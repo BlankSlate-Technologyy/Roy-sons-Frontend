@@ -23,16 +23,16 @@ function ServiceBox({ icon: Icon, title, description, href }) {
 
 export default function CorporateCapabilitiesPanel({ services = CORPORATE_SERVICES }) {
   return (
-    <section className="py-16 border-b border-neutral-100 bg-white font-sans">
+    <section className="py-20 border-b border-neutral-100 bg-white font-sans">
       <div className="max-w-screen-xl mx-auto px-6">
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <h2 className="text-[22px] font-black uppercase tracking-[0.24em] text-neutral-950">
-            Our Services
+            Core Business Sectors
           </h2>
           <div className="mx-auto mt-3 h-[3px] w-12 bg-neutral-950" />
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <ServiceBox 
               key={index} 
