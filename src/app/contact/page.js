@@ -10,7 +10,8 @@ import {
   Lock, 
   ArrowRight, 
   CheckCircle2, 
-  ChevronRight 
+  ChevronRight,
+  ChevronDown
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -236,18 +237,21 @@ export default function ContactPage() {
                       <label className="text-[10px] font-black text-neutral-950 uppercase tracking-[0.14em]">
                         Subject <span className="text-red-500">*</span>
                       </label>
-                      <select 
-                        required
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] cursor-pointer appearance-none"
-                      >
-                        <option value="" disabled>Select a subject</option>
-                        <option value="general">General Inquiries</option>
-                        <option value="services">Service Information</option>
-                        <option value="partnership">Partnership Opportunities</option>
-                        <option value="support">Support & Assistance</option>
-                      </select>
+                      <div className="relative w-full">
+                        <select 
+                          required
+                          value={formData.subject}
+                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                          className="w-full bg-white border border-neutral-200 px-4 py-3 pr-10 text-[12px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] cursor-pointer appearance-none"
+                        >
+                          <option value="" disabled>Select a subject</option>
+                          <option value="general">General Inquiries</option>
+                          <option value="services">Service Information</option>
+                          <option value="partnership">Partnership Opportunities</option>
+                          <option value="support">Support & Assistance</option>
+                        </select>
+                        <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none" />
+                      </div>
                     </div>
                   </div>
 

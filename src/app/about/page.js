@@ -145,11 +145,27 @@ function SectorsServedCard({ category, icon: Icon, items }) {
 
 export default function AboutPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    company: "",
+    division: "",
+    requirements: ""
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 4000);
+    setTimeout(() => {
+      setFormSubmitted(false);
+      setFormData({
+        fullName: "",
+        email: "",
+        company: "",
+        division: "",
+        requirements: ""
+      });
+    }, 4000);
   };
 
   return (
@@ -200,6 +216,7 @@ export default function AboutPage() {
                   src="/hero-building.png" 
                   alt="Roys Group Headquarters" 
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                   priority
                 />
@@ -439,6 +456,8 @@ export default function AboutPage() {
                         type="text"
                         placeholder="John Doe" 
                         required
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                         className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
                       />
                     </div>
@@ -450,6 +469,8 @@ export default function AboutPage() {
                         type="email"
                         placeholder="john@example.com" 
                         required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
                       />
                     </div>
@@ -463,6 +484,8 @@ export default function AboutPage() {
                       <input 
                         type="text"
                         placeholder="Company name" 
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                         className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
                       />
                     </div>
@@ -473,7 +496,8 @@ export default function AboutPage() {
                       <div className="relative">
                         <select
                           required
-                          defaultValue=""
+                          value={formData.division}
+                          onChange={(e) => setFormData({ ...formData, division: e.target.value })}
                           className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] appearance-none cursor-pointer"
                         >
                           <option value="" disabled>Select a division</option>
@@ -483,19 +507,21 @@ export default function AboutPage() {
                             </option>
                           ))}
                         </select>
-                        <ChevronRight size={13} className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 text-neutral-400 pointer-events-none" />
+                        <ChevronRight size={13} className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 text-[#a3a3a3] pointer-events-none" />
                       </div>
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[10px] font-bold text-neutral-950 uppercase tracking-[0.14em]">
-                      Your Requirements / Description <span className="text-red-550">*</span>
+                      Your Requirements / Description <span className="text-red-555">*</span>
                     </label>
                     <textarea 
                       rows={5}
                       required
                       placeholder="Outline your project scope or equipment requirements..."
+                      value={formData.requirements}
+                      onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
                       className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors resize-none rounded-[2px]"
                     />
                   </div>
