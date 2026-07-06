@@ -7,11 +7,11 @@ import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
 
 const COMMITMENTS = [
-  { icon: Trophy,      label: "Excellence" },
-  { icon: Lightbulb,  label: "Innovation" },
-  { icon: ShieldCheck,label: "Integrity" },
-  { icon: Leaf,       label: "Sustainability" },
-  { icon: Landmark,   label: "National\nDevelopment" },
+  { icon: Trophy, label: "Excellence" },
+  { icon: Lightbulb, label: "Innovation" },
+  { icon: ShieldCheck, label: "Integrity" },
+  { icon: Leaf, label: "Sustainability" },
+  { icon: Landmark, label: "National\nDevelopment" },
 ];
 
 export default function ChairmanMessagePage() {
@@ -59,7 +59,7 @@ export default function ChairmanMessagePage() {
             <div className="flex-shrink-0 w-full lg:w-[340px]">
               <div className="relative w-full h-[420px] lg:h-[460px] overflow-hidden rounded-[2px] border border-neutral-200 shadow-sm">
                 <Image
-                  src="/chairman.png"
+                  src="/chairman.jpeg"
                   alt="Brigadier (R) Ijaz Naseer – Chairman & CEO, Roys Group"
                   fill
                   sizes="(max-width: 1024px) 100vw, 340px"

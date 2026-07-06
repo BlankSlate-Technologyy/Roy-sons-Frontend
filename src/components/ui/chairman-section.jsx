@@ -1,83 +1,88 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { CORPORATE_STATS } from "@/lib/constants";
 
 export default function ChairmanAddressBlock({
-  executivePhoto = "/chairman.png",
-  photoDescription = "Chairman – Roy Sons Pvt. Ltd.",
-  addressParagraph = "At Roy Sons, our mission is to deliver quality, value and innovation in everything we do. We are committed to building a stronger, smarter and sustainable future.",
-  authorTitle = "Chairman",
-  organizationName = "Roy Sons Pvt. Ltd.",
+  executivePhoto = "/chairman.jpeg",
+  photoDescription = "Brigadier (R) Ijaz Naseer - Chairman",
+  addressParagraph = "Brigadier (R) Ijaz Naseer founded Roys Group with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, Roys Group stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade.",
+  authorTitle = "BRIGADIER (R) IJAZ NASEER",
+  organizationName = "Chairman & Chief Executive Officer",
   metrics = CORPORATE_STATS,
 }) {
   return (
-    <section className="py-16 border-b border-neutral-100 bg-white font-sans">
+    <section className="py-20 bg-white font-sans border-b border-neutral-100">
       <div className="max-w-screen-xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-12 items-start justify-between">
-          
-          <div className="flex-shrink-0 w-full md:w-[230px] mx-auto lg:mx-0">
-            <div className="relative w-full h-[255px] bg-neutral-100 overflow-hidden border border-neutral-200 shadow-sm rounded-sm">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-14 items-stretch justify-between">
+
+          {/* Column 1: Image */}
+          <div className="flex-shrink-0 w-full md:w-[260px] mx-auto lg:mx-0">
+            <div className="relative w-full h-[320px] bg-neutral-100">
               <Image
                 src={executivePhoto}
                 alt={photoDescription}
                 fill
-                className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 ease-in-out"
-                sizes="(max-width: 768px) 100vw, 230px"
+                className="object-cover object-top shadow-sm"
+                sizes="(max-width: 768px) 100vw, 260px"
               />
             </div>
           </div>
 
-          <div className="flex-1 max-w-full lg:max-w-md">
-            <h2 className="text-[11.5px] font-bold tracking-[0.25em] uppercase text-neutral-900 mb-4">
+          {/* Column 2: Text Area */}
+          <div className="flex-1 max-w-lg lg:max-w-[450px] flex flex-col justify-center">
+            <h2 className="text-[13px] font-bold tracking-[0.2em] uppercase text-neutral-900 mb-5">
               CHAIRMAN&apos;S MESSAGE
             </h2>
-            <p className="text-[13.5px] text-neutral-600 leading-relaxed font-normal mb-6">
+            <p className="text-[15px] text-neutral-600 leading-relaxed font-normal mb-8">
               {addressParagraph}
             </p>
-            
-            <div className="mb-3 select-none">
-              <span className="font-serif italic text-2xl text-neutral-400 select-none tracking-wide">
-                &#x1F58A; Roy Sons
-              </span>
-            </div>
-            
-            <h4 className="text-[11.5px] font-bold text-neutral-900 uppercase tracking-[0.1em]">
-              {authorTitle}
-            </h4>
-            <p className="text-[10.5px] text-neutral-500 font-medium">
-              {organizationName}
-            </p>
 
-            <div className="mt-8">
-              <Link
-                href="/about/chairmans-message"
-                className="inline-flex items-center justify-center px-6 py-2.5 bg-black text-white text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-neutral-800 transition-colors duration-300 rounded-sm"
-              >
-                Read More
-              </Link>
+            <div>
+              <h4 className="text-[13px] font-bold text-neutral-900 uppercase tracking-widest">
+                {authorTitle}
+              </h4>
+              <p className="text-[13.5px] text-neutral-500 font-medium mt-1">
+                {organizationName}
+              </p>
             </div>
           </div>
 
-          <div className="w-full lg:w-auto flex flex-row flex-wrap sm:flex-nowrap justify-between lg:justify-end gap-6 sm:gap-10 lg:gap-12 pt-6 lg:pt-0 lg:ml-auto border-t border-neutral-100 lg:border-t-0">
-            {metrics.map((item) => {
-              const MetricIcon = item.icon;
-              return (
-                <div 
-                  key={item.id} 
-                  className="flex flex-col items-center text-center min-w-[85px] flex-1 sm:flex-initial"
-                >
-                  <div className="p-2.5 bg-neutral-50 rounded-full mb-2.5">
-                    <MetricIcon size={25} className="text-neutral-400" strokeWidth={1.5} />
+          {/* Column 3: Metrics & Button */}
+          <div className="w-full lg:w-auto flex flex-col justify-between pt-8 lg:pt-0 border-t border-neutral-100 lg:border-t-0">
+
+            <div className="flex flex-row flex-wrap sm:flex-nowrap gap-6 sm:gap-10">
+              {metrics.map((item) => {
+                const MetricIcon = item.icon;
+                return (
+                  <div
+                    key={item.id}
+                    className="flex flex-col items-center text-center w-[110px]"
+                  >
+                    <div className="p-3.5 bg-transparent rounded-full border border-neutral-100 mb-4 bg-white/50">
+                      <MetricIcon size={24} className="text-neutral-300" strokeWidth={1} />
+                    </div>
+                    <span className="text-[34px] font-black text-neutral-900 tracking-tight leading-none mb-3">
+                      {item.value}
+                    </span>
+                    <span className="text-[10.5px] text-neutral-500 font-bold uppercase tracking-wider whitespace-pre-line leading-relaxed">
+                      {item.label}
+                    </span>
                   </div>
-                  <span className="text-3xl font-black text-neutral-900 tracking-tight leading-none">
-                    {item.value}
-                  </span>
-                  <span className="text-[9.5px] text-neutral-500 font-bold uppercase tracking-wider mt-2.5 whitespace-pre-line leading-relaxed">
-                    {item.label}
-                  </span>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            <div className="mt-10 lg:mt-6 flex justify-end">
+              <Link
+                href="/about/chairmans-message"
+                className="w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-4 border-2 border-black bg-white text-black text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-black hover:text-white transition-all duration-300 group"
+              >
+                <span>READ FULL MESSAGE</span>
+                <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
           </div>
 
         </div>
