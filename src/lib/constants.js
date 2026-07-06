@@ -105,14 +105,16 @@ export const CORPORATE_STATS = [
 ];
 
 export const CORPORATE_HOLDINGS = [
-  { name: "Roy Construction", href: "/company-construction" },
-  { name: "Roy Engineering", href: "/company-engineering" },
-  { name: "Roy Real Estate", href: "/company-realestate" },
-  { name: "Roy Manufacturing", href: "/company-manufacturing" },
-  { name: "Roy Trading", href: "/company-trading" },
-  { name: "Roy Logistics", href: "/company-logistics" },
-  { name: "Roy Technology", href: "/company-technology" },
-  { name: "Roy Ventures", href: "/company-ventures" },
+  { name: "Alpha Matrix", href: "/group-companies/alpha-matrix", image: "/alpha matrix.jpeg" },
+  { name: "Gateway", href: "/group-companies/gateway", image: "/gateway.jpeg" },
+  { name: "Max Pak", href: "/group-companies/max-pak", image: "/max pak.jpeg" },
+  { name: "National Guard", href: "/group-companies/national-guard", image: "/nation guard.jpeg" },
+  { name: "Neom", href: "/group-companies/neom", image: "/neom.jpeg" },
+  { name: "Swiss Farm", href: "/group-companies/swiss-farm", image: "/swiss fram.jpeg" },
+  { name: "Swiss", href: "/group-companies/swiss", image: "/swiss.jpeg" },
+  { name: "Vet Vec Pharma", href: "/group-companies/vet-vec-pharma", image: "/vet vec pharma.jpeg" },
+  { name: "Walton & Mirror Food", href: "/group-companies/walton-mirror-food", image: "/walton&mirrorfood.jpeg" },
+  { name: "Walton", href: "/group-companies/walton", image: "/walton.jpeg" },
 ];
 
 export const CORPORATE_SERVICES = [
