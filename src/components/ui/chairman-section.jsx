@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CORPORATE_STATS } from "@/lib/constants";
 
 export default function ChairmanAddressBlock({
@@ -46,6 +47,15 @@ export default function ChairmanAddressBlock({
             <p className="text-[10.5px] text-neutral-500 font-medium">
               {organizationName}
             </p>
+
+            <div className="mt-8">
+              <Link
+                href="/about/chairmans-message"
+                className="inline-flex items-center justify-center px-6 py-2.5 bg-black text-white text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-neutral-800 transition-colors duration-300 rounded-sm"
+              >
+                Read More
+              </Link>
+            </div>
           </div>
 
           <div className="w-full lg:w-auto flex flex-row flex-wrap sm:flex-nowrap justify-between lg:justify-end gap-6 sm:gap-10 lg:gap-12 pt-6 lg:pt-0 lg:ml-auto border-t border-neutral-100 lg:border-t-0">

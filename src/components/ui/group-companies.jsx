@@ -8,28 +8,25 @@ function HoldingDivisionItem({ name, href, image }) {
   return (
     <Link
       href={href}
-      className="flex flex-col items-center justify-center gap-3.5 border border-neutral-200 bg-white p-5 hover:border-neutral-950 hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group min-h-[110px] rounded-[3px] h-full"
+      className="flex flex-col items-center justify-center border border-neutral-200 bg-white p-6 hover:border-neutral-950 hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group min-h-[160px] rounded-[3px] h-full"
     >
       {image ? (
-        <div className="relative w-full h-16 mb-2 overflow-hidden rounded-[3px]">
+        <div className="relative w-full h-28 overflow-hidden rounded-[3px]">
           <Image 
             src={image} 
             alt={name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-contain transform group-hover:scale-105 transition-transform duration-300"
+            className="object-contain transform group-hover:scale-110 transition-transform duration-300"
           />
         </div>
       ) : (
         <Building2
-          size={28}
-          strokeWidth={1.3}
-          className="text-neutral-400 group-hover:text-black group-hover:scale-105 transition-all duration-300"
+          size={76}
+          strokeWidth={1.2}
+          className="text-neutral-400 group-hover:text-black group-hover:scale-110 transition-all duration-300"
         />
       )}
-      <span className="text-[9.5px] font-extrabold tracking-[0.15em] uppercase text-center text-neutral-600 group-hover:text-black transition-colors duration-300 line-clamp-2 mt-auto">
-        {name}
-      </span>
     </Link>
   );
 }
