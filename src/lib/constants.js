@@ -115,6 +115,14 @@ export const CORPORATE_HOLDINGS = [
   { name: "Vet Vec Pharma", href: "/group-companies/vet-vec-pharma", image: "/vet vec pharma.jpeg" },
   { name: "Walton & Mirror Food", href: "/group-companies/walton-mirror-food", image: "/walton&mirrorfood.jpeg" },
   { name: "Walton", href: "/group-companies/walton", image: "/walton.jpeg" },
+  { name: "Max Power Corporation", href: "/group-companies/max-power", image: "/max power.jpeg" },
+  { name: "Inverse Union Trading", href: "/group-companies/inverse-union", image: "/inverse.jpeg" },
+  { name: "Roys & Roys International", href: "/group-companies/roys-roys", image: "/roysand roys.jpeg" },
+  { name: "Desert Development & Rehabilitation", href: "/group-companies/desert-development", image: "/desert development.jpeg" },
+  { name: "Swiss Homes", href: "/group-companies/swiss-homes", image: "/swiss homes.jpeg" },
+  { name: "Digital Zoning Corporation", href: "/group-companies/digital-zoning", image: "/digitaz zoning.jpeg" },
+  { name: "Pakistan Consultancy Services", href: "/group-companies/pakistan-consultancy", image: "/pakistani consulancy services.jpeg" },
+  { name: "Pak Janitorial Services", href: "/group-companies/pak-janitorial", image: "/pak janitorial.jpeg" },
 ];
 
 export const CORPORATE_SERVICES = [
