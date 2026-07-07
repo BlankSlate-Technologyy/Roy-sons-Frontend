@@ -123,6 +123,14 @@ export const CORPORATE_HOLDINGS = [
   { name: "Digital Zoning Corporation", href: "/group-companies/digital-zoning", image: "/digitaz zoning.jpeg" },
   { name: "Pakistan Consultancy Services", href: "/group-companies/pakistan-consultancy", image: "/pakistani consulancy services.jpeg" },
   { name: "Pak Janitorial Services", href: "/group-companies/pak-janitorial", image: "/pak janitorial.jpeg" },
+  { name: "NATIONAL FOOD SERVICES", href: "#", image: "/national food service.jpeg" },
+  { name: "BIO MAX CORPORATION", href: "#", image: "/bio max.jpeg" },
+  { name: "NATIONAL AGRICULTURAL CORPORATION", href: "#", image: "/national agricultural.jpeg" },
+  { name: "TDRC – THAL DEVELOPMENT & RESEARCH CENTRE", href: "#", image: "/tdrc.jpeg" },
+  { name: "NEOM CITY RECRUITMENT CONSULTANTS", href: "#", image: "/neom city.jpeg" },
+  { name: "MAX WOOD CORPORATION", href: "#", image: "/max wood.jpeg" },
+  { name: "GERMAN TECHNOLOGY XPERT (GTX)", href: "#", image: "/gtx.jpeg" },
+  { name: "NATIONAL MINES CORPORATION (NMC)", href: "#", image: "/national min.jpeg" },
 ];
 
 export const CORPORATE_SERVICES = [

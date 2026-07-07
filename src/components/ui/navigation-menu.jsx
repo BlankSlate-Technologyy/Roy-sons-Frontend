@@ -19,7 +19,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white shadow-[0_1px_3px_0_rgba(0,0,0,0.05)]">
-      <div className="mx-auto flex h-[72px] max-w-screen-xl items-center justify-between px-6">
+      <div className="mx-auto flex h-20 md:h-24 lg:h-[104px] max-w-screen-xl items-center justify-between px-6">
         
         <Link href="/" className="inline-block flex-shrink-0">
           <BrandLogo />

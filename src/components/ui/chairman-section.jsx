@@ -12,44 +12,46 @@ export default function ChairmanAddressBlock({
   metrics = CORPORATE_STATS,
 }) {
   return (
-    <section className="py-20 bg-white font-sans border-b border-neutral-100">
+    <section className="py-12 lg:py-16 bg-white font-sans border-b border-neutral-100">
       <div className="max-w-screen-xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-14 items-stretch justify-between">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-14 items-stretch justify-between">
 
           {/* Column 1: Image */}
           <div className="flex-shrink-0 w-full md:w-[260px] mx-auto lg:mx-0">
-            <div className="relative w-full h-[320px] bg-neutral-100">
+            <div className="relative w-full h-[280px]">
               <Image
                 src={executivePhoto}
                 alt={photoDescription}
                 fill
-                className="object-cover object-top shadow-sm"
+                className="object-cover object-top shadow-sm rounded-sm"
                 sizes="(max-width: 768px) 100vw, 260px"
               />
             </div>
           </div>
 
           {/* Column 2: Text Area */}
-          <div className="flex-1 max-w-lg lg:max-w-[450px] flex flex-col justify-center">
-            <h2 className="text-[13px] font-bold tracking-[0.2em] uppercase text-neutral-900 mb-5">
-              CHAIRMAN&apos;S MESSAGE
-            </h2>
-            <p className="text-[15px] text-neutral-600 leading-relaxed font-normal mb-8">
-              {addressParagraph}
-            </p>
-
+          <div className="flex-1 max-w-lg lg:max-w-[450px] flex flex-col justify-between">
             <div>
+              <h2 className="text-[13px] font-bold tracking-[0.2em] uppercase text-neutral-900 mb-4 mt-[5px]">
+                CHAIRMAN&apos;S MESSAGE
+              </h2>
+              <p className="text-[14px] text-neutral-600 leading-relaxed font-normal">
+                {addressParagraph}
+              </p>
+            </div>
+
+            <div className="mb-[2px]">
               <h4 className="text-[13px] font-bold text-neutral-900 uppercase tracking-widest">
                 {authorTitle}
               </h4>
-              <p className="text-[13.5px] text-neutral-500 font-medium mt-1">
+              <p className="text-[13px] text-neutral-500 font-medium mt-1">
                 {organizationName}
               </p>
             </div>
           </div>
 
           {/* Column 3: Metrics & Button */}
-          <div className="w-full lg:w-auto flex flex-col justify-between pt-8 lg:pt-0 border-t border-neutral-100 lg:border-t-0">
+          <div className="w-full lg:w-auto flex flex-col justify-between pt-6 lg:pt-0 border-t border-neutral-100 lg:border-t-0">
 
             <div className="flex flex-row flex-wrap sm:flex-nowrap gap-6 sm:gap-10">
               {metrics.map((item) => {
@@ -57,15 +59,15 @@ export default function ChairmanAddressBlock({
                 return (
                   <div
                     key={item.id}
-                    className="flex flex-col items-center text-center w-[110px]"
+                    className="flex flex-col items-center text-center w-[100px]"
                   >
-                    <div className="p-3.5 bg-transparent rounded-full border border-neutral-100 mb-4 bg-white/50">
-                      <MetricIcon size={24} className="text-neutral-300" strokeWidth={1} />
+                    <div className="p-3 bg-transparent rounded-full border border-neutral-100 mb-3 bg-white/50">
+                      <MetricIcon size={22} className="text-neutral-300" strokeWidth={1} />
                     </div>
-                    <span className="text-[34px] font-black text-neutral-900 tracking-tight leading-none mb-3">
+                    <span className="text-[32px] font-black text-neutral-900 tracking-tight leading-none mb-2">
                       {item.value}
                     </span>
-                    <span className="text-[10.5px] text-neutral-500 font-bold uppercase tracking-wider whitespace-pre-line leading-relaxed">
+                    <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider whitespace-pre-line leading-relaxed">
                       {item.label}
                     </span>
                   </div>
@@ -73,16 +75,15 @@ export default function ChairmanAddressBlock({
               })}
             </div>
 
-            <div className="mt-10 lg:mt-6 flex justify-end">
+            <div className="mt-8 lg:mt-0 flex justify-end">
               <Link
                 href="/about/chairmans-message"
-                className="w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-4 border-2 border-black bg-white text-black text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-black hover:text-white transition-all duration-300 group"
+                className="w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-black bg-white text-black text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-black hover:text-white transition-all duration-300 group"
               >
                 <span>READ FULL MESSAGE</span>
                 <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
-
           </div>
 
         </div>
