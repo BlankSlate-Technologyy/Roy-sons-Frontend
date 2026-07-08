@@ -158,7 +158,7 @@ function ServiceCard({ icon: Icon, title, description, href }) {
   );
 }
 
-function FormField({ label, placeholder, type = "text", required = false, id }) {
+function FormField({ label, placeholder, type = "text", required = false, id, value, onChange }) {
   return (
     <div className="flex flex-col gap-1.5">
       <label
@@ -171,13 +171,16 @@ function FormField({ label, placeholder, type = "text", required = false, id }) 
         id={id}
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        required={required}
         className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
       />
     </div>
   );
 }
 
-function FormSelect({ label, options, required = false, id }) {
+function FormSelect({ label, options, required = false, id, value, onChange }) {
   return (
     <div className="flex flex-col gap-1.5">
       <label
@@ -189,14 +192,16 @@ function FormSelect({ label, options, required = false, id }) {
       <div className="relative">
         <select
           id={id}
-          defaultValue=""
+          value={value}
+          onChange={onChange}
+          required={required}
           className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] appearance-none cursor-pointer"
         >
           <option value="" disabled>
             Select a service
           </option>
           {options.map((opt) => (
-            <option key={opt} value={opt.toLowerCase().replace(/\s+/g, "-")}>
+            <option key={opt} value={opt} className="text-black">
               {opt}
             </option>
           ))}
@@ -212,11 +217,55 @@ function FormSelect({ label, options, required = false, id }) {
 
 export default function ServicesPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    company: "",
+    service: "",
+    subject: "",
+    message: ""
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 4000);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+      const response = await fetch(`${apiUrl}/service-query`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to submit query request.");
+      }
+
+      setFormSubmitted(true);
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "",
+        subject: "",
+        message: ""
+      });
+    } catch (err) {
+      console.error("Submission error:", err);
+      setSubmitError(err.message || "Connection refused. Please ensure the backend is running.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -332,6 +381,8 @@ export default function ServicesPage() {
                       label="Full Name"
                       placeholder="Enter your full name"
                       required
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     />
                     <FormField
                       id="query-email"
@@ -339,11 +390,15 @@ export default function ServicesPage() {
                       placeholder="Enter your email"
                       type="email"
                       required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                     <FormField
                       id="query-phone"
                       label="Phone Number"
                       placeholder="Enter your phone number"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
                   </div>
 
@@ -352,18 +407,24 @@ export default function ServicesPage() {
                       id="query-company"
                       label="Company / Organization"
                       placeholder="Enter your company name"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     />
                     <FormSelect
                       id="query-service"
                       label="Service of Interest"
                       options={SERVICE_OPTIONS}
                       required
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                     />
                     <FormField
                       id="query-subject"
                       label="Subject"
                       placeholder="Enter subject"
                       required
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     />
                   </div>
 
@@ -379,17 +440,26 @@ export default function ServicesPage() {
                       rows={5}
                       placeholder="Tell us about your requirements..."
                       required
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px] resize-none"
                     />
                   </div>
+
+                  {submitError && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-[2px] text-[11.5px] font-medium tracking-wide">
+                      ⚠️ {submitError}
+                    </div>
+                  )}
 
                   <div className="flex justify-center pt-2">
                     <button
                       type="submit"
                       id="query-submit-btn"
-                      className="inline-flex items-center gap-3 bg-black text-white px-10 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] hover:bg-neutral-800 transition-colors rounded-[2px] cursor-pointer"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center gap-3 bg-black hover:bg-neutral-800 disabled:bg-neutral-400 text-white px-10 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
                     >
-                      Submit Query <ArrowRight size={13} strokeWidth={2.5} />
+                      {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={13} strokeWidth={2.5} />
                     </button>
                   </div>
                 </form>

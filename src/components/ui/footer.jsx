@@ -16,13 +16,44 @@ export default function CorporateFooter({
 }) {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccessMsg, setSubmitSuccessMsg] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    if (email.trim()) {
-      console.log("Subscribed email address:", email);
+    if (!email.trim()) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccessMsg("");
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+      const response = await fetch(`${apiUrl}/newsletter`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to subscribe to newsletter.");
+      }
+
       setSubscribed(true);
+      setSubmitSuccessMsg(data.message || "Subscription Active");
       setEmail("");
+    } catch (err) {
+      console.error("Newsletter submission error:", err);
+      setSubmitError(err.message || "Connection failed.");
+      // Clear error after 5s
+      setTimeout(() => setSubmitError(""), 5000);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -122,7 +153,7 @@ export default function CorporateFooter({
           {subscribed ? (
             <div className="bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-sm">
               <span className="text-[10px] text-emerald-500 font-bold uppercase tracking-wider">
-                ✓ Subscription Active
+                ✓ {submitSuccessMsg || "Subscription Active"}
               </span>
             </div>
           ) : (
@@ -130,17 +161,24 @@ export default function CorporateFooter({
               <input
                 type="email"
                 required
+                disabled={isSubmitting}
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-white text-[11px] text-black placeholder-neutral-500 px-4 py-3 outline-none font-medium rounded-sm"
+                className="w-full bg-white text-[11px] text-black placeholder-neutral-500 px-4 py-3 outline-none font-medium rounded-sm disabled:bg-neutral-800 disabled:text-neutral-500"
               />
+              {submitError && (
+                <span className="text-[9.5px] text-red-500 font-medium tracking-wide">
+                  ⚠️ {submitError}
+                </span>
+              )}
               <button
                 type="submit"
                 aria-label="Subscribe now"
-                className="w-full py-3 bg-white text-black hover:bg-neutral-200 transition-colors flex items-center justify-center text-[11px] font-bold uppercase tracking-wider rounded-sm cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full py-3 bg-white text-black hover:bg-neutral-200 disabled:bg-neutral-800 disabled:text-neutral-450 transition-colors flex items-center justify-center text-[11px] font-bold uppercase tracking-wider rounded-sm cursor-pointer disabled:cursor-not-allowed"
               >
-                Subscribe
+                {isSubmitting ? "Submitting..." : "Subscribe"}
               </button>
             </form>
           )}

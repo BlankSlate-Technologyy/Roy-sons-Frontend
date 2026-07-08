@@ -18,6 +18,8 @@ import CorporateFooter from "@/components/ui/footer";
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -27,11 +29,28 @@ export default function ContactPage() {
     message: ""
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+      const response = await fetch(`${apiUrl}/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to submit message. Please try again.");
+      }
+
+      setFormSubmitted(true);
       setFormData({
         fullName: "",
         email: "",
@@ -40,7 +59,12 @@ export default function ContactPage() {
         company: "",
         message: ""
       });
-    }, 4000);
+    } catch (err) {
+      console.error("Submission error:", err);
+      setSubmitError(err.message || "Connection refused. Please ensure the backend is running.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -284,13 +308,20 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {submitError && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-[2px] text-[11.5px] font-medium tracking-wide">
+                      ⚠️ {submitError}
+                    </div>
+                  )}
+
                   {/* Submit buttons */}
                   <div className="flex flex-col items-center gap-4 pt-4">
                     <button 
                       type="submit" 
-                      className="bg-black hover:bg-neutral-800 text-white px-10 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] flex items-center gap-3 transition-colors rounded-[2px] cursor-pointer"
+                      disabled={isSubmitting}
+                      className="bg-black hover:bg-neutral-800 disabled:bg-neutral-400 text-white px-10 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] flex items-center gap-3 transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
                     >
-                      Send Message <ArrowRight size={13} strokeWidth={2.5} />
+                      {isSubmitting ? "Sending..." : "Send Message"} <ArrowRight size={13} strokeWidth={2.5} />
                     </button>
                     <div className="flex items-center gap-2 text-neutral-400 text-[10px]">
                       <Lock size={12} />

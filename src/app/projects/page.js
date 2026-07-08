@@ -112,7 +112,7 @@ function ProjectCard({ image, category, title, description, href }) {
   );
 }
 
-function QueryFormField({ id, label, placeholder, type = "text", required = false }) {
+function QueryFormField({ id, label, placeholder, type = "text", required = false, value, onChange }) {
   return (
     <div className="flex flex-col gap-1">
       <label
@@ -125,13 +125,16 @@ function QueryFormField({ id, label, placeholder, type = "text", required = fals
         id={id}
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        required={required}
         className="w-full bg-white border border-neutral-200 px-3 py-2.5 text-[11.5px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
       />
     </div>
   );
 }
 
-function QueryFormSelect({ id, label, options, required = false }) {
+function QueryFormSelect({ id, label, options, required = false, value, onChange }) {
   return (
     <div className="flex flex-col gap-1">
       <label
@@ -143,14 +146,16 @@ function QueryFormSelect({ id, label, options, required = false }) {
       <div className="relative">
         <select
           id={id}
-          defaultValue=""
+          value={value}
+          onChange={onChange}
+          required={required}
           className="w-full bg-white border border-neutral-200 px-3 py-2.5 text-[11.5px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] appearance-none cursor-pointer"
         >
           <option value="" disabled>
             Select a subject
           </option>
           {options.map((opt) => (
-            <option key={opt} value={opt.toLowerCase().replace(/\s+/g, "-")}>
+            <option key={opt} value={opt} className="text-black">
               {opt}
             </option>
           ))}
@@ -166,11 +171,51 @@ function QueryFormSelect({ id, label, options, required = false }) {
 
 export default function ProjectsPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: ""
+  });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+      const response = await fetch(`${apiUrl}/project-query`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to submit project query.");
+      }
+
+      setSubmitted(true);
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: ""
+      });
+    } catch (err) {
+      console.error("Submission error:", err);
+      setSubmitError(err.message || "Connection refused. Please ensure the backend is running.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -281,6 +326,8 @@ export default function ProjectsPage() {
                       label="Full Name"
                       placeholder="Enter your full name"
                       required
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     />
                     <QueryFormField
                       id="sidebar-email"
@@ -288,17 +335,23 @@ export default function ProjectsPage() {
                       placeholder="Enter your email"
                       type="email"
                       required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
                     <QueryFormField
                       id="sidebar-phone"
                       label="Phone Number"
                       placeholder="Enter your phone number"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
                     <QueryFormSelect
                       id="sidebar-subject"
                       label="Subject"
                       options={SUBJECT_OPTIONS}
                       required
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     />
 
                     <div className="flex flex-col gap-1">
@@ -313,16 +366,25 @@ export default function ProjectsPage() {
                         rows={4}
                         placeholder="Write your message..."
                         required
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         className="w-full bg-white border border-neutral-200 px-3 py-2.5 text-[11.5px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px] resize-none"
                       />
                     </div>
 
+                    {submitError && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-[2px] text-[11px] font-medium tracking-wide">
+                        ⚠️ {submitError}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
                       id="sidebar-query-submit"
-                      className="w-full flex items-center justify-center gap-2.5 bg-black text-white py-3 text-[10px] font-black uppercase tracking-[0.18em] hover:bg-neutral-800 transition-colors rounded-[2px] cursor-pointer"
+                      disabled={isSubmitting}
+                      className="w-full flex items-center justify-center gap-2.5 bg-black hover:bg-neutral-800 disabled:bg-neutral-400 text-white py-3 text-[10px] font-black uppercase tracking-[0.18em] transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
                     >
-                      Submit Query <ArrowRight size={12} strokeWidth={2.5} />
+                      {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={12} strokeWidth={2.5} />
                     </button>
 
                     <div className="flex items-center gap-2 text-neutral-400 text-[10px] font-medium pt-1">
