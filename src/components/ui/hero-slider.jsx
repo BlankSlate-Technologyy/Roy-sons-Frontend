@@ -89,16 +89,16 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
 
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-screen-xl mx-auto px-6 w-full">
-          <div className="max-w-[660px]">
+          <div className="max-w-[820px]">
             <p className={`text-[11px] font-bold tracking-[0.28em] uppercase text-white/90 mb-3.5 transition-all duration-500 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.subtitle}
             </p>
 
-            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-white uppercase tracking-tight transition-all duration-500 delay-75 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+            <h1 className={`text-3xl md:text-4xl lg:text-5xl font-black leading-snug text-white uppercase tracking-tight transition-all duration-500 delay-75 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.title}
             </h1>
             {activeSlide.highlight && (
-              <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-white uppercase tracking-tight mb-3 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+              <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black leading-snug text-white uppercase tracking-tight mb-3 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
                 {activeSlide.highlight}
               </h2>
             )}
@@ -109,12 +109,12 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
               </p>
             )}
 
-            <p className={`text-[13px] text-white/80 leading-relaxed mb-3 max-w-[560px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+            <p className={`text-sm text-white/85 leading-loose mb-3 max-w-[720px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.description}
             </p>
 
             {activeSlide.supportingText && (
-              <p className={`text-[12px] text-white/60 leading-relaxed mb-7 max-w-[560px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+              <p className={`text-sm text-white/65 leading-loose mb-7 max-w-[720px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
                 {activeSlide.supportingText}
               </p>
             )}

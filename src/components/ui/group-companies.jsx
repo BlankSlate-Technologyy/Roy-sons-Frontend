@@ -33,16 +33,16 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image }) {
 
       {hasText && (
         <div className="px-4 pb-4 text-center">
-          <h3 className="text-[12px] font-black tracking-[0.08em] uppercase text-neutral-950 leading-snug mb-1">
+          <h3 className="text-[12px] font-black tracking-[0.08em] uppercase text-black leading-snug mb-1">
             {name}
           </h3>
           {subtitle && (
-            <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-neutral-400 mb-2">
+            <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-neutral-700 mb-2">
               {subtitle}
             </p>
           )}
           {tagline && (
-            <p className="text-[11px] text-neutral-500 leading-relaxed font-normal">
+            <p className="text-[11px] text-neutral-700 leading-relaxed font-normal">
               {tagline}
             </p>
           )}
@@ -59,7 +59,7 @@ export default function SubsidiariesHoldingsGrid({
     <section className="py-16 border-b border-neutral-100 bg-neutral-50/20 font-sans">
       <div className="max-w-screen-xl mx-auto px-6">
         <div className="text-center mb-14">
-          <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-500 mb-4">
+          <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-700 mb-4">
             OUR COMPANIES
           </h4>
           <h2 className="text-2xl md:text-3xl lg:text-[34px] font-black tracking-[0.05em] uppercase text-neutral-950 leading-snug md:leading-snug lg:leading-tight">

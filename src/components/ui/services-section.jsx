@@ -9,12 +9,12 @@ function ServiceBox({ icon: Icon, title, description, href }) {
       <Icon
         size={34}
         strokeWidth={1.2}
-        className="text-neutral-400 mb-4 group-hover:text-black group-hover:scale-105 transition-all duration-300"
+        className="text-neutral-600 mb-4 group-hover:text-black group-hover:scale-105 transition-all duration-300"
       />
-      <h3 className="text-[14px] font-black tracking-[0.16em] uppercase text-neutral-950 mb-2.5">
+      <h3 className="text-[14px] font-black tracking-[0.16em] uppercase text-black mb-2.5">
         {title}
       </h3>
-      <p className="text-[11px] text-neutral-500 leading-relaxed font-normal">
+      <p className="text-[11px] text-neutral-700 leading-relaxed font-normal">
         {description}
       </p>
     </a>
