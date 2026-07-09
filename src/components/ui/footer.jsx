@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import BrandLogo from "@/components/ui/logo";
+import Image from "next/image";
 import {
   FOOTER_QUICK_LINKS,
   FOOTER_SERVICES_LINKS,
@@ -64,7 +64,13 @@ export default function CorporateFooter({
         
         <div className="lg:col-span-1 flex flex-col pr-8 lg:border-r lg:border-neutral-800 pb-12 lg:pb-0">
           <Link href="/" className="inline-block mb-4">
-            <BrandLogo isDarkTheme />
+            <Image
+              src="/Roysons Logo White.png"
+              alt="Roy Sons Logo"
+              width={160}
+              height={60}
+              className="object-contain"
+            />
           </Link>
           <p className="text-[12px] text-neutral-400 leading-relaxed font-normal mb-6">
             {caption}
