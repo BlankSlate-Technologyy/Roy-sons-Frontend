@@ -33,7 +33,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                 <li key={route.path} className="relative flex h-full items-center">
                   <Link
                     href={route.path}
-                    className={`px-2 py-2 text-[10.5px] font-bold tracking-[0.14em] uppercase transition-all duration-300 relative whitespace-nowrap rounded-sm
+                    className={`px-2 py-2 text-[13px] font-bold tracking-[0.14em] uppercase transition-all duration-300 relative whitespace-nowrap rounded-sm
                       ${isActive
                         ? "text-black after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-8 after:h-[3px] after:bg-black"
                         : "text-neutral-500 hover:text-black hover:bg-neutral-50/50"
@@ -92,7 +92,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                 <Link
                   href={route.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-6 py-3.5 text-[11px] font-bold tracking-[0.16em] uppercase text-neutral-700 hover:bg-neutral-50 hover:text-black border-b border-neutral-50"
+                  className="block px-6 py-3.5 text-[13px] font-bold tracking-[0.16em] uppercase text-neutral-700 hover:bg-neutral-50 hover:text-black border-b border-neutral-50"
                 >
                   {route.title}
                 </Link>

@@ -4,28 +4,49 @@ import { CORPORATE_HOLDINGS } from "@/lib/constants";
 
 import Image from "next/image";
 
-function HoldingDivisionItem({ name, href, image }) {
+function HoldingDivisionItem({ name, subtitle, tagline, href, image }) {
+  const hasText = subtitle || tagline;
   return (
     <Link
       href={href}
-      className="flex flex-col items-center justify-center border border-neutral-200 bg-white p-3 hover:border-neutral-950 hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group rounded-[3px] h-full"
+      className={`flex flex-col border border-neutral-200 bg-white hover:border-neutral-950 hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group rounded-[3px] h-full overflow-hidden ${hasText ? "" : "items-center justify-center p-3"}`}
     >
-      {image ? (
-        <div className="relative w-full h-48 overflow-hidden rounded-[3px]">
-          <Image 
-            src={image} 
-            alt={name}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-contain transform group-hover:scale-110 transition-transform duration-300"
+      <div className={hasText ? "p-3" : ""}>
+        {image ? (
+          <div className="relative w-full h-48 overflow-hidden rounded-[2px]">
+            <Image 
+              src={image} 
+              alt={name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-contain transform group-hover:scale-110 transition-transform duration-300"
+            />
+          </div>
+        ) : (
+          <Building2
+            size={76}
+            strokeWidth={1.2}
+            className="text-neutral-400 group-hover:text-black group-hover:scale-110 transition-all duration-300"
           />
+        )}
+      </div>
+
+      {hasText && (
+        <div className="px-4 pb-4 text-center">
+          <h3 className="text-[12px] font-black tracking-[0.08em] uppercase text-neutral-950 leading-snug mb-1">
+            {name}
+          </h3>
+          {subtitle && (
+            <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-neutral-400 mb-2">
+              {subtitle}
+            </p>
+          )}
+          {tagline && (
+            <p className="text-[11px] text-neutral-500 leading-relaxed font-normal">
+              {tagline}
+            </p>
+          )}
         </div>
-      ) : (
-        <Building2
-          size={76}
-          strokeWidth={1.2}
-          className="text-neutral-400 group-hover:text-black group-hover:scale-110 transition-all duration-300"
-        />
       )}
     </Link>
   );
@@ -50,7 +71,9 @@ export default function SubsidiariesHoldingsGrid({
           {holdings.map((entity, index) => (
             <HoldingDivisionItem 
               key={index} 
-              name={entity.name} 
+              name={entity.name}
+              subtitle={entity.subtitle}
+              tagline={entity.tagline}
               href={entity.href} 
               image={entity.image}
             />
