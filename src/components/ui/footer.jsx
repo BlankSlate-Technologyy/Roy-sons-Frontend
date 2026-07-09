@@ -67,8 +67,8 @@ export default function CorporateFooter({
             <Image
               src="/Roysons Logo White.png"
               alt="Roy Sons Logo"
-              width={160}
-              height={60}
+              width={200}
+              height={80}
               className="object-contain"
             />
           </Link>

@@ -237,7 +237,7 @@ export default function AboutPage() {
             <div className="flex-1 w-full relative min-h-[300px]">
               <div className="h-full w-full relative overflow-hidden rounded-[2px] border border-neutral-200 shadow-sm">
                 <Image 
-                  src="/hero-building.png" 
+                  src="/ROYSONS PVT. LTD. OFFICE IMAGE.jpeg" 
                   alt="Roys Group Headquarters" 
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
