@@ -36,7 +36,12 @@ import {
   Utensils,
   Award,
   MessageSquare,
-  HardHat
+  HardHat,
+  Landmark,
+  GraduationCap,
+  Microscope,
+  MapPin,
+  Network
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -276,6 +281,88 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Government Sector Clients Section */}
+      <section className="py-20 px-6 bg-white border-b border-neutral-100">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center mb-14">
+            <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
+              PUBLIC SECTOR
+            </span>
+            <h2 className="text-[26px] font-black uppercase tracking-[0.18em] text-neutral-950">
+              Government Sector
+            </h2>
+            <div className="mx-auto mt-4 h-[3px] w-12 bg-neutral-950" />
+            <p className="text-[13px] text-neutral-500 mt-5 max-w-xl mx-auto leading-relaxed">
+              Roys Group proudly serves a wide range of government institutions, delivering trusted solutions across Pakistan&apos;s public sector landscape.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+
+            {/* Federal Ministries */}
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Landmark className="text-white" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Federal Ministries
+              </h4>
+            </div>
+
+            {/* Provincial Governments */}
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <MapPin className="text-white" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Provincial Governments
+              </h4>
+            </div>
+
+            {/* Armed Forces */}
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Shield className="text-white" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Armed Forces
+              </h4>
+            </div>
+
+            {/* Universities */}
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <GraduationCap className="text-white" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Universities
+              </h4>
+            </div>
+
+            {/* Research Institutes */}
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Microscope className="text-white" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Research Institutes
+              </h4>
+            </div>
+
+            {/* Public Sector Organizations */}
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Network className="text-white" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Public Sector Organizations
+              </h4>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* Vision & Mission Elegant Side-by-Side block */}
       <section className="py-20 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
@@ -370,7 +457,7 @@ export default function AboutPage() {
                   <div className="w-10 h-10 border border-neutral-200 flex items-center justify-center bg-neutral-50 rounded-sm">
                     <Icon size={20} className="text-neutral-500" strokeWidth={1.5} />
                   </div>
-                  <h4 className="text-[11.5px] font-black uppercase tracking-wider text-neutral-950 leading-tight">
+                  <h4 className="text-[15px] font-black uppercase tracking-wider text-neutral-950 leading-tight">
                     {div.title}
                   </h4>
                 </div>

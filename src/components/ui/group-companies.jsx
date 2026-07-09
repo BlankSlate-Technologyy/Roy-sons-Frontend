@@ -33,7 +33,7 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image }) {
 
       {hasText && (
         <div className="px-4 pb-4 text-center">
-          <h3 className="text-[12px] font-black tracking-[0.08em] uppercase text-black leading-snug mb-1">
+          <h3 className="text-[16px] font-black tracking-[0.05em] uppercase text-black leading-snug mb-1">
             {name}
           </h3>
           {subtitle && (
@@ -67,7 +67,7 @@ export default function SubsidiariesHoldingsGrid({
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {holdings.map((entity, index) => (
             <HoldingDivisionItem 
               key={index} 
