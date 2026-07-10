@@ -65,7 +65,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
   {
     id: "slide-one",
     type: "image",
-    src: "/hero-building.png",
+    src: "/slide-1.jpeg",
     subtitle: "ROYS GROUP OF COMPANIES",
     title: "Building Industries.",
     highlight: "Empowering Nations.",
