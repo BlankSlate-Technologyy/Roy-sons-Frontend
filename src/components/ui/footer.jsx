@@ -59,13 +59,13 @@ export default function CorporateFooter({
 
   return (
     <footer className="bg-neutral-950 text-white font-sans border-t border-neutral-900">
-      
+
       <div className="max-w-screen-xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-0">
-        
+
         <div className="lg:col-span-1 flex flex-col pr-8 lg:border-r lg:border-neutral-800 pb-12 lg:pb-0">
           <Link href="/" className="inline-block mb-4">
             <Image
-              src="/Roysons Logo White.png"
+              src="/Roysons Logo Golden.png"
               alt="Roy Sons Logo"
               width={200}
               height={80}
@@ -75,7 +75,7 @@ export default function CorporateFooter({
           <p className="text-[12px] text-neutral-400 leading-relaxed font-normal mb-6">
             {caption}
           </p>
-          
+
           <div className="flex gap-2">
             {SOCIAL_MEDIA_HANDLES.map((handle, index) => {
               const SocialIcon = handle.icon;
@@ -155,7 +155,7 @@ export default function CorporateFooter({
           <p className="text-[11.5px] text-neutral-300 leading-relaxed mb-4">
             Subscribe to our newsletter for latest updates.
           </p>
-          
+
           {subscribed ? (
             <div className="bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-sm">
               <span className="text-[10px] text-emerald-500 font-bold uppercase tracking-wider">

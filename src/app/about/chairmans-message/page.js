@@ -60,7 +60,7 @@ export default function ChairmanMessagePage() {
               <div className="relative w-full h-[420px] lg:h-[460px] overflow-hidden rounded-[2px] border border-neutral-200 shadow-sm">
                 <Image
                   src="/chairman.jpeg"
-                  alt="Brigadier (R) Ijaz Naseer – Chairman & CEO, Roys Group"
+                  alt=" Ijaz Naseer – Chairman & CEO, Roys Group"
                   fill
                   sizes="(max-width: 1024px) 100vw, 340px"
                   className="object-cover object-top"
@@ -77,7 +77,7 @@ export default function ChairmanMessagePage() {
                   Ijaz Naseer
                 </p>
                 <p className="text-[13px] font-black text-neutral-950 uppercase tracking-wide">
-                  Brigadier (R) Ijaz Naseer
+                  Ijaz Naseer
                 </p>
                 <p className="text-[12px] text-neutral-500 font-medium mt-0.5">
                   Chairman &amp; Chief Executive Officer
@@ -91,11 +91,11 @@ export default function ChairmanMessagePage() {
 
               {/* Intro paragraphs */}
               <p className="text-[14px] text-neutral-600 leading-relaxed mb-5">
-                Brigadier (R) Ijaz Naseer founded Roys Group with a vision to establish a diversified
+                Ijaz Naseer founded Roysons Pvt. Ltd. with a vision to establish a diversified
                 organization capable of delivering world-class solutions across multiple industries.
               </p>
               <p className="text-[14px] text-neutral-600 leading-relaxed mb-8">
-                Today, Roys Group stands as a multi-sector enterprise operating in healthcare,
+                Today, Roysons Pvt. Ltd. stands as a multi-sector enterprise operating in healthcare,
                 engineering, technology, defense, agriculture, mining, energy, infrastructure,
                 and international trade.
               </p>

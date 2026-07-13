@@ -5,9 +5,9 @@ import { CORPORATE_STATS } from "@/lib/constants";
 
 export default function ChairmanAddressBlock({
   executivePhoto = "/chairman.jpeg",
-  photoDescription = "Brigadier (R) Ijaz Naseer - Chairman",
-  addressParagraph = "Brigadier (R) Ijaz Naseer founded Roys Group with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, Roys Group stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade.",
-  authorTitle = "BRIGADIER (R) IJAZ NASEER",
+  photoDescription = "Ijaz Naseer - Chairman",
+  addressParagraph = "Ijaz Naseer founded Roysons Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, Roys Group stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade.",
+  authorTitle = "IJAZ NASEER",
   organizationName = "Chairman & Chief Executive Officer",
   metrics = CORPORATE_STATS,
 }) {
@@ -78,10 +78,10 @@ export default function ChairmanAddressBlock({
             <div className="mt-8 lg:mt-0 flex justify-end">
               <Link
                 href="/about/chairmans-message"
-                className="w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-black bg-white text-black text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-black hover:text-white transition-all duration-300 group"
+                className="w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#dfb753] bg-[#dfb753] !text-black text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-black hover:!text-[#dfb753] transition-all duration-300 group"
               >
-                <span>READ FULL MESSAGE</span>
-                <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                <span className="!text-black group-hover:!text-[#dfb753] transition-colors">READ FULL MESSAGE</span>
+                <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform !text-black group-hover:!text-[#dfb753] transition-colors" />
               </Link>
             </div>
           </div>

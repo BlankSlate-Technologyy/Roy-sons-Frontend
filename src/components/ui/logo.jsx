@@ -2,12 +2,12 @@ import Image from "next/image";
 
 export default function BrandLogo({ isDarkTheme = false, showSubtitle = false, customStyles = "" }) {
   return (
-    <div 
+    <div
       className={`inline-flex items-center select-none transition-opacity duration-200 hover:opacity-95 ${customStyles}`}
       aria-label="Roy Sons Corporate Identity"
     >
       <Image
-        src="/Roysons Logo-02.png"
+        src="/Roysons Logo Golden.png"
         alt="Roy Sons Logo"
         width={320}
         height={80}

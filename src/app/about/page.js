@@ -227,10 +227,10 @@ export default function AboutPage() {
                 WHO WE ARE
               </span>
               <h1 className="text-4xl lg:text-5xl font-black text-neutral-950 mb-7 leading-[1.08] tracking-tight">
-                About Roys Group
+                About ROYSONS Pvt. Ltd.
               </h1>
               <p className="text-[14px] text-neutral-600 leading-relaxed font-normal mb-6">
-                Roys Group of Companies is one of Pakistan's emerging diversified business groups, 
+                Roys Pvt. Ltd. is one of Pakistan's emerging diversified business groups, 
                 providing world-class products, services, consultancy, engineering solutions, 
                 infrastructure development, and international trade services.
               </p>
