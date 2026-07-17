@@ -63,7 +63,8 @@ export default function SubsidiariesHoldingsGrid({
             OUR COMPANIES
           </h4>
           <h2 className="text-2xl md:text-3xl lg:text-[34px] font-black tracking-[0.05em] uppercase text-neutral-950 leading-snug md:leading-snug lg:leading-tight">
-            DIVERSE GROUP OF<br className="hidden sm:block" /> INDUSTRY-LEADING BUSINESSES
+            ROYSONS holding is a DIVERSE GROUP OF
+INDUSTRY-LEADING BUSINESSES
           </h2>
         </div>
 

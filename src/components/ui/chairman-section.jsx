@@ -61,8 +61,8 @@ export default function ChairmanAddressBlock({
                     key={item.id}
                     className="flex flex-col items-center text-center w-[100px]"
                   >
-                    <div className="p-3 bg-transparent rounded-full border border-neutral-100 mb-3 bg-white/50">
-                      <MetricIcon size={22} className="text-neutral-300" strokeWidth={1} />
+                    <div className="p-3 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: "#dfb753" }}>
+                      <MetricIcon size={22} style={{ color: "#000000" }} strokeWidth={1.5} />
                     </div>
                     <span className="text-[32px] font-black text-neutral-900 tracking-tight leading-none mb-2">
                       {item.value}
