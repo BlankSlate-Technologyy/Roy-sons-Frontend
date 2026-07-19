@@ -65,7 +65,7 @@ export default function CorporateFooter({
         <div className="lg:col-span-1 flex flex-col pr-8 pb-12 lg:pb-0">
           <Link href="/" className="inline-block mb-4">
             <Image
-              src="/Roysons Logo Golden.png"
+              src="/Roysons Logo.jpeg"
               alt="Roy Sons Logo"
               width={200}
               height={80}

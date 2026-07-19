@@ -7,7 +7,7 @@ export default function BrandLogo({ isDarkTheme = false, showSubtitle = false, c
       aria-label="Roy Sons Corporate Identity"
     >
       <Image
-        src="/Roysons Logo Golden.png"
+        src="/Roysons Logo.jpeg"
         alt="Roy Sons Logo"
         width={320}
         height={80}
