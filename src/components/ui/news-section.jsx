@@ -34,7 +34,7 @@ function ArticleTile({ image, date, title, href }) {
 
 export default function CorporateNewsDesk({ news = CORPORATE_BROADCAST_NEWS }) {
   return (
-    <section className="py-16 border-b border-neutral-100 bg-neutral-50/10 font-sans">
+    <section className="py-16 bg-neutral-50/10 font-sans">
       <div className="max-w-screen-xl mx-auto px-6">
         
         <div className="text-center mb-10">

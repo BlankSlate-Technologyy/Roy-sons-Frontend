@@ -9,9 +9,18 @@ function ServiceBox({ icon: Icon, title, description, href }) {
       <Icon
         size={34}
         strokeWidth={1.2}
-        className="text-neutral-600 mb-4 group-hover:text-black group-hover:scale-105 transition-all duration-300"
+        className="text-[#dfb753] mb-4 group-hover:text-black group-hover:scale-105 transition-all duration-300"
       />
-      <h3 className="text-[14px] font-black tracking-[0.16em] uppercase text-black mb-2.5">
+      <h3
+        className="text-[14px] font-black tracking-[0.16em] uppercase mb-2.5"
+        style={{
+          background: "linear-gradient(135deg, #FFF8DC 0%, #F7E7A1 10%, #E8C96B 25%, #D4AF37 50%, #B8860B 75%, #F5DEB3 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          color: "transparent",
+        }}
+      >
         {title}
       </h3>
       <p className="text-[11px] text-neutral-700 leading-relaxed font-normal">
@@ -23,10 +32,19 @@ function ServiceBox({ icon: Icon, title, description, href }) {
 
 export default function CorporateCapabilitiesPanel({ services = CORPORATE_SERVICES }) {
   return (
-    <section className="py-20 border-b border-neutral-100 bg-white font-sans">
+    <section className="py-20 bg-white font-sans">
       <div className="max-w-screen-xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-[22px] font-black uppercase tracking-[0.24em] text-neutral-950">
+          <h2
+            className="text-[22px] font-black uppercase tracking-[0.24em] inline-block"
+            style={{
+              background: "linear-gradient(135deg, #FFF8DC 0%, #F7E7A1 10%, #E8C96B 25%, #D4AF37 50%, #B8860B 75%, #F5DEB3 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
             Core Business Sectors
           </h2>
           <div className="mx-auto mt-3 h-[3px] w-12 bg-neutral-950" />

@@ -37,7 +37,7 @@ export default function FeaturedHoldingsShowcase({
   allProjectsPath = "/projects",
 }) {
   return (
-    <section className="py-16 border-b border-neutral-100 bg-white font-sans">
+    <section className="py-16 bg-white font-sans">
       <div className="max-w-screen-xl mx-auto px-6">
         
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">

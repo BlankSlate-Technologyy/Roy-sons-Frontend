@@ -26,7 +26,7 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image }) {
           <Building2
             size={76}
             strokeWidth={1.2}
-            className="text-neutral-400 group-hover:text-black group-hover:scale-110 transition-all duration-300"
+            className="text-neutral-400 group-hover:scale-110 transition-all duration-300"
           />
         )}
       </div>
@@ -56,14 +56,14 @@ export default function SubsidiariesHoldingsGrid({
   holdings = CORPORATE_HOLDINGS,
 }) {
   return (
-    <section className="py-16 border-b border-neutral-100 bg-neutral-50/20 font-sans">
+    <section className="py-16 bg-neutral-50/20 font-sans">
       <div className="max-w-screen-xl mx-auto px-6">
         <div className="text-center mb-14">
           <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-700 mb-4">
             OUR COMPANIES
           </h4>
           <h2 className="text-2xl md:text-3xl lg:text-[34px] font-black tracking-[0.05em] uppercase text-neutral-950 leading-snug md:leading-snug lg:leading-tight">
-            ROYSONS holding is a DIVERSE GROUP OF
+            ROYSONS holding is a
 INDUSTRY-LEADING BUSINESSES
           </h2>
         </div>

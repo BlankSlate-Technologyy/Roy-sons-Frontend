@@ -80,7 +80,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
   {
     id: "slide-two",
     type: "image",
-    src: "/project-commercial.png",
+    src: "/ROYSONS Slider image 2.jpeg",
     subtitle: "HEALTHCARE DIVISION",
     title: "Advancing Healthcare",
     highlight: "Through Innovation.",
@@ -95,7 +95,112 @@ export const DEFAULT_BILLBOARD_SLIDES = [
   {
     id: "slide-three",
     type: "image",
-    src: "/project-industrial.png",
+    src: "/ROYSONS Slider Image 3.jpeg",
+    subtitle: "TECHNOLOGY & INNOVATION",
+    title: "Engineering the Future",
+    highlight: "of Smart Industries.",
+    subheading: "AI · Defense · Renewable Energy · Smart Cities",
+    description:
+      "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
+    supportingText:
+      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+    cta1: { label: "Discover Innovation", href: "/services" },
+    cta2: { label: "Explore Future Projects", href: "/projects" },
+  },
+    {
+    id: "slide-four",
+    type: "image",
+    src: "/ROYSONS Slider Image 4.jpeg",
+    subtitle: "TECHNOLOGY & INNOVATION",
+    title: "Engineering the Future",
+    highlight: "of Smart Industries.",
+    subheading: "AI · Defense · Renewable Energy · Smart Cities",
+    description:
+      "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
+    supportingText:
+      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+    cta1: { label: "Discover Innovation", href: "/services" },
+    cta2: { label: "Explore Future Projects", href: "/projects" },
+  },
+    {
+    id: "slide-five",
+    type: "image",
+    src: "/ROYSONS Slider Image 5.jpeg",
+    subtitle: "TECHNOLOGY & INNOVATION",
+    title: "Engineering the Future",
+    highlight: "of Smart Industries.",
+    subheading: "AI · Defense · Renewable Energy · Smart Cities",
+    description:
+      "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
+    supportingText:
+      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+    cta1: { label: "Discover Innovation", href: "/services" },
+    cta2: { label: "Explore Future Projects", href: "/projects" },
+  },
+    {
+    id: "slide-six",
+    type: "image",
+    src: "/ROYSONS Slider Image 6.jpeg",
+    subtitle: "TECHNOLOGY & INNOVATION",
+    title: "Engineering the Future",
+    highlight: "of Smart Industries.",
+    subheading: "AI · Defense · Renewable Energy · Smart Cities",
+    description:
+      "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
+    supportingText:
+      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+    cta1: { label: "Discover Innovation", href: "/services" },
+    cta2: { label: "Explore Future Projects", href: "/projects" },
+  },
+    {
+    id: "slide-seven",
+    type: "image",
+    src: "/ROYSONS Slider Image 7.jpeg",
+    subtitle: "TECHNOLOGY & INNOVATION",
+    title: "Engineering the Future",
+    highlight: "of Smart Industries.",
+    subheading: "AI · Defense · Renewable Energy · Smart Cities",
+    description:
+      "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
+    supportingText:
+      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+    cta1: { label: "Discover Innovation", href: "/services" },
+    cta2: { label: "Explore Future Projects", href: "/projects" },
+  },
+    {
+    id: "slide-eight",
+    type: "image",
+    src: "/ROYSONS Slider Image 8.jpeg",
+    subtitle: "TECHNOLOGY & INNOVATION",
+    title: "Engineering the Future",
+    highlight: "of Smart Industries.",
+    subheading: "AI · Defense · Renewable Energy · Smart Cities",
+    description:
+      "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
+    supportingText:
+      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+    cta1: { label: "Discover Innovation", href: "/services" },
+    cta2: { label: "Explore Future Projects", href: "/projects" },
+  },
+     {
+    id: "slide-nine",
+    type: "image",
+    src: "/ROYSONS Slider Image 9.jpeg",
+    subtitle: "TECHNOLOGY & INNOVATION",
+    title: "Engineering the Future",
+    highlight: "of Smart Industries.",
+    subheading: "AI · Defense · Renewable Energy · Smart Cities",
+    description:
+      "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
+    supportingText:
+      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+    cta1: { label: "Discover Innovation", href: "/services" },
+    cta2: { label: "Explore Future Projects", href: "/projects" },
+  },
+     {
+    id: "slide-ten",
+    type: "image",
+    src: "/ROYSONS Slide Image 10.jpeg",
     subtitle: "TECHNOLOGY & INNOVATION",
     title: "Engineering the Future",
     highlight: "of Smart Industries.",
@@ -123,8 +228,8 @@ export const CORPORATE_HOLDINGS = [
   { name: "Gateway Pharmaceuticals Consultants", subtitle: "Pharmaceutical Regulatory Consultancy", tagline: "Offering licensing, compliance, regulatory affairs, and consultancy services for pharmaceutical organizations.", href: "/group-companies/gateway", image: "/gateway.jpeg" },
   { name: "Alpha Matrix Defence Systems", subtitle: "Defense & Security Technologies", tagline: "Providing advanced surveillance, security systems, and defense technologies for critical infrastructure protection.", href: "/group-companies/alpha-matrix", image: "/alpha matrix.jpeg" },
   { name: "National Guard", subtitle: "Professional Security Services", tagline: "Delivering security management, surveillance, risk assessment, and facility protection services.", href: "/group-companies/national-guard", image: "/nation guard.jpeg" },
-  { name: "National Mines Corporation", subtitle: "Mining & Mineral Development", tagline: "Specializing in mineral exploration, mining operations, and sustainable resource development.", href: "#", image: "/national min.jpeg" },
-  { name: "National Agricultural Corporation", subtitle: "Agriculture & Dairy Development", tagline: "Providing agricultural infrastructure, dairy development, irrigation, and livestock solutions.", href: "#", image: "/national agricultural.jpeg" },
+  { name: "National Mines Corporation", subtitle: "Mining & Mineral Development", tagline: "Specializing in mineral exploration, mining operations, and sustainable resource development.", href: "/group-companies/national-mines", image: "/national min.jpeg" },
+  { name: "National Agricultural Corporation", subtitle: "Agriculture & Dairy Development", tagline: "Providing agricultural infrastructure, dairy development, irrigation, and livestock solutions.", href: "/group-companies/national-agricultural", image: "/national agricultural.jpeg" },
   { name: "Swiss Farms", subtitle: "Dairy Production & Livestock Management", tagline: "Focused on dairy farming, breeding programs, and advanced livestock management systems.", href: "/group-companies/swiss-farm", image: "/swiss fram.jpeg" },
   { name: "Walton Consultants & Contracting", subtitle: "Engineering & Infrastructure Development", tagline: "Offering civil engineering, EPC projects, industrial construction, and infrastructure development.", href: "/group-companies/walton", image: "/walton.jpeg" },
   { name: "Pakistan Medical Supplies", subtitle: "Hospital Engineering & Clean Rooms", tagline: "Delivering turnkey healthcare infrastructure, clean room systems, HVAC, and GMP facilities.", href: "/group-companies/pak-janitorial", image: "/pak janitorial.jpeg" },
