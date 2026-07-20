@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { 
@@ -124,6 +124,72 @@ const WHY_ROYS_GROUP = [
   "Innovative Solutions",
   "Long-Term Sustainability"
 ];
+
+function AnimatedStatValue({ value }) {
+  const [displayValue, setDisplayValue] = useState(value);
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    const rawValue = String(value);
+    const match = rawValue.match(/(\d+(?:\.\d+)?)/);
+
+    if (!match) {
+      setDisplayValue(rawValue);
+      return undefined;
+    }
+
+    const numericTarget = parseFloat(match[1].replace(/,/g, ""));
+    const prefix = rawValue.slice(0, match.index);
+    const suffix = rawValue.slice(match.index + match[1].length);
+    const hasDecimal = rawValue.includes(".");
+
+    let frameId;
+    let startTime;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / 1400, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const currentValue = numericTarget * easedProgress;
+      const formattedValue = hasDecimal
+        ? currentValue.toFixed(1).replace(/\.0$/, "")
+        : Math.round(currentValue).toLocaleString("en-US");
+
+      setDisplayValue(`${prefix}${formattedValue}${suffix}`);
+
+      if (progress < 1) {
+        frameId = window.requestAnimationFrame(animate);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          observer.disconnect();
+          frameId = window.requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
+  }, [value]);
+
+  return (
+    <span ref={elementRef} className="text-2xl sm:text-3xl font-black text-neutral-950 mb-1.5 block">
+      {displayValue}
+    </span>
+  );
+}
 
 function SectorsServedCard({ category, icon: Icon, items }) {
   return (
@@ -424,9 +490,7 @@ export default function AboutPage() {
                 <p className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-neutral-400 mb-2">
                   {stat.label}
                 </p>
-                <p className="text-2xl sm:text-3xl font-black text-neutral-950 mb-1.5">
-                  {stat.value}
-                </p>
+                <AnimatedStatValue value={stat.value} />
                 <p className="text-[11px] text-neutral-500 font-medium">
                   {stat.desc}
                 </p>

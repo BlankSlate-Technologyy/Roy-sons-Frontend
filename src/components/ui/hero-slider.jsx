@@ -62,7 +62,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
       style={{ height: "580px" }}
       aria-label="Featured Showcase Slider"
     >
-      <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isTransitioning ? "opacity-0" : "opacity-100"}`}>
+      <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isTransitioning ? "opacity-0" : "opacity-50"}`}>
         {activeSlide.type === "video" ? (
           <video
             key={activeSlide.src}
@@ -84,7 +84,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
             priority
           />
         )}
-        <div className="absolute inset-0 bg-neutral-900/35" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       <div className="relative z-10 h-full flex items-center">

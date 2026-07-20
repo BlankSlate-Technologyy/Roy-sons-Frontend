@@ -6,7 +6,7 @@ import { CORPORATE_STATS } from "@/lib/constants";
 export default function ChairmanAddressBlock({
   executivePhoto = "/chairman.jpeg",
   photoDescription = "Ijaz Naseer - Chairman",
-  addressParagraph = "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, Roys Group stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade.",
+  addressParagraph = "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS.Pvt.Ltd stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade.",
   authorTitle = "IJAZ NASEER",
   organizationName = "Chairman & Chief Executive Officer",
   metrics = CORPORATE_STATS,

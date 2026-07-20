@@ -283,7 +283,7 @@ export default function ServicesPage() {
                 Our Services
               </h1>
               <p className="text-[13px] text-neutral-500 leading-relaxed max-w-md mb-8">
-                Roy Sons Pvt. Ltd. offers a wide range of innovative and
+                ROYSONS Pvt. Ltd. offers a wide range of innovative and
                 reliable services to meet the diverse needs of our clients
                 across multiple industries.
               </p>
