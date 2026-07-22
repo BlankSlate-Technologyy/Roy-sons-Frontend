@@ -7,8 +7,8 @@ import {
   ChevronRight, ChevronLeft,
   HeartPulse, BriefcaseMedical, FlaskConical, Microscope, Pill,
   Globe, ShieldCheck, Target, Award, Lightbulb, Leaf, Users, Star,
-  Building2, Phone, Mail, MapPin, ArrowRight, CheckCircle2,
-  Linkedin, Facebook, Twitter, Youtube,
+  Building2, Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle2,
+  Linkedin, Facebook, Youtube, Instagram, Music,
 } from "lucide-react";
 
 // ─── Design Tokens ──────────────────────────────────────────────────────────
@@ -25,11 +25,7 @@ const COLORS = {
 
 // ─── Static Data ─────────────────────────────────────────────────────────────
 
-const HERO_IMAGES = [
-  "/roys_hospital_interior.png",
-  "/roys_mri_scanner.png",
-  "/roys slide 1.png",
-];
+const HERO_BACKGROUND_IMAGE = "/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg";
 
 const STATS = [
   { value: "15+",   label: "Years of\nExcellence" },
@@ -114,12 +110,32 @@ const INDUSTRIES = [
 ];
 
 const WHY_CHOOSE = [
-  { icon: Globe,        title: "Global Network",        desc: "Access to premium global partners and suppliers." },
-  { icon: Award,        title: "Engineering Excellence", desc: "Expert engineers and consultants on every project." },
-  { icon: ShieldCheck,  title: "Regulatory Expertise",  desc: "Compliance with international standards." },
-  { icon: Target,       title: "Turnkey Solutions",     desc: "End-to-end project implementation." },
-  { icon: HeartPulse,   title: "Technical Support",     desc: "24/7 after sales support." },
-  { icon: CheckCircle2, title: "Quality Assurance",     desc: "Certified quality management." },
+  { icon: ShieldCheck, title: "Trusted Government & Institutional Partner", desc: "Trusted partner for government contracts and institutional procurement." },
+  { icon: Globe, title: "International Procurement & Global Sourcing Network", desc: "Access to a worldwide procurement and sourcing network." },
+  { icon: Award, title: "Comprehensive Healthcare & Industrial Solutions", desc: "End-to-end healthcare and industrial systems delivered globally." },
+  { icon: CheckCircle2, title: "Commitment to International Quality Standards", desc: "Ensuring compliance with global quality and regulatory standards." },
+  { icon: Users, title: "Experienced Multidisciplinary Team", desc: "A team of professionals across engineering, healthcare, and logistics." },
+  { icon: HeartPulse, title: "Reliable After-Sales Support & Technical Services", desc: "Dedicated support and technical service after delivery." },
+  { icon: Lightbulb, title: "Customer-Centric Approach", desc: "Focused on tailored solutions and client satisfaction." },
+  { icon: Star, title: "Innovation, Integrity & Excellence", desc: "Built on innovation, integrity, and operational excellence." },
+];
+
+const WHAT_WE_DO = [
+  "Government Contracting & Procurement",
+  "International Import & Export",
+  "Global Trading & Supply Chain Management",
+  "Manufacturing Solutions",
+  "Strategic Consultancy Services",
+  "Medical Devices & Healthcare Equipment",
+  "Veterinary Healthcare Solutions",
+  "Human & Veterinary Vaccines",
+  "Surgical Disposable Products",
+  "Medical Consumables",
+  "Hospital & Medical Furniture",
+  "Laboratory Equipment & Scientific Instruments",
+  "Pharmaceutical Products",
+  "Hospital Engineering & Infrastructure",
+  "Turnkey Healthcare Projects",
 ];
 
 const VALUES = [
@@ -145,13 +161,20 @@ const FOOTER_LINKS = {
   Industries: ["Hospitals", "Government", "Pharmaceutical", "Research Centers"],
 };
 
-const SOCIAL_ICONS = [Linkedin, Facebook, Twitter, Youtube];
+// Footer social links: set `href` to the desired URL and `newTab: true` to open in a new tab
+const SOCIAL_LINKS = [
+  { label: "Facebook", Icon: Facebook, href: "#", newTab: false },
+  { label: "Instagram", Icon: Instagram, href: "#", newTab: false },
+  { label: "LinkedIn", Icon: Linkedin, href: "#", newTab: false },
+  { label: "YouTube", Icon: Youtube, href: "#", newTab: false },
+  { label: "TikTok", Icon: Music, href: "#", newTab: false },
+];
 
 // ─── Reusable UI Components ──────────────────────────────────────────────────
 
 function SectionHeading({ eyebrow, title }) {
   return (
-    <div className="text-center mb-14">
+    <div className="text-center mb-8">
       <span
         className="text-[11px] font-extrabold tracking-widest uppercase block mb-3"
         style={{ color: COLORS.primary }}
@@ -175,7 +198,7 @@ function SectionHeading({ eyebrow, title }) {
 function IconCard({ icon: Icon, label, iconSize = 20, containerSize = "w-12 h-12" }) {
   return (
     <div
-      className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 hover:translate-y-[-4px] hover:shadow-lg group"
+      className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group"
       style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = COLORS.primary;
@@ -230,6 +253,16 @@ function OutlineButton({ href, children, className = "" }) {
   );
 }
 
+function TiktokIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <path d="M16.5 3.5v6.5a4 4 0 1 1-4-4" />
+      <path d="M12.5 13.5V21a3 3 0 1 1-3-3" />
+      <path d="M16.5 10.5h1.5a2 2 0 1 1-2 2V8.5" />
+    </svg>
+  );
+}
+
 // ─── Page Sections ───────────────────────────────────────────────────────────
 
 function Navbar() {
@@ -272,74 +305,38 @@ function Navbar() {
   );
 }
 
-function HeroSection({ bgImageIndex }) {
+function HeroSection() {
   return (
-    <section id="home" className="relative py-20 lg:py-28 px-6 overflow-hidden bg-transparent">
-      {/* Background slideshow */}
+    <section id="home" className="relative py-12 lg:py-20 px-6 overflow-hidden bg-transparent">
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
-        {HERO_IMAGES.map((src, idx) => (
-          <div
-            key={src}
-            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-            style={{
-              backgroundImage: `url('${src}')`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              opacity: idx === bgImageIndex ? 1 : 0,
-            }}
-          />
-        ))}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url('${HERO_BACKGROUND_IMAGE}')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
         <div
           className="absolute inset-0"
           style={{ background: "linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.15) 100%)" }}
         />
       </div>
 
-      <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-12 items-center relative z-10">
-        {/* Left: Copy */}
-        <div className="flex-1">
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.25em] mb-4" style={{ color: COLORS.primary }}>
-            ROYS &amp; ROYS INTERNATIONAL
+      <div className="mx-auto max-w-screen-xl relative z-10">
+        <div className="max-w-3xl">
+          <p className="text-[12px] font-extrabold uppercase tracking-[0.4em] mb-4" style={{ color: COLORS.white }}>
+            Global Trade • Government Contracting • Healthcare Solutions
           </p>
-          <h1 className="text-3xl lg:text-5xl font-black leading-[1.08] tracking-tight mb-6" style={{ color: COLORS.white }}>
-            Engineering Excellence.<br />
-            Healthcare Innovation.<br />
-            <span style={{ color: COLORS.primary }}>Global Trade.</span>
+          <h1 className="text-2xl lg:text-4xl font-black leading-tight mb-6" style={{ color: COLORS.white }}>
+            Delivering Excellence Through Global Trade, Innovation & Strategic Partnerships
           </h1>
-          <p className="text-[14px] leading-relaxed mb-8 max-w-lg" style={{ color: "rgba(255,255,255,0.75)" }}>
-            ROYS &amp; ROYS International is the flagship company of ROYS Group of Companies, delivering integrated
-            healthcare technologies, hospital engineering, laboratory solutions, medical equipment, pharmaceutical
-            consultancy, and international procurement services.
+          <p className="text-[16px] leading-relaxed mb-10 max-w-2xl" style={{ color: "rgba(255,255,255,0.85)" }}>
+            ROYS & ROYS International is a diversified international business company specializing in government contracting, import & export, consultancy, manufacturing, medical devices, veterinary healthcare, vaccines, surgical disposables, and healthcare infrastructure. We deliver reliable, innovative, and sustainable solutions to public and private sector organizations worldwide.
           </p>
           <div className="flex flex-wrap gap-4">
-            <PrimaryButton href="#solutions">Explore Solutions <ArrowRight size={15} /></PrimaryButton>
-            <OutlineButton href="/contact">Contact Us <ArrowRight size={15} /></OutlineButton>
-          </div>
-        </div>
-
-        {/* Right: Image + Stats */}
-        <div className="flex-shrink-0 w-full lg:w-auto">
-          <div
-            className="relative w-full lg:w-[480px] h-[280px] lg:h-[340px] rounded-xl overflow-hidden mb-6 shadow-2xl"
-            style={{ border: "1.5px solid rgba(255,255,255,0.1)" }}
-          >
-            <Image src="/roys_hospital_interior.png" alt="Roys Hospital Systems" fill className="object-cover" sizes="480px" priority />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          </div>
-
-          <div className="grid grid-cols-4 gap-3 max-w-[480px]">
-            {STATS.map((stat) => (
-              <div
-                key={stat.value}
-                className="p-3.5 text-center rounded-lg border"
-                style={{ backgroundColor: "rgba(255,255,255,0.04)", borderColor: "rgba(255,255,255,0.08)" }}
-              >
-                <p className="text-xl lg:text-2xl font-black" style={{ color: COLORS.primary }}>{stat.value}</p>
-                <p className="text-[10px] font-bold mt-1 whitespace-pre-line leading-tight" style={{ color: "rgba(255,255,255,0.6)" }}>
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+            <PrimaryButton href="#what-we-do">Explore Our Services <ArrowRight size={15} /></PrimaryButton>
+            <OutlineButton href="#contact">Contact Our Team <ArrowRight size={15} /></OutlineButton>
           </div>
         </div>
       </div>
@@ -361,7 +358,7 @@ function TrustedBanner() {
   }, [maxIndex]);
 
   return (
-    <section className="py-10 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+    <section className="py-6 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl">
         <p className="text-center text-[15px] font-black tracking-[0.24em] text-neutral-500 uppercase mb-8">
           TRUSTED BY LEADING ORGANIZATIONS
@@ -395,24 +392,6 @@ function TrustedBanner() {
             ))}
           </div>
 
-          <button
-            type="button"
-            onClick={() => setActiveLogo((prev) => Math.max(prev - 1, 0))}
-            disabled={activeLogo === 0}
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-md hover:bg-white transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
-            aria-label="Previous trusted logo"
-          >
-            <ChevronLeft size={22} color={COLORS.primary} />
-          </button>
-          <button
-            type="button"
-            onClick={() => setActiveLogo((prev) => Math.min(prev + 1, maxIndex))}
-            disabled={activeLogo === maxIndex}
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-md hover:bg-white transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
-            aria-label="Next trusted logo"
-          >
-            <ChevronRight size={22} color={COLORS.primary} />
-          </button>
         </div>
 
         <div className="mt-5 flex justify-center gap-2">
@@ -440,19 +419,30 @@ function AboutSection() {
   ];
 
   return (
-    <section id="about-us" className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-14 items-center">
+    <section id="about-us" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
+      <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-10 items-center">
         {/* Left: Text */}
         <div className="flex-1 max-w-lg">
           <span className="text-[20px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
             ABOUT US
           </span>
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight" style={{ color: COLORS.black }}>
-            Building the Future of Healthcare
+            Delivering Excellence Through Global Trade, Innovation & Strategic Partnerships
           </h2>
           <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
-            We provide end-to-end solutions in healthcare infrastructure, medical equipment, laboratory technologies,
-            and pharmaceutical consultancy. Our commitment is to innovation, quality, and global regulatory compliance.
+            ROYS & ROYS International is a diversified international business company committed to delivering world-class solutions across government contracting, international trade, healthcare, manufacturing, consultancy, and engineering. As the flagship company of ROYS Group of Companies, we serve public and private sector organizations with a strong focus on quality, innovation, reliability, and sustainable growth.
+          </p>
+          <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
+            With extensive experience in government procurement, import and export operations, strategic consultancy, manufacturing, medical device supplies, veterinary healthcare, vaccines, surgical disposables, laboratory solutions, and hospital infrastructure, we provide comprehensive solutions tailored to the evolving needs of our clients.
+          </p>
+          <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
+            Our global sourcing network and strategic partnerships enable us to deliver premium-quality products and services while maintaining international standards of excellence. From supplying advanced medical equipment and veterinary solutions to managing turnkey healthcare projects and government contracts, we are committed to creating long-term value for our customers and stakeholders.
+          </p>
+          <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
+            At ROYS & ROYS International, we believe that trust, integrity, innovation, and customer satisfaction are the foundations of every successful partnership. Our multidisciplinary team works closely with government agencies, healthcare institutions, industries, research organizations, and commercial enterprises to deliver reliable, cost-effective, and future-ready solutions.
+          </p>
+          <p className="text-[14px] leading-relaxed mb-8" style={{ color: COLORS.black }}>
+            Driven by a vision to become a globally recognized leader, we continue to expand our capabilities across international markets while contributing to economic development, technological advancement, and community well-being.
           </p>
           <div className="space-y-4 mb-8">
             {highlights.map(({ label, desc }) => (
@@ -531,8 +521,8 @@ function VisionMissionSection() {
   ];
 
   return (
-    <section className="py-16 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl grid md:grid-cols-2 gap-8">
+    <section className="py-8 px-6" style={{ backgroundColor: COLORS.white }}>
+      <div className="mx-auto max-w-screen-xl grid md:grid-cols-2 gap-6">
         {cards.map(({ accentColor, icon: Icon, eyebrow, title, body }) => (
           <div
             key={eyebrow}
@@ -559,9 +549,32 @@ function VisionMissionSection() {
   );
 }
 
+function WhatWeDoSection() {
+  return (
+    <section id="what-we-do" className="py-8 px-6" style={{ backgroundColor: COLORS.white }}>
+      <div className="mx-auto max-w-screen-xl">
+        <SectionHeading eyebrow="WHAT WE DO" title="Our Service Offerings" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {WHAT_WE_DO.map((item) => (
+            <div
+              key={item}
+              className="rounded-lg border bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              style={{ borderColor: COLORS.border }}
+            >
+              <p className="text-[14px] font-semibold leading-tight" style={{ color: COLORS.black }}>
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CoreBusinessSection() {
   return (
-    <section id="solutions" className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section id="solutions" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="CORE ACTIVITIES" title="Core Business Areas" />
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
@@ -579,12 +592,12 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
   const filteredProducts = PRODUCTS.filter(p => p.category === activeCategory);
 
   return (
-    <section id="products" className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section id="products" className="py-6 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="PORTFOLIO" title="Products & Solutions" />
 
         {/* Tab bar */}
-        <div className="flex flex-wrap gap-2 mb-8 justify-center border-b pb-5" style={{ borderColor: COLORS.border }}>
+        <div className="flex flex-wrap gap-2 mb-5 justify-center border-b pb-3" style={{ borderColor: COLORS.border }}>
           {PRODUCTS_TABS.map((tab, idx) => {
             const isActive = idx === activeTab;
             return (
@@ -605,20 +618,11 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
         </div>
 
         {/* Carousel */}
-        <div className="relative flex items-center justify-center">
-          <button
-            onClick={onSlideLeft}
-            aria-label="Previous product"
-            className="absolute left-0 lg:left-[-20px] z-10 w-10 h-10 rounded-full flex items-center justify-center border hover:opacity-80 transition-opacity cursor-pointer"
-            style={{ backgroundColor: COLORS.primary, borderColor: "rgba(0,0,0,0.1)" }}
-          >
-            <ChevronLeft size={20} color="#ffffff" />
-          </button>
-
-          <div className="w-full overflow-hidden px-10">
+        <div className="flex items-center justify-center">
+          <div className="w-full overflow-hidden px-6">
             <div
-              className="flex gap-6 transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${productIndex * 264}px)`, width: "max-content" }}
+              className="flex gap-4 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${productIndex * 260}px)`, width: "max-content" }}
             >
               {filteredProducts.map((product) => (
                 <div
@@ -637,15 +641,6 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
               ))}
             </div>
           </div>
-
-          <button
-            onClick={onSlideRight}
-            aria-label="Next product"
-            className="absolute right-0 lg:right-[-20px] z-10 w-10 h-10 rounded-full flex items-center justify-center border hover:opacity-80 transition-opacity cursor-pointer"
-            style={{ backgroundColor: COLORS.primary, borderColor: "rgba(0,0,0,0.1)" }}
-          >
-            <ChevronRight size={20} color="#ffffff" />
-          </button>
         </div>
       </div>
     </section>
@@ -654,14 +649,14 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
 
 function IndustriesSection() {
   return (
-    <section id="industries" className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section id="industries" className="py-6 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="MARKET SECTORS" title="Industries We Serve" />
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-4">
           {INDUSTRIES.map(({ icon: Icon, label }) => (
             <div
               key={label}
-              className="p-5 border rounded-lg text-center flex flex-col items-center shadow-sm transition-all duration-300 hover:translate-y-[-4px] hover:shadow-lg group"
+              className="p-5 border rounded-lg text-center flex flex-col items-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group"
               style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = COLORS.primary;
@@ -695,15 +690,15 @@ function IndustriesSection() {
 
 function WhyChooseSection() {
   return (
-    <section className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="py-8 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="COMPETITIVE VALUE" title="Why Choose Roys & Roys International?" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {WHY_CHOOSE.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
-              className="p-6 border rounded-lg flex gap-5 shadow-sm"
-              style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
+              className="p-5 border border-[#e2e8f0] rounded-lg flex gap-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#113658]"
+              style={{ backgroundColor: COLORS.white }}
             >
               <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: COLORS.primary }}>
                 <Icon size={22} style={{ color: COLORS.white }} />
@@ -725,8 +720,8 @@ function ValuesAndCorporateSection() {
   const selectedValue = VALUES[selectedIndex];
 
   return (
-    <section className="py-20 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
-      <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-12 items-start">
+    <section className="py-12 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+      <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-8 items-start">
 
         {/* Value Cards */}
         <div className="lg:col-span-5">
@@ -782,35 +777,109 @@ function ValuesAndCorporateSection() {
 }
 
 function CtaSection() {
-  const contactItems = [
-    { icon: Phone,  text: "+92 300 1234567" },
-    { icon: Mail,   text: "info@ROYSONS.org" },
-    { icon: MapPin, text: "123 Business Avenue, Lahore, Pakistan" },
-  ];
-
   return (
     <section
-      className="relative py-20 px-6 overflow-hidden"
+      id="contact"
+      className="relative overflow-hidden py-12 px-6"
       style={{ backgroundColor: COLORS.white, borderTop: `1px solid ${COLORS.border}`, borderBottom: `1px solid ${COLORS.border}` }}
     >
-      <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-10 items-center justify-between">
-        <div>
-          <h2 className="text-2xl lg:text-3xl font-black mb-4 leading-tight" style={{ color: COLORS.black }}>
-            Let&apos;s Build a Healthier, Smarter,<br />and More Sustainable Future Together.
-          </h2>
-          <div className="flex flex-wrap gap-6 mt-6">
-            {contactItems.map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-3">
-                <Icon size={16} style={{ color: COLORS.primary }} />
-                <span className="text-[13px] font-semibold" style={{ color: COLORS.black }}>{text}</span>
-              </div>
-            ))}
-          </div>
+      <div className="absolute inset-y-0 right-0 hidden lg:block w-[45%]">
+        <div className="relative h-full">
+          <Image
+            src="/roysandroys contact.png"
+            alt="Roys & Roys contact image"
+            fill
+            className="object-cover object-right"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-l from-white/95 via-white/75 to-transparent" />
         </div>
-        <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
-          <PrimaryButton href="/contact" className="flex-1 lg:flex-none justify-center">
-            Request Consultation
-          </PrimaryButton>
+      </div>
+
+      <div className="relative mx-auto max-w-screen-xl">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-start">
+          <div className="max-w-2xl">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
+              CONTACT US
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-black mb-5 leading-tight" style={{ color: COLORS.black }}>
+              Let&apos;s Build Stronger Partnerships Together
+            </h2>
+            <p className="text-[15px] leading-relaxed max-w-3xl" style={{ color: COLORS.black }}>
+              Whether you&apos;re looking for a trusted partner in government contracting, international trade, healthcare solutions, manufacturing, or consultancy, ROYS & ROYS International is ready to support your business with reliable, innovative, and high-quality solutions.
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2 mt-10">
+              {[
+                { title: "Trusted Partner", description: "Reliable collaboration you can count on." },
+                { title: "Quality Solutions", description: "High-quality services built for your success." },
+                { title: "Global Reach", description: "International expertise with local understanding." },
+                { title: "Dedicated Support", description: "Our team is here to assist you always." },
+              ].map((item) => (
+                <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <h4 className="text-[13px] font-black mb-2" style={{ color: COLORS.primary }}>{item.title}</h4>
+                  <p className="text-[13px] leading-relaxed" style={{ color: COLORS.black }}>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative z-10">
+            <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-2xl">
+              <div className="mb-8">
+                <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.black }}>
+                  Send Us a Message
+                </h3>
+                <p className="text-[14px] leading-relaxed" style={{ color: COLORS.black }}>
+                  Share your requirements and our team will get back to you shortly.
+                </p>
+              </div>
+
+              <form className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <input
+                    type="text"
+                    placeholder="Full Name *"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Company Name *"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                  />
+                </div>
+                <input
+                  type="email"
+                  placeholder="Email Address *"
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                />
+                <input
+                  type="tel"
+                  placeholder="Phone Number *"
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                />
+                <select
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                >
+                  <option>Select Service</option>
+                  {WHAT_WE_DO.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </select>
+                <textarea
+                  rows={5}
+                  placeholder="Your Message *"
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                />
+                <button
+                  type="button"
+                  className="w-full rounded-2xl bg-[#113658] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-white transition hover:bg-[#0d2c4f]"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -834,7 +903,7 @@ function Footer() {
         {/* Brand */}
         <div className="lg:col-span-4 max-w-sm">
           <Image
-            src="/roys logo.png"
+            src="/roysandroys white log.png"
             alt="Roys & Roys Logo"
             width={180}
             height={50}
@@ -846,17 +915,24 @@ function Footer() {
             networks, technology infrastructure, and heavy engineering sectors.
           </p>
           <div className="flex gap-3">
-            {SOCIAL_ICONS.map((Icon, idx) => (
-              <a
-                key={idx}
-                href="#"
-                aria-label="Social media link"
-                className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/15 hover:border-white/40 transition-all duration-200"
-                style={{ borderColor: "rgba(255,255,255,0.25)" }}
-              >
-                <Icon size={15} style={{ color: "rgba(255,255,255,0.9)" }} />
-              </a>
-            ))}
+            {SOCIAL_LINKS.map(({ label, Icon, href, newTab }, idx) => {
+              const target = newTab ? "_blank" : undefined;
+              const rel = newTab ? "noopener noreferrer" : undefined;
+              return (
+                <a
+                  key={idx}
+                  href={href}
+                  title={label}
+                  target={target}
+                  rel={rel}
+                  aria-label={label}
+                  className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/15 hover:border-white/40 transition-all duration-200"
+                  style={{ borderColor: "rgba(255,255,255,0.25)" }}
+                >
+                  <Icon size={15} style={{ color: "rgba(255,255,255,0.9)" }} />
+                </a>
+              );
+            })}
           </div>
         </div>
 
@@ -903,15 +979,15 @@ Lahore, Pakistan</span>
 
       {/* Bottom bar */}
       <div
-        className="mx-auto max-w-screen-xl mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-4"
+        className="mx-auto max-w-screen-xl mt-10 pt-4 flex flex-col md:flex-row justify-between items-center gap-4"
         style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
       >
-        <p className="text-[11.5px]" style={{ color: "rgba(255,255,255,0.55)" }}>
+        <p className="text-[11.5px]" style={{ color: "rgba(255, 255, 255, 0.93)" }}>
           &copy; 2026 ROYS &amp; ROYS International. All Rights Reserved. Member of ROYS Group.
         </p>
         <div className="flex gap-6">
           {["Privacy Policy", "Terms of Service"].map((label) => (
-            <a key={label} href="#" className="text-[11.5px] hover:text-white transition-colors duration-200" style={{ color: "rgba(255,255,255,0.55)" }}>
+            <a key={label} href="#" className="text-[11.5px] hover:text-white transition-colors duration-200" style={{ color: "rgba(255, 255, 255, 0.9)" }}>
               {label}
             </a>
           ))}
@@ -926,15 +1002,6 @@ Lahore, Pakistan</span>
 export default function RoysRoysPage() {
   const [activeTab, setActiveTab]       = useState(0);
   const [productIndex, setProductIndex] = useState(0);
-  const [bgImageIndex, setBgImageIndex] = useState(0);
-
-  // Hero background slideshow
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setBgImageIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
 
   // Page-scoped body class for theme isolation
   useEffect(() => {
@@ -956,10 +1023,11 @@ export default function RoysRoysPage() {
   return (
     <main className="min-h-screen" style={{ backgroundColor: COLORS.white, color: COLORS.black }}>
       <Navbar />
-      <HeroSection bgImageIndex={bgImageIndex} />
+      <HeroSection />
       <TrustedBanner />
       <AboutSection />
       <VisionMissionSection />
+      <WhatWeDoSection />
       <CoreBusinessSection />
       <ProductsSection
         activeTab={activeTab}
