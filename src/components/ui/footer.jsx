@@ -11,7 +11,7 @@ import {
 } from "@/lib/constants";
 
 export default function CorporateFooter({
-  caption = "Roy Sons is a diversified conglomerate committed to delivering excellence and building a better tomorrow.",
+  caption = "ROYSONS Pvt.Ltd is a diversified conglomerate committed to delivering excellence and building a better tomorrow.",
   currentYear = 2024,
 }) {
   const [email, setEmail] = useState("");
@@ -84,7 +84,7 @@ export default function CorporateFooter({
                   key={index}
                   href={handle.href}
                   aria-label={handle.label}
-                  className="w-8 h-8 rounded-sm bg-transparent border border-[#dfb753] flex items-center justify-center text-[#dfb753] hover:bg-[#dfb753] hover:text-[#dfb753] hover:border-[#dfb753] transition-all duration-300"
+                  className="w-8 h-8 rounded-sm bg-transparent border border-[#dfb753] flex items-center justify-center text-[#dfb753]"
                 >
                   <SocialIcon size={14} color="#dfb753" />
                 </a>
@@ -102,7 +102,7 @@ export default function CorporateFooter({
               <li key={index}>
                 <Link
                   href={link.destination}
-                  className="text-[11.5px] text-neutral-400 hover:text-white hover:underline transition-all duration-200"
+                  className="text-[11.5px] text-neutral-400 font-normal"
                 >
                   {link.text}
                 </Link>
@@ -120,7 +120,7 @@ export default function CorporateFooter({
               <li key={index}>
                 <Link
                   href={link.destination}
-                  className="text-[11.5px] text-neutral-400 hover:text-white hover:underline transition-all duration-200"
+                  className="text-[11.5px] text-neutral-400 font-normal"
                 >
                   {link.text}
                 </Link>
@@ -138,7 +138,7 @@ export default function CorporateFooter({
               const DetailIcon = detail.icon;
               return (
                 <li key={index} className="flex gap-3 items-start">
-                  <DetailIcon size={14} className="text-neutral-500 mt-0.5 flex-shrink-0" />
+                  <DetailIcon size={14} className="text-[#dfb753] mt-0.5 flex-shrink-0" />
                   <span className="text-[11.5px] text-neutral-400 whitespace-pre-line leading-relaxed font-normal">
                     {detail.value}
                   </span>
@@ -182,7 +182,7 @@ export default function CorporateFooter({
                 type="submit"
                 aria-label="Subscribe now"
                 disabled={isSubmitting}
-                className="w-full py-3 bg-white text-black hover:bg-neutral-200 disabled:bg-neutral-800 disabled:text-neutral-450 transition-colors flex items-center justify-center text-[11px] font-bold uppercase tracking-wider rounded-sm cursor-pointer disabled:cursor-not-allowed"
+                className="w-full py-3 bg-[#dfb753] text-black border border-[#dfb753] flex items-center justify-center text-[11px] font-bold uppercase tracking-wider rounded-sm cursor-pointer disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Submitting..." : "Subscribe"}
               </button>
@@ -198,10 +198,10 @@ export default function CorporateFooter({
             © {currentYear} ROYSONS Pvt. Ltd. All Rights Reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-[10.5px] text-neutral-500 hover:text-white transition-colors font-medium">
+            <Link href="/privacy" className="text-[10.5px] text-neutral-500 font-medium">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-[10.5px] text-neutral-500 hover:text-white transition-colors font-medium">
+            <Link href="/terms" className="text-[10.5px] text-neutral-500 font-medium">
               Terms & Conditions
             </Link>
           </div>

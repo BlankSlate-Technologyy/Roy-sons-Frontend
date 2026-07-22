@@ -52,7 +52,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
             id="navbar-search-btn"
             aria-label="Toggle search bar"
             onClick={() => setIsSearchOpen(!isSearchOpen)}
-            className="p-2 text-neutral-500 hover:text-black rounded-full hover:bg-neutral-50 transition-colors cursor-pointer"
+            className="p-2 text-neutral-800 rounded-full transition-colors cursor-pointer"
           >
             <Search size={19} strokeWidth={2.2} />
           </button>

@@ -193,7 +193,7 @@ body:not(.roys-roys-theme) {
     fill: #ffdf7a !important;
   }
 
-  /* Buttons (CTA & Submit buttons as solid gold with black text) */
+  /* Buttons (CTA & Submit buttons as solid gold with black text on default, and golden fill with black text on hover) */
   .bg-white.text-black,
   .bg-white.text-black *,
   .bg-white.text-black\/95,
@@ -216,20 +216,23 @@ body:not(.roys-roys-theme) {
     border: 1px solid #dfb753 !important;
   }
 
-  .bg-white.text-black:hover,
-  .bg-white.text-black:hover *,
-  #cta-consultation-btn:hover,
-  #cta-consultation-btn:hover *,
-  button[type="submit"]:hover,
-  button[type="submit"]:hover * {
-    color: #dfb753 !important;
+  /* Ensure footer has no hover background changes */
+  footer button[type="submit"] {
+    background-color: #dfb753 !important;
+    color: #000000 !important;
+    border: 1px solid #dfb753 !important;
   }
 
-  .bg-white.text-black:hover,
-  #cta-consultation-btn:hover,
-  button[type="submit"]:hover {
-    background-color: #000000 !important;
-    border: 1px solid #dfb753 !important;
+  footer button[type="submit"]:hover,
+  footer button[type="submit"]:hover * {
+    background-color: #dfb753 !important;
+    color: #000000 !important;
+    border-color: #dfb753 !important;
+  }
+
+  footer a:hover,
+  footer a:hover * {
+    background-color: transparent !important;
   }
 
   .hover\:bg-neutral-50:hover,
@@ -287,4 +290,20 @@ body:not(.roys-roys-theme) {
 
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease forwards;
+}
+
+/* ── Hero Slider & CTA Button Hover: Golden BG + Black Text ─── */
+/* These override the global theme golden-text rule on hover     */
+body:not(.roys-roys-theme) a:hover[class*="hover:bg-[#dfb753]"],
+body:not(.roys-roys-theme) a:hover[class*="hover:bg-[#dfb753]"] *,
+body:not(.roys-roys-theme) a:hover[class*="hover:bg-[#dfb753]"] span,
+body:not(.roys-roys-theme) a.group:hover .group-hover\:text-black {
+  background-color: #dfb753 !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #000000 !important;
+  color: #000000 !important;
+  fill: #000000 !important;
+  opacity: 1 !important;
 }

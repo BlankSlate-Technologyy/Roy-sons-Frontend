@@ -1,7 +1,73 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CORPORATE_STATS } from "@/lib/constants";
+
+function StatCounter({ value }) {
+  const [displayValue, setDisplayValue] = useState("0");
+  const elementRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const rawValue = String(value || "");
+    const match = rawValue.match(/(\d+[\d,.]*)/);
+    if (!match) {
+      setDisplayValue(rawValue);
+      return;
+    }
+
+    const numericTarget = parseFloat(match[1].replace(/,/g, ""));
+    const prefix = rawValue.slice(0, match.index);
+    const suffix = rawValue.slice(match.index + match[1].length);
+    const hasDecimal = rawValue.includes(".");
+
+    let frameId;
+    let startTime;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / 1600, 1);
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const currentValue = numericTarget * easedProgress;
+      const formattedValue = hasDecimal
+        ? currentValue.toFixed(1).replace(/\.0$/, "")
+        : Math.round(currentValue).toLocaleString("en-US");
+
+      setDisplayValue(`${prefix}${formattedValue}${suffix}`);
+
+      if (progress < 1) {
+        frameId = window.requestAnimationFrame(animate);
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          observer.disconnect();
+          frameId = window.requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
+  }, [value]);
+
+  return <span ref={elementRef}>{displayValue}</span>;
+}
 
 export default function ChairmanAddressBlock({
   executivePhoto = "/chairman.jpeg",
@@ -65,7 +131,7 @@ export default function ChairmanAddressBlock({
                       <MetricIcon size={22} className="text-black" strokeWidth={1.5} />
                     </div>
                     <span className="text-[32px] font-black text-neutral-900 tracking-tight leading-none mb-2">
-                      {item.value}
+                      <StatCounter value={item.value} />
                     </span>
                     <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider whitespace-pre-line leading-relaxed">
                       {item.label}
@@ -78,10 +144,10 @@ export default function ChairmanAddressBlock({
             <div className="mt-8 lg:mt-0 flex justify-end">
               <Link
                 href="/about/chairmans-message"
-                className="w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#dfb753] bg-[#dfb753] !text-black text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-black hover:!text-[#dfb753] transition-all duration-300 group"
+                className="w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#dfb753] bg-transparent text-[#dfb753] text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-[#dfb753] hover:text-black hover:border-[#dfb753] transition-all duration-300 group"
               >
-                <span className="!text-black group-hover:!text-[#dfb753] transition-colors">READ FULL MESSAGE</span>
-                <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform group-hover:!text-[#dfb753] transition-colors" />
+                <span className="text-[#dfb753] group-hover:text-black transition-colors">READ FULL MESSAGE</span>
+                <ArrowRight size={18} strokeWidth={2.5} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1.5 transition-all duration-300" />
               </Link>
             </div>
           </div>

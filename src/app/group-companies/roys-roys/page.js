@@ -68,11 +68,37 @@ const PRODUCTS_TABS = [
 ];
 
 const PRODUCTS = [
-  { name: "X-Ray Systems",       desc: "Advanced digital radiography systems for accurate imaging.",    img: "/roys_hospital_interior.png" },
-  { name: "Ultrasound Machines", desc: "High-performance advanced ultrasound for all applications.",    img: "/roys_ultrasound.png" },
-  { name: "CT Scan Machines",    desc: "Advanced CT systems for precise diagnostics.",                  img: "/roys_ct_scan.png" },
-  { name: "MRI Systems",         desc: "High-field MRI for detailed medical imaging.",                  img: "/roys_mri_scanner.png" },
-  { name: "Mammography Systems", desc: "Digital mammography for early detection.",                      img: "/roys_hospital_interior.png" },
+  // Diagnostic Imaging
+  { category: "Diagnostic Imaging", name: "X-Ray Systems",       desc: "Advanced digital radiography systems for accurate imaging.",    img: "/roys_hospital_interior.png" },
+  { category: "Diagnostic Imaging", name: "Ultrasound Machines", desc: "High-performance advanced ultrasound for all applications.",    img: "/roys_ultrasound.png" },
+  { category: "Diagnostic Imaging", name: "CT Scan Machines",    desc: "Advanced CT systems for precise diagnostics.",                  img: "/roys_ct_scan.png" },
+  { category: "Diagnostic Imaging", name: "MRI Systems",         desc: "High-field MRI for detailed medical imaging.",                  img: "/roys_mri_scanner.png" },
+  { category: "Diagnostic Imaging", name: "Mammography Systems", desc: "Digital mammography for early detection.",                      img: "/roys_hospital_interior.png" },
+  
+  // OT Solutions
+  { category: "OT Solutions", name: "Operating Tables",    desc: "State-of-the-art operating tables for surgical precision.",     img: "/roys_ct_scan.png" },
+  { category: "OT Solutions", name: "Surgical Lights",     desc: "High-intensity shadowless surgical lighting systems.",          img: "/roys_hospital_interior.png" },
+  { category: "OT Solutions", name: "Anesthesia Machines", desc: "Advanced anesthesia delivery and monitoring systems.",          img: "/roys_mri_scanner.png" },
+  
+  // ICU & Critical Care
+  { category: "ICU & Critical Care", name: "Patient Monitors",    desc: "Advanced patient monitoring systems for intensive care.",       img: "/roys_ultrasound.png" },
+  { category: "ICU & Critical Care", name: "Ventilators",         desc: "High-performance ventilators for critical life support.",       img: "/roys_mri_scanner.png" },
+  { category: "ICU & Critical Care", name: "Infusion Pumps",      desc: "Precise volumetric infusion pumps for critical medication.",    img: "/roys_ct_scan.png" },
+
+  // Lab Equipment
+  { category: "Lab Equipment", name: "Chemistry Analyzers", desc: "Automated chemistry analyzers for fast and accurate results.",  img: "/roys_ct_scan.png" },
+  { category: "Lab Equipment", name: "Microscopes",         desc: "High-resolution microscopes for detailed laboratory analysis.", img: "/roys_hospital_interior.png" },
+  { category: "Lab Equipment", name: "Centrifuges",         desc: "High-speed laboratory centrifuges for sample separation.",      img: "/roys_ultrasound.png" },
+
+  // Hospital Furniture
+  { category: "Hospital Furniture", name: "Hospital Beds",       desc: "Ergonomic and adjustable beds for patient comfort.",            img: "/roys_ultrasound.png" },
+  { category: "Hospital Furniture", name: "Overbed Tables",      desc: "Adjustable overbed tables for patient convenience.",            img: "/roys_hospital_interior.png" },
+  { category: "Hospital Furniture", name: "Medical Cabinets",    desc: "Secure and sterile medical storage cabinets.",                  img: "/roys_ct_scan.png" },
+
+  // Clean Room Systems
+  { category: "Clean Room Systems", name: "Modular OT Panels",   desc: "Seamless modular panels for sterile environments.",             img: "/roys_mri_scanner.png" },
+  { category: "Clean Room Systems", name: "Laminar Air Flow",    desc: "Laminar flow systems to prevent airborne contamination.",       img: "/roys_hospital_interior.png" },
+  { category: "Clean Room Systems", name: "Pass Boxes",          desc: "Dynamic and static pass boxes for material transfer.",          img: "/roys_ct_scan.png" },
 ];
 
 const INDUSTRIES = [
@@ -105,10 +131,10 @@ const VALUES = [
 ];
 
 const CORPORATE_INFO = [
-  { label: "Company Name",        val: "ROYS & ROYS International (Pvt.) Ltd." },
+  { label: "Company Name",        val: "ROYS & ROYS International" },
   { label: "Industry Sector",     val: "Healthcare Engineering & Medical Technologies" },
-  { label: "Corporate Link",      val: "ROYS Group of Companies, Pakistan" },
-  { label: "Registered Address",  val: "Office # 41-A, 4th Floor, Executive Tower, DHA Phase 2, Islamabad, Pakistan" },
+  { label: "Corporate Link",      val: "ROYSONS Pvt.Ltd., Pakistan" },
+  { label: "Registered Address",  val: "123 Business Avenue,Lahore, Pakistan" },
 ];
 
 const NAV_LINKS = ["Home", "About Us", "Solutions", "Products", "Industries", "Projects", "Contact"];
@@ -149,17 +175,29 @@ function SectionHeading({ eyebrow, title }) {
 function IconCard({ icon: Icon, label, iconSize = 20, containerSize = "w-12 h-12" }) {
   return (
     <div
-      className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm hover:translate-y-[-2px] transition-transform"
+      className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 hover:translate-y-[-4px] hover:shadow-lg group"
       style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = COLORS.primary;
+        e.currentTarget.querySelector('span').style.color = '#ffffff';
+        e.currentTarget.querySelector('svg').style.color = '#ffffff';
+        e.currentTarget.children[0].style.backgroundColor = 'rgba(255,255,255,0.2)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = COLORS.white;
+        e.currentTarget.querySelector('span').style.color = COLORS.black;
+        e.currentTarget.querySelector('svg').style.color = COLORS.primary;
+        e.currentTarget.children[0].style.backgroundColor = `${COLORS.primary}10`;
+      }}
     >
       <div
-        className={`${containerSize} rounded-full flex items-center justify-center mb-3`}
+        className={`${containerSize} rounded-full flex items-center justify-center mb-3 transition-colors duration-300`}
         style={{ backgroundColor: `${COLORS.primary}10` }}
       >
-        <Icon size={iconSize} style={{ color: COLORS.primary }} />
+        <Icon size={iconSize * 1.5} style={{ color: COLORS.primary }} className="transition-colors duration-300" />
       </div>
       <span
-        className="text-[12px] font-extrabold leading-snug whitespace-pre-line"
+        className="text-[14px] font-black leading-snug whitespace-pre-line transition-colors duration-300"
         style={{ color: COLORS.black }}
       >
         {label}
@@ -172,8 +210,8 @@ function PrimaryButton({ href, children, className = "" }) {
   return (
     <Link
       href={href}
-      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider flex items-center gap-2 hover:opacity-90 transition-opacity ${className}`}
-      style={{ backgroundColor: COLORS.primary, color: COLORS.gold }}
+      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider flex items-center gap-2 hover:opacity-90 transition-all duration-300 ease-out ${className}`}
+      style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
     >
       {children}
     </Link>
@@ -184,8 +222,8 @@ function OutlineButton({ href, children, className = "" }) {
   return (
     <Link
       href={href}
-      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider border flex items-center gap-2 hover:bg-white/5 transition-colors ${className}`}
-      style={{ borderColor: COLORS.gold, color: COLORS.gold }}
+      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider border flex items-center gap-2 hover:bg-slate-900 hover:text-white transition-all duration-300 ease-out ${className}`}
+      style={{ borderColor: COLORS.primary, color: COLORS.white }}
     >
       {children}
     </Link>
@@ -224,8 +262,8 @@ function Navbar() {
 
         <Link
           href="/contact"
-          className="px-5 py-2.5 rounded-sm text-[12px] font-bold uppercase tracking-wider transition-all hover:bg-[#009088]"
-          style={{ backgroundColor: COLORS.primary, color: COLORS.gold }}
+          className="px-5 py-2.5 rounded-sm text-[12px] font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:bg-[#009088]"
+          style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
         >
           Get in Touch
         </Link>
@@ -263,7 +301,7 @@ function HeroSection({ bgImageIndex }) {
           <p className="text-[11px] font-extrabold uppercase tracking-[0.25em] mb-4" style={{ color: COLORS.primary }}>
             ROYS &amp; ROYS INTERNATIONAL
           </p>
-          <h1 className="text-3xl lg:text-5xl font-black leading-[1.08] tracking-tight mb-6" style={{ color: COLORS.gold }}>
+          <h1 className="text-3xl lg:text-5xl font-black leading-[1.08] tracking-tight mb-6" style={{ color: COLORS.white }}>
             Engineering Excellence.<br />
             Healthcare Innovation.<br />
             <span style={{ color: COLORS.primary }}>Global Trade.</span>
@@ -310,32 +348,83 @@ function HeroSection({ bgImageIndex }) {
 }
 
 function TrustedBanner() {
+  const [activeLogo, setActiveLogo] = useState(0);
+  const visibleCount = 4;
+  const maxIndex = Math.max(TRUSTED_LOGOS.length - visibleCount, 0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveLogo((current) => (current === maxIndex ? 0 : current + 1));
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [maxIndex]);
+
   return (
     <section className="py-10 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl">
         <p className="text-center text-[15px] font-black tracking-[0.24em] text-neutral-500 uppercase mb-8">
           TRUSTED BY LEADING ORGANIZATIONS
         </p>
-        <div className="flex flex-nowrap items-center justify-center gap-8 lg:gap-12 overflow-x-auto pb-2">
-          {TRUSTED_LOGOS.map((logo) => (
-            <div
-              key={logo.name}
-              className="flex items-center justify-center min-w-[140px] max-w-[200px] h-[90px] flex-shrink-0"
-            >
-              {logo.img ? (
-                <div className="relative w-full h-full">
-                  <Image
-                    src={logo.img}
-                    alt={logo.name}
-                    fill
-                    sizes="200px"
-                    className="object-contain"
-                  />
-                </div>
-              ) : (
-                <span className="text-[14px] font-black tracking-wider text-neutral-800">{logo.abbr}</span>
-              )}
-            </div>
+
+        <div className="relative overflow-hidden rounded-[32px] border-0 shadow-none bg-transparent">
+          <div
+            className="flex gap-4 transition-transform duration-500 ease-in-out px-6 py-8"
+            style={{ transform: `translateX(-${activeLogo * (100 / visibleCount)}%)` }}
+          >
+            {TRUSTED_LOGOS.map((logo) => (
+              <div
+                key={logo.name}
+                className="flex-shrink-0 rounded-[28px] bg-transparent border-0 p-6 flex items-center justify-center shadow-none"
+                style={{ minWidth: `${100 / visibleCount}%` }}
+              >
+                {logo.img ? (
+                  <div className="relative w-full h-24">
+                    <Image
+                      src={logo.img}
+                      alt={logo.name}
+                      fill
+                      className="object-contain"
+                      sizes="220px"
+                    />
+                  </div>
+                ) : (
+                  <span className="text-[18px] font-black tracking-wider text-neutral-800">{logo.abbr}</span>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setActiveLogo((prev) => Math.max(prev - 1, 0))}
+            disabled={activeLogo === 0}
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-md hover:bg-white transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+            aria-label="Previous trusted logo"
+          >
+            <ChevronLeft size={22} color={COLORS.primary} />
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveLogo((prev) => Math.min(prev + 1, maxIndex))}
+            disabled={activeLogo === maxIndex}
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/90 p-2 shadow-md hover:bg-white transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+            aria-label="Next trusted logo"
+          >
+            <ChevronRight size={22} color={COLORS.primary} />
+          </button>
+        </div>
+
+        <div className="mt-5 flex justify-center gap-2">
+          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setActiveLogo(index)}
+              className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                activeLogo === index ? "bg-[#113658] scale-125" : "bg-slate-300"
+              }`}
+            />
           ))}
         </div>
       </div>
@@ -355,7 +444,7 @@ function AboutSection() {
       <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-14 items-center">
         {/* Left: Text */}
         <div className="flex-1 max-w-lg">
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
+          <span className="text-[20px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
             ABOUT US
           </span>
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight" style={{ color: COLORS.black }}>
@@ -386,21 +475,37 @@ function AboutSection() {
           </PrimaryButton>
         </div>
 
-        {/* Right: Images grid */}
-        <div className="flex-1 grid grid-cols-2 gap-4 w-full">
-          {[
-            { src: "/roys_hospital_interior.png", alt: "Hospital interior operations", className: "col-span-2 h-[240px]" },
-            { src: "/roys_mri_scanner.png",       alt: "MRI Scanning room setup",      className: "h-[180px]" },
-            { src: "/roys_ct_scan.png",           alt: "CT Scanner system installation",className: "h-[180px]" },
-          ].map(({ src, alt, className }) => (
-            <div
-              key={src}
-              className={`relative ${className} rounded-xl overflow-hidden shadow-lg border`}
-              style={{ borderColor: COLORS.border }}
-            >
-              <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+        {/* Right: Image showcase */}
+        <div className="flex-1 w-full grid gap-4">
+          <div className="relative h-[520px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
+            <Image
+              src="/roys_hospital_interior.png"
+              alt="Hospital interior operations"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
+              <Image
+                src="/roys_mri_scanner.png"
+                alt="MRI scanning room setup"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
-          ))}
+            <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
+              <Image
+                src="/roys_ct_scan.png"
+                alt="CT scanner system installation"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -438,7 +543,7 @@ function VisionMissionSection() {
               className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
               style={{ backgroundColor: `${accentColor}15` }}
             >
-              <Icon size={22} style={{ color: accentColor }} />
+              <Icon size={28} style={{ color: accentColor }} />
             </div>
             <div>
               <span className="text-[10px] font-black tracking-widest uppercase mb-2 block" style={{ color: accentColor }}>
@@ -470,6 +575,9 @@ function CoreBusinessSection() {
 }
 
 function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, onSlideRight }) {
+  const activeCategory = PRODUCTS_TABS[activeTab];
+  const filteredProducts = PRODUCTS.filter(p => p.category === activeCategory);
+
   return (
     <section id="products" className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
@@ -483,10 +591,10 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
               <button
                 key={tab}
                 onClick={() => setActiveTab(idx)}
-                className="px-5 py-2.5 text-[11.5px] font-extrabold uppercase tracking-wider rounded-sm transition-all"
+                className="px-5 py-2.5 text-[11.5px] font-extrabold uppercase tracking-wider rounded-sm transition-all cursor-pointer hover:opacity-80"
                 style={{
                   backgroundColor: isActive ? COLORS.primary : "transparent",
-                  color: isActive ? COLORS.gold : COLORS.black,
+                  color: isActive ? COLORS.white : COLORS.black,
                   border: isActive ? "none" : `1px solid ${COLORS.border}`,
                 }}
               >
@@ -501,7 +609,7 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
           <button
             onClick={onSlideLeft}
             aria-label="Previous product"
-            className="absolute left-0 lg:left-[-20px] z-10 w-10 h-10 rounded-full flex items-center justify-center border hover:opacity-80 transition-opacity"
+            className="absolute left-0 lg:left-[-20px] z-10 w-10 h-10 rounded-full flex items-center justify-center border hover:opacity-80 transition-opacity cursor-pointer"
             style={{ backgroundColor: COLORS.primary, borderColor: "rgba(0,0,0,0.1)" }}
           >
             <ChevronLeft size={20} color="#ffffff" />
@@ -510,9 +618,9 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
           <div className="w-full overflow-hidden px-10">
             <div
               className="flex gap-6 transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${productIndex * 240}px)`, width: `${PRODUCTS.length * 280}px` }}
+              style={{ transform: `translateX(-${productIndex * 264}px)`, width: "max-content" }}
             >
-              {PRODUCTS.map((product) => (
+              {filteredProducts.map((product) => (
                 <div
                   key={product.name}
                   className="w-[240px] rounded-lg overflow-hidden border shadow-lg flex-shrink-0"
@@ -533,7 +641,7 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
           <button
             onClick={onSlideRight}
             aria-label="Next product"
-            className="absolute right-0 lg:right-[-20px] z-10 w-10 h-10 rounded-full flex items-center justify-center border hover:opacity-80 transition-opacity"
+            className="absolute right-0 lg:right-[-20px] z-10 w-10 h-10 rounded-full flex items-center justify-center border hover:opacity-80 transition-opacity cursor-pointer"
             style={{ backgroundColor: COLORS.primary, borderColor: "rgba(0,0,0,0.1)" }}
           >
             <ChevronRight size={20} color="#ffffff" />
@@ -553,16 +661,28 @@ function IndustriesSection() {
           {INDUSTRIES.map(({ icon: Icon, label }) => (
             <div
               key={label}
-              className="p-5 border rounded-lg text-center flex flex-col items-center shadow-sm hover:translate-y-[-2px] transition-transform"
+              className="p-5 border rounded-lg text-center flex flex-col items-center shadow-sm transition-all duration-300 hover:translate-y-[-4px] hover:shadow-lg group"
               style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = COLORS.primary;
+                e.currentTarget.querySelector('span').style.color = '#ffffff';
+                e.currentTarget.querySelector('svg').style.color = '#ffffff';
+                e.currentTarget.children[0].style.backgroundColor = 'rgba(255,255,255,0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = COLORS.white;
+                e.currentTarget.querySelector('span').style.color = COLORS.black;
+                e.currentTarget.querySelector('svg').style.color = COLORS.primary;
+                e.currentTarget.children[0].style.backgroundColor = `${COLORS.primary}10`;
+              }}
             >
               <div
-                className="w-14 h-14 rounded-full flex items-center justify-center mb-3"
+                className="w-14 h-14 rounded-full flex items-center justify-center mb-3 transition-colors duration-300"
                 style={{ backgroundColor: `${COLORS.primary}10` }}
               >
-                <Icon size={26} style={{ color: COLORS.primary }} />
+                <Icon size={39} style={{ color: COLORS.primary }} className="transition-colors duration-300" />
               </div>
-              <span className="text-[13px] font-extrabold whitespace-pre-line leading-normal" style={{ color: COLORS.black }}>
+              <span className="text-[15px] font-black whitespace-pre-line leading-normal transition-colors duration-300" style={{ color: COLORS.black }}>
                 {label}
               </span>
             </div>
@@ -586,7 +706,7 @@ function WhyChooseSection() {
               style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
             >
               <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: COLORS.primary }}>
-                <Icon size={22} style={{ color: COLORS.gold }} />
+                <Icon size={22} style={{ color: COLORS.white }} />
               </div>
               <div>
                 <h4 className="text-[14px] font-extrabold mb-1.5" style={{ color: COLORS.black }}>{title}</h4>
@@ -601,36 +721,48 @@ function WhyChooseSection() {
 }
 
 function ValuesAndCorporateSection() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedValue = VALUES[selectedIndex];
+
   return (
     <section className="py-20 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-12 items-start">
 
-        {/* Values */}
-        <div className="lg:col-span-7">
+        {/* Value Cards */}
+        <div className="lg:col-span-5">
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
             WHAT WE STAND FOR
           </span>
           <h3 className="text-2xl font-extrabold mb-8 uppercase" style={{ color: COLORS.black }}>Our Values</h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {VALUES.map(({ icon: Icon, label }) => (
-              <div
+            {VALUES.map(({ icon: Icon, label }, idx) => (
+              <button
                 key={label}
-                className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm"
-                style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
+                type="button"
+                onClick={() => setSelectedIndex(idx)}
+                className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 bg-white"
+                style={{ borderColor: selectedIndex === idx ? COLORS.primary : COLORS.border }}
               >
                 <Icon size={20} className="mb-3" style={{ color: COLORS.primary }} />
-                <span className="text-[11px] font-extrabold leading-tight text-neutral-800">{label}</span>
-              </div>
+                <span className="text-[11px] font-extrabold leading-tight text-neutral-800 whitespace-pre-line">{label}</span>
+              </button>
             ))}
           </div>
         </div>
 
         {/* Corporate Info */}
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-7">
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
             OFFICIAL DETAILS
           </span>
           <h3 className="text-2xl font-extrabold mb-8 uppercase" style={{ color: COLORS.black }}>Corporate Info</h3>
+
+          <div className="border rounded-lg p-6 shadow-sm mb-8" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+            <span className="text-[10px] font-bold uppercase tracking-wider block mb-2 text-neutral-500">Selected Value</span>
+            <h4 className="text-xl font-extrabold mb-3" style={{ color: COLORS.black }}>{selectedValue.label}</h4>
+            <p className="text-[13px] leading-relaxed" style={{ color: COLORS.black }}>{selectedValue.desc}</p>
+          </div>
+
           <div className="border rounded-lg p-6 shadow-sm" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
             {CORPORATE_INFO.map(({ label, val }, idx) => (
               <div
@@ -651,9 +783,9 @@ function ValuesAndCorporateSection() {
 
 function CtaSection() {
   const contactItems = [
-    { icon: Phone,  text: "+92 51 2740177" },
-    { icon: Mail,   text: "info@roysinternational.com" },
-    { icon: MapPin, text: "DHA Phase II, Islamabad" },
+    { icon: Phone,  text: "+92 300 1234567" },
+    { icon: Mail,   text: "info@ROYSONS.org" },
+    { icon: MapPin, text: "123 Business Avenue, Lahore, Pakistan" },
   ];
 
   return (
@@ -679,9 +811,6 @@ function CtaSection() {
           <PrimaryButton href="/contact" className="flex-1 lg:flex-none justify-center">
             Request Consultation
           </PrimaryButton>
-          <OutlineButton href="/contact" className="flex-1 lg:flex-none justify-center">
-            Contact Us
-          </OutlineButton>
         </div>
       </div>
     </section>
@@ -757,15 +886,16 @@ function Footer() {
           <div className="space-y-3.5">
             <p className="text-[12px] leading-relaxed flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.72)" }}>
               <MapPin size={15} className="flex-shrink-0 mt-0.5" style={{ color: COLORS.footerBlue }} />
-              <span>Office # 41-A, 4th Floor, Executive Tower, DHA Phase 2, Islamabad.</span>
+              <span>123 Business Avenue,
+Lahore, Pakistan</span>
             </p>
             <p className="text-[12px] flex items-center gap-2.5" style={{ color: "rgba(255,255,255,0.72)" }}>
               <Phone size={14} className="flex-shrink-0" style={{ color: COLORS.footerBlue }} />
-              <span>+92 51 2740177</span>
+              <span>+92 300 1234567</span>
             </p>
             <p className="text-[12px] flex items-center gap-2.5" style={{ color: "rgba(255,255,255,0.72)" }}>
               <Mail size={14} className="flex-shrink-0" style={{ color: COLORS.footerBlue }} />
-              <span>info@roysinternational.com</span>
+              <span>info@ROYSONS.org</span>
             </p>
           </div>
         </div>
@@ -812,8 +942,16 @@ export default function RoysRoysPage() {
     return () => document.body.classList.remove("roys-roys-theme");
   }, []);
 
-  const handleSlideLeft  = () => setProductIndex((prev) => (prev === 0 ? PRODUCTS.length - 1 : prev - 1));
-  const handleSlideRight = () => setProductIndex((prev) => (prev === PRODUCTS.length - 1 ? 0 : prev + 1));
+  const activeCategory = PRODUCTS_TABS[activeTab];
+  const filteredProductsCount = PRODUCTS.filter(p => p.category === activeCategory).length;
+
+  const handleSlideLeft  = () => setProductIndex((prev) => (prev === 0 ? Math.max(0, filteredProductsCount - 1) : prev - 1));
+  const handleSlideRight = () => setProductIndex((prev) => (prev === Math.max(0, filteredProductsCount - 1) ? 0 : prev + 1));
+
+  const handleTabChange = (idx) => {
+    setActiveTab(idx);
+    setProductIndex(0);
+  };
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: COLORS.white, color: COLORS.black }}>
@@ -825,7 +963,7 @@ export default function RoysRoysPage() {
       <CoreBusinessSection />
       <ProductsSection
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleTabChange}
         productIndex={productIndex}
         onSlideLeft={handleSlideLeft}
         onSlideRight={handleSlideRight}

@@ -62,7 +62,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
       style={{ height: "580px" }}
       aria-label="Featured Showcase Slider"
     >
-      <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isTransitioning ? "opacity-0" : "opacity-50"}`}>
+      <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isTransitioning ? "opacity-0" : "opacity-70"}`}>
         {activeSlide.type === "video" ? (
           <video
             key={activeSlide.src}
@@ -122,41 +122,24 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
             <div className={`flex flex-wrap gap-3 transition-all duration-500 delay-200 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               <Link
                 href={activeSlide.cta1?.href || activeSlide.cta?.href || "/"}
-                className="inline-flex items-center gap-3 bg-white text-black text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-neutral-950 hover:text-white transition-all duration-300"
+                className="inline-flex items-center gap-3 bg-transparent border-2 border-[#dfb753] text-[#dfb753] text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#dfb753] hover:text-black hover:border-[#dfb753] transition-all duration-300 group"
               >
-                {activeSlide.cta1?.label || activeSlide.cta?.label}
-                <ArrowRight size={13} strokeWidth={2.4} />
+                <span className="text-[#dfb753] group-hover:text-black transition-colors">{activeSlide.cta1?.label || activeSlide.cta?.label}</span>
+                <ArrowRight size={13} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1 transition-all" />
               </Link>
               {activeSlide.cta2 && (
                 <Link
                   href={activeSlide.cta2.href}
-                  className="inline-flex items-center gap-3 bg-transparent text-white text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 border border-white/50 hover:bg-white hover:text-black hover:border-white transition-all duration-300"
+                  className="inline-flex items-center gap-3 bg-transparent border-2 border-[#dfb753] text-[#dfb753] text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#dfb753] hover:text-black hover:border-[#dfb753] transition-all duration-300 group"
                 >
-                  {activeSlide.cta2.label}
-                  <ArrowRight size={13} strokeWidth={2.4} />
+                  <span className="text-[#dfb753] group-hover:text-black transition-colors">{activeSlide.cta2.label}</span>
+                  <ArrowRight size={13} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1 transition-all" />
                 </Link>
               )}
             </div>
           </div>
         </div>
       </div>
-
-      <button
-        id="hero-prev"
-        onClick={handlePrev}
-        aria-label="Previous slide"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 border border-white/40 text-white flex items-center justify-center rounded-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-pointer"
-      >
-        <ChevronLeft size={22} strokeWidth={1.8} />
-      </button>
-      <button
-        id="hero-next"
-        onClick={handleNext}
-        aria-label="Next slide"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 border border-white/40 text-white flex items-center justify-center rounded-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 cursor-pointer"
-      >
-        <ChevronRight size={22} strokeWidth={1.8} />
-      </button>
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
         {resolvedSlides.map((_, index) => (

@@ -14,13 +14,13 @@ import {
 } from "lucide-react";
 
 const theme = {
-  navy:      "#1B365D",
+  navy:      "#ffffff",
   gold:      "#BCA374",
-  white:     "#ffffff",
-  bgLight:   "#F8FAFC",
-  border:    "#E2E8F0",
-  textMuted: "#4A5568",
-  textLight: "#718096",
+  white:     "#000000",
+  bgLight:   "#0c0c0c",
+  border:    "#222222",
+  textMuted: "#94A3B8",
+  textLight: "#CBD5E1",
 };
 
 const navLinks = [
@@ -323,23 +323,23 @@ const pageStyles = `
   body:not(.roys-roys-theme) header,
   body:not(.roys-roys-theme) .bg-white,
   body:not(.roys-roys-theme) .bg-white-override {
-    background-color: #ffffff !important;
+    background-color: #000000 !important;
   }
 
   body:not(.roys-roys-theme) section.bg-light-override,
   body:not(.roys-roys-theme) div.bg-light-override,
   body:not(.roys-roys-theme) .panel-bg-light-override {
-    background-color: #F8FAFC !important;
+    background-color: #0d0d0d !important;
   }
 
   body:not(.roys-roys-theme) .panel-bg-override {
-    background-color: #ffffff !important;
+    background-color: #121212 !important;
   }
 
   body:not(.roys-roys-theme) footer.footer-override,
   body:not(.roys-roys-theme) footer.footer-override div,
   body:not(.roys-roys-theme) footer.footer-override section {
-    background-color: #1B365D !important;
+    background-color: #050505 !important;
   }
 
   body:not(.roys-roys-theme) hr,
@@ -349,7 +349,7 @@ const pageStyles = `
   body:not(.roys-roys-theme) .border-l,
   body:not(.roys-roys-theme) .border-r,
   body:not(.roys-roys-theme) .border-override {
-    border-color: #E2E8F0 !important;
+    border-color: #222222 !important;
   }
 
   body:not(.roys-roys-theme) h1,
@@ -359,7 +359,7 @@ const pageStyles = `
   body:not(.roys-roys-theme) h5,
   body:not(.roys-roys-theme) h6,
   body:not(.roys-roys-theme) .text-navy-override {
-    color: #1B365D !important;
+    color: #ffffff !important;
   }
 
   body:not(.roys-roys-theme) p,
@@ -368,7 +368,7 @@ const pageStyles = `
   body:not(.roys-roys-theme) a,
   body:not(.roys-roys-theme) label,
   body:not(.roys-roys-theme) time {
-    color: #4A5568 !important;
+    color: #cbd5e1 !important;
   }
 
   body:not(.roys-roys-theme) .text-gold-override {
@@ -384,36 +384,36 @@ const pageStyles = `
     color: #ffffff !important;
   }
 
-  body:not(.roys-roys-theme) header a { color: #1B365D !important; }
+  body:not(.roys-roys-theme) header a { color: #ffffff !important; }
   body:not(.roys-roys-theme) header a:hover { color: #BCA374 !important; }
 
   body:not(.roys-roys-theme) .btn-primary-override {
-    background-color: #1B365D !important;
-    color: #ffffff !important;
-    border: 1px solid #1B365D !important;
+    background-color: #BCA374 !important;
+    color: #000000 !important;
+    border: 1px solid #BCA374 !important;
   }
   body:not(.roys-roys-theme) .btn-primary-override:hover {
-    background-color: #11223F !important;
-    border-color: #11223F !important;
-    color: #ffffff !important;
+    background-color: #d4b886 !important;
+    border-color: #d4b886 !important;
+    color: #000000 !important;
   }
 
   body:not(.roys-roys-theme) .btn-outline-override {
     background-color: transparent !important;
-    color: #1B365D !important;
-    border: 1px solid #1B365D !important;
+    color: #ffffff !important;
+    border: 1px solid #BCA374 !important;
   }
   body:not(.roys-roys-theme) .btn-outline-override:hover {
-    background-color: rgba(27, 54, 93, 0.05) !important;
+    background-color: rgba(188, 163, 116, 0.15) !important;
   }
 
   body:not(.roys-roys-theme) .faq-panel-open {
-    background-color: #F8FAFC !important;
+    background-color: #121212 !important;
   }
 
   body:not(.roys-roys-theme) .stats-icon-wrapper {
-    background-color: rgba(188, 163, 116, 0.08) !important;
-    border: 1px solid rgba(188, 163, 116, 0.2) !important;
+    background-color: rgba(188, 163, 116, 0.12) !important;
+    border: 1px solid rgba(188, 163, 116, 0.25) !important;
   }
 `;
 
@@ -421,8 +421,8 @@ export default function NationalGuardPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   useEffect(() => {
-    document.body.style.backgroundColor = theme.white;
-    document.body.style.color = theme.navy;
+    document.body.style.backgroundColor = "#000000";
+    document.body.style.color = "#ffffff";
     return () => {
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
@@ -432,7 +432,7 @@ export default function NationalGuardPage() {
   const toggleFaq = (index) => setOpenFaqIndex(openFaqIndex === index ? -1 : index);
 
   return (
-    <div className="min-h-screen font-sans selection:bg-amber-600 selection:text-white" style={{ backgroundColor: theme.white }}>
+    <div className="min-h-screen font-sans selection:bg-amber-600 selection:text-white" style={{ backgroundColor: "#000000" }}>
       <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
 
       {/* Navbar */}
@@ -495,7 +495,7 @@ export default function NationalGuardPage() {
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, #ffffff 35%, rgba(255,255,255,0.7) 100%)" }}
+            style={{ background: "linear-gradient(to right, #000000 45%, rgba(0,0,0,0.7) 100%)" }}
           />
         </div>
 
@@ -721,7 +721,7 @@ export default function NationalGuardPage() {
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, #ffffff 45%, rgba(255,255,255,0.85) 100%)" }}
+            style={{ background: "linear-gradient(to right, #000000 45%, rgba(0,0,0,0.85) 100%)" }}
           />
         </div>
         <div className="relative z-10 mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-8 items-center justify-between w-full">

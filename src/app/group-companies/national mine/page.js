@@ -15,14 +15,14 @@ import {
 
 // ─── Colour Palette ──────────────────────────────────────────────────────────
 const COLORS = {
-  primary: "#1a1a1a",      // near-black
+  primary: "#000000",      // pure black
   gold: "#C8961E",      // rich mine-gold
   goldLight: "#E8B84B",      // lighter gold accent
-  darkBg: "#0D0D0D",      // deep dark
-  surface: "#1C1C1C",      // card surfaces
-  surface2: "#242424",      // slightly lighter card
-  border: "#2E2E2E",      // subtle borders
-  textMain: "#F0EDE6",      // warm off-white text
+  darkBg: "#000000",      // pure black background
+  surface: "#111111",      // card surfaces
+  surface2: "#181818",      // slightly lighter card
+  border: "#2A2A2A",      // subtle borders
+  textMain: "#ffffff",      // main text color white
   textMuted: "#A89880",      // muted warm-grey
   textLight: "#6B5D4E",      // faint text
   white: "#ffffff",
@@ -174,6 +174,9 @@ const FAQS = [
 const PAGE_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
+  /* ensure the entire app root and document background are pure black */
+  html, body, #__next { background-color: ${COLORS.darkBg} !important; color: ${COLORS.textMain} !important; }
+
   .nm-page { font-family: 'Inter', sans-serif; background-color: ${COLORS.darkBg}; color: ${COLORS.textMain}; }
   .nm-page *, .nm-page *::before, .nm-page *::after { box-sizing: border-box; }
 
@@ -184,7 +187,8 @@ const PAGE_STYLES = `
   .nm-btn-primary { background: ${COLORS.gold}; color: #000; border: none; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 4px; padding: 11px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
   .nm-btn-primary:hover { background: ${COLORS.goldLight}; }
   .nm-btn-outline { background: transparent; color: ${COLORS.textMain}; border: 1.5px solid ${COLORS.textMain}; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 4px; padding: 11px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-  .nm-btn-outline:hover { border-color: ${COLORS.gold}; color: ${COLORS.gold}; }
+  .nm-btn-outline:hover { border-color: ${COLORS.gold}; color: ${COLORS.gold}; background: rgba(200,150,30,0.12); }
+  svg { background: transparent !important; background-color: transparent !important; }
 
   /* section label */
   .nm-label { color: ${COLORS.gold}; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 8px; }
@@ -223,7 +227,7 @@ const PAGE_STYLES = `
   .nm-faq-answer { padding: 0 20px 16px; font-size: 12.5px; line-height: 1.7; color: ${COLORS.textMuted}; }
 
   /* footer */
-  .nm-footer { background: #0A0A0A; border-top: 1px solid ${COLORS.border}; }
+  .nm-footer { background: ${COLORS.textMain}; border-top: 1px solid ${COLORS.border}; }
 
   @keyframes nm-fade-up { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
   .nm-fade-up { animation: nm-fade-up 0.6s ease both; }
@@ -317,7 +321,7 @@ export default function NationalMinePage() {
             sizes="100vw"
             style={{ objectFit: "cover", objectPosition: "center" }}
           />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(13,13,13,0.92) 45%, rgba(13,13,13,0.6) 100%)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #000000 55%, rgba(0,0,0,0.7) 100%)" }} />
         </div>
 
         <div style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "100px 24px 80px", width: "100%" }}>
@@ -564,7 +568,7 @@ export default function NationalMinePage() {
       <section style={{ position: "relative", overflow: "hidden", padding: "80px 24px" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <Image src="/mine technology.png" alt="Mining technology" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(13,13,13,0.95) 55%, rgba(13,13,13,0.75) 100%)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #000000 55%, rgba(0,0,0,0.70) 100%)" }} />
         </div>
         <div style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "center" }}>
           <div>
@@ -601,71 +605,84 @@ export default function NationalMinePage() {
       {/* ── FOOTER ─────────────────────────────────────────────────────────── */}
       <footer className="nm-footer" style={{ padding: "60px 24px 28px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 48 }}>
-            {/* Brand */}
-            <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                <div style={{ width: 40, height: 40, borderRadius: 6, background: COLORS.gold, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {/* Footer columns stacked vertically */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 40, marginBottom: 48 }}>
+
+            {/* Brand row — logo + description + socials */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ width: 44, height: 44, borderRadius: 6, background: COLORS.gold, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                   <Mountain size={22} color="#000" />
                 </div>
                 <div>
-                  <p style={{ color: COLORS.textMain, fontSize: 15, fontWeight: 900, textTransform: "uppercase", lineHeight: 1.1 }}>NATIONAL</p>
-                  <p style={{ color: COLORS.gold, fontSize: 8.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.2em" }}>MINES CORPORATION</p>
+                  <p style={{ color: COLORS.textMain, fontSize: 16, fontWeight: 900, textTransform: "uppercase", lineHeight: 1.1 }}>NATIONAL</p>
+                  <p style={{ color: COLORS.gold, fontSize: 9, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.2em" }}>MINES CORPORATION</p>
                 </div>
               </div>
-              <p style={{ color: COLORS.textMuted, fontSize: 12.5, lineHeight: 1.7, marginBottom: 6 }}>
-                Trusted Mining &amp; Mineral Development Company
+              <p style={{ color: COLORS.textMuted, fontSize: 13, lineHeight: 1.7, maxWidth: 460 }}>
+                Trusted Mining &amp; Mineral Development Company — responsibly exploring and developing Pakistan's natural mineral resources.
               </p>
-              <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
+              <div style={{ display: "flex", gap: 10 }}>
                 {[Linkedin, Youtube, Facebook, Twitter].map((Icon, i) => (
-                  <a key={i} href="#" aria-label="Social" style={{ width: 32, height: 32, borderRadius: "50%", border: `1px solid ${COLORS.border}`, display: "flex", alignItems: "center", justifyContent: "center", transition: "border-color 0.2s" }}>
-                    <Icon size={13} color={COLORS.textMuted} />
+                  <a key={i} href="#" aria-label="Social" style={{ width: 34, height: 34, borderRadius: "50%", border: `1px solid ${COLORS.border}`, display: "flex", alignItems: "center", justifyContent: "center", transition: "border-color 0.2s" }}>
+                    <Icon size={14} color={COLORS.textMuted} />
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div>
-              <h4 style={{ color: COLORS.gold, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 18 }}>Company</h4>
-              <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-                {["Home", "About", "Services", "Projects", "Sustainability", "Careers", "News"].map(l => (
-                  <li key={l}><a href={`#${l.toLowerCase()}`} style={{ color: COLORS.textMuted, fontSize: 12.5, textDecoration: "none", transition: "color 0.2s" }}>{l}</a></li>
-                ))}
-              </ul>
-            </div>
+            {/* Divider */}
+            <div style={{ height: 1, background: COLORS.border }} />
 
-            {/* Services */}
-            <div>
-              <h4 style={{ color: COLORS.gold, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 18 }}>Our Services</h4>
-              <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-                {["Mineral Exploration", "Mine Development", "Mining Operations", "Mineral Processing", "Environmental Management", "Mining Consultancy"].map(l => (
-                  <li key={l}><a href="#services" style={{ color: COLORS.textMuted, fontSize: 12.5, textDecoration: "none" }}>{l}</a></li>
-                ))}
-              </ul>
-            </div>
+            {/* Three link columns side by side */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 32 }}>
+              {/* Quick Links */}
+              <div>
+                <h4 style={{ color: COLORS.gold, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 16 }}>Company</h4>
+                <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+                  {["Home", "About", "Services", "Projects", "Sustainability", "Careers", "News"].map(l => (
+                    <li key={l}><a href={`#${l.toLowerCase()}`} style={{ color: COLORS.textMuted, fontSize: 13, textDecoration: "none", transition: "color 0.2s" }}>{l}</a></li>
+                  ))}
+                </ul>
+              </div>
 
-            {/* Industries + Contact */}
-            <div>
-              <h4 style={{ color: COLORS.gold, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 18 }}>Industries</h4>
-              <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
-                {["Construction", "Infrastructure", "Energy", "Manufacturing", "Government", "Industrial Development"].map(l => (
-                  <li key={l}><a href="#" style={{ color: COLORS.textMuted, fontSize: 12.5, textDecoration: "none" }}>{l}</a></li>
-                ))}
-              </ul>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                <p style={{ color: COLORS.textMuted, fontSize: 12, display: "flex", alignItems: "flex-start", gap: 8 }}>
-                  <MapPin size={13} color={COLORS.gold} style={{ flexShrink: 0, marginTop: 2 }} />
-                  Lahore, Pakistan
-                </p>
-                <p style={{ color: COLORS.textMuted, fontSize: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                  <Phone size={13} color={COLORS.gold} style={{ flexShrink: 0 }} />
-                  +92 300 000 0000
-                </p>
-                <p style={{ color: COLORS.textMuted, fontSize: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                  <Mail size={13} color={COLORS.gold} style={{ flexShrink: 0 }} />
-                  info@nationalmines.com
-                </p>
+              {/* Services */}
+              <div>
+                <h4 style={{ color: COLORS.gold, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 16 }}>Our Services</h4>
+                <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+                  {["Mineral Exploration", "Mine Development", "Mining Operations", "Mineral Processing", "Environmental Management", "Mining Consultancy"].map(l => (
+                    <li key={l}><a href="#services" style={{ color: COLORS.textMuted, fontSize: 13, textDecoration: "none" }}>{l}</a></li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Industries */}
+              <div>
+                <h4 style={{ color: COLORS.gold, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 16 }}>Industries</h4>
+                <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+                  {["Construction", "Infrastructure", "Energy", "Manufacturing", "Government", "Industrial Development"].map(l => (
+                    <li key={l}><a href="#" style={{ color: COLORS.textMuted, fontSize: 13, textDecoration: "none" }}>{l}</a></li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Contact */}
+              <div>
+                <h4 style={{ color: COLORS.gold, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 16 }}>Contact</h4>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  <p style={{ color: COLORS.textMuted, fontSize: 13, display: "flex", alignItems: "flex-start", gap: 8 }}>
+                    <MapPin size={14} color={COLORS.gold} style={{ flexShrink: 0, marginTop: 2 }} />
+                    Lahore, Pakistan
+                  </p>
+                  <p style={{ color: COLORS.textMuted, fontSize: 13, display: "flex", alignItems: "center", gap: 8 }}>
+                    <Phone size={14} color={COLORS.gold} style={{ flexShrink: 0 }} />
+                    +92 300 000 0000
+                  </p>
+                  <p style={{ color: COLORS.textMuted, fontSize: 13, display: "flex", alignItems: "center", gap: 8 }}>
+                    <Mail size={14} color={COLORS.gold} style={{ flexShrink: 0 }} />
+                    info@nationalmines.com
+                  </p>
+                </div>
               </div>
             </div>
           </div>

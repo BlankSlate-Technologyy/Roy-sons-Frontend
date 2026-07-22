@@ -66,12 +66,12 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     id: "slide-one",
     type: "image",
     src: "/slide-1.jpeg",
-    subtitle: "ROYS GROUP OF COMPANIES",
+    subtitle: "ROYSONS Pvt.Ltd.",
     title: "Building Industries.",
     highlight: "Empowering Nations.",
     subheading: "A Diversified Global Conglomerate",
     description:
-      "ROYS Group of Companies is a diversified business conglomerate operating across healthcare, technology, defense, agriculture, infrastructure, energy, and international trade.",
+      "ROYSONS Pvt.Ltd. is a diversified business conglomerate operating across healthcare, technology, defense, agriculture, infrastructure, energy, and international trade.",
     supportingText:
       "With over two decades of excellence, we deliver innovative solutions, strategic investments, and sustainable growth through a portfolio of specialized companies serving public and private sectors worldwide.",
     cta1: { label: "Explore Our Companies", href: "/group-companies" },
@@ -103,7 +103,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     description:
       "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
     supportingText:
-      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+      "ROYSONS Pvt.Ltd. invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
     cta1: { label: "Discover Innovation", href: "/services" },
     cta2: { label: "Explore Future Projects", href: "/projects" },
   },
@@ -118,7 +118,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     description:
       "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
     supportingText:
-      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+      "ROYSONS Pvt.Ltd. invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
     cta1: { label: "Discover Innovation", href: "/services" },
     cta2: { label: "Explore Future Projects", href: "/projects" },
   },
@@ -133,7 +133,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     description:
       "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
     supportingText:
-      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+      "ROYSONS Pvt.Ltd. invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
     cta1: { label: "Discover Innovation", href: "/services" },
     cta2: { label: "Explore Future Projects", href: "/projects" },
   },
@@ -148,7 +148,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     description:
       "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
     supportingText:
-      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+      "ROYSONS Pvt.Ltd. invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
     cta1: { label: "Discover Innovation", href: "/services" },
     cta2: { label: "Explore Future Projects", href: "/projects" },
   },
@@ -163,7 +163,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     description:
       "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
     supportingText:
-      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+      "ROYSONS Pvt.Ltd. invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
     cta1: { label: "Discover Innovation", href: "/services" },
     cta2: { label: "Explore Future Projects", href: "/projects" },
   },
@@ -178,7 +178,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     description:
       "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
     supportingText:
-      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+      "ROYSONS Pvt.Ltd. invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
     cta1: { label: "Discover Innovation", href: "/services" },
     cta2: { label: "Explore Future Projects", href: "/projects" },
   },
@@ -193,7 +193,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     description:
       "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
     supportingText:
-      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+      "ROYSONS Pvt.Ltd. invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
     cta1: { label: "Discover Innovation", href: "/services" },
     cta2: { label: "Explore Future Projects", href: "/projects" },
   },
@@ -208,7 +208,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     description:
       "Driving transformation through artificial intelligence, defense technologies, renewable energy, smart cities, infrastructure, and digital innovation.",
     supportingText:
-      "ROYS Group invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
+      "ROYSONS Pvt.Ltd. invests in next-generation technologies that enhance security, sustainability, urban development, and industrial progress for a rapidly evolving world.",
     cta1: { label: "Discover Innovation", href: "/services" },
     cta2: { label: "Explore Future Projects", href: "/projects" },
   },
@@ -222,14 +222,14 @@ export const CORPORATE_STATS = [
 ];
 
 export const CORPORATE_HOLDINGS = [
-  { name: "Roys & Roys International", subtitle: "Healthcare Solutions & International Trade", tagline: "Providing advanced medical, laboratory, surgical, and hospital engineering solutions for healthcare institutions and government organizations.", href: "/group-companies/roys-roys", image: "/logo15.jpg.jpeg_2K_202607191857.jpeg" },
-  { name: "Vet Vac Pharma", subtitle: "Veterinary Vaccines & Animal Healthcare", tagline: "Delivering innovative veterinary vaccines, biological products, and livestock healthcare solutions for modern farming and animal health.", href: "/group-companies/Vetvacpharma", image: "/logo_2.jpg.jpeg_2K_202607191900.jpeg" },
-  { name: "Bio Max Corporation", subtitle: "Biotechnology & Laboratory Solutions", tagline: "Supplying scientific equipment, laboratory systems, and biotechnology solutions for research and diagnostic institutions.", href: "/group-companies/biomax", image: "/logo_22.jpg.jpeg_2K_202607191904.jpeg" },
-  { name: "Gateway Pharmaceuticals Consultants", subtitle: "Pharmaceutical Regulatory Consultancy", tagline: "Offering licensing, compliance, regulatory affairs, and consultancy services for pharmaceutical organizations.", href: "/group-companies/gateway", image: "/logo_8.jpg.jpeg_2K_202607191906.jpeg" },
+  { name: "Roys & Roys International", subtitle: "Healthcare Solutions & International Trade", tagline: "Providing advanced medical, laboratory, surgical, and hospital engineering solutions for healthcare institutions and government organizations.", href: "/group-companies/roys-roys", image: "/group-27.png" },
+  { name: "Vet Vac Pharma", subtitle: "Veterinary Vaccines & Animal Healthcare", tagline: "Delivering innovative veterinary vaccines, biological products, and livestock healthcare solutions for modern farming and animal health.", href: "/group-companies/Vetvacpharma", image: "/group-16.png" },
+  { name: "Bio Max Corporation", subtitle: "Biotechnology & Laboratory Solutions", tagline: "Supplying scientific equipment, laboratory systems, and biotechnology solutions for research and diagnostic institutions.", href: "/group-companies/biomax", image: "/group-20.png" },
+  { name: "Gateway Pharmaceuticals Consultants", subtitle: "Pharmaceutical Regulatory Consultancy", tagline: "Offering licensing, compliance, regulatory affairs, and consultancy services for pharmaceutical organizations.", href: "/group-companies/gateway", image: "/group10.png" },
   { name: "Alpha Matrix Defence Systems", subtitle: "Defense & Security Technologies", tagline: "Providing advanced surveillance, security systems, and defense technologies for critical infrastructure protection.", href: "/group-companies/alpha-matrix", image: "/group-15.png" },
   { name: "National Guard", subtitle: "Professional Security Services", tagline: "Delivering security management, surveillance, risk assessment, and facility protection services.", href: "/group-companies/national-guard", image: "/group-9.png" },
   { name: "National Mines Corporation", subtitle: "Mining & Mineral Development", tagline: "Specializing in mineral exploration, mining operations, and sustainable resource development.", href: "/group-companies/national-mines", image: "/group-17.png" },
-  { name: "National Agricultural Corporation", subtitle: "Agriculture & Dairy Development", tagline: "Providing agricultural infrastructure, dairy development, irrigation, and livestock solutions.", href: "/group-companies/national-agricultural", image: "/logo_26.jpg.jpeg_2K_202607191858.jpeg" },
+  { name: "National Agricultural Corporation", subtitle: "Agriculture & Dairy Development", tagline: "Providing agricultural infrastructure, dairy development, irrigation, and livestock solutions.", href: "/group-companies/national-agricultural", image: "/group-26.png" },
   { name: "Swiss Farms", subtitle: "Dairy Production & Livestock Management", tagline: "Focused on dairy farming, breeding programs, and advanced livestock management systems.", href: "/group-companies/swiss-farm", image: "/group-13.png" },
   { name: "Walton Consultants & Contracting", subtitle: "Engineering & Infrastructure Development", tagline: "Offering civil engineering, EPC projects, industrial construction, and infrastructure development.", href: "/group-companies/walton", image: "/group-14.png" },
   { name: "Pakistan Medical Supplies", subtitle: "Hospital Engineering & Clean Rooms", tagline: "Delivering turnkey healthcare infrastructure, clean room systems, HVAC, and GMP facilities.", href: "/group-companies/pak-janitorial", image: "/group-18.png" },

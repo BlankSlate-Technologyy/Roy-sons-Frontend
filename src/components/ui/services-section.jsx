@@ -7,7 +7,7 @@ function ServiceBox({ icon: Icon, title, description, href }) {
       className="flex flex-col items-center text-center bg-white border border-neutral-200 p-6 hover:border-neutral-950 hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-300 group rounded-[3px] font-sans"
     >
       <Icon
-        size={34}
+        size={44}
         strokeWidth={1.2}
         className="text-[#dfb753] mb-4 group-hover:text-black group-hover:scale-105 transition-all duration-300"
       />

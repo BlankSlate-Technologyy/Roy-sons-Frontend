@@ -13,18 +13,18 @@ import {
 
 // ─── Colour Palette (Derived from Logo & White Theme) ────────────────────────
 const C = {
-  navy:        "#1E3A53",   // primary mountain color from logo
-  navyDark:    "#122538",   // dark contrast navy
+  navy:        "#ffffff",   // white heading text
+  navyDark:    "#e2e8f0",
   gold:        "#D1A153",   // accent rock gold from logo
   goldLight:   "#E5C17C",
-  goldPale:    "rgba(209,161,83,0.1)",
+  goldPale:    "rgba(209,161,83,0.15)",
   goldBorder:  "rgba(209,161,83,0.3)",
-  textDark:    "#334155",   // tailwind slate-700 for high-contrast reading
-  textLight:   "#64748B",   // tailwind slate-500 for secondary text
-  bgWhite:     "#FFFFFF",   // clean white container
-  bgTint:      "#F8FAFC",   // tailwind slate-50 for subtle sections
-  border:      "#E2E8F0",   // tailwind slate-200
-  borderDark:  "#CBD5E1",
+  textDark:    "#e2e8f0",   // high-contrast light text
+  textLight:   "#94A3B8",   // secondary text
+  bgWhite:     "#000000",   // black container
+  bgTint:      "#0d0d0d",   // dark section tint
+  border:      "#222222",   // dark border
+  borderDark:  "#333333",
 };
 
 const NAV_LINKS = [
@@ -114,7 +114,7 @@ const FAQS = [
 const PAGE_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-  .nm-page { font-family:'Inter',sans-serif; background:${C.bgWhite}; color:${C.textDark}; }
+  .nm-page { font-family:'Inter',sans-serif; background:#000000; color:${C.textDark}; }
   .nm-page *, .nm-page *::before, .nm-page *::after { box-sizing:border-box; margin:0; padding:0; }
 
   /* ══ SPECIFICITY OVERRIDES TO DEFEAT GLOBAL DARK ENGINE ══ */
@@ -125,7 +125,7 @@ const PAGE_STYLES = `
   body:not(.roys-roys-theme) header,
   body:not(.roys-roys-theme) footer,
   body:not(.roys-roys-theme) .nm-page {
-    background-color: #ffffff !important;
+    background-color: #000000 !important;
     color: ${C.textDark} !important;
   }
 
@@ -151,16 +151,15 @@ const PAGE_STYLES = `
     color: ${C.textDark} !important;
   }
 
-  /* ── dark sections overrides (scoped styling) ── */
-  body:not(.roys-roys-theme) .nm-dark-section {
-    background-color: transparent !important;
-  }
+  /* Force all sections to be transparent to reveal the black page background */
+  section, .nm-bg-tint, .nm-dark-section { background: transparent !important; }
+
 
   body:not(.roys-roys-theme) .nm-dark-section h1,
   body:not(.roys-roys-theme) .nm-dark-section h2,
   body:not(.roys-roys-theme) .nm-dark-section h3,
   body:not(.roys-roys-theme) .nm-dark-section h4 {
-    color: #ffffff !important;
+    color:  !important;
   }
 
   body:not(.roys-roys-theme) .nm-dark-section p,
@@ -188,7 +187,7 @@ const PAGE_STYLES = `
 
   /* ── navbar ── */
   body:not(.roys-roys-theme) .nm-nav { 
-    background: rgba(255,255,255,0.96) !important; 
+    background: rgba(0,0,0,0.95) !important; 
     backdrop-filter: blur(14px);
     border-bottom: 1px solid ${C.border} !important; 
     position: sticky; 
@@ -211,51 +210,39 @@ const PAGE_STYLES = `
   body:not(.roys-roys-theme) .nm-nav-link:hover { color: ${C.gold} !important; }
   .nm-nav-links { display:flex; align-items:center; gap:32px; }
 
-  /* ── buttons (Force Black Text on Gold Button / White on Dark button) ── */
+  /* ── buttons ── */
   body:not(.roys-roys-theme) .nm-btn-black,
-  body:not(.roys-roys-theme) .nm-btn-black * {
-    background-color: ${C.navy} !important;
-    color: #ffffff !important;
+  body:not(.roys-roys-theme) .nm-contact-btn {
+    background-color: ${C.gold} !important;
+    color: #000000 !important;
+    border: 1.5px solid ${C.gold} !important;
   }
   body:not(.roys-roys-theme) .nm-btn-black:hover,
-  body:not(.roys-roys-theme) .nm-btn-black:hover * {
-    background-color: ${C.navyDark} !important;
-    color: ${C.gold} !important;
-  }
-
-  body:not(.roys-roys-theme) .nm-contact-btn,
-  body:not(.roys-roys-theme) .nm-contact-btn * {
-    background-color: ${C.navy} !important;
-    color: #ffffff !important;
-  }
-  body:not(.roys-roys-theme) .nm-contact-btn:hover,
-  body:not(.roys-roys-theme) .nm-contact-btn:hover * {
-    background-color: ${C.navyDark} !important;
-    color: ${C.gold} !important;
+  body:not(.roys-roys-theme) .nm-contact-btn:hover {
+    background-color: ${C.goldLight} !important;
+    color: #000000 !important;
   }
 
   body:not(.roys-roys-theme) .nm-btn-outline-gold,
-  body:not(.roys-roys-theme) .nm-btn-outline-gold * {
+  body:not(.roys-roys-theme) .nm-btn-outline-white {
     background-color: transparent !important;
-    color: ${C.navy} !important;
-    border: 1.5px solid ${C.navy} !important;
+    color: ${C.gold} !important;
+    border: 1.5px solid ${C.gold} !important;
   }
   body:not(.roys-roys-theme) .nm-btn-outline-gold:hover,
-  body:not(.roys-roys-theme) .nm-btn-outline-gold:hover * {
-    background-color: ${C.navy} !important;
-    color: #ffffff !important;
+  body:not(.roys-roys-theme) .nm-btn-outline-white:hover {
+    background-color: rgba(209,161,83,0.18) !important;
+    color: ${C.goldLight} !important;
+    border-color: ${C.goldLight} !important;
   }
 
-  body:not(.roys-roys-theme) .nm-btn-outline-white,
-  body:not(.roys-roys-theme) .nm-btn-outline-white * {
+  body:not(.roys-roys-theme) svg,
+  body:not(.roys-roys-theme) .nm-btn-black svg,
+  body:not(.roys-roys-theme) .nm-contact-btn svg,
+  body:not(.roys-roys-theme) .nm-btn-outline-gold svg,
+  body:not(.roys-roys-theme) .nm-btn-outline-white svg {
+    background: transparent !important;
     background-color: transparent !important;
-    color: #ffffff !important;
-    border: 1.5px solid rgba(255,255,255,0.7) !important;
-  }
-  body:not(.roys-roys-theme) .nm-btn-outline-white:hover,
-  body:not(.roys-roys-theme) .nm-btn-outline-white:hover * {
-    background-color: #ffffff !important;
-    color: ${C.navy} !important;
   }
 
   .nm-btn-black, .nm-contact-btn, .nm-btn-outline-gold, .nm-btn-outline-white {
@@ -281,7 +268,7 @@ const PAGE_STYLES = `
 
   /* ── stat cards ── */
   body:not(.roys-roys-theme) .nm-stat-card { 
-    background: #ffffff !important; 
+    background: #111111 !important; 
     border: 1px solid ${C.border} !important; 
     border-radius: 10px;
     padding: 20px 16px; 
@@ -309,7 +296,7 @@ const PAGE_STYLES = `
 
   /* ── service cards ── */
   body:not(.roys-roys-theme) .nm-svc-card { 
-    background: #ffffff !important; 
+    background: #111111 !important; 
     border: 1px solid ${C.border} !important; 
     border-radius: 10px;
     padding: 24px 20px; 
@@ -343,7 +330,7 @@ const PAGE_STYLES = `
 
   /* ── industry tile ── */
   body:not(.roys-roys-theme) .nm-industry { 
-    background: #ffffff !important; 
+    background: #111111 !important; 
     border: 1px solid ${C.border} !important; 
     border-radius: 9px;
     padding: 16px 10px; 
@@ -365,8 +352,8 @@ const PAGE_STYLES = `
     width: 36px; 
     height: 36px; 
     border-radius: 50%; 
-    background: ${C.navy} !important;
-    color: #ffffff !important; 
+    background: ${C.gold} !important;
+    color: #000000 !important; 
     font-size: 11px; 
     font-weight: 900;
     display: flex; 
@@ -377,7 +364,7 @@ const PAGE_STYLES = `
 
   /* ── sustainability card ── */
   body:not(.roys-roys-theme) .nm-sus-card { 
-    background: #ffffff !important; 
+    background: #111111 !important; 
     border: 1px solid ${C.border} !important;
     border-radius: 10px; 
     padding: 24px; 
@@ -412,8 +399,8 @@ const PAGE_STYLES = `
 
   /* ── footer ── */
   body:not(.roys-roys-theme) .nm-footer { 
-    background: ${C.navyDark} !important; 
-    border-top: 1px solid ${C.navy} !important; 
+    background: #000000 !important; 
+    border-top: 1px solid rgba(255,255,255,0.08) !important; 
   }
   body:not(.roys-roys-theme) .nm-footer *,
   body:not(.roys-roys-theme) .nm-footer p,
@@ -428,6 +415,16 @@ const PAGE_STYLES = `
     transition: color 0.2s; 
   }
   body:not(.roys-roys-theme) .nm-footer-link:hover { color: ${C.gold} !important; }
+
+  /* ── footer grid layout ── */
+  .nm-footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media(max-width: 900px) { .nm-footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media(max-width: 560px) { .nm-footer-grid { grid-template-columns: 1fr; } }
 
   /* ── fade-up animation ── */
   @keyframes nm-fade-up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
@@ -458,7 +455,7 @@ export default function NationalMinePage() {
 
   useEffect(() => {
     const prev = { bg: document.body.style.backgroundColor, color: document.body.style.color };
-    document.body.style.backgroundColor = C.bgWhite;
+    document.body.style.backgroundColor = "#000000";
     document.body.style.color = C.textDark;
     return () => { document.body.style.backgroundColor = prev.bg; document.body.style.color = prev.color; };
   }, []);
@@ -472,8 +469,8 @@ export default function NationalMinePage() {
         <div className="nm-nav-inner">
           {/* Logo */}
           <Link href="#home" style={{ display: "flex", alignItems: "center", gap: 11, textDecoration: "none" }}>
-            <div style={{ width: 44, height: 44, borderRadius: 8, background: C.navy, display: "flex", alignItems: "center", justifyItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <Mountain size={23} color="#ffffff" style={{ stroke: "#ffffff" }} />
+            <div style={{ width: 44, height: 44, borderRadius: 8, background: "rgba(209,161,83,0.15)", border: "1px solid rgba(209,161,83,0.3)", display: "flex", alignItems: "center", justifyItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <Mountain size={23} color={C.gold} style={{ stroke: C.gold }} />
             </div>
             <div>
               <p style={{ color: C.navy, fontSize: 15, fontWeight: 900, textTransform: "uppercase", lineHeight: 1.1, letterSpacing: "0.06em" }}>NATIONAL</p>
@@ -491,7 +488,7 @@ export default function NationalMinePage() {
 
           {/* CTA */}
           <a href="#contact" className="nm-contact-btn">
-            <Phone size={13} stroke="#ffffff" /> Contact Us
+            <Phone size={13} color={C.gold} stroke={C.gold} /> Contact Us
           </a>
         </div>
       </header>
@@ -500,7 +497,7 @@ export default function NationalMinePage() {
       <section id="home" className="nm-dark-section" style={{ position: "relative", minHeight: "92vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <Image src="/mine header.png" alt="Mining operations" fill priority sizes="100vw" style={{ objectFit: "cover", objectPosition: "center" }} />
-          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, rgba(30,58,83,0.94) 40%, rgba(30,58,83,0.60) 100%)` }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #000000 55%, rgba(0,0,0,0.70) 100%)" }} />
         </div>
 
         <div className="nm-wrap" style={{ position: "relative", zIndex: 10, padding: "110px 28px 90px", width: "100%" }}>
@@ -679,8 +676,8 @@ export default function NationalMinePage() {
           <div className="nm-bottom4">
             {/* Vision */}
             <div className="nm-card-dark">
-              <div style={{ width: 34, height: 34, borderRadius: 7, background: C.navy, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-                <Mountain size={17} color="#ffffff" style={{ stroke: "#ffffff" }} />
+              <div style={{ width: 34, height: 34, borderRadius: 7, background: "rgba(209,161,83,0.15)", border: "1px solid rgba(209,161,83,0.3)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
+                <Mountain size={17} color={C.gold} style={{ stroke: C.gold }} />
               </div>
               <h3 style={{ color: C.navy, fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.22em", marginBottom: 10 }}>Our Vision</h3>
               <p style={{ color: C.textLight, fontSize: 12, lineHeight: 1.75 }}>
@@ -690,8 +687,8 @@ export default function NationalMinePage() {
 
             {/* Mission */}
             <div className="nm-card-dark">
-              <div style={{ width: 34, height: 34, borderRadius: 7, background: C.navy, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-                <Award size={17} color="#ffffff" style={{ stroke: "#ffffff" }} />
+              <div style={{ width: 34, height: 34, borderRadius: 7, background: "rgba(209,161,83,0.15)", border: "1px solid rgba(209,161,83,0.3)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
+                <Award size={17} color={C.gold} style={{ stroke: C.gold }} />
               </div>
               <h3 style={{ color: C.navy, fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.22em", marginBottom: 10 }}>Our Mission</h3>
               <p style={{ color: C.textLight, fontSize: 12, lineHeight: 1.75 }}>
@@ -724,8 +721,8 @@ export default function NationalMinePage() {
                     >
                       <span style={{ color: C.navy, fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>{q}</span>
                       {openFaq === i
-                        ? <Minus size={13} color={C.navy} style={{ flexShrink: 0 }} />
-                        : <Plus  size={13} color={C.navy} style={{ flexShrink: 0 }} />}
+                        ? <Minus size={13} color={C.gold} style={{ flexShrink: 0 }} />
+                        : <Plus  size={13} color={C.gold} style={{ flexShrink: 0 }} />}
                     </button>
                     {openFaq === i && (
                       <p style={{ color: C.textLight, fontSize: 11.5, lineHeight: 1.65, padding: "4px 0 10px" }}>{a}</p>
@@ -744,7 +741,7 @@ export default function NationalMinePage() {
       <section className="nm-dark-section" style={{ position: "relative", overflow: "hidden", padding: "90px 0" }}>
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <Image src="/mine technology.png" alt="Mining technology" fill style={{ objectFit: "cover" }} sizes="100vw" />
-          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(110deg, rgba(30,58,83,0.95) 50%, rgba(30,58,83,0.7) 100%)` }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(110deg, #000000 50%, rgba(0,0,0,0.70) 100%)" }} />
         </div>
         <div className="nm-wrap" style={{ position: "relative", zIndex: 10 }}>
           <div className="nm-two-col">
@@ -783,8 +780,8 @@ export default function NationalMinePage() {
             {/* Brand */}
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                <div style={{ width: 42, height: 42, borderRadius: 7, background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Mountain size={22} color={C.navy} />
+                <div style={{ width: 42, height: 42, borderRadius: 7, background: "rgba(209,161,83,0.15)", border: "1px solid rgba(209,161,83,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Mountain size={22} color={C.gold} />
                 </div>
                 <div>
                   <p style={{ color: "#ffffff", fontSize: 15, fontWeight: 900, textTransform: "uppercase", lineHeight: 1.1 }}>NATIONAL</p>

@@ -19,14 +19,14 @@ const COLORS = {
   primaryLight:"#40916C",  // lighter green
   accent:     "#F6A623",   // warm amber/gold
   accentLight:"#FBC55A",   // light amber
-  bgLight:    "#F7F9F4",   // very light green-tinted white
-  bgWhite:    "#FFFFFF",
-  bgSection:  "#EEF4EC",   // subtle green-tinted section bg
+  bgLight:    "#FFFFFF",   // pure white background
+  bgWhite:    "#FFFFFF",   // pure white background
+  bgSection:  "#F4F8F5",   // ultra light green section bg
   border:     "#C8DFC0",   // soft green border
-  textDark:   "#1A2E1A",   // near-black green-tinted
-  textMid:    "#3D5A3E",   // mid green text
-  textMuted:  "#6A8C6B",   // muted green text
-  textLight:  "#9AB89B",   // faint text
+  textDark:   "#1B4332",   // forest green text
+  textMid:    "#2D6A4F",   // medium green text
+  textMuted:  "#40916C",   // muted green text
+  textLight:  "#52B788",   // faint green text
   white:      "#FFFFFF",
 };
 
@@ -222,7 +222,7 @@ const FAQS = [
 const PAGE_STYLES = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-  .na-page { font-family: 'Inter', sans-serif; background-color: ${COLORS.bgWhite}; color: ${COLORS.textDark}; }
+  .na-page { font-family: 'Inter', sans-serif; background-color: ${COLORS.bgWhite}; color: ${COLORS.primary}; }
   .na-page *, .na-page *::before, .na-page *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   /* nav */
