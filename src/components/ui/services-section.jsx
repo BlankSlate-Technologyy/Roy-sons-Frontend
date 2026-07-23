@@ -6,11 +6,13 @@ function ServiceBox({ icon: Icon, title, description, href }) {
       href={href}
       className="flex flex-col items-center text-center bg-white border border-neutral-200 p-6 hover:border-neutral-950 hover:shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:-translate-y-0.5 transition-all duration-300 group rounded-[3px] font-sans"
     >
-      <Icon
-        size={34}
-        strokeWidth={1.2}
-        className="text-[#dfb753] mb-4 group-hover:text-black group-hover:scale-105 transition-all duration-300"
-      />
+      <div className="mb-4 transition-all duration-300">
+        <Icon
+          size={34}
+          strokeWidth={1.2}
+          className="text-[#dfb753] transition-all duration-300 group-hover:fill-[#dfb753] group-hover:text-neutral-950 group-hover:scale-105"
+        />
+      </div>
       <h3
         className="text-[14px] font-black tracking-[0.16em] uppercase mb-2.5"
         style={{
