@@ -153,7 +153,7 @@ const CORPORATE_INFO = [
   { label: "Registered Address",  val: "123 Business Avenue,Lahore, Pakistan" },
 ];
 
-const NAV_LINKS = ["Home", "About Us", "Solutions", "Products", "Industries", "Projects", "Contact"];
+const NAV_LINKS = ["Home", "About Us", "Solutions", "Products", "Industries", "What We Do", "Contact"];
 
 const FOOTER_LINKS = {
   Company:    ["About Us", "Our Values", "Careers", "News & Media"],
@@ -282,23 +282,37 @@ function Navbar() {
 
         <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((item) => (
-            <Link
+            <button
               key={item}
-              href={item === "Contact" ? "/contact" : `#${item.toLowerCase().replace(" ", "-")}`}
-              className="text-[12.5px] font-bold uppercase tracking-wider transition-colors hover:text-[#00a299]"
+              type="button"
+              onClick={() => {
+                const idMap = {
+                  "Home": "home",
+                  "About Us": "about-us",
+                  "Solutions": "solutions",
+                  "Products": "products",
+                  "Industries": "industries",
+                  "Projects": "projects",
+                  "Contact": "contact",
+                };
+                const id = idMap[item] || item.toLowerCase().replace(/\s+/g, "-");
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              className="text-[12.5px] font-bold uppercase tracking-wider bg-transparent border-0 cursor-pointer"
               style={{ color: COLORS.black }}
             >
               {item}
-            </Link>
+            </button>
           ))}
         </nav>
 
         <Link
-          href="/contact"
+          href="#protfolio"
           className="px-5 py-2.5 rounded-sm text-[12px] font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:bg-[#009088]"
           style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
         >
-          Get in Touch
+          Our Projects
         </Link>
       </div>
     </div>
@@ -358,25 +372,25 @@ function TrustedBanner() {
   }, [maxIndex]);
 
   return (
-    <section className="py-6 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+    <section className="py-3 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl">
-        <p className="text-center text-[15px] font-black tracking-[0.24em] text-neutral-500 uppercase mb-8">
+        <p className="text-center text-[11px] font-black tracking-[0.24em] text-neutral-500 uppercase mb-3">
           TRUSTED BY LEADING ORGANIZATIONS
         </p>
 
         <div className="relative overflow-hidden rounded-[32px] border-0 shadow-none bg-transparent">
           <div
-            className="flex gap-4 transition-transform duration-500 ease-in-out px-6 py-8"
+            className="flex gap-2 transition-transform duration-500 ease-in-out px-4 py-3"
             style={{ transform: `translateX(-${activeLogo * (100 / visibleCount)}%)` }}
           >
             {TRUSTED_LOGOS.map((logo) => (
               <div
                 key={logo.name}
-                className="flex-shrink-0 rounded-[28px] bg-transparent border-0 p-6 flex items-center justify-center shadow-none"
+                className="flex-shrink-0 rounded-[28px] bg-transparent border-0 p-3 flex items-center justify-center shadow-none"
                 style={{ minWidth: `${100 / visibleCount}%` }}
               >
                 {logo.img ? (
-                  <div className="relative w-full h-24">
+                  <div className="relative w-full h-14">
                     <Image
                       src={logo.img}
                       alt={logo.name}
@@ -386,7 +400,7 @@ function TrustedBanner() {
                     />
                   </div>
                 ) : (
-                  <span className="text-[18px] font-black tracking-wider text-neutral-800">{logo.abbr}</span>
+                  <span className="text-[16px] font-black tracking-wider text-neutral-800">{logo.abbr}</span>
                 )}
               </div>
             ))}
@@ -460,13 +474,35 @@ function AboutSection() {
               </div>
             ))}
           </div>
-          <PrimaryButton href="/contact" className="w-fit">
-            Learn More About Us <ArrowRight size={15} />
+          <PrimaryButton href="#contact" className="w-fit">
+            Get in Touch <ArrowRight size={15} />
           </PrimaryButton>
         </div>
 
         {/* Right: Image showcase */}
         <div className="flex-1 w-full grid gap-4">
+          {/* Duplicated top images (same as bottom) */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
+              <Image
+                src="/roys_mri_scanner.png"
+                alt="MRI scanning room setup"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+            <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
+              <Image
+                src="/roys_ct_scan.png"
+                alt="CT scanner system installation"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+          {/* Main large image */}
           <div className="relative h-[520px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
             <Image
               src="/roys_hospital_interior.png"
@@ -476,6 +512,7 @@ function AboutSection() {
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
+          {/* Bottom images */}
           <div className="grid grid-cols-2 gap-4">
             <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
               <Image
@@ -723,12 +760,19 @@ function ValuesAndCorporateSection() {
     <section className="py-12 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-8 items-start">
 
-        {/* Value Cards */}
+        {/* LEFT: Selected Value box + Value Cards below */}
         <div className="lg:col-span-5">
+          {/* Selected Value box - top left */}
+          <div className="border rounded-lg p-5 shadow-sm mb-6" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+            <span className="text-[10px] font-bold uppercase tracking-wider block mb-2 text-neutral-500">Selected Value</span>
+            <h4 className="text-xl font-extrabold mb-2" style={{ color: COLORS.black }}>{selectedValue.label}</h4>
+            <p className="text-[13px] leading-relaxed" style={{ color: COLORS.black }}>{selectedValue.desc}</p>
+          </div>
+
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
             WHAT WE STAND FOR
           </span>
-          <h3 className="text-2xl font-extrabold mb-8 uppercase" style={{ color: COLORS.black }}>Our Values</h3>
+          <h3 className="text-2xl font-extrabold mb-6 uppercase" style={{ color: COLORS.black }}>Our Values</h3>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {VALUES.map(({ icon: Icon, label }, idx) => (
               <button
@@ -745,18 +789,12 @@ function ValuesAndCorporateSection() {
           </div>
         </div>
 
-        {/* Corporate Info */}
+        {/* RIGHT: Corporate Info only */}
         <div className="lg:col-span-7">
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
             OFFICIAL DETAILS
           </span>
           <h3 className="text-2xl font-extrabold mb-8 uppercase" style={{ color: COLORS.black }}>Corporate Info</h3>
-
-          <div className="border rounded-lg p-6 shadow-sm mb-8" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
-            <span className="text-[10px] font-bold uppercase tracking-wider block mb-2 text-neutral-500">Selected Value</span>
-            <h4 className="text-xl font-extrabold mb-3" style={{ color: COLORS.black }}>{selectedValue.label}</h4>
-            <p className="text-[13px] leading-relaxed" style={{ color: COLORS.black }}>{selectedValue.desc}</p>
-          </div>
 
           <div className="border rounded-lg p-6 shadow-sm" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
             {CORPORATE_INFO.map(({ label, val }, idx) => (
@@ -987,7 +1025,7 @@ Lahore, Pakistan</span>
         </p>
         <div className="flex gap-6">
           {["Privacy Policy", "Terms of Service"].map((label) => (
-            <a key={label} href="#" className="text-[11.5px] hover:text-white transition-colors duration-200" style={{ color: "rgba(255, 255, 255, 0.9)" }}>
+            <a key={label} href="#" className="text-[11.5px] hover:text-white transition-colors duration-200" style={{ color: "rgb(255, 255, 255)" }}>
               {label}
             </a>
           ))}

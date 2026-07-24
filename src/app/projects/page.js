@@ -293,8 +293,8 @@ export default function ProjectsPage() {
             <div className="lg:w-[300px] flex-shrink-0">
               <div className="bg-white border border-neutral-200 p-6 sticky top-24">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 bg-black rounded-sm flex items-center justify-center flex-shrink-0">
-                    <Shield size={17} className="text-white" strokeWidth={1.8} />
+                  <div className="w-9 h-9 bg-[#dfb753] rounded-sm flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:bg-neutral-950 group cursor-pointer">
+                    <Shield size={17} className="text-black transition-colors duration-300 group-hover:text-[#dfb753]" strokeWidth={1.8} />
                   </div>
                   <div>
                     <h3 className="text-[13px] font-black uppercase tracking-[0.1em] text-neutral-950 leading-tight">
@@ -403,12 +403,14 @@ export default function ProjectsPage() {
         <div className="max-w-screen-xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {STATS.map(({ icon: Icon, count, label }, idx) => (
-              <div key={idx} className="flex items-center gap-4">
-                <Icon
-                  size={40}
-                  strokeWidth={1.2}
-                  className="text-neutral-300 flex-shrink-0"
-                />
+              <div key={idx} className="flex items-center gap-4 group cursor-pointer">
+                <div className="w-14 h-14 rounded-full bg-[#dfb753] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-neutral-950 group-hover:border-2 group-hover:border-[#dfb753]">
+                  <Icon
+                    size={28}
+                    strokeWidth={1.4}
+                    className="text-black transition-colors duration-300 group-hover:text-[#dfb753]"
+                  />
+                </div>
                 <div>
                   <p className="text-3xl font-black text-neutral-950 leading-none">
                     {count}

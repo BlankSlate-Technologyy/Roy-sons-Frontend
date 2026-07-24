@@ -132,11 +132,11 @@ const SERVICE_OPTIONS = [
 function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="flex gap-4 group">
-      <div className="flex-shrink-0 w-14 h-14 bg-neutral-50 border border-neutral-200 rounded-sm flex items-center justify-center transition-all duration-300 group-hover:bg-black group-hover:border-black">
+      <div className="flex-shrink-0 w-14 h-14 bg-neutral-50 border border-neutral-200 rounded-sm flex items-center justify-center transition-all duration-300 group-hover:bg-[#dfb753] group-hover:border-[#dfb753]">
         <Icon
           size={26}
           strokeWidth={1.4}
-          className="text-neutral-700 transition-colors duration-300 group-hover:text-white"
+          className="text-neutral-700 transition-colors duration-300 group-hover:text-black"
         />
       </div>
 
@@ -180,7 +180,8 @@ function FormField({ label, placeholder, type = "text", required = false, id, va
   );
 }
 
-function FormSelect({ label, options, required = false, id, value, onChange }) {
+function FormSelect({ label, options, required = false, id, value, onSelect }) {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="flex flex-col gap-1.5">
       <label
@@ -189,27 +190,42 @@ function FormSelect({ label, options, required = false, id, value, onChange }) {
       >
         {label} {required && <span className="text-red-500">*</span>}
       </label>
-      <div className="relative">
-        <select
-          id={id}
-          value={value}
-          onChange={onChange}
-          required={required}
-          className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] appearance-none cursor-pointer"
+      <div
+        className="relative"
+        tabIndex={0}
+        onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsOpen(false); }}
+      >
+        <div
+          onClick={() => setIsOpen(!isOpen)}
+          className={`w-full bg-neutral-950 border ${isOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-4 py-3 text-[12px] text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
         >
-          <option value="" disabled>
-            Select a service
-          </option>
-          {options.map((opt) => (
-            <option key={opt} value={opt} className="text-black">
-              {opt}
-            </option>
-          ))}
+          <span>{value || 'Select a service'}</span>
+          <ChevronDown size={14} className={`text-[#a3a3a3] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+        </div>
+
+        {isOpen && (
+          <div className="absolute z-50 w-full mt-1 bg-neutral-950 border border-neutral-800 rounded-[2px] max-h-60 overflow-y-auto shadow-xl">
+            <div
+              onClick={() => { onSelect(''); setIsOpen(false); }}
+              className="px-4 py-3 text-[12px] text-[#dfb753] opacity-50 hover:bg-[#dfb753] hover:text-black hover:opacity-100 cursor-pointer transition-colors"
+            >
+              Select a service
+            </div>
+            {options.map((opt) => (
+              <div
+                key={opt}
+                onClick={() => { onSelect(opt); setIsOpen(false); }}
+                className="px-4 py-3 text-[12px] text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
+              >
+                {opt}
+              </div>
+            ))}
+          </div>
+        )}
+        <select id={id} required={required} value={value} onChange={() => {}} className="hidden">
+          <option value="" disabled>Select a service</option>
+          {options.map((opt) => <option key={opt} value={opt}>{opt}</option>)}
         </select>
-        <ChevronDown
-          size={14}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none"
-        />
       </div>
     </div>
   );
@@ -416,7 +432,7 @@ export default function ServicesPage() {
                       options={SERVICE_OPTIONS}
                       required
                       value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      onSelect={(val) => setFormData({ ...formData, service: val })}
                     />
                     <FormField
                       id="query-subject"

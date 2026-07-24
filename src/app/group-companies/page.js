@@ -6,6 +6,7 @@ import { ChevronRight } from "lucide-react";
 import { CORPORATE_HOLDINGS } from "@/lib/constants";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
+import CompanyLogosGrid from "@/components/ui/CompanyLogosGrid";
 
 const REGIONAL_OFFICES = [
   { city: "Lahore", detail: "Corporate Headquarters - 123 Business Avenue" },
@@ -28,7 +29,7 @@ export default function GroupCompaniesPage() {
               </li>
               <li className="flex items-center gap-1.5">
                 <ChevronRight size={11} className="text-neutral-300" />
-                <span className="text-neutral-950">Group Companies</span>
+                <span className="text-neutral-950">  Group Companies</span>
               </li>
             </ol>
           </nav>
@@ -43,10 +44,11 @@ export default function GroupCompaniesPage() {
               OUR SUBSIDIARIES
             </span>
             <h1 className="text-4xl lg:text-5xl font-black text-neutral-950 mb-6 leading-tight tracking-tight uppercase">
-              Group Companies
+               ROYSONS holding is a Diverse group of<br></br>
+INDUSTRY-LEADING BUSINESSES
             </h1>
             <p className="text-[14px] text-neutral-500 leading-relaxed font-normal">
-              Roys Group comprises 26 specialized corporate entities and divisions working in tandem.
+              ROYSONS Pvt.Ltd comprises 26 specialized corporate entities and divisions working in tandem.
               Together, we cover all strategic business sectors to deliver turnkey capabilities for critical government,
               private, and international operations.
             </p>
@@ -54,30 +56,7 @@ export default function GroupCompaniesPage() {
         </div>
       </section>
 
-      {/* Company Logos Grid */}
-      <section className="pb-24 px-6 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {CORPORATE_HOLDINGS.map((company, index) => (
-              <Link
-                key={index}
-                href={company.href}
-                className="flex items-center justify-center bg-neutral-50 border border-neutral-200 rounded-sm p-4 group hover:border-black hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300"
-              >
-                <div className="relative w-full h-36">
-                  <Image
-                    src={company.image}
-                    alt={company.name}
-                    fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                    className="object-contain group-hover:scale-105 transition-transform duration-300 p-2"
-                  />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CompanyLogosGrid />
 
       {/* Regional Offices */}
       <section className="py-20 px-6 bg-neutral-950 text-white border-t border-neutral-850">

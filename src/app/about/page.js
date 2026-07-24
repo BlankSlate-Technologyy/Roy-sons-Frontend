@@ -17,10 +17,8 @@ import {
   Building2,
   Globe,
   CheckCircle2,
-  TrendingUp,
   Briefcase,
   Target,
-  FileText,
   DollarSign,
   HeartPulse,
   BriefcaseMedical,
@@ -39,6 +37,7 @@ import {
   HardHat,
   Landmark,
   GraduationCap,
+  Hospital,
   Microscope,
   MapPin,
   Network
@@ -193,10 +192,10 @@ function AnimatedStatValue({ value }) {
 
 function SectorsServedCard({ category, icon: Icon, items }) {
   return (
-    <div className="bg-white border border-neutral-200 p-8 rounded-sm hover:border-black transition-colors duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+    <div className="bg-white border border-neutral-200 p-8 rounded-sm group hover:border-black transition-colors duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
       <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-12 bg-neutral-950 flex items-center justify-center rounded-sm">
-          <Icon className="text-white" size={22} strokeWidth={1.5} />
+        <div className="w-12 h-12 bg-neutral-950 flex items-center justify-center rounded-sm transition-colors duration-300 group-hover:bg-[#dfb753]">
+          <Icon className="text-white group-hover:text-black" size={22} strokeWidth={1.5} />
         </div>
         <h3 className="text-[14px] font-black uppercase tracking-wider text-neutral-950">
           {category}
@@ -218,6 +217,7 @@ export default function AboutPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -320,46 +320,20 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Client and Sectors Served Grid */}
-      <section className="py-20 px-6 bg-neutral-50 border-y border-neutral-100">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="text-center mb-16">
-            <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
-              OUR CUSTOMERS
-            </span>
-            <h2 className="text-[26px] font-black uppercase tracking-[0.18em] text-neutral-950">
-              Sectors We Serve
-            </h2>
-            <div className="mx-auto mt-4 h-[3px] w-12 bg-neutral-950" />
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {CLIENTS_SERVED.map((sector, index) => (
-              <SectorsServedCard 
-                key={index} 
-                category={sector.category} 
-                icon={sector.icon} 
-                items={sector.items} 
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Government Sector Clients Section */}
       <section className="py-20 px-6 bg-white border-b border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
-              PUBLIC SECTOR
+             ROYSONS holding is a Diverse group of
+INDUSTRY-LEADING BUSINESSES
             </span>
             <h2 className="text-[26px] font-black uppercase tracking-[0.18em] text-neutral-950">
               Government Sector
             </h2>
             <div className="mx-auto mt-4 h-[3px] w-12 bg-neutral-950" />
             <p className="text-[13px] text-neutral-500 mt-5 max-w-xl mx-auto leading-relaxed">
-              Roys Group proudly serves a wide range of government institutions, delivering trusted solutions across Pakistan&apos;s public sector landscape.
+              ROYSON.Pvt.Ltd proudly serves a wide range of government institutions, delivering trusted solutions across Pakistan&apos;s public sector landscape.
             </p>
           </div>
 
@@ -368,7 +342,7 @@ export default function AboutPage() {
             {/* Federal Ministries */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
               <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Landmark className="text-white" size={26} strokeWidth={1.5} />
+                <Landmark className="text-[#dfb753]" size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Federal Ministries
@@ -378,7 +352,7 @@ export default function AboutPage() {
             {/* Provincial Governments */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
               <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="text-white" size={26} strokeWidth={1.5} />
+                <MapPin className="text-[#dfb753]" size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Provincial Governments
@@ -388,7 +362,7 @@ export default function AboutPage() {
             {/* Armed Forces */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
               <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Shield className="text-white" size={26} strokeWidth={1.5} />
+                <Shield className="text-[#dfb753]" size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Armed Forces
@@ -398,7 +372,7 @@ export default function AboutPage() {
             {/* Universities */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
               <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <GraduationCap className="text-white" size={26} strokeWidth={1.5} />
+                <GraduationCap className="text-[#dfb753]" size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Universities
@@ -408,7 +382,7 @@ export default function AboutPage() {
             {/* Research Institutes */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
               <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Microscope className="text-white" size={26} strokeWidth={1.5} />
+                <Microscope className="text-[#dfb753]" size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Research Institutes
@@ -418,7 +392,7 @@ export default function AboutPage() {
             {/* Public Sector Organizations */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
               <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Network className="text-white" size={26} strokeWidth={1.5} />
+                <Network className="text-[#dfb753]" size={26} strokeWidth={1.5} />
               </div>
               <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Public Sector Organizations
@@ -429,15 +403,145 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Private Sector Clients Section */}
+      <section className="py-20 px-6 bg-white border-b border-neutral-100">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center mb-14">
+            <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
+              PRIVATE SECTOR
+            </span>
+            <h2 className="text-[26px] font-black uppercase tracking-[0.18em] text-neutral-950">
+              Private Sector Clients
+            </h2>
+            <div className="mx-auto mt-4 h-[3px] w-12 bg-neutral-950" />
+            <p className="text-[13px] text-neutral-500 mt-5 max-w-xl mx-auto leading-relaxed">
+              We partner with leading private enterprises across healthcare, manufacturing, construction, agriculture, and technology.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Hospital className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Hospitals
+              </h4>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Pill className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Pharmaceutical Industries
+              </h4>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Layers className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Manufacturing Industries
+              </h4>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <HardHat className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Construction Companies
+              </h4>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Sprout className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Agricultural Enterprises
+              </h4>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Monitor className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Technology Companies
+              </h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* International Clients Section */}
+      <section className="py-20 px-6 bg-neutral-50 border-b border-neutral-100">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center mb-14">
+            <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
+              INTERNATIONAL CLIENTS
+            </span>
+            <h2 className="text-[26px] font-black uppercase tracking-[0.18em] text-neutral-950">
+              International Client Partnerships
+            </h2>
+            <div className="mx-auto mt-4 h-[3px] w-12 bg-neutral-950" />
+            <p className="text-[13px] text-neutral-500 mt-5 max-w-xl mx-auto leading-relaxed">
+              We support international clients across imports, exports, manufacturing, and development initiatives.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            <div className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Globe className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Importers
+              </h4>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Users className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Exporters
+              </h4>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Star className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Manufacturers
+              </h4>
+            </div>
+
+            <div className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
+              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Lightbulb className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              </div>
+              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+                Development Agencies
+              </h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Vision & Mission Elegant Side-by-Side block */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-neutral-950">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Vision */}
             <div className="bg-neutral-950 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300">
               <div>
-                <div className="w-12 h-12 border border-neutral-800 flex items-center justify-center mb-10">
-                  <Target size={24} className="text-white" strokeWidth={1.5} />
+                <div className="w-12 h-12 border border-neutral-800 flex items-center justify-center mb-5">
+                  <Target size={24} className="text-[#dfb753]" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-[20px] font-black uppercase tracking-[0.14em] text-white mb-6">
                   Vision Statement
@@ -447,25 +551,25 @@ export default function AboutPage() {
                   sustainable and technology-driven solutions across multiple industries.
                 </p>
               </div>
-              <div className="mt-12 h-1 w-20 bg-white" />
+              <div className="mt-12 h-1 w-20 bg-[#dfb753]" />
             </div>
 
             {/* Mission */}
-            <div className="bg-neutral-50 border border-neutral-200 text-neutral-950 p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-neutral-950 border border-neutral-800 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300">
               <div>
-                <div className="w-12 h-12 bg-neutral-950 flex items-center justify-center mb-10">
-                  <Award size={24} className="text-white" strokeWidth={1.5} />
+                <div className="w-12 h-12 flex items-center mb-5">
+                  <Award size={24} className="text-[#dfb753]" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-[20px] font-black uppercase tracking-[0.14em] text-neutral-950 mb-6">
+                <h3 className="text-[20px] font-black uppercase tracking-[0.14em] text-white mb-6">
                   Mission Statement
                 </h3>
-                <p className="text-[13.5px] text-neutral-600 leading-relaxed font-normal">
+                <p className="text-[13.5px] text-neutral-300 leading-relaxed font-light">
                   To provide world-class products and services through innovation, quality, integrity 
                   and strategic partnerships while creating value for customers, employees, 
                   shareholders and society.
                 </p>
               </div>
-              <div className="mt-12 h-1 w-20 bg-neutral-950" />
+              <div className="mt-12 h-1 w-20 bg-[#dfb753]" />
             </div>
           </div>
         </div>
@@ -517,9 +621,9 @@ export default function AboutPage() {
             {STRATEGIC_DIVISIONS.map((div, index) => {
               const Icon = div.icon;
               return (
-                <div key={index} className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-black transition-colors duration-200">
-                  <div className="w-10 h-10 border border-neutral-200 flex items-center justify-center bg-neutral-50 rounded-sm">
-                    <Icon size={20} className="text-neutral-500" strokeWidth={1.5} />
+                <div key={index} className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-black transition-colors duration-200 cursor-pointer group">
+                  <div className="w-10 h-10 border border-neutral-200 flex items-center justify-center bg-neutral-50 rounded-sm transition-colors duration-300 group-hover:bg-[#dfb753] group-hover:border-[#dfb753]">
+                    <Icon size={20} className="text-[#dfb753] transition-colors duration-300 group-hover:text-black" strokeWidth={1.5} />
                   </div>
                   <h4 className="text-[15px] font-black uppercase tracking-wider text-neutral-950 leading-tight">
                     {div.title}
@@ -534,27 +638,27 @@ export default function AboutPage() {
       {/* Why Roys Group list section */}
       <section className="py-20 px-6 bg-neutral-950 text-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+          <div className="flex flex-col gap-12 lg:gap-16">
             
-            <div className="lg:w-2/5">
+            <div className="text-center max-w-3xl mx-auto">
               <span className="text-[10px] font-black tracking-[0.24em] text-neutral-400 uppercase mb-3 block">
                 COMPETITIVE ADVANTAGE
               </span>
               <h2 className="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight uppercase tracking-wider">
-                Why Roys Group?
+              Why ROYSONS Pvt.Ltd.?
               </h2>
-              <div className="h-1 w-14 bg-white mb-6" />
+              <div className="h-1 w-14 bg-[#dfb753] mb-6 mx-auto" />
               <p className="text-[12.5px] text-neutral-400 leading-relaxed font-light">
                 Our operations are founded on trust, domain expertise, and a multi-tiered supply network. 
                 We combine government-certified credentials with structured global partnerships to deliver turnkey performance.
               </p>
             </div>
 
-            <div className="flex-1 lg:w-3/5 w-full">
+            <div className="w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-5">
                 {WHY_ROYS_GROUP.map((point, index) => (
                   <div key={index} className="flex items-center gap-3 border-b border-neutral-800 pb-3 flex-row">
-                    <CheckCircle2 size={16} className="text-white flex-shrink-0" strokeWidth={2} />
+                    <CheckCircle2 size={16} className="text-[#dfb753] flex-shrink-0" strokeWidth={2} />
                     <span className="text-[12px] font-bold uppercase tracking-wider text-white">
                       {point}
                     </span>
@@ -668,21 +772,43 @@ export default function AboutPage() {
                       <label className="text-[10px] font-bold text-neutral-950 uppercase tracking-[0.14em]">
                         Business Division of Interest <span className="text-red-500">*</span>
                       </label>
-                      <div className="relative">
-                        <select
-                          required
-                          value={formData.division}
-                          onChange={(e) => setFormData({ ...formData, division: e.target.value })}
-                          className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] appearance-none cursor-pointer"
+                      <div className="relative" tabIndex={0} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsDropdownOpen(false); }}>
+                        <div
+                          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                          className={`w-full bg-neutral-950 border ${isDropdownOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-4 py-3 text-[12px] text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
                         >
-                          <option value="" disabled>Select a division</option>
-                          {STRATEGIC_DIVISIONS.map((division) => (
-                            <option key={division.title} value={division.title.toLowerCase().replace(/\s+/g, "-")}>
-                              {division.title}
-                            </option>
-                          ))}
+                          <span>{formData.division ? STRATEGIC_DIVISIONS.find(d => d.title.toLowerCase().replace(/\s+/g, "-") === formData.division)?.title : "Select a division"}</span>
+                          <ChevronRight size={13} className={`text-[#a3a3a3] transition-transform duration-300 ${isDropdownOpen ? '-rotate-90' : 'rotate-90'}`} />
+                        </div>
+                        
+                        {isDropdownOpen && (
+                          <div className="absolute z-50 w-full mt-1 bg-neutral-950 border border-neutral-800 rounded-[2px] max-h-60 overflow-y-auto shadow-xl">
+                            <div 
+                              onClick={() => { setFormData({ ...formData, division: "" }); setIsDropdownOpen(false); }}
+                              className="px-4 py-3 text-[12px] text-[#dfb753] opacity-50 hover:bg-[#dfb753] hover:text-black hover:opacity-100 cursor-pointer transition-colors"
+                            >
+                              Select a division
+                            </div>
+                            {STRATEGIC_DIVISIONS.map((division) => (
+                              <div
+                                key={division.title}
+                                onClick={() => {
+                                  setFormData({ ...formData, division: division.title.toLowerCase().replace(/\s+/g, "-") });
+                                  setIsDropdownOpen(false);
+                                }}
+                                className="px-4 py-3 text-[12px] text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
+                              >
+                                {division.title}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        <select required value={formData.division} onChange={() => {}} className="hidden">
+                           <option value="" disabled>Select a division</option>
+                           {STRATEGIC_DIVISIONS.map((division) => (
+                             <option key={division.title} value={division.title.toLowerCase().replace(/\s+/g, "-")}>{division.title}</option>
+                           ))}
                         </select>
-                        <ChevronRight size={13} className="absolute right-4 top-1/2 -translate-y-1/2 rotate-90 text-[#a3a3a3] pointer-events-none" />
                       </div>
                     </div>
                   </div>

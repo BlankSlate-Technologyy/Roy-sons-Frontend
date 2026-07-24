@@ -20,6 +20,7 @@ export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [isSubjectOpen, setIsSubjectOpen] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -114,8 +115,8 @@ export default function ContactPage() {
           <div className="bg-white border border-neutral-200 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.04)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-neutral-205">
             
             {/* Our Office */}
-            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4">
-              <div className="w-12 h-12 bg-neutral-950 rounded-full flex items-center justify-center flex-shrink-0 text-white">
+            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+              <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
                 <MapPin size={20} strokeWidth={2} />
               </div>
               <div>
@@ -129,8 +130,8 @@ export default function ContactPage() {
             </div>
 
             {/* Call Us */}
-            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4">
-              <div className="w-12 h-12 bg-neutral-950 rounded-full flex items-center justify-center flex-shrink-0 text-white">
+            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+              <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
                 <Phone size={20} strokeWidth={2} />
               </div>
               <div>
@@ -146,8 +147,8 @@ export default function ContactPage() {
             </div>
 
             {/* Email Us */}
-            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4">
-              <div className="w-12 h-12 bg-neutral-950 rounded-full flex items-center justify-center flex-shrink-0 text-white">
+            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+              <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
                 <Mail size={20} strokeWidth={2} />
               </div>
               <div>
@@ -162,8 +163,8 @@ export default function ContactPage() {
             </div>
 
             {/* Business Hours */}
-            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4">
-              <div className="w-12 h-12 bg-neutral-950 rounded-full flex items-center justify-center flex-shrink-0 text-white">
+            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+              <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
                 <Clock size={20} strokeWidth={2} />
               </div>
               <div>
@@ -261,20 +262,48 @@ export default function ContactPage() {
                       <label className="text-[10px] font-black text-neutral-950 uppercase tracking-[0.14em]">
                         Subject <span className="text-red-500">*</span>
                       </label>
-                      <div className="relative w-full">
-                        <select 
-                          required
-                          value={formData.subject}
-                          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                          className="w-full bg-white border border-neutral-200 px-4 py-3 pr-10 text-[12px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] cursor-pointer appearance-none"
+                      <div
+                        className="relative w-full"
+                        tabIndex={0}
+                        onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsSubjectOpen(false); }}
+                      >
+                        <div
+                          onClick={() => setIsSubjectOpen(!isSubjectOpen)}
+                          className={`w-full bg-neutral-950 border ${isSubjectOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-4 py-3 text-[12px] text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
                         >
+                          <span>{formData.subject ? {
+                            general: 'General Inquiries',
+                            services: 'Service Information',
+                            partnership: 'Partnership Opportunities',
+                            support: 'Support & Assistance'
+                          }[formData.subject] : 'Select a subject'}</span>
+                          <ChevronDown size={14} className={`text-[#a3a3a3] transition-transform duration-300 ${isSubjectOpen ? 'rotate-180' : ''}`} />
+                        </div>
+                        {isSubjectOpen && (
+                          <div className="absolute z-50 w-full mt-1 bg-neutral-950 border border-neutral-800 rounded-[2px] shadow-xl">
+                            {[
+                              { value: 'general', label: 'General Inquiries' },
+                              { value: 'services', label: 'Service Information' },
+                              { value: 'partnership', label: 'Partnership Opportunities' },
+                              { value: 'support', label: 'Support & Assistance' },
+                            ].map((opt) => (
+                              <div
+                                key={opt.value}
+                                onClick={() => { setFormData({ ...formData, subject: opt.value }); setIsSubjectOpen(false); }}
+                                className="px-4 py-3 text-[12px] text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
+                              >
+                                {opt.label}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        <select required value={formData.subject} onChange={() => {}} className="hidden">
                           <option value="" disabled>Select a subject</option>
                           <option value="general">General Inquiries</option>
                           <option value="services">Service Information</option>
                           <option value="partnership">Partnership Opportunities</option>
                           <option value="support">Support & Assistance</option>
                         </select>
-                        <ChevronDown size={14} className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none" />
                       </div>
                     </div>
                   </div>
