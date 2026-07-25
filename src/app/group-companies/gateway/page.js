@@ -16,13 +16,32 @@ import Industries from "./sections/Industries";
 import Process from "./sections/Process";
 import Footer from "./sections/Footer";
 import Contact from "./sections/Contact";
+import MapSection from "./sections/MapSection";
 import { COLORS } from "./constants";
 
 export default function GatewayPage() {
   useEffect(() => {
     document.body.classList.add("roys-roys-theme");
+
+    const sections = document.querySelectorAll("section");
+    sections.forEach((sec) => sec.classList.add("section-animate"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-section-fade");
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+
     return () => {
       document.body.classList.remove("roys-roys-theme");
+      observer.disconnect();
     };
   }, []);
 
@@ -34,6 +53,24 @@ export default function GatewayPage() {
         color: COLORS.textDark,
       }}
     >
+      <style>{`
+        @keyframes sectionFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .section-animate {
+          opacity: 0;
+        }
+        .animate-section-fade {
+          animation: sectionFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
       <Navbar />
       <Hero />
       <TrustedBy />
@@ -48,6 +85,7 @@ export default function GatewayPage() {
       <Industries />
       <Process />
       <Contact />
+      <MapSection />
       <Footer />
     </main>
   );

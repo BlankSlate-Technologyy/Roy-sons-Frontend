@@ -731,7 +731,7 @@ export default function NationalAgriculture() {
         >
           {/* Logo */}
           <Link
-            href="#home"
+            href="/group-companies"
             style={{
               display: "flex",
               alignItems: "center",

@@ -24,22 +24,28 @@ const QUICK_SERVICES = [
 
 const CONTACT_INFO = [
   {
+    icon: MapPin,
+    label: "Our Office",
+    value: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
+    href: null,
+  },
+  {
     icon: Phone,
     label: "Phone",
-    value: "+92 300 0000000",
-    href: "tel:+923000000000",
+    value: "0092-42-38924737",
+    href: "tel:+924238924737",
+  },
+  {
+    icon: Phone,
+    label: "WhatsApp",
+    value: "0092-304-7527498 | 0092-321-8431665",
+    href: "https://wa.me/923047527498",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "info@gatewaypharma.com",
-    href: "mailto:info@gatewaypharma.com",
-  },
-  {
-    icon: MapPin,
-    label: "Address",
-    value: "Karachi, Pakistan",
-    href: null,
+    value: "info@roysons.org | support@roysons.org",
+    href: "mailto:info@roysons.org",
   },
 ];
 

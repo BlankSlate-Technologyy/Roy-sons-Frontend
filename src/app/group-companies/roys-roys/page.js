@@ -297,9 +297,18 @@ function Navbar() {
                 };
                 const id = idMap[item] || item.toLowerCase().replace(/\s+/g, "-");
                 const el = document.getElementById(id);
-                if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                if (el) {
+                  const navOffset = 80;
+                  const elementPosition = el.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth",
+                  });
+                }
               }}
-              className="text-[12.5px] font-bold uppercase tracking-wider bg-transparent border-0 cursor-pointer"
+              className="text-[12.5px] font-bold uppercase tracking-wider bg-transparent border-0 cursor-pointer hover:text-[#009088] transition-colors"
               style={{ color: COLORS.black }}
             >
               {item}
@@ -1044,7 +1053,27 @@ export default function RoysRoysPage() {
   // Page-scoped body class for theme isolation
   useEffect(() => {
     document.body.classList.add("roys-roys-theme");
-    return () => document.body.classList.remove("roys-roys-theme");
+
+    const sections = document.querySelectorAll("section");
+    sections.forEach((sec) => sec.classList.add("section-animate"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-section-fade");
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+
+    return () => {
+      document.body.classList.remove("roys-roys-theme");
+      observer.disconnect();
+    };
   }, []);
 
   const activeCategory = PRODUCTS_TABS[activeTab];
@@ -1060,6 +1089,24 @@ export default function RoysRoysPage() {
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: COLORS.white, color: COLORS.black }}>
+      <style>{`
+        @keyframes sectionFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .section-animate {
+          opacity: 0;
+        }
+        .animate-section-fade {
+          animation: sectionFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
       <Navbar />
       <HeroSection />
       <TrustedBanner />

@@ -7,22 +7,28 @@ import { Container } from "./Shared";
 
 const CONTACT_INFO = [
   {
-    icon: Mail,
-    label: "Email Us",
-    value: "info@gatewaypharma.com",
-    href: "mailto:info@gatewaypharma.com",
+    icon: MapPin,
+    label: "Our Office",
+    value: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
+    href: "#",
   },
   {
     icon: Phone,
     label: "Call Us",
-    value: "+92 300 0000000",
-    href: "tel:+923000000000",
+    value: "0092-42-38924737",
+    href: "tel:+924238924737",
   },
   {
-    icon: MapPin,
-    label: "Visit Us",
-    value: "Lahore, Pakistan",
-    href: "#",
+    icon: Phone,
+    label: "WhatsApp",
+    value: "0092-304-7527498 | 0092-321-8431665",
+    href: "https://wa.me/923047527498",
+  },
+  {
+    icon: Mail,
+    label: "Email Us",
+    value: "info@roysons.org | support@roysons.org",
+    href: "mailto:info@roysons.org",
   },
 ];
 

@@ -39,15 +39,15 @@ export default function GroupCompaniesPage() {
       {/* Page Header */}
       <section className="py-16 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="max-w-2xl">
+          <div className="max-w-5xl">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
               OUR SUBSIDIARIES
             </span>
-            <h1 className="text-4xl lg:text-5xl font-black text-neutral-950 mb-6 leading-tight tracking-tight uppercase">
-               ROYSONS holding is a Diverse group of<br></br>
-INDUSTRY-LEADING BUSINESSES
+            <h1 className="text-2xl sm:text-3xl lg:text-[38px] font-black text-neutral-950 mb-6 leading-tight tracking-tight uppercase">
+              ROYSONS holding is a Diverse group<br />
+              of INDUSTRY-LEADING BUSINESSES
             </h1>
-            <p className="text-[14px] text-neutral-500 leading-relaxed font-normal">
+            <p className="text-[14px] text-neutral-500 leading-relaxed font-normal max-w-2xl">
               ROYSONS Pvt.Ltd comprises 26 specialized corporate entities and divisions working in tandem.
               Together, we cover all strategic business sectors to deliver turnkey capabilities for critical government,
               private, and international operations.

@@ -3,6 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import ScrollProgress from "@/components/animations/ScrollProgress";
+import { useActiveSection } from "@/hooks/useActiveSection";
 import {
   ChevronRight, ChevronDown, ArrowRight,
   FlaskConical, Microscope, HeartPulse, Building2, GraduationCap, Pill, Landmark,
@@ -250,11 +253,32 @@ function AnimatedStatBiomax({ value, label, accentColor }) {
 
 // ─── Page Sections ──────────────────────────────────────────────────────────
 
+function scrollToSection(e, href) {
+  if (!href || !href.startsWith("#")) return;
+  e.preventDefault();
+  const targetId = href.replace("#", "");
+  const el = document.getElementById(targetId);
+  if (el) {
+    const navOffset = 80;
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
+}
+
+const BIOMAX_SECTION_IDS = ["home", "about", "solutions", "rnd", "quality", "industries", "contact"];
+
 function Navbar() {
+  const activeSection = useActiveSection(BIOMAX_SECTION_IDS, 120);
+
   return (
-    <div className="sticky top-0 z-50 bg-white border-b" style={{ borderColor: COLORS.border }}>
+    <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b transition-all" style={{ borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
-        <Link href="#home" className="flex items-center">
+        <Link href="/group-companies" className="flex items-center">
           <Image 
             src="/bio max.jpeg" 
             alt="BIO MAX CORPORATION Logo" 
@@ -266,17 +290,29 @@ function Navbar() {
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7">
-          {NAV_LINKS.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="text-[12.5px] font-semibold flex items-center gap-1 transition-colors hover:text-[#2C6FC9]"
-              style={{ color: COLORS.ink }}
-            >
-              {item.label}
-              
-            </Link>
-          ))}
+          {NAV_LINKS.map((item) => {
+            const targetId = item.href.replace("#", "");
+            const isActive = activeSection === targetId;
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
+                className="relative text-[12.5px] font-semibold py-1 transition-colors hover:text-[#2C6FC9] cursor-pointer"
+                style={{ color: isActive ? COLORS.accent : COLORS.ink }}
+              >
+                {item.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="biomaxUnderline"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
+                    style={{ backgroundColor: COLORS.accent }}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         <PrimaryButton href="#solutions" className="hidden md:flex">Our Services</PrimaryButton>
@@ -287,7 +323,7 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section id="home" className="relative py-24 lg:py-36 px-6 overflow-hidden flex items-center min-h-[500px]" style={{ backgroundColor: COLORS.white }}>
+    <section id="home" className="section-animate relative py-24 lg:py-36 px-6 overflow-hidden flex items-center min-h-[500px]" style={{ backgroundColor: COLORS.white }}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image 
@@ -329,18 +365,35 @@ function HeroSection() {
 
 function TrustedBySection() {
   return (
-    <section className="py-12 px-6 border-y" style={{ backgroundColor: COLORS.lightBg, borderColor: COLORS.border }}>
+    <section className="section-animate py-12 px-6 border-y" style={{ backgroundColor: COLORS.lightBg, borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl">
         <p className="text-center text-[13px] font-black tracking-[0.2em] uppercase mb-8" style={{ color: COLORS.muted }}>
           Trusted By
         </p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {TRUSTED_BY.map(({ icon: Icon, label }) => (
-            <div key={label} className="flex flex-col items-center text-center gap-3">
-              <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}12` }}>
-                <Icon size={24} style={{ color: COLORS.primary }} />
+            <div
+              key={label}
+              className="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all duration-300 cursor-pointer group"
+              style={{ backgroundColor: "transparent" }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = COLORS.white;
+                e.currentTarget.style.boxShadow = "0 4px 16px rgba(27,79,204,0.12)";
+                e.currentTarget.style.transform = "translateY(-4px)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              <div
+                className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300"
+                style={{ backgroundColor: `${COLORS.primary}12` }}
+              >
+                <Icon size={28} style={{ color: COLORS.primary }} />
               </div>
-              <span className="text-[11.5px] font-bold leading-snug whitespace-pre-line" style={{ color: COLORS.ink }}>
+              <span className="text-[13px] font-bold leading-snug whitespace-pre-line" style={{ color: COLORS.ink }}>
                 {label}
               </span>
             </div>
@@ -353,7 +406,7 @@ function TrustedBySection() {
 
 function AboutSection() {
   return (
-    <section id="about" className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section id="about" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-12 items-start">
         <div className="lg:col-span-7">
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
@@ -385,7 +438,22 @@ function AboutSection() {
         </div>
 
         <div className="lg:col-span-5 space-y-5">
-          <div className="p-6 rounded-lg border" style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}>
+          <div
+            className="p-6 rounded-lg border transition-all duration-300 cursor-pointer"
+            style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = COLORS.primary;
+              e.currentTarget.style.boxShadow = "0 6px 20px rgba(27,79,204,0.13)";
+              e.currentTarget.style.transform = "translateY(-3px)";
+              e.currentTarget.style.backgroundColor = COLORS.white;
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = COLORS.border;
+              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.backgroundColor = COLORS.lightBg;
+            }}
+          >
             <div className="flex items-center gap-2.5 mb-2">
               <Target size={17} style={{ color: COLORS.primary }} />
               <h4 className="text-[13px] font-extrabold uppercase tracking-wide" style={{ color: COLORS.primary }}>Our Mission</h4>
@@ -396,7 +464,22 @@ function AboutSection() {
             </p>
           </div>
 
-          <div className="p-6 rounded-lg border" style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}>
+          <div
+            className="p-6 rounded-lg border transition-all duration-300 cursor-pointer"
+            style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = COLORS.primary;
+              e.currentTarget.style.boxShadow = "0 6px 20px rgba(27,79,204,0.13)";
+              e.currentTarget.style.transform = "translateY(-3px)";
+              e.currentTarget.style.backgroundColor = COLORS.white;
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = COLORS.border;
+              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.backgroundColor = COLORS.lightBg;
+            }}
+          >
             <div className="flex items-center gap-2.5 mb-2">
               <Eye size={17} style={{ color: COLORS.primary }} />
               <h4 className="text-[13px] font-extrabold uppercase tracking-wide" style={{ color: COLORS.primary }}>Our Vision</h4>
@@ -407,21 +490,47 @@ function AboutSection() {
             </p>
           </div>
 
-          <div className="p-6 rounded-lg border" style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}>
+          <div
+            className="p-6 rounded-lg border transition-all duration-300 cursor-pointer"
+            style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}
+            onMouseEnter={e => {
+              e.currentTarget.style.borderColor = COLORS.primary;
+              e.currentTarget.style.boxShadow = "0 6px 20px rgba(27,79,204,0.13)";
+              e.currentTarget.style.transform = "translateY(-3px)";
+              e.currentTarget.style.backgroundColor = COLORS.white;
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.borderColor = COLORS.border;
+              e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.backgroundColor = COLORS.lightBg;
+            }}
+          >
             <div className="flex items-center gap-2.5 mb-4">
               <Sparkles size={17} style={{ color: COLORS.primary }} />
               <h4 className="text-[13px] font-extrabold uppercase tracking-wide" style={{ color: COLORS.primary }}>Our Core Values</h4>
             </div>
             <div className="grid grid-cols-4 gap-5">
               {CORE_VALUES.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center text-center gap-2">
+                <div
+                  key={label}
+                  className="flex flex-col items-center text-center gap-2 p-2 rounded-lg transition-all duration-200 cursor-pointer"
+                  onMouseEnter={e => {
+                    e.currentTarget.style.backgroundColor = `${COLORS.primary}10`;
+                    e.currentTarget.style.transform = "scale(1.08)";
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }}
+                >
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center mb-1"
-                    style={{ backgroundColor: `${COLORS.primary}15`, border: `1.5px solid ${COLORS.primary}25` }}
+                    className="w-14 h-14 rounded-full flex items-center justify-center mb-1 transition-all duration-200"
+                    style={{ backgroundColor: `${COLORS.primary}15`, border: `1.5px solid ${COLORS.primary}35` }}
                   >
                     <Icon size={28} style={{ color: COLORS.primary }} />
                   </div>
-                  <span className="text-[11px] font-bold leading-tight whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
+                  <span className="text-[11.5px] font-bold leading-tight whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -434,7 +543,7 @@ function AboutSection() {
 
 function SolutionsSection() {
   return (
-    <section id="solutions" className="py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+    <section id="solutions" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="OUR SOLUTIONS" title="Complete Biotechnology & Laboratory Portfolio" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
@@ -459,7 +568,7 @@ function SolutionsSection() {
 
 function WhyIndustriesProcessSection() {
   return (
-    <section className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-3 gap-8">
         {/* Why Choose Us */}
         <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
@@ -525,7 +634,7 @@ function WhyIndustriesProcessSection() {
 
 function CommitmentStatsSection() {
   return (
-    <section className="py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-5">
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
@@ -556,7 +665,7 @@ function CommitmentStatsSection() {
 
 function RndQualitySection() {
   return (
-    <section className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-2 gap-8">
         <div id="rnd" className="p-8 rounded-lg text-white" style={{ backgroundColor: COLORS.primary }}>
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: "#9FC0EE" }}>
@@ -606,7 +715,7 @@ function TestimonialsFaqSection() {
   }, []);
 
   return (
-    <section className="py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10">
 
         {/* ── Testimonials Slider ── */}
@@ -775,7 +884,7 @@ function CtaSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+    <section id="contact" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
       <div className="mx-auto max-w-screen-xl">
         <div className="text-center mb-12">
           <span className="text-[13px] font-extrabold uppercase tracking-widest" style={{ color: COLORS.primary }}>GET IN TOUCH</span>
@@ -789,9 +898,10 @@ function ContactSection() {
           {/* Contact Info */}
           <div className="lg:col-span-2 space-y-6">
             {[
-              { icon: Mail, label: "Email Us", value: "info@biomaxcorporation.com" },
-              { icon: Phone, label: "Call Us", value: "+92 XXX XXXXXXX" },
-              { icon: MapPin, label: "Visit Us", value: "Your Office Address, City, Pakistan" },
+              { icon: MapPin, label: "Our Office", value: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore." },
+              { icon: Phone, label: "Call Us", value: "0092-42-38924737" },
+              { icon: Phone, label: "WhatsApp", value: "0092-304-7527498 | 0092-321-8431665" },
+              { icon: Mail, label: "Email Us", value: "info@roysons.org | support@roysons.org" },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-start gap-4 p-5 rounded-xl bg-white border shadow-sm" style={{ borderColor: COLORS.border }}>
                 <div
@@ -802,7 +912,7 @@ function ContactSection() {
                 </div>
                 <div>
                   <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: COLORS.primary }}>{label}</p>
-                  <p className="text-[13.5px] font-semibold mt-0.5" style={{ color: COLORS.ink }}>{value}</p>
+                  <p className="text-[13.5px] font-semibold mt-0.5 leading-snug" style={{ color: COLORS.ink }}>{value}</p>
                 </div>
               </div>
             ))}
@@ -884,6 +994,60 @@ function ContactSection() {
   );
 }
 
+// ─── Google Map Section ─────────────────────────────────────────────────────
+function MapSection() {
+  return (
+    <section className="section-animate py-10 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+      <div className="mx-auto max-w-screen-xl">
+        <div
+          className="rounded-2xl overflow-hidden border"
+          style={{ borderColor: COLORS.border }}
+        >
+          {/* Header */}
+          <div
+            className="px-8 py-5 flex items-center gap-3 border-b bg-white"
+            style={{ borderColor: COLORS.border }}
+          >
+            <div
+              className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: `${COLORS.primary}15` }}
+            >
+              <MapPin size={18} style={{ color: COLORS.primary }} />
+            </div>
+            <div>
+              <p
+                className="text-[11px] font-black uppercase tracking-widest"
+                style={{ color: COLORS.primary }}
+              >
+                Find Us
+              </p>
+              <p
+                className="text-[13px] font-semibold"
+                style={{ color: COLORS.ink }}
+              >
+                1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
+              </p>
+            </div>
+          </div>
+          {/* Map Embed */}
+          <div className="w-full h-[380px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904de60e29e3b%3A0x9a9d95ad0e1c7d50!2sRehman%20Centre-2%2C%20Ring%20Rd%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000"
+              width="100%"
+              height="380"
+              style={{ border: 0, display: "block" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="BIO MAX CORPORATION Office Location"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="py-14 px-6" style={{ backgroundColor: COLORS.footerBg }}>
@@ -937,16 +1101,24 @@ function Footer() {
           <h5 className="text-[11px] font-black uppercase tracking-[0.16em] mb-4 text-white">Contact Us</h5>
           <div className="space-y-3">
             <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-              <Mail size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
-              info@biomaxcorporation.com
+              <MapPin size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
+              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
             </p>
             <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
               <Phone size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
-              +92 XXX XXXXXXX
+              0092-42-38924737
             </p>
             <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-              <MapPin size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
-              Your Office Address
+              <Phone size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
+              WhatsApp: 0092-304-7527498 | 0092-321-8431665
+            </p>
+            <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
+              <Mail size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
+              info@roysons.org
+            </p>
+            <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
+              <Mail size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
+              support@roysons.org
             </p>
           </div>
         </div>
@@ -976,16 +1148,51 @@ export default function BioMaxCorporationPage() {
     document.body.classList.add("biomax-theme");
     document.body.style.backgroundColor = COLORS.white;
     document.body.style.color = COLORS.primary;
+
+    const sections = document.querySelectorAll(".section-animate");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-section-fade");
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+
     return () => {
       document.body.classList.remove("roys-roys-theme");
       document.body.classList.remove("biomax-theme");
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
+      observer.disconnect();
     };
   }, []);
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: COLORS.white, color: COLORS.primary }}>
+      <style>{`
+        @keyframes sectionFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .section-animate {
+          opacity: 0;
+        }
+        .animate-section-fade {
+          animation: sectionFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+      `}</style>
+      <ScrollProgress color={COLORS.accent} />
       <Navbar />
       <HeroSection />
       <TrustedBySection />
@@ -997,6 +1204,7 @@ export default function BioMaxCorporationPage() {
       <TestimonialsFaqSection />
       <ContactSection />
       <CtaSection />
+      <MapSection />
       <Footer />
     </main>
   );

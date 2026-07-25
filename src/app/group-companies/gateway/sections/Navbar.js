@@ -1,9 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { COLORS, NAV_LINKS } from "../constants";
 import { Container } from "./Shared";
+
+function scrollToSection(e, href) {
+  if (!href || !href.startsWith("#")) return;
+  e.preventDefault();
+  const targetId = href.replace("#", "");
+  const el = document.getElementById(targetId);
+  if (el) {
+    const navOffset = 80;
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  }
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +47,7 @@ export default function Navbar() {
     >
       <Container className="flex items-center justify-between">
         {/* Brand Logo & Name */}
-        <a href="#home" className="flex items-center gap-3 select-none">
+        <Link href="/group-companies" className="flex items-center gap-3 select-none">
           <Image
             src="/gateway.jpeg"
             alt="Gateway Logo"
@@ -52,7 +70,7 @@ export default function Navbar() {
               Consultants
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-7">
@@ -60,7 +78,8 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="text-[13px] font-semibold tracking-wide hover:opacity-100 opacity-90 transition-opacity uppercase relative group py-2"
+              onClick={(e) => scrollToSection(e, link.href)}
+              className="text-[13px] font-semibold tracking-wide hover:opacity-100 opacity-90 transition-opacity uppercase relative group py-2 cursor-pointer"
               style={{ color: COLORS.textDark }}
             >
               {link.label}
