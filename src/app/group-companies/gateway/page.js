@@ -57,7 +57,7 @@ export default function GatewayPage() {
         @keyframes sectionFadeUp {
           from {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(55px);
           }
           to {
             opacity: 1;
@@ -66,9 +66,10 @@ export default function GatewayPage() {
         }
         .section-animate {
           opacity: 0;
+          will-change: transform, opacity;
         }
         .animate-section-fade {
-          animation: sectionFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: sectionFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
       <Navbar />
