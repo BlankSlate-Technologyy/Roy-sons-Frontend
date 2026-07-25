@@ -1,115 +1,160 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ChevronDown, ChevronRight, Facebook, Linkedin,
-  Mail, MapPin, Minus, Phone, Plus, Twitter,
-  Users, Youtube, Award, TrendingUp, Leaf,
-  Droplets, Wheat, Tractor, FlaskConical, Building2,
-  Globe, Mountain, Sprout, Sun, Shield, Zap, Star,
-  CheckCircle, ArrowRight, Search, BarChart3,
+  ChevronDown,
+  ChevronRight,
+  Facebook,
+  Linkedin,
+  Mail,
+  MapPin,
+  Minus,
+  Phone,
+  Plus,
+  Twitter,
+  Users,
+  Youtube,
+  Award,
+  TrendingUp,
+  Leaf,
+  Droplets,
+  Wheat,
+  Tractor,
+  FlaskConical,
+  Building2,
+  Globe,
+  Mountain,
+  Sprout,
+  Sun,
+  Shield,
+  Zap,
+  Star,
+  CheckCircle,
+  ArrowRight,
+  Search,
+  BarChart3,
+  Send,
 } from "lucide-react";
 
 // ─── Colour Palette ───────────────────────────────────────────────────────────
 const COLORS = {
-  primary:    "#1B4332",   // deep forest green
-  primaryMid: "#2D6A4F",   // medium green
-  primaryLight:"#40916C",  // lighter green
-  accent:     "#F6A623",   // warm amber/gold
-  accentLight:"#FBC55A",   // light amber
-  bgLight:    "#FFFFFF",   // pure white background
-  bgWhite:    "#FFFFFF",   // pure white background
-  bgSection:  "#F4F8F5",   // ultra light green section bg
-  border:     "#C8DFC0",   // soft green border
-  textDark:   "#1B4332",   // forest green text
-  textMid:    "#2D6A4F",   // medium green text
-  textMuted:  "#40916C",   // muted green text
-  textLight:  "#52B788",   // faint green text
-  white:      "#FFFFFF",
+  primary: "#1A5C2A", // Dark Green from logo
+  primaryMid: "#2E7D32", // Medium Green
+  primaryLight: "#3D9140", // Light Leaf Green
+  accent: "#E8A800", // Logo Gold / Amber
+  accentLight: "#F5C842", // Light Gold
+  bgLight: "#FFFFFF",
+  bgWhite: "#FFFFFF",
+  bgSection: "#FFFFFF", // Pure white background across all sections
+  border: "#D4E8D0",
+  textDark: "#111827", // Heading / Dark text
+  textMid: "#1A5C2A",
+  textMuted: "#4B5563", // Body text
+  textLight: "#6B7280",
+  white: "#FFFFFF",
 };
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
+// ─── Data Arrays ──────────────────────────────────────────────────────────────
 const NAV_LINKS = [
-  { label: "Home",           href: "#home" },
-  { label: "About",          href: "#about" },
-  { label: "Services",       href: "#services", hasDropdown: true },
-  { label: "Programs",       href: "#programs" },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services", hasDropdown: true },
+  { label: "Programs", href: "#programs" },
   { label: "Sustainability", href: "#sustainability" },
-  { label: "Research",       href: "#research" },
-  { label: "News",           href: "#news" },
+  { label: "Research", href: "#research" },
+  { label: "News", href: "#news" },
 ];
 
 const STATS = [
-  { icon: Award,    value: "25+",      label: "Years of Agricultural\nExperience" },
-  { icon: BarChart3, value: "500+",   label: "Development\nProjects" },
-  { icon: Wheat,    value: "1 Million+", label: "Acres Supported" },
-  { icon: Users,    value: "10,000+", label: "Farmers\nBenefited" },
-  { icon: Shield,   value: "99%",     label: "Quality\nStandards" },
+  {
+    icon: Award,
+    value: "25+",
+    label: "Years of Agricultural\nExperience",
+  },
+  {
+    icon: Tractor,
+    value: "500+",
+    label: "Development\nProjects",
+  },
+  {
+    icon: Wheat,
+    value: "1 Million+",
+    label: "Acres Supported",
+  },
+  {
+    icon: Users,
+    value: "10,000+",
+    label: "Farmers\nBenefited",
+  },
+  {
+    icon: Shield,
+    value: "99%",
+    label: "Quality\nStandards",
+  },
 ];
 
 const SERVICES = [
   {
     icon: Wheat,
-    title: "Agricultural Development",
+    title: "AGRICULTURAL DEVELOPMENT",
     desc: "Supporting sustainable farming through modern cultivation techniques, improved crop management, and agricultural infrastructure.",
   },
   {
     icon: Tractor,
-    title: "Dairy Development",
+    title: "DAIRY DEVELOPMENT",
     desc: "Enhancing dairy farming with improved livestock management, milk production systems, and modern dairy technologies.",
   },
   {
     icon: Droplets,
-    title: "Irrigation Solutions",
+    title: "IRRIGATION SOLUTIONS",
     desc: "Designing and implementing efficient irrigation systems for improved water management and agricultural productivity.",
   },
   {
     icon: Leaf,
-    title: "Livestock Management",
+    title: "LIVESTOCK MANAGEMENT",
     desc: "Providing sustainable livestock development programs focused on animal health, nutrition, breeding, and productivity.",
   },
   {
     icon: FlaskConical,
-    title: "Agricultural Research",
+    title: "AGRICULTURAL RESEARCH",
     desc: "Conducting scientific research to improve crop quality, farming efficiency, and climate-resilient agricultural practices.",
   },
   {
     icon: Building2,
-    title: "Rural Infrastructure",
+    title: "RURAL INFRASTRUCTURE",
     desc: "Developing agricultural facilities, storage systems, rural roads, processing centers, and supply chain infrastructure.",
   },
 ];
 
-const EXPERTISE = [
-  "Crop Production",       "Agricultural Research",
-  "Dairy Farming",         "Farm Mechanization",
-  "Livestock Development", "Food Processing",
-  "Irrigation Engineering","Agricultural Infrastructure",
-  "Water Resource Management", "Sustainable Farming",
+const EXPERTISE_LEFT = [
+  "Crop Production",
+  "Dairy Farming",
+  "Livestock Development",
+  "Irrigation Engineering",
+  "Water Resource Management",
+];
+
+const EXPERTISE_RIGHT = [
+  "Agricultural Research",
+  "Farm Mechanization",
+  "Food Processing",
+  "Agricultural Infrastructure",
+  "Sustainable Farming",
 ];
 
 const SECTORS = [
-  { icon: Wheat,      label: "Agriculture" },
-  { icon: Tractor,    label: "Dairy\nIndustry" },
-  { icon: Leaf,       label: "Livestock\nFarms" },
-  { icon: FlaskConical,label: "Food\nProcessing" },
-  { icon: Building2,  label: "Rural\nCommunities" },
-  { icon: Droplets,   label: "Irrigation\nNetworks" },
-  { icon: Globe,      label: "Government\nProjects" },
-  { icon: Users,      label: "Agricultural\nCooperatives" },
-  { icon: FlaskConical,label:"Research\nInstitutions" },
+  { icon: Wheat, label: "Agriculture" },
+  { icon: Tractor, label: "Dairy\nIndustry" },
+  { icon: Leaf, label: "Livestock\nFarms" },
+  { icon: FlaskConical, label: "Food\nProcessing" },
+  { icon: Building2, label: "Rural\nCommunities" },
+  { icon: Droplets, label: "Irrigation\nNetworks" },
+  { icon: Globe, label: "Government\nProjects" },
+  { icon: Users, label: "Agricultural\nCooperatives" },
+  { icon: FlaskConical, label: "Research\nInstitutions" },
   { icon: TrendingUp, label: "Agri-Business" },
-];
-
-const PROCESS_STEPS = [
-  { num: "01", title: "Research &\nAssessment",      desc: "Understanding agricultural needs through field surveys and scientific research." },
-  { num: "02", title: "Strategic\nPlanning",         desc: "Developing customized agricultural and rural development strategies." },
-  { num: "03", title: "Infrastructure\nDevelopment", desc: "Building irrigation systems, dairy and agricultural infrastructure." },
-  { num: "04", title: "Implementation",              desc: "Executing projects using modern technologies and sustainable practices." },
-  { num: "05", title: "Monitoring &\nEvaluation",    desc: "Assessing performance and continuously improving outcomes." },
-  { num: "06", title: "Sustainable\nGrowth",         desc: "Ensuring long-term productivity through innovation and responsible resource management." },
 ];
 
 const WHY_CHOOSE = [
@@ -140,62 +185,85 @@ const WHY_CHOOSE = [
   },
   {
     icon: Globe,
-    title: "Community Support",
+    title: "Rural Development",
     desc: "Supporting farming communities with education, resources, and sustainable economic opportunities.",
+  },
+];
+
+const PROCESS_STEPS = [
+  {
+    num: "01",
+    title: "Research &\nAssessment",
+    desc: "Understanding agricultural needs through field surveys and scientific research.",
+  },
+  {
+    num: "02",
+    title: "Strategic\nPlanning",
+    desc: "Developing customized agricultural and rural development strategies.",
+  },
+  {
+    num: "03",
+    title: "Infrastructure\nDevelopment",
+    desc: "Building irrigation systems, dairy facilities, and agricultural infrastructure.",
+  },
+  {
+    num: "04",
+    title: "Implementation",
+    desc: "Executing projects using modern technologies and sustainable practices.",
+  },
+  {
+    num: "05",
+    title: "Monitoring &\nEvaluation",
+    desc: "Assessing performance and continuously improving outcomes.",
+  },
+  {
+    num: "06",
+    title: "Sustainable\nGrowth",
+    desc: "Ensuring long-term productivity through innovation and responsible resource management.",
   },
 ];
 
 const FEATURED_PROGRAMS = [
   {
-    title: "Smart Agriculture Initiative",
+    title: "SMART AGRICULTURE INITIATIVE",
     desc: "Introducing precision farming technologies that improve productivity while conserving natural resources.",
     img: "/national agricature-header.png",
   },
   {
-    title: "Dairy Development Program",
+    title: "DAIRY DEVELOPMENT PROGRAM",
     desc: "Supporting modern dairy farming through improved livestock management and advanced dairy practices.",
     img: "/national agricultural.jpeg",
   },
   {
-    title: "Sustainable Irrigation Projects",
+    title: "SUSTAINABLE IRRIGATION PROJECTS",
     desc: "Developing efficient irrigation networks that maximize water conservation and agricultural output.",
     img: "/national agricature-header.png",
   },
 ];
 
-const SUSTAINABILITY_ITEMS = [
-  {
-    icon: Leaf,
-    title: "Sustainability",
-    desc: "We promote efficient water usage, soil conservation, renewable farming practices, biodiversity protection, and climate-smart agriculture to ensure food security for future generations.",
-  },
-  {
-    icon: Zap,
-    title: "Innovation & Technology",
-    desc: "Modern agriculture requires intelligent technologies that increase efficiency and sustainability.",
-    capabilities: [
-      "Precision Agriculture",
-      "Smart Irrigation Systems",
-      "GIS Mapping",
-      "Drone-Crop Monitoring",
-      "Soil Analysis",
-      "Water Management Systems",
-      "Agricultural Automation",
-      "Livestock Monitoring",
-      "Farm Data Analytics",
-      "Climate Monitoring",
-    ],
-  },
+const CAPABILITIES = [
+  "Precision Agriculture",
+  "Water Management Systems",
+  "Smart Irrigation Systems",
+  "Agricultural Automation",
+  "GIS Mapping",
+  "Livestock Monitoring",
+  "Drone Crop Monitoring",
+  "Farm Data Analytics",
+  "Soil Analysis",
+  "Climate Monitoring",
 ];
 
 const TESTIMONIALS = [
   {
-    name: "Agricultural Development Partner",
-    quote: "National Agricultural Corporation has transformed farming communities through innovative agricultural programs and sustainable development initiatives.",
+    role: "Agricultural Development Partner",
+    quote:
+      "National Agricultural Corporation has transformed farming communities through innovative agricultural programs and sustainable development initiatives.",
   },
   {
-    name: "Rural Development Organization",
-    quote: "Their expertise in irrigation, dairy development, and agricultural infrastructure has significantly improved regional agricultural productivity.",
+    role: "Rural Development Organization",
+    quote:
+      "Their expertise in irrigation, dairy development, and agricultural infrastructure has significantly improved regional agricultural productivity.",
   },
 ];
 
@@ -218,266 +286,970 @@ const FAQS = [
   },
 ];
 
-// ─── Inline styles ─────────────────────────────────────────────────────────────
-const PAGE_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
-  .na-page { font-family: 'Inter', sans-serif; background-color: ${COLORS.bgWhite}; color: ${COLORS.primary}; }
-  .na-page *, .na-page *::before, .na-page *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  /* nav */
-  .na-nav { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
-            border-bottom: 1px solid ${COLORS.border}; box-shadow: 0 2px 12px rgba(27,67,50,0.07); }
-  .na-nav-link { color: ${COLORS.textDark}; font-size: 12.5px; font-weight: 700;
-                 text-transform: uppercase; letter-spacing: 0.07em;
-                 transition: color 0.2s; text-decoration: none; }
-  .na-nav-link:hover { color: ${COLORS.primaryLight}; }
-
-  .na-btn-primary { background: ${COLORS.primary}; color: #fff; border: none;
-                    font-weight: 800; font-size: 12px; text-transform: uppercase;
-                    letter-spacing: 0.07em; border-radius: 5px; padding: 11px 22px;
-                    cursor: pointer; transition: all 0.2s; text-decoration: none;
-                    display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-  .na-btn-primary:hover { background: ${COLORS.primaryMid}; }
-  .na-btn-outline  { background: transparent; color: ${COLORS.primary};
-                     border: 1.5px solid ${COLORS.primary}; font-weight: 700; font-size: 12px;
-                     text-transform: uppercase; letter-spacing: 0.07em; border-radius: 5px;
-                     padding: 11px 22px; cursor: pointer; transition: all 0.2s;
-                     text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-  .na-btn-outline:hover { background: ${COLORS.primary}; color: #fff; }
-
-  /* section label */
-  .na-label   { color: ${COLORS.primaryLight}; font-size: 11px; font-weight: 800;
-                text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 8px; }
-  .na-heading { color: ${COLORS.textDark}; font-size: 22px; font-weight: 900;
-                text-transform: uppercase; letter-spacing: -0.01em; line-height: 1.2; }
-
-  /* cards */
-  .na-card { background: ${COLORS.bgWhite}; border: 1px solid ${COLORS.border}; border-radius: 10px; transition: all 0.3s; }
-  .na-card:hover { border-color: ${COLORS.primaryLight}50; transform: translateY(-3px);
-                   box-shadow: 0 10px 30px rgba(27,67,50,0.1); }
-
-  /* stat card */
-  .na-stat { background: ${COLORS.bgWhite}; border: 1px solid ${COLORS.border}; border-radius: 10px;
-             padding: 18px 20px; display: flex; flex-direction: column; align-items: center;
-             text-align: center; gap: 6px; }
-
-  /* sector tile */
-  .na-sector { background: ${COLORS.bgWhite}; border: 1px solid ${COLORS.border}; border-radius: 10px;
-               padding: 16px 8px; display: flex; flex-direction: column; align-items: center;
-               text-align: center; gap: 8px; transition: all 0.3s; }
-  .na-sector:hover { border-color: ${COLORS.primaryLight}; background: ${COLORS.bgSection}; }
-  .na-sector-icon { width: 48px; height: 48px; border-radius: 10px;
-                    background: ${COLORS.bgSection}; border: 1px solid ${COLORS.border};
-                    display: flex; align-items: center; justify-content: center; }
-
-  /* process */
-  .na-process-arrow { color: ${COLORS.primaryLight}; font-size: 20px; margin: 0 4px; }
-
-  /* why card */
-  .na-why-card { background: ${COLORS.bgSection}; border: 1px solid ${COLORS.border};
-                 border-radius: 10px; padding: 22px 20px; transition: all 0.3s; }
-  .na-why-card:hover { background: ${COLORS.bgWhite}; box-shadow: 0 6px 24px rgba(27,67,50,0.08); }
-  .na-why-icon { width: 44px; height: 44px; border-radius: 8px;
-                 background: ${COLORS.primaryLight}18; border: 1px solid ${COLORS.primaryLight}35;
-                 display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
-
-  /* faq */
-  .na-faq { background: ${COLORS.bgWhite}; border: 1px solid ${COLORS.border};
-            border-radius: 8px; overflow: hidden; }
-  .na-faq-btn { width: 100%; text-align: left; background: none; border: none;
-                color: ${COLORS.textDark}; padding: 16px 20px; font-size: 13px; font-weight: 700;
-                cursor: pointer; display: flex; justify-content: space-between;
-                align-items: center; gap: 12px; }
-  .na-faq-btn:hover { color: ${COLORS.primary}; }
-  .na-faq-answer { padding: 0 20px 16px; font-size: 12.5px; line-height: 1.7; color: ${COLORS.textMuted}; }
-
-  /* footer */
-  .na-footer { background: ${COLORS.primary}; color: #fff; }
-
-  /* expertise dot */
-  .na-dot { width: 8px; height: 8px; border-radius: 50%; background: ${COLORS.primaryLight};
-            flex-shrink: 0; margin-top: 5px; }
-
-  @keyframes na-fade-up { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
-  .na-fade-up { animation: na-fade-up 0.6s ease both; }
-`;
-
-// ─── Sub-components ────────────────────────────────────────────────────────────
-function Label({ children }) {
-  return <p className="na-label">{children}</p>;
-}
-function Heading({ children, style = {} }) {
-  return <h2 className="na-heading" style={style}>{children}</h2>;
+// ─── Counter Helpers ──────────────────────────────────────────────────────────
+function parseNA(val) {
+  const raw = val.replace(/,/g, "");
+  const suffix = raw.match(/[+%]$/)?.[0] ?? "";
+  const num = parseFloat(raw);
+  const hasComma = val.includes(",");
+  return { num, suffix, hasComma };
 }
 
-// ─── Main Page ─────────────────────────────────────────────────────────────────
+function useCountUp(target, duration = 1800, shouldStart = false) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!shouldStart) return;
+    let start = null;
+    const step = (ts) => {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setCount(Math.floor(eased * target));
+      if (p < 1) requestAnimationFrame(step);
+      else setCount(target);
+    };
+    requestAnimationFrame(step);
+  }, [shouldStart, target, duration]);
+  return count;
+}
+
+function AnimatedStatNA({ icon: Icon, value, label }) {
+  const { num, suffix, hasComma } = parseNA(value);
+  const ref = useRef(null);
+  const [started, setStarted] = useState(false);
+  const count = useCountUp(num, 1800, started);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) setStarted(true);
+      },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const display = hasComma ? count.toLocaleString() : count;
+  return (
+    <div
+      ref={ref}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
+        padding: "16px 12px",
+      }}
+    >
+      <div
+        style={{
+          width: 48,
+          height: 48,
+          borderRadius: "50%",
+          border: `1.5px solid ${COLORS.primary}`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginBottom: 12,
+          color: COLORS.primary,
+        }}
+      >
+        <Icon size={24} color={COLORS.primary} />
+      </div>
+      <p
+        style={{
+          color: COLORS.primary,
+          fontSize: "28px",
+          fontWeight: 900,
+          lineHeight: 1,
+          marginBottom: 6,
+        }}
+      >
+        {display}
+        {suffix}
+      </p>
+      <p
+        style={{
+          color: COLORS.textMuted,
+          fontSize: "11px",
+          fontWeight: 700,
+          lineHeight: 1.35,
+          whiteSpace: "pre-line",
+        }}
+      >
+        {label}
+      </p>
+    </div>
+  );
+}
+
+// ─── Contact Form ─────────────────────────────────────────────────────────────
+function NaContactForm() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle");
+
+  const inputStyle = {
+    width: "100%",
+    padding: "12px 14px",
+    border: `1px solid ${COLORS.border}`,
+    borderRadius: 8,
+    fontSize: 13,
+    color: COLORS.textDark,
+    background: "#fff",
+    outline: "none",
+  };
+
+  const handleChange = (e) =>
+    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    setTimeout(() => setStatus("sent"), 1500);
+  };
+
+  if (status === "sent") {
+    return (
+      <div
+        style={{
+          background: "#fff",
+          borderRadius: 16,
+          border: `1px solid ${COLORS.border}`,
+          padding: "50px 32px",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 56,
+            height: 56,
+            borderRadius: "50%",
+            background: `${COLORS.primaryLight}20`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "0 auto 16px",
+          }}
+        >
+          <CheckCircle size={28} color={COLORS.primary} />
+        </div>
+        <h3
+          style={{
+            color: COLORS.textDark,
+            fontSize: 20,
+            fontWeight: 800,
+            marginBottom: 8,
+          }}
+        >
+          Message Sent Successfully!
+        </h3>
+        <p
+          style={{
+            color: COLORS.textMuted,
+            fontSize: 13.5,
+            marginBottom: 20,
+          }}
+        >
+          Our agricultural expert team will get back to you within 24 hours.
+        </p>
+        <button
+          onClick={() => {
+            setForm({
+              name: "",
+              email: "",
+              phone: "",
+              service: "",
+              message: "",
+            });
+            setStatus("idle");
+          }}
+          style={{
+            padding: "10px 24px",
+            borderRadius: 6,
+            background: COLORS.primary,
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: 13,
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Send Another Message
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        background: "#fff",
+        borderRadius: 14,
+        border: `1px solid ${COLORS.border}`,
+        boxShadow: "0 4px 20px rgba(26,92,42,0.06)",
+        padding: "32px",
+      }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: "flex", flexDirection: "column", gap: 16 }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 14,
+          }}
+        >
+          <div>
+            <label
+              style={{
+                display: "block",
+                fontSize: 11,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: COLORS.textMuted,
+                marginBottom: 6,
+              }}
+            >
+              Full Name *
+            </label>
+            <input
+              name="name"
+              required
+              value={form.name}
+              onChange={handleChange}
+              placeholder="e.g. Dr. Ahmed Ali"
+              style={inputStyle}
+            />
+          </div>
+          <div>
+            <label
+              style={{
+                display: "block",
+                fontSize: 11,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: COLORS.textMuted,
+                marginBottom: 6,
+              }}
+            >
+              Email Address *
+            </label>
+            <input
+              name="email"
+              type="email"
+              required
+              value={form.email}
+              onChange={handleChange}
+              placeholder="ahmed@farm.com"
+              style={inputStyle}
+            />
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 14,
+          }}
+        >
+          <div>
+            <label
+              style={{
+                display: "block",
+                fontSize: 11,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: COLORS.textMuted,
+                marginBottom: 6,
+              }}
+            >
+              Phone Number
+            </label>
+            <input
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+              placeholder="+92 3XX XXXXXXX"
+              style={inputStyle}
+            />
+          </div>
+          <div>
+            <label
+              style={{
+                display: "block",
+                fontSize: 11,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                color: COLORS.textMuted,
+                marginBottom: 6,
+              }}
+            >
+              Service *
+            </label>
+            <select
+              name="service"
+              required
+              value={form.service}
+              onChange={handleChange}
+              style={{ ...inputStyle, appearance: "auto" }}
+            >
+              <option value="" disabled>
+                Select a service…
+              </option>
+              {SERVICES.map(({ title }) => (
+                <option key={title} value={title}>
+                  {title}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label
+            style={{
+              display: "block",
+              fontSize: 11,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              color: COLORS.textMuted,
+              marginBottom: 6,
+            }}
+          >
+            Message *
+          </label>
+          <textarea
+            name="message"
+            required
+            rows={4}
+            value={form.message}
+            onChange={handleChange}
+            placeholder="Describe your project or agricultural inquiry..."
+            style={{ ...inputStyle, resize: "none" }}
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={status === "sending"}
+          style={{
+            width: "100%",
+            padding: "13px",
+            borderRadius: 8,
+            background:
+              status === "sending" ? `${COLORS.primary}AA` : COLORS.primary,
+            color: "#fff",
+            fontWeight: 800,
+            fontSize: 13,
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            border: "none",
+            cursor: status === "sending" ? "not-allowed" : "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+          }}
+        >
+          {status === "sending" ? (
+            "Sending…"
+          ) : (
+            <>
+              Send Message <ArrowRight size={15} />
+            </>
+          )}
+        </button>
+      </form>
+    </div>
+  );
+}
+
+// ─── Main Page Component ──────────────────────────────────────────────────────
 export default function NationalAgriculture() {
   const [openFaq, setOpenFaq] = useState(null);
 
   useEffect(() => {
+    document.body.classList.add("roys-roys-theme");
     const prevBg = document.body.style.backgroundColor;
     const prevColor = document.body.style.color;
     document.body.style.backgroundColor = COLORS.bgWhite;
     document.body.style.color = COLORS.textDark;
     return () => {
+      document.body.classList.remove("roys-roys-theme");
       document.body.style.backgroundColor = prevBg;
       document.body.style.color = prevColor;
     };
   }, []);
 
   return (
-    <div className="na-page" style={{ minHeight: "100vh" }}>
-      <style dangerouslySetInnerHTML={{ __html: PAGE_STYLES }} />
-
-      {/* ── NAVBAR ────────────────────────────────────────────────────────────── */}
-      <header className="na-nav sticky top-0 z-50">
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "13px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+    <div
+      className="roys-roys-theme"
+      style={{
+        minHeight: "100vh",
+        backgroundColor: COLORS.bgWhite,
+        color: COLORS.textDark,
+        fontFamily: "'Inter', sans-serif",
+      }}
+    >
+      {/* ── 1. NAVBAR ───────────────────────────────────────────────────────── */}
+      <header
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 50,
+          backgroundColor: "#FFFFFF",
+          borderBottom: `1px solid ${COLORS.border}`,
+          boxShadow: "0 2px 10px rgba(0,0,0,0.03)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 1240,
+            margin: "0 auto",
+            padding: "12px 24px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
           {/* Logo */}
-          <Link href="#home" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <div style={{ width: 44, height: 44, borderRadius: 8, background: COLORS.primary, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Sprout size={22} color="#fff" />
+          <Link
+            href="#home"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              textDecoration: "none",
+            }}
+          >
+            <div
+              style={{
+                width: 44,
+                height: 44,
+                position: "relative",
+                borderRadius: "50%",
+                background: COLORS.primary,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Sprout size={24} color="#FFF" />
             </div>
             <div>
-              <p style={{ color: COLORS.primary, fontSize: 14, fontWeight: 900, textTransform: "uppercase", lineHeight: 1.1, letterSpacing: "0.05em" }}>
+              <p
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 16,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  lineHeight: 1.1,
+                  letterSpacing: "0.04em",
+                }}
+              >
                 NATIONAL
               </p>
-              <p style={{ color: COLORS.primaryLight, fontSize: 8.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.18em", lineHeight: 1 }}>
+              <p
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 9,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.15em",
+                  lineHeight: 1.1,
+                }}
+              >
                 AGRICULTURAL CORPORATION
               </p>
-              <p style={{ color: COLORS.textMuted, fontSize: 7, fontWeight: 600, lineHeight: 1, letterSpacing: "0.05em" }}>
+              <p
+                style={{
+                  color: COLORS.textMuted,
+                  fontSize: 7.5,
+                  fontWeight: 500,
+                  lineHeight: 1.2,
+                }}
+              >
                 Cultivating Growth. Empowering Sustainable Agriculture.
               </p>
             </div>
           </Link>
 
-          {/* Nav links */}
-          <nav style={{ display: "flex", alignItems: "center", gap: 26 }} className="hidden lg:flex">
+          {/* Nav Items */}
+          <nav
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 24,
+            }}
+          >
             {NAV_LINKS.map(({ label, href, hasDropdown }) => (
-              <a key={label} href={href} className="na-nav-link" style={{ display: "flex", alignItems: "center", gap: 3 }}>
+              <a
+                key={label}
+                href={href}
+                style={{
+                  color: COLORS.textDark,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 3,
+                }}
+              >
                 {label}
-                {hasDropdown && <ChevronDown size={12} style={{ color: COLORS.primaryLight }} />}
+                {hasDropdown && (
+                  <ChevronDown size={14} color={COLORS.textMuted} />
+                )}
               </a>
             ))}
           </nav>
 
-          {/* CTA */}
-          <a href="#contact" className="na-btn-primary">
-            <Phone size={13} /> Contact Us
+          {/* Contact Button */}
+          <a
+            href="#contact"
+            style={{
+              backgroundColor: COLORS.primary,
+              color: "#FFF",
+              padding: "10px 20px",
+              borderRadius: 6,
+              fontSize: 13,
+              fontWeight: 800,
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            <Phone size={14} /> Contact Us
           </a>
         </div>
       </header>
 
-      {/* ── HERO ──────────────────────────────────────────────────────────────── */}
-      <section id="home" style={{ position: "relative", minHeight: "88vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      {/* ── 2. HERO SECTION ─────────────────────────────────────────────────── */}
+      <section
+        id="home"
+        style={{
+          position: "relative",
+          minHeight: "520px",
+          display: "flex",
+          alignItems: "center",
+          overflow: "hidden",
+        }}
+      >
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <Image
             src="/national agricature-header.png"
-            alt="Agricultural fields"
+            alt="Agriculture field with tractor"
             fill
             priority
-            sizes="100vw"
             style={{ objectFit: "cover", objectPosition: "center" }}
           />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(27,67,50,0.88) 45%, rgba(27,67,50,0.45) 100%)" }} />
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%)",
+            }}
+          />
         </div>
 
-        <div style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "100px 24px 80px", width: "100%" }}>
-          <div style={{ maxWidth: 620 }} className="na-fade-up">
-            <p className="na-label" style={{ color: "#90E0B0", marginBottom: 16 }}>
-              Advancing Agriculture For A Sustainable Future
-            </p>
-            <h1 style={{ color: "#fff", fontSize: "clamp(30px, 5vw, 52px)", fontWeight: 900, lineHeight: 1.05, textTransform: "uppercase", marginBottom: 20 }}>
-              ADVANCING AGRICULTURE<br />
-              <span style={{ color: COLORS.accentLight }}>FOR A SUSTAINABLE<br />FUTURE</span>
+        <div
+          style={{
+            position: "relative",
+            zIndex: 10,
+            maxWidth: 1240,
+            margin: "0 auto",
+            padding: "80px 24px",
+            width: "100%",
+          }}
+        >
+          <div style={{ maxWidth: 640 }}>
+            <h1
+              style={{
+                color: "#FFFFFF",
+                fontSize: "clamp(32px, 4vw, 48px)",
+                fontWeight: 900,
+                lineHeight: 1.1,
+                textTransform: "uppercase",
+                marginBottom: 18,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              ADVANCING AGRICULTURE
+              <br />
+              <span style={{ color: "#FFFFFF" }}>FOR A SUSTAINABLE</span>
+              <br />
+              <span style={{ color: COLORS.accentLight }}>FUTURE</span>
             </h1>
-            <p style={{ color: "rgba(255,255,255,0.82)", fontSize: 14, lineHeight: 1.8, marginBottom: 32, maxWidth: 520 }}>
-              National Agricultural Corporation is dedicated to strengthening agriculture, dairy development, irrigation systems, and livestock management through innovative technologies, sustainable farming practices, and modern agricultural infrastructure.
+            <p
+              style={{
+                color: "rgba(255,255,255,0.9)",
+                fontSize: 14,
+                lineHeight: 1.7,
+                marginBottom: 28,
+              }}
+            >
+              National Agricultural Corporation is dedicated to strengthening
+              agriculture, dairy development, irrigation systems, and livestock
+              management through innovative technologies, sustainable farming
+              practices, and modern agricultural infrastructure.
             </p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <a href="#programs" className="na-btn-primary" style={{ background: COLORS.accent, color: "#1A2E1A" }}>
-                Explore Our Programs <ArrowRight size={14} />
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <a
+                href="#programs"
+                style={{
+                  backgroundColor: COLORS.primary,
+                  color: "#FFF",
+                  padding: "12px 22px",
+                  borderRadius: 5,
+                  fontSize: 12,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                }}
+              >
+                EXPLORE OUR PROGRAMS <ArrowRight size={14} />
               </a>
-              <a href="#about" className="na-btn-outline" style={{ color: "#fff", borderColor: "#fff" }}>
-                Discover Agriculture <ArrowRight size={14} />
+              <a
+                href="#about"
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.9)",
+                  color: COLORS.textDark,
+                  padding: "12px 22px",
+                  borderRadius: 5,
+                  fontSize: 12,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                }}
+              >
+                DISCOVER AGRICULTURE <ArrowRight size={14} />
               </a>
-              <a href="#about" className="na-btn-outline" style={{ color: "#fff", borderColor: "#fff" }}>
-                About Us
+              <a
+                href="#about"
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  color: COLORS.textDark,
+                  padding: "12px 22px",
+                  borderRadius: 5,
+                  fontSize: 12,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  textDecoration: "none",
+                }}
+              >
+                ABOUT US
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── COMPANY STATISTICS BAR ────────────────────────────────────────────── */}
-      <section style={{ background: COLORS.bgWhite, borderBottom: `2px solid ${COLORS.border}`, padding: "48px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 32 }}>
-            <p style={{ color: COLORS.textMuted, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.25em" }}>Company Statistics</p>
+      {/* ── 3. COMPANY STATISTICS ────────────────────────────────────────────── */}
+      <section
+        style={{
+          backgroundColor: "#FFFFFF",
+          borderBottom: `1px solid ${COLORS.border}`,
+          padding: "36px 24px",
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 20 }}>
+            <p
+              style={{
+                color: COLORS.primary,
+                fontSize: 12,
+                fontWeight: 900,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+              }}
+            >
+              — COMPANY STATISTICS —
+            </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(5, 1fr)",
+              gap: 16,
+            }}
+          >
             {STATS.map(({ icon: Icon, value, label }) => (
-              <div key={value} className="na-stat">
-                <div style={{ width: 52, height: 52, borderRadius: 10, background: COLORS.bgSection, border: `1px solid ${COLORS.border}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Icon size={22} color={COLORS.primary} />
-                </div>
-                <p style={{ color: COLORS.primary, fontSize: 26, fontWeight: 900, lineHeight: 1 }}>{value}</p>
-                <p style={{ color: COLORS.textMuted, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", lineHeight: 1.4, whiteSpace: "pre-line", textAlign: "center" }}>{label}</p>
-              </div>
+              <AnimatedStatNA
+                key={value}
+                icon={Icon}
+                value={value}
+                label={label}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CORE SERVICES ─────────────────────────────────────────────────────── */}
-      <section id="services" style={{ padding: "80px 24px", background: COLORS.primary }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <p style={{ color: "#90E0B0", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.25em", marginBottom: 8 }}>Our Core Services</p>
+      {/* ── 4. OUR CORE SERVICES ────────────────────────────────────────────── */}
+      <section id="services" style={{ padding: "60px 24px", background: "#FFF" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          {/* Header Banner */}
+          <div
+            style={{
+              backgroundColor: COLORS.primary,
+              color: "#FFF",
+              padding: "10px 20px",
+              borderRadius: 6,
+              display: "inline-block",
+              marginBottom: 32,
+            }}
+          >
+            <h2
+              style={{
+                fontSize: 15,
+                fontWeight: 900,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                margin: 0,
+              }}
+            >
+              OUR CORE SERVICES
+            </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 16 }}>
+
+          {/* Services Grid */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(6, 1fr)",
+              gap: 16,
+            }}
+          >
             {SERVICES.map(({ icon: Icon, title, desc }) => (
-              <div key={title} style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, padding: "22px 18px", transition: "all 0.3s", cursor: "default" }}
-                onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,0.13)"; e.currentTarget.style.transform = "translateY(-3px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.07)"; e.currentTarget.style.transform = "none"; }}>
-                <div style={{ width: 44, height: 44, borderRadius: 8, background: "rgba(246,166,35,0.15)", border: "1px solid rgba(246,166,35,0.3)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
-                  <Icon size={20} color={COLORS.accentLight} />
+              <div
+                key={title}
+                style={{
+                  border: `1px solid ${COLORS.border}`,
+                  borderRadius: 10,
+                  padding: "20px 16px",
+                  backgroundColor: "#FFF",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div style={{ marginBottom: 14 }}>
+                  <Icon size={24} color={COLORS.primary} />
                 </div>
-                <h3 style={{ color: "#fff", fontSize: 12.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 8 }}>{title}</h3>
-                <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 12, lineHeight: 1.7 }}>{desc}</p>
+                <h3
+                  style={{
+                    color: COLORS.primary,
+                    fontSize: 12,
+                    fontWeight: 900,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.04em",
+                    lineHeight: 1.3,
+                    marginBottom: 10,
+                  }}
+                >
+                  {title}
+                </h3>
+                <p
+                  style={{
+                    color: COLORS.textMuted,
+                    fontSize: 11.5,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── AREAS OF EXPERTISE + SECTORS WE SUPPORT ────────────────────────── */}
-      <section id="about" style={{ padding: "80px 24px", background: COLORS.bgLight }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, alignItems: "start" }}>
-            {/* Areas of expertise */}
+      {/* ── 5. AREAS OF EXPERTISE & SECTORS WE SUPPORT ───────────────────────── */}
+      <section
+        id="about"
+        style={{
+          padding: "60px 24px",
+          backgroundColor: "#FFFFFF",
+          borderTop: `1px solid ${COLORS.border}`,
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1.3fr",
+              gap: 40,
+              alignItems: "start",
+            }}
+          >
+            {/* Left: Areas of Expertise */}
             <div>
-              <Label>Areas of Expertise</Label>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 20 }}>
-                {EXPERTISE.map(item => (
-                  <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                    <div className="na-dot" />
-                    <p style={{ color: COLORS.textMid, fontSize: 13, fontWeight: 600, lineHeight: 1.5 }}>{item}</p>
+              <h3
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 14,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 20,
+                  borderBottom: `2px solid ${COLORS.primary}`,
+                  paddingBottom: 6,
+                  display: "inline-block",
+                }}
+              >
+                AREAS OF EXPERTISE
+              </h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "12px 16px",
+                }}
+              >
+                {EXPERTISE_LEFT.map((item, idx) => (
+                  <div
+                    key={item}
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
+                    <div
+                      style={{
+                        width: 22,
+                        height: 22,
+                        borderRadius: "50%",
+                        border: `1px solid ${COLORS.primary}`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Sprout size={12} color={COLORS.primary} />
+                    </div>
+                    <span
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 700,
+                        color: COLORS.textDark,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  </div>
+                ))}
+                {EXPERTISE_RIGHT.map((item, idx) => (
+                  <div
+                    key={item}
+                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                  >
+                    <div
+                      style={{
+                        width: 22,
+                        height: 22,
+                        borderRadius: "50%",
+                        border: `1px solid ${COLORS.primary}`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Sprout size={12} color={COLORS.primary} />
+                    </div>
+                    <span
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 700,
+                        color: COLORS.textDark,
+                      }}
+                    >
+                      {item}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Sectors we support */}
-            <div>
-              <Label>Sectors We Support</Label>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10, marginTop: 20 }}>
+            {/* Right: Sectors We Support + Farmer Image */}
+            <div style={{ position: "relative" }}>
+              <h3
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 14,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 20,
+                  borderBottom: `2px solid ${COLORS.primary}`,
+                  paddingBottom: 6,
+                  display: "inline-block",
+                }}
+              >
+                SECTORS WE SUPPORT
+              </h3>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(5, 1fr)",
+                  gap: 12,
+                  marginBottom: 20,
+                }}
+              >
                 {SECTORS.map(({ icon: Icon, label }) => (
-                  <div key={label} className="na-sector">
-                    <div className="na-sector-icon">
-                      <Icon size={18} color={COLORS.primary} />
-                    </div>
-                    <p style={{ color: COLORS.textMid, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.04em", lineHeight: 1.4, whiteSpace: "pre-line", textAlign: "center" }}>{label}</p>
+                  <div
+                    key={label}
+                    style={{
+                      border: `1px solid ${COLORS.border}`,
+                      borderRadius: 8,
+                      padding: "12px 6px",
+                      textAlign: "center",
+                      backgroundColor: "#FFF",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 6,
+                    }}
+                  >
+                    <Icon size={20} color={COLORS.primary} />
+                    <p
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 700,
+                        color: COLORS.textDark,
+                        lineHeight: 1.3,
+                        whiteSpace: "pre-line",
+                      }}
+                    >
+                      {label}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -486,50 +1258,174 @@ export default function NationalAgriculture() {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US + DEVELOPMENT PROCESS ───────────────────────────── */}
-      <section style={{ padding: "80px 24px", background: COLORS.bgWhite }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "start" }}>
-            {/* Why choose */}
-            <div>
-              <Label>Why Choose National Agricultural Corporation</Label>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 14, marginTop: 24 }}>
+      {/* ── 6. WHY CHOOSE & DEVELOPMENT PROCESS ───────────────────────────── */}
+      <section
+        style={{
+          padding: "60px 24px",
+          backgroundColor: "#FFFFFF",
+          borderTop: `1px solid ${COLORS.border}`,
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1.3fr",
+              gap: 40,
+            }}
+          >
+            {/* Left: Why Choose Box */}
+            <div
+              style={{
+                backgroundColor: COLORS.primary,
+                borderRadius: 12,
+                padding: "28px",
+                color: "#FFF",
+              }}
+            >
+              <h3
+                style={{
+                  color: "#FFF",
+                  fontSize: 14,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  marginBottom: 20,
+                }}
+              >
+                WHY CHOOSE NATIONAL AGRICULTURAL CORPORATION
+              </h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 20,
+                }}
+              >
                 {WHY_CHOOSE.map(({ icon: Icon, title, desc }) => (
-                  <div key={title} className="na-why-card" style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                    <div className="na-why-icon" style={{ flexShrink: 0 }}>
-                      <Icon size={18} color={COLORS.primary} />
+                  <div
+                    key={title}
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: 12,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 32,
+                        height: 32,
+                        borderRadius: "50%",
+                        background: "rgba(255,255,255,0.15)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Icon size={16} color="#FFF" />
                     </div>
                     <div>
-                      <p style={{ color: COLORS.textDark, fontSize: 13, fontWeight: 800, marginBottom: 4 }}>{title}</p>
-                      <p style={{ color: COLORS.textMuted, fontSize: 12, lineHeight: 1.6 }}>{desc}</p>
+                      <h4
+                        style={{
+                          fontSize: 12,
+                          fontWeight: 800,
+                          marginBottom: 4,
+                        }}
+                      >
+                        {title}
+                      </h4>
+                      <p
+                        style={{
+                          fontSize: 10.5,
+                          lineHeight: 1.5,
+                          color: "rgba(255,255,255,0.8)",
+                        }}
+                      >
+                        {desc}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Development process */}
+            {/* Right: Development Process */}
             <div>
-              <Label>Our Development Process</Label>
-              {/* Process flow arrows */}
-              <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 6, marginTop: 20, marginBottom: 28 }}>
-                {PROCESS_STEPS.map(({ num }, i) => (
-                  <div key={num} style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: "50%", background: COLORS.primary, color: "#fff", fontSize: 11, fontWeight: 900, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      {num}
-                    </div>
-                    {i < PROCESS_STEPS.length - 1 && (
-                      <ChevronRight size={16} color={COLORS.primaryLight} />
-                    )}
-                  </div>
-                ))}
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <h3
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 14,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 24,
+                }}
+              >
+                OUR DEVELOPMENT PROCESS
+              </h3>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(6, 1fr)",
+                  gap: 8,
+                }}
+              >
                 {PROCESS_STEPS.map(({ num, title, desc }) => (
-                  <div key={num} style={{ background: COLORS.bgSection, border: `1px solid ${COLORS.border}`, borderRadius: 8, padding: "16px 14px" }}>
-                    <p style={{ color: COLORS.primaryLight, fontSize: 11, fontWeight: 900, marginBottom: 4 }}>{num}</p>
-                    <p style={{ color: COLORS.textDark, fontSize: 12.5, fontWeight: 800, marginBottom: 6, whiteSpace: "pre-line", lineHeight: 1.35 }}>{title}</p>
-                    <p style={{ color: COLORS.textMuted, fontSize: 11.5, lineHeight: 1.6 }}>{desc}</p>
+                  <div
+                    key={num}
+                    style={{
+                      textAlign: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: "50%",
+                        border: `1.5px solid ${COLORS.primary}`,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginBottom: 10,
+                        backgroundColor: "#FFF",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: 12,
+                          fontWeight: 900,
+                          color: COLORS.primary,
+                        }}
+                      >
+                        {num}
+                      </span>
+                    </div>
+                    <p
+                      style={{
+                        fontSize: 11,
+                        fontWeight: 800,
+                        color: COLORS.textDark,
+                        lineHeight: 1.2,
+                        marginBottom: 6,
+                        whiteSpace: "pre-line",
+                      }}
+                    >
+                      {title}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: 9.5,
+                        color: COLORS.textMuted,
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {desc}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -538,55 +1434,238 @@ export default function NationalAgriculture() {
         </div>
       </section>
 
-      {/* ── SUSTAINABILITY + INNOVATION + FEATURED PROGRAMS ────────────────── */}
-      <section id="sustainability" style={{ padding: "80px 24px", background: COLORS.bgLight }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 28 }}>
-            {/* Sustainability */}
-            <div>
-              <Label>Sustainability</Label>
-              <Heading style={{ marginBottom: 16 }}>Supporting Sustainable Agriculture</Heading>
-              <p style={{ color: COLORS.textMuted, fontSize: 13, lineHeight: 1.8 }}>
-                We promote efficient water usage, soil conservation, renewable farming practices,
-                biodiversity protection, and climate-smart agriculture to ensure food security for future generations.
+      {/* ── 7. SUSTAINABILITY & FEATURED PROGRAMS ──────────────────────────── */}
+      <section
+        id="sustainability"
+        style={{
+          padding: "60px 24px",
+          backgroundColor: "#FFFFFF",
+          borderTop: `1px solid ${COLORS.border}`,
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: 28,
+            }}
+          >
+            {/* Col 1: Sustainability */}
+            <div
+              style={{
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: 10,
+                padding: "24px",
+                backgroundColor: "#FFF",
+              }}
+            >
+              <p
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 11,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 6,
+                }}
+              >
+                SUSTAINABILITY
               </p>
-              <div style={{ marginTop: 20, position: "relative", borderRadius: 10, overflow: "hidden", height: 180 }}>
-                <Image src="/national agricature-header.png" alt="Sustainable agriculture" fill sizes="400px" style={{ objectFit: "cover" }} />
+              <h3
+                style={{
+                  fontSize: 15,
+                  fontWeight: 900,
+                  color: COLORS.textDark,
+                  marginBottom: 12,
+                }}
+              >
+                Supporting Sustainable Agriculture
+              </h3>
+              <p
+                style={{
+                  color: COLORS.textMuted,
+                  fontSize: 12,
+                  lineHeight: 1.6,
+                  marginBottom: 16,
+                }}
+              >
+                We promote efficient water usage, soil conservation, renewable
+                farming practices, biodiversity protection, and climate-smart
+                agriculture to ensure food security for future generations.
+              </p>
+              <div
+                style={{
+                  position: "relative",
+                  height: 160,
+                  borderRadius: 8,
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src="/national agricature-header.png"
+                  alt="Soil sprout"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             </div>
 
-            {/* Innovation & Technology */}
-            <div>
-              <Label>Innovation &amp; Technology</Label>
-              <Heading style={{ marginBottom: 14 }}>Our Capabilities</Heading>
-              <p style={{ color: COLORS.textMuted, fontSize: 12.5, lineHeight: 1.7, marginBottom: 16 }}>
-                Modern agriculture requires intelligent technologies that increase efficiency and sustainability.
+            {/* Col 2: Innovation & Technology */}
+            <div
+              style={{
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: 10,
+                padding: "24px",
+                backgroundColor: "#FFF",
+              }}
+            >
+              <p
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 11,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 6,
+                }}
+              >
+                INNOVATION & TECHNOLOGY
               </p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-                {SUSTAINABILITY_ITEMS[1].capabilities.map(cap => (
-                  <div key={cap} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <CheckCircle size={13} color={COLORS.primaryLight} style={{ flexShrink: 0 }} />
-                    <p style={{ color: COLORS.textMid, fontSize: 12, fontWeight: 600 }}>{cap}</p>
+              <p
+                style={{
+                  color: COLORS.textMuted,
+                  fontSize: 11.5,
+                  lineHeight: 1.5,
+                  marginBottom: 12,
+                }}
+              >
+                Modern agriculture requires intelligent technologies that
+                increase efficiency and sustainability.
+              </p>
+              <h4
+                style={{
+                  fontSize: 11,
+                  fontWeight: 900,
+                  color: COLORS.primary,
+                  textTransform: "uppercase",
+                  marginBottom: 10,
+                }}
+              >
+                OUR CAPABILITIES
+              </h4>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "6px 12px",
+                  marginBottom: 16,
+                }}
+              >
+                {CAPABILITIES.map((cap) => (
+                  <div
+                    key={cap}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      fontSize: 11,
+                      fontWeight: 600,
+                      color: COLORS.textDark,
+                    }}
+                  >
+                    <span style={{ color: COLORS.primary }}>◆</span> {cap}
                   </div>
                 ))}
               </div>
-              <div style={{ marginTop: 20, position: "relative", borderRadius: 10, overflow: "hidden", height: 120 }}>
-                <Image src="/national agricultural.jpeg" alt="Agricultural technology" fill sizes="400px" style={{ objectFit: "cover" }} />
+              <div
+                style={{
+                  position: "relative",
+                  height: 110,
+                  borderRadius: 8,
+                  overflow: "hidden",
+                }}
+              >
+                <Image
+                  src="/national agricultural.jpeg"
+                  alt="Agriculture drone"
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             </div>
 
-            {/* Featured Programs */}
-            <div>
-              <Label>Featured Programs</Label>
-              <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 8 }}>
+            {/* Col 3: Featured Programs */}
+            <div
+              style={{
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: 10,
+                padding: "24px",
+                backgroundColor: "#FFF",
+              }}
+            >
+              <h3
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 13,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 16,
+                }}
+              >
+                FEATURED PROGRAMS
+              </h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 14,
+                }}
+              >
                 {FEATURED_PROGRAMS.map(({ title, desc, img }) => (
-                  <div key={title} style={{ display: "flex", gap: 12, background: COLORS.bgWhite, border: `1px solid ${COLORS.border}`, borderRadius: 10, overflow: "hidden" }}>
-                    <div style={{ position: "relative", width: 90, flexShrink: 0 }}>
-                      <Image src={img} alt={title} fill sizes="90px" style={{ objectFit: "cover" }} />
+                  <div
+                    key={title}
+                    style={{ display: "flex", gap: 12, alignItems: "center" }}
+                  >
+                    <div
+                      style={{
+                        position: "relative",
+                        width: 70,
+                        height: 54,
+                        borderRadius: 6,
+                        overflow: "hidden",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Image
+                        src={img}
+                        alt={title}
+                        fill
+                        style={{ objectFit: "cover" }}
+                      />
                     </div>
-                    <div style={{ padding: "12px 12px 12px 0" }}>
-                      <p style={{ color: COLORS.textDark, fontSize: 12, fontWeight: 800, marginBottom: 4, lineHeight: 1.3 }}>{title}</p>
-                      <p style={{ color: COLORS.textMuted, fontSize: 11, lineHeight: 1.6 }}>{desc}</p>
+                    <div>
+                      <h4
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 900,
+                          color: COLORS.primary,
+                          lineHeight: 1.2,
+                          marginBottom: 3,
+                        }}
+                      >
+                        {title}
+                      </h4>
+                      <p
+                        style={{
+                          fontSize: 10,
+                          color: COLORS.textMuted,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {desc}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -596,60 +1675,206 @@ export default function NationalAgriculture() {
         </div>
       </section>
 
-      {/* ── VISION + MISSION + TESTIMONIALS + FAQ ─────────────────────────── */}
-      <section style={{ padding: "80px 24px", background: COLORS.bgWhite }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 20 }}>
+      {/* ── 8. VISION, MISSION, TESTIMONIALS & FAQ ─────────────────────────── */}
+      <section
+        style={{
+          padding: "60px 24px",
+          backgroundColor: "#FFFFFF",
+          borderTop: `1px solid ${COLORS.border}`,
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr 1.2fr",
+              gap: 20,
+            }}
+          >
             {/* Vision */}
-            <div style={{ background: COLORS.bgSection, border: `1px solid ${COLORS.border}`, borderRadius: 10, padding: 22 }}>
-              <div style={{ width: 36, height: 36, borderRadius: 8, background: COLORS.primary, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-                <Sprout size={18} color="#fff" />
+            <div
+              style={{
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: 10,
+                padding: "20px",
+              }}
+            >
+              <div
+                style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}
+              >
+                <EyeIcon size={18} color={COLORS.primary} />
+                <h3
+                  style={{
+                    color: COLORS.primary,
+                    fontSize: 12,
+                    fontWeight: 900,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  OUR VISION
+                </h3>
               </div>
-              <h3 style={{ color: COLORS.primary, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 10 }}>Our Vision</h3>
-              <p style={{ color: COLORS.textMuted, fontSize: 12, lineHeight: 1.7 }}>
-                To become a leading force in sustainable agriculture by promoting innovation, food security, environmental stewardship, and resilient agricultural systems that benefit communities and future generations.
+              <p
+                style={{
+                  fontSize: 11,
+                  color: COLORS.textMuted,
+                  lineHeight: 1.6,
+                }}
+              >
+                To become a leading force in sustainable agriculture by
+                promoting innovation, food security, environmental stewardship,
+                and resilient agricultural systems that benefit communities and
+                future generations.
               </p>
             </div>
 
             {/* Mission */}
-            <div style={{ background: COLORS.bgSection, border: `1px solid ${COLORS.border}`, borderRadius: 10, padding: 22 }}>
-              <div style={{ width: 36, height: 36, borderRadius: 8, background: COLORS.primary, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-                <Award size={18} color="#fff" />
+            <div
+              style={{
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: 10,
+                padding: "20px",
+              }}
+            >
+              <div
+                style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}
+              >
+                <TargetIcon size={18} color={COLORS.primary} />
+                <h3
+                  style={{
+                    color: COLORS.primary,
+                    fontSize: 12,
+                    fontWeight: 900,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  OUR MISSION
+                </h3>
               </div>
-              <h3 style={{ color: COLORS.primary, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 10 }}>Our Mission</h3>
-              <p style={{ color: COLORS.textMuted, fontSize: 12, lineHeight: 1.7 }}>
-                To strengthen agriculture, dairy development, irrigation, and livestock management through research, technology, infrastructure, and sustainable development practices that improve productivity and economic growth.
+              <p
+                style={{
+                  fontSize: 11,
+                  color: COLORS.textMuted,
+                  lineHeight: 1.6,
+                }}
+              >
+                To strengthen agriculture, dairy development, irrigation, and
+                livestock management through research, technology, infrastructure,
+                and sustainable development practices that improve productivity and
+                economic growth.
               </p>
             </div>
 
             {/* Testimonials */}
-            <div style={{ background: COLORS.bgSection, border: `1px solid ${COLORS.border}`, borderRadius: 10, padding: 22 }}>
-              <h3 style={{ color: COLORS.primary, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 16 }}>Testimonials</h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                {TESTIMONIALS.map(({ name, quote }) => (
-                  <div key={name} style={{ borderLeft: `3px solid ${COLORS.primaryLight}`, paddingLeft: 12 }}>
-                    <p style={{ color: COLORS.textMuted, fontSize: 11.5, lineHeight: 1.65, marginBottom: 6, fontStyle: "italic" }}>&ldquo;{quote}&rdquo;</p>
-                    <p style={{ color: COLORS.primary, fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em" }}>{name}</p>
+            <div
+              style={{
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: 10,
+                padding: "20px",
+              }}
+            >
+              <h3
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 12,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  marginBottom: 12,
+                }}
+              >
+                TESTIMONIALS
+              </h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {TESTIMONIALS.map(({ role, quote }) => (
+                  <div key={role}>
+                    <p
+                      style={{
+                        fontSize: 10.5,
+                        color: COLORS.textMuted,
+                        lineHeight: 1.5,
+                        fontStyle: "italic",
+                        marginBottom: 4,
+                      }}
+                    >
+                      &ldquo;{quote}&rdquo;
+                    </p>
+                    <p
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 800,
+                        color: COLORS.primary,
+                      }}
+                    >
+                      {role}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* FAQ */}
-            <div style={{ background: COLORS.bgSection, border: `1px solid ${COLORS.border}`, borderRadius: 10, padding: 22 }}>
-              <h3 style={{ color: COLORS.primary, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 16 }}>Frequently Asked Questions</h3>
+            {/* FAQ Accordion */}
+            <div
+              style={{
+                border: `1px solid ${COLORS.border}`,
+                borderRadius: 10,
+                padding: "20px",
+              }}
+            >
+              <h3
+                style={{
+                  color: COLORS.primary,
+                  fontSize: 12,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  marginBottom: 12,
+                }}
+              >
+                FREQUENTLY ASKED QUESTIONS
+              </h3>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 {FAQS.map(({ q, a }, i) => (
-                  <div key={i}>
+                  <div
+                    key={i}
+                    style={{ borderBottom: `1px solid ${COLORS.border}` }}
+                  >
                     <button
                       onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                      style={{ width: "100%", background: "none", border: "none", textAlign: "left", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "6px 0", borderBottom: `1px solid ${COLORS.border}` }}
+                      style={{
+                        width: "100%",
+                        background: "none",
+                        border: "none",
+                        padding: "8px 0",
+                        textAlign: "left",
+                        cursor: "pointer",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        fontSize: 11,
+                        fontWeight: 700,
+                        color: COLORS.textDark,
+                      }}
                     >
-                      <span style={{ color: COLORS.textDark, fontSize: 12, fontWeight: 600 }}>{q}</span>
-                      <Plus size={13} color={COLORS.primary} style={{ flexShrink: 0, transform: openFaq === i ? "rotate(45deg)" : "none", transition: "transform 0.2s" }} />
+                      <span>{q}</span>
+                      <Plus
+                        size={14}
+                        color={COLORS.primary}
+                        style={{
+                          transform: openFaq === i ? "rotate(45deg)" : "none",
+                          transition: "transform 0.2s",
+                        }}
+                      />
                     </button>
                     {openFaq === i && (
-                      <p style={{ color: COLORS.textMuted, fontSize: 11.5, lineHeight: 1.6, padding: "8px 0 4px" }}>{a}</p>
+                      <p
+                        style={{
+                          fontSize: 10.5,
+                          color: COLORS.textMuted,
+                          lineHeight: 1.5,
+                          paddingBottom: 8,
+                        }}
+                      >
+                        {a}
+                      </p>
                     )}
                   </div>
                 ))}
@@ -659,117 +1884,421 @@ export default function NationalAgriculture() {
         </div>
       </section>
 
-      {/* ── CTA BANNER ────────────────────────────────────────────────────────── */}
-      <section style={{ background: COLORS.bgSection, borderTop: `2px solid ${COLORS.border}`, padding: "48px 24px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
-          <div>
-            <p style={{ color: COLORS.primary, fontSize: 22, fontWeight: 900, textTransform: "uppercase", marginBottom: 6 }}>
-              Ready to Transform Agriculture?
+      {/* ── 9. CONTACT SECTION ──────────────────────────────────────────────── */}
+      <section
+        id="contact"
+        style={{
+          padding: "60px 24px",
+          backgroundColor: "#FFFFFF",
+          borderTop: `1px solid ${COLORS.border}`,
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <p
+              style={{
+                color: COLORS.primary,
+                fontSize: 11,
+                fontWeight: 900,
+                textTransform: "uppercase",
+                letterSpacing: "0.2em",
+                marginBottom: 6,
+              }}
+            >
+              Get In Touch
             </p>
-            <p style={{ color: COLORS.textMuted, fontSize: 13.5 }}>
-              Partner with National Agricultural Corporation for sustainable growth.
-            </p>
+            <h2
+              style={{
+                color: COLORS.textDark,
+                fontSize: 26,
+                fontWeight: 900,
+                textTransform: "uppercase",
+              }}
+            >
+              Contact{" "}
+              <span style={{ color: COLORS.primary }}>
+                National Agricultural Corporation
+              </span>
+            </h2>
           </div>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <a href="#programs" className="na-btn-primary">
-              Explore Programs <ArrowRight size={14} />
-            </a>
-            <a href="#sustainability" className="na-btn-outline">
-              Sustainability Initiatives <ArrowRight size={14} />
-            </a>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 2fr",
+              gap: 32,
+              alignItems: "start",
+            }}
+          >
+            {/* Contact Details */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              {[
+                {
+                  icon: Mail,
+                  label: "Email Us",
+                  value: "info@nationalagriculture.com",
+                },
+                {
+                  icon: Phone,
+                  label: "Call Us",
+                  value: "+92 300 0000000",
+                },
+                {
+                  icon: MapPin,
+                  label: "Visit Us",
+                  value: "Lahore, Pakistan",
+                },
+              ].map(({ icon: Icon, label, value }) => (
+                <div
+                  key={label}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 14,
+                    padding: "16px",
+                    borderRadius: 10,
+                    backgroundColor: "#FFF",
+                    border: `1px solid ${COLORS.border}`,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 38,
+                      height: 38,
+                      borderRadius: "50%",
+                      backgroundColor: `${COLORS.primary}15`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Icon size={18} color={COLORS.primary} />
+                  </div>
+                  <div>
+                    <p
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 800,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.1em",
+                        color: COLORS.primary,
+                      }}
+                    >
+                      {label}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 700,
+                        color: COLORS.textDark,
+                      }}
+                    >
+                      {value}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Contact Form */}
+            <NaContactForm />
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER ────────────────────────────────────────────────────────────── */}
-      <footer className="na-footer" style={{ padding: "60px 24px 28px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 48 }}>
-            {/* Brand */}
+      {/* ── 10. FOOTER ──────────────────────────────────────────────────────── */}
+      <footer
+        style={{
+          backgroundColor: COLORS.primary,
+          color: "#FFFFFF",
+          padding: "50px 24px 24px",
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "2fr 1fr 1fr 1.2fr",
+              gap: 36,
+              marginBottom: 40,
+            }}
+          >
+            {/* Col 1: Brand Info */}
             <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-                <div style={{ width: 44, height: 44, borderRadius: 8, background: "rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Sprout size={22} color="#fff" />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 10,
+                  marginBottom: 14,
+                }}
+              >
+                <div
+                  style={{
+                    width: 36,
+                    height: 36,
+                    borderRadius: "50%",
+                    backgroundColor: "#FFF",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Sprout size={20} color={COLORS.primary} />
                 </div>
                 <div>
-                  <p style={{ color: "#fff", fontSize: 14, fontWeight: 900, textTransform: "uppercase", lineHeight: 1.1 }}>NATIONAL</p>
-                  <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 8.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.18em" }}>AGRICULTURAL CORPORATION</p>
-                  <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 7, letterSpacing: "0.05em" }}>Cultivating Growth. Empowering Sustainable Agriculture.</p>
+                  <p
+                    style={{
+                      color: "#FFF",
+                      fontSize: 14,
+                      fontWeight: 900,
+                      lineHeight: 1,
+                    }}
+                  >
+                    NATIONAL
+                  </p>
+                  <p
+                    style={{
+                      color: COLORS.accentLight,
+                      fontSize: 8,
+                      fontWeight: 800,
+                      letterSpacing: "0.15em",
+                    }}
+                  >
+                    AGRICULTURAL CORPORATION
+                  </p>
                 </div>
               </div>
-              <div style={{ display: "flex", gap: 10, marginTop: 16 }}>
-                {[Linkedin, Youtube, Facebook, Twitter].map((Icon, i) => (
-                  <a key={i} href="#" aria-label="Social" style={{ width: 32, height: 32, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Icon size={13} color="rgba(255,255,255,0.65)" />
-                  </a>
-                ))}
-              </div>
+              <p
+                style={{
+                  fontSize: 11,
+                  color: "rgba(255,255,255,0.75)",
+                  lineHeight: 1.6,
+                  marginBottom: 16,
+                  maxWidth: 320,
+                }}
+              >
+                Cultivating Growth. Empowering Sustainable Agriculture.
+              </p>
             </div>
 
-            {/* Company */}
+            {/* Col 2: Company Links */}
             <div>
-              <h4 style={{ color: COLORS.accentLight, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 18 }}>Company</h4>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
-                {["Home", "About", "Services", "Programs", "Sustainability", "Research", "News"].map(l => (
-                  <li key={l}><a href={`#${l.toLowerCase()}`} style={{ color: "rgba(255,255,255,0.65)", fontSize: 12.5, textDecoration: "none" }}>{l}</a></li>
+              <h4
+                style={{
+                  fontSize: 11,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 14,
+                  color: COLORS.accentLight,
+                }}
+              >
+                COMPANY
+              </h4>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                  fontSize: 12,
+                }}
+              >
+                {[
+                  "Home",
+                  "About",
+                  "Services",
+                  "Programs",
+                  "Sustainability",
+                  "Research",
+                  "News",
+                ].map((item) => (
+                  <li key={item}>
+                    <a
+                      href={`#${item.toLowerCase()}`}
+                      style={{
+                        color: "rgba(255,255,255,0.85)",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {item}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
 
-            {/* Services */}
+            {/* Col 3: Services */}
             <div>
-              <h4 style={{ color: COLORS.accentLight, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 18 }}>Our Services</h4>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
-                {["Agricultural Development", "Dairy Development", "Irrigation Solutions", "Livestock Management", "Agricultural Research", "Rural Infrastructure"].map(l => (
-                  <li key={l}><a href="#services" style={{ color: "rgba(255,255,255,0.65)", fontSize: 12.5, textDecoration: "none" }}>{l}</a></li>
+              <h4
+                style={{
+                  fontSize: 11,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 14,
+                  color: COLORS.accentLight,
+                }}
+              >
+                OUR SERVICES
+              </h4>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                  fontSize: 12,
+                }}
+              >
+                {[
+                  "Agricultural Development",
+                  "Dairy Development",
+                  "Irrigation Solutions",
+                  "Livestock Management",
+                  "Agricultural Research",
+                  "Rural Infrastructure",
+                ].map((item) => (
+                  <li key={item}>
+                    <a
+                      href="#services"
+                      style={{
+                        color: "rgba(255,255,255,0.85)",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {item}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
 
-            {/* Focus Areas + Contact */}
+            {/* Col 4: Focus Areas + Action Buttons */}
             <div>
-              <h4 style={{ color: COLORS.accentLight, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 18 }}>Focus Areas</h4>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
-                {["Crop Production", "Dairy Farming", "Livestock", "Irrigation", "Food Security", "Sustainable Agriculture"].map(l => (
-                  <li key={l}><a href="#" style={{ color: "rgba(255,255,255,0.65)", fontSize: 12.5, textDecoration: "none" }}>{l}</a></li>
-                ))}
+              <h4
+                style={{
+                  fontSize: 11,
+                  fontWeight: 900,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: 14,
+                  color: COLORS.accentLight,
+                }}
+              >
+                FOCUS AREAS
+              </h4>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 6,
+                  fontSize: 11.5,
+                  color: "rgba(255,255,255,0.85)",
+                  marginBottom: 18,
+                }}
+              >
+                <li>Crop Production</li>
+                <li>Dairy Farming</li>
+                <li>Livestock</li>
+                <li>Irrigation</li>
+                <li>Food Security</li>
+                <li>Sustainable Agriculture</li>
               </ul>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 12, display: "flex", alignItems: "flex-start", gap: 8 }}>
-                  <MapPin size={13} color={COLORS.accentLight} style={{ flexShrink: 0, marginTop: 2 }} />
-                  Lahore, Pakistan
-                </p>
-                <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                  <Phone size={13} color={COLORS.accentLight} style={{ flexShrink: 0 }} />
-                  +92 300 000 0000
-                </p>
-                <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                  <Mail size={13} color={COLORS.accentLight} style={{ flexShrink: 0 }} />
-                  info@nationalagriculture.com
-                </p>
-              </div>
-              <div style={{ display: "flex", gap: 12, marginTop: 20, flexWrap: "wrap" }}>
-                <a href="#programs" className="na-btn-primary" style={{ fontSize: 11 }}>
-                  Explore Programs <ArrowRight size={12} />
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <a
+                  href="#programs"
+                  style={{
+                    backgroundColor: COLORS.accent,
+                    color: "#000",
+                    padding: "8px 14px",
+                    borderRadius: 4,
+                    fontSize: 11,
+                    fontWeight: 800,
+                    textDecoration: "none",
+                  }}
+                >
+                  EXPLORE PROGRAMS →
                 </a>
-                <a href="#sustainability" style={{ background: "transparent", border: "1px solid rgba(255,255,255,0.3)", color: "#fff", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", borderRadius: 5, padding: "9px 14px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 5 }}>
-                  Sustainability Initiatives <ArrowRight size={12} />
+                <a
+                  href="#sustainability"
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "1px solid rgba(255,255,255,0.4)",
+                    color: "#FFF",
+                    padding: "8px 14px",
+                    borderRadius: 4,
+                    fontSize: 11,
+                    fontWeight: 700,
+                    textDecoration: "none",
+                  }}
+                >
+                  SUSTAINABILITY →
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.12)", paddingTop: 20, textAlign: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 6 }}>
-              <Sprout size={14} color="rgba(255,255,255,0.4)" />
-            </div>
-            <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 11.5 }}>
-              &copy; {new Date().getFullYear()} National Agricultural Corporation. All Rights Reserved.
-            </p>
+          <div
+            style={{
+              borderTop: "1px solid rgba(255,255,255,0.15)",
+              paddingTop: 18,
+              textAlign: "center",
+              fontSize: 11,
+              color: "rgba(255,255,255,0.6)",
+            }}
+          >
+            © {new Date().getFullYear()} National Agricultural Corporation. All
+            Rights Reserved.
           </div>
         </div>
       </footer>
     </div>
+  );
+}
+
+function EyeIcon({ size = 16, color = "currentColor" }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+function TargetIcon({ size = 16, color = "currentColor" }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </svg>
   );
 }

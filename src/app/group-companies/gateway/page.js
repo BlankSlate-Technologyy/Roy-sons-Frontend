@@ -15,6 +15,7 @@ import CoreValues from "./sections/CoreValues";
 import Industries from "./sections/Industries";
 import Process from "./sections/Process";
 import Footer from "./sections/Footer";
+import Contact from "./sections/Contact";
 import { COLORS } from "./constants";
 
 export default function GatewayPage() {
@@ -46,6 +47,7 @@ export default function GatewayPage() {
       <CoreValues />
       <Industries />
       <Process />
+      <Contact />
       <Footer />
     </main>
   );

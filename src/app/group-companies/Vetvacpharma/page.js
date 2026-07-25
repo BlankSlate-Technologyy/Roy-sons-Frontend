@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -34,7 +34,6 @@ const NAV_LINKS = [
   { label: "Solutions", href: "#solutions", dropdown: true },
   { label: "R&D & Quality", href: "#rnd" },
   { label: "Industries", href: "#industries" },
-  { label: "Resources", href: "#resources", dropdown: true },
 ];
 
 const TRUSTED_BY = [
@@ -136,6 +135,63 @@ const SOCIAL_ICONS = [Facebook, Linkedin, Twitter, Youtube];
 
 // ─── Reusable UI Components ──────────────────────────────────────────────────
 
+// Parses "10,000+" → { num: 10000, suffix: "+", prefix: "", comma: true }
+function parseStatValue(val) {
+  const raw = val.replace(/,/g, "");
+  const suffix = raw.match(/[+%]$/)?.[0] ?? "";
+  const num = parseFloat(raw);
+  const hasComma = val.includes(",");
+  return { num, suffix, hasComma };
+}
+
+function useCountUp(target, duration = 1800, shouldStart = false) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!shouldStart) return;
+    let start = null;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+      else setCount(target);
+    };
+    requestAnimationFrame(step);
+  }, [shouldStart, target, duration]);
+  return count;
+}
+
+function AnimatedStat({ icon: Icon, value, label }) {
+  const { num, suffix, hasComma } = parseStatValue(value);
+  const ref = useRef(null);
+  const [started, setStarted] = useState(false);
+  const count = useCountUp(num, 1800, started);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const display = hasComma ? count.toLocaleString() : count;
+
+  return (
+    <div ref={ref} className="p-4 rounded-lg border text-center" style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}>
+      <Icon size={28} className="mx-auto mb-2" style={{ color: COLORS.primary }} />
+      <p className="text-[16px] font-black" style={{ color: COLORS.primary }}>
+        {display}{suffix}
+      </p>
+      <p className="text-[11px] font-semibold leading-tight" style={{ color: COLORS.muted }}>{label}</p>
+    </div>
+  );
+}
+
 function SectionHeading({ eyebrow, align = "left" }) {
   return (
     <div className={`mb-8 ${align === "center" ? "text-center" : ""}`}>
@@ -212,7 +268,7 @@ function Navbar() {
               style={{ color: COLORS.ink }}
             >
               {item.label}
-              {item.dropdown && <ChevronDown size={13} />}
+              
             </Link>
           ))}
           <Link href="#contact" className="text-[12.5px] font-semibold transition-colors hover:text-[#1B4FCC]" style={{ color: COLORS.ink }}>
@@ -280,8 +336,8 @@ function TrustedBySection() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {TRUSTED_BY.map(({ icon: Icon, label }, idx) => (
               <div key={idx} className="flex flex-col items-center text-center gap-2.5">
-                <Icon size={22} style={{ color: COLORS.primary }} />
-                <span className="text-[12px] font-bold leading-snug whitespace-pre-line" style={{ color: COLORS.ink }}>
+                <Icon size={30} style={{ color: COLORS.primary }} />
+                <span className="text-[14px] font-bold leading-snug whitespace-pre-line" style={{ color: COLORS.ink }}>
                   {label}
                 </span>
               </div>
@@ -331,11 +387,7 @@ function AboutSection() {
               </p>
               <div className="grid grid-cols-3 gap-3">
                 {GLANCE_STATS.map(({ icon: Icon, value, label }) => (
-                  <div key={label} className="p-4 rounded-lg border text-center" style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}>
-                    <Icon size={18} className="mx-auto mb-2" style={{ color: COLORS.primary }} />
-                    <p className="text-[16px] font-black" style={{ color: COLORS.primary }}>{value}</p>
-                    <p className="text-[10px] font-semibold leading-tight" style={{ color: COLORS.muted }}>{label}</p>
-                  </div>
+                  <AnimatedStat key={label} icon={Icon} value={value} label={label} />
                 ))}
               </div>
             </div>
@@ -398,11 +450,11 @@ function WhyIndustriesProcessSection() {
           <SectionHeading eyebrow="WHY CHOOSE US" />
           <div className="space-y-4">
             {WHY_CHOOSE.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="flex gap-2.5">
-                <Icon size={15} className="flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} />
+              <div key={title} className="flex gap-3">
+                <Icon size={20} className="flex-shrink-0 mt-0.5" style={{ color: COLORS.primary }} />
                 <div>
-                  <p className="text-[12px] font-bold" style={{ color: COLORS.ink }}>{title}</p>
-                  <p className="text-[11px]" style={{ color: COLORS.muted }}>{desc}</p>
+                  <p className="text-[14px] font-bold" style={{ color: COLORS.ink }}>{title}</p>
+                  <p className="text-[13px]" style={{ color: COLORS.muted }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -419,8 +471,8 @@ function WhyIndustriesProcessSection() {
             <div className="space-y-3">
               {INDUSTRIES.map((label) => (
                 <div key={label} className="flex items-center gap-2.5">
-                  <CheckCircle2 size={14} style={{ color: COLORS.green }} />
-                  <span className="text-[12px] font-semibold" style={{ color: COLORS.ink }}>{label}</span>
+                  <CheckCircle2 size={18} style={{ color: COLORS.green }} />
+                  <span className="text-[14px] font-semibold" style={{ color: COLORS.ink }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -440,10 +492,10 @@ function WhyIndustriesProcessSection() {
                   {step}
                 </div>
                 <div>
-                  <p className="text-[12px] font-bold flex items-center gap-1.5" style={{ color: COLORS.ink }}>
-                    <Icon size={13} style={{ color: COLORS.primary }} /> {title}
+                  <p className="text-[14px] font-bold flex items-center gap-1.5" style={{ color: COLORS.ink }}>
+                    <Icon size={17} style={{ color: COLORS.primary }} /> {title}
                   </p>
-                  <p className="text-[11px]" style={{ color: COLORS.muted }}>{desc}</p>
+                  <p className="text-[13px]" style={{ color: COLORS.muted }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -479,10 +531,10 @@ function CommitmentRndSection() {
           <div className="grid grid-cols-3 gap-4">
             {RND_POINTS.map(({ icon: Icon, label }) => (
               <div key={label} className="flex flex-col items-center text-center gap-2">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}12` }}>
-                  <Icon size={17} style={{ color: COLORS.primary }} />
+                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}12` }}>
+                  <Icon size={26} style={{ color: COLORS.primary }} />
                 </div>
-                <span className="text-[10.5px] font-bold leading-tight whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
+                <span className="text-[13px] font-bold leading-tight whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
               </div>
             ))}
           </div>
@@ -494,71 +546,174 @@ function CommitmentRndSection() {
 
 function TestimonialsFaqSection() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const timerRef = useRef(null);
+
+  const goToSlide = useCallback((idx) => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setActiveSlide(idx);
+    setTimeout(() => setIsAnimating(false), 400);
+  }, [isAnimating]);
+
+  const next = useCallback(() => {
+    goToSlide((activeSlide + 1) % TESTIMONIALS.length);
+  }, [activeSlide, goToSlide]);
+
+  const prev = useCallback(() => {
+    goToSlide((activeSlide - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  }, [activeSlide, goToSlide]);
+
+  useEffect(() => {
+    timerRef.current = setInterval(next, 4000);
+    return () => clearInterval(timerRef.current);
+  }, [next]);
+
+  const t = TESTIMONIALS[activeSlide];
 
   return (
     <section className="py-16 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-8">
-        {/* Testimonials */}
-        <div className="lg:col-span-7 rounded-xl border p-8" style={{ borderColor: COLORS.border }}>
+
+        {/* Testimonials Slider */}
+        <div className="lg:col-span-7 rounded-xl border p-8 flex flex-col" style={{ borderColor: COLORS.border }}>
           <SectionHeading eyebrow="WHAT OUR CLIENTS SAY" />
-          <div className="grid md:grid-cols-3 gap-5">
-            {TESTIMONIALS.map(({ name, role, quote, img }) => (
-              <div key={name} className="p-5 rounded-lg border bg-white flex flex-col justify-between" style={{ borderColor: COLORS.border }}>
-                <div>
-                  <div className="flex gap-0.5 mb-3">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} size={12} fill="#F0B429" style={{ color: "#F0B429" }} />
-                    ))}
-                  </div>
-                  <p className="text-[11.5px] leading-relaxed mb-6 font-medium animate-fadeIn" style={{ color: COLORS.ink }}>&ldquo;{quote}&rdquo;</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  {img && (
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border border-neutral-100">
-                      <Image 
-                        src={img} 
-                        alt={name} 
-                        fill 
-                        className="object-cover object-center" 
-                      />
-                    </div>
-                  )}
-                  <div>
-                    <p className="text-[12px] font-black leading-snug" style={{ color: COLORS.primary }}>{name}</p>
-                    <p className="text-[10px] font-semibold" style={{ color: COLORS.muted }}>{role}</p>
-                  </div>
-                </div>
+
+          {/* Card */}
+          <div
+            key={activeSlide}
+            className="flex-1 p-6 rounded-xl border bg-white flex flex-col justify-between"
+            style={{
+              borderColor: COLORS.border,
+              animation: "slideIn 0.4s ease",
+            }}
+          >
+            <div>
+              <div className="flex gap-1 mb-4">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={15} fill="#F0B429" style={{ color: "#F0B429" }} />
+                ))}
               </div>
-            ))}
+              <p className="text-[14px] leading-relaxed mb-6 font-medium" style={{ color: COLORS.ink }}>
+                &ldquo;{t.quote}&rdquo;
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              {t.img && (
+                <div className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2" style={{ borderColor: COLORS.primary }}>
+                  <Image src={t.img} alt={t.name} fill className="object-cover object-center" />
+                </div>
+              )}
+              <div>
+                <p className="text-[14px] font-black leading-snug" style={{ color: COLORS.primary }}>{t.name}</p>
+                <p className="text-[12px] font-semibold" style={{ color: COLORS.muted }}>{t.role}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center justify-between mt-5">
+            {/* Dots */}
+            <div className="flex gap-2">
+              {TESTIMONIALS.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => { clearInterval(timerRef.current); goToSlide(idx); }}
+                  className="rounded-full transition-all duration-300"
+                  style={{
+                    width: activeSlide === idx ? 24 : 8,
+                    height: 8,
+                    backgroundColor: activeSlide === idx ? COLORS.primary : `${COLORS.primary}30`,
+                  }}
+                />
+              ))}
+            </div>
+            {/* Arrows */}
+            <div className="flex gap-2">
+              <button
+                onClick={() => { clearInterval(timerRef.current); prev(); }}
+                className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-blue-50 transition-colors"
+                style={{ borderColor: COLORS.primary }}
+              >
+                <ChevronDown size={16} style={{ color: COLORS.primary, transform: "rotate(90deg)" }} />
+              </button>
+              <button
+                onClick={() => { clearInterval(timerRef.current); next(); }}
+                className="w-9 h-9 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: COLORS.primary }}
+              >
+                <ChevronDown size={16} style={{ color: "#fff", transform: "rotate(-90deg)" }} />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* FAQ */}
+        {/* FAQ with animation */}
         <div className="lg:col-span-5 rounded-xl border p-8" style={{ borderColor: COLORS.border }}>
           <SectionHeading eyebrow="FREQUENTLY ASKED QUESTIONS" />
           <div className="space-y-3">
             {FAQS.map(({ q, a }, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <div key={q} className="rounded-lg border overflow-hidden bg-white" style={{ borderColor: COLORS.border }}>
+                <div
+                  key={q}
+                  className="rounded-lg border overflow-hidden bg-white"
+                  style={{
+                    borderColor: isOpen ? COLORS.primary : COLORS.border,
+                    transition: "border-color 0.3s ease",
+                  }}
+                >
                   <button
                     onClick={() => setOpenFaq(isOpen ? -1 : idx)}
-                    className="w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left transition-colors hover:bg-neutral-50"
+                    className="w-full flex items-center justify-between gap-3 px-4 py-4 text-left"
+                    style={{ backgroundColor: isOpen ? `${COLORS.primary}08` : "transparent", transition: "background-color 0.3s ease" }}
                   >
-                    <span className="text-[12px] font-bold" style={{ color: COLORS.ink }}>
+                    <span className="text-[13px] font-bold" style={{ color: isOpen ? COLORS.primary : COLORS.ink }}>
                       Q{idx + 1}. {q}
                     </span>
-                    {isOpen ? <Minus size={14} style={{ color: COLORS.primary }} /> : <Plus size={14} style={{ color: COLORS.primary }} />}
+                    <span
+                      className="flex-shrink-0"
+                      style={{
+                        display: "inline-flex",
+                        transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+                        transition: "transform 0.3s ease",
+                        color: COLORS.primary,
+                      }}
+                    >
+                      <Plus size={16} />
+                    </span>
                   </button>
-                  {isOpen && (
-                    <p className="px-4 pb-4 text-[11.5px] leading-relaxed border-t pt-3" style={{ color: COLORS.muted, borderColor: COLORS.border }}>{a}</p>
-                  )}
+
+                  {/* Animated answer */}
+                  <div
+                    style={{
+                      maxHeight: isOpen ? 200 : 0,
+                      overflow: "hidden",
+                      transition: "max-height 0.35s ease",
+                    }}
+                  >
+                    <p
+                      className="px-4 pb-4 text-[12.5px] leading-relaxed border-t pt-3"
+                      style={{ color: COLORS.muted, borderColor: COLORS.border }}
+                    >
+                      {a}
+                    </p>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
       </div>
+
+      {/* Slide animation keyframe */}
+      <style>{`
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateX(30px); }
+          to   { opacity: 1; transform: translateX(0);    }
+        }
+      `}</style>
     </section>
   );
 }
@@ -595,11 +750,224 @@ function CtaSection() {
   );
 }
 
+function ContactSection() {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "", type: "General Inquiry" });
+  const [status, setStatus] = useState(null); // null | "sending" | "sent" | "error"
+
+  const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    setTimeout(() => {
+      setStatus("sent");
+      setForm({ name: "", email: "", phone: "", subject: "", message: "", type: "General Inquiry" });
+    }, 1500);
+  };
+
+  const inquiryTypes = ["General Inquiry", "Product Information", "Partnership / Distribution", "Export Services", "Technical Support"];
+
+  const inputStyle = {
+    width: "100%",
+    padding: "10px 14px",
+    fontSize: 13,
+    border: `1.5px solid ${COLORS.border}`,
+    borderRadius: 8,
+    outline: "none",
+    color: COLORS.ink,
+    backgroundColor: "#F8FAFF",
+    transition: "border-color 0.2s",
+  };
+
+  return (
+    <section id="contact-form" className="py-16 px-6" style={{ backgroundColor: COLORS.white }}>
+      <div className="mx-auto max-w-screen-xl">
+        <div className="rounded-2xl border overflow-hidden" style={{ borderColor: COLORS.border }}>
+          <div className="grid lg:grid-cols-5">
+
+            {/* Left info panel */}
+            <div
+              className="lg:col-span-2 p-10 flex flex-col justify-between"
+              style={{ backgroundColor: COLORS.primary }}
+            >
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.2em] mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>GET IN TOUCH</p>
+                <h2 className="text-2xl font-black text-white mb-4 leading-snug">
+                  Let&apos;s Work<br />Together
+                </h2>
+                <p className="text-[13px] leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.75)" }}>
+                  Have questions about our products or services? Our team is ready to help you find the right veterinary solutions.
+                </p>
+
+                <div className="space-y-5">
+                  {[
+                    { icon: MapPin, label: "Address", value: "Your Office Address, City, Country" },
+                    { icon: Phone, label: "Phone", value: "+92 XXX XXXXXXX" },
+                    { icon: Mail, label: "Email", value: "info@vetvacpharma.com" },
+                    { icon: Globe, label: "Website", value: "www.vetvacpharma.com" },
+                  ].map(({ icon: Icon, label, value }) => (
+                    <div key={label} className="flex items-start gap-3">
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                        style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+                      >
+                        <Icon size={15} color="white" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-wide" style={{ color: "rgba(255,255,255,0.55)" }}>{label}</p>
+                        <p className="text-[13px] text-white font-medium">{value}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Decorative circles */}
+              <div className="mt-10 flex gap-3">
+                {[Facebook, Linkedin, Twitter, Youtube].map((Icon, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    className="w-9 h-9 rounded-full flex items-center justify-center transition-colors"
+                    style={{ backgroundColor: "rgba(255,255,255,0.12)" }}
+                  >
+                    <Icon size={15} color="white" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Right form panel */}
+            <div className="lg:col-span-3 p-10 bg-white">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] mb-1" style={{ color: COLORS.primary }}>CONTACT US</p>
+              <h3 className="text-xl font-black mb-6" style={{ color: COLORS.ink }}>Send Us a Message</h3>
+
+              {status === "sent" ? (
+                <div
+                  className="flex flex-col items-center justify-center gap-4 py-16 rounded-xl"
+                  style={{ backgroundColor: COLORS.lightBg }}
+                >
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: `${COLORS.green}20` }}
+                  >
+                    <CheckCircle2 size={28} style={{ color: COLORS.green }} />
+                  </div>
+                  <p className="text-[15px] font-black" style={{ color: COLORS.ink }}>Message Sent!</p>
+                  <p className="text-[13px]" style={{ color: COLORS.muted }}>We&apos;ll get back to you within 24 hours.</p>
+                  <button
+                    onClick={() => setStatus(null)}
+                    className="mt-2 px-5 py-2 rounded-lg text-[13px] font-bold text-white transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: COLORS.primary }}
+                  >
+                    Send Another
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Name + Email */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[11.5px] font-bold mb-1.5" style={{ color: COLORS.muted }}>Full Name *</label>
+                      <input
+                        name="name" required value={form.name} onChange={handleChange}
+                        placeholder="Dr. Ahmed Khan"
+                        style={inputStyle}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11.5px] font-bold mb-1.5" style={{ color: COLORS.muted }}>Email Address *</label>
+                      <input
+                        name="email" type="email" required value={form.email} onChange={handleChange}
+                        placeholder="ahmed@example.com"
+                        style={inputStyle}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Phone + Subject */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[11.5px] font-bold mb-1.5" style={{ color: COLORS.muted }}>Phone Number</label>
+                      <input
+                        name="phone" value={form.phone} onChange={handleChange}
+                        placeholder="+92 XXX XXXXXXX"
+                        style={inputStyle}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[11.5px] font-bold mb-1.5" style={{ color: COLORS.muted }}>Service *</label>
+                        <select
+                          name="subject"
+                          required
+                          value={form.subject}
+                          onChange={handleChange}
+                          style={inputStyle}
+                          className="w-full"
+                        >
+                          {SOLUTIONS.map(({ title }) => (
+                            <option key={title} value={title}>{title}</option>
+                          ))}
+                        </select>
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label className="block text-[11.5px] font-bold mb-1.5" style={{ color: COLORS.muted }}>Your Message *</label>
+                    <textarea
+                      name="message" required rows={4} value={form.message} onChange={handleChange}
+                      placeholder="Tell us how we can help you..."
+                      style={{ ...inputStyle, resize: "none" }}
+                    />
+                  </div>
+
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="w-full py-3.5 rounded-lg text-[14px] font-bold text-white flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-70"
+                    style={{ backgroundColor: COLORS.primary }}
+                  >
+                    {status === "sending" ? (
+                      <>
+                        <span
+                          style={{
+                            width: 16, height: 16, border: "2px solid rgba(255,255,255,0.4)",
+                            borderTopColor: "#fff", borderRadius: "50%",
+                            display: "inline-block",
+                            animation: "spin 0.7s linear infinite",
+                          }}
+                        />
+                        Sending...
+                      </>
+                    ) : (
+                      <>Send Message <ArrowRight size={16} /></>
+                    )}
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
+        input:focus, textarea:focus, select:focus {
+          border-color: #1B4FCC !important;
+          background-color: #fff !important;
+          box-shadow: 0 0 0 3px rgba(27,79,204,0.10);
+        }
+      `}</style>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="py-14 px-6 mt-4" style={{ backgroundColor: COLORS.footerBg }}>
-      <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
-        <div className="lg:col-span-3 max-w-xs">
+      <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10">
+        <div className="lg:col-span-2 max-w-xs">
           <div className="flex items-center mb-4">
             <div className="bg-white p-2 rounded-lg flex items-center justify-center">
               <Image 
@@ -645,7 +1013,7 @@ function Footer() {
           </div>
         ))}
 
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-2">
           <h5 className="text-[11px] font-black uppercase tracking-[0.14em] mb-4 text-white">Contact Us</h5>
           <div className="space-y-3">
             <p className="text-[11.5px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
@@ -696,6 +1064,7 @@ export default function VetVacPharmaPage() {
       <CommitmentRndSection />
       <TestimonialsFaqSection />
       <CtaSection />
+      <ContactSection />
       <Footer />
     </main>
   );

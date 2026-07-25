@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -189,7 +189,66 @@ function OutlineButton({ href, children, className = "" }) {
   );
 }
 
-// ─── Page Sections ───────────────────────────────────────────────────────────
+// ─── Animated Counter Helpers ───────────────────────────────────────────────
+
+function parseStatValue(val) {
+  const raw = val.replace(/,/g, "");
+  const suffix = raw.match(/[+%]$/)?.[0] ?? "";
+  const num = parseFloat(raw);
+  const hasComma = val.includes(",");
+  return { num, suffix, hasComma };
+}
+
+function useCountUp(target, duration = 1800, shouldStart = false) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!shouldStart) return;
+    let start = null;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+      else setCount(target);
+    };
+    requestAnimationFrame(step);
+  }, [shouldStart, target, duration]);
+  return count;
+}
+
+function AnimatedStatBiomax({ value, label, accentColor }) {
+  const { num, suffix, hasComma } = parseStatValue(value);
+  const ref = useRef(null);
+  const [started, setStarted] = useState(false);
+  const count = useCountUp(num, 1800, started);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const display = hasComma ? count.toLocaleString() : count;
+
+  return (
+    <div ref={ref} className="p-5 rounded-lg border bg-white text-center shadow-sm" style={{ borderColor: COLORS.border }}>
+      <p className="text-xl lg:text-2xl font-black" style={{ color: accentColor ?? COLORS.accent }}>
+        {display}{suffix}
+      </p>
+      <p className="text-[10.5px] font-bold mt-1 whitespace-pre-line leading-tight" style={{ color: COLORS.muted }}>
+        {label}
+      </p>
+    </div>
+  );
+}
+
+// ─── Page Sections ──────────────────────────────────────────────────────────
 
 function Navbar() {
   return (
@@ -215,7 +274,7 @@ function Navbar() {
               style={{ color: COLORS.ink }}
             >
               {item.label}
-              {item.dropdown && <ChevronDown size={13} />}
+              
             </Link>
           ))}
         </nav>
@@ -353,11 +412,16 @@ function AboutSection() {
               <Sparkles size={17} style={{ color: COLORS.primary }} />
               <h4 className="text-[13px] font-extrabold uppercase tracking-wide" style={{ color: COLORS.primary }}>Our Core Values</h4>
             </div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-5">
               {CORE_VALUES.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center text-center gap-1.5">
-                  <Icon size={18} style={{ color: COLORS.primary }} />
-                  <span className="text-[10px] font-bold leading-tight whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
+                <div key={label} className="flex flex-col items-center text-center gap-2">
+                  <div
+                    className="w-14 h-14 rounded-full flex items-center justify-center mb-1"
+                    style={{ backgroundColor: `${COLORS.primary}15`, border: `1.5px solid ${COLORS.primary}25` }}
+                  >
+                    <Icon size={28} style={{ color: COLORS.primary }} />
+                  </div>
+                  <span className="text-[11px] font-bold leading-tight whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -380,8 +444,8 @@ function SolutionsSection() {
               className="p-5 rounded-lg border bg-white shadow-sm hover:-translate-y-1 transition-transform"
               style={{ borderColor: COLORS.border }}
             >
-              <div className="w-11 h-11 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: `${COLORS.primary}12` }}>
-                <Icon size={20} style={{ color: COLORS.primary }} />
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: `${COLORS.primary}12` }}>
+                <Icon size={30} style={{ color: COLORS.primary }} />
               </div>
               <h4 className="text-[13px] font-extrabold mb-1.5" style={{ color: COLORS.primary }}>{title}</h4>
               <p className="text-[11.5px] leading-relaxed" style={{ color: COLORS.muted }}>{desc}</p>
@@ -398,16 +462,16 @@ function WhyIndustriesProcessSection() {
     <section className="py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-3 gap-8">
         {/* Why Choose Us */}
-        <div className="p-7 rounded-lg border shadow-sm" style={{ borderColor: COLORS.border }}>
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>WHY CHOOSE US</span>
-          <h3 className="text-[17px] font-extrabold mb-5" style={{ color: COLORS.accent }}>Your Trusted Partner in Science</h3>
-          <div className="space-y-4">
+        <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
+          <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>WHY CHOOSE US</span>
+          <h3 className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>Your Trusted Partner in Science</h3>
+          <div className="space-y-5">
             {WHY_CHOOSE.map(({ title, desc }) => (
-              <div key={title} className="flex gap-2.5">
-                <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: COLORS.accent }} />
+              <div key={title} className="flex gap-3">
+                <CheckCircle2 size={22} className="flex-shrink-0 mt-0.5" style={{ color: COLORS.accent }} />
                 <div>
-                  <p className="text-[12.5px] font-bold" style={{ color: COLORS.ink }}>{title}</p>
-                  <p className="text-[11.5px]" style={{ color: COLORS.muted }}>{desc}</p>
+                  <p className="text-[14px] font-bold" style={{ color: COLORS.ink }}>{title}</p>
+                  <p className="text-[12.5px]" style={{ color: COLORS.muted }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -415,35 +479,40 @@ function WhyIndustriesProcessSection() {
         </div>
 
         {/* Industries We Serve */}
-        <div className="p-7 rounded-lg border shadow-sm" style={{ borderColor: COLORS.border }}>
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>INDUSTRIES WE SERVE</span>
-          <h3 id="industries" className="text-[17px] font-extrabold mb-5" style={{ color: COLORS.accent }}>Sectors We Support</h3>
-          <div className="space-y-3.5">
+        <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
+          <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>INDUSTRIES WE SERVE</span>
+          <h3 id="industries" className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>Sectors We Support</h3>
+          <div className="space-y-4">
             {INDUSTRIES.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3">
-                <Icon size={16} style={{ color: COLORS.primary }} />
-                <span className="text-[12.5px] font-semibold" style={{ color: COLORS.ink }}>{label}</span>
+              <div key={label} className="flex items-center gap-4">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: `${COLORS.primary}15` }}
+                >
+                  <Icon size={20} style={{ color: COLORS.primary }} />
+                </div>
+                <span className="text-[14px] font-semibold" style={{ color: COLORS.ink }}>{label}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Our Process */}
-        <div className="p-7 rounded-lg border shadow-sm" style={{ borderColor: COLORS.border }}>
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>OUR PROCESS</span>
-          <h3 className="text-[17px] font-extrabold mb-5" style={{ color: COLORS.accent }}>How We Deliver Excellence</h3>
-          <div className="space-y-4">
+        <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
+          <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>OUR PROCESS</span>
+          <h3 className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>How We Deliver Excellence</h3>
+          <div className="space-y-5">
             {PROCESS_STEPS.map(({ step, title, desc }) => (
-              <div key={step} className="flex gap-3.5">
+              <div key={step} className="flex gap-4">
                 <div
-                  className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-extrabold"
+                  className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-extrabold"
                   style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
                 >
                   {step}
                 </div>
                 <div>
-                  <p className="text-[12.5px] font-bold" style={{ color: COLORS.ink }}>{title}</p>
-                  <p className="text-[11.5px]" style={{ color: COLORS.muted }}>{desc}</p>
+                  <p className="text-[14px] font-bold" style={{ color: COLORS.ink }}>{title}</p>
+                  <p className="text-[12.5px]" style={{ color: COLORS.muted }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -476,12 +545,7 @@ function CommitmentStatsSection() {
           </p>
           <div className="grid grid-cols-3 gap-4">
             {STATS.map((stat) => (
-              <div key={stat.value} className="p-5 rounded-lg border bg-white text-center shadow-sm" style={{ borderColor: COLORS.border }}>
-                <p className="text-xl lg:text-2xl font-black" style={{ color: COLORS.accent }}>{stat.value}</p>
-                <p className="text-[10.5px] font-bold mt-1 whitespace-pre-line leading-tight" style={{ color: COLORS.muted }}>
-                  {stat.label}
-                </p>
-              </div>
+              <AnimatedStatBiomax key={stat.value} value={stat.value} label={stat.label} />
             ))}
           </div>
         </div>
@@ -530,54 +594,134 @@ function RndQualitySection() {
 
 function TestimonialsFaqSection() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const faqRefs = useRef([]);
+
+  // Auto-advance slider every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % TESTIMONIALS.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10">
-        {/* Testimonials */}
+
+        {/* ── Testimonials Slider ── */}
         <div className="lg:col-span-7">
           <SectionHeading eyebrow="TESTIMONIALS" title="What Our Partners Say" />
-          <div className="grid md:grid-cols-3 gap-5">
-            {TESTIMONIALS.map(({ name, role, quote }) => (
-              <div key={name} className="p-5 rounded-lg border bg-white shadow-sm" style={{ borderColor: COLORS.border }}>
-                <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={13} fill={COLORS.accent} style={{ color: COLORS.accent }} />
-                  ))}
+
+          {/* Slide track */}
+          <div className="relative overflow-hidden rounded-xl">
+            <div
+              className="flex transition-transform duration-700 ease-in-out"
+              style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+            >
+              {TESTIMONIALS.map(({ name, role, quote }) => (
+                <div
+                  key={name}
+                  className="min-w-full px-1"
+                >
+                  <div className="p-7 rounded-xl border bg-white shadow-md" style={{ borderColor: COLORS.border }}>
+                    <div className="flex gap-1 mb-4">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} size={16} fill={COLORS.accent} style={{ color: COLORS.accent }} />
+                      ))}
+                    </div>
+                    <p className="text-[15px] leading-relaxed mb-6 italic" style={{ color: COLORS.ink }}>
+                      &ldquo;{quote}&rdquo;
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center text-white font-extrabold text-[14px] flex-shrink-0"
+                        style={{ backgroundColor: COLORS.primary }}
+                      >
+                        {name.charAt(0)}
+                      </div>
+                      <div>
+                        <p className="text-[13px] font-extrabold" style={{ color: COLORS.primary }}>{name}</p>
+                        <p className="text-[11.5px]" style={{ color: COLORS.muted }}>{role}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-[12px] leading-relaxed mb-4" style={{ color: COLORS.ink }}>&ldquo;{quote}&rdquo;</p>
-                <p className="text-[12px] font-extrabold" style={{ color: COLORS.primary }}>{name}</p>
-                <p className="text-[10.5px]" style={{ color: COLORS.muted }}>{role}</p>
-              </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dots */}
+          <div className="flex items-center justify-center gap-2 mt-5">
+            {TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveSlide(i)}
+                className="rounded-full transition-all duration-300"
+                style={{
+                  width: activeSlide === i ? "28px" : "8px",
+                  height: "8px",
+                  backgroundColor: activeSlide === i ? COLORS.primary : `${COLORS.primary}40`,
+                }}
+              />
             ))}
           </div>
         </div>
 
-        {/* FAQ */}
+        {/* ── FAQ with smooth animation ── */}
         <div className="lg:col-span-5">
           <SectionHeading eyebrow="FAQ" title="Frequently Asked Questions" />
+          <style>{`
+            .faq-body {
+              display: grid;
+              grid-template-rows: 0fr;
+              transition: grid-template-rows 0.4s ease, opacity 0.35s ease;
+              opacity: 0;
+            }
+            .faq-body.open {
+              grid-template-rows: 1fr;
+              opacity: 1;
+            }
+            .faq-body > div { overflow: hidden; }
+          `}</style>
           <div className="space-y-3">
             {FAQS.map(({ q, a }, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <div key={q} className="rounded-lg border bg-white overflow-hidden" style={{ borderColor: COLORS.border }}>
+                <div
+                  key={q}
+                  className="rounded-lg border bg-white overflow-hidden"
+                  style={{
+                    borderColor: isOpen ? COLORS.primary : COLORS.border,
+                    boxShadow: isOpen ? `0 0 0 1px ${COLORS.primary}30` : "none",
+                    transition: "border-color 0.3s, box-shadow 0.3s",
+                  }}
+                >
                   <button
                     onClick={() => setOpenFaq(isOpen ? -1 : idx)}
                     className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left"
                   >
-                    <span className="text-[12.5px] font-bold" style={{ color: COLORS.ink }}>
+                    <span className="text-[13px] font-bold" style={{ color: isOpen ? COLORS.primary : COLORS.ink }}>
                       Q{idx + 1}. {q}
                     </span>
-                    {isOpen ? <Minus size={15} style={{ color: COLORS.primary }} /> : <Plus size={15} style={{ color: COLORS.primary }} />}
+                    <span
+                      className="flex-shrink-0 transition-transform duration-300"
+                      style={{ transform: isOpen ? "rotate(45deg)" : "rotate(0deg)", color: COLORS.primary }}
+                    >
+                      <Plus size={16} />
+                    </span>
                   </button>
-                  {isOpen && (
-                    <p className="px-5 pb-4 text-[12px] leading-relaxed" style={{ color: COLORS.muted }}>{a}</p>
-                  )}
+                  <div className={`faq-body${isOpen ? " open" : ""}`}>
+                    <div>
+                      <p className="px-5 pb-4 text-[12.5px] leading-relaxed" style={{ color: COLORS.muted }}>{a}</p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
+
       </div>
     </section>
   );
@@ -623,6 +767,117 @@ function CtaSection() {
           >
             Become a Partner <ArrowRight size={15} />
           </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ContactSection() {
+  return (
+    <section id="contact" className="py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+      <div className="mx-auto max-w-screen-xl">
+        <div className="text-center mb-12">
+          <span className="text-[13px] font-extrabold uppercase tracking-widest" style={{ color: COLORS.primary }}>GET IN TOUCH</span>
+          <h2 className="text-3xl font-black mt-1 mb-3" style={{ color: COLORS.accent }}>Contact BIO MAX</h2>
+          <p className="text-[14px] max-w-xl mx-auto" style={{ color: COLORS.muted }}>
+            Have a question about our products or services? Fill out the form below and our team will get back to you shortly.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-10 items-start">
+          {/* Contact Info */}
+          <div className="lg:col-span-2 space-y-6">
+            {[
+              { icon: Mail, label: "Email Us", value: "info@biomaxcorporation.com" },
+              { icon: Phone, label: "Call Us", value: "+92 XXX XXXXXXX" },
+              { icon: MapPin, label: "Visit Us", value: "Your Office Address, City, Pakistan" },
+            ].map(({ icon: Icon, label, value }) => (
+              <div key={label} className="flex items-start gap-4 p-5 rounded-xl bg-white border shadow-sm" style={{ borderColor: COLORS.border }}>
+                <div
+                  className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: `${COLORS.primary}15` }}
+                >
+                  <Icon size={22} style={{ color: COLORS.primary }} />
+                </div>
+                <div>
+                  <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: COLORS.primary }}>{label}</p>
+                  <p className="text-[13.5px] font-semibold mt-0.5" style={{ color: COLORS.ink }}>{value}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Contact Form */}
+          <div className="lg:col-span-3 bg-white rounded-2xl border shadow-md p-8" style={{ borderColor: COLORS.border }}>
+            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>First Name</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Ali"
+                    className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
+                    style={{ borderColor: COLORS.border, color: COLORS.ink, "--tw-ring-color": COLORS.primary }}
+                  />
+                </div>
+                <div>
+                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Last Name</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Ahmed"
+                    className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
+                    style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Email Address</label>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
+                  style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                />
+              </div>
+              <div>
+                <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Phone Number</label>
+                <input
+                  type="tel"
+                  placeholder="+92 3XX XXXXXXX"
+                  className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
+                  style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                />
+              </div>
+              <div>
+                <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Service</label>
+                <select
+                  className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
+                  style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                >
+                  {SOLUTIONS.map(({ title }) => (
+                    <option key={title} value={title}>{title}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Message</label>
+                <textarea
+                  rows={4}
+                  placeholder="Write your message here..."
+                  className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all resize-none"
+                  style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-lg text-[13px] font-extrabold uppercase tracking-wide text-white transition-opacity hover:opacity-90"
+                style={{ backgroundColor: COLORS.primary }}
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -740,6 +995,7 @@ export default function BioMaxCorporationPage() {
       <CommitmentStatsSection />
       <RndQualitySection />
       <TestimonialsFaqSection />
+      <ContactSection />
       <CtaSection />
       <Footer />
     </main>
