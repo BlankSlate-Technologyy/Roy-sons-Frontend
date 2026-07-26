@@ -69,15 +69,15 @@ export default function Expertise() {
         {/* Right Side: Image */}
         <div className="lg:col-span-5 relative w-full flex justify-center">
           <div
-            className="relative w-full max-w-[420px] h-[360px] rounded-2xl overflow-hidden shadow-xl border"
+            className="relative w-full max-w-[480px] h-[380px] lg:h-[440px] rounded-2xl overflow-hidden shadow-xl border group"
             style={{ borderColor: COLORS.border }}
           >
             <Image
               src="/gatwayareaofexperince.png"
               alt="Medical regulatory scales and books"
               fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 450px"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 1024px) 100vw, 500px"
             />
           </div>
         </div>

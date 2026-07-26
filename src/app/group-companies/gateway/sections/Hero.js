@@ -68,7 +68,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative w-full max-w-[480px] h-[340px] sm:h-[400px] rounded-2xl overflow-hidden shadow-xl border"
+            className="relative w-full max-w-[520px] h-[380px] sm:h-[440px] lg:h-[480px] rounded-2xl overflow-hidden shadow-2xl border group"
             style={{ borderColor: COLORS.border }}
           >
             <Image
@@ -76,8 +76,8 @@ export default function Hero() {
               alt="Gateway Pharmaceutical Regulatory Experts"
               fill
               priority
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 500px"
+              className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              sizes="(max-width: 1024px) 100vw, 550px"
             />
 
             {/* Premium Corporate Badging */}

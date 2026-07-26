@@ -513,14 +513,16 @@ function Navbar() {
           href="/group-companies"
           className="flex items-center"
         >
-          <Image
-            src="/vet vec pharma.jpeg"
-            alt="VET VAC PHARMA Logo"
-            width={160}
-            height={50}
-            className="h-12 w-auto object-contain"
-            priority
-          />
+          <div className="relative flex items-center py-1">
+            <Image
+              src="/logo (1).png"
+              alt="VET VAC PHARMA Logo"
+              width={260}
+              height={85}
+              className="h-16 sm:h-20 w-auto object-contain"
+              priority
+            />
+          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6">
@@ -532,7 +534,7 @@ function Navbar() {
                 key={item.label}
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
-                className="relative text-[12.5px] font-semibold py-1 transition-colors hover:text-[#1B4FCC] cursor-pointer"
+                className="relative text-[16px] font-bold py-1 transition-colors hover:text-[#1B4FCC] cursor-pointer"
                 style={{ color: isActive ? COLORS.primary : COLORS.ink }}
               >
                 {item.label}
@@ -550,7 +552,7 @@ function Navbar() {
           <a
             href="#contact"
             onClick={(e) => scrollToSection(e, "#contact-form")}
-            className="relative text-[12.5px] font-semibold py-1 transition-colors hover:text-[#1B4FCC] cursor-pointer"
+            className="relative text-[16px] font-bold py-1 transition-colors hover:text-[#1B4FCC] cursor-pointer"
             style={{
               color: activeSection === "contact-form" ? COLORS.primary : COLORS.ink,
             }}
@@ -995,13 +997,13 @@ function CommitmentRndSection() {
             with reliable solutions, we contribute to healthier animals, safer
             food, and a better tomorrow.
           </p>
-          <div className="relative w-full h-[160px] rounded-lg overflow-hidden">
+          <div className="relative w-full h-[240px] rounded-xl overflow-hidden shadow-sm">
             <Image
-              src="/biomax committed.png"
-              alt="Hands holding a growing sprout, symbolizing sustainable farming"
+              src="/vetvac_commitment.jpg"
+              alt="Professional scientist conducting laboratory research for animal health"
               fill
-              className="object-cover"
-              sizes="500px"
+              className="object-cover object-center"
+              sizes="600px"
             />
           </div>
         </div>
@@ -1640,55 +1642,48 @@ function ContactSection() {
 // ─── Google Map Section ──────────────────────────────────────────────────────
 function MapSection() {
   return (
-    <section
-      className="section-animate px-6 pb-0"
-      style={{ backgroundColor: COLORS.white }}
-    >
-      <div className="mx-auto max-w-screen-xl">
+    <section className="relative w-full overflow-hidden bg-slate-50">
+      {/* Floating Address Header */}
+      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10 w-[92%] max-w-screen-xl pointer-events-none">
         <div
-          className="rounded-2xl overflow-hidden border"
+          className="pointer-events-auto flex items-center gap-3.5 rounded-2xl border bg-white/95 backdrop-blur-md px-6 py-4 shadow-xl max-w-3xl mx-auto"
           style={{ borderColor: COLORS.border }}
         >
-          {/* Header */}
           <div
-            className="px-8 py-5 flex items-center gap-3 border-b"
-            style={{ borderColor: COLORS.border }}
+            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style={{ backgroundColor: `${COLORS.primary}15` }}
           >
-            <div
-              className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: `${COLORS.primary}15` }}
-            >
-              <MapPin size={18} style={{ color: COLORS.primary }} />
-            </div>
-            <div>
-              <p
-                className="text-[11px] font-black uppercase tracking-widest"
-                style={{ color: COLORS.primary }}
-              >
-                Find Us
-              </p>
-              <p
-                className="text-[13px] font-semibold"
-                style={{ color: COLORS.ink }}
-              >
-                1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
-              </p>
-            </div>
+            <MapPin size={20} color={COLORS.primary} />
           </div>
-          {/* Map Embed */}
-          <div className="w-full h-[380px]">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904de60e29e3b%3A0x9a9d95ad0e1c7d50!2sRehman%20Centre-2%2C%20Ring%20Rd%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000"
-              width="100%"
-              height="380"
-              style={{ border: 0, display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="VET VAC PHARMA Office Location"
-            />
+          <div>
+            <p
+              className="text-[11px] font-black uppercase tracking-widest mb-0.5"
+              style={{ color: COLORS.primary }}
+            >
+              Find Us
+            </p>
+            <p
+              className="text-xs sm:text-sm font-semibold leading-snug"
+              style={{ color: COLORS.ink }}
+            >
+              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
+            </p>
           </div>
         </div>
+      </div>
+
+      {/* Map Embed - Full Width */}
+      <div className="w-full h-[500px] md:h-[550px] lg:h-[600px] relative">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904de60e29e3b%3A0x9a9d95ad0e1c7d50!2sRehman%20Centre-2%2C%20Ring%20Rd%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000"
+          width="100%"
+          height="100%"
+          style={{ border: 0, display: "block" }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="VET VAC PHARMA Office Location"
+        />
       </div>
     </section>
   );
@@ -1703,13 +1698,13 @@ function Footer() {
       <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10">
         <div className="lg:col-span-2 max-w-xs">
           <div className="flex items-center mb-4">
-            <div className="bg-white p-2 rounded-lg flex items-center justify-center">
+            <div className="bg-white px-4 py-2 rounded-xl flex items-center justify-center shadow-sm">
               <Image
-                src="/vet vec pharma.jpeg"
+                src="/logo (1).png"
                 alt="VET VAC PHARMA Logo"
-                width={150}
-                height={45}
-                className="h-10 w-auto object-contain"
+                width={240}
+                height={75}
+                className="h-14 sm:h-16 w-auto object-contain"
               />
             </div>
           </div>

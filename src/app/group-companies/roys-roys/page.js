@@ -308,7 +308,7 @@ function Navbar() {
                   });
                 }
               }}
-              className="text-[12.5px] font-bold uppercase tracking-wider bg-transparent border-0 cursor-pointer hover:text-[#009088] transition-colors"
+              className="text-[16px] font-bold uppercase tracking-wider bg-transparent border-0 cursor-pointer hover:text-[#009088] transition-colors"
               style={{ color: COLORS.black }}
             >
               {item}
@@ -381,9 +381,9 @@ function TrustedBanner() {
   }, [maxIndex]);
 
   return (
-    <section className="py-3 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+    <section className="py-6 md:py-8 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl">
-        <p className="text-center text-[11px] font-black tracking-[0.24em] text-neutral-500 uppercase mb-3">
+        <p className="text-center text-[11px] font-black tracking-[0.24em] text-neutral-500 uppercase mb-4">
           TRUSTED BY LEADING ORGANIZATIONS
         </p>
 
@@ -399,17 +399,17 @@ function TrustedBanner() {
                 style={{ minWidth: `${100 / visibleCount}%` }}
               >
                 {logo.img ? (
-                  <div className="relative w-full h-14">
+                  <div className="relative w-full h-24 sm:h-28 md:h-32">
                     <Image
                       src={logo.img}
                       alt={logo.name}
                       fill
                       className="object-contain"
-                      sizes="220px"
+                      sizes="350px"
                     />
                   </div>
                 ) : (
-                  <span className="text-[16px] font-black tracking-wider text-neutral-800">{logo.abbr}</span>
+                  <span className="text-xl md:text-2xl font-black tracking-wider text-neutral-800">{logo.abbr}</span>
                 )}
               </div>
             ))}

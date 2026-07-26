@@ -97,26 +97,12 @@ export default function Footer() {
           <div className="lg:col-span-1 flex flex-col gap-5">
             <a href="#home" className="flex items-center gap-3 select-none w-fit">
               <Image
-                src="/gateway.jpeg"
+                src="/logo (2).png"
                 alt="Gateway Pharmaceuticals Logo"
-                width={52}
-                height={52}
-                className="object-cover rounded-lg border shadow"
-                style={{ borderColor: "rgba(255,255,255,0.2)" }}
+                width={220}
+                height={70}
+                className="h-16 w-auto object-contain"
               />
-              <div className="flex flex-col">
-                <span
-                  className="text-[13px] font-extrabold uppercase leading-tight tracking-wider text-white"
-                >
-                  Gateway Pharmaceuticals
-                </span>
-                <span
-                  className="text-[10px] font-bold tracking-widest uppercase"
-                  style={{ color: COLORS.secondary }}
-                >
-                  Consultants
-                </span>
-              </div>
             </a>
 
             <p
@@ -133,7 +119,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg w-fit"
               style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
             >
-              <Shield size={14} style={{ color: COLORS.secondary }} />
+              <Shield size={14} className="text-white" />
               <span
                 className="text-[11px] font-bold uppercase tracking-wider"
                 style={{ color: "rgba(255,255,255,0.85)" }}
@@ -146,8 +132,7 @@ export default function Footer() {
           {/* Column 2: Quick Links */}
           <div>
             <h4
-              className="text-[11px] font-extrabold uppercase tracking-widest mb-6"
-              style={{ color: COLORS.secondary }}
+              className="text-[11px] font-extrabold uppercase tracking-widest mb-6 text-white"
             >
               Quick Links
             </h4>
@@ -161,8 +146,7 @@ export default function Footer() {
                   >
                     <ArrowRight
                       size={12}
-                      className="transition-transform duration-200 group-hover:translate-x-1"
-                      style={{ color: COLORS.secondary }}
+                      className="transition-transform duration-200 group-hover:translate-x-1 text-white"
                     />
                     <span className="group-hover:text-white transition-colors duration-200">
                       {link.label}
@@ -176,8 +160,7 @@ export default function Footer() {
           {/* Column 3: Services */}
           <div>
             <h4
-              className="text-[11px] font-extrabold uppercase tracking-widest mb-6"
-              style={{ color: COLORS.secondary }}
+              className="text-[11px] font-extrabold uppercase tracking-widest mb-6 text-white"
             >
               Our Services
             </h4>
@@ -191,8 +174,7 @@ export default function Footer() {
                   >
                     <ArrowRight
                       size={12}
-                      className="transition-transform duration-200 group-hover:translate-x-1"
-                      style={{ color: COLORS.secondary }}
+                      className="transition-transform duration-200 group-hover:translate-x-1 text-white"
                     />
                     <span className="group-hover:text-white transition-colors duration-200">
                       {svc.label}
@@ -206,8 +188,7 @@ export default function Footer() {
           {/* Column 4: Contact */}
           <div>
             <h4
-              className="text-[11px] font-extrabold uppercase tracking-widest mb-6"
-              style={{ color: COLORS.secondary }}
+              className="text-[11px] font-extrabold uppercase tracking-widest mb-6 text-white"
             >
               Contact Us
             </h4>
@@ -220,7 +201,7 @@ export default function Footer() {
                       className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
                     >
-                      <Icon size={15} style={{ color: COLORS.secondary }} />
+                      <Icon size={15} className="text-white" />
                     </div>
                     <div>
                       <p

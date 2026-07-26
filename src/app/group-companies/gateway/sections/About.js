@@ -75,38 +75,38 @@ export default function About() {
         {/* Right column: Collage layout of Images */}
         <div className="lg:col-span-6 grid grid-cols-2 gap-4">
           <div
-            className="col-span-2 relative h-[240px] rounded-2xl overflow-hidden shadow-md border"
+            className="col-span-2 relative h-[280px] rounded-2xl overflow-hidden shadow-lg border group"
             style={{ borderColor: COLORS.border }}
           >
             <Image
               src="/gatway about.png"
               alt="Healthcare professionals team work"
               fill
-              className="object-cover"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 1024px) 100vw, 600px"
             />
           </div>
           <div
-            className="relative h-[180px] rounded-2xl overflow-hidden shadow-md border"
+            className="relative h-[210px] rounded-2xl overflow-hidden shadow-md border group"
             style={{ borderColor: COLORS.border }}
           >
             <Image
               src="/gatway commited.png"
               alt="Medical dosage check"
               fill
-              className="object-cover"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 1024px) 50vw, 300px"
             />
           </div>
           <div
-            className="relative h-[180px] rounded-2xl overflow-hidden shadow-md border"
+            className="relative h-[210px] rounded-2xl overflow-hidden shadow-md border group"
             style={{ borderColor: COLORS.border }}
           >
             <Image
               src="/gatwayareaofexperince.png"
               alt="Accredited testing compliance"
               fill
-              className="object-cover"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 1024px) 50vw, 300px"
             />
           </div>

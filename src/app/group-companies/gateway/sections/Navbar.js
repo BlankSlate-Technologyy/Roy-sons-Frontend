@@ -38,7 +38,7 @@ export default function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full ${
-        scrolled ? "shadow-md py-3" : "py-4"
+        scrolled ? "shadow-md py-2" : "py-3"
       }`}
       style={{
         backgroundColor: COLORS.white,
@@ -46,29 +46,17 @@ export default function Navbar() {
       }}
     >
       <Container className="flex items-center justify-between">
-        {/* Brand Logo & Name */}
+        {/* Brand Logo */}
         <Link href="/group-companies" className="flex items-center gap-3 select-none">
-          <Image
-            src="/gateway.jpeg"
-            alt="Gateway Logo"
-            width={48}
-            height={48}
-            className="object-cover rounded-lg border shadow-sm"
-            style={{ borderColor: COLORS.border }}
-          />
-          <div className="flex flex-col">
-            <span
-              className="text-[13px] font-extrabold uppercase leading-tight tracking-wider"
-              style={{ color: COLORS.primary }}
-            >
-              Gateway Pharmaceuticals
-            </span>
-            <span
-              className="text-[10px] font-bold tracking-widest uppercase"
-              style={{ color: COLORS.secondary }}
-            >
-              Consultants
-            </span>
+          <div className="relative flex items-center py-1">
+            <Image
+              src="/logo (2).png"
+              alt="Gateway Pharmaceuticals Logo"
+              width={260}
+              height={85}
+              className="h-16 sm:h-20 w-auto object-contain"
+              priority
+            />
           </div>
         </Link>
 

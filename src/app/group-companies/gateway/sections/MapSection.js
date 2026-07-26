@@ -3,91 +3,52 @@
 import React from "react";
 import { MapPin } from "lucide-react";
 import { COLORS } from "../constants";
-import { Container } from "./Shared";
 
 export default function MapSection() {
   return (
-    <section
-      style={{
-        backgroundColor: "#F8FAFC",
-        padding: "60px 24px 0",
-      }}
-    >
-      <Container>
+    <section className="relative w-full overflow-hidden bg-slate-50">
+      {/* Floating Address Header */}
+      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10 w-[92%] max-w-screen-xl pointer-events-none">
         <div
-          style={{
-            borderRadius: "20px",
-            overflow: "hidden",
-            border: `1px solid ${COLORS.border}`,
-            backgroundColor: COLORS.white,
-            boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
-          }}
+          className="pointer-events-auto flex items-center gap-3.5 rounded-2xl border bg-white/95 backdrop-blur-md px-6 py-4 shadow-xl max-w-3xl mx-auto"
+          style={{ borderColor: COLORS.border }}
         >
-          {/* Header */}
           <div
-            style={{
-              padding: "20px 28px",
-              display: "flex",
-              alignItems: "center",
-              gap: "14px",
-              borderBottom: `1px solid ${COLORS.border}`,
-              backgroundColor: COLORS.white,
-            }}
+            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style={{ backgroundColor: `${COLORS.primary}15` }}
           >
-            <div
-              style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "10px",
-                backgroundColor: `${COLORS.primary}15`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-              }}
-            >
-              <MapPin size={20} color={COLORS.primary} />
-            </div>
-            <div>
-              <p
-                style={{
-                  fontSize: "11px",
-                  fontWeight: 800,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.15em",
-                  color: COLORS.primary,
-                  marginBottom: "2px",
-                }}
-              >
-                Find Us
-              </p>
-              <p
-                style={{
-                  fontSize: "13.5px",
-                  fontWeight: 700,
-                  color: COLORS.textDark,
-                }}
-              >
-                1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
-              </p>
-            </div>
+            <MapPin size={20} color={COLORS.primary} />
           </div>
-
-          {/* Map Embed */}
-          <div style={{ width: "100%", height: "380px" }}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904de60e29e3b%3A0x9a9d95ad0e1c7d50!2sRehman%20Centre-2%2C%20Ring%20Rd%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000"
-              width="100%"
-              height="380"
-              style={{ border: 0, display: "block" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Gateway Pharmaceuticals Consultants Location"
-            />
+          <div>
+            <p
+              className="text-[11px] font-extrabold uppercase tracking-[0.15em] mb-0.5"
+              style={{ color: COLORS.primary }}
+            >
+              Find Us
+            </p>
+            <p
+              className="text-xs sm:text-sm font-bold leading-snug"
+              style={{ color: COLORS.textDark }}
+            >
+              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
+            </p>
           </div>
         </div>
-      </Container>
+      </div>
+
+      {/* Map Embed - Full Width */}
+      <div className="w-full h-[500px] md:h-[550px] lg:h-[600px] relative">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904de60e29e3b%3A0x9a9d95ad0e1c7d50!2sRehman%20Centre-2%2C%20Ring%20Rd%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000"
+          width="100%"
+          height="100%"
+          style={{ border: 0, display: "block" }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Gateway Pharmaceuticals Consultants Location"
+        />
+      </div>
     </section>
   );
 }
