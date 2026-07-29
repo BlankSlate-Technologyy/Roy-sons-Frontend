@@ -13,19 +13,20 @@ import {
 
 const theme = {
   bg:           "#FFFFFF",
-  panel:        "#F6F8FB",
-  panelAlt:     "#EEF2F8",
-  navyDark:     "#081B33",
-  navy:         "#0B2545",
-  navySoft:     "#1E3A5F",
-  gold:         "#A9812F",
-  goldSoft:     "#C9A24B",
+  panel:        "#F4F7FA",
+  panelAlt:     "#EBF0F5",
+  navyDark:     "#050D1A",
+  navy:         "#0B1B36",
+  navySoft:     "#1C385E",
+  gold:         "#005691",
+  goldSoft:     "#0E6BA8",
+  shieldBlue:   "#005691",
   white:        "#FFFFFF",
-  textMuted:    "#45566E",
-  textFaint:    "#7A8AA0",
-  border:       "rgba(11,37,69,0.14)",
-  borderSoft:   "rgba(11,37,69,0.08)",
-  borderStrong: "rgba(11,37,69,0.25)",
+  textMuted:    "#3E5063",
+  textFaint:    "#5A6E7F",
+  border:       "rgba(0, 86, 145, 0.14)",
+  borderSoft:   "rgba(0, 86, 145, 0.08)",
+  borderStrong: "rgba(0, 86, 145, 0.28)",
 };
 
 // Every translucent overlay in this file is generated from the hex values in
@@ -249,7 +250,7 @@ function StatCard({ icon: Icon, value, label }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center text-center gap-2 p-5 rounded-lg border transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-500/60 hover:shadow-lg`}
+      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center text-center gap-2 p-5 rounded-lg border transition-all duration-300 hover:-translate-y-1.5 hover:border-[#005691]/60 hover:shadow-lg`}
       style={{ backgroundColor: theme.panel, borderColor: theme.border }}
     >
       <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: hexToRgba(theme.gold, 0.1), border: `1px solid ${theme.border}` }}>
@@ -268,13 +269,13 @@ function SolutionCard({ icon: Icon, title, desc }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group p-6 rounded-lg border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-amber-500/60`}
+      className={`reveal ${visible ? "is-visible" : ""} group p-6 rounded-lg border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#005691]/60`}
       style={{ backgroundColor: theme.panel, borderColor: theme.border }}
     >
-      <div className="w-11 h-11 rounded-md flex items-center justify-center mb-5 border transition-all duration-300 group-hover:bg-[#A9812F]/15 group-hover:scale-110 group-hover:border-amber-500/50" style={{ borderColor: theme.border }}>
+      <div className="w-11 h-11 rounded-md flex items-center justify-center mb-5 border transition-all duration-300 group-hover:bg-[#005691]/15 group-hover:scale-110 group-hover:border-[#005691]/50" style={{ borderColor: theme.border }}>
         <Icon size={18} style={{ color: theme.gold }} />
       </div>
-      <h3 className="text-[13px] font-black uppercase tracking-wide mb-2.5 transition-colors duration-300 group-hover:text-amber-600" style={{ color: theme.navy }}>{title}</h3>
+      <h3 className="text-[13px] font-black uppercase tracking-wide mb-2.5 transition-colors duration-300 group-hover:text-[#005691]" style={{ color: theme.navy }}>{title}</h3>
       <p className="text-[11.5px] leading-relaxed" style={{ color: theme.textMuted }}>{desc}</p>
     </div>
   );
@@ -285,10 +286,10 @@ function IndustryCard({ icon: Icon, label }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-amber-500/60 hover:-translate-y-1 hover:scale-105 hover:shadow-md`}
+      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-[#005691]/60 hover:-translate-y-1 hover:scale-105 hover:shadow-md`}
       style={{ backgroundColor: theme.panel, borderColor: theme.border }}
     >
-      <div className="w-11 h-11 rounded-full flex items-center justify-center mb-3 border transition-all duration-300 group-hover:bg-[#A9812F]/15 group-hover:scale-110" style={{ borderColor: theme.border }}>
+      <div className="w-11 h-11 rounded-full flex items-center justify-center mb-3 border transition-all duration-300 group-hover:bg-[#005691]/15 group-hover:scale-110" style={{ borderColor: theme.border }}>
         <Icon size={17} style={{ color: theme.gold }} />
       </div>
       <p className="text-[9.5px] font-bold leading-snug uppercase tracking-wide whitespace-pre-line" style={{ color: theme.navy }}>{label}</p>
@@ -301,10 +302,10 @@ function TechCard({ icon: Icon, label }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-amber-500/50 hover:-translate-y-1 hover:shadow-md`}
+      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-[#005691]/50 hover:-translate-y-1 hover:shadow-md`}
       style={{ backgroundColor: theme.panelAlt, borderColor: theme.border }}
     >
-      <div className="w-10 h-10 rounded-lg flex items-center justify-center border mb-2 transition-all duration-300 group-hover:bg-[#A9812F]/20 group-hover:scale-110" style={{ borderColor: theme.border, backgroundColor: theme.panel }}>
+      <div className="w-10 h-10 rounded-lg flex items-center justify-center border mb-2 transition-all duration-300 group-hover:bg-[#005691]/20 group-hover:scale-110" style={{ borderColor: theme.border, backgroundColor: theme.panel }}>
         <Icon size={15} style={{ color: theme.gold }} />
       </div>
       <span className="text-[9.5px] font-bold leading-tight uppercase tracking-wider whitespace-pre-line" style={{ color: theme.navy }}>{label}</span>
@@ -317,14 +318,14 @@ function FeaturedCard({ title, desc }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group rounded-lg border overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-amber-500/50`}
+      className={`reveal ${visible ? "is-visible" : ""} group rounded-lg border overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#005691]/50`}
       style={{ backgroundColor: theme.panel, borderColor: theme.border }}
     >
       <div className="relative w-full h-36 flex items-center justify-center overflow-hidden" style={{ background: `linear-gradient(135deg, ${hexToRgba(theme.navy, 0.06)}, ${hexToRgba(theme.navy, 0.12)})` }}>
         <span className="text-[13px] font-black transition-transform duration-500 group-hover:scale-110" style={{ color: theme.textFaint }}>Image Placeholder</span>
       </div>
       <div className="p-5">
-        <h3 className="text-[12.5px] font-black uppercase tracking-wide mb-2 transition-colors duration-300 group-hover:text-amber-600" style={{ color: theme.navy }}>{title}</h3>
+        <h3 className="text-[12.5px] font-black uppercase tracking-wide mb-2 transition-colors duration-300 group-hover:text-[#005691]" style={{ color: theme.navy }}>{title}</h3>
         <p className="text-[11px] leading-relaxed" style={{ color: theme.textMuted }}>{desc}</p>
       </div>
     </div>
@@ -336,9 +337,9 @@ function ProcessStep({ step, icon: Icon, title, isLast }) {
   return (
     <div ref={ref} className={`reveal ${visible ? "is-visible" : ""} flex flex-col items-center text-center relative flex-1 min-w-[100px] group`}>
       {!isLast && (
-        <div className="hidden lg:block absolute top-7 left-[calc(50%+28px)] w-[calc(100%-56px)] h-[2px] border-t-2 border-dashed z-0 transition-colors group-hover:border-amber-500/60" style={{ borderColor: theme.border }} />
+        <div className="hidden lg:block absolute top-7 left-[calc(50%+28px)] w-[calc(100%-56px)] h-[2px] border-t-2 border-dashed z-0 transition-colors group-hover:border-[#005691]/60" style={{ borderColor: theme.border }} />
       )}
-      <div className="relative w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:border-amber-500 group-hover:scale-110 group-hover:shadow-md z-10" style={{ borderColor: theme.border, backgroundColor: theme.bg }}>
+      <div className="relative w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:border-[#005691] group-hover:scale-110 group-hover:shadow-md z-10" style={{ borderColor: theme.border, backgroundColor: theme.bg }}>
         <Icon size={18} style={{ color: theme.gold }} />
         <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full text-[9px] font-black flex items-center justify-center border shadow-sm" style={{ borderColor: theme.border, backgroundColor: theme.gold, color: theme.white }}>
           {step}
@@ -365,7 +366,7 @@ function FaqItem({ question, answer, isOpen, onToggle }) {
   return (
     <div className="rounded-lg border overflow-hidden transition-all duration-300" style={{ backgroundColor: theme.panelAlt, borderColor: theme.border }}>
       <button onClick={onToggle} className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left group transition-all duration-200">
-        <span className="text-[12.5px] font-bold tracking-wide transition-colors group-hover:text-amber-600" style={{ color: theme.navy }}>{question}</span>
+        <span className="text-[12.5px] font-bold tracking-wide transition-colors group-hover:text-[#005691]" style={{ color: theme.navy }}>{question}</span>
         <div className="w-6 h-6 rounded-full flex items-center justify-center border transition-all flex-shrink-0" style={{ borderColor: theme.border, backgroundColor: theme.panel }}>
           {isOpen ? <Minus size={12} style={{ color: theme.gold }} /> : <Plus size={12} style={{ color: theme.gold }} />}
         </div>
@@ -449,7 +450,7 @@ function ContactForm() {
           <input
             type="text" name="name" value={form.name} onChange={handleChange}
             placeholder="John Doe"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-amber-500"
+            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
             style={inputStyle}
           />
         </div>
@@ -458,7 +459,7 @@ function ContactForm() {
           <input
             type="email" name="email" value={form.email} onChange={handleChange}
             placeholder="john@company.com"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-amber-500"
+            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
             style={inputStyle}
           />
         </div>
@@ -470,7 +471,7 @@ function ContactForm() {
           <input
             type="tel" name="phone" value={form.phone} onChange={handleChange}
             placeholder="+1 (800) 123-4567"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-amber-500"
+            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
             style={inputStyle}
           />
         </div>
@@ -479,7 +480,7 @@ function ContactForm() {
           <input
             type="text" name="company" value={form.company} onChange={handleChange}
             placeholder="Organization / Agency"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-amber-500"
+            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
             style={inputStyle}
           />
         </div>
@@ -521,7 +522,7 @@ function ContactForm() {
         <textarea
           name="message" value={form.message} onChange={handleChange} rows={4}
           placeholder="Tell us about your site, threat profile, and operational requirements..."
-          className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all resize-none focus:border-amber-500"
+          className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all resize-none focus:border-[#005691]"
           style={inputStyle}
         />
       </div>
@@ -545,9 +546,11 @@ export default function AlphaMatrixPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   useEffect(() => {
+    document.body.classList.add("roys-roys-theme");
     document.body.style.backgroundColor = theme.bg;
     document.body.style.color = theme.navy;
     return () => {
+      document.body.classList.remove("roys-roys-theme");
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
     };
@@ -556,7 +559,7 @@ export default function AlphaMatrixPage() {
   const toggleFaq = (index) => setOpenFaqIndex(openFaqIndex === index ? -1 : index);
 
   return (
-    <div className="min-h-screen font-sans selection:bg-amber-600 selection:text-white" style={{ backgroundColor: theme.bg, color: theme.navy }}>
+    <div className="roys-roys-theme min-h-screen font-sans selection:bg-[#005691] selection:text-white" style={{ backgroundColor: theme.bg, color: theme.navy }}>
       {/* Forces every page background/text back to the theme object above,
           so an external globals.css (or a browser/OS "dark mode" that
           auto-inverts light sites) can never repaint this page black. */}
@@ -565,6 +568,21 @@ export default function AlphaMatrixPage() {
           background-color: ${theme.bg} !important;
           color: ${theme.navy} !important;
           color-scheme: light !important;
+        }
+        .roys-roys-theme h1,
+        .roys-roys-theme h2,
+        .roys-roys-theme h3,
+        .roys-roys-theme h4,
+        .roys-roys-theme h5,
+        .roys-roys-theme h6,
+        .roys-roys-theme p,
+        .roys-roys-theme span,
+        .roys-roys-theme li,
+        .roys-roys-theme a,
+        .roys-roys-theme label,
+        .roys-roys-theme button {
+          -webkit-text-fill-color: initial !important;
+          background-image: none !important;
         }
       `}</style>
 
@@ -577,13 +595,13 @@ export default function AlphaMatrixPage() {
             </div>
             <div className="leading-tight">
               <p className="text-[14px] md:text-[15px] font-black tracking-wide uppercase" style={{ color: theme.navy }}>ALPHA MATRIX</p>
-              <p className="text-[7.5px] md:text-[8.5px] font-bold tracking-[0.28em]" style={{ color: theme.gold }}>DEFENCE SYSTEMS</p>
+              <p className="text-[7.5px] md:text-[8.5px] font-bold tracking-[0.28em]" style={{ color: theme.textFaint }}>DEFENCE SYSTEM</p>
             </div>
           </a>
 
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map(({ label, href, hasDropdown }) => (
-              <a key={label} href={href} className="text-[12px] font-black uppercase tracking-wider transition-colors hover:text-amber-600" style={{ color: theme.textMuted }}>
+              <a key={label} href={href} className="text-[12px] font-black uppercase tracking-wider transition-colors hover:text-[#005691]" style={{ color: theme.textMuted }}>
                 <span className="flex items-center gap-1">
                   {label}
                   {hasDropdown && <ChevronDown size={13} style={{ color: theme.gold }} />}
@@ -905,7 +923,7 @@ export default function AlphaMatrixPage() {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href={`#${link.toLowerCase().replace(/\s+/g, "")}`} className="text-[12px] transition-colors duration-200 hover:text-amber-400" style={{ color: hexToRgba(theme.white, 0.55) }}>
+                    <a href={`#${link.toLowerCase().replace(/\s+/g, "")}`} className="text-[12px] transition-colors duration-200 hover:text-[#005691]" style={{ color: hexToRgba(theme.white, 0.55) }}>
                       {link}
                     </a>
                   </li>

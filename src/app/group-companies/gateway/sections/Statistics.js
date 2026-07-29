@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState, useRef } from "react";
 import { COLORS, STATS_ITEMS } from "../constants";
 import { Container, Card } from "./Shared";

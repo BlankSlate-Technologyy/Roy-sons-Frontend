@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,19 +8,21 @@ import {
   ChevronDown, ClipboardCheck, ClipboardList, Clock, Eye, Facebook,
   Factory, FileText, GraduationCap, HardHat, Headphones, Home as HomeIcon,
   Hotel, Landmark, Linkedin, Lock, Mail, MapPin, MapPinned, Minus,
-  Network, Phone, Plus, Radio, ScanEye, Search, Shield, ShieldCheck,
-  ShoppingBag, Star, Stethoscope, ThumbsUp, Twitter, UserCheck, Users,
+  Network, Phone, Plus, Radio, ScanEye, Search, Send, Shield, ShieldCheck,
+  ShoppingBag, Star, Stethoscope, ThumbsUp, Twitter, User, UserCheck, Users,
   Warehouse, Youtube,
 } from "lucide-react";
 
 const theme = {
-  navy:      "#ffffff",
-  gold:      "#BCA374",
-  white:     "#000000",
-  bgLight:   "#0c0c0c",
-  border:    "#222222",
-  textMuted: "#94A3B8",
-  textLight: "#CBD5E1",
+  navy:      "#1B365D",   // Shield Navy Blue from National Guard logo
+  navyDark:  "#0F2540",
+  gold:      "#C5A059",   // Wreath Gold from National Guard logo
+  goldHover: "#A6823B",
+  white:     "#ffffff",
+  bgLight:   "#F4F6F9",
+  border:    "#E2E7EE",
+  textMuted: "#4A5B73",
+  textLight: "#6E7F98",
 };
 
 const navLinks = [
@@ -33,11 +35,11 @@ const navLinks = [
 ];
 
 const stats = [
-  { icon: ShieldCheck, value: "10+",    label: "Years of\nExperience" },
-  { icon: Users,       value: "500+",   label: "Security\nProfessionals" },
-  { icon: Building2,   value: "1,000+", label: "Protected\nSites" },
-  { icon: Clock,       value: "24/7",   label: "Security\nOperations" },
-  { icon: ThumbsUp,    value: "99%",    label: "Client\nSatisfaction" },
+  { icon: ShieldCheck, value: 10,   suffix: "+",  label: "Years of\nExperience" },
+  { icon: Users,       value: 500,  suffix: "+",  label: "Security\nProfessionals" },
+  { icon: Building2,   value: 1000, suffix: "+",  label: "Protected\nSites" },
+  { icon: Clock,       value: 24,   suffix: "/7", label: "Security\nOperations" },
+  { icon: ThumbsUp,    value: 99,   suffix: "%",  label: "Client\nSatisfaction" },
 ];
 
 const services = [
@@ -167,7 +169,7 @@ const socialIcons = [Facebook, Linkedin, Twitter, Youtube];
 // Small reusable pieces
 function SectionLabel({ children }) {
   return (
-    <p className="text-[11px] font-black uppercase tracking-[0.25em] mb-3 text-gold-override">
+    <p className="text-[11px] font-black uppercase tracking-[0.25em] mb-3 text-navy-override">
       {children}
     </p>
   );
@@ -181,15 +183,48 @@ function SectionHeading({ children, className = "" }) {
   );
 }
 
-function StatCard({ icon: Icon, value, label }) {
+// Animated counter: counts up from 0 to `value` once it scrolls into view
+function useCountUp(target, duration = 1800, start = false) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!start) return;
+    let rafId;
+    const startTime = performance.now();
+
+    const tick = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-out for a nice deceleration near the end
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        setCount(target);
+      }
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, [start, target, duration]);
+
+  return count;
+}
+
+function StatCard({ icon: Icon, value, suffix, label, startCounting }) {
+  const count = useCountUp(value, 1800, startCounting);
   return (
-    <div className="flex items-center gap-4 p-5 rounded-lg border transition-all duration-300 hover:border-amber-500/30 panel-bg-override">
+    <div className="flex items-center gap-4 p-5 rounded-lg border transition-all duration-300 hover:border-[#C5A059]/40 hover:-translate-y-1 hover:shadow-lg panel-bg-override">
       <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 stats-icon-wrapper">
-        <Icon size={22} style={{ color: theme.gold }} />
+        <Icon size={22} style={{ color: theme.navy }} />
       </div>
       <div className="leading-tight">
-        <p className="text-xl md:text-2xl font-black text-navy-override">{value}</p>
-        <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider mt-0.5 whitespace-pre-line text-light-override">
+        <p className="text-xl md:text-2xl font-black text-navy-override tabular-nums">
+          {count}
+          {suffix}
+        </p>
+        <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider mt-0.5 whitespace-pre-line text-navy-override">
           {label}
         </p>
       </div>
@@ -197,9 +232,42 @@ function StatCard({ icon: Icon, value, label }) {
   );
 }
 
+// Wrapper that detects when the stats section scrolls into view and
+// triggers the count-up animation for every StatCard inside it.
+function StatsCounterSection({ items }) {
+  const sectionRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={sectionRef} className="grid grid-cols-2 md:grid-cols-5 gap-5">
+      {items.map((stat) => (
+        <StatCard key={stat.label} {...stat} startCounting={inView} />
+      ))}
+    </div>
+  );
+}
+
 function ServiceCard({ icon: Icon, title, desc, img }) {
   return (
-    <div className="group rounded-lg border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl panel-bg-override">
+    <div className="group service-card-hover rounded-lg border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl panel-bg-override">
       <div className="relative w-full h-40 bg-slate-100">
         <img
           src={img}
@@ -209,14 +277,14 @@ function ServiceCard({ icon: Icon, title, desc, img }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-85" />
         <div className="absolute bottom-3 left-4 p-2 rounded-md border shadow-sm panel-bg-override">
-          <Icon size={16} style={{ color: theme.gold }} />
+          <Icon size={16} style={{ color: theme.navy }} />
         </div>
       </div>
       <div className="p-5">
-        <h3 className="text-[13px] font-black uppercase tracking-wide mb-2.5 transition-colors group-hover:text-amber-600 text-navy-override">
+        <h3 className="service-card-title text-[13px] font-black uppercase tracking-wide mb-2.5 transition-colors text-navy-override">
           {title}
         </h3>
-        <p className="text-[11.5px] leading-relaxed text-muted-override">{desc}</p>
+        <p className="service-card-desc text-[11.5px] leading-relaxed text-navy-override">{desc}</p>
       </div>
     </div>
   );
@@ -224,11 +292,11 @@ function ServiceCard({ icon: Icon, title, desc, img }) {
 
 function IndustryCard({ icon: Icon, label }) {
   return (
-    <div className="group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-amber-500/40 hover:scale-105 panel-bg-override">
-      <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 border transition-all duration-300 group-hover:bg-[#BCA374]/10 border-override bg-light-override">
-        <Icon size={18} style={{ color: theme.gold }} />
+    <div className="group industry-card-hover flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:scale-105 panel-bg-override">
+      <div className="industry-card-iconwrap w-12 h-12 rounded-full flex items-center justify-center mb-3 border transition-all duration-300 border-override bg-light-override">
+        <Icon size={18} style={{ color: theme.navy }} className="industry-card-icon" />
       </div>
-      <p className="text-[9.5px] font-bold leading-snug uppercase tracking-wide whitespace-pre-line text-navy-override">
+      <p className="industry-card-label text-[9.5px] font-bold leading-snug uppercase tracking-wide whitespace-pre-line text-navy-override">
         {label}
       </p>
     </div>
@@ -240,13 +308,13 @@ function ProcessStep({ step, icon: Icon, title, isLast }) {
     <div className="flex flex-col items-center text-center relative flex-1 min-w-[90px] group">
       {!isLast && (
         <div
-          className="hidden lg:block absolute top-7 left-[calc(50%+24px)] w-[calc(100%-48px)] h-[2px] border-t-2 border-dashed z-0 transition-colors group-hover:border-amber-500/50"
-          style={{ borderColor: `${theme.gold}44` }}
+          className="hidden lg:block absolute top-7 left-[calc(50%+24px)] w-[calc(100%-48px)] h-[2px] border-t-2 border-dashed z-0 transition-colors group-hover:border-[#C5A059]"
+          style={{ borderColor: `${theme.navy}44` }}
         />
       )}
-      <div className="relative w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:border-amber-500 group-hover:scale-105 z-10 border-override bg-white-override">
-        <Icon size={18} style={{ color: theme.gold }} />
-        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full text-[9px] font-black flex items-center justify-center border shadow-sm border-override bg-gold-override text-white">
+      <div className="relative w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:border-[#C5A059] group-hover:scale-105 z-10 border-override bg-white-override">
+        <Icon size={18} style={{ color: theme.navy }} />
+        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full text-[9px] font-black flex items-center justify-center border shadow-sm border-override bg-navy-override text-white">
           {step}
         </div>
       </div>
@@ -259,9 +327,9 @@ function ProcessStep({ step, icon: Icon, title, isLast }) {
 
 function TechCard({ icon: Icon, label }) {
   return (
-    <div className="group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-amber-500/30 border-override bg-light-override">
-      <div className="w-10 h-10 rounded-lg flex items-center justify-center border mb-2 group-hover:bg-[#BCA374]/20 transition-all border-override bg-white-override">
-        <Icon size={16} style={{ color: theme.gold }} />
+    <div className="group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-[#C5A059]/50 border-override bg-light-override">
+      <div className="w-10 h-10 rounded-lg flex items-center justify-center border mb-2 group-hover:bg-[#1B365D]/10 transition-all border-override bg-white-override">
+        <Icon size={16} style={{ color: theme.navy }} />
       </div>
       <span className="text-[9.5px] font-bold leading-tight uppercase tracking-wider whitespace-pre-line text-navy-override">
         {label}
@@ -278,11 +346,11 @@ function TestimonialCard({ name, role, quote }) {
           <Star key={i} size={11} fill={theme.gold} style={{ color: theme.gold }} />
         ))}
       </div>
-      <p className="text-[12px] leading-relaxed italic mb-4 text-muted-override font-medium">
+      <p className="text-[12px] leading-relaxed italic mb-4 text-navy-override font-medium">
         &ldquo;{quote}&rdquo;
       </p>
       <p className="text-[11.5px] font-black uppercase tracking-wider text-navy-override">{name}</p>
-      <p className="text-[9.5px] font-bold uppercase tracking-widest mt-0.5 text-light-override">{role}</p>
+      <p className="text-[9.5px] font-bold uppercase tracking-widest mt-0.5 text-navy-override">{role}</p>
     </div>
   );
 }
@@ -291,139 +359,390 @@ function FaqItem({ question, answer, isOpen, onToggle }) {
   return (
     <div
       className="rounded-lg border overflow-hidden transition-all duration-300 border-override bg-white-override"
-      style={{ backgroundColor: isOpen ? "rgba(0,0,0,0.01)" : "#ffffff" }}
+      style={{ backgroundColor: isOpen ? "rgba(27,54,93,0.02)" : "#ffffff" }}
     >
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left group transition-all duration-200"
       >
-        <span className="text-[12.5px] font-bold group-hover:text-amber-600 tracking-wide transition-colors text-navy-override">
+        <span className="text-[12.5px] font-bold group-hover:text-[#C5A059] tracking-wide transition-colors text-navy-override">
           {question}
         </span>
         <div className="w-6 h-6 rounded-full flex items-center justify-center border transition-all border-override bg-white-override">
           {isOpen ? (
-            <Minus size={12} style={{ color: theme.gold }} />
+            <Minus size={12} style={{ color: theme.navy }} />
           ) : (
-            <Plus size={12} style={{ color: theme.gold }} />
+            <Plus size={12} style={{ color: theme.navy }} />
           )}
         </div>
       </button>
       <div className={`transition-all duration-300 overflow-hidden ${isOpen ? "max-h-40 border-t" : "max-h-0"} border-override`}>
-        <p className="p-5 text-[12px] leading-relaxed text-muted-override faq-panel-open">{answer}</p>
+        <p className="p-5 text-[12px] leading-relaxed text-navy-override faq-panel-open">{answer}</p>
       </div>
     </div>
   );
 }
 
+// ── Contact Us form ───────────────────────────────────────────────────────
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus("error");
+      return;
+    }
+
+    setStatus("submitting");
+    try {
+      // Replace this with your real API endpoint / email service call.
+      await new Promise((resolve) => setTimeout(resolve, 1200));
+      setStatus("success");
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    } catch (err) {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div className="relative">
+          <User size={15} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: theme.navy }} />
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Full Name"
+            className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300"
+            required
+          />
+        </div>
+        <div className="relative">
+          <Mail size={15} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: theme.navy }} />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email Address"
+            className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300"
+            required
+          />
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div className="relative">
+          <Phone size={15} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: theme.navy }} />
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Phone Number"
+            className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300"
+          />
+        </div>
+        <div className="relative">
+          <ShieldCheck size={15} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: theme.navy }} />
+          <select
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300 appearance-none"
+          >
+            <option value="">Select a Service</option>
+            <option value="Manned Guarding">Manned Guarding</option>
+            <option value="Mobile Patrol">Mobile Patrol Services</option>
+            <option value="CCTV Monitoring">CCTV Monitoring</option>
+            <option value="Risk Assessment">Risk Assessment</option>
+            <option value="Event Security">Event Security</option>
+            <option value="Facility Protection">Facility Protection</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="relative">
+        <FileText size={15} className="absolute left-4 top-4" style={{ color: theme.navy }} />
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Tell us about your security needs..."
+          rows={4}
+          className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300 resize-none"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="btn-primary-override w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        {status === "submitting" ? (
+          "Sending..."
+        ) : (
+          <>
+            Send Message <Send size={14} />
+          </>
+        )}
+      </button>
+
+      {status === "success" && (
+        <p className="flex items-center gap-2 text-[12px] font-bold text-emerald-600">
+          <CheckCircle2 size={15} /> Thank you! Your message has been sent. We will contact you shortly.
+        </p>
+      )}
+      {status === "error" && (
+        <p className="text-[12px] font-bold text-red-600">
+          Please fill in your name, email, and message before sending.
+        </p>
+      )}
+    </form>
+  );
+}
+
+// ── Theme styles: WHITE background / NAVY BLUE text throughout ───────────
 const pageStyles = `
-  body:not(.roys-roys-theme),
-  body:not(.roys-roys-theme) html,
-  body:not(.roys-roys-theme) main,
-  body:not(.roys-roys-theme) section,
-  body:not(.roys-roys-theme) header,
-  body:not(.roys-roys-theme) .bg-white,
-  body:not(.roys-roys-theme) .bg-white-override {
-    background-color: #000000 !important;
+  .ng-theme h1,
+  .ng-theme h2,
+  .ng-theme h3,
+  .ng-theme h4,
+  .ng-theme h5,
+  .ng-theme h6,
+  .ng-theme p,
+  .ng-theme span,
+  .ng-theme li,
+  .ng-theme a,
+  .ng-theme label,
+  .ng-theme button,
+  .ng-theme input,
+  .ng-theme textarea {
+    -webkit-text-fill-color: initial !important;
+    background-image: none !important;
   }
 
-  body:not(.roys-roys-theme) section.bg-light-override,
-  body:not(.roys-roys-theme) div.bg-light-override,
-  body:not(.roys-roys-theme) .panel-bg-light-override {
-    background-color: #0d0d0d !important;
+  body.ng-theme,
+  body.ng-theme html,
+  body.ng-theme main,
+  body.ng-theme section,
+  body.ng-theme .bg-white,
+  body.ng-theme .bg-white-override {
+    background-color: #ffffff !important;
   }
 
-  body:not(.roys-roys-theme) .panel-bg-override {
-    background-color: #121212 !important;
+  /* Sticky header */
+  body.ng-theme header.bg-white-override {
+    background-color: rgba(255, 255, 255, 0.92) !important;
   }
 
-  body:not(.roys-roys-theme) footer.footer-override,
-  body:not(.roys-roys-theme) footer.footer-override div,
-  body:not(.roys-roys-theme) footer.footer-override section {
-    background-color: #050505 !important;
+  body.ng-theme section.bg-light-override,
+  body.ng-theme div.bg-light-override,
+  body.ng-theme .panel-bg-light-override {
+    background-color: ${theme.bgLight} !important;
   }
 
-  body:not(.roys-roys-theme) hr,
-  body:not(.roys-roys-theme) .border,
-  body:not(.roys-roys-theme) .border-t,
-  body:not(.roys-roys-theme) .border-b,
-  body:not(.roys-roys-theme) .border-l,
-  body:not(.roys-roys-theme) .border-r,
-  body:not(.roys-roys-theme) .border-override {
-    border-color: #222222 !important;
+  body.ng-theme .panel-bg-override {
+    background-color: #ffffff !important;
   }
 
-  body:not(.roys-roys-theme) h1,
-  body:not(.roys-roys-theme) h2,
-  body:not(.roys-roys-theme) h3,
-  body:not(.roys-roys-theme) h4,
-  body:not(.roys-roys-theme) h5,
-  body:not(.roys-roys-theme) h6,
-  body:not(.roys-roys-theme) .text-navy-override {
+  body.ng-theme footer.footer-override,
+  body.ng-theme footer.footer-override div,
+  body.ng-theme footer.footer-override section {
+    background-color: ${theme.navy} !important;
+  }
+
+  body.ng-theme hr,
+  body.ng-theme .border,
+  body.ng-theme .border-t,
+  body.ng-theme .border-b,
+  body.ng-theme .border-l,
+  body.ng-theme .border-r,
+  body.ng-theme .border-override {
+    border-color: ${theme.border} !important;
+  }
+
+  body.ng-theme h1,
+  body.ng-theme h2,
+  body.ng-theme h3,
+  body.ng-theme h4,
+  body.ng-theme h5,
+  body.ng-theme h6,
+  body.ng-theme .text-navy-override {
+    color: ${theme.navy} !important;
+  }
+
+  body.ng-theme p,
+  body.ng-theme span,
+  body.ng-theme li,
+  body.ng-theme a,
+  body.ng-theme label,
+  body.ng-theme time {
+    color: ${theme.navy} !important;
+  }
+
+  /* Gold accent text & badges */
+  body.ng-theme .text-gold-override {
+    color: ${theme.gold} !important;
+  }
+
+  body.ng-theme .text-muted-override,
+  body.ng-theme .text-light-override {
+    color: ${theme.textMuted} !important;
+  }
+
+  body.ng-theme .bg-gold-override {
+    background-color: ${theme.gold} !important;
+  }
+
+  body.ng-theme .bg-navy-override {
+    background-color: ${theme.navy} !important;
+  }
+
+  /* Footer keeps white text against its navy background */
+  body.ng-theme .text-white-override,
+  body.ng-theme footer.footer-override *,
+  body.ng-theme footer.footer-override p,
+  body.ng-theme footer.footer-override span,
+  body.ng-theme footer.footer-override a,
+  body.ng-theme footer.footer-override h4 {
     color: #ffffff !important;
   }
 
-  body:not(.roys-roys-theme) p,
-  body:not(.roys-roys-theme) span,
-  body:not(.roys-roys-theme) li,
-  body:not(.roys-roys-theme) a,
-  body:not(.roys-roys-theme) label,
-  body:not(.roys-roys-theme) time {
-    color: #cbd5e1 !important;
+  /* Header nav links */
+  body.ng-theme header a { color: ${theme.navy} !important; position: relative; }
+  body.ng-theme header a:hover { color: ${theme.gold} !important; }
+  body.ng-theme header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background-color: ${theme.gold};
+    transition: width 0.3s ease;
+  }
+  body.ng-theme header nav a:hover::after {
+    width: 100%;
   }
 
-  body:not(.roys-roys-theme) .text-gold-override {
-    color: #BCA374 !important;
-  }
-
-  body:not(.roys-roys-theme) .text-white-override,
-  body:not(.roys-roys-theme) footer.footer-override *,
-  body:not(.roys-roys-theme) footer.footer-override p,
-  body:not(.roys-roys-theme) footer.footer-override span,
-  body:not(.roys-roys-theme) footer.footer-override a,
-  body:not(.roys-roys-theme) footer.footer-override h4 {
+  /* Buttons with vibrant hover effects */
+  body.ng-theme .btn-primary-override {
+    background-color: ${theme.navy} !important;
     color: #ffffff !important;
+    border: 1.5px solid ${theme.navy} !important;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1) !important;
+  }
+  body.ng-theme .btn-primary-override:hover {
+    background-color: ${theme.gold} !important;
+    border-color: ${theme.gold} !important;
+    color: #ffffff !important;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 24px -6px rgba(197, 160, 89, 0.45);
   }
 
-  body:not(.roys-roys-theme) header a { color: #ffffff !important; }
-  body:not(.roys-roys-theme) header a:hover { color: #BCA374 !important; }
-
-  body:not(.roys-roys-theme) .btn-primary-override {
-    background-color: #BCA374 !important;
-    color: #000000 !important;
-    border: 1px solid #BCA374 !important;
-  }
-  body:not(.roys-roys-theme) .btn-primary-override:hover {
-    background-color: #d4b886 !important;
-    border-color: #d4b886 !important;
-    color: #000000 !important;
-  }
-
-  body:not(.roys-roys-theme) .btn-outline-override {
+  body.ng-theme .btn-outline-override {
     background-color: transparent !important;
+    color: ${theme.navy} !important;
+    border: 1.5px solid ${theme.navy} !important;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1) !important;
+  }
+  body.ng-theme .btn-outline-override:hover {
+    background-color: ${theme.navy} !important;
     color: #ffffff !important;
-    border: 1px solid #BCA374 !important;
-  }
-  body:not(.roys-roys-theme) .btn-outline-override:hover {
-    background-color: rgba(188, 163, 116, 0.15) !important;
-  }
-
-  body:not(.roys-roys-theme) .faq-panel-open {
-    background-color: #121212 !important;
+    border-color: ${theme.navy} !important;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 24px -6px rgba(27, 54, 93, 0.35);
   }
 
-  body:not(.roys-roys-theme) .stats-icon-wrapper {
-    background-color: rgba(188, 163, 116, 0.12) !important;
-    border: 1px solid rgba(188, 163, 116, 0.25) !important;
+  body.ng-theme .faq-panel-open {
+    background-color: ${theme.bgLight} !important;
+  }
+
+  body.ng-theme .stats-icon-wrapper {
+    background-color: rgba(27, 54, 93, 0.08) !important;
+    border: 1px solid rgba(197, 160, 89, 0.3) !important;
+  }
+
+  /* Service cards hover effects */
+  body.ng-theme .service-card-hover {
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.3, 1) !important;
+  }
+  body.ng-theme .service-card-hover:hover {
+    background-color: ${theme.navy} !important;
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(27, 54, 93, 0.16);
+    border-color: ${theme.gold} !important;
+  }
+  body.ng-theme .service-card-hover:hover .service-card-title,
+  body.ng-theme .service-card-hover:hover .service-card-desc {
+    color: #ffffff !important;
+  }
+
+  /* Industry cards hover effects */
+  body.ng-theme .industry-card-hover {
+    transition: all 0.3s ease !important;
+  }
+  body.ng-theme .industry-card-hover:hover {
+    background-color: ${theme.navy} !important;
+    border-color: ${theme.gold} !important;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(27, 54, 93, 0.14);
+  }
+  body.ng-theme .industry-card-hover:hover .industry-card-label {
+    color: #ffffff !important;
+  }
+  body.ng-theme .industry-card-hover:hover .industry-card-iconwrap {
+    background-color: rgba(197, 160, 89, 0.2) !important;
+    border-color: ${theme.gold} !important;
+  }
+
+  /* Contact form inputs */
+  body.ng-theme .contact-input {
+    background-color: #F5F7FA !important;
+    border-color: ${theme.border} !important;
+    color: ${theme.navy} !important;
+  }
+  body.ng-theme .contact-input::placeholder {
+    color: ${theme.textLight};
+  }
+  body.ng-theme .contact-input:focus {
+    border-color: ${theme.gold} !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
   }
 `;
 
 export default function NationalGuardPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
+  // Set this to an image path/URL to give the header its own background image.
+  // Leave as "" to keep the plain white header.
+  const headerBgImage = ""; // e.g. "/national-guard-header-bg.png"
+
   useEffect(() => {
-    document.body.style.backgroundColor = "#000000";
-    document.body.style.color = "#ffffff";
+    document.body.classList.add("roys-roys-theme", "ng-theme");
+    document.body.style.backgroundColor = "#ffffff";
+    document.body.style.color = theme.navy;
     return () => {
+      document.body.classList.remove("roys-roys-theme", "ng-theme");
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
     };
@@ -432,27 +751,30 @@ export default function NationalGuardPage() {
   const toggleFaq = (index) => setOpenFaqIndex(openFaqIndex === index ? -1 : index);
 
   return (
-    <div className="min-h-screen font-sans selection:bg-amber-600 selection:text-white" style={{ backgroundColor: "#000000" }}>
+    <div className="roys-roys-theme ng-theme min-h-screen font-sans selection:bg-[#1B365D] selection:text-white" style={{ backgroundColor: "#ffffff" }}>
       <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
 
       {/* Navbar */}
       <header
-        className="sticky top-0 z-50 border-b backdrop-blur-md shadow-sm bg-white-override border-override"
-        style={{ borderColor: theme.border }}
+        className={`sticky top-0 z-50 border-b backdrop-blur-md shadow-sm bg-white-override border-override ${headerBgImage ? "header-with-bg" : ""}`}
+        style={{
+          borderColor: theme.border,
+          ...(headerBgImage ? { "--header-bg-image": `url(${headerBgImage})` } : {}),
+        }}
       >
         <div className="mx-auto max-w-screen-xl px-6 py-4 flex items-center justify-between">
           <Link href="#home" className="flex items-center gap-3 group">
             <div
               className="w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 group-hover:scale-105 border-override"
-              style={{ borderColor: theme.gold, backgroundColor: theme.bgLight }}
+              style={{ borderColor: theme.navy, backgroundColor: theme.bgLight }}
             >
-              <Shield size={20} style={{ color: theme.navy }} fill={theme.gold} />
+              <Shield size={20} style={{ color: theme.navy }} fill={theme.navy} />
             </div>
             <div className="leading-tight">
               <p className="text-[14px] md:text-[15px] font-black tracking-wide uppercase text-navy-override">
                 NATIONAL GUARD
               </p>
-              <p className="text-[7.5px] md:text-[8.5px] font-bold tracking-[0.25em] text-gold-override">
+              <p className="text-[7.5px] md:text-[8.5px] font-bold tracking-[0.25em] text-navy-override">
                 SECURITY SERVICES
               </p>
             </div>
@@ -467,7 +789,7 @@ export default function NationalGuardPage() {
               >
                 <span className="flex items-center gap-1">
                   {label}
-                  {hasDropdown && <ChevronDown size={13} style={{ color: theme.gold }} />}
+                  {hasDropdown && <ChevronDown size={13} style={{ color: theme.navy }} />}
                 </span>
               </a>
             ))}
@@ -491,11 +813,11 @@ export default function NationalGuardPage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center opacity-100"
+            className="object-cover object-center opacity-160"
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, #000000 45%, rgba(0,0,0,0.7) 100%)" }}
+            style={{ background: "linear-gradient(to right, rgba(255,255,255,0.92) 45%, rgba(255,255,255,0.55) 100%)" }}
           />
         </div>
 
@@ -503,12 +825,12 @@ export default function NationalGuardPage() {
           <div className="max-w-2xl">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.1] mb-5 uppercase tracking-tight text-navy-override">
               <span className="block mb-1">Trusted Security &amp;</span>
-              <span className="block text-gold-override">Protection Services</span>
+              <span className="block text-navy-override">Protection Services</span>
             </h1>
             <p className="text-[15px] md:text-[17px] font-bold mb-6 text-navy-override">
               Professional Security Solutions for Every Environment
             </p>
-            <p className="text-[13px] md:text-[14.5px] leading-relaxed mb-9 text-muted-override max-w-xl">
+            <p className="text-[13px] md:text-[14.5px] leading-relaxed mb-9 text-navy-override max-w-xl">
               National Guard delivers reliable security management, manned guarding, surveillance, risk assessment,
               and integrated facility protection services. Our highly trained security professionals safeguard
               businesses, residential communities, government facilities, industrial sites, and critical
@@ -542,12 +864,12 @@ export default function NationalGuardPage() {
             <div className="lg:col-span-7 flex flex-col justify-center p-8 lg:p-12 rounded-xl border shadow-sm bg-light-override border-override">
               <SectionLabel>About Us</SectionLabel>
               <SectionHeading className="sm:text-3xl mb-6">Your Trusted Security Partner</SectionHeading>
-              <p className="text-[13px] md:text-[14px] leading-relaxed mb-6 text-muted-override">
+              <p className="text-[13px] md:text-[14px] leading-relaxed mb-6 text-navy-override">
                 National Guard is a professional security services provider committed to protecting people, property,
                 and assets through highly trained personnel, advanced surveillance technologies, and proactive risk
                 management strategies.
               </p>
-              <p className="text-[13px] md:text-[14px] leading-relaxed text-light-override">
+              <p className="text-[13px] md:text-[14px] leading-relaxed text-navy-override">
                 With years of industry experience, we provide customized security solutions designed to meet the unique
                 operational requirements of corporate organizations, government institutions, commercial facilities,
                 healthcare centers, educational campuses, residential communities, and industrial sectors.
@@ -560,11 +882,7 @@ export default function NationalGuardPage() {
       {/* Stats */}
       <section className="py-12 md:py-16 px-6 border-b bg-light-override border-override">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
-            {stats.map((stat) => (
-              <StatCard key={stat.value} {...stat} />
-            ))}
-          </div>
+          <StatsCounterSection items={stats} />
         </div>
       </section>
 
@@ -608,8 +926,8 @@ export default function NationalGuardPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3.5 mt-2">
                 {whyChooseReasons.map((reason) => (
                   <div key={reason} className="flex items-start gap-2.5">
-                    <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: theme.gold }} />
-                    <span className="text-[11.5px] font-bold leading-tight text-muted-override">{reason}</span>
+                    <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: theme.navy }} />
+                    <span className="text-[11.5px] font-bold leading-tight text-navy-override">{reason}</span>
                   </div>
                 ))}
               </div>
@@ -640,7 +958,7 @@ export default function NationalGuardPage() {
               <div>
                 <SectionLabel>Technology &amp; Capabilities</SectionLabel>
                 <SectionHeading className="mb-4">Smarter Security Systems</SectionHeading>
-                <p className="text-[13px] leading-relaxed mb-8 max-w-md text-muted-override">
+                <p className="text-[13px] leading-relaxed mb-8 max-w-md text-navy-override">
                   We combine experienced security personnel with modern technologies to deliver smarter, faster, and
                   more reliable protection services.
                 </p>
@@ -656,7 +974,7 @@ export default function NationalGuardPage() {
               <div>
                 <SectionLabel>Our Commitment</SectionLabel>
                 <SectionHeading className="mb-4">Safeguarding What Matters Most</SectionHeading>
-                <p className="text-[13px] leading-relaxed mb-6 text-muted-override font-medium">
+                <p className="text-[13px] leading-relaxed mb-6 text-navy-override font-medium">
                   We are dedicated to maintaining the highest standards of professionalism, integrity, and operational
                   excellence. Every security solution is designed to minimize risks, protect valuable assets, and
                   provide complete peace of mind for our clients.
@@ -709,7 +1027,7 @@ export default function NationalGuardPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Contact / CTA */}
       <section id="contact" className="relative py-20 lg:py-24 px-6 overflow-hidden bg-white-override">
         <div className="absolute inset-0 z-0">
           <Image
@@ -717,30 +1035,46 @@ export default function NationalGuardPage() {
             alt="Security Officer on Patrol"
             fill
             sizes="100vw"
-            className="object-cover object-center opacity-15"
+            className="object-cover object-center opacity-10"
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, #000000 45%, rgba(0,0,0,0.85) 100%)" }}
+            style={{ background: "linear-gradient(to right, #ffffff 45%, rgba(255,255,255,0.9) 100%)" }}
           />
         </div>
-        <div className="relative z-10 mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-8 items-center justify-between w-full">
-          <div className="max-w-xl">
-            <h2 className="text-2xl sm:text-3xl font-black uppercase mb-4 tracking-tight leading-snug text-navy-override">
-              Secure Your Business With Confidence
-            </h2>
-            <p className="text-[13px] md:text-[14px] leading-relaxed text-muted-override">
-              Protect your people, property, and operations with professional security services tailored to your needs.
-              Partner with National Guard for dependable protection, rapid response, and complete peace of mind.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-4 flex-shrink-0 w-full sm:w-auto">
-            <a href="#contact" className="px-6 py-4 rounded-md text-[12px] font-black uppercase tracking-wider text-center flex-1 sm:flex-initial transition-all duration-300 btn-primary-override">
-              Contact Us
-            </a>
-            <a href="#contact" className="px-6 py-4 rounded-md text-[12px] font-black uppercase tracking-wider text-center flex-1 sm:flex-initial transition-all duration-300 btn-outline-override">
-              Get a Free Assessment
-            </a>
+        <div className="relative z-10 mx-auto max-w-screen-xl">
+          <div className="grid lg:grid-cols-12 gap-10 items-start mb-16">
+            <div className="lg:col-span-5 max-w-xl">
+              <SectionLabel>Get In Touch</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl font-black uppercase mb-4 tracking-tight leading-snug text-navy-override">
+                Secure Your Business With Confidence
+              </h2>
+              <p className="text-[13px] md:text-[14px] leading-relaxed text-navy-override mb-8">
+                Protect your people, property, and operations with professional security services tailored to your
+                needs. Partner with National Guard for dependable protection, rapid response, and complete peace of
+                mind.
+              </p>
+              <div className="space-y-4">
+                <p className="text-[12.5px] font-bold flex items-start gap-2.5 text-navy-override">
+                  <MapPin size={15} className="mt-0.5 flex-shrink-0" style={{ color: theme.navy }} />
+                  123 Security Avenue, Safe City, 12345
+                </p>
+                <p className="text-[12.5px] font-bold flex items-center gap-2.5 text-navy-override">
+                  <Phone size={15} className="flex-shrink-0" style={{ color: theme.navy }} />
+                  +1 (123) 456-7890
+                </p>
+                <p className="text-[12.5px] font-bold flex items-center gap-2.5 text-navy-override">
+                  <Mail size={15} className="flex-shrink-0" style={{ color: theme.navy }} />
+                  info@nationalguard.com
+                </p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 p-7 sm:p-9 rounded-xl border shadow-sm bg-light-override border-override">
+              <SectionLabel>Contact Us</SectionLabel>
+              <SectionHeading className="mb-6">Request a Free Security Assessment</SectionHeading>
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
@@ -752,13 +1086,13 @@ export default function NationalGuardPage() {
             <Link href="#home" className="flex items-center gap-3 mb-5">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center border"
-                style={{ borderColor: theme.gold, backgroundColor: "rgba(255,255,255,0.05)" }}
+                style={{ borderColor: "#ffffff", backgroundColor: "rgba(255,255,255,0.08)" }}
               >
-                <Shield size={20} style={{ color: theme.gold }} fill={theme.gold} />
+                <Shield size={20} style={{ color: "#ffffff" }} fill="#ffffff" />
               </div>
               <div className="leading-tight">
                 <p className="text-[14px] font-black text-white tracking-wide uppercase">NATIONAL GUARD</p>
-                <p className="text-[7.5px] font-bold tracking-[0.25em]" style={{ color: theme.gold }}>
+                <p className="text-[7.5px] font-bold tracking-[0.25em]" style={{ color: "#ffffff" }}>
                   SECURITY SERVICES
                 </p>
               </div>
@@ -784,7 +1118,7 @@ export default function NationalGuardPage() {
 
           {Object.entries(footerLinks).map(([heading, links]) => (
             <div key={heading} className="lg:col-span-2">
-              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-5" style={{ color: theme.gold }}>
+              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-5" style={{ color: "#ffffff" }}>
                 {heading}
               </h4>
               <ul className="space-y-2.5">
@@ -803,20 +1137,20 @@ export default function NationalGuardPage() {
           ))}
 
           <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-5" style={{ color: theme.gold }}>
+            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-5" style={{ color: "#ffffff" }}>
               Contact
             </h4>
             <div className="space-y-4">
               <p className="text-[12px] flex items-start gap-2.5">
-                <MapPin size={14} className="mt-0.5 flex-shrink-0" style={{ color: theme.gold }} />
+                <MapPin size={14} className="mt-0.5 flex-shrink-0" style={{ color: "#ffffff" }} />
                 <span>123 Security Avenue, Safe City, 12345</span>
               </p>
               <p className="text-[12px] flex items-center gap-2.5">
-                <Phone size={14} className="flex-shrink-0" style={{ color: theme.gold }} />
+                <Phone size={14} className="flex-shrink-0" style={{ color: "#ffffff" }} />
                 <span>+1 (123) 456-7890</span>
               </p>
               <p className="text-[12px] flex items-center gap-2.5 font-medium">
-                <Mail size={14} className="flex-shrink-0" style={{ color: theme.gold }} />
+                <Mail size={14} className="flex-shrink-0" style={{ color: "#ffffff" }} />
                 <span>info@nationalguard.com</span>
               </p>
             </div>
@@ -827,7 +1161,7 @@ export default function NationalGuardPage() {
               className="flex flex-col items-center gap-2 p-5 rounded-lg border bg-white/5 w-full text-center"
               style={{ borderColor: "rgba(255,255,255,0.1)" }}
             >
-              <ShieldCheck size={28} style={{ color: theme.gold }} />
+              <ShieldCheck size={28} style={{ color: "#ffffff" }} />
               <p className="text-xl font-black leading-none">24/7</p>
               <p className="text-[9px] font-bold uppercase tracking-wider">Security Operations</p>
             </div>
