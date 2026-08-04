@@ -3,12 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderNavbar from "@/components/ui/navigation-menu";
-import CorporateFooter from "@/components/ui/footer";
 import {
   ArrowRight, Award, CheckCircle2, Leaf, Package, ShieldCheck,
   Sparkles, Truck, Users, Zap, HeartPulse, MapPin, Phone,
   MessageCircle, Mail, Plus, Minus, Send, Clock, Building2,
+  Eye, Target, Menu, X,
 } from "lucide-react";
 
 // ── Color System matching Swiss Farms Logo & Modern Clean Palette ──
@@ -181,17 +180,17 @@ const FEATURED_PROGRAMS = [
   {
     title: "Premium Dairy Production",
     desc: "Delivering delicious, nutritious dairy products with advanced farming methods.",
-    img: "/swiss fram.jpeg",
+    img: "/swiss-card3.png",
   },
   {
     title: "Livestock Genetics Program",
     desc: "Improving herd health and productivity through responsible breeding and genetic selection.",
-    img: "/swiss fram.jpeg",
+    img: "/swiss-card1.png",
   },
   {
     title: "Sustainable Farming Initiative",
     desc: "Implementing eco-friendly farm systems that support long-term agricultural development.",
-    img: "/swiss fram.jpeg",
+    img: "/swiss-card2.png",
   },
 ];
 
@@ -271,7 +270,7 @@ function StatCounterCard({ value, suffix, label }) {
   return (
     <div
       ref={cardRef}
-      className="rounded-[24px] border border-[#D6E5D7] bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1C522A]"
+      className="rounded-[28px] border border-[#D6E5D7] bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1C522A]"
     >
       <p className="text-3xl lg:text-4xl font-black text-[#1C522A] mb-2 tabular-nums">
         {count.toLocaleString()}
@@ -303,7 +302,7 @@ function SectionTitle({ label, title, description }) {
 // ── Service Card with hover ──
 function ServiceCard({ icon: Icon, title, desc }) {
   return (
-    <div className="group rounded-[24px] border border-[#D6E5D7] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1C522A] hover:bg-[#F4F8F4]">
+    <div className="group rounded-[28px] border border-[#D6E5D7] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1C522A] hover:bg-[#F4F8F4]">
       <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#E8F3E9] text-[#1C522A] mb-6 transition-all duration-300 group-hover:bg-[#1C522A] group-hover:text-white group-hover:scale-110">
         <Icon size={26} />
       </div>
@@ -316,7 +315,7 @@ function ServiceCard({ icon: Icon, title, desc }) {
 // ── Feature Card ──
 function FeatureCard({ title, desc, icon: Icon }) {
   return (
-    <div className="group rounded-[24px] border border-[#D6E5D7] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1C522A]">
+    <div className="group rounded-[28px] border border-[#D6E5D7] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1C522A]">
       <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#E8F3E9] text-[#1C522A] mb-5 transition-all duration-300 group-hover:bg-[#1C522A] group-hover:text-white group-hover:scale-110">
         <Icon size={20} />
       </div>
@@ -329,7 +328,7 @@ function FeatureCard({ title, desc, icon: Icon }) {
 // ── Process Step ──
 function ProcessStep({ step, title, desc }) {
   return (
-    <div className="group rounded-[24px] border border-[#D6E5D7] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1C522A]">
+    <div className="group rounded-[28px] border border-[#D6E5D7] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1C522A]">
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs font-black px-3 py-1 rounded-full bg-[#E8F3E9] text-[#1C522A] group-hover:bg-[#1C522A] group-hover:text-white transition-all">Step {step}</span>
         <span className="text-base font-bold text-[#2A3439]">{title}</span>
@@ -365,7 +364,7 @@ function FaqAccordionItem({ question, answer }) {
 
 // ── Contact Form Component ──
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -392,10 +391,10 @@ function ContactForm() {
         </div>
         <h3 className="text-2xl font-black text-[#2A3439] mb-3">Thank You!</h3>
         <p className="text-sm leading-relaxed text-[#485E4E] max-w-md mx-auto mb-6">
-          Thank you, {form.name}. Your inquiry has been received. Our team will contact you shortly.
+          Thank you, {form.name}. {form.service ? `Your inquiry about "${form.service}" has been received.` : "Your inquiry has been received."} Our team will contact you shortly.
         </p>
         <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", subject: "", message: "" }); setSubmitted(false); }}
+          onClick={() => { setForm({ name: "", email: "", phone: "", service: "", message: "" }); setSubmitted(false); }}
           className="inline-flex items-center gap-2 rounded-full bg-[#1C522A] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#123B1D]"
         >
           Send Another Message
@@ -435,12 +434,18 @@ function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#485E4E] mb-2">Subject</label>
-          <input
-            type="text" name="subject" value={form.subject} onChange={handleChange}
-            placeholder="Inquiry / Partnership"
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#485E4E] mb-2">Service</label>
+          <select
+            name="service"
+            value={form.service}
+            onChange={handleChange}
             className="w-full rounded-xl border border-[#D6E5D7] bg-[#F8FAF8] px-4 py-3.5 text-sm text-[#2A3439] outline-none transition-all focus:border-[#1C522A] focus:bg-white"
-          />
+          >
+            <option value="">Select a service...</option>
+            {CORE_SERVICES.map((s) => (
+              <option key={s.title} value={s.title}>{s.title}</option>
+            ))}
+          </select>
         </div>
       </div>
       <div className="mb-5">
@@ -461,6 +466,130 @@ function ContactForm() {
         Send Message <Send size={15} />
       </button>
     </form>
+  );
+}
+
+// ── Swiss Farms Navbar ──
+function SwissFarmsNavbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About Us", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Products", href: "#products" },
+    { label: "Why Us", href: "#why-us" },
+    { label: "Contact", href: "#contact" },
+  ];
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D6E5D7]">
+      {/* Top Bar */}
+      <div className="hidden md:block bg-[#1C522A] text-white py-2 px-6">
+        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
+          <div className="flex items-center gap-6 text-white/80">
+            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
+            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
+            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
+          </div>
+          <span className="text-xs font-bold text-[#C5A059]">Swiss Farms — Dairy & Livestock Excellence</span>
+        </div>
+      </div>
+      {/* Main Bar */}
+      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
+        <Link href="#home" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 rounded-xl bg-[#1C522A] flex items-center justify-center group-hover:scale-105 transition-transform">
+            <Leaf size={22} color="#fff" />
+          </div>
+          <div>
+            <p className="text-base font-black tracking-tight text-[#1C522A] leading-none">SWISS FARMS</p>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-[#485E4E]">Dairy & Livestock</p>
+          </div>
+        </Link>
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#2A3439]">
+          {navLinks.map(l => (
+            <Link key={l.label} href={l.href} className="relative py-1 hover:text-[#1C522A] group transition-colors">
+              {l.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1C522A] transition-all duration-300 group-hover:w-full" />
+            </Link>
+          ))}
+        </nav>
+        <div className="hidden lg:flex items-center gap-3">
+          <a href={`https://wa.me/${CONTACT_INFO.whatsapp[0].replace(/[^0-9]/g,"")}`} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-[#1C522A] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#123B1D] hover:scale-105 transition-all">
+            <MessageCircle size={14} /> Get Quote
+          </a>
+          <Link href="#contact" className="inline-flex items-center gap-2 rounded-full border-2 border-[#C5A059] bg-[#C5A059]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#C5A059] hover:bg-[#C5A059] hover:text-white transition-colors">
+            Contact Us
+          </Link>
+        </div>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#F4F8F4] text-[#1C522A]">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t border-[#D6E5D7] px-6 py-5 space-y-3">
+          {navLinks.map(l => (
+            <Link key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
+              className="block text-sm font-bold text-[#2A3439] hover:text-[#1C522A] py-1">{l.label}</Link>
+          ))}
+          <a href={`https://wa.me/${CONTACT_INFO.whatsapp[0].replace(/[^0-9]/g,"")}`} target="_blank" rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 rounded-full bg-[#1C522A] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
+            <MessageCircle size={14} /> Get Quote
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+// ── Swiss Farms Footer ──
+function SwissFarmsFooter() {
+  return (
+    <footer style={{ background: "#1C522A" }} className="text-white">
+      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
+        {/* Brand */}
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+              <Leaf size={20} color="#C5A059" />
+            </div>
+            <div>
+              <p className="font-black text-lg leading-none">SWISS FARMS</p>
+              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">Dairy & Livestock Excellence</p>
+            </div>
+          </div>
+          <p className="text-sm text-white/70 leading-relaxed mb-5">Trusted dairy production and livestock management across Pakistan, committed to quality, sustainability, and animal welfare.</p>
+          <div className="space-y-2 text-xs text-white/75">
+            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#C5A059]" />{CONTACT_INFO.office}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#C5A059]" />{CONTACT_INFO.phone}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#C5A059]" />{CONTACT_INFO.emails[0]}</p>
+          </div>
+        </div>
+        {/* Quick Links */}
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#C5A059]">Quick Links</h4>
+          <ul className="space-y-2.5 text-sm text-white/75">
+            {["About Us","Services","Products","Why Us","Contact"].map(l => (
+              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
+            ))}
+          </ul>
+        </div>
+        {/* Contact */}
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#C5A059]">Contact Us</h4>
+          <div className="space-y-3 text-xs text-white/75">
+            <p className="flex items-center gap-2"><MessageCircle size={14} className="text-[#C5A059]" /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#C5A059]" />{CONTACT_INFO.emails[0]}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#C5A059]" />{CONTACT_INFO.phone}</p>
+          </div>
+          <div className="mt-6 pt-6 border-t border-white/20">
+            <Link href="/group-companies" className="text-xs text-white/60 hover:text-white transition-colors">← Back to Roysons Group</Link>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} Swiss Farms. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
+      </div>
+    </footer>
   );
 }
 
@@ -505,50 +634,69 @@ export default function SwissFarmsPage() {
         }
       `}</style>
 
-      <HeaderNavbar activeRoute="/group-companies" />
+      <SwissFarmsNavbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#F4F8F4] border-b border-[#E2ECE3]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(28,82,42,0.14),_transparent_55%)]" />
-        <div className="mx-auto max-w-screen-xl px-6 py-12 lg:py-20 relative">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#C6DEC8] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#1C522A] shadow-sm">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#1C522A]" />
-                {HERO_TAGLINE}
-              </span>
-              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#2A3439]">
-                Nourishing Communities Through <span className="text-[#1C522A]">Modern Dairy Farming</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#485E4E]">
-                Swiss Farms is a leading dairy and livestock management company dedicated to producing premium-quality dairy products through advanced breeding programs, sustainable farming practices, and modern livestock care.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="#farms"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#1C522A] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#123B1D] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-                >
-                  Explore Our Services <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#1C522A] bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-[#1C522A] transition-all duration-300 hover:bg-[#1C522A] hover:text-white hover:scale-[1.02] active:scale-95"
-                >
-                  Contact Us
-                </Link>
-              </div>
+      <section
+        className="relative overflow-hidden border-b border-[#E2ECE3] min-h-[480px] lg:min-h-[540px] flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(18, 59, 29, 0.8) 0%, rgba(28, 82, 42, 0.82) 50%, rgba(18, 59, 29, 0) 100%), url("${encodeURI("/swiss-farm-about.png")}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="mx-auto max-w-screen-xl px-6 py-16 lg:py-24 relative z-10 w-full">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#C5A059]/30 bg-[#C5A059] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#1C522A] shadow-md backdrop-blur-md">
+              <span className="h-2.5 w-2.5 rounded-full bg-white/90" />
+              {HERO_TAGLINE}
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+              Nourishing Communities Through <span className="text-[#C5A059]">Modern Dairy Farming</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-[#E8F3E9]">
+              Swiss Farms is a leading dairy and livestock management company dedicated to producing premium-quality dairy products through advanced breeding programs, sustainable farming practices, and modern livestock care.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#farms"
+                className="inline-flex items-center gap-2 rounded-full bg-[#1C522A] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-lg transition-all duration-300 hover:bg-[#123B1D] hover:scale-[1.02] active:scale-95"
+              >
+                Explore Our Services <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#1C522A] hover:scale-[1.02] active:scale-95"
+              >
+                Contact Us
+              </Link>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="relative rounded-[36px] overflow-hidden border-2 border-[#D6E5D7] shadow-xl">
-              <Image
-                src="/swiss fram.jpeg"
-                alt="Swiss Farms dairy landscape"
-                width={1100}
-                height={760}
-                className="h-full w-full object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1C522A]/40 via-transparent to-transparent" />
+      {/* About Section */}
+      <section id="about" className="bg-white px-6 py-12 lg:py-20 border-b border-[#E2ECE3]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-[28px] border border-[#D6E5D7] bg-[#F8FAF8] p-6 md:p-8 lg:p-10 shadow-sm">
+            <div className="grid gap-8 lg:grid-cols-12 items-center">
+              <div className="lg:col-span-6">
+                <div className="relative h-48 md:h-64 rounded-2xl overflow-hidden border border-[#E6EFE6]">
+                  <Image src="/swiss-farm-hero.png" alt="Swiss Farms aerial" fill className="object-cover" />
+                </div>
+              </div>
+
+              <div className="lg:col-span-6">
+                <SectionTitle
+                  label="About Us"
+                  title="Excellence in Dairy Farming"
+                  description="Swiss Farms is committed to transforming dairy farming through innovation, responsible livestock management, and sustainable agricultural practices. Our farms are designed to maintain the highest standards of hygiene, animal welfare, productivity, and environmental responsibility."
+                />
+
+                <p className="mt-6 text-sm leading-relaxed text-[#485E4E]">
+                  From breeding and nutrition to milk production and quality assurance, every stage of our operation is managed with precision to ensure consistent excellence across our products and services.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -722,36 +870,90 @@ export default function SwissFarmsPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-[#F4F8F4] px-6 py-16 lg:py-24 border-b border-[#E2ECE3]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionTitle
-            label="Testimonials"
-            title="What Our Partners Say"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {TESTIMONIALS.map((item, index) => (
-              <div key={index} className="rounded-[28px] border border-[#D6E5D7] bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#1C522A]">
-                <p className="text-base italic leading-relaxed text-[#485E4E] mb-6">“{item.quote}”</p>
-                <p className="font-black text-[#2A3439]">{item.name}</p>
-                <p className="text-xs font-bold text-[#1C522A] mt-0.5">{item.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+          {/* Vision & Mission Section */}
+          <section className="bg-[#F4F8F4] px-6 py-8 lg:py-14 border-b border-[#E2ECE3]">
+            <div className="mx-auto max-w-screen-xl">
+              <div className="grid gap-6 md:grid-cols-2">
+                <div
+                  className="rounded-[28px] border border-[#D6E5D7] p-6 flex items-center justify-between gap-6 shadow-sm bg-cover bg-center"
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(255,255,255,0.86), rgba(255, 255, 255, 0.85)), url("${encodeURI(
+                      "/swiss-card1.png"
+                    )}")`,
+                  }}
+                >
+                  <div className="flex-1">
+                    <div className="inline-flex items-start gap-4">
+                      <div className="w-14 h-14 rounded-2xl bg-[#E8F3E9] text-[#1C522A] flex items-center justify-center">
+                        <Eye size={24} />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-black text-[#2A3439]">Our Vision</h4>
+                        <p className="mt-2 text-sm leading-relaxed text-[#2A3439]">To become a global leader in sustainable dairy farming by producing premium-quality dairy products through innovation, responsible livestock management, and environmentally sustainable agricultural practices.</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* image is used as card background for visual impact */}
+                </div>
 
-      {/* FAQs */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#E2ECE3]">
+                <div
+                  className="rounded-[28px] border border-[#D6E5D7] p-6 flex items-center justify-between gap-6 shadow-sm bg-cover bg-center"
+                  style={{
+                    backgroundImage: `linear-gradient(rgba(255,255,255,0.86), rgba(255,255,255,0.86)), url("${encodeURI(
+                      "/swiss-card2.png"
+                    )}")`,
+                  }}
+                >
+                  <div className="flex-1">
+                    <div className="inline-flex items-start gap-4">
+                      <div className="w-14 h-14 rounded-2xl bg-[#E8F3E9] text-[#1C522A] flex items-center justify-center">
+                        <Target size={24} />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-black text-[#2A3439]">Our Mission</h4>
+                        <p className="mt-2 text-sm leading-relaxed text-[#2A3439]">To deliver safe, nutritious dairy products while promoting animal welfare, sustainable farming, technological innovation, and operational excellence that benefit consumers and farming communities.</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* image is used as card background for visual impact */}
+                </div>
+              </div>
+            </div>
+          </section>
+
+      {/* Testimonials & FAQs (combined two-column section) */}
+      <section id="insights" className="bg-white px-6 py-16 lg:py-24 border-b border-[#E2ECE3]">
         <div className="mx-auto max-w-screen-xl">
           <SectionTitle
-            label="Frequently Asked Questions"
-            title="Your Dairy Farming Questions Answered"
+            label="Insights"
+            title="Testimonials & FAQs"
+            description="What partners say and the common questions we answer about Swiss Farms."
           />
-          <div className="mt-12 grid gap-4 max-w-4xl">
-            {FAQS.map((item, index) => (
-              <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-            ))}
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-2 items-start">
+            {/* Left: Testimonials */}
+            <div>
+              <h3 className="text-xl font-black text-[#2A3439] mb-6">What Our Partners Say</h3>
+              <div className="grid gap-6">
+                {TESTIMONIALS.map((item, index) => (
+                  <div key={index} className="rounded-[28px] border border-[#D6E5D7] bg-white p-6 shadow-sm transition-all duration-300 hover:border-[#1C522A]">
+                    <p className="text-base italic leading-relaxed text-[#485E4E] mb-4">“{item.quote}”</p>
+                    <p className="font-black text-[#2A3439]">{item.name}</p>
+                    <p className="text-xs font-bold text-[#1C522A] mt-0.5">{item.role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: FAQs */}
+            <div>
+              <h3 className="text-xl font-black text-[#2A3439] mb-6">Frequently Asked Questions</h3>
+              <div className="grid gap-4 max-w-xl">
+                {FAQS.map((item, index) => (
+                  <FaqAccordionItem key={index} question={item.q} answer={item.a} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -832,7 +1034,7 @@ export default function SwissFarmsPage() {
         </div>
       </section>
 
-      <CorporateFooter />
+      <SwissFarmsFooter />
     </main>
   );
 }

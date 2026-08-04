@@ -3,14 +3,12 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderNavbar from "@/components/ui/navigation-menu";
-import CorporateFooter from "@/components/ui/footer";
 import {
   ArrowRight, Award, Briefcase, TrendingUp, Handshake, Leaf, Target,
   Settings, CheckCircle2, MapPin, Phone, MessageCircle, Mail, Plus, Minus,
   Send, Wheat, Sprout, Droplet, Flame, Package, Carrot, Factory, Globe2,
   ShieldCheck, Truck, Store, ShoppingCart, Building2, Hotel, UtensilsCrossed,
-  Boxes, Search, FlaskConical, Users2,
+  Boxes, Search, FlaskConical, Users2, Menu, X, ChevronLeft, ChevronRight,
 } from "lucide-react";
 
 // ── Color System matching National Food Services (NFS) Logo ──
@@ -120,6 +118,8 @@ const CONTACT_INFO = {
   whatsapp: ["0092-304-7527498", "0092-321-8431665"],
   emails: ["info@roysons.org", "support@roysons.org"],
 };
+
+const MAP_SRC = "https://www.google.com/maps?q=1st%20Floor%20Rehman%20Centre-2%20Lahore&z=15&output=embed";
 
 // ── Animated Counter Component ──
 function StatCounterCard({ value, suffix, label }) {
@@ -235,6 +235,69 @@ function ProcessStepCard({ step, title, desc }) {
   );
 }
 
+// ── Testimonial Slider Component ──
+function TestimonialSlider({ items }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeItem = items[activeIndex] || items[0];
+
+  const goPrev = () => {
+    setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  const goNext = () => {
+    setActiveIndex((prev) => (prev + 1) % items.length);
+  };
+
+  return (
+    <div className="rounded-[28px] border border-[#EAD6DB] bg-[#FAF5F6] p-8 shadow-sm">
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#8C1832]">Testimonials</p>
+          <h3 className="mt-2 text-2xl font-black text-[#6B0F24]">What Our Partners Say</h3>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={goPrev}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#EAD6DB] bg-white text-[#6B0F24] transition-all hover:border-[#6B0F24] hover:text-[#8C1832]"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#EAD6DB] bg-white text-[#6B0F24] transition-all hover:border-[#6B0F24] hover:text-[#8C1832]"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      <div className="rounded-[24px] border border-[#EAD6DB] bg-white p-7 shadow-sm">
+        <p className="text-base italic leading-relaxed text-[#4E5456]">“{activeItem.quote}”</p>
+        <div className="mt-6">
+          <p className="font-black text-[#6B0F24]">{activeItem.name}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8C1832] mt-1">{activeItem.role}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 flex items-center justify-center gap-2">
+        {items.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setActiveIndex(index)}
+            aria-label={`Go to testimonial ${index + 1}`}
+            className={`h-2.5 w-2.5 rounded-full transition-all ${index === activeIndex ? "bg-[#6B0F24]" : "bg-[#EAD6DB]"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Collapsible FAQ Item Component ──
 function FaqAccordionItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -261,7 +324,7 @@ function FaqAccordionItem({ question, answer }) {
 
 // ── Contact Form Component ──
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -291,7 +354,7 @@ function ContactForm() {
           Thank you, {form.name}. Your catering inquiry has been received. Our food services team will contact you shortly.
         </p>
         <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", subject: "", message: "" }); setSubmitted(false); }}
+          onClick={() => { setForm({ name: "", email: "", phone: "", service: "", message: "" }); setSubmitted(false); }}
           className="inline-flex items-center gap-2 rounded-full bg-[#6B0F24] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#8C1832]"
         >
           Send Another Message
@@ -332,11 +395,18 @@ function ContactForm() {
         </div>
         <div>
           <label className="block text-xs font-bold uppercase tracking-wider text-[#4E5456] mb-2">Service Required</label>
-          <input
-            type="text" name="subject" value={form.subject} onChange={handleChange}
-            placeholder="Corporate Catering / Hospital Meals / Commodity"
+          <select
+            name="service" value={form.service} onChange={handleChange}
             className="w-full rounded-xl border border-[#EAD6DB] bg-[#FAF5F6] px-4 py-3.5 text-sm text-[#6B0F24] outline-none transition-all focus:border-[#6B0F24] focus:bg-white"
-          />
+          >
+            <option value="">Select a service</option>
+            <option value="Institutional Catering">Institutional Catering</option>
+            <option value="Hospital Nutrition">Hospital Nutrition</option>
+            <option value="Educational Food Services">Educational Food Services</option>
+            <option value="Food Supply & Distribution">Food Supply & Distribution</option>
+            <option value="Quality Control & Hygiene Audits">Quality Control & Hygiene Audits</option>
+            <option value="Bulk Ingredient Procurement">Bulk Ingredient Procurement</option>
+          </select>
         </div>
       </div>
       <div className="mb-5">
@@ -357,6 +427,120 @@ function ContactForm() {
         Submit Request <Send size={15} />
       </button>
     </form>
+  );
+}
+
+// ── NFS Navbar ──
+function NFSNavbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About Us", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Menu & Products", href: "#products" },
+    { label: "Why Us", href: "#why-us" },
+    { label: "Contact", href: "#contact" },
+  ];
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#EAD6DB]">
+      <div className="hidden md:block bg-[#6B0F24] text-white py-2 px-6">
+        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
+          <div className="flex items-center gap-6 text-white/80">
+            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
+            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
+            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
+          </div>
+          <span className="text-xs font-bold text-[#F5C6CF]">National Food Services — Catering Excellence</span>
+        </div>
+      </div>
+      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
+        <a href="#home" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 rounded-xl bg-[#6B0F24] flex items-center justify-center group-hover:scale-105 transition-transform">
+            <UtensilsCrossed size={22} color="#fff" />
+          </div>
+          <div>
+            <p className="text-base font-black tracking-tight text-[#6B0F24] leading-none">NATIONAL FOOD</p>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-[#4E5456]">Services</p>
+          </div>
+        </a>
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#2D3436]">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#6B0F24] group transition-colors">
+              {l.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#6B0F24] transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+        </nav>
+        <div className="hidden lg:flex items-center gap-3">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#6B0F24] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#4F0918] hover:scale-105 transition-all">
+            <MessageCircle size={14} /> Order Now
+          </a>
+        </div>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#FAF5F6] text-[#6B0F24]">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t border-[#EAD6DB] px-6 py-5 space-y-3">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
+              className="block text-sm font-bold text-[#2D3436] hover:text-[#6B0F24] py-1">{l.label}</a>
+          ))}
+          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#6B0F24] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
+            <MessageCircle size={14} /> Order Now
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+// ── NFS Footer ──
+function NFSFooter() {
+  return (
+    <footer style={{ background: "#6B0F24" }} className="text-white">
+      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+              <UtensilsCrossed size={20} color="#F5C6CF" />
+            </div>
+            <div>
+              <p className="font-black text-lg leading-none">NATIONAL FOOD</p>
+              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">Services (NFS)</p>
+            </div>
+          </div>
+          <p className="text-sm text-white/70 leading-relaxed mb-5">Premier institutional catering and food supply services for corporate, healthcare, educational, and government institutions across Pakistan.</p>
+          <div className="space-y-2 text-xs text-white/75">
+            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#F5C6CF]" />{CONTACT_INFO.office}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#F5C6CF]" />{CONTACT_INFO.phone}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#F5C6CF]" />{CONTACT_INFO.emails[0]}</p>
+          </div>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#F5C6CF]">Quick Links</h4>
+          <ul className="space-y-2.5 text-sm text-white/75">
+            {["About Us","Services","Products","Why Us","Contact"].map(l => (
+              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#F5C6CF]">Contact Us</h4>
+          <div className="space-y-3 text-xs text-white/75">
+            <p className="flex items-center gap-2"><MessageCircle size={14} className="text-[#F5C6CF]" /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#F5C6CF]" />{CONTACT_INFO.emails[0]}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#F5C6CF]" />{CONTACT_INFO.phone}</p>
+          </div>
+          <div className="mt-6 pt-6 border-t border-white/20">
+            <Link href="/group-companies" className="text-xs text-white/60 hover:text-white transition-colors">← Back to Roysons Group</Link>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} National Food Services. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
+      </div>
+    </footer>
   );
 }
 
@@ -401,46 +585,76 @@ export default function NationalFoodPage() {
         }
       `}</style>
 
-      <HeaderNavbar activeRoute="/group-companies" />
+      <NFSNavbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#FAF5F6] border-b border-[#EAD6DB]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(107,15,36,0.12),_transparent_55%)]" />
-        <div className="mx-auto max-w-screen-xl px-6 py-12 lg:py-20 relative">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#DDB6C0] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#6B0F24] shadow-sm">
+      <section
+        className="relative overflow-hidden border-b border-[#EAD6DB] min-h-[500px] lg:min-h-[560px] flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(65,9,22,0.90) 0%, rgba(107,15,36,0.84) 50%, rgba(65,9,22,0.92) 100%), url("${encodeURI("/national food service.jpeg")}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="mx-auto max-w-screen-xl px-6 py-16 lg:py-24 relative z-10 w-full">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#8C1832]/40 bg-[#6B0F24]/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#EAD6DB] shadow-md backdrop-blur-md">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#8C1832]" />
+              {HERO.badge}
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+              National Food Services <span className="text-[#EAD6DB]">(NFS)</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-[#F5E6E9]">
+              {HERO.subline}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#services"
+                className="inline-flex items-center gap-2 rounded-full bg-[#8C1832] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-lg transition-all duration-300 hover:bg-white hover:text-[#6B0F24] hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaPrimary} <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#6B0F24] hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaSecondary}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="bg-white px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+            <div>
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#EAD6DB] bg-[#FAF5F6] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#8C1832]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#8C1832]" />
-                {HERO.badge}
+                About National Food Services
               </span>
-              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#6B0F24]">
-                National Food Services <span className="text-[#8C1832]">(NFS)</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#4E5456]">
-                {HERO.subline}
+              <h2 className="mt-6 text-3xl md:text-4xl font-black tracking-tight text-[#6B0F24]">
+                Trusted meal solutions for institutions that demand quality, hygiene, and scale.
+              </h2>
+              <p className="mt-5 text-sm md:text-base leading-relaxed text-[#4E5456]">
+                National Food Services delivers nourishing, hygienic, and efficiently managed food programs for corporate campuses, hospitals, schools, and industrial sites. Our robust kitchen operations and cold-chain logistics ensure reliable service every day.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="#services"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#6B0F24] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#8C1832] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-                >
-                  {HERO.ctaPrimary} <ArrowRight size={16} />
+                <Link href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#6B0F24] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-[#8C1832]">
+                  Request A Quote <ArrowRight size={15} />
                 </Link>
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#6B0F24] bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-[#6B0F24] transition-all duration-300 hover:bg-[#6B0F24] hover:text-white hover:scale-[1.02] active:scale-95"
-                >
-                  {HERO.ctaSecondary}
+                <Link href="#projects" className="inline-flex items-center gap-2 rounded-full border border-[#EAD6DB] bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#6B0F24] transition-all hover:border-[#6B0F24] hover:text-[#8C1832]">
+                  View Projects
                 </Link>
               </div>
             </div>
 
-            <div className="relative rounded-[36px] overflow-hidden border-2 border-[#EAD6DB] shadow-xl bg-white p-8 text-center flex flex-col items-center justify-center min-h-[320px]">
-              <div className="w-24 h-24 rounded-3xl bg-[#F5E6E9] text-[#6B0F24] flex items-center justify-center mb-6 shadow-inner">
-                <UtensilsCrossed size={48} className="text-[#6B0F24]" />
+            <div className="rounded-[32px] border border-[#EAD6DB] bg-[#FAF5F6] p-3 shadow-sm">
+              <div className="relative h-[380px] overflow-hidden rounded-[24px]">
+                <Image src="/national food service.jpeg" alt="National Food Services catering operations" fill className="object-cover" />
               </div>
-              <h3 className="text-2xl font-black text-[#6B0F24] tracking-wider uppercase">NATIONAL FOOD SERVICES</h3>
-              <p className="text-xs font-bold tracking-[0.3em] text-[#8C1832] mt-1">— NFS —</p>
             </div>
           </div>
         </div>
@@ -562,38 +776,22 @@ export default function NationalFoodPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-[#FAF5F6] px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Testimonials"
-            title="What Our Dining Partners Say"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((item, index) => (
-              <div key={index} className="rounded-[28px] border border-[#EAD6DB] bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#6B0F24]">
-                <p className="text-base italic leading-relaxed text-[#4E5456] mb-6">“{item.quote}”</p>
-                <p className="font-black text-[#6B0F24]">{item.name}</p>
-                <p className="text-xs text-[#8C1832] font-bold mt-1">{item.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
+      {/* Testimonials + FAQs */}
       <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
         <div className="mx-auto max-w-screen-xl">
           <SectionHeader
-            eyebrow="Frequently Asked Questions"
-            title="Common Questions"
-            description="Answers to common questions regarding our institutional catering, food safety, and dining contracts."
+            eyebrow="Testimonials & FAQs"
+            title="Trusted by Dining Partners. Clear Answers for Every Requirement."
+            description="See how our clients describe their experience and explore common questions about our catering and supply services."
             center
           />
-          <div className="mt-12 grid gap-4 max-w-4xl mx-auto">
-            {FAQS.map((item, index) => (
-              <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-            ))}
+          <div className="mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] items-start">
+            <TestimonialSlider items={TESTIMONIALS} />
+            <div className="grid gap-4">
+              {FAQS.map((item, index) => (
+                <FaqAccordionItem key={index} question={item.q} answer={item.a} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -620,16 +818,6 @@ export default function NationalFoodPage() {
                 </p>
 
                 <div className="space-y-6 text-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <MapPin size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-white/80 mb-1">Our Office</p>
-                      <p className="text-white leading-relaxed">{CONTACT_INFO.office}</p>
-                    </div>
-                  </div>
-
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
                       <Phone size={20} />
@@ -674,7 +862,40 @@ export default function NationalFoodPage() {
         </div>
       </section>
 
-      <CorporateFooter />
+      {/* Separate Location Section */}
+      <section className="bg-[#FAF5F6] px-6 py-16 lg:py-24 border-t border-[#EAD6DB]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
+            <div className="rounded-[28px] border border-[#EAD6DB] bg-white p-8 shadow-sm">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#8C1832]">Our Location</p>
+              <h3 className="mt-3 text-2xl font-black text-[#6B0F24]">Visit Our Office</h3>
+              <p className="mt-4 text-sm leading-relaxed text-[#4E5456]">
+                We welcome catering consultations, food supply discussions, and partnership meetings at our Lahore office.
+              </p>
+              <div className="mt-6 rounded-[20px] border border-[#EAD6DB] bg-[#FAF5F6] p-4">
+                <p className="text-sm font-semibold text-[#6B0F24] leading-relaxed">{CONTACT_INFO.office}</p>
+                <a href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#6B0F24] transition-colors hover:text-[#8C1832]">
+                  Open in Google Maps <ArrowRight size={14} />
+                </a>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-[28px] border border-[#EAD6DB] bg-white shadow-sm">
+              <iframe
+                title="National Food Services Office Location"
+                src={MAP_SRC}
+                width="100%"
+                height="360"
+                style={{ border: 0, display: "block" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <NFSFooter />
     </main>
   );
 }

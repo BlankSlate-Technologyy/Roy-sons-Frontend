@@ -3,12 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderNavbar from "@/components/ui/navigation-menu";
-import CorporateFooter from "@/components/ui/footer";
 import {
   ArrowRight, Award, CheckCircle2, Droplets, Leaf, MapPin, Phone,
   MessageCircle, Mail, Plus, Minus, Send, ShieldCheck, Sparkles,
-  Users, Wrench, Building2, Recycle, Clock, Sparkle,
+  Users, Wrench, Building2, Recycle, Clock, Sparkle, Menu, X,
 } from "lucide-react";
 
 // ── Color System matching Pak Janitorial Services Logo ──
@@ -359,12 +357,20 @@ function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#405060] mb-2">Facility Type / Service</label>
-          <input
-            type="text" name="service" value={form.service} onChange={handleChange}
-            placeholder="Corporate Office / Hospital / Commercial"
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#405060] mb-2">Service Type</label>
+          <select
+            name="service"
+            value={form.service}
+            onChange={handleChange}
             className="w-full rounded-xl border border-[#D4E8F5] bg-[#F8FAFD] px-4 py-3.5 text-sm text-[#2A323D] outline-none transition-all focus:border-[#009BE3] focus:bg-white"
-          />
+          >
+            <option value="">Select a service</option>
+            <option value="Commercial Janitorial">Commercial Janitorial</option>
+            <option value="Healthcare Sanitization">Healthcare Sanitization</option>
+            <option value="Industrial Cleaning">Industrial Cleaning</option>
+            <option value="Green Cleaning">Green Cleaning</option>
+            <option value="Facility Staffing">Facility Staffing</option>
+          </select>
         </div>
       </div>
       <div className="mb-5">
@@ -385,6 +391,121 @@ function ContactForm() {
         Submit Request <Send size={15} />
       </button>
     </form>
+  );
+}
+
+// ── Pak Janitorial Navbar ──
+function PakJanitorialNavbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About Us", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Industries", href: "#industries" },
+    { label: "FAQ", href: "#faq" },
+    { label: "Contact", href: "#contact" },
+  ];
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D4E8F5]">
+      <div className="hidden md:block bg-[#007BBF] text-white py-2 px-6">
+        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
+          <div className="flex items-center gap-6 text-white/80">
+            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
+            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
+            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
+          </div>
+          <span className="text-xs font-bold text-white/80">Pak Janitorial — Clean. Green. Professional.</span>
+        </div>
+      </div>
+      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
+        <a href="#home" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 rounded-xl bg-[#009BE3] flex items-center justify-center group-hover:scale-105 transition-transform">
+            <Sparkles size={22} color="#fff" />
+          </div>
+          <div>
+            <p className="text-base font-black tracking-tight text-[#009BE3] leading-none">PAK JANITORIAL</p>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-[#405060]">Services</p>
+          </div>
+        </a>
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#2A323D]">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#009BE3] group transition-colors">
+              {l.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#009BE3] transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+        </nav>
+        <div className="hidden lg:flex items-center gap-3">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#009BE3] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#61B329] hover:scale-105 transition-all">
+            <MessageCircle size={14} /> Get Free Quote
+          </a>
+        </div>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#F4F9FC] text-[#009BE3]">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t border-[#D4E8F5] px-6 py-5 space-y-3">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
+              className="block text-sm font-bold text-[#2A323D] hover:text-[#009BE3] py-1">{l.label}</a>
+          ))}
+          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#009BE3] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
+            <MessageCircle size={14} /> Get Free Quote
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+// ── Pak Janitorial Footer ──
+function PakJanitorialFooter() {
+  return (
+    <footer className="text-white" style={{ background: "#009BE3" }}>
+      <div className="h-1.5 bg-[#61B329]" />
+      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+              <Sparkles size={20} color="#fff" />
+            </div>
+            <div>
+              <p className="font-black text-lg leading-none">PAK JANITORIAL</p>
+              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">Services</p>
+            </div>
+          </div>
+          <p className="text-sm text-white/80 leading-relaxed mb-5">Professional janitorial and environmental facility services delivering clean, healthy, and sustainable spaces across Pakistan.</p>
+          <div className="space-y-2 text-xs text-white/75">
+            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0" />{CONTACT_INFO.office}</p>
+            <p className="flex items-center gap-2"><Phone size={14} />{CONTACT_INFO.phone}</p>
+            <p className="flex items-center gap-2"><Mail size={14} />{CONTACT_INFO.emails[0]}</p>
+          </div>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5">Quick Links</h4>
+          <ul className="space-y-2.5 text-sm text-white/80">
+            {["About Us","Services","Industries","FAQ","Contact"].map(l => (
+              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5">Contact Us</h4>
+          <div className="space-y-3 text-xs text-white/80">
+            <p className="flex items-center gap-2"><MessageCircle size={14} /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
+            <p className="flex items-center gap-2"><Mail size={14} />{CONTACT_INFO.emails[0]}</p>
+            <p className="flex items-center gap-2"><Phone size={14} />{CONTACT_INFO.phone}</p>
+          </div>
+          <div className="mt-6 pt-6 border-t border-white/20">
+            <Link href="/group-companies" className="text-xs text-white/70 hover:text-white transition-colors">← Back to Roysons Group</Link>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/60">
+        © {new Date().getFullYear()} Pak Janitorial Services. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
+      </div>
+    </footer>
   );
 }
 
@@ -429,50 +550,40 @@ export default function PakJanitorialPage() {
         }
       `}</style>
 
-      <HeaderNavbar activeRoute="/group-companies" />
+      <PakJanitorialNavbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#F4F9FC] border-b border-[#D4E8F5]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,155,227,0.12),_transparent_55%)]" />
-        <div className="mx-auto max-w-screen-xl px-6 py-12 lg:py-20 relative">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#BCE1F5] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#009BE3] shadow-sm">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#61B329]" />
-                {HERO.badge}
-              </span>
-              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#2A323D]">
-                Clean Environments. <span className="text-[#009BE3]">Healthier Spaces.</span> <span className="text-[#61B329]">Sustainable Solutions.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#405060]">
-                {HERO.subline}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="#services"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#009BE3] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#61B329] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-                >
-                  {HERO.ctaPrimary} <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#009BE3] bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-[#009BE3] transition-all duration-300 hover:bg-[#009BE3] hover:text-white hover:scale-[1.02] active:scale-95"
-                >
-                  {HERO.ctaSecondary}
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative rounded-[36px] overflow-hidden border-2 border-[#D4E8F5] shadow-xl">
-              <Image
-                src="/pak janitorial.jpeg"
-                alt="Pak Janitorial Services"
-                width={1200}
-                height={800}
-                className="h-full w-full object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#009BE3]/40 via-transparent to-transparent" />
+      <section className="relative overflow-hidden border-b border-[#D4E8F5]">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/pak janitorial.jpeg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/90 via-[#0f172a]/75 to-[#009BE3]/60" />
+        <div className="relative mx-auto max-w-screen-xl px-6 py-12 lg:py-20">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#BCE1F5] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#009BE3] shadow-sm">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#61B329]" />
+              {HERO.badge}
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+              Clean Environments. <span className="text-[#009BE3]">Healthier Spaces.</span> <span className="text-[#61B329]">Sustainable Solutions.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-100">
+              {HERO.subline}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#services"
+                className="inline-flex items-center gap-2 rounded-full bg-[#009BE3] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#61B329] hover:scale-[1.02] hover:shadow-lg active:scale-95"
+              >
+                {HERO.ctaPrimary} <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#009BE3] hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaSecondary}
+              </Link>
             </div>
           </div>
         </div>
@@ -495,12 +606,21 @@ export default function PakJanitorialPage() {
                 Whether managing daily office janitorial operations, specialized hospital sanitization, industrial floor polishing, or high-rise window cleaning, our dedicated team ensures absolute compliance with international health and safety standards.
               </p>
             </div>
-            <div className="relative rounded-[28px] overflow-hidden border border-[#D4E8F5] bg-[#F4F9FC] p-8 shadow-sm text-center">
-              <div className="w-20 h-20 rounded-full bg-[#E6F4FC] text-[#009BE3] mx-auto flex items-center justify-center mb-4">
-                <Droplets size={40} />
+            <div className="relative overflow-hidden rounded-[28px] border border-[#D4E8F5] bg-[#F4F9FC] shadow-sm">
+              <Image
+                src="/pak janitorial.jpeg"
+                alt="Pak Janitorial facility services"
+                width={900}
+                height={700}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/70 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
+                  <h3 className="text-xl font-black text-white uppercase tracking-wide">PAK JANITORIAL</h3>
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#d9f2ff] mt-1">SERVICES</p>
+                </div>
               </div>
-              <h3 className="text-xl font-black text-[#009BE3] uppercase tracking-wide">PAK JANITORIAL</h3>
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#61B329] mt-1">SERVICES</p>
             </div>
           </div>
         </div>
@@ -606,37 +726,37 @@ export default function PakJanitorialPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-[#F4F9FC] px-6 py-16 lg:py-24 border-b border-[#D4E8F5]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Testimonials"
-            title="What Our Clients Say"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {TESTIMONIALS.map((item, index) => (
-              <div key={index} className="rounded-[28px] border border-[#D4E8F5] bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#009BE3]">
-                <p className="text-base italic leading-relaxed text-[#405060] mb-6">“{item.quote}”</p>
-                <p className="font-black text-[#2A323D]">{item.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
+      {/* Testimonials & FAQs */}
       <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D4E8F5]">
         <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Frequently Asked Questions"
-            title="Common Questions"
-            description="Answers to common questions regarding our janitorial, sanitization, and staffing services."
-            center
-          />
-          <div className="mt-12 grid gap-4 max-w-4xl mx-auto">
-            {FAQS.map((item, index) => (
-              <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-            ))}
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
+            <div>
+              <SectionHeader
+                eyebrow="Testimonials"
+                title="What Our Clients Say"
+              />
+              <div className="mt-8 grid gap-6">
+                {TESTIMONIALS.map((item, index) => (
+                  <div key={index} className="rounded-[28px] border border-[#D4E8F5] bg-[#F4F9FC] p-8 shadow-sm transition-all duration-300 hover:border-[#009BE3]">
+                    <p className="text-base italic leading-relaxed text-[#405060] mb-6">“{item.quote}”</p>
+                    <p className="font-black text-[#2A323D]">{item.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <SectionHeader
+                eyebrow="Frequently Asked Questions"
+                title="Common Questions"
+                description="Answers to common questions regarding our janitorial, sanitization, and staffing services."
+              />
+              <div className="mt-8 grid gap-4">
+                {FAQS.map((item, index) => (
+                  <FaqAccordionItem key={index} question={item.q} answer={item.a} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -709,7 +829,7 @@ export default function PakJanitorialPage() {
                 </div>
               </div>
 
-              <div className="mt-10 pt-6 border-t border-white/20 text-xs text-white/80">
+              <div className="mt-6 pt-6 border-t border-white/20 text-xs text-white/80">
                 &copy; {new Date().getFullYear()} Pak Janitorial Services. All Rights Reserved.
               </div>
             </div>
@@ -717,7 +837,45 @@ export default function PakJanitorialPage() {
         </div>
       </section>
 
-      <CorporateFooter />
+      <section className="bg-white px-6 py-16 lg:py-20 border-t border-[#D4E8F5]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
+            <div>
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#61B329] mb-3">
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#61B329]" />
+                Our Location
+              </span>
+              <h3 className="text-3xl md:text-4xl font-black text-[#2A323D] mb-4">Visit Our Office</h3>
+              <p className="text-base leading-relaxed text-[#405060] mb-6">
+                We are based in Lahore and welcome visits for facility consultations, project discussions, and service planning.
+              </p>
+              <div className="rounded-[24px] border border-[#D4E8F5] bg-[#F4F9FC] p-6">
+                <p className="text-sm font-semibold text-[#2A323D]">{CONTACT_INFO.office}</p>
+                <a
+                  href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#009BE3] hover:text-[#007BBF]"
+                >
+                  Open in Google Maps <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-[28px] border border-[#D4E8F5] shadow-sm">
+              <iframe
+                src="https://www.google.com/maps?q=Lahore%20Pakistan&output=embed"
+                title="Pak Janitorial Location"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-[420px] w-full border-0"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <PakJanitorialFooter />
     </main>
   );
 }

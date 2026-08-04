@@ -3,12 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderNavbar from "@/components/ui/navigation-menu";
-import CorporateFooter from "@/components/ui/footer";
 import {
   ArrowRight, Award, Building2, CheckCircle2, ClipboardList, Globe2,
   Hammer, Layers, MapPin, Phone, MessageCircle, Mail, Plus, Minus, Send,
-  Truck, Users, Wrench, ShieldCheck, Sparkles,
+  Truck, Users, Wrench, ShieldCheck, Sparkles, Menu, X,
 } from "lucide-react";
 
 // ── Color System matching Walton Consultants Logo ──
@@ -32,6 +30,18 @@ const HERO = {
     "Walton Consultants & Contracting is a leading engineering and construction company specializing in civil engineering, EPC projects, industrial construction, and infrastructure development. We deliver innovative, sustainable, and high-quality engineering solutions.",
   ctaPrimary: "Explore Projects",
   ctaSecondary: "View Our Expertise",
+  backgroundImage: "/wlaton-hearo.png",
+};
+
+const ABOUT_SECTION = {
+  eyebrow: "About Our Company",
+  heading: "Building Strong Foundations for the Future",
+  paragraphs: [
+    "Walton Consultants & Contracting provides integrated engineering, procurement, construction, and infrastructure solutions across multiple industries. From concept and design to execution and project completion, we combine technical expertise, innovation, and operational excellence to deliver projects that meet the highest standards of quality and performance.",
+    "Our multidisciplinary team of engineers, architects, project managers, and technical specialists is committed to delivering sustainable infrastructure that creates lasting value for businesses and communities.",
+  ],
+  image: "/walton-about.png",
+  imageAlt: "Walton Consultants office and team",
 };
 
 const STATS = [
@@ -136,10 +146,10 @@ const CAPABILITIES = [
 ];
 
 const FEATURED_PROJECTS = [
-  { title: "Highway Infrastructure Development", image: "/project-infrastructure.png" },
-  { title: "Industrial Manufacturing Facilities", image: "/project-industrial.png" },
-  { title: "Commercial & Mixed-Use Developments", image: "/project-commercial.png" },
-  { title: "Utility Infrastructure Projects", image: "/project-infrastructure.png" },
+  { title: "Highway Infrastructure Development", image: "/highway.png" },
+  { title: "Industrial Manufacturing Facilities", image: "/industry.png" },
+  { title: "Commercial & Mixed-Use Developments", image: "/commerical.png" },
+  { title: "Utility Infrastructure Projects", image: "/utility.png" },
 ];
 
 const TESTIMONIALS = [
@@ -308,7 +318,7 @@ function FaqAccordionItem({ question, answer }) {
 
 // ── Contact Form Component ──
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -335,10 +345,10 @@ function ContactForm() {
         </div>
         <h3 className="text-2xl font-black text-[#0E2A47] mb-3">Thank You!</h3>
         <p className="text-sm leading-relaxed text-[#3A4E63] max-w-md mx-auto mb-6">
-          Thank you, {form.name}. Your inquiry has been received. Our engineering team will contact you shortly.
+          Thank you, {form.name}. {form.service ? `Your inquiry about "${form.service}" has been received.` : "Your inquiry has been received."} Our engineering team will contact you shortly.
         </p>
         <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", subject: "", message: "" }); setSubmitted(false); }}
+          onClick={() => { setForm({ name: "", email: "", phone: "", service: "", message: "" }); setSubmitted(false); }}
           className="inline-flex items-center gap-2 rounded-full bg-[#0E2A47] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#C5A059]"
         >
           Send Another Message
@@ -378,12 +388,18 @@ function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3A4E63] mb-2">Subject</label>
-          <input
-            type="text" name="subject" value={form.subject} onChange={handleChange}
-            placeholder="Infrastructure / Project Consultation"
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#3A4E63] mb-2">Service</label>
+          <select
+            name="service"
+            value={form.service}
+            onChange={handleChange}
             className="w-full rounded-xl border border-[#D8E2EC] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#0E2A47] outline-none transition-all focus:border-[#0E2A47] focus:bg-white"
-          />
+          >
+            <option value="">Select a service...</option>
+            {CORE_SERVICES.map((service) => (
+              <option key={service.title} value={service.title}>{service.title}</option>
+            ))}
+          </select>
         </div>
       </div>
       <div className="mb-5">
@@ -404,6 +420,120 @@ function ContactForm() {
         Submit Request <Send size={15} />
       </button>
     </form>
+  );
+}
+
+// ── Walton Consultants Navbar ──
+function WaltonConsNavbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About Us", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Projects", href: "#projects" },
+    { label: "Careers", href: "#careers" },
+    { label: "Contact", href: "#contact" },
+  ];
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D8E2EC]">
+      <div className="hidden md:block bg-[#081B30] text-white py-2 px-6">
+        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
+          <div className="flex items-center gap-6 text-white/80">
+            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
+            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
+            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
+          </div>
+          <span className="text-xs font-bold text-[#C5A059]">Walton Consultants &amp; Contracting — Engineering Excellence</span>
+        </div>
+      </div>
+      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
+        <a href="#home" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 rounded-xl bg-[#0E2A47] flex items-center justify-center group-hover:scale-105 transition-transform">
+            <Building2 size={22} color="#C5A059" />
+          </div>
+          <div>
+            <p className="text-base font-black tracking-tight text-[#0E2A47] leading-none">WALTON CONSULTANTS</p>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-[#3A4E63]">&amp; Contracting</p>
+          </div>
+        </a>
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#0E2A47]">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#C5A059] group transition-colors">
+              {l.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C5A059] transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+        </nav>
+        <div className="hidden lg:flex items-center gap-3">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#C5A059] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#A6823B] hover:scale-105 transition-all">
+            <MessageCircle size={14} /> Get In Touch
+          </a>
+        </div>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#F4F7FA] text-[#0E2A47]">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t border-[#D8E2EC] px-6 py-5 space-y-3">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
+              className="block text-sm font-bold text-[#0E2A47] hover:text-[#C5A059] py-1">{l.label}</a>
+          ))}
+          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#C5A059] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
+            <MessageCircle size={14} /> Get In Touch
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+// ── Walton Consultants Footer ──
+function WaltonConsFooter() {
+  return (
+    <footer style={{ background: "#0E2A47" }} className="text-white">
+      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+              <Building2 size={20} color="#C5A059" />
+            </div>
+            <div>
+              <p className="font-black text-lg leading-none">WALTON CONSULTANTS</p>
+              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">&amp; Contracting</p>
+            </div>
+          </div>
+          <p className="text-sm text-white/70 leading-relaxed mb-5">Trusted engineering, infrastructure development, and project management services across Pakistan.</p>
+          <div className="space-y-2 text-xs text-white/75">
+            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#C5A059]" />{CONTACT_INFO.office}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#C5A059]" />{CONTACT_INFO.phone}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#C5A059]" />{CONTACT_INFO.emails[0]}</p>
+          </div>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#C5A059]">Quick Links</h4>
+          <ul className="space-y-2.5 text-sm text-white/75">
+            {["About Us","Services","Projects","Careers","Contact"].map(l => (
+              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#C5A059]">Contact Us</h4>
+          <div className="space-y-3 text-xs text-white/75">
+            <p className="flex items-center gap-2"><MessageCircle size={14} className="text-[#C5A059]" /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#C5A059]" />{CONTACT_INFO.emails[0]}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#C5A059]" />{CONTACT_INFO.phone}</p>
+          </div>
+          <div className="mt-6 pt-6 border-t border-white/20">
+            <Link href="/group-companies" className="text-xs text-white/60 hover:text-white transition-colors">← Back to Roysons Group</Link>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} Walton Consultants &amp; Contracting. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
+      </div>
+    </footer>
   );
 }
 
@@ -448,50 +578,45 @@ export default function WaltonConsultantsPage() {
         }
       `}</style>
 
-      <HeaderNavbar activeRoute="/group-companies" />
+      <WaltonConsNavbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#F4F7FA] border-b border-[#D8E2EC]">
+      <section
+        className="relative overflow-hidden bg-[#F4F7FA] border-b border-[#D8E2EC]"
+        style={{
+          backgroundImage: HERO.backgroundImage
+            ? `linear-gradient(180deg, rgba(244,247,250,0.95) 0%, rgba(244, 247, 250, 0) 40%, rgba(244,247,250,0.95) 100%), url("${encodeURI(HERO.backgroundImage)}")`
+            : "linear-gradient(180deg, rgba(244,247,250,0.95) 0%, rgba(244, 247, 250, 0.43) 40%, rgba(244,247,250,0.95) 100%)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,42,71,0.12),_transparent_55%)]" />
-        <div className="mx-auto max-w-screen-xl px-6 py-12 lg:py-20 relative">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#C5D5E6] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#0E2A47] shadow-sm">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#C5A059]" />
-                {HERO.badge}
-              </span>
-              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#0E2A47]">
-                Engineering Excellence. <span className="text-[#C5A059]">Building Tomorrow's Infrastructure.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#3A4E63]">
-                {HERO.subline}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="#projects"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0E2A47] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#C5A059] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-                >
-                  {HERO.ctaPrimary} <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="#services"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#0E2A47] bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-[#0E2A47] transition-all duration-300 hover:bg-[#0E2A47] hover:text-white hover:scale-[1.02] active:scale-95"
-                >
-                  {HERO.ctaSecondary}
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative rounded-[36px] overflow-hidden border-2 border-[#D8E2EC] shadow-xl">
-              <Image
-                src="/hero-building.png"
-                alt="Infrastructure project"
-                width={900}
-                height={600}
-                className="h-full w-full object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0E2A47]/40 via-transparent to-transparent" />
+        <div className="mx-auto max-w-screen-xl px-6 py-16 lg:py-24 relative">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#C5D5E6] bg-white/90 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#0E2A47] shadow-sm backdrop-blur-sm">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#C5A059]" />
+              {HERO.badge}
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#0E2A47]">
+              Engineering Excellence. <span className="text-[#C5A059]">Building Tomorrow's Infrastructure.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#3A4E63]">
+              {HERO.subline}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-full bg-[#0E2A47] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#C5A059] hover:scale-[1.02] hover:shadow-lg active:scale-95"
+              >
+                {HERO.ctaPrimary} <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="#services"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-[#0E2A47] bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-[#0E2A47] transition-all duration-300 hover:bg-[#0E2A47] hover:text-white hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaSecondary}
+              </Link>
             </div>
           </div>
         </div>
@@ -500,27 +625,35 @@ export default function WaltonConsultantsPage() {
       {/* About Section */}
       <section className="bg-white px-6 py-16 lg:py-20 border-b border-[#D8E2EC]">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center">
+          <div className={`grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center ${ABOUT_SECTION.image ? "lg:grid-cols-[1.25fr_0.95fr]" : ""}`}>
             <div>
               <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#C5A059] mb-3">
                 <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#C5A059]" />
-                About Our Company
+                {ABOUT_SECTION.eyebrow}
               </span>
-              <h2 className="text-3xl md:text-4xl font-black text-[#0E2A47] mb-5">Building Strong Foundations for the Future</h2>
-              <p className="text-base leading-relaxed text-[#3A4E63] mb-6">
-                Walton Consultants & Contracting provides integrated engineering, procurement, construction, and infrastructure solutions across multiple industries. From concept and design to execution and project completion, we combine technical expertise, innovation, and operational excellence to deliver projects that meet the highest standards of quality and performance.
-              </p>
-              <p className="text-base leading-relaxed text-[#3A4E63]">
-                Our multidisciplinary team of engineers, architects, project managers, and technical specialists is committed to delivering sustainable infrastructure that creates lasting value for businesses and communities.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-black text-[#0E2A47] mb-5">{ABOUT_SECTION.heading}</h2>
+              <p className="text-base leading-relaxed text-[#3A4E63] mb-6">{ABOUT_SECTION.paragraphs[0]}</p>
+              <p className="text-base leading-relaxed text-[#3A4E63]">{ABOUT_SECTION.paragraphs[1]}</p>
             </div>
-            <div className="relative rounded-[28px] overflow-hidden border border-[#D8E2EC] bg-[#F4F7FA] p-8 shadow-sm text-center">
-              <div className="w-20 h-20 rounded-full bg-[#E8EEF5] text-[#0E2A47] mx-auto flex items-center justify-center mb-4">
-                <Building2 size={40} />
+            {ABOUT_SECTION.image ? (
+              <div
+                className="overflow-hidden rounded-[28px] border border-[#D8E2EC] bg-[#F4F7FA]"
+                style={{ boxShadow: "0 24px 70px -32px rgba(14,42,71,0.32)" }}
+              >
+                <Image src={ABOUT_SECTION.image} alt={ABOUT_SECTION.imageAlt} width={720} height={540} className="h-full w-full object-cover" />
               </div>
-              <h3 className="text-xl font-black text-[#0E2A47] uppercase tracking-wide">WALTON</h3>
-              <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#C5A059] mt-1">CONSULTANTS & CONTRACTING</p>
-            </div>
+            ) : (
+              <div
+                className="relative rounded-[28px] overflow-hidden border border-[#D8E2EC] bg-[#F4F7FA] p-8 text-center"
+                style={{ boxShadow: "0 24px 70px -32px rgba(14,42,71,0.32)" }}
+              >
+                <div className="w-20 h-20 rounded-full bg-[#E8EEF5] text-[#0E2A47] mx-auto flex items-center justify-center mb-4">
+                  <Building2 size={40} />
+                </div>
+                <h3 className="text-xl font-black text-[#0E2A47] uppercase tracking-wide">WALTON</h3>
+                <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#C5A059] mt-1">CONSULTANTS & CONTRACTING</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -666,37 +799,34 @@ export default function WaltonConsultantsPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D8E2EC]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Testimonials"
-            title="What Our Clients & Partners Say"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {TESTIMONIALS.map((item, index) => (
-              <div key={index} className="rounded-[28px] border border-[#D8E2EC] bg-[#F4F7FA] p-8 shadow-sm transition-all duration-300 hover:border-[#0E2A47]">
-                <p className="text-base italic leading-relaxed text-[#3A4E63] mb-6">“{item.quote}”</p>
-                <p className="font-black text-[#0E2A47]">{item.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
+      {/* Testimonials & FAQs */}
       <section className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-b border-[#D8E2EC]">
         <div className="mx-auto max-w-screen-xl">
           <SectionHeader
-            eyebrow="Frequently Asked Questions"
-            title="Common Questions"
-            description="Answers to the most common project and service questions."
-            center
+            eyebrow="Insights"
+            title="Testimonials & Frequently Asked Questions"
+            description="What our clients say and the questions we answer most often."
           />
-          <div className="mt-12 grid gap-4 max-w-4xl mx-auto">
-            {FAQS.map((item, index) => (
-              <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-            ))}
+          <div className="mt-12 grid gap-10 lg:grid-cols-2 items-start">
+            <div>
+              <h3 className="text-xl font-black text-[#0E2A47] mb-6">What Our Clients Say</h3>
+              <div className="grid gap-6">
+                {TESTIMONIALS.map((item, index) => (
+                  <div key={index} className="rounded-[28px] border border-[#D8E2EC] bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#0E2A47]">
+                    <p className="text-base italic leading-relaxed text-[#3A4E63] mb-6">“{item.quote}”</p>
+                    <p className="font-black text-[#0E2A47]">{item.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xl font-black text-[#0E2A47] mb-6">Frequently Asked Questions</h3>
+              <div className="grid gap-4 max-w-xl">
+                {FAQS.map((item, index) => (
+                  <FaqAccordionItem key={index} question={item.q} answer={item.a} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -777,7 +907,44 @@ export default function WaltonConsultantsPage() {
         </div>
       </section>
 
-      <CorporateFooter />
+      <section className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-t border-[#D8E2EC]">
+        <div className="mx-auto max-w-screen-xl">
+          <SectionHeader
+            eyebrow="Our Location"
+            title="Visit Our Walton Office"
+            description="Find us near Zakir Tikka on Service Lane, Ring Road. Use the map link to open directions in Google Maps."
+          />
+          <div className="mt-10 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-center">
+            <div className="rounded-[28px] border border-[#D8E2EC] bg-white p-8 shadow-sm">
+              <h3 className="text-xl font-black text-[#0E2A47] mb-4">Office Location</h3>
+              <p className="text-sm leading-relaxed text-[#3A4E63] mb-6">
+                1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
+              </p>
+              <a
+                href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#0E2A47] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-[#C5A059]"
+              >
+                Open in Google Maps <ArrowRight size={16} />
+              </a>
+            </div>
+            <div className="overflow-hidden rounded-[28px] border border-[#D8E2EC] bg-white shadow-sm">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.73888879359!2d74.2895593150027!3d31.45275698142781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391905d6dfd96b7f%3A0x28f4f4f5f1f69c20!2sService%20Lane%20Ring%20Road%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000!5m2!1sen!2s"
+                width="100%"
+                height="360"
+                className="border-0"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <WaltonConsFooter />
     </main>
   );
 }

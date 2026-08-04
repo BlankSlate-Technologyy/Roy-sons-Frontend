@@ -122,18 +122,18 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
             <div className={`flex flex-wrap gap-3 transition-all duration-500 delay-200 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               <Link
                 href={activeSlide.cta1?.href || activeSlide.cta?.href || "/"}
-                className="inline-flex items-center gap-3 bg-transparent border-2 border-[#dfb753] text-[#dfb753] text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#dfb753] hover:text-black hover:border-[#dfb753] transition-all duration-300 group"
+                className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#dfb753] text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#dfb753] hover:border-[#dfb753] transition-all duration-300 group"
               >
-                <span className="text-[#dfb753] group-hover:text-black transition-colors">{activeSlide.cta1?.label || activeSlide.cta?.label}</span>
-                <ArrowRight size={13} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1 transition-all" />
+                <span className="text-[#dfb753] group-hover:text-black transition-colors duration-300">{activeSlide.cta1?.label || activeSlide.cta?.label}</span>
+                <ArrowRight size={13} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
               </Link>
               {activeSlide.cta2 && (
                 <Link
                   href={activeSlide.cta2.href}
-                  className="inline-flex items-center gap-3 bg-transparent border-2 border-[#dfb753] text-[#dfb753] text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#dfb753] hover:text-black hover:border-[#dfb753] transition-all duration-300 group"
+                  className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#dfb753] text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#dfb753] hover:border-[#dfb753] transition-all duration-300 group"
                 >
-                  <span className="text-[#dfb753] group-hover:text-black transition-colors">{activeSlide.cta2.label}</span>
-                  <ArrowRight size={13} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1 transition-all" />
+                  <span className="text-[#dfb753] group-hover:text-black transition-colors duration-300">{activeSlide.cta2.label}</span>
+                  <ArrowRight size={13} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
                 </Link>
               )}
             </div>

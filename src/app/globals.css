@@ -80,7 +80,7 @@
     font-family: var(--font-inter), system-ui, sans-serif;
   }
 
-  body:not(.roys-roys-theme) {
+  body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) {
     background-color: #000000 !important;
     color: #dfb753 !important;
   }
@@ -88,7 +88,7 @@
 
 /* --- Roy Sons Premium Black & Gold Theme Engine --- */
 
-body:not(.roys-roys-theme) {
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) {
 
   /* Black Backgrounds */
   &,
@@ -292,13 +292,29 @@ body:not(.roys-roys-theme) {
   animation: fadeInUp 0.8s ease forwards;
 }
 
-/* ── Hero Slider & CTA Button Hover: Golden BG + Black Text ─── */
-/* These override the global theme golden-text rule on hover     */
-body:not(.roys-roys-theme) a:hover[class*="hover:bg-[#dfb753]"],
-body:not(.roys-roys-theme) a:hover[class*="hover:bg-[#dfb753]"] *,
-body:not(.roys-roys-theme) a:hover[class*="hover:bg-[#dfb753]"] span,
-body:not(.roys-roys-theme) a.group:hover .group-hover\:text-black {
+/* ── CTA Button: Default state — golden border + transparent bg ── */
+.rs-cta-btn {
+  background-color: transparent !important;
+  border-color: #dfb753 !important;
+}
+
+/* ── CTA Button: Hover state — golden fill + solid black text ──  */
+/* Specificity must beat body:not(...) a = (0,6,2)                 */
+/* We use the same :not() chain + .rs-cta-btn:hover = (0,7,2) ✓   */
+/* Also reset background-image on the <a> itself — global rule     */
+/* sets background-image: gradient on 'a' for text-clip, which     */
+/* sits on top of background-color and hides the golden fill.      */
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) .rs-cta-btn:hover {
   background-color: #dfb753 !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  border-color: #dfb753 !important;
+}
+
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) .rs-cta-btn:hover span,
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) .rs-cta-btn:hover svg,
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) .rs-cta-btn:hover * {
   background-image: none !important;
   background-clip: unset !important;
   -webkit-background-clip: unset !important;

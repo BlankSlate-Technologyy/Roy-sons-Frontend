@@ -23,10 +23,10 @@ function ArticleTile({ image, date, title, href }) {
       </h3>
       <Link
         href={href}
-        className="inline-flex items-center gap-2 px-4 py-2 text-[10px] font-bold tracking-[0.16em] uppercase border-2 border-[#dfb753] text-[#dfb753] bg-transparent hover:bg-[#dfb753] hover:text-black hover:border-[#dfb753] transition-all duration-300 w-fit mt-auto group"
+        className="rs-cta-btn inline-flex items-center gap-2 px-4 py-2 text-[10px] font-bold tracking-[0.16em] uppercase border-2 border-[#dfb753] bg-transparent hover:bg-[#dfb753] hover:border-[#dfb753] transition-all duration-300 w-fit mt-auto group"
       >
-        <span className="text-[#dfb753] group-hover:text-black transition-colors">READ MORE</span>
-        <ArrowRight size={10} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-0.5 transition-all" />
+        <span className="text-[#dfb753] group-hover:text-black transition-colors duration-300">READ MORE</span>
+        <ArrowRight size={10} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-0.5 transition-all duration-300" />
       </Link>
     </div>
   );

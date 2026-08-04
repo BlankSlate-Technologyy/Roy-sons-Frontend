@@ -388,8 +388,15 @@ function ContactForm() {
           <input className="tdrc-field" placeholder="+92 XXX XXXXXXX" value={form.phone} onChange={update("phone")} />
         </div>
         <div>
-          <label className="tdrc-label">Subject</label>
-          <input className="tdrc-field" placeholder="How can we help?" value={form.subject} onChange={update("subject")} />
+          <label className="tdrc-label">Service Type</label>
+          <select className="tdrc-field" value={form.subject} onChange={update("subject")}>
+            <option value="">Select a service</option>
+            <option value="Applied Research">Applied Research</option>
+            <option value="Environmental Studies">Environmental Studies</option>
+            <option value="Policy Research">Policy Research</option>
+            <option value="Sustainable Development">Sustainable Development</option>
+            <option value="Capacity Building">Capacity Building</option>
+          </select>
         </div>
       </div>
       <div>
@@ -406,6 +413,8 @@ function ContactForm() {
 // ─── Main Page ───────────────────────────────────────────────────────────────
 export default function TDRCPage() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const activeTestimonialItem = TESTIMONIALS[activeTestimonial];
   const MAP_SRC = "https://www.google.com/maps?q=31.4609249,74.4260081&hl=en&z=16&output=embed";
 
   useEffect(() => {
@@ -452,27 +461,38 @@ export default function TDRCPage() {
       </header>
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section id="home" style={{ position: "relative", background: C.bgWhite, overflow: "hidden", paddingBottom: 64 }}>
-        <svg width="100%" height="100%" style={{ position: "absolute", inset: 0, opacity: 0.3 }} preserveAspectRatio="none">
-          <path d="M0,120 Q300,60 600,140 T1240,90" className="tdrc-current" style={{ animationDuration: "5s" }} />
-        </svg>
-
-        <div style={{ position: "relative", zIndex: 5, maxWidth: 1240, margin: "0 auto", padding: "68px 24px 40px", display: "grid", gridTemplateColumns: "1.05fr 0.95fr", gap: 40, alignItems: "center" }} className="tdrc-grid-2">
-          <div className="tdrc-reveal">
+      <section
+        id="home"
+        style={{
+          position: "relative",
+          backgroundImage: `linear-gradient(135deg, rgba(14,31,23,0.88) 0%, rgba(28,66,49,0.84) 50%, rgba(14,31,23,0.92) 100%), url("${encodeURI("/tdrc.jpeg")}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          overflow: "hidden",
+          paddingBottom: 64,
+          minHeight: 520,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <div style={{ position: "relative", zIndex: 5, maxWidth: 1240, margin: "0 auto", padding: "68px 24px 40px", width: "100%" }}>
+          <div className="tdrc-reveal" style={{ maxWidth: 750 }}>
             <div style={{
-              display: "inline-flex", alignItems: "center", gap: 8, background: C.greenSoft,
-              border: `1px solid ${C.green}55`, borderRadius: 20, padding: "6px 14px", marginBottom: 22,
+              display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.12)",
+              border: `1px solid rgba(255,255,255,0.25)`, borderRadius: 20, padding: "6px 14px", marginBottom: 22,
+              backdropFilter: "blur(4px)",
             }}>
               <Leaf size={12} color={C.green} />
-              <span style={{ color: C.greenDeep, fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
+              <span style={{ color: "#fff", fontSize: 10.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
                 Trusted Research, Innovation &amp; Sustainable Development Organization
               </span>
             </div>
 
-            <h1 style={{ color: C.ink, fontSize: "clamp(30px, 4.2vw, 46px)", fontWeight: 700, lineHeight: 1.1, marginBottom: 18, letterSpacing: "-0.01em" }}>
+            <h1 style={{ color: "#ffffff", fontSize: "clamp(30px, 4.2vw, 48px)", fontWeight: 800, lineHeight: 1.1, marginBottom: 18, letterSpacing: "-0.01em" }}>
               Research That Creates Impact.<br />Innovation That Builds the <span style={{ color: C.green }}>Future.</span>
             </h1>
-            <p style={{ color: C.textMute, fontSize: 14, lineHeight: 1.85, marginBottom: 32, maxWidth: 500 }}>
+            <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, lineHeight: 1.85, marginBottom: 32, maxWidth: 640 }}>
               TDRC — THAL Development &amp; Research Centre is a leading research and development
               organization committed to advancing scientific research, environmental sustainability,
               social development, and innovative solutions for public and private sectors. Through
@@ -482,16 +502,12 @@ export default function TDRCPage() {
             </p>
             <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
               <a href="#services" className="tdrc-btn-green">Explore Our Research <ArrowRight size={14} /></a>
-              <a href="#projects" className="tdrc-btn-outline">View Our Projects <ArrowRight size={14} /></a>
+              <a href="#projects" className="tdrc-btn-outline" style={{ borderColor: "#ffffff", color: "#ffffff" }}>View Our Projects <ArrowRight size={14} /></a>
             </div>
-          </div>
-
-          <div className="tdrc-reveal" style={{ animationDelay: "150ms" }}>
-            <VisualPanel height={360} dark icon={Satellite} dense />
           </div>
         </div>
 
-        <div style={{ position: "relative", zIndex: 6, maxWidth: 1240, margin: "0 auto", padding: "0 24px", transform: "translateY(50%)" }}>
+        <div style={{ position: "relative", zIndex: 6, maxWidth: 1240, margin: "0 auto", padding: "0 24px", transform: "translateY(50%)", width: "100%" }}>
           <Reveal delay={200}>
             <div style={{ background: C.bgWhite, borderRadius: 14, border: `1px solid ${C.border}`, boxShadow: "0 24px 60px rgba(14,31,23,0.14)", padding: "22px 20px", display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 14 }} className="tdrc-grid-5">
               {STATS.map(({ icon: Icon, value, suffix, label }) => (
@@ -513,7 +529,15 @@ export default function TDRCPage() {
       {/* ── ABOUT ─────────────────────────────────────────────────────────── */}
       <section id="about" style={{ padding: "40px 24px 90px", background: C.bgWhite }}>
         <div style={{ maxWidth: 1240, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }} className="tdrc-grid-2">
-          <Reveal><VisualPanel height={300} icon={Landmark} /></Reveal>
+          <Reveal>
+            <div style={{ borderRadius: 18, overflow: "hidden", border: `1px solid ${C.border}`, background: C.bgPanel, minHeight: 320 }}>
+              <img
+                src="/tdrc.jpeg"
+                alt="TDRC research and development team"
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+            </div>
+          </Reveal>
           <Reveal delay={100}>
             <p className="tdrc-eyebrow">About Us</p>
             <h2 className="tdrc-h2" style={{ marginBottom: 18 }}>Advancing Research. Empowering Sustainable Development.</h2>
@@ -721,15 +745,28 @@ export default function TDRCPage() {
             <div>
               <h3 style={{ color: C.textInk, fontSize: 13, fontWeight: 800, marginBottom: 16 }}>Testimonials</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                {TESTIMONIALS.map(({ name, role, quote }) => (
-                  <div key={name} className="tdrc-card" style={{ padding: 16 }}>
-                    <Quote size={16} color={C.green} style={{ marginBottom: 8 }} />
-                    <p style={{ fontSize: 11, lineHeight: 1.65, color: C.textMid, fontStyle: "italic", marginBottom: 10 }}>&ldquo;{quote}&rdquo;</p>
-                    <Stars />
-                    <p style={{ fontSize: 10, fontWeight: 800, color: C.textInk, marginTop: 8 }}>{name}</p>
-                    <p style={{ fontSize: 9.5, color: C.textMute }}>{role}</p>
+                <div className="tdrc-card" style={{ padding: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 10 }}>
+                    <Quote size={16} color={C.green} />
+                    <div style={{ display: "flex", gap: 8 }}>
+                      <button type="button" onClick={() => setActiveTestimonial((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1))} style={{ width: 28, height: 28, borderRadius: "50%", border: `1px solid ${C.border}`, background: C.bgWhite, display: "flex", alignItems: "center", justifyContent: "center" }} aria-label="Previous testimonial">
+                        <ArrowRight size={13} className="rotate-180" />
+                      </button>
+                      <button type="button" onClick={() => setActiveTestimonial((prev) => (prev + 1) % TESTIMONIALS.length)} style={{ width: 28, height: 28, borderRadius: "50%", border: `1px solid ${C.border}`, background: C.bgWhite, display: "flex", alignItems: "center", justifyContent: "center" }} aria-label="Next testimonial">
+                        <ArrowRight size={13} />
+                      </button>
+                    </div>
                   </div>
-                ))}
+                  <p style={{ fontSize: 11, lineHeight: 1.65, color: C.textMid, fontStyle: "italic", marginBottom: 10 }}>&ldquo;{activeTestimonialItem.quote}&rdquo;</p>
+                  <Stars />
+                  <p style={{ fontSize: 10, fontWeight: 800, color: C.textInk, marginTop: 8 }}>{activeTestimonialItem.name}</p>
+                  <p style={{ fontSize: 9.5, color: C.textMute }}>{activeTestimonialItem.role}</p>
+                  <div style={{ display: "flex", gap: 6, marginTop: 12 }}>
+                    {TESTIMONIALS.map((_, index) => (
+                      <button key={index} type="button" onClick={() => setActiveTestimonial(index)} style={{ height: 6, borderRadius: 999, background: index === activeTestimonial ? C.green : C.border, width: index === activeTestimonial ? 20 : 6 }} aria-label={`Go to testimonial ${index + 1}`} />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -777,7 +814,7 @@ export default function TDRCPage() {
         </div>
       </section>
 
-      {/* ── CONTACT + MAP ─────────────────────────────────────────────────── */}
+      {/* ── CONTACT ─────────────────────────────────────────────────────── */}
       <section id="contact" style={{ padding: "90px 24px", background: C.bgWhite }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <Reveal>
@@ -788,52 +825,34 @@ export default function TDRCPage() {
           </Reveal>
 
           <div style={{ display: "grid", gridTemplateColumns: "0.85fr 1.15fr", gap: 30 }} className="tdrc-grid-2">
-            {/* Contact details + Map */}
+            {/* Contact details */}
             <Reveal>
-              <div style={{ display: "flex", flexDirection: "column", gap: 18, height: "100%" }}>
-                <div className="tdrc-card" style={{ padding: 22 }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                      <div className="tdrc-card-icon" style={{ width: 36, height: 36, marginBottom: 0, flexShrink: 0 }}><Mail size={16} color={C.ink} /></div>
-                      <div>
-                        <p style={{ fontSize: 11, fontWeight: 700, color: C.textInk }}>Email</p>
-                        <p style={{ fontSize: 12, color: C.textMute }}>info@thaldrc.org</p>
-                      </div>
-                    </div>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                      <div className="tdrc-card-icon" style={{ width: 36, height: 36, marginBottom: 0, flexShrink: 0 }}><Phone size={16} color={C.ink} /></div>
-                      <div>
-                        <p style={{ fontSize: 11, fontWeight: 700, color: C.textInk }}>Phone</p>
-                        <p style={{ fontSize: 12, color: C.textMute }}>+92 XXX XXXXXXX</p>
-                      </div>
-                    </div>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                      <div className="tdrc-card-icon" style={{ width: 36, height: 36, marginBottom: 0, flexShrink: 0 }}><MapPin size={16} color={C.ink} /></div>
-                      <div>
-                        <p style={{ fontSize: 11, fontWeight: 700, color: C.textInk }}>Office</p>
-                        <p style={{ fontSize: 12, color: C.textMute }}>Lahore, Punjab, Pakistan</p>
-                      </div>
-                    </div>
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                      <div className="tdrc-card-icon" style={{ width: 36, height: 36, marginBottom: 0, flexShrink: 0 }}><Clock size={16} color={C.ink} /></div>
-                      <div>
-                        <p style={{ fontSize: 11, fontWeight: 700, color: C.textInk }}>Hours</p>
-                        <p style={{ fontSize: 12, color: C.textMute }}>Mon – Fri, 9:00 AM – 6:00 PM</p>
-                      </div>
+              <div className="tdrc-card" style={{ padding: 22, height: "100%" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <div className="tdrc-card-icon" style={{ width: 36, height: 36, marginBottom: 0, flexShrink: 0 }}><Mail size={16} color={C.ink} /></div>
+                    <div>
+                      <p style={{ fontSize: 11, fontWeight: 700, color: C.textInk }}>Email Us</p>
+                      <p style={{ fontSize: 12, color: C.textMute, lineHeight: 1.7 }}>info@roysons.org</p>
+                      <p style={{ fontSize: 12, color: C.textMute, lineHeight: 1.7 }}>support@roysons.org</p>
                     </div>
                   </div>
-                </div>
-
-                <div className="tdrc-card" style={{ overflow: "hidden", flex: 1, minHeight: 220 }}>
-                  <iframe
-                    title="TDRC Office Location"
-                    src={MAP_SRC}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0, minHeight: 220, display: "block" }}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <div className="tdrc-card-icon" style={{ width: 36, height: 36, marginBottom: 0, flexShrink: 0 }}><Phone size={16} color={C.ink} /></div>
+                    <div>
+                      <p style={{ fontSize: 11, fontWeight: 700, color: C.textInk }}>Call Us</p>
+                      <p style={{ fontSize: 12, color: C.textMute, lineHeight: 1.7 }}>Phone: 0092-42-38924737</p>
+                      <p style={{ fontSize: 12, color: C.textMute, lineHeight: 1.7 }}>WhatsApp: 0092-304-7527498</p>
+                      <p style={{ fontSize: 12, color: C.textMute, lineHeight: 1.7 }}>0092-321-8431665</p>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <div className="tdrc-card-icon" style={{ width: 36, height: 36, marginBottom: 0, flexShrink: 0 }}><MapPin size={16} color={C.ink} /></div>
+                    <div>
+                      <p style={{ fontSize: 11, fontWeight: 700, color: C.textInk }}>Our Office</p>
+                      <p style={{ fontSize: 12, color: C.textMute, lineHeight: 1.7 }}>1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -844,6 +863,41 @@ export default function TDRCPage() {
                 <h3 style={{ fontSize: 15, fontWeight: 800, color: C.textInk, marginBottom: 4 }}>Send Us a Message</h3>
                 <p style={{ fontSize: 12, color: C.textMute, marginBottom: 22 }}>Fill out the form below and our team will respond within one business day.</p>
                 <ContactForm />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "0 24px 90px", background: C.bgWhite }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 24, alignItems: "start" }} className="tdrc-grid-2">
+            <Reveal>
+              <div style={{ background: C.bgPanel, border: `1px solid ${C.border}`, borderRadius: 14, padding: 24 }}>
+                <p className="tdrc-eyebrow">Our Location</p>
+                <h3 style={{ color: C.textInk, fontSize: 20, fontWeight: 800, marginBottom: 10 }}>Visit Our Office</h3>
+                <p style={{ color: C.textMute, fontSize: 13, lineHeight: 1.7, marginBottom: 14 }}>
+                  We welcome project consultations, research discussions, and partnership meetings at our Lahore office.
+                </p>
+                <div style={{ background: C.bgWhite, border: `1px solid ${C.border}`, borderRadius: 10, padding: 14 }}>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: C.textInk, lineHeight: 1.6 }}>1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</p>
+                  <a href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7" target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 10, color: C.greenDeep, fontSize: 12.5, fontWeight: 700 }}>
+                    Open in Google Maps <ArrowRight size={14} />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <div className="tdrc-card" style={{ overflow: "hidden", minHeight: 320 }}>
+                <iframe
+                  title="TDRC Office Location"
+                  src={MAP_SRC}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, minHeight: 320, display: "block" }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </Reveal>
           </div>

@@ -3,15 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderNavbar from "@/components/ui/navigation-menu";
-import CorporateFooter from "@/components/ui/footer";
 import {
   ArrowRight, Award, Briefcase, TrendingUp, Handshake, Leaf, Target,
   Settings, ShieldCheck, CheckCircle2, MapPin, Phone, MessageCircle, Mail,
   Plus, Minus, Send, Factory, Snowflake, Package, Boxes, FlaskConical,
   Milk, Wheat, Croissant, GlassWater, Beaker, Refrigerator, Sprout, ScanLine,
   Store, ShoppingCart, Building2, UtensilsCrossed, Globe2, Landmark,
-  GraduationCap, HeartPulse, PlaneTakeoff, Truck, Search, Compass, Users2,
+  GraduationCap, HeartPulse, PlaneTakeoff, Truck, Search, Compass, Users2, Menu, X,
+  ChevronLeft, ChevronRight,
 } from "lucide-react";
 
 // ── Color System matching Walton & Morris Foods Logo ──
@@ -122,6 +121,8 @@ const CONTACT_INFO = {
   whatsapp: ["0092-304-7527498", "0092-321-8431665"],
   emails: ["info@roysons.org", "support@roysons.org"],
 };
+
+const MAP_SRC = "https://www.google.com/maps?q=1st%20Floor%20Rehman%20Centre-2%20Lahore&z=15&output=embed";
 
 // ── Animated Counter Component ──
 function StatCounterCard({ value, suffix, label }) {
@@ -237,6 +238,69 @@ function ProcessStepCard({ step, title, desc }) {
   );
 }
 
+// ── Testimonial Slider Component ──
+function TestimonialSlider({ items }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeItem = items[activeIndex] || items[0];
+
+  const goPrev = () => {
+    setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  const goNext = () => {
+    setActiveIndex((prev) => (prev + 1) % items.length);
+  };
+
+  return (
+    <div className="rounded-[28px] border border-[#D3E4DB] bg-[#F4F8F5] p-8 shadow-sm">
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#D89C46]">Testimonials</p>
+          <h3 className="mt-2 text-2xl font-black text-[#1E6B43]">What Our Partners Say</h3>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={goPrev}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D3E4DB] bg-white text-[#1E6B43] transition-all hover:border-[#1E6B43] hover:text-[#D89C46]"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D3E4DB] bg-white text-[#1E6B43] transition-all hover:border-[#1E6B43] hover:text-[#D89C46]"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      <div className="rounded-[24px] border border-[#D3E4DB] bg-white p-7 shadow-sm">
+        <p className="text-base italic leading-relaxed text-[#3D4E44]">“{activeItem.quote}”</p>
+        <div className="mt-6">
+          <p className="font-black text-[#1E6B43]">{activeItem.name}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#D89C46] mt-1">{activeItem.role}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 flex items-center justify-center gap-2">
+        {items.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setActiveIndex(index)}
+            aria-label={`Go to testimonial ${index + 1}`}
+            className={`h-2.5 w-2.5 rounded-full transition-all ${index === activeIndex ? "bg-[#1E6B43]" : "bg-[#D3E4DB]"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Collapsible FAQ Item Component ──
 function FaqAccordionItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -263,7 +327,7 @@ function FaqAccordionItem({ question, answer }) {
 
 // ── Contact Form Component ──
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -293,7 +357,7 @@ function ContactForm() {
           Thank you, {form.name}. Your inquiry has been received. Our food manufacturing team will contact you shortly.
         </p>
         <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", subject: "", message: "" }); setSubmitted(false); }}
+          onClick={() => { setForm({ name: "", email: "", phone: "", service: "", message: "" }); setSubmitted(false); }}
           className="inline-flex items-center gap-2 rounded-full bg-[#1E6B43] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#D89C46]"
         >
           Send Another Message
@@ -333,12 +397,19 @@ function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3D4E44] mb-2">Service Of Interest</label>
-          <input
-            type="text" name="subject" value={form.subject} onChange={handleChange}
-            placeholder="Private Label / Frozen Foods / Bulk Supply"
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#3D4E44] mb-2">Service Required</label>
+          <select
+            name="service" value={form.service} onChange={handleChange}
             className="w-full rounded-xl border border-[#D3E4DB] bg-[#F8FAF9] px-4 py-3.5 text-sm text-[#1E6B43] outline-none transition-all focus:border-[#1E6B43] focus:bg-white"
-          />
+          >
+            <option value="">Select a service</option>
+            <option value="Modern Food Processing">Modern Food Processing</option>
+            <option value="Frozen Food Production">Frozen Food Production</option>
+            <option value="Packaged Consumer Goods">Packaged Consumer Goods</option>
+            <option value="Private Label Manufacturing">Private Label Manufacturing</option>
+            <option value="Food R&D & Innovation">Food R&D & Innovation</option>
+            <option value="Quality Control & Assurance">Quality Control & Assurance</option>
+          </select>
         </div>
       </div>
       <div className="mb-5">
@@ -359,6 +430,120 @@ function ContactForm() {
         Submit Request <Send size={15} />
       </button>
     </form>
+  );
+}
+
+// ── Walton Food Navbar ──
+function WaltonFoodNavbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About Us", href: "#about" },
+    { label: "Products", href: "#products" },
+    { label: "Services", href: "#services" },
+    { label: "Why Us", href: "#why-us" },
+    { label: "Contact", href: "#contact" },
+  ];
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D3E4DB]">
+      <div className="hidden md:block bg-[#134A2D] text-white py-2 px-6">
+        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
+          <div className="flex items-center gap-6 text-white/80">
+            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
+            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
+            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
+          </div>
+          <span className="text-xs font-bold text-[#D89C46]">Walton &amp; Morris Foods — Quality You Trust</span>
+        </div>
+      </div>
+      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
+        <a href="#home" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 rounded-xl bg-[#1E6B43] flex items-center justify-center group-hover:scale-105 transition-transform">
+            <Wheat size={22} color="#D89C46" />
+          </div>
+          <div>
+            <p className="text-base font-black tracking-tight text-[#1E6B43] leading-none">WALTON &amp; MORRIS</p>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-[#3D4E44]">Foods</p>
+          </div>
+        </a>
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#0B1B36]">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#1E6B43] group transition-colors">
+              {l.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1E6B43] transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+        </nav>
+        <div className="hidden lg:flex items-center gap-3">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#D89C46] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#BC8330] hover:scale-105 transition-all">
+            <MessageCircle size={14} /> Order Now
+          </a>
+        </div>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#F4F8F5] text-[#1E6B43]">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t border-[#D3E4DB] px-6 py-5 space-y-3">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
+              className="block text-sm font-bold text-[#0B1B36] hover:text-[#1E6B43] py-1">{l.label}</a>
+          ))}
+          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#D89C46] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
+            <MessageCircle size={14} /> Order Now
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+// ── Walton Food Footer ──
+function WaltonFoodFooter() {
+  return (
+    <footer style={{ background: "#1E6B43" }} className="text-white">
+      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+              <Wheat size={20} color="#D89C46" />
+            </div>
+            <div>
+              <p className="font-black text-lg leading-none">WALTON &amp; MORRIS</p>
+              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">Foods</p>
+            </div>
+          </div>
+          <p className="text-sm text-white/70 leading-relaxed mb-5">Premium food products and catering solutions for institutional, retail, and industrial clients across Pakistan.</p>
+          <div className="space-y-2 text-xs text-white/75">
+            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#D89C46]" />{CONTACT_INFO.office}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#D89C46]" />{CONTACT_INFO.phone}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#D89C46]" />{CONTACT_INFO.emails[0]}</p>
+          </div>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#D89C46]">Quick Links</h4>
+          <ul className="space-y-2.5 text-sm text-white/75">
+            {["About Us","Products","Services","Why Us","Contact"].map(l => (
+              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#D89C46]">Contact Us</h4>
+          <div className="space-y-3 text-xs text-white/75">
+            <p className="flex items-center gap-2"><MessageCircle size={14} className="text-[#D89C46]" /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#D89C46]" />{CONTACT_INFO.emails[0]}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#D89C46]" />{CONTACT_INFO.phone}</p>
+          </div>
+          <div className="mt-6 pt-6 border-t border-white/20">
+            <Link href="/group-companies" className="text-xs text-white/60 hover:text-white transition-colors">← Back to Roysons Group</Link>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} Walton &amp; Morris Foods. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
+      </div>
+    </footer>
   );
 }
 
@@ -403,46 +588,76 @@ export default function WaltonMirrorFoodPage() {
         }
       `}</style>
 
-      <HeaderNavbar activeRoute="/group-companies" />
+      <WaltonFoodNavbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#F4F8F5] border-b border-[#D3E4DB]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(30,107,67,0.12),_transparent_55%)]" />
-        <div className="mx-auto max-w-screen-xl px-6 py-12 lg:py-20 relative">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#B3D6C4] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#1E6B43] shadow-sm">
+      <section
+        className="relative overflow-hidden border-b border-[#D3E4DB] min-h-[500px] lg:min-h-[560px] flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(14,48,30,0.88) 0%, rgba(30,107,67,0.82) 50%, rgba(14,48,30,0.92) 100%), url("${encodeURI("/walton&mirrorfood.jpeg")}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="mx-auto max-w-screen-xl px-6 py-16 lg:py-24 relative z-10 w-full">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D89C46]/40 bg-[#1E6B43]/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#D89C46] shadow-md backdrop-blur-md">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#D89C46]" />
+              {HERO.badge}
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+              Walton &amp; Morris <span className="text-[#D89C46]">Foods</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-[#E6F2EC]">
+              {HERO.subline}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#services"
+                className="inline-flex items-center gap-2 rounded-full bg-[#D89C46] px-8 py-4 text-xs font-bold uppercase tracking-widest text-[#0B1B36] shadow-lg transition-all duration-300 hover:bg-white hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaPrimary} <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#1E6B43] hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaSecondary}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="bg-white px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+            <div>
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D3E4DB] bg-[#F4F8F5] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#D89C46]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#D89C46]" />
-                {HERO.badge}
+                About Walton & Morris Foods
               </span>
-              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#1E6B43]">
-                Walton &amp; Morris <span className="text-[#D89C46]">Foods</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#3D4E44]">
-                {HERO.subline}
+              <h2 className="mt-6 text-3xl md:text-4xl font-black tracking-tight text-[#1E6B43]">
+                Producing quality food that nourishes every generation with consistency and care.
+              </h2>
+              <p className="mt-5 text-sm md:text-base leading-relaxed text-[#3D4E44]">
+                Walton & Morris Foods combines advanced food processing, rigorous quality control, and flexible manufacturing to produce premium products for retail, food service, and international markets.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="#services"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#1E6B43] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#D89C46] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-                >
-                  {HERO.ctaPrimary} <ArrowRight size={16} />
+                <Link href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#1E6B43] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-[#D89C46]">
+                  Request A Quote <ArrowRight size={15} />
                 </Link>
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#1E6B43] bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-[#1E6B43] transition-all duration-300 hover:bg-[#1E6B43] hover:text-white hover:scale-[1.02] active:scale-95"
-                >
-                  {HERO.ctaSecondary}
+                <Link href="#projects" className="inline-flex items-center gap-2 rounded-full border border-[#D3E4DB] bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#1E6B43] transition-all hover:border-[#1E6B43] hover:text-[#D89C46]">
+                  View Projects
                 </Link>
               </div>
             </div>
 
-            <div className="relative rounded-[36px] overflow-hidden border-2 border-[#D3E4DB] shadow-xl bg-white p-8 text-center flex flex-col items-center justify-center min-h-[320px]">
-              <div className="w-24 h-24 rounded-3xl bg-[#E6F2EC] text-[#1E6B43] flex items-center justify-center mb-6 shadow-inner">
-                <Wheat size={48} className="text-[#1E6B43]" />
+            <div className="rounded-[32px] border border-[#D3E4DB] bg-[#F4F8F5] p-3 shadow-sm">
+              <div className="relative h-[380px] overflow-hidden rounded-[24px]">
+                <Image src="/walton&mirrorfood.jpeg" alt="Walton & Morris Foods manufacturing plant" fill className="object-cover" />
               </div>
-              <h3 className="text-2xl font-black text-[#0B1B36] tracking-wider uppercase">WALTON &amp; MORRIS</h3>
-              <p className="text-xs font-bold tracking-[0.3em] text-[#D89C46] mt-1">FOODS</p>
             </div>
           </div>
         </div>
@@ -564,38 +779,22 @@ export default function WaltonMirrorFoodPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-[#F4F8F5] px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Testimonials"
-            title="What Our Retail & Trade Partners Say"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((item, index) => (
-              <div key={index} className="rounded-[28px] border border-[#D3E4DB] bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#1E6B43]">
-                <p className="text-base italic leading-relaxed text-[#3D4E44] mb-6">“{item.quote}”</p>
-                <p className="font-black text-[#1E6B43]">{item.name}</p>
-                <p className="text-xs text-[#D89C46] font-bold mt-1">{item.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
+      {/* Testimonials + FAQs */}
       <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
         <div className="mx-auto max-w-screen-xl">
           <SectionHeader
-            eyebrow="Frequently Asked Questions"
-            title="Common Questions"
-            description="Answers to common questions regarding our food processing, private label manufacturing, and export services."
+            eyebrow="Testimonials & FAQs"
+            title="Trusted by Retail & Trade Partners. Clear Answers for Every Requirement."
+            description="See how our clients describe our manufacturing quality and browse answers to common production and supply questions."
             center
           />
-          <div className="mt-12 grid gap-4 max-w-4xl mx-auto">
-            {FAQS.map((item, index) => (
-              <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-            ))}
+          <div className="mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] items-start">
+            <TestimonialSlider items={TESTIMONIALS} />
+            <div className="grid gap-4">
+              {FAQS.map((item, index) => (
+                <FaqAccordionItem key={index} question={item.q} answer={item.a} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -622,16 +821,6 @@ export default function WaltonMirrorFoodPage() {
                 </p>
 
                 <div className="space-y-6 text-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#D89C46]">
-                      <MapPin size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#D89C46] mb-1">Our Office</p>
-                      <p className="text-white leading-relaxed">{CONTACT_INFO.office}</p>
-                    </div>
-                  </div>
-
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#D89C46]">
                       <Phone size={20} />
@@ -676,7 +865,40 @@ export default function WaltonMirrorFoodPage() {
         </div>
       </section>
 
-      <CorporateFooter />
+      {/* Separate Location Section */}
+      <section className="bg-[#F4F8F5] px-6 py-16 lg:py-24 border-t border-[#D3E4DB]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
+            <div className="rounded-[28px] border border-[#D3E4DB] bg-white p-8 shadow-sm">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#D89C46]">Our Location</p>
+              <h3 className="mt-3 text-2xl font-black text-[#1E6B43]">Visit Our Office</h3>
+              <p className="mt-4 text-sm leading-relaxed text-[#3D4E44]">
+                We welcome manufacturing discussions, product development meetings, and partnership consultations at our Lahore office.
+              </p>
+              <div className="mt-6 rounded-[20px] border border-[#D3E4DB] bg-[#F4F8F5] p-4">
+                <p className="text-sm font-semibold text-[#1E6B43] leading-relaxed">{CONTACT_INFO.office}</p>
+                <a href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#1E6B43] transition-colors hover:text-[#D89C46]">
+                  Open in Google Maps <ArrowRight size={14} />
+                </a>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-[28px] border border-[#D3E4DB] bg-white shadow-sm">
+              <iframe
+                title="Walton & Morris Foods Office Location"
+                src={MAP_SRC}
+                width="100%"
+                height="360"
+                style={{ border: 0, display: "block" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <WaltonFoodFooter />
     </main>
   );
 }

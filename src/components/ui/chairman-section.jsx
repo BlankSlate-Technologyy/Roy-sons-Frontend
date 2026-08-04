@@ -144,9 +144,9 @@ export default function ChairmanAddressBlock({
             <div className="mt-8 lg:mt-0 flex justify-end">
               <Link
                 href="/about/chairmans-message"
-                className="w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#dfb753] bg-transparent text-[#dfb753] text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-[#dfb753] hover:text-black hover:border-[#dfb753] transition-all duration-300 group"
+                className="rs-cta-btn w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#dfb753] bg-transparent text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-[#dfb753] hover:border-[#dfb753] transition-all duration-300 group"
               >
-                <span className="text-[#dfb753] group-hover:text-black transition-colors">READ FULL MESSAGE</span>
+                <span className="text-[#dfb753] group-hover:text-black transition-colors duration-300">READ FULL MESSAGE</span>
                 <ArrowRight size={18} strokeWidth={2.5} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1.5 transition-all duration-300" />
               </Link>
             </div>

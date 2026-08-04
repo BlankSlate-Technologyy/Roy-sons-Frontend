@@ -3,14 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderNavbar from "@/components/ui/navigation-menu";
-import CorporateFooter from "@/components/ui/footer";
 import {
   ArrowRight, Award, Briefcase, Zap, Sun, Cpu, Battery, Radio, Wrench,
   Plug, Fuel, Factory, Mountain, Building2, Building, HeartPulse, Server,
   Truck, Warehouse, ShieldCheck, HardHat, FlaskConical, MessageCircle, Gauge,
   MapPin, Phone, Mail, Plus, Minus, Send, CheckCircle2, Search, Compass,
-  ClipboardList, Settings, Leaf, BrainCircuit, Users2,
+  ClipboardList, Settings, Leaf, BrainCircuit, Users2, Menu, X, Facebook, Linkedin, Twitter,
+  ChevronLeft, ChevronRight
 } from "lucide-react";
 
 // ── Color System matching Max Power Corporation Logo ──
@@ -118,6 +117,222 @@ const CONTACT_INFO = {
   whatsapp: ["0092-304-7527498", "0092-321-8431665"],
   emails: ["info@roysons.org", "support@roysons.org"],
 };
+
+const MAP_SRC = "https://www.google.com/maps?q=1st%20Floor%20Rehman%20Centre-2%20Lahore&z=15&output=embed";
+
+// ── Max Power Custom Navbar Component ──
+function MaxPowerNavbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { label: "Home", href: "#home" },
+    { label: "Services", href: "#services" },
+    { label: "Sectors", href: "#sectors" },
+    { label: "Why Choose Us", href: "#why-choose" },
+    { label: "Projects", href: "#projects" },
+    { label: "FAQs", href: "#faqs" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  return (
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#D2E0EC] shadow-sm transition-all">
+      <div className="mx-auto max-w-screen-xl px-6 h-20 flex items-center justify-between">
+        {/* Brand Logo */}
+        <Link href="#home" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 rounded-2xl bg-[#0E4B7E] flex items-center justify-center text-[#F5A623] shadow-md group-hover:bg-[#F5A623] group-hover:text-white transition-all duration-300">
+            <Zap size={24} className="fill-current" />
+          </div>
+          <div>
+            <span className="block text-lg font-black tracking-tight text-[#0E4B7E] leading-none uppercase">
+              MAX POWER
+            </span>
+            <span className="block text-[9px] font-black tracking-[0.25em] text-[#F5A623] uppercase mt-0.5">
+              CORPORATION
+            </span>
+          </div>
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex items-center gap-7">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="text-xs font-bold uppercase tracking-wider text-[#0E4B7E] hover:text-[#F5A623] transition-colors relative py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#F5A623] hover:after:w-full after:transition-all"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* CTA & Mobile Toggle */}
+        <div className="flex items-center gap-3">
+          <a
+            href="#contact"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#0E4B7E] px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#F5A623] hover:scale-[1.02]"
+          >
+            Get In Touch
+          </a>
+
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-[#0E4B7E] hover:text-[#F5A623] rounded-lg transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-[#D2E0EC] px-6 py-4 space-y-3 animate-fade-in-up">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-xs font-bold uppercase tracking-wider text-[#0E4B7E] hover:text-[#F5A623] py-2 border-b border-[#F4F7FA]"
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-center rounded-full bg-[#0E4B7E] py-3 text-xs font-bold uppercase tracking-widest text-white mt-2"
+          >
+            Get In Touch
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+// ── Max Power Custom Footer Component ──
+function MaxPowerFooter() {
+  return (
+    <footer className="bg-[#0E4B7E] text-white border-t-4 border-[#F5A623]">
+      <div className="mx-auto max-w-screen-xl px-6 py-14 lg:py-20">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand Info */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-[#F5A623] shadow-inner">
+                <Zap size={26} className="fill-current" />
+              </div>
+              <div>
+                <span className="block text-xl font-black tracking-tight text-white uppercase leading-none">
+                  MAX POWER
+                </span>
+                <span className="block text-[10px] font-black tracking-[0.25em] text-[#F5A623] uppercase mt-1">
+                  CORPORATION
+                </span>
+              </div>
+            </div>
+            <p className="text-xs text-[#D2E0EC] leading-relaxed">
+              Powering industries and energizing the future through reliable renewable energy, thermal power generation, high-voltage substations, and electrical engineering excellence.
+            </p>
+            <div className="flex items-center gap-3 pt-2">
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-[#D2E0EC] hover:bg-[#F5A623] hover:text-white transition-all">
+                <Facebook size={16} />
+              </a>
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-[#D2E0EC] hover:bg-[#F5A623] hover:text-white transition-all">
+                <Linkedin size={16} />
+              </a>
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-[#D2E0EC] hover:bg-[#F5A623] hover:text-white transition-all">
+                <Twitter size={16} />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-[#F5A623] mb-4">Quick Links</h4>
+            <ul className="space-y-2.5 text-xs text-[#D2E0EC]">
+              {[
+                { label: "Home", href: "#home" },
+                { label: "Services", href: "#services" },
+                { label: "Target Sectors", href: "#sectors" },
+                { label: "Why Choose Us", href: "#why-choose" },
+                { label: "Featured Projects", href: "#projects" },
+                { label: "FAQ Center", href: "#faqs" },
+                { label: "Contact Us", href: "#contact" }
+              ].map((link, idx) => (
+                <li key={idx}>
+                  <a href={link.href} className="hover:text-[#F5A623] transition-colors flex items-center gap-1.5">
+                    <span className="text-[#F5A623] text-xs">›</span> {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Core Services */}
+          <div>
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-[#F5A623] mb-4">Core Solutions</h4>
+            <ul className="space-y-2.5 text-xs text-[#D2E0EC]">
+              {[
+                "Renewable Solar & Wind",
+                "Power Generation Plants",
+                "Electrical Engineering",
+                "Battery Energy Storage",
+                "Transmission & Substations",
+                "Operations & Maintenance",
+              ].map((service, idx) => (
+                <li key={idx} className="flex items-start gap-1.5">
+                  <span className="text-[#F5A623] text-xs mt-0.5">•</span>
+                  <span>{service}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Head Office Info */}
+          <div>
+            <h4 className="text-xs font-black uppercase tracking-[0.2em] text-[#F5A623] mb-4">Corporate Office</h4>
+            <div className="space-y-3 text-xs text-[#D2E0EC]">
+              <div className="flex items-start gap-2.5">
+                <MapPin size={16} className="text-[#F5A623] shrink-0 mt-0.5" />
+                <p className="leading-relaxed">{CONTACT_INFO.office}</p>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Phone size={16} className="text-[#F5A623] shrink-0" />
+                <p className="font-semibold">{CONTACT_INFO.phone}</p>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <MessageCircle size={16} className="text-[#F5A623] shrink-0 mt-0.5" />
+                <div>
+                  {CONTACT_INFO.whatsapp.map((w, i) => (
+                    <p key={i} className="font-medium">{w}</p>
+                  ))}
+                </div>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <Mail size={16} className="text-[#F5A623] shrink-0 mt-0.5" />
+                <div>
+                  {CONTACT_INFO.emails.map((e, i) => (
+                    <p key={i} className="font-medium">{e}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between text-xs text-[#D2E0EC] gap-4">
+          <p>© {new Date().getFullYear()} Max Power Corporation. All Rights Reserved.</p>
+          <div className="flex items-center gap-6">
+            <a href="#" className="hover:text-[#F5A623] transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-[#F5A623] transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-[#F5A623] transition-colors">ISO Compliance</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
 
 // ── Animated Counter Component ──
 function StatCounterCard({ value, suffix, label }) {
@@ -233,6 +448,69 @@ function ProcessStepCard({ step, title, desc }) {
   );
 }
 
+// ── Testimonial Slider Component ──
+function TestimonialSlider({ items }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeItem = items[activeIndex] || items[0];
+
+  const goPrev = () => {
+    setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
+
+  const goNext = () => {
+    setActiveIndex((prev) => (prev + 1) % items.length);
+  };
+
+  return (
+    <div className="rounded-[28px] border border-[#D2E0EC] bg-[#F4F7FA] p-8 shadow-sm">
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#F5A623]">Testimonials</p>
+          <h3 className="mt-2 text-2xl font-black text-[#0E4B7E]">What Our Partners Say</h3>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={goPrev}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D2E0EC] bg-white text-[#0E4B7E] transition-all hover:border-[#0E4B7E] hover:text-[#F5A623]"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D2E0EC] bg-white text-[#0E4B7E] transition-all hover:border-[#0E4B7E] hover:text-[#F5A623]"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      <div className="rounded-[24px] border border-[#D2E0EC] bg-white p-7 shadow-sm">
+        <p className="text-base italic leading-relaxed text-[#3E4C5E]">“{activeItem.quote}”</p>
+        <div className="mt-6">
+          <p className="font-black text-[#0E4B7E]">{activeItem.name}</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#F5A623] mt-1">{activeItem.role}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 flex items-center justify-center gap-2">
+        {items.map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            onClick={() => setActiveIndex(index)}
+            aria-label={`Go to testimonial ${index + 1}`}
+            className={`h-2.5 w-2.5 rounded-full transition-all ${index === activeIndex ? "bg-[#0E4B7E]" : "bg-[#D2E0EC]"}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Collapsible FAQ Item Component ──
 function FaqAccordionItem({ question, answer }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -259,7 +537,7 @@ function FaqAccordionItem({ question, answer }) {
 
 // ── Contact Form Component ──
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -289,7 +567,7 @@ function ContactForm() {
           Thank you, {form.name}. Your inquiry has been received. Our power engineering team will contact you shortly.
         </p>
         <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", subject: "", message: "" }); setSubmitted(false); }}
+          onClick={() => { setForm({ name: "", email: "", phone: "", service: "", message: "" }); setSubmitted(false); }}
           className="inline-flex items-center gap-2 rounded-full bg-[#0E4B7E] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#F5A623]"
         >
           Send Another Message
@@ -329,12 +607,19 @@ function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4C5E] mb-2">Energy Service Required</label>
-          <input
-            type="text" name="subject" value={form.subject} onChange={handleChange}
-            placeholder="Solar / Substation / Generation / O&M"
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4C5E] mb-2">Service Required</label>
+          <select
+            name="service" value={form.service} onChange={handleChange}
             className="w-full rounded-xl border border-[#D2E0EC] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#0E4B7E] outline-none transition-all focus:border-[#0E4B7E] focus:bg-white"
-          />
+          >
+            <option value="">Select a service</option>
+            <option value="Renewable Energy Solutions">Renewable Energy Solutions</option>
+            <option value="Power Generation Plants">Power Generation Plants</option>
+            <option value="Electrical Engineering">Electrical Engineering</option>
+            <option value="Energy Storage Systems">Energy Storage Systems</option>
+            <option value="Transmission & Distribution">Transmission & Distribution</option>
+            <option value="Operations & Maintenance">Operations & Maintenance</option>
+          </select>
         </div>
       </div>
       <div className="mb-5">
@@ -360,6 +645,9 @@ function ContactForm() {
 
 // ── Main Page Component ──
 export default function MaxPowerPage() {
+  // Header / Hero Background Image
+  const headerBgImage = "/max power.jpeg";
+
   useEffect(() => {
     document.body.classList.add("roys-roys-theme", "maxpower-theme");
     document.body.style.backgroundColor = "#FFFFFF";
@@ -399,46 +687,78 @@ export default function MaxPowerPage() {
         }
       `}</style>
 
-      <HeaderNavbar activeRoute="/group-companies" />
+      {/* Max Power Custom Navbar (replaces Roysons global navbar) */}
+      <MaxPowerNavbar />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#F4F7FA] border-b border-[#D2E0EC]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,75,126,0.12),_transparent_55%)]" />
-        <div className="mx-auto max-w-screen-xl px-6 py-12 lg:py-20 relative">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#B3CFE5] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#0E4B7E] shadow-sm">
+      {/* Hero Section with Header Background Image */}
+      <section
+        id="home"
+        className="relative overflow-hidden border-b border-[#D2E0EC] min-h-[500px] lg:min-h-[580px] flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(10, 56, 96, 0.86) 0%, rgba(14, 75, 126, 0.80) 50%, rgba(10, 56, 96, 0.90) 100%), url("${encodeURI(headerBgImage)}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="mx-auto max-w-screen-xl px-6 py-20 lg:py-28 relative z-10 w-full">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#F5A623]/50 bg-[#0E4B7E]/80 px-4.5 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#F5A623] shadow-md backdrop-blur-md">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#F5A623]" />
+              {HERO.badge}
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+              Powering Industries. <span className="text-[#F5A623]">Energizing The Future.</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-[#E6F0F8]">
+              {HERO.subline}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#services"
+                className="inline-flex items-center gap-2 rounded-full bg-[#F5A623] px-8 py-4 text-xs font-bold uppercase tracking-widest text-[#0E4B7E] shadow-lg transition-all duration-300 hover:bg-white hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaPrimary} <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#0E4B7E] hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaSecondary}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E0EC]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+            <div>
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D2E0EC] bg-[#F4F7FA] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#F5A623]">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#F5A623]" />
-                {HERO.badge}
+                About Max Power
               </span>
-              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#0E4B7E]">
-                Powering Industries. <span className="text-[#F5A623]">Energizing The Future.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#3E4C5E]">
-                {HERO.subline}
+              <h2 className="mt-6 text-3xl md:text-4xl font-black tracking-tight text-[#0E4B7E]">
+                Reliable energy infrastructure designed for performance, safety, and long-term growth.
+              </h2>
+              <p className="mt-5 text-sm md:text-base leading-relaxed text-[#3E4C5E]">
+                Max Power Corporation delivers dependable power systems across renewable energy, high-voltage transmission, industrial electrification, and smart energy management. Our engineering-led approach ensures every project is executed with precision, compliance, and measurable results.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="#services"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0E4B7E] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#F5A623] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-                >
-                  {HERO.ctaPrimary} <ArrowRight size={16} />
+                <Link href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#0E4B7E] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-[#F5A623]">
+                  Request A Consultation <ArrowRight size={15} />
                 </Link>
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#0E4B7E] bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-[#0E4B7E] transition-all duration-300 hover:bg-[#0E4B7E] hover:text-white hover:scale-[1.02] active:scale-95"
-                >
-                  {HERO.ctaSecondary}
+                <Link href="#projects" className="inline-flex items-center gap-2 rounded-full border border-[#D2E0EC] bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#0E4B7E] transition-all hover:border-[#0E4B7E] hover:text-[#F5A623]">
+                  View Projects
                 </Link>
               </div>
             </div>
 
-            <div className="relative rounded-[36px] overflow-hidden border-2 border-[#D2E0EC] shadow-xl bg-white p-8 text-center flex flex-col items-center justify-center min-h-[320px]">
-              <div className="w-24 h-24 rounded-3xl bg-[#E6F0F8] text-[#0E4B7E] flex items-center justify-center mb-6 shadow-inner">
-                <Zap size={48} className="text-[#F5A623]" />
+            <div className="rounded-[32px] border border-[#D2E0EC] bg-[#F4F7FA] p-3 shadow-sm">
+              <div className="relative h-[380px] overflow-hidden rounded-[24px]">
+                <Image src="/max power.jpeg" alt="Max Power facility and engineering work" fill className="object-cover" />
               </div>
-              <h3 className="text-2xl font-black text-[#0E4B7E] tracking-wider uppercase">MAX POWER</h3>
-              <p className="text-xs font-bold tracking-[0.3em] text-[#F5A623] mt-1">CORPORATION</p>
             </div>
           </div>
         </div>
@@ -472,7 +792,7 @@ export default function MaxPowerPage() {
       </section>
 
       {/* Industries Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E0EC]">
+      <section id="sectors" className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E0EC]">
         <div className="mx-auto max-w-screen-xl">
           <SectionHeader eyebrow="Industries" title="Sectors We Support With Reliable Energy" description="Powering critical utilities, industrial plants, commercial complexes, and smart infrastructure." center />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -489,7 +809,7 @@ export default function MaxPowerPage() {
       </section>
 
       {/* Why Choose Max Power Section */}
-      <section className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-b border-[#D2E0EC]">
+      <section id="why-choose" className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-b border-[#D2E0EC]">
         <div className="mx-auto max-w-screen-xl">
           <SectionHeader
             eyebrow="Why Choose Us"
@@ -544,38 +864,22 @@ export default function MaxPowerPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E0EC]">
+      {/* Testimonials + FAQs */}
+      <section id="faqs" className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-b border-[#D2E0EC]">
         <div className="mx-auto max-w-screen-xl">
           <SectionHeader
-            eyebrow="Testimonials"
-            title="What Our Power Partners Say"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((item, index) => (
-              <div key={index} className="rounded-[28px] border border-[#D2E0EC] bg-[#F4F7FA] p-8 shadow-sm transition-all duration-300 hover:border-[#0E4B7E]">
-                <p className="text-base italic leading-relaxed text-[#3E4C5E] mb-6">“{item.quote}”</p>
-                <p className="font-black text-[#0E4B7E]">{item.name}</p>
-                <p className="text-xs text-[#F5A623] font-bold mt-1">{item.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
-      <section className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-b border-[#D2E0EC]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Frequently Asked Questions"
-            title="Common Questions"
-            description="Answers to common questions regarding our power generation, renewable solar, and O&M services."
+            eyebrow="Testimonials & FAQs"
+            title="Trusted by Clients. Clear Answers for Every Project."
+            description="See how our clients describe their experience and explore common questions about our energy solutions."
             center
           />
-          <div className="mt-12 grid gap-4 max-w-4xl mx-auto">
-            {FAQS.map((item, index) => (
-              <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-            ))}
+          <div className="mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] items-start">
+            <TestimonialSlider items={TESTIMONIALS} />
+            <div className="grid gap-4">
+              {FAQS.map((item, index) => (
+                <FaqAccordionItem key={index} question={item.q} answer={item.a} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -602,16 +906,6 @@ export default function MaxPowerPage() {
                 </p>
 
                 <div className="space-y-6 text-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#F5A623]">
-                      <MapPin size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#F5A623] mb-1">Our Office</p>
-                      <p className="text-white leading-relaxed">{CONTACT_INFO.office}</p>
-                    </div>
-                  </div>
-
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#F5A623]">
                       <Phone size={20} />
@@ -649,14 +943,48 @@ export default function MaxPowerPage() {
               </div>
 
               <div className="mt-10 pt-6 border-t border-white/15 text-xs text-[#D2E0EC]">
-                &copy; {new Date().getFullYear()} Max Power Corporation. All Rights Reserved.
+                © {new Date().getFullYear()} Max Power Corporation. All Rights Reserved.
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <CorporateFooter />
+      {/* Separate Location Section */}
+      <section className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-t border-[#D2E0EC]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
+            <div className="rounded-[28px] border border-[#D2E0EC] bg-white p-8 shadow-sm">
+              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#F5A623]">Our Location</p>
+              <h3 className="mt-3 text-2xl font-black text-[#0E4B7E]">Visit Our Office</h3>
+              <p className="mt-4 text-sm leading-relaxed text-[#3E4C5E]">
+                We welcome project consultations, engineering discussions, and partnership meetings at our Lahore office.
+              </p>
+              <div className="mt-6 rounded-[20px] border border-[#D2E0EC] bg-[#F4F7FA] p-4">
+                <p className="text-sm font-semibold text-[#0E4B7E] leading-relaxed">{CONTACT_INFO.office}</p>
+                <a href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#0E4B7E] transition-colors hover:text-[#F5A623]">
+                  Open in Google Maps <ArrowRight size={14} />
+                </a>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-[28px] border border-[#D2E0EC] bg-white shadow-sm">
+              <iframe
+                title="Max Power Office Location"
+                src={MAP_SRC}
+                width="100%"
+                height="360"
+                style={{ border: 0, display: "block" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Max Power Custom Footer (replaces Roysons corporate footer) */}
+      <MaxPowerFooter />
     </main>
   );
 }

@@ -3,15 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderNavbar from "@/components/ui/navigation-menu";
-import CorporateFooter from "@/components/ui/footer";
 import {
   ArrowRight, Award, Brain, Code2, Database, Cloud, ShieldCheck,
   Smartphone, BarChart3, Users2, CheckCircle2, MapPin, Phone, MessageCircle,
   Mail, Plus, Minus, Send, Server, Layers, Cpu, Lock, BadgeCheck,
   Network, Search, Compass, PenTool, Hammer, TestTube2, Wrench,
   Building2, Landmark, HeartPulse, GraduationCap, Factory, ShoppingCart,
-  Truck, Radio, Home as HomeIcon, Zap, Sparkles,
+  Truck, Radio, Home as HomeIcon, Zap, Sparkles, Menu, X, ChevronLeft, ChevronRight,
 } from "lucide-react";
 
 // ── Color System matching Digital Zoning Corporation Logo ──
@@ -335,12 +333,20 @@ function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4F61] mb-2">Service Of Interest</label>
-          <input
-            type="text" name="subject" value={form.subject} onChange={handleChange}
-            placeholder="AI Solutions / Custom Software / ERP"
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4F61] mb-2">Service Type</label>
+          <select
+            name="subject"
+            value={form.subject}
+            onChange={handleChange}
             className="w-full rounded-xl border border-[#D2E3F3] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#0A3A6B] outline-none transition-all focus:border-[#0A3A6B] focus:bg-white"
-          />
+          >
+            <option value="">Select a service</option>
+            <option value="AI Solutions">AI Solutions</option>
+            <option value="Custom Software">Custom Software</option>
+            <option value="ERP Solutions">ERP Solutions</option>
+            <option value="Cloud Services">Cloud Services</option>
+            <option value="Cybersecurity">Cybersecurity</option>
+          </select>
         </div>
       </div>
       <div className="mb-5">
@@ -364,8 +370,125 @@ function ContactForm() {
   );
 }
 
+// ── Digital Zone Navbar ──
+function DigitalZoneNavbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navLinks = [
+    { label: "Home", href: "#home" },
+    { label: "About Us", href: "#about" },
+    { label: "Services", href: "#services" },
+    { label: "Industries", href: "#industries" },
+    { label: "FAQs", href: "#faqs" },
+    { label: "Contact", href: "#contact" },
+  ];
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D2E3F3]">
+      <div className="hidden md:block bg-[#0A3A6B] text-white py-2 px-6">
+        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
+          <div className="flex items-center gap-6 text-white/80">
+            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
+            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
+            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
+          </div>
+          <span className="text-xs font-bold text-[#00A8E8]">Digital Zoning Corporation — Tech Innovators</span>
+        </div>
+      </div>
+      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
+        <a href="#home" className="flex items-center gap-3 group">
+          <div className="w-11 h-11 rounded-xl bg-[#0A3A6B] flex items-center justify-center group-hover:scale-105 transition-transform">
+            <Cpu size={22} color="#00A8E8" />
+          </div>
+          <div>
+            <p className="text-base font-black tracking-tight text-[#0A3A6B] leading-none">DIGITAL ZONING</p>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-[#3E4F61]">Corporation</p>
+          </div>
+        </a>
+        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#0A3A6B]">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#00A8E8] group transition-colors">
+              {l.label}
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#00A8E8] transition-all duration-300 group-hover:w-full" />
+            </a>
+          ))}
+        </nav>
+        <div className="hidden lg:flex items-center gap-3">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#00A8E8] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#0A3A6B] hover:scale-105 transition-all">
+            <MessageCircle size={14} /> Get In Touch
+          </a>
+        </div>
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#E6F3FB] text-[#0A3A6B]">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t border-[#D2E3F3] px-6 py-5 space-y-3">
+          {navLinks.map(l => (
+            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
+              className="block text-sm font-bold text-[#0A3A6B] hover:text-[#00A8E8] py-1">{l.label}</a>
+          ))}
+          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#00A8E8] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
+            <MessageCircle size={14} /> Get In Touch
+          </a>
+        </div>
+      )}
+    </header>
+  );
+}
+
+// ── Digital Zone Footer ──
+function DigitalZoneFooter() {
+  return (
+    <footer style={{ background: "#0A3A6B" }} className="text-white">
+      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+              <Cpu size={20} color="#00A8E8" />
+            </div>
+            <div>
+              <p className="font-black text-lg leading-none">DIGITAL ZONING</p>
+              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">Corporation</p>
+            </div>
+          </div>
+          <p className="text-sm text-white/70 leading-relaxed mb-5">Innovative technology solutions, custom software, ERP systems, and digital transformation services for businesses across Pakistan.</p>
+          <div className="space-y-2 text-xs text-white/75">
+            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#00A8E8]" />{CONTACT_INFO.office}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#00A8E8]" />{CONTACT_INFO.phone}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#00A8E8]" />{CONTACT_INFO.emails[0]}</p>
+          </div>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#00A8E8]">Quick Links</h4>
+          <ul className="space-y-2.5 text-sm text-white/75">
+            {["About Us","Services","Industries","FAQs","Contact"].map(l => (
+              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#00A8E8]">Contact Us</h4>
+          <div className="space-y-3 text-xs text-white/75">
+            <p className="flex items-center gap-2"><MessageCircle size={14} className="text-[#00A8E8]" /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
+            <p className="flex items-center gap-2"><Mail size={14} className="text-[#00A8E8]" />{CONTACT_INFO.emails[0]}</p>
+            <p className="flex items-center gap-2"><Phone size={14} className="text-[#00A8E8]" />{CONTACT_INFO.phone}</p>
+          </div>
+          <div className="mt-6 pt-6 border-t border-white/20">
+            <Link href="/group-companies" className="text-xs text-white/60 hover:text-white transition-colors">← Back to Roysons Group</Link>
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} Digital Zoning Corporation. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
+      </div>
+    </footer>
+  );
+}
+
 // ── Main Page Component ──
 export default function DigitalZonePage() {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const activeTestimonialItem = TESTIMONIALS[activeTestimonial];
+
   useEffect(() => {
     document.body.classList.add("roys-roys-theme", "digitalzone-theme");
     document.body.style.backgroundColor = "#FFFFFF";
@@ -405,46 +528,79 @@ export default function DigitalZonePage() {
         }
       `}</style>
 
-      <HeaderNavbar activeRoute="/group-companies" />
+      <DigitalZoneNavbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#F4F8FC] border-b border-[#D2E3F3]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(10,58,107,0.12),_transparent_55%)]" />
-        <div className="mx-auto max-w-screen-xl px-6 py-12 lg:py-20 relative">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#B3D7F5] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#0A3A6B] shadow-sm">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#00A8E8]" />
-                {HERO.badge}
-              </span>
-              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#0A3A6B]">
-                Digital Zoning <span className="text-[#00A8E8]">Corporation</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-[#3E4F61]">
-                {HERO.subline}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="#services"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#0A3A6B] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#00A8E8] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-                >
-                  {HERO.ctaPrimary} <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border-2 border-[#0A3A6B] bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-[#0A3A6B] transition-all duration-300 hover:bg-[#0A3A6B] hover:text-white hover:scale-[1.02] active:scale-95"
-                >
-                  {HERO.ctaSecondary}
-                </Link>
-              </div>
+      <section
+        className="relative overflow-hidden border-b border-[#D2E3F3] min-h-[500px] lg:min-h-[560px] flex items-center"
+        style={{
+          backgroundImage: `linear-gradient(135deg, rgba(10,58,107,0.88) 0%, rgba(10,58,107,0.80) 50%, rgba(0,168,232,0.70) 100%), url("${encodeURI("/digitaz zoning.jpeg")}")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="mx-auto max-w-screen-xl px-6 py-16 lg:py-24 relative z-10 w-full">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#00A8E8]/40 bg-[#0A3A6B]/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#00A8E8] shadow-md backdrop-blur-md">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#00A8E8]" />
+              {HERO.badge}
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+              Digital Zoning <span className="text-[#00A8E8]">Corporation</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-[#E6F3FB]">
+              {HERO.subline}
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#services"
+                className="inline-flex items-center gap-2 rounded-full bg-[#00A8E8] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-lg transition-all duration-300 hover:bg-white hover:text-[#0A3A6B] hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaPrimary} <ArrowRight size={16} />
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#0A3A6B] hover:scale-[1.02] active:scale-95"
+              >
+                {HERO.ctaSecondary}
+              </Link>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="relative rounded-[36px] overflow-hidden border-2 border-[#D2E3F3] shadow-xl bg-white p-8 text-center flex flex-col items-center justify-center min-h-[320px]">
-              <div className="w-24 h-24 rounded-3xl bg-[#E6F3FB] text-[#0A3A6B] flex items-center justify-center mb-6 shadow-inner">
-                <Cpu size={48} />
+      {/* About Section */}
+      <section className="bg-white px-6 py-16 lg:py-20 border-b border-[#D2E3F3]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#00A8E8] mb-3">
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#00A8E8]" />
+                About Digital Zoning
+              </span>
+              <h2 className="text-3xl md:text-4xl font-black text-[#0A3A6B] mb-5">Building Intelligent Digital Ecosystems</h2>
+              <p className="text-base leading-relaxed text-[#3E4F61] mb-6">
+                Digital Zoning Corporation helps businesses unlock growth through AI-driven software, secure cloud environments, and modern enterprise platforms built for performance and scale.
+              </p>
+              <p className="text-base leading-relaxed text-[#3E4F61]">
+                From custom product development to ERP implementation and digital strategy, we provide the technology foundation to transform ambition into measurable results.
+              </p>
+            </div>
+            <div className="relative overflow-hidden rounded-[28px] border border-[#D2E3F3] bg-[#F4F8FC] shadow-sm">
+              <Image
+                src="/digitaz zoning.jpeg"
+                alt="Digital Zoning technology solutions"
+                width={900}
+                height={700}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A3A6B]/80 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
+                  <h3 className="text-xl font-black text-white uppercase tracking-wide">SMART DIGITAL SOLUTIONS</h3>
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#dceffd] mt-1">DIGITAL ZONING</p>
+                </div>
               </div>
-              <h3 className="text-2xl font-black text-[#0A3A6B] tracking-wider uppercase">DIGITAL ZONING</h3>
-              <p className="text-xs font-bold tracking-[0.3em] text-[#00A8E8] mt-1">CORPORATION</p>
             </div>
           </div>
         </div>
@@ -566,38 +722,79 @@ export default function DigitalZonePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-[#F4F8FC] px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Testimonials"
-            title="What Our Enterprise Clients Say"
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((item, index) => (
-              <div key={index} className="rounded-[28px] border border-[#D2E3F3] bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#0A3A6B]">
-                <p className="text-base italic leading-relaxed text-[#3E4F61] mb-6">“{item.quote}”</p>
-                <p className="font-black text-[#0A3A6B]">{item.name}</p>
-                <p className="text-xs text-[#00A8E8] font-bold mt-1">{item.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
+      {/* Testimonials & FAQs */}
       <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
         <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Frequently Asked Questions"
-            title="Common Questions"
-            description="Answers to common questions regarding our software, AI, and cloud services."
-            center
-          />
-          <div className="mt-12 grid gap-4 max-w-4xl mx-auto">
-            {FAQS.map((item, index) => (
-              <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-            ))}
+          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
+            <div>
+              <SectionHeader
+                eyebrow="Testimonials"
+                title="What Our Enterprise Clients Say"
+              />
+              <div className="mt-8 rounded-[28px] border border-[#D2E3F3] bg-[#F4F8FC] p-8 shadow-sm">
+                <div className="flex items-center justify-between gap-4 mb-6">
+                  <div className="flex items-center gap-2 text-[#0A3A6B]">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0A3A6B] shadow-sm">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                        <path d="M9.5 7a3.5 3.5 0 0 0-3.5 3.5v1.75A3.5 3.5 0 0 0 9.5 15.75h.5v1.75a2.5 2.5 0 0 1-2.5 2.5H5.5a2.5 2.5 0 0 1-2.5-2.5V10.5A3.5 3.5 0 0 1 6.5 7h3Zm10 0a3.5 3.5 0 0 0-3.5 3.5v1.75A3.5 3.5 0 0 0 19.5 15.75h.5v1.75a2.5 2.5 0 0 1-2.5 2.5h-1.5a2.5 2.5 0 0 1-2.5-2.5V10.5A3.5 3.5 0 0 1 16.5 7h3Z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-xs font-black uppercase tracking-[0.25em] text-[#00A8E8]">Client Feedback</p>
+                      <p className="text-sm font-semibold text-[#3E4F61]">Trusted by growth-focused enterprises</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setActiveTestimonial((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1))}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2E3F3] bg-white text-[#0A3A6B] transition hover:border-[#0A3A6B] hover:bg-[#E6F3FB]"
+                      aria-label="Previous testimonial"
+                    >
+                      <ChevronLeft size={18} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveTestimonial((prev) => (prev + 1) % TESTIMONIALS.length)}
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2E3F3] bg-white text-[#0A3A6B] transition hover:border-[#0A3A6B] hover:bg-[#E6F3FB]"
+                      aria-label="Next testimonial"
+                    >
+                      <ChevronRight size={18} />
+                    </button>
+                  </div>
+                </div>
+
+                <p className="text-base italic leading-relaxed text-[#3E4F61] mb-6">“{activeTestimonialItem.quote}”</p>
+                <p className="font-black text-[#0A3A6B]">{activeTestimonialItem.name}</p>
+                <p className="text-xs text-[#00A8E8] font-bold mt-1">{activeTestimonialItem.role}</p>
+
+                <div className="mt-6 flex gap-2">
+                  {TESTIMONIALS.map((_, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => setActiveTestimonial(index)}
+                      className={`h-2.5 rounded-full transition-all ${index === activeTestimonial ? "w-8 bg-[#0A3A6B]" : "w-2.5 bg-[#C7DDEC]"}`}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <SectionHeader
+                eyebrow="Frequently Asked Questions"
+                title="Common Questions"
+                description="Answers to common questions regarding our software, AI, and cloud services."
+              />
+              <div className="mt-8 grid gap-4">
+                {FAQS.map((item, index) => (
+                  <FaqAccordionItem key={index} question={item.q} answer={item.a} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -678,7 +875,45 @@ export default function DigitalZonePage() {
         </div>
       </section>
 
-      <CorporateFooter />
+      <section className="bg-[#F4F8FC] px-6 py-16 lg:py-20 border-t border-[#D2E3F3]">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
+            <div>
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#00A8E8] mb-3">
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#00A8E8]" />
+                Our Location
+              </span>
+              <h3 className="text-3xl md:text-4xl font-black text-[#0A3A6B] mb-4">Visit Our Office</h3>
+              <p className="text-base leading-relaxed text-[#3E4F61] mb-6">
+                We welcome project consultations, strategy sessions, and technical planning meetings at our Lahore office.
+              </p>
+              <div className="rounded-[24px] border border-[#D2E3F3] bg-white p-6">
+                <p className="text-sm font-semibold text-[#0A3A6B]">{CONTACT_INFO.office}</p>
+                <a
+                  href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#0A3A6B] hover:text-[#00A8E8]"
+                >
+                  Open in Google Maps <ArrowRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-[28px] border border-[#D2E3F3] shadow-sm">
+              <iframe
+                src="https://www.google.com/maps?q=Lahore%20Pakistan&output=embed"
+                title="Digital Zoning Location"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-[420px] w-full border-0"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <DigitalZoneFooter />
     </main>
   );
 }
