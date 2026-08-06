@@ -58,10 +58,24 @@ export default function Contact() {
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
-    setTimeout(() => setStatus("sent"), 1500);
+    try {
+      const res = await fetch("/group-companies/gateway/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to submit message.");
+      }
+      setStatus("sent");
+    } catch (err) {
+      alert(err.message || "Error sending message.");
+      setStatus("idle");
+    }
   };
 
   return (

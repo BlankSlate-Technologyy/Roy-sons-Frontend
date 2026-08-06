@@ -824,6 +824,30 @@ function ValuesAndCorporateSection() {
 }
 
 function CtaSection() {
+  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", service: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) { setError("Please fill in your name, email, and message."); return; }
+    setError("");
+    try {
+      const res = await fetch("/group-companies/roys-roys/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send.");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Error sending message. Please try again.");
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -853,7 +877,7 @@ function CtaSection() {
               Let&apos;s Build Stronger Partnerships Together
             </h2>
             <p className="text-[15px] leading-relaxed max-w-3xl" style={{ color: COLORS.black }}>
-              Whether you&apos;re looking for a trusted partner in government contracting, international trade, healthcare solutions, manufacturing, or consultancy, ROYS & ROYS International is ready to support your business with reliable, innovative, and high-quality solutions.
+              Whether you&apos;re looking for a trusted partner in government contracting, international trade, healthcare solutions, manufacturing, or consultancy, ROYS &amp; ROYS International is ready to support your business with reliable, innovative, and high-quality solutions.
             </p>
 
             <div className="grid gap-4 sm:grid-cols-2 mt-10">
@@ -882,49 +906,83 @@ function CtaSection() {
                 </p>
               </div>
 
-              <form className="space-y-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <input
-                    type="text"
-                    placeholder="Full Name *"
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Company Name *"
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                  />
+              {submitted ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 rounded-full bg-[#E6F4F1] text-[#113658] mx-auto flex items-center justify-center mb-5">
+                    <CheckCircle2 size={32} />
+                  </div>
+                  <h3 className="text-2xl font-black mb-3" style={{ color: COLORS.black }}>Thank You!</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: COLORS.black }}>
+                    Your message has been received. Our team will contact you shortly.
+                  </p>
                 </div>
-                <input
-                  type="email"
-                  placeholder="Email Address *"
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone Number *"
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                />
-                <select
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                >
-                  <option>Select Service</option>
-                  {WHAT_WE_DO.map((item) => (
-                    <option key={item}>{item}</option>
-                  ))}
-                </select>
-                <textarea
-                  rows={5}
-                  placeholder="Your Message *"
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                />
-                <button
-                  type="button"
-                  className="w-full rounded-2xl bg-[#113658] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-white transition hover:bg-[#0d2c4f]"
-                >
-                  Send Message
-                </button>
-              </form>
+              ) : (
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <input
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Full Name *"
+                      required
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                    />
+                    <input
+                      type="text"
+                      name="company"
+                      value={form.company}
+                      onChange={handleChange}
+                      placeholder="Company Name"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                    />
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="Email Address *"
+                    required
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="Phone Number"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                  />
+                  <select
+                    name="service"
+                    value={form.service}
+                    onChange={handleChange}
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                  >
+                    <option value="">Select Service</option>
+                    {WHAT_WE_DO.map((item) => (
+                      <option key={item}>{item}</option>
+                    ))}
+                  </select>
+                  <textarea
+                    rows={5}
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Your Message *"
+                    required
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                  />
+                  {error && <p className="text-sm text-red-600">{error}</p>}
+                  <button
+                    type="submit"
+                    className="w-full rounded-2xl bg-[#113658] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-white transition hover:bg-[#0d2c4f]"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

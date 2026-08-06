@@ -885,6 +885,39 @@ function CtaSection() {
 }
 
 function ContactSection() {
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", service: "All Solutions", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.firstName || !form.email || !form.message) {
+      setError("Please fill in your name, email, and message.");
+      return;
+    }
+    setError("");
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/group-companies/biomax/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to send message.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Error submitting form.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
       <div className="mx-auto max-w-screen-xl">
@@ -922,73 +955,110 @@ function ContactSection() {
 
           {/* Contact Form */}
           <div className="lg:col-span-3 bg-white rounded-2xl border shadow-md p-8" style={{ borderColor: COLORS.border }}>
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid sm:grid-cols-2 gap-5">
+            {submitted ? (
+              <div className="text-center py-10">
+                <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.accent }}>Thank You!</h3>
+                <p className="text-sm mb-6" style={{ color: COLORS.muted }}>Your message has been sent successfully. Our team will contact you shortly.</p>
+                <button
+                  onClick={() => { setSubmitted(false); setForm({ firstName: "", lastName: "", email: "", phone: "", service: "All Solutions", message: "" }); }}
+                  className="px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wide text-white"
+                  style={{ backgroundColor: COLORS.primary }}
+                >
+                  Send Another Message
+                </button>
+              </div>
+            ) : (
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                {error && <p className="text-xs font-bold text-red-600 mb-2">{error}</p>}
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>First Name</label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={form.firstName}
+                      onChange={handleChange}
+                      placeholder="e.g. Ali"
+                      className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
+                      style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Last Name</label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={form.lastName}
+                      onChange={handleChange}
+                      placeholder="e.g. Ahmed"
+                      className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
+                      style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                    />
+                  </div>
+                </div>
                 <div>
-                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>First Name</label>
+                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Email Address</label>
                   <input
-                    type="text"
-                    placeholder="e.g. Ali"
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
                     className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                    style={{ borderColor: COLORS.border, color: COLORS.ink, "--tw-ring-color": COLORS.primary }}
+                    style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                    required
                   />
                 </div>
                 <div>
-                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Last Name</label>
+                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Phone Number</label>
                   <input
-                    type="text"
-                    placeholder="e.g. Ahmed"
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="+92 3XX XXXXXXX"
                     className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
                     style={{ borderColor: COLORS.border, color: COLORS.ink }}
                   />
                 </div>
-              </div>
-              <div>
-                <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Email Address</label>
-                <input
-                  type="email"
-                  placeholder="you@example.com"
-                  className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                  style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                />
-              </div>
-              <div>
-                <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Phone Number</label>
-                <input
-                  type="tel"
-                  placeholder="+92 3XX XXXXXXX"
-                  className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                  style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                />
-              </div>
-              <div>
-                <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Service</label>
-                <select
-                  className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                  style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                <div>
+                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Service</label>
+                  <select
+                    name="service"
+                    value={form.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
+                    style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                  >
+                    {SOLUTIONS.map(({ title }) => (
+                      <option key={title} value={title}>{title}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Message</label>
+                  <textarea
+                    rows={4}
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Write your message here..."
+                    className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all resize-none"
+                    style={{ borderColor: COLORS.border, color: COLORS.ink }}
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 rounded-lg text-[13px] font-extrabold uppercase tracking-wide text-white transition-opacity hover:opacity-90 disabled:opacity-50"
+                  style={{ backgroundColor: COLORS.primary }}
                 >
-                  {SOLUTIONS.map(({ title }) => (
-                    <option key={title} value={title}>{title}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Message</label>
-                <textarea
-                  rows={4}
-                  placeholder="Write your message here..."
-                  className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all resize-none"
-                  style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full py-3.5 rounded-lg text-[13px] font-extrabold uppercase tracking-wide text-white transition-opacity hover:opacity-90"
-                style={{ backgroundColor: COLORS.primary }}
-              >
-                Send Message
-              </button>
-            </form>
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

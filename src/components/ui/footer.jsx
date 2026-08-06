@@ -32,7 +32,7 @@ export default function CorporateFooter({
             {caption}
           </p>
 
-          <div className="flex gap-2">
+          <div className="flex gap-2.5">
             {SOCIAL_MEDIA_HANDLES.map((handle, index) => {
               const SocialIcon = handle.icon;
               return (
@@ -40,9 +40,9 @@ export default function CorporateFooter({
                   key={index}
                   href={handle.href}
                   aria-label={handle.label}
-                  className="w-8 h-8 rounded-sm border border-[#dfb753] bg-transparent flex items-center justify-center text-[#dfb753] transition duration-300 ease-in-out hover:bg-[#dfb753] hover:text-black hover:border-[#dfb753]"
+                  className="group w-9 h-9 rounded-sm border border-[#C6A15A]/40 bg-transparent flex items-center justify-center transition-all duration-300 ease-in-out hover:bg-[#C6A15A] hover:border-[#C6A15A] hover:scale-110 hover:shadow-[0_0_12px_rgba(198,161,90,0.4)]"
                 >
-                  <SocialIcon size={14} color="#dfb753" />
+                  <SocialIcon size={15} className="text-[#C6A15A] group-hover:text-[#2D3136] transition-colors duration-300" />
                 </a>
               );
             })}
@@ -58,7 +58,7 @@ export default function CorporateFooter({
               <li key={index}>
                 <Link
                   href={link.destination}
-                  className="text-[11.5px] text-neutral-400 font-normal"
+                  className="text-[11.5px] text-neutral-400 font-normal hover:text-[#C6A15A] transition-colors duration-200"
                 >
                   {link.text}
                 </Link>
@@ -76,7 +76,7 @@ export default function CorporateFooter({
               <li key={index}>
                 <Link
                   href={link.destination}
-                  className="text-[11.5px] text-neutral-400 font-normal"
+                  className="text-[11.5px] text-neutral-400 font-normal hover:text-[#C6A15A] transition-colors duration-200"
                 >
                   {link.text}
                 </Link>
@@ -93,9 +93,11 @@ export default function CorporateFooter({
             {CORPORATE_HELPLINE_DETAILS.map((detail, index) => {
               const DetailIcon = detail.icon;
               return (
-                <li key={index} className="flex gap-3 items-start">
-                  <DetailIcon size={14} className="text-[#dfb753] mt-0.5 flex-shrink-0" />
-                  <span className="text-[11.5px] text-neutral-400 whitespace-pre-line leading-relaxed font-normal">
+                <li key={index} className="flex gap-3 items-start group cursor-pointer">
+                  <div className="p-1.5 rounded bg-white/5 border border-[#C6A15A]/20 transition-all duration-300 group-hover:bg-[#C6A15A] group-hover:border-[#C6A15A] group-hover:scale-110 group-hover:shadow-[0_0_10px_rgba(198,161,90,0.3)] mt-0.5 flex-shrink-0">
+                    <DetailIcon size={13} className="text-[#C6A15A] group-hover:text-[#2D3136] transition-colors duration-300" />
+                  </div>
+                  <span className="text-[11.5px] text-neutral-400 whitespace-pre-line leading-relaxed font-normal group-hover:text-[#C6A15A] transition-colors duration-200">
                     {detail.value}
                   </span>
                 </li>

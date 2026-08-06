@@ -1338,10 +1338,19 @@ function ContactSection() {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
-    setTimeout(() => {
+    try {
+      const res = await fetch("/group-companies/Vetvacpharma/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to submit message.");
+      }
       setStatus("sent");
       setForm({
         name: "",
@@ -1351,7 +1360,10 @@ function ContactSection() {
         message: "",
         type: "General Inquiry",
       });
-    }, 1500);
+    } catch (err) {
+      alert(err.message || "Failed to send message.");
+      setStatus(null);
+    }
   };
 
   const inputStyle = {

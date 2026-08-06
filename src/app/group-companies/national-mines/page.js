@@ -336,11 +336,22 @@ function ContactForm() {
 
   const handle = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
   
-  const submit = e => {
+  const submit = async e => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+    try {
+      const res = await fetch("/group-companies/national-mines/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send.");
+      setSent(true);
+      setTimeout(() => setSent(false), 4000);
+      setForm({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+    } catch (err) {
+      alert(err.message || "Error sending message.");
+    }
   };
 
   return (

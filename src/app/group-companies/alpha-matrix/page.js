@@ -397,17 +397,27 @@ function ContactForm() {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       setError("Please fill in your name, email, and message.");
       return;
     }
     setError("");
-    // NOTE: no backend is wired up yet. Hook this up to your API route,
-    // email service (e.g. Resend, Formspree) or CRM to actually send the lead.
-    console.log("Contact form submission:", { ...form, services: selectedServices });
-    setSubmitted(true);
+    try {
+      const res = await fetch("/group-companies/alpha-matrix/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, selectedServices }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to submit message.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit message. Please try again.");
+    }
   };
 
   const resetForm = () => {

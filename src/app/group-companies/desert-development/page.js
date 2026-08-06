@@ -372,6 +372,7 @@ function TestimonialsSlider({ testimonials }) {
 function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
   const servicesOptions = [
@@ -390,14 +391,30 @@ function ContactForm() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       setError("Please fill in your name, email, and message.");
       return;
     }
     setError("");
-    setSubmitted(true);
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/group-companies/desert-development/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to submit message.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Error submitting form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {

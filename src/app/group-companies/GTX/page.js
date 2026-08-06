@@ -13,13 +13,13 @@ import {
 
 // ── Color System matching GTX German Technology Xpert Logo ──
 const COLORS = {
-  blue:         "#0F52BA", // Official GTX Racing/Tech Blue
-  blueDark:     "#0B3D8A",
-  blueSoft:     "#E6EEFA",
-  red:          "#E52E2E", // Official GTX Racing Red Accent
-  redHover:     "#C41E1E",
+  blue:         "#16A34A", // Official GTX Racing/Tech Blue
+  blueDark:     "#15803D",
+  blueSoft:     "#DCFCE7",
+  red:          "#16A34A", // Official GTX Racing Red Accent
+  redHover:     "#15803D",
   charcoal:     "#202A36", // Official GTX Hexagon Charcoal Slate for text & dark panels
-  charcoalDark: "#151C24",
+  charcoalDark: "#052e16",
   white:        "#FFFFFF",
   bgLight:      "#F4F7FA", // Light grey-blue background
   border:       "#D6E2F0",
@@ -97,10 +97,10 @@ const PRODUCTS = [
 ];
 
 const FEATURED_PROJECTS = [
-  { title: "Smart City EV Network",       desc: "Deployment of intelligent EV charging infrastructure across urban areas.", image: "/project-infrastructure.png" },
-  { title: "Commercial Charging Hub",     desc: "High-capacity charging solutions for commercial vehicle fleets.", image: "/project-industrial.png" },
-  { title: "Solar Charging Station",      desc: "Renewable energy-powered EV charging infrastructure.", image: "/project-commercial.png" },
-  { title: "Corporate Fleet Electrification", desc: "Complete electric mobility transition for enterprise fleets.", image: "/project-infrastructure.png" },
+  { title: "Smart City EV Network",       desc: "Deployment of intelligent EV charging infrastructure across urban areas.", image: "/GTX-card1.png" },
+  { title: "Commercial Charging Hub",     desc: "High-capacity charging solutions for commercial vehicle fleets.", image: "/GTX-card2.png" },
+  { title: "Solar Charging Station",      desc: "Renewable energy-powered EV charging infrastructure.", image: "/GTX-card3.png" },
+  { title: "Corporate Fleet Electrification", desc: "Complete electric mobility transition for enterprise fleets.", image: "/GTX-card4.png" },
 ];
 
 const TESTIMONIALS = [
@@ -172,9 +172,9 @@ function StatCounterCard({ value, suffix, label }) {
   return (
     <div
       ref={cardRef}
-      className="rounded-[24px] border border-[#D6E2F0] bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#0F52BA]"
+      className="rounded-[24px] border border-[#D6E2F0] bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A]"
     >
-      <p className="text-3xl lg:text-4xl font-black text-[#0F52BA] mb-2 tabular-nums">
+      <p className="text-3xl lg:text-4xl font-black text-[#16A34A] mb-2 tabular-nums">
         {count.toLocaleString()}
         {suffix}
       </p>
@@ -187,8 +187,8 @@ function StatCounterCard({ value, suffix, label }) {
 function SectionHeader({ eyebrow, title, description, center }) {
   return (
     <div className={`${center ? "text-center" : ""} max-w-3xl mx-auto`}>
-      <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#E52E2E] mb-3">
-        <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#E52E2E]" />
+      <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#16A34A] mb-3">
+        <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#16A34A]" />
         {eyebrow}
       </span>
       <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#202A36] mb-4">
@@ -204,11 +204,11 @@ function SectionHeader({ eyebrow, title, description, center }) {
 // ── Service Card with hover ──
 function ServiceCard({ icon: Icon, title, desc }) {
   return (
-    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#0F52BA] hover:bg-[#F4F7FA]">
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#E6EEFA] text-[#0F52BA] mb-6 transition-all duration-300 group-hover:bg-[#0F52BA] group-hover:text-white group-hover:scale-110">
+    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A] hover:bg-[#F4F7FA]">
+      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#DCFCE7] text-[#16A34A] mb-6 transition-all duration-300 group-hover:bg-[#16A34A] group-hover:text-white group-hover:scale-110">
         <Icon size={26} />
       </div>
-      <h3 className="text-xl font-bold text-[#202A36] mb-3 transition-colors duration-300 group-hover:text-[#0F52BA]">{title}</h3>
+      <h3 className="text-xl font-bold text-[#202A36] mb-3 transition-colors duration-300 group-hover:text-[#16A34A]">{title}</h3>
       <p className="text-sm leading-relaxed text-[#3E4C5E]">{desc}</p>
     </div>
   );
@@ -217,9 +217,9 @@ function ServiceCard({ icon: Icon, title, desc }) {
 // ── Feature Card ──
 function FeatureCard({ title, desc }) {
   return (
-    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#E52E2E]">
-      <div className="text-[#E52E2E] text-3xl font-black mb-3 group-hover:scale-110 transition-transform">•</div>
-      <h3 className="text-lg font-black text-[#202A36] mb-3 transition-colors duration-300 group-hover:text-[#E52E2E]">{title}</h3>
+    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A]">
+      <div className="text-[#16A34A] text-3xl font-black mb-3 group-hover:scale-110 transition-transform">•</div>
+      <h3 className="text-lg font-black text-[#202A36] mb-3 transition-colors duration-300 group-hover:text-[#16A34A]">{title}</h3>
       <p className="text-sm text-[#3E4C5E] leading-relaxed">{desc}</p>
     </div>
   );
@@ -236,9 +236,9 @@ function QuoteIcon() {
 // ── Process Card ──
 function ProcessStepCard({ step, title, desc }) {
   return (
-    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#0F52BA]">
+    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A]">
       <div className="flex items-center gap-3 mb-4">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0F52BA] text-white font-black group-hover:bg-[#E52E2E] transition-all">{step}</div>
+        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#16A34A] text-white font-black group-hover:bg-[#16A34A] transition-all">{step}</div>
         <h4 className="text-base font-bold text-[#202A36]">{title}</h4>
       </div>
       <p className="text-sm text-[#3E4C5E] leading-relaxed">{desc}</p>
@@ -256,13 +256,13 @@ function FaqAccordionItem({ question, answer }) {
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex items-center justify-between gap-4 p-6 text-left group"
       >
-        <h4 className="text-base font-bold text-[#202A36] transition-colors group-hover:text-[#0F52BA]">{question}</h4>
-        <div className="w-8 h-8 rounded-full bg-[#E6EEFA] flex items-center justify-center text-[#0F52BA] flex-shrink-0 transition-transform duration-300 group-hover:bg-[#0F52BA] group-hover:text-white">
+        <h4 className="text-base font-bold text-[#202A36] transition-colors group-hover:text-[#16A34A]">{question}</h4>
+        <div className="w-8 h-8 rounded-full bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] flex-shrink-0 transition-transform duration-300 group-hover:bg-[#16A34A] group-hover:text-white">
           {isOpen ? <Minus size={16} /> : <Plus size={16} />}
         </div>
       </button>
       {isOpen && (
-        <div className="px-6 pb-6 pt-0 border-t border-[#E6EEFA]">
+        <div className="px-6 pb-6 pt-0 border-t border-[#DCFCE7]">
           <p className="mt-3 text-sm leading-relaxed text-[#3E4C5E]">{answer}</p>
         </div>
       )}
@@ -274,6 +274,7 @@ function FaqAccordionItem({ question, answer }) {
 function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -281,20 +282,37 @@ function ContactForm() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       setError("Please fill in your name, email, and message.");
       return;
     }
     setError("");
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/group-companies/GTX/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to submit message.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
     return (
       <div className="rounded-[28px] border border-[#D6E2F0] bg-white p-8 md:p-10 text-center shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-[#E6EEFA] text-[#0F52BA] mx-auto flex items-center justify-center mb-5">
+        <div className="w-16 h-16 rounded-full bg-[#DCFCE7] text-[#16A34A] mx-auto flex items-center justify-center mb-5">
           <CheckCircle2 size={32} />
         </div>
         <h3 className="text-2xl font-black text-[#202A36] mb-3">Thank You!</h3>
@@ -303,7 +321,7 @@ function ContactForm() {
         </p>
         <button
           onClick={() => { setForm({ name: "", email: "", phone: "", subject: "", message: "" }); setSubmitted(false); }}
-          className="inline-flex items-center gap-2 rounded-full bg-[#0F52BA] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#E52E2E]"
+          className="inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#16A34A]"
         >
           Send Another Message
         </button>
@@ -320,7 +338,7 @@ function ContactForm() {
           <input
             type="text" name="name" value={form.name} onChange={handleChange}
             placeholder="John Doe"
-            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#0F52BA] focus:bg-white"
+            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#16A34A] focus:bg-white"
           />
         </div>
         <div>
@@ -328,7 +346,7 @@ function ContactForm() {
           <input
             type="email" name="email" value={form.email} onChange={handleChange}
             placeholder="john@example.com"
-            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#0F52BA] focus:bg-white"
+            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#16A34A] focus:bg-white"
           />
         </div>
       </div>
@@ -338,7 +356,7 @@ function ContactForm() {
           <input
             type="tel" name="phone" value={form.phone} onChange={handleChange}
             placeholder="+92 300 1234567"
-            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#0F52BA] focus:bg-white"
+            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#16A34A] focus:bg-white"
           />
         </div>
         <div>
@@ -347,7 +365,7 @@ function ContactForm() {
             name="subject"
             value={form.subject}
             onChange={handleChange}
-            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#0F52BA] focus:bg-white"
+            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#16A34A] focus:bg-white"
           >
             <option value="">Select a service</option>
             <option value="EV Infrastructure">EV Infrastructure</option>
@@ -363,7 +381,7 @@ function ContactForm() {
         <textarea
           name="message" value={form.message} onChange={handleChange} rows={4}
           placeholder="Tell us about your technical requirements..."
-          className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all resize-none focus:border-[#0F52BA] focus:bg-white"
+          className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all resize-none focus:border-[#16A34A] focus:bg-white"
         />
       </div>
 
@@ -371,7 +389,7 @@ function ContactForm() {
 
       <button
         type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#0F52BA] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#E52E2E] hover:scale-[1.02] hover:shadow-lg active:scale-95"
+        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#16A34A] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#16A34A] hover:scale-[1.02] hover:shadow-lg active:scale-95"
       >
         Submit Inquiry <Send size={15} />
       </button>
@@ -392,40 +410,40 @@ function GTXNavbar() {
   ];
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D6E2F0]">
-      <div className="hidden md:block bg-[#151C24] text-white py-2 px-6">
+      <div className="hidden md:block bg-[#052e16] text-white py-2 px-6">
         <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
           <div className="flex items-center gap-6 text-white/80">
             <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
             <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
             <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
           </div>
-          <span className="text-xs font-bold text-[#E52E2E]">GTX — German Technology Xpert</span>
+          <span className="text-xs font-bold text-[#16A34A]">GTX — German Technology Xpert</span>
         </div>
       </div>
       <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-[#0F52BA] flex items-center justify-center group-hover:scale-105 transition-transform">
+          <div className="w-11 h-11 rounded-xl bg-[#16A34A] flex items-center justify-center group-hover:scale-105 transition-transform">
             <Zap size={22} color="#fff" />
           </div>
           <div>
-            <p className="text-base font-black tracking-tight text-[#0F52BA] leading-none">GTX</p>
+            <p className="text-base font-black tracking-tight text-[#16A34A] leading-none">GTX</p>
             <p className="text-[9px] font-bold uppercase tracking-widest text-[#3E4C5E]">German Technology Xpert</p>
           </div>
         </a>
         <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#202A36]">
           {navLinks.map(l => (
-            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#0F52BA] group transition-colors">
+            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#16A34A] group transition-colors">
               {l.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0F52BA] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#16A34A] transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </nav>
         <div className="hidden lg:flex items-center gap-3">
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#E52E2E] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#C41E1E] hover:scale-105 transition-all">
+          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#15803D] hover:scale-105 transition-all">
             <MessageCircle size={14} /> Get In Touch
           </a>
         </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#F4F7FA] text-[#0F52BA]">
+        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#F4F7FA] text-[#16A34A]">
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -433,9 +451,9 @@ function GTXNavbar() {
         <div className="lg:hidden bg-white border-t border-[#D6E2F0] px-6 py-5 space-y-3">
           {navLinks.map(l => (
             <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
-              className="block text-sm font-bold text-[#202A36] hover:text-[#0F52BA] py-1">{l.label}</a>
+              className="block text-sm font-bold text-[#202A36] hover:text-[#16A34A] py-1">{l.label}</a>
           ))}
-          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#E52E2E] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
+          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#16A34A] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
             <MessageCircle size={14} /> Get In Touch
           </a>
         </div>
@@ -447,7 +465,7 @@ function GTXNavbar() {
 // ── GTX Footer ──
 function GTXFooter() {
   return (
-    <footer style={{ background: "#0F52BA" }} className="text-white">
+    <footer style={{ background: "#16A34A" }} className="text-white">
       <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3 mb-4">
@@ -521,7 +539,7 @@ export default function GTXPage() {
   const activeTestimonialItem = TESTIMONIALS[activeTestimonial];
 
   return (
-    <main className="roys-roys-theme gtx-theme font-sans bg-white text-[#202A36] selection:bg-[#0F52BA] selection:text-white">
+    <main className="roys-roys-theme gtx-theme font-sans bg-white text-[#202A36] selection:bg-[#16A34A] selection:text-white">
       {/* Styles to bypass global dark override from globals.css */}
       <style>{`
         html, body {
@@ -554,17 +572,17 @@ export default function GTXPage() {
       <section className="relative overflow-hidden border-b border-[#D6E2F0]">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/project-infrastructure.png')" }}
+          style={{ backgroundImage: "url('/GTX_hero.png')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071a2f]/90 via-[#0c2852]/80 to-[#0F52BA]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#052e16]/90 via-[#14532d]/80 to-[#16A34A]/70" />
         <div className="relative mx-auto max-w-screen-xl px-6 py-12 lg:py-20">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#B8D0F5] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#0F52BA] shadow-sm">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#E52E2E]" />
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#BBF7D0] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#16A34A] shadow-sm">
+              <span className="h-2.5 w-2.5 rounded-full bg-[#16A34A]" />
               {HERO.badge}
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
-              German Technology Xpert <span className="text-[#E52E2E]">(GTX)</span>
+              German Technology Xpert <span className="text-[#16A34A]">(GTX)</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-100">
               {HERO.subline}
@@ -572,13 +590,13 @@ export default function GTXPage() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="#solutions"
-                className="inline-flex items-center gap-2 rounded-full bg-[#0F52BA] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#E52E2E] hover:scale-[1.02] hover:shadow-lg active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#16A34A] hover:scale-[1.02] hover:shadow-lg active:scale-95"
               >
                 {HERO.ctaPrimary} <ArrowRight size={16} />
               </Link>
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#0F52BA] hover:scale-[1.02] active:scale-95"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#16A34A] hover:scale-[1.02] active:scale-95"
               >
                 {HERO.ctaSecondary}
               </Link>
@@ -592,8 +610,8 @@ export default function GTXPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
             <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#E52E2E] mb-3">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#E52E2E]" />
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#16A34A] mb-3">
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#16A34A]" />
                 About GTX
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-[#202A36] mb-5">Engineering Smarter Mobility For Tomorrow</h2>
@@ -606,7 +624,7 @@ export default function GTXPage() {
             </div>
             <div className="relative overflow-hidden rounded-[28px] border border-[#D6E2F0] bg-[#F4F7FA] shadow-sm">
               <Image
-                src="/project-industrial.png"
+                src="/GTX-about.png"
                 alt="GTX electric mobility systems"
                 width={900}
                 height={700}
@@ -675,7 +693,7 @@ export default function GTXPage() {
             {INDUSTRIES.map((industry, index) => (
               <div
                 key={index}
-                className="group rounded-2xl border border-[#D6E2F0] bg-white p-5 text-sm font-semibold text-[#202A36] text-center transition-all duration-300 hover:border-[#0F52BA] hover:bg-[#0F52BA] hover:text-white hover:shadow-md"
+                className="group rounded-2xl border border-[#D6E2F0] bg-white p-5 text-sm font-semibold text-[#202A36] text-center transition-all duration-300 hover:border-[#16A34A] hover:bg-[#16A34A] hover:text-white hover:shadow-md"
               >
                 {industry}
               </div>
@@ -726,12 +744,12 @@ export default function GTXPage() {
           />
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {FEATURED_PROJECTS.map((project, index) => (
-              <div key={index} className="group overflow-hidden rounded-[28px] border border-[#D6E2F0] bg-[#F4F7FA] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#0F52BA]">
+              <div key={index} className="group overflow-hidden rounded-[28px] border border-[#D6E2F0] bg-[#F4F7FA] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A]">
                 <div className="relative h-52 w-full">
                   <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-base font-bold text-[#202A36] group-hover:text-[#0F52BA] transition-colors mb-2">{project.title}</h3>
+                  <h3 className="text-base font-bold text-[#202A36] group-hover:text-[#16A34A] transition-colors mb-2">{project.title}</h3>
                   <p className="text-xs text-[#3E4C5E] leading-relaxed">{project.desc}</p>
                 </div>
               </div>
@@ -751,12 +769,12 @@ export default function GTXPage() {
               />
               <div className="mt-8 rounded-[28px] border border-[#D6E2F0] bg-[#F4F7FA] p-8 shadow-sm">
                 <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-2 text-[#0F52BA]">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0F52BA] shadow-sm">
+                  <div className="flex items-center gap-2 text-[#16A34A]">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#16A34A] shadow-sm">
                       <QuoteIcon />
                     </div>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.25em] text-[#E52E2E]">Client Feedback</p>
+                      <p className="text-xs font-black uppercase tracking-[0.25em] text-[#16A34A]">Client Feedback</p>
                       <p className="text-sm font-semibold text-[#3E4C5E]">Trusted by industry leaders</p>
                     </div>
                   </div>
@@ -765,7 +783,7 @@ export default function GTXPage() {
                     <button
                       type="button"
                       onClick={() => setActiveTestimonial((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1))}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D6E2F0] bg-white text-[#0F52BA] transition hover:border-[#0F52BA] hover:bg-[#E6EEFA]"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D6E2F0] bg-white text-[#16A34A] transition hover:border-[#16A34A] hover:bg-[#DCFCE7]"
                       aria-label="Previous testimonial"
                     >
                       <ChevronLeft size={18} />
@@ -773,7 +791,7 @@ export default function GTXPage() {
                     <button
                       type="button"
                       onClick={() => setActiveTestimonial((prev) => (prev + 1) % TESTIMONIALS.length)}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D6E2F0] bg-white text-[#0F52BA] transition hover:border-[#0F52BA] hover:bg-[#E6EEFA]"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D6E2F0] bg-white text-[#16A34A] transition hover:border-[#16A34A] hover:bg-[#DCFCE7]"
                       aria-label="Next testimonial"
                     >
                       <ChevronRight size={18} />
@@ -783,7 +801,7 @@ export default function GTXPage() {
 
                 <p className="text-base italic leading-relaxed text-[#3E4C5E] mb-6">“{activeTestimonialItem.quote}”</p>
                 <p className="font-black text-[#202A36]">{activeTestimonialItem.name}</p>
-                <p className="text-xs text-[#0F52BA] font-bold mt-1">{activeTestimonialItem.role}</p>
+                <p className="text-xs text-[#16A34A] font-bold mt-1">{activeTestimonialItem.role}</p>
 
                 <div className="mt-6 flex gap-2">
                   {TESTIMONIALS.map((_, index) => (
@@ -791,7 +809,7 @@ export default function GTXPage() {
                       key={index}
                       type="button"
                       onClick={() => setActiveTestimonial(index)}
-                      className={`h-2.5 rounded-full transition-all ${index === activeTestimonial ? "w-8 bg-[#0F52BA]" : "w-2.5 bg-[#C9D8EA]"}`}
+                      className={`h-2.5 rounded-full transition-all ${index === activeTestimonial ? "w-8 bg-[#16A34A]" : "w-2.5 bg-[#C9D8EA]"}`}
                       aria-label={`Go to testimonial ${index + 1}`}
                     />
                   ))}
@@ -828,9 +846,9 @@ export default function GTXPage() {
               <ContactForm />
             </div>
 
-            <div className="lg:col-span-5 rounded-[28px] bg-[#0F52BA] p-8 md:p-10 text-white shadow-xl flex flex-col justify-between h-full">
+            <div className="lg:col-span-5 rounded-[28px] bg-[#16A34A] p-8 md:p-10 text-white shadow-xl flex flex-col justify-between h-full">
               <div>
-                <span className="text-xs uppercase tracking-[0.25em] font-black text-[#E52E2E]">Contact Details</span>
+                <span className="text-xs uppercase tracking-[0.25em] font-black text-[#16A34A]">Contact Details</span>
                 <h3 className="mt-3 text-2xl font-black text-white mb-6">Talk To Our Team</h3>
                 <p className="text-sm leading-relaxed text-[#D6E2F0] mb-8">
                   Our EV engineering team responds to every technical inquiry within one business day.
@@ -838,31 +856,31 @@ export default function GTXPage() {
 
                 <div className="space-y-6 text-sm">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#E52E2E]">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
                       <MapPin size={20} />
                     </div>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#E52E2E] mb-1">Our Office</p>
+                      <p className="text-xs font-black uppercase tracking-wider text-[#16A34A] mb-1">Our Office</p>
                       <p className="text-white leading-relaxed">{CONTACT_INFO.office}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#E52E2E]">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
                       <Phone size={20} />
                     </div>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#E52E2E] mb-1">Call Us</p>
+                      <p className="text-xs font-black uppercase tracking-wider text-[#16A34A] mb-1">Call Us</p>
                       <p className="text-white font-bold">Phone: {CONTACT_INFO.phone}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#E52E2E]">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
                       <MessageCircle size={20} />
                     </div>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#E52E2E] mb-1">WhatsApp</p>
+                      <p className="text-xs font-black uppercase tracking-wider text-[#16A34A] mb-1">WhatsApp</p>
                       {CONTACT_INFO.whatsapp.map((num) => (
                         <p key={num} className="text-white font-semibold">{num}</p>
                       ))}
@@ -870,11 +888,11 @@ export default function GTXPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#E52E2E]">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
                       <Mail size={20} />
                     </div>
                     <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#E52E2E] mb-1">Email Us</p>
+                      <p className="text-xs font-black uppercase tracking-wider text-[#16A34A] mb-1">Email Us</p>
                       {CONTACT_INFO.emails.map((mail) => (
                         <p key={mail} className="text-white font-medium">{mail}</p>
                       ))}
@@ -895,8 +913,8 @@ export default function GTXPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
             <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#E52E2E] mb-3">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#E52E2E]" />
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#16A34A] mb-3">
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#16A34A]" />
                 Our Location
               </span>
               <h3 className="text-3xl md:text-4xl font-black text-[#202A36] mb-4">Visit Our Office</h3>
@@ -909,7 +927,7 @@ export default function GTXPage() {
                   href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7"
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#0F52BA] hover:text-[#0B3D8A]"
+                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#16A34A] hover:text-[#15803D]"
                 >
                   Open in Google Maps <ArrowRight size={16} />
                 </a>

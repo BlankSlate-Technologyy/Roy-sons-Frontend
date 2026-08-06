@@ -18,7 +18,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white shadow-[0_1px_3px_0_rgba(0,0,0,0.05)]">
+    <header className="sticky top-0 z-50 w-full border-b border-neutral-800 shadow-[0_1px_8px_0_rgba(0,0,0,0.4)]" style={{backgroundColor:'#2D3136'}}>
       <div className="mx-auto flex h-20 md:h-24 lg:h-[104px] max-w-screen-xl items-center justify-between px-6">
         
         <Link href="/" className="inline-block flex-shrink-0">
@@ -33,10 +33,10 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                 <li key={route.path} className="relative flex h-full items-center">
                   <Link
                     href={route.path}
-                    className={`px-2.5 py-2 text-[16px] font-bold tracking-[0.1em] uppercase transition-all duration-300 relative whitespace-nowrap rounded-sm
+                    className={`px-3 py-2 text-[15px] font-bold tracking-[0.1em] uppercase transition-all duration-300 relative whitespace-nowrap bg-transparent hover:bg-transparent
                       ${isActive
-                        ? "text-black after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-8 after:h-[3px] after:bg-black"
-                        : "text-neutral-500 hover:text-black hover:bg-neutral-50/50"
+                        ? "text-[#C6A15A] after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-8 after:h-[3px] after:bg-[#C6A15A]"
+                        : "text-[#C6A15A]/70 hover:text-[#C6A15A] after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-[#C6A15A] hover:after:w-8 after:transition-all after:duration-300"
                       }`}
                   >
                     {route.title}
@@ -52,7 +52,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
             id="navbar-search-btn"
             aria-label="Toggle search bar"
             onClick={() => setIsSearchOpen(!isSearchOpen)}
-            className="p-2 text-neutral-800 rounded-full transition-colors cursor-pointer"
+            className="p-2 text-[#C6A15A] bg-transparent cursor-pointer"
           >
             <Search size={19} strokeWidth={2.2} />
           </button>
@@ -61,7 +61,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
             id="navbar-mobile-btn"
             aria-label="Toggle menu"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-neutral-500 hover:text-black rounded-full hover:bg-neutral-50 transition-colors cursor-pointer"
+            className="lg:hidden p-2 text-[#C6A15A] bg-transparent cursor-pointer"
           >
             {isMobileMenuOpen ? <X size={21} strokeWidth={2.2} /> : <Menu size={21} strokeWidth={2.2} />}
           </button>
@@ -69,7 +69,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
       </div>
 
       {isSearchOpen && (
-        <div className="border-t border-neutral-100 bg-neutral-50/50 px-6 py-4 animate-fade-in-up">
+        <div className="border-t px-6 py-4 animate-fade-in-up" style={{backgroundColor:'#252830', borderColor:'rgba(198,161,90,0.2)'}}>
           <div className="mx-auto w-full max-w-screen-xl relative">
             <input
               autoFocus
@@ -85,14 +85,14 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
       )}
 
       {isMobileMenuOpen && (
-        <nav aria-label="Mobile Navigation" className="lg:hidden border-t border-neutral-150 bg-white">
+        <nav aria-label="Mobile Navigation" className="lg:hidden border-t" style={{backgroundColor:'#2D3136', borderColor:'rgba(198,161,90,0.2)'}}>
           <ul className="flex flex-col py-2">
             {HEADER_ROUTES.map((route) => (
               <li key={route.path}>
                 <Link
                   href={route.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-6 py-3.5 text-[13px] font-bold tracking-[0.16em] uppercase text-neutral-700 hover:bg-neutral-50 hover:text-black border-b border-neutral-50"
+                  className="block px-6 py-3.5 text-[13px] font-bold tracking-[0.16em] uppercase text-[#C6A15A] hover:bg-white/5 border-b border-white/10 transition-colors"
                 >
                   {route.title}
                 </Link>

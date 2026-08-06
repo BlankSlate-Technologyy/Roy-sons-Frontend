@@ -114,7 +114,7 @@ export default function ChairmanMessagePage() {
                       ${idx < COMMITMENTS.length - 1 ? "border-r border-neutral-200" : ""}
                     `}
                   >
-                    <Icon size={28} strokeWidth={1.4} className="text-neutral-700" />
+                    <Icon size={28} strokeWidth={1.4} className="text-[#C6A15A]" />
                     <span className="text-[11.5px] font-medium text-neutral-700 text-center whitespace-pre-line leading-snug">
                       {label}
                     </span>

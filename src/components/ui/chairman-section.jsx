@@ -127,8 +127,8 @@ export default function ChairmanAddressBlock({
                     key={item.id}
                     className="flex flex-col items-center text-center w-[100px]"
                   >
-                    <div className="p-3 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: "#dfb753" }}>
-                      <MetricIcon size={22} className="text-black" strokeWidth={1.5} />
+                    <div className="p-3 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: "#C6A15A" }}>
+                      <MetricIcon size={22} className="text-[#2D3136]" strokeWidth={1.5} />
                     </div>
                     <span className="text-[32px] font-black text-neutral-900 tracking-tight leading-none mb-2">
                       <StatCounter value={item.value} />
@@ -144,10 +144,10 @@ export default function ChairmanAddressBlock({
             <div className="mt-8 lg:mt-0 flex justify-end">
               <Link
                 href="/about/chairmans-message"
-                className="rs-cta-btn w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#dfb753] bg-transparent text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-[#dfb753] hover:border-[#dfb753] transition-all duration-300 group"
+                className="rs-cta-btn w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#C6A15A] bg-transparent text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
               >
-                <span className="text-[#dfb753] group-hover:text-black transition-colors duration-300">READ FULL MESSAGE</span>
-                <ArrowRight size={18} strokeWidth={2.5} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1.5 transition-all duration-300" />
+                <span className="text-[#C6A15A] group-hover:text-[#2D3136] transition-colors duration-300">READ FULL MESSAGE</span>
+                <ArrowRight size={18} strokeWidth={2.5} className="text-[#C6A15A] group-hover:text-[#2D3136] group-hover:translate-x-1.5 transition-all duration-300" />
               </Link>
             </div>
           </div>

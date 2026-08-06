@@ -344,12 +344,29 @@ function Stars({ count = 5 }) {
 function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
-    setSent(true);
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/group-companies/TDRC/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to submit message.");
+      }
+      setSent(true);
+    } catch (err) {
+      alert(err.message || "Submission failed.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (sent) {

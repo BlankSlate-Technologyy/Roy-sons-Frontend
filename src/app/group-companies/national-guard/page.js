@@ -409,8 +409,13 @@ function ContactForm() {
 
     setStatus("submitting");
     try {
-      // Replace this with your real API endpoint / email service call.
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+      const res = await fetch("/group-companies/national-guard/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send.");
       setStatus("success");
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
     } catch (err) {
