@@ -11,6 +11,11 @@ export const metadata = {
   title: "Roy Sons Pvt. Ltd. – Building A Better Tomorrow",
   description:
     "Roy Sons is a diversified conglomerate delivering excellence in construction, engineering, real estate, and multiple industries.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

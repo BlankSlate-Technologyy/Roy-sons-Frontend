@@ -50,7 +50,7 @@
 ───────────────────────────────────────────── */
 
 :root {
-  --rs-bg:           #2D3136;   /* Corporate Charcoal */
+  --rs-bg:           #203136;   /* Corporate Charcoal */
   --rs-bg-deep:      #252830;   /* slightly darker variant */
   --rs-bg-surface:   #343840;   /* card / surface variant */
   --rs-gold:         #C6A15A;   /* Champagne Gold */
@@ -100,7 +100,7 @@
   }
 
   body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) {
-    background-color: #2D3136 !important;
+    background-color: #203136 !important;
     color: #C6A15A !important;
   }
 }
@@ -126,31 +126,44 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   .bg-neutral-50\/20,
   .bg-neutral-50\/50,
   .bg-neutral-950\/50 {
-    background-color: #2D3136 !important;
+    background-color: #203136 !important;
   }
 
-  /* Champagne Gold Texts (#C6A15A) */
+  /* ── Logo-matched Text Colors ──
+     Gold  #C6A15A → Headings, links, buttons (logo "Sons" / "INDUSTRIES" colour)
+     Silver #C0C0C0 → Body text  (logo "Roy" / tagline metallic-silver colour)
+  ─────────────────────────────── */
+
+  /* Gold — Headings, links, interactive elements */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6,
+  a,
+  label,
+  button,
+  th {
+    color: #C6A15A !important;
+    -webkit-text-fill-color: #C6A15A !important;
+    background-image: none !important;
+    background-clip: unset !important;
+    -webkit-background-clip: unset !important;
+  }
+
+  /* Silver — Body / paragraph / secondary text */
   p,
   span,
   li,
-  a,
-  label,
   time,
-  button,
   input,
   textarea,
   select,
   option,
-  th,
   td {
-    color: #C6A15A !important;
-    -webkit-text-fill-color: #C6A15A !important;
+    color: #C0C0C0 !important;
+    -webkit-text-fill-color: #C0C0C0 !important;
     background-image: none !important;
     background-clip: unset !important;
     -webkit-background-clip: unset !important;
