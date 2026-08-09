@@ -78,9 +78,9 @@ export default function ChairmanAddressBlock({
   metrics = CORPORATE_STATS,
 }) {
   return (
-    <section className="py-12 lg:py-16 bg-white font-sans">
+    <section className="py-8 lg:py-10 font-sans" style={{ backgroundColor: "#101518" }}>
       <div className="max-w-screen-xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-14 items-stretch justify-between">
+        <div className="flex flex-col lg:flex-row gap-0 lg:gap-0 items-stretch justify-between">
 
           {/* Column 1: Image */}
           <div className="flex-shrink-0 w-full md:w-[260px] mx-auto lg:mx-0">
@@ -94,6 +94,9 @@ export default function ChairmanAddressBlock({
               />
             </div>
           </div>
+
+          {/* Golden vertical divider between image and text */}
+          <div className="hidden lg:block w-[2px] self-stretch mx-10 flex-shrink-0" style={{ backgroundColor: "#C6A15A" }} />
 
           {/* Column 2: Text Area */}
           <div className="flex-1 max-w-lg lg:max-w-[450px] flex flex-col justify-between">
