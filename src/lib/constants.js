@@ -155,7 +155,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     {
     id: "slide-seven",
     type: "image",
-    src: "/ROYSONS Slider Image 7.jpeg",
+    src: "/ROYSONS Slider image 7.jpeg",
     subtitle: "TECHNOLOGY & INNOVATION",
     title: "Engineering the Future",
     highlight: "of Smart Industries.",
