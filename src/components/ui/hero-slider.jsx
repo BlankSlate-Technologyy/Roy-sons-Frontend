@@ -94,11 +94,11 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
               {activeSlide.subtitle}
             </p>
 
-            <h1 className={`text-3xl md:text-4xl lg:text-5xl font-black leading-snug text-white uppercase tracking-tight transition-all duration-500 delay-75 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+            <h1 className={`text-3xl md:text-4xl lg:text-5xl font-black leading-none text-white uppercase tracking-tight transition-all duration-500 delay-75 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.title}
             </h1>
             {activeSlide.highlight && (
-              <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black leading-snug text-white uppercase tracking-tight mb-3 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+              <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black leading-none text-white uppercase tracking-tight mb-3 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
                 {activeSlide.highlight}
               </h2>
             )}
@@ -109,12 +109,12 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
               </p>
             )}
 
-            <p className={`text-sm text-white/85 leading-loose mb-3 max-w-[720px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+            <p className={`text-sm text-white/85 leading-snug mb-3 max-w-[720px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.description}
             </p>
 
             {activeSlide.supportingText && (
-              <p className={`text-sm text-white/65 leading-loose mb-7 max-w-[720px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+              <p className={`text-sm text-white/65 leading-snug mb-7 max-w-[720px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
                 {activeSlide.supportingText}
               </p>
             )}

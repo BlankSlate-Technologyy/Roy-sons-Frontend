@@ -72,7 +72,7 @@ function StatCounter({ value }) {
 export default function ChairmanAddressBlock({
   executivePhoto = "/chairman.jpeg",
   photoDescription = "Ijaz Naseer - Chairman",
-  addressParagraph = "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS.Pvt.Ltd stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade.",
+  addressParagraph = "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade.",
   authorTitle = "IJAZ NASEER",
   organizationName = "Chairman & Chief Executive Officer",
   metrics = CORPORATE_STATS,
@@ -80,63 +80,66 @@ export default function ChairmanAddressBlock({
   return (
     <section className="py-8 lg:py-10 font-sans" style={{ backgroundColor: "#101518" }}>
       <div className="max-w-screen-xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-0 lg:gap-0 items-stretch justify-between">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
 
-          {/* Column 1: Image */}
-          <div className="flex-shrink-0 w-full md:w-[260px] mx-auto lg:mx-0">
-            <div className="relative w-full h-[280px]">
+          {/* Column 1: Image — LEFT with golden border */}
+          <div className="flex-shrink-0 w-full lg:w-[240px] mx-auto lg:mx-0">
+            <div
+              className="relative w-full h-[280px]"
+              style={{
+                border: "2px solid #C6A15A",
+                boxShadow: "0 0 18px rgba(198,161,90,0.25), 4px 4px 0px #C6A15A",
+                borderRadius: "2px",
+              }}
+            >
               <Image
                 src={executivePhoto}
                 alt={photoDescription}
                 fill
-                className="object-cover object-top shadow-sm rounded-sm"
-                sizes="(max-width: 768px) 100vw, 260px"
+                className="object-cover object-top rounded-sm"
+                sizes="(max-width: 768px) 100vw, 240px"
               />
             </div>
           </div>
 
-          {/* Golden vertical divider between image and text */}
-          <div className="hidden lg:block w-[2px] self-stretch mx-10 flex-shrink-0" style={{ backgroundColor: "#C6A15A" }} />
-
-          {/* Column 2: Text Area */}
-          <div className="flex-1 max-w-lg lg:max-w-[450px] flex flex-col justify-between">
+          {/* Column 2: Text Content — MIDDLE */}
+          <div className="flex-1 flex flex-col justify-between">
             <div>
-              <h2 className="text-[13px] font-bold tracking-[0.2em] uppercase text-neutral-900 mb-4 mt-[5px]">
+              <h2 className="text-[13px] font-bold tracking-[0.2em] uppercase mb-4 mt-[5px]">
                 CHAIRMAN&apos;S MESSAGE
               </h2>
-              <p className="text-[14px] text-neutral-600 leading-relaxed font-normal">
+              <p className="text-[14px] leading-relaxed font-normal">
                 {addressParagraph}
               </p>
             </div>
 
-            <div className="mb-[2px]">
-              <h4 className="text-[13px] font-bold text-neutral-900 uppercase tracking-widest">
+            <div className="mb-[2px] mt-6">
+              <h4 className="text-[13px] font-bold uppercase tracking-widest">
                 {authorTitle}
               </h4>
-              <p className="text-[13px] text-neutral-500 font-medium mt-1">
+              <p className="text-[13px] font-medium mt-1">
                 {organizationName}
               </p>
             </div>
           </div>
 
           {/* Column 3: Metrics & Button */}
-          <div className="w-full lg:w-auto flex flex-col justify-between pt-6 lg:pt-0">
-
-            <div className="flex flex-row flex-wrap sm:flex-nowrap gap-6 sm:gap-10">
+          <div className="w-full lg:w-auto flex flex-col justify-between pt-2 lg:pt-0">
+            <div className="flex flex-row flex-wrap sm:flex-nowrap gap-6 sm:gap-8">
               {metrics.map((item) => {
                 const MetricIcon = item.icon;
                 return (
                   <div
                     key={item.id}
-                    className="flex flex-col items-center text-center w-[100px]"
+                    className="flex flex-col items-center text-center w-[90px]"
                   >
                     <div className="p-3 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: "#C6A15A" }}>
                       <MetricIcon size={22} className="text-[#2D3136]" strokeWidth={1.5} />
                     </div>
-                    <span className="text-[32px] font-black text-neutral-900 tracking-tight leading-none mb-2">
+                    <span className="text-[30px] font-black tracking-tight leading-none mb-2">
                       <StatCounter value={item.value} />
                     </span>
-                    <span className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider whitespace-pre-line leading-relaxed">
+                    <span className="text-[10px] font-bold uppercase tracking-wider whitespace-pre-line leading-relaxed">
                       {item.label}
                     </span>
                   </div>
@@ -147,7 +150,7 @@ export default function ChairmanAddressBlock({
             <div className="mt-8 lg:mt-0 flex justify-end">
               <Link
                 href="/about/chairmans-message"
-                className="rs-cta-btn w-full sm:w-[280px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#C6A15A] bg-transparent text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+                className="rs-cta-btn w-full sm:w-[260px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#C6A15A] bg-transparent text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
               >
                 <span className="text-[#C6A15A] group-hover:text-[#2D3136] transition-colors duration-300">READ FULL MESSAGE</span>
                 <ArrowRight size={18} strokeWidth={2.5} className="text-[#C6A15A] group-hover:text-[#2D3136] group-hover:translate-x-1.5 transition-all duration-300" />

@@ -9,9 +9,9 @@ export default function BrandLogo({ isDarkTheme = false, showSubtitle = false, c
       <Image
         src="/ROYSONS Logo.png"
         alt="Roy Sons Logo"
-        width={320}
+        width={150}
         height={80}
-        className="w-auto h-14 md:h-16 lg:h-20 object-contain"
+        className="w-auto h-14 md:h-16 lg:h-12 object-contain"
         priority
       />
     </div>

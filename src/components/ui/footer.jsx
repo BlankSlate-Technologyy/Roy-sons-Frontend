@@ -23,7 +23,7 @@ export default function CorporateFooter({
             <Image
               src="/ROYSONS Logo.png"
               alt="Roy Sons Logo"
-              width={250}
+              width={200}
               height={100}
               className="object-contain"
             />
