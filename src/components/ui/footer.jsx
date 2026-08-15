@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import BrandLogo from "@/components/ui/logo";
 import {
   FOOTER_QUICK_LINKS,
   FOOTER_SERVICES_LINKS,
@@ -20,13 +20,7 @@ export default function CorporateFooter({
 
         <div className="lg:col-span-1 flex flex-col pr-8 pb-12 lg:pb-0">
           <Link href="/" className="inline-block mb-4">
-            <Image
-              src="/ROYSONS Logo.png"
-              alt="Roy Sons Logo"
-              width={200}
-              height={100}
-              className="object-contain"
-            />
+            <BrandLogo />
           </Link>
           <p className="text-[12px] text-neutral-400 leading-relaxed font-normal mb-6">
             {caption}

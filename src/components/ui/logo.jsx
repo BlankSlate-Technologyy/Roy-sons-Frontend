@@ -7,11 +7,11 @@ export default function BrandLogo({ isDarkTheme = false, showSubtitle = false, c
       aria-label="Roy Sons Corporate Identity"
     >
       <Image
-        src="/ROYSONS Logo.png"
+        src="/roysons-logo.png"
         alt="Roy Sons Logo"
-        width={150}
+        width={180}
         height={80}
-        className="w-auto h-14 md:h-16 lg:h-12 object-contain"
+        className="w-auto h-12 md:h-14 lg:h-14 object-contain"
         priority
       />
     </div>
