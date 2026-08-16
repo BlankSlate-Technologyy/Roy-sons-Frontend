@@ -296,19 +296,16 @@ export default function AboutPage() {
                 About ROYSONS Pvt. Ltd.
               </h1>
               <p className="text-[14px] text-neutral-600 leading-relaxed font-normal mb-6">
-                Roys Pvt. Ltd. is one of Pakistan's emerging diversified business groups, 
-                providing world-class products, services, consultancy, engineering solutions, 
-                infrastructure development, and international trade services.
+                ROYSONS Pvt. Ltd. is a diversified multi-sector enterprise built with a vision to establish a dynamic organization capable of delivering world-class solutions across multiple industries. With a growing portfolio of specialized companies and business divisions, ROYSONS operates across healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, international trade, manufacturing, real estate, food, and consultancy.
               </p>
               <p className="text-[14.5px] text-neutral-950 font-bold leading-relaxed border-l-2 border-neutral-950 pl-5">
-                We are dedicated to establishing national paradigms of corporate excellence, connecting global 
-                partnerships with local industrial capabilities.
+             Our strength lies in bringing diverse expertise together under one corporate platform. Through our specialized companies, strategic partnerships, and industry-focused teams, we deliver products, services, and integrated solutions designed to meet the evolving needs of governments, institutions, businesses, and communities.
               </p>
             </div>
             <div className="flex-1 w-full relative min-h-[300px]">
               <div className="h-full w-full relative overflow-hidden rounded-[2px] border border-neutral-200 shadow-sm">
                 <Image 
-                  src="/ROYSONS PVT. LTD. OFFICE IMAGE.jpeg" 
+                  src="/About-us-hero.jpeg" 
                   alt="Roys Group Headquarters" 
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

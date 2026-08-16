@@ -41,35 +41,35 @@ export default function ChairmanMessagePage() {
       </section>
 
       {/* Chairman's Message Section */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
 
           {/* Page Title */}
-          <div className="text-center mb-14">
-            <h1 className="text-4xl lg:text-5xl font-black text-neutral-950 tracking-tight">
+          <div className="text-center mb-10 sm:mb-14">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-950 tracking-tight">
               Chairman&apos;s Message
             </h1>
-            <div className="mx-auto mt-5 h-[3px] w-14 bg-neutral-950" />
+            <div className="mx-auto mt-4 sm:mt-5 h-[3px] w-14 bg-neutral-950" />
           </div>
 
           {/* Two-column layout */}
-          <div className="flex flex-col lg:flex-row gap-14 lg:gap-20 items-start">
+          <div className="flex flex-col lg:flex-row gap-10 sm:gap-14 lg:gap-20 items-center lg:items-start">
 
             {/* Left – Photo + Signature */}
-            <div className="flex-shrink-0 w-full lg:w-[340px]">
-              <div className="relative w-full h-[420px] lg:h-[460px] overflow-hidden rounded-[2px] border border-neutral-200 shadow-sm">
+            <div className="flex-shrink-0 w-full max-w-[300px] sm:max-w-[340px] lg:w-[340px] mx-auto lg:mx-0">
+              <div className="relative w-full aspect-[3/4] overflow-hidden rounded-[2px] border border-neutral-200 shadow-sm bg-neutral-900">
                 <Image
                   src="/chairman.jpeg"
-                  alt=" Ijaz Naseer – Chairman & CEO, Roys Group"
+                  alt="Ijaz Naseer – Chairman & CEO, Roys Group"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 340px"
-                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 340px, 340px"
+                  className="object-contain object-top"
                   priority
                 />
               </div>
 
               {/* Signature block */}
-              <div className="mt-6">
+              <div className="mt-6 text-center lg:text-left">
                 <p
                   className="text-3xl text-neutral-700 mb-2 select-none"
                   style={{ fontFamily: "'Dancing Script', cursive, serif", fontStyle: "italic" }}
@@ -82,12 +82,12 @@ export default function ChairmanMessagePage() {
                 <p className="text-[12px] text-neutral-500 font-medium mt-0.5">
                   Chairman &amp; Chief Executive Officer
                 </p>
-                <div className="mt-3 h-[2px] w-10 bg-neutral-950" />
+                <div className="mt-3 h-[2px] w-10 bg-neutral-950 mx-auto lg:mx-0" />
               </div>
             </div>
 
             {/* Right – Message Content */}
-            <div className="flex-1">
+            <div className="flex-1 text-left">
 
               {/* Intro paragraphs */}
               <p className="text-[14px] text-neutral-600 leading-relaxed mb-5">
@@ -106,13 +106,11 @@ export default function ChairmanMessagePage() {
               </p>
 
               {/* Five commitment icons */}
-              <div className="flex flex-wrap gap-0 border border-neutral-200 rounded-[2px] mb-8 overflow-hidden">
-                {COMMITMENTS.map(({ icon: Icon, label }, idx) => (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 border border-neutral-200 rounded-[2px] mb-8 overflow-hidden divide-x divide-y divide-neutral-200">
+                {COMMITMENTS.map(({ icon: Icon, label }) => (
                   <div
                     key={label}
-                    className={`flex flex-col items-center justify-center gap-3 py-6 px-4 flex-1 min-w-[90px]
-                      ${idx < COMMITMENTS.length - 1 ? "border-r border-neutral-200" : ""}
-                    `}
+                    className="flex flex-col items-center justify-center gap-3 py-5 sm:py-6 px-3 sm:px-4"
                   >
                     <Icon size={28} strokeWidth={1.4} className="text-[#C6A15A]" />
                     <span className="text-[11.5px] font-medium text-neutral-700 text-center whitespace-pre-line leading-snug">

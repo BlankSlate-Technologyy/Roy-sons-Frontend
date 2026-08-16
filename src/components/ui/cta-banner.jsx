@@ -28,10 +28,10 @@ export default function ConsultationBanner({
         <Link
           href={href}
           id="cta-consultation-btn"
-          className="rs-cta-btn flex-shrink-0 inline-flex items-center gap-3.5 border-2 border-[#dfb753] bg-transparent px-7 py-3.5 text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#dfb753] hover:border-[#dfb753] transition-all duration-300 group"
+          className="rs-cta-btn flex-shrink-0 inline-flex items-center gap-3.5 border-2 border-[#C6A15A] bg-transparent px-7 py-3.5 text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
         >
-          <span className="text-[#dfb753] group-hover:text-black transition-colors duration-300">{buttonLabel}</span>
-          <ArrowRight size={13} strokeWidth={2.4} className="text-[#dfb753] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+          <span className="text-[#C6A15A] group-hover:text-black transition-colors duration-300">{buttonLabel}</span>
+          <ArrowRight size={13} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
         </Link>
         
       </div>

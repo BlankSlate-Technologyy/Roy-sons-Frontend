@@ -1,14 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { Building2, ArrowRight } from "lucide-react";
+import { Building2, ChevronDown, ChevronUp } from "lucide-react";
 import { CORPORATE_HOLDINGS } from "@/lib/constants";
 
 import Image from "next/image";
 
-function HoldingDivisionItem({ name, subtitle, tagline, href, image }) {
+function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal }) {
   const hasText = subtitle || tagline;
+  const isExternalLink = isExternal || href?.startsWith("http");
+
   return (
     <Link
       href={href}
+      target={isExternalLink ? "_blank" : undefined}
+      rel={isExternalLink ? "noopener noreferrer" : undefined}
       className={`flex flex-col border border-neutral-200 bg-white hover:border-neutral-950 hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)] transition-all duration-300 group rounded-[3px] h-full overflow-hidden ${hasText ? "" : "items-center justify-center p-3"}`}
     >
       <div className={hasText ? "p-3" : ""}>
@@ -55,31 +62,56 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image }) {
 export default function SubsidiariesHoldingsGrid({
   holdings = CORPORATE_HOLDINGS,
 }) {
+  const [showAllMobile, setShowAllMobile] = useState(false);
+
   return (
     <section className="py-16 bg-neutral-50/20 font-sans">
-      <div className="max-w-screen-xl mx-auto px-6">
-        <div className="text-center mb-14">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
+        <div className="text-center mb-10 sm:mb-14">
           <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-700 mb-4">
             OUR COMPANIES
           </h4>
-          <h2 className="text-1xl md:text-3xl lg:text-[34px] font-black tracking-[0.05em] uppercase text-neutral-950 leading-snug md:leading-snug lg:leading-tight">
+          <h2 className="text-xl md:text-3xl lg:text-[34px] font-black tracking-[0.05em] uppercase text-neutral-950 leading-snug md:leading-snug lg:leading-tight">
             ROYSONS holding is a Diverse group <br className="hidden sm:block" />
            of INDUSTRY-LEADING BUSINESSES
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {holdings.map((entity, index) => (
-            <HoldingDivisionItem 
-              key={index} 
-              name={entity.name}
-              subtitle={entity.subtitle}
-              tagline={entity.tagline}
-              href={entity.href} 
-              image={entity.image}
-            />
-          ))}
+        {/* Grid: 1 card per row on mobile (grid-cols-1), 2 on sm, 4 on lg */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-3">
+          {holdings.map((entity, index) => {
+            const isHiddenOnMobile = !showAllMobile && index >= 3;
+            return (
+              <div
+                key={index}
+                className={isHiddenOnMobile ? "hidden sm:block" : "block"}
+              >
+                <HoldingDivisionItem 
+                  name={entity.name}
+                  subtitle={entity.subtitle}
+                  tagline={entity.tagline}
+                  href={entity.href} 
+                  image={entity.image}
+                  isExternal={entity.isExternal}
+                />
+              </div>
+            );
+          })}
         </div>
+
+        {/* View All Cards button for Mobile */}
+        {holdings.length > 3 && (
+          <div className="mt-8 flex justify-center sm:hidden">
+            <button
+              type="button"
+              onClick={() => setShowAllMobile(!showAllMobile)}
+              className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#C6A15A] bg-[#C6A15A] text-[#101518] text-[12px] font-extrabold uppercase tracking-widest rounded-[2px] active:scale-95 transition-all shadow-md"
+            >
+              <span>{showAllMobile ? "SHOW LESS" : "VIEW ALL CARDS"}</span>
+              {showAllMobile ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+            </button>
+          </div>
+        )}
 
       </div>
     </section>

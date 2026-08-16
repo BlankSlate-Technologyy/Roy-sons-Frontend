@@ -569,6 +569,21 @@ export default function NationalMinesPage() {
               >
                 Explore Services <ChevronRight size={17} />
               </a>
+              <a 
+                href="https://nationalminescorporation.com/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 30px",
+                  background: C.logoNavy, color: C.white, borderRadius: 10, fontWeight: 800, fontSize: 14,
+                  textDecoration: "none", textTransform: "uppercase", letterSpacing: "0.06em",
+                  boxShadow: "0 8px 24px rgba(22,36,62,0.25)", transition: "all 0.2s",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = C.gold; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = C.logoNavy; e.currentTarget.style.transform = "translateY(0)"; }}
+              >
+                Visit Official Website <Globe size={17} />
+              </a>
               <a href="#contact" style={{
                 display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 30px",
                 background: C.white, color: C.logoNavy, borderRadius: 10, fontWeight: 800, fontSize: 14,
@@ -1035,6 +1050,19 @@ export default function NationalMinesPage() {
                 <div style={{ display: "flex", gap: 10, color: C.textMuted, fontSize: 12.5, fontWeight: 600 }}>
                   <Mail size={15} style={{ color: C.gold, flexShrink: 0 }} />
                   <span>{CONTACT_INFO.email1}</span>
+                </div>
+                <div style={{ display: "flex", gap: 10, color: C.textMuted, fontSize: 12.5, fontWeight: 600 }}>
+                  <Globe size={15} style={{ color: C.gold, flexShrink: 0 }} />
+                  <a 
+                    href="https://nationalminescorporation.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    style={{ color: C.logoNavy, textDecoration: "underline", transition: "color 0.2s" }}
+                    onMouseEnter={e => { e.target.style.color = C.gold; }}
+                    onMouseLeave={e => { e.target.style.color = C.logoNavy; }}
+                  >
+                    nationalminescorporation.com
+                  </a>
                 </div>
               </div>
             </div>

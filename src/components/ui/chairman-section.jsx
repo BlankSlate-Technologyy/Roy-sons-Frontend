@@ -72,20 +72,20 @@ function StatCounter({ value }) {
 export default function ChairmanAddressBlock({
   executivePhoto = "/chairman.jpeg",
   photoDescription = "Ijaz Naseer - Chairman",
-  addressParagraph = "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade.",
+  addressParagraph = "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade. With a strong commitment to innovation, quality, and sustainable growth, the company continues to expand its capabilities and build strategic partnerships both locally and internationally. Through its diverse portfolio and professional expertise, ROYSONS aims to create lasting value for its clients, partners, and communities while contributing to economic and industrial development.",
   authorTitle = "IJAZ NASEER",
   organizationName = "Chairman & Chief Executive Officer",
   metrics = CORPORATE_STATS,
 }) {
   return (
-    <section className="py-8 lg:py-10 font-sans" style={{ backgroundColor: "#101518" }}>
-      <div className="max-w-screen-xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-stretch">
+    <section className="py-10 lg:py-12 font-sans bg-[#101518]">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch">
 
           {/* Column 1: Image — LEFT with golden border */}
-          <div className="flex-shrink-0 w-full lg:w-[240px] mx-auto lg:mx-0">
+          <div className="flex-shrink-0 w-full max-w-[260px] sm:max-w-[280px] lg:w-[240px] mx-auto lg:mx-0">
             <div
-              className="relative w-full h-[280px]"
+              className="relative w-full aspect-[3/4] overflow-hidden bg-[#1a1f24]"
               style={{
                 border: "2px solid #C6A15A",
                 boxShadow: "0 0 18px rgba(198,161,90,0.25), 4px 4px 0px #C6A15A",
@@ -96,36 +96,37 @@ export default function ChairmanAddressBlock({
                 src={executivePhoto}
                 alt={photoDescription}
                 fill
-                className="object-cover object-top rounded-sm"
-                sizes="(max-width: 768px) 100vw, 240px"
+                className="object-contain object-top rounded-sm"
+                sizes="(max-width: 768px) 280px, 240px"
+                priority
               />
             </div>
           </div>
 
           {/* Column 2: Text Content — MIDDLE */}
-          <div className="flex-1 flex flex-col justify-between">
+          <div className="flex-1 flex flex-col justify-between text-center lg:text-left">
             <div>
-              <h2 className="text-[13px] font-bold tracking-[0.2em] uppercase mb-4 mt-[5px]">
+              <h2 className="text-[13px] font-bold tracking-[0.2em] uppercase mb-4 mt-1 text-[#C6A15A]">
                 CHAIRMAN&apos;S MESSAGE
               </h2>
-              <p className="text-[14px] leading-relaxed font-normal">
+              <p className="text-[14px] sm:text-[14.5px] leading-relaxed font-normal text-neutral-300">
                 {addressParagraph}
               </p>
             </div>
 
-            <div className="mb-[2px] mt-6">
-              <h4 className="text-[13px] font-bold uppercase tracking-widest">
+            <div className="mb-1 mt-6">
+              <h4 className="text-[13px] font-bold uppercase tracking-widest text-white">
                 {authorTitle}
               </h4>
-              <p className="text-[13px] font-medium mt-1">
+              <p className="text-[13px] font-medium mt-1 text-[#C6A15A]">
                 {organizationName}
               </p>
             </div>
           </div>
 
           {/* Column 3: Metrics & Button */}
-          <div className="w-full lg:w-auto flex flex-col justify-between pt-2 lg:pt-0">
-            <div className="flex flex-row flex-wrap sm:flex-nowrap gap-6 sm:gap-8">
+          <div className="w-full lg:w-auto flex flex-col justify-between pt-6 lg:pt-0 border-t border-neutral-800 lg:border-t-0">
+            <div className="flex flex-row flex-wrap sm:flex-nowrap justify-center lg:justify-start gap-6 sm:gap-8">
               {metrics.map((item) => {
                 const MetricIcon = item.icon;
                 return (
@@ -133,13 +134,13 @@ export default function ChairmanAddressBlock({
                     key={item.id}
                     className="flex flex-col items-center text-center w-[90px]"
                   >
-                    <div className="p-3 rounded-full mb-3 flex items-center justify-center" style={{ backgroundColor: "#C6A15A" }}>
-                      <MetricIcon size={22} className="text-[#2D3136]" strokeWidth={1.5} />
+                    <div className="p-3 rounded-full mb-3 flex items-center justify-center bg-[#C6A15A]/75">
+                      <MetricIcon size={22} className="text-[#101518]" strokeWidth={1.8} />
                     </div>
-                    <span className="text-[30px] font-black tracking-tight leading-none mb-2">
+                    <span className="text-[28px] sm:text-[30px] font-black tracking-tight leading-none mb-2 text-white">
                       <StatCounter value={item.value} />
                     </span>
-                    <span className="text-[10px] font-bold uppercase tracking-wider whitespace-pre-line leading-relaxed">
+                    <span className="text-[10px] font-bold uppercase tracking-wider whitespace-pre-line leading-relaxed text-neutral-300">
                       {item.label}
                     </span>
                   </div>
@@ -147,7 +148,7 @@ export default function ChairmanAddressBlock({
               })}
             </div>
 
-            <div className="mt-8 lg:mt-0 flex justify-end">
+            <div className="mt-8 lg:mt-0 flex justify-center lg:justify-end">
               <Link
                 href="/about/chairmans-message"
                 className="rs-cta-btn w-full sm:w-[260px] flex items-center justify-center gap-3 px-6 py-[15px] border-2 border-[#C6A15A] bg-transparent text-[11px] font-extrabold uppercase tracking-[0.15em] hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
