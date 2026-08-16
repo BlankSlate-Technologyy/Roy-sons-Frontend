@@ -44,6 +44,7 @@ import {
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
+import FeatureShowcase from "@/components/about/FeatureShowcase";
 
 const CLIENTS_SERVED = [
   {
@@ -317,6 +318,10 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Alternating Feature Showcase Section */}
+      <FeatureShowcase />
+
       {/* Government Sector Clients Section */}
       <section className="py-20 px-6 bg-white border-b border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
