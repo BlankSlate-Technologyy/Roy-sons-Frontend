@@ -109,7 +109,8 @@ const STRATEGIC_DIVISIONS = [
   { title: "Mining & Minerals", icon: Gem },
   { title: "Construction & Infrastructure", icon: HardHat },
   { title: "Food Processing", icon: Utensils },
-  { title: "International Trade & Exports", icon: Globe }
+  { title: "International Trade & Exports", icon: Globe },
+  { title: "Real Estate & Development", icon: Building2 }
 ];
 
 const WHY_ROYS_GROUP = [
@@ -195,8 +196,8 @@ function SectorsServedCard({ category, icon: Icon, items }) {
   return (
     <div className="bg-white border border-neutral-200 p-8 rounded-sm group hover:border-black transition-colors duration-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
       <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-12 bg-neutral-950 flex items-center justify-center rounded-sm transition-colors duration-300 group-hover:bg-[#dfb753]">
-          <Icon className="text-white group-hover:text-black" size={22} strokeWidth={1.5} />
+        <div className="w-12 h-12 bg-neutral-950 border border-neutral-800 flex items-center justify-center rounded-sm transition-colors duration-300 group-hover:border-[#C6A15A]/70">
+          <Icon className="text-white group-hover:text-[#C6A15A] transition-colors duration-300" size={22} strokeWidth={1.5} />
         </div>
         <h3 className="text-[14px] font-black uppercase tracking-wider text-neutral-950">
           {category}
@@ -349,63 +350,64 @@ INDUSTRY-LEADING BUSINESSES
 
             {/* Federal Ministries */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Landmark className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Landmark className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Federal Ministries
               </h4>
             </div>
 
             {/* Provincial Governments */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <MapPin className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <MapPin className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Provincial Governments
               </h4>
             </div>
 
             {/* Armed Forces */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Shield className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Shield className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Armed Forces
               </h4>
             </div>
 
             {/* Universities */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <GraduationCap className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <GraduationCap className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Universities
               </h4>
             </div>
 
             {/* Research Institutes */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Microscope className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Microscope className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Research Institutes
               </h4>
             </div>
 
             {/* Public Sector Organizations */}
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Network className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Network className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Public Sector Organizations
               </h4>
             </div>
+
 
           </div>
         </div>
@@ -429,55 +431,55 @@ INDUSTRY-LEADING BUSINESSES
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Hospital className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Hospital className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Hospitals
               </h4>
             </div>
 
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Pill className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Pill className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Pharmaceutical Industries
               </h4>
             </div>
 
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Layers className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Layers className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Manufacturing Industries
               </h4>
             </div>
 
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <HardHat className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <HardHat className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Construction Companies
               </h4>
             </div>
 
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Sprout className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Sprout className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Agricultural Enterprises
               </h4>
             </div>
 
             <div className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Monitor className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Monitor className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Technology Companies
               </h4>
             </div>
@@ -503,37 +505,37 @@ INDUSTRY-LEADING BUSINESSES
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             <div className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Globe className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Globe className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Importers
               </h4>
             </div>
 
             <div className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Users className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Users className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Exporters
               </h4>
             </div>
 
             <div className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Star className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Star className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Manufacturers
               </h4>
             </div>
 
             <div className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-sm hover:-translate-y-1 transition-all duration-300 group">
-              <div className="w-14 h-14 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
-                <Lightbulb className="text-[#dfb753]" size={26} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm group-hover:scale-110 transition-transform duration-300">
+                <Lightbulb className="text-[#dfb753]" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[12px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight">
                 Development Agencies
               </h4>
             </div>
@@ -629,11 +631,11 @@ INDUSTRY-LEADING BUSINESSES
             {STRATEGIC_DIVISIONS.map((div, index) => {
               const Icon = div.icon;
               return (
-                <div key={index} className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-black transition-colors duration-200 cursor-pointer group">
-                  <div className="w-10 h-10 border border-neutral-200 flex items-center justify-center bg-neutral-50 rounded-sm transition-colors duration-300 group-hover:bg-[#dfb753] group-hover:border-[#dfb753]">
-                    <Icon size={20} className="text-[#dfb753] transition-colors duration-300 group-hover:text-black" strokeWidth={1.5} />
+                <div key={index} className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-[#C6A15A] hover:shadow-sm transition-all duration-300 cursor-pointer group">
+                  <div className="w-12 h-12 bg-neutral-950 border border-neutral-800 flex items-center justify-center rounded-sm transition-all duration-300 group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127]">
+                    <Icon size={22} className="text-white group-hover:text-[#C6A15A] transition-colors duration-300" strokeWidth={1.5} />
                   </div>
-                  <h4 className="text-[15px] font-black uppercase tracking-wider text-neutral-950 leading-tight">
+                  <h4 className="text-[15px] font-black uppercase tracking-wider text-neutral-950 group-hover:text-[#C6A15A] transition-colors duration-300 leading-tight">
                     {div.title}
                   </h4>
                 </div>

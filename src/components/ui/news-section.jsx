@@ -15,10 +15,10 @@ function ArticleTile({ image, date, title, href }) {
           sizes="(max-width: 768px) 100vw, 33vw"
         />
       </div>
-      <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-wider mb-2">
+      <p className="text-[11.5px] text-neutral-400 font-bold uppercase tracking-wider mb-2">
         {date}
       </p>
-      <h3 className="text-[13.5px] font-bold text-neutral-950 mb-4 leading-snug min-h-[40px]">
+      <h3 className="text-[15px] font-bold text-neutral-950 mb-4 leading-snug min-h-[40px]">
         {title}
       </h3>
       <Link

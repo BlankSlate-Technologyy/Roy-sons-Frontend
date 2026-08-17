@@ -12,16 +12,16 @@ function ServiceItem({ icon: Icon, title, description, href }) {
         <Icon
           size={22}
           strokeWidth={1.4}
-          className="text-neutral-400 group-hover:text-[#C6A15A] transition-colors duration-300"
+          className="text-white group-hover:text-[#C6A15A] transition-colors duration-300"
         />
       </div>
 
       {/* Text & Action */}
       <div className="flex-1 flex flex-col justify-start">
-        <h3 className="text-[13px] sm:text-[13.5px] font-extrabold tracking-[0.06em] uppercase text-white mb-1.5 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
+        <h3 className="text-[14.5px] sm:text-[15px] font-extrabold tracking-[0.06em] uppercase text-white mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-[12px] text-neutral-400 leading-relaxed font-normal mb-2.5">
+        <p className="text-[13px] sm:text-[13.5px] text-neutral-400 leading-relaxed font-normal mb-2.5">
           {description}
         </p>
         <Link

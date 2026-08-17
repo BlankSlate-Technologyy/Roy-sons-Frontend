@@ -78,11 +78,8 @@ export default function FeatureShowcase() {
                 {/* Content Side */}
                 <div className="flex-1 w-full flex flex-col justify-center text-center lg:text-left">
                   {/* Badge Pill */}
-                  <div className="inline-flex items-center gap-2 bg-neutral-100 border border-neutral-200 px-3 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
-                    <span className="bg-neutral-950 text-[#C6A15A] font-bold text-[10px] px-2.5 py-0.5 rounded-full">
-                      {item.id || `0${index + 1}`}
-                    </span>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-800">
+                  <div className="inline-flex items-center bg-neutral-100 border border-neutral-200 px-3 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#C6A15A]">
                       {item.badge}
                     </span>
                   </div>

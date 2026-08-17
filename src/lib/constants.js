@@ -225,7 +225,7 @@ export const CORPORATE_HOLDINGS = [
   { name: "Roys & Roys International", subtitle: "Healthcare Solutions & International Trade", tagline: "Providing advanced medical, laboratory, surgical, and hospital engineering solutions for healthcare institutions and government organizations.", href: "/group-companies/roys-roys", image: "/25.png" },
   { name: "Vet Vac Pharma", subtitle: "Veterinary Vaccines & Animal Healthcare", tagline: "Delivering innovative veterinary vaccines, biological products, and livestock healthcare solutions for modern farming and animal health.", href: "/group-companies/Vetvacpharma", image: "/23.png" },
   { name: "Bio Max Corporation", subtitle: "Biotechnology & Laboratory Solutions", tagline: "Supplying scientific equipment, laboratory systems, and biotechnology solutions for research and diagnostic institutions.", href: "/group-companies/biomax", image: "/4.png" },
-  { name: "Gateway Pharmaceuticals Consultants", subtitle: "Pharmaceutical Regulatory Consultancy", tagline: "Offering licensing, compliance, regulatory affairs, and consultancy services for pharmaceutical organizations.", href: "/group-companies/gateway", image: "/17.png" },
+  { name: "Gateway Pharmaceuticals Consultants", subtitle: "Pharmaceutical Regulatory Consultancy", tagline: "Offering licensing, compliance, regulatory affairs, and consultancy services for pharmaceutical organizations.", href: "/group-companies/gateway", image: "/100.png" },
   { name: "Alpha Matrix Defence Systems", subtitle: "Defense & Security Technologies", tagline: "Providing advanced surveillance, security systems, and defense technologies for critical infrastructure protection.", href: "/group-companies/alpha-matrix", image: "/22.png" },
   { name: "National Guard", subtitle: "Professional Security Services", tagline: "Delivering security management, surveillance, risk assessment, and facility protection services.", href: "/group-companies/national-guard", image: "/16.png" },
   { name: "National Mines Corporation", subtitle: "Mining & Mineral Development", tagline: "Specializing in mineral exploration, mining operations, and sustainable resource development.", href: "/https://nationalminescorporation.com/", image: "/cropedlogo.png" },
@@ -335,6 +335,12 @@ export const CORPORATE_SERVICES = [
     description: "Global import-export trade processes and supply chain logistics.",
     href: "/services/international-trade-exports",
   },
+  {
+    icon: Building2,
+    title: "Real Estate & Development",
+    description: "Smart housing, residential communities, and property development.",
+    href: "/services/real-estate-development",
+  },
 ];
 
 export const FEATURED_STRUCTURAL_WORKS = [
@@ -394,7 +400,7 @@ export const SOCIAL_MEDIA_HANDLES = [
 ];
 
 export const CORPORATE_HELPLINE_DETAILS = [
-  { icon: MapPin, value: "123 Business Avenue,\nLahore, Pakistan" },
+  { icon: MapPin, value: "Rehman Centre 2, DHA Phase 5, Ring Road Service Lane, Natha Singh Wala, Lahore" },
   { icon: Phone, value: "+92 300 1234567" },
   { icon: Mail, value: "info@roysons.org" },
   { icon: Globe, value: "www.roysons.org" },

@@ -18,6 +18,7 @@ import {
   HardHat,
   Utensils,
   Globe,
+  Building2,
   ArrowRight,
   MessageSquare,
   ChevronDown,
@@ -110,6 +111,12 @@ const CORE_SERVICES = [
     description: "Global import-export trade processes and supply chain logistics.",
     href: "/services/international-trade-exports",
   },
+  {
+    icon: Building2,
+    title: "Real Estate & Development",
+    description: "Smart housing, residential communities, and property development.",
+    href: "/services/real-estate-development",
+  },
 ];
 
 const SERVICE_OPTIONS = [
@@ -127,31 +134,39 @@ const SERVICE_OPTIONS = [
   "Construction & Infrastructure",
   "Food Processing",
   "International Trade & Exports",
+  "Real Estate & Development",
 ];
 
 function ServiceCard({ icon: Icon, title, description, href }) {
   return (
-    <div className="flex gap-4 group">
-      <div className="flex-shrink-0 w-14 h-14 bg-neutral-50 border border-neutral-200 rounded-sm flex items-center justify-center transition-all duration-300 group-hover:bg-[#dfb753] group-hover:border-[#dfb753]">
+    <div className="flex flex-row items-start gap-4 group">
+      {/* Icon Box */}
+      <div className="flex-shrink-0 w-12 h-12 sm:w-13 sm:h-13 border border-neutral-800 bg-[#161c20]/60 rounded-[2px] flex items-center justify-center group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127] transition-all duration-300">
         <Icon
-          size={26}
+          size={22}
           strokeWidth={1.4}
-          className="text-neutral-700 transition-colors duration-300 group-hover:text-black"
+          className="text-white group-hover:text-[#C6A15A] transition-colors duration-300"
         />
       </div>
 
-      <div className="flex-1 min-w-0">
-        <h3 className="text-[13px] font-black uppercase tracking-[0.12em] text-neutral-950 mb-1.5">
+      {/* Text & Action */}
+      <div className="flex-1 flex flex-col justify-start">
+        <h3 className="text-[14.5px] sm:text-[15px] font-extrabold tracking-[0.06em] uppercase text-white mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-[11.5px] text-neutral-500 leading-relaxed mb-3">
+        <p className="text-[13px] sm:text-[13.5px] text-neutral-400 leading-relaxed font-normal mb-2.5">
           {description}
         </p>
         <Link
-          href={href}
-          className="inline-flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-black border-b border-black pb-0.5 hover:gap-2.5 transition-all duration-200"
+          href={href || "#"}
+          className="inline-flex items-center gap-1.5 text-[10.5px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
         >
-          Learn More <ArrowRight size={11} strokeWidth={2.5} />
+          <span>LEARN MORE</span>
+          <ArrowRight
+            size={13}
+            strokeWidth={2.5}
+            className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#C6A15A]"
+          />
         </Link>
       </div>
     </div>
@@ -328,19 +343,19 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-400 mb-3">
+      <section className="py-16 sm:py-20 bg-[#101518] font-sans border-t border-b border-neutral-800/60">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16">
+            <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-[#C6A15A] mb-3">
               WHAT WE OFFER
-            </p>
-            <h2 className="text-[26px] font-black uppercase tracking-[0.18em] text-neutral-950">
+            </h4>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-[0.18em] text-white">
               Our Core Services
             </h2>
-            <div className="mx-auto mt-4 h-[3px] w-12 bg-neutral-950" />
+            <div className="mx-auto mt-4 h-[3px] w-12 bg-[#C6A15A]" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
             {CORE_SERVICES.map((service, index) => (
               <ServiceCard
                 key={index}
