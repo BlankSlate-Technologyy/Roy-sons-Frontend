@@ -1,6 +1,6 @@
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import BillboardSlider from "@/components/ui/hero-slider";
-import ChairmanAddressBlock from "@/components/ui/chairman-section";
+// import ChairmanAddressBlock from "@/components/ui/chairman-section";
 import SubsidiariesHoldingsGrid from "@/components/ui/group-companies";
 import CorporateCapabilitiesPanel from "@/components/ui/services-section";
 import FeaturedHoldingsShowcase from "@/components/ui/featured-projects";
@@ -13,7 +13,7 @@ export default function RootHomePage() {
     <main className="min-h-screen bg-white">
       <HeaderNavbar activeRoute="/" />
       <BillboardSlider />
-      <ChairmanAddressBlock />
+      {/* <ChairmanAddressBlock /> */}
       <SubsidiariesHoldingsGrid />
       <CorporateCapabilitiesPanel />
       <FeaturedHoldingsShowcase />
