@@ -83,9 +83,9 @@ export default function ChairmanAddressBlock({
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch">
 
           {/* Column 1: Image — LEFT with golden border */}
-          <div className="flex-shrink-0 w-full max-w-[260px] sm:max-w-[280px] lg:w-[240px] mx-auto lg:mx-0">
+          <div className="flex-shrink-0 w-full max-w-[300px] sm:max-w-[340px] lg:w-[320px] mx-auto lg:mx-0">
             <div
-              className="relative w-full aspect-[3/4] overflow-hidden bg-[#1a1f24]"
+              className="relative w-full h-[400px] sm:h-[440px] lg:h-[480px] overflow-hidden bg-[#1a1f24]"
               style={{
                 border: "2px solid #C6A15A",
                 boxShadow: "0 0 18px rgba(198,161,90,0.25), 4px 4px 0px #C6A15A",
@@ -96,8 +96,8 @@ export default function ChairmanAddressBlock({
                 src={executivePhoto}
                 alt={photoDescription}
                 fill
-                className="object-contain object-top rounded-sm"
-                sizes="(max-width: 768px) 280px, 240px"
+                className="object-cover object-top rounded-sm"
+                sizes="(max-width: 768px) 340px, 320px"
                 priority
               />
             </div>

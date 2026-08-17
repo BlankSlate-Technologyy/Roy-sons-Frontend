@@ -246,7 +246,7 @@ export const CORPORATE_HOLDINGS = [
   { name: "Neom City Recruitment Consultants", subtitle: "Human Resources & Recruitment Services", tagline: "Providing executive search, overseas recruitment, workforce planning, and talent acquisition services.", href: "/group-companies/Neom-city-recruitment", image: "/2.png" },
   { name: "Max Pak Corporation", subtitle: "Industrial Trading & Commercial Supplies", tagline: "Supplying industrial equipment, machinery, construction materials, and commercial products.", href: "/group-companies/max-pak-corrpration", image: "/19.png" },
   { name: "Inverse & Union Trading", subtitle: "International Procurement & Supply Chain", tagline: "Providing global sourcing, procurement management, and international trade solutions.", href: "/group-companies/inverse&union", image: "/27.jpeg" },
-  { name: "Max Wood Corporation", subtitle: "Furniture Manufacturing & Interior Solutions", tagline: "Designing premium furniture, customized interiors, and wood-based architectural solutions.", href: "/group-companies/max-wood", image: "/group-23.png" },
+  { name: "Max Wood Corporation", subtitle: "Furniture Manufacturing & Interior Solutions", tagline: "Designing premium furniture, customized interiors, and wood-based architectural solutions.", href: "/group-companies/max-wood", image: "/00.png" },
   { name: "Desert Development & Rehabilitation", subtitle: "Land Development & Environmental Solutions", tagline: "Rehabilitating desert environments and developing sustainable infrastructure for arid regions.", href: "/group-companies/desert-development", image: "/12.png" },
 ];
 

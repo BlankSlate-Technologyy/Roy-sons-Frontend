@@ -269,7 +269,7 @@ export default function AboutPage() {
       <HeaderNavbar activeRoute="/about" />
 
       {/* Breadcrumb section */}
-      <section className="pt-8 pb-4 px-6 border-b border-neutral-100">
+      <section className="pt-6 pb-3 px-4 sm:px-6 border-b border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-[10.5px] text-neutral-400 font-bold uppercase tracking-wider">
@@ -284,27 +284,33 @@ export default function AboutPage() {
           </nav>
         </div>
       </section>
-
       {/* Banner / About Roys Group intro */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col lg:flex-row items-stretch gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
             <div className="flex-1 flex flex-col justify-center">
               <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3">
                 WHO WE ARE
               </span>
-              <h1 className="text-4xl lg:text-5xl font-black text-neutral-950 mb-7 leading-[1.08] tracking-tight">
+              <h2 className="text-3xl lg:text-4xl font-black text-neutral-950 mb-5 leading-[1.08] tracking-tight">
                 About ROYSONS Pvt. Ltd.
-              </h1>
-              <p className="text-[14px] text-neutral-600 leading-relaxed font-normal mb-6">
+              </h2>
+              <p className="text-[14px] text-neutral-600 leading-relaxed font-normal mb-5">
                 ROYSONS Pvt. Ltd. is a diversified multi-sector enterprise built with a vision to establish a dynamic organization capable of delivering world-class solutions across multiple industries. With a growing portfolio of specialized companies and business divisions, ROYSONS operates across healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, international trade, manufacturing, real estate, food, and consultancy.
               </p>
-              <p className="text-[14.5px] text-neutral-950 font-bold leading-relaxed border-l-2 border-neutral-950 pl-5">
-             Our strength lies in bringing diverse expertise together under one corporate platform. Through our specialized companies, strategic partnerships, and industry-focused teams, we deliver products, services, and integrated solutions designed to meet the evolving needs of governments, institutions, businesses, and communities.
+              <p className="text-[14.5px] text-neutral-950 font-bold leading-relaxed border-l-2 border-neutral-950 pl-4">
+                Our strength lies in bringing diverse expertise together under one corporate platform. Through our specialized companies, strategic partnerships, and industry-focused teams, we deliver products, services, and integrated solutions designed to meet the evolving needs of governments, institutions, businesses, and communities.
               </p>
             </div>
-            <div className="flex-1 w-full relative min-h-[300px]">
-              <div className="h-full w-full relative overflow-hidden rounded-[2px] border border-neutral-200 shadow-sm">
+            <div className="flex-1 w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]">
+              <div 
+                className="h-full w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] overflow-hidden rounded-[2px] bg-[#1a1f24]"
+                style={{
+                  border: "2px solid #C6A15A",
+                  boxShadow: "0 0 20px rgba(198,161,90,0.25), 4px 4px 0px #C6A15A",
+                  borderRadius: "2px",
+                }}
+              >
                 <Image 
                   src="/About-us-hero.jpeg" 
                   alt="Roys Group Headquarters" 
@@ -323,7 +329,7 @@ export default function AboutPage() {
       <FeatureShowcase />
 
       {/* Government Sector Clients Section */}
-      <section className="py-20 px-6 bg-white border-b border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
@@ -406,7 +412,7 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Private Sector Clients Section */}
-      <section className="py-20 px-6 bg-white border-b border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
@@ -480,7 +486,7 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* International Clients Section */}
-      <section className="py-20 px-6 bg-neutral-50 border-b border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-50 border-b border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
@@ -536,7 +542,7 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Vision & Mission Elegant Side-by-Side block */}
-      <section className="py-20 px-6 bg-neutral-950">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-950">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Vision */}
@@ -578,7 +584,7 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Corporate Statistics Table/Grid */}
-      <section className="py-20 px-6 bg-neutral-50 border-t border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-50 border-t border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-16">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
@@ -607,7 +613,7 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Strategic Business Divisions Cards */}
-      <section className="py-20 px-6 bg-white border-t border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-16">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
@@ -638,7 +644,7 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Why Roys Group list section */}
-      <section className="py-20 px-6 bg-neutral-950 text-white">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-950 text-white">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col gap-12 lg:gap-16">
             
@@ -674,7 +680,7 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Consultation Section */}
-      <section className="py-20 px-6 bg-white border-t border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <div className="bg-white border border-neutral-200 overflow-hidden flex flex-col lg:flex-row rounded-sm">
             <div className="lg:w-1/3 bg-neutral-50 p-10 lg:p-12 border-r border-neutral-200 flex flex-col justify-between">
