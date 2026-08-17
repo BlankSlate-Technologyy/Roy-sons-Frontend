@@ -55,7 +55,7 @@ const CORE_SERVICES = [
     icon: Monitor,
     title: "Information Technology & AI",
     description: "Enterprise software, cloud networks, and smart AI solutions.",
-    href: "/services/information-technology-ai",
+    href: "/services/it-ai",
   },
   {
     icon: Zap,
@@ -85,7 +85,7 @@ const CORE_SERVICES = [
     icon: Sprout,
     title: "Agriculture & Dairy Development",
     description: "Modern agritech, crop management, and dairy development solutions.",
-    href: "/services/agriculture-dairy",
+    href: "/services/agriculture-dairy-development",
   },
   {
     icon: Gem,

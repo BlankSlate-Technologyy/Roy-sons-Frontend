@@ -52,13 +52,14 @@ export const FOOTER_QUICK_LINKS = [
 ];
 
 export const FOOTER_SERVICES_LINKS = [
-  { text: "Construction", destination: "/services/construction" },
+  { text: "Healthcare & Medical", destination: "/services/healthcare-medical" },
+  { text: "Hospital Engineering", destination: "/services/hospital-engineering" },
+  { text: "Pharmaceutical Consultancy", destination: "/services/pharmaceutical-consultancy" },
+  { text: "IT & Artificial Intelligence", destination: "/services/it-ai" },
+  { text: "Electrical & Power Systems", destination: "/services/electrical-power-systems" },
+  { text: "Construction & Infrastructure", destination: "/services/construction-infrastructure" },
   { text: "Architecture", destination: "/services/architecture" },
-  { text: "Renewable Energy", destination: "/services/renewable-energy" },
-  { text: "Infrastructure", destination: "/services/infrastructure" },
-  { text: "IT & Technology", destination: "/services/it-technology" },
-  { text: "Project Management", destination: "/services/project-management" },
-  { text: "And More", destination: "/services" },
+
 ];
 
 export const DEFAULT_BILLBOARD_SLIDES = [
@@ -279,7 +280,7 @@ export const CORPORATE_SERVICES = [
     icon: Monitor,
     title: "Information Technology & AI",
     description: "Enterprise software, cloud networks, and smart AI solutions.",
-    href: "/services/information-technology-ai",
+    href: "/services/it-ai",
   },
   {
     icon: Zap,

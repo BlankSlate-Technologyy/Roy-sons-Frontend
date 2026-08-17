@@ -26,7 +26,7 @@ const SHOWCASE_ITEMS = [
     imageAlt: "Hesham Sultan Ijaz - Director ROYSONS Pvt. Ltd.",
     bgColor: "bg-neutral-50",
     borderColor: "border-neutral-200",
-    profileHref: "https://www.heshamsultan.com/",
+    profileHref: "https://www.heshamsultan.com/about-me",
     linkedinHref: "https://www.linkedin.com/company/wix-com/"
   },
   {

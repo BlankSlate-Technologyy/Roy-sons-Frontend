@@ -96,21 +96,21 @@ const CORPORATE_STATS = [
 ];
 
 const STRATEGIC_DIVISIONS = [
-  { title: "Healthcare & Medical Technologies", icon: HeartPulse },
-  { title: "Hospital Engineering & Clean Rooms", icon: BriefcaseMedical },
-  { title: "Pharmaceutical Consultancy", icon: Pill },
-  { title: "Veterinary & Livestock Solutions", icon: PawPrint },
-  { title: "Information Technology & AI", icon: Monitor },
-  { title: "Electrical & Power Systems", icon: Zap },
-  { title: "Renewable Energy", icon: Sun },
-  { title: "Electric Mobility", icon: PlugZap },
-  { title: "Defense & Security", icon: Shield },
-  { title: "Agriculture & Dairy Development", icon: Sprout },
-  { title: "Mining & Minerals", icon: Gem },
-  { title: "Construction & Infrastructure", icon: HardHat },
-  { title: "Food Processing", icon: Utensils },
-  { title: "International Trade & Exports", icon: Globe },
-  { title: "Real Estate & Development", icon: Building2 }
+  { title: "Healthcare & Medical Technologies", icon: HeartPulse, href: "/services/healthcare-medical" },
+  { title: "Hospital Engineering & Clean Rooms", icon: BriefcaseMedical, href: "/services/hospital-engineering" },
+  { title: "Pharmaceutical Consultancy", icon: Pill, href: "/services/pharmaceutical-consultancy" },
+  { title: "Veterinary & Livestock Solutions", icon: PawPrint, href: "/services" },
+  { title: "Information Technology & AI", icon: Monitor, href: "/services/it-ai" },
+  { title: "Electrical & Power Systems", icon: Zap, href: "/services/electrical-power-systems" },
+  { title: "Renewable Energy", icon: Sun, href: "/services/renewable-energy" },
+  { title: "Electric Mobility", icon: PlugZap, href: "/services/electric-mobility" },
+  { title: "Defense & Security", icon: Shield, href: "/services/defense-security" },
+  { title: "Agriculture & Dairy Development", icon: Sprout, href: "/services/agriculture-dairy-development" },
+  { title: "Mining & Minerals", icon: Gem, href: "/services/mining-minerals" },
+  { title: "Construction & Infrastructure", icon: HardHat, href: "/services/construction-infrastructure" },
+  { title: "Food Processing", icon: Utensils, href: "/services/food-processing" },
+  { title: "International Trade & Exports", icon: Globe, href: "/services/international-trade-exports" },
+  { title: "Real Estate & Development", icon: Building2, href: "/services/real-estate-development" }
 ];
 
 const WHY_ROYS_GROUP = [
@@ -290,10 +290,10 @@ export default function AboutPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
             <div className="flex-1 flex flex-col justify-center">
-              <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3">
+              <span className="text-[15px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3">
                 WHO WE ARE
               </span>
-              <h2 className="text-3xl lg:text-4xl font-black text-neutral-950 mb-5 leading-[1.08] tracking-tight">
+              <h2 className="text-4xl lg:text-4xl font-black text-neutral-950 mb-5 leading-[1.08] tracking-tight">
                 About ROYSONS Pvt. Ltd.
               </h2>
               <p className="text-[14px] text-neutral-600 leading-relaxed font-normal mb-5">
@@ -631,14 +631,18 @@ INDUSTRY-LEADING BUSINESSES
             {STRATEGIC_DIVISIONS.map((div, index) => {
               const Icon = div.icon;
               return (
-                <div key={index} className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-[#C6A15A] hover:shadow-sm transition-all duration-300 cursor-pointer group">
+                <Link
+                  key={index}
+                  href={div.href || "/services"}
+                  className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-[#C6A15A] hover:shadow-sm transition-all duration-300 cursor-pointer group"
+                >
                   <div className="w-12 h-12 bg-neutral-950 border border-neutral-800 flex items-center justify-center rounded-sm transition-all duration-300 group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127]">
                     <Icon size={22} className="text-white group-hover:text-[#C6A15A] transition-colors duration-300" strokeWidth={1.5} />
                   </div>
                   <h4 className="text-[15px] font-black uppercase tracking-wider text-neutral-950 group-hover:text-[#C6A15A] transition-colors duration-300 leading-tight">
                     {div.title}
                   </h4>
-                </div>
+                </Link>
               );
             })}
           </div>
