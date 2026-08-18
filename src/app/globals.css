@@ -413,3 +413,32 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   fill: #2D3136 !important;
   opacity: 1 !important;
 }
+
+/* ─────────────────────────────────────────────
+   ROYS & ROYS INTERNATIONAL WHITE & BLUE THEME
+───────────────────────────────────────────── */
+body.roys-roys-theme {
+  background-color: #ffffff !important;
+  color: #113658 !important;
+}
+
+body.roys-roys-theme main,
+body.roys-roys-theme header {
+  background-color: #ffffff !important;
+}
+
+body.roys-roys-theme h1,
+body.roys-roys-theme h2,
+body.roys-roys-theme h3,
+body.roys-roys-theme h4,
+body.roys-roys-theme h5,
+body.roys-roys-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.roys-roys-theme p,
+body.roys-roys-theme span,
+body.roys-roys-theme li {
+  text-shadow: none !important;
+}

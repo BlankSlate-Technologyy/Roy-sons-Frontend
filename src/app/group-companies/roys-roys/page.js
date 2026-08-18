@@ -11,6 +11,8 @@ import {
   Linkedin, Facebook, Youtube, Instagram, Music,
 } from "lucide-react";
 
+import { RoysNavbar, RoysFooter } from "./_shared";
+
 // ─── Design Tokens ──────────────────────────────────────────────────────────
 
 const COLORS = {
@@ -153,7 +155,15 @@ const CORPORATE_INFO = [
   { label: "Registered Address",  val: "123 Business Avenue,Lahore, Pakistan" },
 ];
 
-const NAV_LINKS = ["Home", "About Us", "Solutions", "Products", "Industries", "What We Do", "Contact"];
+const NAV_LINKS = [
+  { label: "Home",        href: "/group-companies/roys-roys" },
+  { label: "About Us",   href: "/group-companies/roys-roys/about" },
+  { label: "Solutions",  href: "/group-companies/roys-roys/solutions" },
+  { label: "Products",   href: "/group-companies/roys-roys/products" },
+  { label: "Industries", href: "/group-companies/roys-roys/industries" },
+  { label: "What We Do", href: "/group-companies/roys-roys/what-we-do" },
+  { label: "Contact",    href: "/group-companies/roys-roys/contact" },
+];
 
 const FOOTER_LINKS = {
   Company:    ["About Us", "Our Values", "Careers", "News & Media"],
@@ -230,11 +240,18 @@ function IconCard({ icon: Icon, label, iconSize = 20, containerSize = "w-12 h-12
 }
 
 function PrimaryButton({ href, children, className = "" }) {
+  const [hov, setHov] = useState(false);
   return (
     <Link
       href={href}
-      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider flex items-center gap-2 hover:opacity-90 transition-all duration-300 ease-out ${className}`}
-      style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
+      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider flex items-center gap-2 transition-all duration-300 ease-out ${className}`}
+      style={{
+        backgroundColor: hov ? "#009088" : COLORS.primary,
+        color: COLORS.white,
+        boxShadow: hov ? "0 4px 14px rgba(0, 144, 136, 0.35)" : "none",
+      }}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
     >
       {children}
     </Link>
@@ -242,11 +259,18 @@ function PrimaryButton({ href, children, className = "" }) {
 }
 
 function OutlineButton({ href, children, className = "" }) {
+  const [hov, setHov] = useState(false);
   return (
     <Link
       href={href}
-      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider border flex items-center gap-2 hover:bg-slate-900 hover:text-white transition-all duration-300 ease-out ${className}`}
-      style={{ borderColor: COLORS.primary, color: COLORS.white }}
+      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider border flex items-center gap-2 transition-all duration-300 ease-out ${className}`}
+      style={{
+        borderColor: hov ? COLORS.primary : COLORS.white,
+        backgroundColor: hov ? COLORS.primary : "transparent",
+        color: COLORS.white,
+      }}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
     >
       {children}
     </Link>
@@ -282,37 +306,14 @@ function Navbar() {
 
         <nav className="hidden lg:flex items-center gap-8">
           {NAV_LINKS.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => {
-                const idMap = {
-                  "Home": "home",
-                  "About Us": "about-us",
-                  "Solutions": "solutions",
-                  "Products": "products",
-                  "Industries": "industries",
-                  "Projects": "projects",
-                  "Contact": "contact",
-                };
-                const id = idMap[item] || item.toLowerCase().replace(/\s+/g, "-");
-                const el = document.getElementById(id);
-                if (el) {
-                  const navOffset = 80;
-                  const elementPosition = el.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth",
-                  });
-                }
-              }}
-              className="text-[16px] font-bold uppercase tracking-wider bg-transparent border-0 cursor-pointer hover:text-[#009088] transition-colors"
+            <Link
+              key={item.label}
+              href={item.href}
+              className="text-[16px] font-bold uppercase tracking-wider hover:text-[#009088] transition-colors"
               style={{ color: COLORS.black }}
             >
-              {item}
-            </button>
+              {item.label}
+            </Link>
           ))}
         </nav>
 
@@ -358,8 +359,8 @@ function HeroSection() {
             ROYS & ROYS International is a diversified international business company specializing in government contracting, import & export, consultancy, manufacturing, medical devices, veterinary healthcare, vaccines, surgical disposables, and healthcare infrastructure. We deliver reliable, innovative, and sustainable solutions to public and private sector organizations worldwide.
           </p>
           <div className="flex flex-wrap gap-4">
-            <PrimaryButton href="#what-we-do">Explore Our Services <ArrowRight size={15} /></PrimaryButton>
-            <OutlineButton href="#contact">Contact Our Team <ArrowRight size={15} /></OutlineButton>
+            <PrimaryButton href="/group-companies/roys-roys/what-we-do">Explore Our Services <ArrowRight size={15} /></PrimaryButton>
+            <OutlineButton href="/group-companies/roys-roys/contact">Contact Our Team <ArrowRight size={15} /></OutlineButton>
           </div>
         </div>
       </div>
@@ -483,9 +484,14 @@ function AboutSection() {
               </div>
             ))}
           </div>
-          <PrimaryButton href="#contact" className="w-fit">
-            Get in Touch <ArrowRight size={15} />
-          </PrimaryButton>
+          <div className="flex flex-wrap gap-4">
+            <PrimaryButton href="/group-companies/roys-roys/about" className="w-fit">
+              Read More About Us <ArrowRight size={15} />
+            </PrimaryButton>
+            <OutlineButton href="/group-companies/roys-roys/contact" className="w-fit" style={{ borderColor: COLORS.primary, color: COLORS.primary }}>
+              Contact Us <ArrowRight size={15} />
+            </OutlineButton>
+          </div>
         </div>
 
         {/* Right: Image showcase */}
@@ -600,7 +606,7 @@ function WhatWeDoSection() {
     <section id="what-we-do" className="py-8 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="WHAT WE DO" title="Our Service Offerings" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           {WHAT_WE_DO.map((item) => (
             <div
               key={item}
@@ -613,6 +619,11 @@ function WhatWeDoSection() {
             </div>
           ))}
         </div>
+        <div className="flex justify-center">
+          <PrimaryButton href="/group-companies/roys-roys/what-we-do">
+            View All Services &amp; Capabilities <ArrowRight size={15} />
+          </PrimaryButton>
+        </div>
       </div>
     </section>
   );
@@ -623,10 +634,15 @@ function CoreBusinessSection() {
     <section id="solutions" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="CORE ACTIVITIES" title="Core Business Areas" />
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
           {CORE_BUSINESS_AREAS.map(({ icon, label }) => (
             <IconCard key={label} icon={icon} label={label} iconSize={20} containerSize="w-12 h-12" />
           ))}
+        </div>
+        <div className="flex justify-center">
+          <PrimaryButton href="/group-companies/roys-roys/solutions">
+            Explore All Healthcare Solutions <ArrowRight size={15} />
+          </PrimaryButton>
         </div>
       </div>
     </section>
@@ -664,7 +680,7 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
         </div>
 
         {/* Carousel */}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mb-8">
           <div className="w-full overflow-hidden px-6">
             <div
               className="flex gap-4 transition-transform duration-500 ease-in-out"
@@ -673,20 +689,25 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
               {filteredProducts.map((product) => (
                 <div
                   key={product.name}
-                  className="w-[240px] rounded-lg overflow-hidden border shadow-lg flex-shrink-0"
-                  style={{ backgroundColor: COLORS.primary, borderColor: "rgba(255,255,255,0.05)" }}
+                  className="w-[240px] rounded-lg overflow-hidden border flex-shrink-0"
+                  style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}
                 >
                   <div className="relative h-[160px] w-full">
                     <Image src={product.img} alt={product.name} fill className="object-cover" sizes="240px" />
                   </div>
-                  <div className="p-4">
-                    <h4 className="text-[13.5px] font-extrabold mb-1" style={{ color: "#ffffff" }}>{product.name}</h4>
-                    <p className="text-[11.5px] leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{product.desc}</p>
+                  <div className="p-4" style={{ borderTop: `3px solid ${COLORS.primary}` }}>
+                    <h4 className="text-[13.5px] font-extrabold mb-1" style={{ color: COLORS.primary }}>{product.name}</h4>
+                    <p className="text-[11.5px] leading-relaxed" style={{ color: COLORS.primary, opacity: 0.75 }}>{product.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+        <div className="flex justify-center">
+          <PrimaryButton href="/group-companies/roys-roys/products">
+            Browse Full Product Portfolio <ArrowRight size={15} />
+          </PrimaryButton>
         </div>
       </div>
     </section>
@@ -698,7 +719,7 @@ function IndustriesSection() {
     <section id="industries" className="py-6 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="MARKET SECTORS" title="Industries We Serve" />
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-4 mb-8">
           {INDUSTRIES.map(({ icon: Icon, label }) => (
             <div
               key={label}
@@ -728,6 +749,11 @@ function IndustriesSection() {
               </span>
             </div>
           ))}
+        </div>
+        <div className="flex justify-center">
+          <PrimaryButton href="/group-companies/roys-roys/industries">
+            Explore All Industry Sectors <ArrowRight size={15} />
+          </PrimaryButton>
         </div>
       </div>
     </section>
@@ -1166,7 +1192,7 @@ export default function RoysRoysPage() {
           animation: sectionFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
       `}</style>
-      <Navbar />
+      <RoysNavbar active="Home" />
       <HeroSection />
       <TrustedBanner />
       <AboutSection />
@@ -1184,7 +1210,7 @@ export default function RoysRoysPage() {
       <WhyChooseSection />
       <ValuesAndCorporateSection />
       <CtaSection />
-      <Footer />
+      <RoysFooter />
     </main>
   );
 }

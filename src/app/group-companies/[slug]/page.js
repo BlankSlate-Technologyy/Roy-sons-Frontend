@@ -4,15 +4,15 @@ import Image from "next/image";
 import { COMPANY_LIST } from "@/lib/company-data";
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   const company = COMPANY_LIST.find(
     (c) => c.href.split("/").pop() === slug
   );
   return { title: company ? `${company.name} – ROYSONS` : "Company – ROYSONS" };
 }
 
-export default function CompanyPage({ params }) {
-  const { slug } = params;
+export default async function CompanyPage({ params }) {
+  const { slug } = await params;
 
   // Match slug against last segment of each company's href
   const holding = COMPANY_LIST.find(

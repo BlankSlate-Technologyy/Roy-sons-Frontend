@@ -367,7 +367,7 @@ export default function ContactPage() {
               {/* Find Us Card */}
               <div className="bg-white border border-neutral-200 p-6 rounded-sm">
                 <h3 className="text-[13px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-4 pb-2 border-b border-neutral-200">
-                  Find Us
+                  Find ROYSONS on Google Map
                 </h3>
 
                 {/* Google Maps Iframe */}
