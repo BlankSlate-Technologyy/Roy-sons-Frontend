@@ -108,10 +108,10 @@ export default function CorporateFooter({
             © {currentYear} ROYSONS Pvt. Ltd. All Rights Reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-[10.5px] text-neutral-500 font-medium">
+            <Link href="/privacy" className="text-[10.5px] text-neutral-500 font-medium hover:text-[#C6A15A] transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-[10.5px] text-neutral-500 font-medium">
+            <Link href="/terms" className="text-[10.5px] text-neutral-500 font-medium hover:text-[#C6A15A] transition-colors duration-200">
               Terms & Conditions
             </Link>
           </div>

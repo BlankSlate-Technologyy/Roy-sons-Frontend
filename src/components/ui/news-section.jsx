@@ -55,6 +55,16 @@ export default function CorporateNewsDesk({ news = CORPORATE_BROADCAST_NEWS }) {
             />
           ))}
         </div>
+
+        <div className="mt-12 text-center">
+          <Link
+            href="/news"
+            className="rs-cta-btn inline-flex items-center gap-2.5 px-6 py-3 text-[11px] font-black tracking-[0.18em] uppercase border-2 border-black bg-black text-white hover:bg-[#dfb753] hover:border-[#dfb753] hover:text-black transition-all duration-300 rounded-[2px]"
+          >
+            <span>VIEW ALL NEWS & INSIGHTS</span>
+            <ArrowRight size={13} strokeWidth={2.4} />
+          </Link>
+        </div>
       </div>
     </section>
   );

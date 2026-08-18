@@ -47,6 +47,7 @@ export const FOOTER_QUICK_LINKS = [
   { text: "Services", destination: "/services" },
   { text: "Projects", destination: "/projects" },
   { text: "Group Companies", destination: "/group-companies" },
+  { text: "News & Insights", destination: "/news" },
   { text: "Careers", destination: "/careers" },
   { text: "Contact Us", destination: "/contact" },
 ];
@@ -346,49 +347,50 @@ export const CORPORATE_SERVICES = [
 
 export const FEATURED_STRUCTURAL_WORKS = [
   {
-    image: "/project-commercial.png",
-    title: "Commercial Complex",
-    location: "Lahore, Pakistan",
+    image: "/logos/banu mukhar.jpg.jpeg",
+    title: "BANU MUKHAR",
     href: "/projects/commercial-complex",
   },
   {
-    image: "/project-residential.png",
-    title: "Residential Towers",
-    location: "Karachi, Pakistan",
+    image: "/logos/fangrow.jpg.jpeg",
+    title: "FANGROW",
     href: "/projects/residential-towers",
   },
   {
-    image: "/project-industrial.png",
-    title: "Industrial Plant",
-    location: "Islamabad, Pakistan",
+    image: "/logos/go.jpg.jpeg",
+    title: "GO",
     href: "/projects/industrial-plant",
   },
   {
-    image: "/project-infrastructure.png",
-    title: "Infrastructure Project",
-    location: "Peshawar, Pakistan",
+    image: "/logos/Gourmet foods.jpg.jpeg",
+    title: "GOURMET FOODS",
     href: "/projects/infrastructure",
+  },
+  {
+    image: "/logos/roysons.jpg.jpeg",
+    title: "ROYSONS PVT. LTD.",
+    href: "/projects/roysons-infrastructure",
   },
 ];
 
 export const CORPORATE_BROADCAST_NEWS = [
   {
-    image: "/project-commercial.png",
-    date: "May 10, 2024",
-    title: "Roy Sons Announces New Expansion Plan",
-    href: "/news/expansion-plan",
+    image: "/healthcare_infrastructure.jpg",
+    date: "August 18, 2026",
+    title: "The Future of Healthcare: How Technology Is Transforming Medical Infrastructure",
+    href: "/news/future-of-healthcare",
   },
   {
-    image: "/project-industrial.png",
-    date: "April 28, 2024",
-    title: "Completion of New Commercial Project",
-    href: "/news/commercial-project",
+    image: "/global_trade_supply_chain.jpg",
+    date: "August 18, 2026",
+    title: "Global Trade & Government Contracting: Building Reliable Supply Chains",
+    href: "/news/global-trade-supply-chains",
   },
   {
-    image: "/project-infrastructure.png",
-    date: "April 15, 2024",
-    title: "Roy Sons Wins Excellence Award 2024",
-    href: "/news/excellence-award",
+    image: "/diversified_future_growth.jpg",
+    date: "August 18, 2026",
+    title: "Building a Diversified Future: Why Multi-Sector Businesses Drive Sustainable Growth",
+    href: "/news/building-diversified-future",
   },
 ];
 
