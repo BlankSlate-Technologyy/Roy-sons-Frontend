@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ScrollProgress from "@/components/animations/ScrollProgress";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { BiomaxNavbar, BiomaxFooter, HeroPrimaryButton, HeroOutlineButton } from "./components/BiomaxShared";
+import "./biomax.css";
 import {
   ChevronRight, ChevronDown, ArrowRight,
   FlaskConical, Microscope, HeartPulse, Building2, GraduationCap, Pill, Landmark,
@@ -17,27 +19,29 @@ import {
 // ─── Design Tokens ──────────────────────────────────────────────────────────
 
 const COLORS = {
-  primary:    "#1A4B7A",
-  primaryDk:  "#0F3359",
-  accent:     "#2E8B78",
-  accentAlt:  "#7B1C2A",
-  white:      "#ffffff",
-  ink:        "#1A4B7A",
-  muted:      "#4A6A8A",
-  border:     "#dce8f0",
-  lightBg:    "#F0F6FA",
-  footerBg:   "#0F2847",
+  primary:    "#165B7E",      // BioMax Teal-Blue (from "BIO MAX" & Cross)
+  primaryDk:  "#0D3A52",      // Deep Navy Teal
+  accent:     "#1D906C",      // BioMax DNA Emerald Green (from Helix)
+  accentDk:   "#136B50",      // Deep Forest Green
+  accentRed:  "#7B1C2A",      // BioMax Crimson Red (from "CORPORATION")
+  white:      "#ffffff",      // Pure White Background
+  ink:        "#165B7E",      // Teal-Blue Headings & Title Text
+  muted:      "#1F4E68",      // Medium Slate Teal-Blue Body Text
+  greenText:  "#1D906C",      // DNA Green Accent Text
+  border:     "#d7e5ec",      // Crisp Border
+  lightBg:    "#ffffff",      // Pure White
+  footerBg:   "#0D2B3D",      // Deep Brand Navy Teal Footer
 };
 
 // ─── Static Data ─────────────────────────────────────────────────────────────
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Products", href: "#solutions", dropdown: true },
-  { label: "Research & Development", href: "#rnd" },
-  { label: "Quality Assurance", href: "#quality" },
-  { label: "Industries", href: "#industries" },
+  { label: "About Us", href: "/group-companies/biomax/about" },
+  { label: "Products", href: "/group-companies/biomax/solutions", dropdown: true },
+  { label: "Research & Development", href: "/group-companies/biomax/rnd" },
+  { label: "Quality Assurance", href: "/group-companies/biomax/quality" },
+  { label: "Industries", href: "/group-companies/biomax/industries" },
 ];
 
 const TRUSTED_BY = [
@@ -162,10 +166,10 @@ function PrimaryButton({ href, children, className = "" }) {
       href={href}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`px-6 py-3 rounded-sm text-[12.5px] font-bold uppercase tracking-wide flex items-center gap-2 transition-all duration-300 ${className}`}
+      className={`px-6 py-3 rounded-md text-[12.5px] font-bold uppercase tracking-wide flex items-center gap-2 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-md hover:-translate-y-0.5 ${className}`}
       style={{ 
         backgroundColor: isHovered ? COLORS.accent : COLORS.primary, 
-        color: COLORS.white 
+        color: "#ffffff" 
       }}
     >
       {children}
@@ -180,11 +184,11 @@ function OutlineButton({ href, children, className = "" }) {
       href={href}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`px-6 py-3 rounded-sm text-[12.5px] font-bold uppercase tracking-wide border flex items-center gap-2 transition-all duration-300 ${className}`}
+      className={`px-6 py-3 rounded-md text-[12.5px] font-bold uppercase tracking-wide border flex items-center gap-2 transition-all duration-300 cursor-pointer ${className}`}
       style={{ 
-        borderColor: COLORS.primary, 
-        backgroundColor: isHovered ? COLORS.primary : "transparent",
-        color: isHovered ? COLORS.white : COLORS.primary 
+        borderColor: isHovered ? COLORS.accent : COLORS.primary, 
+        backgroundColor: isHovered ? COLORS.accent : "transparent",
+        color: isHovered ? "#ffffff" : COLORS.primary 
       }}
     >
       {children}
@@ -240,11 +244,15 @@ function AnimatedStatBiomax({ value, label, accentColor }) {
   const display = hasComma ? count.toLocaleString() : count;
 
   return (
-    <div ref={ref} className="p-5 rounded-lg border bg-white text-center shadow-sm" style={{ borderColor: COLORS.border }}>
-      <p className="text-xl lg:text-2xl font-black" style={{ color: accentColor ?? COLORS.accent }}>
+    <div
+      ref={ref}
+      className="p-5 rounded-xl border bg-white text-center shadow-sm biomax-counter-box cursor-pointer"
+      style={{ borderColor: COLORS.border }}
+    >
+      <p className="text-2xl lg:text-3xl font-black" style={{ color: accentColor ?? COLORS.accent }} suppressHydrationWarning>
         {display}{suffix}
       </p>
-      <p className="text-[10.5px] font-bold mt-1 whitespace-pre-line leading-tight" style={{ color: COLORS.muted }}>
+      <p className="text-[11px] font-bold mt-1 whitespace-pre-line leading-tight" style={{ color: COLORS.primary }}>
         {label}
       </p>
     </div>
@@ -293,8 +301,21 @@ function Navbar() {
 
         <nav className="hidden lg:flex items-center gap-7">
           {NAV_LINKS.map((item) => {
+            const isRoute = item.href.startsWith("/");
             const targetId = item.href.replace("#", "");
             const isActive = activeSection === targetId;
+            if (isRoute) {
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="relative text-[16px] font-bold py-1 transition-colors hover:text-[#2C6FC9]"
+                  style={{ color: COLORS.ink }}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
             return (
               <a
                 key={item.label}
@@ -325,39 +346,87 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section id="home" className="section-animate relative py-24 lg:py-36 px-6 overflow-hidden flex items-center min-h-[500px]" style={{ backgroundColor: COLORS.white }}>
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src="/biomax header.png" 
-          alt="Biotechnology laboratory background" 
-          fill 
-          className="object-cover object-center pointer-events-none" 
-          priority 
-        />
-        {/* Soft white gradient overlay for maximum text readability and seamless transition */}
-        <div 
-          className="absolute inset-0" 
-          style={{ 
-            background: "linear-gradient(to right, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.85) 45%, rgba(255,255,255,0.2) 100%)" 
-          }} 
-        />
-      </div>
+    <section
+      id="home"
+      className="section-animate relative py-20 lg:py-28 px-6 overflow-hidden bg-white border-b"
+      style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
+    >
+      <div className="mx-auto max-w-screen-xl relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: Hero Content */}
+          <div className="lg:col-span-7 space-y-6">
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[12px] font-extrabold uppercase tracking-wider border bg-white shadow-sm"
+              style={{ color: COLORS.accent, borderColor: COLORS.border }}
+            >
+              <ShieldCheck size={14} style={{ color: COLORS.accent }} />
+              <span>Advancing Laboratory Science &amp; Biotechnology</span>
+            </div>
 
-      <div className="relative z-10 mx-auto max-w-screen-xl w-full">
-        <div className="max-w-2xl">
-          <h1 className="text-3xl lg:text-[46px] font-black leading-[1.1] mb-5" style={{ color: COLORS.accent }}>
-            BIOTECHNOLOGY &amp;<br />LABORATORY SOLUTIONS
-          </h1>
-          <p className="text-[15px] font-medium leading-relaxed mb-8 max-w-md" style={{ color: COLORS.primary }}>
-            Supplying scientific equipment, laboratory systems, and biotechnology solutions for research and
-            diagnostic institutions.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <PrimaryButton href="#solutions">Explore Products <ArrowRight size={15} /></PrimaryButton>
-            <OutlineButton href="#solutions" className="bg-white/80 hover:bg-white transition-colors">
-              Our Services <ArrowRight size={15} />
-            </OutlineButton>
+            <h1 className="text-3xl sm:text-4xl lg:text-[50px] font-black leading-[1.1] tracking-tight">
+              <span style={{ color: COLORS.primary }}>
+                BIOTECHNOLOGY &amp;
+              </span>
+              <br />
+              <span style={{ color: COLORS.accent }}>
+                LABORATORY SOLUTIONS
+              </span>
+            </h1>
+
+            <p
+              className="text-[16px] sm:text-[17.5px] font-medium leading-relaxed max-w-xl"
+              style={{ color: COLORS.muted }}
+            >
+              Supplying advanced scientific equipment, high-precision laboratory systems, and biotechnology solutions for research, healthcare, and diagnostic institutions.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              <HeroPrimaryButton href="/group-companies/biomax/solutions">
+                <span>Explore Products</span>
+                <ArrowRight size={15} />
+              </HeroPrimaryButton>
+              <HeroOutlineButton href="/group-companies/biomax/contact">
+                <span>Contact Us</span>
+                <ArrowRight size={15} />
+              </HeroOutlineButton>
+            </div>
+          </div>
+
+          {/* Right Column: High-Tech Lab Showcase Card */}
+          <div className="lg:col-span-5 relative">
+            <div
+              className="relative w-full h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border-2"
+              style={{ borderColor: COLORS.border }}
+            >
+              <Image
+                src="/biomax_products_hero_ai.jpg"
+                alt="BioMax Advanced Laboratory & Scientific Equipment"
+                fill
+                priority
+                className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 500px"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(to top, rgba(13, 58, 82, 0.45) 0%, transparent 60%)",
+                }}
+              />
+
+              {/* Floating Stat Pill on Image */}
+              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border shadow-lg flex items-center justify-between" style={{ borderColor: COLORS.border }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}15` }}>
+                    <Microscope size={20} style={{ color: COLORS.primary }} />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: COLORS.accent }}>Precision Verified</p>
+                    <p className="text-[13px] font-black" style={{ color: COLORS.primary }}>100+ Scientific Systems</p>
+                  </div>
+                </div>
+                <div className="w-2.5 h-2.5 rounded-full bg-[#1D906C] animate-pulse" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -367,39 +436,36 @@ function HeroSection() {
 
 function TrustedBySection() {
   return (
-    <section className="section-animate py-12 px-6 border-y" style={{ backgroundColor: COLORS.lightBg, borderColor: COLORS.border }}>
+    <section className="section-animate py-10 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
-        <p className="text-center text-[13px] font-black tracking-[0.2em] uppercase mb-8" style={{ color: COLORS.muted }}>
-          Trusted By
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {TRUSTED_BY.map(({ icon: Icon, label }) => (
-            <div
-              key={label}
-              className="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all duration-300 cursor-pointer group"
-              style={{ backgroundColor: "transparent" }}
-              onMouseEnter={e => {
-                e.currentTarget.style.backgroundColor = COLORS.white;
-                e.currentTarget.style.boxShadow = "0 4px 16px rgba(27,79,204,0.12)";
-                e.currentTarget.style.transform = "translateY(-4px)";
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.boxShadow = "none";
-                e.currentTarget.style.transform = "translateY(0)";
-              }}
-            >
+        <div
+          className="rounded-xl border p-8 bg-white"
+          style={{ borderColor: COLORS.border }}
+        >
+          <p
+            className="text-center text-[11px] font-black tracking-[0.2em] uppercase mb-7"
+            style={{ color: COLORS.accent }}
+          >
+            Trusted By
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {TRUSTED_BY.map(({ icon: Icon, label }) => (
               <div
-                className="w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300"
-                style={{ backgroundColor: `${COLORS.primary}12` }}
+                key={label}
+                className="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all duration-300 cursor-pointer group hover:shadow-sm hover:border-[#1D906C] border border-transparent bg-white"
               >
-                <Icon size={28} style={{ color: COLORS.primary }} />
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
+                  style={{ backgroundColor: `${COLORS.primary}12` }}
+                >
+                  <Icon size={26} style={{ color: COLORS.primary }} />
+                </div>
+                <span className="text-[13px] font-bold leading-snug whitespace-pre-line" style={{ color: COLORS.ink }}>
+                  {label}
+                </span>
               </div>
-              <span className="text-[13px] font-bold leading-snug whitespace-pre-line" style={{ color: COLORS.ink }}>
-                {label}
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -407,135 +473,129 @@ function TrustedBySection() {
 }
 
 function AboutSection() {
+  const whyChoosePoints = [
+    { title: "Reliable Scientific Equipment", icon: Microscope, desc: "High-precision instrumentation and laboratory analyzers tested for durability." },
+    { title: "Laboratory & Diagnostic Solutions", icon: HeartPulse, desc: "End-to-end diagnostic systems and workflow optimizations." },
+    { title: "Technical Expertise", icon: Users, desc: "Engineers and scientific specialists providing calibration and protocol guidance." },
+    { title: "Quality-Focused Products", icon: ShieldCheck, desc: "International compliance with ISO, CE, and rigorous laboratory benchmarks." },
+    { title: "Professional Customer Support", icon: CheckCircle2, desc: "Responsive technical assistance, installation, and ongoing maintenance." },
+    { title: "Solutions for Multiple Industries", icon: Building2, desc: "Serving research, healthcare, academic, diagnostic, and industrial sectors." },
+  ];
+
   return (
     <section id="about" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-12 items-start">
-        <div className="lg:col-span-7">
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
-            ABOUT US
-          </span>
-          <h2 className="text-2xl lg:text-3xl font-extrabold mb-6" style={{ color: COLORS.accent }}>
-            Advancing Science Through Reliable Solutions
-          </h2>
-          <div className="space-y-4 mb-2 text-[13.5px] leading-relaxed" style={{ color: COLORS.ink }}>
-            <p>
-              BIO MAX CORPORATION is a trusted name in biotechnology and laboratory solutions, dedicated to
-              supplying high-quality scientific equipment, diagnostic systems, and research technologies to
-              institutions across the country.
+      <div className="mx-auto max-w-screen-xl space-y-12">
+        {/* Main Header & Story */}
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
+              02 — ABOUT US
+            </span>
+            <h2 className="text-2xl lg:text-3xl font-extrabold mb-4" style={{ color: COLORS.accent }}>
+              About Bio Max Corporation
+            </h2>
+            <p className="text-[15px] font-bold mb-4" style={{ color: COLORS.primary }}>
+              Empowering Laboratories with Advanced Scientific Technology
             </p>
-            <p>
-              Our team of scientists, engineers, and technical specialists works closely with laboratories,
-              hospitals, and research centers to ensure accurate, efficient, and reliable outcomes for every
-              project.
-            </p>
-            <p>
-              From academic research to clinical diagnostics, we are committed to supporting scientific
-              advancement through innovation and precision.
-            </p>
+            <div className="space-y-3 text-[14px] leading-relaxed" style={{ color: COLORS.ink }}>
+              <p>
+                Bio Max Corporation is a biotechnology and laboratory solutions company focused on providing reliable scientific equipment, laboratory systems, and technical solutions to research, healthcare, diagnostic, educational, and industrial institutions.
+              </p>
+              <p>
+                We work with laboratories and organizations that require dependable technology, quality products, and professional support for their scientific and diagnostic operations.
+              </p>
+              <p>
+                Our approach combines quality, technical expertise, innovation, and customer support to help laboratories operate efficiently and achieve accurate and consistent results.
+              </p>
+            </div>
           </div>
 
-          <div className="relative w-full h-[260px] rounded-xl overflow-hidden shadow-lg mt-8">
-            <Image src="/biomaxabout.png" alt="Lab scientists at work" fill className="object-cover" sizes="700px" />
+          <div className="lg:col-span-5">
+            <div className="relative w-full h-[320px] rounded-2xl overflow-hidden shadow-lg border" style={{ borderColor: COLORS.border }}>
+              <Image 
+                src="/biomax_research_lab.jpg" 
+                alt="Bio Max Corporation laboratory equipment and scientific research" 
+                fill 
+                className="object-cover object-center" 
+                sizes="600px" 
+              />
+            </div>
           </div>
         </div>
 
-        <div className="lg:col-span-5 space-y-5">
+        {/* Mission & Vision Cards */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Mission Card */}
           <div
-            className="p-6 rounded-lg border transition-all duration-300 cursor-pointer"
+            className="p-8 rounded-2xl border transition-all duration-300 shadow-sm"
             style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = COLORS.primary;
-              e.currentTarget.style.boxShadow = "0 6px 20px rgba(27,79,204,0.13)";
-              e.currentTarget.style.transform = "translateY(-3px)";
-              e.currentTarget.style.backgroundColor = COLORS.white;
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = COLORS.border;
-              e.currentTarget.style.boxShadow = "none";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.backgroundColor = COLORS.lightBg;
-            }}
           >
-            <div className="flex items-center gap-2.5 mb-2">
-              <Target size={17} style={{ color: COLORS.primary }} />
-              <h4 className="text-[13px] font-extrabold uppercase tracking-wide" style={{ color: COLORS.primary }}>Our Mission</h4>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}18` }}>
+                <Target size={20} style={{ color: COLORS.primary }} />
+              </div>
+              <h3 className="text-xl font-extrabold" style={{ color: COLORS.primary }}>
+                Our Mission
+              </h3>
             </div>
-            <p className="text-[13px] leading-relaxed" style={{ color: COLORS.muted }}>
-              To empower research and diagnostic institutions with cutting-edge laboratory equipment and
-              biotechnology solutions that drive scientific progress.
+            <p className="text-[14px] leading-relaxed" style={{ color: COLORS.muted }}>
+              To provide high-quality biotechnology and laboratory solutions that support scientific research, diagnostics, education, and industrial development.
             </p>
           </div>
 
+          {/* Vision Card */}
           <div
-            className="p-6 rounded-lg border transition-all duration-300 cursor-pointer"
+            className="p-8 rounded-2xl border transition-all duration-300 shadow-sm"
             style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = COLORS.primary;
-              e.currentTarget.style.boxShadow = "0 6px 20px rgba(27,79,204,0.13)";
-              e.currentTarget.style.transform = "translateY(-3px)";
-              e.currentTarget.style.backgroundColor = COLORS.white;
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = COLORS.border;
-              e.currentTarget.style.boxShadow = "none";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.backgroundColor = COLORS.lightBg;
-            }}
           >
-            <div className="flex items-center gap-2.5 mb-2">
-              <Eye size={17} style={{ color: COLORS.primary }} />
-              <h4 className="text-[13px] font-extrabold uppercase tracking-wide" style={{ color: COLORS.primary }}>Our Vision</h4>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${COLORS.accent}18` }}>
+                <Eye size={20} style={{ color: COLORS.accent }} />
+              </div>
+              <h3 className="text-xl font-extrabold" style={{ color: COLORS.accent }}>
+                Our Vision
+              </h3>
             </div>
-            <p className="text-[13px] leading-relaxed" style={{ color: COLORS.muted }}>
-              To be a globally recognized leader in biotechnology solutions, known for innovation, precision, and
-              unwavering commitment to scientific excellence.
+            <p className="text-[14px] leading-relaxed" style={{ color: COLORS.muted }}>
+              To become a trusted provider of advanced laboratory and biotechnology solutions, contributing to scientific progress and better research outcomes.
             </p>
           </div>
+        </div>
 
-          <div
-            className="p-6 rounded-lg border transition-all duration-300 cursor-pointer"
-            style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}
-            onMouseEnter={e => {
-              e.currentTarget.style.borderColor = COLORS.primary;
-              e.currentTarget.style.boxShadow = "0 6px 20px rgba(27,79,204,0.13)";
-              e.currentTarget.style.transform = "translateY(-3px)";
-              e.currentTarget.style.backgroundColor = COLORS.white;
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.borderColor = COLORS.border;
-              e.currentTarget.style.boxShadow = "none";
-              e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.backgroundColor = COLORS.lightBg;
-            }}
-          >
-            <div className="flex items-center gap-2.5 mb-4">
-              <Sparkles size={17} style={{ color: COLORS.primary }} />
-              <h4 className="text-[13px] font-extrabold uppercase tracking-wide" style={{ color: COLORS.primary }}>Our Core Values</h4>
-            </div>
-            <div className="grid grid-cols-4 gap-5">
-              {CORE_VALUES.map(({ icon: Icon, label }) => (
-                <div
-                  key={label}
-                  className="flex flex-col items-center text-center gap-2 p-2 rounded-lg transition-all duration-200 cursor-pointer"
-                  onMouseEnter={e => {
-                    e.currentTarget.style.backgroundColor = `${COLORS.primary}10`;
-                    e.currentTarget.style.transform = "scale(1.08)";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.backgroundColor = "transparent";
-                    e.currentTarget.style.transform = "scale(1)";
-                  }}
-                >
+        {/* Why Choose Bio Max? 6 Key Pillars */}
+        <div className="pt-4">
+          <div className="mb-6">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>
+              PROVEN VALUE
+            </span>
+            <h3 className="text-2xl font-black" style={{ color: COLORS.accent }}>
+              Why Choose Bio Max?
+            </h3>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {whyChoosePoints.map(({ title, icon: Icon, desc }) => (
+              <div
+                key={title}
+                className="p-6 rounded-xl border bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                style={{ borderColor: COLORS.border }}
+              >
+                <div className="flex items-center gap-3 mb-3">
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center mb-1 transition-all duration-200"
-                    style={{ backgroundColor: `${COLORS.primary}15`, border: `1.5px solid ${COLORS.primary}35` }}
+                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${COLORS.primary}12` }}
                   >
-                    <Icon size={28} style={{ color: COLORS.primary }} />
+                    <Icon size={20} style={{ color: COLORS.primary }} />
                   </div>
-                  <span className="text-[11.5px] font-bold leading-tight whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
+                  <h4 className="text-[14.5px] font-black" style={{ color: COLORS.ink }}>
+                    {title}
+                  </h4>
                 </div>
-              ))}
-            </div>
+                <p className="text-[12.5px] leading-relaxed" style={{ color: COLORS.muted }}>
+                  {desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -545,7 +605,7 @@ function AboutSection() {
 
 function SolutionsSection() {
   return (
-    <section id="solutions" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+    <section id="solutions" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="OUR SOLUTIONS" title="Complete Biotechnology & Laboratory Portfolio" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
@@ -562,6 +622,29 @@ function SolutionsSection() {
               <p className="text-[11.5px] leading-relaxed" style={{ color: COLORS.muted }}>{desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* View Full Product Catalog Banner */}
+        <div className="mt-12 p-8 rounded-2xl border flex flex-col md:flex-row items-center justify-between gap-6 bg-white shadow-md" style={{ borderColor: COLORS.border }}>
+          <div>
+            <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.accent }}>
+              OUR PRODUCTS &amp; LABORATORY SOLUTIONS
+            </span>
+            <h3 className="text-xl sm:text-2xl font-black" style={{ color: COLORS.primary }}>
+              Looking for Detailed Equipment Specifications?
+            </h3>
+            <p className="text-[13.5px] mt-1" style={{ color: COLORS.muted }}>
+              Explore our 5 specialized solution portfolios: Laboratory Equipment, Diagnostics, Biotech, Consumables &amp; Scientific Instruments.
+            </p>
+          </div>
+          <Link
+            href="/group-companies/biomax/solutions"
+            className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold text-white flex items-center gap-2 shadow-md hover:bg-[#1D906C] transition-all flex-shrink-0"
+            style={{ backgroundColor: COLORS.primary }}
+          >
+            <span>Explore Products &amp; Solutions</span>
+            <ArrowRight size={15} />
+          </Link>
         </div>
       </div>
     </section>
@@ -593,19 +676,27 @@ function WhyIndustriesProcessSection() {
         <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
           <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>INDUSTRIES WE SERVE</span>
           <h3 id="industries" className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>Sectors We Support</h3>
-          <div className="space-y-4">
+          <div className="space-y-3.5 mb-6">
             {INDUSTRIES.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-4">
+              <div key={label} className="flex items-center gap-3.5">
                 <div
-                  className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: `${COLORS.primary}15` }}
                 >
-                  <Icon size={20} style={{ color: COLORS.primary }} />
+                  <Icon size={17} style={{ color: COLORS.primary }} />
                 </div>
-                <span className="text-[14px] font-semibold" style={{ color: COLORS.ink }}>{label}</span>
+                <span className="text-[13.5px] font-semibold" style={{ color: COLORS.ink }}>{label}</span>
               </div>
             ))}
           </div>
+          <Link
+            href="/group-companies/biomax/industries"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[12px] font-bold text-white shadow-sm hover:opacity-90 transition-opacity"
+            style={{ backgroundColor: COLORS.primary }}
+          >
+            <span>Explore All 7 Sectors</span>
+            <ArrowRight size={13} />
+          </Link>
         </div>
 
         {/* Our Process */}
@@ -636,7 +727,7 @@ function WhyIndustriesProcessSection() {
 
 function CommitmentStatsSection() {
   return (
-    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-5">
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
@@ -669,34 +760,52 @@ function RndQualitySection() {
   return (
     <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-2 gap-8">
-        <div id="rnd" className="p-8 rounded-lg text-white" style={{ backgroundColor: COLORS.primary }}>
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: "#9FC0EE" }}>
-            RESEARCH & DEVELOPMENT
-          </span>
-          <h3 className="text-xl font-extrabold mb-4">Innovation at the Core</h3>
-          <p className="text-[13.5px] leading-relaxed" style={{ color: "rgba(255,255,255,0.85)" }}>
-            Our R&amp;D team continuously explores emerging biotechnology trends and laboratory advancements to
-            bring next-generation solutions that improve accuracy, efficiency, and reliability for research and
-            diagnostic institutions.
-          </p>
+        <div id="rnd" className="p-8 rounded-2xl border flex flex-col justify-between shadow-sm bg-white" style={{ borderColor: COLORS.border, backgroundColor: "#ffffff" }}>
+          <div>
+            <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.accent }}>
+              RESEARCH &amp; DEVELOPMENT
+            </span>
+            <h3 className="text-xl font-extrabold mb-3" style={{ color: COLORS.primary }}>Advancing Laboratory Science</h3>
+            <p className="text-[13.5px] leading-relaxed mb-6" style={{ color: COLORS.muted }}>
+              Our R&amp;D team focuses on identifying emerging laboratory technologies and developing practical solutions for modern scientific and diagnostic environments.
+            </p>
+          </div>
+          <Link
+            href="/group-companies/biomax/rnd"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-bold text-white hover:bg-[#1D906C] transition-all w-fit shadow-md cursor-pointer"
+            style={{ backgroundColor: COLORS.primary }}
+          >
+            <span>Explore R&amp;D Focus</span>
+            <ArrowRight size={14} />
+          </Link>
         </div>
 
-        <div id="quality" className="p-8 rounded-lg border" style={{ borderColor: COLORS.border, backgroundColor: COLORS.lightBg }}>
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
-            QUALITY ASSURANCE
-          </span>
-          <h3 className="text-xl font-extrabold mb-4" style={{ color: COLORS.accent }}>Precision Without Compromise</h3>
-          <p className="text-[13.5px] leading-relaxed mb-6" style={{ color: COLORS.muted }}>
-            Every product undergoes rigorous testing to ensure:
-          </p>
-          <div className="grid grid-cols-5 gap-3">
-            {QUALITY_POINTS.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center text-center gap-2">
-                <Icon size={18} style={{ color: COLORS.accent }} />
-                <span className="text-[10px] font-bold leading-tight whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
-              </div>
-            ))}
+        <div id="quality" className="p-8 rounded-2xl border flex flex-col justify-between shadow-sm bg-white" style={{ borderColor: COLORS.border, backgroundColor: "#ffffff" }}>
+          <div>
+            <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
+              QUALITY ASSURANCE
+            </span>
+            <h3 className="text-xl font-extrabold mb-3" style={{ color: COLORS.accent }}>Quality You Can Trust</h3>
+            <p className="text-[13.5px] leading-relaxed mb-5" style={{ color: COLORS.muted }}>
+              Our quality-focused approach extends from product selection and sourcing to technical support and customer service.
+            </p>
+            <div className="grid grid-cols-5 gap-2 mb-6">
+              {QUALITY_POINTS.map(({ icon: Icon, label }) => (
+                <div key={label} className="flex flex-col items-center text-center gap-1.5 p-2 rounded-lg bg-white border" style={{ borderColor: COLORS.border }}>
+                  <Icon size={16} style={{ color: COLORS.accent }} />
+                  <span className="text-[9.5px] font-bold leading-tight" style={{ color: COLORS.ink }}>{label}</span>
+                </div>
+              ))}
+            </div>
           </div>
+          <Link
+            href="/group-companies/biomax/quality"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-bold text-white hover:bg-[#1D906C] transition-all w-fit shadow-md"
+            style={{ backgroundColor: COLORS.accent }}
+          >
+            <span>View Quality Standards</span>
+            <ArrowRight size={14} />
+          </Link>
         </div>
       </div>
     </section>
@@ -717,7 +826,7 @@ function TestimonialsFaqSection() {
   }, []);
 
   return (
-    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+    <section className="section-animate py-16 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10">
 
         {/* ── Testimonials Slider ── */}
@@ -786,7 +895,7 @@ function TestimonialsFaqSection() {
             .faq-body {
               display: grid;
               grid-template-rows: 0fr;
-              transition: grid-template-rows 0.4s ease, opacity 0.35s ease;
+              transition: grid-template-rows: 0.4s ease, opacity 0.35s ease;
               opacity: 0;
             }
             .faq-body.open {
@@ -839,45 +948,37 @@ function TestimonialsFaqSection() {
 }
 
 function CtaSection() {
-  const [hoverBtn1, setHoverBtn1] = useState(false);
-  const [hoverBtn2, setHoverBtn2] = useState(false);
-
   return (
-    <section id="contact" className="py-14 px-6" style={{ backgroundColor: COLORS.primary }}>
-      <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-8 items-center justify-between">
-        <div>
-          <h2 className="text-xl lg:text-2xl font-black text-white mb-2">Let&apos;s Advance Science Together</h2>
-          <p className="text-[13px] max-w-lg" style={{ color: "rgba(255,255,255,0.75)" }}>
-            Partner with BIO MAX CORPORATION for reliable laboratory equipment, biotechnology solutions, and
-            dependable technical support.
-          </p>
-        </div>
-        <div className="flex gap-4 flex-shrink-0 w-full lg:w-auto">
-          <Link
-            href="#contact"
-            onMouseEnter={() => setHoverBtn1(true)}
-            onMouseLeave={() => setHoverBtn1(false)}
-            className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-sm text-[12.5px] font-bold uppercase tracking-wide flex items-center gap-2 transition-all duration-300"
-            style={{ 
-              backgroundColor: hoverBtn1 ? COLORS.accent : COLORS.white, 
-              color: hoverBtn1 ? COLORS.white : COLORS.primary 
-            }}
-          >
-            Contact Sales <ArrowRight size={15} />
-          </Link>
-          <Link
-            href="#contact"
-            onMouseEnter={() => setHoverBtn2(true)}
-            onMouseLeave={() => setHoverBtn2(false)}
-            className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-sm text-[12.5px] font-bold uppercase tracking-wide border flex items-center gap-2 transition-all duration-300"
-            style={{ 
-              borderColor: COLORS.white,
-              backgroundColor: hoverBtn2 ? COLORS.white : "transparent",
-              color: hoverBtn2 ? COLORS.primary : COLORS.white 
-            }}
-          >
-            Become a Partner <ArrowRight size={15} />
-          </Link>
+    <section className="section-animate py-6 px-6" style={{ backgroundColor: COLORS.white }}>
+      <div className="mx-auto max-w-screen-xl">
+        <div
+          className="rounded-2xl border p-8 lg:p-10 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-sm bg-white"
+          style={{ borderColor: COLORS.border, backgroundColor: COLORS.white }}
+        >
+          <div>
+            <h2 className="text-xl lg:text-2xl font-black mb-2" style={{ color: COLORS.primary }}>
+              Partner with BIO MAX CORPORATION
+            </h2>
+            <p className="text-[13.5px] max-w-md" style={{ color: COLORS.muted }}>
+              Let&apos;s work together for dependable laboratory equipment, biotechnology solutions, and advanced scientific progress.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <Link
+              href="/group-companies/biomax/contact"
+              className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-lg text-[13px] font-bold text-white flex items-center gap-2 cursor-pointer transition-all duration-300 shadow-md hover:bg-[#1D906C]"
+              style={{ backgroundColor: COLORS.primary }}
+            >
+              <span>Contact Us Today</span> <ArrowRight size={15} />
+            </Link>
+            <a
+              href="tel:+923218431665"
+              className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-lg text-[13px] font-bold border-2 bg-white flex items-center gap-2 transition-all duration-200 cursor-pointer"
+              style={{ borderColor: COLORS.primary, color: COLORS.primary }}
+            >
+              <Phone size={15} /> 0092-321-8431665
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -885,180 +986,66 @@ function CtaSection() {
 }
 
 function ContactSection() {
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", service: "All Solutions", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.firstName || !form.email || !form.message) {
-      setError("Please fill in your name, email, and message.");
-      return;
-    }
-    setError("");
-    setIsSubmitting(true);
-    try {
-      const res = await fetch("/group-companies/biomax/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to send message.");
-      }
-      setSubmitted(true);
-    } catch (err) {
-      setError(err.message || "Error submitting form.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
-    <section id="contact" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.lightBg }}>
+    <section id="contact" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <div className="text-center mb-12">
           <span className="text-[13px] font-extrabold uppercase tracking-widest" style={{ color: COLORS.primary }}>GET IN TOUCH</span>
           <h2 className="text-3xl font-black mt-1 mb-3" style={{ color: COLORS.accent }}>Contact BIO MAX</h2>
           <p className="text-[14px] max-w-xl mx-auto" style={{ color: COLORS.muted }}>
-            Have a question about our products or services? Fill out the form below and our team will get back to you shortly.
+            Have a question about our laboratory products, diagnostic equipment, or services? Our team is ready to assist you.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-10 items-start">
-          {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-6">
+        <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+          {/* Contact Info Cards */}
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
             {[
               { icon: MapPin, label: "Our Office", value: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore." },
               { icon: Phone, label: "Call Us", value: "0092-42-38924737" },
               { icon: Phone, label: "WhatsApp", value: "0092-304-7527498 | 0092-321-8431665" },
               { icon: Mail, label: "Email Us", value: "info@roysons.org | support@roysons.org" },
             ].map(({ icon: Icon, label, value }) => (
-              <div key={label} className="flex items-start gap-4 p-5 rounded-xl bg-white border shadow-sm" style={{ borderColor: COLORS.border }}>
+              <div key={label} className="flex items-start gap-4 p-5 rounded-2xl bg-white border shadow-sm" style={{ borderColor: COLORS.border }}>
                 <div
-                  className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: `${COLORS.primary}15` }}
                 >
                   <Icon size={22} style={{ color: COLORS.primary }} />
                 </div>
                 <div>
-                  <p className="text-[12px] font-bold uppercase tracking-wide" style={{ color: COLORS.primary }}>{label}</p>
-                  <p className="text-[13.5px] font-semibold mt-0.5 leading-snug" style={{ color: COLORS.ink }}>{value}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wide" style={{ color: COLORS.primary }}>{label}</p>
+                  <p className="text-[13px] font-semibold mt-0.5 leading-snug" style={{ color: COLORS.ink }}>{value}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-3 bg-white rounded-2xl border shadow-md p-8" style={{ borderColor: COLORS.border }}>
-            {submitted ? (
-              <div className="text-center py-10">
-                <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.accent }}>Thank You!</h3>
-                <p className="text-sm mb-6" style={{ color: COLORS.muted }}>Your message has been sent successfully. Our team will contact you shortly.</p>
-                <button
-                  onClick={() => { setSubmitted(false); setForm({ firstName: "", lastName: "", email: "", phone: "", service: "All Solutions", message: "" }); }}
-                  className="px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wide text-white"
-                  style={{ backgroundColor: COLORS.primary }}
-                >
-                  Send Another Message
-                </button>
-              </div>
-            ) : (
-              <form className="space-y-5" onSubmit={handleSubmit}>
-                {error && <p className="text-xs font-bold text-red-600 mb-2">{error}</p>}
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>First Name</label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={form.firstName}
-                      onChange={handleChange}
-                      placeholder="e.g. Ali"
-                      className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                      style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Last Name</label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={form.lastName}
-                      onChange={handleChange}
-                      placeholder="e.g. Ahmed"
-                      className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                      style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="you@example.com"
-                    className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                    style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    placeholder="+92 3XX XXXXXXX"
-                    className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                    style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                  />
-                </div>
-                <div>
-                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Service</label>
-                  <select
-                    name="service"
-                    value={form.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all"
-                    style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                  >
-                    {SOLUTIONS.map(({ title }) => (
-                      <option key={title} value={title}>{title}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-[12px] font-bold mb-1.5 uppercase tracking-wide" style={{ color: COLORS.primary }}>Message</label>
-                  <textarea
-                    rows={4}
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Write your message here..."
-                    className="w-full px-4 py-3 rounded-lg border text-[13px] outline-none focus:ring-2 transition-all resize-none"
-                    style={{ borderColor: COLORS.border, color: COLORS.ink }}
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3.5 rounded-lg text-[13px] font-extrabold uppercase tracking-wide text-white transition-opacity hover:opacity-90 disabled:opacity-50"
-                  style={{ backgroundColor: COLORS.primary }}
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </button>
-              </form>
-            )}
+          {/* Contact Us CTA Card */}
+          <div
+            className="lg:col-span-5 rounded-3xl p-8 border flex flex-col justify-between shadow-sm bg-white"
+            style={{ borderColor: COLORS.border, backgroundColor: "#ffffff" }}
+          >
+            <div>
+              <span className="text-[11px] font-black uppercase tracking-widest block mb-2" style={{ color: COLORS.accent }}>
+                ONLINE INQUIRY &amp; SUPPORT
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black mb-3" style={{ color: COLORS.primary }}>
+                Send Us Your Requirements
+              </h3>
+              <p className="text-[13.5px] leading-relaxed mb-6" style={{ color: COLORS.muted }}>
+                Looking for instrument quotes, product specifications, or technical setup support? Submit your message directly on our dedicated Contact page.
+              </p>
+            </div>
+
+            <Link
+              href="/group-companies/biomax/contact"
+              className="w-full py-4 rounded-xl text-[14px] font-bold text-center flex items-center justify-center gap-2 text-white hover:bg-[#1D906C] transition-all shadow-md cursor-pointer"
+              style={{ backgroundColor: COLORS.primary }}
+            >
+              <span>Go to Contact Page</span>
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </div>
@@ -1069,7 +1056,7 @@ function ContactSection() {
 // ─── Google Map Section ─────────────────────────────────────────────────────
 function MapSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-slate-50">
+    <section className="relative w-full overflow-hidden bg-white">
       {/* Floating Address Header */}
       <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10 w-[92%] max-w-screen-xl pointer-events-none">
         <div
@@ -1116,106 +1103,11 @@ function MapSection() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="py-14 px-6" style={{ backgroundColor: COLORS.footerBg }}>
-      <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
-        <div className="lg:col-span-4 max-w-sm">
-          <div className="flex items-center mb-4">
-            <div className="bg-white px-4 py-2 rounded-xl flex items-center justify-center shadow-sm">
-              <Image 
-                src="/logo.png" 
-                alt="BIO MAX CORPORATION Logo" 
-                width={240} 
-                height={75} 
-                className="h-14 sm:h-16 w-auto object-contain" 
-              />
-            </div>
-          </div>
-          <p className="text-[12px] leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
-            Your trusted partner for biotechnology and laboratory solutions.
-          </p>
-          <div className="flex gap-3">
-            {SOCIAL_ICONS.map((Icon, idx) => (
-              <a
-                key={idx}
-                href="#"
-                aria-label="Social media link"
-                className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/10 transition-colors"
-                style={{ borderColor: "rgba(255,255,255,0.25)" }}
-              >
-                <Icon size={14} style={{ color: "rgba(255,255,255,0.9)" }} />
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
-          <div key={heading} className="lg:col-span-2">
-            <h5 className="text-[11px] font-black uppercase tracking-[0.16em] mb-4 text-white">{heading}</h5>
-            <ul className="space-y-2">
-              {links.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-[12px] hover:text-white transition-colors" style={{ color: "rgba(255,255,255,0.6)" }}>
-                    {link}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-
-        <div className="lg:col-span-4">
-          <h5 className="text-[11px] font-black uppercase tracking-[0.16em] mb-4 text-white">Contact Us</h5>
-          <div className="space-y-3">
-            <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-              <MapPin size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
-              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
-            </p>
-            <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-              <Phone size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
-              0092-42-38924737
-            </p>
-            <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-              <Phone size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
-              WhatsApp: 0092-304-7527498 | 0092-321-8431665
-            </p>
-            <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-              <Mail size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
-              info@roysons.org
-            </p>
-            <p className="text-[12px] flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.7)" }}>
-              <Mail size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#6FA8F0" }} />
-              support@roysons.org
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-screen-xl mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-        <p className="text-[11px]" style={{ color: "rgba(255,255,255,0.5)" }}>
-          &copy; 2026 BIO MAX CORPORATION. All Rights Reserved.
-        </p>
-        <div className="flex gap-6">
-          {["Privacy Policy", "Terms of Service"].map((label) => (
-            <a key={label} href="#" className="text-[11px] hover:text-white transition-colors" style={{ color: "rgba(255,255,255,0.5)" }}>
-              {label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </footer>
-  );
-}
-
 // ─── Page Component ───────────────────────────────────────────────────────────
 
 export default function BioMaxCorporationPage() {
   useEffect(() => {
-    document.body.classList.add("roys-roys-theme");
     document.body.classList.add("biomax-theme");
-    document.body.style.backgroundColor = COLORS.white;
-    document.body.style.color = COLORS.primary;
 
     const sections = document.querySelectorAll(".section-animate");
     const observer = new IntersectionObserver(
@@ -1232,16 +1124,13 @@ export default function BioMaxCorporationPage() {
     sections.forEach((sec) => observer.observe(sec));
 
     return () => {
-      document.body.classList.remove("roys-roys-theme");
       document.body.classList.remove("biomax-theme");
-      document.body.style.backgroundColor = "";
-      document.body.style.color = "";
       observer.disconnect();
     };
   }, []);
 
   return (
-    <main className="min-h-screen" style={{ backgroundColor: COLORS.white, color: COLORS.primary }}>
+    <main className="min-h-screen biomax-theme bg-white" style={{ backgroundColor: COLORS.white, color: COLORS.primary }}>
       <style>{`
         @keyframes sectionFadeUp {
           from {
@@ -1262,7 +1151,7 @@ export default function BioMaxCorporationPage() {
         }
       `}</style>
       <ScrollProgress color={COLORS.accent} />
-      <Navbar />
+      <BiomaxNavbar />
       <HeroSection />
       <TrustedBySection />
       <AboutSection />
@@ -1274,7 +1163,7 @@ export default function BioMaxCorporationPage() {
       <ContactSection />
       <CtaSection />
       <MapSection />
-      <Footer />
+      <BiomaxFooter />
     </main>
   );
 }

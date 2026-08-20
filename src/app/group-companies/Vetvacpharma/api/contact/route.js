@@ -6,7 +6,7 @@ export async function POST(req) {
   try {
     await connectDB();
     const body = await req.json();
-    const { name, fullName, email, phone, subject, message, type, ...rest } = body;
+    const { name, fullName, company, email, phone, subject, requirement, message, type, ...rest } = body;
 
     const applicantName = fullName || name;
     if (!applicantName || !email || !message) {
@@ -22,9 +22,9 @@ export async function POST(req) {
       fullName: applicantName,
       email,
       phone: phone || "",
-      subject: subject || type || "Pharma Inquiry",
+      subject: subject || requirement || type || "Pharma Inquiry",
       message,
-      additionalFields: rest,
+      additionalFields: { company: company || "", requirement: requirement || "", ...rest },
     });
 
     return NextResponse.json(

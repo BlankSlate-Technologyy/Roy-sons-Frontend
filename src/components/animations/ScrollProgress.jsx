@@ -1,10 +1,18 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollProgress } from "@/hooks/useScrollProgress";
 
 export default function ScrollProgress({ color = "#1B4FCC" }) {
   const progress = useScrollProgress();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <motion.div

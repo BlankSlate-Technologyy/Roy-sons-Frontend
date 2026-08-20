@@ -103,7 +103,7 @@
     font-family: var(--font-cormorant), Georgia, serif;
   }
 
-  body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) {
+  body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) {
     background-color: #101518 !important;
     color: #C6A15A !important;
   }
@@ -111,7 +111,7 @@
 
 /* --- Roy Sons Premium Charcoal & Champagne Gold Theme Engine --- */
 
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) {
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) {
 
   /* Charcoal Backgrounds */
   &,
@@ -394,7 +394,7 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
 }
 
 /* ── CTA Button: Hover state — gold fill + charcoal text ── */
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) .rs-cta-btn:hover {
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) .rs-cta-btn:hover {
   background-color: #C6A15A !important;
   background-image: none !important;
   background-clip: unset !important;
@@ -402,9 +402,9 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   border-color: #C6A15A !important;
 }
 
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) .rs-cta-btn:hover span,
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) .rs-cta-btn:hover svg,
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme) .rs-cta-btn:hover * {
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) .rs-cta-btn:hover span,
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) .rs-cta-btn:hover svg,
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) .rs-cta-btn:hover * {
   background-image: none !important;
   background-clip: unset !important;
   -webkit-background-clip: unset !important;
@@ -441,4 +441,107 @@ body.roys-roys-theme p,
 body.roys-roys-theme span,
 body.roys-roys-theme li {
   text-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   RESET FOR ROYS, VETVAC & BIOMAX THEMES
+   Allows inline styles and classes to work properly
+───────────────────────────────────────────── */
+body.roys-roys-theme a,
+body.roys-roys-theme button,
+body.roys-roys-theme label,
+body.roys-roys-theme h1,
+body.roys-roys-theme h2,
+body.roys-roys-theme h3,
+body.roys-roys-theme h4,
+body.roys-roys-theme h5,
+body.roys-roys-theme h6,
+body.roys-roys-theme p,
+body.roys-roys-theme span,
+body.roys-roys-theme li,
+body.vetvac-pharma-theme a,
+body.vetvac-pharma-theme button,
+body.vetvac-pharma-theme label,
+body.vetvac-pharma-theme h1,
+body.vetvac-pharma-theme h2,
+body.vetvac-pharma-theme h3,
+body.vetvac-pharma-theme h4,
+body.vetvac-pharma-theme h5,
+body.vetvac-pharma-theme h6,
+body.vetvac-pharma-theme p,
+body.vetvac-pharma-theme span,
+body.vetvac-pharma-theme li,
+body.biomax-theme a,
+body.biomax-theme button,
+body.biomax-theme label,
+body.biomax-theme h1,
+body.biomax-theme h2,
+body.biomax-theme h3,
+body.biomax-theme h4,
+body.biomax-theme h5,
+body.biomax-theme h6,
+body.biomax-theme p,
+body.biomax-theme span,
+body.biomax-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   VET VAC PHARMA FOOTER — ALWAYS WHITE TEXT
+───────────────────────────────────────────── */
+body.vetvac-pharma-theme footer,
+body.vetvac-pharma-theme footer h5,
+body.vetvac-pharma-theme footer h6,
+body.vetvac-pharma-theme footer p,
+body.vetvac-pharma-theme footer span,
+body.vetvac-pharma-theme footer a,
+body.vetvac-pharma-theme footer li {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+body.vetvac-pharma-theme footer svg {
+  fill: none !important;
+  stroke: #FFFFFF !important;
+}
+
+body.vetvac-pharma-theme footer a:hover,
+body.vetvac-pharma-theme footer a:hover * {
+  color: #6FA8F0 !important;
+  -webkit-text-fill-color: #6FA8F0 !important;
+}
+
+body.vetvac-pharma-theme footer a:hover svg {
+  stroke: #6FA8F0 !important;
+}
+
+/* ─────────────────────────────────────────────
+   VET VAC PHARMA BUTTONS — ALWAYS WHITE TEXT
+───────────────────────────────────────────── */
+body.vetvac-pharma-theme .vetvac-primary-btn,
+body.vetvac-pharma-theme .vetvac-primary-btn *,
+body.vetvac-pharma-theme .vetvac-primary-btn:hover,
+body.vetvac-pharma-theme .vetvac-primary-btn:hover *,
+body.vetvac-pharma-theme a.vetvac-primary-btn,
+body.vetvac-pharma-theme a.vetvac-primary-btn *,
+body.vetvac-pharma-theme a.vetvac-primary-btn:hover,
+body.vetvac-pharma-theme a.vetvac-primary-btn:hover *,
+body.vetvac-pharma-theme button[type="submit"],
+body.vetvac-pharma-theme button[type="submit"] *,
+body.vetvac-pharma-theme button[type="submit"]:hover,
+body.vetvac-pharma-theme button[type="submit"]:hover *,
+body.vetvac-pharma-theme .text-white,
+body.vetvac-pharma-theme .text-white *,
+body.vetvac-pharma-theme .text-white:hover,
+body.vetvac-pharma-theme .text-white:hover * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+body.vetvac-pharma-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
 }

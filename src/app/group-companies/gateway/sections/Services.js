@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import * as Icons from "lucide-react";
 import { COLORS, SERVICES } from "../constants";
 import { Container, SectionHeading, Card } from "./Shared";
@@ -46,6 +47,17 @@ export default function Services() {
               </Card>
             );
           })}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/group-companies/gateway/services"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+            style={{ backgroundColor: COLORS.primary }}
+          >
+            <span>Explore All 8 Regulatory Services</span>
+            <Icons.ArrowRight size={16} />
+          </Link>
         </div>
       </Container>
     </section>

@@ -42,7 +42,7 @@ export default function Counter({
   }, [isInView, value, duration]);
 
   return (
-    <span ref={ref} className={className} style={style}>
+    <span ref={ref} className={className} style={style} suppressHydrationWarning>
       {displayValue}
     </span>
   );

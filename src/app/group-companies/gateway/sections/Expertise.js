@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { COLORS } from "../constants";
 import { Container, Button } from "./Shared";
@@ -61,9 +62,18 @@ export default function Expertise() {
             ))}
           </div>
 
-          <Button variant="primary" href="#contact">
-            Schedule a Consultation
-          </Button>
+          <div className="flex flex-wrap gap-4 items-center">
+            <Link
+              href="/group-companies/gateway/expertise"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+              style={{ backgroundColor: COLORS.primary }}
+            >
+              <span>Explore All 6 Expertise Areas</span>
+            </Link>
+            <Button variant="secondary" href="#contact">
+              Schedule a Consultation
+            </Button>
+          </div>
         </div>
 
         {/* Right Side: Image */}

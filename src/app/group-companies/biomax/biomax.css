@@ -1,0 +1,100 @@
+/* ─────────────────────────────────────────────────────────────
+   BIO MAX CORPORATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/biomax/biomax.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --biomax-primary: #165B7E;      /* BioMax Teal-Blue from logo */
+  --biomax-primary-dark: #0D3A52; /* Deep Navy Teal */
+  --biomax-accent: #1D906C;       /* DNA Helix Emerald Green */
+  --biomax-accent-dark: #136B50;  /* Deep Forest Green */
+  --biomax-accent-red: #7B1C2A;   /* Corporation Crimson Burgundy */
+  --biomax-muted: #1F4E68;        /* Slate Teal-Blue text */
+  --biomax-white: #ffffff;        /* Pure White */
+  --biomax-border: #D0E2EE;       /* Clean Soft Border */
+  --biomax-footer-bg: #0D2B3D;    /* Deep Brand Navy Teal */
+}
+
+body.biomax-theme,
+.biomax-theme,
+body.biomax-theme main,
+body.biomax-theme section,
+body.biomax-theme header,
+.biomax-theme main,
+.biomax-theme section,
+.biomax-theme header {
+  background-color: #ffffff !important;
+  color: #165B7E;
+}
+
+body.biomax-theme .cursor-pointer,
+.biomax-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Reset for BioMax components to inherit styles seamlessly */
+body.biomax-theme a,
+body.biomax-theme button,
+body.biomax-theme label,
+body.biomax-theme h1,
+body.biomax-theme h2,
+body.biomax-theme h3,
+body.biomax-theme h4,
+body.biomax-theme h5,
+body.biomax-theme h6,
+body.biomax-theme p,
+body.biomax-theme span,
+body.biomax-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* Interactive Card & Button Hover Effects */
+.biomax-card-hover {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+.biomax-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #1D906C !important;
+  box-shadow: 0 14px 30px -8px rgba(22, 91, 126, 0.18), 0 0 0 1px rgba(29, 144, 108, 0.25) !important;
+}
+
+.biomax-counter-box {
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+.biomax-counter-box:hover {
+  border-color: #1D906C !important;
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 10px 25px rgba(22, 91, 126, 0.16) !important;
+}
+
+/* Footer rules */
+body.biomax-theme footer,
+body.biomax-theme footer h5,
+body.biomax-theme footer h6,
+body.biomax-theme footer p,
+body.biomax-theme footer span,
+body.biomax-theme footer a,
+body.biomax-theme footer li {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+body.biomax-theme footer a:hover {
+  color: #1D906C !important;
+  -webkit-text-fill-color: #1D906C !important;
+}
+
+body.biomax-theme footer svg {
+  fill: none !important;
+  stroke: #FFFFFF !important;
+}
+
+body.biomax-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

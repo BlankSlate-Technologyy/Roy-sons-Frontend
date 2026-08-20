@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { COLORS } from "../constants";
 import { Container, Button } from "./Shared";
@@ -67,9 +68,18 @@ export default function About() {
             ))}
           </div>
 
-          <Button variant="primary" href="#services" className="w-fit">
-            Our Services
-          </Button>
+          <div className="flex flex-wrap gap-4 items-center">
+            <Link
+              href="/group-companies/gateway/about"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+              style={{ backgroundColor: COLORS.primary }}
+            >
+              <span>Learn More About Us</span>
+            </Link>
+            <Button variant="secondary" href="#services" className="w-fit">
+              Our Services
+            </Button>
+          </div>
         </div>
 
         {/* Right column: Collage layout of Images */}
