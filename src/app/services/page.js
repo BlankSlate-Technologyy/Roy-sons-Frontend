@@ -266,8 +266,7 @@ export default function ServicesPage() {
     setSubmitError("");
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
-      const response = await fetch(`${apiUrl}/service-query`, {
+      const response = await fetch("/api/service-query", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -293,7 +292,7 @@ export default function ServicesPage() {
       });
     } catch (err) {
       console.error("Submission error:", err);
-      setSubmitError(err.message || "Connection refused. Please ensure the backend is running.");
+      setSubmitError(err.message || "An error occurred while submitting your inquiry. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

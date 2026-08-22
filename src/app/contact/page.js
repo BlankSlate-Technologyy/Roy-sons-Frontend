@@ -36,8 +36,7 @@ export default function ContactPage() {
     setSubmitError("");
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
-      const response = await fetch(`${apiUrl}/contact`, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -62,7 +61,7 @@ export default function ContactPage() {
       });
     } catch (err) {
       console.error("Submission error:", err);
-      setSubmitError(err.message || "Connection refused. Please ensure the backend is running.");
+      setSubmitError(err.message || "An unexpected error occurred. Please try again or call our hotline.");
     } finally {
       setIsSubmitting(false);
     }

@@ -137,8 +137,7 @@ export default function CareersPage() {
     setSubmitError("");
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
-      const response = await fetch(`${apiUrl}/careers-apply`, {
+      const response = await fetch("/api/careers-apply", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -146,8 +145,9 @@ export default function CareersPage() {
         body: JSON.stringify(formData)
       });
 
-      if (!response.ok && response.status !== 404) {
-        const data = await response.json().catch(() => ({}));
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
         throw new Error(data.message || "Failed to submit application.");
       }
 
@@ -163,7 +163,7 @@ export default function CareersPage() {
       });
     } catch (err) {
       console.error("Submission error:", err);
-      setFormSubmitted(true);
+      setSubmitError(err.message || "Failed to submit application. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

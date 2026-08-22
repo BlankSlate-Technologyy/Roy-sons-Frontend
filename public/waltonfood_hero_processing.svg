@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="wmBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1B36" />
+      <stop offset="50%" stop-color="#134A2D" />
+      <stop offset="100%" stop-color="#1E6B43" />
+    </linearGradient>
+    <linearGradient id="ochreGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D89C46" />
+      <stop offset="50%" stop-color="#F3C677" />
+      <stop offset="100%" stop-color="#BC8330" />
+    </linearGradient>
+    <linearGradient id="plantGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#113322" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#081A12" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="wmGlow">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Deep Forest Green & Navy Gradient Background -->
+  <rect width="1200" height="675" fill="url(#wmBg)" />
+
+  <!-- Industrial Plant Grid & Automated Conveyor Trajectories -->
+  <g opacity="0.15" stroke="#D89C46" stroke-width="1.5" fill="none">
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="360" x2="1200" y2="360" />
+    <line x1="0" y1="480" x2="1200" y2="480" />
+    <line x1="200" y1="0" x2="200" y2="675" />
+    <line x1="400" y1="0" x2="400" y2="675" />
+    <line x1="600" y1="0" x2="600" y2="675" />
+    <line x1="800" y1="0" x2="800" y2="675" />
+    <line x1="1000" y1="0" x2="1000" y2="675" />
+  </g>
+
+  <!-- Distant High-Capacity Processing Silos Silhouettes -->
+  <g fill="#071710" opacity="0.5">
+    <rect x="130" y="210" width="100" height="290" rx="10" />
+    <rect x="250" y="170" width="125" height="330" rx="10" />
+    <rect x="850" y="190" width="115" height="310" rx="10" />
+    <rect x="980" y="160" width="135" height="340" rx="10" />
+  </g>
+
+  <!-- Central Automated Food Processing & IQF Cryogenic Console -->
+  <g transform="translate(300, 100)">
+    <!-- Main Console Card -->
+    <rect x="0" y="0" width="600" height="370" rx="16" fill="url(#plantGlass)" stroke="#D89C46" stroke-width="2.5" filter="url(#wmGlow)" />
+    <!-- Header Bar -->
+    <rect x="0" y="0" width="600" height="45" rx="16" fill="#0B1E15" />
+    <circle cx="25" cy="22" r="5" fill="#EF4444" />
+    <circle cx="45" cy="22" r="5" fill="#F59E0B" />
+    <circle cx="65" cy="22" r="5" fill="#10B981" />
+    <text x="95" y="27" fill="#F3C677" font-family="sans-serif" font-size="12" font-weight="bold">WALTON &amp; MORRIS FOODS // AUTOMATED FOOD PROCESSING TELEMETRY</text>
+
+    <!-- Sub-Dashboard 1: IQF Flash Freezing & Thermal Profile (Left) -->
+    <g transform="translate(25, 65)">
+      <rect width="260" height="155" rx="10" fill="#06140D" stroke="#1E6B43" stroke-width="1.5" />
+      <text x="15" y="24" fill="#F3C677" font-family="sans-serif" font-size="11" font-weight="bold">IQF CRYOGENIC FREEZING TUNNEL</text>
+      <!-- Cryogenic Wave Graph -->
+      <line x1="25" y1="130" x2="235" y2="130" stroke="#134A2D" stroke-width="1" />
+      <line x1="25" y1="40" x2="25" y2="130" stroke="#134A2D" stroke-width="1" />
+      <!-- Sub-zero freeze curve -->
+      <path d="M 25,50 Q 70,120 120,120 T 225,120" fill="none" stroke="#38BDF8" stroke-width="2.5" />
+      <circle cx="120" cy="120" r="4" fill="#38BDF8" />
+      <circle cx="225" cy="120" r="5" fill="#10B981" />
+      <text x="145" y="110" fill="#38BDF8" font-family="sans-serif" font-size="10" font-weight="bold">-38.5°C CRYO IQF</text>
+      <text x="35" y="65" fill="#E2E8F0" font-family="sans-serif" font-size="9.5">Flash Freeze Tunnel #2 Active</text>
+    </g>
+
+    <!-- Sub-Dashboard 2: Automated Production Lines Throughput (Right) -->
+    <g transform="translate(310, 65)">
+      <rect width="265" height="155" rx="10" fill="#06140D" stroke="#1E6B43" stroke-width="1.5" />
+      <text x="15" y="24" fill="#F3C677" font-family="sans-serif" font-size="11" font-weight="bold">LINE THROUGHPUT (UNITS / HR)</text>
+      <!-- Production Bar Charts -->
+      <g transform="translate(15, 38)">
+        <text x="0" y="12" fill="#E2E8F0" font-family="sans-serif" font-size="9">IQF Veg / Fries</text>
+        <rect x="95" y="3" width="110" height="12" rx="3" fill="#D89C46" />
+        <text x="215" y="13" fill="#F3C677" font-family="sans-serif" font-size="9" font-weight="bold">12K/hr</text>
+        
+        <text x="0" y="34" fill="#E2E8F0" font-family="sans-serif" font-size="9">Ready Meals</text>
+        <rect x="95" y="25" width="85" height="12" rx="3" fill="#10B981" />
+        <text x="190" y="35" fill="#10B981" font-family="sans-serif" font-size="9" font-weight="bold">8.5K/hr</text>
+
+        <text x="0" y="56" fill="#E2E8F0" font-family="sans-serif" font-size="9">UHT Dairy</text>
+        <rect x="95" y="47" width="125" height="12" rx="3" fill="#38BDF8" />
+        <text x="230" y="57" fill="#38BDF8" font-family="sans-serif" font-size="9" font-weight="bold">16K/hr</text>
+
+        <text x="0" y="78" fill="#E2E8F0" font-family="sans-serif" font-size="9">Bakery Lines</text>
+        <rect x="95" y="69" width="100" height="12" rx="3" fill="#EC4899" />
+        <text x="205" y="79" fill="#EC4899" font-family="sans-serif" font-size="9" font-weight="bold">10K/hr</text>
+      </g>
+    </g>
+
+    <!-- Bottom Manufacturing Telemetry Log -->
+    <g transform="translate(25, 235)">
+      <rect width="550" height="115" rx="10" fill="#040D09" stroke="#1E6B43" stroke-width="1.5" />
+      <text x="15" y="25" fill="#F3C677" font-family="monospace" font-size="11">&gt; walton_foods.process_batch(product=&quot;IQF_Crispy_Fries&quot;, volume=&quot;45 Tons&quot;, status=&quot;SEALED&quot;)</text>
+      <text x="15" y="48" fill="#10B981" font-family="monospace" font-size="11">&gt; retort_pouch_sterilization.check_f0_val(target=&quot;F0 &gt; 6.0&quot;, result=&quot;PASSED_STERILE&quot;)</text>
+      <text x="15" y="71" fill="#E2E8F0" font-family="monospace" font-size="11">&gt; private_label_packaging.sync_conveyors(speed=&quot;180 packs/min&quot;, leak_test=&quot;0.0% FAILS&quot;)</text>
+      <text x="15" y="94" fill="#38BDF8" font-family="monospace" font-size="11">&gt; [OK] 120,000 TONS ANNUAL CAPACITY // EXPORTING TO 25+ COUNTRIES WORLDWIDE</text>
+    </g>
+  </g>
+
+  <!-- Left Floating ISO 22000 & Export Quality Badge -->
+  <g transform="translate(90, 180)">
+    <rect width="180" height="240" rx="16" fill="#0D2418" stroke="#D89C46" stroke-width="2" filter="url(#wmGlow)" />
+    <!-- Wheat & Gear Emblem Graphic -->
+    <g transform="translate(90, 80)">
+      <!-- Gear -->
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#D89C46" stroke-width="3" stroke-dasharray="6,4" />
+      <!-- Wheat Sheaf Stalks -->
+      <path d="M0,25 C-15,5 -15,-20 0,-30 C15,-20 15,5 0,25" fill="#1E6B43" stroke="#F3C677" stroke-width="2" />
+      <circle cx="0" cy="-10" r="4" fill="#D89C46" />
+      <circle cx="-5" cy="0" r="3" fill="#D89C46" />
+      <circle cx="5" cy="0" r="3" fill="#D89C46" />
+    </g>
+    <text x="90" y="165" fill="#E2E8F0" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">ISO 22000 &amp; HACCP</text>
+    <text x="90" y="182" fill="#F3C677" font-family="sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">CERTIFIED PLANT</text>
+    <text x="90" y="205" fill="#94A3B8" font-family="sans-serif" font-size="9" text-anchor="middle">100% Halal Verified</text>
+  </g>
+
+  <!-- Right Floating Global Export & Capacity Emblem -->
+  <g transform="translate(930, 180)">
+    <rect width="190" height="240" rx="16" fill="#0D2418" stroke="#D89C46" stroke-width="2" filter="url(#wmGlow)" />
+    <!-- Globe / Container Emblem -->
+    <g transform="translate(95, 80)">
+      <circle cx="0" cy="0" r="26" fill="#134A2D" stroke="#D89C46" stroke-width="2" />
+      <!-- Latitude / Longitude arcs -->
+      <ellipse cx="0" cy="0" rx="26" ry="10" fill="none" stroke="#D89C46" stroke-width="1.5" />
+      <ellipse cx="0" cy="0" rx="12" ry="26" fill="none" stroke="#D89C46" stroke-width="1.5" />
+    </g>
+    <text x="95" y="165" fill="#E2E8F0" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">120,000 TONS</text>
+    <text x="95" y="182" fill="#F3C677" font-family="sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">ANNUAL CAPACITY</text>
+    <text x="95" y="205" fill="#94A3B8" font-family="sans-serif" font-size="9" text-anchor="middle">Exporting to 25+ Nations</text>
+  </g>
+
+  <!-- Top Floating Header Badge -->
+  <g transform="translate(60, 45)">
+    <rect width="470" height="65" rx="16" fill="#0D2418" stroke="#D89C46" stroke-width="2" />
+    <circle cx="36" cy="32.5" r="14" fill="#D89C46" />
+    <text x="64" y="29" fill="#F3C677" font-family="sans-serif" font-size="13" font-weight="bold">WALTON &amp; MORRIS FOODS</text>
+    <text x="64" y="47" fill="#F4F8F5" font-family="sans-serif" font-size="10.5">Food Processing · Frozen Foods (IQF) · FMCG Private Label</text>
+  </g>
+</svg>

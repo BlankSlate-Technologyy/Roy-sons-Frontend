@@ -234,8 +234,7 @@ export default function AboutPage() {
     setSubmitError("");
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
-      const response = await fetch(`${apiUrl}/consultation`, {
+      const response = await fetch("/api/consultation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -259,7 +258,7 @@ export default function AboutPage() {
       });
     } catch (err) {
       console.error("Submission error:", err);
-      setSubmitError(err.message || "Connection refused. Please ensure the backend is running.");
+      setSubmitError(err.message || "An error occurred while submitting your consultation request. Please try again.");
     } finally {
       setIsSubmitting(false);
     }

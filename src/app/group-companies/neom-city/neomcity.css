@@ -1,0 +1,80 @@
+/* ─────────────────────────────────────────────────────────────
+   NEOM CITY CORPORATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/neom-city/neomcity.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --nc-navy: #0A2540;          /* Deep Smart Navy */
+  --nc-navy-dark: #05172A;
+  --nc-teal: #008080;          /* Modern Teal / Cyan */
+  --nc-teal-hover: #006666;
+  --nc-emerald: #10B981;       /* Clean Emerald Green */
+  --nc-white: #ffffff;
+  --nc-bg-light: #F4F7F6;      /* Clean Light Gray/Teal Tint Background */
+  --nc-border: #E2E8F0;
+  --nc-text-muted: #475569;
+  --nc-text-light: #64748B;
+}
+
+body.neom-city-theme,
+body.neom-city-corp-theme,
+.neom-city-theme,
+.neom-city-corp-theme,
+body.neom-city-theme main,
+body.neom-city-theme section,
+body.neom-city-theme header,
+.neom-city-theme main,
+.neom-city-theme section,
+.neom-city-theme header {
+  background-color: #ffffff !important;
+  color: #475569;
+}
+
+body.neom-city-theme .cursor-pointer,
+.neom-city-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.neom-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.neom-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #008080 !important;
+  box-shadow: 0 16px 32px -8px rgba(10, 37, 64, 0.16), 0 0 0 1px rgba(0, 128, 128, 0.25) !important;
+}
+
+/* Counter box */
+.neom-counter-box {
+  transition: all 0.3s ease !important;
+}
+.neom-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #008080 !important;
+  box-shadow: 0 10px 25px rgba(10, 37, 64, 0.1) !important;
+}
+
+/* Reset for Neom City Corporation components */
+body.neom-city-theme a,
+body.neom-city-theme button,
+body.neom-city-theme label,
+body.neom-city-theme h1,
+body.neom-city-theme h2,
+body.neom-city-theme h3,
+body.neom-city-theme h4,
+body.neom-city-theme h5,
+body.neom-city-theme h6,
+body.neom-city-theme p,
+body.neom-city-theme span,
+body.neom-city-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.neom-city-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

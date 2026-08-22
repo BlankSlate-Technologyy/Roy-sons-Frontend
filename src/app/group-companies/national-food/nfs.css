@@ -1,0 +1,83 @@
+/* ─────────────────────────────────────────────────────────────
+   NATIONAL FOOD SERVICES (NFS) — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/national-food/nfs.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --nfs-maroon: #6B0F24;          /* Official NFS Deep Maroon Burgundy */
+  --nfs-maroon-dark: #4F0918;
+  --nfs-crimson: #8C1832;          /* Crimson Accent */
+  --nfs-crimson-hover: #A81E3D;
+  --nfs-gold: #C5A059;             /* Warm Gold Accent */
+  --nfs-gold-hover: #A6823B;
+  --nfs-white: #ffffff;
+  --nfs-bg-light: #FAF5F6;         /* Clean Light Maroon/Cream Tint */
+  --nfs-border: #EAD6DB;
+  --nfs-text-muted: #4E5456;
+  --nfs-text-light: #70777A;
+}
+
+body.national-food-theme,
+body.nfs-food-theme,
+body.nfs-theme,
+.national-food-theme,
+.nfs-food-theme,
+.nfs-theme,
+body.national-food-theme main,
+body.national-food-theme section,
+body.national-food-theme header,
+.national-food-theme main,
+.national-food-theme section,
+.national-food-theme header {
+  background-color: #ffffff !important;
+  color: #4E5456;
+}
+
+body.national-food-theme .cursor-pointer,
+.national-food-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.nfs-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.nfs-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #8C1832 !important;
+  box-shadow: 0 16px 32px -8px rgba(107, 15, 36, 0.16), 0 0 0 1px rgba(140, 24, 50, 0.25) !important;
+}
+
+/* Counter box */
+.nfs-counter-box {
+  transition: all 0.3s ease !important;
+}
+.nfs-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #8C1832 !important;
+  box-shadow: 0 10px 25px rgba(107, 15, 36, 0.1) !important;
+}
+
+/* Reset for National Food components */
+body.national-food-theme a,
+body.national-food-theme button,
+body.national-food-theme label,
+body.national-food-theme h1,
+body.national-food-theme h2,
+body.national-food-theme h3,
+body.national-food-theme h4,
+body.national-food-theme h5,
+body.national-food-theme h6,
+body.national-food-theme p,
+body.national-food-theme span,
+body.national-food-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.national-food-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

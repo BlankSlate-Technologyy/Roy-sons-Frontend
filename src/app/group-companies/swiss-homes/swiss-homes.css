@@ -1,0 +1,77 @@
+/* ─────────────────────────────────────────────────────────────
+   SWISS HOMES REAL ESTATE & HOUSING — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/swiss-homes/swiss-homes.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --swiss-red: #B01B2E;        /* Deep Swiss Red */
+  --swiss-red-hover: #8E1524;
+  --swiss-red-light: #FDF2F3;
+  --swiss-charcoal: #2B2B2B;   /* Swiss Charcoal */
+  --swiss-white: #ffffff;
+  --swiss-offwhite: #F8F8F8;
+  --swiss-border: #E8E8E8;
+  --swiss-text-muted: #5A5A5A;
+  --swiss-text-light: #8A8A8A;
+}
+
+body.swiss-homes-theme,
+.swiss-homes-theme,
+body.swiss-homes-theme main,
+body.swiss-homes-theme section,
+body.swiss-homes-theme header,
+.swiss-homes-theme main,
+.swiss-homes-theme section,
+.swiss-homes-theme header {
+  background-color: #ffffff !important;
+  color: #2B2B2B;
+}
+
+body.swiss-homes-theme .cursor-pointer,
+.swiss-homes-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.swiss-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.swiss-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #B01B2E !important;
+  box-shadow: 0 16px 32px -8px rgba(176, 27, 46, 0.14), 0 0 0 1px rgba(176, 27, 46, 0.25) !important;
+}
+
+/* Counter box */
+.swiss-counter-box {
+  transition: all 0.3s ease !important;
+}
+.swiss-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #B01B2E !important;
+  box-shadow: 0 10px 25px rgba(176, 27, 46, 0.1) !important;
+}
+
+/* Reset for Swiss Homes components */
+body.swiss-homes-theme a,
+body.swiss-homes-theme button,
+body.swiss-homes-theme label,
+body.swiss-homes-theme h1,
+body.swiss-homes-theme h2,
+body.swiss-homes-theme h3,
+body.swiss-homes-theme h4,
+body.swiss-homes-theme h5,
+body.swiss-homes-theme h6,
+body.swiss-homes-theme p,
+body.swiss-homes-theme span,
+body.swiss-homes-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.swiss-homes-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

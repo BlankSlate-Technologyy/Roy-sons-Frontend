@@ -175,54 +175,6 @@ const SOCIAL_ICONS = [Facebook, Linkedin, Twitter, Youtube];
 
 export default function BiomaxQualityPage() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    organization: "",
-    inquiryType: "Quality Assurance & Compliance",
-    message: "",
-  });
-  const [formStatus, setFormStatus] = useState(null);
-
-  const handleFormChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    setFormStatus("sending");
-    try {
-      const res = await fetch("/group-companies/biomax/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          company: formData.organization,
-          email: formData.email,
-          phone: formData.phone,
-          subject: `QA Inquiry: ${formData.inquiryType}`,
-          message: `Type: ${formData.inquiryType} | Organization: ${formData.organization || "N/A"} | Inquiry: ${formData.message}`,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to submit request.");
-      }
-      setFormStatus("sent");
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        organization: "",
-        inquiryType: "Quality Assurance & Compliance",
-        message: "",
-      });
-    } catch (err) {
-      alert(err.message || "Failed to submit inquiry.");
-      setFormStatus(null);
-    }
-  };
 
   const scrollToSection = (id) => {
     const el = document.getElementById(id);

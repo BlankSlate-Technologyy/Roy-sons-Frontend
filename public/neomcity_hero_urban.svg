@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="neomSky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05172A" />
+      <stop offset="60%" stop-color="#0A2540" />
+      <stop offset="100%" stop-color="#0F3B5F" />
+    </linearGradient>
+    <linearGradient id="tealGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#008080" />
+      <stop offset="50%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="smartGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#082038" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#041220" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="neomGlow">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Deep Smart Navy Sky Background -->
+  <rect width="1200" height="675" fill="url(#neomSky)" />
+
+  <!-- Digital City Mesh & GIS Spatial Coordinate Overlay -->
+  <g opacity="0.16" stroke="#008080" stroke-width="1.5" fill="none">
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="360" x2="1200" y2="360" />
+    <line x1="0" y1="480" x2="1200" y2="480" />
+    <line x1="200" y1="0" x2="200" y2="675" />
+    <line x1="400" y1="0" x2="400" y2="675" />
+    <line x1="600" y1="0" x2="600" y2="675" />
+    <line x1="800" y1="0" x2="800" y2="675" />
+    <line x1="1000" y1="0" x2="1000" y2="675" />
+  </g>
+
+  <!-- Futuristic High-Rise City Skyline Silhouettes -->
+  <g fill="#06182B" opacity="0.6">
+    <polygon points="100,500 100,240 160,200 220,240 220,500" />
+    <rect x="240" y="160" width="130" height="340" rx="6" />
+    <polygon points="390,500 390,130 460,90 530,130 530,500" />
+    <rect x="850" y="150" width="120" height="350" rx="6" />
+    <polygon points="990,500 990,180 1060,140 1130,180 1130,500" />
+  </g>
+
+  <!-- Central Smart City Command & Urban Telemetry Console -->
+  <g transform="translate(300, 100)">
+    <!-- Main Board Glass Screen -->
+    <rect x="0" y="0" width="600" height="370" rx="16" fill="url(#smartGlass)" stroke="#008080" stroke-width="2.5" filter="url(#neomGlow)" />
+    <!-- Header Bar -->
+    <rect x="0" y="0" width="600" height="45" rx="16" fill="#041220" />
+    <circle cx="25" cy="22" r="5" fill="#EF4444" />
+    <circle cx="45" cy="22" r="5" fill="#F59E0B" />
+    <circle cx="65" cy="22" r="5" fill="#10B981" />
+    <text x="95" y="27" fill="#38BDF8" font-family="sans-serif" font-size="12" font-weight="bold">NEOM CITY CORPORATION // URBAN OS &amp; DIGITAL TWIN PLATFORM</text>
+
+    <!-- Sub-Dashboard 1: Renewable Microgrid & Energy Telemetry (Left) -->
+    <g transform="translate(25, 65)">
+      <rect width="260" height="155" rx="10" fill="#051525" stroke="#008080" stroke-width="1.5" />
+      <text x="15" y="24" fill="#38BDF8" font-family="sans-serif" font-size="11" font-weight="bold">CLEAN ENERGY &amp; SMART GRID (MW)</text>
+      <!-- Grid Telemetry Line -->
+      <line x1="25" y1="130" x2="235" y2="130" stroke="#0F3B5F" stroke-width="1" />
+      <line x1="25" y1="40" x2="25" y2="130" stroke="#0F3B5F" stroke-width="1" />
+      <!-- Area chart -->
+      <polygon points="25,120 60,95 100,105 140,70 180,55 225,40 225,130 25,130" fill="#10B981" fill-opacity="0.25" />
+      <polyline points="25,120 60,95 100,105 140,70 180,55 225,40" fill="none" stroke="#10B981" stroke-width="2.5" />
+      <circle cx="60" cy="95" r="3.5" fill="#10B981" />
+      <circle cx="100" cy="105" r="3.5" fill="#10B981" />
+      <circle cx="140" cy="70" r="3.5" fill="#10B981" />
+      <circle cx="180" cy="55" r="3.5" fill="#10B981" />
+      <circle cx="225" cy="40" r="5" fill="#38BDF8" />
+      <text x="165" y="35" fill="#38BDF8" font-family="sans-serif" font-size="10" font-weight="bold">98.4% SOLAR</text>
+    </g>
+
+    <!-- Sub-Dashboard 2: Smart Traffic & Urban Transit Flow (Right) -->
+    <g transform="translate(310, 65)">
+      <rect width="265" height="155" rx="10" fill="#051525" stroke="#008080" stroke-width="1.5" />
+      <text x="15" y="24" fill="#38BDF8" font-family="sans-serif" font-size="11" font-weight="bold">SMART MOBILITY &amp; TRANSIT TELEMETRY</text>
+      <!-- Telemetry Bars -->
+      <g transform="translate(15, 38)">
+        <text x="0" y="12" fill="#E2E8F0" font-family="sans-serif" font-size="9">Metro Rail</text>
+        <rect x="95" y="3" width="115" height="12" rx="3" fill="#008080" />
+        <text x="220" y="13" fill="#38BDF8" font-family="sans-serif" font-size="9" font-weight="bold">99.8%</text>
+        
+        <text x="0" y="34" fill="#E2E8F0" font-family="sans-serif" font-size="9">Autonomous EV</text>
+        <rect x="95" y="25" width="100" height="12" rx="3" fill="#10B981" />
+        <text x="205" y="35" fill="#10B981" font-family="sans-serif" font-size="9" font-weight="bold">94.2%</text>
+
+        <text x="0" y="56" fill="#E2E8F0" font-family="sans-serif" font-size="9">Smart Grids</text>
+        <rect x="95" y="47" width="130" height="12" rx="3" fill="#38BDF8" />
+        <text x="235" y="57" fill="#38BDF8" font-family="sans-serif" font-size="9" font-weight="bold">100%</text>
+
+        <text x="0" y="78" fill="#E2E8F0" font-family="sans-serif" font-size="9">IoT Sensor Hub</text>
+        <rect x="95" y="69" width="120" height="12" rx="3" fill="#EC4899" />
+        <text x="225" y="79" fill="#EC4899" font-family="sans-serif" font-size="9" font-weight="bold">500K+</text>
+      </g>
+    </g>
+
+    <!-- Bottom Digital Twin Log -->
+    <g transform="translate(25, 235)">
+      <rect width="550" height="115" rx="10" fill="#030C16" stroke="#008080" stroke-width="1.5" />
+      <text x="15" y="25" fill="#38BDF8" font-family="monospace" font-size="11">&gt; neom_digital_twin.synchronize(sensors=500000, latency=&quot;4.2ms&quot;, status=&quot;OPTIMAL&quot;)</text>
+      <text x="15" y="48" fill="#10B981" font-family="monospace" font-size="11">&gt; bim_structural_mesh.verify_leed_platinum(carbon_cut=&quot;65%&quot;, compliance=&quot;VERIFIED&quot;)</text>
+      <text x="15" y="71" fill="#E2E8F0" font-family="monospace" font-size="11">&gt; smart_mobility.optimize_autonomous_corridors(traffic_flow=&quot;ZERO_CONGESTION&quot;)</text>
+      <text x="15" y="94" fill="#38BDF8" font-family="monospace" font-size="11">&gt; [OK] NEOM CITY MASTER DEVELOPMENTS SYNCHRONIZED ACROSS 20+ METROPOLISES</text>
+    </g>
+  </g>
+
+  <!-- Left Floating LEED Platinum & Smart Infrastructure Badge -->
+  <g transform="translate(90, 180)">
+    <rect width="180" height="240" rx="16" fill="#061B2E" stroke="#008080" stroke-width="2" filter="url(#neomGlow)" />
+    <!-- Building & Sprout Icon -->
+    <g transform="translate(90, 80)">
+      <rect x="-25" y="-20" width="50" height="45" rx="4" fill="#0A2540" stroke="#008080" stroke-width="2" />
+      <!-- Windows -->
+      <rect x="-18" y="-12" width="8" height="8" rx="1" fill="#38BDF8" />
+      <rect x="-5" y="-12" width="8" height="8" rx="1" fill="#38BDF8" />
+      <rect x="8" y="-12" width="8" height="8" rx="1" fill="#38BDF8" />
+      <rect x="-18" y="2" width="8" height="8" rx="1" fill="#38BDF8" />
+      <rect x="-5" y="2" width="8" height="8" rx="1" fill="#38BDF8" />
+      <rect x="8" y="2" width="8" height="8" rx="1" fill="#38BDF8" />
+      <!-- Sprout -->
+      <path d="M0,25 Q-15,10 0,-5 Q15,10 0,25" fill="#10B981" />
+    </g>
+    <text x="90" y="165" fill="#E2E8F0" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">LEED PLATINUM</text>
+    <text x="90" y="182" fill="#10B981" font-family="sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">SUSTAINABLE CITIES</text>
+    <text x="90" y="205" fill="#94A3B8" font-family="sans-serif" font-size="9" text-anchor="middle">Smart Infrastructure</text>
+  </g>
+
+  <!-- Right Floating 25+ Years Experience & Projects Emblem -->
+  <g transform="translate(930, 180)">
+    <rect width="190" height="240" rx="16" fill="#061B2E" stroke="#008080" stroke-width="2" filter="url(#neomGlow)" />
+    <!-- Compass / Geometric Node Icon -->
+    <g transform="translate(95, 80)">
+      <circle cx="0" cy="0" r="26" fill="#0A2540" stroke="#008080" stroke-width="2" />
+      <polygon points="0,-20 6,-4 20,0 6,4 0,20 -6,4 -20,0 -6,-4" fill="#38BDF8" />
+      <circle cx="0" cy="0" r="4" fill="#10B981" />
+    </g>
+    <text x="95" y="165" fill="#E2E8F0" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">150+ SMART</text>
+    <text x="95" y="182" fill="#38BDF8" font-family="sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">MEGA DEVELOPMENTS</text>
+    <text x="95" y="205" fill="#94A3B8" font-family="sans-serif" font-size="9" text-anchor="middle">20+ Cities Delivered</text>
+  </g>
+
+  <!-- Top Floating Header Badge -->
+  <g transform="translate(60, 45)">
+    <rect width="470" height="65" rx="16" fill="#061B2E" stroke="#008080" stroke-width="2" />
+    <circle cx="36" cy="32.5" r="14" fill="#008080" />
+    <text x="64" y="29" fill="#38BDF8" font-family="sans-serif" font-size="13" font-weight="bold">NEOM CITY CORPORATION</text>
+    <text x="64" y="47" fill="#F4F7F6" font-family="sans-serif" font-size="10.5">Smart Cities · Urban Infrastructure · Digital City Solutions</text>
+  </g>
+</svg>

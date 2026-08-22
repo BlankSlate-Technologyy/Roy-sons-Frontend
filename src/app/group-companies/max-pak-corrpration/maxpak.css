@@ -1,0 +1,78 @@
+/* ─────────────────────────────────────────────────────────────
+   MAX PAK CORPORATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/max-pak-corrpration/maxpak.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --mp-navy: #1B365D;          /* Primary Deep Navy Shield */
+  --mp-navy-dark: #0F172A;
+  --mp-green: #16A34A;         /* Emerald Green Accent */
+  --mp-green-hover: #15803D;
+  --mp-navy-light: #EDF2F7;
+  --mp-white: #ffffff;
+  --mp-off-white: #F8FAFC;
+  --mp-border: #E2E8F0;
+  --mp-text-muted: #475569;
+  --mp-text-light: #64748B;
+}
+
+body.max-pak-theme,
+.max-pak-theme,
+body.max-pak-theme main,
+body.max-pak-theme section,
+body.max-pak-theme header,
+.max-pak-theme main,
+.max-pak-theme section,
+.max-pak-theme header {
+  background-color: #ffffff !important;
+  color: #475569;
+}
+
+body.max-pak-theme .cursor-pointer,
+.max-pak-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.mp-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.mp-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #16A34A !important;
+  box-shadow: 0 16px 32px -8px rgba(27, 54, 93, 0.16), 0 0 0 1px rgba(22, 163, 74, 0.25) !important;
+}
+
+/* Counter box */
+.mp-counter-box {
+  transition: all 0.3s ease !important;
+}
+.mp-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #16A34A !important;
+  box-shadow: 0 10px 25px rgba(27, 54, 93, 0.1) !important;
+}
+
+/* Reset for Max Pak Corporation components */
+body.max-pak-theme a,
+body.max-pak-theme button,
+body.max-pak-theme label,
+body.max-pak-theme h1,
+body.max-pak-theme h2,
+body.max-pak-theme h3,
+body.max-pak-theme h4,
+body.max-pak-theme h5,
+body.max-pak-theme h6,
+body.max-pak-theme p,
+body.max-pak-theme span,
+body.max-pak-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.max-pak-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

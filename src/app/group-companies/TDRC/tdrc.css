@@ -1,0 +1,78 @@
+/* ─────────────────────────────────────────────────────────────
+   THAL DEVELOPMENT & RESEARCH CENTRE (TDRC) — DEDICATED THEME
+   Location: src/app/group-companies/TDRC/tdrc.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --tdrc-primary: #2E9E54;       /* Emerald Green */
+  --tdrc-primary-dark: #1F7A3E;
+  --tdrc-primary-light: #7BE0A0;
+  --tdrc-ink: #0E1F17;          /* Forest Ink */
+  --tdrc-ink-soft: #15301F;
+  --tdrc-white: #ffffff;
+  --tdrc-offwhite: #F5F9F6;
+  --tdrc-border: #E1E9E3;
+  --tdrc-text-muted: #3D4F44;
+  --tdrc-text-light: #6B7C71;
+}
+
+body.tdrc-theme,
+.tdrc-theme,
+body.tdrc-theme main,
+body.tdrc-theme section,
+body.tdrc-theme header,
+.tdrc-theme main,
+.tdrc-theme section,
+.tdrc-theme header {
+  background-color: #ffffff !important;
+  color: #0E1F17;
+}
+
+body.tdrc-theme .cursor-pointer,
+.tdrc-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.tdrc-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.tdrc-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #2E9E54 !important;
+  box-shadow: 0 16px 32px -8px rgba(46, 158, 84, 0.16), 0 0 0 1px rgba(46, 158, 84, 0.25) !important;
+}
+
+/* Counter box */
+.tdrc-counter-box {
+  transition: all 0.3s ease !important;
+}
+.tdrc-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #2E9E54 !important;
+  box-shadow: 0 10px 25px rgba(46, 158, 84, 0.1) !important;
+}
+
+/* Reset for TDRC components */
+body.tdrc-theme a,
+body.tdrc-theme button,
+body.tdrc-theme label,
+body.tdrc-theme h1,
+body.tdrc-theme h2,
+body.tdrc-theme h3,
+body.tdrc-theme h4,
+body.tdrc-theme h5,
+body.tdrc-theme h6,
+body.tdrc-theme p,
+body.tdrc-theme span,
+body.tdrc-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.tdrc-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

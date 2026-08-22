@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="woodBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#21140A" />
+      <stop offset="50%" stop-color="#3A2312" />
+      <stop offset="100%" stop-color="#5C3A21" />
+    </linearGradient>
+    <linearGradient id="amberGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D4A373" />
+      <stop offset="50%" stop-color="#F4C28D" />
+      <stop offset="100%" stop-color="#BA7A3E" />
+    </linearGradient>
+    <linearGradient id="woodStudioGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D1A0D" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#190E07" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="woodGlow">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Deep Warm Walnut & Mahogany Background -->
+  <rect width="1200" height="675" fill="url(#woodBg)" />
+
+  <!-- Wood Grain & Precision Architectural Joinery Grid -->
+  <g opacity="0.15" stroke="#D4A373" stroke-width="1.5" fill="none">
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="360" x2="1200" y2="360" />
+    <line x1="0" y1="480" x2="1200" y2="480" />
+    <line x1="200" y1="0" x2="200" y2="675" />
+    <line x1="400" y1="0" x2="400" y2="675" />
+    <line x1="600" y1="0" x2="600" y2="675" />
+    <line x1="800" y1="0" x2="800" y2="675" />
+    <line x1="1000" y1="0" x2="1000" y2="675" />
+  </g>
+
+  <!-- Distant Architectural Fluted Wood Wall & Ceiling Silhouettes -->
+  <g fill="#180C05" opacity="0.6">
+    <rect x="80" y="160" width="30" height="340" rx="3" />
+    <rect x="120" y="160" width="30" height="340" rx="3" />
+    <rect x="160" y="160" width="30" height="340" rx="3" />
+    <rect x="200" y="160" width="30" height="340" rx="3" />
+    <rect x="240" y="160" width="30" height="340" rx="3" />
+
+    <rect x="920" y="160" width="30" height="340" rx="3" />
+    <rect x="960" y="160" width="30" height="340" rx="3" />
+    <rect x="1000" y="160" width="30" height="340" rx="3" />
+    <rect x="1040" y="160" width="30" height="340" rx="3" />
+    <rect x="1080" y="160" width="30" height="340" rx="3" />
+  </g>
+
+  <!-- Central CNC 5-Axis Precision Machining & Joinery Console -->
+  <g transform="translate(300, 100)">
+    <!-- Main Studio Board Screen -->
+    <rect x="0" y="0" width="600" height="370" rx="16" fill="url(#woodStudioGlass)" stroke="#D4A373" stroke-width="2.5" filter="url(#woodGlow)" />
+    <!-- Header Bar -->
+    <rect x="0" y="0" width="600" height="45" rx="16" fill="#1A0D06" />
+    <circle cx="25" cy="22" r="5" fill="#EF4444" />
+    <circle cx="45" cy="22" r="5" fill="#F59E0B" />
+    <circle cx="65" cy="22" r="5" fill="#10B981" />
+    <text x="95" y="27" fill="#F4C28D" font-family="sans-serif" font-size="12" font-weight="bold">MAX WOOD CORPORATION // 5-AXIS CNC PRECISION WOOD ENGINEERING</text>
+
+    <!-- Sub-Dashboard 1: CNC Wood Milling & Dimensional Tolerance (Left) -->
+    <g transform="translate(25, 65)">
+      <rect width="260" height="155" rx="10" fill="#140A04" stroke="#5C3A21" stroke-width="1.5" />
+      <text x="15" y="24" fill="#F4C28D" font-family="sans-serif" font-size="11" font-weight="bold">CNC 5-AXIS MILLING PROFILE</text>
+      <!-- CAD Joinery Curve -->
+      <line x1="25" y1="130" x2="235" y2="130" stroke="#3A2312" stroke-width="1" />
+      <line x1="25" y1="40" x2="25" y2="130" stroke="#3A2312" stroke-width="1" />
+      <!-- Dovetail Joinery path -->
+      <path d="M 25,110 L 60,110 L 75,60 L 105,60 L 120,110 L 160,110 L 175,60 L 205,60 L 220,110" fill="none" stroke="#D4A373" stroke-width="2.5" />
+      <circle cx="75" cy="60" r="3.5" fill="#D4A373" />
+      <circle cx="105" cy="60" r="3.5" fill="#D4A373" />
+      <circle cx="175" cy="60" r="3.5" fill="#D4A373" />
+      <circle cx="205" cy="60" r="3.5" fill="#D4A373" />
+      <text x="135" y="45" fill="#10B981" font-family="sans-serif" font-size="10" font-weight="bold">±0.05mm TOLERANCE</text>
+    </g>
+
+    <!-- Sub-Dashboard 2: Timber Kiln Drying & Moisture Telemetry (Right) -->
+    <g transform="translate(310, 65)">
+      <rect width="265" height="155" rx="10" fill="#140A04" stroke="#5C3A21" stroke-width="1.5" />
+      <text x="15" y="24" fill="#F4C28D" font-family="sans-serif" font-size="11" font-weight="bold">TIMBER SPECIES &amp; MOISTURE (%)</text>
+      <!-- Species Telemetry Bars -->
+      <g transform="translate(15, 38)">
+        <text x="0" y="12" fill="#E2E8F0" font-family="sans-serif" font-size="9">Burma Teak</text>
+        <rect x="95" y="3" width="115" height="12" rx="3" fill="#D4A373" />
+        <text x="220" y="13" fill="#F4C28D" font-family="sans-serif" font-size="9" font-weight="bold">8.2% (Dry)</text>
+        
+        <text x="0" y="34" fill="#E2E8F0" font-family="sans-serif" font-size="9">American Walnut</text>
+        <rect x="95" y="25" width="105" height="12" rx="3" fill="#BA7A3E" />
+        <text x="210" y="35" fill="#BA7A3E" font-family="sans-serif" font-size="9" font-weight="bold">7.8% (Dry)</text>
+
+        <text x="0" y="56" fill="#E2E8F0" font-family="sans-serif" font-size="9">White Oak</text>
+        <rect x="95" y="47" width="125" height="12" rx="3" fill="#E6A15C" />
+        <text x="230" y="57" fill="#E6A15C" font-family="sans-serif" font-size="9" font-weight="bold">8.0% (Dry)</text>
+
+        <text x="0" y="78" fill="#E2E8F0" font-family="sans-serif" font-size="9">Rosewood / Sheesham</text>
+        <rect x="95" y="69" width="110" height="12" rx="3" fill="#10B981" />
+        <text x="215" y="79" fill="#10B981" font-family="sans-serif" font-size="9" font-weight="bold">8.5% (Dry)</text>
+      </g>
+    </g>
+
+    <!-- Bottom Woodcraft Telemetry Log -->
+    <g transform="translate(25, 235)">
+      <rect width="550" height="115" rx="10" fill="#0D0602" stroke="#5C3A21" stroke-width="1.5" />
+      <text x="15" y="25" fill="#F4C28D" font-family="monospace" font-size="11">&gt; cnc_spindle.execute_carving(tool=&quot;5-Axis Diamond Mill&quot;, feed=&quot;4500 RPM&quot;, status=&quot;ACTIVE&quot;)</text>
+      <text x="15" y="48" fill="#10B981" font-family="monospace" font-size="11">&gt; pu_lacquer_finishing.apply_multi_coat(sheen=&quot;15% Satin Matt&quot;, uv_cure=&quot;PASSED&quot;)</text>
+      <text x="15" y="71" fill="#E2E8F0" font-family="monospace" font-size="11">&gt; architectural_panelling.sync_acoustic_flutes(nrc_rating=&quot;0.85&quot;, fitment=&quot;PERFECT&quot;)</text>
+      <text x="15" y="94" fill="#D4A373" font-family="monospace" font-size="11">&gt; [OK] 1,500+ INTERIOR PROJECTS DELIVERED // LUXURY RESIDENTIAL &amp; COMMERCIAL</text>
+    </g>
+  </g>
+
+  <!-- Left Floating FSC Certified & Craftsmanship Badge -->
+  <g transform="translate(90, 180)">
+    <rect width="180" height="240" rx="16" fill="#1E0E06" stroke="#D4A373" stroke-width="2" filter="url(#woodGlow)" />
+    <!-- Sofa & Hammer Emblem Graphic -->
+    <g transform="translate(90, 80)">
+      <!-- Sofa icon -->
+      <rect x="-25" y="-15" width="50" height="35" rx="4" fill="#3A2312" stroke="#D4A373" stroke-width="2" />
+      <rect x="-22" y="-10" width="44" height="20" rx="2" fill="#5C3A21" />
+      <circle cx="-15" cy="22" r="3" fill="#D4A373" />
+      <circle cx="15" cy="22" r="3" fill="#D4A373" />
+      <!-- Small Leaf -->
+      <path d="M0,-25 Q-10,-35 0,-40 Q10,-35 0,-25" fill="#10B981" />
+    </g>
+    <text x="90" y="165" fill="#E2E8F0" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">FSC CERTIFIED</text>
+    <text x="90" y="182" fill="#F4C28D" font-family="sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">MASTER CRAFTSMANSHIP</text>
+    <text x="90" y="205" fill="#94A3B8" font-family="sans-serif" font-size="9" text-anchor="middle">Precision Wood Joinery</text>
+  </g>
+
+  <!-- Right Floating 1,500+ Projects Completed Emblem -->
+  <g transform="translate(930, 180)">
+    <rect width="190" height="240" rx="16" fill="#1E0E06" stroke="#D4A373" stroke-width="2" filter="url(#woodGlow)" />
+    <!-- Compass / Drafting Tool Icon -->
+    <g transform="translate(95, 80)">
+      <circle cx="0" cy="0" r="26" fill="#3A2312" stroke="#D4A373" stroke-width="2" />
+      <!-- Drafting Compass Arms -->
+      <line x1="-12" y1="-15" x2="0" y2="15" stroke="#D4A373" stroke-width="2.5" />
+      <line x1="12" y1="-15" x2="0" y2="15" stroke="#D4A373" stroke-width="2.5" />
+      <circle cx="0" cy="-15" r="4" fill="#F4C28D" />
+    </g>
+    <text x="95" y="165" fill="#E2E8F0" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">1,500+ PROJECTS</text>
+    <text x="95" y="182" fill="#F4C28D" font-family="sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">INTERIOR FITOUTS</text>
+    <text x="95" y="205" fill="#94A3B8" font-family="sans-serif" font-size="9" text-anchor="middle">30+ Cities Nationwide</text>
+  </g>
+
+  <!-- Top Floating Header Badge -->
+  <g transform="translate(60, 45)">
+    <rect width="470" height="65" rx="16" fill="#1E0E06" stroke="#D4A373" stroke-width="2" />
+    <circle cx="36" cy="32.5" r="14" fill="#D4A373" />
+    <text x="64" y="29" fill="#F4C28D" font-family="sans-serif" font-size="13" font-weight="bold">MAX WOOD CORPORATION</text>
+    <text x="64" y="47" fill="#FDFBF7" font-family="sans-serif" font-size="10.5">Custom Furniture · Turnkey Interiors · Architectural Woodwork</text>
+  </g>
+</svg>

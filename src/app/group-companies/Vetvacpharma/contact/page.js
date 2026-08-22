@@ -92,24 +92,32 @@ export default function ContactPage() {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMessage("");
     try {
-      const res = await fetch("/group-companies/Vetvacpharma/api/contact", {
+      const res = await fetch("/api/company-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          companySlug: "Vetvacpharma",
+          companyName: "Vetvac Pharma",
           fullName: form.fullName,
           company: form.company,
           email: form.email,
           phone: form.phone,
-          requirement: form.requirement,
-          subject: form.requirement,
+          subject: `Veterinary Inquiry: ${form.requirement}`,
           message: form.message,
+          additionalFields: {
+            company: form.company,
+            requirement: form.requirement,
+          },
         }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.success) {
         throw new Error(data.message || "Failed to submit message.");
       }
@@ -123,8 +131,8 @@ export default function ContactPage() {
         message: "",
       });
     } catch (err) {
-      alert(err.message || "Failed to send message.");
-      setStatus(null);
+      setErrorMessage(err.message || "Failed to send message. Please try again.");
+      setStatus("error");
     }
   };
 
@@ -375,7 +383,15 @@ export default function ContactPage() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <>
+                    {status === "error" && errorMessage && (
+                      <div className="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-start gap-3 text-rose-800 text-xs font-medium">
+                        <ShieldCheck size={18} className="text-rose-600 flex-shrink-0 mt-0.5" />
+                        <span>{errorMessage}</span>
+                      </div>
+                    )}
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
                         <label className="text-[12px] font-bold block mb-1.5" style={{ color: COLORS.green }}>
@@ -485,7 +501,8 @@ export default function ContactPage() {
                       )}
                     </button>
                   </form>
-                )}
+                </>
+              )}
               </div>
             </div>
           </div>

@@ -1,0 +1,80 @@
+/* ─────────────────────────────────────────────────────────────
+   SWISS FARMS DAIRY & LIVESTOCK — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/swiss-farm/swiss-farm.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --swiss-farm-primary: #1C522A;      /* Deep Forest Green */
+  --swiss-farm-dark: #123B1D;
+  --swiss-farm-light: #2A6B3D;
+  --swiss-farm-gold: #C5A059;       /* Warm Gold */
+  --swiss-farm-charcoal: #2A3439;
+  --swiss-farm-white: #ffffff;
+  --swiss-farm-offwhite: #F4F8F4;
+  --swiss-farm-border: #D6E5D7;
+  --swiss-farm-text-muted: #485E4E;
+  --swiss-farm-text-light: #6B8271;
+}
+
+body.swiss-farm-theme,
+.swiss-farm-theme,
+body.swiss-farms-theme,
+.swiss-farms-theme,
+body.swiss-farm-theme main,
+body.swiss-farm-theme section,
+body.swiss-farm-theme header,
+.swiss-farm-theme main,
+.swiss-farm-theme section,
+.swiss-farm-theme header {
+  background-color: #ffffff !important;
+  color: #1C522A;
+}
+
+body.swiss-farm-theme .cursor-pointer,
+.swiss-farm-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.swiss-farm-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.swiss-farm-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 16px 32px -8px rgba(28, 82, 42, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.25) !important;
+}
+
+/* Counter box */
+.swiss-farm-counter-box {
+  transition: all 0.3s ease !important;
+}
+.swiss-farm-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 10px 25px rgba(28, 82, 42, 0.1) !important;
+}
+
+/* Reset for Swiss Farm components */
+body.swiss-farm-theme a,
+body.swiss-farm-theme button,
+body.swiss-farm-theme label,
+body.swiss-farm-theme h1,
+body.swiss-farm-theme h2,
+body.swiss-farm-theme h3,
+body.swiss-farm-theme h4,
+body.swiss-farm-theme h5,
+body.swiss-farm-theme h6,
+body.swiss-farm-theme p,
+body.swiss-farm-theme span,
+body.swiss-farm-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.swiss-farm-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

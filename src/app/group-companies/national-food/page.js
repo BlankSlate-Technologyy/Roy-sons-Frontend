@@ -1,670 +1,205 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight, Award, Briefcase, TrendingUp, Handshake, Leaf, Target,
-  Settings, CheckCircle2, MapPin, Phone, MessageCircle, Mail, Plus, Minus,
-  Send, Wheat, Sprout, Droplet, Flame, Package, Carrot, Factory, Globe2,
-  ShieldCheck, Truck, Store, ShoppingCart, Building2, Hotel, UtensilsCrossed,
-  Boxes, Search, FlaskConical, Users2, Menu, X, ChevronLeft, ChevronRight,
+  Award,
+  Briefcase,
+  Building2,
+  CheckCircle2,
+  ChevronDown,
+  Clock,
+  Hotel,
+  Package,
+  Phone,
+  Search,
+  Send,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
+  Truck,
+  Users2,
+  UtensilsCrossed,
+  ArrowRight,
 } from "lucide-react";
-
-// ── Color System matching National Food Services (NFS) Logo ──
-const COLORS = {
-  maroon:       "#6B0F24", // Official NFS Shield Deep Maroon Burgundy
-  maroonDark:   "#4F0918",
-  crimson:      "#8C1832", // Official NFS Crimson Accent
-  crimsonHover: "#A81E3D",
-  charcoal:     "#2D3436", // Charcoal Gray for body text
-  white:        "#FFFFFF",
-  bgLight:      "#FAF5F6", // Soft cream/maroon-tinted background
-  border:       "#EAD6DB",
-  textMuted:    "#4E5456",
-  textLight:    "#70777A",
-};
-
-const HERO = {
-  badge: "Premier Institutional Catering & Food Supply Services",
-  headline: "National Food Services (NFS)",
-  subline:
-    "Delivering nutritious, high-quality, and hygienic food solutions for corporate, industrial, healthcare, educational, and government institutions. NFS combines culinary excellence, strict food safety standards, and efficient supply chain management.",
-  ctaPrimary: "Explore Services",
-  ctaSecondary: "Request Catering Quote",
-};
+import {
+  theme,
+  NFSNavbar,
+  NFSFooter,
+  SectionLabel,
+  SectionHeading,
+  AnimatedCounter,
+} from "./components/NFSShared";
 
 const STATS = [
-  { value: 25,      suffix: "+",          label: "Years of Culinary & Food Excellence" },
-  { value: 500,     suffix: "+",          label: "Institutional Catering Contracts" },
-  { value: 1000000, suffix: "+",          label: "Nutritious Meals Served Daily" },
-  { value: 350,     suffix: "+",          label: "Corporate & Hospital Clients" },
-  { value: 99.9,    suffix: "%",          label: "Food Safety & Quality Compliance" },
+  { icon: Award, value: "25+", label: "Years of Culinary &\nCatering Excellence" },
+  { icon: Building2, value: "500+", label: "Institutional &\nCorporate Contracts" },
+  { icon: UtensilsCrossed, value: "1000000+", label: "Nutritious Meals\nPrepared Daily" },
+  { icon: Users2, value: "350+", label: "Hospitals, Colleges &\nCorporate Clients" },
+  { icon: ShieldCheck, value: "99.9%", label: "HACCP Food Safety &\nHygiene Compliance" },
 ];
 
 const SERVICES = [
-  { icon: UtensilsCrossed, title: "Institutional & Corporate Catering", desc: "Customized daily meal programs and cafeteria management for corporate offices, factories, and institutions." },
-  { icon: Hotel,           title: "Hospital & Healthcare Nutrition",  desc: "Specialized, dietitian-approved meal preparation for hospital patients, staff, and medical facilities." },
-  { icon: Building2,       title: "Educational Food Services",         desc: "Hygienic, balanced, and nutritious dining services for schools, colleges, and university campuses." },
-  { icon: Truck,           title: "Food Supply Chain & Distribution",   desc: "Reliable logistics, temperature-controlled cold chain, and bulk food distribution for institutions." },
-  { icon: ShieldCheck,     title: "Quality Control & Hygiene Audits",   desc: "HACCP-certified food safety protocols, laboratory testing, and routine kitchen hygiene inspections." },
-  { icon: Boxes,           title: "Bulk Ingredient Procurement",        desc: "Sourcing premium agricultural commodities, grains, pulses, dairy, and fresh produce at scale." },
+  {
+    icon: UtensilsCrossed,
+    title: "Institutional & Corporate Catering",
+    desc: "Customized daily meal programs, cafeteria management, and executive boardroom dining for corporate campuses.",
+    href: "/group-companies/national-food/services#corporate-catering",
+    img: "/nfs_hero_catering.svg",
+  },
+  {
+    icon: Hotel,
+    title: "Hospital & Healthcare Nutrition",
+    desc: "Specialized, dietitian-approved therapeutic meal preparation for hospital in-patients, ICU wards, and medical staff.",
+    href: "/group-companies/national-food/services#healthcare-nutrition",
+    img: "/nfs_hero_catering.svg",
+  },
+  {
+    icon: Building2,
+    title: "Educational Food Services",
+    desc: "Hygienic, balanced, and nutritious dining services for schools, colleges, and university campus food courts.",
+    href: "/group-companies/national-food/services#educational-dining",
+    img: "/nfs_hero_catering.svg",
+  },
+  {
+    icon: Truck,
+    title: "Refrigerated Cold Chain & Distribution",
+    desc: "Reliable logistics with 48+ multi-temperature refrigerated trucks (+2°C to +4°C) ensuring farm-to-table freshness.",
+    href: "/group-companies/national-food/services#cold-chain-logistics",
+    img: "/nfs_hero_catering.svg",
+  },
+  {
+    icon: Package,
+    title: "Bulk Commodity & Raw Sourcing",
+    desc: "Direct farm procurement and wholesale distribution of export-grade basmati rice, wheat, pulses, and 100% Halal meat.",
+    href: "/group-companies/national-food/services#bulk-sourcing",
+    img: "/nfs_hero_catering.svg",
+  },
+  {
+    icon: ShieldCheck,
+    title: "HACCP & ISO 22000 Food Safety Audits",
+    desc: "Certified food laboratory testing, routine ATP hygiene swabs, chef medical screenings, and PFA regulatory compliance.",
+    href: "/group-companies/national-food/services#quality-audits",
+    img: "/nfs_hero_catering.svg",
+  },
 ];
 
-const PRODUCTS = [
-  { icon: Wheat,           title: "Grains & Cereals",         desc: "High-grade wheat, basmati rice, pulses, and grain flours." },
-  { icon: Carrot,          title: "Fresh Agricultural Produce",desc: "Farm-fresh organic vegetables, fruits, and greens." },
-  { icon: UtensilsCrossed, title: "Prepared Meals & Catering", desc: "Hygienically packaged meals and buffet setups." },
-  { icon: Droplet,         title: "Dairy & Edible Oils",       desc: "Pure pasteurized milk, butter, ghee, and cooking oils." },
-  { icon: Package,         title: "Processed Ingredients",    desc: "Spices, sauces, condiments, and food processing supplies." },
-  { icon: ShieldCheck,     title: "Specialized Diets",        desc: "Low-sodium, diabetic, and clinical nutrition meal plans." },
+const SOLUTIONS_PREVIEW = [
+  {
+    name: "NFS Corporate Dining Suite",
+    tag: "Corporate Cafeteria",
+    desc: "Rotating gourmet hot lunch buffets, live cooking stations, and smart mobile cashless cafeteria ordering.",
+    img: "/nfs_hero_catering.svg",
+  },
+  {
+    name: "NFS Clinical Nutrition Suite",
+    tag: "Healthcare Diets",
+    desc: "Specialized diabetic, renal, cardiac, and soft diets delivered in sterile thermal trays to patient bedsides.",
+    img: "/nfs_hero_catering.svg",
+  },
+  {
+    name: "NFS Campus Dining Plan",
+    tag: "University Food Courts",
+    desc: "Nutrient-dense, high-energy meal passes for up to 25,000 students daily across multiple campus dining halls.",
+    img: "/nfs_hero_catering.svg",
+  },
 ];
 
-const WHY_CHOOSE = [
-  { title: "HACCP Food Safety Standards", desc: "Rigorous hygiene, temperature monitoring, and food safety protocols at every stage." },
-  { title: "Culinary & Nutritional Excellence", desc: "Professional chefs and certified nutritionists creating delicious, balanced menus." },
-  { title: "Uninterrupted Supply Chain", desc: "Dedicated cold chain fleet and strategic warehouses ensuring 100% on-time delivery." },
-  { title: "Scalable Capacity",          desc: "Capability to prepare and serve over 1 million fresh meals daily across regions." },
-  { title: "Customized Institutional Plans", desc: "Flexible dining agreements tailored to budgets, shift schedules, and diets." },
-  { title: "Sustainable Food Sourcing", desc: "Ethical farm-to-table procurement supporting local agriculture and reducing waste." },
-];
-
-const INDUSTRIES = [
-  "Corporate Headquarters",
-  "Hospitals & Healthcare",
-  "Manufacturing Plants",
-  "Universities & Colleges",
-  "Government Institutions",
-  "Industrial Complexes",
-  "Hotels & Hospitality",
-  "Event & Convention Hubs",
-  "Aviation & Defense Catering",
-  "Commercial Off-Sites",
-];
-
-const PROCESS = [
-  { step: "01", title: "Needs Assessment",         desc: "Evaluating headcount, dietary requirements, shift schedules, and budget." },
-  { step: "02", title: "Menu Design & Nutrition",  desc: "Crafting balanced, diverse menus planned by certified nutritionists." },
-  { step: "03", title: "Fresh Sourcing",           desc: "Procuring daily fresh produce and quality-tested ingredients." },
-  { step: "04", title: "Hygienic Cooking",          desc: "Preparing meals in HACCP-certified, state-of-the-art kitchens." },
-  { step: "05", title: "Hot & Cold Delivery",       desc: "Transporting meals in insulated, temperature-monitored vehicles." },
-  { step: "06", title: "On-Site Dining Service",   desc: "Professional cafeteria management, serving, and clean-up." },
-];
-
-const FEATURED_PROJECTS = [
-  { title: "Corporate Campus Cafeteria",       desc: "Serving 15,000 fresh daily meals for a multinational corporate campus.", image: "/project-commercial.png" },
-  { title: "Hospital Patient Nutrition Network",desc: "Managing specialized dietary meal delivery across a 600-bed hospital network.", image: "/project-infrastructure.png" },
-  { title: "Industrial Plant Dining Facility", desc: "24/7 multi-shift catering for an industrial manufacturing workforce.", image: "/project-industrial.png" },
-  { title: "University Dining Hall Operations",desc: "Modern campus food court and dining hall management for 10,000 students.", image: "/project-infrastructure.png" },
-];
-
-const TESTIMONIALS = [
-  { name: "Corporate HR & Admin Lead", role: "Multinational Enterprise", quote: "National Food Services has transformed our employee dining experience with exceptional food quality, variety, and flawless hygiene." },
-  { name: "Hospital Operations Director", role: "Medical Center Network", quote: "Their specialized clinical diet preparation and strict food safety compliance make NFS an invaluable partner." },
-  { name: "Industrial Plant Head", role: "Manufacturing Facility", quote: "Reliable 24/7 meal delivery for our shift workers. Great taste, hygienic packaging, and zero downtime." },
+const PROCESS_STEPS = [
+  { num: "01", title: "Dietary Scoping & Audit", desc: "Understanding client headcount, shift timings, dietitian guidelines, and on-site cafeteria infrastructure." },
+  { num: "02", title: "Menu Engineering & Tasting", desc: "Formulating balanced multi-week rotating menus and hosting live tasting sessions with client committees." },
+  { num: "03", title: "Direct Farm Procurement", desc: "Sourcing premium Halal meat, fresh produce, and export-grade grains through unbroken cold chain transport." },
+  { num: "04", title: "Central Sterile Prep & Cooking", desc: "Preparing fresh meals in stainless steel commercial kitchens under continuous HACCP temperature logging." },
+  { num: "05", title: "Thermal Dispatch & On-Site Serving", desc: "Delivering via insulated carriers and serving hot meals with courteous, uniform-clad culinary staff." },
+  { num: "06", title: "Daily Sanitization & Quality Audits", desc: "Conducting ATP surface swab testing, waste segregation, and client satisfaction score reviews." },
 ];
 
 const FAQS = [
-  { q: "What services does National Food Services (NFS) provide?", a: "We provide institutional catering, corporate dining management, hospital patient nutrition, educational food services, bulk ingredient supply, and cold chain food distribution." },
-  { q: "What food safety certifications do you hold?", a: "Our kitchens operate under strict HACCP and ISO food safety management protocols with routine lab testing and health inspections." },
-  { q: "Can you cater to multi-shift industrial facilities?", a: "Yes. We operate 24/7 to provide fresh breakfast, lunch, dinner, and late-night shift meals tailored to factory schedules." },
-  { q: "Do you offer customized menu planning?", a: "Absolutely. Our nutritionists and executive chefs design customized menus around your institution's preferences, health guidelines, and budget." },
+  {
+    q: "What food safety certifications does National Food Services (NFS) operate under?",
+    a: "Our central kitchens and institutional dining operations are certified under HACCP, ISO 22000 (Food Safety Management Systems), Halal Certification, and strictly comply with Punjab Food Authority (PFA) and federal standards.",
+  },
+  {
+    q: "Can NFS accommodate specialized clinical diets for hospital patients?",
+    a: "Yes. We have dedicated clinical dietitians on staff who design individualized meal plans for diabetic, renal, cardiac, post-operative, and pediatric patients with sterile isolation kitchen preparation.",
+  },
+  {
+    q: "How does NFS handle temperature control during food transportation?",
+    a: "We operate a dedicated fleet of 48+ refrigerated trucks equipped with continuous GPS thermal sensors maintaining optimal chilling (+2°C to +4°C), and food-grade insulated cambro hot-carriers maintaining serving temperatures above 65°C.",
+  },
+  {
+    q: "What is the daily meal capacity of National Food Services?",
+    a: "NFS currently prepares and distributes over 1,000,000 meals daily across Pakistan, ranging from corporate headquarters with 200 staff to mega-university campuses and industrial textile plants with over 25,000 workers.",
+  },
 ];
 
-// Exact contact information requested by user
-const CONTACT_INFO = {
-  office: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
-  phone: "0092-42-38924737",
-  whatsapp: ["0092-304-7527498", "0092-321-8431665"],
-  emails: ["info@roysons.org", "support@roysons.org"],
-};
-
-const MAP_SRC = "https://www.google.com/maps?q=1st%20Floor%20Rehman%20Centre-2%20Lahore&z=15&output=embed";
-
-// ── Animated Counter Component ──
-function StatCounterCard({ value, suffix, label }) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    let rafId;
-    const duration = 1800;
-    const startTime = performance.now();
-
-    const tick = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * value));
-      if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        setCount(value);
-      }
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [started, value]);
+export default function NFSHomePage() {
+  const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <div
-      ref={cardRef}
-      className="rounded-[24px] border border-[#EAD6DB] bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#6B0F24]"
-    >
-      <p className="text-3xl lg:text-4xl font-black text-[#6B0F24] mb-2 tabular-nums">
-        {count.toLocaleString()}
-        {suffix}
-      </p>
-      <p className="text-xs lg:text-sm font-semibold leading-relaxed text-[#4E5456]">{label}</p>
-    </div>
-  );
-}
-
-// ── Section Title ──
-function SectionHeader({ eyebrow, title, description, center }) {
-  return (
-    <div className={`${center ? "text-center" : ""} max-w-3xl mx-auto`}>
-      <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#8C1832] mb-3">
-        <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#8C1832]" />
-        {eyebrow}
-      </span>
-      <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#6B0F24] mb-4">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-sm md:text-base leading-relaxed text-[#4E5456]">{description}</p>
-      )}
-    </div>
-  );
-}
-
-// ── Service Card with hover ──
-function ServiceCard({ icon: Icon, title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#EAD6DB] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#6B0F24] hover:bg-[#FAF5F6]">
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#F5E6E9] text-[#6B0F24] mb-6 transition-all duration-300 group-hover:bg-[#6B0F24] group-hover:text-white group-hover:scale-110">
-        <Icon size={26} />
-      </div>
-      <h3 className="text-xl font-bold text-[#6B0F24] mb-3 transition-colors duration-300 group-hover:text-[#8C1832]">{title}</h3>
-      <p className="text-sm leading-relaxed text-[#4E5456]">{desc}</p>
-    </div>
-  );
-}
-
-// ── Feature Card ──
-function FeatureCard({ title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#EAD6DB] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#8C1832]">
-      <div className="text-[#8C1832] text-3xl font-black mb-3 group-hover:scale-110 transition-transform">•</div>
-      <h3 className="text-lg font-black text-[#6B0F24] mb-3 transition-colors duration-300 group-hover:text-[#8C1832]">{title}</h3>
-      <p className="text-sm text-[#4E5456] leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-// ── Process Card ──
-function ProcessStepCard({ step, title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#EAD6DB] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#6B0F24]">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#6B0F24] text-white font-black group-hover:bg-[#8C1832] transition-all">{step}</div>
-        <h4 className="text-base font-bold text-[#6B0F24]">{title}</h4>
-      </div>
-      <p className="text-sm text-[#4E5456] leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-// ── Testimonial Slider Component ──
-function TestimonialSlider({ items }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeItem = items[activeIndex] || items[0];
-
-  const goPrev = () => {
-    setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
-  };
-
-  const goNext = () => {
-    setActiveIndex((prev) => (prev + 1) % items.length);
-  };
-
-  return (
-    <div className="rounded-[28px] border border-[#EAD6DB] bg-[#FAF5F6] p-8 shadow-sm">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#8C1832]">Testimonials</p>
-          <h3 className="mt-2 text-2xl font-black text-[#6B0F24]">What Our Partners Say</h3>
-        </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={goPrev}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#EAD6DB] bg-white text-[#6B0F24] transition-all hover:border-[#6B0F24] hover:text-[#8C1832]"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft size={16} />
-          </button>
-          <button
-            type="button"
-            onClick={goNext}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#EAD6DB] bg-white text-[#6B0F24] transition-all hover:border-[#6B0F24] hover:text-[#8C1832]"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight size={16} />
-          </button>
-        </div>
-      </div>
-
-      <div className="rounded-[24px] border border-[#EAD6DB] bg-white p-7 shadow-sm">
-        <p className="text-base italic leading-relaxed text-[#4E5456]">“{activeItem.quote}”</p>
-        <div className="mt-6">
-          <p className="font-black text-[#6B0F24]">{activeItem.name}</p>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#8C1832] mt-1">{activeItem.role}</p>
-        </div>
-      </div>
-
-      <div className="mt-5 flex items-center justify-center gap-2">
-        {items.map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            onClick={() => setActiveIndex(index)}
-            aria-label={`Go to testimonial ${index + 1}`}
-            className={`h-2.5 w-2.5 rounded-full transition-all ${index === activeIndex ? "bg-[#6B0F24]" : "bg-[#EAD6DB]"}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ── Collapsible FAQ Item Component ──
-function FaqAccordionItem({ question, answer }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="rounded-[20px] border border-[#EAD6DB] bg-white transition-all duration-300 overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between gap-4 p-6 text-left group"
-      >
-        <h4 className="text-base font-bold text-[#6B0F24] transition-colors group-hover:text-[#8C1832]">{question}</h4>
-        <div className="w-8 h-8 rounded-full bg-[#F5E6E9] flex items-center justify-center text-[#6B0F24] flex-shrink-0 transition-transform duration-300 group-hover:bg-[#6B0F24] group-hover:text-white">
-          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-        </div>
-      </button>
-      {isOpen && (
-        <div className="px-6 pb-6 pt-0 border-t border-[#F5E6E9]">
-          <p className="mt-3 text-sm leading-relaxed text-[#4E5456]">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Contact Form Component ──
-function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setError("Please fill in your name, email, and message.");
-      return;
-    }
-    setError("");
-    try {
-      const res = await fetch("/group-companies/national-food/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send.");
-      setSubmitted(true);
-    } catch (err) {
-      setError(err.message || "Error sending message. Please try again.");
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="rounded-[28px] border border-[#EAD6DB] bg-white p-8 md:p-10 text-center shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-[#F5E6E9] text-[#6B0F24] mx-auto flex items-center justify-center mb-5">
-          <CheckCircle2 size={32} />
-        </div>
-        <h3 className="text-2xl font-black text-[#6B0F24] mb-3">Thank You!</h3>
-        <p className="text-sm leading-relaxed text-[#4E5456] max-w-md mx-auto mb-6">
-          Thank you, {form.name}. Your catering inquiry has been received. Our food services team will contact you shortly.
-        </p>
-        <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", service: "", message: "" }); setSubmitted(false); }}
-          className="inline-flex items-center gap-2 rounded-full bg-[#6B0F24] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#8C1832]"
-        >
-          Send Another Message
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="rounded-[28px] border border-[#EAD6DB] bg-white p-8 md:p-10 shadow-sm">
-      <h3 className="text-2xl font-black text-[#6B0F24] mb-6">Request A Catering / Supply Quote</h3>
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#4E5456] mb-2">Full Name *</label>
-          <input
-            type="text" name="name" value={form.name} onChange={handleChange}
-            placeholder="John Doe"
-            className="w-full rounded-xl border border-[#EAD6DB] bg-[#FAF5F6] px-4 py-3.5 text-sm text-[#6B0F24] outline-none transition-all focus:border-[#6B0F24] focus:bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#4E5456] mb-2">Email Address *</label>
-          <input
-            type="email" name="email" value={form.email} onChange={handleChange}
-            placeholder="john@example.com"
-            className="w-full rounded-xl border border-[#EAD6DB] bg-[#FAF5F6] px-4 py-3.5 text-sm text-[#6B0F24] outline-none transition-all focus:border-[#6B0F24] focus:bg-white"
-          />
-        </div>
-      </div>
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#4E5456] mb-2">Phone Number</label>
-          <input
-            type="tel" name="phone" value={form.phone} onChange={handleChange}
-            placeholder="+92 300 1234567"
-            className="w-full rounded-xl border border-[#EAD6DB] bg-[#FAF5F6] px-4 py-3.5 text-sm text-[#6B0F24] outline-none transition-all focus:border-[#6B0F24] focus:bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#4E5456] mb-2">Service Required</label>
-          <select
-            name="service" value={form.service} onChange={handleChange}
-            className="w-full rounded-xl border border-[#EAD6DB] bg-[#FAF5F6] px-4 py-3.5 text-sm text-[#6B0F24] outline-none transition-all focus:border-[#6B0F24] focus:bg-white"
-          >
-            <option value="">Select a service</option>
-            <option value="Institutional Catering">Institutional Catering</option>
-            <option value="Hospital Nutrition">Hospital Nutrition</option>
-            <option value="Educational Food Services">Educational Food Services</option>
-            <option value="Food Supply & Distribution">Food Supply & Distribution</option>
-            <option value="Quality Control & Hygiene Audits">Quality Control & Hygiene Audits</option>
-            <option value="Bulk Ingredient Procurement">Bulk Ingredient Procurement</option>
-          </select>
-        </div>
-      </div>
-      <div className="mb-5">
-        <label className="block text-xs font-bold uppercase tracking-wider text-[#4E5456] mb-2">Requirement Details *</label>
-        <textarea
-          name="message" value={form.message} onChange={handleChange} rows={4}
-          placeholder="Tell us about your headcount, location, shift schedule, or supply needs..."
-          className="w-full rounded-xl border border-[#EAD6DB] bg-[#FAF5F6] px-4 py-3.5 text-sm text-[#6B0F24] outline-none transition-all resize-none focus:border-[#6B0F24] focus:bg-white"
-        />
-      </div>
-
-      {error && <p className="text-xs font-bold text-red-600 mb-4">{error}</p>}
-
-      <button
-        type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#6B0F24] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#8C1832] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-      >
-        Submit Request <Send size={15} />
-      </button>
-    </form>
-  );
-}
-
-// ── NFS Navbar ──
-function NFSNavbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Menu & Products", href: "#products" },
-    { label: "Why Us", href: "#why-us" },
-    { label: "Contact", href: "#contact" },
-  ];
-  return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#EAD6DB]">
-      <div className="hidden md:block bg-[#6B0F24] text-white py-2 px-6">
-        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
-          <div className="flex items-center gap-6 text-white/80">
-            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
-            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
-            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
-          </div>
-          <span className="text-xs font-bold text-[#F5C6CF]">National Food Services — Catering Excellence</span>
-        </div>
-      </div>
-      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-[#6B0F24] flex items-center justify-center group-hover:scale-105 transition-transform">
-            <UtensilsCrossed size={22} color="#fff" />
-          </div>
-          <div>
-            <p className="text-base font-black tracking-tight text-[#6B0F24] leading-none">NATIONAL FOOD</p>
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#4E5456]">Services</p>
-          </div>
-        </a>
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#2D3436]">
-          {navLinks.map(l => (
-            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#6B0F24] group transition-colors">
-              {l.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#6B0F24] transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
-        <div className="hidden lg:flex items-center gap-3">
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#6B0F24] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#4F0918] hover:scale-105 transition-all">
-            <MessageCircle size={14} /> Order Now
-          </a>
-        </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#FAF5F6] text-[#6B0F24]">
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-      {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-[#EAD6DB] px-6 py-5 space-y-3">
-          {navLinks.map(l => (
-            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
-              className="block text-sm font-bold text-[#2D3436] hover:text-[#6B0F24] py-1">{l.label}</a>
-          ))}
-          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#6B0F24] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
-            <MessageCircle size={14} /> Order Now
-          </a>
-        </div>
-      )}
-    </header>
-  );
-}
-
-// ── NFS Footer ──
-function NFSFooter() {
-  return (
-    <footer style={{ background: "#6B0F24" }} className="text-white">
-      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-              <UtensilsCrossed size={20} color="#F5C6CF" />
-            </div>
-            <div>
-              <p className="font-black text-lg leading-none">NATIONAL FOOD</p>
-              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">Services (NFS)</p>
-            </div>
-          </div>
-          <p className="text-sm text-white/70 leading-relaxed mb-5">Premier institutional catering and food supply services for corporate, healthcare, educational, and government institutions across Pakistan.</p>
-          <div className="space-y-2 text-xs text-white/75">
-            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#F5C6CF]" />{CONTACT_INFO.office}</p>
-            <p className="flex items-center gap-2"><Phone size={14} className="text-[#F5C6CF]" />{CONTACT_INFO.phone}</p>
-            <p className="flex items-center gap-2"><Mail size={14} className="text-[#F5C6CF]" />{CONTACT_INFO.emails[0]}</p>
-          </div>
-        </div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#F5C6CF]">Quick Links</h4>
-          <ul className="space-y-2.5 text-sm text-white/75">
-            {["About Us","Services","Products","Why Us","Contact"].map(l => (
-              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#F5C6CF]">Contact Us</h4>
-          <div className="space-y-3 text-xs text-white/75">
-            <p className="flex items-center gap-2"><MessageCircle size={14} className="text-[#F5C6CF]" /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
-            <p className="flex items-center gap-2"><Mail size={14} className="text-[#F5C6CF]" />{CONTACT_INFO.emails[0]}</p>
-            <p className="flex items-center gap-2"><Phone size={14} className="text-[#F5C6CF]" />{CONTACT_INFO.phone}</p>
-          </div>
-          <div className="mt-6 pt-6 border-t border-white/20">
-            <Link href="/group-companies" className="text-xs text-white/60 hover:text-white transition-colors">← Back to Roysons Group</Link>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} National Food Services. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
-      </div>
-    </footer>
-  );
-}
-
-// ── Main Page Component ──
-export default function NationalFoodPage() {
-  useEffect(() => {
-    document.body.classList.add("roys-roys-theme", "nfs-theme");
-    document.body.style.backgroundColor = "#FFFFFF";
-    document.body.style.color = COLORS.maroon;
-    return () => {
-      document.body.classList.remove("roys-roys-theme", "nfs-theme");
-      document.body.style.backgroundColor = "";
-      document.body.style.color = "";
-    };
-  }, []);
-
-  return (
-    <main className="roys-roys-theme nfs-theme font-sans bg-white text-[#6B0F24] selection:bg-[#6B0F24] selection:text-white">
-      {/* Styles to bypass global dark override from globals.css */}
-      <style>{`
-        html, body {
-          background-color: #FFFFFF !important;
-          color: #6B0F24 !important;
-          color-scheme: light !important;
-        }
-        .nfs-theme h1,
-        .nfs-theme h2,
-        .nfs-theme h3,
-        .nfs-theme h4,
-        .nfs-theme h5,
-        .nfs-theme h6,
-        .nfs-theme p,
-        .nfs-theme span,
-        .nfs-theme li,
-        .nfs-theme a,
-        .nfs-theme label,
-        .nfs-theme button,
-        .nfs-theme input,
-        .nfs-theme textarea {
-          -webkit-text-fill-color: initial !important;
-          background-image: none !important;
-        }
-      `}</style>
-
+    <main className="min-h-screen bg-white text-[#4E5456] font-sans antialiased overflow-x-hidden">
       <NFSNavbar />
 
-      {/* Hero Section */}
-      <section
-        className="relative overflow-hidden border-b border-[#EAD6DB] min-h-[500px] lg:min-h-[560px] flex items-center"
-        style={{
-          backgroundImage: `linear-gradient(135deg, rgba(65,9,22,0.90) 0%, rgba(107,15,36,0.84) 50%, rgba(65,9,22,0.92) 100%), url("${encodeURI("/national food service.jpeg")}")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="mx-auto max-w-screen-xl px-6 py-16 lg:py-24 relative z-10 w-full">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#8C1832]/40 bg-[#6B0F24]/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#EAD6DB] shadow-md backdrop-blur-md">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#8C1832]" />
-              {HERO.badge}
-            </span>
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
-              National Food Services <span className="text-[#EAD6DB]">(NFS)</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-[#F5E6E9]">
-              {HERO.subline}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="#services"
-                className="inline-flex items-center gap-2 rounded-full bg-[#8C1832] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-lg transition-all duration-300 hover:bg-white hover:text-[#6B0F24] hover:scale-[1.02] active:scale-95"
-              >
-                {HERO.ctaPrimary} <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#6B0F24] hover:scale-[1.02] active:scale-95"
-              >
-                {HERO.ctaSecondary}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="bg-white px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
+      {/* Hero Section with Institutional Culinary Visual */}
+      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
-            <div>
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#EAD6DB] bg-[#FAF5F6] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#8C1832]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#8C1832]" />
-                About National Food Services
-              </span>
-              <h2 className="mt-6 text-3xl md:text-4xl font-black tracking-tight text-[#6B0F24]">
-                Trusted meal solutions for institutions that demand quality, hygiene, and scale.
-              </h2>
-              <p className="mt-5 text-sm md:text-base leading-relaxed text-[#4E5456]">
-                National Food Services delivers nourishing, hygienic, and efficiently managed food programs for corporate campuses, hospitals, schools, and industrial sites. Our robust kitchen operations and cold-chain logistics ensure reliable service every day.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7">
+              <SectionLabel>Premier Institutional Catering &amp; Food Supply Services</SectionLabel>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.maroonDark }}>
+                National Food Services. <span style={{ color: theme.maroon }}>Culinary Mastery. Uncompromised Hygiene.</span>
+              </h1>
+
+              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
+                Delivering nutritious, high-quality, and hygienic food solutions for corporate, industrial, healthcare, educational, and government institutions. NFS combines culinary excellence, strict HACCP food safety standards, and efficient cold-chain supply chain management.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#6B0F24] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-[#8C1832]">
-                  Request A Quote <ArrowRight size={15} />
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/group-companies/national-food/solutions"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  style={{ backgroundColor: theme.maroon }}
+                >
+                  <span>Explore Catering Menus</span>
+                  <ArrowRight size={16} />
                 </Link>
-                <Link href="#projects" className="inline-flex items-center gap-2 rounded-full border border-[#EAD6DB] bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#6B0F24] transition-all hover:border-[#6B0F24] hover:text-[#8C1832]">
-                  View Projects
+
+                <Link
+                  href="/group-companies/national-food/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-rose-50/50 cursor-pointer"
+                  style={{ borderColor: theme.border, color: theme.maroonDark }}
+                >
+                  <span>Request Catering Quote</span>
                 </Link>
               </div>
             </div>
 
-            <div className="rounded-[32px] border border-[#EAD6DB] bg-[#FAF5F6] p-3 shadow-sm">
-              <div className="relative h-[380px] overflow-hidden rounded-[24px]">
-                <Image src="/national food service.jpeg" alt="National Food Services catering operations" fill className="object-cover" />
+            {/* Right Hero Image Card */}
+            <div className="lg:col-span-5 w-full flex justify-center">
+              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-rose-50/50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/nfs_hero_catering.svg"
+                  alt="National Food Services Institutional Culinary Kitchen"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#380611]/85 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-black uppercase tracking-wider text-[#8C1832]">
+                        1,000,000+ Meals Daily
+                      </span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    </div>
+                    <p className="text-sm font-bold" style={{ color: theme.maroonDark }}>
+                      HACCP · Corporate · Hospital · University Dining
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -672,235 +207,330 @@ export default function NationalFoodPage() {
       </section>
 
       {/* Stats Counter Section */}
-      <section className="bg-white px-6 py-14 lg:py-20 border-b border-[#EAD6DB]">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {STATS.map((stat, index) => (
-              <StatCounterCard key={index} value={stat.value} suffix={stat.suffix} label={stat.label} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Services Section */}
-      <section id="services" className="bg-[#FAF5F6] px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Core Services"
-            title="Comprehensive Institutional Food & Catering Solutions"
-            description="From corporate cafeterias and hospital patient dining to bulk food distribution and HACCP quality audits."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {SERVICES.map((item, index) => (
-              <ServiceCard key={index} icon={item.icon} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products & Commodity Sourcing Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Products & Ingredients"
-            title="Farm-Fresh Ingredients & Bulk Food Supplies"
-            description="Procuring premium grains, fresh vegetables, dairy, edible oils, and food products for institutional dining."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {PRODUCTS.map((item, index) => (
-              <ServiceCard key={index} icon={item.icon} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Section */}
-      <section className="bg-[#FAF5F6] px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader eyebrow="Industries" title="Sectors We Support With Hygienic Dining" description="Serving corporate campuses, hospitals, universities, manufacturing plants, and government bodies." center />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {INDUSTRIES.map((industry, index) => (
-              <div
-                key={index}
-                className="group rounded-2xl border border-[#EAD6DB] bg-white p-5 text-sm font-semibold text-[#6B0F24] text-center transition-all duration-300 hover:border-[#6B0F24] hover:bg-[#6B0F24] hover:text-white hover:shadow-md"
-              >
-                {industry}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose NFS Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Why Choose Us"
-            title="Your Trusted Partner In Institutional Dining"
-            description="Combining HACCP food safety compliance, certified nutritionists, and robust cold chain logistics."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {WHY_CHOOSE.map((item, index) => (
-              <FeatureCard key={index} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="bg-[#FAF5F6] px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Process"
-            title="Disciplined Culinary & Service Workflow"
-            description="From dietary assessment and menu design through hygienic preparation, insulated delivery, and serving."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PROCESS.map((item, index) => (
-              <ProcessStepCard key={index} step={item.step} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section id="projects" className="bg-white px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Featured Projects"
-            title="Delivering Food Excellence At Scale"
-            description="Selected highlights of corporate cafeterias, hospital nutrition, and multi-shift industrial catering."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {FEATURED_PROJECTS.map((project, index) => (
-              <div key={index} className="group overflow-hidden rounded-[28px] border border-[#EAD6DB] bg-[#FAF5F6] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#6B0F24]">
-                <div className="relative h-52 w-full">
-                  <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-base font-bold text-[#6B0F24] group-hover:text-[#8C1832] transition-colors mb-2">{project.title}</h3>
-                  <p className="text-xs text-[#4E5456] leading-relaxed">{project.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials + FAQs */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Testimonials & FAQs"
-            title="Trusted by Dining Partners. Clear Answers for Every Requirement."
-            description="See how our clients describe their experience and explore common questions about our catering and supply services."
-            center
-          />
-          <div className="mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] items-start">
-            <TestimonialSlider items={TESTIMONIALS} />
-            <div className="grid gap-4">
-              {FAQS.map((item, index) => (
-                <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Us Section with User Information */}
-      <section id="contact" className="bg-[#FAF5F6] px-6 py-16 lg:py-24">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Get In Touch"
-            title="Contact National Food Services (NFS)"
-            description="Discuss your corporate catering, hospital food management, or bulk supply requirements with our team."
-          />
-          <div className="mt-12 grid gap-10 lg:grid-cols-12 items-start">
-            <div className="lg:col-span-7">
-              <ContactForm />
-            </div>
-
-            <div className="lg:col-span-5 rounded-[28px] bg-[#6B0F24] p-8 md:p-10 text-white shadow-xl flex flex-col justify-between h-full">
-              <div>
-                <span className="text-xs uppercase tracking-[0.25em] font-black text-[#FAF5F6]">Contact Details</span>
-                <h3 className="mt-3 text-2xl font-black text-white mb-6">Talk To Our Team</h3>
-                <p className="text-sm leading-relaxed text-[#EAD6DB] mb-8">
-                  Our institutional food services team responds to every catering inquiry within one business day.
-                </p>
-
-                <div className="space-y-6 text-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <Phone size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-white/80 mb-1">Call Us</p>
-                      <p className="text-white font-bold">Phone: {CONTACT_INFO.phone}</p>
-                    </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {STATS.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className="nfs-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.maroon}10` }}>
+                    <Icon size={22} style={{ color: theme.maroon }} />
                   </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <MessageCircle size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-white/80 mb-1">WhatsApp</p>
-                      {CONTACT_INFO.whatsapp.map((num) => (
-                        <p key={num} className="text-white font-semibold">{num}</p>
-                      ))}
-                    </div>
+                  <div className="mb-1" style={{ color: theme.maroonDark }}>
+                    <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                    {stat.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <Mail size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-white/80 mb-1">Email Us</p>
-                      {CONTACT_INFO.emails.map((mail) => (
-                        <p key={mail} className="text-white font-medium">{mail}</p>
-                      ))}
-                    </div>
+      {/* About Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Visual */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-rose-50/50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/nfs_hero_catering.svg"
+                  alt="Institutional Kitchen Operations and Nutrition"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#380611]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <p className="text-xs font-black uppercase tracking-widest text-[#DFC48B] mb-1">
+                      Premier Institutional Food Network
+                    </p>
+                    <h4 className="text-base font-bold">25+ Years of Nourishing Leading Organizations</h4>
                   </div>
                 </div>
               </div>
-
-              <div className="mt-10 pt-6 border-t border-white/15 text-xs text-[#EAD6DB]">
-                &copy; {new Date().getFullYear()} National Food Services (NFS). All Rights Reserved.
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Separate Location Section */}
-      <section className="bg-[#FAF5F6] px-6 py-16 lg:py-24 border-t border-[#EAD6DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
-            <div className="rounded-[28px] border border-[#EAD6DB] bg-white p-8 shadow-sm">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#8C1832]">Our Location</p>
-              <h3 className="mt-3 text-2xl font-black text-[#6B0F24]">Visit Our Office</h3>
-              <p className="mt-4 text-sm leading-relaxed text-[#4E5456]">
-                We welcome catering consultations, food supply discussions, and partnership meetings at our Lahore office.
+            {/* Right Text */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <SectionLabel>About National Food Services</SectionLabel>
+              <SectionHeading className="mb-6">Nourishing Pakistan&apos;s Workforce &amp; Students</SectionHeading>
+
+              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                National Food Services delivers nourishing, hygienic, and efficiently managed food programs for corporate campuses, hospitals, schools, and industrial sites. Our robust central kitchen operations, certified dietitians, and refrigerated cold-chain logistics ensure delicious and dependable meals 365 days a year.
               </p>
-              <div className="mt-6 rounded-[20px] border border-[#EAD6DB] bg-[#FAF5F6] p-4">
-                <p className="text-sm font-semibold text-[#6B0F24] leading-relaxed">{CONTACT_INFO.office}</p>
-                <a href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#6B0F24] transition-colors hover:text-[#8C1832]">
-                  Open in Google Maps <ArrowRight size={14} />
-                </a>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-rose-50/50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} className="text-[#8C1832] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">HACCP &amp; ISO 22000 Certified</span>
+                </div>
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-rose-50/50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} className="text-[#8C1832] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">1,000,000+ Daily Meals Served</span>
+                </div>
               </div>
+
+              <Link
+                href="/group-companies/national-food/about"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#6B0F24]"
+              >
+                <span>Read Full Corporate Profile</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>What We Deliver</SectionLabel>
+              <SectionHeading>Our Core Divisions</SectionHeading>
             </div>
 
-            <div className="overflow-hidden rounded-[28px] border border-[#EAD6DB] bg-white shadow-sm">
-              <iframe
-                title="National Food Services Office Location"
-                src={MAP_SRC}
-                width="100%"
-                height="360"
-                style={{ border: 0, display: "block" }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <Link
+              href="/group-companies/national-food/services"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.maroonDark }}
+            >
+              <span>View All 6 Divisions</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES.map((svc) => {
+              const Icon = svc.icon;
+              return (
+                <div
+                  key={svc.title}
+                  className="nfs-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div>
+                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                      <Image
+                        src={svc.img}
+                        alt={svc.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+
+                    <div className="p-7">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.maroon}10` }}>
+                        <Icon size={20} style={{ color: theme.maroon }} />
+                      </div>
+
+                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.maroonDark }}>
+                        {svc.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                        {svc.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-7 pt-0">
+                    <Link
+                      href={svc.href}
+                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-rose-50/50 transition-colors cursor-pointer"
+                      style={{ borderColor: theme.border, color: theme.maroonDark }}
+                    >
+                      <span>Explore Division</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Catering Packages Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>Engineered Menus</SectionLabel>
+              <SectionHeading>Featured Catering Packages</SectionHeading>
+            </div>
+
+            <Link
+              href="/group-companies/national-food/solutions"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.maroon }}
+            >
+              <span>View All Menus</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {SOLUTIONS_PREVIEW.map((p) => (
+              <div
+                key={p.name}
+                className="nfs-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                style={{ borderColor: theme.border }}
+              >
+                <div>
+                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-7">
+                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#8C1832]/10 text-[#8C1832] inline-block mb-3">
+                      {p.tag}
+                    </span>
+                    <h3 className="text-xl font-black mb-2" style={{ color: theme.maroonDark }}>
+                      {p.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-7 pt-0">
+                  <Link
+                    href="/group-companies/national-food/contact"
+                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-rose-50/50 transition-colors cursor-pointer"
+                    style={{ borderColor: theme.border, color: theme.maroonDark }}
+                  >
+                    <span>Request Menu Details</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Pathway Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Disciplined Methodology</SectionLabel>
+            <SectionHeading center className="mb-4">6-Stage Culinary &amp; Hygiene Lifecycle</SectionHeading>
+            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+              From initial nutritional audit and tasting sessions to cold-chain logistics, thermal bedside delivery, and daily ATP swab testing.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROCESS_STEPS.map((step) => (
+              <div
+                key={step.num}
+                className="p-8 rounded-3xl border bg-white shadow-xs flex flex-col justify-between"
+                style={{ borderColor: theme.border }}
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm text-white mb-6 shadow-sm" style={{ backgroundColor: theme.maroon }}>
+                    {step.num}
+                  </div>
+                  <h4 className="text-base font-bold mb-3" style={{ color: theme.maroonDark }}>
+                    {step.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <SectionLabel center>Frequently Asked Questions</SectionLabel>
+            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {FAQS.map((faq, idx) => (
+              <div
+                key={faq.q}
+                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
+                style={{ borderColor: theme.border }}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
+                  style={{ color: theme.maroonDark }}
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-300 flex-shrink-0 ${
+                      openFaq === idx ? "rotate-180 text-[#8C1832]" : "text-slate-400"
+                    }`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+            <div>
+              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#A81E3D]">
+                COMMENCE YOUR INSTITUTIONAL CATERING PROGRAM
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.maroonDark }}>
+                Schedule A Culinary Consultation &amp; Kitchen Audit
+              </h2>
+              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
+                Connect with our certified executive chefs and food safety directors to customize daily meal plans for your facility.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+              <Link
+                href="/group-companies/national-food/contact"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.maroon }}
+              >
+                <span>Request Catering Proposal</span>
+                <ArrowRight size={15} />
+              </Link>
+              <a
+                href="tel:00924238924737"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-rose-50/50 cursor-pointer"
+                style={{ borderColor: theme.maroon, color: theme.maroon }}
+              >
+                <Phone size={15} />
+                <span>0092-42-38924737</span>
+              </a>
             </div>
           </div>
         </div>

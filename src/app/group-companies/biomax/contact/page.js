@@ -46,21 +46,24 @@ export default function BiomaxContactPage() {
     setError("");
     setIsSubmitting(true);
     try {
-      const res = await fetch("/group-companies/biomax/api/contact", {
+      const res = await fetch("/api/company-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          company: form.organization,
+          companySlug: "biomax",
+          companyName: "BIO MAX Corporation",
+          fullName: `${form.firstName} ${form.lastName}`.trim(),
           email: form.email,
           phone: form.phone,
-          service: form.service,
           subject: `BioMax Inquiry: ${form.service}`,
-          message: `Service/Category: ${form.service} | Organization: ${form.organization || "N/A"} | Message: ${form.message}`,
+          message: form.message,
+          additionalFields: {
+            organization: form.organization,
+            service: form.service,
+          },
         }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.success) {
         throw new Error(data.message || "Failed to send message.");
       }

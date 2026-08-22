@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────
+   PAKISTAN MEDICAL SUPPLIES — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/pak-janitorial/pak-medical.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --med-royal: #1A4FA0;         /* Royal Medical Blue */
+  --med-royal-dark: #163D80;
+  --med-sky: #2B8DD6;           /* Sky Blue Accent */
+  --med-cyan: #0EA5E9;          /* Cyan Cleanroom Highlight */
+  --med-charcoal: #1E2A3A;      /* Slate Charcoal Text */
+  --med-charcoal-dark: #0F172A;
+  --med-white: #ffffff;
+  --med-offwhite: #F4F8FD;      /* Sterile Light Blue-Gray Tint */
+  --med-border: #D2E4F5;
+  --med-text-muted: #3D5166;
+  --med-text-light: #5A7080;
+}
+
+body.pak-medical-theme,
+body.pak-janitorial-theme,
+.pak-medical-theme,
+.pak-janitorial-theme,
+body.pak-medical-theme main,
+body.pak-medical-theme section,
+body.pak-medical-theme header,
+.pak-medical-theme main,
+.pak-medical-theme section,
+.pak-medical-theme header {
+  background-color: #ffffff !important;
+  color: #1E2A3A;
+}
+
+body.pak-medical-theme .cursor-pointer,
+.pak-medical-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.pakmed-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.pakmed-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #2B8DD6 !important;
+  box-shadow: 0 16px 32px -8px rgba(26, 79, 160, 0.16), 0 0 0 1px rgba(43, 141, 214, 0.25) !important;
+}
+
+/* Counter box */
+.pakmed-counter-box {
+  transition: all 0.3s ease !important;
+}
+.pakmed-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #2B8DD6 !important;
+  box-shadow: 0 10px 25px rgba(26, 79, 160, 0.1) !important;
+}
+
+/* Reset for Pakistan Medical components */
+body.pak-medical-theme a,
+body.pak-medical-theme button,
+body.pak-medical-theme label,
+body.pak-medical-theme h1,
+body.pak-medical-theme h2,
+body.pak-medical-theme h3,
+body.pak-medical-theme h4,
+body.pak-medical-theme h5,
+body.pak-medical-theme h6,
+body.pak-medical-theme p,
+body.pak-medical-theme span,
+body.pak-medical-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.pak-medical-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

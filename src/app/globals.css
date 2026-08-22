@@ -103,7 +103,7 @@
     font-family: var(--font-cormorant), Georgia, serif;
   }
 
-  body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) {
+  body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) {
     background-color: #101518 !important;
     color: #C6A15A !important;
   }
@@ -111,7 +111,7 @@
 
 /* --- Roy Sons Premium Charcoal & Champagne Gold Theme Engine --- */
 
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) {
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) {
 
   /* Charcoal Backgrounds */
   &,
@@ -394,7 +394,7 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
 }
 
 /* ── CTA Button: Hover state — gold fill + charcoal text ── */
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) .rs-cta-btn:hover {
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) .rs-cta-btn:hover {
   background-color: #C6A15A !important;
   background-image: none !important;
   background-clip: unset !important;
@@ -402,9 +402,9 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   border-color: #C6A15A !important;
 }
 
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) .rs-cta-btn:hover span,
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) .rs-cta-btn:hover svg,
-body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme) .rs-cta-btn:hover * {
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) .rs-cta-btn:hover span,
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) .rs-cta-btn:hover svg,
+body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) .rs-cta-btn:hover * {
   background-image: none !important;
   background-clip: unset !important;
   -webkit-background-clip: unset !important;
@@ -444,7 +444,170 @@ body.roys-roys-theme li {
 }
 
 /* ─────────────────────────────────────────────
-   RESET FOR ROYS, VETVAC & BIOMAX THEMES
+   ALPHA MATRIX DEFENCE SYSTEMS WHITE THEME
+───────────────────────────────────────────── */
+body.alpha-matrix-theme {
+  background-color: #ffffff !important;
+  color: #0B1B36 !important;
+}
+
+body.alpha-matrix-theme main,
+body.alpha-matrix-theme section,
+body.alpha-matrix-theme header {
+  background-color: #ffffff !important;
+}
+
+body.alpha-matrix-theme h1,
+body.alpha-matrix-theme h2,
+body.alpha-matrix-theme h3,
+body.alpha-matrix-theme h4,
+body.alpha-matrix-theme h5,
+body.alpha-matrix-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.alpha-matrix-theme p,
+body.alpha-matrix-theme span,
+body.alpha-matrix-theme li {
+  text-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   NATIONAL GUARD SECURITY SERVICES WHITE THEME
+───────────────────────────────────────────── */
+body.national-guard-theme {
+  background-color: #ffffff !important;
+  color: #1B365D !important;
+}
+
+body.national-guard-theme main,
+body.national-guard-theme section,
+body.national-guard-theme header {
+  background-color: #ffffff !important;
+}
+
+body.national-guard-theme h1,
+body.national-guard-theme h2,
+body.national-guard-theme h3,
+body.national-guard-theme h4,
+body.national-guard-theme h5,
+body.national-guard-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.national-guard-theme p,
+body.national-guard-theme span,
+body.national-guard-theme li {
+  text-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   NATIONAL MINES CORPORATION WHITE THEME
+───────────────────────────────────────────── */
+body.national-mines-theme {
+  background-color: #ffffff !important;
+  color: #16243E !important;
+}
+
+body.national-mines-theme main,
+body.national-mines-theme section,
+body.national-mines-theme header {
+  background-color: #ffffff !important;
+}
+
+body.national-mines-theme h1,
+body.national-mines-theme h2,
+body.national-mines-theme h3,
+body.national-mines-theme h4,
+body.national-mines-theme h5,
+body.national-mines-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.national-mines-theme p,
+body.national-mines-theme span,
+body.national-mines-theme li {
+  text-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   NATIONAL AGRICULTURAL CORPORATION WHITE THEME
+───────────────────────────────────────────── */
+body.national-agricultural-theme,
+body.national-agricalture-theme {
+  background-color: #ffffff !important;
+  color: #1A5C2A !important;
+}
+
+body.national-agricultural-theme main,
+body.national-agricultural-theme section,
+body.national-agricultural-theme header,
+body.national-agricalture-theme main,
+body.national-agricalture-theme section,
+body.national-agricalture-theme header {
+  background-color: #ffffff !important;
+}
+
+body.national-agricultural-theme h1,
+body.national-agricultural-theme h2,
+body.national-agricultural-theme h3,
+body.national-agricultural-theme h4,
+body.national-agricultural-theme h5,
+body.national-agricultural-theme h6,
+body.national-agricalture-theme h1,
+body.national-agricalture-theme h2,
+body.national-agricalture-theme h3,
+body.national-agricalture-theme h4,
+body.national-agricalture-theme h5,
+body.national-agricalture-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.national-agricultural-theme p,
+body.national-agricultural-theme span,
+body.national-agricultural-theme li,
+body.national-agricalture-theme p,
+body.national-agricalture-theme span,
+body.national-agricalture-theme li {
+  text-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   SWISS HOMES REAL ESTATE & HOUSING WHITE THEME
+───────────────────────────────────────────── */
+body.swiss-homes-theme {
+  background-color: #ffffff !important;
+  color: #2B2B2B !important;
+}
+
+body.swiss-homes-theme main,
+body.swiss-homes-theme section,
+body.swiss-homes-theme header {
+  background-color: #ffffff !important;
+}
+
+body.swiss-homes-theme h1,
+body.swiss-homes-theme h2,
+body.swiss-homes-theme h3,
+body.swiss-homes-theme h4,
+body.swiss-homes-theme h5,
+body.swiss-homes-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.swiss-homes-theme p,
+body.swiss-homes-theme span,
+body.swiss-homes-theme li {
+  text-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   RESET FOR ALL LIGHT-THEME SUBSIDIARIES
    Allows inline styles and classes to work properly
 ───────────────────────────────────────────── */
 body.roys-roys-theme a,
@@ -482,7 +645,1287 @@ body.biomax-theme h5,
 body.biomax-theme h6,
 body.biomax-theme p,
 body.biomax-theme span,
-body.biomax-theme li {
+body.biomax-theme li,
+body.alpha-matrix-theme a,
+body.alpha-matrix-theme button,
+body.alpha-matrix-theme label,
+body.alpha-matrix-theme h1,
+body.alpha-matrix-theme h2,
+body.alpha-matrix-theme h3,
+body.alpha-matrix-theme h4,
+body.alpha-matrix-theme h5,
+body.alpha-matrix-theme h6,
+body.alpha-matrix-theme p,
+body.alpha-matrix-theme span,
+body.alpha-matrix-theme li,
+body.national-guard-theme a,
+body.national-guard-theme button,
+body.national-guard-theme label,
+body.national-guard-theme h1,
+body.national-guard-theme h2,
+body.national-guard-theme h3,
+body.national-guard-theme h4,
+body.national-guard-theme h5,
+body.national-guard-theme h6,
+body.national-guard-theme p,
+body.national-guard-theme span,
+body.national-guard-theme li,
+body.national-mines-theme a,
+body.national-mines-theme button,
+body.national-mines-theme label,
+body.national-mines-theme h1,
+body.national-mines-theme h2,
+body.national-mines-theme h3,
+body.national-mines-theme h4,
+body.national-mines-theme h5,
+body.national-mines-theme h6,
+body.national-mines-theme p,
+body.national-mines-theme span,
+body.national-mines-theme li,
+body.national-agricultural-theme a,
+body.national-agricultural-theme button,
+body.national-agricultural-theme label,
+body.national-agricultural-theme h1,
+body.national-agricultural-theme h2,
+body.national-agricultural-theme h3,
+body.national-agricultural-theme h4,
+body.national-agricultural-theme h5,
+body.national-agricultural-theme h6,
+body.national-agricultural-theme p,
+body.national-agricultural-theme span,
+body.national-agricultural-theme li,
+body.national-agricalture-theme a,
+body.national-agricalture-theme button,
+body.national-agricalture-theme label,
+body.national-agricalture-theme h1,
+body.national-agricalture-theme h2,
+body.national-agricalture-theme h3,
+body.national-agricalture-theme h4,
+body.national-agricalture-theme h5,
+body.national-agricalture-theme h6,
+body.national-agricalture-theme p,
+body.national-agricalture-theme span,
+body.national-agricalture-theme li,
+body.swiss-homes-theme a,
+body.swiss-homes-theme button,
+body.swiss-homes-theme label,
+body.swiss-homes-theme h1,
+body.swiss-homes-theme h2,
+body.swiss-homes-theme h3,
+body.swiss-homes-theme h4,
+body.swiss-homes-theme h5,
+body.swiss-homes-theme h6,
+body.swiss-homes-theme p,
+body.swiss-homes-theme span,
+body.swiss-homes-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   SWISS FARMS DAIRY & LIVESTOCK WHITE THEME
+───────────────────────────────────────────── */
+body.swiss-farm-theme,
+body.swiss-farms-theme {
+  background-color: #ffffff !important;
+  color: #1C522A !important;
+}
+
+body.swiss-farm-theme main,
+body.swiss-farm-theme section,
+body.swiss-farm-theme header,
+body.swiss-farms-theme main,
+body.swiss-farms-theme section,
+body.swiss-farms-theme header {
+  background-color: #ffffff !important;
+}
+
+body.swiss-farm-theme h1,
+body.swiss-farm-theme h2,
+body.swiss-farm-theme h3,
+body.swiss-farm-theme h4,
+body.swiss-farm-theme h5,
+body.swiss-farm-theme h6,
+body.swiss-farms-theme h1,
+body.swiss-farms-theme h2,
+body.swiss-farms-theme h3,
+body.swiss-farms-theme h4,
+body.swiss-farms-theme h5,
+body.swiss-farms-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.swiss-farm-theme p,
+body.swiss-farm-theme span,
+body.swiss-farm-theme li,
+body.swiss-farms-theme p,
+body.swiss-farms-theme span,
+body.swiss-farms-theme li {
+  text-shadow: none !important;
+}
+
+body.swiss-farm-theme a,
+body.swiss-farm-theme button,
+body.swiss-farm-theme label,
+body.swiss-farm-theme h1,
+body.swiss-farm-theme h2,
+body.swiss-farm-theme h3,
+body.swiss-farm-theme h4,
+body.swiss-farm-theme h5,
+body.swiss-farm-theme h6,
+body.swiss-farm-theme p,
+body.swiss-farm-theme span,
+body.swiss-farm-theme li,
+body.swiss-farms-theme a,
+body.swiss-farms-theme button,
+body.swiss-farms-theme label,
+body.swiss-farms-theme h1,
+body.swiss-farms-theme h2,
+body.swiss-farms-theme h3,
+body.swiss-farms-theme h4,
+body.swiss-farms-theme h5,
+body.swiss-farms-theme h6,
+body.swiss-farms-theme p,
+body.swiss-farms-theme span,
+body.swiss-farms-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   SWISS HUTS HOSPITALITY & TOURISM WHITE THEME
+───────────────────────────────────────────── */
+body.swiss-huts-theme,
+body.swiss-hut-theme {
+  background-color: #ffffff !important;
+  color: #2A323D !important;
+}
+
+body.swiss-huts-theme main,
+body.swiss-huts-theme section,
+body.swiss-huts-theme header,
+body.swiss-hut-theme main,
+body.swiss-hut-theme section,
+body.swiss-hut-theme header {
+  background-color: #ffffff !important;
+}
+
+body.swiss-huts-theme h1,
+body.swiss-huts-theme h2,
+body.swiss-huts-theme h3,
+body.swiss-huts-theme h4,
+body.swiss-huts-theme h5,
+body.swiss-huts-theme h6,
+body.swiss-hut-theme h1,
+body.swiss-hut-theme h2,
+body.swiss-hut-theme h3,
+body.swiss-hut-theme h4,
+body.swiss-hut-theme h5,
+body.swiss-hut-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.swiss-huts-theme p,
+body.swiss-huts-theme span,
+body.swiss-huts-theme li,
+body.swiss-hut-theme p,
+body.swiss-hut-theme span,
+body.swiss-hut-theme li {
+  text-shadow: none !important;
+}
+
+body.swiss-huts-theme a,
+body.swiss-huts-theme button,
+body.swiss-huts-theme label,
+body.swiss-huts-theme h1,
+body.swiss-huts-theme h2,
+body.swiss-huts-theme h3,
+body.swiss-huts-theme h4,
+body.swiss-huts-theme h5,
+body.swiss-huts-theme h6,
+body.swiss-huts-theme p,
+body.swiss-huts-theme span,
+body.swiss-huts-theme li,
+body.swiss-hut-theme a,
+body.swiss-hut-theme button,
+body.swiss-hut-theme label,
+body.swiss-hut-theme h1,
+body.swiss-hut-theme h2,
+body.swiss-hut-theme h3,
+body.swiss-hut-theme h4,
+body.swiss-hut-theme h5,
+body.swiss-hut-theme h6,
+body.swiss-hut-theme p,
+body.swiss-hut-theme span,
+body.swiss-hut-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   GERMAN TECHNOLOGY XPERT (GTX) WHITE THEME
+───────────────────────────────────────────── */
+body.gtx-theme {
+  background-color: #ffffff !important;
+  color: #202A36 !important;
+}
+
+body.gtx-theme main,
+body.gtx-theme section,
+body.gtx-theme header {
+  background-color: #ffffff !important;
+}
+
+body.gtx-theme h1,
+body.gtx-theme h2,
+body.gtx-theme h3,
+body.gtx-theme h4,
+body.gtx-theme h5,
+body.gtx-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.gtx-theme p,
+body.gtx-theme span,
+body.gtx-theme li {
+  text-shadow: none !important;
+}
+
+body.gtx-theme a,
+body.gtx-theme button,
+body.gtx-theme label,
+body.gtx-theme h1,
+body.gtx-theme h2,
+body.gtx-theme h3,
+body.gtx-theme h4,
+body.gtx-theme h5,
+body.gtx-theme h6,
+body.gtx-theme p,
+body.gtx-theme span,
+body.gtx-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   THAL DEVELOPMENT & RESEARCH CENTRE (TDRC) WHITE THEME
+───────────────────────────────────────────── */
+body.tdrc-theme {
+  background-color: #ffffff !important;
+  color: #0E1F17 !important;
+}
+
+body.tdrc-theme main,
+body.tdrc-theme section,
+body.tdrc-theme header {
+  background-color: #ffffff !important;
+}
+
+body.tdrc-theme h1,
+body.tdrc-theme h2,
+body.tdrc-theme h3,
+body.tdrc-theme h4,
+body.tdrc-theme h5,
+body.tdrc-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.tdrc-theme p,
+body.tdrc-theme span,
+body.tdrc-theme li {
+  text-shadow: none !important;
+}
+
+body.tdrc-theme a,
+body.tdrc-theme button,
+body.tdrc-theme label,
+body.tdrc-theme h1,
+body.tdrc-theme h2,
+body.tdrc-theme h3,
+body.tdrc-theme h4,
+body.tdrc-theme h5,
+body.tdrc-theme h6,
+body.tdrc-theme p,
+body.tdrc-theme span,
+body.tdrc-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   MAX POWER CORPORATION WHITE THEME
+───────────────────────────────────────────── */
+body.max-power-theme {
+  background-color: #ffffff !important;
+  color: #2D3748 !important;
+}
+
+body.max-power-theme main,
+body.max-power-theme section,
+body.max-power-theme header {
+  background-color: #ffffff !important;
+}
+
+body.max-power-theme h1,
+body.max-power-theme h2,
+body.max-power-theme h3,
+body.max-power-theme h4,
+body.max-power-theme h5,
+body.max-power-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.max-power-theme p,
+body.max-power-theme span,
+body.max-power-theme li {
+  text-shadow: none !important;
+}
+
+body.max-power-theme a,
+body.max-power-theme button,
+body.max-power-theme label,
+body.max-power-theme h1,
+body.max-power-theme h2,
+body.max-power-theme h3,
+body.max-power-theme h4,
+body.max-power-theme h5,
+body.max-power-theme h6,
+body.max-power-theme p,
+body.max-power-theme span,
+body.max-power-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   PAKISTAN MEDICAL SUPPLIES WHITE THEME
+───────────────────────────────────────────── */
+body.pak-medical-theme,
+body.pak-janitorial-theme,
+body.pakistan-medical-theme {
+  background-color: #ffffff !important;
+  color: #1E2A3A !important;
+}
+
+body.pak-medical-theme main,
+body.pak-medical-theme section,
+body.pak-medical-theme header,
+body.pak-janitorial-theme main,
+body.pak-janitorial-theme section,
+body.pak-janitorial-theme header {
+  background-color: #ffffff !important;
+}
+
+body.pak-medical-theme h1,
+body.pak-medical-theme h2,
+body.pak-medical-theme h3,
+body.pak-medical-theme h4,
+body.pak-medical-theme h5,
+body.pak-medical-theme h6,
+body.pak-janitorial-theme h1,
+body.pak-janitorial-theme h2,
+body.pak-janitorial-theme h3,
+body.pak-janitorial-theme h4,
+body.pak-janitorial-theme h5,
+body.pak-janitorial-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.pak-medical-theme p,
+body.pak-medical-theme span,
+body.pak-medical-theme li,
+body.pak-janitorial-theme p,
+body.pak-janitorial-theme span,
+body.pak-janitorial-theme li {
+  text-shadow: none !important;
+}
+
+body.pak-medical-theme a,
+body.pak-medical-theme button,
+body.pak-medical-theme label,
+body.pak-medical-theme h1,
+body.pak-medical-theme h2,
+body.pak-medical-theme h3,
+body.pak-medical-theme h4,
+body.pak-medical-theme h5,
+body.pak-medical-theme h6,
+body.pak-medical-theme p,
+body.pak-medical-theme span,
+body.pak-medical-theme li,
+body.pak-janitorial-theme a,
+body.pak-janitorial-theme button,
+body.pak-janitorial-theme label,
+body.pak-janitorial-theme h1,
+body.pak-janitorial-theme h2,
+body.pak-janitorial-theme h3,
+body.pak-janitorial-theme h4,
+body.pak-janitorial-theme h5,
+body.pak-janitorial-theme h6,
+body.pak-janitorial-theme p,
+body.pak-janitorial-theme span,
+body.pak-janitorial-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   WALTON CONSULTANTS & CONTRACTING WHITE THEME
+───────────────────────────────────────────── */
+body.walton-theme,
+body.walton-consultants-theme {
+  background-color: #ffffff !important;
+  color: #3A4E63 !important;
+}
+
+body.walton-theme main,
+body.walton-theme section,
+body.walton-theme header,
+body.walton-consultants-theme main,
+body.walton-consultants-theme section,
+body.walton-consultants-theme header {
+  background-color: #ffffff !important;
+}
+
+body.walton-theme h1,
+body.walton-theme h2,
+body.walton-theme h3,
+body.walton-theme h4,
+body.walton-theme h5,
+body.walton-theme h6,
+body.walton-consultants-theme h1,
+body.walton-consultants-theme h2,
+body.walton-consultants-theme h3,
+body.walton-consultants-theme h4,
+body.walton-consultants-theme h5,
+body.walton-consultants-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.walton-theme p,
+body.walton-theme span,
+body.walton-theme li,
+body.walton-consultants-theme p,
+body.walton-consultants-theme span,
+body.walton-consultants-theme li {
+  text-shadow: none !important;
+}
+
+body.walton-theme a,
+body.walton-theme button,
+body.walton-theme label,
+body.walton-theme h1,
+body.walton-theme h2,
+body.walton-theme h3,
+body.walton-theme h4,
+body.walton-theme h5,
+body.walton-theme h6,
+body.walton-theme p,
+body.walton-theme span,
+body.walton-theme li,
+body.walton-consultants-theme a,
+body.walton-consultants-theme button,
+body.walton-consultants-theme label,
+body.walton-consultants-theme h1,
+body.walton-consultants-theme h2,
+body.walton-consultants-theme h3,
+body.walton-consultants-theme h4,
+body.walton-consultants-theme h5,
+body.walton-consultants-theme h6,
+body.walton-consultants-theme p,
+body.walton-consultants-theme span,
+body.walton-consultants-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   DIGITAL ZONING CORPORATION WHITE THEME
+───────────────────────────────────────────── */
+body.digitalzone-theme,
+body.digital-zoning-theme {
+  background-color: #ffffff !important;
+  color: #3E4F61 !important;
+}
+
+body.digitalzone-theme main,
+body.digitalzone-theme section,
+body.digitalzone-theme header,
+body.digital-zoning-theme main,
+body.digital-zoning-theme section,
+body.digital-zoning-theme header {
+  background-color: #ffffff !important;
+}
+
+body.digitalzone-theme h1,
+body.digitalzone-theme h2,
+body.digitalzone-theme h3,
+body.digitalzone-theme h4,
+body.digitalzone-theme h5,
+body.digitalzone-theme h6,
+body.digital-zoning-theme h1,
+body.digital-zoning-theme h2,
+body.digital-zoning-theme h3,
+body.digital-zoning-theme h4,
+body.digital-zoning-theme h5,
+body.digital-zoning-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.digitalzone-theme p,
+body.digitalzone-theme span,
+body.digitalzone-theme li,
+body.digital-zoning-theme p,
+body.digital-zoning-theme span,
+body.digital-zoning-theme li {
+  text-shadow: none !important;
+}
+
+body.digitalzone-theme a,
+body.digitalzone-theme button,
+body.digitalzone-theme label,
+body.digitalzone-theme h1,
+body.digitalzone-theme h2,
+body.digitalzone-theme h3,
+body.digitalzone-theme h4,
+body.digitalzone-theme h5,
+body.digitalzone-theme h6,
+body.digitalzone-theme p,
+body.digitalzone-theme span,
+body.digitalzone-theme li,
+body.digital-zoning-theme a,
+body.digital-zoning-theme button,
+body.digital-zoning-theme label,
+body.digital-zoning-theme h1,
+body.digital-zoning-theme h2,
+body.digital-zoning-theme h3,
+body.digital-zoning-theme h4,
+body.digital-zoning-theme h5,
+body.digital-zoning-theme h6,
+body.digital-zoning-theme p,
+body.digital-zoning-theme span,
+body.digital-zoning-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   PAKISTANI CONSULTANCY SERVICES WHITE THEME
+───────────────────────────────────────────── */
+body.pakistan-consultancy-theme,
+body.pak-consultancy-theme {
+  background-color: #ffffff !important;
+  color: #48525D !important;
+}
+
+body.pakistan-consultancy-theme main,
+body.pakistan-consultancy-theme section,
+body.pakistan-consultancy-theme header,
+body.pak-consultancy-theme main,
+body.pak-consultancy-theme section,
+body.pak-consultancy-theme header {
+  background-color: #ffffff !important;
+}
+
+body.pakistan-consultancy-theme h1,
+body.pakistan-consultancy-theme h2,
+body.pakistan-consultancy-theme h3,
+body.pakistan-consultancy-theme h4,
+body.pakistan-consultancy-theme h5,
+body.pakistan-consultancy-theme h6,
+body.pak-consultancy-theme h1,
+body.pak-consultancy-theme h2,
+body.pak-consultancy-theme h3,
+body.pak-consultancy-theme h4,
+body.pak-consultancy-theme h5,
+body.pak-consultancy-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.pakistan-consultancy-theme p,
+body.pakistan-consultancy-theme span,
+body.pakistan-consultancy-theme li,
+body.pak-consultancy-theme p,
+body.pak-consultancy-theme span,
+body.pak-consultancy-theme li {
+  text-shadow: none !important;
+}
+
+body.pakistan-consultancy-theme a,
+body.pakistan-consultancy-theme button,
+body.pakistan-consultancy-theme label,
+body.pakistan-consultancy-theme h1,
+body.pakistan-consultancy-theme h2,
+body.pakistan-consultancy-theme h3,
+body.pakistan-consultancy-theme h4,
+body.pakistan-consultancy-theme h5,
+body.pakistan-consultancy-theme h6,
+body.pakistan-consultancy-theme p,
+body.pakistan-consultancy-theme span,
+body.pakistan-consultancy-theme li,
+body.pak-consultancy-theme a,
+body.pak-consultancy-theme button,
+body.pak-consultancy-theme label,
+body.pak-consultancy-theme h1,
+body.pak-consultancy-theme h2,
+body.pak-consultancy-theme h3,
+body.pak-consultancy-theme h4,
+body.pak-consultancy-theme h5,
+body.pak-consultancy-theme h6,
+body.pak-consultancy-theme p,
+body.pak-consultancy-theme span,
+body.pak-consultancy-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   NATIONAL FOOD SERVICES (NFS) WHITE THEME
+───────────────────────────────────────────── */
+body.national-food-theme,
+body.nfs-food-theme,
+body.nfs-theme {
+  background-color: #ffffff !important;
+  color: #4E5456 !important;
+}
+
+body.national-food-theme main,
+body.national-food-theme section,
+body.national-food-theme header,
+body.nfs-food-theme main,
+body.nfs-food-theme section,
+body.nfs-food-theme header,
+body.nfs-theme main,
+body.nfs-theme section,
+body.nfs-theme header {
+  background-color: #ffffff !important;
+}
+
+body.national-food-theme h1,
+body.national-food-theme h2,
+body.national-food-theme h3,
+body.national-food-theme h4,
+body.national-food-theme h5,
+body.national-food-theme h6,
+body.nfs-food-theme h1,
+body.nfs-food-theme h2,
+body.nfs-food-theme h3,
+body.nfs-food-theme h4,
+body.nfs-food-theme h5,
+body.nfs-food-theme h6,
+body.nfs-theme h1,
+body.nfs-theme h2,
+body.nfs-theme h3,
+body.nfs-theme h4,
+body.nfs-theme h5,
+body.nfs-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.national-food-theme p,
+body.national-food-theme span,
+body.national-food-theme li,
+body.nfs-food-theme p,
+body.nfs-food-theme span,
+body.nfs-food-theme li,
+body.nfs-theme p,
+body.nfs-theme span,
+body.nfs-theme li {
+  text-shadow: none !important;
+}
+
+body.national-food-theme a,
+body.national-food-theme button,
+body.national-food-theme label,
+body.national-food-theme h1,
+body.national-food-theme h2,
+body.national-food-theme h3,
+body.national-food-theme h4,
+body.national-food-theme h5,
+body.national-food-theme h6,
+body.national-food-theme p,
+body.national-food-theme span,
+body.national-food-theme li,
+body.nfs-food-theme a,
+body.nfs-food-theme button,
+body.nfs-food-theme label,
+body.nfs-food-theme h1,
+body.nfs-food-theme h2,
+body.nfs-food-theme h3,
+body.nfs-food-theme h4,
+body.nfs-food-theme h5,
+body.nfs-food-theme h6,
+body.nfs-food-theme p,
+body.nfs-food-theme span,
+body.nfs-food-theme li,
+body.nfs-theme a,
+body.nfs-theme button,
+body.nfs-theme label,
+body.nfs-theme h1,
+body.nfs-theme h2,
+body.nfs-theme h3,
+body.nfs-theme h4,
+body.nfs-theme h5,
+body.nfs-theme h6,
+body.nfs-theme p,
+body.nfs-theme span,
+body.nfs-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   WALTON & MORRIS / MIRROR FOODS WHITE THEME
+───────────────────────────────────────────── */
+body.walton-mirror-food-theme,
+body.walton-food-theme,
+body.walton-morris-theme {
+  background-color: #ffffff !important;
+  color: #3D4E44 !important;
+}
+
+body.walton-mirror-food-theme main,
+body.walton-mirror-food-theme section,
+body.walton-mirror-food-theme header,
+body.walton-food-theme main,
+body.walton-food-theme section,
+body.walton-food-theme header,
+body.walton-morris-theme main,
+body.walton-morris-theme section,
+body.walton-morris-theme header {
+  background-color: #ffffff !important;
+}
+
+body.walton-mirror-food-theme h1,
+body.walton-mirror-food-theme h2,
+body.walton-mirror-food-theme h3,
+body.walton-mirror-food-theme h4,
+body.walton-mirror-food-theme h5,
+body.walton-mirror-food-theme h6,
+body.walton-food-theme h1,
+body.walton-food-theme h2,
+body.walton-food-theme h3,
+body.walton-food-theme h4,
+body.walton-food-theme h5,
+body.walton-food-theme h6,
+body.walton-morris-theme h1,
+body.walton-morris-theme h2,
+body.walton-morris-theme h3,
+body.walton-morris-theme h4,
+body.walton-morris-theme h5,
+body.walton-morris-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.walton-mirror-food-theme p,
+body.walton-mirror-food-theme span,
+body.walton-mirror-food-theme li,
+body.walton-food-theme p,
+body.walton-food-theme span,
+body.walton-food-theme li,
+body.walton-morris-theme p,
+body.walton-morris-theme span,
+body.walton-morris-theme li {
+  text-shadow: none !important;
+}
+
+body.walton-mirror-food-theme a,
+body.walton-mirror-food-theme button,
+body.walton-mirror-food-theme label,
+body.walton-mirror-food-theme h1,
+body.walton-mirror-food-theme h2,
+body.walton-mirror-food-theme h3,
+body.walton-mirror-food-theme h4,
+body.walton-mirror-food-theme h5,
+body.walton-mirror-food-theme h6,
+body.walton-mirror-food-theme p,
+body.walton-mirror-food-theme span,
+body.walton-mirror-food-theme li,
+body.walton-food-theme a,
+body.walton-food-theme button,
+body.walton-food-theme label,
+body.walton-food-theme h1,
+body.walton-food-theme h2,
+body.walton-food-theme h3,
+body.walton-food-theme h4,
+body.walton-food-theme h5,
+body.walton-food-theme h6,
+body.walton-food-theme p,
+body.walton-food-theme span,
+body.walton-food-theme li,
+body.walton-morris-theme a,
+body.walton-morris-theme button,
+body.walton-morris-theme label,
+body.walton-morris-theme h1,
+body.walton-morris-theme h2,
+body.walton-morris-theme h3,
+body.walton-morris-theme h4,
+body.walton-morris-theme h5,
+body.walton-morris-theme h6,
+body.walton-morris-theme p,
+body.walton-morris-theme span,
+body.walton-morris-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   NEOM CITY CORPORATION WHITE THEME
+───────────────────────────────────────────── */
+body.neom-city-theme,
+body.neom-city-corp-theme {
+  background-color: #ffffff !important;
+  color: #475569 !important;
+}
+
+body.neom-city-theme main,
+body.neom-city-theme section,
+body.neom-city-theme header,
+body.neom-city-corp-theme main,
+body.neom-city-corp-theme section,
+body.neom-city-corp-theme header {
+  background-color: #ffffff !important;
+}
+
+body.neom-city-theme h1,
+body.neom-city-theme h2,
+body.neom-city-theme h3,
+body.neom-city-theme h4,
+body.neom-city-theme h5,
+body.neom-city-theme h6,
+body.neom-city-corp-theme h1,
+body.neom-city-corp-theme h2,
+body.neom-city-corp-theme h3,
+body.neom-city-corp-theme h4,
+body.neom-city-corp-theme h5,
+body.neom-city-corp-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.neom-city-theme p,
+body.neom-city-theme span,
+body.neom-city-theme li,
+body.neom-city-corp-theme p,
+body.neom-city-corp-theme span,
+body.neom-city-corp-theme li {
+  text-shadow: none !important;
+}
+
+body.neom-city-theme a,
+body.neom-city-theme button,
+body.neom-city-theme label,
+body.neom-city-theme h1,
+body.neom-city-theme h2,
+body.neom-city-theme h3,
+body.neom-city-theme h4,
+body.neom-city-theme h5,
+body.neom-city-theme h6,
+body.neom-city-theme p,
+body.neom-city-theme span,
+body.neom-city-theme li,
+body.neom-city-corp-theme a,
+body.neom-city-corp-theme button,
+body.neom-city-corp-theme label,
+body.neom-city-corp-theme h1,
+body.neom-city-corp-theme h2,
+body.neom-city-corp-theme h3,
+body.neom-city-corp-theme h4,
+body.neom-city-corp-theme h5,
+body.neom-city-corp-theme h6,
+body.neom-city-corp-theme p,
+body.neom-city-corp-theme span,
+body.neom-city-corp-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   MAX WOOD CORPORATION WHITE THEME
+───────────────────────────────────────────── */
+body.max-wood-theme,
+body.wood-theme {
+  background-color: #ffffff !important;
+  color: #5C5248 !important;
+}
+
+body.max-wood-theme main,
+body.max-wood-theme section,
+body.max-wood-theme header,
+body.wood-theme main,
+body.wood-theme section,
+body.wood-theme header {
+  background-color: #ffffff !important;
+}
+
+body.max-wood-theme h1,
+body.max-wood-theme h2,
+body.max-wood-theme h3,
+body.max-wood-theme h4,
+body.max-wood-theme h5,
+body.max-wood-theme h6,
+body.wood-theme h1,
+body.wood-theme h2,
+body.wood-theme h3,
+body.wood-theme h4,
+body.wood-theme h5,
+body.wood-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.max-wood-theme p,
+body.max-wood-theme span,
+body.max-wood-theme li,
+body.wood-theme p,
+body.wood-theme span,
+body.wood-theme li {
+  text-shadow: none !important;
+}
+
+body.max-wood-theme a,
+body.max-wood-theme button,
+body.max-wood-theme label,
+body.max-wood-theme h1,
+body.max-wood-theme h2,
+body.max-wood-theme h3,
+body.max-wood-theme h4,
+body.max-wood-theme h5,
+body.max-wood-theme h6,
+body.max-wood-theme p,
+body.max-wood-theme span,
+body.max-wood-theme li,
+body.wood-theme a,
+body.wood-theme button,
+body.wood-theme label,
+body.wood-theme h1,
+body.wood-theme h2,
+body.wood-theme h3,
+body.wood-theme h4,
+body.wood-theme h5,
+body.wood-theme h6,
+body.wood-theme p,
+body.wood-theme span,
+body.wood-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   INVERSE & UNION TRADING WHITE THEME
+───────────────────────────────────────────── */
+body.inverse-union-theme,
+body.inverse-theme {
+  background-color: #ffffff !important;
+  color: #4A5568 !important;
+}
+
+body.inverse-union-theme main,
+body.inverse-union-theme section,
+body.inverse-union-theme header,
+body.inverse-theme main,
+body.inverse-theme section,
+body.inverse-theme header {
+  background-color: #ffffff !important;
+}
+
+body.inverse-union-theme h1,
+body.inverse-union-theme h2,
+body.inverse-union-theme h3,
+body.inverse-union-theme h4,
+body.inverse-union-theme h5,
+body.inverse-union-theme h6,
+body.inverse-theme h1,
+body.inverse-theme h2,
+body.inverse-theme h3,
+body.inverse-theme h4,
+body.inverse-theme h5,
+body.inverse-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.inverse-union-theme p,
+body.inverse-union-theme span,
+body.inverse-union-theme li,
+body.inverse-theme p,
+body.inverse-theme span,
+body.inverse-theme li {
+  text-shadow: none !important;
+}
+
+body.inverse-union-theme a,
+body.inverse-union-theme button,
+body.inverse-union-theme label,
+body.inverse-union-theme h1,
+body.inverse-union-theme h2,
+body.inverse-union-theme h3,
+body.inverse-union-theme h4,
+body.inverse-union-theme h5,
+body.inverse-union-theme h6,
+body.inverse-union-theme p,
+body.inverse-union-theme span,
+body.inverse-union-theme li,
+body.inverse-theme a,
+body.inverse-theme button,
+body.inverse-theme label,
+body.inverse-theme h1,
+body.inverse-theme h2,
+body.inverse-theme h3,
+body.inverse-theme h4,
+body.inverse-theme h5,
+body.inverse-theme h6,
+body.inverse-theme p,
+body.inverse-theme span,
+body.inverse-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   DESERT DEVELOPMENT & REHABILITATION WHITE THEME
+───────────────────────────────────────────── */
+body.desert-development-theme,
+body.desert-theme {
+  background-color: #ffffff !important;
+  color: #425C52 !important;
+}
+
+body.desert-development-theme main,
+body.desert-development-theme section,
+body.desert-development-theme header,
+body.desert-theme main,
+body.desert-theme section,
+body.desert-theme header {
+  background-color: #ffffff !important;
+}
+
+body.desert-development-theme h1,
+body.desert-development-theme h2,
+body.desert-development-theme h3,
+body.desert-development-theme h4,
+body.desert-development-theme h5,
+body.desert-development-theme h6,
+body.desert-theme h1,
+body.desert-theme h2,
+body.desert-theme h3,
+body.desert-theme h4,
+body.desert-theme h5,
+body.desert-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.desert-development-theme p,
+body.desert-development-theme span,
+body.desert-development-theme li,
+body.desert-theme p,
+body.desert-theme span,
+body.desert-theme li {
+  text-shadow: none !important;
+}
+
+body.desert-development-theme a,
+body.desert-development-theme button,
+body.desert-development-theme label,
+body.desert-development-theme h1,
+body.desert-development-theme h2,
+body.desert-development-theme h3,
+body.desert-development-theme h4,
+body.desert-development-theme h5,
+body.desert-development-theme h6,
+body.desert-development-theme p,
+body.desert-development-theme span,
+body.desert-development-theme li,
+body.desert-theme a,
+body.desert-theme button,
+body.desert-theme label,
+body.desert-theme h1,
+body.desert-theme h2,
+body.desert-theme h3,
+body.desert-theme h4,
+body.desert-theme h5,
+body.desert-theme h6,
+body.desert-theme p,
+body.desert-theme span,
+body.desert-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   NEOM CITY RECRUITMENT CONSULTANTS WHITE THEME
+───────────────────────────────────────────── */
+body.neom-recruitment-theme,
+body.neom-city-recruitment-theme {
+  background-color: #ffffff !important;
+  color: #475569 !important;
+}
+
+body.neom-recruitment-theme main,
+body.neom-recruitment-theme section,
+body.neom-recruitment-theme header,
+body.neom-city-recruitment-theme main,
+body.neom-city-recruitment-theme section,
+body.neom-city-recruitment-theme header {
+  background-color: #ffffff !important;
+}
+
+body.neom-recruitment-theme h1,
+body.neom-recruitment-theme h2,
+body.neom-recruitment-theme h3,
+body.neom-recruitment-theme h4,
+body.neom-recruitment-theme h5,
+body.neom-recruitment-theme h6,
+body.neom-city-recruitment-theme h1,
+body.neom-city-recruitment-theme h2,
+body.neom-city-recruitment-theme h3,
+body.neom-city-recruitment-theme h4,
+body.neom-city-recruitment-theme h5,
+body.neom-city-recruitment-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.neom-recruitment-theme p,
+body.neom-recruitment-theme span,
+body.neom-recruitment-theme li,
+body.neom-city-recruitment-theme p,
+body.neom-city-recruitment-theme span,
+body.neom-city-recruitment-theme li {
+  text-shadow: none !important;
+}
+
+body.neom-recruitment-theme a,
+body.neom-recruitment-theme button,
+body.neom-recruitment-theme label,
+body.neom-recruitment-theme h1,
+body.neom-recruitment-theme h2,
+body.neom-recruitment-theme h3,
+body.neom-recruitment-theme h4,
+body.neom-recruitment-theme h5,
+body.neom-recruitment-theme h6,
+body.neom-recruitment-theme p,
+body.neom-recruitment-theme span,
+body.neom-recruitment-theme li,
+body.neom-city-recruitment-theme a,
+body.neom-city-recruitment-theme button,
+body.neom-city-recruitment-theme label,
+body.neom-city-recruitment-theme h1,
+body.neom-city-recruitment-theme h2,
+body.neom-city-recruitment-theme h3,
+body.neom-city-recruitment-theme h4,
+body.neom-city-recruitment-theme h5,
+body.neom-city-recruitment-theme h6,
+body.neom-city-recruitment-theme p,
+body.neom-city-recruitment-theme span,
+body.neom-city-recruitment-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* ─────────────────────────────────────────────
+   MAX PAK CORPORATION WHITE THEME
+───────────────────────────────────────────── */
+body.max-pak-theme {
+  background-color: #ffffff !important;
+  color: #475569 !important;
+}
+
+body.max-pak-theme main,
+body.max-pak-theme section,
+body.max-pak-theme header {
+  background-color: #ffffff !important;
+}
+
+body.max-pak-theme h1,
+body.max-pak-theme h2,
+body.max-pak-theme h3,
+body.max-pak-theme h4,
+body.max-pak-theme h5,
+body.max-pak-theme h6 {
+  font-family: system-ui, -apple-system, sans-serif !important;
+  text-shadow: none !important;
+}
+
+body.max-pak-theme p,
+body.max-pak-theme span,
+body.max-pak-theme li {
+  text-shadow: none !important;
+}
+
+body.max-pak-theme a,
+body.max-pak-theme button,
+body.max-pak-theme label,
+body.max-pak-theme h1,
+body.max-pak-theme h2,
+body.max-pak-theme h3,
+body.max-pak-theme h4,
+body.max-pak-theme h5,
+body.max-pak-theme h6,
+body.max-pak-theme p,
+body.max-pak-theme span,
+body.max-pak-theme li {
   -webkit-text-fill-color: inherit;
   text-shadow: none !important;
   background-image: none !important;

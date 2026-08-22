@@ -52,7 +52,8 @@ export default function Contact() {
     service: "",
     message: "",
   });
-  const [status, setStatus] = useState("idle"); // idle | sending | sent
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
@@ -61,20 +62,33 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
+    setErrorMessage("");
     try {
-      const res = await fetch("/group-companies/gateway/api/contact", {
+      const res = await fetch("/api/company-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          companySlug: "gateway",
+          companyName: "Gateway Regulatory & Pharma Consulting",
+          fullName: form.name,
+          email: form.email,
+          phone: form.phone,
+          subject: `Regulatory Inquiry: ${form.service}`,
+          message: form.message,
+          additionalFields: {
+            service: form.service,
+          },
+        }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.success) {
         throw new Error(data.message || "Failed to submit message.");
       }
       setStatus("sent");
+      setForm({ name: "", email: "", phone: "", service: "", message: "" });
     } catch (err) {
-      alert(err.message || "Error sending message.");
-      setStatus("idle");
+      setErrorMessage(err.message || "Error sending message. Please try again.");
+      setStatus("error");
     }
   };
 
@@ -262,6 +276,11 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+                {status === "error" && errorMessage && (
+                  <div style={{ padding: "12px 16px", borderRadius: "8px", backgroundColor: "#FFEBEB", border: "1px solid #FFC2C2", color: "#C00", fontSize: "13px", fontWeight: 600 }}>
+                    {errorMessage}
+                  </div>
+                )}
                 {/* Name + Email */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                   <div>

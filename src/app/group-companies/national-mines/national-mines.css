@@ -1,0 +1,78 @@
+/* ─────────────────────────────────────────────────────────────
+   NATIONAL MINES CORPORATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/national-mines/national-mines.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --nmc-navy: #16243E;         /* NMC Dark Navy */
+  --nmc-slate: #4A607A;        /* Steel Slate Blue */
+  --nmc-gold: #C59B27;         /* Mineral Gold */
+  --nmc-gold-hover: #A8821D;
+  --nmc-gold-light: #DDB338;
+  --nmc-white: #ffffff;
+  --nmc-offwhite: #F8FAFC;
+  --nmc-border: #E2E8F0;
+  --nmc-text-muted: #334155;
+  --nmc-text-light: #64748B;
+}
+
+body.national-mines-theme,
+.national-mines-theme,
+body.national-mines-theme main,
+body.national-mines-theme section,
+body.national-mines-theme header,
+.national-mines-theme main,
+.national-mines-theme section,
+.national-mines-theme header {
+  background-color: #ffffff !important;
+  color: #16243E;
+}
+
+body.national-mines-theme .cursor-pointer,
+.national-mines-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.nmc-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.nmc-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #C59B27 !important;
+  box-shadow: 0 16px 32px -8px rgba(22, 36, 62, 0.14), 0 0 0 1px rgba(197, 155, 39, 0.25) !important;
+}
+
+/* Counter box */
+.nmc-counter-box {
+  transition: all 0.3s ease !important;
+}
+.nmc-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #C59B27 !important;
+  box-shadow: 0 10px 25px rgba(22, 36, 62, 0.1) !important;
+}
+
+/* Reset for National Mines components */
+body.national-mines-theme a,
+body.national-mines-theme button,
+body.national-mines-theme label,
+body.national-mines-theme h1,
+body.national-mines-theme h2,
+body.national-mines-theme h3,
+body.national-mines-theme h4,
+body.national-mines-theme h5,
+body.national-mines-theme h6,
+body.national-mines-theme p,
+body.national-mines-theme span,
+body.national-mines-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.national-mines-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

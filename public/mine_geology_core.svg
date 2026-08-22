@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16243E" />
+      <stop offset="100%" stop-color="#0E1624" />
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C59B27" />
+      <stop offset="50%" stop-color="#FFD700" />
+      <stop offset="100%" stop-color="#C59B27" />
+    </linearGradient>
+    <linearGradient id="strata1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A607A" />
+      <stop offset="100%" stop-color="#2D3E54" />
+    </linearGradient>
+    <linearGradient id="strata2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3D4E67" />
+      <stop offset="100%" stop-color="#1E2B3D" />
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bgGrad)" />
+
+  <!-- Geological Stratigraphy Subsurface Layers (Cross Section) -->
+  <g transform="translate(50, 100)">
+    <!-- Topsoil & Alluvium -->
+    <path d="M0,80 Q200,60 400,75 T700,70 L700,140 Q400,150 200,135 T0,145 Z" fill="#5B6D87" opacity="0.8" />
+    <text x="30" y="115" fill="#FFFDF2" font-family="sans-serif" font-size="12" font-weight="bold">TOP STRATA: ALLUVIAL GRAVEL &amp; LIMESTONE</text>
+
+    <!-- Mineralized Quartz & Copper Porphyry Layer -->
+    <path d="M0,145 Q200,135 400,150 T700,140 L700,240 Q450,255 250,235 T0,250 Z" fill="url(#strata1)" />
+    <!-- Copper Veins -->
+    <path d="M50,180 Q220,165 420,195 Q580,175 660,190" stroke="#E59866" stroke-width="6" stroke-linecap="round" opacity="0.9" />
+    <text x="30" y="225" fill="#E59866" font-family="sans-serif" font-size="12" font-weight="bold">PORPHYRY COPPER BED (0.85% Cu Cut-off)</text>
+
+    <!-- High-Grade Gold Quartz Vein System (Deep Igneous) -->
+    <path d="M0,250 Q250,235 450,255 T700,240 L700,380 Q400,395 200,375 T0,390 Z" fill="url(#strata2)" />
+    <!-- Radiant Gold Vein -->
+    <path d="M30,300 Q200,270 380,310 Q540,285 680,320" stroke="url(#goldGlow)" stroke-width="9" stroke-linecap="round" filter="url(#glow2)" />
+    <text x="30" y="360" fill="#FFD700" font-family="sans-serif" font-size="13" font-weight="bold">HIGH GRADE GOLD ORE VEIN (3.4 g/t Au)</text>
+
+    <!-- Bedrock Granite Basement -->
+    <path d="M0,390 Q200,375 400,395 T700,380 L700,450 L0,450 Z" fill="#111B2C" />
+  </g>
+
+  <!-- Diamond Core Drill Rig Cylinder Inspection Simulation (Right Side) -->
+  <g transform="translate(560, 60)">
+    <!-- Core Tube Frame -->
+    <rect x="0" y="0" width="180" height="480" rx="16" fill="#16243E" stroke="#C59B27" stroke-width="2" />
+    <rect x="15" y="20" width="150" height="440" rx="8" fill="#0E1624" />
+
+    <!-- Core Samples Cylinder -->
+    <rect x="30" y="40" width="120" height="80" rx="6" fill="#5B6D87" stroke="#C59B27" stroke-width="1" />
+    <text x="45" y="85" fill="#FFFDF2" font-family="monospace" font-size="10" font-weight="bold">0–80m: Gravel</text>
+
+    <rect x="30" y="130" width="120" height="110" rx="6" fill="#4A607A" stroke="#E59866" stroke-width="1.5" />
+    <text x="40" y="190" fill="#E59866" font-family="monospace" font-size="10" font-weight="bold">80–190m: Cu Ore</text>
+
+    <rect x="30" y="250" width="120" height="130" rx="6" fill="#2D3E54" stroke="#FFD700" stroke-width="2" />
+    <circle cx="90" cy="305" r="18" fill="#FFD700" filter="url(#glow2)" opacity="0.8" />
+    <text x="40" y="345" fill="#FFD700" font-family="monospace" font-size="10" font-weight="bold">190–320m: Au Ore</text>
+
+    <rect x="30" y="390" width="120" height="50" rx="6" fill="#111B2C" stroke="#4A607A" stroke-width="1" />
+    <text x="45" y="420" fill="#64748B" font-family="monospace" font-size="10">Basement Rock</text>
+  </g>
+
+  <!-- Data & Analysis Badge -->
+  <g transform="translate(60, 40)">
+    <rect width="280" height="48" rx="10" fill="#16243E" stroke="#C59B27" stroke-width="1.5" />
+    <circle cx="24" cy="24" r="8" fill="#C59B27" />
+    <text x="42" y="22" fill="#FFD700" font-family="sans-serif" font-size="11" font-weight="bold">GEOLOGICAL EXPLORATION LAB</text>
+    <text x="42" y="38" fill="#FFFDF2" font-family="sans-serif" font-size="10">Diamond Core Drill Assay: 99.4% Purity</text>
+  </g>
+</svg>

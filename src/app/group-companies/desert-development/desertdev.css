@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────
+   DESERT DEVELOPMENT & REHABILITATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/desert-development/desertdev.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --dd-primary: #1B4D3E;       /* Forest / Desert Environmental Green */
+  --dd-dark-green: #0D3025;
+  --dd-darker-green: #071C15;
+  --dd-emerald: #2D7D62;       /* Vibrant Emerald Accent */
+  --dd-emerald-hover: #22634D;
+  --dd-sand: #E2B774;          /* Warm Desert Sand Accent */
+  --dd-white: #ffffff;
+  --dd-cream: #F7FBF9;         /* Soft eco-light background */
+  --dd-border: #D4E5DD;
+  --dd-text-muted: #425C52;
+  --dd-text-light: #5E7D72;
+}
+
+body.desert-development-theme,
+body.desert-theme,
+.desert-development-theme,
+.desert-theme,
+body.desert-development-theme main,
+body.desert-development-theme section,
+body.desert-development-theme header,
+.desert-development-theme main,
+.desert-development-theme section,
+.desert-development-theme header {
+  background-color: #ffffff !important;
+  color: #425C52;
+}
+
+body.desert-development-theme .cursor-pointer,
+.desert-development-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.dd-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.dd-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #1B4D3E !important;
+  box-shadow: 0 16px 32px -8px rgba(27, 77, 62, 0.16), 0 0 0 1px rgba(45, 125, 98, 0.25) !important;
+}
+
+/* Counter box */
+.dd-counter-box {
+  transition: all 0.3s ease !important;
+}
+.dd-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #1B4D3E !important;
+  box-shadow: 0 10px 25px rgba(27, 77, 62, 0.1) !important;
+}
+
+/* Reset for Desert Development components */
+body.desert-development-theme a,
+body.desert-development-theme button,
+body.desert-development-theme label,
+body.desert-development-theme h1,
+body.desert-development-theme h2,
+body.desert-development-theme h3,
+body.desert-development-theme h4,
+body.desert-development-theme h5,
+body.desert-development-theme h6,
+body.desert-development-theme p,
+body.desert-development-theme span,
+body.desert-development-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.desert-development-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGtx" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#064E3B" />
+    </linearGradient>
+    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="50%" stop-color="#4ADE80" />
+      <stop offset="100%" stop-color="#16A34A" />
+    </linearGradient>
+    <linearGradient id="chargerBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="60%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+    <linearGradient id="solarGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <filter id="gtxGlow">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Clean Tech Sky / Modern Urban Backdrop -->
+  <rect width="1200" height="675" fill="url(#bgGtx)" />
+
+  <!-- Smart City Skyline Silhouette (Background) -->
+  <g fill="#1E293B" opacity="0.6">
+    <rect x="50" y="240" width="80" height="200" rx="4" />
+    <rect x="150" y="180" width="90" height="260" rx="4" />
+    <rect x="260" y="220" width="110" height="220" rx="4" />
+    <rect x="850" y="190" width="100" height="250" rx="4" />
+    <rect x="970" y="160" width="120" height="280" rx="4" />
+    <rect x="1110" y="230" width="80" height="210" rx="4" />
+  </g>
+
+  <!-- Glowing Green Smart Energy Data Grid Lines -->
+  <g stroke="#22C55E" stroke-width="1.5" opacity="0.3" stroke-dasharray="6,6">
+    <line x1="0" y1="440" x2="1200" y2="440" />
+    <line x1="0" y1="480" x2="1200" y2="480" />
+    <line x1="0" y1="530" x2="1200" y2="530" />
+    <line x1="0" y1="590" x2="1200" y2="590" />
+  </g>
+
+  <!-- High-Tech Solar Canopy Structure -->
+  <g transform="translate(140, 100)">
+    <!-- Canopy Pillars -->
+    <rect x="120" y="80" width="18" height="260" fill="#334155" />
+    <rect x="420" y="80" width="18" height="260" fill="#334155" />
+    <rect x="720" y="80" width="18" height="260" fill="#334155" />
+    <!-- Cantilevered Solar Roof -->
+    <polygon points="0,70 920,40 900,90 -20,120" fill="url(#solarGlass)" stroke="#38BDF8" stroke-width="2" />
+    <!-- Solar Cell Grid Pattern -->
+    <line x1="150" y1="65" x2="130" y2="115" stroke="#38BDF8" stroke-width="1.5" opacity="0.7" />
+    <line x1="300" y1="60" x2="280" y2="110" stroke="#38BDF8" stroke-width="1.5" opacity="0.7" />
+    <line x1="450" y1="55" x2="430" y2="105" stroke="#38BDF8" stroke-width="1.5" opacity="0.7" />
+    <line x1="600" y1="50" x2="580" y2="100" stroke="#38BDF8" stroke-width="1.5" opacity="0.7" />
+    <line x1="750" y1="45" x2="730" y2="95" stroke="#38BDF8" stroke-width="1.5" opacity="0.7" />
+    <!-- LED Glow Strip under Canopy -->
+    <line x1="0" y1="95" x2="900" y2="65" stroke="#22C55E" stroke-width="4" filter="url(#gtxGlow)" />
+  </g>
+
+  <!-- Paved EV Hub Forecourt -->
+  <polygon points="0,440 1200,440 1200,675 0,675" fill="#0F172A" />
+  <!-- Green EV Parking Bay Lines -->
+  <polygon points="180,480 340,480 390,660 170,660" fill="none" stroke="#22C55E" stroke-width="3" stroke-dasharray="12,6" />
+  <polygon points="460,480 620,480 690,660 470,660" fill="none" stroke="#22C55E" stroke-width="3" stroke-dasharray="12,6" />
+  <polygon points="740,480 900,480 990,660 770,660" fill="none" stroke="#22C55E" stroke-width="3" stroke-dasharray="12,6" />
+
+  <!-- ─── GTX Ultra-Fast 350kW DC Fast Charging Station 1 (Left) ─── -->
+  <g transform="translate(240, 260)">
+    <rect width="70" height="190" rx="8" fill="url(#chargerBody)" stroke="#16A34A" stroke-width="2" />
+    <!-- Digital Glass Display Screen -->
+    <rect x="10" y="25" width="50" height="70" rx="4" fill="#0F172A" stroke="#22C55E" stroke-width="1.5" />
+    <!-- Charging UI Graphics -->
+    <circle cx="35" cy="50" r="14" fill="none" stroke="#22C55E" stroke-width="3" filter="url(#gtxGlow)" />
+    <text x="35" y="54" fill="#22C55E" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">92%</text>
+    <text x="35" y="82" fill="#38BDF8" font-family="sans-serif" font-size="7" font-weight="bold" text-anchor="middle">350 kW FAST</text>
+    <!-- GTX Green Accent Brand Bar -->
+    <rect x="0" y="110" width="70" height="12" fill="#16A34A" />
+    <!-- Heavy-Duty Liquid-Cooled Charging Cable & Gun -->
+    <path d="M60,140 Q100,160 80,230 Q65,270 120,290" fill="none" stroke="#22C55E" stroke-width="6" filter="url(#gtxGlow)" />
+  </g>
+
+  <!-- ─── GTX Ultra-Fast 350kW DC Fast Charging Station 2 (Center-Right) ─── -->
+  <g transform="translate(520, 260)">
+    <rect width="70" height="190" rx="8" fill="url(#chargerBody)" stroke="#16A34A" stroke-width="2" />
+    <rect x="10" y="25" width="50" height="70" rx="4" fill="#0F172A" stroke="#22C55E" stroke-width="1.5" />
+    <circle cx="35" cy="50" r="14" fill="none" stroke="#22C55E" stroke-width="3" filter="url(#gtxGlow)" />
+    <text x="35" y="54" fill="#22C55E" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">85%</text>
+    <text x="35" y="82" fill="#38BDF8" font-family="sans-serif" font-size="7" font-weight="bold" text-anchor="middle">350 kW FAST</text>
+    <rect x="0" y="110" width="70" height="12" fill="#16A34A" />
+    <path d="M60,140 Q100,160 80,230 Q65,270 120,290" fill="none" stroke="#22C55E" stroke-width="6" filter="url(#gtxGlow)" />
+  </g>
+
+  <!-- ─── Sleek Electric Vehicle (EV) Connected & Charging (Right Foreground) ─── -->
+  <g transform="translate(680, 410) scale(1.1)">
+    <!-- Aerodynamic EV Body Silhouette -->
+    <path d="M20,130 Q40,75 110,65 Q220,50 310,75 Q360,90 380,135 Q370,165 340,165 L40,165 Q10,165 20,130 Z" fill="#F8FAFC" stroke="#94A3B8" stroke-width="2" />
+    <!-- Tinted Panoramic Glass Cabin -->
+    <path d="M90,75 Q150,55 240,55 Q290,65 315,85 L85,85 Z" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5" />
+    <!-- Cyber LED Lightbar Headlight & Taillight -->
+    <path d="M20,125 Q35,120 50,128" fill="none" stroke="#38BDF8" stroke-width="3.5" filter="url(#gtxGlow)" />
+    <path d="M365,125 Q375,128 380,135" fill="none" stroke="#EF4444" stroke-width="4" filter="url(#gtxGlow)" />
+    <!-- Aero Alloy Wheels -->
+    <g transform="translate(70, 130)">
+      <circle cx="35" cy="35" r="32" fill="#1E293B" stroke="#64748B" stroke-width="4" />
+      <circle cx="35" cy="35" r="18" fill="#0F172A" stroke="#22C55E" stroke-width="2" />
+    </g>
+    <g transform="translate(280, 130)">
+      <circle cx="35" cy="35" r="32" fill="#1E293B" stroke="#64748B" stroke-width="4" />
+      <circle cx="35" cy="35" r="18" fill="#0F172A" stroke="#22C55E" stroke-width="2" />
+    </g>
+    <!-- Light-up EV Charging Port -->
+    <circle cx="340" cy="105" r="7" fill="#22C55E" filter="url(#gtxGlow)" />
+  </g>
+
+  <!-- GTX German Engineering HUD Badge -->
+  <g transform="translate(60, 60)">
+    <rect width="340" height="60" rx="14" fill="#0F172A" stroke="#16A34A" stroke-width="2" />
+    <circle cx="30" cy="30" r="12" fill="#16A34A" />
+    <text x="54" y="27" fill="#4ADE80" font-family="sans-serif" font-size="12" font-weight="bold">GERMAN TECHNOLOGY XPERT</text>
+    <text x="54" y="44" fill="#F8FAFC" font-family="sans-serif" font-size="10.5">350kW DC Fast Chargers · Smart EV Grids · BESS</text>
+  </g>
+</svg>

@@ -251,17 +251,6 @@ export default function BiomaxSolutionsPage() {
   const [selectedCategoryForQuote, setSelectedCategoryForQuote] = useState("Laboratory Equipment");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Contact Form State
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    organization: "",
-    category: "Laboratory Equipment",
-    message: "",
-  });
-  const [formStatus, setFormStatus] = useState(null); // null | "sending" | "sent"
-
   useEffect(() => {
     document.body.classList.add("biomax-theme");
     return () => {
@@ -269,49 +258,9 @@ export default function BiomaxSolutionsPage() {
     };
   }, []);
 
-  const handleFormChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    setFormStatus("sending");
-    try {
-      const res = await fetch("/group-companies/biomax/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          company: formData.organization,
-          email: formData.email,
-          phone: formData.phone,
-          subject: `Product Inquiry: ${formData.category}`,
-          message: `Category: ${formData.category} | Organization: ${formData.organization || "N/A"} | Inquiry: ${formData.message}`,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to submit request.");
-      }
-      setFormStatus("sent");
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        organization: "",
-        category: "Laboratory Equipment",
-        message: "",
-      });
-    } catch (err) {
-      alert(err.message || "Failed to submit inquiry.");
-      setFormStatus(null);
-    }
-  };
-
   const scrollToInquiry = (categoryTitle) => {
     if (categoryTitle) {
       setSelectedCategoryForQuote(categoryTitle);
-      setFormData((prev) => ({ ...prev, category: categoryTitle }));
     }
     const el = document.getElementById("inquire-section");
     if (el) {

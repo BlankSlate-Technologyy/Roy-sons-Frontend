@@ -1,0 +1,78 @@
+/* ─────────────────────────────────────────────────────────────
+   MAX POWER CORPORATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/max-power/max-power.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --max-navy: #0E4B7E;          /* Deep Electric Navy */
+  --max-navy-dark: #0A3860;
+  --max-amber: #F5A623;         /* High-Voltage Electric Amber/Gold */
+  --max-amber-dark: #D88E12;
+  --max-charcoal: #2D3748;      /* Slate Charcoal */
+  --max-white: #ffffff;
+  --max-offwhite: #F4F7FA;
+  --max-border: #D2E0EC;
+  --max-text-muted: #3E4C5E;
+  --max-text-light: #6B7A8E;
+}
+
+body.max-power-theme,
+.max-power-theme,
+body.max-power-theme main,
+body.max-power-theme section,
+body.max-power-theme header,
+.max-power-theme main,
+.max-power-theme section,
+.max-power-theme header {
+  background-color: #ffffff !important;
+  color: #2D3748;
+}
+
+body.max-power-theme .cursor-pointer,
+.max-power-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.max-power-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.max-power-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #F5A623 !important;
+  box-shadow: 0 16px 32px -8px rgba(14, 75, 126, 0.16), 0 0 0 1px rgba(245, 166, 35, 0.25) !important;
+}
+
+/* Counter box */
+.max-power-counter-box {
+  transition: all 0.3s ease !important;
+}
+.max-power-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #F5A623 !important;
+  box-shadow: 0 10px 25px rgba(14, 75, 126, 0.1) !important;
+}
+
+/* Reset for Max Power components */
+body.max-power-theme a,
+body.max-power-theme button,
+body.max-power-theme label,
+body.max-power-theme h1,
+body.max-power-theme h2,
+body.max-power-theme h3,
+body.max-power-theme h4,
+body.max-power-theme h5,
+body.max-power-theme h6,
+body.max-power-theme p,
+body.max-power-theme span,
+body.max-power-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.max-power-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

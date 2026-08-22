@@ -1,0 +1,82 @@
+/* ─────────────────────────────────────────────────────────────
+   WALTON CONSULTANTS & CONTRACTING — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/walton-consultants-contracting/walton.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --walton-navy: #0E2A47;        /* Official Walton Dark Navy Blue */
+  --walton-navy-dark: #081B30;
+  --walton-navy-soft: #1A3C60;
+  --walton-gold: #C5A059;        /* Official Walton Warm Gold Accent */
+  --walton-gold-hover: #A6823B;
+  --walton-charcoal: #3A4E63;    /* Slate Text */
+  --walton-charcoal-dark: #1E2A3A;
+  --walton-white: #ffffff;
+  --walton-offwhite: #F4F7FA;
+  --walton-border: #D8E2EC;
+  --walton-text-muted: #3A4E63;
+  --walton-text-light: #657B94;
+}
+
+body.walton-theme,
+body.walton-consultants-theme,
+.walton-theme,
+.walton-consultants-theme,
+body.walton-theme main,
+body.walton-theme section,
+body.walton-theme header,
+.walton-theme main,
+.walton-theme section,
+.walton-theme header {
+  background-color: #ffffff !important;
+  color: #3A4E63;
+}
+
+body.walton-theme .cursor-pointer,
+.walton-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.walton-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.walton-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 16px 32px -8px rgba(14, 42, 71, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.25) !important;
+}
+
+/* Counter box */
+.walton-counter-box {
+  transition: all 0.3s ease !important;
+}
+.walton-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 10px 25px rgba(14, 42, 71, 0.1) !important;
+}
+
+/* Reset for Walton components */
+body.walton-theme a,
+body.walton-theme button,
+body.walton-theme label,
+body.walton-theme h1,
+body.walton-theme h2,
+body.walton-theme h3,
+body.walton-theme h4,
+body.walton-theme h5,
+body.walton-theme h6,
+body.walton-theme p,
+body.walton-theme span,
+body.walton-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.walton-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

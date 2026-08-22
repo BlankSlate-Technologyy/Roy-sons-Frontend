@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────
+   NATIONAL AGRICULTURAL CORPORATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/national-agricultural/national-agricultural.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --nac-primary: #1A5C2A;       /* Deep Forest Green */
+  --nac-primary-dark: #134620;  /* Dark Green */
+  --nac-primary-light: #2E7D32; /* Medium Green */
+  --nac-accent: #E8A800;        /* Logo Warm Gold */
+  --nac-accent-hover: #C68F00;
+  --nac-white: #ffffff;
+  --nac-offwhite: #F8FAFC;
+  --nac-border: #D4E8D0;
+  --nac-text-dark: #111827;
+  --nac-text-muted: #4B5563;
+  --nac-text-light: #6B7280;
+}
+
+body.national-agricultural-theme,
+.national-agricultural-theme,
+body.national-agricalture-theme,
+.national-agricalture-theme,
+body.national-agricultural-theme main,
+body.national-agricultural-theme section,
+body.national-agricultural-theme header,
+.national-agricultural-theme main,
+.national-agricultural-theme section,
+.national-agricultural-theme header {
+  background-color: #ffffff !important;
+  color: #1A5C2A;
+}
+
+body.national-agricultural-theme .cursor-pointer,
+.national-agricultural-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.nac-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.nac-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #E8A800 !important;
+  box-shadow: 0 16px 32px -8px rgba(26, 92, 42, 0.14), 0 0 0 1px rgba(232, 168, 0, 0.25) !important;
+}
+
+/* Counter box */
+.nac-counter-box {
+  transition: all 0.3s ease !important;
+}
+.nac-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #E8A800 !important;
+  box-shadow: 0 10px 25px rgba(26, 92, 42, 0.1) !important;
+}
+
+/* Reset for National Agricultural components */
+body.national-agricultural-theme a,
+body.national-agricultural-theme button,
+body.national-agricultural-theme label,
+body.national-agricultural-theme h1,
+body.national-agricultural-theme h2,
+body.national-agricultural-theme h3,
+body.national-agricultural-theme h4,
+body.national-agricultural-theme h5,
+body.national-agricultural-theme h6,
+body.national-agricultural-theme p,
+body.national-agricultural-theme span,
+body.national-agricultural-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.national-agricultural-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

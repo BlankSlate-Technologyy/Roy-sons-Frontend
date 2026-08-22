@@ -1,0 +1,80 @@
+/* ─────────────────────────────────────────────────────────────
+   PAKISTANI CONSULTANCY SERVICES — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/pakistan-consultancy/pakconsult.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --pc-slate: #3A444E;          /* Official Slate Charcoal */
+  --pc-slate-dark: #252C34;
+  --pc-steel: #4F5963;          /* Steel Gray */
+  --pc-gold: #C5A059;           /* Metallic Warm Gold */
+  --pc-gold-hover: #A6823B;
+  --pc-white: #ffffff;
+  --pc-bg-light: #F4F6F8;       /* Clean Light Gray Background */
+  --pc-border: #D6DCE2;
+  --pc-text-muted: #48525D;
+  --pc-text-light: #6E7A87;
+}
+
+body.pakistan-consultancy-theme,
+body.pak-consultancy-theme,
+.pakistan-consultancy-theme,
+.pak-consultancy-theme,
+body.pakistan-consultancy-theme main,
+body.pakistan-consultancy-theme section,
+body.pakistan-consultancy-theme header,
+.pakistan-consultancy-theme main,
+.pakistan-consultancy-theme section,
+.pakistan-consultancy-theme header {
+  background-color: #ffffff !important;
+  color: #48525D;
+}
+
+body.pakistan-consultancy-theme .cursor-pointer,
+.pakistan-consultancy-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.pakconsult-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.pakconsult-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 16px 32px -8px rgba(58, 68, 78, 0.16), 0 0 0 1px rgba(197, 160, 89, 0.25) !important;
+}
+
+/* Counter box */
+.pakconsult-counter-box {
+  transition: all 0.3s ease !important;
+}
+.pakconsult-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 10px 25px rgba(58, 68, 78, 0.1) !important;
+}
+
+/* Reset for Pakistan Consultancy components */
+body.pakistan-consultancy-theme a,
+body.pakistan-consultancy-theme button,
+body.pakistan-consultancy-theme label,
+body.pakistan-consultancy-theme h1,
+body.pakistan-consultancy-theme h2,
+body.pakistan-consultancy-theme h3,
+body.pakistan-consultancy-theme h4,
+body.pakistan-consultancy-theme h5,
+body.pakistan-consultancy-theme h6,
+body.pakistan-consultancy-theme p,
+body.pakistan-consultancy-theme span,
+body.pakistan-consultancy-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.pakistan-consultancy-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

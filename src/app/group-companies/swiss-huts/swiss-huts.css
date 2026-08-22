@@ -1,0 +1,79 @@
+/* ─────────────────────────────────────────────────────────────
+   SWISS HUTS HOSPITALITY & TOURISM — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/swiss-huts/swiss-huts.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --swiss-huts-slate: #2A323D;       /* Dark Charcoal Slate from Logo */
+  --swiss-huts-dark: #1A202C;
+  --swiss-huts-gold: #C5A059;        /* Warm Gold Luxury Accent */
+  --swiss-huts-wood: #8B5A2B;
+  --swiss-huts-white: #ffffff;
+  --swiss-huts-offwhite: #F8FAFC;
+  --swiss-huts-border: #CBD5E0;
+  --swiss-huts-text-muted: #4A5568;
+  --swiss-huts-text-light: #718096;
+}
+
+body.swiss-huts-theme,
+.swiss-huts-theme,
+body.swiss-hut-theme,
+.swiss-hut-theme,
+body.swiss-huts-theme main,
+body.swiss-huts-theme section,
+body.swiss-huts-theme header,
+.swiss-huts-theme main,
+.swiss-huts-theme section,
+.swiss-huts-theme header {
+  background-color: #ffffff !important;
+  color: #2A323D;
+}
+
+body.swiss-huts-theme .cursor-pointer,
+.swiss-huts-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.swiss-huts-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.swiss-huts-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 16px 32px -8px rgba(42, 50, 61, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.3) !important;
+}
+
+/* Counter box */
+.swiss-huts-counter-box {
+  transition: all 0.3s ease !important;
+}
+.swiss-huts-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 10px 25px rgba(42, 50, 61, 0.08) !important;
+}
+
+/* Reset for Swiss Huts components */
+body.swiss-huts-theme a,
+body.swiss-huts-theme button,
+body.swiss-huts-theme label,
+body.swiss-huts-theme h1,
+body.swiss-huts-theme h2,
+body.swiss-huts-theme h3,
+body.swiss-huts-theme h4,
+body.swiss-huts-theme h5,
+body.swiss-huts-theme h6,
+body.swiss-huts-theme p,
+body.swiss-huts-theme span,
+body.swiss-huts-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.swiss-huts-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

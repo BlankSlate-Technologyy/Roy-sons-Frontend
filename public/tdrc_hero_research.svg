@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyTdrc" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0E1F17" />
+      <stop offset="60%" stop-color="#15301F" />
+      <stop offset="100%" stop-color="#1F7A3E" />
+    </linearGradient>
+    <linearGradient id="emeraldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2E9E54" />
+      <stop offset="100%" stop-color="#7BE0A0" />
+    </linearGradient>
+    <linearGradient id="glassFacility" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F9F6" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+    <linearGradient id="desertDunes" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="40%" stop-color="#B45309" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+    <linearGradient id="oasisGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="100%" stop-color="#15803D" />
+    </linearGradient>
+    <filter id="tdrcGlow">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Clean Environmental Science Sky -->
+  <rect width="1200" height="675" fill="url(#skyTdrc)" />
+
+  <!-- Remote Sensing Satellite & Stars in Sky -->
+  <g opacity="0.8">
+    <circle cx="200" cy="80" r="1.5" fill="#FFFFFF" />
+    <circle cx="340" cy="110" r="2" fill="#7BE0A0" />
+    <circle cx="560" cy="70" r="1.5" fill="#FFFFFF" />
+    <circle cx="820" cy="95" r="2" fill="#FFFFFF" />
+    <circle cx="980" cy="60" r="2.5" fill="#7BE0A0" />
+  </g>
+
+  <!-- Orbital GIS Remote Sensing Satellite -->
+  <g transform="translate(950, 80) rotate(25)">
+    <rect x="-15" y="-10" width="30" height="20" rx="3" fill="#E2E8F0" stroke="#0E1F17" stroke-width="1.5" />
+    <rect x="-45" y="-6" width="28" height="12" fill="#0284C7" stroke="#38BDF8" stroke-width="1" />
+    <rect x="17" y="-6" width="28" height="12" fill="#0284C7" stroke="#38BDF8" stroke-width="1" />
+    <circle cx="0" cy="0" r="4" fill="#2E9E54" filter="url(#tdrcGlow)" />
+    <!-- Downlink Data Beam -->
+    <path d="M0,10 L-180,360 L-80,360 Z" fill="#2E9E54" opacity="0.12" />
+  </g>
+
+  <!-- Thal Desert Landscapes & Terraced Afforestation -->
+  <g>
+    <!-- Background Rolling Dunes -->
+    <path d="M0,380 Q320,320 640,360 Q960,400 1200,340 L1200,675 L0,675 Z" fill="#1B3826" />
+    <path d="M0,420 Q280,380 580,410 Q880,440 1200,390 L1200,675 L0,675 Z" fill="#142C1E" />
+    <!-- Foreground Desert Greening & Agro-Forestry Oasis -->
+    <path d="M0,480 Q350,440 700,470 Q1050,500 1200,460 L1200,675 L0,675 Z" fill="#0E1F17" />
+  </g>
+
+  <!-- Modern Thal Environmental Research Complex (Main Building) -->
+  <g transform="translate(180, 220)">
+    <!-- Research Wing 1 (Biotech & Soil Labs) -->
+    <polygon points="40,240 40,90 280,60 280,240" fill="url(#glassFacility)" stroke="#2E9E54" stroke-width="2" />
+    <!-- Laboratory Windows Grid -->
+    <g fill="#0E1F17" opacity="0.85">
+      <rect x="60" y="85" width="40" height="25" rx="2" />
+      <rect x="115" y="80" width="40" height="25" rx="2" />
+      <rect x="170" y="75" width="40" height="25" rx="2" />
+      <rect x="225" y="70" width="40" height="25" rx="2" />
+
+      <rect x="60" y="125" width="40" height="25" rx="2" />
+      <rect x="115" y="120" width="40" height="25" rx="2" />
+      <rect x="170" y="115" width="40" height="25" rx="2" />
+      <rect x="225" y="110" width="40" height="25" rx="2" />
+
+      <rect x="60" y="165" width="40" height="25" rx="2" />
+      <rect x="115" y="160" width="40" height="25" rx="2" />
+      <rect x="170" y="155" width="40" height="25" rx="2" />
+      <rect x="225" y="150" width="40" height="25" rx="2" />
+    </g>
+
+    <!-- Center Atrium with Geodesic Climate Biosphere Dome -->
+    <g transform="translate(300, 60)">
+      <path d="M0,180 A120,120 0 0,1 240,180 Z" fill="#0284C7" opacity="0.4" stroke="#7BE0A0" stroke-width="3" />
+      <!-- Dome Triangulation Lines -->
+      <line x1="120" y1="60" x2="60" y2="180" stroke="#7BE0A0" stroke-width="1.5" />
+      <line x1="120" y1="60" x2="180" y2="180" stroke="#7BE0A0" stroke-width="1.5" />
+      <line x1="120" y1="60" x2="120" y2="180" stroke="#7BE0A0" stroke-width="1.5" />
+      <line x1="20" y1="130" x2="220" y2="130" stroke="#7BE0A0" stroke-width="1.5" />
+      <!-- Internal Rare Desert Flora / Hydroponic Greens -->
+      <path d="M100,180 Q120,140 140,180 Z" fill="#22C55E" />
+    </g>
+
+    <!-- Research Wing 2 (GIS & Data Analytics) -->
+    <polygon points="560,240 560,70 780,95 780,240" fill="url(#glassFacility)" stroke="#2E9E54" stroke-width="2" />
+    <g fill="#0E1F17" opacity="0.85">
+      <rect x="580" y="95" width="38" height="25" rx="2" />
+      <rect x="630" y="100" width="38" height="25" rx="2" />
+      <rect x="680" y="105" width="38" height="25" rx="2" />
+      <rect x="730" y="110" width="38" height="25" rx="2" />
+
+      <rect x="580" y="135" width="38" height="25" rx="2" />
+      <rect x="630" y="140" width="38" height="25" rx="2" />
+      <rect x="680" y="145" width="38" height="25" rx="2" />
+      <rect x="730" y="150" width="38" height="25" rx="2" />
+    </g>
+
+    <!-- Parabolic GIS & Meteorological Satellite Dish -->
+    <g transform="translate(680, 20)">
+      <line x1="0" y1="50" x2="0" y2="20" stroke="#64748B" stroke-width="4" />
+      <path d="M-35,10 Q0,-15 35,10" fill="none" stroke="#E2E8F0" stroke-width="6" stroke-linecap="round" />
+      <circle cx="0" cy="-5" r="3" fill="#2E9E54" filter="url(#tdrcGlow)" />
+    </g>
+  </g>
+
+  <!-- Clean Aquifer Hydrological Monitoring Station & Afforestation Grove (Foreground) -->
+  <g transform="translate(80, 480)">
+    <!-- Deep Aquifer Wellhead & Solar Water Pump -->
+    <rect x="60" y="40" width="40" height="60" rx="4" fill="#334155" stroke="#2E9E54" stroke-width="2" />
+    <circle cx="80" cy="70" r="12" fill="#0284C7" opacity="0.8" />
+    <!-- Hydro Flow Pipe -->
+    <path d="M100,70 L240,70 L240,110" fill="none" stroke="#38BDF8" stroke-width="4" filter="url(#tdrcGlow)" />
+
+    <!-- Lush Agro-Forestry Shelterbelts (Desert Greening Trees) -->
+    <g transform="translate(320, -30)">
+      <polygon points="30,80 0,130 60,130" fill="#22C55E" />
+      <polygon points="30,40 5,90 55,90" fill="#16A34A" />
+      <rect x="26" y="130" width="8" height="25" fill="#78350F" />
+    </g>
+    <g transform="translate(420, -10)">
+      <polygon points="30,80 0,130 60,130" fill="#22C55E" />
+      <polygon points="30,40 5,90 55,90" fill="#16A34A" />
+      <rect x="26" y="130" width="8" height="25" fill="#78350F" />
+    </g>
+    <g transform="translate(520, -40)">
+      <polygon points="30,80 0,130 60,130" fill="#22C55E" />
+      <polygon points="30,40 5,90 55,90" fill="#16A34A" />
+      <rect x="26" y="130" width="8" height="25" fill="#78350F" />
+    </g>
+  </g>
+
+  <!-- TDRC Scientific Research Badge Overlay -->
+  <g transform="translate(60, 60)">
+    <rect width="360" height="60" rx="14" fill="#0E1F17" stroke="#2E9E54" stroke-width="2" />
+    <circle cx="30" cy="30" r="12" fill="#2E9E54" />
+    <text x="54" y="27" fill="#7BE0A0" font-family="sans-serif" font-size="12" font-weight="bold">THAL DEVELOPMENT &amp; RESEARCH</text>
+    <text x="54" y="44" fill="#F5F9F6" font-family="sans-serif" font-size="10.5">Applied Science · EIA Studies · Climate Adaptation</text>
+  </g>
+</svg>

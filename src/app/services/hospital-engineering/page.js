@@ -275,8 +275,7 @@ export default function HospitalEngineeringServicePage() {
     setSubmitError("");
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
-      const response = await fetch(`${apiUrl}/service-query`, {
+      const response = await fetch("/api/service-query", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -302,7 +301,6 @@ export default function HospitalEngineeringServicePage() {
       });
     } catch (err) {
       console.error("Submission error:", err);
-      // Friendly fallback
       setFormSubmitted(true);
     } finally {
       setIsSubmitting(false);

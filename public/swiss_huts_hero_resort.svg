@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyAlpine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="40%" stop-color="#1E293B" />
+      <stop offset="80%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#64748B" />
+    </linearGradient>
+    <linearGradient id="chaletWood" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5A2B" />
+      <stop offset="50%" stop-color="#5C3A21" />
+      <stop offset="100%" stop-color="#3B2213" />
+    </linearGradient>
+    <linearGradient id="warmLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF2" />
+      <stop offset="40%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#EA580C" />
+    </linearGradient>
+    <linearGradient id="poolGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="50%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0EA5E9" />
+    </linearGradient>
+    <filter id="cozyGlow">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Twilight Sky & Mountain Sunset -->
+  <rect width="1200" height="675" fill="url(#skyAlpine)" />
+
+  <!-- Stars in Alpine Sky -->
+  <g fill="#FFFFFF" opacity="0.7">
+    <circle cx="150" cy="50" r="1.5" />
+    <circle cx="320" cy="80" r="2" />
+    <circle cx="500" cy="40" r="1.5" />
+    <circle cx="750" cy="65" r="2" />
+    <circle cx="950" cy="35" r="1.5" />
+    <circle cx="1100" cy="90" r="2" />
+    <circle cx="220" cy="110" r="1" />
+    <circle cx="620" cy="95" r="1.5" />
+    <circle cx="840" cy="45" r="1" />
+  </g>
+
+  <!-- Snow-Capped Alpine Mountain Peaks (Backdrop) -->
+  <polygon points="0,280 180,110 380,240 600,80 850,220 1080,100 1200,190 1200,420 0,420" fill="#1E293B" opacity="0.95" />
+  <!-- Snowcaps on peaks -->
+  <polygon points="180,110 140,150 165,145 180,160 195,145 220,150" fill="#E2E8F0" opacity="0.9" />
+  <polygon points="600,80 550,130 580,125 600,145 620,125 650,130" fill="#E2E8F0" opacity="0.9" />
+  <polygon points="1080,100 1040,140 1065,135 1080,150 1095,135 1120,140" fill="#E2E8F0" opacity="0.9" />
+
+  <!-- Forest Mountain Hills (Midground) -->
+  <polygon points="0,340 240,210 520,290 820,180 1100,280 1200,230 1200,480 0,480" fill="#0F172A" opacity="0.9" />
+
+  <!-- Dense Pine Evergreen Trees Silhouette -->
+  <g fill="#0B132B">
+    <!-- Tree cluster left -->
+    <polygon points="40,380 20,430 60,430" />
+    <polygon points="80,360 55,420 105,420" />
+    <polygon points="130,370 105,430 155,430" />
+    <!-- Tree cluster right -->
+    <polygon points="1020,360 995,420 1045,420" />
+    <polygon points="1070,340 1040,410 1100,410" />
+    <polygon points="1130,370 1105,430 1155,430" />
+  </g>
+
+  <!-- Alpine Ground Terrace & Stone Base -->
+  <path d="M-50,420 Q300,390 620,410 T1250,400 L1250,490 Q750,480 450,500 T-50,510 Z" fill="#1E293B" />
+  <path d="M-50,500 Q350,470 700,490 T1250,480 L1250,675 L-50,675 Z" fill="#0F172A" />
+
+  <!-- ─── Swiss Hut Luxury Alpine Chalet 1 (Left Center) ─── -->
+  <g transform="translate(160, 220)">
+    <!-- Main A-Frame Wood Chalet Structure -->
+    <polygon points="160,40 20,220 300,220" fill="url(#chaletWood)" stroke="#2A323D" stroke-width="3" />
+    <!-- Overhanging Alpine Roof with Snow Rim -->
+    <polygon points="160,30 5,225 35,225 160,50 285,225 315,225" fill="#E2E8F0" />
+    <line x1="160" y1="30" x2="5" y2="225" stroke="#CBD5E1" stroke-width="4" />
+    <line x1="160" y1="30" x2="315" y2="225" stroke="#CBD5E1" stroke-width="4" />
+
+    <!-- Stone Fireplace Chimney with Warm Smoke -->
+    <rect x="230" y="60" width="30" height="90" fill="#475569" stroke="#334155" stroke-width="2" />
+    <!-- Chimney Smoke -->
+    <path d="M245,60 Q235,30 250,15 T240,-10" fill="none" stroke="#E2E8F0" stroke-width="3" opacity="0.5" stroke-dasharray="4,4" />
+
+    <!-- Floor-to-Ceiling Glowing A-Frame Glass Window -->
+    <polygon points="160,70 55,205 265,205" fill="url(#warmLight)" opacity="0.9" filter="url(#cozyGlow)" />
+    <!-- Window Grid Beams -->
+    <line x1="160" y1="70" x2="160" y2="205" stroke="#3B2213" stroke-width="3" />
+    <line x1="105" y1="140" x2="215" y2="140" stroke="#3B2213" stroke-width="3" />
+    <line x1="75" y1="180" x2="245" y2="180" stroke="#3B2213" stroke-width="3" />
+
+    <!-- Wooden Balcony Terrace Deck -->
+    <rect x="40" y="200" width="240" height="30" rx="3" fill="#8B5A2B" stroke="#5C3A21" stroke-width="2" />
+    <line x1="40" y1="212" x2="280" y2="212" stroke="#FDE047" stroke-width="2" />
+  </g>
+
+  <!-- ─── Swiss Hut Luxury Alpine Chalet 2 (Right Center) ─── -->
+  <g transform="translate(560, 240) scale(0.9)">
+    <polygon points="160,40 20,220 300,220" fill="url(#chaletWood)" stroke="#2A323D" stroke-width="3" />
+    <polygon points="160,30 5,225 35,225 160,50 285,225 315,225" fill="#E2E8F0" />
+    <rect x="230" y="60" width="30" height="90" fill="#475569" stroke="#334155" stroke-width="2" />
+    <polygon points="160,70 55,205 265,205" fill="url(#warmLight)" opacity="0.9" filter="url(#cozyGlow)" />
+    <line x1="160" y1="70" x2="160" y2="205" stroke="#3B2213" stroke-width="3" />
+    <line x1="105" y1="140" x2="215" y2="140" stroke="#3B2213" stroke-width="3" />
+    <rect x="40" y="200" width="240" height="30" rx="3" fill="#8B5A2B" stroke="#5C3A21" stroke-width="2" />
+  </g>
+
+  <!-- ─── Heated Infinity Edge Thermal Jacuzzi Pool (Foreground Center) ─── -->
+  <g transform="translate(420, 480)">
+    <ellipse cx="180" cy="50" rx="160" ry="35" fill="#0C4A6E" stroke="#38BDF8" stroke-width="3" />
+    <ellipse cx="180" cy="50" rx="145" ry="28" fill="url(#poolGlow)" opacity="0.9" filter="url(#cozyGlow)" />
+    <!-- Steam mist on heated pool -->
+    <path d="M80,45 Q120,25 160,45 T240,45" fill="none" stroke="#FFFFFF" stroke-width="2.5" opacity="0.6" />
+    <path d="M120,40 Q160,20 200,40 T280,40" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.5" />
+    <!-- Ambient Deck Lanterns -->
+    <circle cx="15" cy="50" r="6" fill="#FDE047" filter="url(#cozyGlow)" />
+    <circle cx="345" cy="50" r="6" fill="#FDE047" filter="url(#cozyGlow)" />
+  </g>
+
+  <!-- Swiss Hut Quality Hospitality Badge HUD -->
+  <g transform="translate(60, 60)">
+    <rect width="330" height="60" rx="14" fill="#0F172A" stroke="#CBD5E0" stroke-width="2" />
+    <circle cx="30" cy="30" r="12" fill="#FDE047" />
+    <text x="54" y="27" fill="#FDE047" font-family="sans-serif" font-size="12" font-weight="bold">SWISS HUT HOSPITALITY</text>
+    <text x="54" y="44" fill="#F8FAFC" font-family="sans-serif" font-size="10.5">50+ Managed Resorts · 500K+ Guests Served</text>
+  </g>
+</svg>

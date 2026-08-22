@@ -1,1182 +1,596 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  AlarmClock, BarChart3, Building, Building2, Camera, CheckCircle2,
-  ChevronDown, ClipboardCheck, ClipboardList, Clock, Eye, Facebook,
-  Factory, FileText, GraduationCap, HardHat, Headphones, Home as HomeIcon,
-  Hotel, Landmark, Linkedin, Lock, Mail, MapPin, MapPinned, Minus,
-  Network, Phone, Plus, Radio, ScanEye, Search, Send, Shield, ShieldCheck,
-  ShoppingBag, Star, Stethoscope, ThumbsUp, Twitter, User, UserCheck, Users,
-  Warehouse, Youtube,
+  AlarmClock,
+  BarChart3,
+  Building,
+  Building2,
+  Camera,
+  CheckCircle2,
+  ChevronDown,
+  ClipboardCheck,
+  ClipboardList,
+  Clock,
+  Eye,
+  Factory,
+  FileText,
+  GraduationCap,
+  HardHat,
+  Headphones,
+  Home as HomeIcon,
+  Hotel,
+  Landmark,
+  Lock,
+  Mail,
+  MapPin,
+  MapPinned,
+  Minus,
+  Network,
+  Phone,
+  Plus,
+  Radio,
+  ScanEye,
+  Search,
+  Send,
+  Shield,
+  ShieldCheck,
+  ShoppingBag,
+  Star,
+  Stethoscope,
+  ThumbsUp,
+  User,
+  UserCheck,
+  Users,
+  Warehouse,
+  ArrowRight,
+  Award,
 } from "lucide-react";
+import {
+  theme,
+  NationalGuardNavbar,
+  NationalGuardFooter,
+  SectionLabel,
+  SectionHeading,
+  AnimatedCounter,
+} from "./components/NationalGuardShared";
 
-const theme = {
-  navy:      "#1B365D",   // Shield Navy Blue from National Guard logo
-  navyDark:  "#0F2540",
-  gold:      "#C5A059",   // Wreath Gold from National Guard logo
-  goldHover: "#A6823B",
-  white:     "#ffffff",
-  bgLight:   "#F4F6F9",
-  border:    "#E2E7EE",
-  textMuted: "#4A5B73",
-  textLight: "#6E7F98",
-};
-
-const navLinks = [
-  { label: "Home",       href: "#home" },
-  { label: "About Us",   href: "#about" },
-  { label: "Services",   href: "#services", hasDropdown: true },
-  { label: "Industries", href: "#industries" },
-  { label: "Careers",    href: "#careers" },
-  { label: "Contact",    href: "#contact" },
+const STATS = [
+  { icon: ShieldCheck, value: "10+", label: "Years of\nExperience" },
+  { icon: Users, value: "500+", label: "Security\nProfessionals" },
+  { icon: Building2, value: "1000+", label: "Protected\nSites" },
+  { icon: Clock, value: "24/7", label: "Security\nOperations" },
+  { icon: ThumbsUp, value: "99%", label: "Client\nSatisfaction" },
 ];
 
-const stats = [
-  { icon: ShieldCheck, value: 10,   suffix: "+",  label: "Years of\nExperience" },
-  { icon: Users,       value: 500,  suffix: "+",  label: "Security\nProfessionals" },
-  { icon: Building2,   value: 1000, suffix: "+",  label: "Protected\nSites" },
-  { icon: Clock,       value: 24,   suffix: "/7", label: "Security\nOperations" },
-  { icon: ThumbsUp,    value: 99,   suffix: "%",  label: "Client\nSatisfaction" },
-];
-
-const services = [
+const SERVICES = [
   {
     icon: UserCheck,
     title: "Manned Guarding",
     desc: "Professional uniformed security officers for commercial, residential, industrial, and government facilities.",
     img: "/national-guard-manned-guarding.png",
+    href: "/group-companies/national-guard/services#manned-guarding",
   },
   {
     icon: Radio,
     title: "Mobile Patrol Services",
     desc: "Scheduled and random patrols to enhance site security and rapid incident response.",
     img: "/national-guard-mobile-patrol.png",
+    href: "/group-companies/national-guard/services#mobile-patrol",
   },
   {
     icon: Camera,
     title: "CCTV Monitoring",
-    desc: "Continuous surveillance through advanced monitoring systems and control rooms.",
+    desc: "Continuous surveillance through advanced monitoring systems and central control rooms.",
     img: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=400&q=80",
+    href: "/group-companies/national-guard/services#cctv-monitoring",
   },
   {
     icon: ClipboardCheck,
     title: "Risk Assessment",
     desc: "Comprehensive security audits, vulnerability assessments, and strategic risk management.",
     img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80",
+    href: "/group-companies/national-guard/services#risk-assessment",
   },
   {
     icon: Users,
     title: "Event Security",
     desc: "Professional crowd management and event protection for public and private gatherings.",
     img: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=400&q=80",
+    href: "/group-companies/national-guard/services#event-security",
   },
   {
     icon: Building2,
     title: "Facility Protection",
     desc: "Integrated security services designed to secure offices, factories, warehouses, and educational institutions.",
     img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80",
+    href: "/group-companies/national-guard/services#facility-protection",
   },
 ];
 
-const industries = [
-  { icon: Landmark,      label: "Government\nOrganizations" },
-  { icon: Building,      label: "Corporate\nOffices" },
-  { icon: HomeIcon,      label: "Residential\nCommunities" },
-  { icon: ShoppingBag,   label: "Shopping\nMalls" },
-  { icon: Factory,       label: "Industrial\nFacilities" },
-  { icon: Stethoscope,   label: "Healthcare\nCenters" },
-  { icon: GraduationCap, label: "Educational\nInstitutions" },
-  { icon: Hotel,         label: "Hotels &\nHospitality" },
-  { icon: Landmark,      label: "Financial\nInstitutions" },
-  { icon: HardHat,       label: "Construction\nSites" },
-  { icon: Warehouse,     label: "Logistics &\nWarehouses" },
-  { icon: Network,       label: "Critical\nInfrastructure" },
+const INDUSTRIES = [
+  { icon: Landmark, label: "Government\nOrganizations", href: "/group-companies/national-guard/industries" },
+  { icon: Building, label: "Corporate\nOffices", href: "/group-companies/national-guard/industries" },
+  { icon: HomeIcon, label: "Residential\nCommunities", href: "/group-companies/national-guard/industries" },
+  { icon: ShoppingBag, label: "Shopping\nMalls", href: "/group-companies/national-guard/industries" },
+  { icon: Factory, label: "Industrial\nFacilities", href: "/group-companies/national-guard/industries" },
+  { icon: Stethoscope, label: "Healthcare\nCenters", href: "/group-companies/national-guard/industries" },
+  { icon: GraduationCap, label: "Educational\nInstitutions", href: "/group-companies/national-guard/industries" },
+  { icon: Hotel, label: "Hotels &\nHospitality", href: "/group-companies/national-guard/industries" },
+  { icon: Landmark, label: "Financial\nInstitutions", href: "/group-companies/national-guard/industries" },
+  { icon: HardHat, label: "Construction\nSites", href: "/group-companies/national-guard/industries" },
+  { icon: Warehouse, label: "Logistics &\nWarehouses", href: "/group-companies/national-guard/industries" },
+  { icon: Network, label: "Critical\nInfrastructure", href: "/group-companies/national-guard/industries" },
 ];
 
-const whyChooseReasons = [
+const WHY_CHOOSE_REASONS = [
   "Highly Trained Security Personnel",
   "Licensed & Professional Guards",
-  "24/7 Monitoring & Support",
+  "24/7 Monitoring & Operations Support",
   "Modern Surveillance Technology",
   "Customized Security Plans",
-  "Reliable Operations",
+  "Reliable Day & Night Supervision",
   "Rapid Emergency Response",
-  "Proven Industry Experience",
+  "Proven Industry Experience Across Pakistan",
 ];
 
-const processSteps = [
-  { step: "01", icon: Users,       title: "Security\nConsultation" },
-  { step: "02", icon: Search,      title: "Site\nInspection" },
+const PROCESS_STEPS = [
+  { step: "01", icon: Users, title: "Security\nConsultation" },
+  { step: "02", icon: Search, title: "Site\nInspection" },
   { step: "03", icon: ShieldCheck, title: "Risk\nAssessment" },
-  { step: "04", icon: FileText,    title: "Customized\nSecurity Planning" },
-  { step: "05", icon: UserCheck,   title: "Deployment &\nMonitoring" },
-  { step: "06", icon: Headphones,  title: "Continuous\nSupport & Reporting" },
+  { step: "04", icon: FileText, title: "Customized\nSecurity Plan" },
+  { step: "05", icon: UserCheck, title: "Deployment &\nSupervision" },
+  { step: "06", icon: Headphones, title: "Continuous\nSupport" },
 ];
 
-const techCapabilities = [
-  { icon: Eye,           label: "CCTV\nSurveillance" },
-  { icon: Lock,          label: "Access Control\nSystems" },
-  { icon: ScanEye,       label: "Visitor\nManagement" },
-  { icon: AlarmClock,    label: "Alarm\nMonitoring" },
-  { icon: MapPinned,     label: "GPS Patrol\nTracking" },
-  { icon: ClipboardList, label: "Incident\nReporting" },
-  { icon: Radio,         label: "Emergency Response\nCoordination" },
-  { icon: BarChart3,     label: "Security\nAnalytics" },
-];
-
-const testimonials = [
+const FAQS = [
   {
-    name: "Corporate Client",
-    role: "Office Complex",
-    quote: "National Guard has consistently delivered dependable security services with exceptional professionalism and responsiveness.",
+    q: "What types of security guards and services do you provide?",
+    a: "We provide armed (ex-military / trained civilian) and unarmed static guards, mobile patrol units, 24/7 CCTV surveillance, event security, and comprehensive facility risk audits.",
   },
   {
-    name: "Industrial Client",
-    role: "Manufacturing Facility",
-    quote: "Their security officers and monitoring systems have significantly improved the safety of our facilities.",
+    q: "Are all National Guard security personnel licensed and verified?",
+    a: "Yes. Every guard undergoes NADRA biometric verification, local police clearance checks, and weapon training certifications before deployment.",
+  },
+  {
+    q: "How quickly can security guards be mobilized to our premises?",
+    a: "Standard guard placements can be mobilized within 24 to 48 hours. Emergency or immediate reinforcement squads can be activated within 2 to 4 hours.",
+  },
+  {
+    q: "Do you offer 24/7 continuous operations supervision?",
+    a: "Yes. In addition to on-site guards, our area field supervisors conduct surprise mobile inspections day and night, connected to our 24/7 control center.",
   },
 ];
 
-const faqs = [
-  {
-    question: "What types of security services do you provide?",
-    answer: "We provide manned guarding, mobile patrols, CCTV monitoring, risk assessment, event security, and full facility protection tailored to your site.",
-  },
-  {
-    question: "Are your security personnel professionally trained?",
-    answer: "Yes, every officer completes rigorous licensing, background checks, and ongoing professional training before deployment.",
-  },
-  {
-    question: "Do you provide 24/7 security coverage?",
-    answer: "Yes, our operations center and patrol teams run around the clock, 365 days a year.",
-  },
-  {
-    question: "Can you customize security solutions?",
-    answer: "Absolutely. We design a security plan around your site's specific risks, layout, and operational needs.",
-  },
-];
-
-const footerLinks = {
-  "Quick Links": ["Home", "About Us", "Services", "Industries", "Careers", "Contact"],
-  Services: ["Manned Guarding", "Mobile Patrol", "CCTV Monitoring", "Event Security", "Risk Assessment", "Facility Protection"],
-};
-
-const socialIcons = [Facebook, Linkedin, Twitter, Youtube];
-
-// Small reusable pieces
-function SectionLabel({ children }) {
-  return (
-    <p className="text-[11px] font-black uppercase tracking-[0.25em] mb-3 text-navy-override">
-      {children}
-    </p>
-  );
-}
-
-function SectionHeading({ children, className = "" }) {
-  return (
-    <h2 className={`text-2xl font-black uppercase tracking-tight text-navy-override ${className}`}>
-      {children}
-    </h2>
-  );
-}
-
-// Animated counter: counts up from 0 to `value` once it scrolls into view
-function useCountUp(target, duration = 1800, start = false) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!start) return;
-    let rafId;
-    const startTime = performance.now();
-
-    const tick = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // ease-out for a nice deceleration near the end
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * target));
-      if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        setCount(target);
-      }
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [start, target, duration]);
-
-  return count;
-}
-
-function StatCard({ icon: Icon, value, suffix, label, startCounting }) {
-  const count = useCountUp(value, 1800, startCounting);
-  return (
-    <div className="flex items-center gap-4 p-5 rounded-lg border transition-all duration-300 hover:border-[#C5A059]/40 hover:-translate-y-1 hover:shadow-lg panel-bg-override">
-      <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 stats-icon-wrapper">
-        <Icon size={22} style={{ color: theme.navy }} />
-      </div>
-      <div className="leading-tight">
-        <p className="text-xl md:text-2xl font-black text-navy-override tabular-nums">
-          {count}
-          {suffix}
-        </p>
-        <p className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider mt-0.5 whitespace-pre-line text-navy-override">
-          {label}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-// Wrapper that detects when the stats section scrolls into view and
-// triggers the count-up animation for every StatCard inside it.
-function StatsCounterSection({ items }) {
-  const sectionRef = useRef(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const node = sectionRef.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
+export default function NationalGuardHomePage() {
+  const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <div ref={sectionRef} className="grid grid-cols-2 md:grid-cols-5 gap-5">
-      {items.map((stat) => (
-        <StatCard key={stat.label} {...stat} startCounting={inView} />
-      ))}
-    </div>
-  );
-}
+    <main className="min-h-screen bg-white text-[#1B365D] font-sans antialiased overflow-x-hidden">
+      <NationalGuardNavbar />
 
-function ServiceCard({ icon: Icon, title, desc, img }) {
-  return (
-    <div className="group service-card-hover rounded-lg border overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl panel-bg-override">
-      <div className="relative w-full h-40 bg-slate-100">
-        <img
-          src={img}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-85" />
-        <div className="absolute bottom-3 left-4 p-2 rounded-md border shadow-sm panel-bg-override">
-          <Icon size={16} style={{ color: theme.navy }} />
-        </div>
-      </div>
-      <div className="p-5">
-        <h3 className="service-card-title text-[13px] font-black uppercase tracking-wide mb-2.5 transition-colors text-navy-override">
-          {title}
-        </h3>
-        <p className="service-card-desc text-[11.5px] leading-relaxed text-navy-override">{desc}</p>
-      </div>
-    </div>
-  );
-}
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7">
+              <SectionLabel>Pakistan&apos;s Trusted Security Partner</SectionLabel>
 
-function IndustryCard({ icon: Icon, label }) {
-  return (
-    <div className="group industry-card-hover flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:scale-105 panel-bg-override">
-      <div className="industry-card-iconwrap w-12 h-12 rounded-full flex items-center justify-center mb-3 border transition-all duration-300 border-override bg-light-override">
-        <Icon size={18} style={{ color: theme.navy }} className="industry-card-icon" />
-      </div>
-      <p className="industry-card-label text-[9.5px] font-bold leading-snug uppercase tracking-wide whitespace-pre-line text-navy-override">
-        {label}
-      </p>
-    </div>
-  );
-}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navy }}>
+                Protecting People, Properties &amp; <span style={{ color: theme.gold }}>Critical Assets</span>
+              </h1>
 
-function ProcessStep({ step, icon: Icon, title, isLast }) {
-  return (
-    <div className="flex flex-col items-center text-center relative flex-1 min-w-[90px] group">
-      {!isLast && (
-        <div
-          className="hidden lg:block absolute top-7 left-[calc(50%+24px)] w-[calc(100%-48px)] h-[2px] border-t-2 border-dashed z-0 transition-colors group-hover:border-[#C5A059]"
-          style={{ borderColor: `${theme.navy}44` }}
-        />
-      )}
-      <div className="relative w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:border-[#C5A059] group-hover:scale-105 z-10 border-override bg-white-override">
-        <Icon size={18} style={{ color: theme.navy }} />
-        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full text-[9px] font-black flex items-center justify-center border shadow-sm border-override bg-navy-override text-white">
-          {step}
-        </div>
-      </div>
-      <p className="text-[10px] font-bold leading-tight uppercase tracking-wider mt-4 whitespace-pre-line text-navy-override">
-        {title}
-      </p>
-    </div>
-  );
-}
-
-function TechCard({ icon: Icon, label }) {
-  return (
-    <div className="group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-[#C5A059]/50 border-override bg-light-override">
-      <div className="w-10 h-10 rounded-lg flex items-center justify-center border mb-2 group-hover:bg-[#1B365D]/10 transition-all border-override bg-white-override">
-        <Icon size={16} style={{ color: theme.navy }} />
-      </div>
-      <span className="text-[9.5px] font-bold leading-tight uppercase tracking-wider whitespace-pre-line text-navy-override">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-function TestimonialCard({ name, role, quote }) {
-  return (
-    <div className="p-5 rounded-lg border shadow-sm border-override bg-white-override animate-fade-in-up">
-      <div className="flex gap-0.5 mb-3">
-        {[...Array(5)].map((_, i) => (
-          <Star key={i} size={11} fill={theme.gold} style={{ color: theme.gold }} />
-        ))}
-      </div>
-      <p className="text-[12px] leading-relaxed italic mb-4 text-navy-override font-medium">
-        &ldquo;{quote}&rdquo;
-      </p>
-      <p className="text-[11.5px] font-black uppercase tracking-wider text-navy-override">{name}</p>
-      <p className="text-[9.5px] font-bold uppercase tracking-widest mt-0.5 text-navy-override">{role}</p>
-    </div>
-  );
-}
-
-function FaqItem({ question, answer, isOpen, onToggle }) {
-  return (
-    <div
-      className="rounded-lg border overflow-hidden transition-all duration-300 border-override bg-white-override"
-      style={{ backgroundColor: isOpen ? "rgba(27,54,93,0.02)" : "#ffffff" }}
-    >
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left group transition-all duration-200"
-      >
-        <span className="text-[12.5px] font-bold group-hover:text-[#C5A059] tracking-wide transition-colors text-navy-override">
-          {question}
-        </span>
-        <div className="w-6 h-6 rounded-full flex items-center justify-center border transition-all border-override bg-white-override">
-          {isOpen ? (
-            <Minus size={12} style={{ color: theme.navy }} />
-          ) : (
-            <Plus size={12} style={{ color: theme.navy }} />
-          )}
-        </div>
-      </button>
-      <div className={`transition-all duration-300 overflow-hidden ${isOpen ? "max-h-40 border-t" : "max-h-0"} border-override`}>
-        <p className="p-5 text-[12px] leading-relaxed text-navy-override faq-panel-open">{answer}</p>
-      </div>
-    </div>
-  );
-}
-
-// ── Contact Us form ───────────────────────────────────────────────────────
-function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus("error");
-      return;
-    }
-
-    setStatus("submitting");
-    try {
-      const res = await fetch("/group-companies/national-guard/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send.");
-      setStatus("success");
-      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
-    } catch (err) {
-      setStatus("error");
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div className="relative">
-          <User size={15} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: theme.navy }} />
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Full Name"
-            className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300"
-            required
-          />
-        </div>
-        <div className="relative">
-          <Mail size={15} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: theme.navy }} />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email Address"
-            className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300"
-            required
-          />
-        </div>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-4">
-        <div className="relative">
-          <Phone size={15} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: theme.navy }} />
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Phone Number"
-            className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300"
-          />
-        </div>
-        <div className="relative">
-          <ShieldCheck size={15} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: theme.navy }} />
-          <select
-            name="service"
-            value={formData.service}
-            onChange={handleChange}
-            className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300 appearance-none"
-          >
-            <option value="">Select a Service</option>
-            <option value="Manned Guarding">Manned Guarding</option>
-            <option value="Mobile Patrol">Mobile Patrol Services</option>
-            <option value="CCTV Monitoring">CCTV Monitoring</option>
-            <option value="Risk Assessment">Risk Assessment</option>
-            <option value="Event Security">Event Security</option>
-            <option value="Facility Protection">Facility Protection</option>
-          </select>
-        </div>
-      </div>
-
-      <div className="relative">
-        <FileText size={15} className="absolute left-4 top-4" style={{ color: theme.navy }} />
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Tell us about your security needs..."
-          rows={4}
-          className="contact-input w-full pl-11 pr-4 py-3.5 rounded-md border text-[12.5px] font-medium outline-none transition-all duration-300 resize-none"
-          required
-        />
-      </div>
-
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="btn-primary-override w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
-      >
-        {status === "submitting" ? (
-          "Sending..."
-        ) : (
-          <>
-            Send Message <Send size={14} />
-          </>
-        )}
-      </button>
-
-      {status === "success" && (
-        <p className="flex items-center gap-2 text-[12px] font-bold text-emerald-600">
-          <CheckCircle2 size={15} /> Thank you! Your message has been sent. We will contact you shortly.
-        </p>
-      )}
-      {status === "error" && (
-        <p className="text-[12px] font-bold text-red-600">
-          Please fill in your name, email, and message before sending.
-        </p>
-      )}
-    </form>
-  );
-}
-
-// ── Theme styles: WHITE background / NAVY BLUE text throughout ───────────
-const pageStyles = `
-  .ng-theme h1,
-  .ng-theme h2,
-  .ng-theme h3,
-  .ng-theme h4,
-  .ng-theme h5,
-  .ng-theme h6,
-  .ng-theme p,
-  .ng-theme span,
-  .ng-theme li,
-  .ng-theme a,
-  .ng-theme label,
-  .ng-theme button,
-  .ng-theme input,
-  .ng-theme textarea {
-    -webkit-text-fill-color: initial !important;
-    background-image: none !important;
-  }
-
-  body.ng-theme,
-  body.ng-theme html,
-  body.ng-theme main,
-  body.ng-theme section,
-  body.ng-theme .bg-white,
-  body.ng-theme .bg-white-override {
-    background-color: #ffffff !important;
-  }
-
-  /* Sticky header */
-  body.ng-theme header.bg-white-override {
-    background-color: rgba(255, 255, 255, 0.92) !important;
-  }
-
-  body.ng-theme section.bg-light-override,
-  body.ng-theme div.bg-light-override,
-  body.ng-theme .panel-bg-light-override {
-    background-color: ${theme.bgLight} !important;
-  }
-
-  body.ng-theme .panel-bg-override {
-    background-color: #ffffff !important;
-  }
-
-  body.ng-theme footer.footer-override,
-  body.ng-theme footer.footer-override div,
-  body.ng-theme footer.footer-override section {
-    background-color: ${theme.navy} !important;
-  }
-
-  body.ng-theme hr,
-  body.ng-theme .border,
-  body.ng-theme .border-t,
-  body.ng-theme .border-b,
-  body.ng-theme .border-l,
-  body.ng-theme .border-r,
-  body.ng-theme .border-override {
-    border-color: ${theme.border} !important;
-  }
-
-  body.ng-theme h1,
-  body.ng-theme h2,
-  body.ng-theme h3,
-  body.ng-theme h4,
-  body.ng-theme h5,
-  body.ng-theme h6,
-  body.ng-theme .text-navy-override {
-    color: ${theme.navy} !important;
-  }
-
-  body.ng-theme p,
-  body.ng-theme span,
-  body.ng-theme li,
-  body.ng-theme a,
-  body.ng-theme label,
-  body.ng-theme time {
-    color: ${theme.navy} !important;
-  }
-
-  /* Gold accent text & badges */
-  body.ng-theme .text-gold-override {
-    color: ${theme.gold} !important;
-  }
-
-  body.ng-theme .text-muted-override,
-  body.ng-theme .text-light-override {
-    color: ${theme.textMuted} !important;
-  }
-
-  body.ng-theme .bg-gold-override {
-    background-color: ${theme.gold} !important;
-  }
-
-  body.ng-theme .bg-navy-override {
-    background-color: ${theme.navy} !important;
-  }
-
-  /* Footer keeps white text against its navy background */
-  body.ng-theme .text-white-override,
-  body.ng-theme footer.footer-override *,
-  body.ng-theme footer.footer-override p,
-  body.ng-theme footer.footer-override span,
-  body.ng-theme footer.footer-override a,
-  body.ng-theme footer.footer-override h4 {
-    color: #ffffff !important;
-  }
-
-  /* Header nav links */
-  body.ng-theme header a { color: ${theme.navy} !important; position: relative; }
-  body.ng-theme header a:hover { color: ${theme.gold} !important; }
-  body.ng-theme header nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 2px;
-    background-color: ${theme.gold};
-    transition: width 0.3s ease;
-  }
-  body.ng-theme header nav a:hover::after {
-    width: 100%;
-  }
-
-  /* Buttons with vibrant hover effects */
-  body.ng-theme .btn-primary-override {
-    background-color: ${theme.navy} !important;
-    color: #ffffff !important;
-    border: 1.5px solid ${theme.navy} !important;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1) !important;
-  }
-  body.ng-theme .btn-primary-override:hover {
-    background-color: ${theme.gold} !important;
-    border-color: ${theme.gold} !important;
-    color: #ffffff !important;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 24px -6px rgba(197, 160, 89, 0.45);
-  }
-
-  body.ng-theme .btn-outline-override {
-    background-color: transparent !important;
-    color: ${theme.navy} !important;
-    border: 1.5px solid ${theme.navy} !important;
-    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.3, 1) !important;
-  }
-  body.ng-theme .btn-outline-override:hover {
-    background-color: ${theme.navy} !important;
-    color: #ffffff !important;
-    border-color: ${theme.navy} !important;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 12px 24px -6px rgba(27, 54, 93, 0.35);
-  }
-
-  body.ng-theme .faq-panel-open {
-    background-color: ${theme.bgLight} !important;
-  }
-
-  body.ng-theme .stats-icon-wrapper {
-    background-color: rgba(27, 54, 93, 0.08) !important;
-    border: 1px solid rgba(197, 160, 89, 0.3) !important;
-  }
-
-  /* Service cards hover effects */
-  body.ng-theme .service-card-hover {
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.3, 1) !important;
-  }
-  body.ng-theme .service-card-hover:hover {
-    background-color: ${theme.navy} !important;
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(27, 54, 93, 0.16);
-    border-color: ${theme.gold} !important;
-  }
-  body.ng-theme .service-card-hover:hover .service-card-title,
-  body.ng-theme .service-card-hover:hover .service-card-desc {
-    color: #ffffff !important;
-  }
-
-  /* Industry cards hover effects */
-  body.ng-theme .industry-card-hover {
-    transition: all 0.3s ease !important;
-  }
-  body.ng-theme .industry-card-hover:hover {
-    background-color: ${theme.navy} !important;
-    border-color: ${theme.gold} !important;
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 12px 24px rgba(27, 54, 93, 0.14);
-  }
-  body.ng-theme .industry-card-hover:hover .industry-card-label {
-    color: #ffffff !important;
-  }
-  body.ng-theme .industry-card-hover:hover .industry-card-iconwrap {
-    background-color: rgba(197, 160, 89, 0.2) !important;
-    border-color: ${theme.gold} !important;
-  }
-
-  /* Contact form inputs */
-  body.ng-theme .contact-input {
-    background-color: #F5F7FA !important;
-    border-color: ${theme.border} !important;
-    color: ${theme.navy} !important;
-  }
-  body.ng-theme .contact-input::placeholder {
-    color: ${theme.textLight};
-  }
-  body.ng-theme .contact-input:focus {
-    border-color: ${theme.gold} !important;
-    background-color: #ffffff !important;
-    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
-  }
-`;
-
-export default function NationalGuardPage() {
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
-
-  // Set this to an image path/URL to give the header its own background image.
-  // Leave as "" to keep the plain white header.
-  const headerBgImage = ""; // e.g. "/national-guard-header-bg.png"
-
-  useEffect(() => {
-    document.body.classList.add("roys-roys-theme", "ng-theme");
-    document.body.style.backgroundColor = "#ffffff";
-    document.body.style.color = theme.navy;
-    return () => {
-      document.body.classList.remove("roys-roys-theme", "ng-theme");
-      document.body.style.backgroundColor = "";
-      document.body.style.color = "";
-    };
-  }, []);
-
-  const toggleFaq = (index) => setOpenFaqIndex(openFaqIndex === index ? -1 : index);
-
-  return (
-    <div className="roys-roys-theme ng-theme min-h-screen font-sans selection:bg-[#1B365D] selection:text-white" style={{ backgroundColor: "#ffffff" }}>
-      <style dangerouslySetInnerHTML={{ __html: pageStyles }} />
-
-      {/* Navbar */}
-      <header
-        className={`sticky top-0 z-50 border-b backdrop-blur-md shadow-sm bg-white-override border-override ${headerBgImage ? "header-with-bg" : ""}`}
-        style={{
-          borderColor: theme.border,
-          ...(headerBgImage ? { "--header-bg-image": `url(${headerBgImage})` } : {}),
-        }}
-      >
-        <div className="mx-auto max-w-screen-xl px-6 py-4 flex items-center justify-between">
-          <Link href="#home" className="flex items-center gap-3 group">
-            <div
-              className="w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 group-hover:scale-105 border-override"
-              style={{ borderColor: theme.navy, backgroundColor: theme.bgLight }}
-            >
-              <Shield size={20} style={{ color: theme.navy }} fill={theme.navy} />
-            </div>
-            <div className="leading-tight">
-              <p className="text-[14px] md:text-[15px] font-black tracking-wide uppercase text-navy-override">
-                NATIONAL GUARD
+              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
+                National Guard Security Services delivers premier armed &amp; unarmed guarding, 24/7 mobile patrols, and integrated digital surveillance to safeguard businesses, residential communities, and industrial facilities.
               </p>
-              <p className="text-[7.5px] md:text-[8.5px] font-bold tracking-[0.25em] text-navy-override">
-                SECURITY SERVICES
-              </p>
-            </div>
-          </Link>
 
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map(({ label, href, hasDropdown }) => (
-              <a
-                key={label}
-                href={href}
-                className="text-[12px] font-black uppercase tracking-wider transition-colors"
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/group-companies/national-guard/services"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  style={{ backgroundColor: theme.navy }}
+                >
+                  <span>Explore Our Services</span>
+                  <ArrowRight size={16} />
+                </Link>
+
+                <Link
+                  href="/group-companies/national-guard/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
+                  style={{ borderColor: theme.border, color: theme.navy }}
+                >
+                  <span>Get A Free Quote</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Hero Image */}
+            <div className="lg:col-span-5 w-full flex justify-center">
+              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/national-guard-manned-guarding.png"
+                  alt="National Guard Uniformed Security Officers"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F2540]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-black uppercase tracking-wider" style={{ color: theme.gold }}>
+                        Operational Readiness
+                      </span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    </div>
+                    <p className="text-sm font-bold" style={{ color: theme.navy }}>
+                      500+ Active Officers on 24/7 Vigilance
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Counter Section */}
+      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {STATS.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className="ng-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.navy}10` }}>
+                    <Icon size={22} style={{ color: theme.navy }} />
+                  </div>
+                  <div className="mb-1" style={{ color: theme.navy }}>
+                    <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
+                  </div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                    {stat.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* About Company Showcase */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Image */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/national-guard-about.png"
+                  alt="About National Guard Security"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F2540]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <p className="text-xs font-black uppercase tracking-widest text-[#C5A059] mb-1">
+                      Professional Leadership
+                    </p>
+                    <h4 className="text-base font-bold">Managed By Retired Armed Forces Officers</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Text */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <SectionLabel>About Our Enterprise</SectionLabel>
+              <SectionHeading className="mb-6">Disciplined Protection Engineered For Trust</SectionHeading>
+
+              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                National Guard Security Services (Pvt) Ltd has established itself as one of the most reliable and disciplined private security providers in the country. Our strength lies in our rigorous recruit selection, ex-military supervisory backbone, and constant modernization of communication systems.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} style={{ color: theme.gold }} className="flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">Govt Licensed &amp; Verified</span>
+                </div>
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} style={{ color: theme.gold }} className="flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">24/7 Mobile Supervisory Patrols</span>
+                </div>
+              </div>
+
+              <Link
+                href="/group-companies/national-guard/about"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3"
+                style={{ color: theme.gold }}
               >
-                <span className="flex items-center gap-1">
-                  {label}
-                  {hasDropdown && <ChevronDown size={13} style={{ color: theme.navy }} />}
-                </span>
-              </a>
-            ))}
-          </nav>
-
-          <a
-            href="#contact"
-            className="hidden md:inline-flex px-5 py-3 rounded-md text-[11.5px] font-black uppercase tracking-wider transition-all duration-300 active:scale-[0.98] btn-primary-override"
-          >
-            Request Security Consultation
-          </a>
+                <span>Read Full Corporate Profile</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
         </div>
-      </header>
+      </section>
 
-      {/* Hero */}
-      <section id="home" className="relative py-24 lg:py-36 px-6 overflow-hidden flex items-center min-h-[85vh] bg-white-override">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/national-guard-hero-bg.png"
-            alt="Security Command Center"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center opacity-160"
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, rgba(255,255,255,0.92) 45%, rgba(255,255,255,0.55) 100%)" }}
-          />
+      {/* Core Services Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>What We Deliver</SectionLabel>
+              <SectionHeading>Our Core Security Solutions</SectionHeading>
+            </div>
+
+            <Link
+              href="/group-companies/national-guard/services"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.navy }}
+            >
+              <span>View All 6 Services</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES.map((svc) => {
+              const Icon = svc.icon;
+              return (
+                <div
+                  key={svc.title}
+                  className="ng-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div>
+                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                      <Image
+                        src={svc.img}
+                        alt={svc.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+
+                    <div className="p-7">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.navy}10` }}>
+                        <Icon size={20} style={{ color: theme.navy }} />
+                      </div>
+
+                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.navy }}>
+                        {svc.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                        {svc.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-7 pt-0">
+                    <Link
+                      href={svc.href}
+                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      style={{ borderColor: theme.border, color: theme.navy }}
+                    >
+                      <span>Explore Service</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
+      </section>
 
-        <div className="relative z-10 mx-auto max-w-screen-xl w-full">
-          <div className="max-w-2xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.1] mb-5 uppercase tracking-tight text-navy-override">
-              <span className="block mb-1">Trusted Security &amp;</span>
-              <span className="block text-navy-override">Protection Services</span>
-            </h1>
-            <p className="text-[15px] md:text-[17px] font-bold mb-6 text-navy-override">
-              Professional Security Solutions for Every Environment
+      {/* Industries Protected Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Tailored Sector Coverage</SectionLabel>
+            <SectionHeading center className="mb-4">Industries We Safeguard</SectionHeading>
+            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+              Delivering customized security matrices designed specifically for diverse facility requirements.
             </p>
-            <p className="text-[13px] md:text-[14.5px] leading-relaxed mb-9 text-navy-override max-w-xl">
-              National Guard delivers reliable security management, manned guarding, surveillance, risk assessment,
-              and integrated facility protection services. Our highly trained security professionals safeguard
-              businesses, residential communities, government facilities, industrial sites, and critical
-              infrastructure with unwavering commitment and operational excellence.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#contact" className="px-6 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 btn-primary-override">
-                Request Security Consultation
-              </a>
-              <a href="#services" className="px-6 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 btn-outline-override">
-                Explore Services
-              </a>
-            </div>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {INDUSTRIES.map((ind) => {
+              const Icon = ind.icon;
+              return (
+                <Link
+                  key={ind.label}
+                  href={ind.href}
+                  className="ng-counter-box p-5 rounded-2xl border flex flex-col items-center justify-center text-center group bg-white shadow-xs cursor-pointer hover:border-[#C5A059]"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform" style={{ backgroundColor: `${theme.navy}10` }}>
+                    <Icon size={18} style={{ color: theme.navy }} />
+                  </div>
+                  <p className="text-[11px] font-bold leading-tight uppercase tracking-wider whitespace-pre-line text-slate-800">
+                    {ind.label}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/group-companies/national-guard/industries"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider transition-all hover:bg-slate-50"
+              style={{ borderColor: theme.border, color: theme.navy }}
+            >
+              <span>Explore All Protected Sectors</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="py-20 lg:py-24 px-6 border-b bg-white-override border-override">
+      {/* Why Choose National Guard Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch">
-            <div className="lg:col-span-5 relative min-h-[350px] lg:min-h-auto rounded-xl overflow-hidden shadow-lg border border-override animate-fade-in-up">
-              <Image
-                src="/national-guard-about.png"
-                alt="Corporate Security Guard"
-                fill
-                sizes="(max-width: 1024px) 100vw, 500px"
-                className="object-cover"
-              />
-            </div>
-            <div className="lg:col-span-7 flex flex-col justify-center p-8 lg:p-12 rounded-xl border shadow-sm bg-light-override border-override">
-              <SectionLabel>About Us</SectionLabel>
-              <SectionHeading className="sm:text-3xl mb-6">Your Trusted Security Partner</SectionHeading>
-              <p className="text-[13px] md:text-[14px] leading-relaxed mb-6 text-navy-override">
-                National Guard is a professional security services provider committed to protecting people, property,
-                and assets through highly trained personnel, advanced surveillance technologies, and proactive risk
-                management strategies.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6">
+              <SectionLabel>The National Guard Standard</SectionLabel>
+              <SectionHeading className="mb-6">Why Partner With Us?</SectionHeading>
+              <p className="text-sm sm:text-base font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
+                We combine physical strength and tactical discipline with modern digital reporting to deliver unmatched peace of mind.
               </p>
-              <p className="text-[13px] md:text-[14px] leading-relaxed text-navy-override">
-                With years of industry experience, we provide customized security solutions designed to meet the unique
-                operational requirements of corporate organizations, government institutions, commercial facilities,
-                healthcare centers, educational campuses, residential communities, and industrial sectors.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Stats */}
-      <section className="py-12 md:py-16 px-6 border-b bg-light-override border-override">
-        <div className="mx-auto max-w-screen-xl">
-          <StatsCounterSection items={stats} />
-        </div>
-      </section>
-
-      {/* Services */}
-      <section id="services" className="py-20 lg:py-24 px-6 border-b bg-white-override border-override">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <SectionLabel>Our Security Services</SectionLabel>
-            <SectionHeading className="sm:text-3xl">Comprehensive Protection, Built Around You</SectionHeading>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
-            {services.map((service) => (
-              <ServiceCard key={service.title} {...service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industries */}
-      <section id="industries" className="py-16 px-6 border-b bg-light-override border-override">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="text-center mb-14">
-            <SectionLabel>Industries We Protect</SectionLabel>
-            <SectionHeading className="tracking-wider">Reliable Coverage Across Industries</SectionHeading>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-4">
-            {industries.map((industry) => (
-              <IndustryCard key={industry.label} {...industry} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose + Process */}
-      <section className="py-20 lg:py-24 px-6 border-b bg-white-override border-override">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-5 p-8 rounded-xl border h-full shadow-sm bg-light-override border-override">
-              <SectionLabel>Why Choose Us</SectionLabel>
-              <SectionHeading className="mb-6">Why Choose National Guard</SectionHeading>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3.5 mt-2">
-                {whyChooseReasons.map((reason) => (
-                  <div key={reason} className="flex items-start gap-2.5">
-                    <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: theme.navy }} />
-                    <span className="text-[11.5px] font-bold leading-tight text-navy-override">{reason}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                {WHY_CHOOSE_REASONS.map((reason) => (
+                  <div key={reason} className="flex items-center gap-2.5 p-3 rounded-xl border bg-slate-50/70" style={{ borderColor: theme.border }}>
+                    <CheckCircle2 size={16} style={{ color: theme.gold }} className="flex-shrink-0" />
+                    <span className="text-xs font-bold text-slate-800">{reason}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="lg:col-span-7 p-8 rounded-xl border h-full shadow-sm bg-light-override border-override">
-              <SectionLabel>Our Security Process</SectionLabel>
-              <SectionHeading className="mb-8">A Step-by-Step Security Blueprint</SectionHeading>
-              <div className="flex flex-wrap lg:flex-nowrap items-start justify-between gap-6 mt-4 relative z-10 w-full">
-                {processSteps.map((step, index) => (
-                  <ProcessStep
-                    key={step.step}
-                    {...step}
-                    isLast={index === processSteps.length - 1}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tech + Commitment */}
-      <section className="py-20 lg:py-24 px-6 border-b bg-light-override border-override">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch">
-            <div className="lg:col-span-6 p-8 lg:p-10 rounded-xl border flex flex-col justify-between shadow-sm panel-bg-override bg-white-override">
-              <div>
-                <SectionLabel>Technology &amp; Capabilities</SectionLabel>
-                <SectionHeading className="mb-4">Smarter Security Systems</SectionHeading>
-                <p className="text-[13px] leading-relaxed mb-8 max-w-md text-navy-override">
-                  We combine experienced security personnel with modern technologies to deliver smarter, faster, and
-                  more reliable protection services.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {techCapabilities.map((tech) => (
-                  <TechCard key={tech.label} {...tech} />
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 p-8 lg:p-10 rounded-xl border flex flex-col justify-between shadow-sm panel-bg-override bg-white-override">
-              <div>
-                <SectionLabel>Our Commitment</SectionLabel>
-                <SectionHeading className="mb-4">Safeguarding What Matters Most</SectionHeading>
-                <p className="text-[13px] leading-relaxed mb-6 text-navy-override font-medium">
-                  We are dedicated to maintaining the highest standards of professionalism, integrity, and operational
-                  excellence. Every security solution is designed to minimize risks, protect valuable assets, and
-                  provide complete peace of mind for our clients.
-                </p>
-              </div>
-              <div className="relative w-full h-[190px] rounded-lg overflow-hidden border shadow-sm border-override">
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[400px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/national-guard-team.png"
-                  alt="Security Guard Team"
+                  src="/national-guard-mobile-patrol.png"
+                  alt="National Guard Mobile Patrol Cruiser"
                   fill
-                  sizes="(max-width: 1024px) 100vw, 550px"
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F2540]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <p className="text-xs font-black uppercase tracking-widest text-[#C5A059] mb-1">
+                      Fleet Operations
+                    </p>
+                    <h4 className="text-base font-bold">24/7 Mobile Patrol Cruisers &amp; Quick Response Units</h4>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials + FAQ */}
-      <section className="py-20 lg:py-24 px-6 border-b bg-white-override border-override">
+      {/* Process Pathway Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-5 p-8 rounded-xl border shadow-sm bg-light-override border-override">
-              <SectionLabel>Reviews</SectionLabel>
-              <SectionHeading className="mb-6">Client Testimonials</SectionHeading>
-              <div className="space-y-4">
-                {testimonials.map((testimonial) => (
-                  <TestimonialCard key={testimonial.name} {...testimonial} />
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:col-span-7 p-8 rounded-xl border shadow-sm bg-light-override border-override">
-              <SectionLabel>Answers</SectionLabel>
-              <SectionHeading className="mb-6">Frequently Asked Questions</SectionHeading>
-              <div className="space-y-3 mt-4">
-                {faqs.map(({ question, answer }, index) => (
-                  <FaqItem
-                    key={question}
-                    question={question}
-                    answer={answer}
-                    isOpen={openFaqIndex === index}
-                    onToggle={() => toggleFaq(index)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact / CTA */}
-      <section id="contact" className="relative py-20 lg:py-24 px-6 overflow-hidden bg-white-override">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/national-guard-cta-bg.png"
-            alt="Security Officer on Patrol"
-            fill
-            sizes="100vw"
-            className="object-cover object-center opacity-10"
-          />
-          <div
-            className="absolute inset-0"
-            style={{ background: "linear-gradient(to right, #ffffff 45%, rgba(255,255,255,0.9) 100%)" }}
-          />
-        </div>
-        <div className="relative z-10 mx-auto max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-10 items-start mb-16">
-            <div className="lg:col-span-5 max-w-xl">
-              <SectionLabel>Get In Touch</SectionLabel>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase mb-4 tracking-tight leading-snug text-navy-override">
-                Secure Your Business With Confidence
-              </h2>
-              <p className="text-[13px] md:text-[14px] leading-relaxed text-navy-override mb-8">
-                Protect your people, property, and operations with professional security services tailored to your
-                needs. Partner with National Guard for dependable protection, rapid response, and complete peace of
-                mind.
-              </p>
-              <div className="space-y-4">
-                <p className="text-[12.5px] font-bold flex items-start gap-2.5 text-navy-override">
-                  <MapPin size={15} className="mt-0.5 flex-shrink-0" style={{ color: theme.navy }} />
-                  123 Security Avenue, Safe City, 12345
-                </p>
-                <p className="text-[12.5px] font-bold flex items-center gap-2.5 text-navy-override">
-                  <Phone size={15} className="flex-shrink-0" style={{ color: theme.navy }} />
-                  +1 (123) 456-7890
-                </p>
-                <p className="text-[12.5px] font-bold flex items-center gap-2.5 text-navy-override">
-                  <Mail size={15} className="flex-shrink-0" style={{ color: theme.navy }} />
-                  info@nationalguard.com
-                </p>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7 p-7 sm:p-9 rounded-xl border shadow-sm bg-light-override border-override">
-              <SectionLabel>Contact Us</SectionLabel>
-              <SectionHeading className="mb-6">Request a Free Security Assessment</SectionHeading>
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="pt-16 pb-8 px-6 footer-override">
-        <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
-          <div className="lg:col-span-4 justify-self-start">
-            <Link href="#home" className="flex items-center gap-3 mb-5">
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center border"
-                style={{ borderColor: "#ffffff", backgroundColor: "rgba(255,255,255,0.08)" }}
-              >
-                <Shield size={20} style={{ color: "#ffffff" }} fill="#ffffff" />
-              </div>
-              <div className="leading-tight">
-                <p className="text-[14px] font-black text-white tracking-wide uppercase">NATIONAL GUARD</p>
-                <p className="text-[7.5px] font-bold tracking-[0.25em]" style={{ color: "#ffffff" }}>
-                  SECURITY SERVICES
-                </p>
-              </div>
-            </Link>
-            <p className="text-[12px] leading-relaxed mb-6">
-              Delivering trusted security and protection services to safeguard people, property, and operations around
-              the clock.
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Our Protocol</SectionLabel>
+            <SectionHeading center className="mb-4">6-Step Guard Deployment Workflow</SectionHeading>
+            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+              From the initial site visit to daily continuous support, we maintain strict quality control.
             </p>
-            <div className="flex gap-3">
-              {socialIcons.map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="Social media link"
-                  className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-white/5 transition-all duration-200"
-                  style={{ borderColor: "rgba(255,255,255,0.15)" }}
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {PROCESS_STEPS.map((step) => {
+              const Icon = step.icon;
+              return (
+                <div
+                  key={step.step}
+                  className="p-5 rounded-2xl border flex flex-col items-center text-center bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
                 >
-                  <Icon size={13} style={{ color: "#ffffff" }} />
-                </a>
-              ))}
-            </div>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center font-black text-xs text-white mb-3 shadow-xs" style={{ backgroundColor: theme.navy }}>
+                    {step.step}
+                  </div>
+                  <Icon size={20} className="mb-2" style={{ color: theme.gold }} />
+                  <p className="text-xs font-bold leading-tight uppercase whitespace-pre-line text-slate-800">
+                    {step.title}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Accordion Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <SectionLabel center>Frequently Asked Questions</SectionLabel>
+            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
           </div>
 
-          {Object.entries(footerLinks).map(([heading, links]) => (
-            <div key={heading} className="lg:col-span-2">
-              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-5" style={{ color: "#ffffff" }}>
-                {heading}
-              </h4>
-              <ul className="space-y-2.5">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href={`#${link.toLowerCase().replace(" ", "")}`}
-                      className="text-[12px] transition-colors duration-200"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-5" style={{ color: "#ffffff" }}>
-              Contact
-            </h4>
-            <div className="space-y-4">
-              <p className="text-[12px] flex items-start gap-2.5">
-                <MapPin size={14} className="mt-0.5 flex-shrink-0" style={{ color: "#ffffff" }} />
-                <span>123 Security Avenue, Safe City, 12345</span>
-              </p>
-              <p className="text-[12px] flex items-center gap-2.5">
-                <Phone size={14} className="flex-shrink-0" style={{ color: "#ffffff" }} />
-                <span>+1 (123) 456-7890</span>
-              </p>
-              <p className="text-[12px] flex items-center gap-2.5 font-medium">
-                <Mail size={14} className="flex-shrink-0" style={{ color: "#ffffff" }} />
-                <span>info@nationalguard.com</span>
-              </p>
-            </div>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {FAQS.map((faq, idx) => (
+              <div
+                key={faq.q}
+                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
+                style={{ borderColor: theme.border }}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
+                  style={{ color: theme.navy }}
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-300 flex-shrink-0 ${
+                      openFaq === idx ? "rotate-180 text-[#C5A059]" : "text-slate-400"
+                    }`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="lg:col-span-2 flex lg:justify-end items-start">
-            <div
-              className="flex flex-col items-center gap-2 p-5 rounded-lg border bg-white/5 w-full text-center"
-              style={{ borderColor: "rgba(255,255,255,0.1)" }}
-            >
-              <ShieldCheck size={28} style={{ color: "#ffffff" }} />
-              <p className="text-xl font-black leading-none">24/7</p>
-              <p className="text-[9px] font-bold uppercase tracking-wider">Security Operations</p>
+      {/* Call To Action Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+            <div>
+              <span className="text-xs font-black uppercase tracking-widest block mb-2" style={{ color: theme.gold }}>
+                READY TO HARDEN YOUR PREMISES?
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navy }}>
+                Request A Free Security Consultation
+              </h2>
+              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
+                Speak directly with our senior security managers to conduct an on-site survey and get custom security proposals.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+              <Link
+                href="/group-companies/national-guard/contact"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.navy }}
+              >
+                <span>Request Security Audit</span>
+                <ArrowRight size={15} />
+              </Link>
+              <a
+                href="tel:+923218431665"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
+                style={{ borderColor: theme.navy, color: theme.navy }}
+              >
+                <Phone size={15} />
+                <span>+92 321 8431665</span>
+              </a>
             </div>
           </div>
         </div>
+      </section>
 
-        <div className="mx-auto max-w-screen-xl mt-12 pt-6 text-center border-t border-white/10">
-          <p className="text-[11px]">&copy; {new Date().getFullYear()} National Guard. All Rights Reserved.</p>
-        </div>
-      </footer>
-    </div>
+      <NationalGuardFooter />
+    </main>
   );
 }

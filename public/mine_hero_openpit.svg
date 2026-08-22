@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#16243E" />
+      <stop offset="60%" stop-color="#243B60" />
+      <stop offset="100%" stop-color="#4A607A" />
+    </linearGradient>
+    <linearGradient id="goldVein" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#C59B27" />
+      <stop offset="50%" stop-color="#FFD700" />
+      <stop offset="100%" stop-color="#C59B27" />
+    </linearGradient>
+    <linearGradient id="copperVein" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B87333" />
+      <stop offset="50%" stop-color="#E59866" />
+      <stop offset="100%" stop-color="#B87333" />
+    </linearGradient>
+    <linearGradient id="mountain1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3A4D6B" />
+      <stop offset="100%" stop-color="#1E2F48" />
+    </linearGradient>
+    <linearGradient id="terraceGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5B6D87" />
+      <stop offset="100%" stop-color="#3D4E67" />
+    </linearGradient>
+    <linearGradient id="terraceGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4D5F7A" />
+      <stop offset="100%" stop-color="#2B3C54" />
+    </linearGradient>
+    <linearGradient id="pitBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2B3C54" />
+      <stop offset="100%" stop-color="#111B2C" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1200" height="675" fill="url(#skyGrad)" />
+
+  <!-- Sun Glow & Rays -->
+  <circle cx="950" cy="180" r="140" fill="#FFD700" opacity="0.15" filter="url(#glow)" />
+  <circle cx="950" cy="180" r="60" fill="#FFFDF2" opacity="0.3" filter="url(#glow)" />
+
+  <!-- Mountain Silhouettes in Background -->
+  <polygon points="0,320 220,180 480,290 750,140 1020,260 1200,190 1200,450 0,450" fill="url(#mountain1)" opacity="0.85" />
+  <polygon points="0,360 310,240 600,340 850,220 1120,310 1200,280 1200,500 0,500" fill="#2E4059" opacity="0.9" />
+
+  <!-- Open Pit Mining Terraces (Tiered Step Excavations) -->
+  <!-- Level 1 -->
+  <path d="M-50,420 Q300,390 600,410 T1250,400 L1250,470 Q800,460 550,475 T-50,480 Z" fill="url(#terraceGrad1)" />
+  <!-- Golden Ore Seam in Level 1 -->
+  <path d="M120,440 Q350,430 520,445 Q800,435 1050,442" stroke="url(#goldVein)" stroke-width="6" stroke-linecap="round" filter="url(#glow)" opacity="0.9" />
+  
+  <!-- Level 2 -->
+  <path d="M-50,475 Q280,455 580,470 T1250,465 L1250,530 Q750,520 500,535 T-50,540 Z" fill="url(#terraceGrad2)" />
+  <!-- Copper Vein in Level 2 -->
+  <path d="M80,500 Q400,490 680,505 Q920,495 1160,502" stroke="url(#copperVein)" stroke-width="7" stroke-linecap="round" opacity="0.85" />
+
+  <!-- Level 3 -->
+  <path d="M-50,535 Q320,515 620,530 T1250,525 L1250,590 Q700,580 450,595 T-50,600 Z" fill="url(#pitBase)" />
+  <!-- Rich Gold Seam in Level 3 -->
+  <path d="M200,560 Q450,550 750,565 Q980,555 1100,562" stroke="url(#goldVein)" stroke-width="8" stroke-linecap="round" filter="url(#glow)" opacity="0.95" />
+
+  <!-- Pit Floor Level 4 -->
+  <path d="M-50,595 Q350,575 650,590 T1250,585 L1250,675 L-50,675 Z" fill="#0E1624" />
+
+  <!-- Heavy Mining Haul Trucks (Vector Stylized) -->
+  <!-- Haul Truck 1 (Left on Bench) -->
+  <g transform="translate(320, 415) scale(0.65)">
+    <rect x="0" y="20" width="80" height="40" rx="4" fill="#C59B27" />
+    <polygon points="15,20 75,5 85,20" fill="#E5B93E" />
+    <rect x="65" y="25" width="25" height="30" rx="3" fill="#16243E" />
+    <circle cx="20" cy="62" r="14" fill="#111B2C" stroke="#4A607A" stroke-width="3" />
+    <circle cx="65" cy="62" r="14" fill="#111B2C" stroke="#4A607A" stroke-width="3" />
+    <line x1="88" y1="35" x2="130" y2="45" stroke="#FFD700" stroke-width="3" opacity="0.6" />
+  </g>
+
+  <!-- Heavy Excavator 1 (Right Bench) -->
+  <g transform="translate(780, 465) scale(0.75)">
+    <!-- Cabin & Tracks -->
+    <rect x="30" y="30" width="60" height="35" rx="4" fill="#C59B27" />
+    <rect x="65" y="35" width="22" height="22" rx="2" fill="#16243E" />
+    <rect x="20" y="65" width="80" height="15" rx="6" fill="#111B2C" stroke="#4A607A" stroke-width="2" />
+    <!-- Boom & Bucket -->
+    <line x1="40" y1="40" x2="-20" y2="0" stroke="#C59B27" stroke-width="10" stroke-linecap="round" />
+    <line x1="-20" y1="0" x2="-60" y2="30" stroke="#C59B27" stroke-width="8" stroke-linecap="round" />
+    <polygon points="-60,30 -75,45 -55,55 -45,40" fill="#16243E" stroke="#C59B27" stroke-width="2" />
+  </g>
+
+  <!-- Haul Road Ramp Lines -->
+  <path d="M0,450 Q300,480 600,520 T1200,600" stroke="#C59B27" stroke-width="1.5" stroke-dasharray="8,8" opacity="0.4" fill="none" />
+  <path d="M1200,430 Q800,480 500,540 T0,630" stroke="#4A607A" stroke-width="1.5" stroke-dasharray="8,8" opacity="0.4" fill="none" />
+
+  <!-- Geological Coordinate & Sensor HUD Overlay -->
+  <g opacity="0.4" stroke="#C59B27" stroke-width="1" fill="none">
+    <circle cx="950" cy="180" r="100" stroke-dasharray="4,6" />
+    <line x1="950" y1="60" x2="950" y2="300" stroke-dasharray="2,4" />
+    <line x1="830" y1="180" x2="1070" y2="180" stroke-dasharray="2,4" />
+    <text x="860" y="295" fill="#FFD700" font-family="monospace" font-size="12" font-weight="bold">COORD: 29°18'N 64°22'E</text>
+    <text x="860" y="315" fill="#FFD700" font-family="monospace" font-size="11">ORE GRADE: HIGH (Au + Cu)</text>
+  </g>
+</svg>

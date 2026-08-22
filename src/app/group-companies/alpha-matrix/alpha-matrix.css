@@ -1,0 +1,58 @@
+/* ─────────────────────────────────────────────────────────────
+   ALPHA MATRIX DEFENCE SYSTEMS — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/alpha-matrix/alpha-matrix.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --alpha-primary: #0B1B36;       /* Alpha Matrix Deep Navy */
+  --alpha-navy-dark: #08182B;     /* Deep Command Navy */
+  --alpha-shield-blue: #005691;   /* Logo Shield Blue / Accent */
+  --alpha-gold-soft: #0E6BA8;     /* Soft Blue */
+  --alpha-text-muted: #3E5063;    /* Slate Text */
+  --alpha-text-faint: #5A6E7F;    /* Defence System Slate Grey */
+  --alpha-white: #ffffff;         /* Pure White */
+  --alpha-border: rgba(0, 86, 145, 0.16);
+  --alpha-border-soft: rgba(0, 86, 145, 0.08);
+}
+
+body.alpha-matrix-theme,
+.alpha-matrix-theme,
+body.alpha-matrix-theme main,
+body.alpha-matrix-theme section,
+body.alpha-matrix-theme header,
+.alpha-matrix-theme main,
+.alpha-matrix-theme section,
+.alpha-matrix-theme header {
+  background-color: #ffffff !important;
+  color: #0B1B36;
+}
+
+body.alpha-matrix-theme .cursor-pointer,
+.alpha-matrix-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Reset for Alpha Matrix components */
+body.alpha-matrix-theme a,
+body.alpha-matrix-theme button,
+body.alpha-matrix-theme label,
+body.alpha-matrix-theme h1,
+body.alpha-matrix-theme h2,
+body.alpha-matrix-theme h3,
+body.alpha-matrix-theme h4,
+body.alpha-matrix-theme h5,
+body.alpha-matrix-theme h6,
+body.alpha-matrix-theme p,
+body.alpha-matrix-theme span,
+body.alpha-matrix-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+/* Footer white background */
+body.alpha-matrix-theme footer {
+  background-color: #ffffff !important;
+}

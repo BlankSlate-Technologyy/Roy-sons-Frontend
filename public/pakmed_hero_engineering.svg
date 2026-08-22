@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="medSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0F284E" />
+      <stop offset="60%" stop-color="#1A4FA0" />
+      <stop offset="100%" stop-color="#2B8DD6" />
+    </linearGradient>
+    <linearGradient id="cleanroomWall" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="50%" stop-color="#EDF4FC" />
+      <stop offset="100%" stop-color="#E2EDF8" />
+    </linearGradient>
+    <linearGradient id="surgicalPanel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+    <linearGradient id="medicalCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <filter id="medGlow">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Clean Medical Background -->
+  <rect width="1200" height="675" fill="url(#medSky)" />
+
+  <!-- Modern Hospital Architectural Grid Structure -->
+  <g opacity="0.12" stroke="#FFFFFF" stroke-width="1.5">
+    <line x1="0" y1="120" x2="1200" y2="120" />
+    <line x1="0" y1="240" x2="1200" y2="240" />
+    <line x1="0" y1="360" x2="1200" y2="360" />
+    <line x1="0" y1="480" x2="1200" y2="480" />
+    <line x1="200" y1="0" x2="200" y2="675" />
+    <line x1="400" y1="0" x2="400" y2="675" />
+    <line x1="600" y1="0" x2="600" y2="675" />
+    <line x1="800" y1="0" x2="800" y2="675" />
+    <line x1="1000" y1="0" x2="1000" y2="675" />
+  </g>
+
+  <!-- Modular Clean Room & Operation Theater Suite (Main Chamber) -->
+  <g transform="translate(100, 160)">
+    <!-- Room Shell -->
+    <rect x="0" y="0" width="1000" height="460" rx="24" fill="url(#cleanroomWall)" stroke="#D2E4F5" stroke-width="4" />
+
+    <!-- Laminar Air Flow Ceiling Plenum with HEPA Filter Matrix -->
+    <g transform="translate(120, 20)">
+      <rect x="0" y="0" width="760" height="45" rx="8" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2" />
+      <!-- HEPA Air Diffuser Slots -->
+      <line x1="20" y1="22" x2="740" y2="22" stroke="#38BDF8" stroke-width="4" stroke-dasharray="25, 10" filter="url(#medGlow)" />
+      <!-- Laminar Flow Air Streams (Descending downward) -->
+      <g stroke="#38BDF8" stroke-width="1.5" opacity="0.35" stroke-dasharray="6, 6">
+        <line x1="100" y1="45" x2="100" y2="200" />
+        <line x1="220" y1="45" x2="220" y2="200" />
+        <line x1="380" y1="45" x2="380" y2="200" />
+        <line x1="540" y1="45" x2="540" y2="200" />
+        <line x1="660" y1="45" x2="660" y2="200" />
+      </g>
+    </g>
+
+    <!-- Ceiling-Mounted Articulated Surgical Pendant Light (Left-Center) -->
+    <g transform="translate(360, 65)">
+      <!-- Pendant Arm -->
+      <line x1="0" y1="0" x2="0" y2="70" stroke="#64748B" stroke-width="8" />
+      <line x1="0" y1="70" x2="60" y2="100" stroke="#64748B" stroke-width="6" />
+      <!-- Surgical LED Lamp Head -->
+      <ellipse cx="60" cy="115" rx="45" ry="16" fill="#0284C7" stroke="#38BDF8" stroke-width="3" />
+      <ellipse cx="60" cy="118" rx="35" ry="10" fill="#FFFFFF" filter="url(#medGlow)" />
+      <!-- Surgical Light Cone -->
+      <polygon points="25,125 95,125 150,300 -30,300" fill="#E0F2FE" opacity="0.45" />
+    </g>
+
+    <!-- Ergonomic Modular Operating Table (Center) -->
+    <g transform="translate(320, 290)">
+      <rect x="30" y="40" width="220" height="22" rx="6" fill="#1E293B" stroke="#0EA5E9" stroke-width="2" />
+      <!-- Telescopic Base Column -->
+      <rect x="115" y="62" width="50" height="70" fill="#64748B" />
+      <!-- Heavy Cast Base Plate -->
+      <rect x="80" y="132" width="120" height="18" rx="4" fill="#334155" />
+    </g>
+
+    <!-- Digital Surgical Command Console / Vital Signs Monitor (Right Side) -->
+    <g transform="translate(680, 110)">
+      <rect x="0" y="0" width="220" height="260" rx="14" fill="url(#surgicalPanel)" stroke="#2B8DD6" stroke-width="3" />
+      <!-- Screen 1: Real-Time Patient ECG & Vital Telemetry -->
+      <rect x="15" y="15" width="190" height="90" rx="6" fill="#0A1420" stroke="#0284C7" stroke-width="1.5" />
+      <path d="M25,60 L50,60 L58,40 L66,80 L74,30 L82,65 L90,60 L140,60 L148,45 L156,75 L164,60 L195,60" fill="none" stroke="#22C55E" stroke-width="2.5" filter="url(#medGlow)" />
+      <text x="30" y="32" fill="#38BDF8" font-family="monospace" font-size="10" font-weight="bold">ECG: 72 BPM · SPO2: 99%</text>
+
+      <!-- Screen 2: Clean Room HVAC & Positive Pressure Differential Monitor -->
+      <rect x="15" y="118" width="190" height="70" rx="6" fill="#0A1420" stroke="#0284C7" stroke-width="1.5" />
+      <text x="25" y="138" fill="#F59E0B" font-family="monospace" font-size="10" font-weight="bold">ROOM PRESSURE: +25 Pa (ISO-5)</text>
+      <text x="25" y="156" fill="#38BDF8" font-family="monospace" font-size="9.5">TEMP: 20.5°C · HUMIDITY: 48%</text>
+      <text x="25" y="174" fill="#22C55E" font-family="monospace" font-size="9.5">LAMINAR FLOW: 0.45 m/s PASS</text>
+
+      <!-- Control Pushbuttons -->
+      <circle cx="35" cy="225" r="9" fill="#22C55E" />
+      <circle cx="65" cy="225" r="9" fill="#38BDF8" />
+      <circle cx="95" cy="225" r="9" fill="#F59E0B" />
+      <circle cx="125" cy="225" r="9" fill="#EF4444" />
+    </g>
+
+    <!-- Medical Gas Pipeline System Wall Manifold (Left Wall) -->
+    <g transform="translate(40, 130)">
+      <rect x="0" y="0" width="160" height="220" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="2" />
+      <text x="80" y="30" fill="#1A4FA0" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">MEDICAL GAS OUTLETS</text>
+
+      <!-- Oxygen O2 Outlet -->
+      <circle cx="45" cy="70" r="18" fill="#E0F2FE" stroke="#0284C7" stroke-width="2" />
+      <text x="45" y="74" fill="#0284C7" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">O2</text>
+
+      <!-- Vacuum VAC Outlet -->
+      <circle cx="115" cy="70" r="18" fill="#FEF3C7" stroke="#D97706" stroke-width="2" />
+      <text x="115" y="74" fill="#D97706" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">VAC</text>
+
+      <!-- Medical Air 4 BAR -->
+      <circle cx="45" cy="130" r="18" fill="#DCFCE7" stroke="#16A34A" stroke-width="2" />
+      <text x="45" y="134" fill="#16A34A" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">AIR</text>
+
+      <!-- Nitrous Oxide N2O -->
+      <circle cx="115" cy="130" r="18" fill="#F3E8FF" stroke="#9333EA" stroke-width="2" />
+      <text x="115" y="134" fill="#9333EA" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">N2O</text>
+
+      <!-- Emergency Isolator Valve -->
+      <rect x="25" y="175" width="110" height="28" rx="6" fill="#EF4444" />
+      <text x="80" y="193" fill="#FFFFFF" font-family="sans-serif" font-size="9.5" font-weight="bold" text-anchor="middle">SHUT-OFF VALVE</text>
+    </g>
+  </g>
+
+  <!-- Top Floating Badge -->
+  <g transform="translate(60, 50)">
+    <rect width="430" height="65" rx="16" fill="#0B1E3B" stroke="#38BDF8" stroke-width="2" />
+    <circle cx="36" cy="32.5" r="14" fill="#2B8DD6" />
+    <text x="64" y="29" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold">PAKISTAN MEDICAL SUPPLIES</text>
+    <text x="64" y="47" fill="#BAE6FD" font-family="sans-serif" font-size="10.5">Turnkey Healthcare Infrastructure · Clean Rooms · HVAC · MGPS</text>
+  </g>
+</svg>

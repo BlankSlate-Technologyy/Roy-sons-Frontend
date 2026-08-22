@@ -1,97 +1,67 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-// Image handling removed — using placeholders so you can add images later
+import Image from "next/image";
+import Link from "next/link";
 import {
   Activity, BarChart3, Building, Building2, Camera, CheckCircle2,
   ChevronDown, ClipboardList, Cloud, Cpu,
   Facebook, FileSearch, Flame, Fingerprint, Globe2, Handshake, Landmark,
   Layers, Linkedin, Mail, MapPin, MessageCircle, Network, Phone, Plane, Plus, Minus,
   Radar, Radio, Satellite, ScanFace, Send, Server, Shield, ShieldCheck, Ship,
-  Star, Twitter, UserCog, Wifi, Wrench, Youtube, Zap,
+  Star, Twitter, UserCog, Wifi, Wrench, Youtube, Zap, ArrowRight,
 } from "lucide-react";
-
-const theme = {
-  bg:           "#FFFFFF",
-  panel:        "#F4F7FA",
-  panelAlt:     "#EBF0F5",
-  navyDark:     "#050D1A",
-  navy:         "#0B1B36",
-  navySoft:     "#1C385E",
-  gold:         "#005691",
-  goldSoft:     "#0E6BA8",
-  shieldBlue:   "#005691",
-  white:        "#FFFFFF",
-  textMuted:    "#3E5063",
-  textFaint:    "#5A6E7F",
-  border:       "rgba(0, 86, 145, 0.14)",
-  borderSoft:   "rgba(0, 86, 145, 0.08)",
-  borderStrong: "rgba(0, 86, 145, 0.28)",
-};
-
-// Every translucent overlay in this file is generated from the hex values in
-// `theme` above via this helper, instead of being a separate hard-coded rgba()
-// string. Change a hex value in `theme` and every tint/shade of it updates too.
-function hexToRgba(hex, alpha = 1) {
-  const clean = hex.replace("#", "");
-  const bigint = parseInt(clean, 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}
-
-const navLinks = [
-  { label: "Home",       href: "#home" },
-  { label: "About",      href: "#about" },
-  { label: "Solutions",  href: "#solutions", hasDropdown: true },
-  { label: "Industries", href: "#industries" },
-  { label: "Projects",   href: "#projects" },
-  { label: "Careers",    href: "#careers" },
-  { label: "Contact",    href: "#contact" },
-];
+import {
+  theme,
+  hexToRgba,
+  AlphaMatrixNavbar,
+  AlphaMatrixFooter,
+  ContactForm,
+  SectionLabel,
+  SectionHeading,
+} from "./components/AlphaMatrixShared";
 
 const stats = [
   { icon: Star,        value: "15+",   label: "Years\nExperience" },
-  { icon: Layers,      value: "250+",  label: "Projects\nCompleted" },
-  { icon: Handshake,   value: "50+",   label: "Technology\nPartners" },
-  { icon: Globe2,      value: "20+",   label: "Countries\nServed" },
-  { icon: ShieldCheck, value: "99.9%", label: "System\nReliability" },
+  { icon: Layers,      value: "250+",  label: "Defense & Security\nDeployments" },
+  { icon: Handshake,   value: "50+",   label: "Global Technology\nPartners" },
+  { icon: Globe2,      value: "20+",   label: "Countries\nProtected" },
+  { icon: ShieldCheck, value: "99.9%", label: "Mission-Critical\nSystem Uptime" },
 ];
 
 const solutions = [
-  { icon: Camera,       title: "Surveillance Systems",       desc: "AI-powered CCTV, thermal imaging, long-range cameras, and intelligent video analytics." },
-  { icon: Landmark,     title: "Border Security",            desc: "Integrated border surveillance, intrusion detection, radar systems, and monitoring platforms." },
-  { icon: Server,       title: "Command & Control Centers",  desc: "Real-time monitoring, data visualization, emergency response, and operational intelligence." },
-  { icon: Fingerprint,  title: "Access Control",              desc: "Biometric authentication, smart identity management, vehicle access systems, and visitor management." },
-  { icon: Shield,       title: "Perimeter Protection",        desc: "Fence detection, fiber optic sensors, microwave barriers, smart alarms, and intrusion prevention." },
-  { icon: Network,      title: "Cyber Defense",               desc: "Network security, threat intelligence, incident response, digital infrastructure protection, and cyber resilience." },
+  { icon: Camera,       title: "Surveillance Systems",       desc: "AI-powered CCTV, thermal imaging, long-range cameras, and intelligent video analytics.", href: "/group-companies/alpha-matrix/solutions#surveillance" },
+  { icon: Landmark,     title: "Border Security",            desc: "Integrated border surveillance, intrusion detection, radar systems, and monitoring platforms.", href: "/group-companies/alpha-matrix/solutions#border-security" },
+  { icon: Server,       title: "Command & Control Centers",  desc: "Real-time monitoring, C4ISR data visualization, emergency response, and operational intelligence.", href: "/group-companies/alpha-matrix/solutions#command-control" },
+  { icon: Fingerprint,  title: "Access Control",              desc: "Biometric authentication, smart identity management, vehicle access systems, and visitor management.", href: "/group-companies/alpha-matrix/solutions#access-control" },
+  { icon: Shield,       title: "Perimeter Protection",        desc: "Fence detection, fiber optic sensors, microwave barriers, smart alarms, and intrusion prevention.", href: "/group-companies/alpha-matrix/solutions#perimeter-protection" },
+  { icon: Network,      title: "Cyber Defense",               desc: "Network security, threat intelligence, incident response, digital infrastructure protection, and cyber resilience.", href: "/group-companies/alpha-matrix/solutions#cyber-defense" },
 ];
 
 const industries = [
-  { icon: ShieldCheck, label: "Military &\nArmed Forces" },
-  { icon: Landmark,    label: "Government\nOrganizations" },
-  { icon: MapPin,      label: "Border\nSecurity" },
-  { icon: Plane,       label: "Airports" },
-  { icon: Ship,        label: "Seaports" },
-  { icon: Flame,       label: "Oil & Gas" },
-  { icon: Zap,         label: "Power\nPlants" },
-  { icon: Building2,   label: "Smart\nCities" },
-  { icon: Server,      label: "Data\nCenters" },
-  { icon: Network,     label: "Critical\nInfrastructure" },
-  { icon: Building,    label: "Transportation" },
-  { icon: Wrench,      label: "Defense\nManufacturing" },
+  { icon: ShieldCheck, label: "Military &\nArmed Forces", href: "/group-companies/alpha-matrix/industries#military" },
+  { icon: Landmark,    label: "Government\nOrganizations", href: "/group-companies/alpha-matrix/industries#government" },
+  { icon: MapPin,      label: "Border\nSecurity",         href: "/group-companies/alpha-matrix/industries#border" },
+  { icon: Plane,       label: "Airports &\nAviation",     href: "/group-companies/alpha-matrix/industries#airports" },
+  { icon: Ship,        label: "Seaports &\nMaritime",     href: "/group-companies/alpha-matrix/industries#seaports" },
+  { icon: Flame,       label: "Oil & Gas\nRefineries",    href: "/group-companies/alpha-matrix/industries#oil-gas" },
+  { icon: Zap,         label: "Power Plants\n& Utilities", href: "/group-companies/alpha-matrix/industries#power-plants" },
+  { icon: Building2,   label: "Smart\nCities",            href: "/group-companies/alpha-matrix/industries#smart-cities" },
+  { icon: Server,      label: "Data Centers\n& Telecom",  href: "/group-companies/alpha-matrix/industries#data-centers" },
+  { icon: Network,     label: "Critical\nInfrastructure", href: "/group-companies/alpha-matrix/industries#critical-infra" },
+  { icon: Building,    label: "Transportation\n& Rail",   href: "/group-companies/alpha-matrix/industries#transportation" },
+  { icon: Wrench,      label: "Defense\nManufacturing",   href: "/group-companies/alpha-matrix/industries#manufacturing" },
 ];
 
 const whyChooseReasons = [
-  "Advanced AI Security Technologies",
-  "Global Technology Partners",
-  "End-to-End Defense Solutions",
-  "Secure System Integration",
-  "Certified Engineering Team",
-  "International Quality Standards",
-  "24/7 Technical Support",
-  "Customized Defense Solutions",
+  "Advanced AI Surveillance & Vision Technologies",
+  "Global Defense & Security Technology Partners",
+  "End-to-End Mission-Critical Integration",
+  "Zero-Trust Encrypted Cyber Integration",
+  "Certified Defense System Engineers",
+  "Compliant with International Defense Standards",
+  "24/7 Rapid Response & Technical Support",
+  "Custom Tactical Solutions for High-Threat Environments",
 ];
 
 const techExpertise = [
@@ -108,71 +78,59 @@ const techExpertise = [
 ];
 
 const featuredSolutions = [
-  { title: "Intelligent Surveillance Platform",   desc: "Real-time AI video analytics with facial recognition, object detection, and behavioral monitoring." },
-  { title: "Integrated Command Center",           desc: "Centralized monitoring platform for defense operations and emergency response." },
-  { title: "Smart Border Monitoring",             desc: "Long-range surveillance with automated threat detection and rapid incident management." },
-  { title: "Critical Infrastructure Protection",  desc: "Complete security architecture for power plants, airports, ports, and government facilities." },
+  {
+    title: "Intelligent Surveillance Platform",
+    desc: "Real-time AI video analytics with facial recognition, object detection, and behavioral monitoring for rapid threat detection.",
+    image: "/alpha_surveillance.svg",
+    href: "/group-companies/alpha-matrix/solutions#surveillance",
+  },
+  {
+    title: "Integrated Command Center",
+    desc: "Centralized C4ISR monitoring platform for unified situational awareness, tactical coordination, and emergency response.",
+    image: "/alpha_command_center.svg",
+    href: "/group-companies/alpha-matrix/solutions#command-control",
+  },
+  {
+    title: "Smart Border Monitoring",
+    desc: "Long-range multi-sensor surveillance with automated radar tracking, fiber-optic fence sensors, and rapid incident dispatch.",
+    image: "/alpha_border_security.svg",
+    href: "/group-companies/alpha-matrix/solutions#border-security",
+  },
+  {
+    title: "Critical Infrastructure Protection",
+    desc: "Comprehensive perimeter protection and cyber-physical security architecture for power stations, airports, and refineries.",
+    image: "/alpha_critical_infrastructure.svg",
+    href: "/group-companies/alpha-matrix/solutions#perimeter-protection",
+  },
 ];
 
 const processSteps = [
-  { step: "01", icon: FileSearch,    title: "Security\nAssessment" },
-  { step: "02", icon: ClipboardList, title: "Solution\nDesign" },
+  { step: "01", icon: FileSearch,    title: "Threat & Site\nAssessment" },
+  { step: "02", icon: ClipboardList, title: "Tactical\nArchitecture" },
   { step: "03", icon: Cpu,           title: "System\nEngineering" },
   { step: "04", icon: Server,        title: "Deployment &\nIntegration" },
-  { step: "05", icon: UserCog,       title: "Training &\nMaintenance" },
+  { step: "05", icon: UserCog,       title: "24/7 Operations\n& Support" },
 ];
 
-const partners = ["HIKVISION", "AXIS", "HUAWEI", "THALES", "LOCKHEED MARTIN", "leidos", "Palantir"];
+const partners = ["HIKVISION", "AXIS COMMUNICATIONS", "HUAWEI", "THALES", "LOCKHEED MARTIN", "LEIDOS", "PALANTIR"];
 
 const testimonials = [
   {
-    name: "Government Security Authority",
-    quote: "Alpha Matrix Defence Systems delivered an exceptional integrated surveillance solution that significantly enhanced our operational security.",
+    name: "Government Defense & Security Authority",
+    quote: "Alpha Matrix Defence Systems delivered an exceptional integrated surveillance and command platform that significantly fortified our national perimeter security.",
   },
   {
-    name: "Infrastructure Operations Director",
-    quote: "Professional engineering, reliable technology, and outstanding technical support throughout the project lifecycle.",
+    name: "Critical Infrastructure Operations Director",
+    quote: "Professional engineering, robust system uptime, and unmatched 24/7 tactical support across our high-security facilities.",
   },
 ];
 
 const faqs = [
-  { question: "What industries do you serve?", answer: "We serve government, military, border security, airports, seaports, energy, smart cities, and critical infrastructure operators worldwide." },
-  { question: "Do you provide customized security solutions?", answer: "Yes, every deployment is engineered around your site's operational requirements, threat profile, and existing infrastructure." },
-  { question: "Do you offer installation and maintenance?", answer: "We provide full lifecycle support, from installation and system engineering to 24/7 monitoring and ongoing maintenance." },
-  { question: "Can your systems integrate with existing infrastructure?", answer: "Absolutely. Our platforms are built for interoperability with existing command, surveillance, and access control systems." },
+  { question: "What sectors does Alpha Matrix Defence Systems support?", answer: "We provide comprehensive defense, surveillance, and cyber security solutions for military organizations, government agencies, international airports, seaports, oil & gas complexes, power plants, smart cities, and critical national infrastructure." },
+  { question: "Can your defense systems integrate with legacy security infrastructure?", answer: "Yes. Our platforms are built on open C4ISR standards, allowing seamless integration with existing radar networks, optical surveillance cameras, access control systems, and command databases." },
+  { question: "Do you offer turnkey deployment and maintenance services?", answer: "We deliver complete lifecycle solutions: initial site risk assessment, custom defense architecture design, hardware procurement, on-site commissioning, operator training, and 24/7 technical maintenance." },
+  { question: "What cybersecurity safeguards are built into your command systems?", answer: "All our platforms adhere to zero-trust architecture, multi-factor biometric authentication, end-to-end AES-256 encryption, and isolated defense network topologies to prevent unauthorized access and cyber threats." },
 ];
-
-const footerLinks = {
-  "Quick Links": ["Home", "About", "Solutions", "Industries", "Projects", "Careers", "Contact"],
-  Solutions: ["Surveillance Systems", "Border Security", "Cyber Defense", "Command & Control", "Perimeter Protection", "Access Control"],
-};
-
-const socialIcons = [Linkedin, Facebook, Twitter, Youtube];
-
-const contactInfo = {
-  address: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
-  phone: "0092-42-38924737",
-  whatsapp: ["0092-304-7527498", "0092-321-8431665"],
-  emails: ["info@roysons.org", "support@roysons.org"],
-};
-
-// ---------- Reusable pieces ----------
-
-function SectionLabel({ children, center }) {
-  return (
-    <p className={`text-[11px] font-black uppercase tracking-[0.3em] mb-3 ${center ? "text-center" : ""}`} style={{ color: theme.gold }}>
-      {children}
-    </p>
-  );
-}
-
-function SectionHeading({ children, className = "", center }) {
-  return (
-    <h2 className={`text-2xl font-black uppercase tracking-tight ${center ? "text-center" : ""} ${className}`} style={{ color: theme.navy }}>
-      {children}
-    </h2>
-  );
-}
 
 function useReveal(threshold = 0.15) {
   const ref = useRef(null);
@@ -190,7 +148,7 @@ function useReveal(threshold = 0.15) {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, visible];
 }
 
@@ -233,8 +191,7 @@ function AnimatedCounter({ value, duration = 1800 }) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [started]);
+  }, [started, duration, target, decimals]);
 
   return (
     <span ref={ref}>
@@ -250,85 +207,89 @@ function StatCard({ icon: Icon, value, label }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center text-center gap-2 p-5 rounded-lg border transition-all duration-300 hover:-translate-y-1.5 hover:border-[#005691]/60 hover:shadow-lg`}
-      style={{ backgroundColor: theme.panel, borderColor: theme.border }}
+      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center text-center gap-2 p-5 rounded-xl border transition-all duration-300 hover:-translate-y-1.5 hover:border-[#005691]/60 hover:shadow-md bg-white`}
+      style={{ borderColor: theme.border }}
     >
       <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110" style={{ backgroundColor: hexToRgba(theme.gold, 0.1), border: `1px solid ${theme.border}` }}>
         <Icon size={18} style={{ color: theme.gold }} />
       </div>
-      <p className="text-lg md:text-xl font-black tabular-nums" style={{ color: theme.navy }}>
+      <p className="text-xl md:text-2xl font-black tabular-nums" style={{ color: theme.navy }}>
         <AnimatedCounter value={value} />
       </p>
-      <p className="text-[9px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textFaint }}>{label}</p>
+      <p className="text-[10.5px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textFaint }}>{label}</p>
     </div>
   );
 }
 
-function SolutionCard({ icon: Icon, title, desc }) {
+function SolutionCard({ icon: Icon, title, desc, href }) {
   const [ref, visible] = useReveal();
   return (
-    <div
+    <Link
+      href={href}
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group p-6 rounded-lg border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#005691]/60`}
-      style={{ backgroundColor: theme.panel, borderColor: theme.border }}
+      className={`reveal ${visible ? "is-visible" : ""} group p-6 rounded-xl border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[#005691]/60 bg-white`}
+      style={{ borderColor: theme.border }}
     >
-      <div className="w-11 h-11 rounded-md flex items-center justify-center mb-5 border transition-all duration-300 group-hover:bg-[#005691]/15 group-hover:scale-110 group-hover:border-[#005691]/50" style={{ borderColor: theme.border }}>
-        <Icon size={18} style={{ color: theme.gold }} />
+      <div>
+        <div className="w-11 h-11 rounded-lg flex items-center justify-center mb-5 border transition-all duration-300 group-hover:bg-[#005691]/15 group-hover:scale-110 group-hover:border-[#005691]/50" style={{ borderColor: theme.border, backgroundColor: hexToRgba(theme.gold, 0.06) }}>
+          <Icon size={18} style={{ color: theme.gold }} />
+        </div>
+        <h3 className="text-[13px] font-black uppercase tracking-wide mb-2.5 transition-colors duration-300 group-hover:text-[#005691]" style={{ color: theme.navy }}>{title}</h3>
+        <p className="text-[11.5px] leading-relaxed mb-4" style={{ color: theme.textMuted }}>{desc}</p>
       </div>
-      <h3 className="text-[13px] font-black uppercase tracking-wide mb-2.5 transition-colors duration-300 group-hover:text-[#005691]" style={{ color: theme.navy }}>{title}</h3>
-      <p className="text-[11.5px] leading-relaxed" style={{ color: theme.textMuted }}>{desc}</p>
-    </div>
+      <div className="flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider mt-2 group-hover:translate-x-1 transition-transform" style={{ color: theme.gold }}>
+        <span>Explore Solution</span>
+        <ArrowRight size={12} />
+      </div>
+    </Link>
   );
 }
 
-function IndustryCard({ icon: Icon, label }) {
+function IndustryCard({ icon: Icon, label, href }) {
   const [ref, visible] = useReveal();
   return (
-    <div
+    <Link
+      href={href}
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-[#005691]/60 hover:-translate-y-1 hover:scale-105 hover:shadow-md`}
-      style={{ backgroundColor: theme.panel, borderColor: theme.border }}
+      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-xl border text-center transition-all duration-300 hover:border-[#005691]/60 hover:-translate-y-1 hover:scale-105 hover:shadow-md bg-white`}
+      style={{ borderColor: theme.border }}
     >
-      <div className="w-11 h-11 rounded-full flex items-center justify-center mb-3 border transition-all duration-300 group-hover:bg-[#005691]/15 group-hover:scale-110" style={{ borderColor: theme.border }}>
+      <div className="w-11 h-11 rounded-full flex items-center justify-center mb-3 border transition-all duration-300 group-hover:bg-[#005691]/15 group-hover:scale-110" style={{ borderColor: theme.border, backgroundColor: hexToRgba(theme.gold, 0.06) }}>
         <Icon size={17} style={{ color: theme.gold }} />
       </div>
-      <p className="text-[9.5px] font-bold leading-snug uppercase tracking-wide whitespace-pre-line" style={{ color: theme.navy }}>{label}</p>
-    </div>
+      <p className="text-[10.5px] font-bold leading-snug uppercase tracking-wide whitespace-pre-line" style={{ color: theme.navy }}>{label}</p>
+    </Link>
   );
 }
 
-function TechCard({ icon: Icon, label }) {
+function FeaturedCard({ title, desc, image, href }) {
   const [ref, visible] = useReveal();
   return (
-    <div
+    <Link
+      href={href}
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-lg border text-center transition-all duration-300 hover:border-[#005691]/50 hover:-translate-y-1 hover:shadow-md`}
-      style={{ backgroundColor: theme.panelAlt, borderColor: theme.border }}
+      className={`reveal ${visible ? "is-visible" : ""} group rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#005691]/50 flex flex-col justify-between bg-white`}
+      style={{ borderColor: theme.border }}
     >
-      <div className="w-10 h-10 rounded-lg flex items-center justify-center border mb-2 transition-all duration-300 group-hover:bg-[#005691]/20 group-hover:scale-110" style={{ borderColor: theme.border, backgroundColor: theme.panel }}>
-        <Icon size={15} style={{ color: theme.gold }} />
+      <div>
+        <div className="relative w-full h-44 overflow-hidden bg-slate-50 border-b" style={{ borderColor: theme.border }}>
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+        <div className="p-5">
+          <h3 className="text-[13px] font-black uppercase tracking-wide mb-2 transition-colors duration-300 group-hover:text-[#005691]" style={{ color: theme.navy }}>{title}</h3>
+          <p className="text-[11.5px] leading-relaxed" style={{ color: theme.textMuted }}>{desc}</p>
+        </div>
       </div>
-      <span className="text-[9.5px] font-bold leading-tight uppercase tracking-wider whitespace-pre-line" style={{ color: theme.navy }}>{label}</span>
-    </div>
-  );
-}
-
-function FeaturedCard({ title, desc }) {
-  const [ref, visible] = useReveal();
-  return (
-    <div
-      ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group rounded-lg border overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#005691]/50`}
-      style={{ backgroundColor: theme.panel, borderColor: theme.border }}
-    >
-      <div className="relative w-full h-36 flex items-center justify-center overflow-hidden" style={{ background: `linear-gradient(135deg, ${hexToRgba(theme.navy, 0.06)}, ${hexToRgba(theme.navy, 0.12)})` }}>
-        <span className="text-[13px] font-black transition-transform duration-500 group-hover:scale-110" style={{ color: theme.textFaint }}>Image Placeholder</span>
+      <div className="px-5 pb-5 pt-1 flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider group-hover:translate-x-1 transition-transform" style={{ color: theme.gold }}>
+        <span>View Deployment Specs</span>
+        <ArrowRight size={12} />
       </div>
-      <div className="p-5">
-        <h3 className="text-[12.5px] font-black uppercase tracking-wide mb-2 transition-colors duration-300 group-hover:text-[#005691]" style={{ color: theme.navy }}>{title}</h3>
-        <p className="text-[11px] leading-relaxed" style={{ color: theme.textMuted }}>{desc}</p>
-      </div>
-    </div>
+    </Link>
   );
 }
 
@@ -339,228 +300,26 @@ function ProcessStep({ step, icon: Icon, title, isLast }) {
       {!isLast && (
         <div className="hidden lg:block absolute top-7 left-[calc(50%+28px)] w-[calc(100%-56px)] h-[2px] border-t-2 border-dashed z-0 transition-colors group-hover:border-[#005691]/60" style={{ borderColor: theme.border }} />
       )}
-      <div className="relative w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:border-[#005691] group-hover:scale-110 group-hover:shadow-md z-10" style={{ borderColor: theme.border, backgroundColor: theme.bg }}>
+      <div className="relative w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:border-[#005691] group-hover:scale-110 group-hover:shadow-md z-10 bg-white" style={{ borderColor: theme.border }}>
         <Icon size={18} style={{ color: theme.gold }} />
-        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full text-[9px] font-black flex items-center justify-center border shadow-sm" style={{ borderColor: theme.border, backgroundColor: theme.gold, color: theme.white }}>
+        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full text-[9px] font-black flex items-center justify-center border shadow-xs" style={{ borderColor: theme.border, backgroundColor: theme.gold, color: theme.white }}>
           {step}
         </div>
       </div>
-      <p className="text-[10px] font-bold leading-tight uppercase tracking-wider mt-4 whitespace-pre-line" style={{ color: theme.navy }}>{title}</p>
+      <p className="text-[10.5px] font-bold leading-tight uppercase tracking-wider mt-4 whitespace-pre-line" style={{ color: theme.navy }}>{title}</p>
     </div>
   );
 }
-
-function TestimonialCard({ name, quote }) {
-  return (
-    <div className="p-5 rounded-lg border" style={{ backgroundColor: theme.panelAlt, borderColor: theme.border }}>
-      <div className="flex gap-0.5 mb-3">
-        {[...Array(5)].map((_, i) => <Star key={i} size={11} fill={theme.gold} style={{ color: theme.gold }} />)}
-      </div>
-      <p className="text-[12px] leading-relaxed italic mb-4 font-medium" style={{ color: theme.textMuted }}>&ldquo;{quote}&rdquo;</p>
-      <p className="text-[11.5px] font-black uppercase tracking-wider" style={{ color: theme.gold }}>{name}</p>
-    </div>
-  );
-}
-
-function FaqItem({ question, answer, isOpen, onToggle }) {
-  return (
-    <div className="rounded-lg border overflow-hidden transition-all duration-300" style={{ backgroundColor: theme.panelAlt, borderColor: theme.border }}>
-      <button onClick={onToggle} className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left group transition-all duration-200">
-        <span className="text-[12.5px] font-bold tracking-wide transition-colors group-hover:text-[#005691]" style={{ color: theme.navy }}>{question}</span>
-        <div className="w-6 h-6 rounded-full flex items-center justify-center border transition-all flex-shrink-0" style={{ borderColor: theme.border, backgroundColor: theme.panel }}>
-          {isOpen ? <Minus size={12} style={{ color: theme.gold }} /> : <Plus size={12} style={{ color: theme.gold }} />}
-        </div>
-      </button>
-      <div className={`transition-all duration-300 overflow-hidden ${isOpen ? "max-h-40 border-t" : "max-h-0"}`} style={{ borderColor: theme.border }}>
-        <p className="p-5 text-[12px] leading-relaxed" style={{ color: theme.textMuted }}>{answer}</p>
-      </div>
-    </div>
-  );
-}
-
-// ---------- Contact form ----------
-
-function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
-  const [selectedServices, setSelectedServices] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const toggleService = (title) => {
-    setSelectedServices((prev) =>
-      prev.includes(title) ? prev.filter((s) => s !== title) : [...prev, title]
-    );
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setError("Please fill in your name, email, and message.");
-      return;
-    }
-    setError("");
-    try {
-      const res = await fetch("/group-companies/alpha-matrix/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, selectedServices }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to submit message.");
-      }
-      setSubmitted(true);
-    } catch (err) {
-      setError(err.message || "Failed to submit message. Please try again.");
-    }
-  };
-
-  const resetForm = () => {
-    setForm({ name: "", email: "", phone: "", company: "", message: "" });
-    setSelectedServices([]);
-    setSubmitted(false);
-  };
-
-  const inputStyle = {
-    backgroundColor: theme.white,
-    borderColor: theme.border,
-    color: theme.navy,
-  };
-
-  if (submitted) {
-    return (
-      <div className="p-8 rounded-xl border flex flex-col items-center text-center gap-4" style={{ backgroundColor: theme.panel, borderColor: theme.border }}>
-        <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: hexToRgba(theme.gold, 0.12) }}>
-          <CheckCircle2 size={26} style={{ color: theme.gold }} />
-        </div>
-        <h3 className="text-[15px] font-black uppercase tracking-wide" style={{ color: theme.navy }}>Request Received</h3>
-        <p className="text-[12.5px] leading-relaxed max-w-sm" style={{ color: theme.textMuted }}>
-          Thank you, {form.name.split(" ")[0] || "there"}. Our team will review your requirements and get back to you shortly.
-        </p>
-        <button onClick={resetForm} className="mt-2 px-5 py-3 rounded-md text-[11px] font-black uppercase tracking-wider border transition-all" style={{ borderColor: theme.gold, color: theme.gold }}>
-          Send Another Message
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="p-8 rounded-xl border" style={{ backgroundColor: theme.panel, borderColor: theme.border }}>
-      <SectionLabel>Get In Touch</SectionLabel>
-      <SectionHeading className="mb-6">Request A Consultation</SectionHeading>
-
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Full Name *</label>
-          <input
-            type="text" name="name" value={form.name} onChange={handleChange}
-            placeholder="John Doe"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
-            style={inputStyle}
-          />
-        </div>
-        <div>
-          <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Email Address *</label>
-          <input
-            type="email" name="email" value={form.email} onChange={handleChange}
-            placeholder="john@company.com"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
-            style={inputStyle}
-          />
-        </div>
-      </div>
-
-      <div className="grid sm:grid-cols-2 gap-4 mb-5">
-        <div>
-          <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Phone Number</label>
-          <input
-            type="tel" name="phone" value={form.phone} onChange={handleChange}
-            placeholder="+1 (800) 123-4567"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
-            style={inputStyle}
-          />
-        </div>
-        <div>
-          <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Organization</label>
-          <input
-            type="text" name="company" value={form.company} onChange={handleChange}
-            placeholder="Organization / Agency"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
-            style={inputStyle}
-          />
-        </div>
-      </div>
-
-      <div className="mb-5">
-        <label className="text-[10.5px] font-black uppercase tracking-wider mb-2.5 block" style={{ color: theme.textFaint }}>
-          Services You're Interested In
-        </label>
-        <div className="grid sm:grid-cols-2 gap-2.5">
-          {solutions.map((s) => {
-            const active = selectedServices.includes(s.title);
-            return (
-              <button
-                type="button"
-                key={s.title}
-                onClick={() => toggleService(s.title)}
-                className="flex items-center gap-2.5 px-3.5 py-3 rounded-md border text-left transition-all duration-200"
-                style={{
-                  borderColor: active ? theme.gold : theme.border,
-                  backgroundColor: active ? hexToRgba(theme.gold, 0.08) : theme.white,
-                }}
-              >
-                <div
-                  className="w-4 h-4 rounded-sm border flex items-center justify-center flex-shrink-0"
-                  style={{ borderColor: active ? theme.gold : theme.border, backgroundColor: active ? theme.gold : "transparent" }}
-                >
-                  {active && <CheckCircle2 size={12} style={{ color: theme.white }} />}
-                </div>
-                <span className="text-[11px] font-bold leading-tight" style={{ color: theme.navy }}>{s.title}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      <div className="mb-5">
-        <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Project Details *</label>
-        <textarea
-          name="message" value={form.message} onChange={handleChange} rows={4}
-          placeholder="Tell us about your site, threat profile, and operational requirements..."
-          className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all resize-none focus:border-[#005691]"
-          style={inputStyle}
-        />
-      </div>
-
-      {error && <p className="text-[11.5px] font-bold mb-4" style={{ color: "#B3261E" }}>{error}</p>}
-
-      <button
-        type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 active:scale-[0.98]"
-        style={{ backgroundColor: theme.gold, color: theme.white }}
-      >
-        Submit Request <Send size={14} />
-      </button>
-    </form>
-  );
-}
-
-// ---------- Page ----------
 
 export default function AlphaMatrixPage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
 
   useEffect(() => {
-    document.body.classList.add("roys-roys-theme");
+    document.body.classList.add("alpha-matrix-theme");
     document.body.style.backgroundColor = theme.bg;
     document.body.style.color = theme.navy;
     return () => {
-      document.body.classList.remove("roys-roys-theme");
+      document.body.classList.remove("alpha-matrix-theme");
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
     };
@@ -569,139 +328,132 @@ export default function AlphaMatrixPage() {
   const toggleFaq = (index) => setOpenFaqIndex(openFaqIndex === index ? -1 : index);
 
   return (
-    <div className="roys-roys-theme min-h-screen font-sans selection:bg-[#005691] selection:text-white" style={{ backgroundColor: theme.bg, color: theme.navy }}>
-      {/* Forces every page background/text back to the theme object above,
-          so an external globals.css (or a browser/OS "dark mode" that
-          auto-inverts light sites) can never repaint this page black. */}
-      <style>{`
-        html, body {
-          background-color: ${theme.bg} !important;
-          color: ${theme.navy} !important;
-          color-scheme: light !important;
-        }
-        .roys-roys-theme h1,
-        .roys-roys-theme h2,
-        .roys-roys-theme h3,
-        .roys-roys-theme h4,
-        .roys-roys-theme h5,
-        .roys-roys-theme h6,
-        .roys-roys-theme p,
-        .roys-roys-theme span,
-        .roys-roys-theme li,
-        .roys-roys-theme a,
-        .roys-roys-theme label,
-        .roys-roys-theme button {
-          -webkit-text-fill-color: initial !important;
-          background-image: none !important;
-        }
-      `}</style>
+    <div className="alpha-matrix-theme min-h-screen font-sans selection:bg-[#005691] selection:text-white bg-white" style={{ backgroundColor: theme.bg, color: theme.navy }}>
+      <AlphaMatrixNavbar />
 
-      {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b backdrop-blur-md shadow-sm" style={{ backgroundColor: hexToRgba(theme.white, 0.92), borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl px-6 py-4 flex items-center justify-between">
-          <a href="#home" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-md flex items-center justify-center border transition-all duration-300 group-hover:scale-105" style={{ borderColor: theme.gold, backgroundColor: theme.panel }}>
-              <Shield size={20} style={{ color: theme.gold }} fill="none" strokeWidth={1.75} />
-            </div>
-            <div className="leading-tight">
-              <p className="text-[14px] md:text-[15px] font-black tracking-wide uppercase" style={{ color: theme.navy }}>ALPHA MATRIX</p>
-              <p className="text-[7.5px] md:text-[8.5px] font-bold tracking-[0.28em]" style={{ color: theme.textFaint }}>DEFENCE SYSTEM</p>
-            </div>
-          </a>
-
-          <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map(({ label, href, hasDropdown }) => (
-              <a key={label} href={href} className="text-[12px] font-black uppercase tracking-wider transition-colors hover:text-[#005691]" style={{ color: theme.textMuted }}>
-                <span className="flex items-center gap-1">
-                  {label}
-                  {hasDropdown && <ChevronDown size={13} style={{ color: theme.gold }} />}
-                </span>
-              </a>
-            ))}
-          </nav>
-
-          <a href="#contact" className="hidden md:inline-flex px-5 py-3 rounded-md text-[11px] font-black uppercase tracking-wider transition-all duration-300 active:scale-[0.98] border" style={{ borderColor: theme.gold, color: theme.gold, backgroundColor: "transparent" }}>
-            Request Consultation
-          </a>
-        </div>
-      </header>
-
-      {/* Hero */}
-      <section id="home" className="relative py-24 lg:py-32 px-6 overflow-hidden flex items-center min-h-[85vh]" style={{ backgroundColor: theme.bg, color: theme.navy }}>
+      {/* Hero Section (Clean White Background) */}
+      <section className="relative py-20 lg:py-28 px-6 overflow-hidden flex items-center min-h-[85vh] border-b bg-white" style={{ borderColor: theme.border }}>
+        {/* Background Visual Graphic */}
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-cover bg-center" style={{ background: `linear-gradient(180deg, ${hexToRgba(theme.white, 0.98)}, ${hexToRgba(theme.panelAlt, 0.9)})` }}>
-            <div className="w-full h-full flex items-center justify-center" style={{ background: `linear-gradient(to right, ${hexToRgba(theme.white, 0.97)} 30%, ${hexToRgba(theme.panelAlt, 0.75)} 100%)` }} />
-          </div>
-          <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${hexToRgba(theme.panelAlt, 0.6)}, transparent 40%)` }} />
+          <Image
+            src="/alpha_hero_defense.svg"
+            alt="Alpha Matrix Defense Command Center Visual"
+            fill
+            priority
+            className="object-cover object-center opacity-70"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-screen-xl w-full">
           <div className="max-w-2xl">
-            <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: theme.gold }}>Defense &amp; Security Technology</p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-[1.1] mb-5 uppercase tracking-tight" style={{ color: theme.navy }}>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border mb-5 bg-white/90 shadow-xs" style={{ borderColor: theme.border }}>
+              <ShieldCheck size={14} style={{ color: theme.gold }} />
+              <span className="text-[10.5px] font-black uppercase tracking-[0.25em]" style={{ color: theme.gold }}>Mission-Critical Defense Technology</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] mb-5 uppercase tracking-tight" style={{ color: theme.navy }}>
               <span className="block mb-1">Advanced Defense &amp;</span>
-              <span className="block mb-1">Security Solutions For</span>
-              <span className="block" style={{ color: theme.gold }}>Mission-Critical Infrastructure</span>
+              <span className="block mb-1">Security Systems For</span>
+              <span className="block" style={{ color: theme.gold }}>Critical Infrastructure</span>
             </h1>
-            <p className="text-[13px] md:text-[14.5px] leading-relaxed mb-9 max-w-xl" style={{ color: theme.textMuted }}>
-              Delivering innovative surveillance, perimeter protection, command &amp; control, and integrated
-              defense technologies that safeguard governments, military organizations, critical infrastructure,
-              and commercial facilities.
+
+            <p className="text-[13.5px] md:text-[15px] leading-relaxed mb-9 max-w-xl" style={{ color: theme.textMuted }}>
+              Delivering integrated AI surveillance, border radar monitoring, tactical command &amp; control centers, and military-grade perimeter protection systems that safeguard sovereign interests and critical facilities.
             </p>
+
             <div className="flex flex-wrap gap-4">
-              <a href="#solutions" className="px-6 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300" style={{ backgroundColor: theme.gold, color: theme.white }}>
-                Explore Solutions
-              </a>
-              <a href="#contact" className="px-6 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 border" style={{ borderColor: theme.borderStrong, color: theme.navy }}>
-                Request Consultation
-              </a>
+              <Link
+                href="/group-companies/alpha-matrix/solutions"
+                className="px-7 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 shadow-md flex items-center gap-2 hover:shadow-lg hover:scale-105 text-white"
+                style={{ backgroundColor: theme.gold, color: theme.white }}
+              >
+                <span>Explore Solutions</span>
+                <ArrowRight size={14} />
+              </Link>
+              <Link
+                href="/group-companies/alpha-matrix/about"
+                className="px-7 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 border bg-white shadow-xs hover:bg-[#F8FAFC]"
+                style={{ borderColor: theme.borderStrong, color: theme.navy }}
+              >
+                About Alpha Matrix
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About */}
-      <section id="about" className="py-20 lg:py-24 px-6 border-b" style={{ borderColor: theme.border, backgroundColor: theme.bg, color: theme.navy }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch">
-            <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-auto rounded-xl overflow-hidden border" style={{ borderColor: theme.border }}>
-              <div className="w-full h-full absolute inset-0 flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${hexToRgba(theme.navy, 0.06)}, ${hexToRgba(theme.navy, 0.14)})`, color: theme.textFaint }}>
-                Company Image Placeholder
-              </div>
-            </div>
-            <div className="lg:col-span-7 flex flex-col justify-center p-8 lg:p-12 rounded-xl border" style={{ backgroundColor: theme.panel, borderColor: theme.border }}>
-              <SectionLabel>About Company</SectionLabel>
-              <SectionHeading className="sm:text-3xl mb-6">Engineering Security.<br />Protecting Nations.</SectionHeading>
-              <p className="text-[13px] md:text-[14px] leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                Alpha Matrix Defence Systems is a leading defense and security technology company specializing in
-                advanced surveillance systems, integrated security infrastructure, border protection, command &amp;
-                control platforms, cybersecurity solutions, and intelligent defense technologies.
-              </p>
-              <p className="text-[13px] md:text-[14px] leading-relaxed" style={{ color: theme.textFaint }}>
-                We work closely with government agencies, military organizations, law enforcement, airports, ports,
-                energy sectors, smart cities, and critical infrastructure operators to provide secure, scalable, and
-                future-ready defense solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-12 md:py-16 px-6 border-b" style={{ backgroundColor: theme.panelAlt, borderColor: theme.border, color: theme.navy }}>
+      {/* Stats Section */}
+      <section className="py-12 md:py-16 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-5">
-            {stats.map((stat) => <StatCard key={stat.value} {...stat} />)}
+            {stats.map((stat) => <StatCard key={stat.label} {...stat} />)}
           </div>
         </div>
       </section>
 
-      {/* Core Solutions */}
-      <section id="solutions" className="py-20 lg:py-24 px-6 border-b" style={{ borderColor: theme.border, backgroundColor: theme.bg, color: theme.navy }}>
+      {/* About Company Showcase */}
+      <section className="py-20 lg:py-24 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-6 relative min-h-[380px] rounded-2xl overflow-hidden border shadow-sm group bg-white" style={{ borderColor: theme.border }}>
+              <Image
+                src="/alpha_about_facility.svg"
+                alt="Alpha Matrix Defense Facility and Engineering Operations"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent flex items-end p-6">
+                <div>
+                  <p className="text-[11px] font-black uppercase tracking-widest" style={{ color: theme.gold }}>Engineering Operations Center</p>
+                  <p className="text-[14px] font-black uppercase" style={{ color: theme.navy }}>Defense Technology &amp; Systems Integration Lab</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6 flex flex-col justify-center p-8 lg:p-10 rounded-2xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
+              <SectionLabel>About Company</SectionLabel>
+              <SectionHeading className="mb-5">Engineering Security.<br />Protecting Nations.</SectionHeading>
+              <p className="text-[13px] md:text-[14px] leading-relaxed mb-5" style={{ color: theme.textMuted }}>
+                Alpha Matrix Defence Systems is a premier defense and high-tier security technology provider specializing in AI surveillance systems, border radar networks, C4ISR tactical command platforms, and cybersecurity architectures.
+              </p>
+              <p className="text-[13px] md:text-[14px] leading-relaxed mb-7" style={{ color: theme.textFaint }}>
+                We partner with national ministries, armed forces, law enforcement, international airports, ports, energy complexes, and critical infrastructure operators worldwide to deliver battle-tested, high-reliability protection.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t" style={{ borderColor: theme.border }}>
+                <div className="flex items-center gap-2">
+                  <ShieldCheck size={18} style={{ color: theme.gold }} />
+                  <span className="text-[12px] font-bold" style={{ color: theme.navy }}>ISO &amp; Military Compliant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Cpu size={18} style={{ color: theme.gold }} />
+                  <span className="text-[12px] font-bold" style={{ color: theme.navy }}>AI &amp; Sensor Fusion</span>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                <Link
+                  href="/group-companies/alpha-matrix/about"
+                  className="inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-wider transition-all"
+                  style={{ color: theme.gold }}
+                >
+                  <span>Read Full Corporate Profile</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Solutions Grid */}
+      <section className="py-20 lg:py-24 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <SectionLabel center>Our Core Solutions</SectionLabel>
-            <SectionHeading center>Comprehensive Defense &amp; Security Technology</SectionHeading>
+            <SectionLabel center>Our Core Defense Solutions</SectionLabel>
+            <SectionHeading center>Comprehensive Defense &amp; Security Technologies</SectionHeading>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
             {solutions.map((s) => <SolutionCard key={s.title} {...s} />)}
@@ -709,69 +461,100 @@ export default function AlphaMatrixPage() {
         </div>
       </section>
 
-      {/* Industries */}
-      <section id="industries" className="py-16 px-6 border-b" style={{ backgroundColor: theme.panelAlt, borderColor: theme.border, color: theme.navy }}>
+      {/* Featured Solutions Visual Cards */}
+      <section className="py-20 lg:py-24 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <SectionLabel center>Featured Deployments</SectionLabel>
+            <SectionHeading center>Deployed Systems &amp; Tactical Capabilities</SectionHeading>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredSolutions.map((f) => <FeaturedCard key={f.title} {...f} />)}
+          </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/group-companies/alpha-matrix/solutions"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg text-white"
+              style={{ backgroundColor: theme.gold, color: theme.white }}
+            >
+              <span>Explore All Capabilities &amp; Specs</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Serve */}
+      <section className="py-16 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14">
             <SectionLabel center>Industries We Serve</SectionLabel>
             <SectionHeading center className="tracking-wider">Trusted Across Critical Sectors</SectionHeading>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:grid-cols-12 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {industries.map((industry) => <IndustryCard key={industry.label} {...industry} />)}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/group-companies/alpha-matrix/industries"
+              className="inline-flex items-center gap-2 text-[12px] font-black uppercase tracking-wider transition-all"
+              style={{ color: theme.gold }}
+            >
+              <span>View Industry-Specific Defense Solutions</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Why Choose + Technology Expertise */}
-      <section className="py-20 lg:py-24 px-6 border-b" style={{ borderColor: theme.border, backgroundColor: theme.bg, color: theme.navy }}>
+      <section className="py-20 lg:py-24 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div className="grid lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-6 p-8 rounded-xl border h-full" style={{ backgroundColor: theme.panel, borderColor: theme.border }}>
+            <div className="lg:col-span-6 p-8 md:p-10 rounded-2xl border h-full shadow-xs bg-white" style={{ borderColor: theme.border }}>
               <SectionLabel>Why Choose Us</SectionLabel>
-              <SectionHeading className="mb-6">Why Choose Alpha Matrix Defence Systems</SectionHeading>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3.5 mt-2">
+              <SectionHeading className="mb-6">Why Alpha Matrix Defence Systems</SectionHeading>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4 mt-2">
                 {whyChooseReasons.map((reason) => (
                   <div key={reason} className="flex items-start gap-2.5">
-                    <CheckCircle2 size={15} className="mt-0.5 flex-shrink-0" style={{ color: theme.gold }} />
-                    <span className="text-[11.5px] font-bold leading-tight" style={{ color: theme.textMuted }}>{reason}</span>
+                    <CheckCircle2 size={16} className="mt-0.5 flex-shrink-0" style={{ color: theme.gold }} />
+                    <span className="text-[12px] font-bold leading-snug" style={{ color: theme.textMuted }}>{reason}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="lg:col-span-6 p-8 rounded-xl border h-full" style={{ backgroundColor: theme.panel, borderColor: theme.border }}>
-              <SectionLabel>Technology Expertise</SectionLabel>
-              <SectionHeading className="mb-3">Next-Generation Security Ecosystems</SectionHeading>
-              <p className="text-[12.5px] leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                We leverage next-generation technologies to build intelligent security ecosystems.
+            <div className="lg:col-span-6 p-8 md:p-10 rounded-2xl border h-full shadow-xs bg-white" style={{ borderColor: theme.border }}>
+              <SectionLabel>Technology Ecosystem</SectionLabel>
+              <SectionHeading className="mb-3">Next-Generation Security Tech</SectionHeading>
+              <p className="text-[13px] leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                We harness advanced sensor integration, neural vision networks, and resilient data architectures.
               </p>
               <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
-                {techExpertise.map((tech) => <TechCard key={tech.label} {...tech} />)}
+                {techExpertise.map(({ icon: Icon, label }) => (
+                  <div
+                    key={label}
+                    className="flex flex-col items-center justify-center p-3 rounded-lg border text-center transition-all duration-300 hover:border-[#005691]/50 hover:-translate-y-1 hover:shadow-md bg-white"
+                    style={{ borderColor: theme.border }}
+                  >
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center border mb-2" style={{ borderColor: theme.border, backgroundColor: hexToRgba(theme.gold, 0.08) }}>
+                      <Icon size={16} style={{ color: theme.gold }} />
+                    </div>
+                    <span className="text-[9.5px] font-bold leading-tight uppercase tracking-wider whitespace-pre-line" style={{ color: theme.navy }}>{label}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Solutions */}
-      <section id="projects" className="py-20 lg:py-24 px-6 border-b" style={{ backgroundColor: theme.panelAlt, borderColor: theme.border, color: theme.navy }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <SectionLabel center>Featured Solutions</SectionLabel>
-            <SectionHeading center>Deployed Systems, Real-World Results</SectionHeading>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {featuredSolutions.map((f) => <FeaturedCard key={f.title} {...f} />)}
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="py-20 lg:py-24 px-6 border-b" style={{ borderColor: theme.border, backgroundColor: theme.bg, color: theme.navy }}>
+      {/* Process Lifecycle */}
+      <section className="py-20 lg:py-24 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14">
-            <SectionLabel center>Our Process</SectionLabel>
-            <SectionHeading center>From Assessment to Long-Term Support</SectionHeading>
+            <SectionLabel center>Our Process Lifecycle</SectionLabel>
+            <SectionHeading center>From Threat Assessment to 24/7 Mission Support</SectionHeading>
           </div>
           <div className="flex flex-wrap lg:flex-nowrap items-start justify-between gap-6 relative z-10 w-full">
             {processSteps.map((step, index) => <ProcessStep key={step.step} {...step} isLast={index === processSteps.length - 1} />)}
@@ -779,209 +562,88 @@ export default function AlphaMatrixPage() {
         </div>
       </section>
 
-      {/* Partners */}
-      <section className="py-14 px-6 border-b" style={{ backgroundColor: theme.panelAlt, borderColor: theme.border, color: theme.navy }}>
+      {/* Global Technology Partners */}
+      <section className="py-14 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl text-center">
-          <SectionLabel center>Our Partners</SectionLabel>
+          <SectionLabel center>Global Technology Partners</SectionLabel>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 mt-6">
             {partners.map((p) => (
-              <span key={p} className="text-[15px] md:text-[17px] font-black uppercase tracking-wider" style={{ color: theme.textFaint }}>{p}</span>
+              <span key={p} className="text-[15px] md:text-[18px] font-black uppercase tracking-wider" style={{ color: theme.textFaint }}>{p}</span>
             ))}
           </div>
-          <p className="text-[11.5px] mt-8" style={{ color: theme.textFaint }}>
-            Trusted by governments, defense organizations, security agencies, infrastructure operators, and global technology partners.
+          <p className="text-[12px] mt-8" style={{ color: theme.textFaint }}>
+            Trusted by governments, defense organizations, security agencies, and mission-critical infrastructure operators.
           </p>
         </div>
       </section>
 
-      {/* Testimonials + FAQ */}
-      <section className="py-20 lg:py-24 px-6 border-b" style={{ borderColor: theme.border, backgroundColor: theme.bg, color: theme.navy }}>
+      {/* Testimonials & FAQs */}
+      <section className="py-20 lg:py-24 px-6 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-5 p-8 rounded-xl border" style={{ backgroundColor: theme.panel, borderColor: theme.border }}>
-              <SectionLabel>Reviews</SectionLabel>
-              <SectionHeading className="mb-6">Client Testimonials</SectionHeading>
-              <div className="space-y-4">
-                {testimonials.map((testimonial) => <TestimonialCard key={testimonial.name} {...testimonial} />)}
-              </div>
-            </div>
-
-            <div className="lg:col-span-7 p-8 rounded-xl border" style={{ backgroundColor: theme.panel, borderColor: theme.border }}>
-              <SectionLabel>FAQ</SectionLabel>
-              <SectionHeading className="mb-6">Frequently Asked Questions</SectionHeading>
-              <div className="space-y-3 mt-4">
-                {faqs.map(({ question, answer }, index) => (
-                  <FaqItem key={question} question={question} answer={answer} isOpen={openFaqIndex === index} onToggle={() => toggleFaq(index)} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact intro banner */}
-      <section className="relative py-16 px-6 overflow-hidden border-b" style={{ borderColor: theme.border, backgroundColor: theme.panelAlt, color: theme.navy }}>
-        <div className="relative z-10 mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-8 items-center justify-between w-full">
-          <div className="max-w-xl">
-            <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-4" style={{ color: theme.gold }}>
-              Ready to Strengthen Your Security Infrastructure?
-            </p>
-            <p className="text-[13px] md:text-[14px] leading-relaxed" style={{ color: theme.textMuted }}>
-              Partner with Alpha Matrix Defence Systems for intelligent surveillance, integrated defense
-              technologies, and mission-critical security solutions tailored to your operational needs.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-4 flex-shrink-0 w-full sm:w-auto">
-            <a href="#contact" className="px-6 py-4 rounded-md text-[12px] font-black uppercase tracking-wider text-center flex-1 sm:flex-initial transition-all duration-300" style={{ backgroundColor: theme.gold, color: theme.white }}>
-              Contact Us
-            </a>
-            <a href="#contact" className="px-6 py-4 rounded-md text-[12px] font-black uppercase tracking-wider text-center flex-1 sm:flex-initial transition-all duration-300 border" style={{ borderColor: theme.borderStrong, color: theme.navy }}>
-              Schedule a Consultation
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact form section */}
-      <section id="contact" className="py-20 lg:py-24 px-6 border-b" style={{ borderColor: theme.border, backgroundColor: theme.bg, color: theme.navy }}>
-        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-7">
-            <ContactForm />
-          </div>
-
-          <div className="lg:col-span-5 p-8 rounded-xl border h-full flex flex-col gap-6" style={{ backgroundColor: theme.navy, borderColor: theme.border }}>
-            <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.3em] mb-3" style={{ color: theme.goldSoft }}>Contact Information</p>
-              <h3 className="text-xl font-black uppercase tracking-tight text-white mb-3">Talk To Our Team</h3>
-              <p className="text-[12.5px] leading-relaxed" style={{ color: hexToRgba(theme.white, 0.7) }}>
-                Our engineering team responds to every consultation request within one business day.
-              </p>
-            </div>
-            <div className="space-y-5">
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2" style={{ color: theme.goldSoft }}>Our Office</p>
-                <p className="text-[12.5px] flex items-start gap-3 text-white">
-                  <MapPin size={16} className="mt-0.5 flex-shrink-0" style={{ color: theme.goldSoft }} />
-                  <span>{contactInfo.address}</span>
-                </p>
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2" style={{ color: theme.goldSoft }}>Call Us</p>
-                <p className="text-[12.5px] flex items-center gap-3 text-white mb-1.5">
-                  <Phone size={16} className="flex-shrink-0" style={{ color: theme.goldSoft }} />
-                  <span>Phone: {contactInfo.phone}</span>
-                </p>
-                {contactInfo.whatsapp.map((num) => (
-                  <p key={num} className="text-[12.5px] flex items-center gap-3 text-white mb-1.5">
-                    <MessageCircle size={16} className="flex-shrink-0" style={{ color: theme.goldSoft }} />
-                    <span>WhatsApp: {num}</span>
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+            
+            {/* Testimonials */}
+            <div className="lg:col-span-5 space-y-6">
+              <SectionLabel>Client Trust</SectionLabel>
+              <SectionHeading className="mb-6">Proven Defense Capabilities</SectionHeading>
+              
+              {testimonials.map((t, idx) => (
+                <div key={idx} className="p-6 rounded-xl border shadow-xs bg-white" style={{ borderColor: theme.border }}>
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={13} fill={theme.gold} style={{ color: theme.gold }} />)}
+                  </div>
+                  <p className="text-[13px] leading-relaxed italic mb-4 font-medium" style={{ color: theme.textMuted }}>
+                    &ldquo;{t.quote}&rdquo;
                   </p>
-                ))}
-              </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.2em] mb-2" style={{ color: theme.goldSoft }}>Email Us</p>
-                {contactInfo.emails.map((mail) => (
-                  <p key={mail} className="text-[12.5px] flex items-center gap-3 text-white mb-1.5">
-                    <Mail size={16} className="flex-shrink-0" style={{ color: theme.goldSoft }} />
-                    <span>{mail}</span>
+                  <p className="text-[12px] font-black uppercase tracking-wider" style={{ color: theme.gold }}>
+                    {t.name}
                   </p>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-            <div className="mt-auto pt-4 border-t" style={{ borderColor: hexToRgba(theme.white, 0.12) }}>
-              <div className="flex gap-3">
-                {socialIcons.map((Icon, i) => (
-                  <a key={i} href="#" aria-label="Social media link" className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/10 transition-all duration-200" style={{ borderColor: hexToRgba(theme.white, 0.2) }}>
-                    <Icon size={14} className="text-white" />
-                  </a>
-                ))}
-              </div>
+
+            {/* FAQs */}
+            <div className="lg:col-span-7 space-y-4">
+              <SectionLabel>Frequently Asked Questions</SectionLabel>
+              <SectionHeading className="mb-6">Operational Clarity</SectionHeading>
+              
+              {faqs.map((faq, idx) => {
+                const isOpen = openFaqIndex === idx;
+                return (
+                  <div key={idx} className="rounded-xl border overflow-hidden transition-all duration-300 bg-white" style={{ borderColor: theme.border }}>
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left group transition-all"
+                    >
+                      <span className="text-[13px] font-bold tracking-wide transition-colors group-hover:text-[#005691]" style={{ color: theme.navy }}>
+                        {faq.question}
+                      </span>
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center border transition-all flex-shrink-0" style={{ borderColor: theme.border, backgroundColor: hexToRgba(theme.gold, 0.08) }}>
+                        {isOpen ? <Minus size={12} style={{ color: theme.gold }} /> : <Plus size={12} style={{ color: theme.gold }} />}
+                      </div>
+                    </button>
+                    {isOpen && (
+                      <div className="px-6 pb-5 pt-1 text-[12.5px] leading-relaxed border-t" style={{ borderColor: theme.border, color: theme.textMuted }}>
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="pt-16 pb-8 px-6" style={{ backgroundColor: theme.navyDark }}>
-        <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10">
-          <div className="lg:col-span-4 justify-self-start">
-            <a href="#home" className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-md flex items-center justify-center border" style={{ borderColor: theme.gold, backgroundColor: hexToRgba(theme.white, 0.03) }}>
-                <Shield size={20} style={{ color: theme.goldSoft }} strokeWidth={1.75} />
-              </div>
-              <div className="leading-tight">
-                <p className="text-[14px] font-black text-white tracking-wide uppercase">ALPHA MATRIX</p>
-                <p className="text-[7.5px] font-bold tracking-[0.28em]" style={{ color: theme.goldSoft }}>DEFENCE SYSTEMS</p>
-              </div>
-            </a>
-            <p className="text-[12px] leading-relaxed mb-6" style={{ color: hexToRgba(theme.white, 0.55) }}>
-              Engineering security, protecting nations. Advanced defense and surveillance technology for
-              mission-critical infrastructure worldwide.
-            </p>
-            <div className="flex gap-3">
-              {socialIcons.map((Icon, i) => (
-                <a key={i} href="#" aria-label="Social media link" className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-white/5 transition-all duration-200" style={{ borderColor: hexToRgba(theme.white, 0.15) }}>
-                  <Icon size={13} style={{ color: "#ffffff" }} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {Object.entries(footerLinks).map(([heading, links]) => (
-            <div key={heading} className="lg:col-span-2">
-              <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-5" style={{ color: theme.goldSoft }}>{heading}</h4>
-              <ul className="space-y-2.5">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a href={`#${link.toLowerCase().replace(/\s+/g, "")}`} className="text-[12px] transition-colors duration-200 hover:text-[#005691]" style={{ color: hexToRgba(theme.white, 0.55) }}>
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-black uppercase tracking-[0.2em] mb-5" style={{ color: theme.goldSoft }}>Contact</h4>
-            <div className="space-y-3.5">
-              <p className="text-[12px] flex items-start gap-2.5" style={{ color: hexToRgba(theme.white, 0.55) }}>
-                <MapPin size={14} className="mt-0.5 flex-shrink-0" style={{ color: theme.goldSoft }} />
-                <span>{contactInfo.address}</span>
-              </p>
-              <p className="text-[12px] flex items-center gap-2.5" style={{ color: hexToRgba(theme.white, 0.55) }}>
-                <Phone size={14} className="flex-shrink-0" style={{ color: theme.goldSoft }} />
-                <span>{contactInfo.phone}</span>
-              </p>
-              {contactInfo.whatsapp.map((num) => (
-                <p key={num} className="text-[12px] flex items-center gap-2.5" style={{ color: hexToRgba(theme.white, 0.55) }}>
-                  <MessageCircle size={14} className="flex-shrink-0" style={{ color: theme.goldSoft }} />
-                  <span>{num}</span>
-                </p>
-              ))}
-              {contactInfo.emails.map((mail) => (
-                <p key={mail} className="text-[12px] flex items-center gap-2.5 font-medium" style={{ color: hexToRgba(theme.white, 0.55) }}>
-                  <Mail size={14} className="flex-shrink-0" style={{ color: theme.goldSoft }} />
-                  <span>{mail}</span>
-                </p>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-2 flex lg:justify-end items-start">
-            <div className="flex flex-col items-center justify-center gap-2 p-6 rounded-lg border w-full h-full min-h-[150px] text-center" style={{ borderColor: hexToRgba(theme.white, 0.1), backgroundColor: hexToRgba(theme.white, 0.02) }}>
-              <Globe2 size={26} style={{ color: theme.goldSoft }} />
-              <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: hexToRgba(theme.white, 0.55) }}>Global Coverage</p>
-            </div>
-          </div>
+      {/* Consultation & Inquiry Section */}
+      <section id="contact" className="py-20 lg:py-24 px-6 bg-white">
+        <div className="mx-auto max-w-screen-lg">
+          <ContactForm />
         </div>
+      </section>
 
-        <div className="mx-auto max-w-screen-xl mt-12 pt-6 text-center border-t" style={{ borderColor: hexToRgba(theme.white, 0.08) }}>
-          <p className="text-[11px]" style={{ color: hexToRgba(theme.white, 0.45) }}>
-            &copy; {new Date().getFullYear()} Alpha Matrix Defence Systems. All Rights Reserved.
-          </p>
-        </div>
-      </footer>
+      <AlphaMatrixFooter />
     </div>
   );
 }

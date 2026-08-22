@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="acBgLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#EEF5FA" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#acBgLight)" />
+  <g transform="translate(400, 300)">
+    <path d="M-60,40 C-60,-40 60,-40 60,40" fill="none" stroke="#005691" stroke-width="3" />
+    <path d="M-90,60 C-90,-70 90,-70 90,60" fill="none" stroke="#005691" stroke-width="3" stroke-dasharray="8 6" />
+    <path d="M-120,80 C-120,-100 120,-100 120,80" fill="none" stroke="#0B1B36" stroke-width="3" />
+    <path d="M-30,20 C-30,-20 30,-20 30,20" fill="none" stroke="#005691" stroke-width="3" />
+    
+    <line x1="-150" y1="0" x2="150" y2="0" stroke="#005691" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="140" fill="none" stroke="rgba(0, 86, 145, 0.25)" stroke-width="2" />
+    
+    <text x="-120" y="170" fill="#0B1B36" font-family="sans-serif" font-size="13" font-weight="bold" letter-spacing="2">BIOMETRIC AUTHENTICATION</text>
+  </g>
+</svg>

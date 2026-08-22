@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────
+   NEOM CITY RECRUITMENT CONSULTANTS — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/Neom-city-recruitment/neomrecruitment.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --nr-navy: #0F2B5B;          /* Primary Corporate Deep Navy */
+  --nr-navy-dark: #07152B;
+  --nr-blue: #0072CE;          /* Vibrant Cyan Blue */
+  --nr-blue-hover: #005BB5;
+  --nr-teal: #00A896;          /* Teal highlight */
+  --nr-blue-light: #EBF5FF;
+  --nr-white: #ffffff;
+  --nr-off-white: #F8FAFC;
+  --nr-border: #E2E8F0;
+  --nr-text-muted: #475569;
+  --nr-text-light: #64748B;
+}
+
+body.neom-recruitment-theme,
+body.neom-city-recruitment-theme,
+.neom-recruitment-theme,
+.neom-city-recruitment-theme,
+body.neom-recruitment-theme main,
+body.neom-recruitment-theme section,
+body.neom-recruitment-theme header,
+.neom-recruitment-theme main,
+.neom-recruitment-theme section,
+.neom-recruitment-theme header {
+  background-color: #ffffff !important;
+  color: #475569;
+}
+
+body.neom-recruitment-theme .cursor-pointer,
+.neom-recruitment-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.nr-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.nr-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #0072CE !important;
+  box-shadow: 0 16px 32px -8px rgba(15, 43, 91, 0.16), 0 0 0 1px rgba(0, 168, 150, 0.25) !important;
+}
+
+/* Counter box */
+.nr-counter-box {
+  transition: all 0.3s ease !important;
+}
+.nr-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #0072CE !important;
+  box-shadow: 0 10px 25px rgba(15, 43, 91, 0.1) !important;
+}
+
+/* Reset for Neom City Recruitment components */
+body.neom-recruitment-theme a,
+body.neom-recruitment-theme button,
+body.neom-recruitment-theme label,
+body.neom-recruitment-theme h1,
+body.neom-recruitment-theme h2,
+body.neom-recruitment-theme h3,
+body.neom-recruitment-theme h4,
+body.neom-recruitment-theme h5,
+body.neom-recruitment-theme h6,
+body.neom-recruitment-theme p,
+body.neom-recruitment-theme span,
+body.neom-recruitment-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.neom-recruitment-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

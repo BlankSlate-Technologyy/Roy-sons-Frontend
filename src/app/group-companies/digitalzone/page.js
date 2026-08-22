@@ -1,621 +1,204 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight, Award, Brain, Code2, Database, Cloud, ShieldCheck,
-  Smartphone, BarChart3, Users2, CheckCircle2, MapPin, Phone, MessageCircle,
-  Mail, Plus, Minus, Send, Server, Layers, Cpu, Lock, BadgeCheck,
-  Network, Search, Compass, PenTool, Hammer, TestTube2, Wrench,
-  Building2, Landmark, HeartPulse, GraduationCap, Factory, ShoppingCart,
-  Truck, Radio, Home as HomeIcon, Zap, Sparkles, Menu, X, ChevronLeft, ChevronRight,
+  Award,
+  Brain,
+  Code2,
+  Layers,
+  Cloud,
+  ShieldCheck,
+  Smartphone,
+  CheckCircle2,
+  ChevronDown,
+  Clock,
+  Phone,
+  Search,
+  Send,
+  Sparkles,
+  Users2,
+  ArrowRight,
+  Server,
+  Lock,
 } from "lucide-react";
-
-// ── Color System matching Digital Zoning Corporation Logo ──
-const COLORS = {
-  navy:         "#0A3A6B", // Deep Tech Navy Blue from Digital Zoning logo
-  navyDark:     "#062242",
-  cyan:         "#00A8E8", // Vibrant Cyan / Electric Blue from Digital Zoning logo
-  cyanHover:    "#0086BA",
-  slate:        "#3D4852", // Dark Slate / Charcoal Gray from logo
-  white:        "#FFFFFF",
-  bgLight:      "#F4F8FC", // Light tech-tinted background
-  border:       "#D2E3F3",
-  textMuted:    "#3E4F61",
-  textLight:    "#6B7C90",
-};
-
-const HERO = {
-  badge: "Leading AI & Enterprise Software Development Company",
-  headline: "Digital Zoning Corporation",
-  subline:
-    "Transforming businesses through artificial intelligence, enterprise software, ERP solutions, cloud computing, cybersecurity, and digital transformation. Digital Zoning Corporation builds intelligent digital ecosystems engineered for high performance.",
-  ctaPrimary: "Explore Services",
-  ctaSecondary: "Talk To An Expert",
-};
+import {
+  theme,
+  DigitalZoneNavbar,
+  DigitalZoneFooter,
+  SectionLabel,
+  SectionHeading,
+  AnimatedCounter,
+} from "./components/DigitalZoneShared";
 
 const STATS = [
-  { value: 15,  suffix: "+", label: "Years of Industry Experience" },
-  { value: 500, suffix: "+", label: "Successful Projects Delivered" },
-  { value: 200, suffix: "+", label: "Enterprise & Global Clients" },
-  { value: 150, suffix: "+", label: "Software & AI Engineers" },
-  { value: 99,  suffix: "%", label: "Client Satisfaction & Uptime" },
-  { value: 25,  suffix: "+", label: "Countries Served Worldwide" },
+  { icon: Award, value: "15+", label: "Years of Enterprise\nSoftware Experience" },
+  { icon: Code2, value: "500+", label: "Delivered Software &\nAI Deployments" },
+  { icon: Users2, value: "200+", label: "Enterprise &\nGovernment Clients" },
+  { icon: Brain, value: "150+", label: "Software & AI\nEngineers on Staff" },
+  { icon: ShieldCheck, value: "99%", label: "Uptime SLA &\nSOC-2 Compliance" },
 ];
 
 const SERVICES = [
-  { icon: Brain,        title: "Artificial Intelligence",           desc: "AI-powered business automation, predictive analytics, machine learning models, and intelligent decision systems." },
-  { icon: Code2,        title: "Custom Software Development",       desc: "Scalable web applications, enterprise software, SaaS platforms, and tailored business systems." },
-  { icon: Layers,       title: "ERP Solutions",                     desc: "End-to-end ERP implementation for finance, HR, inventory, manufacturing, procurement, and operations." },
-  { icon: Cloud,        title: "Cloud Computing",                   desc: "Cloud migration, infrastructure management, DevOps, server optimization, and multi-cloud governance." },
-  { icon: ShieldCheck,  title: "Cybersecurity",                     desc: "Comprehensive security solutions including penetration testing, threat monitoring, data encryption, and compliance." },
-  { icon: Smartphone,   title: "Mobile Application Development",    desc: "High-performance iOS, Android, and cross-platform mobile apps built with modern frameworks." },
-  { icon: BarChart3,    title: "Data Analytics & Business Intelligence", desc: "Transforming raw data into actionable insights through interactive dashboards and BI reporting." },
-  { icon: Users2,       title: "IT Consultancy & Digital Strategy", desc: "Strategic technology consulting, architecture planning, and enterprise digital transformation advisory." },
+  {
+    icon: Brain,
+    title: "Artificial Intelligence & ML",
+    desc: "Custom LLMs, RAG semantic search, computer vision object detection, and predictive neural network analytics.",
+    href: "/group-companies/digitalzone/services#artificial-intelligence",
+    img: "/digitalzone_hero_tech.svg",
+  },
+  {
+    icon: Code2,
+    title: "Custom Enterprise Software",
+    desc: "Scalable microservices, distributed SaaS platforms, high-concurrency database backends, and Next.js web apps.",
+    href: "/group-companies/digitalzone/services#custom-software",
+    img: "/digitalzone_hero_tech.svg",
+  },
+  {
+    icon: Layers,
+    title: "Enterprise ERP Systems",
+    desc: "Unified ERP platforms covering financial general ledgers, multi-warehouse inventory, HRMS, and manufacturing workflows.",
+    href: "/group-companies/digitalzone/services#erp-solutions",
+    img: "/digitalzone_hero_tech.svg",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Computing & DevOps",
+    desc: "Auto-scaling Kubernetes infrastructure across AWS, Azure, and GCP with automated CI/CD deployment pipelines.",
+    href: "/group-companies/digitalzone/services#cloud-computing",
+    img: "/digitalzone_hero_tech.svg",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Zero-Trust Cybersecurity",
+    desc: "SOC-2 Type II and ISO 27001 compliant security, penetration testing (VAPT), 24/7 SIEM monitoring, and data encryption.",
+    href: "/group-companies/digitalzone/services#cybersecurity",
+    img: "/digitalzone_hero_tech.svg",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Application Development",
+    desc: "Native iOS Swift, Android Kotlin, and high-performance React Native / Flutter apps with offline-first synchronization.",
+    href: "/group-companies/digitalzone/services#mobile-apps",
+    img: "/digitalzone_hero_tech.svg",
+  },
 ];
 
-const WHY_CHOOSE = [
-  { title: "AI-Driven Innovation", desc: "Building intelligent systems that automate workflows and drive competitive advantage." },
-  { title: "Enterprise Reliability", desc: "Years of experience delivering mission-critical software for enterprises and governments." },
-  { title: "Secure By Architecture", desc: "Every solution is built with zero-trust cybersecurity standards and strict data privacy." },
-  { title: "Scalable Performance",   desc: "Future-ready cloud infrastructure designed to handle high transaction volumes effortlessly." },
-  { title: "Agile Engineering",      desc: "Transparent, sprint-based software development with rapid time-to-market." },
-  { title: "24/7 Dedicated Support", desc: "Round-the-clock monitoring, maintenance, updates, and dedicated technical assistance." },
+const SOLUTIONS_PREVIEW = [
+  {
+    name: "DigitalZone CoreERP Platform",
+    tag: "Enterprise ERP Suite",
+    desc: "Centralized general ledger, automated multi-warehouse inventory, payroll, and manufacturing BOM.",
+    img: "/digitalzone_hero_tech.svg",
+  },
+  {
+    name: "DigitalZone CortexAI Engine",
+    tag: "Enterprise AI Engine",
+    desc: "Fine-tuned LLM document extraction, automated customer support agents, and predictive telemetry.",
+    img: "/digitalzone_hero_tech.svg",
+  },
+  {
+    name: "DigitalZone ZeroTrust CyberShield",
+    tag: "Zero-Trust Cyber Defense",
+    desc: "Real-time SIEM event correlation, mutual TLS API proxy, and automated security incident containment.",
+    img: "/digitalzone_hero_tech.svg",
+  },
 ];
 
-const INDUSTRIES = [
-  "Banking & Finance",
-  "Healthcare & Pharma",
-  "Government & Public Sector",
-  "Education & E-Learning",
-  "Manufacturing & Industrial",
-  "Retail & E-Commerce",
-  "Logistics & Supply Chain",
-  "Telecommunications",
-  "Real Estate & Property",
-  "Energy & Utilities",
-];
-
-const PROCESS = [
-  { step: "01", title: "Discovery & Strategy",     desc: "Understanding business goals, user needs, and technical requirements." },
-  { step: "02", title: "Architecture & Planning",   desc: "Developing cloud architecture, UI/UX design, and development roadmaps." },
-  { step: "03", title: "Agile Development",         desc: "Building secure, scalable software through iterative sprint cycles." },
-  { step: "04", title: "Testing & Quality Control", desc: "Rigorously testing performance, security, and integration compatibility." },
-  { step: "05", title: "Deployment & Launch",       desc: "Smooth production deployment, cloud provisioning, and data migration." },
-  { step: "06", title: "Ongoing Support & Scaling", desc: "Continuous monitoring, feature updates, and performance optimization." },
-];
-
-const PLATFORMS = [
-  { icon: Server,   title: "Enterprise ERP Systems", desc: "Customized ERP platforms for seamless cross-departmental operations." },
-  { icon: Sparkles, title: "AI Business Automation",  desc: "Smart workflow automation powered by machine learning algorithms." },
-  { icon: Users2,   title: "CRM Platforms",           desc: "Comprehensive customer relationship platforms that drive sales growth." },
-  { icon: Cloud,    title: "Cloud Infrastructure",    desc: "Scalable multi-cloud management across AWS, Azure, and Google Cloud." },
-  { icon: BarChart3,title: "Business Intelligence",   desc: "Real-time analytics and executive dashboards for data-driven decisions." },
-  { icon: Lock,     title: "Cyber Defense Systems",   desc: "Proactive threat detection and automated security incident response." },
-];
-
-const FEATURED_PROJECTS = [
-  { title: "Enterprise ERP Platform",       desc: "Integrated ERP solution for manufacturing and distribution enterprise.", image: "/project-infrastructure.png" },
-  { title: "AI Support & Automation System", desc: "Intelligent AI assistant automating customer service and data workflows.", image: "/project-commercial.png" },
-  { title: "Healthcare Management System",  desc: "Digital healthcare platform serving multi-specialty hospital networks.", image: "/project-industrial.png" },
-  { title: "Smart Government Services Portal", desc: "Secure public sector portal facilitating digital citizen services.", image: "/project-infrastructure.png" },
-];
-
-const TESTIMONIALS = [
-  { name: "Enterprise Client", role: "CEO, Manufacturing Group", quote: "Digital Zoning Corporation transformed our business operations with a custom ERP system that improved productivity by 40%." },
-  { name: "Government Authority", role: "IT Director", quote: "Their team delivered a secure, highly scalable citizen services platform on time and beyond expectations." },
-  { name: "Global Technology Partner", role: "CTO, SaaS Platform", quote: "Outstanding expertise in AI integration, cloud infrastructure, and cybersecurity. Highly recommended." },
+const PROCESS_STEPS = [
+  { num: "01", title: "Technical Discovery & Scope", desc: "Analyzing user workflows, business objectives, data schemas, and software architecture requirements." },
+  { num: "02", title: "Cloud Architecture & UI/UX", desc: "Designing microservices diagrams, database schemas, interactive Figma prototypes, and API specifications." },
+  { num: "03", title: "Agile Sprint Development", desc: "Executing 2-week agile sprint iterations with peer code reviews, Git branching, and automated unit testing." },
+  { num: "04", title: "Security & Performance QA", desc: "Conducting automated load testing, vulnerability scans (VAPT), SOC-2 compliance checks, and regression tests." },
+  { num: "05", title: "Zero-Downtime Deployment", desc: "Provisioning auto-scaling Kubernetes clusters, database migrations, and CI/CD production pipelines." },
+  { num: "06", title: "24/7 NOC & Continuous Scaling", desc: "Providing 24/7 monitoring, telemetry logging, feature upgrades, and dedicated engineering SLAs." },
 ];
 
 const FAQS = [
-  { q: "What core services does Digital Zoning Corporation provide?", a: "We provide AI solutions, custom software development, ERP systems, cloud computing, cybersecurity, mobile app development, and business intelligence." },
-  { q: "Can you build custom enterprise software?", a: "Yes. We engineer bespoke web applications, enterprise software platforms, and SaaS products tailored to your precise workflow requirements." },
-  { q: "Do you offer cloud migration and DevOps?", a: "Yes. We handle end-to-end cloud migration, infrastructure optimization, automated DevOps pipelines, and cloud security on AWS, Azure, and GCP." },
-  { q: "How do you ensure data security?", a: "We apply security-by-design principles, regular vulnerability audits, end-to-end encryption, Zero Trust access, and ISO-compliant security protocols." },
+  {
+    q: "What tech stacks does Digital Zoning Corporation specialize in?",
+    a: "We specialize in modern enterprise technology stacks including Next.js, React, Node.js, Python, Go, PostgreSQL, Redis, Apache Kafka, Kubernetes, AWS, Microsoft Azure, Google Cloud, and PyTorch for AI/ML development.",
+  },
+  {
+    q: "Can Digital Zoning develop custom ERP platforms tailored to our workflow?",
+    a: "Yes. We engineer customized ERP systems with tailored general ledger accounting, multi-warehouse barcoded inventory, HRMS payroll, procurement workflows, and manufacturing bills of materials (BOM).",
+  },
+  {
+    q: "How does Digital Zoning ensure data security and compliance?",
+    a: "We enforce zero-trust security architectures, end-to-end AES-256 and mutual TLS encryption, automated penetration testing (VAPT), and full compliance readiness for ISO 27001, SOC-2 Type II, and GDPR.",
+  },
+  {
+    q: "Does Digital Zoning offer on-premises air-gapped AI deployment?",
+    a: "Yes. We deploy custom large language models (LLMs) and computer vision inference pipelines on private on-premises GPU clusters or dedicated virtual private clouds (VPC) with zero external data leakage.",
+  },
 ];
 
-// Exact contact information requested by user
-const CONTACT_INFO = {
-  office: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
-  phone: "0092-42-38924737",
-  whatsapp: ["0092-304-7527498", "0092-321-8431665"],
-  emails: ["info@roysons.org", "support@roysons.org"],
-};
-
-// ── Animated Counter Component ──
-function StatCounterCard({ value, suffix, label }) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    let rafId;
-    const duration = 1800;
-    const startTime = performance.now();
-
-    const tick = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * value));
-      if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        setCount(value);
-      }
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [started, value]);
+export default function DigitalZoneHomePage() {
+  const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <div
-      ref={cardRef}
-      className="rounded-[24px] border border-[#D2E3F3] bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#0A3A6B]"
-    >
-      <p className="text-3xl lg:text-4xl font-black text-[#0A3A6B] mb-2 tabular-nums">
-        {count.toLocaleString()}
-        {suffix}
-      </p>
-      <p className="text-xs lg:text-sm font-semibold leading-relaxed text-[#3E4F61]">{label}</p>
-    </div>
-  );
-}
-
-// ── Section Title ──
-function SectionHeader({ eyebrow, title, description, center }) {
-  return (
-    <div className={`${center ? "text-center" : ""} max-w-3xl mx-auto`}>
-      <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#00A8E8] mb-3">
-        <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#00A8E8]" />
-        {eyebrow}
-      </span>
-      <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#0A3A6B] mb-4">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-sm md:text-base leading-relaxed text-[#3E4F61]">{description}</p>
-      )}
-    </div>
-  );
-}
-
-// ── Service Card with hover ──
-function ServiceCard({ icon: Icon, title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D2E3F3] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#0A3A6B] hover:bg-[#F4F8FC]">
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#E6F3FB] text-[#0A3A6B] mb-6 transition-all duration-300 group-hover:bg-[#0A3A6B] group-hover:text-[#00A8E8] group-hover:scale-110">
-        <Icon size={26} />
-      </div>
-      <h3 className="text-xl font-bold text-[#0A3A6B] mb-3 transition-colors duration-300 group-hover:text-[#00A8E8]">{title}</h3>
-      <p className="text-sm leading-relaxed text-[#3E4F61]">{desc}</p>
-    </div>
-  );
-}
-
-// ── Feature Card ──
-function FeatureCard({ title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D2E3F3] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#00A8E8]">
-      <div className="text-[#00A8E8] text-3xl font-black mb-3 group-hover:scale-110 transition-transform">•</div>
-      <h3 className="text-lg font-black text-[#0A3A6B] mb-3 transition-colors duration-300 group-hover:text-[#00A8E8]">{title}</h3>
-      <p className="text-sm text-[#3E4F61] leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-// ── Process Card ──
-function ProcessStepCard({ step, title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D2E3F3] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#0A3A6B]">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#0A3A6B] text-[#00A8E8] font-black group-hover:bg-[#00A8E8] group-hover:text-white transition-all">{step}</div>
-        <h4 className="text-base font-bold text-[#0A3A6B]">{title}</h4>
-      </div>
-      <p className="text-sm text-[#3E4F61] leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-// ── Collapsible FAQ Item Component ──
-function FaqAccordionItem({ question, answer }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="rounded-[20px] border border-[#D2E3F3] bg-white transition-all duration-300 overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between gap-4 p-6 text-left group"
-      >
-        <h4 className="text-base font-bold text-[#0A3A6B] transition-colors group-hover:text-[#00A8E8]">{question}</h4>
-        <div className="w-8 h-8 rounded-full bg-[#E6F3FB] flex items-center justify-center text-[#0A3A6B] flex-shrink-0 transition-transform duration-300 group-hover:bg-[#0A3A6B] group-hover:text-[#00A8E8]">
-          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-        </div>
-      </button>
-      {isOpen && (
-        <div className="px-6 pb-6 pt-0 border-t border-[#E6F3FB]">
-          <p className="mt-3 text-sm leading-relaxed text-[#3E4F61]">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Contact Form Component ──
-function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setError("Please fill in your name, email, and message.");
-      return;
-    }
-    setError("");
-    setIsSubmitting(true);
-    try {
-      const res = await fetch("/group-companies/digitalzone/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to submit message.");
-      }
-      setSubmitted(true);
-    } catch (err) {
-      setError(err.message || "Error submitting form. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="rounded-[28px] border border-[#D2E3F3] bg-white p-8 md:p-10 text-center shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-[#E6F3FB] text-[#0A3A6B] mx-auto flex items-center justify-center mb-5">
-          <CheckCircle2 size={32} />
-        </div>
-        <h3 className="text-2xl font-black text-[#0A3A6B] mb-3">Thank You!</h3>
-        <p className="text-sm leading-relaxed text-[#3E4F61] max-w-md mx-auto mb-6">
-          Thank you, {form.name}. Your message has been received. Our digital solutions team will contact you shortly.
-        </p>
-        <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", subject: "", message: "" }); setSubmitted(false); }}
-          className="inline-flex items-center gap-2 rounded-full bg-[#0A3A6B] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#00A8E8]"
-        >
-          Send Another Message
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="rounded-[28px] border border-[#D2E3F3] bg-white p-8 md:p-10 shadow-sm">
-      <h3 className="text-2xl font-black text-[#0A3A6B] mb-6">Start Your Digital Transformation</h3>
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4F61] mb-2">Full Name *</label>
-          <input
-            type="text" name="name" value={form.name} onChange={handleChange}
-            placeholder="John Doe"
-            className="w-full rounded-xl border border-[#D2E3F3] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#0A3A6B] outline-none transition-all focus:border-[#0A3A6B] focus:bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4F61] mb-2">Email Address *</label>
-          <input
-            type="email" name="email" value={form.email} onChange={handleChange}
-            placeholder="john@example.com"
-            className="w-full rounded-xl border border-[#D2E3F3] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#0A3A6B] outline-none transition-all focus:border-[#0A3A6B] focus:bg-white"
-          />
-        </div>
-      </div>
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4F61] mb-2">Phone Number</label>
-          <input
-            type="tel" name="phone" value={form.phone} onChange={handleChange}
-            placeholder="+92 300 1234567"
-            className="w-full rounded-xl border border-[#D2E3F3] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#0A3A6B] outline-none transition-all focus:border-[#0A3A6B] focus:bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4F61] mb-2">Service Type</label>
-          <select
-            name="subject"
-            value={form.subject}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-[#D2E3F3] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#0A3A6B] outline-none transition-all focus:border-[#0A3A6B] focus:bg-white"
-          >
-            <option value="">Select a service</option>
-            <option value="AI Solutions">AI Solutions</option>
-            <option value="Custom Software">Custom Software</option>
-            <option value="ERP Solutions">ERP Solutions</option>
-            <option value="Cloud Services">Cloud Services</option>
-            <option value="Cybersecurity">Cybersecurity</option>
-          </select>
-        </div>
-      </div>
-      <div className="mb-5">
-        <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4F61] mb-2">Project Overview *</label>
-        <textarea
-          name="message" value={form.message} onChange={handleChange} rows={4}
-          placeholder="Tell us about your project requirements..."
-          className="w-full rounded-xl border border-[#D2E3F3] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#0A3A6B] outline-none transition-all resize-none focus:border-[#0A3A6B] focus:bg-white"
-        />
-      </div>
-
-      {error && <p className="text-xs font-bold text-red-600 mb-4">{error}</p>}
-
-      <button
-        type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#0A3A6B] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#00A8E8] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-      >
-        Send Message <Send size={15} />
-      </button>
-    </form>
-  );
-}
-
-// ── Digital Zone Navbar ──
-function DigitalZoneNavbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Industries", href: "#industries" },
-    { label: "FAQs", href: "#faqs" },
-    { label: "Contact", href: "#contact" },
-  ];
-  return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D2E3F3]">
-      <div className="hidden md:block bg-[#0A3A6B] text-white py-2 px-6">
-        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
-          <div className="flex items-center gap-6 text-white/80">
-            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
-            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
-            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
-          </div>
-          <span className="text-xs font-bold text-[#00A8E8]">Digital Zoning Corporation — Tech Innovators</span>
-        </div>
-      </div>
-      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-[#0A3A6B] flex items-center justify-center group-hover:scale-105 transition-transform">
-            <Cpu size={22} color="#00A8E8" />
-          </div>
-          <div>
-            <p className="text-base font-black tracking-tight text-[#0A3A6B] leading-none">DIGITAL ZONING</p>
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#3E4F61]">Corporation</p>
-          </div>
-        </a>
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#0A3A6B]">
-          {navLinks.map(l => (
-            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#00A8E8] group transition-colors">
-              {l.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#00A8E8] transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
-        <div className="hidden lg:flex items-center gap-3">
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#00A8E8] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#0A3A6B] hover:scale-105 transition-all">
-            <MessageCircle size={14} /> Get In Touch
-          </a>
-        </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#E6F3FB] text-[#0A3A6B]">
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-      {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-[#D2E3F3] px-6 py-5 space-y-3">
-          {navLinks.map(l => (
-            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
-              className="block text-sm font-bold text-[#0A3A6B] hover:text-[#00A8E8] py-1">{l.label}</a>
-          ))}
-          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#00A8E8] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
-            <MessageCircle size={14} /> Get In Touch
-          </a>
-        </div>
-      )}
-    </header>
-  );
-}
-
-// ── Digital Zone Footer ──
-function DigitalZoneFooter() {
-  return (
-    <footer style={{ background: "#0A3A6B" }} className="text-white">
-      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-              <Cpu size={20} color="#00A8E8" />
-            </div>
-            <div>
-              <p className="font-black text-lg leading-none">DIGITAL ZONING</p>
-              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">Corporation</p>
-            </div>
-          </div>
-          <p className="text-sm text-white/70 leading-relaxed mb-5">Innovative technology solutions, custom software, ERP systems, and digital transformation services for businesses across Pakistan.</p>
-          <div className="space-y-2 text-xs text-white/75">
-            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#00A8E8]" />{CONTACT_INFO.office}</p>
-            <p className="flex items-center gap-2"><Phone size={14} className="text-[#00A8E8]" />{CONTACT_INFO.phone}</p>
-            <p className="flex items-center gap-2"><Mail size={14} className="text-[#00A8E8]" />{CONTACT_INFO.emails[0]}</p>
-          </div>
-        </div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#00A8E8]">Quick Links</h4>
-          <ul className="space-y-2.5 text-sm text-white/75">
-            {["About Us","Services","Industries","FAQs","Contact"].map(l => (
-              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#00A8E8]">Contact Us</h4>
-          <div className="space-y-3 text-xs text-white/75">
-            <p className="flex items-center gap-2"><MessageCircle size={14} className="text-[#00A8E8]" /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
-            <p className="flex items-center gap-2"><Mail size={14} className="text-[#00A8E8]" />{CONTACT_INFO.emails[0]}</p>
-            <p className="flex items-center gap-2"><Phone size={14} className="text-[#00A8E8]" />{CONTACT_INFO.phone}</p>
-          </div>
-          <div className="mt-6 pt-6 border-t border-white/20">
-            <Link href="/group-companies" className="text-xs text-white/60 hover:text-white transition-colors">← Back to Roysons Group</Link>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} Digital Zoning Corporation. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
-      </div>
-    </footer>
-  );
-}
-
-// ── Main Page Component ──
-export default function DigitalZonePage() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const activeTestimonialItem = TESTIMONIALS[activeTestimonial];
-
-  useEffect(() => {
-    document.body.classList.add("roys-roys-theme", "digitalzone-theme");
-    document.body.style.backgroundColor = "#FFFFFF";
-    document.body.style.color = COLORS.navy;
-    return () => {
-      document.body.classList.remove("roys-roys-theme", "digitalzone-theme");
-      document.body.style.backgroundColor = "";
-      document.body.style.color = "";
-    };
-  }, []);
-
-  return (
-    <main className="roys-roys-theme digitalzone-theme font-sans bg-white text-[#0A3A6B] selection:bg-[#0A3A6B] selection:text-white">
-      {/* Styles to bypass global dark override from globals.css */}
-      <style>{`
-        html, body {
-          background-color: #FFFFFF !important;
-          color: #0A3A6B !important;
-          color-scheme: light !important;
-        }
-        .digitalzone-theme h1,
-        .digitalzone-theme h2,
-        .digitalzone-theme h3,
-        .digitalzone-theme h4,
-        .digitalzone-theme h5,
-        .digitalzone-theme h6,
-        .digitalzone-theme p,
-        .digitalzone-theme span,
-        .digitalzone-theme li,
-        .digitalzone-theme a,
-        .digitalzone-theme label,
-        .digitalzone-theme button,
-        .digitalzone-theme input,
-        .digitalzone-theme textarea {
-          -webkit-text-fill-color: initial !important;
-          background-image: none !important;
-        }
-      `}</style>
-
+    <main className="min-h-screen bg-white text-[#3E4F61] font-sans antialiased overflow-x-hidden">
       <DigitalZoneNavbar />
 
-      {/* Hero Section */}
-      <section
-        className="relative overflow-hidden border-b border-[#D2E3F3] min-h-[500px] lg:min-h-[560px] flex items-center"
-        style={{
-          backgroundImage: `linear-gradient(135deg, rgba(10,58,107,0.88) 0%, rgba(10,58,107,0.80) 50%, rgba(0,168,232,0.70) 100%), url("${encodeURI("/digitaz zoning.jpeg")}")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="mx-auto max-w-screen-xl px-6 py-16 lg:py-24 relative z-10 w-full">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#00A8E8]/40 bg-[#0A3A6B]/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#00A8E8] shadow-md backdrop-blur-md">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#00A8E8]" />
-              {HERO.badge}
-            </span>
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
-              Digital Zoning <span className="text-[#00A8E8]">Corporation</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-[#E6F3FB]">
-              {HERO.subline}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="#services"
-                className="inline-flex items-center gap-2 rounded-full bg-[#00A8E8] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-lg transition-all duration-300 hover:bg-white hover:text-[#0A3A6B] hover:scale-[1.02] active:scale-95"
-              >
-                {HERO.ctaPrimary} <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#0A3A6B] hover:scale-[1.02] active:scale-95"
-              >
-                {HERO.ctaSecondary}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="bg-white px-6 py-16 lg:py-20 border-b border-[#D2E3F3]">
+      {/* Hero Section with AI & Cloud Visual */}
+      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#00A8E8] mb-3">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#00A8E8]" />
-                About Digital Zoning
-              </span>
-              <h2 className="text-3xl md:text-4xl font-black text-[#0A3A6B] mb-5">Building Intelligent Digital Ecosystems</h2>
-              <p className="text-base leading-relaxed text-[#3E4F61] mb-6">
-                Digital Zoning Corporation helps businesses unlock growth through AI-driven software, secure cloud environments, and modern enterprise platforms built for performance and scale.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7">
+              <SectionLabel>Leading AI &amp; Enterprise Software Development</SectionLabel>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
+                Intelligent Digital Systems. <span style={{ color: theme.navy }}>Built For Global Scale.</span>
+              </h1>
+
+              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
+                Transforming businesses through artificial intelligence, enterprise software, ERP solutions, cloud computing, cybersecurity, and digital transformation. Digital Zoning Corporation builds intelligent digital ecosystems engineered for high performance.
               </p>
-              <p className="text-base leading-relaxed text-[#3E4F61]">
-                From custom product development to ERP implementation and digital strategy, we provide the technology foundation to transform ambition into measurable results.
-              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/group-companies/digitalzone/solutions"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  style={{ backgroundColor: theme.navy }}
+                >
+                  <span>Explore Platforms</span>
+                  <ArrowRight size={16} />
+                </Link>
+
+                <Link
+                  href="/group-companies/digitalzone/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
+                  style={{ borderColor: theme.border, color: theme.navyDark }}
+                >
+                  <span>Consult AI Architect</span>
+                </Link>
+              </div>
             </div>
-            <div className="relative overflow-hidden rounded-[28px] border border-[#D2E3F3] bg-[#F4F8FC] shadow-sm">
-              <Image
-                src="/digitaz zoning.jpeg"
-                alt="Digital Zoning technology solutions"
-                width={900}
-                height={700}
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A3A6B]/80 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
-                  <h3 className="text-xl font-black text-white uppercase tracking-wide">SMART DIGITAL SOLUTIONS</h3>
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#dceffd] mt-1">DIGITAL ZONING</p>
+
+            {/* Right Hero Image Card */}
+            <div className="lg:col-span-5 w-full flex justify-center">
+              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/digitalzone_hero_tech.svg"
+                  alt="Enterprise AI and Cloud Infrastructure"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#062242]/85 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-black uppercase tracking-wider text-[#0086BA]">
+                        500+ Delivered Systems
+                      </span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    </div>
+                    <p className="text-sm font-bold" style={{ color: theme.navyDark }}>
+                      Custom AI · Enterprise ERP · Multi-Cloud
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -624,307 +207,330 @@ export default function DigitalZonePage() {
       </section>
 
       {/* Stats Counter Section */}
-      <section className="bg-white px-6 py-14 lg:py-20 border-b border-[#D2E3F3]">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
-            {STATS.map((stat, index) => (
-              <StatCounterCard key={index} value={stat.value} suffix={stat.suffix} label={stat.label} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Services Section */}
-      <section id="services" className="bg-[#F4F8FC] px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Services"
-            title="Complete Digital Technology Solutions"
-            description="From AI automation and custom software to enterprise ERP, cloud infrastructure, and cybersecurity."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {SERVICES.map((item, index) => (
-              <ServiceCard key={index} icon={item.icon} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Intelligent Platforms Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Intelligent Platforms"
-            title="Enterprise Technology Ecosystems"
-            description="High-performance software platforms designed to optimize business operations, customer engagement, and security."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {PLATFORMS.map((item, index) => (
-              <ServiceCard key={index} icon={item.icon} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Section */}
-      <section className="bg-[#F4F8FC] px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader eyebrow="Industries" title="Supporting Key Economic Sectors" description="Delivering tailored software, AI, and cloud solutions across diverse industries." center />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {INDUSTRIES.map((industry, index) => (
-              <div
-                key={index}
-                className="group rounded-2xl border border-[#D2E3F3] bg-white p-5 text-sm font-semibold text-[#0A3A6B] text-center transition-all duration-300 hover:border-[#0A3A6B] hover:bg-[#0A3A6B] hover:text-white hover:shadow-md"
-              >
-                {industry}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Digital Zoning Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Why Choose Us"
-            title="Your Trusted Technology Partner"
-            description="Combining AI innovation, enterprise expertise, and zero-trust security."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {WHY_CHOOSE.map((item, index) => (
-              <FeatureCard key={index} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="bg-[#F4F8FC] px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Process"
-            title="Disciplined Engineering Workflow"
-            description="From discovery and architecture planning to agile development and deployment."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PROCESS.map((item, index) => (
-              <ProcessStepCard key={index} step={item.step} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section id="projects" className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Featured Projects"
-            title="Trusted by Enterprises & Government Institutions"
-            description="Selected highlights of enterprise software and AI solutions successfully delivered."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {FEATURED_PROJECTS.map((project, index) => (
-              <div key={index} className="group overflow-hidden rounded-[28px] border border-[#D2E3F3] bg-[#F4F8FC] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#0A3A6B]">
-                <div className="relative h-52 w-full">
-                  <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-base font-bold text-[#0A3A6B] group-hover:text-[#00A8E8] transition-colors mb-2">{project.title}</h3>
-                  <p className="text-xs text-[#3E4F61] leading-relaxed">{project.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials & FAQs */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
-            <div>
-              <SectionHeader
-                eyebrow="Testimonials"
-                title="What Our Enterprise Clients Say"
-              />
-              <div className="mt-8 rounded-[28px] border border-[#D2E3F3] bg-[#F4F8FC] p-8 shadow-sm">
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-2 text-[#0A3A6B]">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#0A3A6B] shadow-sm">
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-                        <path d="M9.5 7a3.5 3.5 0 0 0-3.5 3.5v1.75A3.5 3.5 0 0 0 9.5 15.75h.5v1.75a2.5 2.5 0 0 1-2.5 2.5H5.5a2.5 2.5 0 0 1-2.5-2.5V10.5A3.5 3.5 0 0 1 6.5 7h3Zm10 0a3.5 3.5 0 0 0-3.5 3.5v1.75A3.5 3.5 0 0 0 19.5 15.75h.5v1.75a2.5 2.5 0 0 1-2.5 2.5h-1.5a2.5 2.5 0 0 1-2.5-2.5V10.5A3.5 3.5 0 0 1 16.5 7h3Z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-[0.25em] text-[#00A8E8]">Client Feedback</p>
-                      <p className="text-sm font-semibold text-[#3E4F61]">Trusted by growth-focused enterprises</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setActiveTestimonial((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1))}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2E3F3] bg-white text-[#0A3A6B] transition hover:border-[#0A3A6B] hover:bg-[#E6F3FB]"
-                      aria-label="Previous testimonial"
-                    >
-                      <ChevronLeft size={18} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveTestimonial((prev) => (prev + 1) % TESTIMONIALS.length)}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2E3F3] bg-white text-[#0A3A6B] transition hover:border-[#0A3A6B] hover:bg-[#E6F3FB]"
-                      aria-label="Next testimonial"
-                    >
-                      <ChevronRight size={18} />
-                    </button>
-                  </div>
-                </div>
-
-                <p className="text-base italic leading-relaxed text-[#3E4F61] mb-6">“{activeTestimonialItem.quote}”</p>
-                <p className="font-black text-[#0A3A6B]">{activeTestimonialItem.name}</p>
-                <p className="text-xs text-[#00A8E8] font-bold mt-1">{activeTestimonialItem.role}</p>
-
-                <div className="mt-6 flex gap-2">
-                  {TESTIMONIALS.map((_, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      onClick={() => setActiveTestimonial(index)}
-                      className={`h-2.5 rounded-full transition-all ${index === activeTestimonial ? "w-8 bg-[#0A3A6B]" : "w-2.5 bg-[#C7DDEC]"}`}
-                      aria-label={`Go to testimonial ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <SectionHeader
-                eyebrow="Frequently Asked Questions"
-                title="Common Questions"
-                description="Answers to common questions regarding our software, AI, and cloud services."
-              />
-              <div className="mt-8 grid gap-4">
-                {FAQS.map((item, index) => (
-                  <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Us Section with User Information */}
-      <section id="contact" className="bg-[#F4F8FC] px-6 py-16 lg:py-24">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Get In Touch"
-            title="Contact Digital Zoning Corporation"
-            description="Discuss your software development, AI integration, ERP, or cloud transformation project with our engineers."
-          />
-          <div className="mt-12 grid gap-10 lg:grid-cols-12 items-start">
-            <div className="lg:col-span-7">
-              <ContactForm />
-            </div>
-
-            <div className="lg:col-span-5 rounded-[28px] bg-[#0A3A6B] p-8 md:p-10 text-white shadow-xl flex flex-col justify-between h-full">
-              <div>
-                <span className="text-xs uppercase tracking-[0.25em] font-black text-[#00A8E8]">Contact Details</span>
-                <h3 className="mt-3 text-2xl font-black text-white mb-6">Talk To Our Team</h3>
-                <p className="text-sm leading-relaxed text-[#D2E3F3] mb-8">
-                  Our technology solutions team responds to every inquiry within one business day.
-                </p>
-
-                <div className="space-y-6 text-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#00A8E8]">
-                      <MapPin size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#00A8E8] mb-1">Our Office</p>
-                      <p className="text-white leading-relaxed">{CONTACT_INFO.office}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#00A8E8]">
-                      <Phone size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#00A8E8] mb-1">Call Us</p>
-                      <p className="text-white font-bold">Phone: {CONTACT_INFO.phone}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#00A8E8]">
-                      <MessageCircle size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#00A8E8] mb-1">WhatsApp</p>
-                      {CONTACT_INFO.whatsapp.map((num) => (
-                        <p key={num} className="text-white font-semibold">{num}</p>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#00A8E8]">
-                      <Mail size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#00A8E8] mb-1">Email Us</p>
-                      {CONTACT_INFO.emails.map((mail) => (
-                        <p key={mail} className="text-white font-medium">{mail}</p>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 pt-6 border-t border-white/15 text-xs text-[#D2E3F3]">
-                &copy; {new Date().getFullYear()} Digital Zoning Corporation. All Rights Reserved.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#F4F8FC] px-6 py-16 lg:py-20 border-t border-[#D2E3F3]">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
-            <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#00A8E8] mb-3">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#00A8E8]" />
-                Our Location
-              </span>
-              <h3 className="text-3xl md:text-4xl font-black text-[#0A3A6B] mb-4">Visit Our Office</h3>
-              <p className="text-base leading-relaxed text-[#3E4F61] mb-6">
-                We welcome project consultations, strategy sessions, and technical planning meetings at our Lahore office.
-              </p>
-              <div className="rounded-[24px] border border-[#D2E3F3] bg-white p-6">
-                <p className="text-sm font-semibold text-[#0A3A6B]">{CONTACT_INFO.office}</p>
-                <a
-                  href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#0A3A6B] hover:text-[#00A8E8]"
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {STATS.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className="digitalzone-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
                 >
-                  Open in Google Maps <ArrowRight size={16} />
-                </a>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.navy}10` }}>
+                    <Icon size={22} style={{ color: theme.navy }} />
+                  </div>
+                  <div className="mb-1" style={{ color: theme.navyDark }}>
+                    <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
+                  </div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                    {stat.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Visual */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/digitalzone_hero_tech.svg"
+                  alt="Enterprise AI and Software Capabilities"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#062242]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <p className="text-xs font-black uppercase tracking-widest text-[#38BDF8] mb-1">
+                      Enterprise Digital Engineering
+                    </p>
+                    <h4 className="text-base font-bold">15+ Years of Scalable Software Innovation</h4>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-[28px] border border-[#D2E3F3] shadow-sm">
-              <iframe
-                src="https://www.google.com/maps?q=Lahore%20Pakistan&output=embed"
-                title="Digital Zoning Location"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-[420px] w-full border-0"
-              />
+            {/* Right Text */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <SectionLabel>About Our Enterprise</SectionLabel>
+              <SectionHeading className="mb-6">Building Scalable Digital Ecosystems</SectionHeading>
+
+              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                Digital Zoning Corporation provides integrated software development, AI model engineering, cloud modernization, and zero-trust cybersecurity solutions. From initial requirements analysis and UX prototyping to microservices engineering and global production rollout, we deliver software that meets the highest standards of reliability.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} className="text-[#00A8E8] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">ISO 27001 &amp; SOC-2 Certified</span>
+                </div>
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} className="text-[#00A8E8] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">500+ Delivered Digital Systems</span>
+                </div>
+              </div>
+
+              <Link
+                href="/group-companies/digitalzone/about"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#0A3A6B]"
+              >
+                <span>Read Full Corporate Profile</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>What We Deliver</SectionLabel>
+              <SectionHeading>Our Core Divisions</SectionHeading>
+            </div>
+
+            <Link
+              href="/group-companies/digitalzone/services"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.navyDark }}
+            >
+              <span>View All 6 Divisions</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES.map((svc) => {
+              const Icon = svc.icon;
+              return (
+                <div
+                  key={svc.title}
+                  className="digitalzone-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div>
+                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                      <Image
+                        src={svc.img}
+                        alt={svc.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+
+                    <div className="p-7">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.navy}10` }}>
+                        <Icon size={20} style={{ color: theme.navy }} />
+                      </div>
+
+                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.navyDark }}>
+                        {svc.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                        {svc.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-7 pt-0">
+                    <Link
+                      href={svc.href}
+                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      style={{ borderColor: theme.border, color: theme.navyDark }}
+                    >
+                      <span>Explore Division</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Solutions Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>Engineered Platforms</SectionLabel>
+              <SectionHeading>Featured Software Platforms</SectionHeading>
+            </div>
+
+            <Link
+              href="/group-companies/digitalzone/solutions"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.navy }}
+            >
+              <span>View All Solutions</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {SOLUTIONS_PREVIEW.map((p) => (
+              <div
+                key={p.name}
+                className="digitalzone-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                style={{ borderColor: theme.border }}
+              >
+                <div>
+                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-7">
+                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#00A8E8]/15 text-[#0086BA] inline-block mb-3">
+                      {p.tag}
+                    </span>
+                    <h3 className="text-xl font-black mb-2" style={{ color: theme.navyDark }}>
+                      {p.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-7 pt-0">
+                  <Link
+                    href="/group-companies/digitalzone/contact"
+                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
+                    style={{ borderColor: theme.border, color: theme.navyDark }}
+                  >
+                    <span>Request Specs</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Pathway Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Disciplined Engineering</SectionLabel>
+            <SectionHeading center className="mb-4">6-Stage Software Engineering Lifecycle</SectionHeading>
+            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+              From initial technical discovery to microservices design, automated CI/CD deployment, and 24/7 monitoring.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROCESS_STEPS.map((step) => (
+              <div
+                key={step.num}
+                className="p-8 rounded-3xl border bg-white shadow-xs flex flex-col justify-between"
+                style={{ borderColor: theme.border }}
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm text-white mb-6 shadow-sm" style={{ backgroundColor: theme.navy }}>
+                    {step.num}
+                  </div>
+                  <h4 className="text-base font-bold mb-3" style={{ color: theme.navyDark }}>
+                    {step.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <SectionLabel center>Frequently Asked Questions</SectionLabel>
+            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {FAQS.map((faq, idx) => (
+              <div
+                key={faq.q}
+                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
+                style={{ borderColor: theme.border }}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
+                  style={{ color: theme.navyDark }}
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-300 flex-shrink-0 ${
+                      openFaq === idx ? "rotate-180 text-[#00A8E8]" : "text-slate-400"
+                    }`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+            <div>
+              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#0086BA]">
+                READY TO COMMENCE YOUR ENTERPRISE DIGITAL INITIATIVE?
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navyDark }}>
+                Schedule An Architecture Consultation
+              </h2>
+              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
+                Connect with our principal software architects to review microservices blueprints, AI feasibility models, and enterprise pricing.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+              <Link
+                href="/group-companies/digitalzone/contact"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.navy }}
+              >
+                <span>Request Project Proposal</span>
+                <ArrowRight size={15} />
+              </Link>
+              <a
+                href="tel:00924238924737"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
+                style={{ borderColor: theme.navy, color: theme.navy }}
+              >
+                <Phone size={15} />
+                <span>0092-42-38924737</span>
+              </a>
             </div>
           </div>
         </div>

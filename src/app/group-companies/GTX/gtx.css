@@ -1,0 +1,78 @@
+/* ─────────────────────────────────────────────────────────────
+   GERMAN TECHNOLOGY XPERT (GTX) — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/GTX/gtx.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --gtx-primary: #16A34A;       /* Clean Tech Green */
+  --gtx-primary-dark: #15803D;
+  --gtx-primary-light: #22C55E;
+  --gtx-charcoal: #202A36;      /* Slate Charcoal */
+  --gtx-charcoal-dark: #0F172A;
+  --gtx-white: #ffffff;
+  --gtx-offwhite: #F4F7FA;
+  --gtx-border: #D6E2F0;
+  --gtx-text-muted: #3E4C5E;
+  --gtx-text-light: #6B7A8E;
+}
+
+body.gtx-theme,
+.gtx-theme,
+body.gtx-theme main,
+body.gtx-theme section,
+body.gtx-theme header,
+.gtx-theme main,
+.gtx-theme section,
+.gtx-theme header {
+  background-color: #ffffff !important;
+  color: #202A36;
+}
+
+body.gtx-theme .cursor-pointer,
+.gtx-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.gtx-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.gtx-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #16A34A !important;
+  box-shadow: 0 16px 32px -8px rgba(22, 163, 74, 0.16), 0 0 0 1px rgba(22, 163, 74, 0.25) !important;
+}
+
+/* Counter box */
+.gtx-counter-box {
+  transition: all 0.3s ease !important;
+}
+.gtx-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #16A34A !important;
+  box-shadow: 0 10px 25px rgba(22, 163, 74, 0.1) !important;
+}
+
+/* Reset for GTX components */
+body.gtx-theme a,
+body.gtx-theme button,
+body.gtx-theme label,
+body.gtx-theme h1,
+body.gtx-theme h2,
+body.gtx-theme h3,
+body.gtx-theme h4,
+body.gtx-theme h5,
+body.gtx-theme h6,
+body.gtx-theme p,
+body.gtx-theme span,
+body.gtx-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.gtx-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

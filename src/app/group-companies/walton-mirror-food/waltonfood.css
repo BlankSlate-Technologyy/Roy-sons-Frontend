@@ -1,0 +1,83 @@
+/* ─────────────────────────────────────────────────────────────
+   WALTON & MORRIS / MIRROR FOODS — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/walton-mirror-food/waltonfood.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --wm-green: #1E6B43;          /* Official Forest Green (Wheat & Logo) */
+  --wm-green-dark: #134A2D;
+  --wm-ochre: #D89C46;          /* Golden Harvest Ochre Accent */
+  --wm-ochre-hover: #BC8330;
+  --wm-navy: #0B1B36;           /* Deep Navy Blue */
+  --wm-navy-dark: #061022;
+  --wm-white: #ffffff;
+  --wm-bg-light: #F4F8F5;       /* Clean Light Green/Cream Tint Background */
+  --wm-border: #D3E4DB;
+  --wm-text-muted: #3D4E44;
+  --wm-text-light: #6B7D72;
+}
+
+body.walton-mirror-food-theme,
+body.walton-food-theme,
+body.walton-morris-theme,
+.walton-mirror-food-theme,
+.walton-food-theme,
+.walton-morris-theme,
+body.walton-mirror-food-theme main,
+body.walton-mirror-food-theme section,
+body.walton-mirror-food-theme header,
+.walton-mirror-food-theme main,
+.walton-mirror-food-theme section,
+.walton-mirror-food-theme header {
+  background-color: #ffffff !important;
+  color: #3D4E44;
+}
+
+body.walton-mirror-food-theme .cursor-pointer,
+.walton-mirror-food-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.wm-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.wm-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #1E6B43 !important;
+  box-shadow: 0 16px 32px -8px rgba(30, 107, 67, 0.16), 0 0 0 1px rgba(216, 156, 70, 0.25) !important;
+}
+
+/* Counter box */
+.wm-counter-box {
+  transition: all 0.3s ease !important;
+}
+.wm-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #1E6B43 !important;
+  box-shadow: 0 10px 25px rgba(30, 107, 67, 0.1) !important;
+}
+
+/* Reset for Walton & Morris components */
+body.walton-mirror-food-theme a,
+body.walton-mirror-food-theme button,
+body.walton-mirror-food-theme label,
+body.walton-mirror-food-theme h1,
+body.walton-mirror-food-theme h2,
+body.walton-mirror-food-theme h3,
+body.walton-mirror-food-theme h4,
+body.walton-mirror-food-theme h5,
+body.walton-mirror-food-theme h6,
+body.walton-mirror-food-theme p,
+body.walton-mirror-food-theme span,
+body.walton-mirror-food-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.walton-mirror-food-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bgGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#F4F8FC" />
+      <stop offset="100%" stop-color="#E8F1F8" />
+    </linearGradient>
+    <radialGradient id="radarGlowLight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#005691" stop-opacity="0.12" />
+      <stop offset="70%" stop-color="#005691" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#005691" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="gridLight" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(0, 86, 145, 0.08)" stroke-width="1" />
+      <circle cx="60" cy="60" r="1.5" fill="rgba(0, 86, 145, 0.2)" />
+    </pattern>
+  </defs>
+
+  <!-- Clean White / Light Background -->
+  <rect width="1920" height="1080" fill="url(#bgGradLight)" />
+  <rect width="1920" height="1080" fill="url(#gridLight)" />
+
+  <!-- Tactical Radar Rings -->
+  <g transform="translate(1350, 540)">
+    <circle r="420" fill="url(#radarGlowLight)" />
+    <circle r="420" fill="none" stroke="rgba(0, 86, 145, 0.2)" stroke-width="1.5" stroke-dasharray="8 6" />
+    <circle r="320" fill="none" stroke="rgba(0, 86, 145, 0.25)" stroke-width="2" />
+    <circle r="220" fill="none" stroke="rgba(0, 86, 145, 0.18)" stroke-width="1.5" stroke-dasharray="4 4" />
+    <circle r="120" fill="none" stroke="rgba(0, 86, 145, 0.35)" stroke-width="2" />
+    <circle r="16" fill="#005691" />
+    
+    <line x1="-460" y1="0" x2="460" y2="0" stroke="rgba(0, 86, 145, 0.2)" stroke-width="1.5" stroke-dasharray="6 6" />
+    <line x1="0" y1="-460" x2="0" y2="460" stroke="rgba(0, 86, 145, 0.2)" stroke-width="1.5" stroke-dasharray="6 6" />
+    
+    <path d="M 0 0 L 297 -297 A 420 420 0 0 1 420 0 Z" fill="rgba(0, 86, 145, 0.12)" />
+    <line x1="0" y1="0" x2="297" y2="-297" stroke="#005691" stroke-width="2.5" />
+
+    <circle cx="180" cy="-140" r="5" fill="#E11D48" />
+    <circle cx="180" cy="-140" r="12" fill="none" stroke="#E11D48" stroke-width="1.5" opacity="0.6" />
+    <text x="200" y="-135" fill="#0B1B36" font-family="sans-serif" font-size="12" font-weight="bold">TARGET-01 [ACTIVE]</text>
+
+    <circle cx="-160" cy="180" r="4" fill="#005691" />
+    <circle cx="-160" cy="180" r="10" fill="none" stroke="#005691" stroke-width="1.5" opacity="0.6" />
+    <text x="-145" y="185" fill="#0B1B36" font-family="sans-serif" font-size="11" font-weight="bold">NODE-ALPHA [SECURE]</text>
+  </g>
+
+  <!-- World Defense Map Matrix -->
+  <g transform="translate(180, 220)" opacity="0.35" stroke="#005691" stroke-width="1.2" fill="none">
+    <path d="M50,120 Q120,80 200,100 T350,70 T480,110 T600,80 T750,120" />
+    <path d="M60,180 Q140,150 220,190 T380,140 T520,180 T680,150 T800,200" />
+    <path d="M100,250 Q190,220 280,260 T420,220 T580,270 T720,230 T850,280" />
+    <circle cx="200" cy="100" r="3.5" fill="#005691" />
+    <circle cx="480" cy="110" r="3.5" fill="#005691" />
+    <circle cx="380" cy="140" r="3.5" fill="#005691" />
+    <circle cx="580" cy="270" r="3.5" fill="#005691" />
+    <circle cx="720" cy="230" r="3.5" fill="#005691" />
+  </g>
+
+  <!-- Telemetry Interface Panels -->
+  <g transform="translate(100, 100)">
+    <rect x="0" y="0" width="380" height="70" rx="8" fill="#FFFFFF" stroke="rgba(0, 86, 145, 0.25)" stroke-width="1.5" />
+    <text x="20" y="28" fill="#0B1B36" font-family="sans-serif" font-size="12" font-weight="900" letter-spacing="2">SYSTEM STATUS: OPERATIONAL</text>
+    <text x="20" y="52" fill="#5A6E7F" font-family="sans-serif" font-size="11">SURVEILLANCE GRID ACTIVE • 99.9% UPTIME</text>
+  </g>
+
+  <g transform="translate(100, 780)">
+    <rect x="0" y="0" width="520" height="180" rx="10" fill="#FFFFFF" stroke="rgba(0, 86, 145, 0.25)" stroke-width="1.5" />
+    <text x="25" y="35" fill="#0B1B36" font-family="sans-serif" font-size="14" font-weight="900" letter-spacing="2">C4ISR DEFENSE METRICS</text>
+    <line x1="25" y1="50" x2="495" y2="50" stroke="rgba(0, 86, 145, 0.15)" />
+    
+    <g transform="translate(25, 75)">
+      <text x="0" y="0" fill="#5A6E7F" font-family="sans-serif" font-size="11">PERIMETER SENSORS</text>
+      <text x="0" y="24" fill="#005691" font-family="sans-serif" font-size="18" font-weight="bold">1,420 ACTIVE</text>
+    </g>
+    <g transform="translate(200, 75)">
+      <text x="0" y="0" fill="#5A6E7F" font-family="sans-serif" font-size="11">RADAR COVERAGE</text>
+      <text x="0" y="24" fill="#005691" font-family="sans-serif" font-size="18" font-weight="bold">360° FULL-BAND</text>
+    </g>
+    <g transform="translate(380, 75)">
+      <text x="0" y="0" fill="#5A6E7F" font-family="sans-serif" font-size="11">RESPONSE TIME</text>
+      <text x="0" y="24" fill="#005691" font-family="sans-serif" font-size="18" font-weight="bold">&lt; 0.4 SEC</text>
+    </g>
+  </g>
+</svg>

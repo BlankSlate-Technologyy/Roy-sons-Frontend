@@ -1,0 +1,77 @@
+/* ─────────────────────────────────────────────────────────────
+   NATIONAL GUARD SECURITY SERVICES — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/national-guard/national-guard.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --ng-navy: #1B365D;          /* Shield Navy Blue */
+  --ng-navy-dark: #0F2540;     /* Deep Navy */
+  --ng-gold: #C5A059;          /* Wreath Gold */
+  --ng-gold-hover: #A6823B;
+  --ng-white: #ffffff;
+  --ng-bg-light: #F4F6F9;
+  --ng-border: #E2E7EE;
+  --ng-text-muted: #4A5B73;
+  --ng-text-light: #6E7F98;
+}
+
+body.national-guard-theme,
+.national-guard-theme,
+body.national-guard-theme main,
+body.national-guard-theme section,
+body.national-guard-theme header,
+.national-guard-theme main,
+.national-guard-theme section,
+.national-guard-theme header {
+  background-color: #ffffff !important;
+  color: #1B365D;
+}
+
+body.national-guard-theme .cursor-pointer,
+.national-guard-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.ng-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.ng-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 16px 32px -8px rgba(27, 54, 93, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.25) !important;
+}
+
+/* Counter box */
+.ng-counter-box {
+  transition: all 0.3s ease !important;
+}
+.ng-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #C5A059 !important;
+  box-shadow: 0 10px 25px rgba(27, 54, 93, 0.1) !important;
+}
+
+/* Reset for National Guard components */
+body.national-guard-theme a,
+body.national-guard-theme button,
+body.national-guard-theme label,
+body.national-guard-theme h1,
+body.national-guard-theme h2,
+body.national-guard-theme h3,
+body.national-guard-theme h4,
+body.national-guard-theme h5,
+body.national-guard-theme h6,
+body.national-guard-theme p,
+body.national-guard-theme span,
+body.national-guard-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.national-guard-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

@@ -1,0 +1,80 @@
+/* ─────────────────────────────────────────────────────────────
+   INVERSE & UNION TRADING — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/inverse&union/inverseunion.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --iu-navy: #0B2545;          /* Deep Smart Navy */
+  --iu-navy-dark: #071A33;
+  --iu-blue: #0080FF;          /* Electric Blue Accent */
+  --iu-blue-hover: #0066CC;
+  --iu-cyan: #00D2C8;          /* Cyan Teal Highlight */
+  --iu-white: #ffffff;
+  --iu-off-white: #F8FAFC;     /* Soft slate/off-white background */
+  --iu-border: #E2E8F0;
+  --iu-text-muted: #4A5568;
+  --iu-text-light: #718096;
+}
+
+body.inverse-union-theme,
+body.inverse-theme,
+.inverse-union-theme,
+.inverse-theme,
+body.inverse-union-theme main,
+body.inverse-union-theme section,
+body.inverse-union-theme header,
+.inverse-union-theme main,
+.inverse-union-theme section,
+.inverse-union-theme header {
+  background-color: #ffffff !important;
+  color: #4A5568;
+}
+
+body.inverse-union-theme .cursor-pointer,
+.inverse-union-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.iu-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.iu-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #0080FF !important;
+  box-shadow: 0 16px 32px -8px rgba(11, 37, 69, 0.16), 0 0 0 1px rgba(0, 210, 200, 0.25) !important;
+}
+
+/* Counter box */
+.iu-counter-box {
+  transition: all 0.3s ease !important;
+}
+.iu-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #0080FF !important;
+  box-shadow: 0 10px 25px rgba(11, 37, 69, 0.1) !important;
+}
+
+/* Reset for Inverse & Union Corporation components */
+body.inverse-union-theme a,
+body.inverse-union-theme button,
+body.inverse-union-theme label,
+body.inverse-union-theme h1,
+body.inverse-union-theme h2,
+body.inverse-union-theme h3,
+body.inverse-union-theme h4,
+body.inverse-union-theme h5,
+body.inverse-union-theme h6,
+body.inverse-union-theme p,
+body.inverse-union-theme span,
+body.inverse-union-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.inverse-union-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

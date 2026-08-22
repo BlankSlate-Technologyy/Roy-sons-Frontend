@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────
+   MAX WOOD CORPORATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/max-wood/maxwood.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --mw-primary: #5C3A21;       /* Warm Rich Wood Brown */
+  --mw-dark-wood: #3A2312;     /* Deep Solid Walnut */
+  --mw-darker-wood: #21140A;
+  --mw-gold: #D4A373;          /* Warm Wood Gold / Amber Accent */
+  --mw-gold-hover: #BA7A3E;
+  --mw-amber: #E6A15C;
+  --mw-white: #ffffff;
+  --mw-cream: #FDFBF7;         /* Soft warm cream-tinted background */
+  --mw-border: #E8DFD5;
+  --mw-text-muted: #5C5248;
+  --mw-text-light: #7A6F64;
+}
+
+body.max-wood-theme,
+body.wood-theme,
+.max-wood-theme,
+.wood-theme,
+body.max-wood-theme main,
+body.max-wood-theme section,
+body.max-wood-theme header,
+.max-wood-theme main,
+.max-wood-theme section,
+.max-wood-theme header {
+  background-color: #ffffff !important;
+  color: #5C5248;
+}
+
+body.max-wood-theme .cursor-pointer,
+.max-wood-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.mw-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.mw-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #5C3A21 !important;
+  box-shadow: 0 16px 32px -8px rgba(92, 58, 33, 0.16), 0 0 0 1px rgba(212, 163, 115, 0.25) !important;
+}
+
+/* Counter box */
+.mw-counter-box {
+  transition: all 0.3s ease !important;
+}
+.mw-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #5C3A21 !important;
+  box-shadow: 0 10px 25px rgba(92, 58, 33, 0.1) !important;
+}
+
+/* Reset for Max Wood Corporation components */
+body.max-wood-theme a,
+body.max-wood-theme button,
+body.max-wood-theme label,
+body.max-wood-theme h1,
+body.max-wood-theme h2,
+body.max-wood-theme h3,
+body.max-wood-theme h4,
+body.max-wood-theme h5,
+body.max-wood-theme h6,
+body.max-wood-theme p,
+body.max-wood-theme span,
+body.max-wood-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.max-wood-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}

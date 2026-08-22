@@ -1,640 +1,230 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight, Award, Zap, Battery, Truck, TrafficCone, Sun, Gauge, Users2,
-  ShieldCheck, Cloud, Wifi, LineChart, MapPinned, MapPin, Phone, MessageCircle,
-  Mail, Plus, Minus, Send, PlugZap, BatteryCharging, CheckCircle2, Search,
-  ScanSearch, ClipboardList, Wrench, Hammer, Building2, Landmark, School,
-  ShoppingBag, Factory, Fuel, Home as HomeIcon, Menu, X, ChevronLeft, ChevronRight,
+  Award,
+  BarChart3,
+  Battery,
+  BatteryCharging,
+  Building,
+  Building2,
+  CheckCircle2,
+  ChevronDown,
+  Cloud,
+  Cpu,
+  Factory,
+  FileText,
+  FlaskConical,
+  Gauge,
+  Globe,
+  HardHat,
+  HeartPulse,
+  Landmark,
+  Layers,
+  Leaf,
+  LineChart,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Mountain,
+  Package,
+  Phone,
+  PlugZap,
+  Search,
+  Send,
+  Shield,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  Sun,
+  TrafficCone,
+  TrendingUp,
+  Truck,
+  Users,
+  Users2,
+  Wifi,
+  Wrench,
+  Zap,
+  ArrowRight,
 } from "lucide-react";
-
-// ── Color System matching GTX German Technology Xpert Logo ──
-const COLORS = {
-  blue:         "#16A34A", // Official GTX Racing/Tech Blue
-  blueDark:     "#15803D",
-  blueSoft:     "#DCFCE7",
-  red:          "#16A34A", // Official GTX Racing Red Accent
-  redHover:     "#15803D",
-  charcoal:     "#202A36", // Official GTX Hexagon Charcoal Slate for text & dark panels
-  charcoalDark: "#052e16",
-  white:        "#FFFFFF",
-  bgLight:      "#F4F7FA", // Light grey-blue background
-  border:       "#D6E2F0",
-  textMuted:    "#3E4C5E",
-  textLight:    "#6B7A8E",
-};
-
-const HERO = {
-  badge: "German Engineering & EV Mobility Solutions",
-  headline: "German Technology Xpert (GTX)",
-  subline:
-    "Engineering the future of electric mobility, intelligent charging infrastructure, smart energy management, and high-performance battery technology. GTX brings German engineering precision to transform urban transport and green energy ecosystems.",
-  ctaPrimary: "Explore Solutions",
-  ctaSecondary: "Get In Touch",
-};
+import {
+  theme,
+  GTXNavbar,
+  GTXFooter,
+  SectionLabel,
+  SectionHeading,
+  AnimatedCounter,
+} from "./components/GTXShared";
 
 const STATS = [
-  { value: 15,  suffix: "+", label: "Years of Engineering Excellence" },
-  { value: 200, suffix: "+", label: "EV Infrastructure Projects" },
-  { value: 500, suffix: "+", label: "Charging Stations Installed" },
-  { value: 100, suffix: "+", label: "Technology & EV Experts" },
-  { value: 99,  suffix: "%", label: "Customer Satisfaction & Uptime" },
-  { value: 20,  suffix: "+", label: "Cities & Regions Served" },
+  { icon: Award, value: "15+", label: "Years of German\nEngineering Precision" },
+  { icon: PlugZap, value: "500+", label: "DC Fast Charging\nStations Installed" },
+  { icon: Truck, value: "200+", label: "Commercial & Fleet\nEV Projects Delivered" },
+  { icon: Users2, value: "100+", label: "Technology & EV\nPower Engineers" },
+  { icon: ShieldCheck, value: "99.8%", label: "Charging Network\nUptime Reliability" },
 ];
 
-const SOLUTIONS = [
-  { icon: Zap,          title: "Electric Vehicle Infrastructure", desc: "Comprehensive EV charging infrastructure for commercial, residential, and public applications." },
-  { icon: PlugZap,      title: "Smart EV Charging Stations",      desc: "Fast, reliable, and intelligent charging solutions with advanced monitoring and payment systems." },
-  { icon: Truck,        title: "Fleet Electrification",           desc: "Helping businesses transition their commercial fleets to electric mobility." },
-  { icon: TrafficCone,  title: "Smart Transportation Systems",    desc: "AI-powered traffic management, intelligent transport systems, and connected mobility technologies." },
-  { icon: Sun,          title: "Renewable Energy Integration",    desc: "Solar-powered EV charging systems and clean energy integration for sustainable transportation." },
-  { icon: Battery,      title: "Battery Energy Storage",          desc: "Advanced battery storage solutions for reliable and efficient power management." },
-  { icon: LineChart,    title: "Energy Management Systems",       desc: "Intelligent software platforms for monitoring, optimizing, and controlling energy usage." },
-  { icon: Users2,       title: "EV Consultancy",                  desc: "Strategic consulting, project planning, feasibility studies, and implementation support." },
+const SERVICES = [
+  {
+    icon: Zap,
+    title: "DC Ultra-Fast EV Charging",
+    desc: "Modular power cabinets scalable up to 360kW with liquid-cooled cables delivering 200–300 km in 12 mins.",
+    href: "/group-companies/GTX/services#dc-fast-charging",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
+  {
+    icon: Truck,
+    title: "Fleet Electrification Depots",
+    desc: "Turnkey depot charging infrastructure, automated overnight load balancing, and battery health telemetry.",
+    href: "/group-companies/GTX/services#fleet-electrification",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
+  {
+    icon: Battery,
+    title: "Battery Energy Storage (BESS)",
+    desc: "Containerized utility-scale LFP battery storage systems for peak shaving, buffer charging, and grid stability.",
+    href: "/group-companies/GTX/services#battery-storage",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
+  {
+    icon: Sun,
+    title: "Solar EV Canopy Integration",
+    desc: "Bifacial solar PV carports generating clean on-site electricity directly for EV fast charging hubs.",
+    href: "/group-companies/GTX/services#solar-charging",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
+  {
+    icon: LineChart,
+    title: "Smart Charging CMS Software",
+    desc: "Enterprise cloud telemetry platform with OCPP 2.0.1 compliance, dynamic load management, and billing.",
+    href: "/group-companies/GTX/services#energy-management",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Grid Interconnection & EPC",
+    desc: "Full high-voltage transformer sizing, utility power connection approvals, and certified commissioning.",
+    href: "/group-companies/GTX/services#ev-consultancy",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
 ];
 
-const WHY_CHOOSE = [
-  { title: "German Engineering Standards", desc: "Precision-engineered solutions built to world-class quality and reliability." },
-  { title: "Innovative Technologies",      desc: "Cutting-edge smart mobility and clean energy solutions." },
-  { title: "End-to-End Services",          desc: "Complete project management from consultation to installation and maintenance." },
-  { title: "Sustainable Solutions",        desc: "Reducing carbon emissions through environmentally responsible engineering." },
-  { title: "Expert Engineering Team",       desc: "Experienced engineers, energy specialists, and mobility consultants." },
-  { title: "Reliable Support",             desc: "Dedicated technical support and long-term service commitments." },
+const PRODUCTS_PREVIEW = [
+  {
+    name: "GTX HyperCharge 360kW DC Station",
+    tag: "Ultra-Fast Charging",
+    desc: "Dual liquid-cooled CCS-2 dispensers capable of 500A continuous output for highway corridors and smart cities.",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
+  {
+    name: "GTX PowerVault 2MWh BESS",
+    tag: "Grid Energy Storage",
+    desc: "Tier-1 Lithium Iron Phosphate (LFP) liquid-cooled containerized storage for peak shaving and buffer charging.",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
+  {
+    name: "GTX SolarFleet Bifacial Carport",
+    tag: "Solar EV Canopy",
+    desc: "Heavy-duty galvanized steel cantilever canopy with high-yield bifacial solar panels powering EV charging bays.",
+    img: "/gtx_hero_ev_mobility.svg",
+  },
 ];
 
-const INDUSTRIES = [
-  "Government Organizations",
-  "Smart Cities",
-  "Commercial Buildings",
-  "Residential Communities",
-  "Corporate Offices",
-  "Shopping Malls",
-  "Fuel & Service Stations",
-  "Transportation Companies",
-  "Manufacturing Industries",
-  "Educational Institutions",
-];
-
-const PROCESS = [
-  { step: "01", title: "Consultation",            desc: "Understanding project requirements and mobility objectives." },
-  { step: "02", title: "Site Assessment",         desc: "Technical surveys and infrastructure evaluation." },
-  { step: "03", title: "System Design",           desc: "Customized engineering designs and energy planning." },
-  { step: "04", title: "Installation",            desc: "Professional installation by certified engineering teams." },
-  { step: "05", title: "Testing & Commissioning", desc: "Performance validation and safety inspections." },
-  { step: "06", title: "Maintenance & Support",   desc: "Continuous monitoring, servicing, and technical assistance." },
-];
-
-const PRODUCTS = [
-  { icon: Zap,      title: "DC Fast Chargers",      desc: "Ultra-fast charging solutions for commercial and highway applications." },
-  { icon: PlugZap,  title: "AC Charging Stations",   desc: "Reliable charging systems for homes, offices, and public parking." },
-  { icon: Cloud,    title: "Smart Charging Software",desc: "Cloud-based charging management and monitoring platform." },
-  { icon: Battery,  title: "Energy Storage Systems", desc: "Advanced battery storage for uninterrupted power supply." },
-  { icon: Sun,      title: "Solar EV Charging",      desc: "Renewable energy-powered EV charging infrastructure." },
-  { icon: Wifi,     title: "Smart Grid Solutions",   desc: "Intelligent energy distribution and grid integration." },
-];
-
-const FEATURED_PROJECTS = [
-  { title: "Smart City EV Network",       desc: "Deployment of intelligent EV charging infrastructure across urban areas.", image: "/GTX-card1.png" },
-  { title: "Commercial Charging Hub",     desc: "High-capacity charging solutions for commercial vehicle fleets.", image: "/GTX-card2.png" },
-  { title: "Solar Charging Station",      desc: "Renewable energy-powered EV charging infrastructure.", image: "/GTX-card3.png" },
-  { title: "Corporate Fleet Electrification", desc: "Complete electric mobility transition for enterprise fleets.", image: "/GTX-card4.png" },
-];
-
-const TESTIMONIALS = [
-  { name: "Commercial Fleet Operator", role: "Fleet Director",     quote: "GTX helped us transition to electric vehicles with reliable charging infrastructure and exceptional technical support." },
-  { name: "Smart City Authority",     role: "Project Lead",       quote: "Their innovative EV charging solutions have significantly improved our city's sustainable transportation network." },
-  { name: "Corporate Client",          role: "Operations Manager", quote: "Professional engineering, world-class products, and outstanding customer service made GTX the perfect technology partner." },
+const PROCESS_STEPS = [
+  { num: "01", title: "Site Power Feasibility", desc: "Evaluating electrical grid capacity, utility transformer headroom, and physical parking transit flow." },
+  { num: "02", title: "Single-Line System Design", desc: "Developing customized CAD electrical layouts, cable tray routing, and dynamic load management schemes." },
+  { num: "03", title: "Utility Approvals & Civil Build", desc: "Managing DISCO power sanctioning, civil trenching, armored cable laying, and transformer installation." },
+  { num: "04", title: "Hardware Rigging & Wiring", desc: "Mounting modular DC fast charger cabinets, BESS battery containers, and solar PV canopy arrays." },
+  { num: "05", title: "OCPP Telemetry Commissioning", desc: "Testing galvanic safety insulation, cloud CMS integration, automated billing, and driver mobile apps." },
+  { num: "06", title: "24/7 SLA Operations", desc: "Providing round-the-clock remote station monitoring, predictive AI maintenance, and on-site technician response." },
 ];
 
 const FAQS = [
-  { q: "What services does GTX provide?", a: "We provide EV charging infrastructure, smart transportation systems, fleet electrification, renewable energy integration, battery storage, and energy management solutions." },
-  { q: "Do you provide complete installation services?", a: "Yes. Our certified engineering teams handle every stage — consultation, site assessment, system design, installation, testing, and commissioning." },
-  { q: "Can your charging stations support all EV brands?", a: "Our charging infrastructure is built to open standards and supports a wide range of EV brands and connector types." },
-  { q: "Do you provide maintenance and technical support?", a: "Yes. We offer continuous monitoring, servicing, predictive maintenance, and dedicated technical support for every installation." },
+  {
+    q: "What charging speeds do GTX DC fast chargers support?",
+    a: "GTX DC fast chargers range from 60kW and 120kW up to 360kW ultra-fast liquid-cooled systems capable of providing 200–300 km of driving range in approximately 10 to 12 minutes.",
+  },
+  {
+    q: "Are GTX chargers compatible with all electric vehicle brands in Pakistan?",
+    a: "Yes. Our chargers support universal standard European CCS-2 (Combined Charging System Type 2), CHAdeMO, and GB/T protocols, making them fully compatible with Audi e-tron, Porsche Taycan, MG ZS EV, Deepal, BYD, Haval, and all commercial electric buses.",
+  },
+  {
+    q: "Can GTX stations operate off-grid or with solar panels?",
+    a: "Yes. We engineer hybrid microgrid systems integrating bifacial solar carports and containerized Battery Energy Storage Systems (BESS) to provide clean, reliable fast charging independent of grid blackouts.",
+  },
+  {
+    q: "How do commercial hosts monetize GTX charging stations?",
+    a: "Our GTX CloudConnect CMS software automates user payment processing via JazzCash, Easypaisa, and credit cards. Operators can set custom per-kWh tariffs and time-of-use rates while monitoring revenue in real-time.",
+  },
 ];
 
-// Exact contact information requested by user
-const CONTACT_INFO = {
-  office: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
-  phone: "0092-42-38924737",
-  whatsapp: ["0092-304-7527498", "0092-321-8431665"],
-  emails: ["info@roysons.org", "support@roysons.org"],
-};
-
-// ── Animated Counter Component ──
-function StatCounterCard({ value, suffix, label }) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    let rafId;
-    const duration = 1800;
-    const startTime = performance.now();
-
-    const tick = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * value));
-      if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        setCount(value);
-      }
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [started, value]);
+export default function GTXHomePage() {
+  const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <div
-      ref={cardRef}
-      className="rounded-[24px] border border-[#D6E2F0] bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A]"
-    >
-      <p className="text-3xl lg:text-4xl font-black text-[#16A34A] mb-2 tabular-nums">
-        {count.toLocaleString()}
-        {suffix}
-      </p>
-      <p className="text-xs lg:text-sm font-semibold leading-relaxed text-[#3E4C5E]">{label}</p>
-    </div>
-  );
-}
-
-// ── Section Title ──
-function SectionHeader({ eyebrow, title, description, center }) {
-  return (
-    <div className={`${center ? "text-center" : ""} max-w-3xl mx-auto`}>
-      <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#16A34A] mb-3">
-        <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#16A34A]" />
-        {eyebrow}
-      </span>
-      <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#202A36] mb-4">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-sm md:text-base leading-relaxed text-[#3E4C5E]">{description}</p>
-      )}
-    </div>
-  );
-}
-
-// ── Service Card with hover ──
-function ServiceCard({ icon: Icon, title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A] hover:bg-[#F4F7FA]">
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#DCFCE7] text-[#16A34A] mb-6 transition-all duration-300 group-hover:bg-[#16A34A] group-hover:text-white group-hover:scale-110">
-        <Icon size={26} />
-      </div>
-      <h3 className="text-xl font-bold text-[#202A36] mb-3 transition-colors duration-300 group-hover:text-[#16A34A]">{title}</h3>
-      <p className="text-sm leading-relaxed text-[#3E4C5E]">{desc}</p>
-    </div>
-  );
-}
-
-// ── Feature Card ──
-function FeatureCard({ title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A]">
-      <div className="text-[#16A34A] text-3xl font-black mb-3 group-hover:scale-110 transition-transform">•</div>
-      <h3 className="text-lg font-black text-[#202A36] mb-3 transition-colors duration-300 group-hover:text-[#16A34A]">{title}</h3>
-      <p className="text-sm text-[#3E4C5E] leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-function QuoteIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
-      <path d="M9.5 7a3.5 3.5 0 0 0-3.5 3.5v1.75A3.5 3.5 0 0 0 9.5 15.75h.5v1.75a2.5 2.5 0 0 1-2.5 2.5H5.5a2.5 2.5 0 0 1-2.5-2.5V10.5A3.5 3.5 0 0 1 6.5 7h3Zm10 0a3.5 3.5 0 0 0-3.5 3.5v1.75A3.5 3.5 0 0 0 19.5 15.75h.5v1.75a2.5 2.5 0 0 1-2.5 2.5h-1.5a2.5 2.5 0 0 1-2.5-2.5V10.5A3.5 3.5 0 0 1 16.5 7h3Z" />
-    </svg>
-  );
-}
-
-// ── Process Card ──
-function ProcessStepCard({ step, title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D6E2F0] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A]">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#16A34A] text-white font-black group-hover:bg-[#16A34A] transition-all">{step}</div>
-        <h4 className="text-base font-bold text-[#202A36]">{title}</h4>
-      </div>
-      <p className="text-sm text-[#3E4C5E] leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-// ── Collapsible FAQ Item Component ──
-function FaqAccordionItem({ question, answer }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="rounded-[20px] border border-[#D6E2F0] bg-white transition-all duration-300 overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between gap-4 p-6 text-left group"
-      >
-        <h4 className="text-base font-bold text-[#202A36] transition-colors group-hover:text-[#16A34A]">{question}</h4>
-        <div className="w-8 h-8 rounded-full bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] flex-shrink-0 transition-transform duration-300 group-hover:bg-[#16A34A] group-hover:text-white">
-          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-        </div>
-      </button>
-      {isOpen && (
-        <div className="px-6 pb-6 pt-0 border-t border-[#DCFCE7]">
-          <p className="mt-3 text-sm leading-relaxed text-[#3E4C5E]">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Contact Form Component ──
-function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setError("Please fill in your name, email, and message.");
-      return;
-    }
-    setError("");
-    setIsSubmitting(true);
-
-    try {
-      const res = await fetch("/group-companies/GTX/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to submit message.");
-      }
-      setSubmitted(true);
-    } catch (err) {
-      setError(err.message || "Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="rounded-[28px] border border-[#D6E2F0] bg-white p-8 md:p-10 text-center shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-[#DCFCE7] text-[#16A34A] mx-auto flex items-center justify-center mb-5">
-          <CheckCircle2 size={32} />
-        </div>
-        <h3 className="text-2xl font-black text-[#202A36] mb-3">Thank You!</h3>
-        <p className="text-sm leading-relaxed text-[#3E4C5E] max-w-md mx-auto mb-6">
-          Thank you, {form.name}. Your inquiry has been received. Our engineering team will contact you shortly.
-        </p>
-        <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", subject: "", message: "" }); setSubmitted(false); }}
-          className="inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#16A34A]"
-        >
-          Send Another Message
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="rounded-[28px] border border-[#D6E2F0] bg-white p-8 md:p-10 shadow-sm">
-      <h3 className="text-2xl font-black text-[#202A36] mb-6">Request A Technology Consultation</h3>
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4C5E] mb-2">Full Name *</label>
-          <input
-            type="text" name="name" value={form.name} onChange={handleChange}
-            placeholder="John Doe"
-            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#16A34A] focus:bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4C5E] mb-2">Email Address *</label>
-          <input
-            type="email" name="email" value={form.email} onChange={handleChange}
-            placeholder="john@example.com"
-            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#16A34A] focus:bg-white"
-          />
-        </div>
-      </div>
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4C5E] mb-2">Phone Number</label>
-          <input
-            type="tel" name="phone" value={form.phone} onChange={handleChange}
-            placeholder="+92 300 1234567"
-            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#16A34A] focus:bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4C5E] mb-2">Service Type</label>
-          <select
-            name="subject"
-            value={form.subject}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all focus:border-[#16A34A] focus:bg-white"
-          >
-            <option value="">Select a service</option>
-            <option value="EV Infrastructure">EV Infrastructure</option>
-            <option value="Fleet Electrification">Fleet Electrification</option>
-            <option value="Smart Charging">Smart Charging</option>
-            <option value="Renewable Integration">Renewable Integration</option>
-            <option value="Energy Management">Energy Management</option>
-          </select>
-        </div>
-      </div>
-      <div className="mb-5">
-        <label className="block text-xs font-bold uppercase tracking-wider text-[#3E4C5E] mb-2">Project Details *</label>
-        <textarea
-          name="message" value={form.message} onChange={handleChange} rows={4}
-          placeholder="Tell us about your technical requirements..."
-          className="w-full rounded-xl border border-[#D6E2F0] bg-[#F8FAFC] px-4 py-3.5 text-sm text-[#202A36] outline-none transition-all resize-none focus:border-[#16A34A] focus:bg-white"
-        />
-      </div>
-
-      {error && <p className="text-xs font-bold text-red-600 mb-4">{error}</p>}
-
-      <button
-        type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#16A34A] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#16A34A] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-      >
-        Submit Inquiry <Send size={15} />
-      </button>
-    </form>
-  );
-}
-
-// ── GTX Navbar ──
-function GTXNavbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Products", href: "#products" },
-    { label: "Industries", href: "#industries" },
-    { label: "Contact", href: "#contact" },
-  ];
-  return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D6E2F0]">
-      <div className="hidden md:block bg-[#052e16] text-white py-2 px-6">
-        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
-          <div className="flex items-center gap-6 text-white/80">
-            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
-            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
-            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
-          </div>
-          <span className="text-xs font-bold text-[#16A34A]">GTX — German Technology Xpert</span>
-        </div>
-      </div>
-      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-[#16A34A] flex items-center justify-center group-hover:scale-105 transition-transform">
-            <Zap size={22} color="#fff" />
-          </div>
-          <div>
-            <p className="text-base font-black tracking-tight text-[#16A34A] leading-none">GTX</p>
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#3E4C5E]">German Technology Xpert</p>
-          </div>
-        </a>
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#202A36]">
-          {navLinks.map(l => (
-            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#16A34A] group transition-colors">
-              {l.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#16A34A] transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
-        <div className="hidden lg:flex items-center gap-3">
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#15803D] hover:scale-105 transition-all">
-            <MessageCircle size={14} /> Get In Touch
-          </a>
-        </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#F4F7FA] text-[#16A34A]">
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-      {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-[#D6E2F0] px-6 py-5 space-y-3">
-          {navLinks.map(l => (
-            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
-              className="block text-sm font-bold text-[#202A36] hover:text-[#16A34A] py-1">{l.label}</a>
-          ))}
-          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#16A34A] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
-            <MessageCircle size={14} /> Get In Touch
-          </a>
-        </div>
-      )}
-    </header>
-  );
-}
-
-// ── GTX Footer ──
-function GTXFooter() {
-  return (
-    <footer style={{ background: "#16A34A" }} className="text-white">
-      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-              <Zap size={20} color="#fff" />
-            </div>
-            <div>
-              <p className="font-black text-lg leading-none">GTX</p>
-              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">German Technology Xpert</p>
-            </div>
-          </div>
-          <p className="text-sm text-white/80 leading-relaxed mb-5">Cutting-edge German engineering and technology solutions for EV charging, smart systems, and industrial applications across Pakistan.</p>
-          <div className="space-y-2 text-xs text-white/75">
-            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0" />{CONTACT_INFO.office}</p>
-            <p className="flex items-center gap-2"><Phone size={14} />{CONTACT_INFO.phone}</p>
-            <p className="flex items-center gap-2"><Mail size={14} />{CONTACT_INFO.emails[0]}</p>
-          </div>
-        </div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-wider mb-5">Quick Links</h4>
-          <ul className="space-y-2.5 text-sm text-white/80">
-            {["About Us","Services","Products","Industries","Contact"].map(l => (
-              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-wider mb-5">Contact Us</h4>
-          <div className="space-y-3 text-xs text-white/80">
-            <p className="flex items-center gap-2"><MessageCircle size={14} /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
-            <p className="flex items-center gap-2"><Mail size={14} />{CONTACT_INFO.emails[0]}</p>
-            <p className="flex items-center gap-2"><Phone size={14} />{CONTACT_INFO.phone}</p>
-          </div>
-          <div className="mt-6 pt-6 border-t border-white/20">
-            <Link href="/group-companies" className="text-xs text-white/70 hover:text-white transition-colors">← Back to Roysons Group</Link>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/60">
-        © {new Date().getFullYear()} GTX — German Technology Xpert. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
-      </div>
-    </footer>
-  );
-}
-
-// ── Main Page Component ──
-export default function GTXPage() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-
-  useEffect(() => {
-    document.body.classList.add("roys-roys-theme", "gtx-theme");
-    document.body.style.backgroundColor = "#FFFFFF";
-    document.body.style.color = COLORS.charcoal;
-    return () => {
-      document.body.classList.remove("roys-roys-theme", "gtx-theme");
-      document.body.style.backgroundColor = "";
-      document.body.style.color = "";
-    };
-  }, []);
-
-  useEffect(() => {
-    if (TESTIMONIALS.length <= 1) return undefined;
-
-    const timer = window.setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, 5000);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const activeTestimonialItem = TESTIMONIALS[activeTestimonial];
-
-  return (
-    <main className="roys-roys-theme gtx-theme font-sans bg-white text-[#202A36] selection:bg-[#16A34A] selection:text-white">
-      {/* Styles to bypass global dark override from globals.css */}
-      <style>{`
-        html, body {
-          background-color: #FFFFFF !important;
-          color: #202A36 !important;
-          color-scheme: light !important;
-        }
-        .gtx-theme h1,
-        .gtx-theme h2,
-        .gtx-theme h3,
-        .gtx-theme h4,
-        .gtx-theme h5,
-        .gtx-theme h6,
-        .gtx-theme p,
-        .gtx-theme span,
-        .gtx-theme li,
-        .gtx-theme a,
-        .gtx-theme label,
-        .gtx-theme button,
-        .gtx-theme input,
-        .gtx-theme textarea {
-          -webkit-text-fill-color: initial !important;
-          background-image: none !important;
-        }
-      `}</style>
-
+    <main className="min-h-screen bg-white text-[#202A36] font-sans antialiased overflow-x-hidden">
       <GTXNavbar />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-[#D6E2F0]">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/GTX_hero.png')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#052e16]/90 via-[#14532d]/80 to-[#16A34A]/70" />
-        <div className="relative mx-auto max-w-screen-xl px-6 py-12 lg:py-20">
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#BBF7D0] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#16A34A] shadow-sm">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#16A34A]" />
-              {HERO.badge}
-            </span>
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
-              German Technology Xpert <span className="text-[#16A34A]">(GTX)</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-100">
-              {HERO.subline}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="#solutions"
-                className="inline-flex items-center gap-2 rounded-full bg-[#16A34A] px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#16A34A] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-              >
-                {HERO.ctaPrimary} <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#16A34A] hover:scale-[1.02] active:scale-95"
-              >
-                {HERO.ctaSecondary}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="bg-white px-6 py-16 lg:py-20 border-b border-[#D6E2F0]">
+      {/* Hero Section with EV Hub Visual */}
+      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
-            <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#16A34A] mb-3">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#16A34A]" />
-                About GTX
-              </span>
-              <h2 className="text-3xl md:text-4xl font-black text-[#202A36] mb-5">Engineering Smarter Mobility For Tomorrow</h2>
-              <p className="text-base leading-relaxed text-[#3E4C5E] mb-6">
-                GTX brings together German engineering precision, smart charging technology, and sustainable energy solutions to power the future of transportation.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7">
+              <SectionLabel>German Engineering &amp; EV Mobility Solutions</SectionLabel>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.charcoal }}>
+                German Technology Xpert. <span style={{ color: theme.primary }}>Future Electric Mobility.</span>
+              </h1>
+
+              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
+                Engineering the future of electric mobility, intelligent charging infrastructure, smart energy management, and high-performance battery technology. GTX brings German engineering precision to transform urban transport and green energy ecosystems.
               </p>
-              <p className="text-base leading-relaxed text-[#3E4C5E]">
-                From EV infrastructure to fleet electrification and renewable integration, we deliver reliable systems for governments, enterprises, and modern urban environments.
-              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/group-companies/GTX/products"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  style={{ backgroundColor: theme.primary }}
+                >
+                  <span>Explore EV Products</span>
+                  <ArrowRight size={16} />
+                </Link>
+
+                <Link
+                  href="/group-companies/GTX/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
+                  style={{ borderColor: theme.border, color: theme.charcoal }}
+                >
+                  <span>Get In Touch</span>
+                </Link>
+              </div>
             </div>
-            <div className="relative overflow-hidden rounded-[28px] border border-[#D6E2F0] bg-[#F4F7FA] shadow-sm">
-              <Image
-                src="/GTX-about.png"
-                alt="GTX electric mobility systems"
-                width={900}
-                height={700}
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071a2f]/70 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
-                  <h3 className="text-xl font-black text-white uppercase tracking-wide">SMART EV SOLUTIONS</h3>
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#dcecff] mt-1">GTX</p>
+
+            {/* Right Hero Image Card */}
+            <div className="lg:col-span-5 w-full flex justify-center">
+              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/gtx_hero_ev_mobility.svg"
+                  alt="GTX German EV Mobility Solutions"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-black uppercase tracking-wider text-[#16A34A]">
+                        500+ Fast Chargers Installed
+                      </span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    </div>
+                    <p className="text-sm font-bold" style={{ color: theme.charcoal }}>
+                      360kW DC Fast Charging · Solar Carports · BESS
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -643,305 +233,330 @@ export default function GTXPage() {
       </section>
 
       {/* Stats Counter Section */}
-      <section className="bg-white px-6 py-14 lg:py-20 border-b border-[#D6E2F0]">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-6">
-            {STATS.map((stat, index) => (
-              <StatCounterCard key={index} value={stat.value} suffix={stat.suffix} label={stat.label} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Solutions Section */}
-      <section id="solutions" className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-b border-[#D6E2F0]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Solutions"
-            title="Complete Electric Mobility Ecosystem"
-            description="GTX delivers end-to-end electric vehicle infrastructure, smart charging technology, and sustainable energy storage systems."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {SOLUTIONS.map((item, index) => (
-              <ServiceCard key={index} icon={item.icon} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D6E2F0]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Hardware & Software"
-            title="Hardware Built For The Grid"
-            description="High-performance charging hardware and cloud-based management software engineered for durability and efficiency."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {PRODUCTS.map((item, index) => (
-              <ServiceCard key={index} icon={item.icon} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Section */}
-      <section className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-b border-[#D6E2F0]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader eyebrow="Industries" title="Supporting Every Sector" description="Deploying smart EV charging solutions across diverse commercial and public environments." center />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {INDUSTRIES.map((industry, index) => (
-              <div
-                key={index}
-                className="group rounded-2xl border border-[#D6E2F0] bg-white p-5 text-sm font-semibold text-[#202A36] text-center transition-all duration-300 hover:border-[#16A34A] hover:bg-[#16A34A] hover:text-white hover:shadow-md"
-              >
-                {industry}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose GTX Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D6E2F0]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Why Choose GTX"
-            title="Your Trusted Electric Mobility Partner"
-            description="Combining German precision engineering with sustainable clean energy technology."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {WHY_CHOOSE.map((item, index) => (
-              <FeatureCard key={index} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="bg-[#F4F7FA] px-6 py-16 lg:py-24 border-b border-[#D6E2F0]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Process"
-            title="Disciplined Engineering Workflow"
-            description="From initial consultation to installation and 24/7 technical monitoring."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PROCESS.map((item, index) => (
-              <ProcessStepCard key={index} step={item.step} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section id="projects" className="bg-white px-6 py-16 lg:py-24 border-b border-[#D6E2F0]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Featured Projects"
-            title="Trusted by Fleet Operators & Smart Cities"
-            description="Selected highlights of EV charging infrastructure successfully deployed."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {FEATURED_PROJECTS.map((project, index) => (
-              <div key={index} className="group overflow-hidden rounded-[28px] border border-[#D6E2F0] bg-[#F4F7FA] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#16A34A]">
-                <div className="relative h-52 w-full">
-                  <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-base font-bold text-[#202A36] group-hover:text-[#16A34A] transition-colors mb-2">{project.title}</h3>
-                  <p className="text-xs text-[#3E4C5E] leading-relaxed">{project.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials & FAQs */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D6E2F0]">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] items-start">
-            <div>
-              <SectionHeader
-                eyebrow="Testimonials"
-                title="What Our Partners Say"
-              />
-              <div className="mt-8 rounded-[28px] border border-[#D6E2F0] bg-[#F4F7FA] p-8 shadow-sm">
-                <div className="flex items-center justify-between gap-4 mb-6">
-                  <div className="flex items-center gap-2 text-[#16A34A]">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#16A34A] shadow-sm">
-                      <QuoteIcon />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-[0.25em] text-[#16A34A]">Client Feedback</p>
-                      <p className="text-sm font-semibold text-[#3E4C5E]">Trusted by industry leaders</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setActiveTestimonial((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1))}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D6E2F0] bg-white text-[#16A34A] transition hover:border-[#16A34A] hover:bg-[#DCFCE7]"
-                      aria-label="Previous testimonial"
-                    >
-                      <ChevronLeft size={18} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveTestimonial((prev) => (prev + 1) % TESTIMONIALS.length)}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D6E2F0] bg-white text-[#16A34A] transition hover:border-[#16A34A] hover:bg-[#DCFCE7]"
-                      aria-label="Next testimonial"
-                    >
-                      <ChevronRight size={18} />
-                    </button>
-                  </div>
-                </div>
-
-                <p className="text-base italic leading-relaxed text-[#3E4C5E] mb-6">“{activeTestimonialItem.quote}”</p>
-                <p className="font-black text-[#202A36]">{activeTestimonialItem.name}</p>
-                <p className="text-xs text-[#16A34A] font-bold mt-1">{activeTestimonialItem.role}</p>
-
-                <div className="mt-6 flex gap-2">
-                  {TESTIMONIALS.map((_, index) => (
-                    <button
-                      key={index}
-                      type="button"
-                      onClick={() => setActiveTestimonial(index)}
-                      className={`h-2.5 rounded-full transition-all ${index === activeTestimonial ? "w-8 bg-[#16A34A]" : "w-2.5 bg-[#C9D8EA]"}`}
-                      aria-label={`Go to testimonial ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <SectionHeader
-                eyebrow="Frequently Asked Questions"
-                title="Common Questions"
-                description="Answers to common questions regarding our EV charging infrastructure and technologies."
-              />
-              <div className="mt-8 grid gap-4">
-                {FAQS.map((item, index) => (
-                  <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Us Section with User Information */}
-      <section id="contact" className="bg-[#F4F7FA] px-6 py-16 lg:py-24">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Get In Touch"
-            title="Contact German Technology Xpert (GTX)"
-            description="Discuss your EV mobility project, fleet electrification, or infrastructure requirements with our engineers."
-          />
-          <div className="mt-12 grid gap-10 lg:grid-cols-12 items-start">
-            <div className="lg:col-span-7">
-              <ContactForm />
-            </div>
-
-            <div className="lg:col-span-5 rounded-[28px] bg-[#16A34A] p-8 md:p-10 text-white shadow-xl flex flex-col justify-between h-full">
-              <div>
-                <span className="text-xs uppercase tracking-[0.25em] font-black text-[#16A34A]">Contact Details</span>
-                <h3 className="mt-3 text-2xl font-black text-white mb-6">Talk To Our Team</h3>
-                <p className="text-sm leading-relaxed text-[#D6E2F0] mb-8">
-                  Our EV engineering team responds to every technical inquiry within one business day.
-                </p>
-
-                <div className="space-y-6 text-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <MapPin size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#16A34A] mb-1">Our Office</p>
-                      <p className="text-white leading-relaxed">{CONTACT_INFO.office}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <Phone size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#16A34A] mb-1">Call Us</p>
-                      <p className="text-white font-bold">Phone: {CONTACT_INFO.phone}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <MessageCircle size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#16A34A] mb-1">WhatsApp</p>
-                      {CONTACT_INFO.whatsapp.map((num) => (
-                        <p key={num} className="text-white font-semibold">{num}</p>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <Mail size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#16A34A] mb-1">Email Us</p>
-                      {CONTACT_INFO.emails.map((mail) => (
-                        <p key={mail} className="text-white font-medium">{mail}</p>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 pt-6 border-t border-white/15 text-xs text-[#D6E2F0]">
-                &copy; {new Date().getFullYear()} German Technology Xpert (GTX). All Rights Reserved.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white px-6 py-16 lg:py-20 border-t border-[#D6E2F0]">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
-            <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#16A34A] mb-3">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#16A34A]" />
-                Our Location
-              </span>
-              <h3 className="text-3xl md:text-4xl font-black text-[#202A36] mb-4">Visit Our Office</h3>
-              <p className="text-base leading-relaxed text-[#3E4C5E] mb-6">
-                We welcome project discussions, technical consultations, and site planning meetings at our Lahore office.
-              </p>
-              <div className="rounded-[24px] border border-[#D6E2F0] bg-[#F4F7FA] p-6">
-                <p className="text-sm font-semibold text-[#202A36]">{CONTACT_INFO.office}</p>
-                <a
-                  href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#16A34A] hover:text-[#15803D]"
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {STATS.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className="gtx-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
                 >
-                  Open in Google Maps <ArrowRight size={16} />
-                </a>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.primary}10` }}>
+                    <Icon size={22} style={{ color: theme.primary }} />
+                  </div>
+                  <div className="mb-1" style={{ color: theme.charcoal }}>
+                    <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
+                  </div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                    {stat.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Visual */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/gtx_hero_ev_mobility.svg"
+                  alt="GTX German Engineering Excellence"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <p className="text-xs font-black uppercase tracking-widest text-[#22C55E] mb-1">
+                      German Engineering Rigor
+                    </p>
+                    <h4 className="text-base font-bold">Liquid-Cooled 500A Ultra-Fast Power Architecture</h4>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-[28px] border border-[#D6E2F0] shadow-sm">
-              <iframe
-                src="https://www.google.com/maps?q=Lahore%20Pakistan&output=embed"
-                title="GTX Location"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-[420px] w-full border-0"
-              />
+            {/* Right Text */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <SectionLabel>About Our Enterprise</SectionLabel>
+              <SectionHeading className="mb-6">Shaping The Future Of Smart Clean Mobility</SectionHeading>
+
+              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                German Technology Xpert (GTX) delivers world-class electric vehicle charging infrastructure, battery storage systems, and smart grid automation. Combining German precision with comprehensive turnkey EPC execution, we empower businesses, fleet operators, and smart cities to electrify smoothly.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} className="text-[#16A34A] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">DIN &amp; IEC Certified European Standards</span>
+                </div>
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} className="text-[#16A34A] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">99.8% Guaranteed Network Uptime SLA</span>
+                </div>
+              </div>
+
+              <Link
+                href="/group-companies/GTX/about"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#16A34A]"
+              >
+                <span>Read Full Corporate Profile</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>What We Deliver</SectionLabel>
+              <SectionHeading>Our Core Capabilities</SectionHeading>
+            </div>
+
+            <Link
+              href="/group-companies/GTX/services"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.charcoal }}
+            >
+              <span>View All 6 Capabilities</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES.map((svc) => {
+              const Icon = svc.icon;
+              return (
+                <div
+                  key={svc.title}
+                  className="gtx-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div>
+                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                      <Image
+                        src={svc.img}
+                        alt={svc.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+
+                    <div className="p-7">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.primary}10` }}>
+                        <Icon size={20} style={{ color: theme.primary }} />
+                      </div>
+
+                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.charcoal }}>
+                        {svc.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                        {svc.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-7 pt-0">
+                    <Link
+                      href={svc.href}
+                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      style={{ borderColor: theme.border, color: theme.charcoal }}
+                    >
+                      <span>Explore Capability</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>Hardware &amp; Systems</SectionLabel>
+              <SectionHeading>Featured EV Products</SectionHeading>
+            </div>
+
+            <Link
+              href="/group-companies/GTX/products"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.primary }}
+            >
+              <span>View All Products</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {PRODUCTS_PREVIEW.map((p) => (
+              <div
+                key={p.name}
+                className="gtx-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                style={{ borderColor: theme.border }}
+              >
+                <div>
+                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-7">
+                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#16A34A]/10 text-[#16A34A] inline-block mb-3">
+                      {p.tag}
+                    </span>
+                    <h3 className="text-xl font-black mb-2" style={{ color: theme.charcoal }}>
+                      {p.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-7 pt-0">
+                  <Link
+                    href="/group-companies/GTX/contact"
+                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
+                    style={{ borderColor: theme.border, color: theme.charcoal }}
+                  >
+                    <span>Request Specs</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Pathway Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Disciplined Protocol</SectionLabel>
+            <SectionHeading center className="mb-4">6-Stage EV EPC Lifecycle</SectionHeading>
+            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+              From initial site grid load flow analysis to certified installation and 24/7 cloud telemetry.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROCESS_STEPS.map((step) => (
+              <div
+                key={step.num}
+                className="p-8 rounded-3xl border bg-white shadow-xs flex flex-col justify-between"
+                style={{ borderColor: theme.border }}
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm text-white mb-6 shadow-sm" style={{ backgroundColor: theme.primary }}>
+                    {step.num}
+                  </div>
+                  <h4 className="text-base font-bold mb-3" style={{ color: theme.charcoal }}>
+                    {step.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <SectionLabel center>Frequently Asked Questions</SectionLabel>
+            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {FAQS.map((faq, idx) => (
+              <div
+                key={faq.q}
+                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
+                style={{ borderColor: theme.border }}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
+                  style={{ color: theme.charcoal }}
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-300 flex-shrink-0 ${
+                      openFaq === idx ? "rotate-180 text-[#16A34A]" : "text-slate-400"
+                    }`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+            <div>
+              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#16A34A]">
+                READY TO ELECTRIFY YOUR INFRASTRUCTURE?
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.charcoal }}>
+                Schedule An EV Engineering Feasibility Study
+              </h2>
+              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
+                Connect with our senior power engineers to review hardware specifications, electrical grid capacity, and turnkey deployment timelines.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+              <Link
+                href="/group-companies/GTX/contact"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.primary }}
+              >
+                <span>Request EV Consultation</span>
+                <ArrowRight size={15} />
+              </Link>
+              <a
+                href="tel:00924238924737"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
+                style={{ borderColor: theme.charcoal, color: theme.charcoal }}
+              >
+                <Phone size={15} />
+                <span>0092-42-38924737</span>
+              </a>
             </div>
           </div>
         </div>

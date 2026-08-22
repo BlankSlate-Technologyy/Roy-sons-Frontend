@@ -1,673 +1,207 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ArrowRight, Award, Briefcase, TrendingUp, Handshake, Leaf, Target,
-  Settings, ShieldCheck, CheckCircle2, MapPin, Phone, MessageCircle, Mail,
-  Plus, Minus, Send, Factory, Snowflake, Package, Boxes, FlaskConical,
-  Milk, Wheat, Croissant, GlassWater, Beaker, Refrigerator, Sprout, ScanLine,
-  Store, ShoppingCart, Building2, UtensilsCrossed, Globe2, Landmark,
-  GraduationCap, HeartPulse, PlaneTakeoff, Truck, Search, Compass, Users2, Menu, X,
-  ChevronLeft, ChevronRight,
+  Award,
+  Boxes,
+  Briefcase,
+  CheckCircle2,
+  ChevronDown,
+  Clock,
+  Factory,
+  FlaskConical,
+  Package,
+  Phone,
+  Search,
+  Send,
+  ShieldCheck,
+  Snowflake,
+  Sparkles,
+  TrendingUp,
+  Truck,
+  Users2,
+  UtensilsCrossed,
+  ArrowRight,
 } from "lucide-react";
-
-// ── Color System matching Walton & Morris Foods Logo ──
-const COLORS = {
-  green:        "#1E6B43", // Official Logo Forest Green (Wheat & "W" emblem)
-  greenDark:    "#134A2D",
-  ochre:        "#D89C46", // Official Logo Golden Harvest Ochre (Gear & Leaf)
-  ochreHover:   "#BC8330",
-  navy:         "#0B1B36", // Official Logo Deep Navy Blue (Typography)
-  navyDark:     "#061022",
-  white:        "#FFFFFF",
-  bgLight:      "#F4F8F5", // Light green-tinted background
-  border:       "#D3E4DB",
-  textMuted:    "#3D4E44",
-  textLight:    "#6B7D72",
-};
-
-const HERO = {
-  badge: "Leading Food Manufacturing & Processing Enterprise",
-  headline: "Walton & Morris Foods",
-  subline:
-    "Producing quality food, nourishing every generation. Walton & Morris Foods specializes in modern food processing, frozen foods, packaged consumer goods, dairy, ready-to-eat meals, and private label manufacturing engineered to global quality standards.",
-  ctaPrimary: "Explore Products",
-  ctaSecondary: "Talk To Our Team",
-};
+import {
+  theme,
+  WaltonFoodNavbar,
+  WaltonFoodFooter,
+  SectionLabel,
+  SectionHeading,
+  AnimatedCounter,
+} from "./components/WaltonFoodShared";
 
 const STATS = [
-  { value: 20,     suffix: "+",          label: "Years of Manufacturing Excellence" },
-  { value: 400,    suffix: "+",          label: "Food Products Manufactured" },
-  { value: 120000, suffix: " Tons",      label: "Annual Production Capacity" },
-  { value: 300,    suffix: "+",          label: "Skilled Food Technologists" },
-  { value: 99.8,   suffix: "%",          label: "Quality & Safety Pass Rate" },
+  { icon: Award, value: "20+", label: "Years of Manufacturing\nExcellence" },
+  { icon: Package, value: "400+", label: "Food Products\nManufactured" },
+  { icon: Factory, value: "120000", label: "Tons Annual\nProduction Capacity" },
+  { icon: Users2, value: "300+", label: "Skilled Food\nTechnologists" },
+  { icon: ShieldCheck, value: "99.8%", label: "Quality & Safety\nPass Rate" },
 ];
 
 const SERVICES = [
-  { icon: Factory,       title: "Modern Food Processing",      desc: "High-volume processing of agricultural produce, grains, pulses, and dairy with automated processing lines." },
-  { icon: Snowflake,     title: "Frozen Food Production",      desc: "Flash-frozen vegetables, ready-to-cook snacks, meats, and convenience items using IQF technology." },
-  { icon: Package,       title: "Packaged Consumer Goods",     desc: "Retail-ready packaged foods produced under strict hygiene protocols and export-grade packaging." },
-  { icon: Boxes,         title: "Private Label Manufacturing",  desc: "Turnkey private label production for supermarkets, retail brands, and international distributors." },
-  { icon: FlaskConical,  title: "Food R&D & Product Innovation",desc: "Culinary R&D laboratory creating custom recipes, flavor profiles, and shelf-life extension." },
-  { icon: ShieldCheck,   title: "Quality Control & Assurance", desc: "HACCP and ISO-22000 certified food safety testing, traceability, and batch inspections." },
+  {
+    icon: Factory,
+    title: "Modern Food Processing",
+    desc: "High-volume processing of agricultural produce, grains, pulses, and dairy with automated optical sorting and aseptic canning.",
+    href: "/group-companies/walton-mirror-food/services#modern-processing",
+    img: "/waltonfood_hero_processing.svg",
+  },
+  {
+    icon: Snowflake,
+    title: "Frozen Food Production (IQF)",
+    desc: "Flash-frozen vegetables, French fries, ready-to-cook snacks, and layered parathas using sub-zero -38°C cryogenic IQF technology.",
+    href: "/group-companies/walton-mirror-food/services#frozen-production",
+    img: "/waltonfood_hero_processing.svg",
+  },
+  {
+    icon: Package,
+    title: "Packaged Consumer Goods (FMCG)",
+    desc: "Retail-ready shelf-stable retort meal pouches, MAP fresh packaging, biscuits, and extruded snacks.",
+    href: "/group-companies/walton-mirror-food/services#packaged-goods",
+    img: "/waltonfood_hero_processing.svg",
+  },
+  {
+    icon: Boxes,
+    title: "Private Label & OEM Manufacturing",
+    desc: "Turnkey private label co-packing for national supermarkets, FMCG brand owners, and international export distributors.",
+    href: "/group-companies/walton-mirror-food/services#private-label",
+    img: "/waltonfood_hero_processing.svg",
+  },
+  {
+    icon: FlaskConical,
+    title: "Food R&D & Recipe Innovation",
+    desc: "Culinary science laboratory creating custom formulations, shelf-life acceleration testing, and clean-label solutions.",
+    href: "/group-companies/walton-mirror-food/services#food-rd",
+    img: "/waltonfood_hero_processing.svg",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Quality Control & Assurance",
+    desc: "HACCP and ISO 22000 certified food safety testing, in-line metal detection, and batch spectrometry tracking.",
+    href: "/group-companies/walton-mirror-food/services#quality-assurance",
+    img: "/waltonfood_hero_processing.svg",
+  },
 ];
 
-const PRODUCTS = [
-  { icon: Snowflake,      title: "Frozen Foods & Snacks",      desc: "Flash-frozen vegetables, fries, and ready-to-cook appetizers." },
-  { icon: UtensilsCrossed,title: "Ready-to-Eat Meals",        desc: "Chef-curated ready meals in retort and fresh packaging." },
-  { icon: Milk,           title: "Dairy Products",            desc: "UHT milk, cheese, butter, cream, and dairy ingredients." },
-  { icon: Croissant,      title: "Bakery & Confectionery",    desc: "Biscuits, baked goods, breads, and confectionery lines." },
-  { icon: GlassWater,     title: "Beverages & Juices",        desc: "Natural fruit juices, flavored drinks, and liquid refreshments." },
-  { icon: Beaker,         title: "Sauces & Condiments",       desc: "Ketchups, dressings, spices, and culinary seasonings." },
+const SOLUTIONS_PREVIEW = [
+  {
+    name: "Walton Gold Frozen Foods",
+    tag: "IQF Frozen Foods",
+    desc: "Flash-frozen French fries, green peas, sweet corn, stuffed parathas, and samosas locked in at -38°C.",
+    img: "/waltonfood_hero_processing.svg",
+  },
+  {
+    name: "Walton Chef Ready-to-Eat Meals",
+    tag: "Retort Pouches",
+    desc: "Authentic Biryani, Nihari, Chicken Karahi, and Daal in 12-month ambient storage retort pouches.",
+    img: "/waltonfood_hero_processing.svg",
+  },
+  {
+    name: "Walton Dairy UHT Line",
+    tag: "UHT Milk & Butter",
+    desc: "Direct steam injection pasteurized UHT full-cream milk, butter, cheese, and pure dairy ghee.",
+    img: "/waltonfood_hero_processing.svg",
+  },
 ];
 
-const WHY_CHOOSE = [
-  { title: "Premium Quality Standards", desc: "Using farm-fresh raw materials processed under strict HACCP and ISO certifications." },
-  { title: "Automated Production Lines",desc: "State-of-the-art European processing equipment ensuring consistency and high output." },
-  { title: "Cold Chain Logistics",      desc: "Temperature-controlled warehousing and refrigerated transport for zero spoilage." },
-  { title: "Flexible Private Labeling", desc: "Tailored recipe formulation, packaging design, and private label manufacturing." },
-  { title: "R&D Culinary Expertise",   desc: "Dedicated food scientists and master chefs developing market-trending products." },
-  { title: "Global Export Reach",       desc: "Exporting food products to over 25 countries across Europe, Middle East, and Asia." },
-];
-
-const INDUSTRIES = [
-  "Retail Supermarkets",
-  "FMCG Brands",
-  "Hospitality & Hotels",
-  "Restaurants & Fast Food",
-  "Food Service Distributors",
-  "Export Importers",
-  "Wholesale Buyers",
-  "Government Food Reserves",
-  "Educational Catering",
-  "Healthcare Dining",
-];
-
-const PROCESS = [
-  { step: "01", title: "Ingredient Sourcing",    desc: "Selecting farm-fresh agricultural produce and quality-tested ingredients." },
-  { step: "02", title: "Lab Inspection",         desc: "Rigorous testing for purity, moisture, micro-biology, and safety." },
-  { step: "03", title: "Automated Processing",   desc: "Washing, sorting, cooking, processing, and flash freezing." },
-  { step: "04", title: "Hygienic Packaging",     desc: "Sealing in food-grade, MAP (Modified Atmosphere), or vacuum packaging." },
-  { step: "05", title: "Cold Storage",           desc: "Holding finished goods in climate-controlled, automated warehouses." },
-  { step: "06", title: "Distribution",           desc: "Refrigerated transport and export dispatch with full batch tracking." },
-];
-
-const FEATURED_PROJECTS = [
-  { title: "IQF Frozen Food Processing Plant",  desc: "High-capacity flash freezing facility for fruits and vegetables.", image: "/project-industrial.png" },
-  { title: "Automated Dairy & Beverage Line",   desc: "High-speed UHT milk bottling and juice packaging facility.", image: "/project-infrastructure.png" },
-  { title: "Private Label Snack Manufacturing", desc: "Turnkey snack production for international supermarket chains.", image: "/project-commercial.png" },
-  { title: "Centralized Cold Storage Hub",     desc: "10,000-ton capacity refrigerated distribution warehouse.", image: "/project-infrastructure.png" },
-];
-
-const TESTIMONIALS = [
-  { name: "Supermarket Procurement Director", role: "Retail Supermarket Chain", quote: "Walton & Morris Foods has been our primary private label manufacturer for 8 years. Their product consistency and packaging quality are unmatched." },
-  { name: "Food Import Distributor", role: "Global Trade Group", quote: "Flawless cold chain logistics, full regulatory compliance, and delicious frozen products that sell out fast." },
-  { name: "FMCG Brand Manager", role: "Consumer Goods Company", quote: "Their R&D team helped us formulate and launch a new ready-to-eat meal line in record time." },
+const PROCESS_STEPS = [
+  { num: "01", title: "Ingredient Sourcing & Grading", desc: "Selecting farm-fresh contract agricultural produce, grains, and 100% Halal meat with multi-residue pesticide screening." },
+  { num: "02", title: "Microbiology & Lab Inspection", desc: "Rigorous laboratory testing for moisture, purity, microbiological safety, and biochemical grading." },
+  { num: "03", title: "Automated Processing & Cooking", desc: "Optical laser sorting, continuous steam blanching, high-pressure cooking, and cryogenic flash freezing." },
+  { num: "04", title: "Hygienic Cleanroom Packaging", desc: "Automated filling into food-grade barrier pouches, MAP gas flushing, or hermetically sealed retort pouches." },
+  { num: "05", title: "Climate-Controlled Storage", desc: "Holding finished inventory in automated sub-zero -20°C frozen and climate-controlled dry warehouses." },
+  { num: "06", title: "Export Logistics & Distribution", desc: "Refrigerated road fleet and international container shipping with full barcode batch traceability." },
 ];
 
 const FAQS = [
-  { q: "What product categories does Walton & Morris Foods manufacture?", a: "We manufacture frozen foods, ready-to-eat meals, dairy products, bakery items, beverages, sauces, condiments, and packaged consumer goods." },
-  { q: "Do you offer private label manufacturing services?", a: "Yes. We offer complete contract manufacturing and private labeling including custom recipe formulation, packaging design, and batch production." },
-  { q: "What food safety certifications do your facilities hold?", a: "Our production plants are certified under ISO 22000, HACCP, Halal, and international food safety management systems." },
-  { q: "Do you export products internationally?", a: "Yes. We export packaged and frozen food products to distributors, retail chains, and food service partners worldwide." },
+  {
+    q: "What food safety certifications do Walton & Morris Foods manufacturing facilities hold?",
+    a: "Our manufacturing plants are fully certified under ISO 22000 (Food Safety Management Systems), HACCP, Halal Certification, and comply with international export standards for the UK, Europe, and Middle East.",
+  },
+  {
+    q: "Does Walton & Morris Foods offer private label (OEM) co-packing services?",
+    a: "Yes. We provide turnkey private label contract manufacturing for supermarket chains and brand owners, including recipe development, pilot batch trials, packaging design, and container export shipping.",
+  },
+  {
+    q: "What is Individual Quick Freezing (IQF) technology?",
+    a: "IQF is a specialized cryogenic freezing process at -38°C that freezes each piece of food individually in minutes. This prevents large ice crystals from damaging the cellular structure, locking in fresh garden flavor, crispness, and vitamins.",
+  },
+  {
+    q: "What is the annual production capacity of your processing plants?",
+    a: "Walton & Morris Foods operates an aggregate annual manufacturing capacity of over 120,000 metric tons across frozen foods, retort ready-to-eat meals, dairy products, bakery goods, and condiments.",
+  },
 ];
 
-// Exact contact information requested by user
-const CONTACT_INFO = {
-  office: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
-  phone: "0092-42-38924737",
-  whatsapp: ["0092-304-7527498", "0092-321-8431665"],
-  emails: ["info@roysons.org", "support@roysons.org"],
-};
-
-const MAP_SRC = "https://www.google.com/maps?q=1st%20Floor%20Rehman%20Centre-2%20Lahore&z=15&output=embed";
-
-// ── Animated Counter Component ──
-function StatCounterCard({ value, suffix, label }) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    let rafId;
-    const duration = 1800;
-    const startTime = performance.now();
-
-    const tick = (now) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * value));
-      if (progress < 1) {
-        rafId = requestAnimationFrame(tick);
-      } else {
-        setCount(value);
-      }
-    };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [started, value]);
+export default function WaltonFoodHomePage() {
+  const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <div
-      ref={cardRef}
-      className="rounded-[24px] border border-[#D3E4DB] bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1E6B43]"
-    >
-      <p className="text-3xl lg:text-4xl font-black text-[#1E6B43] mb-2 tabular-nums">
-        {count.toLocaleString()}
-        {suffix}
-      </p>
-      <p className="text-xs lg:text-sm font-semibold leading-relaxed text-[#3D4E44]">{label}</p>
-    </div>
-  );
-}
-
-// ── Section Title ──
-function SectionHeader({ eyebrow, title, description, center }) {
-  return (
-    <div className={`${center ? "text-center" : ""} max-w-3xl mx-auto`}>
-      <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-black text-[#D89C46] mb-3">
-        <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#D89C46]" />
-        {eyebrow}
-      </span>
-      <h2 className="text-3xl md:text-4xl font-black tracking-tight text-[#1E6B43] mb-4">
-        {title}
-      </h2>
-      {description && (
-        <p className="text-sm md:text-base leading-relaxed text-[#3D4E44]">{description}</p>
-      )}
-    </div>
-  );
-}
-
-// ── Service Card with hover ──
-function ServiceCard({ icon: Icon, title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D3E4DB] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1E6B43] hover:bg-[#F4F8F5]">
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#E6F2EC] text-[#1E6B43] mb-6 transition-all duration-300 group-hover:bg-[#1E6B43] group-hover:text-white group-hover:scale-110">
-        <Icon size={26} />
-      </div>
-      <h3 className="text-xl font-bold text-[#1E6B43] mb-3 transition-colors duration-300 group-hover:text-[#D89C46]">{title}</h3>
-      <p className="text-sm leading-relaxed text-[#3D4E44]">{desc}</p>
-    </div>
-  );
-}
-
-// ── Feature Card ──
-function FeatureCard({ title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D3E4DB] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#D89C46]">
-      <div className="text-[#D89C46] text-3xl font-black mb-3 group-hover:scale-110 transition-transform">•</div>
-      <h3 className="text-lg font-black text-[#1E6B43] mb-3 transition-colors duration-300 group-hover:text-[#D89C46]">{title}</h3>
-      <p className="text-sm text-[#3D4E44] leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-// ── Process Card ──
-function ProcessStepCard({ step, title, desc }) {
-  return (
-    <div className="group rounded-[24px] border border-[#D3E4DB] bg-white p-7 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1E6B43]">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#1E6B43] text-white font-black group-hover:bg-[#D89C46] transition-all">{step}</div>
-        <h4 className="text-base font-bold text-[#1E6B43]">{title}</h4>
-      </div>
-      <p className="text-sm text-[#3D4E44] leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-// ── Testimonial Slider Component ──
-function TestimonialSlider({ items }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeItem = items[activeIndex] || items[0];
-
-  const goPrev = () => {
-    setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
-  };
-
-  const goNext = () => {
-    setActiveIndex((prev) => (prev + 1) % items.length);
-  };
-
-  return (
-    <div className="rounded-[28px] border border-[#D3E4DB] bg-[#F4F8F5] p-8 shadow-sm">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#D89C46]">Testimonials</p>
-          <h3 className="mt-2 text-2xl font-black text-[#1E6B43]">What Our Partners Say</h3>
-        </div>
-        <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={goPrev}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D3E4DB] bg-white text-[#1E6B43] transition-all hover:border-[#1E6B43] hover:text-[#D89C46]"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft size={16} />
-          </button>
-          <button
-            type="button"
-            onClick={goNext}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D3E4DB] bg-white text-[#1E6B43] transition-all hover:border-[#1E6B43] hover:text-[#D89C46]"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight size={16} />
-          </button>
-        </div>
-      </div>
-
-      <div className="rounded-[24px] border border-[#D3E4DB] bg-white p-7 shadow-sm">
-        <p className="text-base italic leading-relaxed text-[#3D4E44]">“{activeItem.quote}”</p>
-        <div className="mt-6">
-          <p className="font-black text-[#1E6B43]">{activeItem.name}</p>
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#D89C46] mt-1">{activeItem.role}</p>
-        </div>
-      </div>
-
-      <div className="mt-5 flex items-center justify-center gap-2">
-        {items.map((_, index) => (
-          <button
-            key={index}
-            type="button"
-            onClick={() => setActiveIndex(index)}
-            aria-label={`Go to testimonial ${index + 1}`}
-            className={`h-2.5 w-2.5 rounded-full transition-all ${index === activeIndex ? "bg-[#1E6B43]" : "bg-[#D3E4DB]"}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ── Collapsible FAQ Item Component ──
-function FaqAccordionItem({ question, answer }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="rounded-[20px] border border-[#D3E4DB] bg-white transition-all duration-300 overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between gap-4 p-6 text-left group"
-      >
-        <h4 className="text-base font-bold text-[#1E6B43] transition-colors group-hover:text-[#D89C46]">{question}</h4>
-        <div className="w-8 h-8 rounded-full bg-[#E6F2EC] flex items-center justify-center text-[#1E6B43] flex-shrink-0 transition-transform duration-300 group-hover:bg-[#1E6B43] group-hover:text-white">
-          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-        </div>
-      </button>
-      {isOpen && (
-        <div className="px-6 pb-6 pt-0 border-t border-[#E6F2EC]">
-          <p className="mt-3 text-sm leading-relaxed text-[#3D4E44]">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ── Contact Form Component ──
-function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setError("Please fill in your name, email, and message.");
-      return;
-    }
-    setError("");
-    try {
-      const res = await fetch("/group-companies/walton-mirror-food/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send.");
-      setSubmitted(true);
-    } catch (err) {
-      setError(err.message || "Error sending message. Please try again.");
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="rounded-[28px] border border-[#D3E4DB] bg-white p-8 md:p-10 text-center shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-[#E6F2EC] text-[#1E6B43] mx-auto flex items-center justify-center mb-5">
-          <CheckCircle2 size={32} />
-        </div>
-        <h3 className="text-2xl font-black text-[#1E6B43] mb-3">Thank You!</h3>
-        <p className="text-sm leading-relaxed text-[#3D4E44] max-w-md mx-auto mb-6">
-          Thank you, {form.name}. Your inquiry has been received. Our food manufacturing team will contact you shortly.
-        </p>
-        <button
-          onClick={() => { setForm({ name: "", email: "", phone: "", service: "", message: "" }); setSubmitted(false); }}
-          className="inline-flex items-center gap-2 rounded-full bg-[#1E6B43] px-6 py-3 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-[#D89C46]"
-        >
-          Send Another Message
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="rounded-[28px] border border-[#D3E4DB] bg-white p-8 md:p-10 shadow-sm">
-      <h3 className="text-2xl font-black text-[#1E6B43] mb-6">Request A Manufacturing / Supply Quote</h3>
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3D4E44] mb-2">Full Name *</label>
-          <input
-            type="text" name="name" value={form.name} onChange={handleChange}
-            placeholder="John Doe"
-            className="w-full rounded-xl border border-[#D3E4DB] bg-[#F8FAF9] px-4 py-3.5 text-sm text-[#1E6B43] outline-none transition-all focus:border-[#1E6B43] focus:bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3D4E44] mb-2">Email Address *</label>
-          <input
-            type="email" name="email" value={form.email} onChange={handleChange}
-            placeholder="john@example.com"
-            className="w-full rounded-xl border border-[#D3E4DB] bg-[#F8FAF9] px-4 py-3.5 text-sm text-[#1E6B43] outline-none transition-all focus:border-[#1E6B43] focus:bg-white"
-          />
-        </div>
-      </div>
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3D4E44] mb-2">Phone Number</label>
-          <input
-            type="tel" name="phone" value={form.phone} onChange={handleChange}
-            placeholder="+92 300 1234567"
-            className="w-full rounded-xl border border-[#D3E4DB] bg-[#F8FAF9] px-4 py-3.5 text-sm text-[#1E6B43] outline-none transition-all focus:border-[#1E6B43] focus:bg-white"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-[#3D4E44] mb-2">Service Required</label>
-          <select
-            name="service" value={form.service} onChange={handleChange}
-            className="w-full rounded-xl border border-[#D3E4DB] bg-[#F8FAF9] px-4 py-3.5 text-sm text-[#1E6B43] outline-none transition-all focus:border-[#1E6B43] focus:bg-white"
-          >
-            <option value="">Select a service</option>
-            <option value="Modern Food Processing">Modern Food Processing</option>
-            <option value="Frozen Food Production">Frozen Food Production</option>
-            <option value="Packaged Consumer Goods">Packaged Consumer Goods</option>
-            <option value="Private Label Manufacturing">Private Label Manufacturing</option>
-            <option value="Food R&D & Innovation">Food R&D & Innovation</option>
-            <option value="Quality Control & Assurance">Quality Control & Assurance</option>
-          </select>
-        </div>
-      </div>
-      <div className="mb-5">
-        <label className="block text-xs font-bold uppercase tracking-wider text-[#3D4E44] mb-2">Product & Volume Details *</label>
-        <textarea
-          name="message" value={form.message} onChange={handleChange} rows={4}
-          placeholder="Tell us about your product requirements, volume, or private label needs..."
-          className="w-full rounded-xl border border-[#D3E4DB] bg-[#F8FAF9] px-4 py-3.5 text-sm text-[#1E6B43] outline-none transition-all resize-none focus:border-[#1E6B43] focus:bg-white"
-        />
-      </div>
-
-      {error && <p className="text-xs font-bold text-red-600 mb-4">{error}</p>}
-
-      <button
-        type="submit"
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#1E6B43] px-8 py-4 text-xs font-bold uppercase tracking-widest text-white shadow-md transition-all duration-300 hover:bg-[#D89C46] hover:scale-[1.02] hover:shadow-lg active:scale-95"
-      >
-        Submit Request <Send size={15} />
-      </button>
-    </form>
-  );
-}
-
-// ── Walton Food Navbar ──
-function WaltonFoodNavbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const navLinks = [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Products", href: "#products" },
-    { label: "Services", href: "#services" },
-    { label: "Why Us", href: "#why-us" },
-    { label: "Contact", href: "#contact" },
-  ];
-  return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-[#D3E4DB]">
-      <div className="hidden md:block bg-[#134A2D] text-white py-2 px-6">
-        <div className="mx-auto max-w-screen-xl flex items-center justify-between text-xs">
-          <div className="flex items-center gap-6 text-white/80">
-            <span className="flex items-center gap-1.5"><MapPin size={12} /> Lahore, Pakistan</span>
-            <span className="flex items-center gap-1.5"><Phone size={12} /> {CONTACT_INFO.phone}</span>
-            <span className="flex items-center gap-1.5"><Mail size={12} /> {CONTACT_INFO.emails[0]}</span>
-          </div>
-          <span className="text-xs font-bold text-[#D89C46]">Walton &amp; Morris Foods — Quality You Trust</span>
-        </div>
-      </div>
-      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-xl bg-[#1E6B43] flex items-center justify-center group-hover:scale-105 transition-transform">
-            <Wheat size={22} color="#D89C46" />
-          </div>
-          <div>
-            <p className="text-base font-black tracking-tight text-[#1E6B43] leading-none">WALTON &amp; MORRIS</p>
-            <p className="text-[9px] font-bold uppercase tracking-widest text-[#3D4E44]">Foods</p>
-          </div>
-        </a>
-        <nav className="hidden lg:flex items-center gap-7 text-sm font-bold text-[#0B1B36]">
-          {navLinks.map(l => (
-            <a key={l.label} href={l.href} className="relative py-1 hover:text-[#1E6B43] group transition-colors">
-              {l.label}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1E6B43] transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
-        </nav>
-        <div className="hidden lg:flex items-center gap-3">
-          <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#D89C46] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-[#BC8330] hover:scale-105 transition-all">
-            <MessageCircle size={14} /> Order Now
-          </a>
-        </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 rounded-lg hover:bg-[#F4F8F5] text-[#1E6B43]">
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-      {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-[#D3E4DB] px-6 py-5 space-y-3">
-          {navLinks.map(l => (
-            <a key={l.label} href={l.href} onClick={() => setMobileOpen(false)}
-              className="block text-sm font-bold text-[#0B1B36] hover:text-[#1E6B43] py-1">{l.label}</a>
-          ))}
-          <a href="#contact" className="flex items-center justify-center gap-2 rounded-full bg-[#D89C46] py-3 text-xs font-bold uppercase tracking-wider text-white mt-4">
-            <MessageCircle size={14} /> Order Now
-          </a>
-        </div>
-      )}
-    </header>
-  );
-}
-
-// ── Walton Food Footer ──
-function WaltonFoodFooter() {
-  return (
-    <footer style={{ background: "#1E6B43" }} className="text-white">
-      <div className="mx-auto max-w-screen-xl px-6 py-14 grid gap-10 md:grid-cols-3">
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-              <Wheat size={20} color="#D89C46" />
-            </div>
-            <div>
-              <p className="font-black text-lg leading-none">WALTON &amp; MORRIS</p>
-              <p className="text-[9px] font-bold uppercase tracking-widest text-white/70">Foods</p>
-            </div>
-          </div>
-          <p className="text-sm text-white/70 leading-relaxed mb-5">Premium food products and catering solutions for institutional, retail, and industrial clients across Pakistan.</p>
-          <div className="space-y-2 text-xs text-white/75">
-            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 flex-shrink-0 text-[#D89C46]" />{CONTACT_INFO.office}</p>
-            <p className="flex items-center gap-2"><Phone size={14} className="text-[#D89C46]" />{CONTACT_INFO.phone}</p>
-            <p className="flex items-center gap-2"><Mail size={14} className="text-[#D89C46]" />{CONTACT_INFO.emails[0]}</p>
-          </div>
-        </div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#D89C46]">Quick Links</h4>
-          <ul className="space-y-2.5 text-sm text-white/75">
-            {["About Us","Products","Services","Why Us","Contact"].map(l => (
-              <li key={l}><a href={`#${l.toLowerCase().replace(/ /g,"-")}`} className="hover:text-white transition-colors">{l}</a></li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-sm font-black uppercase tracking-wider mb-5 text-[#D89C46]">Contact Us</h4>
-          <div className="space-y-3 text-xs text-white/75">
-            <p className="flex items-center gap-2"><MessageCircle size={14} className="text-[#D89C46]" /> WhatsApp: {CONTACT_INFO.whatsapp.join(" / ")}</p>
-            <p className="flex items-center gap-2"><Mail size={14} className="text-[#D89C46]" />{CONTACT_INFO.emails[0]}</p>
-            <p className="flex items-center gap-2"><Phone size={14} className="text-[#D89C46]" />{CONTACT_INFO.phone}</p>
-          </div>
-          <div className="mt-6 pt-6 border-t border-white/20">
-            <Link href="/group-companies" className="text-xs text-white/60 hover:text-white transition-colors">← Back to Roysons Group</Link>
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-white/20 py-5 px-6 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} Walton &amp; Morris Foods. Part of <Link href="/" className="hover:text-white transition-colors">Roysons Group</Link>. All rights reserved.
-      </div>
-    </footer>
-  );
-}
-
-// ── Main Page Component ──
-export default function WaltonMirrorFoodPage() {
-  useEffect(() => {
-    document.body.classList.add("roys-roys-theme", "waltonfood-theme");
-    document.body.style.backgroundColor = "#FFFFFF";
-    document.body.style.color = COLORS.green;
-    return () => {
-      document.body.classList.remove("roys-roys-theme", "waltonfood-theme");
-      document.body.style.backgroundColor = "";
-      document.body.style.color = "";
-    };
-  }, []);
-
-  return (
-    <main className="roys-roys-theme waltonfood-theme font-sans bg-white text-[#1E6B43] selection:bg-[#1E6B43] selection:text-white">
-      {/* Styles to bypass global dark override from globals.css */}
-      <style>{`
-        html, body {
-          background-color: #FFFFFF !important;
-          color: #1E6B43 !important;
-          color-scheme: light !important;
-        }
-        .waltonfood-theme h1,
-        .waltonfood-theme h2,
-        .waltonfood-theme h3,
-        .waltonfood-theme h4,
-        .waltonfood-theme h5,
-        .waltonfood-theme h6,
-        .waltonfood-theme p,
-        .waltonfood-theme span,
-        .waltonfood-theme li,
-        .waltonfood-theme a,
-        .waltonfood-theme label,
-        .waltonfood-theme button,
-        .waltonfood-theme input,
-        .waltonfood-theme textarea {
-          -webkit-text-fill-color: initial !important;
-          background-image: none !important;
-        }
-      `}</style>
-
+    <main className="min-h-screen bg-white text-[#3D4E44] font-sans antialiased overflow-x-hidden">
       <WaltonFoodNavbar />
 
-      {/* Hero Section */}
-      <section
-        className="relative overflow-hidden border-b border-[#D3E4DB] min-h-[500px] lg:min-h-[560px] flex items-center"
-        style={{
-          backgroundImage: `linear-gradient(135deg, rgba(14,48,30,0.88) 0%, rgba(30,107,67,0.82) 50%, rgba(14,48,30,0.92) 100%), url("${encodeURI("/walton&mirrorfood.jpeg")}")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="mx-auto max-w-screen-xl px-6 py-16 lg:py-24 relative z-10 w-full">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D89C46]/40 bg-[#1E6B43]/80 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#D89C46] shadow-md backdrop-blur-md">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#D89C46]" />
-              {HERO.badge}
-            </span>
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
-              Walton &amp; Morris <span className="text-[#D89C46]">Foods</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-[#E6F2EC]">
-              {HERO.subline}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="#services"
-                className="inline-flex items-center gap-2 rounded-full bg-[#D89C46] px-8 py-4 text-xs font-bold uppercase tracking-widest text-[#0B1B36] shadow-lg transition-all duration-300 hover:bg-white hover:scale-[1.02] active:scale-95"
-              >
-                {HERO.ctaPrimary} <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="#contact"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white bg-white/10 px-8 py-4 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-[#1E6B43] hover:scale-[1.02] active:scale-95"
-              >
-                {HERO.ctaSecondary}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="bg-white px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
+      {/* Hero Section with Processing Plant Visual */}
+      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
-            <div>
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#D3E4DB] bg-[#F4F8F5] px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-[#D89C46]">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#D89C46]" />
-                About Walton & Morris Foods
-              </span>
-              <h2 className="mt-6 text-3xl md:text-4xl font-black tracking-tight text-[#1E6B43]">
-                Producing quality food that nourishes every generation with consistency and care.
-              </h2>
-              <p className="mt-5 text-sm md:text-base leading-relaxed text-[#3D4E44]">
-                Walton & Morris Foods combines advanced food processing, rigorous quality control, and flexible manufacturing to produce premium products for retail, food service, and international markets.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7">
+              <SectionLabel>Leading Food Manufacturing &amp; Processing Enterprise</SectionLabel>
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.greenDark }}>
+                Walton &amp; Morris Foods. <span style={{ color: theme.green }}>Nourishing Generations with Quality.</span>
+              </h1>
+
+              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
+                Producing quality food, nourishing every generation. Walton &amp; Morris Foods specializes in modern food processing, frozen foods, packaged consumer goods, dairy, ready-to-eat meals, and private label manufacturing engineered to global quality standards.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#1E6B43] px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-[#D89C46]">
-                  Request A Quote <ArrowRight size={15} />
+
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/group-companies/walton-mirror-food/solutions"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  style={{ backgroundColor: theme.green }}
+                >
+                  <span>Explore Products</span>
+                  <ArrowRight size={16} />
                 </Link>
-                <Link href="#projects" className="inline-flex items-center gap-2 rounded-full border border-[#D3E4DB] bg-white px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#1E6B43] transition-all hover:border-[#1E6B43] hover:text-[#D89C46]">
-                  View Projects
+
+                <Link
+                  href="/group-companies/walton-mirror-food/contact"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-emerald-50/50 cursor-pointer"
+                  style={{ borderColor: theme.border, color: theme.greenDark }}
+                >
+                  <span>Talk To Our Team</span>
                 </Link>
               </div>
             </div>
 
-            <div className="rounded-[32px] border border-[#D3E4DB] bg-[#F4F8F5] p-3 shadow-sm">
-              <div className="relative h-[380px] overflow-hidden rounded-[24px]">
-                <Image src="/walton&mirrorfood.jpeg" alt="Walton & Morris Foods manufacturing plant" fill className="object-cover" />
+            {/* Right Hero Image Card */}
+            <div className="lg:col-span-5 w-full flex justify-center">
+              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-emerald-50/50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/waltonfood_hero_processing.svg"
+                  alt="Automated Food Processing Telemetry"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061022]/85 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs font-black uppercase tracking-wider text-[#BC8330]">
+                        120,000 Tons Annual Capacity
+                      </span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                    </div>
+                    <p className="text-sm font-bold" style={{ color: theme.greenDark }}>
+                      IQF Freezing · Retort Meals · UHT Dairy · OEM
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -675,235 +209,330 @@ export default function WaltonMirrorFoodPage() {
       </section>
 
       {/* Stats Counter Section */}
-      <section className="bg-white px-6 py-14 lg:py-20 border-b border-[#D3E4DB]">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {STATS.map((stat, index) => (
-              <StatCounterCard key={index} value={stat.value} suffix={stat.suffix} label={stat.label} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Services Section */}
-      <section id="services" className="bg-[#F4F8F5] px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Core Capabilities"
-            title="Comprehensive Food Processing & Manufacturing"
-            description="From high-speed processing and frozen foods to private label manufacturing and food safety testing."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {SERVICES.map((item, index) => (
-              <ServiceCard key={index} icon={item.icon} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Product Portfolio"
-            title="Diverse Quality Food Products"
-            description="Manufactured under strict HACCP and ISO-22000 quality standards for retail and food service."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {PRODUCTS.map((item, index) => (
-              <ServiceCard key={index} icon={item.icon} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Industries Section */}
-      <section className="bg-[#F4F8F5] px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader eyebrow="Industries" title="Serving Global Retail & Food Networks" description="Supplying supermarkets, hotels, restaurants, FMCG companies, and international distributors." center />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {INDUSTRIES.map((industry, index) => (
-              <div
-                key={index}
-                className="group rounded-2xl border border-[#D3E4DB] bg-white p-5 text-sm font-semibold text-[#1E6B43] text-center transition-all duration-300 hover:border-[#1E6B43] hover:bg-[#1E6B43] hover:text-white hover:shadow-md"
-              >
-                {industry}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Walton & Morris Foods Section */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Why Choose Us"
-            title="Your Trusted Food Manufacturing Partner"
-            description="Combining automated production technology, culinary R&D, and certified food safety."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {WHY_CHOOSE.map((item, index) => (
-              <FeatureCard key={index} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="bg-[#F4F8F5] px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Our Process"
-            title="Disciplined Farm-to-Fork Manufacturing Workflow"
-            description="From raw ingredient inspection and automated processing through flash freezing, packaging, and cold chain dispatch."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {PROCESS.map((item, index) => (
-              <ProcessStepCard key={index} step={item.step} title={item.title} desc={item.desc} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section id="projects" className="bg-white px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Featured Projects"
-            title="World-Class Processing Infrastructure"
-            description="Selected highlights of automated food processing plants and cold chain distribution hubs."
-          />
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {FEATURED_PROJECTS.map((project, index) => (
-              <div key={index} className="group overflow-hidden rounded-[28px] border border-[#D3E4DB] bg-[#F4F8F5] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#1E6B43]">
-                <div className="relative h-52 w-full">
-                  <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-base font-bold text-[#1E6B43] group-hover:text-[#D89C46] transition-colors mb-2">{project.title}</h3>
-                  <p className="text-xs text-[#3D4E44] leading-relaxed">{project.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials + FAQs */}
-      <section className="bg-white px-6 py-16 lg:py-24 border-b border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Testimonials & FAQs"
-            title="Trusted by Retail & Trade Partners. Clear Answers for Every Requirement."
-            description="See how our clients describe our manufacturing quality and browse answers to common production and supply questions."
-            center
-          />
-          <div className="mt-12 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] items-start">
-            <TestimonialSlider items={TESTIMONIALS} />
-            <div className="grid gap-4">
-              {FAQS.map((item, index) => (
-                <FaqAccordionItem key={index} question={item.q} answer={item.a} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Us Section with User Information */}
-      <section id="contact" className="bg-[#F4F8F5] px-6 py-16 lg:py-24">
-        <div className="mx-auto max-w-screen-xl">
-          <SectionHeader
-            eyebrow="Get In Touch"
-            title="Contact Walton & Morris Foods"
-            description="Discuss your food manufacturing, private label, frozen food supply, or export requirements with our team."
-          />
-          <div className="mt-12 grid gap-10 lg:grid-cols-12 items-start">
-            <div className="lg:col-span-7">
-              <ContactForm />
-            </div>
-
-            <div className="lg:col-span-5 rounded-[28px] bg-[#1E6B43] p-8 md:p-10 text-white shadow-xl flex flex-col justify-between h-full">
-              <div>
-                <span className="text-xs uppercase tracking-[0.25em] font-black text-[#D89C46]">Contact Details</span>
-                <h3 className="mt-3 text-2xl font-black text-white mb-6">Talk To Our Team</h3>
-                <p className="text-sm leading-relaxed text-[#D3E4DB] mb-8">
-                  Our food manufacturing sales team responds to every inquiry and quote request within one business day.
-                </p>
-
-                <div className="space-y-6 text-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#D89C46]">
-                      <Phone size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#D89C46] mb-1">Call Us</p>
-                      <p className="text-white font-bold">Phone: {CONTACT_INFO.phone}</p>
-                    </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {STATS.map((stat, i) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className="wm-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.green}10` }}>
+                    <Icon size={22} style={{ color: theme.green }} />
                   </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#D89C46]">
-                      <MessageCircle size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#D89C46] mb-1">WhatsApp</p>
-                      {CONTACT_INFO.whatsapp.map((num) => (
-                        <p key={num} className="text-white font-semibold">{num}</p>
-                      ))}
-                    </div>
+                  <div className="mb-1" style={{ color: theme.greenDark }}>
+                    <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                    {stat.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 text-[#D89C46]">
-                      <Mail size={20} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-wider text-[#D89C46] mb-1">Email Us</p>
-                      {CONTACT_INFO.emails.map((mail) => (
-                        <p key={mail} className="text-white font-medium">{mail}</p>
-                      ))}
-                    </div>
+      {/* About Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Visual */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-emerald-50/50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/waltonfood_hero_processing.svg"
+                  alt="Industrial Food Processing Lines"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061022]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <p className="text-xs font-black uppercase tracking-widest text-[#F3C677] mb-1">
+                      Premier Food Manufacturing
+                    </p>
+                    <h4 className="text-base font-bold">20+ Years of Manufacturing Leadership</h4>
                   </div>
                 </div>
               </div>
-
-              <div className="mt-10 pt-6 border-t border-white/15 text-xs text-[#D3E4DB]">
-                &copy; {new Date().getFullYear()} Walton &amp; Morris Foods. All Rights Reserved.
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Separate Location Section */}
-      <section className="bg-[#F4F8F5] px-6 py-16 lg:py-24 border-t border-[#D3E4DB]">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start">
-            <div className="rounded-[28px] border border-[#D3E4DB] bg-white p-8 shadow-sm">
-              <p className="text-xs font-black uppercase tracking-[0.25em] text-[#D89C46]">Our Location</p>
-              <h3 className="mt-3 text-2xl font-black text-[#1E6B43]">Visit Our Office</h3>
-              <p className="mt-4 text-sm leading-relaxed text-[#3D4E44]">
-                We welcome manufacturing discussions, product development meetings, and partnership consultations at our Lahore office.
+            {/* Right Text */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <SectionLabel>About Walton &amp; Morris Foods</SectionLabel>
+              <SectionHeading className="mb-6">Engineered To Global Food Standards</SectionHeading>
+
+              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                Walton &amp; Morris Foods specializes in high-volume food processing, flash-frozen IQF foods, packaged consumer goods, dairy, ready-to-eat meals, and private label manufacturing. Powered by automated European machinery and certified under ISO 22000 and HACCP, we deliver consistency, hygiene, and authentic flavors in every batch.
               </p>
-              <div className="mt-6 rounded-[20px] border border-[#D3E4DB] bg-[#F4F8F5] p-4">
-                <p className="text-sm font-semibold text-[#1E6B43] leading-relaxed">{CONTACT_INFO.office}</p>
-                <a href="https://maps.app.goo.gl/iDreS8eCT1teZeRV7" target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#1E6B43] transition-colors hover:text-[#D89C46]">
-                  Open in Google Maps <ArrowRight size={14} />
-                </a>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-emerald-50/50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} className="text-[#D89C46] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">ISO 22000 &amp; HACCP Certified</span>
+                </div>
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-emerald-50/50" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} className="text-[#D89C46] flex-shrink-0" />
+                  <span className="text-xs font-bold text-slate-800">Exporting to 25+ Countries</span>
+                </div>
               </div>
+
+              <Link
+                href="/group-companies/walton-mirror-food/about"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#1E6B43]"
+              >
+                <span>Read Full Corporate Profile</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>What We Manufacture</SectionLabel>
+              <SectionHeading>Our Core Divisions</SectionHeading>
             </div>
 
-            <div className="overflow-hidden rounded-[28px] border border-[#D3E4DB] bg-white shadow-sm">
-              <iframe
-                title="Walton & Morris Foods Office Location"
-                src={MAP_SRC}
-                width="100%"
-                height="360"
-                style={{ border: 0, display: "block" }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <Link
+              href="/group-companies/walton-mirror-food/services"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.greenDark }}
+            >
+              <span>View All 6 Divisions</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES.map((svc) => {
+              const Icon = svc.icon;
+              return (
+                <div
+                  key={svc.title}
+                  className="wm-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div>
+                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                      <Image
+                        src={svc.img}
+                        alt={svc.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+
+                    <div className="p-7">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.green}10` }}>
+                        <Icon size={20} style={{ color: theme.green }} />
+                      </div>
+
+                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.greenDark }}>
+                        {svc.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                        {svc.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="p-7 pt-0">
+                    <Link
+                      href={svc.href}
+                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-emerald-50/50 transition-colors cursor-pointer"
+                      style={{ borderColor: theme.border, color: theme.greenDark }}
+                    >
+                      <span>Explore Division</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <SectionLabel>Consumer Brands</SectionLabel>
+              <SectionHeading>Featured Product Lines</SectionHeading>
+            </div>
+
+            <Link
+              href="/group-companies/walton-mirror-food/solutions"
+              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
+              style={{ color: theme.green }}
+            >
+              <span>View All Products</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {SOLUTIONS_PREVIEW.map((p) => (
+              <div
+                key={p.name}
+                className="wm-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                style={{ borderColor: theme.border }}
+              >
+                <div>
+                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    <Image
+                      src={p.img}
+                      alt={p.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-7">
+                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#D89C46]/15 text-[#BC8330] inline-block mb-3">
+                      {p.tag}
+                    </span>
+                    <h3 className="text-xl font-black mb-2" style={{ color: theme.greenDark }}>
+                      {p.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-7 pt-0">
+                  <Link
+                    href="/group-companies/walton-mirror-food/contact"
+                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-emerald-50/50 transition-colors cursor-pointer"
+                    style={{ borderColor: theme.border, color: theme.greenDark }}
+                  >
+                    <span>Request Specs</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Pathway Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Disciplined Methodology</SectionLabel>
+            <SectionHeading center className="mb-4">6-Stage Manufacturing Lifecycle</SectionHeading>
+            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+              From farm-gate sourcing and lab inspection to automated cooking, flash-freezing, MAP packaging, and cold storage distribution.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROCESS_STEPS.map((step) => (
+              <div
+                key={step.num}
+                className="p-8 rounded-3xl border bg-white shadow-xs flex flex-col justify-between"
+                style={{ borderColor: theme.border }}
+              >
+                <div>
+                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm text-white mb-6 shadow-sm" style={{ backgroundColor: theme.green }}>
+                    {step.num}
+                  </div>
+                  <h4 className="text-base font-bold mb-3" style={{ color: theme.greenDark }}>
+                    {step.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <SectionLabel center>Frequently Asked Questions</SectionLabel>
+            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {FAQS.map((faq, idx) => (
+              <div
+                key={faq.q}
+                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
+                style={{ borderColor: theme.border }}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
+                  style={{ color: theme.greenDark }}
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-300 flex-shrink-0 ${
+                      openFaq === idx ? "rotate-180 text-[#D89C46]" : "text-slate-400"
+                    }`}
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+            <div>
+              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#BC8330]">
+                COMMENCE YOUR NEXT FOOD PROCESSING CONTRACT
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.greenDark }}>
+                Schedule A Manufacturing Scoping Consultation
+              </h2>
+              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
+                Connect with our senior food technologists and OEM packaging engineers to review recipe formulation, batch sizing, and export logistics.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+              <Link
+                href="/group-companies/walton-mirror-food/contact"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.green }}
+              >
+                <span>Request Production Proposal</span>
+                <ArrowRight size={15} />
+              </Link>
+              <a
+                href="tel:00924238924737"
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-emerald-50/50 cursor-pointer"
+                style={{ borderColor: theme.green, color: theme.green }}
+              >
+                <Phone size={15} />
+                <span>0092-42-38924737</span>
+              </a>
             </div>
           </div>
         </div>

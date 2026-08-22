@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dairyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B4D3E" />
+      <stop offset="100%" stop-color="#0E281F" />
+    </linearGradient>
+    <linearGradient id="goldAcc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E8A800" />
+      <stop offset="100%" stop-color="#FFD700" />
+    </linearGradient>
+    <filter id="glowDairy">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#dairyBg)" />
+
+  <!-- Pasture Rolling Hills Backdrop -->
+  <path d="M0,320 Q200,280 400,300 T800,290 L800,600 L0,600 Z" fill="#2E7D32" opacity="0.9" />
+  <path d="M0,380 Q250,350 500,370 T800,360 L800,600 L0,600 Z" fill="#1B5E20" />
+
+  <!-- Modern Automated Milking & Dairy Processing Facility (Center-Left) -->
+  <g transform="translate(60, 160)">
+    <!-- Facility Structure -->
+    <rect x="0" y="50" width="340" height="180" rx="12" fill="#FFFFFF" stroke="#D4E8D0" stroke-width="3" />
+    <polygon points="-10,50 170,10 350,50" fill="#1A5C2A" />
+    
+    <!-- Windows & Clean Room Ventilation -->
+    <rect x="30" y="80" width="60" height="40" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5" />
+    <rect x="110" y="80" width="60" height="40" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5" />
+    <rect x="190" y="80" width="60" height="40" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5" />
+    <rect x="270" y="80" width="45" height="40" rx="4" fill="#E8F5E9" stroke="#2E7D32" stroke-width="1.5" />
+
+    <!-- Stainless Steel Milk Storage Tanks -->
+    <rect x="370" y="40" width="65" height="150" rx="10" fill="#F1F5F9" stroke="#E8A800" stroke-width="2.5" />
+    <ellipse cx="402" cy="40" rx="32" ry="12" fill="#E2E8F0" />
+    <text x="382" y="120" fill="#1A5C2A" font-family="sans-serif" font-size="10" font-weight="bold">COLD</text>
+    <text x="380" y="135" fill="#1A5C2A" font-family="sans-serif" font-size="10" font-weight="bold">CHAIN</text>
+
+    <rect x="450" y="60" width="55" height="130" rx="10" fill="#F1F5F9" stroke="#E8A800" stroke-width="2.5" />
+    <ellipse cx="477" cy="60" rx="27" ry="10" fill="#E2E8F0" />
+
+    <line x1="340" y1="120" x2="370" y2="120" stroke="#E8A800" stroke-width="6" />
+    <line x1="435" y1="120" x2="450" y2="120" stroke="#E8A800" stroke-width="6" />
+  </g>
+
+  <!-- High-Yield Dairy Cattle (Stylized Silhouette on Pasture) -->
+  <g transform="translate(180, 420) scale(0.9)">
+    <!-- Cow 1 -->
+    <ellipse cx="140" cy="80" rx="65" ry="40" fill="#FFFFFF" stroke="#111827" stroke-width="2" />
+    <!-- Black Spots -->
+    <path d="M110,60 Q130,50 145,65 Q135,90 115,80 Z" fill="#111827" />
+    <path d="M160,70 Q185,60 190,85 Q170,95 155,80 Z" fill="#111827" />
+    <!-- Head -->
+    <ellipse cx="65" cy="60" rx="25" ry="18" fill="#FFFFFF" stroke="#111827" stroke-width="2" />
+    <circle cx="58" cy="56" r="3" fill="#111827" />
+    <!-- Legs -->
+    <rect x="95" y="110" width="10" height="40" rx="3" fill="#111827" />
+    <rect x="120" y="110" width="10" height="40" rx="3" fill="#111827" />
+    <rect x="160" y="110" width="10" height="40" rx="3" fill="#111827" />
+    <rect x="185" y="110" width="10" height="40" rx="3" fill="#111827" />
+  </g>
+
+  <g transform="translate(460, 430) scale(0.75)">
+    <!-- Cow 2 -->
+    <ellipse cx="140" cy="80" rx="65" ry="40" fill="#FFFFFF" stroke="#111827" stroke-width="2" />
+    <path d="M120,60 Q150,55 145,85 Q125,90 115,75 Z" fill="#111827" />
+    <ellipse cx="65" cy="60" rx="25" ry="18" fill="#FFFFFF" stroke="#111827" stroke-width="2" />
+    <rect x="95" y="110" width="10" height="40" rx="3" fill="#111827" />
+    <rect x="120" y="110" width="10" height="40" rx="3" fill="#111827" />
+    <rect x="160" y="110" width="10" height="40" rx="3" fill="#111827" />
+    <rect x="185" y="110" width="10" height="40" rx="3" fill="#111827" />
+  </g>
+
+  <!-- Dairy Quality Badge -->
+  <g transform="translate(60, 50)">
+    <rect width="320" height="55" rx="12" fill="#1B4D3E" stroke="#E8A800" stroke-width="2" />
+    <circle cx="28" cy="28" r="10" fill="#E8A800" />
+    <text x="50" y="24" fill="#FFD700" font-family="sans-serif" font-size="12" font-weight="bold">DAIRY DEVELOPMENT &amp; LIVESTOCK</text>
+    <text x="50" y="42" fill="#FFFDF2" font-family="sans-serif" font-size="10.5">High-Yield Genetics · Automated Cold Chain</text>
+  </g>
+</svg>

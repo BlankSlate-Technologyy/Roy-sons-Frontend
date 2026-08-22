@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────────────────────
+   DIGITAL ZONING CORPORATION — DEDICATED THEME STYLESHEET
+   Location: src/app/group-companies/digitalzone/digitalzone.css
+───────────────────────────────────────────────────────────── */
+
+:root {
+  --dz-navy: #0A3A6B;           /* Deep Tech Navy Blue */
+  --dz-navy-dark: #062242;
+  --dz-navy-soft: #0E4B8B;
+  --dz-cyan: #00A8E8;           /* Vibrant Cyan / Electric Blue */
+  --dz-cyan-hover: #0086BA;
+  --dz-slate: #3E4F61;          /* Slate Charcoal Text */
+  --dz-white: #ffffff;
+  --dz-bg-light: #F4F8FC;       /* Light Tech Background */
+  --dz-border: #D2E3F3;
+  --dz-text-muted: #3E4F61;
+  --dz-text-light: #6B7C90;
+}
+
+body.digitalzone-theme,
+body.digital-zoning-theme,
+.digitalzone-theme,
+.digital-zoning-theme,
+body.digitalzone-theme main,
+body.digitalzone-theme section,
+body.digitalzone-theme header,
+.digitalzone-theme main,
+.digitalzone-theme section,
+.digitalzone-theme header {
+  background-color: #ffffff !important;
+  color: #3E4F61;
+}
+
+body.digitalzone-theme .cursor-pointer,
+.digitalzone-theme .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Card hover animation */
+.digitalzone-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.digitalzone-card-hover:hover {
+  transform: translateY(-5px) !important;
+  border-color: #00A8E8 !important;
+  box-shadow: 0 16px 32px -8px rgba(10, 58, 107, 0.16), 0 0 0 1px rgba(0, 168, 232, 0.25) !important;
+}
+
+/* Counter box */
+.digitalzone-counter-box {
+  transition: all 0.3s ease !important;
+}
+.digitalzone-counter-box:hover {
+  transform: translateY(-4px) !important;
+  border-color: #00A8E8 !important;
+  box-shadow: 0 10px 25px rgba(10, 58, 107, 0.1) !important;
+}
+
+/* Reset for Digital Zoning components */
+body.digitalzone-theme a,
+body.digitalzone-theme button,
+body.digitalzone-theme label,
+body.digitalzone-theme h1,
+body.digitalzone-theme h2,
+body.digitalzone-theme h3,
+body.digitalzone-theme h4,
+body.digitalzone-theme h5,
+body.digitalzone-theme h6,
+body.digitalzone-theme p,
+body.digitalzone-theme span,
+body.digitalzone-theme li {
+  -webkit-text-fill-color: inherit;
+  text-shadow: none !important;
+  background-image: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+}
+
+body.digitalzone-theme svg:not([fill="currentColor"]) {
+  fill: none !important;
+}
