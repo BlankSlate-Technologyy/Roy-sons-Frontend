@@ -40,7 +40,7 @@ const DAIRY_PRODUCTS = [
     category: "Bulk Raw Milk",
     specs: ["Butterfat: 3.8% – 4.2%", "SNF: Minimum 8.5%", "Temperature: Chilled to 3.5°C"],
     desc: "Direct farm-fresh raw milk extracted through automated rotaries and transferred immediately into insulated refrigerated road tankers for corporate dairy and cheese processors.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card1.png",
     tag: "Commercial B2B Supply",
   },
   {
@@ -48,7 +48,7 @@ const DAIRY_PRODUCTS = [
     category: "Pasteurized Dairy",
     specs: ["Standardized Fat: 3.5%", "Shelf Life: Extended Refrigerated", "Packaging: 20L / 50L Food-Grade Drums"],
     desc: "High-Temperature Short-Time (HTST) pasteurized milk sanitized against all pathogens while preserving natural vitamins, enzymes, and fresh farm taste for hotels and institutions.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card2.png",
     tag: "Hygienic Pasteurized",
   },
   {
@@ -56,7 +56,7 @@ const DAIRY_PRODUCTS = [
     category: "Breeding Genetics",
     specs: ["Genetics: 100% US/EU Pedigree", "Health: Certified Disease-Free", "Vaccinations: Complete Lifetime Record"],
     desc: "Top-tier pregnant and maiden dairy heifers genetically screened for high milk production, structural longevity, and easy calving characteristics.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card3.png",
     tag: "Elite Live Cattle",
   },
   {
@@ -64,7 +64,7 @@ const DAIRY_PRODUCTS = [
     category: "Breeding Genetics",
     specs: ["Purity: > 90% Female Probability", "TPI Rating: Top 1% Global Bulls", "Storage: Liquid Nitrogen Cryo-Flasks"],
     desc: "Cryogenically preserved sexed semen from world-champion breeding bulls, engineered to guarantee female replacement calves and boost herd productivity.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-farm-hero.png",
     tag: "Genetic Technology",
   },
   {
@@ -72,16 +72,16 @@ const DAIRY_PRODUCTS = [
     category: "Cattle Feed & Silage",
     specs: ["Dry Matter: 32% – 35%", "Crude Protein: 8.5% – 9.2%", "Packaging: 500kg & 1000kg Vacuum Bales"],
     desc: "Precision-chopped whole maize crop inoculated with lactic acid bacteria and vacuum-packed to ensure high palatability and sustained lactation milk yield.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card1.png",
     tag: "Animal Nutrition",
   },
   {
     name: "Matured Bovine Bio-Compost",
     category: "Organic Fertilizers",
-    specs: ["Organic Matter: > 45%", "Moisture: < 25%", "Form: Fine Granular & Bagged"],
-    desc: "100% natural, fully composted cattle manure free of weed seeds and pathogens, engineered to enrich soil microbiome and organic carbon in orchards and farms.",
-    image: "/swiss_farm_hero_dairy.svg",
-    tag: "Organic Soil Food",
+    specs: ["Organic Matter: > 45%", "C:N Ratio: Optimal 18:1", "Packaging: 50kg Bags / Bulk Tankers"],
+    desc: "Fully aerobically composted cattle manure free of weed seeds and pathogens, enriching agricultural soils with essential nitrogen, phosphorus, and microbial flora.",
+    image: "/swiss-farm-about.png",
+    tag: "Eco Soil Enhancer",
   },
 ];
 

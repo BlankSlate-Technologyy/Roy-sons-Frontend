@@ -121,7 +121,7 @@ export default function SwissFarmSustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_farm_hero_dairy.svg"
+                  src="/swiss-card3.png"
                   alt="Swiss Farms Sustainable Pasture & Bio-Energy"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

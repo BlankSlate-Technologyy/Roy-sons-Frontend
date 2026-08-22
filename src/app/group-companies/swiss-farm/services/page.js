@@ -33,7 +33,7 @@ const DAIRY_SERVICES = [
     title: "High-Volume Dairy Production",
     subtitle: "Automated Rotary Milking & Instant Cold Chain Chilling",
     desc: "Utilizing modern electronic rotary milking parlors that milk thousands of cows daily with zero human contact, immediately chilling fresh milk to 4°C within seconds to preserve peak nutritional purity.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card1.png",
     tag: "Milk Production",
     icon: Truck,
     deliverables: [
@@ -48,7 +48,7 @@ const DAIRY_SERVICES = [
     title: "Livestock Herd Management & Housing",
     subtitle: "Climate-Controlled Sheds & Comfort-First Husbandry",
     desc: "Housing over 25,000 head of healthy cattle in modern cross-ventilated sheds with fine mist cooling fans, deep sand bedding, and automated robotic alley scrapers.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card2.png",
     tag: "Herd Care",
     icon: Users,
     deliverables: [
@@ -63,7 +63,7 @@ const DAIRY_SERVICES = [
     title: "Genetic Breeding & Reproduction",
     subtitle: "Elite Pedigree Artificial Insemination & Embryo Transfer",
     desc: "Accelerating genetic gain through imported pedigree sexed semen, genomic testing, and embryo transfer programs to breed high-yielding, heat-resilient dairy cows.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card3.png",
     tag: "Breeding Genetics",
     icon: Leaf,
     deliverables: [
@@ -78,7 +78,7 @@ const DAIRY_SERVICES = [
     title: "Veterinary Healthcare & Disease Prevention",
     subtitle: "On-Site Laboratory & Preventative Vaccination Protocols",
     desc: "Staffed 24/7 by licensed veterinary surgeons, our on-farm medical hospital delivers preventative vaccination protocols, routine diagnostic blood work, and hoof trimming care.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card1.png",
     tag: "Veterinary Care",
     icon: HeartPulse,
     deliverables: [
@@ -93,7 +93,7 @@ const DAIRY_SERVICES = [
     title: "Animal Nutrition & Silage Rations",
     subtitle: "Total Mixed Ration (TMR) Precision Formulations",
     desc: "Feeding our cattle a scientifically balanced diet formulated by international animal nutritionists, utilizing high-protein alfalfa hay, corn silage, and custom mineral premixes.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card2.png",
     tag: "Feed & Silage",
     icon: Sparkles,
     deliverables: [
@@ -108,7 +108,7 @@ const DAIRY_SERVICES = [
     title: "Sustainable Bio-Energy & Farm Infrastructure",
     subtitle: "Manure Biogas Digesters & Organic Compost Production",
     desc: "Implementing circular economy practices by transforming cattle manure into clean biogas energy to power farm operations and producing premium organic compost for green crop fertilizing.",
-    image: "/swiss_farm_hero_dairy.svg",
+    image: "/swiss-card3.png",
     tag: "Circular Agritech",
     icon: Zap,
     deliverables: [
@@ -181,7 +181,7 @@ export default function SwissFarmServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_farm_hero_dairy.svg"
+                  src="/swiss-farm-hero.png"
                   alt="Swiss Farms Automated Milking and Cold Chain"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

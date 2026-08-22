@@ -62,42 +62,42 @@ const SERVICES = [
     title: "Commercial Dairy Production",
     desc: "Automated rotary milking parlors producing fresh milk chilled to 4°C within seconds with zero human contact.",
     href: "/group-companies/swiss-farm/services#dairy-production",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card1.png",
   },
   {
     icon: Users,
     title: "Livestock Herd Management",
     desc: "Climate-controlled cross-ventilated barns with sand bedding, robotic grooming brushes, and RFID health tracking.",
     href: "/group-companies/swiss-farm/services#livestock",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card2.png",
   },
   {
     icon: Leaf,
     title: "Genetic Breeding Programs",
     desc: "Pedigree sexed semen artificial insemination and genomic selection producing high-yielding dairy heifers.",
     href: "/group-companies/swiss-farm/services#breeding",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card3.png",
   },
   {
     icon: HeartPulse,
     title: "Veterinary Healthcare",
     desc: "Comprehensive on-farm veterinary hospital, preventative vaccinations, automated mastitis testing, and hoof care.",
     href: "/group-companies/swiss-farm/services#veterinary",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card1.png",
   },
   {
     icon: Sparkles,
     title: "Animal Nutrition & Silage",
     desc: "Total Mixed Ration (TMR) computerized feed formulas, anaerobic corn silage pits, and custom mineral premixes.",
     href: "/group-companies/swiss-farm/services#nutrition",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card2.png",
   },
   {
     icon: Zap,
     title: "Sustainable Bio-Energy",
     desc: "Anaerobic bio-digesters converting cattle manure into clean electricity and premium organic compost fertilizer.",
     href: "/group-companies/swiss-farm/sustainability",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card3.png",
   },
 ];
 
@@ -106,19 +106,19 @@ const PRODUCTS_PREVIEW = [
     name: "Grade-A Bulk Raw Milk",
     tag: "Commercial Milk Supply",
     desc: "Chilled to 3.5°C immediately at milking, tested for 3.8%+ Butterfat and 8.5%+ SNF for industrial processors.",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card1.png",
   },
   {
     name: "Holstein-Friesian Heifers",
     tag: "Pedigree Breeding Stock",
     desc: "Certified disease-free pregnant and maiden heifers with verified US/European genomic lineages.",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card2.png",
   },
   {
     name: "High-Energy Corn Silage",
     tag: "Animal Nutrition Bales",
     desc: "Precision-chopped whole maize crop vacuum-baled for maximum protein and energy lactation density.",
-    img: "/swiss_farm_hero_dairy.svg",
+    img: "/swiss-card3.png",
   },
 ];
 
@@ -197,7 +197,7 @@ export default function SwissFarmHomePage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_farm_hero_dairy.svg"
+                  src="/swiss-farm-hero.png"
                   alt="Swiss Farms Dairy Complex"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -258,7 +258,7 @@ export default function SwissFarmHomePage() {
             <div className="lg:col-span-6">
               <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_farm_hero_dairy.svg"
+                  src="/swiss-farm-about.png"
                   alt="Swiss Farms Automated Milking and Pastures"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

@@ -103,7 +103,7 @@ export default function SwissFarmAboutPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_farm_hero_dairy.svg"
+                  src="/swiss-farm-hero.png"
                   alt="Swiss Farms Automated Milking & Pastures"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -160,7 +160,7 @@ export default function SwissFarmAboutPage() {
             {/* Left Graphic */}
             <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
               <Image
-                src="/swiss_farm_hero_dairy.svg"
+                src="/swiss-farm-about.png"
                 alt="Swiss Farms Heritage & Infrastructure"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
