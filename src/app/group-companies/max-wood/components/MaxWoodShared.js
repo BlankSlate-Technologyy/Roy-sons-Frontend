@@ -166,7 +166,7 @@ export function MaxWoodNavbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        scrolled ? "shadow-md py-2" : "py-3"
+        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
       }`}
       style={{
         borderBottom: `1px solid ${theme.border}`,
@@ -175,36 +175,36 @@ export function MaxWoodNavbar() {
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/group-companies/max-wood" className="flex items-center gap-3 select-none group">
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden border p-1 bg-white shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
+        <Link href="/group-companies/max-wood" className="flex items-center gap-2.5 select-none group">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden border p-0.5 bg-white shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
             <Image
               src="/logos/00.png"
               alt="Max Wood Corporation Logo"
-              width={56}
-              height={56}
+              width={44}
+              height={44}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-base sm:text-lg font-black tracking-wide leading-tight uppercase" style={{ color: theme.darkWood }}>
-              Max Wood Corporation
+            <span className="text-sm sm:text-base font-black tracking-tight leading-none uppercase" style={{ color: theme.darkWood }}>
+              Max Wood
             </span>
-            <span className="text-[9.5px] sm:text-[10.5px] font-bold tracking-[0.2em] uppercase" style={{ color: theme.goldHover }}>
-              Furniture &amp; Interior Solutions
+            <span className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-0.5" style={{ color: theme.goldHover }}>
+              Furniture &amp; Interior Craft
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[13px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1 hover:text-[#5C3A21] cursor-pointer"
+                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#5C3A21] cursor-pointer"
                 style={{
                   color: active ? theme.primary : theme.textMuted,
                 }}
@@ -222,23 +222,23 @@ export function MaxWoodNavbar() {
         </nav>
 
         {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/group-companies/max-wood/contact"
-            className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white shadow-sm transition-all duration-300 hover:opacity-95 cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
             style={{ backgroundColor: theme.primary }}
           >
-            <span>Bespoke Interior Consultation</span>
-            <ArrowRight size={14} />
+            <span>Interior Consult</span>
+            <ArrowRight size={13} />
           </Link>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-xl border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: theme.border, color: theme.darkWood }}
             aria-label="Toggle Menu"
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -246,7 +246,7 @@ export function MaxWoodNavbar() {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-6 py-5 space-y-3 bg-white shadow-xl"
+          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
           style={{ borderColor: theme.border }}
         >
           {NAV_LINKS.map((link) => {
@@ -256,14 +256,13 @@ export function MaxWoodNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-between py-2 text-sm font-bold uppercase tracking-wide border-b last:border-0 cursor-pointer"
+                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
                 style={{
-                  color: active ? theme.primary : theme.textMuted,
-                  borderColor: "rgba(232, 223, 213, 0.7)",
+                  backgroundColor: active ? `${theme.primary}12` : "transparent",
+                  color: active ? theme.primary : theme.darkWood,
                 }}
               >
-                <span>{link.label}</span>
-                <ChevronRight size={15} style={{ color: theme.textLight }} />
+                {link.label}
               </Link>
             );
           })}
@@ -271,10 +270,10 @@ export function MaxWoodNavbar() {
             <Link
               href="/group-companies/max-wood/contact"
               onClick={() => setMobileOpen(false)}
-              className="w-full py-3.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-md cursor-pointer"
+              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
               style={{ backgroundColor: theme.primary }}
             >
-              <span>Request Custom Woodwork Quote</span>
+              <span>Bespoke Interior Consultation</span>
               <ArrowRight size={14} />
             </Link>
           </div>

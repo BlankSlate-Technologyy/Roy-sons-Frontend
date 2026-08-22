@@ -121,7 +121,7 @@ export default function GTXSustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/gtx_hero_ev_mobility.svg"
+                  src="/GTX-card4.png"
                   alt="GTX Sustainable EV Mobility and Solar Canopies"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

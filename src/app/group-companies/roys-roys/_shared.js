@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 // ─── Shared Design Tokens ─────────────────────────────────────────────────────
 export const C = {
@@ -30,104 +31,127 @@ export const NAV_LINKS = [
 
 // ─── Shared Navbar ────────────────────────────────────────────────────────────
 export function RoysNavbar({ active = "" }) {
-  const [hovered, setHovered]   = useState(null);
-  const [btnHover, setBtnHover] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.classList.add("roys-roys-theme");
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
     return () => {
       document.body.classList.remove("roys-roys-theme");
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
     <header
-      className="sticky top-0 z-50 transition-all duration-300"
+      className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
+        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
+      }`}
       style={{
-        backgroundColor: C.white,
         borderBottom: `1px solid ${C.border}`,
-        boxShadow: "0 2px 10px rgba(0,0,0,0.05)",
+        backgroundColor: C.white,
       }}
     >
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 24px",
-          height: "80px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/group-companies/roys-roys" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
-          <Image
-            src="/roys logo.png"
-            alt="ROYS & ROYS INTERNATIONAL"
-            width={230}
-            height={68}
-            style={{ objectFit: "contain", maxHeight: "68px" }}
-            priority
-          />
+        <Link href="/group-companies/roys-roys" className="flex items-center gap-2.5 select-none group">
+          <div className="relative flex items-center">
+            <Image
+              src="/roys logo.png"
+              alt="ROYS & ROYS INTERNATIONAL"
+              width={180}
+              height={48}
+              className="h-9 sm:h-11 w-auto object-contain group-hover:opacity-95 transition-opacity"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Navigation Links */}
-        <nav
-          style={{ display: "flex", alignItems: "center", gap: "24px", flexWrap: "wrap" }}
-        >
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
           {NAV_LINKS.map((item) => {
             const isActive = item.label.toLowerCase() === active.toLowerCase();
-            const isHovered = hovered === item.label;
             return (
               <Link
                 key={item.label}
                 href={item.href}
+                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-colors relative py-1 px-1 hover:text-[#009088]"
                 style={{
-                  color: isHovered ? C.teal : isActive ? C.primary : C.primary,
-                  fontWeight: "800",
-                  fontSize: "15px",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.04em",
-                  textDecoration: "none",
-                  position: "relative",
-                  paddingBottom: "4px",
-                  transition: "color 0.2s ease",
-                  borderBottom: isActive ? `3px solid ${C.primary}` : "3px solid transparent",
+                  color: isActive ? C.teal : C.primary,
                 }}
-                onMouseEnter={() => setHovered(item.label)}
-                onMouseLeave={() => setHovered(null)}
               >
                 {item.label}
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
+                    isActive ? "w-full" : "w-0 hover:w-full"
+                  }`}
+                  style={{ backgroundColor: C.teal }}
+                />
               </Link>
             );
           })}
         </nav>
 
-        {/* Action Button: OUR PROJECTS */}
-        <div style={{ display: "flex", alignItems: "center" }}>
+        {/* Action Button & Mobile Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
-            href="/projects"
-            style={{
-              backgroundColor: btnHover ? C.teal : C.primary,
-              color: C.white,
-              padding: "11px 24px",
-              fontWeight: "800",
-              fontSize: "13px",
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              textDecoration: "none",
-              borderRadius: "3px",
-              transition: "all 0.3s ease",
-              boxShadow: btnHover ? "0 4px 14px rgba(0, 144, 136, 0.35)" : "none",
-            }}
-            onMouseEnter={() => setBtnHover(true)}
-            onMouseLeave={() => setBtnHover(false)}
+            href="/group-companies/roys-roys/contact"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+            style={{ backgroundColor: C.primary }}
           >
-            Our Projects
+            <span>Inquire Now</span>
+            <ArrowRight size={13} />
           </Link>
+
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            style={{ borderColor: C.border, color: C.primary }}
+            aria-label="Toggle Menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Drawer */}
+      {mobileOpen && (
+        <div
+          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
+          style={{ borderColor: C.border }}
+        >
+          {NAV_LINKS.map((item) => {
+            const isActive = item.label.toLowerCase() === active.toLowerCase();
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                style={{
+                  backgroundColor: isActive ? `${C.teal}15` : "transparent",
+                  color: isActive ? C.teal : C.primary,
+                }}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+          <div className="pt-2">
+            <Link
+              href="/group-companies/roys-roys/contact"
+              onClick={() => setMobileOpen(false)}
+              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
+              style={{ backgroundColor: C.primary }}
+            >
+              <span>Submit Inquiry</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

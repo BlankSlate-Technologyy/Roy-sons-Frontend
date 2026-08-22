@@ -63,7 +63,7 @@ export default function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full ${
-        scrolled ? "shadow-md py-2" : "py-3"
+        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
       }`}
       style={{
         backgroundColor: COLORS.white,
@@ -72,21 +72,21 @@ export default function Navbar() {
     >
       <Container className="flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/group-companies/gateway" className="flex items-center gap-3 select-none">
-          <div className="relative flex items-center py-1">
+        <Link href="/group-companies/gateway" className="flex items-center gap-2.5 select-none">
+          <div className="relative flex items-center">
             <Image
               src="/logo (2).png"
               alt="Gateway Pharmaceuticals Logo"
-              width={260}
-              height={85}
-              className="h-16 sm:h-20 w-auto object-contain"
+              width={180}
+              height={50}
+              className="h-10 sm:h-12 w-auto object-contain"
               priority
             />
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
           {NAV_LINKS.map((link) => {
             const href = getHref(link);
             const isActive =
@@ -100,13 +100,13 @@ export default function Navbar() {
                 key={link.label}
                 href={href}
                 onClick={(e) => handleNavClick(e, link)}
-                className="text-[13px] font-semibold tracking-wide hover:opacity-100 opacity-90 transition-opacity uppercase relative group py-2 cursor-pointer"
+                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-colors relative py-1 px-1 cursor-pointer"
                 style={{ color: isActive ? COLORS.secondary : COLORS.textDark }}
               >
                 {link.label}
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    isActive ? "w-full" : "w-0 group-hover:w-full"
+                    isActive ? "w-full" : "w-0 hover:w-full"
                   }`}
                   style={{ backgroundColor: COLORS.secondary }}
                 />
@@ -115,17 +115,26 @@ export default function Navbar() {
           })}
         </nav>
 
+        {/* Right CTA Button & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            href="/group-companies/gateway#contact"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+            style={{ backgroundColor: COLORS.primary }}
+          >
+            <span>Consult Pharma Desk</span>
+          </Link>
 
-
-        {/* Mobile Toggle Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 rounded-lg transition-colors focus:outline-none"
-          style={{ color: COLORS.textDark }}
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          {/* Mobile Toggle Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            style={{ borderColor: COLORS.border, color: COLORS.textDark }}
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </Container>
 
       {/* Mobile Drawer Menu */}

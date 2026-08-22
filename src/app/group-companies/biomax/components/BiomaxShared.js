@@ -129,66 +129,70 @@ export function BiomaxNavbar() {
       className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b transition-all"
       style={{ borderColor: COLORS.border }}
     >
-      <div className="mx-auto max-w-screen-xl px-6 py-3.5 flex items-center justify-between">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/group-companies/biomax" className="flex items-center">
-          <div className="relative flex items-center py-1">
+          <div className="relative flex items-center">
             <Image
               src="/logo.png"
               alt="BIO MAX CORPORATION Logo"
-              width={260}
-              height={85}
-              className="h-16 sm:h-20 w-auto object-contain"
+              width={180}
+              height={50}
+              className="h-10 sm:h-12 w-auto object-contain"
               priority
             />
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[14.5px] font-bold py-1 transition-colors hover:text-[#1D906C]"
+                className="relative text-[11.5px] xl:text-xs font-bold uppercase tracking-wider py-1 px-1 transition-colors hover:text-[#1D906C]"
                 style={{
                   color: active ? COLORS.accent : COLORS.primary,
-                  borderBottom: active ? `2px solid ${COLORS.accent}` : "2px solid transparent",
-                  paddingBottom: "4px",
                 }}
               >
                 {item.label}
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
+                    active ? "w-full" : "w-0 hover:w-full"
+                  }`}
+                  style={{ backgroundColor: COLORS.accent }}
+                />
               </Link>
             );
           })}
         </nav>
 
         {/* Header Action Button & Mobile Toggle */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/group-companies/biomax/contact"
             onMouseEnter={() => setBtnHover(true)}
             onMouseLeave={() => setBtnHover(false)}
-            className="hidden md:flex px-5 py-2.5 rounded-md text-[13px] font-bold text-white items-center gap-2 shadow-sm transition-all duration-300 cursor-pointer"
+            className="hidden sm:inline-flex px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white items-center gap-1.5 shadow-xs transition-all duration-300 cursor-pointer"
             style={{
               backgroundColor: btnHover ? COLORS.accent : COLORS.primary,
               color: "#FFFFFF",
             }}
           >
             <span style={{ color: "#FFFFFF" }}>Get in Touch</span>
-            <ArrowRight size={14} style={{ color: "#FFFFFF" }} />
+            <ArrowRight size={13} style={{ color: "#FFFFFF" }} />
           </Link>
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2 rounded-md transition-colors"
-            style={{ color: COLORS.primary }}
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            style={{ borderColor: COLORS.border, color: COLORS.primary }}
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle Navigation Menu"
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -196,7 +200,7 @@ export function BiomaxNavbar() {
       {/* Mobile Dropdown Menu */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-6 py-4 space-y-3 bg-white"
+          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
           style={{ borderColor: COLORS.border }}
         >
           {NAV_LINKS.map((item) => {
@@ -206,8 +210,11 @@ export function BiomaxNavbar() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-[14px] font-bold py-2 transition-colors"
-                style={{ color: active ? COLORS.accent : COLORS.primary }}
+                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                style={{
+                  backgroundColor: active ? `${COLORS.accent}15` : "transparent",
+                  color: active ? COLORS.accent : COLORS.primary,
+                }}
               >
                 {item.label}
               </Link>
@@ -217,7 +224,7 @@ export function BiomaxNavbar() {
             <Link
               href="/group-companies/biomax/contact"
               onClick={() => setMobileOpen(false)}
-              className="w-full py-3 rounded-md text-[13px] font-bold text-white flex items-center justify-center gap-2"
+              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
               style={{ backgroundColor: COLORS.primary, color: "#FFFFFF" }}
             >
               <span style={{ color: "#FFFFFF" }}>Get in Touch</span>

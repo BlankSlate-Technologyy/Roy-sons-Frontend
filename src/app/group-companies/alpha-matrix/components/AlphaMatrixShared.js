@@ -113,33 +113,33 @@ export function AlphaMatrixNavbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b backdrop-blur-md shadow-xs bg-white/95" style={{ borderColor: theme.border }}>
-      <div className="mx-auto max-w-screen-xl px-6 py-3.5 flex items-center justify-between">
-        <Link href="/group-companies/alpha-matrix" className="flex items-center gap-3.5 group">
-          <div className="relative w-12 h-12 rounded-lg overflow-hidden border p-0.5 bg-white shadow-xs flex items-center justify-center" style={{ borderColor: theme.border }}>
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between">
+        <Link href="/group-companies/alpha-matrix" className="flex items-center gap-2.5 group">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden border p-0.5 bg-white shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
             <Image
               src="/alpha matrix.jpeg"
               alt="Alpha Matrix Defence Systems Logo"
-              width={48}
-              height={48}
+              width={44}
+              height={44}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
-          <div className="leading-tight">
-            <p className="text-[15px] font-black tracking-wider uppercase" style={{ color: theme.navy }}>ALPHA MATRIX</p>
-            <p className="text-[9px] font-bold tracking-[0.24em]" style={{ color: theme.textFaint }}>DEFENCE SYSTEM</p>
+          <div className="leading-none">
+            <p className="text-sm sm:text-base font-black tracking-tight uppercase" style={{ color: theme.navy }}>ALPHA MATRIX</p>
+            <p className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-0.5" style={{ color: theme.textFaint }}>DEFENCE SYSTEM</p>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[12.5px] font-black uppercase tracking-wider transition-colors py-1 hover:text-[#005691]"
+                className="text-[11.5px] xl:text-xs font-bold uppercase tracking-wide transition-colors py-1 px-1 hover:text-[#005691]"
                 style={{
                   color: active ? theme.gold : theme.navy,
                   borderBottom: active ? `2px solid ${theme.gold}` : "2px solid transparent",
@@ -153,10 +153,10 @@ export function AlphaMatrixNavbar() {
         </nav>
 
         {/* Action Button & Mobile Toggle */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/group-companies/alpha-matrix/contact"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-md text-[11.5px] font-black uppercase tracking-wider transition-all duration-300 hover:shadow-md active:scale-[0.98] border shadow-xs"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 hover:shadow-md active:scale-[0.98] border shadow-xs"
             style={{ borderColor: theme.gold, color: theme.white, backgroundColor: theme.gold }}
           >
             <span>Consultation</span>
@@ -164,19 +164,19 @@ export function AlphaMatrixNavbar() {
           </Link>
 
           <button
-            className="lg:hidden p-2 rounded-md transition-colors"
-            style={{ color: theme.navy }}
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            style={{ borderColor: theme.border, color: theme.navy }}
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle Navigation Menu"
           >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t px-6 py-4 space-y-2.5 bg-white shadow-lg" style={{ borderColor: theme.border }}>
+        <div className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl" style={{ borderColor: theme.border }}>
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
@@ -184,8 +184,11 @@ export function AlphaMatrixNavbar() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-[13px] font-black uppercase tracking-wider py-2 transition-colors"
-                style={{ color: active ? theme.gold : theme.navy }}
+                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                style={{
+                  backgroundColor: active ? `${theme.gold}15` : "transparent",
+                  color: active ? theme.gold : theme.navy,
+                }}
               >
                 {item.label}
               </Link>
@@ -195,7 +198,7 @@ export function AlphaMatrixNavbar() {
             <Link
               href="/group-companies/alpha-matrix/contact"
               onClick={() => setMobileOpen(false)}
-              className="w-full py-3 rounded-md text-[12px] font-black uppercase tracking-wider text-white flex items-center justify-center gap-2"
+              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
               style={{ backgroundColor: theme.gold, color: theme.white }}
             >
               <span>Request Defense Consultation</span>

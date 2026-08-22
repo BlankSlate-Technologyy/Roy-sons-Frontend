@@ -35,7 +35,7 @@ const EV_SERVICES = [
     title: "DC Ultra-Fast EV Charging (60kW – 360kW)",
     subtitle: "Liquid-Cooled High-Power Dispensing Infrastructure",
     desc: "Designing and installing high-power modular DC fast chargers capable of simultaneously charging multiple electric vehicles at speeds up to 360kW with 96%+ electrical efficiency and dual CCS2 connectors.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card1.png",
     tag: "Ultra-Fast EV Charging",
     icon: Zap,
     deliverables: [
@@ -50,7 +50,7 @@ const EV_SERVICES = [
     title: "Commercial & Logistics Fleet Electrification",
     subtitle: "Turnkey Depot Infrastructure & Staggered Charging",
     desc: "Transforming corporate delivery fleets, bus transit networks, and commercial vehicle operators with custom depot charging layouts, automated overnight load balancing, and fleet telematics.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card2.png",
     tag: "Fleet Solutions",
     icon: Truck,
     deliverables: [
@@ -65,7 +65,7 @@ const EV_SERVICES = [
     title: "Battery Energy Storage Systems (BESS)",
     subtitle: "Utility-Scale Lithium Iron Phosphate (LFP) Storage",
     desc: "Deploying industrial containerized Battery Energy Storage Systems (0.5 MWh to 10 MWh) for peak shaving, grid stabilization, backup power resilience, and high-load EV buffer charging.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card3.png",
     tag: "BESS & Grid Storage",
     icon: Battery,
     deliverables: [
@@ -80,7 +80,7 @@ const EV_SERVICES = [
     title: "Solar-Powered EV Canopy Integration",
     subtitle: "Bifacial Solar Carports & Clean Microgrids",
     desc: "Constructing architectural solar PV carports that generate clean on-site electricity to power EV charging stations directly, lowering operational electricity costs and achieving zero-carbon mobility.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card4.png",
     tag: "Renewable EV Carports",
     icon: Sun,
     deliverables: [
@@ -95,7 +95,7 @@ const EV_SERVICES = [
     title: "Smart Charging Software (EMS & CMS)",
     subtitle: "OCPP 2.0.1 Cloud Management & Driver Billing Apps",
     desc: "Providing an enterprise-grade cloud charging management system (CMS) with dynamic load management, automated billing, tariff scheduling, and branded driver mobile apps.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-about.png",
     tag: "Cloud Telemetry",
     icon: LineChart,
     deliverables: [
@@ -110,7 +110,7 @@ const EV_SERVICES = [
     title: "Grid Interconnection Feasibility & EPC",
     subtitle: "High-Voltage Power Approvals & Certified Commissioning",
     desc: "Executing full electrical EPC services from initial DISCO utility power sanctioning and transformer substation sizing to civil trenching, cabling, and certified safety commissioning.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX_hero.png",
     tag: "Turnkey EPC Engineering",
     icon: ClipboardList,
     deliverables: [
@@ -183,7 +183,7 @@ export default function GTXServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/gtx_hero_ev_mobility.svg"
+                  src="/GTX_hero.png"
                   alt="GTX EV Charging Solutions"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

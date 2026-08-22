@@ -40,7 +40,7 @@ const EV_PRODUCTS = [
     category: "DC Fast Chargers",
     specs: ["Output Power: 360 kW (Dual CCS-2)", "Max Current: 500A Liquid-Cooled", "Voltage Range: 150V – 1000V DC"],
     desc: "Our flagship ultra-fast charging dispenser engineered for highway corridors and smart city hubs, delivering up to 300 km of driving range in 10–12 minutes.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card1.png",
     tag: "360kW Ultra-Fast",
   },
   {
@@ -48,7 +48,7 @@ const EV_PRODUCTS = [
     category: "DC Fast Chargers",
     specs: ["Output: 120kW / 180kW Modular", "Connectors: Dual CCS-2 / CHAdeMO", "Efficiency: ≥ 96.5% Peak"],
     desc: "Compact footprint DC fast charger ideal for fuel stations, shopping mall parking lots, and corporate office parks with dynamic power splitting between two vehicles.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card2.png",
     tag: "Commercial Fast Charger",
   },
   {
@@ -56,7 +56,7 @@ const EV_PRODUCTS = [
     category: "AC Destination Chargers",
     specs: ["Power: 22 kW Three-Phase AC", "Socket: Universal Type-2 Locking", "Access: RFID / NFC / QR Mobile App"],
     desc: "Heavy-duty destination charger for residential gated societies, hotels, and workplace fleet parking with integrated dynamic load management.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card3.png",
     tag: "AC Destination Charging",
   },
   {
@@ -64,7 +64,7 @@ const EV_PRODUCTS = [
     category: "Battery Storage (BESS)",
     specs: ["Capacity: 2 MWh – 5 MWh Scalable", "Battery: Tier-1 LFP (6,000+ Cycles)", "Thermal: Active Liquid Loop (25°C)"],
     desc: "Utility-scale containerized battery energy storage designed for high-power EV buffer charging, peak shaving, and renewable microgrid stabilization.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card4.png",
     tag: "Industrial BESS",
   },
   {
@@ -72,7 +72,7 @@ const EV_PRODUCTS = [
     category: "Solar EV Carports",
     specs: ["Structure: Hot-Dip Galvanized Steel", "Panels: 600W+ High-Yield Bifacial", "Wind Rating: Certified up to 160 km/h"],
     desc: "Architectural solar carport canopy that generates clean on-site solar electricity while providing premium shaded parking for charging vehicles.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX_hero.png",
     tag: "Solar EV Carport",
   },
   {
@@ -80,7 +80,7 @@ const EV_PRODUCTS = [
     category: "Cloud CMS Software",
     specs: ["Protocol: OCPP 1.6J & OCPP 2.0.1", "Billing: JazzCash, Easypaisa, Credit Card", "Apps: White-Label iOS & Android"],
     desc: "Full-stack cloud telemetry platform allowing station operators to monitor real-time energy usage, set dynamic tariffs, and manage customer billing.",
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-about.png",
     tag: "Cloud Telemetry",
   },
 ];

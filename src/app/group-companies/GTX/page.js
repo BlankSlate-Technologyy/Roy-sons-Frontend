@@ -72,42 +72,42 @@ const SERVICES = [
     title: "DC Ultra-Fast EV Charging",
     desc: "Modular power cabinets scalable up to 360kW with liquid-cooled cables delivering 200–300 km in 12 mins.",
     href: "/group-companies/GTX/services#dc-fast-charging",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card1.png",
   },
   {
     icon: Truck,
     title: "Fleet Electrification Depots",
     desc: "Turnkey depot charging infrastructure, automated overnight load balancing, and battery health telemetry.",
     href: "/group-companies/GTX/services#fleet-electrification",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card2.png",
   },
   {
     icon: Battery,
     title: "Battery Energy Storage (BESS)",
     desc: "Containerized utility-scale LFP battery storage systems for peak shaving, buffer charging, and grid stability.",
     href: "/group-companies/GTX/services#battery-storage",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card3.png",
   },
   {
     icon: Sun,
     title: "Solar EV Canopy Integration",
     desc: "Bifacial solar PV carports generating clean on-site electricity directly for EV fast charging hubs.",
     href: "/group-companies/GTX/services#solar-charging",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card4.png",
   },
   {
     icon: LineChart,
     title: "Smart Charging CMS Software",
     desc: "Enterprise cloud telemetry platform with OCPP 2.0.1 compliance, dynamic load management, and billing.",
     href: "/group-companies/GTX/services#energy-management",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card1.png",
   },
   {
     icon: ShieldCheck,
     title: "Grid Interconnection & EPC",
     desc: "Full high-voltage transformer sizing, utility power connection approvals, and certified commissioning.",
     href: "/group-companies/GTX/services#ev-consultancy",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card2.png",
   },
 ];
 
@@ -116,19 +116,19 @@ const PRODUCTS_PREVIEW = [
     name: "GTX HyperCharge 360kW DC Station",
     tag: "Ultra-Fast Charging",
     desc: "Dual liquid-cooled CCS-2 dispensers capable of 500A continuous output for highway corridors and smart cities.",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card1.png",
   },
   {
     name: "GTX PowerVault 2MWh BESS",
     tag: "Grid Energy Storage",
     desc: "Tier-1 Lithium Iron Phosphate (LFP) liquid-cooled containerized storage for peak shaving and buffer charging.",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card3.png",
   },
   {
     name: "GTX SolarFleet Bifacial Carport",
     tag: "Solar EV Canopy",
     desc: "Heavy-duty galvanized steel cantilever canopy with high-yield bifacial solar panels powering EV charging bays.",
-    img: "/gtx_hero_ev_mobility.svg",
+    img: "/GTX-card4.png",
   },
 ];
 
@@ -207,7 +207,7 @@ export default function GTXHomePage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/gtx_hero_ev_mobility.svg"
+                  src="/GTX_hero.png"
                   alt="GTX German EV Mobility Solutions"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -268,7 +268,7 @@ export default function GTXHomePage() {
             <div className="lg:col-span-6">
               <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/gtx_hero_ev_mobility.svg"
+                  src="/GTX-about.png"
                   alt="GTX German Engineering Excellence"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

@@ -43,7 +43,7 @@ const SIGNATURE_PROJECTS = [
     status: "Operational – 24/7 Ultra-Fast Charging",
     desc: "Deployment of 360kW liquid-cooled ultra-fast DC chargers with integrated solar PV canopies and 1MWh BESS energy storage buffers across Pakistan's primary intercity motorway network.",
     specs: ["Chargers: 360kW Dual Liquid-Cooled Guns", "Storage: 1MWh BESS Buffer", "Turnaround: 12-Min Rapid Charging"],
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card1.png",
     tag: "Motorway Fast Corridor",
   },
   {
@@ -53,7 +53,7 @@ const SIGNATURE_PROJECTS = [
     status: "50+ Stations Connected via Cloud CMS",
     desc: "Comprehensive smart city charging deployment featuring 120kW DC fast chargers and 22kW AC wallboxes with integrated mobile app reservations and automated digital payments.",
     specs: ["Network: 50+ Connected EV Chargers", "Software: OCPP 2.0.1 Cloud Management", "Payment: JazzCash, Easypaisa, Credit Cards"],
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card2.png",
     tag: "Smart City Infrastructure",
   },
   {
@@ -63,7 +63,7 @@ const SIGNATURE_PROJECTS = [
     status: "Electrified 120+ Commercial Vans",
     desc: "Turnkey logistics depot equipped with automated overnight staggered charging schedules, power load balancing, and real-time battery state-of-health monitoring for delivery vehicles.",
     specs: ["Depot Capacity: 60 Simultaneous Commercial Vans", "Management: Dynamic Load Balancing", "Uptime SLA: 99.9% Operational Guarantee"],
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card3.png",
     tag: "Fleet Logistics Depot",
   },
   {
@@ -73,7 +73,7 @@ const SIGNATURE_PROJECTS = [
     status: "Zero-Carbon Solar EV Canopy",
     desc: "Architectural 150kW bifacial solar carport powering 12 commercial EV charging bays for executive office towers with surplus clean electricity fed into the building grid.",
     specs: ["Solar PV: 150kW Bifacial Rooftop Canopy", "Chargers: 8x 22kW AC + 2x 120kW DC", "Carbon Offset: 180 Tons CO2 / Year"],
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-card4.png",
     tag: "Corporate Solar Hub",
   },
   {
@@ -83,7 +83,7 @@ const SIGNATURE_PROJECTS = [
     status: "High-Availability 180kW Fast Charging",
     desc: "Dedicated high-power DC fast charging infrastructure supporting airport ground-handling electric passenger shuttle buses and executive VIP electric fleet transfers.",
     specs: ["Chargers: 180kW High-Voltage DC Chargers", "Vehicles: Electric Passenger Buses & Shuttles", "Operation: 24/7 Continuous Mission-Critical"],
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX_hero.png",
     tag: "Airport Transit Infrastructure",
   },
   {
@@ -93,7 +93,7 @@ const SIGNATURE_PROJECTS = [
     status: "Public EV Destination Hub",
     desc: "High-traffic public retail charging station offering premium shopper EV charging with 120kW DC fast chargers and 22kW AC wallboxes with contactless NFC card payments.",
     specs: ["Bays: 10 Dedicated EV Parking Slots", "Chargers: 2x 120kW DC + 6x 22kW AC", "Footfall: 5,000+ Charges Monthly"],
-    image: "/gtx_hero_ev_mobility.svg",
+    image: "/GTX-about.png",
     tag: "Retail Destination Hub",
   },
 ];
