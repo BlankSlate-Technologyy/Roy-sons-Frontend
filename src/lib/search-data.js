@@ -1,0 +1,147 @@
+import { CORPORATE_HOLDINGS, CORPORATE_SERVICES, FEATURED_STRUCTURAL_WORKS, CORPORATE_BROADCAST_NEWS } from "./constants";
+
+export const SEARCH_CATEGORIES = [
+  { id: "all", label: "All" },
+  { id: "companies", label: "Group Companies" },
+  { id: "services", label: "Services" },
+  { id: "projects", label: "Projects" },
+  { id: "pages", label: "Pages & News" },
+];
+
+export const POPULAR_SEARCH_TERMS = [
+  "Healthcare",
+  "GTX",
+  "Solar Energy",
+  "Defense & Security",
+  "Agriculture",
+  "Pharmaceutical",
+  "Neom City",
+  "Mining",
+  "Swiss Farm",
+  "IT & AI",
+];
+
+export const SEARCHABLE_ITEMS = [
+  // 1. Group Companies (26 Subsidiaries)
+  ...CORPORATE_HOLDINGS.map((company) => ({
+    id: `company-${company.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    title: company.name,
+    subtitle: company.subtitle,
+    description: company.tagline,
+    href: company.href,
+    category: "companies",
+    badge: "Subsidiary",
+    badgeColor: "bg-[#C6A15A]/15 text-[#C6A15A] border-[#C6A15A]/30",
+    image: company.image,
+    keywords: `${company.name} ${company.subtitle} ${company.tagline} group company subsidiary holding roysons`,
+  })),
+
+  // 2. Corporate Services (15 Verticals)
+  ...CORPORATE_SERVICES.map((service) => ({
+    id: `service-${service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    title: service.title,
+    subtitle: "Core Corporate Capability",
+    description: service.description,
+    href: service.href === "/services/agriculture-dairy" ? "/services/agriculture-dairy-development" : service.href,
+    category: "services",
+    badge: "Service",
+    badgeColor: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+    keywords: `${service.title} ${service.description} service capabilities solutions engineering`,
+  })),
+
+  // 3. Featured Projects
+  ...FEATURED_STRUCTURAL_WORKS.map((project) => ({
+    id: `project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    title: project.title,
+    subtitle: "Turnkey Structural & Infrastructure Project",
+    description: "Engineering, development, and procurement project delivered by ROYSONS holding.",
+    href: project.href,
+    category: "projects",
+    badge: "Project",
+    badgeColor: "bg-sky-500/15 text-sky-400 border-sky-500/30",
+    image: project.image,
+    keywords: `${project.title} project civil engineering infrastructure construction`,
+  })),
+
+  // 4. Broadcast News & Articles
+  ...CORPORATE_BROADCAST_NEWS.map((news) => ({
+    id: `news-${news.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+    title: news.title,
+    subtitle: `Insight Article · ${news.date}`,
+    description: "Corporate news and industry perspective published by ROYSONS holding.",
+    href: news.href,
+    category: "pages",
+    badge: "News",
+    badgeColor: "bg-purple-500/15 text-purple-400 border-purple-500/30",
+    image: news.image,
+    keywords: `${news.title} ${news.date} news article update corporate insight`,
+  })),
+
+  // 5. Main Portal Navigation Pages
+  {
+    id: "page-about",
+    title: "About ROYSONS Holding",
+    subtitle: "Corporate Profile & Strategic Vision",
+    description: "Learn about the history, executive leadership, governance, and mission of ROYSONS conglomerate.",
+    href: "/about",
+    category: "pages",
+    badge: "Page",
+    badgeColor: "bg-neutral-500/15 text-neutral-300 border-neutral-500/30",
+    keywords: "about us company history leadership board mission vision corporate profile",
+  },
+  {
+    id: "page-group-companies",
+    title: "Group Companies Directory",
+    subtitle: "26 Strategic Business Subsidiaries",
+    description: "Comprehensive portfolio of specialized entities covering all major industrial verticals.",
+    href: "/group-companies",
+    category: "pages",
+    badge: "Directory",
+    badgeColor: "bg-[#C6A15A]/15 text-[#C6A15A] border-[#C6A15A]/30",
+    keywords: "group companies subsidiaries list directory all businesses entities",
+  },
+  {
+    id: "page-services",
+    title: "All Corporate Services",
+    subtitle: "Enterprise Capabilities & Solutions",
+    description: "Explore 15 multidisciplinary corporate service sectors spanning infrastructure, technology, and health.",
+    href: "/services",
+    category: "pages",
+    badge: "Services Hub",
+    badgeColor: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+    keywords: "services solutions capabilities portfolio offerings",
+  },
+  {
+    id: "page-projects",
+    title: "Projects & Deployments",
+    subtitle: "National & Global Project Portfolio",
+    description: "View completed and ongoing commercial, industrial, hospital, and governmental projects.",
+    href: "/projects",
+    category: "pages",
+    badge: "Projects Hub",
+    badgeColor: "bg-sky-500/15 text-sky-400 border-sky-500/30",
+    keywords: "projects portfolio structural works completed developments",
+  },
+  {
+    id: "page-contact",
+    title: "Contact ROYSONS Corporate Office",
+    subtitle: "Lahore Headquarters, Inquiries & RFQs",
+    description: "Get in touch with our executive desks for business consultations, proposals, and vendor partnerships.",
+    href: "/contact",
+    category: "pages",
+    badge: "Contact",
+    badgeColor: "bg-amber-500/15 text-amber-400 border-amber-500/30",
+    keywords: "contact us phone email address lahore office inquiry quotation proposal",
+  },
+  {
+    id: "page-careers",
+    title: "Careers & Talent Acquisition",
+    subtitle: "Join the ROYSONS Conglomerate",
+    description: "Explore open positions, executive roles, and career pathways across our 26 group companies.",
+    href: "/careers",
+    category: "pages",
+    badge: "Careers",
+    badgeColor: "bg-rose-500/15 text-rose-400 border-rose-500/30",
+    keywords: "careers jobs hiring vacancies employment recruitment resume apply",
+  },
+];
