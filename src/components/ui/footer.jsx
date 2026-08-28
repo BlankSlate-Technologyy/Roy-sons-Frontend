@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
-import BrandLogo from "@/components/ui/logo";
 import {
   FOOTER_QUICK_LINKS,
   FOOTER_SERVICES_LINKS,
@@ -120,7 +120,13 @@ export default function CorporateFooter({
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
         <div className="lg:col-span-1 flex flex-col pr-0 lg:pr-6">
           <Link href="/" className="inline-block mb-4">
-            <BrandLogo />
+            <Image
+              src="/logos/Roysons logo_logo variation 2 png.png"
+              alt="Roy Sons Logo"
+              width={180}
+              height={80}
+              className="w-auto h-12 md:h-14 lg:h-14 object-contain"
+            />
           </Link>
           <p className="text-xs text-neutral-400 leading-relaxed font-normal mb-6">
             {caption}
