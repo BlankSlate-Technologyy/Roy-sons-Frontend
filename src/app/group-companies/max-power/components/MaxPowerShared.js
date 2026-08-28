@@ -183,7 +183,7 @@ export function MaxPowerNavbar() {
         <Link href="/group-companies/max-power" className="flex items-center gap-3 select-none group">
           <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
             <Image
-              src="/max power.jpeg"
+              src="/logos/12.png"
               alt="Max Power Logo"
               width={80}
               height={80}
