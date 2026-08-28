@@ -181,22 +181,22 @@ export function NationalAgriculturalNavbar() {
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/group-companies/national-agricultural" className="flex items-center gap-2.5 select-none group">
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden border p-0.5 bg-white shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
+        <Link href="/group-companies/national-agricultural" className="flex items-center gap-3 select-none group">
+          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
             <Image
               src="/national agricultural.jpeg"
               alt="National Agricultural Corporation Logo"
-              width={44}
-              height={44}
+              width={80}
+              height={80}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm sm:text-base font-black tracking-tight leading-none uppercase" style={{ color: theme.primary }}>
+            <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.primary }}>
               National Agricultural
             </span>
-            <span className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-0.5" style={{ color: theme.accent }}>
+            <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.accent }}>
               Corporation (Pvt) Ltd
             </span>
           </div>

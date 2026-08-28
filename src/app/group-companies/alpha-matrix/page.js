@@ -88,7 +88,7 @@ const featuredSolutions = [
     title: "Integrated Command Center",
     desc: "Centralized C4ISR monitoring platform for unified situational awareness, tactical coordination, and emergency response.",
     image: "/alpha_command_center.svg",
-    href: "/group-companies/alpha-matrix/solutions#command-control",
+    href: "/group-companies/alpha-matrix/solutions#command-centers",
   },
   {
     title: "Smart Border Monitoring",
@@ -100,7 +100,7 @@ const featuredSolutions = [
     title: "Critical Infrastructure Protection",
     desc: "Comprehensive perimeter protection and cyber-physical security architecture for power stations, airports, and refineries.",
     image: "/alpha_critical_infrastructure.svg",
-    href: "/group-companies/alpha-matrix/solutions#perimeter-protection",
+    href: "/group-companies/alpha-matrix/solutions#critical-infrastructure",
   },
 ];
 
@@ -262,32 +262,26 @@ function IndustryCard({ icon: Icon, label, href }) {
   );
 }
 
-function FeaturedCard({ title, desc, image, href }) {
+function FeaturedCard({ title, desc, image, href = "/group-companies/alpha-matrix/solutions" }) {
   const [ref, visible] = useReveal();
   return (
     <Link
       href={href}
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} group rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#005691]/50 flex flex-col justify-between bg-white`}
+      className={`reveal ${visible ? "is-visible" : ""} group rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#005691]/50 flex flex-col bg-white`}
       style={{ borderColor: theme.border }}
     >
-      <div>
-        <div className="relative w-full h-44 overflow-hidden bg-slate-50 border-b" style={{ borderColor: theme.border }}>
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-        </div>
-        <div className="p-5">
-          <h3 className="text-[13px] font-black uppercase tracking-wide mb-2 transition-colors duration-300 group-hover:text-[#005691]" style={{ color: theme.navy }}>{title}</h3>
-          <p className="text-[11.5px] leading-relaxed" style={{ color: theme.textMuted }}>{desc}</p>
-        </div>
+      <div className="relative w-full h-44 overflow-hidden bg-slate-50 border-b" style={{ borderColor: theme.border }}>
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
-      <div className="px-5 pb-5 pt-1 flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider group-hover:translate-x-1 transition-transform" style={{ color: theme.gold }}>
-        <span>View Deployment Specs</span>
-        <ArrowRight size={12} />
+      <div className="p-5">
+        <h3 className="text-[13px] font-black uppercase tracking-wide mb-2 transition-colors duration-300 group-hover:text-[#005691]" style={{ color: theme.navy }}>{title}</h3>
+        <p className="text-[11.5px] leading-relaxed" style={{ color: theme.textMuted }}>{desc}</p>
       </div>
     </Link>
   );
@@ -336,7 +330,7 @@ export default function AlphaMatrixPage() {
         {/* Background Visual Graphic */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/alpha_hero_defense.svg"
+            src="/logos/alpha.png"
             alt="Alpha Matrix Defense Command Center Visual"
             fill
             priority
@@ -399,7 +393,7 @@ export default function AlphaMatrixPage() {
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-6 relative min-h-[380px] rounded-2xl overflow-hidden border shadow-sm group bg-white" style={{ borderColor: theme.border }}>
               <Image
-                src="/alpha_about_facility.svg"
+                src="/logos/alpha.png"
                 alt="Alpha Matrix Defense Facility and Engineering Operations"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"

@@ -61,9 +61,9 @@ export function RoysNavbar({ active = "" }) {
             <Image
               src="/roys logo.png"
               alt="ROYS & ROYS INTERNATIONAL"
-              width={180}
-              height={48}
-              className="h-9 sm:h-11 w-auto object-contain group-hover:opacity-95 transition-opacity"
+              width={260}
+              height={80}
+              className="h-14 sm:h-16 lg:h-[68px] w-auto object-contain group-hover:opacity-95 transition-opacity"
               priority
             />
           </div>

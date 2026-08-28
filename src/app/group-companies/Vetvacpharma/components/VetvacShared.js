@@ -135,11 +135,11 @@ export function VetvacNavbar() {
         <Link href="/group-companies/Vetvacpharma" className="flex items-center">
           <div className="relative flex items-center">
             <Image
-              src="/logo (1).png"
+              src="/logos/3.png"
               alt="VET VAC PHARMA Logo"
-              width={180}
-              height={50}
-              className="h-10 sm:h-12 w-auto object-contain"
+              width={260}
+              height={80}
+              className="h-14 sm:h-16 lg:h-[68px] w-auto object-contain"
               priority
             />
           </div>

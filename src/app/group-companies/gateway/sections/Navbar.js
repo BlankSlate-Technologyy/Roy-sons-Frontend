@@ -77,9 +77,9 @@ export default function Navbar() {
             <Image
               src="/logo (2).png"
               alt="Gateway Pharmaceuticals Logo"
-              width={180}
-              height={50}
-              className="h-10 sm:h-12 w-auto object-contain"
+              width={260}
+              height={80}
+              className="h-14 sm:h-16 lg:h-[68px] w-auto object-contain"
               priority
             />
           </div>

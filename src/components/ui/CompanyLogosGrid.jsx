@@ -22,9 +22,9 @@ export default function CompanyLogosGrid() {
                   href={company.href}
                   target={isExt ? "_blank" : undefined}
                   rel={isExt ? "noopener noreferrer" : undefined}
-                  className="flex items-center justify-center bg-neutral-50 border border-neutral-200 rounded-sm p-4 group hover:border-black hover:shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-300 h-full"
+                  className="flex flex-col items-center justify-between bg-white border border-neutral-200 rounded-lg p-4 group hover:border-black hover:shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition-all duration-300 h-full"
                 >
-                  <div className="relative w-full h-36">
+                  <div className="relative w-full h-32 flex items-center justify-center">
                     <Image
                       src={company.image}
                       alt={company.name}
@@ -32,6 +32,11 @@ export default function CompanyLogosGrid() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
                       className="object-contain group-hover:scale-105 transition-transform duration-300 p-2"
                     />
+                  </div>
+                  <div className="w-full pt-3 mt-2 border-t border-neutral-100 flex items-center justify-center text-center">
+                    <h3 className="text-[12.5px] sm:text-[13px] font-black uppercase tracking-wide text-neutral-900 group-hover:text-[#C6A15A] transition-colors line-clamp-2">
+                      {company.name}
+                    </h3>
                   </div>
                 </Link>
               </div>
