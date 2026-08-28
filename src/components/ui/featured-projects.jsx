@@ -22,10 +22,10 @@ function ProjectTile({ image, title, location, href }) {
       </div>
       
       <div className="absolute bottom-0 left-0 right-0 bg-[#101518]/95 px-4 py-3 border-t border-[#C6A15A]/40 backdrop-blur-md transition-colors duration-300">
-        <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-[#C6A15A] transition-colors group-hover:text-[#D9B87A]" style={{ textShadow: "0 0 10px rgba(198,161,90,0.3)" }}>
+        <p className="text-[15px] font-extrabold uppercase tracking-[0.14em] text-[#C6A15A] transition-colors group-hover:text-[#D9B87A]" style={{ textShadow: "0 0 10px rgba(198,161,90,0.3)" }}>
           {title}
         </p>
-        <p className="text-[10px] text-[#F7F5F0]/80 font-semibold uppercase tracking-wider mt-0.5">
+        <p className="text-[14px] text-[#F7F5F0]/80 font-semibold uppercase tracking-wider mt-0.5">
           {location}
         </p>
       </div>
@@ -52,7 +52,7 @@ export default function FeaturedHoldingsShowcase({
           <Link
             href={allProjectsPath}
             id="view-all-projects-btn"
-            className="rs-cta-btn inline-flex items-center gap-2.5 border-2 border-[#C6A15A] bg-transparent px-6 py-2.5 text-[9.5px] font-bold tracking-[0.16em] uppercase hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+            className="rs-cta-btn inline-flex items-center gap-2.5 border-2 border-[#C6A15A] bg-transparent px-6 py-2.5 text-[13.5px] font-bold tracking-[0.16em] uppercase hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
           >
             <span className="text-[#C6A15A] group-hover:text-[#2D3136] transition-colors duration-300">VIEW ALL PROJECTS</span>
             <ArrowRight size={11} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-[#2D3136] group-hover:translate-x-1 transition-all duration-300" />

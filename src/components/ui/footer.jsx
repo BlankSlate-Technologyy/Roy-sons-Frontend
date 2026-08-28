@@ -65,7 +65,7 @@ export default function CorporateFooter({
       <div className="border-b border-neutral-900 bg-neutral-950/60 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#C6A15A] block mb-1">
+            <span className="text-[15px] font-black uppercase tracking-[0.2em] text-[#C6A15A] block mb-1">
               Stay Informed
             </span>
             <h3 className="text-base sm:text-lg font-bold text-white">
@@ -100,14 +100,14 @@ export default function CorporateFooter({
             </div>
 
             {newsletterStatus.type === "success" && (
-              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400">
+              <div className="flex items-center gap-1.5 text-[15px] font-semibold text-emerald-400">
                 <CheckCircle2 size={13} className="flex-shrink-0" />
                 <span>{newsletterStatus.message}</span>
               </div>
             )}
 
             {newsletterStatus.type === "error" && (
-              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-rose-400">
+              <div className="flex items-center gap-1.5 text-[15px] font-semibold text-rose-400">
                 <AlertCircle size={13} className="flex-shrink-0" />
                 <span>{newsletterStatus.message}</span>
               </div>
@@ -152,7 +152,7 @@ export default function CorporateFooter({
         </div>
 
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.24em] text-white mb-5">
+          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
             Quick Links
           </h4>
           <ul className="space-y-3">
@@ -170,7 +170,7 @@ export default function CorporateFooter({
         </div>
 
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.24em] text-white mb-5">
+          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
             Our Services
           </h4>
           <ul className="space-y-3">
@@ -188,7 +188,7 @@ export default function CorporateFooter({
         </div>
 
         <div>
-          <h4 className="text-[10px] font-black uppercase tracking-[0.24em] text-white mb-5">
+          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
             Contact Us
           </h4>
           <ul className="space-y-4">

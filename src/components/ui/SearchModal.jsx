@@ -152,7 +152,7 @@ export default function SearchModal({ isOpen, onClose }) {
                   key={cat.id}
                   type="button"
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3 py-1.5 rounded-md text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-md text-[15px] sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
                     isActive
                       ? "bg-[#C6A15A] text-[#121518] shadow-sm"
                       : "bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white border border-white/10"
@@ -160,7 +160,7 @@ export default function SearchModal({ isOpen, onClose }) {
                 >
                   <span>{cat.label}</span>
                   <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${
+                    className={`text-[14px] px-1.5 py-0.2 rounded-full font-extrabold ${
                       isActive ? "bg-black/20 text-[#121518]" : "bg-black/40 text-neutral-400"
                     }`}
                   >
@@ -175,7 +175,7 @@ export default function SearchModal({ isOpen, onClose }) {
         {/* Popular searches suggestions if query is empty */}
         {!query && (
           <div className="px-5 py-3 border-b border-white/5 bg-black/20 flex items-center gap-2 flex-wrap">
-            <span className="text-[11px] font-bold text-neutral-400 flex items-center gap-1 uppercase tracking-wider">
+            <span className="text-[15px] font-bold text-neutral-400 flex items-center gap-1 uppercase tracking-wider">
               <Sparkles size={13} className="text-[#C6A15A]" /> Popular:
             </span>
             {POPULAR_SEARCH_TERMS.map((term) => (
@@ -183,7 +183,7 @@ export default function SearchModal({ isOpen, onClose }) {
                 key={term}
                 type="button"
                 onClick={() => setQuery(term)}
-                className="text-[11px] px-2.5 py-0.5 rounded-full bg-white/5 text-neutral-300 hover:text-[#C6A15A] hover:bg-white/10 transition-colors border border-white/5 cursor-pointer"
+                className="text-[15px] px-2.5 py-0.5 rounded-full bg-white/5 text-neutral-300 hover:text-[#C6A15A] hover:bg-white/10 transition-colors border border-white/5 cursor-pointer"
               >
                 {term}
               </button>
@@ -223,24 +223,24 @@ export default function SearchModal({ isOpen, onClose }) {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                      <h4 className="text-sm sm:text-[14.5px] font-black text-white group-hover:text-[#C6A15A] transition-colors leading-tight">
+                      <h4 className="text-sm sm:text-[18.5px] font-black text-white group-hover:text-[#C6A15A] transition-colors leading-tight">
                         {item.title}
                       </h4>
                       <span
-                        className={`text-[9.5px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider border ${item.badgeColor}`}
+                        className={`text-[13.5px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider border ${item.badgeColor}`}
                       >
                         {item.badge}
                       </span>
                     </div>
 
                     {item.subtitle && (
-                      <p className="text-[11.5px] font-semibold text-neutral-400 mb-1 leading-snug">
+                      <p className="text-[15.5px] font-semibold text-neutral-400 mb-1 leading-snug">
                         {item.subtitle}
                       </p>
                     )}
 
                     {item.description && (
-                      <p className="text-[12px] text-neutral-400 line-clamp-2 leading-relaxed font-normal">
+                      <p className="text-[16px] text-neutral-400 line-clamp-2 leading-relaxed font-normal">
                         {item.description}
                       </p>
                     )}
@@ -279,7 +279,7 @@ export default function SearchModal({ isOpen, onClose }) {
 
         {/* Footer info */}
         <div
-          className="p-3 px-5 border-t flex items-center justify-between text-[11px] text-neutral-400"
+          className="p-3 px-5 border-t flex items-center justify-between text-[15px] text-neutral-400"
           style={{
             backgroundColor: "#252830",
             borderColor: "rgba(255, 255, 255, 0.08)",
@@ -291,14 +291,14 @@ export default function SearchModal({ isOpen, onClose }) {
             </span>
             <span className="hidden sm:inline text-neutral-500">•</span>
             <span className="hidden sm:inline">
-              Press <kbd className="px-1.5 py-0.5 rounded bg-black/40 text-neutral-300 border border-white/10 font-mono text-[10px]">Esc</kbd> to close
+              Press <kbd className="px-1.5 py-0.5 rounded bg-black/40 text-neutral-300 border border-white/10 font-mono text-[14px]">Esc</kbd> to close
             </span>
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="text-[#C6A15A] hover:underline font-bold uppercase text-[10.5px] tracking-wider cursor-pointer"
+            className="text-[#C6A15A] hover:underline font-bold uppercase text-[14.5px] tracking-wider cursor-pointer"
           >
             Close Search
           </button>

@@ -90,7 +90,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
       <div className="relative z-10 h-full flex items-center">
         <div className="max-w-screen-xl mx-auto px-6 w-full">
           <div className="max-w-[820px]">
-            <p className={`text-[11px] font-bold tracking-[0.28em] uppercase text-white/90 mb-3.5 transition-all duration-500 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+            <p className={`text-[15px] font-bold tracking-[0.28em] uppercase text-white/90 mb-3.5 transition-all duration-500 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.subtitle}
             </p>
 
@@ -104,7 +104,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
             )}
 
             {activeSlide.subheading && (
-              <p className={`text-[13px] font-semibold tracking-[0.12em] uppercase text-white/70 mb-3 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+              <p className={`text-[17px] font-semibold tracking-[0.12em] uppercase text-white/70 mb-3 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
                 {activeSlide.subheading}
               </p>
             )}
@@ -122,7 +122,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
             <div className={`flex flex-wrap gap-3 transition-all duration-500 delay-200 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               <Link
                 href={activeSlide.cta1?.href || activeSlide.cta?.href || "/"}
-                className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+                className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[15px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
               >
                 <span className="text-[#C6A15A] group-hover:text-black transition-colors duration-300">{activeSlide.cta1?.label || activeSlide.cta?.label}</span>
                 <ArrowRight size={13} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
@@ -130,7 +130,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
               {activeSlide.cta2 && (
                 <Link
                   href={activeSlide.cta2.href}
-                  className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[11px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+                  className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[15px] font-bold tracking-[0.2em] uppercase px-7 py-3.5 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
                 >
                   <span className="text-[#C6A15A] group-hover:text-black transition-colors duration-300">{activeSlide.cta2.label}</span>
                   <ArrowRight size={13} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />

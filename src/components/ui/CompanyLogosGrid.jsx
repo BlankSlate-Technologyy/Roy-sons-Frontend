@@ -34,7 +34,7 @@ export default function CompanyLogosGrid() {
                     />
                   </div>
                   <div className="w-full pt-3 mt-2 border-t border-neutral-100 flex items-center justify-center text-center">
-                    <h3 className="text-[12.5px] sm:text-[13px] font-black uppercase tracking-wide text-neutral-900 group-hover:text-[#C6A15A] transition-colors line-clamp-2">
+                    <h3 className="text-[16.5px] sm:text-[17px] font-black uppercase tracking-wide text-neutral-900 group-hover:text-[#C6A15A] transition-colors line-clamp-2">
                       {company.name}
                     </h3>
                   </div>
@@ -49,7 +49,7 @@ export default function CompanyLogosGrid() {
             <button
               type="button"
               onClick={() => setShowAllMobile(!showAllMobile)}
-              className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#C6A15A] bg-[#C6A15A] text-[#101518] text-[12px] font-extrabold uppercase tracking-widest rounded-[2px] active:scale-95 transition-all shadow-md"
+              className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#C6A15A] bg-[#C6A15A] text-[#101518] text-[16px] font-extrabold uppercase tracking-widest rounded-[2px] active:scale-95 transition-all shadow-md"
             >
               <span>{showAllMobile ? "SHOW LESS" : "VIEW ALL CARDS"}</span>
               {showAllMobile ? <ChevronUp size={18} /> : <ChevronDown size={18} />}

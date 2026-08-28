@@ -16,7 +16,7 @@ export default function ConsultationBanner({
             <Headphones size={24} className="text-white" strokeWidth={1.8} />
           </div>
           <div>
-            <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-white/50 mb-1">
+            <p className="text-[14px] font-bold tracking-[0.25em] uppercase text-white/50 mb-1">
               {subtitle}
             </p>
             <h2 className="text-xl md:text-2xl font-black text-white tracking-tight leading-tight">
@@ -28,7 +28,7 @@ export default function ConsultationBanner({
         <Link
           href={href}
           id="cta-consultation-btn"
-          className="rs-cta-btn flex-shrink-0 inline-flex items-center gap-3.5 border-2 border-[#C6A15A] bg-transparent px-7 py-3.5 text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+          className="rs-cta-btn flex-shrink-0 inline-flex items-center gap-3.5 border-2 border-[#C6A15A] bg-transparent px-7 py-3.5 text-[14px] font-bold tracking-[0.2em] uppercase hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
         >
           <span className="text-[#C6A15A] group-hover:text-black transition-colors duration-300">{buttonLabel}</span>
           <ArrowRight size={13} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />

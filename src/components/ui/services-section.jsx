@@ -18,15 +18,15 @@ function ServiceItem({ icon: Icon, title, description, href }) {
 
       {/* Text & Action */}
       <div className="flex-1 flex flex-col justify-start">
-        <h3 className="text-[14.5px] sm:text-[15px] font-extrabold tracking-[0.06em] uppercase text-white mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
+        <h3 className="text-[18.5px] sm:text-[19px] font-extrabold tracking-[0.06em] uppercase text-white mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-[13px] sm:text-[13.5px] text-neutral-400 leading-relaxed font-normal mb-2.5">
+        <p className="text-[17px] sm:text-[17.5px] text-neutral-400 leading-relaxed font-normal mb-2.5">
           {description}
         </p>
         <Link
           href={href || "#"}
-          className="inline-flex items-center gap-1.5 text-[10.5px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
+          className="inline-flex items-center gap-1.5 text-[14.5px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
         >
           <span>LEARN MORE</span>
           <ArrowRight
@@ -45,7 +45,7 @@ export default function CorporateCapabilitiesPanel({ services = CORPORATE_SERVIC
     <section className="py-16 sm:py-20 bg-[#101518] font-sans border-t border-b border-neutral-800/60">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
-          <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-[#C6A15A] mb-3">
+          <h4 className="text-[15px] font-bold tracking-[0.25em] uppercase text-[#C6A15A] mb-3">
             OUR CAPABILITIES
           </h4>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-[0.18em] text-white">

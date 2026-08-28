@@ -40,16 +40,16 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal 
 
       {hasText && (
         <div className="px-4 pb-4 text-center">
-          <h3 className="text-[16px] font-black tracking-[0.05em] uppercase text-black leading-snug mb-1">
+          <h3 className="text-[20px] font-black tracking-[0.05em] uppercase text-black leading-snug mb-1">
             {name}
           </h3>
           {subtitle && (
-            <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-neutral-700 mb-2">
+            <p className="text-[14px] font-bold tracking-[0.14em] uppercase text-neutral-700 mb-2">
               {subtitle}
             </p>
           )}
           {tagline && (
-            <p className="text-[11px] text-neutral-700 leading-relaxed font-normal">
+            <p className="text-[15px] text-neutral-700 leading-relaxed font-normal">
               {tagline}
             </p>
           )}
@@ -68,10 +68,10 @@ export default function SubsidiariesHoldingsGrid({
     <section className="py-16 bg-neutral-50/20 font-sans">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-14">
-          <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-neutral-700 mb-4">
+          <h4 className="text-[15px] font-bold tracking-[0.25em] uppercase text-neutral-700 mb-4">
             OUR COMPANIES
           </h4>
-          <h2 className="text-xl md:text-3xl lg:text-[34px] font-black tracking-[0.05em] uppercase text-neutral-950 leading-snug md:leading-snug lg:leading-tight">
+          <h2 className="text-xl md:text-3xl lg:text-[38px] font-black tracking-[0.05em] uppercase text-neutral-950 leading-snug md:leading-snug lg:leading-tight">
             ROYSONS holding is a Diverse group <br className="hidden sm:block" />
            of INDUSTRY-LEADING BUSINESSES
           </h2>
@@ -105,7 +105,7 @@ export default function SubsidiariesHoldingsGrid({
             <button
               type="button"
               onClick={() => setShowAllMobile(!showAllMobile)}
-              className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#C6A15A] bg-[#C6A15A] text-[#101518] text-[12px] font-extrabold uppercase tracking-widest rounded-[2px] active:scale-95 transition-all shadow-md"
+              className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#C6A15A] bg-[#C6A15A] text-[#101518] text-[16px] font-extrabold uppercase tracking-widest rounded-[2px] active:scale-95 transition-all shadow-md"
             >
               <span>{showAllMobile ? "SHOW LESS" : "VIEW ALL CARDS"}</span>
               {showAllMobile ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
