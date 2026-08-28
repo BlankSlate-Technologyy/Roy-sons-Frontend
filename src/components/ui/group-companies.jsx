@@ -39,17 +39,17 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal 
       </div>
 
       {hasText && (
-        <div className="px-4 pb-4 text-center">
-          <h3 className="text-[20px] font-black tracking-[0.05em] uppercase text-black leading-snug mb-1">
+        <div className="px-4 pb-5 pt-1 text-center">
+          <h3 className="text-[23px] font-black tracking-[0.04em] uppercase text-black leading-snug mb-1.5">
             {name}
           </h3>
           {subtitle && (
-            <p className="text-[14px] font-bold tracking-[0.14em] uppercase text-neutral-700 mb-2">
+            <p className="text-[16px] font-bold tracking-[0.14em] uppercase text-neutral-700 mb-2">
               {subtitle}
             </p>
           )}
           {tagline && (
-            <p className="text-[15px] text-neutral-700 leading-relaxed font-normal">
+            <p className="text-[17px] text-neutral-700 leading-relaxed font-normal">
               {tagline}
             </p>
           )}

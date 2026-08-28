@@ -34,7 +34,7 @@ export default function CompanyLogosGrid() {
                     />
                   </div>
                   <div className="w-full pt-3 mt-2 border-t border-neutral-100 flex items-center justify-center text-center">
-                    <h3 className="text-[16.5px] sm:text-[17px] font-black uppercase tracking-wide text-neutral-900 group-hover:text-[#C6A15A] transition-colors line-clamp-2">
+                    <h3 className="text-[18.5px] sm:text-[19.5px] font-black uppercase tracking-wide text-neutral-900 group-hover:text-[#C6A15A] transition-colors line-clamp-2">
                       {company.name}
                     </h3>
                   </div>
