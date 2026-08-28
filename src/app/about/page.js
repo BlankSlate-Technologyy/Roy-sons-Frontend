@@ -40,7 +40,8 @@ import {
   Hospital,
   Microscope,
   MapPin,
-  Network
+  Network,
+  Linkedin
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -328,8 +329,69 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2nd Section: Leadership / Board of Directors */}
-      <FeatureShowcase />
+      {/* 2nd Section: Chairman, ROYSONS Trust (Zeba Ijaz) */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-[#101518] text-white border-t border-neutral-800">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            
+            {/* Left: Content */}
+            <div className="flex-1 flex flex-col justify-center">
+              {/* Badge */}
+              <div className="inline-flex items-center border border-[#C6A15A]/40 bg-white/5 px-3.5 py-1 rounded-full w-fit mb-4">
+                <span className="text-[11px] font-black uppercase tracking-widest text-[#C6A15A]">
+                  Chairman, ROYSONS Trust
+                </span>
+              </div>
+
+              {/* Title */}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
+                Zeba Ijaz
+              </h2>
+
+              {/* Description */}
+              <p className="text-[14px] sm:text-[14.5px] text-neutral-300 leading-relaxed font-normal mb-8 max-w-2xl">
+                Zeba Ijaz leads ROYSONS Trust with a vision to establish a purpose-driven institution committed to creating lasting social and economic value for future generations. Under her leadership, the Trust aims to support initiatives across education, healthcare, community development, research, skills development, sustainability, and social welfare. With a strong commitment to responsible stewardship, compassion, and long-term development, ROYSONS Trust seeks to strengthen the foundation behind the ROYSONS enterprise while contributing to meaningful progress in society. Through strategic leadership and a people-centered vision, Zeba Ijaz is committed to building an institution that creates opportunities, supports communities, and leaves a lasting positive legacy.
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/about/chairmans-message"
+                  className="rs-cta-btn inline-flex items-center gap-2.5 px-6 py-3 border-2 border-[#C6A15A] bg-transparent text-[11px] font-black uppercase tracking-[0.18em] text-[#C6A15A] hover:bg-[#C6A15A] hover:text-[#101518] transition-all duration-300 group rounded-[2px]"
+                >
+                  <span className="transition-colors">VIEW PROFILE</span>
+                  <ArrowRight size={14} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+
+                <a
+                  href="https://www.linkedin.com/company/roysonspvtltd"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Zeba Ijaz LinkedIn Profile"
+                  className="inline-flex items-center justify-center w-11 h-11 border border-[#C6A15A]/40 bg-white/5 hover:bg-[#C6A15A] text-[#C6A15A] hover:text-[#101518] rounded-[2px] transition-all duration-300"
+                >
+                  <Linkedin size={18} strokeWidth={1.8} />
+                </a>
+              </div>
+            </div>
+
+            {/* Right: Image */}
+            <div className="flex-1 w-full flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[380px] sm:max-w-[440px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-900 group">
+                <Image
+                  src="/logos/about-2.jpeg"
+                  alt="Zeba Ijaz - Chairman, ROYSONS Trust"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 440px"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  priority
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       {/* 3rd Section: About ROYSONS Pvt. Ltd. (Content Left, Image Right) */}
       <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100">
@@ -371,6 +433,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* 4th Section: Board of Directors Feature Showcase */}
+      <FeatureShowcase />
 
       {/* Government Sector Clients Section */}
       <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100">
