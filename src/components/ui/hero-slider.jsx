@@ -58,7 +58,8 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
 
   return (
     <section 
-      className="relative w-full overflow-hidden bg-stone-950 font-sans min-h-[600px] lg:min-h-[640px] flex items-center" 
+      className="relative w-full overflow-hidden bg-stone-950 font-sans" 
+      style={{ height: "560px" }}
       aria-label="Featured Showcase Slider"
     >
       <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isTransitioning ? "opacity-0" : "opacity-90"}`}>
@@ -86,53 +87,53 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      <div className="relative z-10 h-full w-full py-16 sm:py-20 flex items-center">
+      <div className="relative z-10 h-full flex items-center">
         <div className="max-w-screen-xl mx-auto px-6 w-full">
-          <div className="max-w-[880px]">
-            <p className={`text-[19px] font-bold tracking-[0.28em] uppercase text-white/90 mb-3.5 transition-all duration-500 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+          <div className="max-w-[820px]">
+            <p className={`text-[13px] md:text-[14px] font-bold tracking-[0.28em] uppercase text-white/90 mb-3 transition-all duration-500 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.subtitle}
             </p>
 
-            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-black leading-none text-white uppercase tracking-tight transition-all duration-500 delay-75 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+            <h1 className={`text-3xl md:text-4xl lg:text-5xl font-black leading-none text-white uppercase tracking-tight transition-all duration-500 delay-75 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.title}
             </h1>
             {activeSlide.highlight && (
-              <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black leading-none text-white uppercase tracking-tight mb-3.5 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+              <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black leading-none text-white uppercase tracking-tight mb-3 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
                 {activeSlide.highlight}
               </h2>
             )}
 
             {activeSlide.subheading && (
-              <p className={`text-[21px] font-semibold tracking-[0.12em] uppercase text-white/70 mb-3.5 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+              <p className={`text-[14px] md:text-[15px] font-semibold tracking-[0.12em] uppercase text-white/70 mb-3 transition-all duration-500 delay-100 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
                 {activeSlide.subheading}
               </p>
             )}
 
-            <p className={`text-base sm:text-lg text-white/85 leading-relaxed mb-3.5 max-w-[780px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+            <p className={`text-sm sm:text-base text-white/85 leading-snug mb-3 max-w-[720px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.description}
             </p>
 
             {activeSlide.supportingText && (
-              <p className={`text-base sm:text-lg text-white/65 leading-relaxed mb-8 max-w-[780px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+              <p className={`text-sm sm:text-base text-white/65 leading-snug mb-6 max-w-[720px] transition-all duration-500 delay-150 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
                 {activeSlide.supportingText}
               </p>
             )}
 
-            <div className={`flex flex-wrap gap-3.5 transition-all duration-500 delay-200 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
+            <div className={`flex flex-wrap gap-3 transition-all duration-500 delay-200 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               <Link
                 href={activeSlide.cta1?.href || activeSlide.cta?.href || "/"}
-                className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[19px] font-bold tracking-[0.2em] uppercase px-8 py-4 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+                className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase px-6 py-3 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
               >
                 <span className="text-[#C6A15A] group-hover:text-black transition-colors duration-300">{activeSlide.cta1?.label || activeSlide.cta?.label}</span>
-                <ArrowRight size={15} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+                <ArrowRight size={13} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
               </Link>
               {activeSlide.cta2 && (
                 <Link
                   href={activeSlide.cta2.href}
-                  className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[19px] font-bold tracking-[0.2em] uppercase px-8 py-4 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+                  className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase px-6 py-3 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
                 >
                   <span className="text-[#C6A15A] group-hover:text-black transition-colors duration-300">{activeSlide.cta2.label}</span>
-                  <ArrowRight size={15} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+                  <ArrowRight size={13} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
                 </Link>
               )}
             </div>

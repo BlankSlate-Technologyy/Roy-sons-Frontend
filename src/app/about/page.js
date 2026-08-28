@@ -325,6 +325,54 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Second Feature Section (Image Left, Content Right) */}
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
+            {/* Left: Image */}
+            <div className="flex-1 w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] order-2 lg:order-1">
+              <div 
+                className="h-full w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] overflow-hidden rounded-[2px] bg-[#1a1f24]"
+                style={{
+                  border: "2px solid #C6A15A",
+                  boxShadow: "0 0 20px rgba(198,161,90,0.25), 4px 4px 0px #C6A15A",
+                  borderRadius: "2px",
+                }}
+              >
+                <Image 
+                  src="/logos/about-2.jpeg" 
+                  alt="ROYSONS Corporate Overview" 
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Right: Content */}
+            <div className="flex-1 flex flex-col justify-center order-1 lg:order-2">
+              <span className="text-[15px] font-black tracking-[0.3em] text-[#C6A15A] uppercase mb-3">
+                ROYSONS TRUST
+              </span>
+              <h2 className="text-4xl lg:text-4xl font-black text-neutral-950 mb-5 leading-[1.08] tracking-tight">
+               Building Institutions. Creating Opportunities. Serving Generations.
+              </h2>
+              <p className="text-[18px] text-neutral-600 leading-relaxed font-normal mb-5">
+               A Purpose-Led Institution Behind a Diversified Enterprise
+
+ROYSONS Trust is envisioned as the purpose-driven institution supporting the long-term development, stewardship, and social impact of the ROYSONS enterprise.
+
+The Trust is designed around a simple philosophy: business growth should create lasting value for people, communities, and future generations.
+
+Through its relationship with ROYSONS Pvt. Ltd., the Trust aims to support responsible enterprise development, strengthen long-term institutional ownership, and channel resources toward initiatives in education, healthcare, community development, skills, research, sustainability, and other areas of public benefit.
+
+Our ambition is to build an institution that can outlive individual businesses and generations—creating a sustainable foundation for economic development and social progress.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Alternating Feature Showcase Section */}
       <FeatureShowcase />
 
