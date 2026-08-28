@@ -177,7 +177,7 @@ export function WaltonNavbar() {
         <Link href="/group-companies/walton-consultants-contracting" className="flex items-center gap-3 select-none group">
           <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
             <Image
-              src="/walton.jpeg"
+              src="/logos/5.png"
               alt="Walton Consultants & Contracting Logo"
               width={80}
               height={80}

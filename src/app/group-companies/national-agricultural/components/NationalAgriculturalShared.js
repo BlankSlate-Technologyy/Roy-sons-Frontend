@@ -184,7 +184,7 @@ export function NationalAgriculturalNavbar() {
         <Link href="/group-companies/national-agricultural" className="flex items-center gap-3 select-none group">
           <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
             <Image
-              src="/national agricultural.jpeg"
+              src="/logos/2.png"
               alt="National Agricultural Corporation Logo"
               width={80}
               height={80}

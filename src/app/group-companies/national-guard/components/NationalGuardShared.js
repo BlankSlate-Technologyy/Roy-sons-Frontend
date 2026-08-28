@@ -184,7 +184,7 @@ export function NationalGuardNavbar() {
         <Link href="/group-companies/national-guard" className="flex items-center gap-3 select-none group">
           <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
             <Image
-              src="/nation guard.jpeg"
+              src="/logos/10.png"
               alt="National Guard Security Services Logo"
               width={80}
               height={80}

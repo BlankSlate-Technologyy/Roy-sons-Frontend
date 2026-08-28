@@ -117,7 +117,7 @@ export function AlphaMatrixNavbar() {
         <Link href="/group-companies/alpha-matrix" className="flex items-center gap-3 group">
           <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
             <Image
-              src="/alpha matrix.jpeg"
+              src="/logos/4.png"
               alt="Alpha Matrix Defence Systems Logo"
               width={80}
               height={80}
