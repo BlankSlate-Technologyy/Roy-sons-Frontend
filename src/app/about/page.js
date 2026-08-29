@@ -402,7 +402,7 @@ export default function AboutPage() {
                 WHO WE ARE
               </span>
               <h2 className="text-4xl lg:text-4xl font-black text-neutral-950 mb-5 leading-[1.08] tracking-tight">
-                About ROYSONS Pvt. Ltd.
+               ROYSONS Pvt. Ltd.
               </h2>
               <p className="text-[14px] text-neutral-600 leading-relaxed font-normal mb-5">
                 ROYSONS Pvt. Ltd. is a diversified multi-sector enterprise built with a vision to establish a dynamic organization capable of delivering world-class solutions across multiple industries. With a growing portfolio of specialized companies and business divisions, ROYSONS operates across healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, international trade, manufacturing, real estate, food, and consultancy.
