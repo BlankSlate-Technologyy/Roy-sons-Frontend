@@ -162,13 +162,15 @@ export function RoysFooter() {
 
   const footerSections = [
     {
-      heading: "Solutions",
+      heading: "Core Services",
       links: [
-        { label: "Medical Solutions",      href: "/group-companies/roys-roys/solutions#medical" },
-        { label: "Laboratory Solutions",   href: "/group-companies/roys-roys/solutions#laboratory" },
-        { label: "Surgical Solutions",     href: "/group-companies/roys-roys/solutions#surgical" },
-        { label: "Hospital Engineering",   href: "/group-companies/roys-roys/solutions#engineering" },
-        { label: "Customized Solutions",   href: "/group-companies/roys-roys/solutions#customized" },
+        { label: "Healthcare Technologies",    href: "/group-companies/roys-roys/services/healthcare-technologies" },
+        { label: "Hospital Engineering",        href: "/group-companies/roys-roys/services/hospital-engineering" },
+        { label: "Clean Room & HVAC",            href: "/group-companies/roys-roys/services/clean-room-hvac" },
+        { label: "Laboratory Solutions",        href: "/group-companies/roys-roys/services/laboratory-solutions" },
+        { label: "Pharmaceutical Consultancy",  href: "/group-companies/roys-roys/services/pharmaceutical-consultancy" },
+        { label: "International Procurement",   href: "/group-companies/roys-roys/services/international-procurement" },
+        { label: "Biomedical Services",         href: "/group-companies/roys-roys/services/biomedical-services" },
       ],
     },
     {

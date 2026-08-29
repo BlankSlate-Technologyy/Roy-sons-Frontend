@@ -47,13 +47,13 @@ const TRUSTED_LOGOS = [
 ];
 
 const CORE_BUSINESS_AREAS = [
-  { icon: HeartPulse,      label: "Healthcare\nTechnologies" },
-  { icon: BriefcaseMedical,label: "Hospital\nEngineering" },
-  { icon: FlaskConical,    label: "Clean Room\n& HVAC" },
-  { icon: Microscope,      label: "Laboratory\nSolutions" },
-  { icon: Pill,            label: "Pharmaceutical\nConsultancy" },
-  { icon: Globe,           label: "International\nProcurement" },
-  { icon: ShieldCheck,     label: "Biomedical\nServices" },
+  { icon: HeartPulse,      label: "Healthcare\nTechnologies",    slug: "healthcare-technologies" },
+  { icon: BriefcaseMedical,label: "Hospital\nEngineering",        slug: "hospital-engineering" },
+  { icon: FlaskConical,    label: "Clean Room\n& HVAC",            slug: "clean-room-hvac" },
+  { icon: Microscope,      label: "Laboratory\nSolutions",        slug: "laboratory-solutions" },
+  { icon: Pill,            label: "Pharmaceutical\nConsultancy",  slug: "pharmaceutical-consultancy" },
+  { icon: Globe,           label: "International\nProcurement",   slug: "international-procurement" },
+  { icon: ShieldCheck,     label: "Biomedical\nServices",         slug: "biomedical-services" },
 ];
 
 const PRODUCTS_TABS = [
@@ -205,22 +205,30 @@ function SectionHeading({ eyebrow, title }) {
   );
 }
 
-function IconCard({ icon: Icon, label, iconSize = 20, containerSize = "w-12 h-12" }) {
-  return (
+function IconCard({ icon: Icon, label, href, iconSize = 20, containerSize = "w-12 h-12" }) {
+  const cardContent = (
     <div
-      className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group"
+      className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group cursor-pointer h-full select-none"
       style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = COLORS.primary;
-        e.currentTarget.querySelector('span').style.color = '#ffffff';
-        e.currentTarget.querySelector('svg').style.color = '#ffffff';
-        e.currentTarget.children[0].style.backgroundColor = 'rgba(255,255,255,0.2)';
+        const span = e.currentTarget.querySelector('span');
+        if (span) span.style.color = '#ffffff';
+        const svg = e.currentTarget.querySelector('svg');
+        if (svg) svg.style.color = '#ffffff';
+        if (e.currentTarget.children[0]) {
+          e.currentTarget.children[0].style.backgroundColor = 'rgba(255,255,255,0.2)';
+        }
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.backgroundColor = COLORS.white;
-        e.currentTarget.querySelector('span').style.color = COLORS.black;
-        e.currentTarget.querySelector('svg').style.color = COLORS.primary;
-        e.currentTarget.children[0].style.backgroundColor = `${COLORS.primary}10`;
+        const span = e.currentTarget.querySelector('span');
+        if (span) span.style.color = COLORS.black;
+        const svg = e.currentTarget.querySelector('svg');
+        if (svg) svg.style.color = COLORS.primary;
+        if (e.currentTarget.children[0]) {
+          e.currentTarget.children[0].style.backgroundColor = `${COLORS.primary}10`;
+        }
       }}
     >
       <div
@@ -237,6 +245,16 @@ function IconCard({ icon: Icon, label, iconSize = 20, containerSize = "w-12 h-12
       </span>
     </div>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className="block h-full no-underline">
+        {cardContent}
+      </Link>
+    );
+  }
+
+  return cardContent;
 }
 
 function PrimaryButton({ href, children, className = "" }) {
@@ -635,12 +653,19 @@ function CoreBusinessSection() {
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="CORE ACTIVITIES" title="Core Business Areas" />
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
-          {CORE_BUSINESS_AREAS.map(({ icon, label }) => (
-            <IconCard key={label} icon={icon} label={label} iconSize={20} containerSize="w-12 h-12" />
+          {CORE_BUSINESS_AREAS.map(({ icon, label, slug }) => (
+            <IconCard
+              key={label}
+              icon={icon}
+              label={label}
+              href={`/group-companies/roys-roys/services/${slug}`}
+              iconSize={20}
+              containerSize="w-12 h-12"
+            />
           ))}
         </div>
         <div className="flex justify-center">
-          <PrimaryButton href="/group-companies/roys-roys/solutions">
+          <PrimaryButton href="/group-companies/roys-roys/services">
             Explore All Healthcare Solutions <ArrowRight size={15} />
           </PrimaryButton>
         </div>

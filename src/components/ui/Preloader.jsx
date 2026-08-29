@@ -12,7 +12,7 @@ export default function Preloader() {
     // Lock body scroll during preloader
     document.body.style.overflow = "hidden";
 
-    // Smooth simulated progress (spread over ~3s)
+    // Smooth simulated progress (spread over ~4.5s)
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -20,16 +20,16 @@ export default function Preloader() {
           return 100;
         }
         // Smooth progression with slight acceleration near completion
-        const step = prev > 80 ? 3 : 1;
+        const step = prev > 85 ? 2 : 1;
         return Math.min(prev + step, 100);
       });
-    }, 35);
+    }, 48);
 
-    // Fade out after completion (increased by 2s: 1.5s -> 3.5s)
+    // Fade out after completion (total 5s)
     const timer = setTimeout(() => {
       setLoading(false);
       document.body.style.overflow = "";
-    }, 3500);
+    }, 5000);
 
     return () => {
       clearInterval(interval);

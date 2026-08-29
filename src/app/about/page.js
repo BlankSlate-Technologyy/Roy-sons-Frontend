@@ -313,10 +313,10 @@ export default function AboutPage() {
             {/* Right: Content */}
             <div className="flex-1 flex flex-col justify-center order-1 lg:order-2">
               <span className="text-[14px] font-black tracking-[0.3em] text-[#C6A15A] uppercase mb-3 block">
-                ROYSONS TRUST
+                Building Institutions
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-950 mb-5 leading-[1.12] tracking-tight">
-                Building Institutions. Creating Opportunities. Serving Generations.
+                 ROYSONS TRUST 
               </h2>
               <p className="text-[15px] sm:text-[16px] text-neutral-950 font-bold leading-relaxed mb-3">
                 A Purpose-Led Institution Behind a Diversified Enterprise
@@ -339,7 +339,7 @@ export default function AboutPage() {
               {/* Badge */}
               <div className="inline-flex items-center border border-[#C6A15A]/40 bg-white/5 px-3.5 py-1 rounded-full w-fit mb-4">
                 <span className="text-[11px] font-black uppercase tracking-widest text-[#C6A15A]">
-                  Chairman, ROYSONS Trust
+                  Chairman ROYSONS Trust
                 </span>
               </div>
 
@@ -379,7 +379,7 @@ export default function AboutPage() {
             <div className="flex-1 w-full flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[380px] sm:max-w-[440px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-900 group">
                 <Image
-                  src="/logos/about-2.jpeg"
+                  src="/logos/ijaz.jpeg"
                   alt="Zeba Ijaz - Chairman, ROYSONS Trust"
                   fill
                   sizes="(max-width: 768px) 100vw, 440px"
