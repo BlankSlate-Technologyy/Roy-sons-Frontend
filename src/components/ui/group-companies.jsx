@@ -45,7 +45,7 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal 
           </h3>
           {subtitle && (
             <>
-              <div className="w-12 h-[1.5px] bg-[#C6A15A] my-2.5 rounded-full" />
+              <div className="w-12 h-[2px] bg-[#C6A15A] my-2.5 rounded-full flex-shrink-0" />
               <p className="text-[15px] font-bold tracking-[0.12em] uppercase text-neutral-700">
                 {subtitle}
               </p>
@@ -53,7 +53,7 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal 
           )}
           {tagline && (
             <>
-              <div className="w-12 h-[1.5px] bg-[#C6A15A] my-2.5 rounded-full" />
+              <div className="w-12 h-[2px] bg-[#C6A15A] my-2.5 rounded-full flex-shrink-0" />
               <p className="text-[15px] text-neutral-700 leading-relaxed font-normal">
                 {tagline}
               </p>

@@ -18,10 +18,12 @@ function ServiceItem({ icon: Icon, title, description, href }) {
 
       {/* Text & Action */}
       <div className="flex-1 flex flex-col justify-start">
-        <h3 className="text-[18.5px] sm:text-[19px] font-extrabold tracking-[0.06em] uppercase text-white mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
+        <h3 className="text-[18.5px] sm:text-[19px] font-extrabold tracking-[0.06em] uppercase text-white mb-1.5 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-[17px] sm:text-[17.5px] text-neutral-400 leading-relaxed font-normal mb-2.5">
+        {/* Gold Separation Line */}
+        <div className="w-10 h-[2px] bg-[#C6A15A] my-2 rounded-full group-hover:w-16 transition-all duration-300" />
+        <p className="text-[17px] sm:text-[17.5px] text-neutral-400 leading-relaxed font-normal mb-3">
           {description}
         </p>
         <Link

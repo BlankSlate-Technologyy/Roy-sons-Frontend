@@ -1,5 +1,6 @@
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import Preloader from "@/components/ui/Preloader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -74,6 +75,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${cormorantGaramond.variable}`}>
       <body className="min-h-full flex flex-col bg-white text-[#111]">
+        <Preloader />
         {children}
       </body>
     </html>
