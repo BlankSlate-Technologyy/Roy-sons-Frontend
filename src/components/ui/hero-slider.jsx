@@ -58,7 +58,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
 
   return (
     <section 
-      className="relative w-full overflow-hidden bg-stone-950 font-sans min-h-[660px] sm:min-h-[700px] md:min-h-[700px] lg:min-h-[760px] flex items-center" 
+      className="relative w-full overflow-hidden bg-stone-950 font-sans min-h-[500px] sm:min-h-[650px] md:min-h-[650px] lg:min-h-[700px] flex items-center" 
       aria-label="Featured Showcase Slider"
     >
       <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isTransitioning ? "opacity-0" : "opacity-90"}`}>

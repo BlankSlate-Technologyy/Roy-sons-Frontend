@@ -352,28 +352,8 @@ export default function AboutPage() {
               <p className="text-[14px] sm:text-[14.5px] text-neutral-300 leading-relaxed font-normal mb-8 max-w-2xl">
                 Zeba Ijaz leads ROYSONS Trust with a vision to establish a purpose-driven institution committed to creating lasting social and economic value for future generations. Under her leadership, the Trust aims to support initiatives across education, healthcare, community development, research, skills development, sustainability, and social welfare. With a strong commitment to responsible stewardship, compassion, and long-term development, ROYSONS Trust seeks to strengthen the foundation behind the ROYSONS enterprise while contributing to meaningful progress in society. Through strategic leadership and a people-centered vision, Zeba Ijaz is committed to building an institution that creates opportunities, supports communities, and leaves a lasting positive legacy.
               </p>
-
-              {/* Action Buttons */}
-              <div className="flex items-center gap-3">
-                <Link
-                  href="/about/chairmans-message"
-                  className="rs-cta-btn inline-flex items-center gap-2.5 px-6 py-3 border-2 border-[#C6A15A] bg-transparent text-[11px] font-black uppercase tracking-[0.18em] text-[#C6A15A] hover:bg-[#C6A15A] hover:text-[#101518] transition-all duration-300 group rounded-[2px]"
-                >
-                  <span className="transition-colors">VIEW PROFILE</span>
-                  <ArrowRight size={14} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-
-                <a
-                  href="https://www.linkedin.com/company/roysonspvtltd"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Zeba Ijaz LinkedIn Profile"
-                  className="inline-flex items-center justify-center w-11 h-11 border border-[#C6A15A]/40 bg-white/5 hover:bg-[#C6A15A] text-[#C6A15A] hover:text-[#101518] rounded-[2px] transition-all duration-300"
-                >
-                  <Linkedin size={18} strokeWidth={1.8} />
-                </a>
               </div>
-            </div>
+              
 
             {/* Right: Image */}
             <div className="flex-1 w-full flex justify-center lg:justify-end">

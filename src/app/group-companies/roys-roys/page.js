@@ -100,15 +100,15 @@ const PRODUCTS = [
 ];
 
 const INDUSTRIES = [
-  { icon: Building2,  label: "Hospitals" },
-  { icon: ShieldCheck,label: "Government" },
-  { icon: Star,       label: "Military\nHealthcare" },
-  { icon: Award,      label: "Universities" },
-  { icon: Microscope, label: "Research\nCenters" },
-  { icon: Users,      label: "Private\nClinics" },
-  { icon: HeartPulse, label: "NGOs" },
-  { icon: FlaskConical,label: "Diagnostic\nLabs" },
-  { icon: Pill,       label: "Pharmaceutical\nIndustry" },
+  { icon: Building2,  label: "Hospitals",                 slug: "hospitals" },
+  { icon: ShieldCheck,label: "Government",                slug: "government" },
+  { icon: Star,       label: "Military\nHealthcare",      slug: "military-healthcare" },
+  { icon: Award,      label: "Universities",              slug: "universities" },
+  { icon: Microscope, label: "Research\nCenters",         slug: "research-centers" },
+  { icon: Users,      label: "Private\nClinics",          slug: "private-clinics" },
+  { icon: HeartPulse, label: "NGOs",                     slug: "ngos" },
+  { icon: FlaskConical,label: "Diagnostic\nLabs",         slug: "diagnostic-labs" },
+  { icon: Pill,       label: "Pharmaceutical\nIndustry",  slug: "pharmaceutical-industry" },
 ];
 
 const WHY_CHOOSE = [
@@ -745,22 +745,31 @@ function IndustriesSection() {
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="MARKET SECTORS" title="Industries We Serve" />
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-4 mb-8">
-          {INDUSTRIES.map(({ icon: Icon, label }) => (
-            <div
+          {INDUSTRIES.map(({ icon: Icon, label, slug }) => (
+            <Link
               key={label}
-              className="p-5 border rounded-lg text-center flex flex-col items-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group"
+              href={`/group-companies/roys-roys/industries/${slug}`}
+              className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group cursor-pointer no-underline select-none h-full"
               style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = COLORS.primary;
-                e.currentTarget.querySelector('span').style.color = '#ffffff';
-                e.currentTarget.querySelector('svg').style.color = '#ffffff';
-                e.currentTarget.children[0].style.backgroundColor = 'rgba(255,255,255,0.2)';
+                const span = e.currentTarget.querySelector('span');
+                if (span) span.style.color = '#ffffff';
+                const svg = e.currentTarget.querySelector('svg');
+                if (svg) svg.style.color = '#ffffff';
+                if (e.currentTarget.children[0]) {
+                  e.currentTarget.children[0].style.backgroundColor = 'rgba(255,255,255,0.2)';
+                }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = COLORS.white;
-                e.currentTarget.querySelector('span').style.color = COLORS.black;
-                e.currentTarget.querySelector('svg').style.color = COLORS.primary;
-                e.currentTarget.children[0].style.backgroundColor = `${COLORS.primary}10`;
+                const span = e.currentTarget.querySelector('span');
+                if (span) span.style.color = COLORS.black;
+                const svg = e.currentTarget.querySelector('svg');
+                if (svg) svg.style.color = COLORS.primary;
+                if (e.currentTarget.children[0]) {
+                  e.currentTarget.children[0].style.backgroundColor = `${COLORS.primary}10`;
+                }
               }}
             >
               <div
@@ -772,7 +781,7 @@ function IndustriesSection() {
               <span className="text-[15px] font-black whitespace-pre-line leading-normal transition-colors duration-300" style={{ color: COLORS.black }}>
                 {label}
               </span>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="flex justify-center">

@@ -1,25 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ChevronRight,
   ArrowRight,
-  Building2,
-  Stethoscope,
-  FlaskConical,
-  Landmark,
-  Scissors,
-  ClipboardList,
   CheckCircle2,
   Globe,
   Users,
   ShieldCheck,
   HeartPulse,
+  Sparkles,
+  Building2,
 } from "lucide-react";
 import { RoysNavbar, RoysFooter, RoysButton, SectionHeading } from "../_shared";
+import { INDUSTRIES_LIST } from "../industries-data";
 
-// ─── Local Page Color Tokens (Independent of Global CSS) ──────────────────────
 const COLORS = {
   primary:     "#113658",
   primaryDark: "#0a2238",
@@ -32,110 +29,11 @@ const COLORS = {
   muted:       "#4a5568",
 };
 
-const INDUSTRIES = [
-  {
-    id: "hospitals",
-    icon: Building2,
-    number: "01",
-    title: "Hospitals",
-    subtitle: "Complete Healthcare Facility Support",
-    desc: "We provide products and solutions supporting hospital departments, clinical operations, patient care, and facility requirements.",
-    points: [
-      "Inpatient & outpatient department equipment",
-      "ICU & critical care technologies",
-      "Operating theatre solutions",
-      "Radiology & imaging equipment",
-      "Hospital furniture & infrastructure",
-      "Medical gas systems",
-    ],
-  },
-  {
-    id: "clinics",
-    icon: Stethoscope,
-    number: "02",
-    title: "Clinics & Medical Centers",
-    subtitle: "Supporting Everyday Clinical Care",
-    desc: "Our healthcare products help clinics and medical centers access reliable equipment and supplies for professional medical services.",
-    points: [
-      "Clinical examination equipment",
-      "Diagnostic instruments",
-      "Patient monitoring devices",
-      "Medical consumables & supplies",
-      "Clinic furniture & fixtures",
-      "Point-of-care testing solutions",
-    ],
-  },
-  {
-    id: "laboratories",
-    icon: FlaskConical,
-    number: "03",
-    title: "Laboratories",
-    subtitle: "Solutions for Modern Diagnostics",
-    desc: "We support diagnostic and medical laboratories with laboratory equipment, instruments, and related products.",
-    points: [
-      "Clinical chemistry & haematology systems",
-      "Microscopy & pathology instruments",
-      "PCR & molecular diagnostics",
-      "Biosafety & containment equipment",
-      "Laboratory consumables",
-      "Sample handling & processing",
-    ],
-  },
-  {
-    id: "government",
-    icon: Landmark,
-    number: "04",
-    title: "Government Healthcare Organizations",
-    subtitle: "Supporting Public Healthcare Infrastructure",
-    desc: "We work with government and institutional organizations to support healthcare procurement, medical projects, and infrastructure requirements.",
-    points: [
-      "Large-scale institutional procurement",
-      "Government hospital supply",
-      "Public health infrastructure support",
-      "Medical project equipment supply",
-      "Documentation & compliance support",
-      "Multi-phase procurement planning",
-    ],
-  },
-  {
-    id: "surgical",
-    icon: Scissors,
-    number: "05",
-    title: "Surgical & Specialized Facilities",
-    subtitle: "Professional Solutions for Specialized Environments",
-    desc: "Our surgical and clinical solutions support specialized healthcare environments requiring dependable equipment and professional supplies.",
-    points: [
-      "Surgical instruments & sets",
-      "Operating room equipment",
-      "Sterilization & infection control",
-      "Anaesthesia & life support",
-      "Electrosurgical units",
-      "Specialized clinical accessories",
-    ],
-  },
-  {
-    id: "projects",
-    icon: ClipboardList,
-    number: "06",
-    title: "Healthcare Projects",
-    subtitle: "From Product Supply to Project Support",
-    desc: "For larger healthcare projects, we can support product sourcing, procurement, supply, and technical requirements based on project specifications.",
-    points: [
-      "Greenfield & expansion hospital projects",
-      "Turnkey medical facility setup",
-      "Equipment planning & procurement",
-      "Multi-department supply programs",
-      "Technical specification support",
-      "Project-based logistics & delivery",
-    ],
-  },
-];
-
 const CAPABILITIES = [
-  { icon: ShieldCheck, title: "Quality-Assured Supply",       desc: "Products sourced from verified international partners with focus on quality and compliance." },
-  { icon: Globe,       title: "International Reach",          desc: "Serving healthcare clients across multiple countries with efficient international procurement." },
-  { icon: Users,       title: "Institutional Experience",     desc: "Extensive experience working with hospitals, government bodies, and large healthcare organizations." },
-  { icon: HeartPulse,  title: "Healthcare-First Approach",    desc: "Every solution is evaluated for its healthcare application, reliability, and clinical suitability." },
+  { icon: ShieldCheck, title: "Quality-Assured Supply",    desc: "Products sourced from verified international partners with focus on quality and compliance." },
+  { icon: Globe,       title: "International Reach",       desc: "Serving healthcare clients across multiple countries with efficient international procurement." },
+  { icon: Users,       title: "Institutional Experience",  desc: "Extensive experience working with hospitals, government bodies, and large healthcare organizations." },
+  { icon: HeartPulse,  title: "Healthcare-First Approach", desc: "Every solution is evaluated for its healthcare application, reliability, and clinical suitability." },
 ];
 
 function IndustryCard({ industry, index }) {
@@ -144,13 +42,13 @@ function IndustryCard({ industry, index }) {
 
   return (
     <div
-      id={industry.id}
+      id={industry.slug}
       style={{
         display: "grid",
-        gridTemplateColumns: "1.1fr 1fr",
+        gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
         backgroundColor: COLORS.white,
         border: `1.5px solid ${hovered ? COLORS.primary : COLORS.border}`,
-        borderRadius: "8px",
+        borderRadius: "12px",
         overflow: "hidden",
         boxShadow: hovered ? "0 16px 40px rgba(17,54,88,0.12)" : "0 4px 16px rgba(0,0,0,0.04)",
         transition: "all 0.3s ease",
@@ -159,47 +57,77 @@ function IndustryCard({ industry, index }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Left panel: Info */}
-      <div style={{ padding: "48px 40px", display: "flex", flexDirection: "column", justifyContent: "center", borderRight: `1px solid ${COLORS.border}` }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "18px" }}>
-          <div style={{ width: "54px", height: "54px", borderRadius: "50%", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Icon size={26} color={COLORS.primary} />
+      <div style={{ padding: "44px 36px", display: "flex", flexDirection: "column", justifyContent: "space-between", borderRight: `1px solid ${COLORS.border}` }}>
+        <div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "18px" }}>
+            <div style={{ width: "54px", height: "54px", borderRadius: "12px", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Icon size={28} color={COLORS.primary} />
+            </div>
+            <span style={{ color: COLORS.gold, fontSize: "28px", fontWeight: "900", fontFamily: "monospace" }}>0{index + 1}</span>
           </div>
-          <span style={{ color: COLORS.gold, fontSize: "28px", fontWeight: "900" }}>{industry.number}</span>
+
+          <p style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "8px" }}>
+            {industry.badge}
+          </p>
+          <h3 style={{ color: COLORS.primary, fontSize: "clamp(1.3rem, 2vw, 1.65rem)", fontWeight: "900", lineHeight: "1.25", marginBottom: "14px" }}>
+            {industry.title}
+          </h3>
+          <p style={{ color: COLORS.primary, fontSize: "14px", lineHeight: "1.75", opacity: 0.85, marginBottom: "20px" }}>
+            {industry.tagline}
+          </p>
         </div>
 
-        <p style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "8px" }}>
-          {industry.subtitle}
-        </p>
-        <h3 style={{ color: COLORS.primary, fontSize: "clamp(1.25rem, 2vw, 1.55rem)", fontWeight: "900", lineHeight: "1.3", marginBottom: "14px" }}>
-          {industry.title}
-        </h3>
-        <p style={{ color: COLORS.primary, fontSize: "14.5px", lineHeight: "1.85", opacity: 0.88 }}>
-          {industry.desc}
-        </p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", paddingTop: "20px", borderTop: `1px solid ${COLORS.border}` }}>
+          <Link
+            href={`/group-companies/roys-roys/industries/${industry.slug}`}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              backgroundColor: COLORS.primary,
+              color: COLORS.white,
+              fontSize: "12px",
+              fontWeight: "800",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              padding: "12px 22px",
+              borderRadius: "6px",
+              textDecoration: "none",
+              transition: "background-color 0.2s",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = COLORS.teal)}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = COLORS.primary)}
+          >
+            Explore Detail Page <ArrowRight size={14} />
+          </Link>
+        </div>
       </div>
 
-      {/* Right panel: Points */}
-      <div style={{ backgroundColor: COLORS.light, padding: "48px 40px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <p style={{ color: COLORS.primary, fontSize: "11px", fontWeight: "800", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "18px" }}>
-          WHAT WE SUPPORT
+      {/* Right panel: Core Capabilities & Tech */}
+      <div style={{ backgroundColor: COLORS.light, padding: "44px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+        <p style={{ color: COLORS.primary, fontSize: "11px", fontWeight: "800", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "18px" }}>
+          FEATURED CAPABILITIES &amp; SYSTEMS
         </p>
 
         <div style={{ marginBottom: "24px" }}>
-          {industry.points.map((point) => (
-            <div key={point} style={{ display: "flex", alignItems: "flex-start", gap: "10px", padding: "10px 0", borderBottom: `1px solid ${COLORS.border}` }}>
-              <CheckCircle2 size={15} color={COLORS.primary} style={{ flexShrink: 0, marginTop: "2px" }} />
-              <span style={{ color: COLORS.primary, fontSize: "13.5px", fontWeight: "700" }}>{point}</span>
+          {industry.keyPillars.slice(0, 4).map((pillar) => (
+            <div key={pillar.title} style={{ display: "flex", alignItems: "flex-start", gap: "10px", padding: "10px 0", borderBottom: `1px solid ${COLORS.border}` }}>
+              <CheckCircle2 size={16} color={COLORS.teal} style={{ flexShrink: 0, marginTop: "2px" }} />
+              <div>
+                <span style={{ color: COLORS.primary, fontSize: "13.5px", fontWeight: "800", display: "block" }}>{pillar.title}</span>
+                <span style={{ color: COLORS.muted, fontSize: "12px", lineHeight: "1.5" }}>{pillar.desc}</span>
+              </div>
             </div>
           ))}
         </div>
 
         <Link
-          href="/group-companies/roys-roys/contact"
-          style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: COLORS.primary, fontSize: "12px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", transition: "color 0.2s" }}
+          href={`/group-companies/roys-roys/industries/${industry.slug}`}
+          style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: COLORS.primary, fontSize: "12px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", transition: "color 0.2s" }}
           onMouseEnter={e => (e.currentTarget.style.color = COLORS.teal)}
           onMouseLeave={e => (e.currentTarget.style.color = COLORS.primary)}
         >
-          Discuss Your Requirements <ArrowRight size={13} />
+          View Full Equipment Portfolio &amp; FAQs <ArrowRight size={13} />
         </Link>
       </div>
     </div>
@@ -220,10 +148,9 @@ export default function IndustriesPage() {
 
       {/* ── HERO (IMAGE BACKGROUND + DARK OVERLAY) ───────────────────────── */}
       <section style={{ position: "relative", padding: "80px 24px 75px", overflow: "hidden", minHeight: "420px", display: "flex", alignItems: "center" }}>
-        {/* Background image + overlay */}
         <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: `url('/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg')`, backgroundSize: "cover", backgroundPosition: "center" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.58) 55%, rgba(0,0,0,0.25) 100%)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.65) 55%, rgba(0,0,0,0.35) 100%)" }} />
         </div>
 
         <div style={{ maxWidth: "1280px", margin: "0 auto", position: "relative", zIndex: 1, width: "100%" }}>
@@ -233,7 +160,7 @@ export default function IndustriesPage() {
             <span style={{ color: COLORS.white, fontSize: "13px", fontWeight: "800" }}>Industries</span>
           </nav>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "40px", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "40px", alignItems: "center", maxWidth: "800px" }}>
             <div>
               <p style={{ color: COLORS.gold, fontSize: "12px", fontWeight: "800", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "14px" }}>
                 SECTORS WE SERVE
@@ -242,150 +169,136 @@ export default function IndustriesPage() {
                 Industries We Serve
               </h1>
               <p style={{ color: COLORS.white, fontSize: "clamp(1.1rem, 2vw, 1.3rem)", fontWeight: "700", marginBottom: "18px" }}>
-                Healthcare Solutions Across Critical Medical &amp; Institutional Environments
+                Healthcare Solutions Across 9 Critical Medical &amp; Institutional Sectors
               </p>
               <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "15.5px", lineHeight: "1.85", maxWidth: "640px", marginBottom: "36px" }}>
-                Roys &amp; Roys International supports organizations across healthcare and related institutional sectors with products, equipment, and specialized solutions.
+                Roys &amp; Roys International delivers tailored medical technologies, sterile cleanrooms, laboratory equipment, and engineering infrastructure to hospitals, defense forces, universities, pharma plants, and international relief bodies.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>
-                <RoysButton href="#industries-list" variant="gold">
-                  Explore Industries <ArrowRight size={14} />
+                <RoysButton href="/group-companies/roys-roys/contact" variant="primary">
+                  Inquire For Your Sector
                 </RoysButton>
-                <RoysButton href="/group-companies/roys-roys/contact" variant="outline-white">
-                  Contact Our Team <ArrowRight size={14} />
+                <RoysButton href="#industries-list" variant="outline-white">
+                  Browse All 9 Sectors
                 </RoysButton>
               </div>
-            </div>
-
-            {/* Quick stats floating cards */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", minWidth: "260px" }} className="hidden lg:grid">
-              {[
-                { val: "6", lbl: "Sectors" },
-                { val: "30+", lbl: "Countries" },
-                { val: "250+", lbl: "Projects" },
-                { val: "15+", lbl: "Years" },
-              ].map((s) => (
-                <div key={s.lbl} style={{ backgroundColor: COLORS.white, border: `1.5px solid ${COLORS.border}`, borderRadius: "6px", padding: "20px 18px", textAlign: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.18)" }}>
-                  <div style={{ color: COLORS.primary, fontSize: "clamp(1.5rem, 2vw, 2rem)", fontWeight: "900", lineHeight: "1" }}>{s.val}</div>
-                  <div style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: "5px" }}>{s.lbl}</div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── QUICK NAV STRIP ───────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: COLORS.light, borderBottom: `1px solid ${COLORS.border}`, padding: "0" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", overflowX: "auto" }}>
-          {INDUSTRIES.map((ind) => {
-            const Icon = ind.icon;
-            return (
-              <a
-                key={ind.id}
-                href={`#${ind.id}`}
-                style={{
-                  flex: "1",
-                  minWidth: "150px",
-                  padding: "16px 12px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: "6px",
-                  textDecoration: "none",
-                  borderRight: `1px solid ${COLORS.border}`,
-                  transition: "background-color 0.2s",
-                }}
-                onMouseEnter={e => (e.currentTarget.style.backgroundColor = `${COLORS.primary}10`)}
-                onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}
-              >
-                <Icon size={18} color={COLORS.primary} />
-                <span style={{ color: COLORS.primary, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", textAlign: "center" }}>
-                  {ind.title}
-                </span>
-              </a>
-            );
-          })}
+      {/* ── QUICK NAV TABS ──────────────────────────────────────────────── */}
+      <section style={{ backgroundColor: COLORS.light, borderBottom: `1px solid ${COLORS.border}`, padding: "16px 24px", position: "sticky", top: "68px", zIndex: 40, boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", alignItems: "center", gap: "8px", overflowX: "auto", paddingBottom: "2px" }}>
+          <span style={{ fontSize: "11px", fontWeight: "800", letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.muted, whiteSpace: "nowrap", marginRight: "6px" }}>Jump to:</span>
+          {INDUSTRIES_LIST.map((ind) => (
+            <a
+              key={ind.slug}
+              href={`#${ind.slug}`}
+              style={{
+                padding: "6px 14px",
+                borderRadius: "4px",
+                fontSize: "12px",
+                fontWeight: "700",
+                color: COLORS.primary,
+                backgroundColor: COLORS.white,
+                border: `1px solid ${COLORS.border}`,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = COLORS.primary;
+                e.currentTarget.style.color = COLORS.white;
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = COLORS.white;
+                e.currentTarget.style.color = COLORS.primary;
+              }}
+            >
+              {ind.label.replace("\n", " ")}
+            </a>
+          ))}
         </div>
       </section>
 
-      {/* ── INDUSTRIES LIST ───────────────────────────────────────────────── */}
-      <section id="industries-list" style={{ backgroundColor: COLORS.white, padding: "88px 24px" }}>
+      {/* ── INDUSTRIES LIST ──────────────────────────────────────────────── */}
+      <section id="industries-list" style={{ padding: "80px 24px", backgroundColor: COLORS.white }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <SectionHeading eyebrow="WHO WE SERVE" title="Healthcare Sectors We Support" />
+          <SectionHeading
+            eyebrow="TARGET SECTORS"
+            title="Comprehensive Sector Coverage"
+            subtitle="Click on any industry to explore specialized clinical capabilities, equipment portfolios, and turnkey case studies."
+          />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-            {INDUSTRIES.map((industry, index) => (
-              <IndustryCard key={industry.id} industry={industry} index={index} />
+          <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
+            {INDUSTRIES_LIST.map((industry, index) => (
+              <IndustryCard key={industry.slug} industry={industry} index={index} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── OUR CAPABILITIES ─────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: COLORS.light, padding: "88px 24px", borderTop: `1px solid ${COLORS.border}` }}>
+      {/* ── WHY CHOOSE US / CAPABILITIES ─────────────────────────────────── */}
+      <section style={{ padding: "75px 24px", backgroundColor: COLORS.light, borderTop: `1px solid ${COLORS.border}` }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <SectionHeading eyebrow="WHY WORK WITH US" title="Our Cross-Industry Capabilities" />
+          <SectionHeading
+            eyebrow="WHY ROYS &amp; ROYS"
+            title="Institutional Reliability &amp; Experience"
+            subtitle="Partnering with organizations to deliver reliable products and practical healthcare solutions."
+          />
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "20px" }}>
-            {CAPABILITIES.map((cap) => {
-              const Icon = cap.icon;
-              return (
-                <div
-                  key={cap.title}
-                  style={{
-                    backgroundColor: COLORS.white,
-                    border: `1.5px solid ${COLORS.border}`,
-                    borderRadius: "6px",
-                    padding: "32px 26px",
-                    transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = COLORS.primary;
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    e.currentTarget.style.boxShadow = "0 12px 30px rgba(17,54,88,0.1)";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = COLORS.border;
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <div style={{ width: "48px", height: "48px", borderRadius: "50%", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "18px" }}>
-                    <Icon size={22} color={COLORS.primary} />
-                  </div>
-                  <h3 style={{ color: COLORS.primary, fontSize: "17px", fontWeight: "900", marginBottom: "10px" }}>{cap.title}</h3>
-                  <p style={{ color: COLORS.primary, fontSize: "13.5px", lineHeight: "1.75", opacity: 0.85 }}>{cap.desc}</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "24px" }}>
+            {CAPABILITIES.map(({ icon: Icon, title, desc }) => (
+              <div
+                key={title}
+                style={{
+                  backgroundColor: COLORS.white,
+                  padding: "32px 28px",
+                  borderRadius: "8px",
+                  border: `1px solid ${COLORS.border}`,
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                <div style={{ width: "48px", height: "48px", borderRadius: "8px", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                  <Icon size={24} color={COLORS.primary} />
                 </div>
-              );
-            })}
+                <h4 style={{ color: COLORS.primary, fontSize: "16px", fontWeight: "800", marginBottom: "10px" }}>
+                  {title}
+                </h4>
+                <p style={{ color: COLORS.primary, fontSize: "13.5px", lineHeight: "1.75", opacity: 0.8 }}>
+                  {desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA BANNER ────────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: COLORS.white, borderTop: `2px solid ${COLORS.primary}`, padding: "64px 24px" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "28px" }}>
-          <div>
-            <h2 style={{ color: COLORS.primary, fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: "900", marginBottom: "10px" }}>
-              Does Your Organization Need Healthcare Solutions?
-            </h2>
-            <p style={{ color: COLORS.primary, fontSize: "15px", maxWidth: "620px", opacity: 0.85 }}>
-              Whether you represent a hospital, clinic, laboratory, or government body — our team is ready to discuss your specific requirements.
-            </p>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
-            <RoysButton href="/group-companies/roys-roys/contact" variant="primary">
-              Discuss Your Requirements <ArrowRight size={15} />
+      {/* ── CTA SECTION ──────────────────────────────────────────────────── */}
+      <section style={{ padding: "80px 24px", backgroundColor: COLORS.primary, color: COLORS.white, textAlign: "center" }}>
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+          <p style={{ color: COLORS.gold, fontSize: "12px", fontWeight: "800", letterSpacing: "0.35em", textTransform: "uppercase", marginBottom: "14px" }}>
+            GET STARTED
+          </p>
+          <h2 style={{ color: COLORS.white, fontSize: "clamp(1.75rem, 3.5vw, 2.6rem)", fontWeight: "900", lineHeight: "1.25", marginBottom: "18px" }}>
+            Ready to Discuss Your Sector&apos;s Requirements?
+          </h2>
+          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "16px", lineHeight: "1.8", marginBottom: "36px" }}>
+            Whether you represent a hospital, government health agency, research institute, or private medical practice, our specialists are here to assist.
+          </p>
+          <div style={{ display: "flex", justifyContent: "center", gap: "16px", flexWrap: "wrap" }}>
+            <RoysButton href="/group-companies/roys-roys/contact" variant="gold">
+              Submit an Inquiry
             </RoysButton>
-            <RoysButton href="/group-companies/roys-roys/products" variant="outline">
-              Browse Products
+            <RoysButton href="/group-companies/roys-roys/solutions" variant="outline-white">
+              Explore Solutions
             </RoysButton>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER ────────────────────────────────────────────────────────── */}
       <RoysFooter />
     </main>
   );

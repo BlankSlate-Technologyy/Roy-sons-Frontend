@@ -1,0 +1,457 @@
+"use client";
+
+import { use, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import {
+  ChevronRight,
+  ArrowRight,
+  CheckCircle2,
+  Phone,
+  Mail,
+  ChevronDown,
+  Building2,
+  ShieldCheck,
+  Award,
+  Sparkles,
+  ArrowLeft,
+  Activity,
+  Layers,
+} from "lucide-react";
+import { RoysNavbar, RoysFooter, SectionHeading } from "../../_shared";
+import { INDUSTRIES_LIST, getIndustryBySlug } from "../../industries-data";
+
+export default function IndustryDetailPage({ params }) {
+  const unwrappedParams = use(params);
+  const slug = unwrappedParams?.slug;
+  const industry = getIndustryBySlug(slug);
+
+  const [openFaq, setOpenFaq] = useState(0);
+
+  if (!industry) {
+    notFound();
+  }
+
+  const MainIcon = industry.icon;
+
+  return (
+    <div className="min-h-screen flex flex-col bg-white text-[#111827]">
+      <RoysNavbar active="Industries" />
+
+      {/* ─── Breadcrumb ─────────────────────────────────────────────────────────── */}
+      <div className="bg-[#f1f5f9] border-b border-[#e2e8f0] py-3 px-4 sm:px-6">
+        <div className="mx-auto max-w-screen-xl flex items-center gap-2 text-xs text-[#64748b]">
+          <Link href="/group-companies/roys-roys" className="hover:text-[#113658] transition-colors">
+            Home
+          </Link>
+          <ChevronRight size={13} />
+          <Link href="/group-companies/roys-roys/industries" className="hover:text-[#113658] transition-colors">
+            Industries We Serve
+          </Link>
+          <ChevronRight size={13} />
+          <span className="font-semibold text-[#113658] truncate">{industry.title}</span>
+        </div>
+      </div>
+
+      {/* ─── Hero Section ───────────────────────────────────────────────────────── */}
+      <section className="relative bg-[#0b2138] text-white py-16 lg:py-20 px-6 overflow-hidden">
+        {/* Ambient Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071728] via-[#0b2138] to-[#113658] opacity-95" />
+        <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-15 pointer-events-none hidden lg:block">
+          <Image
+            src={industry.heroImage || "/roys_hospital_interior.png"}
+            alt={industry.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-screen-xl">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#B49438] text-xs font-bold uppercase tracking-widest mb-4">
+              <MainIcon size={15} />
+              <span>{industry.badge || "Market Sector"}</span>
+            </div>
+
+            <p className="text-[#B49438] text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] mb-2">
+              {industry.eyebrow}
+            </p>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-5 text-white">
+              {industry.title}
+            </h1>
+
+            <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-8">
+              {industry.tagline}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/group-companies/roys-roys/contact"
+                className="px-6 py-3.5 rounded-sm bg-[#B49438] hover:bg-[#113658] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg shadow-black/20"
+              >
+                <span>Inquire For This Sector</span>
+                <ArrowRight size={15} />
+              </Link>
+              <Link
+                href="/group-companies/roys-roys/industries"
+                className="px-5 py-3.5 rounded-sm border border-white/40 hover:bg-white hover:text-[#113658] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2"
+              >
+                <ArrowLeft size={14} />
+                <span>All Industries</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Quick Stat Highlights */}
+          {industry.stats && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-10 border-t border-white/10">
+              {industry.stats.map((stat, i) => (
+                <div key={i} className="p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
+                  <p className="text-2xl sm:text-3xl font-black text-[#B49438] tracking-tight mb-1">
+                    {stat.value}
+                  </p>
+                  <p className="text-xs text-white/70 font-semibold tracking-wide uppercase">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ─── Industry Switcher Tabs ────────────────────────────────────────────── */}
+      <section className="bg-white border-b border-[#e2e8f0] sticky top-[68px] z-40 shadow-xs hidden md:block">
+        <div className="mx-auto max-w-screen-xl px-6">
+          <div className="flex items-center gap-2 overflow-x-auto py-3 no-scrollbar">
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#64748b] mr-2 shrink-0">
+              Sectors:
+            </span>
+            {INDUSTRIES_LIST.map((item) => {
+              const isActive = item.slug === industry.slug;
+              const TabIcon = item.icon;
+              return (
+                <Link
+                  key={item.slug}
+                  href={`/group-companies/roys-roys/industries/${item.slug}`}
+                  className={`px-3 py-1.5 rounded-md text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shrink-0 ${
+                    isActive
+                      ? "bg-[#113658] text-white shadow-sm"
+                      : "bg-[#f8fafc] text-[#475569] hover:bg-[#e2e8f0] hover:text-[#113658]"
+                  }`}
+                >
+                  <TabIcon size={13} className={isActive ? "text-[#B49438]" : "text-[#64748b]"} />
+                  <span>{item.label.replace("\n", " ")}</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Sector Overview ─────────────────────────────────────────────────── */}
+      <section className="py-16 px-6 bg-[#f8fafc]">
+        <div className="mx-auto max-w-screen-xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 text-[#009088] text-xs font-extrabold uppercase tracking-[0.2em] mb-3">
+              <Sparkles size={14} />
+              <span>SECTOR PROFILE &amp; REQUIREMENTS</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#113658] tracking-tight leading-snug mb-6">
+              Tailored Healthcare &amp; Infrastructure for {industry.title}
+            </h2>
+            <div className="space-y-4 text-[#475569] leading-relaxed text-sm sm:text-base">
+              {industry.overview.map((para, idx) => (
+                <p key={idx}>{para}</p>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-6 pt-6 border-t border-[#e2e8f0]">
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 size={20} className="text-[#009088]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1e293b]">
+                  Institutional Standard
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 size={20} className="text-[#009088]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1e293b]">
+                  Turnkey Commissioning
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 size={20} className="text-[#009088]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1e293b]">
+                  Full Warranty &amp; SLA
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-[#113658]">
+              <div className="relative h-80 sm:h-96 w-full">
+                <Image
+                  src={industry.heroImage || "/roys_hospital_interior.png"}
+                  alt={industry.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020f1f]/80 via-transparent to-transparent" />
+              </div>
+              <div className="p-6 bg-[#113658] text-white">
+                <div className="flex items-center gap-3 mb-2">
+                  <MainIcon size={24} className="text-[#B49438]" />
+                  <h3 className="text-lg font-black">{industry.title}</h3>
+                </div>
+                <p className="text-xs text-white/80 leading-relaxed">
+                  Specialized solutions designed to meet the rigorous clinical, technical, and regulatory requirements of this sector.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Key Solution Pillars ────────────────────────────────────────────── */}
+      <section className="py-16 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <SectionHeading
+            eyebrow="TAILORED CAPABILITIES"
+            title={`Key Solutions for ${industry.label.replace("\n", " ")}`}
+            subtitle="Customized systems, certified infrastructure, and specialized procurement designed specifically for this sector."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {industry.keyPillars.map((pillar, idx) => {
+              const PillarIcon = pillar.icon || CheckCircle2;
+              return (
+                <div
+                  key={idx}
+                  className="p-6 rounded-xl border border-[#e2e8f0] bg-white hover:border-[#113658] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-lg bg-[#113658]/10 text-[#113658] flex items-center justify-center mb-5 group-hover:bg-[#113658] group-hover:text-white transition-colors duration-300">
+                      <PillarIcon size={24} />
+                    </div>
+                    <h3 className="text-lg font-black text-[#113658] mb-2.5 group-hover:text-[#009088] transition-colors">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#64748b] leading-relaxed">
+                      {pillar.desc}
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-[#f1f5f9] flex items-center gap-1.5 text-xs font-extrabold text-[#113658] uppercase tracking-wider group-hover:text-[#009088]">
+                    <span>Standardized Workflow</span>
+                    <CheckCircle2 size={13} className="text-[#009088]" />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Technology & Equipment Portfolio ─────────────────────────────────── */}
+      <section className="py-16 px-6 bg-[#0c233c] text-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-[#B49438] text-xs font-extrabold uppercase tracking-[0.25em] mb-2">
+              EQUIPMENT &amp; SYSTEM LINEUP
+            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+              Featured Systems for {industry.title}
+            </h2>
+            <div className="w-12 h-1 bg-[#B49438] mx-auto mt-4 rounded-full" />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 max-w-4xl mx-auto">
+            {industry.technologies.map((tech, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-3.5 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
+              >
+                <div className="w-8 h-8 rounded-full bg-[#B49438]/20 flex items-center justify-center shrink-0 text-[#B49438]">
+                  <CheckCircle2 size={16} />
+                </div>
+                <span className="text-sm font-semibold text-white/90 leading-snug">
+                  {tech}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 4-Step Project Delivery Workflow ─────────────────────────────────── */}
+      <section className="py-16 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <SectionHeading
+            eyebrow="HOW WE DELIVER"
+            title="Structured Project Implementation"
+            subtitle="From initial requirement consultation and site preparation to procurement, installation, and post-warranty support."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {industry.workflow.map((w, idx) => (
+              <div
+                key={idx}
+                className="relative p-6 rounded-xl bg-[#f8fafc] border border-[#e2e8f0] hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-3xl font-black text-[#113658]/20 mb-3 font-mono">
+                  {w.step}
+                </div>
+                <h3 className="text-base font-black text-[#113658] mb-2">
+                  {w.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#64748b] leading-relaxed">
+                  {w.desc}
+                </p>
+                <div className="w-8 h-0.5 bg-[#009088] mt-4 rounded-full" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Benefits & Target Departments ───────────────────────────────────── */}
+      <section className="py-16 px-6 bg-[#f8fafc] border-y border-[#e2e8f0]">
+        <div className="mx-auto max-w-screen-xl grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Key Advantages */}
+          <div className="p-8 rounded-2xl bg-white border border-[#e2e8f0] shadow-sm">
+            <div className="inline-flex items-center gap-2 text-[#009088] text-xs font-extrabold uppercase tracking-widest mb-3">
+              <Award size={16} />
+              <span>STRATEGIC ADVANTAGES</span>
+            </div>
+            <h3 className="text-2xl font-black text-[#113658] mb-6">
+              Why Partner With Roys &amp; Roys
+            </h3>
+            <div className="space-y-4">
+              {industry.benefits.map((benefit, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#009088]/10 text-[#009088] flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckCircle2 size={13} />
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#475569] font-medium leading-relaxed">
+                    {benefit}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Target Departments */}
+          <div className="p-8 rounded-2xl bg-[#113658] text-white shadow-xl flex flex-col justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2 text-[#B49438] text-xs font-extrabold uppercase tracking-widest mb-3">
+                <Building2 size={16} />
+                <span>DEPARTMENTS &amp; DIVISIONS SERVED</span>
+              </div>
+              <h3 className="text-2xl font-black text-white mb-6">
+                Target Units &amp; Environments
+              </h3>
+              <div className="space-y-3 mb-8">
+                {industry.targetDepts.map((dept, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm font-semibold text-white/90"
+                  >
+                    <Building2 size={15} className="text-[#B49438] shrink-0" />
+                    <span>{dept}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-white/10 flex items-center justify-between">
+              <span className="text-xs text-white/70 uppercase tracking-wider font-bold">
+                Quality Assurance
+              </span>
+              <span className="text-xs font-extrabold text-[#B49438]">
+                ISO 9001 / 13485 Certified
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Frequently Asked Questions ───────────────────────────────────────── */}
+      <section className="py-16 px-6 bg-white">
+        <div className="mx-auto max-w-screen-md">
+          <SectionHeading
+            eyebrow="FREQUENTLY ASKED"
+            title="Sector Inquiries &amp; FAQs"
+            subtitle="Quick answers regarding procurement workflows, warranty coverage, and compliance standards."
+          />
+
+          <div className="space-y-3">
+            {industry.faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-lg border border-[#e2e8f0] overflow-hidden transition-colors"
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? -1 : idx)}
+                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 bg-white hover:bg-[#f8fafc] transition-colors cursor-pointer"
+                  >
+                    <span className="text-sm sm:text-base font-bold text-[#113658]">
+                      {faq.q}
+                    </span>
+                    <ChevronDown
+                      size={18}
+                      className={`text-[#113658] shrink-0 transition-transform duration-200 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="p-4 sm:p-5 pt-0 bg-[#f8fafc] text-xs sm:text-sm text-[#64748b] leading-relaxed border-t border-[#f1f5f9]">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA Banner ───────────────────────────────────────────────────────── */}
+      <section className="py-16 px-6 bg-[#020f1f] text-white">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <p className="text-[#B49438] text-xs font-extrabold uppercase tracking-[0.3em] mb-3">
+            COLLABORATE WITH ROYS &amp; ROYS
+          </p>
+          <h2 className="text-2xl sm:text-4xl font-black mb-4 text-white">
+            Need Solutions for {industry.title}?
+          </h2>
+          <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base mb-8">
+            Our sector specialists are ready to discuss tender specifications, customized product configurations, institutional pricing, and site planning.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/group-companies/roys-roys/contact"
+              className="px-8 py-4 rounded-sm bg-[#B49438] hover:bg-[#009088] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-xl shadow-black/40"
+            >
+              <span>Submit Sector Inquiry</span>
+              <ArrowRight size={15} />
+            </Link>
+            <Link
+              href="/group-companies/roys-roys/industries"
+              className="px-6 py-4 rounded-sm border border-white/30 hover:bg-white hover:text-[#020f1f] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300"
+            >
+              <span>View All Industries</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <RoysFooter />
+    </div>
+  );
+}
