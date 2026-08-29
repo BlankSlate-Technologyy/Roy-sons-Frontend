@@ -40,7 +40,7 @@ const SHOWCASE_ITEMS = [
     badge: "Director",
     title: "Dr Ahsan Sardar",
     description: "Dr. Ahsan Sardar serves as a Director at Roys Group, contributing to strategic growth and business expansion across multiple sectors. He is the Senior Vice President of the Pakistan Medical Companies Association and an Executive Member of the Lahore Chamber of Commerce & Industry (LCCI)With a strong blend of medical expertise and corporate leadership, he focuses on building strategic partnerships, driving innovation, and delivering sustainable value for the organization.",
-    image: "/Hesham Sultan Ijaz.jpg.jpeg",
+    image: "/logos/ashan sardar.jpeg",
     imageAlt: "Director - ROYSONS Pvt. Ltd.",
     profileHref: "",
     linkedinHref: "https://www.linkedin.com/company/roysonspvtltd"
