@@ -114,65 +114,65 @@ export default function ContactPage() {
           <div className="bg-white border border-neutral-200 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.04)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-neutral-205">
             
             {/* Our Office */}
-            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
               <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
-                <MapPin size={20} strokeWidth={2} />
+                <MapPin size={22} strokeWidth={2} />
               </div>
               <div>
-                <h4 className="text-[12.5px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
+                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
                   Our Office
                 </h4>
-                <p className="text-[11.5px] text-neutral-500 leading-relaxed">
+                <p className="text-[13.5px] text-neutral-600 leading-relaxed">
                   1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
                 </p>
               </div>
             </div>
 
             {/* Call Us */}
-            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
               <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
-                <Phone size={20} strokeWidth={2} />
+                <Phone size={22} strokeWidth={2} />
               </div>
               <div>
-                <h4 className="text-[12.5px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
+                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
                   Call Us
                 </h4>
-                <div className="text-[11.5px] text-neutral-500 leading-relaxed space-y-0.5">
-                  <p className="font-bold text-neutral-800">Phone: 0092-42-38924737</p>
+                <div className="text-[13.5px] text-neutral-600 leading-relaxed space-y-1">
+                  <p className="font-bold text-neutral-900">Phone: 0092-42-38924737</p>
                   <p>WhatsApp: 0092-304-7527498</p>
-                  <p className="pl-16">0092-321-8431665</p>
+                  <p className="lg:pl-[78px]">0092-321-8431665</p>
                 </div>
               </div>
             </div>
 
             {/* Email Us */}
-            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
               <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
-                <Mail size={20} strokeWidth={2} />
+                <Mail size={22} strokeWidth={2} />
               </div>
               <div>
-                <h4 className="text-[12.5px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
+                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
                   Email Us
                 </h4>
-                <div className="text-[11.5px] text-neutral-500 leading-neutral space-y-0.5">
-                  <p className="text-neutral-850 font-bold">info@roysons.org</p>
+                <div className="text-[13.5px] text-neutral-600 leading-relaxed space-y-1">
+                  <p className="text-neutral-900 font-bold">info@roysons.org</p>
                   <p>support@roysons.org</p>
                 </div>
               </div>
             </div>
 
             {/* Business Hours */}
-            <div className="p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
               <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
-                <Clock size={20} strokeWidth={2} />
+                <Clock size={22} strokeWidth={2} />
               </div>
               <div>
-                <h4 className="text-[12.5px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
+                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
                   Business Hours
                 </h4>
-                <div className="text-[11.5px] text-neutral-500 leading-relaxed space-y-0.5">
+                <div className="text-[13.5px] text-neutral-600 leading-relaxed space-y-1">
                   <p>Monday - Friday</p>
-                  <p className="font-bold text-neutral-800">9:00 AM - 6:00 PM</p>
+                  <p className="font-bold text-neutral-900">9:00 AM - 6:00 PM</p>
                   <p>Saturday - 9:00 AM - 1:00 PM</p>
                   <p className="text-neutral-400">(Sunday Closed)</p>
                 </div>
