@@ -34,10 +34,10 @@ function ArticleTile({ image, date, title, href }) {
 
 export default function CorporateNewsDesk({ news = CORPORATE_BROADCAST_NEWS }) {
   return (
-    <section className="py-16 bg-neutral-50/10 font-sans">
+    <section className="py-16 bg-neutral-50/10 font-sans" data-aos="fade-up">
       <div className="max-w-screen-xl mx-auto px-6">
         
-        <div className="text-center mb-10">
+        <div className="text-center mb-10" data-aos="fade-up" data-aos-delay="100">
           <h2 className="text-[26px] font-black uppercase tracking-[0.24em] text-neutral-950">
             Latest News & Updates
           </h2>
@@ -45,18 +45,26 @@ export default function CorporateNewsDesk({ news = CORPORATE_BROADCAST_NEWS }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {news.map((item, index) => (
-            <ArticleTile 
-              key={index} 
-              image={item.image}
-              date={item.date}
-              title={item.title}
-              href={item.href}
-            />
-          ))}
+          {news.map((item, index) => {
+            const staggerDelay = (index + 1) * 100;
+            return (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={staggerDelay}
+              >
+                <ArticleTile 
+                  image={item.image}
+                  date={item.date}
+                  title={item.title}
+                  href={item.href}
+                />
+              </div>
+            );
+          })}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center" data-aos="fade-up" data-aos-delay="200">
           <Link
             href="/news"
             className="rs-cta-btn inline-flex items-center gap-2.5 px-6 py-3 text-[15px] font-black tracking-[0.18em] uppercase border-2 border-black bg-black text-white hover:bg-[#dfb753] hover:border-[#dfb753] hover:text-black transition-all duration-300 rounded-[2px]"

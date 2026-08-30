@@ -227,9 +227,9 @@ export default function CareersPage() {
       </section>
 
       {/* Why Build Your Career Here */}
-      <section className="py-16 sm:py-20 bg-white border-b border-neutral-100">
+      <section className="py-16 sm:py-20 bg-white border-b border-neutral-100" data-aos="fade-up">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
             <span className="text-[10px] font-black tracking-[0.25em] text-neutral-400 uppercase mb-3 block">
               WHY JOIN US
             </span>
@@ -245,9 +245,12 @@ export default function CareersPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {CAREER_BENEFITS.map((benefit, index) => {
               const Icon = benefit.icon;
+              const staggerDelay = (index + 1) * 100;
               return (
                 <div
                   key={index}
+                  data-aos="fade-up"
+                  data-aos-delay={staggerDelay}
                   className="bg-white border border-neutral-200 p-7 rounded-sm hover:border-[#C6A15A] hover:shadow-md transition-all duration-300 group"
                 >
                   <div className="w-12 h-12 bg-[#101518] border border-neutral-800 rounded-sm flex items-center justify-center mb-5 group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127] transition-all duration-300">
@@ -267,9 +270,9 @@ export default function CareersPage() {
       </section>
 
       {/* Open Positions Section */}
-      <section id="open-positions" className="py-16 sm:py-20 bg-[#101518] text-white border-b border-neutral-800">
+      <section id="open-positions" className="py-16 sm:py-20 bg-[#101518] text-white border-b border-neutral-800" data-aos="fade-up">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
             <span className="text-[10px] font-bold tracking-[0.25em] text-[#C6A15A] uppercase mb-3 block">
               CURRENT OPPORTUNITIES
             </span>
@@ -283,56 +286,61 @@ export default function CareersPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {OPEN_POSITIONS.map((job) => (
-              <div
-                key={job.id}
-                className="bg-[#161c20]/90 border border-neutral-800 p-6 sm:p-7 rounded-sm hover:border-[#C6A15A]/60 hover:bg-[#1a2127] transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] bg-[#C6A15A]/10 px-2.5 py-1 rounded-sm border border-[#C6A15A]/30">
-                      {job.department}
-                    </span>
-                    <span className="text-[11px] text-neutral-400 flex items-center gap-1 font-medium">
-                      <Clock size={12} className="text-[#C6A15A]" /> {job.type}
-                    </span>
+            {OPEN_POSITIONS.map((job, index) => {
+              const staggerDelay = ((index % 2) + 1) * 100;
+              return (
+                <div
+                  key={job.id}
+                  data-aos="fade-up"
+                  data-aos-delay={staggerDelay}
+                  className="bg-[#161c20]/90 border border-neutral-800 p-6 sm:p-7 rounded-sm hover:border-[#C6A15A]/60 hover:bg-[#1a2127] transition-all duration-300 flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] bg-[#C6A15A]/10 px-2.5 py-1 rounded-sm border border-[#C6A15A]/30">
+                        {job.department}
+                      </span>
+                      <span className="text-[11px] text-neutral-400 flex items-center gap-1 font-medium">
+                        <Clock size={12} className="text-[#C6A15A]" /> {job.type}
+                      </span>
+                    </div>
+
+                    <h3 className="text-[16px] sm:text-[17px] font-bold uppercase tracking-wide text-white mb-2.5 group-hover:text-[#C6A15A] transition-colors duration-300">
+                      {job.title}
+                    </h3>
+
+                    <p className="text-[12.5px] text-neutral-400 leading-relaxed font-light mb-5">
+                      {job.description}
+                    </p>
                   </div>
 
-                  <h3 className="text-[16px] sm:text-[17px] font-bold uppercase tracking-wide text-white mb-2.5 group-hover:text-[#C6A15A] transition-colors duration-300">
-                    {job.title}
-                  </h3>
+                  <div className="pt-4 border-t border-neutral-800 flex flex-wrap items-center justify-between gap-4">
+                    <div className="flex items-center gap-4 text-[11.5px] text-neutral-400">
+                      <span className="flex items-center gap-1">
+                        <MapPin size={13} className="text-[#C6A15A]" /> {job.location}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Briefcase size={13} className="text-[#C6A15A]" /> {job.experience}
+                      </span>
+                    </div>
 
-                  <p className="text-[12.5px] text-neutral-400 leading-relaxed font-light mb-5">
-                    {job.description}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-neutral-800 flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex items-center gap-4 text-[11.5px] text-neutral-400">
-                    <span className="flex items-center gap-1">
-                      <MapPin size={13} className="text-[#C6A15A]" /> {job.location}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Briefcase size={13} className="text-[#C6A15A]" /> {job.experience}
-                    </span>
+                    <button
+                      onClick={() => handleApplyClick(job.title)}
+                      className="inline-flex items-center gap-1.5 text-[10.5px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] hover:text-white transition-colors duration-200 cursor-pointer"
+                    >
+                      <span>Apply Now</span>
+                      <ArrowRight size={13} strokeWidth={2.5} />
+                    </button>
                   </div>
-
-                  <button
-                    onClick={() => handleApplyClick(job.title)}
-                    className="inline-flex items-center gap-1.5 text-[10.5px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] hover:text-white transition-colors duration-200 cursor-pointer"
-                  >
-                    <span>Apply Now</span>
-                    <ArrowRight size={13} strokeWidth={2.5} />
-                  </button>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Application Form Section */}
-      <section id="application-form" className="py-16 sm:py-20 bg-white">
+      <section id="application-form" className="py-16 sm:py-20 bg-white" data-aos="fade-up">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="bg-white border border-neutral-200 rounded-sm overflow-hidden flex flex-col lg:flex-row shadow-sm">
             {/* Left Info Panel */}

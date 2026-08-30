@@ -71,9 +71,9 @@ export default function SubsidiariesHoldingsGrid({
   const [showAllMobile, setShowAllMobile] = useState(false);
 
   return (
-    <section className="py-16 bg-neutral-50/20 font-sans">
+    <section className="py-16 bg-neutral-50/20 font-sans" data-aos="fade-up">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-10 sm:mb-14">
+        <div className="text-center mb-10 sm:mb-14" data-aos="fade-up" data-aos-delay="100">
           <h4 className="text-[15px] font-bold tracking-[0.25em] uppercase text-neutral-700 mb-4">
             OUR COMPANIES
           </h4>
@@ -87,10 +87,13 @@ export default function SubsidiariesHoldingsGrid({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-3">
           {holdings.map((entity, index) => {
             const isHiddenOnMobile = !showAllMobile && index >= 3;
+            const staggerDelay = ((index % 4) + 1) * 100;
             return (
               <div
                 key={index}
                 className={isHiddenOnMobile ? "hidden sm:block" : "block"}
+                data-aos="fade-up"
+                data-aos-delay={staggerDelay}
               >
                 <HoldingDivisionItem 
                   name={entity.name}
@@ -107,7 +110,7 @@ export default function SubsidiariesHoldingsGrid({
 
         {/* View All Cards button for Mobile */}
         {holdings.length > 3 && (
-          <div className="mt-8 flex justify-center sm:hidden">
+          <div className="mt-8 flex justify-center sm:hidden" data-aos="fade-up" data-aos-delay="200">
             <button
               type="button"
               onClick={() => setShowAllMobile(!showAllMobile)}

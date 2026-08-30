@@ -38,10 +38,10 @@ export default function FeaturedHoldingsShowcase({
   allProjectsPath = "/projects",
 }) {
   return (
-    <section className="py-16 font-sans" style={{ backgroundColor: "#101518" }}>
+    <section className="py-16 font-sans" style={{ backgroundColor: "#101518" }} data-aos="fade-up">
       <div className="max-w-screen-xl mx-auto px-6">
         
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8" data-aos="fade-up" data-aos-delay="100">
           <div className="text-center sm:text-left">
             <h2 className="text-lg font-black uppercase tracking-[0.2em] text-[#F7F5F0]">
               Featured Projects
@@ -60,15 +60,23 @@ export default function FeaturedHoldingsShowcase({
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {projects.map((project, index) => (
-            <ProjectTile 
-              key={index} 
-              image={project.image}
-              title={project.title}
-              location={project.location}
-              href={project.href}
-            />
-          ))}
+          {projects.map((project, index) => {
+            const staggerDelay = ((index % 4) + 1) * 100;
+            return (
+              <div
+                key={index}
+                data-aos="zoom-in"
+                data-aos-delay={staggerDelay}
+              >
+                <ProjectTile 
+                  image={project.image}
+                  title={project.title}
+                  location={project.location}
+                  href={project.href}
+                />
+              </div>
+            );
+          })}
         </div>
 
       </div>

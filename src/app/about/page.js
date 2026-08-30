@@ -286,11 +286,11 @@ export default function AboutPage() {
         </div>
       </section>
       {/* 1st Section: ROYSONS TRUST (Image Left, Content Right) */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
             {/* Left: Image with Gold Border */}
-            <div className="flex-1 w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] order-2 lg:order-1">
+            <div className="flex-1 w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] order-2 lg:order-1" data-aos="fade-right" data-aos-delay="100">
               <div 
                 className="h-full w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] overflow-hidden rounded-[2px] bg-[#1a1f24]"
                 style={{
@@ -311,7 +311,7 @@ export default function AboutPage() {
             </div>
 
             {/* Right: Content */}
-            <div className="flex-1 flex flex-col justify-center order-1 lg:order-2">
+            <div className="flex-1 flex flex-col justify-center order-1 lg:order-2" data-aos="fade-left" data-aos-delay="150">
               <span className="text-[14px] font-black tracking-[0.3em] text-[#C6A15A] uppercase mb-3 block">
                 Building Institutions
               </span>
@@ -330,12 +330,12 @@ export default function AboutPage() {
       </section>
 
       {/* 2nd Section: Chairman, ROYSONS Trust (Zeba Ijaz) */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-[#101518] text-white border-t border-neutral-800">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-[#101518] text-white border-t border-neutral-800" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             
             {/* Left: Content */}
-            <div className="flex-1 flex flex-col justify-center">
+            <div className="flex-1 flex flex-col justify-center" data-aos="fade-right" data-aos-delay="100">
               {/* Badge */}
               <div className="inline-flex items-center border border-[#C6A15A]/40 bg-white/5 px-3.5 py-1 rounded-full w-fit mb-4">
                 <span className="text-[11px] font-black uppercase tracking-widest text-[#C6A15A]">
@@ -352,11 +352,10 @@ export default function AboutPage() {
               <p className="text-[14px] sm:text-[14.5px] text-neutral-300 leading-relaxed font-normal mb-8 max-w-2xl">
                 Zeba Ijaz leads ROYSONS Trust with a vision to establish a purpose-driven institution committed to creating lasting social and economic value for future generations. Under her leadership, the Trust aims to support initiatives across education, healthcare, community development, research, skills development, sustainability, and social welfare. With a strong commitment to responsible stewardship, compassion, and long-term development, ROYSONS Trust seeks to strengthen the foundation behind the ROYSONS enterprise while contributing to meaningful progress in society. Through strategic leadership and a people-centered vision, Zeba Ijaz is committed to building an institution that creates opportunities, supports communities, and leaves a lasting positive legacy.
               </p>
-              </div>
-              
+            </div>
 
             {/* Right: Image */}
-            <div className="flex-1 w-full flex justify-center lg:justify-end">
+            <div className="flex-1 w-full flex justify-center lg:justify-end" data-aos="fade-left" data-aos-delay="150">
               <div className="relative w-full max-w-[380px] sm:max-w-[440px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-900 group">
                 <Image
                   src="/logos/ijaz.jpeg"
@@ -374,10 +373,10 @@ export default function AboutPage() {
       </section>
 
       {/* 3rd Section: About ROYSONS Pvt. Ltd. (Content Left, Image Right) */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
-            <div className="flex-1 flex flex-col justify-center">
+            <div className="flex-1 flex flex-col justify-center" data-aos="fade-right" data-aos-delay="100">
               <span className="text-[15px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3">
                 WHO WE ARE
               </span>
@@ -391,7 +390,7 @@ export default function AboutPage() {
                 Our strength lies in bringing diverse expertise together under one corporate platform. Through our specialized companies, strategic partnerships, and industry-focused teams, we deliver products, services, and integrated solutions designed to meet the evolving needs of governments, institutions, businesses, and communities.
               </p>
             </div>
-            <div className="flex-1 w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]">
+            <div className="flex-1 w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]" data-aos="fade-left" data-aos-delay="150">
               <div 
                 className="h-full w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] overflow-hidden rounded-[2px] bg-[#1a1f24]"
                 style={{
@@ -418,9 +417,9 @@ export default function AboutPage() {
       <FeatureShowcase />
 
       {/* Government Sector Clients Section */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
              ROYSONS holding is a Diverse group of
 INDUSTRY-LEADING BUSINESSES
@@ -432,11 +431,14 @@ INDUSTRY-LEADING BUSINESSES
             <p className="text-[13px] text-neutral-500 mt-5 max-w-xl mx-auto leading-relaxed">
               ROYSON.Pvt.Ltd proudly serves a wide range of government institutions, delivering trusted solutions across Pakistan&apos;s public sector landscape.
             </p>
-          </div>          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
 
             {/* Federal Ministries */}
             <Link
               href="/government-sector/federal-ministries"
+              data-aos="fade-up"
+              data-aos-delay="100"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -450,6 +452,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Provincial Governments */}
             <Link
               href="/government-sector/provincial-governments"
+              data-aos="fade-up"
+              data-aos-delay="150"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -463,6 +467,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Armed Forces */}
             <Link
               href="/government-sector/armed-forces"
+              data-aos="fade-up"
+              data-aos-delay="200"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -476,6 +482,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Universities */}
             <Link
               href="/government-sector/universities"
+              data-aos="fade-up"
+              data-aos-delay="250"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -489,6 +497,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Research Institutes */}
             <Link
               href="/government-sector/research-institutes"
+              data-aos="fade-up"
+              data-aos-delay="300"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -502,6 +512,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Public Sector Organizations */}
             <Link
               href="/government-sector/public-sector-organizations"
+              data-aos="fade-up"
+              data-aos-delay="350"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -517,9 +529,9 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Private Sector Clients Section */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
               PRIVATE SECTOR
             </span>
@@ -537,6 +549,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Hospitals */}
             <Link
               href="/private-sector/hospitals"
+              data-aos="fade-up"
+              data-aos-delay="100"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -550,6 +564,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Pharmaceutical Industries */}
             <Link
               href="/private-sector/pharmaceutical-industries"
+              data-aos="fade-up"
+              data-aos-delay="150"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -563,6 +579,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Manufacturing Industries */}
             <Link
               href="/private-sector/manufacturing-industries"
+              data-aos="fade-up"
+              data-aos-delay="200"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -576,6 +594,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Construction Companies */}
             <Link
               href="/private-sector/construction-companies"
+              data-aos="fade-up"
+              data-aos-delay="250"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -589,6 +609,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Agricultural Enterprises */}
             <Link
               href="/private-sector/agricultural-enterprises"
+              data-aos="fade-up"
+              data-aos-delay="300"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -602,6 +624,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Technology Companies */}
             <Link
               href="/private-sector/technology-companies"
+              data-aos="fade-up"
+              data-aos-delay="350"
               className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -617,9 +641,9 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* International Clients Section */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-50 border-b border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-50 border-b border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center mb-14">
+          <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
               INTERNATIONAL CLIENTS
             </span>
@@ -637,6 +661,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Importers */}
             <Link
               href="/international-clients/importers"
+              data-aos="fade-up"
+              data-aos-delay="100"
               className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -650,6 +676,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Exporters */}
             <Link
               href="/international-clients/exporters"
+              data-aos="fade-up"
+              data-aos-delay="150"
               className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -663,6 +691,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Manufacturers */}
             <Link
               href="/international-clients/manufacturers"
+              data-aos="fade-up"
+              data-aos-delay="200"
               className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -676,6 +706,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Development Agencies */}
             <Link
               href="/international-clients/development-agencies"
+              data-aos="fade-up"
+              data-aos-delay="250"
               className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
               <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
@@ -691,11 +723,11 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Vision & Mission Elegant Side-by-Side block */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-950">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-950" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Vision */}
-            <div className="bg-neutral-950 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-neutral-950 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300" data-aos="fade-right" data-aos-delay="100">
               <div>
                 <div className="w-12 h-12 border border-neutral-800 flex items-center justify-center mb-5">
                   <Target size={24} className="text-[#dfb753]" strokeWidth={1.5} />
@@ -712,7 +744,7 @@ INDUSTRY-LEADING BUSINESSES
             </div>
 
             {/* Mission */}
-            <div className="bg-neutral-950 border border-neutral-800 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-neutral-950 border border-neutral-800 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300" data-aos="fade-left" data-aos-delay="150">
               <div>
                 <div className="w-12 h-12 flex items-center mb-5">
                   <Award size={24} className="text-[#dfb753]" strokeWidth={1.5} />
@@ -733,9 +765,9 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Corporate Statistics Table/Grid */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-50 border-t border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-50 border-t border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16" data-aos="fade-up" data-aos-delay="100">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
               ROYS AT A GLANCE
             </span>
@@ -746,25 +778,33 @@ INDUSTRY-LEADING BUSINESSES
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {CORPORATE_STATS.map((stat, index) => (
-              <div key={index} className="bg-white border border-neutral-200 p-6 sm:p-8 rounded-sm">
-                <p className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-neutral-400 mb-2">
-                  {stat.label}
-                </p>
-                <AnimatedStatValue value={stat.value} />
-                <p className="text-[11px] text-neutral-500 font-medium">
-                  {stat.desc}
-                </p>
-              </div>
-            ))}
+            {CORPORATE_STATS.map((stat, index) => {
+              const staggerDelay = ((index % 3) + 1) * 100;
+              return (
+                <div
+                  key={index}
+                  className="bg-white border border-neutral-200 p-6 sm:p-8 rounded-sm"
+                  data-aos="zoom-in"
+                  data-aos-delay={staggerDelay}
+                >
+                  <p className="text-[10.5px] font-bold uppercase tracking-[0.14em] text-neutral-400 mb-2">
+                    {stat.label}
+                  </p>
+                  <AnimatedStatValue value={stat.value} />
+                  <p className="text-[11px] text-neutral-500 font-medium">
+                    {stat.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Strategic Business Divisions Cards */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16" data-aos="fade-up" data-aos-delay="100">
             <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
               OUR OPERATIONS
             </span>
@@ -777,10 +817,13 @@ INDUSTRY-LEADING BUSINESSES
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {STRATEGIC_DIVISIONS.map((div, index) => {
               const Icon = div.icon;
+              const staggerDelay = ((index % 4) + 1) * 75;
               return (
                 <Link
                   key={index}
                   href={div.href || "/services"}
+                  data-aos="fade-up"
+                  data-aos-delay={staggerDelay}
                   className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-[#C6A15A] hover:shadow-sm transition-all duration-300 cursor-pointer group"
                 >
                   <div className="w-12 h-12 bg-neutral-950 border border-neutral-800 flex items-center justify-center rounded-sm transition-all duration-300 group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127]">
@@ -797,11 +840,11 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Why Roys Group list section */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-950 text-white">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-950 text-white" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col gap-12 lg:gap-16">
             
-            <div className="text-center max-w-3xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
               <span className="text-[10px] font-black tracking-[0.24em] text-neutral-400 uppercase mb-3 block">
                 COMPETITIVE ADVANTAGE
               </span>
@@ -818,7 +861,12 @@ INDUSTRY-LEADING BUSINESSES
             <div className="w-full">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-5">
                 {WHY_ROYS_GROUP.map((point, index) => (
-                  <div key={index} className="flex items-center gap-3 border-b border-neutral-800 pb-3 flex-row">
+                  <div
+                    key={index}
+                    data-aos="fade-up"
+                    data-aos-delay={(index % 2) * 100 + 100}
+                    className="flex items-center gap-3 border-b border-neutral-800 pb-3 flex-row"
+                  >
                     <CheckCircle2 size={16} className="text-[#dfb753] flex-shrink-0" strokeWidth={2} />
                     <span className="text-[12px] font-bold uppercase tracking-wider text-white">
                       {point}
@@ -833,10 +881,10 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Consultation Section */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="bg-white border border-neutral-200 overflow-hidden flex flex-col lg:flex-row rounded-sm">
-            <div className="lg:w-1/3 bg-neutral-50 p-10 lg:p-12 border-r border-neutral-200 flex flex-col justify-between">
+          <div className="bg-white border border-neutral-200 overflow-hidden flex flex-col lg:flex-row rounded-sm" data-aos="zoom-in" data-aos-delay="100">
+            <div className="lg:w-1/3 bg-neutral-50 p-10 lg:p-12 border-r border-neutral-200 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="150">
               <div>
                 <div className="w-10 h-10 bg-black rounded-sm flex items-center justify-center mb-6">
                   <MessageSquare className="text-white" size={20} />

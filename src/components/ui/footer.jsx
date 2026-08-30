@@ -60,9 +60,9 @@ export default function CorporateFooter({
   };
 
   return (
-    <footer className="bg-neutral-950 text-white font-sans border-t border-neutral-900">
+    <footer className="bg-neutral-950 text-white font-sans border-t border-neutral-900" data-aos="fade-up">
       {/* Top Newsletter Bar */}
-      <div className="border-b border-neutral-900 bg-neutral-950/60 py-8 px-4 sm:px-6 lg:px-8">
+      <div className="border-b border-neutral-900 bg-neutral-950/60 py-8 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-delay="100">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <span className="text-[15px] font-black uppercase tracking-[0.2em] text-[#C6A15A] block mb-1">
@@ -118,7 +118,7 @@ export default function CorporateFooter({
 
       {/* Main Footer Links */}
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-        <div className="lg:col-span-1 flex flex-col pr-0 lg:pr-6">
+        <div className="lg:col-span-1 flex flex-col pr-0 lg:pr-6" data-aos="fade-up" data-aos-delay="100">
           <Link href="/" className="inline-block mb-4">
             <Image
               src="/logos/Roysons logo_logo variation 2 png.png"
@@ -151,7 +151,7 @@ export default function CorporateFooter({
           </div>
         </div>
 
-        <div>
+        <div data-aos="fade-up" data-aos-delay="200">
           <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
             Quick Links
           </h4>
@@ -169,7 +169,7 @@ export default function CorporateFooter({
           </ul>
         </div>
 
-        <div>
+        <div data-aos="fade-up" data-aos-delay="300">
           <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
             Our Services
           </h4>
@@ -187,7 +187,7 @@ export default function CorporateFooter({
           </ul>
         </div>
 
-        <div>
+        <div data-aos="fade-up" data-aos-delay="400">
           <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
             Contact Us
           </h4>

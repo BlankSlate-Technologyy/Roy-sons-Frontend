@@ -49,11 +49,11 @@ const SHOWCASE_ITEMS = [
 
 export default function FeatureShowcase() {
   return (
-    <section className="w-full py-12 sm:py-16 bg-[#0c1013] text-white border-b border-neutral-800 font-sans">
+    <section className="w-full py-12 sm:py-16 bg-[#0c1013] text-white border-b border-neutral-800 font-sans" data-aos="fade-up">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-6" data-aos="fade-up" data-aos-delay="100">
           <span className="text-[11px] font-black tracking-[0.25em] text-[#C6A15A] uppercase mb-2 block">
             LEADERSHIP THAT DRIVES OUR VISION
           </span>
@@ -72,6 +72,8 @@ export default function FeatureShowcase() {
           return (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={(index + 1) * 100}
               className="rounded-2xl p-6 sm:p-10 lg:p-12 border border-neutral-800 bg-[#101518] shadow-xl hover:border-[#C6A15A]/40 transition-all duration-300"
             >
               <div

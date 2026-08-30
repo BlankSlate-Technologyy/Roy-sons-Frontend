@@ -117,6 +117,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   * {
     @apply border-border;
     box-sizing: border-box;
@@ -124,6 +128,30 @@
 
   body {
     font-family: var(--font-inter), system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* AOS Animation GPU acceleration and precision easing matching Banu Mukhtar */
+  [data-aos] {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  [data-aos="fade-up"] {
+    transform: translate3d(0, 35px, 0);
+  }
+
+  [data-aos="fade-up"].aos-animate {
+    transform: translate3d(0, 0, 0);
+  }
+
+  [data-aos="zoom-in"] {
+    transform: scale(0.92);
+  }
+
+  [data-aos="zoom-in"].aos-animate {
+    transform: scale(1);
   }
 
   /* Navlinks are preserved at their original standard size */

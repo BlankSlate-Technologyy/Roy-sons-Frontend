@@ -1,6 +1,7 @@
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Preloader from "@/components/ui/Preloader";
+import AOSProvider from "@/components/animations/AOSProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -76,7 +77,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable} ${cormorantGaramond.variable}`}>
       <body className="min-h-full flex flex-col bg-white text-[#111]">
         <Preloader />
-        {children}
+        <AOSProvider>{children}</AOSProvider>
       </body>
     </html>
   );

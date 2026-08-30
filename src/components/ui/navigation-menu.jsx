@@ -10,6 +10,21 @@ import SearchModal from "@/components/ui/SearchModal";
 export default function HeaderNavbar({ activeRoute = "/" }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Dynamic header elevation on scroll (matching Banu Mukhtar header-scrolled)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Global Ctrl+K / Cmd+K hotkey
   useEffect(() => {
@@ -25,8 +40,18 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-neutral-800 shadow-[0_1px_8px_0_rgba(0,0,0,0.4)]" style={{backgroundColor:'#2D3136'}}>
-        <div className="mx-auto flex h-20 md:h-24 lg:h-[104px] max-w-screen-xl items-center justify-between px-6">
+      <header
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+          isScrolled
+            ? "border-b border-[#C6A15A]/30 shadow-[0_6px_24px_rgba(0,0,0,0.65)] bg-[#101518]/95 backdrop-blur-md"
+            : "border-b border-neutral-800 shadow-[0_1px_8px_0_rgba(0,0,0,0.4)] bg-[#2D3136]"
+        }`}
+      >
+        <div
+          className={`mx-auto flex max-w-screen-xl items-center justify-between px-6 transition-all duration-300 ${
+            isScrolled ? "h-16 md:h-20 lg:h-[84px]" : "h-20 md:h-24 lg:h-[104px]"
+          }`}
+        >
           
           <Link href="/" className="inline-block flex-shrink-0">
             <BrandLogo />

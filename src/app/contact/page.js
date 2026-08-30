@@ -109,12 +109,12 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Info Cards */}
-      <section className="relative px-6 z-20 -mt-10">
+      <section className="relative px-6 z-20 -mt-10" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="bg-white border border-neutral-200 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.04)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-neutral-205">
             
             {/* Our Office */}
-            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
               <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
                 <MapPin size={22} strokeWidth={2} />
               </div>
@@ -129,7 +129,7 @@ export default function ContactPage() {
             </div>
 
             {/* Call Us */}
-            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
               <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
                 <Phone size={22} strokeWidth={2} />
               </div>
@@ -146,7 +146,7 @@ export default function ContactPage() {
             </div>
 
             {/* Email Us */}
-            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="300">
               <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
                 <Mail size={22} strokeWidth={2} />
               </div>
@@ -162,7 +162,7 @@ export default function ContactPage() {
             </div>
 
             {/* Business Hours */}
-            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer">
+            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="400">
               <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
                 <Clock size={22} strokeWidth={2} />
               </div>
@@ -184,12 +184,12 @@ export default function ContactPage() {
       </section>
 
       {/* Form & Map Section */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-stretch">
             
             {/* Form Panel (Left Col, 3/5 cols) */}
-            <div className="lg:col-span-3 bg-white border border-neutral-200 p-8 sm:p-10 rounded-sm">
+            <div className="lg:col-span-3 bg-white border border-neutral-200 p-8 sm:p-10 rounded-sm" data-aos="fade-right" data-aos-delay="100">
               <h2 className="text-[20px] font-black uppercase tracking-wider text-neutral-950 mb-3">
                 Contact Us
               </h2>
@@ -361,7 +361,7 @@ export default function ContactPage() {
             </div>
 
             {/* Map & Get in Touch Panel (Right Col, 2/5 cols) */}
-            <div className="lg:col-span-2 flex flex-col gap-8">
+            <div className="lg:col-span-2 flex flex-col gap-8" data-aos="fade-left" data-aos-delay="150">
               
               {/* Find Us Card */}
               <div className="bg-white border border-neutral-200 p-6 rounded-sm">

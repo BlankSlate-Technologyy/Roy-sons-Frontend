@@ -44,9 +44,9 @@ function ServiceItem({ icon: Icon, title, description, href }) {
 
 export default function CorporateCapabilitiesPanel({ services = CORPORATE_SERVICES }) {
   return (
-    <section className="py-16 sm:py-20 bg-[#101518] font-sans border-t border-b border-neutral-800/60">
+    <section className="py-16 sm:py-20 bg-[#101518] font-sans border-t border-b border-neutral-800/60" data-aos="fade-up">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-12 sm:mb-16" data-aos="fade-up" data-aos-delay="100">
           <h4 className="text-[15px] font-bold tracking-[0.25em] uppercase text-[#C6A15A] mb-3">
             OUR CAPABILITIES
           </h4>
@@ -57,15 +57,23 @@ export default function CorporateCapabilitiesPanel({ services = CORPORATE_SERVIC
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
-          {services.map((service, index) => (
-            <ServiceItem
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              href={service.href}
-            />
-          ))}
+          {services.map((service, index) => {
+            const staggerDelay = ((index % 4) + 1) * 100;
+            return (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={staggerDelay}
+              >
+                <ServiceItem
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  href={service.href}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
