@@ -66,10 +66,10 @@ export function RoysNavbar({ active = "Home" }) {
             priority
           />
           <div className="flex flex-col justify-center">
-            <span className="text-base sm:text-lg font-black tracking-tight leading-none text-[#0f2b48]">
+            <span className="text-sm sm:text-base font-black tracking-tight leading-none text-[#0f2b48]">
               ROYS &amp; ROYS
             </span>
-            <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#B49438] mt-0.5">
+            <span className="text-sm sm:text-base font-black tracking-tight leading-none text-[#2563eb] mt-1">
               INTERNATIONAL
             </span>
           </div>
@@ -222,10 +222,10 @@ export function RoysFooter() {
               className="h-10 sm:h-12 w-auto object-contain brightness-110"
             />
             <div className="flex flex-col justify-center">
-              <span className="text-base sm:text-lg font-black tracking-tight leading-none text-white">
+              <span className="text-sm sm:text-base font-black tracking-tight leading-none text-white">
                 ROYS &amp; ROYS
               </span>
-              <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#d4af37] mt-0.5">
+              <span className="text-sm sm:text-base font-black tracking-tight leading-none text-[#38bdf8] mt-1">
                 INTERNATIONAL
               </span>
             </div>
