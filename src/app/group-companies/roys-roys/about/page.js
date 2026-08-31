@@ -52,21 +52,6 @@ const VALUES = [
   },
 ];
 
-const LEADERSHIP = [
-  {
-    name: "Hesham Sultan Ijaz",
-    role: "Chairman & Managing Director",
-    desc: "Spearheading global strategy, international procurement, and large-scale turnkey institutional infrastructure.",
-    image: "/Hesham Sultan Ijaz.jpg.jpeg",
-  },
-  {
-    name: "Executive Engineering Team",
-    role: "Chief Biomedical & MEP Directorate",
-    desc: "Over 30 years of collective experience delivering sterile operating theatres, gas pipelines, and imaging suites.",
-    image: "/biomax_qa_scientist_ai.jpg",
-  },
-];
-
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
@@ -214,37 +199,6 @@ export default function AboutPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Leadership ────────────────────────────────────────────────────── */}
-      <section className="py-16 px-6 bg-white">
-        <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
-            LEADERSHIP &amp; EXPERTISE
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
-            {LEADERSHIP.map((lead) => (
-              <div
-                key={lead.name}
-                className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all flex flex-col sm:flex-row items-center sm:items-start gap-5"
-              >
-                <div className="relative w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-[#2563eb]/30 shadow">
-                  <Image
-                    src={lead.image}
-                    alt={lead.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-[#0f2b48] mb-0.5">{lead.name}</h3>
-                  <p className="text-xs font-bold text-[#2563eb] mb-2 uppercase tracking-wide">{lead.role}</p>
-                  <p className="text-xs text-slate-600 leading-relaxed">{lead.desc}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

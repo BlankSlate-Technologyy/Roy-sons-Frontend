@@ -568,24 +568,24 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 8. CORE BUSINESS AREAS (7 PILL CARDS) ─────────────────────────── */}
-      <section className="py-12 px-6 bg-white">
+      <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-8">
+          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10">
             CORE BUSINESS AREAS
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3.5 sm:gap-4">
             {CORE_BUSINESS_7.map((area) => {
               const Icon = area.icon;
               return (
                 <div
                   key={area.title}
-                  className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-sm transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
+                  className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
                 >
-                  <div className="w-10 h-10 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center mb-2">
-                    <Icon size={18} />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-200 flex items-center justify-center mb-3 shadow-xs">
+                    <Icon size={26} />
                   </div>
-                  <p className="text-xs font-bold text-[#0f2b48] whitespace-pre-line leading-tight">
+                  <p className="text-xs sm:text-sm font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors whitespace-pre-line leading-snug">
                     {area.title}
                   </p>
                 </div>
@@ -777,23 +777,23 @@ export default function RoysRoysPage() {
       {/* ─── 11. INDUSTRIES WE SERVE (8 GRID CARDS) ────────────────────────── */}
       <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-9">
+          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10">
             INDUSTRIES WE SERVE
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 mb-9">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 sm:gap-4 mb-10">
             {INDUSTRIES_8.map((ind) => {
               const Icon = ind.icon;
               return (
                 <Link
                   key={ind.title}
                   href={"/group-companies/roys-roys/industries/" + ind.slug}
-                  className="p-3.5 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-sm transition-all duration-200 flex flex-col items-center justify-center text-center group no-underline"
+                  className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group no-underline"
                 >
-                  <div className="w-10 h-10 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center mb-2">
-                    <Icon size={18} />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-200 flex items-center justify-center mb-3 shadow-xs">
+                    <Icon size={26} />
                   </div>
-                  <span className="text-[11px] font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors leading-tight">
+                  <span className="text-xs sm:text-sm font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors leading-snug">
                     {ind.title}
                   </span>
                 </Link>
@@ -803,10 +803,10 @@ export default function RoysRoysPage() {
 
           <Link
             href="/group-companies/roys-roys/industries"
-            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
             <span>Explore All Industries</span>
-            <ArrowRight size={14} />
+            <ArrowRight size={16} />
           </Link>
         </div>
       </section>
@@ -814,26 +814,26 @@ export default function RoysRoysPage() {
       {/* ─── 12. WHY CHOOSE ROYS & ROYS INTERNATIONAL? (8 CARDS) ───────────── */}
       <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-9">
+          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10">
             WHY CHOOSE ROYS &amp; ROYS INTERNATIONAL?
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 text-left">
             {WHY_CHOOSE_8.map((item) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.title}
-                  className="p-5 rounded-xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                  className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-9 h-9 rounded bg-blue-50 text-[#2563eb] flex items-center justify-center mb-3">
-                      <Icon size={18} />
+                    <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#2563eb] flex items-center justify-center mb-4">
+                      <Icon size={24} />
                     </div>
-                    <h3 className="text-sm font-bold text-[#0f2b48] mb-1">
+                    <h3 className="text-base font-bold text-[#0f2b48] mb-1.5">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
@@ -845,55 +845,70 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 13. 3-PANEL CORPORATE BAR (VALUES, INFO, CERTIFICATIONS) ───────── */}
-      <section className="py-9 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
-        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-5 items-center">
+      <section className="py-10 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
+        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-6 items-stretch">
           {/* Panel 1: Our Values */}
-          <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-[10.5px] font-bold uppercase tracking-widest text-[#B49438] block mb-2.5">
-              OUR VALUES
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {VALUES_5.map((v) => {
-                const Icon = v.icon;
-                return (
-                  <span
-                    key={v.label}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded bg-slate-100 text-slate-700 text-[11px] font-bold"
-                  >
-                    <Icon size={13} className="text-[#2563eb]" />
-                    <span>{v.label}</span>
-                  </span>
-                );
-              })}
+          <div className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
+                OUR VALUES
+              </span>
+              <div className="flex flex-wrap gap-2.5">
+                {VALUES_5.map((v) => {
+                  const Icon = v.icon;
+                  return (
+                    <span
+                      key={v.label}
+                      className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-100 hover:bg-blue-50 text-slate-800 hover:text-[#2563eb] text-xs sm:text-sm font-bold transition-colors shadow-xs"
+                    >
+                      <Icon size={18} className="text-[#2563eb]" />
+                      <span>{v.label}</span>
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
           {/* Panel 2: Corporate Info */}
-          <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-[10.5px] font-bold uppercase tracking-widest text-[#B49438] block mb-2">
-              CORPORATE INFO
-            </span>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-600">
-              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">About Us</Link>
-              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">Overview</Link>
-              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">Leadership</Link>
-              <Link href="/group-companies/roys-roys/contact" className="hover:text-[#2563eb]">Clients</Link>
-              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">Careers</Link>
-              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">Partners</Link>
-              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">News &amp; Media</Link>
+          <div className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
+                CORPORATE INFO
+              </span>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-sm text-slate-600 font-medium">
+                <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb] transition-colors">About Us</Link>
+                <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb] transition-colors">Overview</Link>
+                <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb] transition-colors">Leadership</Link>
+                <Link href="/group-companies/roys-roys/contact" className="hover:text-[#2563eb] transition-colors">Clients</Link>
+                <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb] transition-colors">Careers</Link>
+                <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb] transition-colors">Partners</Link>
+                <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb] transition-colors">News &amp; Media</Link>
+              </div>
             </div>
           </div>
 
           {/* Panel 3: Certifications */}
-          <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-[10.5px] font-bold uppercase tracking-widest text-[#B49438] block mb-2">
-              CERTIFICATIONS &amp; MEMBERSHIPS
-            </span>
-            <ul className="text-xs text-slate-600 space-y-1">
-              <li>• ISO 9001:2015 Certified Organization</li>
-              <li>• Registered with Pakistan Engineering Council (PEC)</li>
-              <li>• Member: FPCCI, PHA &amp; Other Associations</li>
-            </ul>
+          <div className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
+                CERTIFICATIONS &amp; MEMBERSHIPS
+              </span>
+              <ul className="text-xs sm:text-sm text-slate-600 space-y-2 font-medium">
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#B49438] shrink-0" />
+                  <span>ISO 9001:2015 Certified Organization</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#B49438] shrink-0" />
+                  <span>Registered with Pakistan Engineering Council (PEC)</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#B49438] shrink-0" />
+                  <span>Member: FPCCI, PHA &amp; Other Associations</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -906,26 +921,35 @@ export default function RoysRoysPage() {
             <h2 className="text-2xl sm:text-3xl font-black text-[#0f2b48] leading-tight">
               Let&apos;s Build Stronger Partnerships Together
             </h2>
-            <p className="text-sm text-slate-600 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
               Whether you&apos;re looking for a complete healthcare solution or a reliable partner for your procurement, our team is ready to collaborate with you.
             </p>
 
-            <div className="grid grid-cols-3 gap-3 pt-1">
-              <div className="p-3 rounded-lg bg-[#f8fafc] border border-slate-200">
-                <p className="text-xs font-bold text-[#0f2b48] mb-0.5">Global Reach</p>
-                <p className="text-[10px] text-slate-500 leading-tight">
+            <div className="grid sm:grid-cols-3 gap-3.5 pt-2">
+              <div className="p-4 rounded-xl bg-[#f8fafc] border border-slate-200 hover:border-[#2563eb]/40 transition-colors">
+                <div className="w-9 h-9 rounded-lg bg-blue-50 text-[#2563eb] flex items-center justify-center mb-2.5 shadow-xs">
+                  <Globe size={20} />
+                </div>
+                <p className="text-sm sm:text-base font-bold text-[#0f2b48] mb-1">Global Reach</p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Serving healthcare facilities worldwide.
                 </p>
               </div>
-              <div className="p-3 rounded-lg bg-[#f8fafc] border border-slate-200">
-                <p className="text-xs font-bold text-[#0f2b48] mb-0.5">Quality Solutions</p>
-                <p className="text-[10px] text-slate-500 leading-tight">
+              <div className="p-4 rounded-xl bg-[#f8fafc] border border-slate-200 hover:border-[#2563eb]/40 transition-colors">
+                <div className="w-9 h-9 rounded-lg bg-blue-50 text-[#2563eb] flex items-center justify-center mb-2.5 shadow-xs">
+                  <ShieldCheck size={20} />
+                </div>
+                <p className="text-sm sm:text-base font-bold text-[#0f2b48] mb-1">Quality Solutions</p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   Built to highest industry standards.
                 </p>
               </div>
-              <div className="p-3 rounded-lg bg-[#f8fafc] border border-slate-200">
-                <p className="text-xs font-bold text-[#0f2b48] mb-0.5">Dedicated Support</p>
-                <p className="text-[10px] text-slate-500 leading-tight">
+              <div className="p-4 rounded-xl bg-[#f8fafc] border border-slate-200 hover:border-[#2563eb]/40 transition-colors">
+                <div className="w-9 h-9 rounded-lg bg-blue-50 text-[#2563eb] flex items-center justify-center mb-2.5 shadow-xs">
+                  <HeartPulse size={20} />
+                </div>
+                <p className="text-sm sm:text-base font-bold text-[#0f2b48] mb-1">Dedicated Support</p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                   We&apos;re with you, every step of the way.
                 </p>
               </div>
