@@ -56,15 +56,23 @@ export function RoysNavbar({ active = "Home" }) {
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/group-companies/roys-roys" className="flex items-center gap-2.5 select-none group">
+        <Link href="/group-companies/roys-roys" className="flex items-center gap-2.5 sm:gap-3 select-none group">
           <Image
-            src="/roys logo.png"
-            alt="ROYS & ROYS INTERNATIONAL"
-            width={170}
-            height={55}
-            className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-95 transition-opacity"
+            src="/logos/r&r.png"
+            alt="ROYS & ROYS"
+            width={48}
+            height={48}
+            className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
             priority
           />
+          <div className="flex flex-col justify-center">
+            <span className="text-base sm:text-lg font-black tracking-tight leading-none text-[#0f2b48]">
+              ROYS &amp; ROYS
+            </span>
+            <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#B49438] mt-0.5">
+              INTERNATIONAL
+            </span>
+          </div>
         </Link>
 
         {/* Navigation Links */}
@@ -205,13 +213,23 @@ export function RoysFooter() {
       <div className="mx-auto max-w-screen-xl px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
         {/* Column 1: Brand */}
         <div className="lg:col-span-1">
-          <Image
-            src="/roysandroys white log.png"
-            alt="ROYS & ROYS"
-            width={160}
-            height={50}
-            className="object-contain mb-4"
-          />
+          <Link href="/group-companies/roys-roys" className="inline-flex items-center gap-3 mb-4 select-none group">
+            <Image
+              src="/logos/r&r.png"
+              alt="ROYS & ROYS"
+              width={48}
+              height={48}
+              className="h-10 sm:h-12 w-auto object-contain brightness-110"
+            />
+            <div className="flex flex-col justify-center">
+              <span className="text-base sm:text-lg font-black tracking-tight leading-none text-white">
+                ROYS &amp; ROYS
+              </span>
+              <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.25em] text-[#d4af37] mt-0.5">
+                INTERNATIONAL
+              </span>
+            </div>
+          </Link>
           <p className="text-sm leading-relaxed text-slate-300 mb-5">
             Roys &amp; Roys™ International is a global leader in healthcare infrastructure and institutional solutions.
           </p>
