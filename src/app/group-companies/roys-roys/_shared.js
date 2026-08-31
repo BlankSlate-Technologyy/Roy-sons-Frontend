@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ArrowUpRight, Phone, Mail, MapPin } from "lucide-react";
 
 // ─── Shared Design Tokens ─────────────────────────────────────────────────────
 export const C = {
@@ -75,7 +75,7 @@ export function RoysNavbar({ active = "Home" }) {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[13px] font-bold tracking-tight transition-colors relative py-1 px-1"
+                className="text-[15px] font-bold tracking-normal transition-colors relative py-1.5 px-1"
                 style={{
                   color: isActive ? "#2563eb" : "#0f2b48",
                 }}
@@ -95,7 +95,7 @@ export function RoysNavbar({ active = "Home" }) {
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/group-companies/roys-roys/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-md text-[12.5px] font-bold tracking-tight text-white shadow-sm transition-all duration-300 hover:bg-[#091b2c] cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded text-xs font-semibold text-white shadow-xs transition-all duration-200 hover:bg-[#091b2c] cursor-pointer"
             style={{ backgroundColor: "#0f2b48" }}
           >
             <span>Request a Quote</span>
@@ -103,11 +103,11 @@ export function RoysNavbar({ active = "Home" }) {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 rounded-lg border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-2.5 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: C.border, color: C.primary }}
             aria-label="Toggle Menu"
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -115,7 +115,7 @@ export function RoysNavbar({ active = "Home" }) {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
+          className="lg:hidden border-t px-6 py-5 space-y-2.5 bg-white shadow-xl"
           style={{ borderColor: C.border }}
         >
           {NAV_LINKS.map((item) => {
@@ -125,7 +125,7 @@ export function RoysNavbar({ active = "Home" }) {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-sm font-bold tracking-tight py-2 px-3 rounded-lg transition-colors"
+                className="block text-base font-bold tracking-normal py-2.5 px-3.5 rounded-lg transition-colors"
                 style={{
                   backgroundColor: isActive ? "#eff6ff" : "transparent",
                   color: isActive ? "#2563eb" : "#0f2b48",
@@ -139,11 +139,11 @@ export function RoysNavbar({ active = "Home" }) {
             <Link
               href="/group-companies/roys-roys/contact"
               onClick={() => setMobileOpen(false)}
-              className="w-full py-3 rounded-md text-xs font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-3.5 rounded-md text-sm font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-sm"
               style={{ backgroundColor: "#0f2b48" }}
             >
               <span>Request a Quote</span>
-              <ArrowRight size={14} />
+              <ArrowRight size={15} />
             </Link>
           </div>
         </div>
@@ -202,24 +202,24 @@ export function RoysFooter() {
   return (
     <footer style={{ backgroundColor: "#061527" }} className="text-white">
       {/* Upper Footer (6 Columns Grid) */}
-      <div className="mx-auto max-w-screen-xl px-6 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+      <div className="mx-auto max-w-screen-xl px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
         {/* Column 1: Brand */}
         <div className="lg:col-span-1">
           <Image
             src="/roysandroys white log.png"
             alt="ROYS & ROYS"
-            width={140}
-            height={45}
+            width={160}
+            height={50}
             className="object-contain mb-4"
           />
-          <p className="text-xs leading-relaxed text-slate-300 mb-4">
+          <p className="text-sm leading-relaxed text-slate-300 mb-5">
             Roys &amp; Roys™ International is a global leader in healthcare infrastructure and institutional solutions.
           </p>
-          <div className="flex gap-2.5 text-slate-400">
+          <div className="flex gap-3 text-slate-400">
             {["in", "x", "f", "yt"].map((soc) => (
               <span
                 key={soc}
-                className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white hover:bg-white/20 transition-colors cursor-pointer"
+                className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-xs font-bold text-white hover:bg-white/20 transition-colors cursor-pointer"
               >
                 {soc}
               </span>
@@ -230,15 +230,15 @@ export function RoysFooter() {
         {/* Columns 2-5: Nav Columns */}
         {footerNav.map((sec) => (
           <div key={sec.heading}>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
+            <h4 className="text-[13.5px] font-extrabold uppercase tracking-wider text-white mb-4">
               {sec.heading}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {sec.links.map((lnk) => (
                 <li key={lnk.label}>
                   <Link
                     href={lnk.href}
-                    className="text-xs text-slate-300 hover:text-white transition-colors"
+                    className="text-[13.5px] text-slate-300 hover:text-white transition-colors"
                   >
                     {lnk.label}
                   </Link>
@@ -250,36 +250,42 @@ export function RoysFooter() {
 
         {/* Column 6: Contact Us */}
         <div>
-          <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
+          <h4 className="text-[13.5px] font-extrabold uppercase tracking-wider text-white mb-4">
             Contact Us
           </h4>
-          <div className="space-y-2 text-xs text-slate-300 mb-4">
-            <p className="flex items-center gap-1.5">
-              <span>📞</span>
-              <span>+92 42 111 786 786</span>
-            </p>
-            <p className="flex items-center gap-1.5">
-              <span>✉</span>
+          <div className="space-y-3 text-xs sm:text-[13px] text-slate-300 mb-5">
+            <a
+              href="tel:+9242111786786"
+              className="flex items-center gap-2.5 hover:text-white transition-colors group"
+            >
+              <Phone size={15} className="text-[#38bdf8] shrink-0" />
+              <span className="whitespace-nowrap">+92 42 111 786 786</span>
+            </a>
+            <a
+              href="mailto:info@roysroys.com"
+              className="flex items-center gap-2.5 hover:text-white transition-colors group"
+            >
+              <Mail size={15} className="text-[#38bdf8] shrink-0" />
               <span>info@roysroys.com</span>
-            </p>
-            <p className="flex items-center gap-1.5">
-              <span>📍</span>
+            </a>
+            <div className="flex items-center gap-2.5">
+              <MapPin size={15} className="text-[#38bdf8] shrink-0" />
               <span>Lahore, Pakistan</span>
-            </p>
+            </div>
           </div>
           <Link
             href="/group-companies/roys-roys/contact"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] font-bold tracking-wide text-[#B49438] border border-[#B49438] hover:bg-[#B49438] hover:text-[#061527] transition-colors"
+            className="inline-flex items-center justify-between gap-2 px-3.5 py-2 rounded text-[11px] font-extrabold tracking-wider uppercase text-[#d4af37] border border-[#B49438]/80 hover:bg-[#B49438] hover:text-[#061527] transition-all whitespace-nowrap"
           >
             <span>Request a Quote</span>
-            <ArrowRight size={11} />
+            <ArrowRight size={13} />
           </Link>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 py-4 px-6">
-        <div className="mx-auto max-w-screen-xl flex flex-wrap items-center justify-between text-xs text-slate-400 gap-4">
+      <div className="border-t border-white/10 py-5 px-6">
+        <div className="mx-auto max-w-screen-xl flex flex-wrap items-center justify-between text-xs sm:text-sm text-slate-400 gap-4">
           <p>© {new Date().getFullYear()} Roys &amp; Roys™ International. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link href="/group-companies/roys-roys/privacy-policy" className="hover:text-white transition-colors">
@@ -293,7 +299,7 @@ export function RoysFooter() {
             </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="w-6 h-6 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+              className="w-7 h-7 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
               aria-label="Back to Top"
             >
               ↑

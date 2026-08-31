@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   ChevronRight,
-  ChevronLeft,
   ChevronDown,
   ArrowRight,
   ArrowUpRight,
@@ -15,7 +14,6 @@ import {
   Building2,
   ShieldCheck,
   Award,
-  Star,
   Users,
   Target,
   Eye,
@@ -32,17 +30,12 @@ import {
   Layers,
   Wrench,
   Activity,
-  Phone,
-  Mail,
-  MapPin,
   Flame,
-  Radiation,
   FileCheck,
   Hammer,
   GraduationCap,
   Building,
   Factory,
-  CheckSquare,
 } from "lucide-react";
 
 import { RoysNavbar, RoysFooter } from "./_shared";
@@ -159,7 +152,7 @@ const PRODUCTS_BY_TAB = {
 const CONFIGURATOR_ACCORDIONS = [
   {
     id: 1,
-    title: "1. Turnkey Suite Infrastructure",
+    title: "1. Modular Operating Theatre & ICU Suite",
     featuredTitle: "MODULAR OPERATING THEATRE & ICU SUITE",
     featuredDesc: "Engineered for efficiency, safety, and flexibility. Our modular OT & ICU solutions ensure faster deployment and optimal performance.",
     points: [
@@ -210,7 +203,7 @@ const CONFIGURATOR_ACCORDIONS = [
 const INDUSTRIES_8 = [
   { title: "Hospitals",                 icon: Building2,      slug: "hospitals" },
   { title: "Government",                icon: Building,       slug: "government" },
-  { title: "Military & Defense",        icon: ShieldCheck,    slug: "military-healthcare" },
+  { title: "Military & Defence",        icon: ShieldCheck,    slug: "military-healthcare" },
   { title: "Research Institutions",     icon: Microscope,     slug: "research-centers" },
   { title: "Educational Institutions",  icon: GraduationCap,  slug: "universities" },
   { title: "Pharma Companies",          icon: Pill,           slug: "pharmaceutical-industry" },
@@ -268,34 +261,24 @@ export default function RoysRoysPage() {
       {/* ─── 1. TOP NAVBAR ─────────────────────────────────────────────────── */}
       <RoysNavbar active="Home" />
 
-      {/* ─── 2. HERO SECTION ──────────────────────────────────────────────── */}
-      <section className="relative bg-[#061527] text-white pt-14 pb-16 lg:pt-20 lg:pb-24 px-6 overflow-hidden">
-        {/* Background Graphic & Hospital Illumination */}
+      {/* ─── 2. HERO SECTION (DARK NAVY GRADIENT + ARCHITECTURAL BUILDING) ─── */}
+      <section className="relative bg-[#07152b] text-white pt-12 pb-16 lg:pt-16 lg:pb-20 px-6 overflow-hidden">
+        {/* Subtle background glow */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
-          <div
-            className="absolute inset-0 bg-cover bg-right lg:bg-center"
-            style={{
-              backgroundImage: "url('/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg')",
-              opacity: 0.28,
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061527] via-[#061527]/90 to-[#061527]/50" />
-          
-          {/* Subtle network glow lines / ambient orb */}
-          <div className="absolute top-10 right-10 w-96 h-96 bg-[#2563eb]/15 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#2563eb]/10 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left: Content */}
             <div className="lg:col-span-7">
               {/* Gold pill badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#B49438]/60 bg-[#B49438]/10 text-[#d4af37] text-[10.5px] sm:text-[11.5px] font-extrabold uppercase tracking-[0.2em] mb-6">
+              <div className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-5">
                 GLOBAL HEALTHCARE ENGINEERING &amp; INSTITUTIONAL CONTRACTING
               </div>
 
               {/* H1 Heading */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-black leading-[1.18] tracking-tight text-white mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-5">
                 Delivering Excellence Through
                 <span className="block text-[#38bdf8] font-black text-2xl sm:text-3xl lg:text-4xl my-1">
                   &amp;
@@ -304,22 +287,22 @@ export default function RoysRoysPage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-8 font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-7 font-normal">
                 Roys &amp; Roys™ International is a diversified enterprise specializing in turnkey hospital engineering, integrated healthcare infrastructure, and institutional contracting solutions across 30+ nations.
               </p>
 
-              {/* Hero Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 mb-12">
+              {/* Hero Action Buttons (Compact, Sleek, Pixel-Perfect) */}
+              <div className="flex flex-wrap items-center gap-3 mb-10">
                 <Link
                   href="/group-companies/roys-roys/what-we-do"
-                  className="px-6 py-3 rounded-md bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md flex items-center gap-2"
+                  className="px-5 py-2.5 rounded bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow flex items-center gap-1.5"
                 >
                   <span>Explore Our Capabilities</span>
                   <ArrowRight size={14} />
                 </Link>
                 <Link
                   href="/group-companies/roys-roys/contact"
-                  className="px-6 py-3 rounded-md border border-white/30 bg-white/5 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-2"
+                  className="px-5 py-2.5 rounded border border-white/40 bg-white/5 hover:bg-white/10 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5"
                 >
                   <span>Download Brochure</span>
                   <ArrowUpRight size={14} />
@@ -327,19 +310,19 @@ export default function RoysRoysPage() {
               </div>
 
               {/* 4 Stat Cards in Row */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-white/15">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-5 border-t border-white/15">
                 {HERO_STATS.map((st) => {
                   const Icon = st.icon;
                   return (
                     <div
                       key={st.label}
-                      className="p-3.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xs flex items-center gap-3"
+                      className="p-3 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs flex items-center gap-2.5"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-[#38bdf8] flex items-center justify-center shrink-0">
+                      <div className="w-8 h-8 rounded bg-blue-500/20 text-[#38bdf8] flex items-center justify-center shrink-0">
                         <Icon size={16} />
                       </div>
                       <div>
-                        <p className="text-lg sm:text-xl font-black text-white leading-none mb-1">
+                        <p className="text-lg sm:text-xl font-black text-white leading-none mb-0.5">
                           {st.value}
                         </p>
                         <p className="text-[10px] text-slate-300 font-bold uppercase tracking-wider whitespace-pre-line leading-tight">
@@ -352,35 +335,16 @@ export default function RoysRoysPage() {
               </div>
             </div>
 
-            {/* Right: Hospital Building Graphic / Illustration Showcase */}
+            {/* Right: Hospital Building Graphic with Glowing Network Nodes */}
             <div className="lg:col-span-5 hidden lg:block">
-              <div className="relative h-[440px] w-full rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-gradient-to-b from-blue-900/40 to-slate-950/80">
+              <div className="relative h-[430px] w-full rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-gradient-to-b from-blue-950 to-slate-950">
                 <Image
-                  src="/roys_hospital_interior.png"
-                  alt="Modern Healthcare Infrastructure"
+                  src="/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg"
+                  alt="Modern Healthcare Infrastructure Building"
                   fill
-                  className="object-cover opacity-85 hover:scale-105 transition-transform duration-700"
+                  className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#061527] via-transparent to-transparent opacity-80" />
-                
-                {/* Floating Node Chips on Image */}
-                <div className="absolute top-6 left-6 p-2.5 rounded-xl bg-[#061527]/80 backdrop-blur-md border border-white/20 text-white flex items-center gap-2 shadow-lg">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#38bdf8] animate-ping" />
-                  <span className="text-[11px] font-extrabold uppercase tracking-wider">
-                    Turnkey Engineering
-                  </span>
-                </div>
-
-                <div className="absolute bottom-6 right-6 p-3 rounded-xl bg-[#061527]/90 backdrop-blur-md border border-white/20 text-white flex items-center gap-3 shadow-xl">
-                  <div className="w-8 h-8 rounded-lg bg-[#B49438] text-white flex items-center justify-center font-black text-xs">
-                    15+
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-extrabold uppercase text-[#B49438]">Global Reach</p>
-                    <p className="text-xs font-bold text-white">30+ Countries Served</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -388,16 +352,16 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 3. TRUSTED BY LEADING ORGANIZATIONS ───────────────────────────── */}
-      <section className="py-10 px-6 bg-white border-b border-[#e2e8f0]">
+      <section className="py-8 px-6 bg-white border-b border-[#e2e8f0]">
         <div className="mx-auto max-w-screen-xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#0f2b48] mb-8">
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#0f2b48] mb-6">
             TRUSTED BY LEADING ORGANIZATIONS
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center max-w-4xl mx-auto">
             {TRUSTED_LOGOS.map((logo) => (
               <div
                 key={logo.name}
-                className="h-16 px-4 py-2 flex items-center justify-center grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-200"
+                className="h-14 px-4 py-2 flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity"
               >
                 {logo.img ? (
                   <div className="relative w-full h-12">
@@ -421,15 +385,15 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 4. ABOUT US SECTION ───────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 px-6 bg-white">
-        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-12 items-center">
+      <section className="py-14 lg:py-18 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10 items-center">
           {/* Left: Content */}
           <div className="lg:col-span-6">
-            <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-[11px] font-black uppercase tracking-wider mb-4">
+            <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-xs font-bold uppercase tracking-wider mb-3">
               ABOUT US
             </span>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0f2b48] leading-[1.2] tracking-tight mb-5">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0f2b48] leading-[1.22] tracking-tight mb-4">
               Delivering Excellence Through Global Trade, Innovation &amp; Strategic Partnerships
             </h2>
 
@@ -437,7 +401,7 @@ export default function RoysRoysPage() {
               At Roys &amp; Roys™ International, we combine global expertise with local insight to deliver world-class healthcare infrastructure and institutional solutions. With decades of experience and commitment to quality, we transform visions into operational realities across the globe.
             </p>
 
-            <div className="space-y-3 mb-8">
+            <div className="space-y-3 mb-7">
               {[
                 { title: "Global Expertise", desc: "Decades of experience in healthcare innovation." },
                 { title: "Turnkey Solutions", desc: "End-to-end delivery from concept to commissioning." },
@@ -448,8 +412,8 @@ export default function RoysRoysPage() {
                   <div className="w-5 h-5 rounded-full bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0 mt-0.5">
                     <Check size={12} strokeWidth={3} />
                   </div>
-                  <p className="text-xs sm:text-[13px] text-slate-700 leading-normal">
-                    <strong className="text-[#0f2b48] font-extrabold">{point.title}:</strong> {point.desc}
+                  <p className="text-xs sm:text-sm text-slate-700 leading-normal">
+                    <strong className="text-[#0f2b48] font-bold">{point.title}:</strong> {point.desc}
                   </p>
                 </div>
               ))}
@@ -457,7 +421,7 @@ export default function RoysRoysPage() {
 
             <Link
               href="/group-companies/roys-roys/about"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
             >
               <span>More About Us</span>
               <ArrowRight size={14} />
@@ -466,7 +430,7 @@ export default function RoysRoysPage() {
 
           {/* Right: Hospital Image Showcase with Floating Badge */}
           <div className="lg:col-span-6">
-            <div className="relative h-[380px] sm:h-[440px] rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+            <div className="relative h-[360px] sm:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-slate-200">
               <Image
                 src="/roys_hospital_interior.png"
                 alt="Hospital corridor interior"
@@ -476,18 +440,15 @@ export default function RoysRoysPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#061527]/90 via-transparent to-transparent" />
 
-              <div className="absolute bottom-6 left-6 right-6 p-4 sm:p-5 rounded-xl bg-[#0f2b48]/95 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-2xl">
+              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-[#0f2b48]/95 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-xl">
                 <div>
-                  <p className="text-[10.5px] font-extrabold uppercase tracking-widest text-[#B49438]">
-                    Featured Facility
-                  </p>
-                  <p className="text-sm sm:text-base font-black text-white">
+                  <p className="text-sm font-bold text-white">
                     Turnkey Healthcare &amp; Global Trade
                   </p>
                 </div>
                 <div className="text-right pl-4 border-l border-white/20">
-                  <span className="text-xl sm:text-2xl font-black text-[#B49438]">15+</span>
-                  <p className="text-[9.5px] text-slate-300 uppercase font-extrabold tracking-wider">
+                  <span className="text-xl font-black text-[#B49438]">15+</span>
+                  <p className="text-[10px] text-slate-300 uppercase font-bold tracking-wider">
                     Countries Served
                   </p>
                 </div>
@@ -498,29 +459,29 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 5. OUR MISSION & OUR VISION ───────────────────────────────────── */}
-      <section className="py-6 px-6 bg-white">
-        <div className="mx-auto max-w-screen-xl grid md:grid-cols-2 gap-6">
+      <section className="py-4 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl grid md:grid-cols-2 gap-5">
           {/* Mission Card */}
-          <div className="p-7 rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-xl bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
-              <Target size={24} />
+          <div className="p-6 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
+            <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
+              <Target size={20} />
             </div>
             <div>
-              <h3 className="text-base font-black text-[#0f2b48] mb-2">Our Mission</h3>
-              <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed">
+              <h3 className="text-base font-bold text-[#0f2b48] mb-1.5">Our Mission</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 To build a healthier tomorrow by delivering innovative, sustainable, and patient-centric healthcare infrastructure solutions globally.
               </p>
             </div>
           </div>
 
           {/* Vision Card */}
-          <div className="p-7 rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-xl bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
-              <Eye size={24} />
+          <div className="p-6 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
+            <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
+              <Eye size={20} />
             </div>
             <div>
-              <h3 className="text-base font-black text-[#0f2b48] mb-2">Our Vision</h3>
-              <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed">
+              <h3 className="text-base font-bold text-[#0f2b48] mb-1.5">Our Vision</h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 To be a global leader in healthcare solutions and exceed expectations through innovation, integrity, and unwavering commitment.
               </p>
             </div>
@@ -529,30 +490,30 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 6. HOW WE DELIVER HEALTHCARE INFRASTRUCTURE ────────────────────── */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-12">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
             HOW WE DELIVER HEALTHCARE INFRASTRUCTURE
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
             {WORKFLOW_STEPS.map((step) => {
               const Icon = step.icon;
               return (
                 <div
                   key={step.num}
-                  className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
+                  className="p-6 rounded-xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center justify-between mb-4">
                       <span className="text-3xl font-black text-slate-300 font-mono">
                         {step.num}
                       </span>
-                      <div className="w-10 h-10 rounded-full bg-[#2563eb] text-white flex items-center justify-center shadow-xs">
-                        <Icon size={18} />
+                      <div className="w-9 h-9 rounded-full bg-[#2563eb] text-white flex items-center justify-center shadow-xs">
+                        <Icon size={16} />
                       </div>
                     </div>
-                    <h3 className="text-base font-black text-[#0f2b48] mb-2">
+                    <h3 className="text-sm sm:text-base font-bold text-[#0f2b48] mb-1.5">
                       {step.title}
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed">
@@ -567,30 +528,30 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 7. OUR SERVICE OFFERINGS (12 CARDS GRID) ──────────────────────── */}
-      <section className="py-16 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
+      <section className="py-14 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-9">
             OUR SERVICE OFFERINGS
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left mb-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5 text-left mb-9">
             {SERVICE_OFFERINGS_12.map((srv) => {
               const Icon = srv.icon;
               return (
                 <Link
                   key={srv.title}
                   href={"/group-companies/roys-roys/what-we-do/" + srv.slug}
-                  className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex items-center justify-between group no-underline"
+                  className="p-3.5 rounded-lg border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-sm transition-all duration-200 flex items-center justify-between group no-underline"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center shrink-0">
-                      <Icon size={18} />
+                    <div className="w-8 h-8 rounded bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center shrink-0">
+                      <Icon size={16} />
                     </div>
                     <p className="text-xs font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors leading-snug">
                       {srv.title}
                     </p>
                   </div>
-                  <ChevronRight size={15} className="text-slate-400 group-hover:text-[#2563eb] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                  <ChevronRight size={14} className="text-slate-400 group-hover:text-[#2563eb] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
                 </Link>
               );
             })}
@@ -598,7 +559,7 @@ export default function RoysRoysPage() {
 
           <Link
             href="/group-companies/roys-roys/what-we-do"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
             <span>View All Services</span>
             <ArrowRight size={14} />
@@ -607,22 +568,22 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 8. CORE BUSINESS AREAS (7 PILL CARDS) ─────────────────────────── */}
-      <section className="py-14 px-6 bg-white">
+      <section className="py-12 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
           <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-8">
             CORE BUSINESS AREAS
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3.5">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
             {CORE_BUSINESS_7.map((area) => {
               const Icon = area.icon;
               return (
                 <div
                   key={area.title}
-                  className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
+                  className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-sm transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
                 >
-                  <div className="w-11 h-11 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center mb-2.5">
-                    <Icon size={20} />
+                  <div className="w-10 h-10 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center mb-2">
+                    <Icon size={18} />
                   </div>
                   <p className="text-xs font-bold text-[#0f2b48] whitespace-pre-line leading-tight">
                     {area.title}
@@ -635,14 +596,14 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 9. PRODUCTS & SOLUTIONS (TABS + 4 CARDS) ───────────────────────── */}
-      <section className="py-16 px-6 bg-[#f8fafc] border-t border-slate-200">
+      <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl text-center">
           <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-6">
             PRODUCTS &amp; SOLUTIONS
           </h2>
 
           {/* Product Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-10">
+          <div className="flex flex-wrap justify-center gap-2 mb-9">
             {PRODUCT_TABS.map((tab) => {
               const active = tab === productTab;
               return (
@@ -650,9 +611,9 @@ export default function RoysRoysPage() {
                   key={tab}
                   onClick={() => setProductTab(tab)}
                   className={
-                    "px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer " +
+                    "px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer " +
                     (active
-                      ? "bg-[#0f2b48] text-white shadow-sm"
+                      ? "bg-[#0f2b48] text-white shadow-xs"
                       : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100")
                   }
                 >
@@ -663,11 +624,11 @@ export default function RoysRoysPage() {
           </div>
 
           {/* 4 Products Cards Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left mb-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left mb-9">
             {(PRODUCTS_BY_TAB[productTab] || PRODUCTS_BY_TAB["Diagnostic Imaging"]).map((prod) => (
               <div
                 key={prod.name}
-                className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col justify-between"
+                className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
                   <div className="relative h-44 w-full bg-slate-900">
@@ -675,12 +636,12 @@ export default function RoysRoysPage() {
                       src={prod.img}
                       alt={prod.name}
                       fill
-                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      className="object-cover"
                       sizes="300px"
                     />
                   </div>
-                  <div className="p-5">
-                    <h3 className="text-sm font-black text-[#0f2b48] mb-1.5">
+                  <div className="p-4">
+                    <h3 className="text-sm font-bold text-[#0f2b48] mb-1">
                       {prod.name}
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed">
@@ -689,13 +650,13 @@ export default function RoysRoysPage() {
                   </div>
                 </div>
 
-                <div className="px-5 pb-5 pt-0">
+                <div className="px-4 pb-4 pt-0">
                   <Link
                     href="/group-companies/roys-roys/products"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2563eb] hover:text-[#0f2b48] transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#2563eb] hover:text-[#0f2b48] transition-colors"
                   >
                     <span>View Details</span>
-                    <ArrowRight size={13} />
+                    <ArrowRight size={12} />
                   </Link>
                 </div>
               </div>
@@ -704,7 +665,7 @@ export default function RoysRoysPage() {
 
           <Link
             href="/group-companies/roys-roys/products"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
             <span>Explore All Products &amp; Solutions</span>
             <ArrowRight size={14} />
@@ -713,12 +674,12 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 10. INTERACTIVE CONFIGURATOR BOX ───────────────────────────────── */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl bg-[#0c2340] text-white p-8 lg:p-12 shadow-2xl grid lg:grid-cols-12 gap-8 items-center">
+          <div className="rounded-2xl bg-[#091d34] text-white p-7 lg:p-10 shadow-2xl grid lg:grid-cols-12 gap-8 items-center">
             {/* Left: Accordion Selection */}
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#B49438] block">
+            <div className="lg:col-span-6 space-y-5">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#B49438] block">
                 CUSTOMIZED. SCALABLE. RELIABLE.
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-white leading-tight">
@@ -729,7 +690,7 @@ export default function RoysRoysPage() {
               </p>
 
               {/* Accordions */}
-              <div className="space-y-2.5 pt-2">
+              <div className="space-y-2.5 pt-1">
                 {CONFIGURATOR_ACCORDIONS.map((acc) => {
                   const active = acc.id === activeAccordion;
                   return (
@@ -737,15 +698,15 @@ export default function RoysRoysPage() {
                       key={acc.id}
                       onClick={() => setActiveAccordion(acc.id)}
                       className={
-                        "p-3.5 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between " +
+                        "p-3 rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-between " +
                         (active
-                          ? "bg-[#1d4ed8] border-[#38bdf8] text-white shadow-md"
+                          ? "bg-[#2563eb] border-[#38bdf8] text-white shadow-sm"
                           : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white")
                       }
                     >
-                      <span className="text-xs sm:text-sm font-bold">{acc.title}</span>
+                      <span className="text-xs sm:text-sm font-semibold">{acc.title}</span>
                       <ChevronDown
-                        size={16}
+                        size={15}
                         className={
                           "transition-transform duration-200 " +
                           (active ? "rotate-180 text-white" : "text-slate-400")
@@ -756,22 +717,22 @@ export default function RoysRoysPage() {
                 })}
               </div>
 
-              <div className="pt-2">
+              <div className="pt-1">
                 <Link
                   href="/group-companies/roys-roys/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#B49438] hover:bg-[#9a7d2d] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-md"
+                  className="inline-flex items-center gap-1.5 px-5 py-2 rounded bg-[#B49438] hover:bg-[#9a7d2d] text-white font-semibold text-xs uppercase tracking-wider transition-colors shadow-sm"
                 >
                   <span>Tailor-Made Proposal</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={13} />
                 </Link>
               </div>
             </div>
 
             {/* Right: Featured Preview Card */}
             <div className="lg:col-span-6">
-              <div className="p-6 sm:p-7 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md space-y-5 shadow-xl">
+              <div className="p-6 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md space-y-4 shadow-xl">
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-white mb-2">
+                  <h3 className="text-base font-bold text-white mb-1.5">
                     {selectedAccordionData.featuredTitle}
                   </h3>
                   <p className="text-xs text-slate-200 leading-relaxed">
@@ -779,11 +740,11 @@ export default function RoysRoysPage() {
                   </p>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   {selectedAccordionData.points.map((pt) => (
                     <div key={pt} className="flex items-center gap-2 text-xs text-slate-200">
-                      <div className="w-4 h-4 rounded bg-[#38bdf8]/20 text-[#38bdf8] flex items-center justify-center shrink-0">
-                        <Check size={11} strokeWidth={3} />
+                      <div className="w-4 h-4 rounded-full bg-[#38bdf8]/20 text-[#38bdf8] flex items-center justify-center shrink-0">
+                        <Check size={10} strokeWidth={3} />
                       </div>
                       <span>{pt}</span>
                     </div>
@@ -792,13 +753,13 @@ export default function RoysRoysPage() {
 
                 <Link
                   href="/group-companies/roys-roys/contact"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#B49438] hover:bg-[#9a7d2d] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#B49438] hover:bg-[#9a7d2d] text-white font-semibold text-xs uppercase tracking-wider transition-colors shadow-xs"
                 >
                   <span>Request a Feature Solution</span>
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={13} />
                 </Link>
 
-                <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden border border-white/20 mt-3">
+                <div className="relative h-44 sm:h-48 w-full rounded-lg overflow-hidden border border-white/20 mt-3">
                   <Image
                     src={selectedAccordionData.img}
                     alt={selectedAccordionData.featuredTitle}
@@ -814,20 +775,20 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 11. INDUSTRIES WE SERVE (8 GRID CARDS) ────────────────────────── */}
-      <section className="py-16 px-6 bg-[#f8fafc] border-t border-slate-200">
+      <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-9">
             INDUSTRIES WE SERVE
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 mb-9">
             {INDUSTRIES_8.map((ind) => {
               const Icon = ind.icon;
               return (
                 <Link
                   key={ind.title}
                   href={"/group-companies/roys-roys/industries/" + ind.slug}
-                  className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group no-underline"
+                  className="p-3.5 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-sm transition-all duration-200 flex flex-col items-center justify-center text-center group no-underline"
                 >
                   <div className="w-10 h-10 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center mb-2">
                     <Icon size={18} />
@@ -842,7 +803,7 @@ export default function RoysRoysPage() {
 
           <Link
             href="/group-companies/roys-roys/industries"
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
             <span>Explore All Industries</span>
             <ArrowRight size={14} />
@@ -851,25 +812,25 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 12. WHY CHOOSE ROYS & ROYS INTERNATIONAL? (8 CARDS) ───────────── */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-9">
             WHY CHOOSE ROYS &amp; ROYS INTERNATIONAL?
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
             {WHY_CHOOSE_8.map((item) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.title}
-                  className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                  className="p-5 rounded-xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563eb] flex items-center justify-center mb-3">
-                      <Icon size={20} />
+                    <div className="w-9 h-9 rounded bg-blue-50 text-[#2563eb] flex items-center justify-center mb-3">
+                      <Icon size={18} />
                     </div>
-                    <h3 className="text-sm font-black text-[#0f2b48] mb-1.5">
+                    <h3 className="text-sm font-bold text-[#0f2b48] mb-1">
                       {item.title}
                     </h3>
                     <p className="text-xs text-slate-600 leading-relaxed">
@@ -884,11 +845,11 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 13. 3-PANEL CORPORATE BAR (VALUES, INFO, CERTIFICATIONS) ───────── */}
-      <section className="py-10 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
-        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-6 items-center">
+      <section className="py-9 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
+        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-5 items-center">
           {/* Panel 1: Our Values */}
           <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-[10px] font-black uppercase tracking-widest text-[#B49438] block mb-3">
+            <span className="text-[10.5px] font-bold uppercase tracking-widest text-[#B49438] block mb-2.5">
               OUR VALUES
             </span>
             <div className="flex flex-wrap gap-2">
@@ -897,7 +858,7 @@ export default function RoysRoysPage() {
                 return (
                   <span
                     key={v.label}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-slate-100 text-slate-700 text-[11px] font-bold"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded bg-slate-100 text-slate-700 text-[11px] font-bold"
                   >
                     <Icon size={13} className="text-[#2563eb]" />
                     <span>{v.label}</span>
@@ -909,7 +870,7 @@ export default function RoysRoysPage() {
 
           {/* Panel 2: Corporate Info */}
           <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-[10px] font-black uppercase tracking-widest text-[#B49438] block mb-2">
+            <span className="text-[10.5px] font-bold uppercase tracking-widest text-[#B49438] block mb-2">
               CORPORATE INFO
             </span>
             <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-600">
@@ -925,23 +886,23 @@ export default function RoysRoysPage() {
 
           {/* Panel 3: Certifications */}
           <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
-            <span className="text-[10px] font-black uppercase tracking-widest text-[#B49438] block mb-2">
+            <span className="text-[10.5px] font-bold uppercase tracking-widest text-[#B49438] block mb-2">
               CERTIFICATIONS &amp; MEMBERSHIPS
             </span>
             <ul className="text-xs text-slate-600 space-y-1">
               <li>• ISO 9001:2015 Certified Organization</li>
               <li>• Registered with Pakistan Engineering Council (PEC)</li>
-              <li>• Member: FPCCI, PHA &amp; Global Trade Associations</li>
+              <li>• Member: FPCCI, PHA &amp; Other Associations</li>
             </ul>
           </div>
         </div>
       </section>
 
       {/* ─── 14. CONTACT / LEAD CAPTURE SECTION ─────────────────────────────── */}
-      <section id="contact" className="py-16 lg:py-20 px-6 bg-white">
-        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-12 items-start">
+      <section id="contact" className="py-14 lg:py-18 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10 items-start">
           {/* Left: Info */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-5">
             <h2 className="text-2xl sm:text-3xl font-black text-[#0f2b48] leading-tight">
               Let&apos;s Build Stronger Partnerships Together
             </h2>
@@ -949,22 +910,22 @@ export default function RoysRoysPage() {
               Whether you&apos;re looking for a complete healthcare solution or a reliable partner for your procurement, our team is ready to collaborate with you.
             </p>
 
-            <div className="grid grid-cols-3 gap-3 pt-2">
-              <div className="p-3.5 rounded-xl bg-[#f8fafc] border border-slate-200">
-                <p className="text-xs font-black text-[#0f2b48] mb-1">Global Reach</p>
-                <p className="text-[10.5px] text-slate-500 leading-tight">
+            <div className="grid grid-cols-3 gap-3 pt-1">
+              <div className="p-3 rounded-lg bg-[#f8fafc] border border-slate-200">
+                <p className="text-xs font-bold text-[#0f2b48] mb-0.5">Global Reach</p>
+                <p className="text-[10px] text-slate-500 leading-tight">
                   Serving healthcare facilities worldwide.
                 </p>
               </div>
-              <div className="p-3.5 rounded-xl bg-[#f8fafc] border border-slate-200">
-                <p className="text-xs font-black text-[#0f2b48] mb-1">Quality Solutions</p>
-                <p className="text-[10.5px] text-slate-500 leading-tight">
+              <div className="p-3 rounded-lg bg-[#f8fafc] border border-slate-200">
+                <p className="text-xs font-bold text-[#0f2b48] mb-0.5">Quality Solutions</p>
+                <p className="text-[10px] text-slate-500 leading-tight">
                   Built to highest industry standards.
                 </p>
               </div>
-              <div className="p-3.5 rounded-xl bg-[#f8fafc] border border-slate-200">
-                <p className="text-xs font-black text-[#0f2b48] mb-1">Dedicated Support</p>
-                <p className="text-[10.5px] text-slate-500 leading-tight">
+              <div className="p-3 rounded-lg bg-[#f8fafc] border border-slate-200">
+                <p className="text-xs font-bold text-[#0f2b48] mb-0.5">Dedicated Support</p>
+                <p className="text-[10px] text-slate-500 leading-tight">
                   We&apos;re with you, every step of the way.
                 </p>
               </div>
@@ -973,22 +934,22 @@ export default function RoysRoysPage() {
 
           {/* Right: Form */}
           <div className="lg:col-span-7">
-            <div className="p-7 sm:p-8 rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-md">
-              <h3 className="text-lg font-black text-[#0f2b48] mb-5">
+            <div className="p-6 sm:p-7 rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-md">
+              <h3 className="text-base sm:text-lg font-bold text-[#0f2b48] mb-4">
                 Send Us a Message
               </h3>
 
               {submitted ? (
                 <div className="p-6 text-center rounded-xl bg-white border border-slate-200">
-                  <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-3">
-                    <CheckCircle2 size={24} />
+                  <div className="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-2.5">
+                    <CheckCircle2 size={22} />
                   </div>
-                  <p className="text-sm font-black text-[#0f2b48] mb-1">Thank You!</p>
+                  <p className="text-sm font-bold text-[#0f2b48] mb-0.5">Thank You!</p>
                   <p className="text-xs text-slate-600">Your message has been received. Our directors will contact you shortly.</p>
                 </div>
               ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleFormSubmit} className="space-y-3.5">
+                  <div className="grid sm:grid-cols-2 gap-3.5">
                     <input
                       type="text"
                       name="fullName"
@@ -996,7 +957,7 @@ export default function RoysRoysPage() {
                       required
                       value={form.fullName}
                       onChange={handleFormChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
                     />
                     <input
                       type="email"
@@ -1005,18 +966,18 @@ export default function RoysRoysPage() {
                       required
                       value={form.email}
                       onChange={handleFormChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
                     />
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-3.5">
                     <input
                       type="tel"
                       name="phone"
                       placeholder="Phone Number"
                       value={form.phone}
                       onChange={handleFormChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
                     />
                     <input
                       type="text"
@@ -1024,7 +985,7 @@ export default function RoysRoysPage() {
                       placeholder="Company / Organization"
                       value={form.company}
                       onChange={handleFormChange}
-                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
                     />
                   </div>
 
@@ -1035,12 +996,12 @@ export default function RoysRoysPage() {
                     required
                     value={form.message}
                     onChange={handleFormChange}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors resize-none"
                   />
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-lg bg-[#0f2b48] hover:bg-[#2563eb] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors duration-200 shadow-sm cursor-pointer"
+                    className="w-full py-3 rounded-lg bg-[#0f2b48] hover:bg-[#2563eb] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors duration-200 shadow-xs cursor-pointer"
                   >
                     <span>Send Message</span>
                     <Send size={13} />

@@ -6,149 +6,104 @@ import Link from "next/link";
 import {
   ChevronRight,
   ArrowRight,
-  Sparkles,
-  CheckCircle2,
+  ArrowUpRight,
   Building2,
-  Globe,
-  Award,
+  Wrench,
+  BriefcaseMedical,
+  Activity,
+  Stethoscope,
+  Hammer,
+  Building,
+  Microscope,
+  Layers,
   ShieldCheck,
+  Flame,
+  FlaskConical,
+  Check,
 } from "lucide-react";
-import { RoysNavbar, RoysFooter, SectionHeading } from "../_shared";
+import { RoysNavbar, RoysFooter } from "../_shared";
 import { SERVICES_LIST } from "../services-data";
 
-export default function ServicesHubPage() {
+export default function ServicesPage() {
   const [selectedFilter, setSelectedFilter] = useState("all");
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-[#111827]">
-      <RoysNavbar active="Solutions" />
+    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
+      <RoysNavbar active="Services" />
 
-      {/* ─── Breadcrumb ─────────────────────────────────────────────────────────── */}
-      <div className="bg-[#f1f5f9] border-b border-[#e2e8f0] py-3 px-4 sm:px-6">
-        <div className="mx-auto max-w-screen-xl flex items-center gap-2 text-xs text-[#64748b]">
-          <Link href="/group-companies/roys-roys" className="hover:text-[#113658] transition-colors">
-            Home
-          </Link>
-          <ChevronRight size={13} />
-          <span className="font-semibold text-[#113658]">Core Business Areas &amp; Services</span>
-        </div>
-      </div>
-
-      {/* ─── Hero Section ───────────────────────────────────────────────────────── */}
-      <section className="relative bg-[#0b2138] text-white py-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071728] via-[#0b2138] to-[#113658] opacity-95" />
+      {/* ─── Hero Section ─────────────────────────────────────────────────── */}
+      <section className="relative bg-[#07152b] text-white pt-12 pb-16 lg:pt-16 lg:pb-20 px-6 overflow-hidden">
         <div className="relative z-10 mx-auto max-w-screen-xl text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#B49438] text-xs font-extrabold uppercase tracking-widest mb-4">
-            <Sparkles size={14} />
-            <span>ROYS &amp; ROYS INTERNATIONAL</span>
+          <div className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4">
+            END-TO-END HEALTHCARE ENGINEERING
           </div>
-
-          <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-6 max-w-4xl mx-auto">
-            Core Business Areas &amp; Specialized Services
+          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4 max-w-3xl mx-auto">
+            Our Specialized Service Offerings &amp; Engineering Solutions
           </h1>
-
-          <p className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto mb-8">
-            Explore our end-to-end healthcare technologies, hospital engineering, sterile cleanroom systems, laboratory diagnostics, pharmaceutical consultancy, global procurement, and biomedical maintenance solutions.
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7 font-normal">
+            From complete hospital infrastructure and MEP utility networks to cleanroom HVAC, radiation shielding, and biomedical facility management.
           </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/group-companies/roys-roys/contact"
-              className="px-7 py-3.5 rounded-sm bg-[#B49438] hover:bg-[#009088] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg"
+              className="px-5 py-2.5 rounded bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow flex items-center gap-1.5"
             >
               <span>Request Consultation</span>
-              <ArrowRight size={15} />
+              <ArrowRight size={14} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ─── 7 Services Grid ──────────────────────────────────────────────────── */}
-      <section className="py-20 px-6 bg-[#f8fafc]">
+      {/* ─── Services Grid ─────────────────────────────────────────────────── */}
+      <section className="py-14 px-6 bg-[#f8fafc]">
         <div className="mx-auto max-w-screen-xl">
-          <SectionHeading
-            eyebrow="PORTFOLIO OF EXCELLENCE"
-            title="Our 7 Core Business Divisions"
-            subtitle="Click on any division to explore in-depth technical specifications, equipment catalogs, and turnkey delivery capabilities."
-          />
+          <div className="text-center mb-10">
+            <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-3">
+              Comprehensive Healthcare Services
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
+              Delivering turnkey engineering precision from project inception to lifetime operations.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES_LIST.map((service, idx) => {
-              const ServiceIcon = service.icon;
-              return (
-                <div
-                  key={service.slug}
-                  className="rounded-2xl border border-[#e2e8f0] bg-white overflow-hidden shadow-xs hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5"
-                >
-                  <div className="p-8">
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="w-14 h-14 rounded-xl bg-[#113658]/10 text-[#113658] flex items-center justify-center group-hover:bg-[#113658] group-hover:text-white transition-all duration-300 shadow-xs">
-                        <ServiceIcon size={28} />
-                      </div>
-                      <span className="text-xs font-mono font-black text-[#64748b]/40 text-lg">
-                        0{idx + 1}
-                      </span>
-                    </div>
-
-                    <div className="mb-2">
-                      <span className="text-[11px] font-extrabold text-[#B49438] uppercase tracking-wider block mb-1">
-                        {service.badge}
-                      </span>
-                      <h3 className="text-xl font-black text-[#113658] group-hover:text-[#009088] transition-colors">
-                        {service.title}
-                      </h3>
-                    </div>
-
-                    <p className="text-sm sm:text-[15px] text-[#475569] leading-relaxed mb-6">
-                      {service.tagline}
-                    </p>
-
-                    <div className="space-y-2.5 pt-4 border-t border-[#f1f5f9]">
-                      {service.keyPillars.slice(0, 3).map((pillar, i) => (
-                        <div key={i} className="flex items-center gap-2 text-[13.5px] font-semibold text-[#334155]">
-                          <CheckCircle2 size={15} className="text-[#009088] shrink-0" />
-                          <span className="truncate">{pillar.title}</span>
-                        </div>
-                      ))}
-                    </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SERVICES_LIST.map((srv) => (
+              <div
+                key={srv.slug}
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:shadow-lg hover:border-[#2563eb] transition-all duration-200 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#2563eb] bg-blue-50 px-2.5 py-1 rounded">
+                      {srv.tag || "Engineering"}
+                    </span>
+                    <span className="text-xs font-mono text-slate-400 font-bold">{srv.num}</span>
                   </div>
+                  <h3 className="text-base font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors mb-2">
+                    {srv.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                    {srv.desc}
+                  </p>
 
-                  <div className="p-6 bg-[#f8fafc] border-t border-[#e2e8f0]">
-                    <Link
-                      href={`/group-companies/roys-roys/services/${service.slug}`}
-                      className="w-full py-3 px-4 rounded-lg bg-[#113658] group-hover:bg-[#B49438] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
-                    >
-                      <span>Explore Detail Page</span>
-                      <ArrowRight size={14} />
-                    </Link>
+                  <div className="space-y-1.5 mb-5 pt-3 border-t border-slate-100">
+                    {srv.subServices && srv.subServices.slice(0, 3).map((sub) => (
+                      <div key={sub} className="flex items-center gap-2 text-xs text-slate-600">
+                        <Check size={11} className="text-[#2563eb] shrink-0" />
+                        <span>{sub}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* ─── Global Trust Section ──────────────────────────────────────────────── */}
-      <section className="py-16 px-6 bg-[#020f1f] text-white">
-        <div className="mx-auto max-w-screen-xl text-center">
-          <p className="text-[#B49438] text-xs font-extrabold uppercase tracking-[0.25em] mb-2">
-            GLOBAL ACCREDITATION &amp; STANDARDS
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
-            Trusted by Health Ministries, Military, &amp; Global Healthcare Leaders
-          </h2>
-          <p className="text-white/85 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            All our services and installations comply with international quality benchmarks including WHO-GMP, ISO 13485, CE, FDA, and HTM 02-01 standards.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            {["WHO-GMP Compliant", "ISO 13485 & 9001", "CE & FDA Certified Systems", "HTM 02-01 & NFPA 99", "24/7 SLA Technical Support"].map((badge, idx) => (
-              <div
-                key={idx}
-                className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-wider text-[#B49438]"
-              >
-                {badge}
+                <Link
+                  href={"/group-companies/roys-roys/services/" + srv.slug}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2563eb] hover:text-[#0f2b48] transition-colors"
+                >
+                  <span>Explore Service Details</span>
+                  <ArrowRight size={13} />
+                </Link>
               </div>
             ))}
           </div>
@@ -156,6 +111,6 @@ export default function ServicesHubPage() {
       </section>
 
       <RoysFooter />
-    </div>
+    </main>
   );
 }
