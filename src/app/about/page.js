@@ -339,7 +339,7 @@ export default function AboutPage() {
               {/* Badge */}
               <div className="inline-flex items-center border border-[#C6A15A]/40 bg-white/5 px-3.5 py-1 rounded-full w-fit mb-4">
                 <span className="text-[11px] font-black uppercase tracking-widest text-[#C6A15A]">
-                  Chairman ROYSONS Trust
+                  Chairman
                 </span>
               </div>
 

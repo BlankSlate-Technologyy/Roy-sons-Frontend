@@ -28,12 +28,12 @@ function ServiceItem({ icon: Icon, title, description, href }) {
         </p>
         <Link
           href={href || "#"}
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-black tracking-[0.18em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
+          className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-bold tracking-[0.16em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
         >
           <span>LEARN MORE</span>
           <ArrowRight
-            size={14}
-            strokeWidth={2.5}
+            size={12}
+            strokeWidth={2}
             className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#C6A15A]"
           />
         </Link>

@@ -159,12 +159,12 @@ function ServiceCard({ icon: Icon, title, description, href }) {
         </p>
         <Link
           href={href || "#"}
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-black tracking-[0.18em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
+          className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-bold tracking-[0.16em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
         >
           <span>LEARN MORE</span>
           <ArrowRight
-            size={14}
-            strokeWidth={2.5}
+            size={12}
+            strokeWidth={2}
             className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#C6A15A]"
           />
         </Link>
@@ -175,10 +175,10 @@ function ServiceCard({ icon: Icon, title, description, href }) {
 
 function FormField({ label, placeholder, type = "text", required = false, id, value, onChange }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="text-xs sm:text-sm font-bold text-neutral-950 uppercase tracking-[0.12em]"
+        className="text-[11px] sm:text-xs font-bold text-neutral-950 uppercase tracking-[0.1em]"
       >
         {label} {required && <span className="text-red-500">*</span>}
       </label>
@@ -189,7 +189,7 @@ function FormField({ label, placeholder, type = "text", required = false, id, va
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full bg-white border border-neutral-200 px-4 py-3.5 text-sm sm:text-base text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+        className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
       />
     </div>
   );
@@ -198,10 +198,10 @@ function FormField({ label, placeholder, type = "text", required = false, id, va
 function FormSelect({ label, options, required = false, id, value, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="text-xs sm:text-sm font-bold text-neutral-950 uppercase tracking-[0.12em]"
+        className="text-[11px] sm:text-xs font-bold text-neutral-950 uppercase tracking-[0.1em]"
       >
         {label} {required && <span className="text-red-500">*</span>}
       </label>
@@ -212,17 +212,17 @@ function FormSelect({ label, options, required = false, id, value, onSelect }) {
       >
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full bg-neutral-950 border ${isOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-4 py-3.5 text-sm sm:text-base text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
+          className={`w-full bg-neutral-950 border ${isOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-3.5 py-2.5 text-xs sm:text-sm text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
         >
           <span>{value || 'Select a service'}</span>
-          <ChevronDown size={16} className={`text-[#a3a3a3] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+          <ChevronDown size={14} className={`text-[#a3a3a3] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
         </div>
 
         {isOpen && (
           <div className="absolute z-50 w-full mt-1 bg-neutral-950 border border-neutral-800 rounded-[2px] max-h-60 overflow-y-auto shadow-xl">
             <div
               onClick={() => { onSelect(''); setIsOpen(false); }}
-              className="px-4 py-3 text-sm text-[#dfb753] opacity-50 hover:bg-[#dfb753] hover:text-black hover:opacity-100 cursor-pointer transition-colors"
+              className="px-3.5 py-2 text-xs sm:text-sm text-[#dfb753] opacity-50 hover:bg-[#dfb753] hover:text-black hover:opacity-100 cursor-pointer transition-colors"
             >
               Select a service
             </div>
@@ -230,7 +230,7 @@ function FormSelect({ label, options, required = false, id, value, onSelect }) {
               <div
                 key={opt}
                 onClick={() => { onSelect(opt); setIsOpen(false); }}
-                className="px-4 py-3 text-sm text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
+                className="px-3.5 py-2 text-xs sm:text-sm text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
               >
                 {opt}
               </div>
@@ -305,14 +305,14 @@ export default function ServicesPage() {
       <section className="bg-white border-b border-neutral-100">
         <div className="max-w-screen-xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-stretch min-h-[280px]">
-            <div className="flex-1 py-14 pr-0 lg:pr-16 flex flex-col justify-center">
-              <p className="text-xs sm:text-sm font-black uppercase tracking-[0.3em] text-neutral-500 mb-3.5">
+            <div className="flex-1 py-10 sm:py-12 pr-0 lg:pr-16 flex flex-col justify-center">
+              <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-neutral-500 mb-2.5">
                 WHAT WE DO
               </p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-neutral-950 tracking-tight mb-5 leading-[1.08]">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-950 tracking-tight mb-3.5 leading-tight">
                 Our Services
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl text-neutral-600 leading-relaxed max-w-xl mb-8 font-normal">
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed max-w-lg mb-6 font-normal">
                 ROYSONS Pvt. Ltd. offers a wide range of innovative and
                 reliable services to meet the diverse needs of our clients
                 across multiple industries.
@@ -321,9 +321,9 @@ export default function ServicesPage() {
                 <Link
                   href="#request-query"
                   id="services-hero-cta"
-                  className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 text-xs sm:text-sm font-black uppercase tracking-[0.2em] hover:bg-neutral-800 transition-colors rounded-[2px]"
+                  className="inline-flex items-center gap-2.5 bg-black text-white px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] hover:bg-neutral-800 transition-colors rounded-[2px]"
                 >
-                  Request a Query <ArrowRight size={14} strokeWidth={2.5} />
+                  Request a Query <ArrowRight size={13} strokeWidth={2.5} />
                 </Link>
               </div>
             </div>
@@ -370,19 +370,19 @@ export default function ServicesPage() {
 
       <section
         id="request-query"
-        className="py-20 bg-neutral-50 border-t border-neutral-100"
+        className="py-16 sm:py-20 bg-neutral-50 border-t border-neutral-100"
       >
         <div className="max-w-screen-xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-16">
-            <div className="lg:w-[320px] flex-shrink-0">
-              <div className="w-12 h-12 bg-black rounded-sm flex items-center justify-center mb-6">
-                <MessageSquare size={22} className="text-white" strokeWidth={1.8} />
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+            <div className="lg:w-[300px] flex-shrink-0">
+              <div className="w-10 h-10 bg-black rounded-sm flex items-center justify-center mb-5">
+                <MessageSquare size={18} className="text-white" strokeWidth={1.8} />
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-neutral-950 tracking-tight mb-4 leading-snug">
+              <h2 className="text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight mb-3 leading-snug">
                 Request a Query
               </h2>
-              <div className="h-[3.5px] w-12 bg-neutral-950 mb-5" />
-              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
+              <div className="h-[3px] w-10 bg-neutral-950 mb-4" />
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
                 Have a question or need more information about our services? Fill
                 out the form and our team will get back to you shortly.
               </p>
@@ -392,20 +392,20 @@ export default function ServicesPage() {
               {formSubmitted ? (
                 <div className="flex items-center justify-center h-full min-h-[280px] bg-white border border-neutral-200 rounded-[3px]">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ArrowRight size={26} className="text-white" />
+                    <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ArrowRight size={22} className="text-white" />
                     </div>
-                    <p className="text-base sm:text-lg font-black uppercase tracking-widest text-neutral-950">
+                    <p className="text-sm sm:text-base font-black uppercase tracking-widest text-neutral-950">
                       Query Submitted!
                     </p>
-                    <p className="text-sm text-neutral-500 mt-2 font-normal">
+                    <p className="text-xs sm:text-sm text-neutral-500 mt-1.5 font-normal">
                       Our team will get back to you shortly.
                     </p>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <FormField
                       id="query-fullname"
                       label="Full Name"
@@ -432,7 +432,7 @@ export default function ServicesPage() {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <FormField
                       id="query-company"
                       label="Company / Organization"
@@ -458,38 +458,38 @@ export default function ServicesPage() {
                     />
                   </div>
 
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-1.5">
                     <label
                       htmlFor="query-message"
-                      className="text-xs sm:text-sm font-bold text-neutral-950 uppercase tracking-[0.12em]"
+                      className="text-[11px] sm:text-xs font-bold text-neutral-950 uppercase tracking-[0.1em]"
                     >
                       Your Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
                       id="query-message"
-                      rows={5}
+                      rows={4}
                       placeholder="Tell us about your requirements..."
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border border-neutral-200 px-4 py-3.5 text-sm sm:text-base text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px] resize-none"
+                      className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px] resize-none"
                     />
                   </div>
 
                   {submitError && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-[2px] text-sm font-medium tracking-wide">
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-2.5 rounded-[2px] text-xs sm:text-sm font-medium tracking-wide">
                       ⚠️ {submitError}
                     </div>
                   )}
 
-                  <div className="flex justify-center pt-2">
+                  <div className="flex justify-start sm:justify-end pt-2">
                     <button
                       type="submit"
                       id="query-submit-btn"
                       disabled={isSubmitting}
-                      className="inline-flex items-center gap-3 bg-black hover:bg-neutral-800 disabled:bg-neutral-400 text-white px-10 py-4 text-xs sm:text-sm font-black uppercase tracking-[0.2em] transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
+                      className="inline-flex items-center gap-2.5 bg-[#dfb753] hover:bg-[#c6a15a] disabled:bg-neutral-400 text-neutral-950 font-black px-8 py-3 text-xs uppercase tracking-[0.16em] transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={14} strokeWidth={2.5} />
+                      {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={13} strokeWidth={2.5} />
                     </button>
                   </div>
                 </form>

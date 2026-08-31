@@ -7,7 +7,7 @@ import { ArrowRight, Linkedin } from "lucide-react";
 const SHOWCASE_ITEMS = [
   {
     id: "ijaz-naseer",
-    badge: "Chairman & CEO",
+    badge: "President",
     title: "Ijaz Naseer",
     description: "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade. With a strong commitment to innovation, quality, and sustainable growth, the company continues to expand its capabilities and build strategic partnerships both locally and internationally. Through its diverse portfolio and professional expertise, ROYSONS aims to create lasting value for its clients, partners, and communities while contributing to economic and industrial development.",
     image: "/chairman.jpeg",
