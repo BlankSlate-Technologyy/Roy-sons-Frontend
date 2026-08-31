@@ -971,13 +971,13 @@ function CtaSection() {
       <div className="relative mx-auto max-w-screen-xl">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-start">
           <div className="max-w-2xl">
-            <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
+            <span className="text-[13px] font-black uppercase tracking-[0.25em] block mb-3" style={{ color: COLORS.primary }}>
               CONTACT US
             </span>
-            <h2 className="text-3xl lg:text-4xl font-black mb-5 leading-tight" style={{ color: COLORS.black }}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-5 leading-tight" style={{ color: COLORS.black }}>
               Let&apos;s Build Stronger Partnerships Together
             </h2>
-            <p className="text-[16px] sm:text-[17px] leading-relaxed max-w-3xl" style={{ color: COLORS.black }}>
+            <p className="text-[17px] sm:text-[18px] lg:text-[19px] leading-relaxed max-w-3xl font-normal" style={{ color: COLORS.black }}>
               Whether you&apos;re looking for a trusted partner in government contracting, international trade, healthcare solutions, manufacturing, or consultancy, ROYS &amp; ROYS International is ready to support your business with reliable, innovative, and high-quality solutions.
             </p>
 
@@ -988,21 +988,21 @@ function CtaSection() {
                 { title: "Global Reach", description: "International expertise with local understanding." },
                 { title: "Dedicated Support", description: "Our team is here to assist you always." },
               ].map((item) => (
-                <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <h4 className="text-[14px] font-black mb-2" style={{ color: COLORS.primary }}>{item.title}</h4>
-                  <p className="text-[14px] leading-relaxed" style={{ color: COLORS.black }}>{item.description}</p>
+                <div key={item.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <h4 className="text-[16px] font-black mb-2" style={{ color: COLORS.primary }}>{item.title}</h4>
+                  <p className="text-[15px] leading-relaxed text-slate-700">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="relative z-10">
-            <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-2xl">
+            <div className="rounded-[32px] border border-slate-200 bg-white p-8 sm:p-10 shadow-2xl">
               <div className="mb-8">
-                <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.black }}>
+                <h3 className="text-2xl sm:text-3xl font-black mb-2" style={{ color: COLORS.black }}>
                   Send Us a Message
                 </h3>
-                <p className="text-[15px] leading-relaxed" style={{ color: COLORS.black }}>
+                <p className="text-[16px] sm:text-[17px] leading-relaxed text-slate-700">
                   Share your requirements and our team will get back to you shortly.
                 </p>
               </div>
@@ -1013,7 +1013,7 @@ function CtaSection() {
                     <CheckCircle2 size={32} />
                   </div>
                   <h3 className="text-2xl font-black mb-3" style={{ color: COLORS.black }}>Thank You!</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: COLORS.black }}>
+                  <p className="text-base leading-relaxed" style={{ color: COLORS.black }}>
                     Your message has been received. Our team will contact you shortly.
                   </p>
                 </div>
@@ -1027,7 +1027,7 @@ function CtaSection() {
                       onChange={handleChange}
                       placeholder="Full Name *"
                       required
-                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
                     />
                     <input
                       type="text"
@@ -1035,7 +1035,7 @@ function CtaSection() {
                       value={form.company}
                       onChange={handleChange}
                       placeholder="Company Name"
-                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
                     />
                   </div>
                   <input
@@ -1045,7 +1045,7 @@ function CtaSection() {
                     onChange={handleChange}
                     placeholder="Email Address *"
                     required
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
                   />
                   <input
                     type="tel"
@@ -1053,13 +1053,13 @@ function CtaSection() {
                     value={form.phone}
                     onChange={handleChange}
                     placeholder="Phone Number"
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
                   />
                   <select
                     name="service"
                     value={form.service}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
                   >
                     <option value="">Select Service</option>
                     {OFFERINGS_LIST.map((item) => (
@@ -1075,12 +1075,12 @@ function CtaSection() {
                     onChange={handleChange}
                     placeholder="Your Message *"
                     required
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
                   />
                   {error && <p className="text-sm text-red-600">{error}</p>}
                   <button
                     type="submit"
-                    className="w-full rounded-2xl bg-[#113658] px-6 py-3 text-sm font-bold uppercase tracking-[0.22em] text-white transition hover:bg-[#0d2c4f]"
+                    className="w-full rounded-xl bg-[#113658] px-6 py-4 text-[15px] sm:text-[16px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#0d2c4f] shadow-lg cursor-pointer"
                   >
                     Send Message
                   </button>
@@ -1094,116 +1094,7 @@ function CtaSection() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="relative py-14 px-6 overflow-hidden bg-[#020f1f]" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-      {/* Decorative background */}
-      <div className="absolute inset-0 z-0 select-none pointer-events-none">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/roys_hospital_interior.png')", opacity: 0.06 }}
-        />
-        <div className="absolute inset-0 bg-[#020f1f]/92" />
-      </div>
 
-      <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-10 items-start relative z-10">
-
-        {/* Brand */}
-        <div className="lg:col-span-4 max-w-sm">
-          <Image
-            src="/roysandroys white log.png"
-            alt="Roys & Roys Logo"
-            width={180}
-            height={50}
-            className="object-contain mb-5 rounded-sm"
-            style={{ filter: "none", mixBlendMode: "normal" }}
-          />
-          <p className="text-[12.5px] leading-relaxed mb-6" style={{ color: "rgba(255,255,255,0.72)" }}>
-            Delivering specialized contracting excellence across healthcare systems, international procurement
-            networks, technology infrastructure, and heavy engineering sectors.
-          </p>
-          <div className="flex gap-3">
-            {SOCIAL_LINKS.map(({ label, Icon, href, newTab }, idx) => {
-              const target = newTab ? "_blank" : undefined;
-              const rel = newTab ? "noopener noreferrer" : undefined;
-              return (
-                <a
-                  key={idx}
-                  href={href}
-                  title={label}
-                  target={target}
-                  rel={rel}
-                  aria-label={label}
-                  className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/15 hover:border-white/40 transition-all duration-200"
-                  style={{ borderColor: "rgba(255,255,255,0.25)" }}
-                >
-                  <Icon size={15} style={{ color: "rgba(255,255,255,0.9)" }} />
-                </a>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Nav columns */}
-        {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
-          <div key={heading} className="lg:col-span-2">
-            <h5 className="text-[11px] font-black uppercase tracking-[0.18em] mb-5" style={{ color: "rgba(255,255,255,0.95)" }}>
-              {heading}
-            </h5>
-            <ul className="space-y-2.5">
-              {links.map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-[12.5px] transition-colors duration-200 hover:text-white" style={{ color: "rgba(255,255,255,0.62)" }}>
-                    {link}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-
-        {/* Contact */}
-        <div className="lg:col-span-2">
-          <h5 className="text-[11px] font-black uppercase tracking-[0.18em] mb-5" style={{ color: "rgba(255,255,255,0.95)" }}>
-            Contact Us
-          </h5>
-          <div className="space-y-3.5">
-            <p className="text-[12px] leading-relaxed flex items-start gap-2.5" style={{ color: "rgba(255,255,255,0.72)" }}>
-              <MapPin size={15} className="flex-shrink-0 mt-0.5" style={{ color: COLORS.footerBlue }} />
-              <span>123 Business Avenue,
-Lahore, Pakistan</span>
-            </p>
-            <p className="text-[12px] flex items-center gap-2.5" style={{ color: "rgba(255,255,255,0.72)" }}>
-              <Phone size={14} className="flex-shrink-0" style={{ color: COLORS.footerBlue }} />
-              <span>+92 300 1234567</span>
-            </p>
-            <p className="text-[12px] flex items-center gap-2.5" style={{ color: "rgba(255,255,255,0.72)" }}>
-              <Mail size={14} className="flex-shrink-0" style={{ color: COLORS.footerBlue }} />
-              <span>info@ROYSONS.org</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div
-        className="mx-auto max-w-screen-xl mt-10 pt-4 flex flex-col md:flex-row justify-between items-center gap-4"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
-      >
-        <p className="text-[11.5px]" style={{ color: "rgba(255, 255, 255, 0.93)" }}>
-          &copy; 2026 ROYS &amp; ROYS International. All Rights Reserved. Member of ROYS Group.
-        </p>
-        <div className="flex gap-6">
-          {["Privacy Policy", "Terms of Service"].map((label) => (
-            <a key={label} href="#" className="text-[11.5px] hover:text-white transition-colors duration-200" style={{ color: "rgb(255, 255, 255)" }}>
-              {label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </footer>
-  );
-}
 
 // ─── Page Component ───────────────────────────────────────────────────────────
 

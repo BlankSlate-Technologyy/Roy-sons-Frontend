@@ -174,59 +174,74 @@ export function RoysFooter() {
       ],
     },
     {
-      heading: "Products",
+      heading: "Service Offerings",
+      links: [
+        { label: "Government Contracting",      href: "/group-companies/roys-roys/what-we-do/government-contracting" },
+        { label: "Import & Export",             href: "/group-companies/roys-roys/what-we-do/international-import-export" },
+        { label: "Supply Chain Solutions",      href: "/group-companies/roys-roys/what-we-do/global-trading-supply-chain" },
+        { label: "Medical Devices",             href: "/group-companies/roys-roys/what-we-do/medical-devices-equipment" },
+        { label: "Hospital Infrastructure",     href: "/group-companies/roys-roys/what-we-do/hospital-engineering-infrastructure" },
+        { label: "Veterinary Healthcare",       href: "/group-companies/roys-roys/what-we-do/veterinary-healthcare" },
+        { label: "All 15 Capabilities →",       href: "/group-companies/roys-roys/what-we-do" },
+      ],
+    },
+    {
+      heading: "Products & Sectors",
       links: [
         { label: "Medical Equipment",      href: "/group-companies/roys-roys/products#medical" },
         { label: "Laboratory Equipment",   href: "/group-companies/roys-roys/products#laboratory" },
         { label: "Surgical Instruments",   href: "/group-companies/roys-roys/products#surgical" },
         { label: "Hospital Equipment",     href: "/group-companies/roys-roys/products#hospital" },
         { label: "Medical Supplies",       href: "/group-companies/roys-roys/products#supplies" },
+        { label: "Engineering Solutions",  href: "/group-companies/roys-roys/products#engineering" },
+        { label: "Industries We Serve",    href: "/group-companies/roys-roys/industries" },
       ],
     },
     {
-      heading: "Company",
+      heading: "Company & Legal",
       links: [
-        { label: "About Us",   href: "/group-companies/roys-roys/about" },
-        { label: "Solutions",  href: "/group-companies/roys-roys/solutions" },
-        { label: "Industries", href: "/group-companies/roys-roys/industries" },
-        { label: "What We Do", href: "/group-companies/roys-roys/what-we-do" },
-        { label: "Contact",    href: "/group-companies/roys-roys/contact" },
+        { label: "About Us",               href: "/group-companies/roys-roys/about" },
+        { label: "Solutions Portfolio",    href: "/group-companies/roys-roys/solutions" },
+        { label: "Contact Specialists",    href: "/group-companies/roys-roys/contact" },
+        { label: "Industries Served",      href: "/group-companies/roys-roys/industries" },
+        { label: "Privacy Policy",         href: "/group-companies/roys-roys/privacy-policy" },
+        { label: "Terms & Conditions",     href: "/group-companies/roys-roys/terms-and-conditions" },
       ],
     },
   ];
 
   return (
     <footer style={{ backgroundColor: C.footerBg }}>
-      {/* Upper Footer */}
+      {/* Upper Footer (5 Columns) */}
       <div
         style={{
-          maxWidth: "1280px",
+          maxWidth: "1320px",
           margin: "0 auto",
           padding: "64px 24px 44px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "40px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
+          gap: "36px",
         }}
       >
-        {/* Brand Column */}
-        <div style={{ maxWidth: "340px" }}>
+        {/* Column 1: Brand Column */}
+        <div style={{ maxWidth: "300px" }}>
           <Image
             src="/logos/r&r.png"
             alt="ROYS & ROYS INTERNATIONAL"
-            width={200}
-            height={60}
+            width={190}
+            height={55}
             style={{ objectFit: "contain", filter: "brightness(0) invert(1)", marginBottom: "20px" }}
           />
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: "14px", lineHeight: "1.8", marginBottom: "20px" }}>
-            A healthcare solutions and international trading company providing medical, laboratory, surgical, and hospital engineering solutions to healthcare institutions worldwide.
+          <p style={{ color: "rgba(255,255,255,0.68)", fontSize: "13.5px", lineHeight: "1.8", marginBottom: "18px" }}>
+            A healthcare solutions and international trading enterprise providing medical, surgical, laboratory, and turnkey hospital engineering solutions globally.
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "13px" }}>info@roysroysinternational.com</p>
-            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "13px" }}>Lahore, Pakistan</p>
+            <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "12.5px" }}>info@roysroysinternational.com</p>
+            <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "12.5px" }}>Lahore, Pakistan</p>
           </div>
         </div>
 
-        {/* Link Columns */}
+        {/* Columns 2 to 5: Link Columns */}
         {footerSections.map((section) => (
           <div key={section.heading}>
             <h4
@@ -235,20 +250,20 @@ export function RoysFooter() {
                 fontSize: "12px",
                 fontWeight: "800",
                 textTransform: "uppercase",
-                letterSpacing: "0.2em",
+                letterSpacing: "0.18em",
                 marginBottom: "20px",
               }}
             >
               {section.heading}
             </h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "11px" }}>
               {section.links.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
                   style={{
-                    color: hovered === link.label ? C.white : "rgba(255,255,255,0.55)",
-                    fontSize: "14px",
+                    color: hovered === link.label ? C.white : "rgba(255,255,255,0.6)",
+                    fontSize: "13.5px",
                     fontWeight: "500",
                     textDecoration: "none",
                     transition: "color 0.2s ease",
@@ -274,28 +289,31 @@ export function RoysFooter() {
           alignItems: "center",
           justifyContent: "space-between",
           gap: "12px",
-          maxWidth: "1280px",
+          maxWidth: "1320px",
           margin: "0 auto",
         }}
       >
-        <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "12px" }}>
+        <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "12.5px" }}>
           © {new Date().getFullYear()} ROYS & ROYS International — A Member of the ROYSONS Pvt. Ltd. Group. All rights reserved.
         </p>
         <div style={{ display: "flex", gap: "24px" }}>
-          {["Privacy Policy", "Terms & Conditions"].map((t) => (
+          {[
+            { label: "Privacy Policy", href: "/group-companies/roys-roys/privacy-policy" },
+            { label: "Terms & Conditions", href: "/group-companies/roys-roys/terms-and-conditions" },
+          ].map((t) => (
             <Link
-              key={t}
-              href="/privacy-policy"
+              key={t.label}
+              href={t.href}
               style={{
-                color: "rgba(255,255,255,0.4)",
-                fontSize: "12px",
+                color: "rgba(255,255,255,0.45)",
+                fontSize: "12.5px",
                 textDecoration: "none",
                 transition: "color 0.2s",
               }}
               onMouseEnter={e => (e.currentTarget.style.color = C.white)}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}
             >
-              {t}
+              {t.label}
             </Link>
           ))}
         </div>
