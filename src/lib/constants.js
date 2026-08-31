@@ -311,7 +311,7 @@ export const CORPORATE_SERVICES = [
     icon: Sprout,
     title: "Agriculture & Dairy Development",
     description: "Modern agritech, crop management, and dairy development solutions.",
-    href: "/services/agriculture-dairy",
+    href: "/services/agriculture-dairy-development",
   },
   {
     icon: Gem,

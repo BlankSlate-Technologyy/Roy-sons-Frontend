@@ -312,17 +312,17 @@ export default function HospitalEngineeringServicePage() {
       <HeaderNavbar activeRoute="/services" />
 
       {/* Breadcrumb Navigation */}
-      <section className="bg-neutral-50 border-b border-neutral-200 py-3.5 px-4 sm:px-6">
+      <section className="bg-neutral-50 border-b border-neutral-200 py-4 px-4 sm:px-6">
         <div className="max-w-screen-xl mx-auto">
           <nav aria-label="Breadcrumb">
-            <ol className="flex items-center flex-wrap gap-2 text-[11px] font-bold uppercase tracking-wider text-neutral-500">
+            <ol className="flex items-center flex-wrap gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500">
               <li>
                 <Link href="/" className="hover:text-black transition-colors">
                   Home
                 </Link>
               </li>
               <li className="flex items-center gap-1.5 text-neutral-300">
-                <ChevronRight size={12} />
+                <ChevronRight size={14} />
               </li>
               <li>
                 <Link href="/services" className="hover:text-black transition-colors">
@@ -330,7 +330,7 @@ export default function HospitalEngineeringServicePage() {
                 </Link>
               </li>
               <li className="flex items-center gap-1.5 text-neutral-300">
-                <ChevronRight size={12} />
+                <ChevronRight size={14} />
               </li>
               <li className="text-neutral-950 font-black">
                 Hospital Engineering &amp; Clean Rooms
@@ -341,36 +341,36 @@ export default function HospitalEngineeringServicePage() {
       </section>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-24 lg:py-28 border-b border-neutral-800 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C6A15A_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-[#C6A15A]/15 border border-[#C6A15A]/40 text-[#C6A15A] text-[10.5px] font-black uppercase tracking-[0.22em] mb-5 self-start">
-                <BriefcaseMedical size={14} className="text-[#C6A15A]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#C6A15A]/15 border border-[#C6A15A]/40 text-[#C6A15A] text-xs sm:text-sm font-black uppercase tracking-[0.22em] mb-6 self-start">
+                <BriefcaseMedical size={16} className="text-[#C6A15A]" />
                 <span>Sector 02 • Healthcare Infrastructure</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-[1.1] mb-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[1.08] mb-5">
                 Hospital Engineering &amp; Clean Rooms
               </h1>
 
-              <p className="text-lg sm:text-xl font-bold text-[#C6A15A] uppercase tracking-wide mb-6">
+              <p className="text-xl sm:text-2xl font-bold text-[#C6A15A] uppercase tracking-wide mb-6">
                 Engineering Healthcare Environments Built for Precision, Safety &amp; Compliance
               </p>
 
-              <div className="h-[3px] w-16 bg-[#C6A15A] mb-6" />
+              <div className="h-[3.5px] w-20 bg-[#C6A15A] mb-6" />
 
-              <p className="text-[14px] sm:text-[15px] text-neutral-300 leading-relaxed font-normal mb-8 max-w-2xl">
+              <p className="text-base sm:text-lg lg:text-xl text-neutral-300 leading-relaxed font-normal mb-8 max-w-2xl">
                 ROYSONS provides specialized hospital engineering and clean room solutions for healthcare, pharmaceutical, biotechnology, and research facilities. Our solutions integrate architectural planning, HVAC engineering, clean room technology, medical infrastructure, and environmental control.
               </p>
 
               <div className="flex flex-wrap gap-4 items-center">
                 <Link
                   href="#cta-consultation"
-                  className="group inline-flex items-center gap-3 bg-[#C6A15A] hover:bg-white text-white hover:text-black font-black px-7 py-3.5 text-[11px] uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#C6A15A]/20"
+                  className="group inline-flex items-center gap-3 bg-[#C6A15A] hover:bg-white text-white hover:text-black font-black px-7 py-3.5 text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#C6A15A]/20"
                 >
                   <span className="text-white group-hover:text-black transition-colors duration-300">
                     Engineer Your Facility
@@ -384,7 +384,7 @@ export default function HospitalEngineeringServicePage() {
 
                 <Link
                   href="#clean-room-solutions"
-                  className="inline-flex items-center gap-2.5 bg-transparent hover:bg-white/5 border border-neutral-700 hover:border-[#C6A15A] text-white px-6 py-3.5 text-[11px] font-black uppercase tracking-[0.18em] transition-all rounded-[2px]"
+                  className="inline-flex items-center gap-2.5 bg-transparent hover:bg-white/5 border border-neutral-700 hover:border-[#C6A15A] text-white px-7 py-3.5 text-xs sm:text-sm font-black uppercase tracking-[0.2em] transition-all rounded-[2px]"
                 >
                   Clean Room Solutions
                 </Link>
@@ -406,10 +406,10 @@ export default function HospitalEngineeringServicePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
 
                   <div className="absolute bottom-5 left-5 right-5 p-4 bg-neutral-950/80 backdrop-blur-md border border-[#C6A15A]/40 rounded-[2px]">
-                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#C6A15A] mb-1">
+                    <p className="text-xs sm:text-sm font-black uppercase tracking-[0.2em] text-[#C6A15A] mb-1.5">
                       ISO 14644 &amp; cGMP Compliant
                     </p>
-                    <p className="text-[13px] font-bold text-white leading-snug">
+                    <p className="text-base sm:text-lg font-bold text-white leading-snug">
                       Turnkey HVAC, Modular Panels &amp; Environmental Control Systems
                     </p>
                   </div>
@@ -421,33 +421,33 @@ export default function HospitalEngineeringServicePage() {
       </section>
 
       {/* Metrics Banner with Animated Counter */}
-      <section className="bg-white border-b border-neutral-200 py-10">
+      <section className="bg-white border-b border-neutral-200 py-12">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             <div className="border-l-2 border-[#C6A15A] pl-5 py-1">
               <AnimatedStatValue value="20+" />
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-500 mt-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500 mt-2">
                 Years of Engineering
               </p>
             </div>
 
             <div className="border-l-2 border-[#C6A15A] pl-5 py-1">
               <AnimatedStatValue value="150+" />
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-500 mt-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500 mt-2">
                 Clean Rooms Executed
               </p>
             </div>
 
             <div className="border-l-2 border-[#C6A15A] pl-5 py-1">
               <AnimatedStatValue value="99.997%" />
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-500 mt-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500 mt-2">
                 HEPA H14 Filtration
               </p>
             </div>
 
             <div className="border-l-2 border-[#C6A15A] pl-5 py-1">
               <AnimatedStatValue value="100%" />
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-500 mt-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500 mt-2">
                 cGMP &amp; ISO Validation
               </p>
             </div>
@@ -456,17 +456,17 @@ export default function HospitalEngineeringServicePage() {
       </section>
 
       {/* Our Capabilities Grid */}
-      <section id="capabilities" className="py-20 bg-neutral-50 border-b border-neutral-200">
+      <section id="capabilities" className="py-20 sm:py-24 bg-neutral-50 border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[10.5px] font-black uppercase tracking-[0.28em] text-[#C6A15A] mb-3 block">
+            <span className="text-xs sm:text-sm font-black uppercase tracking-[0.28em] text-[#C6A15A] mb-3 block">
               FULL-SPECTRUM EXPERTISE
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-[0.12em] text-neutral-950 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-[0.12em] text-neutral-950 mb-4">
               Our Capabilities
             </h2>
-            <div className="mx-auto h-[3px] w-14 bg-neutral-950 mb-5" />
-            <p className="text-[13.5px] text-neutral-600 leading-relaxed font-normal">
+            <div className="mx-auto h-[3.5px] w-16 bg-neutral-950 mb-5" />
+            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
               Specialized engineering services combining clinical planning, high-efficiency mechanical systems, and precision containment technology.
             </p>
           </div>
@@ -477,29 +477,22 @@ export default function HospitalEngineeringServicePage() {
               return (
                 <div
                   key={index}
-                  className="bg-white border border-neutral-200 p-6 rounded-[2px] flex flex-col justify-between group hover:border-[#C6A15A] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#C6A15A] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#C6A15A]/60 transition-all duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#C6A15A]/60 transition-all duration-300">
                       <Icon
-                        size={22}
+                        size={24}
                         strokeWidth={1.5}
                         className="text-[#C6A15A] group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="text-[14.5px] font-black uppercase tracking-[0.06em] text-neutral-950 mb-2.5 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
                       {cap.title}
                     </h3>
-                    <p className="text-[12.5px] text-neutral-600 leading-relaxed font-normal">
+                    <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
                       {cap.description}
                     </p>
-                  </div>
-
-                  <div className="mt-5 pt-3 border-t border-neutral-100 flex items-center justify-between">
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-neutral-400">
-                      Capability {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 group-hover:bg-[#C6A15A] transition-colors duration-300" />
                   </div>
                 </div>
               );
@@ -509,17 +502,17 @@ export default function HospitalEngineeringServicePage() {
       </section>
 
       {/* Clean Room Solutions Section */}
-      <section id="clean-room-solutions" className="py-20 bg-[#101518] text-white border-b border-neutral-800">
+      <section id="clean-room-solutions" className="py-20 sm:py-24 bg-[#101518] text-white border-b border-neutral-800">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[10.5px] font-black uppercase tracking-[0.28em] text-[#C6A15A] mb-3 block">
+            <span className="text-xs sm:text-sm font-black uppercase tracking-[0.28em] text-[#C6A15A] mb-3 block">
               CONTROLLED ENVIRONMENTS
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-[0.14em] text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-[0.14em] text-white mb-4">
               Clean Room Solutions
             </h2>
-            <div className="mx-auto h-[3px] w-14 bg-[#C6A15A] mb-5" />
-            <p className="text-[13.5px] text-neutral-400 leading-relaxed font-normal">
+            <div className="mx-auto h-[3.5px] w-16 bg-[#C6A15A] mb-5" />
+            <p className="text-base sm:text-lg text-neutral-400 leading-relaxed font-normal">
               Custom-engineered controlled atmospheres ensuring optimal particulate count, microclimate balance, and zero cross-contamination.
             </p>
           </div>
@@ -532,7 +525,7 @@ export default function HospitalEngineeringServicePage() {
                   key={index}
                   className="bg-[#161c20] border border-neutral-800 rounded-[2px] overflow-hidden group hover:border-[#C6A15A] transition-all duration-300 flex flex-col"
                 >
-                  <div className="relative h-44 w-full bg-neutral-900 overflow-hidden">
+                  <div className="relative h-48 w-full bg-neutral-900 overflow-hidden">
                     <Image
                       src={sol.image}
                       alt={sol.title}
@@ -542,34 +535,34 @@ export default function HospitalEngineeringServicePage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#161c20] via-transparent to-transparent" />
                     <div className="absolute top-3 right-3">
-                      <span className="px-2.5 py-1 bg-black/80 backdrop-blur-sm border border-[#C6A15A]/40 text-[#C6A15A] text-[9px] font-black uppercase tracking-widest rounded-[2px]">
+                      <span className="px-3 py-1 bg-black/80 backdrop-blur-sm border border-[#C6A15A]/40 text-[#C6A15A] text-xs font-black uppercase tracking-widest rounded-[2px]">
                         {sol.badge}
                       </span>
                     </div>
                   </div>
 
-                  <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-[2px] bg-white/5 border border-[#C6A15A]/30 flex items-center justify-center">
-                          <Icon size={16} className="text-[#C6A15A]" />
+                      <div className="flex items-center gap-3 mb-3.5">
+                        <div className="w-10 h-10 rounded-[2px] bg-white/5 border border-[#C6A15A]/30 flex items-center justify-center">
+                          <Icon size={20} className="text-[#C6A15A]" />
                         </div>
-                        <h3 className="text-[14px] font-black uppercase tracking-wider text-white group-hover:text-[#C6A15A] transition-colors duration-300">
+                        <h3 className="text-base sm:text-lg font-black uppercase tracking-wider text-white group-hover:text-[#C6A15A] transition-colors duration-300">
                           {sol.title}
                         </h3>
                       </div>
-                      <p className="text-[12px] text-neutral-400 leading-relaxed font-normal">
+                      <p className="text-sm sm:text-[15px] text-neutral-400 leading-relaxed font-normal">
                         {sol.description}
                       </p>
                     </div>
 
-                    <div className="mt-5 pt-3 border-t border-neutral-800/80">
+                    <div className="mt-5 pt-3.5 border-t border-neutral-800/80">
                       <Link
                         href="#cta-consultation"
-                        className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#C6A15A] hover:text-white transition-colors"
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[0.14em] text-[#C6A15A] hover:text-white transition-colors"
                       >
                         <span>Inquire Solution</span>
-                        <ArrowRight size={11} strokeWidth={2.5} />
+                        <ArrowRight size={13} strokeWidth={2.5} />
                       </Link>
                     </div>
                   </div>
@@ -581,17 +574,17 @@ export default function HospitalEngineeringServicePage() {
       </section>
 
       {/* Engineering Services Workflow */}
-      <section id="engineering-services" className="py-20 bg-white border-b border-neutral-200">
+      <section id="engineering-services" className="py-20 sm:py-24 bg-white border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[10.5px] font-black uppercase tracking-[0.28em] text-[#C6A15A] mb-3 block">
+            <span className="text-xs sm:text-sm font-black uppercase tracking-[0.28em] text-[#C6A15A] mb-3 block">
               END-TO-END PROJECT LIFECYCLE
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-[0.14em] text-neutral-950 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-[0.14em] text-neutral-950 mb-4">
               Engineering Services
             </h2>
-            <div className="mx-auto h-[3px] w-14 bg-neutral-950 mb-5" />
-            <p className="text-[13.5px] text-neutral-600 leading-relaxed font-normal">
+            <div className="mx-auto h-[3.5px] w-16 bg-neutral-950 mb-5" />
+            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
               From concept and design to installation, testing, validation, and commissioning, our multidisciplinary approach ensures complete project support.
             </p>
           </div>
@@ -600,20 +593,20 @@ export default function HospitalEngineeringServicePage() {
             {ENGINEERING_WORKFLOW.map((wf, idx) => (
               <div
                 key={idx}
-                className="relative p-7 rounded-[2px] border border-neutral-200 bg-neutral-50/50 hover:bg-white hover:border-neutral-950 hover:shadow-md transition-all duration-300 group"
+                className="relative p-7 sm:p-8 rounded-[2px] border border-neutral-200 bg-neutral-50/50 hover:bg-white hover:border-neutral-950 hover:shadow-md transition-all duration-300 group"
               >
                 <div className="flex items-center justify-between mb-5">
-                  <span className="text-2xl font-black text-[#C6A15A] tracking-wider">
+                  <span className="text-3xl font-black text-[#C6A15A] tracking-wider">
                     {wf.step}
                   </span>
-                  <div className="w-9 h-9 rounded-[2px] bg-neutral-950 flex items-center justify-center group-hover:border group-hover:border-[#C6A15A]/70 transition-colors">
-                    <Wrench size={16} className="text-white group-hover:text-[#C6A15A] transition-colors" />
+                  <div className="w-10 h-10 rounded-[2px] bg-neutral-950 flex items-center justify-center group-hover:border group-hover:border-[#C6A15A]/70 transition-colors">
+                    <Wrench size={18} className="text-white group-hover:text-[#C6A15A] transition-colors" />
                   </div>
                 </div>
-                <h3 className="text-[15px] font-black uppercase tracking-[0.06em] text-neutral-950 mb-2.5 leading-snug group-hover:text-[#C6A15A] transition-colors">
+                <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#C6A15A] transition-colors">
                   {wf.title}
                 </h3>
-                <p className="text-[12.5px] text-neutral-600 leading-relaxed font-normal">
+                <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
                   {wf.description}
                 </p>
               </div>

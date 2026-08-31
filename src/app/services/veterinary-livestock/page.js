@@ -139,17 +139,17 @@ export default function VeterinaryLivestockServicePage() {
       <HeaderNavbar activeRoute="/services" />
 
       {/* Breadcrumb Navigation */}
-      <section className="bg-neutral-50 border-b border-neutral-200 py-3.5 px-4 sm:px-6">
+      <section className="bg-neutral-50 border-b border-neutral-200 py-4 px-4 sm:px-6">
         <div className="max-w-screen-xl mx-auto">
           <nav aria-label="Breadcrumb">
-            <ol className="flex items-center flex-wrap gap-2 text-[11px] font-bold uppercase tracking-wider text-neutral-500">
+            <ol className="flex items-center flex-wrap gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500">
               <li>
                 <Link href="/" className="hover:text-black transition-colors">
                   Home
                 </Link>
               </li>
               <li className="flex items-center gap-1.5 text-neutral-300">
-                <ChevronRight size={12} />
+                <ChevronRight size={14} />
               </li>
               <li>
                 <Link href="/services" className="hover:text-black transition-colors">
@@ -157,7 +157,7 @@ export default function VeterinaryLivestockServicePage() {
                 </Link>
               </li>
               <li className="flex items-center gap-1.5 text-neutral-300">
-                <ChevronRight size={12} />
+                <ChevronRight size={14} />
               </li>
               <li className="text-neutral-950 font-black">
                 Veterinary &amp; Livestock Solutions
@@ -168,33 +168,33 @@ export default function VeterinaryLivestockServicePage() {
       </section>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-24 lg:py-28 border-b border-neutral-800 overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C6A15A_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-[#C6A15A]/15 border border-[#C6A15A]/40 text-[#C6A15A] text-[10.5px] font-black uppercase tracking-[0.22em] mb-5 self-start">
-                <BriefcaseMedical size={14} className="text-[#C6A15A]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#C6A15A]/15 border border-[#C6A15A]/40 text-[#C6A15A] text-xs sm:text-sm font-black uppercase tracking-[0.22em] mb-6 self-start">
+                <BriefcaseMedical size={16} className="text-[#C6A15A]" />
                 <span>Sector 03 • Agriculture &amp; Livestock</span>
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-[1.1] mb-4">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[1.08] mb-5">
                 Veterinary &amp; Livestock Solutions
               </h1>
-              <p className="text-lg sm:text-xl font-bold text-[#C6A15A] uppercase tracking-wide mb-6">
+              <p className="text-xl sm:text-2xl font-bold text-[#C6A15A] uppercase tracking-wide mb-6">
                 Advancing Animal Health, Livestock Productivity &amp; Veterinary Care
               </p>
-              <div className="h-[3px] w-16 bg-[#C6A15A] mb-6" />
-              <p className="text-[14px] sm:text-[15px] text-neutral-300 leading-relaxed font-normal mb-8 max-w-2xl">
+              <div className="h-[3.5px] w-20 bg-[#C6A15A] mb-6" />
+              <p className="text-base sm:text-lg lg:text-xl text-neutral-300 leading-relaxed font-normal mb-8 max-w-2xl">
                 ROYSONS provides comprehensive veterinary and livestock solutions supporting animal health, dairy development, livestock management, veterinary diagnostics, and agricultural productivity.
               </p>
               <Link
-                href="#cta-consultation"
-                className="group self-start inline-flex items-center gap-3 bg-[#C6A15A] hover:bg-white text-white hover:text-black font-black px-6 py-3 text-[11px] uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#C6A15A]/20"
+                href="/contact"
+                className="group self-start inline-flex items-center gap-3 bg-[#C6A15A] hover:bg-white text-white hover:text-black font-black px-7 py-3.5 text-xs sm:text-sm uppercase tracking-[0.2em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#C6A15A]/20"
               >
                 <span className="text-white group-hover:text-black transition-colors duration-300">
                   Build Healthier Livestock
                 </span>
-                <ArrowRight size={13} strokeWidth={2.5} className="text-white group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+                <ArrowRight size={14} strokeWidth={2.5} className="text-white group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
               </Link>
             </div>
             <div className="lg:col-span-5">
@@ -217,30 +217,30 @@ export default function VeterinaryLivestockServicePage() {
       </section>
 
       {/* Metrics Banner */}
-      <section className="bg-white border-b border-neutral-200 py-10">
+      <section className="bg-white border-b border-neutral-200 py-12">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             <div className="border-l-2 border-[#C6A15A] pl-5 py-1">
               <AnimatedStatValue value="10+" />
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-500 mt-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500 mt-2">
                 Years of Expertise
               </p>
             </div>
             <div className="border-l-2 border-[#C6A15A] pl-5 py-1">
               <AnimatedStatValue value="500+" />
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-500 mt-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500 mt-2">
                 Livestock Projects
               </p>
             </div>
             <div className="border-l-2 border-[#C6A15A] pl-5 py-1">
               <AnimatedStatValue value="95%" />
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-500 mt-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500 mt-2">
                 Success Rate
               </p>
             </div>
             <div className="border-l-2 border-[#C6A15A] pl-5 py-1">
               <AnimatedStatValue value="100%" />
-              <p className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-500 mt-1">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-500 mt-2">
                 Compliance
               </p>
             </div>
@@ -249,17 +249,17 @@ export default function VeterinaryLivestockServicePage() {
       </section>
 
       {/* Capabilities Grid */}
-      <section id="capabilities" className="py-20 bg-neutral-50 border-b border-neutral-200">
+      <section id="capabilities" className="py-20 sm:py-24 bg-neutral-50 border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-[10.5px] font-black uppercase tracking-[0.28em] text-[#C6A15A] mb-3 block">
+            <span className="text-xs sm:text-sm font-black uppercase tracking-[0.28em] text-[#C6A15A] mb-3 block">
               COMPREHENSIVE VETERINARY SOLUTIONS
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-[0.12em] text-neutral-950 mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-[0.12em] text-neutral-950 mb-4">
               Our Capabilities
             </h2>
-            <div className="mx-auto h-[3px] w-14 bg-neutral-950 mb-5" />
-            <p className="text-[13.5px] text-neutral-600 leading-relaxed font-normal">
+            <div className="mx-auto h-[3.5px] w-16 bg-neutral-950 mb-5" />
+            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">
               From medicines and vaccines to farm management and bio‑security, we cover the full spectrum of animal health and productivity.
             </p>
           </div>
@@ -267,23 +267,17 @@ export default function VeterinaryLivestockServicePage() {
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (
-                <div key={index} className="bg-white border border-neutral-200 p-6 rounded-[2px] flex flex-col justify-between group hover:border-[#C6A15A] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div key={index} className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#C6A15A] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div>
-                    <div className="w-12 h-12 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#C6A15A]/60 transition-all duration-300">
-                      <Icon size={22} strokeWidth={1.5} className="text-[#C6A15A] group-hover:scale-110 transition-transform duration-300" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#C6A15A]/60 transition-all duration-300">
+                      <Icon size={24} strokeWidth={1.5} className="text-[#C6A15A] group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <h3 className="text-[14.5px] font-black uppercase tracking-[0.06em] text-neutral-950 mb-2.5 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
                       {cap.title}
                     </h3>
-                    <p className="text-[12.5px] text-neutral-600 leading-relaxed font-normal">
+                    <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
                       {cap.description}
                     </p>
-                  </div>
-                  <div className="mt-5 pt-3 border-t border-neutral-100 flex items-center justify-between">
-                    <span className="text-[10px] font-extrabold uppercase tracking-widest text-neutral-400">
-                      Capability {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-neutral-300 group-hover:bg-[#C6A15A] transition-colors duration-300" />
                   </div>
                 </div>
               );
@@ -293,20 +287,20 @@ export default function VeterinaryLivestockServicePage() {
       </section>
 
       {/* Solution Highlights */}
-      <section className="py-20 bg-white border-b border-neutral-200">
+      <section className="py-20 sm:py-24 bg-white border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-neutral-50 p-6 rounded-[2px] border border-neutral-200">
-              <h3 className="text-xl font-black uppercase text-neutral-950 mb-2">Animal Healthcare</h3>
-              <p className="text-neutral-600">Supporting veterinarians and livestock owners with reliable healthcare products and technologies.</p>
+            <div className="bg-neutral-50 p-7 sm:p-8 rounded-[2px] border border-neutral-200 hover:border-[#C6A15A] transition-all">
+              <h3 className="text-xl sm:text-2xl font-black uppercase tracking-wide text-neutral-950 mb-3">Animal Healthcare</h3>
+              <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">Supporting veterinarians and livestock owners with reliable healthcare products and technologies.</p>
             </div>
-            <div className="bg-neutral-50 p-6 rounded-[2px] border border-neutral-200">
-              <h3 className="text-xl font-black uppercase text-neutral-950 mb-2">Dairy Development</h3>
-              <p className="text-neutral-600">Solutions designed to improve herd health, productivity, nutrition, and farm management.</p>
+            <div className="bg-neutral-50 p-7 sm:p-8 rounded-[2px] border border-neutral-200 hover:border-[#C6A15A] transition-all">
+              <h3 className="text-xl sm:text-2xl font-black uppercase tracking-wide text-neutral-950 mb-3">Dairy Development</h3>
+              <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">Solutions designed to improve herd health, productivity, nutrition, and farm management.</p>
             </div>
-            <div className="bg-neutral-50 p-6 rounded-[2px] border border-neutral-200">
-              <h3 className="text-xl font-black uppercase text-neutral-950 mb-2">Biosecurity</h3>
-              <p className="text-neutral-600">Supporting disease prevention through controlled farm environments, vaccination programs, and hygiene systems.</p>
+            <div className="bg-neutral-50 p-7 sm:p-8 rounded-[2px] border border-neutral-200 hover:border-[#C6A15A] font-normal transition-all">
+              <h3 className="text-xl sm:text-2xl font-black uppercase tracking-wide text-neutral-950 mb-3">Biosecurity</h3>
+              <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-normal">Supporting disease prevention through controlled farm environments, vaccination programs, and hygiene systems.</p>
             </div>
           </div>
         </div>

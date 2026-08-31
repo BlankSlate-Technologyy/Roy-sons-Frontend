@@ -141,29 +141,29 @@ function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="flex flex-row items-start gap-4 group">
       {/* Icon Box */}
-      <div className="flex-shrink-0 w-12 h-12 sm:w-13 sm:h-13 border border-neutral-800 bg-[#161c20]/60 rounded-[2px] flex items-center justify-center group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127] transition-all duration-300">
+      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 border border-neutral-800 bg-[#161c20]/60 rounded-[2px] flex items-center justify-center group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127] transition-all duration-300">
         <Icon
-          size={22}
-          strokeWidth={1.4}
+          size={24}
+          strokeWidth={1.5}
           className="text-white group-hover:text-[#C6A15A] transition-colors duration-300"
         />
       </div>
 
       {/* Text & Action */}
       <div className="flex-1 flex flex-col justify-start">
-        <h3 className="text-[14.5px] sm:text-[15px] font-extrabold tracking-[0.06em] uppercase text-white mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
+        <h3 className="text-lg sm:text-xl font-black tracking-[0.05em] uppercase text-white mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-[13px] sm:text-[13.5px] text-neutral-400 leading-relaxed font-normal mb-2.5">
+        <p className="text-[15px] sm:text-[16px] text-neutral-300 leading-relaxed font-normal mb-3">
           {description}
         </p>
         <Link
           href={href || "#"}
-          className="inline-flex items-center gap-1.5 text-[10.5px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-black tracking-[0.18em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
         >
           <span>LEARN MORE</span>
           <ArrowRight
-            size={13}
+            size={14}
             strokeWidth={2.5}
             className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#C6A15A]"
           />
@@ -175,10 +175,10 @@ function ServiceCard({ icon: Icon, title, description, href }) {
 
 function FormField({ label, placeholder, type = "text", required = false, id, value, onChange }) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-2">
       <label
         htmlFor={id}
-        className="text-[10.5px] font-bold text-neutral-950 uppercase tracking-[0.12em]"
+        className="text-xs sm:text-sm font-bold text-neutral-950 uppercase tracking-[0.12em]"
       >
         {label} {required && <span className="text-red-500">*</span>}
       </label>
@@ -189,7 +189,7 @@ function FormField({ label, placeholder, type = "text", required = false, id, va
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+        className="w-full bg-white border border-neutral-200 px-4 py-3.5 text-sm sm:text-base text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
       />
     </div>
   );
@@ -198,10 +198,10 @@ function FormField({ label, placeholder, type = "text", required = false, id, va
 function FormSelect({ label, options, required = false, id, value, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-2">
       <label
         htmlFor={id}
-        className="text-[10.5px] font-bold text-neutral-950 uppercase tracking-[0.12em]"
+        className="text-xs sm:text-sm font-bold text-neutral-950 uppercase tracking-[0.12em]"
       >
         {label} {required && <span className="text-red-500">*</span>}
       </label>
@@ -212,17 +212,17 @@ function FormSelect({ label, options, required = false, id, value, onSelect }) {
       >
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full bg-neutral-950 border ${isOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-4 py-3 text-[12px] text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
+          className={`w-full bg-neutral-950 border ${isOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-4 py-3.5 text-sm sm:text-base text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
         >
           <span>{value || 'Select a service'}</span>
-          <ChevronDown size={14} className={`text-[#a3a3a3] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+          <ChevronDown size={16} className={`text-[#a3a3a3] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
         </div>
 
         {isOpen && (
           <div className="absolute z-50 w-full mt-1 bg-neutral-950 border border-neutral-800 rounded-[2px] max-h-60 overflow-y-auto shadow-xl">
             <div
               onClick={() => { onSelect(''); setIsOpen(false); }}
-              className="px-4 py-3 text-[12px] text-[#dfb753] opacity-50 hover:bg-[#dfb753] hover:text-black hover:opacity-100 cursor-pointer transition-colors"
+              className="px-4 py-3 text-sm text-[#dfb753] opacity-50 hover:bg-[#dfb753] hover:text-black hover:opacity-100 cursor-pointer transition-colors"
             >
               Select a service
             </div>
@@ -230,7 +230,7 @@ function FormSelect({ label, options, required = false, id, value, onSelect }) {
               <div
                 key={opt}
                 onClick={() => { onSelect(opt); setIsOpen(false); }}
-                className="px-4 py-3 text-[12px] text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
+                className="px-4 py-3 text-sm text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
               >
                 {opt}
               </div>
@@ -304,15 +304,15 @@ export default function ServicesPage() {
 
       <section className="bg-white border-b border-neutral-100">
         <div className="max-w-screen-xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-stretch min-h-[260px]">
+          <div className="flex flex-col lg:flex-row items-stretch min-h-[280px]">
             <div className="flex-1 py-14 pr-0 lg:pr-16 flex flex-col justify-center">
-              <p className="text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500 mb-3">
+              <p className="text-xs sm:text-sm font-black uppercase tracking-[0.3em] text-neutral-500 mb-3.5">
                 WHAT WE DO
               </p>
-              <h1 className="text-4xl lg:text-5xl font-black text-neutral-950 tracking-tight mb-5 leading-[1.08]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-neutral-950 tracking-tight mb-5 leading-[1.08]">
                 Our Services
               </h1>
-              <p className="text-[13px] text-neutral-500 leading-relaxed max-w-md mb-8">
+              <p className="text-base sm:text-lg lg:text-xl text-neutral-600 leading-relaxed max-w-xl mb-8 font-normal">
                 ROYSONS Pvt. Ltd. offers a wide range of innovative and
                 reliable services to meet the diverse needs of our clients
                 across multiple industries.
@@ -321,9 +321,9 @@ export default function ServicesPage() {
                 <Link
                   href="#request-query"
                   id="services-hero-cta"
-                  className="inline-flex items-center gap-3 bg-black text-white px-7 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] hover:bg-neutral-800 transition-colors rounded-[2px]"
+                  className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 text-xs sm:text-sm font-black uppercase tracking-[0.2em] hover:bg-neutral-800 transition-colors rounded-[2px]"
                 >
-                  Request a Query <ArrowRight size={13} strokeWidth={2.5} />
+                  Request a Query <ArrowRight size={14} strokeWidth={2.5} />
                 </Link>
               </div>
             </div>
@@ -342,16 +342,16 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-[#101518] font-sans border-t border-b border-neutral-800/60">
+      <section className="py-16 sm:py-24 bg-[#101518] font-sans border-t border-b border-neutral-800/60">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12 sm:mb-16">
-            <h4 className="text-[11px] font-bold tracking-[0.25em] uppercase text-[#C6A15A] mb-3">
+          <div className="text-center mb-14 sm:mb-20">
+            <h4 className="text-xs sm:text-sm font-black tracking-[0.28em] uppercase text-[#C6A15A] mb-3.5">
               WHAT WE OFFER
             </h4>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-[0.18em] text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-[0.16em] text-white">
               Our Core Services
             </h2>
-            <div className="mx-auto mt-4 h-[3px] w-12 bg-[#C6A15A]" />
+            <div className="mx-auto mt-5 h-[3.5px] w-16 bg-[#C6A15A]" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
@@ -374,15 +374,15 @@ export default function ServicesPage() {
       >
         <div className="max-w-screen-xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16">
-            <div className="lg:w-[280px] flex-shrink-0">
-              <div className="w-10 h-10 bg-black rounded-sm flex items-center justify-center mb-5">
-                <MessageSquare size={18} className="text-white" strokeWidth={1.8} />
+            <div className="lg:w-[320px] flex-shrink-0">
+              <div className="w-12 h-12 bg-black rounded-sm flex items-center justify-center mb-6">
+                <MessageSquare size={22} className="text-white" strokeWidth={1.8} />
               </div>
-              <h2 className="text-2xl font-black text-neutral-950 tracking-tight mb-4 leading-snug">
+              <h2 className="text-3xl sm:text-4xl font-black text-neutral-950 tracking-tight mb-4 leading-snug">
                 Request a Query
               </h2>
-              <div className="h-[3px] w-10 bg-neutral-950 mb-5" />
-              <p className="text-[12.5px] text-neutral-500 leading-relaxed">
+              <div className="h-[3.5px] w-12 bg-neutral-950 mb-5" />
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
                 Have a question or need more information about our services? Fill
                 out the form and our team will get back to you shortly.
               </p>
@@ -392,19 +392,19 @@ export default function ServicesPage() {
               {formSubmitted ? (
                 <div className="flex items-center justify-center h-full min-h-[280px] bg-white border border-neutral-200 rounded-[3px]">
                   <div className="text-center">
-                    <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ArrowRight size={22} className="text-white" />
+                    <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ArrowRight size={26} className="text-white" />
                     </div>
-                    <p className="text-[13px] font-black uppercase tracking-widest text-neutral-950">
+                    <p className="text-base sm:text-lg font-black uppercase tracking-widest text-neutral-950">
                       Query Submitted!
                     </p>
-                    <p className="text-[11.5px] text-neutral-500 mt-2">
+                    <p className="text-sm text-neutral-500 mt-2 font-normal">
                       Our team will get back to you shortly.
                     </p>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     <FormField
                       id="query-fullname"
@@ -458,10 +458,10 @@ export default function ServicesPage() {
                     />
                   </div>
 
-                  <div className="flex flex-col gap-1.5">
+                  <div className="flex flex-col gap-2">
                     <label
                       htmlFor="query-message"
-                      className="text-[10.5px] font-bold text-neutral-950 uppercase tracking-[0.12em]"
+                      className="text-xs sm:text-sm font-bold text-neutral-950 uppercase tracking-[0.12em]"
                     >
                       Your Message <span className="text-red-500">*</span>
                     </label>
@@ -472,12 +472,12 @@ export default function ServicesPage() {
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px] resize-none"
+                      className="w-full bg-white border border-neutral-200 px-4 py-3.5 text-sm sm:text-base text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px] resize-none"
                     />
                   </div>
 
                   {submitError && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-[2px] text-[11.5px] font-medium tracking-wide">
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-[2px] text-sm font-medium tracking-wide">
                       ⚠️ {submitError}
                     </div>
                   )}
@@ -487,9 +487,9 @@ export default function ServicesPage() {
                       type="submit"
                       id="query-submit-btn"
                       disabled={isSubmitting}
-                      className="inline-flex items-center gap-3 bg-black hover:bg-neutral-800 disabled:bg-neutral-400 text-white px-10 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
+                      className="inline-flex items-center gap-3 bg-black hover:bg-neutral-800 disabled:bg-neutral-400 text-white px-10 py-4 text-xs sm:text-sm font-black uppercase tracking-[0.2em] transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={13} strokeWidth={2.5} />
+                      {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={14} strokeWidth={2.5} />
                     </button>
                   </div>
                 </form>
