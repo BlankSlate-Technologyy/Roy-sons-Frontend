@@ -8,7 +8,8 @@ import {
   HeartPulse, BriefcaseMedical, FlaskConical, Microscope, Pill,
   Globe, ShieldCheck, Target, Award, Lightbulb, Leaf, Users, Star,
   Building2, Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle2,
-  Linkedin, Facebook, Youtube, Instagram, Music,
+  Linkedin, Facebook, Youtube, Instagram, Music, Layers, Settings,
+  Sparkles, Cpu, Check, Activity, FileCheck,
 } from "lucide-react";
 
 import { RoysNavbar, RoysFooter } from "./_shared";
@@ -109,6 +110,77 @@ const PRODUCTS = [
   { category: "Clean Room Systems", name: "Digital Bed Head Supply Unit", desc: "Extruded aluminum medical gas pipeline wall unit with electrical and nurse call ports.", img: "/offerings/roys_gov_contracting.jpg" },
   { category: "Clean Room Systems", name: "CSSD Steam Autoclave System", desc: "Heavy-duty hospital sterilizer with double vacuum door for sterile department processing.", img: "/offerings/roys_import_export.jpg" },
 ];
+
+const LIFECYCLE_STEPS = [
+  {
+    step: "01",
+    icon: Building2,
+    title: "Clinical Architecture & Layout",
+    desc: "Comprehensive feasibility analysis, architectural space programming, BOQ drafting, and regulatory room layout compliant with HTM and international medical codes.",
+    tags: ["AutoCAD / BIM", "Room Layouts", "HTM 02-01 Compliance"],
+  },
+  {
+    step: "02",
+    icon: Globe,
+    title: "Global Sourcing & Procurement",
+    desc: "Direct OEM sourcing from accredited European, US, and Asian manufacturers under Incoterms 2020 (CIF/FOB), with international cold-chain and customs logistics.",
+    tags: ["OEM Direct", "Incoterms 2020", "Fast-Track Clearance"],
+  },
+  {
+    step: "03",
+    icon: Layers,
+    title: "Turnkey Cleanroom & MEP Engineering",
+    desc: "Precision installation of modular antibacterial wall panels, laminar air flow plenum ceiling hoods, medical gas pipelines, and specialized surgical lighting.",
+    tags: ["Class 100 Cleanroom", "Medical Gas Pipeline", "Modular OT Panels"],
+  },
+  {
+    step: "04",
+    icon: ShieldCheck,
+    title: "Biomedical Commissioning & SLA",
+    desc: "Rigorous Site Acceptance Testing (SAT), biomedical calibration certification, hospital staff clinical training, and round-the-clock SLA maintenance support.",
+    tags: ["SAT & Calibration", "Clinician Training", "24/7 SLA Support"],
+  },
+];
+
+const ESTIMATOR_OPTIONS = {
+  sectors: [
+    { id: "tertiary", name: "Tertiary & Specialized Hospitals", icon: Building2 },
+    { id: "defense", name: "Military & Defense Healthcare", icon: ShieldCheck },
+    { id: "diagnostic", name: "Commercial Diagnostic & Pathology Labs", icon: Microscope },
+    { id: "ministry", name: "Federal & Provincial Health Ministries", icon: Award },
+    { id: "pharma", name: "Pharmaceutical & Industrial Facilities", icon: Pill },
+  ],
+  solutions: [
+    {
+      id: "ot_icu",
+      name: "Modular Operating Theatre & ICU Suite",
+      scope: "Prefabricated modular antibacterial OT walls, laminar air flow plenum ceiling, multi-parameter ICU patient monitors, surgical tables & ceiling pendant units.",
+      standards: "ISO 13485 • HTM 02-01 • CE Mark • Class 100 Sterile",
+      timeline: "6 – 12 Weeks Fast-Track Delivery",
+    },
+    {
+      id: "radiology",
+      name: "Complete Diagnostic Radiology Center",
+      scope: "1.5T Superconducting MRI, 128-Slice CT Scanner, Digital Ceiling X-Ray Radiography, 4D Color Doppler Ultrasound, and PACS workstation integration.",
+      standards: "AERB / FDA Cleared • CE Certified • Radiation Shielding Lead-Lined",
+      timeline: "8 – 16 Weeks Global Turnkey Setup",
+    },
+    {
+      id: "cleanroom_hvac",
+      name: "Cleanroom HVAC & Central Medical Gas",
+      scope: "HEPA filtration air handling units (AHU), differential pressure controls, dynamic pass boxes, and complete HTM 02-01 medical gas pipeline network.",
+      standards: "ISO 14644 Class 5–8 • NFPA 99 • EU-GMP Cleanroom Grade B",
+      timeline: "4 – 10 Weeks Site Handover",
+    },
+    {
+      id: "global_procure",
+      name: "Institutional Bulk Procurement & Trade",
+      scope: "Large-scale surgical disposable supplies, hospital medical furniture, diagnostic reagents, and high-frequency tender fulfillment.",
+      standards: "WHO-GMP Verified • ISO 9001:2015 • Strict Cold-Chain Monitoring",
+      timeline: "Immediate Sourcing & CIF Delivery",
+    },
+  ],
+};
 
 const INDUSTRIES = [
   { icon: Building2,  label: "Hospitals",                 slug: "hospitals" },
@@ -360,36 +432,72 @@ function Navbar() {
 
 function HeroSection() {
   return (
-    <section id="home" className="relative py-12 lg:py-20 px-6 overflow-hidden bg-transparent">
+    <section id="home" className="relative py-16 lg:py-24 px-6 overflow-hidden bg-[#020f1f]">
+      {/* Background with Ambient Overlay */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none">
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
           style={{
             backgroundImage: `url('${HERO_BACKGROUND_IMAGE}')`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            opacity: 0.28,
           }}
         />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.15) 100%)" }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020f1f] via-[#020f1f]/90 to-[#0b2138]/70" />
+        {/* Subtle glowing ambient orbs */}
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-[#009088]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-[#B49438]/15 rounded-full blur-3xl pointer-events-none" />
       </div>
 
       <div className="mx-auto max-w-screen-xl relative z-10">
         <div className="max-w-3xl">
-          <p className="text-[12px] font-extrabold uppercase tracking-[0.4em] mb-4" style={{ color: COLORS.white }}>
-            Global Trade • Government Contracting • Healthcare Solutions
-          </p>
-          <h1 className="text-2xl lg:text-4xl font-black leading-tight mb-6" style={{ color: COLORS.white }}>
-            Delivering Excellence Through Global Trade, Innovation & Strategic Partnerships
+          {/* Live Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[#B49438] text-xs font-black uppercase tracking-[0.25em] mb-6 shadow-lg">
+            <span className="w-2 h-2 rounded-full bg-[#009088] animate-pulse" />
+            <span>GLOBAL HEALTHCARE ENGINEERING &amp; INSTITUTIONAL CONTRACTING</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.15] tracking-tight mb-6 text-white">
+            Delivering Excellence Through{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B49438] via-[#e6ca65] to-[#ffffff]">
+              Global Trade, Innovation
+            </span>{" "}
+            &amp; Turnkey Healthcare Solutions
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-2xl text-white/90">
-            ROYS & ROYS International is a diversified international business company specializing in government contracting, import & export, consultancy, manufacturing, medical devices, veterinary healthcare, vaccines, surgical disposables, and healthcare infrastructure. We deliver reliable, innovative, and sustainable solutions to public and private sector organizations worldwide.
+
+          <p className="text-base sm:text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl text-slate-200 font-normal">
+            ROYS &amp; ROYS International is a diversified enterprise specializing in turnkey hospital engineering, diagnostic radiology, modular cleanroom systems, government contracting, and global medical supply chains across 30+ nations.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <PrimaryButton href="/group-companies/roys-roys/what-we-do">Explore Our Services <ArrowRight size={15} /></PrimaryButton>
-            <OutlineButton href="/group-companies/roys-roys/contact">Contact Our Team <ArrowRight size={15} /></OutlineButton>
+
+          <div className="flex flex-wrap gap-4 mb-12">
+            <Link
+              href="/group-companies/roys-roys/what-we-do"
+              className="px-7 py-4 rounded-xl bg-[#B49438] hover:bg-[#009088] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 flex items-center gap-2"
+            >
+              <span>Explore 15 Capabilities</span>
+              <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/group-companies/roys-roys/contact"
+              className="px-7 py-4 rounded-xl border-2 border-white/30 hover:border-white bg-white/5 hover:bg-white text-white hover:text-[#020f1f] font-extrabold text-xs uppercase tracking-wider transition-all duration-300 backdrop-blur-xs flex items-center gap-2"
+            >
+              <span>Inquire Specifications</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          {/* 4 Hero KPI Glass Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-6 border-t border-white/15">
+            {STATS.map((st) => (
+              <div
+                key={st.label}
+                className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors"
+              >
+                <p className="text-2xl sm:text-3xl font-black text-[#B49438] mb-1">{st.value}</p>
+                <p className="text-[11.5px] font-bold uppercase tracking-wider text-slate-300 whitespace-pre-line leading-tight">
+                  {st.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -590,6 +698,60 @@ function VisionMissionSection() {
             </div>
           </div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function TurnkeyLifecycleSection() {
+  return (
+    <section className="py-16 px-6 bg-[#f8fafc] border-t border-b border-[#e2e8f0]">
+      <div className="mx-auto max-w-screen-xl">
+        <SectionHeading
+          eyebrow="TURNKEY ENGINEERING LIFECYCLE"
+          title="How We Deliver Healthcare Infrastructure"
+        />
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+          {LIFECYCLE_STEPS.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.step}
+                className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#113658] group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-3xl font-black text-[#113658]/20 group-hover:text-[#B49438] transition-colors font-mono">
+                      {item.step}
+                    </span>
+                    <div className="w-12 h-12 rounded-2xl bg-[#113658]/10 text-[#113658] group-hover:bg-[#113658] group-hover:text-white transition-all duration-300 flex items-center justify-center group-hover:scale-110 shadow-xs">
+                      <Icon size={22} />
+                    </div>
+                  </div>
+
+                  <h4 className="text-[17px] font-black text-[#113658] group-hover:text-[#009088] transition-colors mb-3 leading-snug">
+                    {item.title}
+                  </h4>
+                  <p className="text-[14px] leading-relaxed text-slate-600 mb-6">
+                    {item.desc}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[10.5px] font-extrabold"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -856,6 +1018,154 @@ function WhyChooseSection() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function QuickEstimatorSection() {
+  const [selectedSector, setSelectedSector] = useState(ESTIMATOR_OPTIONS.sectors[0].id);
+  const [selectedSolution, setSelectedSolution] = useState(ESTIMATOR_OPTIONS.solutions[0].id);
+
+  const currentSector = ESTIMATOR_OPTIONS.sectors.find(s => s.id === selectedSector);
+  const currentSolution = ESTIMATOR_OPTIONS.solutions.find(s => s.id === selectedSolution);
+
+  return (
+    <section className="py-16 px-6 bg-[#0a192f] text-white relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#009088]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B49438]/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="mx-auto max-w-screen-xl relative z-10">
+        <div className="text-center mb-10 max-w-3xl mx-auto">
+          <span className="text-[12px] font-black uppercase tracking-[0.25em] text-[#B49438] block mb-3">
+            INTERACTIVE PROJECT ESTIMATOR
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-4">
+            Configure Your Healthcare &amp; Institutional Solution
+          </h2>
+          <p className="text-slate-300 text-[15.5px] leading-relaxed">
+            Select your organization sector and target technical requirements to get an instant scope breakdown and international compliance specifications.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-8 items-start">
+          {/* Step 1 & 2 Selectors */}
+          <div className="lg:col-span-6 space-y-6">
+            {/* Sector Selector */}
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <label className="text-[11px] font-black uppercase tracking-wider text-[#B49438] block mb-3">
+                Step 1: Select Your Organization Sector
+              </label>
+              <div className="grid sm:grid-cols-2 gap-2.5">
+                {ESTIMATOR_OPTIONS.sectors.map((sec) => {
+                  const Icon = sec.icon;
+                  const active = sec.id === selectedSector;
+                  return (
+                    <button
+                      key={sec.id}
+                      type="button"
+                      onClick={() => setSelectedSector(sec.id)}
+                      className={`p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all duration-200 cursor-pointer ${
+                        active
+                          ? "bg-[#113658] border-[#B49438] text-white shadow-lg"
+                          : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white"
+                      }`}
+                    >
+                      <Icon size={18} className={active ? "text-[#B49438]" : "text-slate-400"} />
+                      <span className="text-[13px] font-bold leading-tight">{sec.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Solution Selector */}
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <label className="text-[11px] font-black uppercase tracking-wider text-[#B49438] block mb-3">
+                Step 2: Select Technical Scope &amp; Solution Area
+              </label>
+              <div className="space-y-2">
+                {ESTIMATOR_OPTIONS.solutions.map((sol) => {
+                  const active = sol.id === selectedSolution;
+                  return (
+                    <button
+                      key={sol.id}
+                      type="button"
+                      onClick={() => setSelectedSolution(sol.id)}
+                      className={`w-full p-3.5 rounded-xl border text-left flex items-center justify-between transition-all duration-200 cursor-pointer ${
+                        active
+                          ? "bg-[#113658] border-[#009088] text-white shadow-lg"
+                          : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white"
+                      }`}
+                    >
+                      <span className="text-[14px] font-bold">{sol.name}</span>
+                      <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded ${active ? "bg-[#009088] text-white" : "bg-white/10 text-slate-400"}`}>
+                        {active ? "Active" : "Select"}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Results Card */}
+          <div className="lg:col-span-6">
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-[#113658] to-[#0b2138] border border-white/20 shadow-2xl space-y-6">
+              <div className="flex items-center justify-between border-b border-white/15 pb-4">
+                <div>
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#B49438] block mb-1">
+                    PROJECT BLUEPRINT • {currentSector?.name}
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-black text-white">
+                    {currentSolution?.name}
+                  </h3>
+                </div>
+                <div className="w-12 h-12 rounded-2xl bg-[#B49438]/20 flex items-center justify-center text-[#B49438]">
+                  <Activity size={24} />
+                </div>
+              </div>
+
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-wider text-slate-300 mb-2">
+                  Recommended Equipment &amp; Technical Scope:
+                </p>
+                <p className="text-[15px] text-white/90 leading-relaxed bg-black/20 p-4 rounded-xl border border-white/10">
+                  {currentSolution?.scope}
+                </p>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <p className="text-[10px] font-black uppercase tracking-wider text-[#B49438] mb-1">
+                    Applicable Compliance Standards:
+                  </p>
+                  <p className="text-[12.5px] font-bold text-slate-200">
+                    {currentSolution?.standards}
+                  </p>
+                </div>
+                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                  <p className="text-[10px] font-black uppercase tracking-wider text-[#009088] mb-1">
+                    Estimated Delivery &amp; Handover:
+                  </p>
+                  <p className="text-[12.5px] font-bold text-slate-200">
+                    {currentSolution?.timeline}
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <Link
+                  href="/group-companies/roys-roys/contact"
+                  className="w-full py-4 rounded-xl bg-[#B49438] hover:bg-[#009088] text-white text-[13px] font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-xl cursor-pointer"
+                >
+                  <span>Request Official Commercial Quotation</span>
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1165,6 +1475,7 @@ export default function RoysRoysPage() {
       <TrustedBanner />
       <AboutSection />
       <VisionMissionSection />
+      <TurnkeyLifecycleSection />
       <WhatWeDoSection />
       <CoreBusinessSection />
       <ProductsSection
@@ -1174,6 +1485,7 @@ export default function RoysRoysPage() {
         onSlideLeft={handleSlideLeft}
         onSlideRight={handleSlideRight}
       />
+      <QuickEstimatorSection />
       <IndustriesSection />
       <WhyChooseSection />
       <ValuesAndCorporateSection />

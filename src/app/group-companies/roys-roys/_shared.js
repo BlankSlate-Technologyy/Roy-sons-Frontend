@@ -186,23 +186,11 @@ export function RoysFooter() {
       ],
     },
     {
-      heading: "Products & Sectors",
-      links: [
-        { label: "Medical Equipment",      href: "/group-companies/roys-roys/products#medical" },
-        { label: "Laboratory Equipment",   href: "/group-companies/roys-roys/products#laboratory" },
-        { label: "Surgical Instruments",   href: "/group-companies/roys-roys/products#surgical" },
-        { label: "Hospital Equipment",     href: "/group-companies/roys-roys/products#hospital" },
-        { label: "Medical Supplies",       href: "/group-companies/roys-roys/products#supplies" },
-        { label: "Engineering Solutions",  href: "/group-companies/roys-roys/products#engineering" },
-        { label: "Industries We Serve",    href: "/group-companies/roys-roys/industries" },
-      ],
-    },
-    {
       heading: "Company & Legal",
       links: [
         { label: "About Us",               href: "/group-companies/roys-roys/about" },
         { label: "Solutions Portfolio",    href: "/group-companies/roys-roys/solutions" },
-        { label: "Contact Specialists",    href: "/group-companies/roys-roys/contact" },
+        { label: "Products Catalog",       href: "/group-companies/roys-roys/products" },
         { label: "Industries Served",      href: "/group-companies/roys-roys/industries" },
         { label: "Privacy Policy",         href: "/group-companies/roys-roys/privacy-policy" },
         { label: "Terms & Conditions",     href: "/group-companies/roys-roys/terms-and-conditions" },
@@ -224,7 +212,7 @@ export function RoysFooter() {
         }}
       >
         {/* Column 1: Brand Column */}
-        <div style={{ maxWidth: "300px" }}>
+        <div style={{ maxWidth: "290px" }}>
           <Image
             src="/logos/r&r.png"
             alt="ROYS & ROYS INTERNATIONAL"
@@ -235,13 +223,12 @@ export function RoysFooter() {
           <p style={{ color: "rgba(255,255,255,0.68)", fontSize: "13.5px", lineHeight: "1.8", marginBottom: "18px" }}>
             A healthcare solutions and international trading enterprise providing medical, surgical, laboratory, and turnkey hospital engineering solutions globally.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "12.5px" }}>info@roysroysinternational.com</p>
-            <p style={{ color: "rgba(255,255,255,0.55)", fontSize: "12.5px" }}>Lahore, Pakistan</p>
-          </div>
+          <span style={{ display: "inline-block", fontSize: "11px", fontWeight: "800", letterSpacing: "0.15em", textTransform: "uppercase", color: C.gold, opacity: 0.9 }}>
+            Member of ROYSONS Group
+          </span>
         </div>
 
-        {/* Columns 2 to 5: Link Columns */}
+        {/* Columns 2 to 4: Link Columns */}
         {footerSections.map((section) => (
           <div key={section.heading}>
             <h4
@@ -277,6 +264,90 @@ export function RoysFooter() {
             </div>
           </div>
         ))}
+
+        {/* Column 5: Dedicated Contact Us Column */}
+        <div>
+          <h4
+            style={{
+              color: C.gold,
+              fontSize: "12px",
+              fontWeight: "800",
+              textTransform: "uppercase",
+              letterSpacing: "0.18em",
+              marginBottom: "20px",
+            }}
+          >
+            Contact Us
+          </h4>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            <a
+              href="mailto:info@roysroysinternational.com"
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "10px",
+                color: "rgba(255,255,255,0.75)",
+                fontSize: "13.5px",
+                lineHeight: "1.5",
+                textDecoration: "none",
+                transition: "color 0.2s",
+                wordBreak: "break-word",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = C.white)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.75)")}
+            >
+              <span style={{ color: C.teal, marginTop: "2px" }}>✉</span>
+              <span>info@roysroysinternational.com</span>
+            </a>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "10px",
+                color: "rgba(255,255,255,0.75)",
+                fontSize: "13.5px",
+                lineHeight: "1.5",
+              }}
+            >
+              <span style={{ color: C.teal, marginTop: "2px" }}>📍</span>
+              <span>Lahore, Pakistan</span>
+            </div>
+
+            <div style={{ paddingTop: "8px" }}>
+              <Link
+                href="/group-companies/roys-roys/contact"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  backgroundColor: "rgba(17,54,88,0.7)",
+                  border: `1px solid ${C.gold}`,
+                  color: C.white,
+                  padding: "8px 16px",
+                  borderRadius: "6px",
+                  fontSize: "12px",
+                  fontWeight: "800",
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  textDecoration: "none",
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = C.gold;
+                  e.currentTarget.style.color = C.black;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "rgba(17,54,88,0.7)";
+                  e.currentTarget.style.color = C.white;
+                }}
+              >
+                <span>Send Message</span>
+                <ArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Bottom Copyright bar */}
