@@ -22,15 +22,15 @@ export const C = {
 export const NAV_LINKS = [
   { label: "Home",        href: "/group-companies/roys-roys" },
   { label: "About Us",   href: "/group-companies/roys-roys/about" },
-  { label: "Solutions",  href: "/group-companies/roys-roys/solutions" },
-  { label: "Products",   href: "/group-companies/roys-roys/products" },
+  { label: "Services",   href: "/group-companies/roys-roys/services" },
   { label: "Industries", href: "/group-companies/roys-roys/industries" },
-  { label: "What We Do", href: "/group-companies/roys-roys/what-we-do" },
+  { label: "Solutions",  href: "/group-companies/roys-roys/solutions" },
+  { label: "Resources",  href: "/group-companies/roys-roys/what-we-do" },
   { label: "Contact",    href: "/group-companies/roys-roys/contact" },
 ];
 
 // ─── Shared Navbar ────────────────────────────────────────────────────────────
-export function RoysNavbar({ active = "" }) {
+export function RoysNavbar({ active = "Home" }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -47,7 +47,7 @@ export function RoysNavbar({ active = "" }) {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
+        scrolled ? "shadow-md py-2 sm:py-2.5" : "py-3 sm:py-3.5"
       }`}
       style={{
         borderBottom: `1px solid ${C.border}`,
@@ -57,37 +57,34 @@ export function RoysNavbar({ active = "" }) {
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link href="/group-companies/roys-roys" className="flex items-center gap-2.5 select-none group">
-          <div className="relative flex items-center">
-            <Image
-              src="/logos/r&r.png"
-              alt="ROYS & ROYS INTERNATIONAL"
-              width={260}
-              height={80}
-              className="h-14 sm:h-16 lg:h-[68px] w-auto object-contain group-hover:opacity-95 transition-opacity"
-              priority
-            />
-          </div>
+          <Image
+            src="/roys logo.png"
+            alt="ROYS & ROYS INTERNATIONAL"
+            width={170}
+            height={55}
+            className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-95 transition-opacity"
+            priority
+          />
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {NAV_LINKS.map((item) => {
             const isActive = item.label.toLowerCase() === active.toLowerCase();
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-colors relative py-1 px-1 hover:text-[#009088]"
+                className="text-[13px] font-bold tracking-tight transition-colors relative py-1 px-1"
                 style={{
-                  color: isActive ? C.teal : C.primary,
+                  color: isActive ? "#2563eb" : "#0f2b48",
                 }}
               >
                 {item.label}
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    isActive ? "w-full" : "w-0 hover:w-full"
+                    isActive ? "w-full bg-[#2563eb]" : "w-0 hover:w-full bg-[#2563eb]"
                   }`}
-                  style={{ backgroundColor: C.teal }}
                 />
               </Link>
             );
@@ -98,16 +95,15 @@ export function RoysNavbar({ active = "" }) {
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/group-companies/roys-roys/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
-            style={{ backgroundColor: C.primary }}
+            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-md text-[12.5px] font-bold tracking-tight text-white shadow-sm transition-all duration-300 hover:bg-[#091b2c] cursor-pointer"
+            style={{ backgroundColor: "#0f2b48" }}
           >
-            <span>Inquire Now</span>
-            <ArrowRight size={13} />
+            <span>Request a Quote</span>
           </Link>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-2 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: C.border, color: C.primary }}
             aria-label="Toggle Menu"
           >
@@ -129,10 +125,10 @@ export function RoysNavbar({ active = "" }) {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-sm font-bold tracking-tight py-2 px-3 rounded-lg transition-colors"
                 style={{
-                  backgroundColor: isActive ? `${C.teal}15` : "transparent",
-                  color: isActive ? C.teal : C.primary,
+                  backgroundColor: isActive ? "#eff6ff" : "transparent",
+                  color: isActive ? "#2563eb" : "#0f2b48",
                 }}
               >
                 {item.label}
@@ -143,10 +139,10 @@ export function RoysNavbar({ active = "" }) {
             <Link
               href="/group-companies/roys-roys/contact"
               onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: C.primary }}
+              className="w-full py-3 rounded-md text-xs font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-sm"
+              style={{ backgroundColor: "#0f2b48" }}
             >
-              <span>Submit Inquiry</span>
+              <span>Request a Quote</span>
               <ArrowRight size={14} />
             </Link>
           </div>
@@ -160,233 +156,149 @@ export function RoysNavbar({ active = "" }) {
 export function RoysFooter() {
   const [hovered, setHovered] = useState(null);
 
-  const footerSections = [
+  const footerNav = [
     {
-      heading: "Core Services",
+      heading: "Company",
       links: [
-        { label: "Healthcare Technologies",    href: "/group-companies/roys-roys/services/healthcare-technologies" },
-        { label: "Hospital Engineering",        href: "/group-companies/roys-roys/services/hospital-engineering" },
-        { label: "Clean Room & HVAC",            href: "/group-companies/roys-roys/services/clean-room-hvac" },
-        { label: "Laboratory Solutions",        href: "/group-companies/roys-roys/services/laboratory-solutions" },
-        { label: "Pharmaceutical Consultancy",  href: "/group-companies/roys-roys/services/pharmaceutical-consultancy" },
-        { label: "International Procurement",   href: "/group-companies/roys-roys/services/international-procurement" },
-        { label: "Biomedical Services",         href: "/group-companies/roys-roys/services/biomedical-services" },
+        { label: "About Us",       href: "/group-companies/roys-roys/about" },
+        { label: "Our Leadership", href: "/group-companies/roys-roys/about" },
+        { label: "Careers",        href: "/group-companies/roys-roys/about" },
+        { label: "News & Media",   href: "/group-companies/roys-roys/about" },
+        { label: "CSR",            href: "/group-companies/roys-roys/about" },
       ],
     },
     {
-      heading: "Service Offerings",
+      heading: "Services",
       links: [
-        { label: "Government Contracting",      href: "/group-companies/roys-roys/what-we-do/government-contracting" },
-        { label: "Import & Export",             href: "/group-companies/roys-roys/what-we-do/international-import-export" },
-        { label: "Supply Chain Solutions",      href: "/group-companies/roys-roys/what-we-do/global-trading-supply-chain" },
-        { label: "Medical Devices",             href: "/group-companies/roys-roys/what-we-do/medical-devices-equipment" },
-        { label: "Hospital Infrastructure",     href: "/group-companies/roys-roys/what-we-do/hospital-engineering-infrastructure" },
-        { label: "Veterinary Healthcare",       href: "/group-companies/roys-roys/what-we-do/veterinary-healthcare" },
-        { label: "All 15 Capabilities →",       href: "/group-companies/roys-roys/what-we-do" },
+        { label: "Our Services",        href: "/group-companies/roys-roys/services" },
+        { label: "Turnkey Solutions",   href: "/group-companies/roys-roys/solutions" },
+        { label: "Equipment Supply",    href: "/group-companies/roys-roys/products" },
+        { label: "Facility Management", href: "/group-companies/roys-roys/services" },
+        { label: "Consultancy",         href: "/group-companies/roys-roys/what-we-do" },
       ],
     },
     {
-      heading: "Company & Legal",
+      heading: "Industries",
       links: [
-        { label: "About Us",               href: "/group-companies/roys-roys/about" },
-        { label: "Solutions Portfolio",    href: "/group-companies/roys-roys/solutions" },
-        { label: "Products Catalog",       href: "/group-companies/roys-roys/products" },
-        { label: "Industries Served",      href: "/group-companies/roys-roys/industries" },
-        { label: "Privacy Policy",         href: "/group-companies/roys-roys/privacy-policy" },
-        { label: "Terms & Conditions",     href: "/group-companies/roys-roys/terms-and-conditions" },
+        { label: "Healthcare",          href: "/group-companies/roys-roys/industries/hospitals" },
+        { label: "Government",          href: "/group-companies/roys-roys/industries/government" },
+        { label: "Military & Defence",   href: "/group-companies/roys-roys/industries/military-healthcare" },
+        { label: "Education",           href: "/group-companies/roys-roys/industries/universities" },
+        { label: "Corporate",           href: "/group-companies/roys-roys/industries/pharmaceutical-industry" },
+      ],
+    },
+    {
+      heading: "Resources",
+      links: [
+        { label: "Case Studies",  href: "/group-companies/roys-roys/what-we-do" },
+        { label: "Brochures",     href: "/group-companies/roys-roys/what-we-do" },
+        { label: "Whitepapers",   href: "/group-companies/roys-roys/what-we-do" },
+        { label: "Blog",          href: "/group-companies/roys-roys/what-we-do" },
+        { label: "FAQ",           href: "/group-companies/roys-roys/about" },
       ],
     },
   ];
 
   return (
-    <footer style={{ backgroundColor: C.footerBg }}>
-      {/* Upper Footer (5 Columns) */}
-      <div
-        style={{
-          maxWidth: "1320px",
-          margin: "0 auto",
-          padding: "64px 24px 44px",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
-          gap: "36px",
-        }}
-      >
-        {/* Column 1: Brand Column */}
-        <div style={{ maxWidth: "290px" }}>
+    <footer style={{ backgroundColor: "#061527" }} className="text-white">
+      {/* Upper Footer (6 Columns Grid) */}
+      <div className="mx-auto max-w-screen-xl px-6 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        {/* Column 1: Brand */}
+        <div className="lg:col-span-1">
           <Image
-            src="/logos/r&r.png"
-            alt="ROYS & ROYS INTERNATIONAL"
-            width={190}
-            height={55}
-            style={{ objectFit: "contain", filter: "brightness(0) invert(1)", marginBottom: "20px" }}
+            src="/roysandroys white log.png"
+            alt="ROYS & ROYS"
+            width={140}
+            height={45}
+            className="object-contain mb-4"
           />
-          <p style={{ color: "rgba(255,255,255,0.68)", fontSize: "13.5px", lineHeight: "1.8", marginBottom: "18px" }}>
-            A healthcare solutions and international trading enterprise providing medical, surgical, laboratory, and turnkey hospital engineering solutions globally.
+          <p className="text-xs leading-relaxed text-slate-300 mb-4">
+            Roys &amp; Roys™ International is a global leader in healthcare infrastructure and institutional solutions.
           </p>
-          <span style={{ display: "inline-block", fontSize: "11px", fontWeight: "800", letterSpacing: "0.15em", textTransform: "uppercase", color: C.gold, opacity: 0.9 }}>
-            Member of ROYSONS Group
-          </span>
+          <div className="flex gap-2.5 text-slate-400">
+            {["in", "x", "f", "yt"].map((soc) => (
+              <span
+                key={soc}
+                className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white hover:bg-white/20 transition-colors cursor-pointer"
+              >
+                {soc}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Columns 2 to 4: Link Columns */}
-        {footerSections.map((section) => (
-          <div key={section.heading}>
-            <h4
-              style={{
-                color: C.gold,
-                fontSize: "12px",
-                fontWeight: "800",
-                textTransform: "uppercase",
-                letterSpacing: "0.18em",
-                marginBottom: "20px",
-              }}
-            >
-              {section.heading}
+        {/* Columns 2-5: Nav Columns */}
+        {footerNav.map((sec) => (
+          <div key={sec.heading}>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
+              {sec.heading}
             </h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "11px" }}>
-              {section.links.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  style={{
-                    color: hovered === link.label ? C.white : "rgba(255,255,255,0.6)",
-                    fontSize: "13.5px",
-                    fontWeight: "500",
-                    textDecoration: "none",
-                    transition: "color 0.2s ease",
-                  }}
-                  onMouseEnter={() => setHovered(link.label)}
-                  onMouseLeave={() => setHovered(null)}
-                >
-                  {link.label}
-                </Link>
+            <ul className="space-y-2">
+              {sec.links.map((lnk) => (
+                <li key={lnk.label}>
+                  <Link
+                    href={lnk.href}
+                    className="text-xs text-slate-300 hover:text-white transition-colors"
+                  >
+                    {lnk.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         ))}
 
-        {/* Column 5: Dedicated Contact Us Column */}
+        {/* Column 6: Contact Us */}
         <div>
-          <h4
-            style={{
-              color: C.gold,
-              fontSize: "12px",
-              fontWeight: "800",
-              textTransform: "uppercase",
-              letterSpacing: "0.18em",
-              marginBottom: "20px",
-            }}
-          >
+          <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-3">
             Contact Us
           </h4>
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-            <a
-              href="mailto:info@roysroysinternational.com"
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "10px",
-                color: "rgba(255,255,255,0.75)",
-                fontSize: "13.5px",
-                lineHeight: "1.5",
-                textDecoration: "none",
-                transition: "color 0.2s",
-                wordBreak: "break-word",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = C.white)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.75)")}
-            >
-              <span style={{ color: C.teal, marginTop: "2px" }}>✉</span>
-              <span>info@roysroysinternational.com</span>
-            </a>
-
-            <div
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "10px",
-                color: "rgba(255,255,255,0.75)",
-                fontSize: "13.5px",
-                lineHeight: "1.5",
-              }}
-            >
-              <span style={{ color: C.teal, marginTop: "2px" }}>📍</span>
+          <div className="space-y-2 text-xs text-slate-300 mb-4">
+            <p className="flex items-center gap-1.5">
+              <span>📞</span>
+              <span>+92 42 111 786 786</span>
+            </p>
+            <p className="flex items-center gap-1.5">
+              <span>✉</span>
+              <span>info@roysroys.com</span>
+            </p>
+            <p className="flex items-center gap-1.5">
+              <span>📍</span>
               <span>Lahore, Pakistan</span>
-            </div>
-
-            <div style={{ paddingTop: "8px" }}>
-              <Link
-                href="/group-companies/roys-roys/contact"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  backgroundColor: "rgba(17,54,88,0.7)",
-                  border: `1px solid ${C.gold}`,
-                  color: C.white,
-                  padding: "8px 16px",
-                  borderRadius: "6px",
-                  fontSize: "12px",
-                  fontWeight: "800",
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                  transition: "all 0.2s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = C.gold;
-                  e.currentTarget.style.color = C.black;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "rgba(17,54,88,0.7)";
-                  e.currentTarget.style.color = C.white;
-                }}
-              >
-                <span>Send Message</span>
-                <ArrowRight size={12} />
-              </Link>
-            </div>
+            </p>
           </div>
+          <Link
+            href="/group-companies/roys-roys/contact"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] font-bold tracking-wide text-[#B49438] border border-[#B49438] hover:bg-[#B49438] hover:text-[#061527] transition-colors"
+          >
+            <span>Request a Quote</span>
+            <ArrowRight size={11} />
+          </Link>
         </div>
       </div>
 
-      {/* Bottom Copyright bar */}
-      <div
-        style={{
-          borderTop: "1px solid rgba(255,255,255,0.1)",
-          padding: "22px 24px",
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: "12px",
-          maxWidth: "1320px",
-          margin: "0 auto",
-        }}
-      >
-        <p style={{ color: "rgba(255,255,255,0.45)", fontSize: "12.5px" }}>
-          © {new Date().getFullYear()} ROYS & ROYS International — A Member of the ROYSONS Pvt. Ltd. Group. All rights reserved.
-        </p>
-        <div style={{ display: "flex", gap: "24px" }}>
-          {[
-            { label: "Privacy Policy", href: "/group-companies/roys-roys/privacy-policy" },
-            { label: "Terms & Conditions", href: "/group-companies/roys-roys/terms-and-conditions" },
-          ].map((t) => (
-            <Link
-              key={t.label}
-              href={t.href}
-              style={{
-                color: "rgba(255,255,255,0.45)",
-                fontSize: "12.5px",
-                textDecoration: "none",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = C.white)}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.45)")}
-            >
-              {t.label}
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10 py-4 px-6">
+        <div className="mx-auto max-w-screen-xl flex flex-wrap items-center justify-between text-xs text-slate-400 gap-4">
+          <p>© {new Date().getFullYear()} Roys &amp; Roys™ International. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link href="/group-companies/roys-roys/privacy-policy" className="hover:text-white transition-colors">
+              Privacy Policy
             </Link>
-          ))}
+            <Link href="/group-companies/roys-roys/terms-and-conditions" className="hover:text-white transition-colors">
+              Terms of Use
+            </Link>
+            <Link href="/group-companies/roys-roys" className="hover:text-white transition-colors">
+              Sitemap
+            </Link>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="w-6 h-6 rounded bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+              aria-label="Back to Top"
+            >
+              ↑
+            </button>
+          </div>
         </div>
       </div>
     </footer>

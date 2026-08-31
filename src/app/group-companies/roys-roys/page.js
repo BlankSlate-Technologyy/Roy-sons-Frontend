@@ -4,1492 +4,1055 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  ChevronRight, ChevronLeft,
-  HeartPulse, BriefcaseMedical, FlaskConical, Microscope, Pill,
-  Globe, ShieldCheck, Target, Award, Lightbulb, Leaf, Users, Star,
-  Building2, Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle2,
-  Linkedin, Facebook, Youtube, Instagram, Music, Layers, Settings,
-  Sparkles, Cpu, Check, Activity, FileCheck,
+  ChevronRight,
+  ChevronLeft,
+  ChevronDown,
+  ArrowRight,
+  ArrowUpRight,
+  Send,
+  Check,
+  CheckCircle2,
+  Building2,
+  ShieldCheck,
+  Award,
+  Star,
+  Users,
+  Target,
+  Eye,
+  Microscope,
+  Stethoscope,
+  HeartPulse,
+  BriefcaseMedical,
+  FlaskConical,
+  Pill,
+  Globe,
+  Lightbulb,
+  Leaf,
+  Clock,
+  Layers,
+  Wrench,
+  Activity,
+  Phone,
+  Mail,
+  MapPin,
+  Flame,
+  Radiation,
+  FileCheck,
+  Hammer,
+  GraduationCap,
+  Building,
+  Factory,
+  CheckSquare,
 } from "lucide-react";
 
 import { RoysNavbar, RoysFooter } from "./_shared";
-import { OFFERINGS_LIST } from "./offerings-data";
-
-// ─── Design Tokens ──────────────────────────────────────────────────────────
-
-const COLORS = {
-  primary:     "#113658",
-  gold:        "#B49438",
-  white:       "#ffffff",
-  black:       "#000000",
-  border:      "#e2e8f0",
-  footerBg:    "#020f1f",
-  footerBlue:  "#4da8ff",
-};
 
 // ─── Static Data ─────────────────────────────────────────────────────────────
 
-const HERO_BACKGROUND_IMAGE = "/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg";
-
-const STATS = [
-  { value: "15+",   label: "Years of\nExcellence" },
-  { value: "250+",  label: "Projects\nDelivered" },
-  { value: "30+",   label: "Countries\nServed" },
-  { value: "1000+", label: "Products &\nSolutions" },
+const HERO_STATS = [
+  { value: "15+",   label: "Countries\nServed",         icon: Globe },
+  { value: "250+",  label: "Projects\nDelivered",       icon: Building2 },
+  { value: "30+",   label: "Years of\nExperience",      icon: Award },
+  { value: "1000+", label: "Healthcare\nExperts",       icon: Users },
 ];
 
 const TRUSTED_LOGOS = [
-  { name: "World Health Organization", abbr: "WHO",      img: "/world health.png" },
-  { name: "UNICEF",                    abbr: "UNICEF",   img: "/unicef.png" },
-  { name: "Pakistan Army",             abbr: "Pak Army", img: "/pak.png" },
-  { name: "Siemens Healthineers",      abbr: "Siemens",  img: "/siemens.png" },
-  { name: "Philips Healthcare",        abbr: "PHILIPS",  img: "/philips.png" },
-  { name: "GE Healthcare",             abbr: "GE Health",img: null },
-  { name: "Becton Dickinson",          abbr: "BD",       img: "/bd.png" },
+  { name: "World Health Organization", abbr: "WHO",     img: "/world health.png" },
+  { name: "UNICEF",                    abbr: "UNICEF",  img: "/unicef.png" },
+  { name: "Pakistan Army",             abbr: "Pak Army",img: "/pak.png" },
+  { name: "SIEMENS Healthineers",      abbr: "Siemens", img: "/siemens.png" },
 ];
 
-const CORE_BUSINESS_AREAS = [
-  { icon: HeartPulse,      label: "Healthcare\nTechnologies",    slug: "healthcare-technologies" },
-  { icon: BriefcaseMedical,label: "Hospital\nEngineering",        slug: "hospital-engineering" },
-  { icon: FlaskConical,    label: "Clean Room\n& HVAC",            slug: "clean-room-hvac" },
-  { icon: Microscope,      label: "Laboratory\nSolutions",        slug: "laboratory-solutions" },
-  { icon: Pill,            label: "Pharmaceutical\nConsultancy",  slug: "pharmaceutical-consultancy" },
-  { icon: Globe,           label: "International\nProcurement",   slug: "international-procurement" },
-  { icon: ShieldCheck,     label: "Biomedical\nServices",         slug: "biomedical-services" },
+const WORKFLOW_STEPS = [
+  {
+    num: "01",
+    icon: Stethoscope,
+    title: "Consult & Assess",
+    desc: "Understanding your needs, site analysis & feasibility study.",
+  },
+  {
+    num: "02",
+    icon: FileCheck,
+    title: "Design & Plan",
+    desc: "Architectural planning, engineering design & regulatory compliance.",
+  },
+  {
+    num: "03",
+    icon: Wrench,
+    title: "Build & Integrate",
+    desc: "Precision construction, equipment integration & quality assurance.",
+  },
+  {
+    num: "04",
+    icon: ShieldCheck,
+    title: "Commission & Support",
+    desc: "Testing, commissioning & ongoing maintenance for seamless operations.",
+  },
 ];
 
-const PRODUCTS_TABS = [
+const SERVICE_OFFERINGS_12 = [
+  { title: "Healthcare Infrastructure Development", icon: Building2,      slug: "hospital-engineering-infrastructure" },
+  { title: "MEP (Mechanical, Electrical & Plumbing)", icon: Wrench,       slug: "hospital-engineering" },
+  { title: "Modular OT & ICU Solutions",             icon: BriefcaseMedical, slug: "medical-devices-equipment" },
+  { title: "Medical Gas Pipeline Systems",           icon: Activity,      slug: "hospital-engineering-infrastructure" },
+  { title: "Healthcare Equipment Supply & Installation", icon: Stethoscope, slug: "medical-devices-equipment" },
+  { title: "Hospital Renovation & Upgrades",         icon: Hammer,        slug: "hospital-engineering-infrastructure" },
+  { title: "Facility Management Services",           icon: Building,      slug: "hospital-engineering" },
+  { title: "Biomedical Engineering Solutions",       icon: Microscope,    slug: "biomedical-services" },
+  { title: "Cleanroom & HVAC Solutions",             icon: Layers,        slug: "clean-room-hvac" },
+  { title: "Radiation Protection Solutions",         icon: ShieldCheck,   slug: "hospital-engineering" },
+  { title: "Fire Safety & Life Safety Systems",      icon: Flame,         slug: "hospital-engineering" },
+  { title: "Lab & Diagnostic Solutions",             icon: FlaskConical,  slug: "laboratory-solutions" },
+];
+
+const CORE_BUSINESS_7 = [
+  { title: "Hospital\nInfrastructure", icon: Building2 },
+  { title: "Medical\nEngineering",      icon: Stethoscope },
+  { title: "Facility\nManagement",      icon: Building },
+  { title: "Turnkey\nProjects",         icon: Layers },
+  { title: "Consultancy &\nAdvisory",   icon: Lightbulb },
+  { title: "Equipment\nSolutions",      icon: Activity },
+  { title: "Institutional\nSupport",    icon: ShieldCheck },
+];
+
+const PRODUCT_TABS = [
   "Diagnostic Imaging",
   "OT Solutions",
   "ICU & Critical Care",
   "Lab Equipment",
   "Hospital Furniture",
-  "Clean Room Systems",
 ];
 
-const PRODUCTS = [
-  // Diagnostic Imaging
-  { category: "Diagnostic Imaging", name: "Digital X-Ray Radiography", desc: "High-frequency digital radiography suite for rapid clinical diagnostic imaging.", img: "/biomax_diagnostic_equipment_ai.jpg" },
-  { category: "Diagnostic Imaging", name: "4D Color Doppler Ultrasound", desc: "High-performance ultrasound platform for multi-specialty clinical diagnostics.", img: "/roys_ultrasound.png" },
-  { category: "Diagnostic Imaging", name: "128-Slice CT Scanner", desc: "Multi-slice computed tomography system for sub-millimeter precision scanning.", img: "/roys_ct_scan.png" },
-  { category: "Diagnostic Imaging", name: "1.5T Superconducting MRI", desc: "High-field magnetic resonance imaging system with advanced neurological mapping.", img: "/roys_mri_scanner.png" },
-  { category: "Diagnostic Imaging", name: "Digital 3D Mammography", desc: "Low-dose full-field digital mammography for high-resolution breast screening.", img: "/biomax_products_hero_ai.jpg" },
-  
-  // OT Solutions
-  { category: "OT Solutions", name: "Hydraulic Surgical Table", desc: "Electro-hydraulic multi-position surgical table with carbon-fiber radiological top.", img: "/pakmedical-card2.png" },
-  { category: "OT Solutions", name: "Shadowless Dual-Dome LED Lights", desc: "High-intensity surgical illumination with laminar flow aerodynamic design.", img: "/biomax_ind_healthcare_ai.jpg" },
-  { category: "OT Solutions", name: "Integrated Anesthesia Workstation", desc: "Advanced anesthesia delivery system with electronic gas mixing and spirometry.", img: "/pakmedical-card4.png" },
-  { category: "OT Solutions", name: "4K Laparoscopic Endoscopy Tower", desc: "Ultra HD minimally invasive surgical camera system, insufflator, and LED light source.", img: "/biomax_ind_hero_ai.jpg" },
-  { category: "OT Solutions", name: "Turnkey Modular OT Suite", desc: "Prefabricated sterile operating theater with integrated hermetic sliding doors.", img: "/roys_hospital_interior.png" },
-  
-  // ICU & Critical Care
-  { category: "ICU & Critical Care", name: "Multi-Parameter ICU Monitor", desc: "15-inch touch screen bedside patient vital signs monitoring with ECG & arrhythmia analysis.", img: "/biomax_consumables_ai.jpg" },
-  { category: "ICU & Critical Care", name: "Intelligent ICU Ventilator", desc: "Non-invasive and invasive high-end respiratory ventilator with lung protective modes.", img: "/pakmedical-card1.png" },
-  { category: "ICU & Critical Care", name: "Syringe & Infusion Pump Workstation", desc: "Docking station with programmable micro-infusion and volumetric syringe pumps.", img: "/healthcare_infrastructure.jpg" },
-  { category: "ICU & Critical Care", name: "Biphasic Defibrillator Monitor", desc: "Emergency external defibrillator with pacing, CPR coaching, and automated AED mode.", img: "/biomax_qa_scientist_ai.jpg" },
-  { category: "ICU & Critical Care", name: "Central ICU Telemetry Station", desc: "Centralized wireless networking hub monitoring up to 64 critical care patient beds.", img: "/pakmedical-card5.png" },
-
-  // Lab Equipment
-  { category: "Lab Equipment", name: "Automated Chemistry Analyzer", desc: "High-throughput clinical chemistry analyzer delivering 800 tests/hour with ISE module.", img: "/biomax_lab_equipment_ai.jpg" },
-  { category: "Lab Equipment", name: "5-Part Hematology Counter", desc: "Laser flow cytometry hematology analyzer with automated 3D cell scattergram profiling.", img: "/biomax_scientific_instruments_ai.jpg" },
-  { category: "Lab Equipment", name: "Research Binocular Microscope", desc: "Infinity optical system laboratory microscope with digital fluorescence imaging.", img: "/biomax_research_lab.jpg" },
-  { category: "Lab Equipment", name: "Refrigerated Benchtop Centrifuge", desc: "High-speed microprocessor controlled centrifuge with brushless induction drive.", img: "/biomax_quality_lab.jpg" },
-  { category: "Lab Equipment", name: "Real-Time PCR Thermal Cycler", desc: "Multi-channel quantitative molecular diagnostics system for pathogen detection.", img: "/biomax_biotech_solutions_ai.jpg" },
-
-  // Hospital Furniture
-  { category: "Hospital Furniture", name: "5-Function Electric ICU Bed", desc: "Motorized critical care hospital bed with cardiac chair position and CPR release.", img: "/roys_hospital_interior.png" },
-  { category: "Hospital Furniture", name: "Emergency Mobile Crash Cart", desc: "Stainless steel resuscitation emergency trolley with medication locks and oxygen holder.", img: "/pakmedical-card5.png" },
-  { category: "Hospital Furniture", name: "Sterile Medical Storage Cabinet", desc: "Heavy-duty antibacterial steel pharmacy storage with tamper-proof locking glass doors.", img: "/pakmedical-card3.png" },
-  { category: "Hospital Furniture", name: "Hydraulic Gas-Spring Overbed Table", desc: "Smooth height-adjustable antimicrobial overbed table with spill-containment rim.", img: "/pakmedical-card6.png" },
-  { category: "Hospital Furniture", name: "Emergency Transport Stretcher", desc: "Hydraulic emergency patient transport trolley with foldable side rails and IV pole.", img: "/pakmedical-card1.png" },
-
-  // Clean Room Systems
-  { category: "Clean Room Systems", name: "Modular Antibacterial OT Panels", desc: "Seamless powder-coated galvanized steel cleanroom wall and ceiling panels.", img: "/biomax_rnd_hero_ai.jpg" },
-  { category: "Clean Room Systems", name: "Laminar Air Flow Plenum Hood", desc: "HEPA filtered ceiling supply system providing Class 100 sterile ultra-clean airflow.", img: "/biomax_rnd_objective_ai.jpg" },
-  { category: "Clean Room Systems", name: "Dynamic UV Transfer Pass Box", desc: "Electromagnetic interlocked stainless steel pass-through hatch with germicidal UV lamp.", img: "/offerings/roys_supply_chain.jpg" },
-  { category: "Clean Room Systems", name: "Digital Bed Head Supply Unit", desc: "Extruded aluminum medical gas pipeline wall unit with electrical and nurse call ports.", img: "/offerings/roys_gov_contracting.jpg" },
-  { category: "Clean Room Systems", name: "CSSD Steam Autoclave System", desc: "Heavy-duty hospital sterilizer with double vacuum door for sterile department processing.", img: "/offerings/roys_import_export.jpg" },
-];
-
-const LIFECYCLE_STEPS = [
-  {
-    step: "01",
-    icon: Building2,
-    title: "Clinical Architecture & Layout",
-    desc: "Comprehensive feasibility analysis, architectural space programming, BOQ drafting, and regulatory room layout compliant with HTM and international medical codes.",
-    tags: ["AutoCAD / BIM", "Room Layouts", "HTM 02-01 Compliance"],
-  },
-  {
-    step: "02",
-    icon: Globe,
-    title: "Global Sourcing & Procurement",
-    desc: "Direct OEM sourcing from accredited European, US, and Asian manufacturers under Incoterms 2020 (CIF/FOB), with international cold-chain and customs logistics.",
-    tags: ["OEM Direct", "Incoterms 2020", "Fast-Track Clearance"],
-  },
-  {
-    step: "03",
-    icon: Layers,
-    title: "Turnkey Cleanroom & MEP Engineering",
-    desc: "Precision installation of modular antibacterial wall panels, laminar air flow plenum ceiling hoods, medical gas pipelines, and specialized surgical lighting.",
-    tags: ["Class 100 Cleanroom", "Medical Gas Pipeline", "Modular OT Panels"],
-  },
-  {
-    step: "04",
-    icon: ShieldCheck,
-    title: "Biomedical Commissioning & SLA",
-    desc: "Rigorous Site Acceptance Testing (SAT), biomedical calibration certification, hospital staff clinical training, and round-the-clock SLA maintenance support.",
-    tags: ["SAT & Calibration", "Clinician Training", "24/7 SLA Support"],
-  },
-];
-
-const ESTIMATOR_OPTIONS = {
-  sectors: [
-    { id: "tertiary", name: "Tertiary & Specialized Hospitals", icon: Building2 },
-    { id: "defense", name: "Military & Defense Healthcare", icon: ShieldCheck },
-    { id: "diagnostic", name: "Commercial Diagnostic & Pathology Labs", icon: Microscope },
-    { id: "ministry", name: "Federal & Provincial Health Ministries", icon: Award },
-    { id: "pharma", name: "Pharmaceutical & Industrial Facilities", icon: Pill },
+const PRODUCTS_BY_TAB = {
+  "Diagnostic Imaging": [
+    { name: "Digital X-Ray Systems",   desc: "High-resolution imaging for accurate diagnosis.",  img: "/biomax_diagnostic_equipment_ai.jpg" },
+    { name: "CT Scan Systems",         desc: "Advanced CT imaging for precise insights.",        img: "/roys_ct_scan.png" },
+    { name: "MRI Systems",             desc: "High-performance MRI for detailed imaging.",       img: "/roys_mri_scanner.png" },
+    { name: "Ultrasound Systems",      desc: "Versatile ultrasound systems for all needs.",      img: "/roys_ultrasound.png" },
   ],
-  solutions: [
-    {
-      id: "ot_icu",
-      name: "Modular Operating Theatre & ICU Suite",
-      scope: "Prefabricated modular antibacterial OT walls, laminar air flow plenum ceiling, multi-parameter ICU patient monitors, surgical tables & ceiling pendant units.",
-      standards: "ISO 13485 • HTM 02-01 • CE Mark • Class 100 Sterile",
-      timeline: "6 – 12 Weeks Fast-Track Delivery",
-    },
-    {
-      id: "radiology",
-      name: "Complete Diagnostic Radiology Center",
-      scope: "1.5T Superconducting MRI, 128-Slice CT Scanner, Digital Ceiling X-Ray Radiography, 4D Color Doppler Ultrasound, and PACS workstation integration.",
-      standards: "AERB / FDA Cleared • CE Certified • Radiation Shielding Lead-Lined",
-      timeline: "8 – 16 Weeks Global Turnkey Setup",
-    },
-    {
-      id: "cleanroom_hvac",
-      name: "Cleanroom HVAC & Central Medical Gas",
-      scope: "HEPA filtration air handling units (AHU), differential pressure controls, dynamic pass boxes, and complete HTM 02-01 medical gas pipeline network.",
-      standards: "ISO 14644 Class 5–8 • NFPA 99 • EU-GMP Cleanroom Grade B",
-      timeline: "4 – 10 Weeks Site Handover",
-    },
-    {
-      id: "global_procure",
-      name: "Institutional Bulk Procurement & Trade",
-      scope: "Large-scale surgical disposable supplies, hospital medical furniture, diagnostic reagents, and high-frequency tender fulfillment.",
-      standards: "WHO-GMP Verified • ISO 9001:2015 • Strict Cold-Chain Monitoring",
-      timeline: "Immediate Sourcing & CIF Delivery",
-    },
+  "OT Solutions": [
+    { name: "Hydraulic Surgical Table",desc: "Electro-hydraulic multi-position surgical table.", img: "/pakmedical-card2.png" },
+    { name: "Shadowless LED Lights",   desc: "Aerodynamic laminar flow surgical illumination.",  img: "/biomax_ind_healthcare_ai.jpg" },
+    { name: "Anesthesia Workstation",  desc: "Integrated anesthesia delivery & gas spirometry.", img: "/pakmedical-card4.png" },
+    { name: "4K Endoscopy Tower",      desc: "Ultra HD minimally invasive camera tower system.", img: "/biomax_ind_hero_ai.jpg" },
+  ],
+  "ICU & Critical Care": [
+    { name: "Multi-Parameter Monitor", desc: "15-inch touch vital signs monitor with ECG.",     img: "/biomax_consumables_ai.jpg" },
+    { name: "Intelligent Ventilator",  desc: "Invasive and non-invasive ICU life support.",      img: "/pakmedical-card1.png" },
+    { name: "Syringe & Infusion Pump", desc: "Multi-channel precision volumetric pump stack.",   img: "/healthcare_infrastructure.jpg" },
+    { name: "Biphasic Defibrillator",  desc: "Clinical pacing with automated AED coaching.",     img: "/biomax_qa_scientist_ai.jpg" },
+  ],
+  "Lab Equipment": [
+    { name: "Clinical Chemistry Analyzer", desc: "Automated high-throughput blood testing system.", img: "/biomax_lab_equipment_ai.jpg" },
+    { name: "5-Part Hematology Counter",  desc: "Laser flow cytometry 3D scattergram analyzer.", img: "/biomax_scientific_instruments_ai.jpg" },
+    { name: "Binocular Microscope",        desc: "Infinity optical system laboratory microscope.",img: "/biomax_research_lab.jpg" },
+    { name: "Refrigerated Centrifuge",    desc: "Microprocessor brushless sample centrifuge.",   img: "/biomax_quality_lab.jpg" },
+  ],
+  "Hospital Furniture": [
+    { name: "Electric ICU Bed",        desc: "5-function motorized critical care patient bed.",  img: "/roys_hospital_interior.png" },
+    { name: "Emergency Crash Cart",    desc: "Stainless steel resuscitation trolley with locks.",img: "/pakmedical-card5.png" },
+    { name: "Medical Storage Cabinet", desc: "Heavy-duty lockable antibacterial glass cabinet.", img: "/pakmedical-card3.png" },
+    { name: "Hydraulic Overbed Table", desc: "Smooth height-adjustable antimicrobial table.",    img: "/pakmedical-card6.png" },
   ],
 };
 
-const INDUSTRIES = [
-  { icon: Building2,  label: "Hospitals",                 slug: "hospitals" },
-  { icon: ShieldCheck,label: "Government",                slug: "government" },
-  { icon: Star,       label: "Military\nHealthcare",      slug: "military-healthcare" },
-  { icon: Award,      label: "Universities",              slug: "universities" },
-  { icon: Microscope, label: "Research\nCenters",         slug: "research-centers" },
-  { icon: Users,      label: "Private\nClinics",          slug: "private-clinics" },
-  { icon: HeartPulse, label: "NGOs",                     slug: "ngos" },
-  { icon: FlaskConical,label: "Diagnostic\nLabs",         slug: "diagnostic-labs" },
-  { icon: Pill,       label: "Pharmaceutical\nIndustry",  slug: "pharmaceutical-industry" },
+const CONFIGURATOR_ACCORDIONS = [
+  {
+    id: 1,
+    title: "1. Turnkey Suite Infrastructure",
+    featuredTitle: "MODULAR OPERATING THEATRE & ICU SUITE",
+    featuredDesc: "Engineered for efficiency, safety, and flexibility. Our modular OT & ICU solutions ensure faster deployment and optimal performance.",
+    points: [
+      "Modular & Scalable Design",
+      "International Safety Standards",
+      "Fast Installation & Handover",
+    ],
+    img: "/pakmedical-card2.png",
+  },
+  {
+    id: 2,
+    title: "2. MEP & Utility Infrastructure",
+    featuredTitle: "CENTRAL MEDICAL GAS & CLEANROOM HVAC",
+    featuredDesc: "Complete HTM 02-01 compliant medical gas distribution, HEPA filtration air handling units, and positive pressure airflow containment.",
+    points: [
+      "HTM 02-01 & NFPA 99 Compliance",
+      "Class 100 HEPA Filtration",
+      "Continuous Monitoring Panels",
+    ],
+    img: "/biomax_rnd_hero_ai.jpg",
+  },
+  {
+    id: 3,
+    title: "3. Equipment Supply & Integration",
+    featuredTitle: "DIAGNOSTIC RADIOLOGY & CLINICAL SYSTEMS",
+    featuredDesc: "Turnkey diagnostic imaging suites including 1.5T MRI, 128-slice CT, ceiling digital X-ray, and PACs network integration.",
+    points: [
+      "Direct OEM Global Sourcing",
+      "Lead-Lined Radiation Shielding",
+      "Biomedical SAT Calibration",
+    ],
+    img: "/roys_ct_scan.png",
+  },
+  {
+    id: 4,
+    title: "4. Facility Management Services",
+    featuredTitle: "BIOMEDICAL PREVENTIVE & SLA SUPPORT",
+    featuredDesc: "Comprehensive Annual Maintenance Contracts (AMC/CMC), hospital engineering facility maintenance, and 24/7 technical emergency response.",
+    points: [
+      "24/7 Rapid Emergency Response",
+      "Certified Biomedical Engineers",
+      "OEM Genuine Parts Warranty",
+    ],
+    img: "/biomax_qa_scientist_ai.jpg",
+  },
 ];
 
-const WHY_CHOOSE = [
-  { icon: ShieldCheck, title: "Trusted Government & Institutional Partner", desc: "Trusted partner for government contracts and institutional procurement." },
-  { icon: Globe, title: "International Procurement & Global Sourcing Network", desc: "Access to a worldwide procurement and sourcing network." },
-  { icon: Award, title: "Comprehensive Healthcare & Industrial Solutions", desc: "End-to-end healthcare and industrial systems delivered globally." },
-  { icon: CheckCircle2, title: "Commitment to International Quality Standards", desc: "Ensuring compliance with global quality and regulatory standards." },
-  { icon: Users, title: "Experienced Multidisciplinary Team", desc: "A team of professionals across engineering, healthcare, and logistics." },
-  { icon: HeartPulse, title: "Reliable After-Sales Support & Technical Services", desc: "Dedicated support and technical service after delivery." },
-  { icon: Lightbulb, title: "Customer-Centric Approach", desc: "Focused on tailored solutions and client satisfaction." },
-  { icon: Star, title: "Innovation, Integrity & Excellence", desc: "Built on innovation, integrity, and operational excellence." },
+const INDUSTRIES_8 = [
+  { title: "Hospitals",                 icon: Building2,      slug: "hospitals" },
+  { title: "Government",                icon: Building,       slug: "government" },
+  { title: "Military & Defense",        icon: ShieldCheck,    slug: "military-healthcare" },
+  { title: "Research Institutions",     icon: Microscope,     slug: "research-centers" },
+  { title: "Educational Institutions",  icon: GraduationCap,  slug: "universities" },
+  { title: "Pharma Companies",          icon: Pill,           slug: "pharmaceutical-industry" },
+  { title: "Hotels & Labs",             icon: FlaskConical,   slug: "diagnostic-labs" },
+  { title: "Industrial & Corporate",    icon: Factory,        slug: "pharmaceutical-industry" },
 ];
 
-const WHAT_WE_DO = [
-  "Government Contracting & Procurement",
-  "International Import & Export",
-  "Global Trading & Supply Chain Management",
-  "Manufacturing Solutions",
-  "Strategic Consultancy Services",
-  "Medical Devices & Healthcare Equipment",
-  "Veterinary Healthcare Solutions",
-  "Human & Veterinary Vaccines",
-  "Surgical Disposable Products",
-  "Medical Consumables",
-  "Hospital & Medical Furniture",
-  "Laboratory Equipment & Scientific Instruments",
-  "Pharmaceutical Products",
-  "Hospital Engineering & Infrastructure",
-  "Turnkey Healthcare Projects",
+const WHY_CHOOSE_8 = [
+  { title: "Global Experience",    desc: "Serving clients in 30+ countries.",          icon: Globe },
+  { title: "End-to-End Solutions", desc: "From concept to commissioning.",             icon: FileCheck },
+  { title: "Quality & Compliance", desc: "International standards assured.",           icon: ShieldCheck },
+  { title: "Innovation-Driven",    desc: "Cutting-edge technology for better outcomes.", icon: Lightbulb },
+  { title: "Experienced Team",     desc: "1000+ professionals & experts.",             icon: Users },
+  { title: "Timely Delivery",      desc: "On time, every time.",                       icon: Clock },
+  { title: "Customer-Centric",     desc: "Tailored solutions for every client.",       icon: HeartPulse },
+  { title: "Sustainable Approach", desc: "Eco-friendly & future-ready solutions.",     icon: Leaf },
 ];
 
-const VALUES = [
-  { icon: Lightbulb, label: "Integrity",           desc: "We adhere strictly to honesty and moral standards." },
-  { icon: Star,      label: "Innovation",           desc: "Constantly upgrading medical technologies." },
-  { icon: Award,     label: "Excellence",           desc: "Aiming for perfection in every delivery." },
-  { icon: Leaf,      label: "Sustainability",       desc: "Designing long-lasting and eco-conscious engineering." },
-  { icon: Users,     label: "Customer Commitment",  desc: "Full post-sales support and partnership." },
+const VALUES_5 = [
+  { label: "Integrity",   icon: ShieldCheck },
+  { label: "Excellence",  icon: Award },
+  { label: "Innovation",  icon: Lightbulb },
+  { label: "Teamwork",    icon: Users },
+  { label: "Commitment",  icon: Target },
 ];
 
-const CORPORATE_INFO = [
-  { label: "Company Name",        val: "ROYS & ROYS International" },
-  { label: "Industry Sector",     val: "Healthcare Engineering & Medical Technologies" },
-  { label: "Corporate Link",      val: "ROYSONS Pvt.Ltd., Pakistan" },
-  { label: "Registered Address",  val: "123 Business Avenue,Lahore, Pakistan" },
-];
+// ─── Main Landing Page Component ──────────────────────────────────────────────
 
-const NAV_LINKS = [
-  { label: "Home",        href: "/group-companies/roys-roys" },
-  { label: "About Us",   href: "/group-companies/roys-roys/about" },
-  { label: "Solutions",  href: "/group-companies/roys-roys/solutions" },
-  { label: "Products",   href: "/group-companies/roys-roys/products" },
-  { label: "Industries", href: "/group-companies/roys-roys/industries" },
-  { label: "What We Do", href: "/group-companies/roys-roys/what-we-do" },
-  { label: "Contact",    href: "/group-companies/roys-roys/contact" },
-];
+export default function RoysRoysPage() {
+  const [productTab, setProductTab] = useState("Diagnostic Imaging");
+  const [activeAccordion, setActiveAccordion] = useState(1);
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
 
-const FOOTER_LINKS = {
-  Company:    ["About Us", "Our Values", "Careers", "News & Media"],
-  Solutions:  ["Healthcare Technologies", "Hospital Engineering", "Laboratory Solutions", "Clean Room Systems"],
-  Industries: ["Hospitals", "Government", "Pharmaceutical", "Research Centers"],
-};
+  const selectedAccordionData =
+    CONFIGURATOR_ACCORDIONS.find((a) => a.id === activeAccordion) ||
+    CONFIGURATOR_ACCORDIONS[0];
 
-// Footer social links: set `href` to the desired URL and `newTab: true` to open in a new tab
-const SOCIAL_LINKS = [
-  { label: "Facebook", Icon: Facebook, href: "#", newTab: false },
-  { label: "Instagram", Icon: Instagram, href: "#", newTab: false },
-  { label: "LinkedIn", Icon: Linkedin, href: "#", newTab: false },
-  { label: "YouTube", Icon: Youtube, href: "#", newTab: false },
-  { label: "TikTok", Icon: Music, href: "#", newTab: false },
-];
+  const handleFormChange = (e) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-// ─── Reusable UI Components ──────────────────────────────────────────────────
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
 
-function SectionHeading({ eyebrow, title }) {
   return (
-    <div className="text-center mb-8">
-      <span
-        className="text-[11px] font-extrabold tracking-widest uppercase block mb-3"
-        style={{ color: COLORS.primary }}
-      >
-        {eyebrow}
-      </span>
-      <h2
-        className="text-3xl font-extrabold tracking-tight uppercase"
-        style={{ color: COLORS.black }}
-      >
-        {title}
-      </h2>
-      <div
-        className="mx-auto mt-4 h-1 w-14 rounded-full"
-        style={{ backgroundColor: COLORS.primary }}
-      />
-    </div>
-  );
-}
+    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
+      {/* ─── 1. TOP NAVBAR ─────────────────────────────────────────────────── */}
+      <RoysNavbar active="Home" />
 
-function IconCard({ icon: Icon, label, href, iconSize = 20, containerSize = "w-12 h-12" }) {
-  const cardContent = (
-    <div
-      className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group cursor-pointer h-full select-none"
-      style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = COLORS.primary;
-        const span = e.currentTarget.querySelector('span');
-        if (span) span.style.color = '#ffffff';
-        const svg = e.currentTarget.querySelector('svg');
-        if (svg) svg.style.color = '#ffffff';
-        if (e.currentTarget.children[0]) {
-          e.currentTarget.children[0].style.backgroundColor = 'rgba(255,255,255,0.2)';
-        }
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = COLORS.white;
-        const span = e.currentTarget.querySelector('span');
-        if (span) span.style.color = COLORS.black;
-        const svg = e.currentTarget.querySelector('svg');
-        if (svg) svg.style.color = COLORS.primary;
-        if (e.currentTarget.children[0]) {
-          e.currentTarget.children[0].style.backgroundColor = `${COLORS.primary}10`;
-        }
-      }}
-    >
-      <div
-        className={`${containerSize} rounded-full flex items-center justify-center mb-3 transition-colors duration-300`}
-        style={{ backgroundColor: `${COLORS.primary}10` }}
-      >
-        <Icon size={iconSize * 1.5} style={{ color: COLORS.primary }} className="transition-colors duration-300" />
-      </div>
-      <span
-        className="text-[14px] font-black leading-snug whitespace-pre-line transition-colors duration-300"
-        style={{ color: COLORS.black }}
-      >
-        {label}
-      </span>
-    </div>
-  );
-
-  if (href) {
-    return (
-      <Link href={href} className="block h-full no-underline">
-        {cardContent}
-      </Link>
-    );
-  }
-
-  return cardContent;
-}
-
-function PrimaryButton({ href, children, className = "" }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <Link
-      href={href}
-      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider flex items-center gap-2 transition-all duration-300 ease-out ${className}`}
-      style={{
-        backgroundColor: hov ? "#009088" : COLORS.primary,
-        color: COLORS.white,
-        boxShadow: hov ? "0 4px 14px rgba(0, 144, 136, 0.35)" : "none",
-      }}
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-    >
-      {children}
-    </Link>
-  );
-}
-
-function OutlineButton({ href, children, className = "" }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <Link
-      href={href}
-      className={`px-6 py-3.5 rounded-sm text-[12.5px] font-extrabold uppercase tracking-wider border flex items-center gap-2 transition-all duration-300 ease-out ${className}`}
-      style={{
-        borderColor: hov ? COLORS.primary : COLORS.white,
-        backgroundColor: hov ? COLORS.primary : "transparent",
-        color: COLORS.white,
-      }}
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-    >
-      {children}
-    </Link>
-  );
-}
-
-function TiktokIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}>
-      <path d="M16.5 3.5v6.5a4 4 0 1 1-4-4" />
-      <path d="M12.5 13.5V21a3 3 0 1 1-3-3" />
-      <path d="M16.5 10.5h1.5a2 2 0 1 1-2 2V8.5" />
-    </svg>
-  );
-}
-
-// ─── Page Sections ───────────────────────────────────────────────────────────
-
-function Navbar() {
-  return (
-    <div className="sticky top-0 z-50 bg-white shadow-none transition-all duration-300">
-      <div className="mx-auto max-w-screen-xl px-6 py-4 flex items-center justify-between">
-        <Link href="/group-companies" className="flex items-center gap-3">
-          <Image
-            src="/roys logo.png"
-            alt="Roys & Roys Logo"
-            width={240}
-            height={70}
-            className="object-contain rounded-sm"
-            style={{ filter: "none", mixBlendMode: "normal" }}
+      {/* ─── 2. HERO SECTION ──────────────────────────────────────────────── */}
+      <section className="relative bg-[#061527] text-white pt-14 pb-16 lg:pt-20 lg:pb-24 px-6 overflow-hidden">
+        {/* Background Graphic & Hospital Illumination */}
+        <div className="absolute inset-0 z-0 select-none pointer-events-none">
+          <div
+            className="absolute inset-0 bg-cover bg-right lg:bg-center"
+            style={{
+              backgroundImage: "url('/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg')",
+              opacity: 0.28,
+            }}
           />
-        </Link>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#061527] via-[#061527]/90 to-[#061527]/50" />
+          
+          {/* Subtle network glow lines / ambient orb */}
+          <div className="absolute top-10 right-10 w-96 h-96 bg-[#2563eb]/15 rounded-full blur-3xl" />
+        </div>
 
-        <nav className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="text-[16px] font-bold uppercase tracking-wider hover:text-[#009088] transition-colors"
-              style={{ color: COLORS.black }}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <Link
-          href="#protfolio"
-          className="px-5 py-2.5 rounded-sm text-[12px] font-bold uppercase tracking-wider transition-all duration-300 ease-out hover:bg-[#009088]"
-          style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
-        >
-          Our Projects
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function HeroSection() {
-  return (
-    <section id="home" className="relative py-16 lg:py-24 px-6 overflow-hidden bg-[#020f1f]">
-      {/* Background with Ambient Overlay */}
-      <div className="absolute inset-0 z-0 select-none pointer-events-none">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105"
-          style={{
-            backgroundImage: `url('${HERO_BACKGROUND_IMAGE}')`,
-            opacity: 0.28,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020f1f] via-[#020f1f]/90 to-[#0b2138]/70" />
-        {/* Subtle glowing ambient orbs */}
-        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-[#009088]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-[#B49438]/15 rounded-full blur-3xl pointer-events-none" />
-      </div>
-
-      <div className="mx-auto max-w-screen-xl relative z-10">
-        <div className="max-w-3xl">
-          {/* Live Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[#B49438] text-xs font-black uppercase tracking-[0.25em] mb-6 shadow-lg">
-            <span className="w-2 h-2 rounded-full bg-[#009088] animate-pulse" />
-            <span>GLOBAL HEALTHCARE ENGINEERING &amp; INSTITUTIONAL CONTRACTING</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.15] tracking-tight mb-6 text-white">
-            Delivering Excellence Through{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B49438] via-[#e6ca65] to-[#ffffff]">
-              Global Trade, Innovation
-            </span>{" "}
-            &amp; Turnkey Healthcare Solutions
-          </h1>
-
-          <p className="text-base sm:text-lg lg:text-xl leading-relaxed mb-8 max-w-2xl text-slate-200 font-normal">
-            ROYS &amp; ROYS International is a diversified enterprise specializing in turnkey hospital engineering, diagnostic radiology, modular cleanroom systems, government contracting, and global medical supply chains across 30+ nations.
-          </p>
-
-          <div className="flex flex-wrap gap-4 mb-12">
-            <Link
-              href="/group-companies/roys-roys/what-we-do"
-              className="px-7 py-4 rounded-xl bg-[#B49438] hover:bg-[#009088] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-0.5 flex items-center gap-2"
-            >
-              <span>Explore 15 Capabilities</span>
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              href="/group-companies/roys-roys/contact"
-              className="px-7 py-4 rounded-xl border-2 border-white/30 hover:border-white bg-white/5 hover:bg-white text-white hover:text-[#020f1f] font-extrabold text-xs uppercase tracking-wider transition-all duration-300 backdrop-blur-xs flex items-center gap-2"
-            >
-              <span>Inquire Specifications</span>
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          {/* 4 Hero KPI Glass Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-6 border-t border-white/15">
-            {STATS.map((st) => (
-              <div
-                key={st.label}
-                className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors"
-              >
-                <p className="text-2xl sm:text-3xl font-black text-[#B49438] mb-1">{st.value}</p>
-                <p className="text-[11.5px] font-bold uppercase tracking-wider text-slate-300 whitespace-pre-line leading-tight">
-                  {st.label}
-                </p>
+        <div className="relative z-10 mx-auto max-w-screen-xl">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            {/* Left: Content */}
+            <div className="lg:col-span-7">
+              {/* Gold pill badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#B49438]/60 bg-[#B49438]/10 text-[#d4af37] text-[10.5px] sm:text-[11.5px] font-extrabold uppercase tracking-[0.2em] mb-6">
+                GLOBAL HEALTHCARE ENGINEERING &amp; INSTITUTIONAL CONTRACTING
               </div>
-            ))}
+
+              {/* H1 Heading */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-black leading-[1.18] tracking-tight text-white mb-6">
+                Delivering Excellence Through
+                <span className="block text-[#38bdf8] font-black text-2xl sm:text-3xl lg:text-4xl my-1">
+                  &amp;
+                </span>
+                Turnkey Healthcare Solutions
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-8 font-normal">
+                Roys &amp; Roys™ International is a diversified enterprise specializing in turnkey hospital engineering, integrated healthcare infrastructure, and institutional contracting solutions across 30+ nations.
+              </p>
+
+              {/* Hero Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3.5 mb-12">
+                <Link
+                  href="/group-companies/roys-roys/what-we-do"
+                  className="px-6 py-3 rounded-md bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md flex items-center gap-2"
+                >
+                  <span>Explore Our Capabilities</span>
+                  <ArrowRight size={14} />
+                </Link>
+                <Link
+                  href="/group-companies/roys-roys/contact"
+                  className="px-6 py-3 rounded-md border border-white/30 bg-white/5 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-2"
+                >
+                  <span>Download Brochure</span>
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
+
+              {/* 4 Stat Cards in Row */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-white/15">
+                {HERO_STATS.map((st) => {
+                  const Icon = st.icon;
+                  return (
+                    <div
+                      key={st.label}
+                      className="p-3.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xs flex items-center gap-3"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-[#38bdf8] flex items-center justify-center shrink-0">
+                        <Icon size={16} />
+                      </div>
+                      <div>
+                        <p className="text-lg sm:text-xl font-black text-white leading-none mb-1">
+                          {st.value}
+                        </p>
+                        <p className="text-[10px] text-slate-300 font-bold uppercase tracking-wider whitespace-pre-line leading-tight">
+                          {st.label}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right: Hospital Building Graphic / Illustration Showcase */}
+            <div className="lg:col-span-5 hidden lg:block">
+              <div className="relative h-[440px] w-full rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-gradient-to-b from-blue-900/40 to-slate-950/80">
+                <Image
+                  src="/roys_hospital_interior.png"
+                  alt="Modern Healthcare Infrastructure"
+                  fill
+                  className="object-cover opacity-85 hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061527] via-transparent to-transparent opacity-80" />
+                
+                {/* Floating Node Chips on Image */}
+                <div className="absolute top-6 left-6 p-2.5 rounded-xl bg-[#061527]/80 backdrop-blur-md border border-white/20 text-white flex items-center gap-2 shadow-lg">
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#38bdf8] animate-ping" />
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider">
+                    Turnkey Engineering
+                  </span>
+                </div>
+
+                <div className="absolute bottom-6 right-6 p-3 rounded-xl bg-[#061527]/90 backdrop-blur-md border border-white/20 text-white flex items-center gap-3 shadow-xl">
+                  <div className="w-8 h-8 rounded-lg bg-[#B49438] text-white flex items-center justify-center font-black text-xs">
+                    15+
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-extrabold uppercase text-[#B49438]">Global Reach</p>
+                    <p className="text-xs font-bold text-white">30+ Countries Served</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-function TrustedBanner() {
-  const [activeLogo, setActiveLogo] = useState(0);
-  const visibleCount = 4;
-  const maxIndex = Math.max(TRUSTED_LOGOS.length - visibleCount, 0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveLogo((current) => (current === maxIndex ? 0 : current + 1));
-    }, 4500);
-
-    return () => clearInterval(interval);
-  }, [maxIndex]);
-
-  return (
-    <section className="py-6 md:py-8 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
-      <div className="mx-auto max-w-screen-xl">
-        <p className="text-center text-sm sm:text-base md:text-lg lg:text-xl font-black tracking-[0.22em] text-[#113658] uppercase mb-5">
-          TRUSTED BY LEADING ORGANIZATIONS
-        </p>
-
-        <div className="relative overflow-hidden rounded-[32px] border-0 shadow-none bg-transparent">
-          <div
-            className="flex gap-2 transition-transform duration-500 ease-in-out px-4 py-3"
-            style={{ transform: `translateX(-${activeLogo * (100 / visibleCount)}%)` }}
-          >
+      {/* ─── 3. TRUSTED BY LEADING ORGANIZATIONS ───────────────────────────── */}
+      <section className="py-10 px-6 bg-white border-b border-[#e2e8f0]">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#0f2b48] mb-8">
+            TRUSTED BY LEADING ORGANIZATIONS
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center max-w-4xl mx-auto">
             {TRUSTED_LOGOS.map((logo) => (
               <div
                 key={logo.name}
-                className="flex-shrink-0 rounded-[28px] bg-transparent border-0 p-3 flex items-center justify-center shadow-none"
-                style={{ minWidth: `${100 / visibleCount}%` }}
+                className="h-16 px-4 py-2 flex items-center justify-center grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-200"
               >
                 {logo.img ? (
-                  <div className="relative w-full h-24 sm:h-28 md:h-32">
+                  <div className="relative w-full h-12">
                     <Image
                       src={logo.img}
                       alt={logo.name}
                       fill
                       className="object-contain"
-                      sizes="350px"
+                      sizes="200px"
                     />
                   </div>
                 ) : (
-                  <span className="text-xl md:text-2xl font-black tracking-wider text-neutral-800">{logo.abbr}</span>
+                  <span className="text-sm font-black text-slate-700 tracking-wider">
+                    {logo.abbr}
+                  </span>
                 )}
               </div>
             ))}
           </div>
-
         </div>
+      </section>
 
-        <div className="mt-5 flex justify-center gap-2">
-          {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => setActiveLogo(index)}
-              className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
-                activeLogo === index ? "bg-[#113658] scale-125" : "bg-slate-300"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+      {/* ─── 4. ABOUT US SECTION ───────────────────────────────────────────── */}
+      <section className="py-16 lg:py-20 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-12 items-center">
+          {/* Left: Content */}
+          <div className="lg:col-span-6">
+            <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-[11px] font-black uppercase tracking-wider mb-4">
+              ABOUT US
+            </span>
 
-function AboutSection() {
-  const highlights = [
-    { label: "Global Standards",     desc: "Ensuring compliance with FDA, CE, and GMP requirements." },
-    { label: "Turnkey Solutions",    desc: "From design and planning to engineering and installation." },
-    { label: "Technical Excellence", desc: "Delivered by seasoned engineers and medical technology experts." },
-  ];
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0f2b48] leading-[1.2] tracking-tight mb-5">
+              Delivering Excellence Through Global Trade, Innovation &amp; Strategic Partnerships
+            </h2>
 
-  return (
-    <section id="about-us" className="py-14 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-12 items-center">
-        {/* Left: Text */}
-        <div className="flex-1 max-w-xl">
-          <span className="text-[14px] font-extrabold uppercase tracking-[0.25em] block mb-3" style={{ color: COLORS.primary }}>
-            ABOUT US
-          </span>
-          <h2 className="text-3xl lg:text-4xl font-extrabold mb-5 leading-tight" style={{ color: COLORS.black }}>
-            Delivering Excellence Through Global Trade, Innovation &amp; Strategic Partnerships
-          </h2>
-          <p className="text-[16px] leading-relaxed mb-4" style={{ color: COLORS.black }}>
-            ROYS &amp; ROYS International is a diversified international business company and the flagship enterprise of ROYS Group of Companies, delivering world-class solutions across government contracting, international trade, healthcare, manufacturing, consultancy, and engineering.
-          </p>
-          <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
-            Backed by a global sourcing network and strategic partnerships, we provide end-to-end medical equipment, hospital infrastructure, veterinary healthcare, and turnkey project management compliant with international FDA, CE, and ISO standards.
-          </p>
+            <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+              At Roys &amp; Roys™ International, we combine global expertise with local insight to deliver world-class healthcare infrastructure and institutional solutions. With decades of experience and commitment to quality, we transform visions into operational realities across the globe.
+            </p>
 
-          <div className="space-y-3.5 mb-8">
-            {highlights.map(({ label, desc }) => (
-              <div key={label} className="flex gap-3.5">
-                <div
-                  className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5"
-                  style={{ backgroundColor: `${COLORS.primary}15` }}
-                >
-                  <CheckCircle2 size={16} style={{ color: COLORS.primary }} />
+            <div className="space-y-3 mb-8">
+              {[
+                { title: "Global Expertise", desc: "Decades of experience in healthcare innovation." },
+                { title: "Turnkey Solutions", desc: "End-to-end delivery from concept to commissioning." },
+                { title: "Innovation-Driven", desc: "Advanced technology for better patient outcomes." },
+                { title: "Commitment to Excellence", desc: "Quality, safety, and sustainability in every project." },
+              ].map((point) => (
+                <div key={point.title} className="flex items-start gap-2.5">
+                  <div className="w-5 h-5 rounded-full bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0 mt-0.5">
+                    <Check size={12} strokeWidth={3} />
+                  </div>
+                  <p className="text-xs sm:text-[13px] text-slate-700 leading-normal">
+                    <strong className="text-[#0f2b48] font-extrabold">{point.title}:</strong> {point.desc}
+                  </p>
                 </div>
+              ))}
+            </div>
+
+            <Link
+              href="/group-companies/roys-roys/about"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+            >
+              <span>More About Us</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          {/* Right: Hospital Image Showcase with Floating Badge */}
+          <div className="lg:col-span-6">
+            <div className="relative h-[380px] sm:h-[440px] rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+              <Image
+                src="/roys_hospital_interior.png"
+                alt="Hospital corridor interior"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#061527]/90 via-transparent to-transparent" />
+
+              <div className="absolute bottom-6 left-6 right-6 p-4 sm:p-5 rounded-xl bg-[#0f2b48]/95 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-2xl">
                 <div>
-                  <h4 className="text-[14.5px] font-extrabold" style={{ color: COLORS.black }}>{label}</h4>
-                  <p className="text-[13.5px]" style={{ color: COLORS.black }}>{desc}</p>
+                  <p className="text-[10.5px] font-extrabold uppercase tracking-widest text-[#B49438]">
+                    Featured Facility
+                  </p>
+                  <p className="text-sm sm:text-base font-black text-white">
+                    Turnkey Healthcare &amp; Global Trade
+                  </p>
+                </div>
+                <div className="text-right pl-4 border-l border-white/20">
+                  <span className="text-xl sm:text-2xl font-black text-[#B49438]">15+</span>
+                  <p className="text-[9.5px] text-slate-300 uppercase font-extrabold tracking-wider">
+                    Countries Served
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5. OUR MISSION & OUR VISION ───────────────────────────────────── */}
+      <section className="py-6 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl grid md:grid-cols-2 gap-6">
+          {/* Mission Card */}
+          <div className="p-7 rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
+              <Target size={24} />
+            </div>
+            <div>
+              <h3 className="text-base font-black text-[#0f2b48] mb-2">Our Mission</h3>
+              <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed">
+                To build a healthier tomorrow by delivering innovative, sustainable, and patient-centric healthcare infrastructure solutions globally.
+              </p>
+            </div>
+          </div>
+
+          {/* Vision Card */}
+          <div className="p-7 rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
+              <Eye size={24} />
+            </div>
+            <div>
+              <h3 className="text-base font-black text-[#0f2b48] mb-2">Our Vision</h3>
+              <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed">
+                To be a global leader in healthcare solutions and exceed expectations through innovation, integrity, and unwavering commitment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 6. HOW WE DELIVER HEALTHCARE INFRASTRUCTURE ────────────────────── */}
+      <section className="py-16 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-12">
+            HOW WE DELIVER HEALTHCARE INFRASTRUCTURE
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            {WORKFLOW_STEPS.map((step) => {
+              const Icon = step.icon;
+              return (
+                <div
+                  key={step.num}
+                  className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="text-3xl font-black text-slate-300 font-mono">
+                        {step.num}
+                      </span>
+                      <div className="w-10 h-10 rounded-full bg-[#2563eb] text-white flex items-center justify-center shadow-xs">
+                        <Icon size={18} />
+                      </div>
+                    </div>
+                    <h3 className="text-base font-black text-[#0f2b48] mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 7. OUR SERVICE OFFERINGS (12 CARDS GRID) ──────────────────────── */}
+      <section className="py-16 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+            OUR SERVICE OFFERINGS
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left mb-10">
+            {SERVICE_OFFERINGS_12.map((srv) => {
+              const Icon = srv.icon;
+              return (
+                <Link
+                  key={srv.title}
+                  href={"/group-companies/roys-roys/what-we-do/" + srv.slug}
+                  className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex items-center justify-between group no-underline"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center shrink-0">
+                      <Icon size={18} />
+                    </div>
+                    <p className="text-xs font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors leading-snug">
+                      {srv.title}
+                    </p>
+                  </div>
+                  <ChevronRight size={15} className="text-slate-400 group-hover:text-[#2563eb] group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+                </Link>
+              );
+            })}
+          </div>
+
+          <Link
+            href="/group-companies/roys-roys/what-we-do"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+          >
+            <span>View All Services</span>
+            <ArrowRight size={14} />
+          </Link>
+        </div>
+      </section>
+
+      {/* ─── 8. CORE BUSINESS AREAS (7 PILL CARDS) ─────────────────────────── */}
+      <section className="py-14 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-8">
+            CORE BUSINESS AREAS
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3.5">
+            {CORE_BUSINESS_7.map((area) => {
+              const Icon = area.icon;
+              return (
+                <div
+                  key={area.title}
+                  className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
+                >
+                  <div className="w-11 h-11 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center mb-2.5">
+                    <Icon size={20} />
+                  </div>
+                  <p className="text-xs font-bold text-[#0f2b48] whitespace-pre-line leading-tight">
+                    {area.title}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 9. PRODUCTS & SOLUTIONS (TABS + 4 CARDS) ───────────────────────── */}
+      <section className="py-16 px-6 bg-[#f8fafc] border-t border-slate-200">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-6">
+            PRODUCTS &amp; SOLUTIONS
+          </h2>
+
+          {/* Product Category Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {PRODUCT_TABS.map((tab) => {
+              const active = tab === productTab;
+              return (
+                <button
+                  key={tab}
+                  onClick={() => setProductTab(tab)}
+                  className={
+                    "px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer " +
+                    (active
+                      ? "bg-[#0f2b48] text-white shadow-sm"
+                      : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100")
+                  }
+                >
+                  {tab}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* 4 Products Cards Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left mb-10">
+            {(PRODUCTS_BY_TAB[productTab] || PRODUCTS_BY_TAB["Diagnostic Imaging"]).map((prod) => (
+              <div
+                key={prod.name}
+                className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-xl transition-all duration-200 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative h-44 w-full bg-slate-900">
+                    <Image
+                      src={prod.img}
+                      alt={prod.name}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500"
+                      sizes="300px"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-sm font-black text-[#0f2b48] mb-1.5">
+                      {prod.name}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {prod.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="px-5 pb-5 pt-0">
+                  <Link
+                    href="/group-companies/roys-roys/products"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2563eb] hover:text-[#0f2b48] transition-colors"
+                  >
+                    <span>View Details</span>
+                    <ArrowRight size={13} />
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-4">
-            <PrimaryButton href="/group-companies/roys-roys/about" className="w-fit">
-              Read More About Us <ArrowRight size={15} />
-            </PrimaryButton>
-            <OutlineButton href="/group-companies/roys-roys/contact" className="w-fit" style={{ borderColor: COLORS.primary, color: COLORS.primary }}>
-              Contact Us <ArrowRight size={15} />
-            </OutlineButton>
-          </div>
-        </div>
-
-        {/* Right: Image showcase */}
-        <div className="flex-1 w-full">
-          <div className="relative h-[420px] lg:h-[480px] rounded-[28px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
-            <Image
-              src="/roys_hospital_interior.png"
-              alt="Hospital interior operations"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020f1f]/85 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-[#113658]/90 backdrop-blur-md border border-white/20 text-white flex items-center justify-between shadow-xl">
-              <div>
-                <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#B49438]">Institutional Excellence</p>
-                <p className="text-base font-black text-white">Turnkey Healthcare &amp; Global Trade</p>
-              </div>
-              <div className="text-right pl-4 border-l border-white/20">
-                <span className="text-2xl font-black text-[#B49438]">15+</span>
-                <p className="text-[10px] text-white/80 uppercase font-bold tracking-wider">Years Experience</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function VisionMissionSection() {
-  const cards = [
-    {
-      accentColor: COLORS.primary,
-      icon: Target,
-      eyebrow: "OUR VISION",
-      title: "To Lead & Innovate",
-      body: "To be a global leader in healthcare engineering and medical solutions, transforming public health and medical access through quality, advanced technology, and sustainable engineering values.",
-    },
-    {
-      accentColor: COLORS.primary,
-      icon: Award,
-      eyebrow: "OUR MISSION",
-      title: "To Support Globally",
-      body: "To deliver world-class medical technologies and healthcare equipment, supported by exceptional engineering capabilities and international distribution frameworks to elevate modern clinical delivery.",
-    },
-  ];
-
-  return (
-    <section className="py-8 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl grid md:grid-cols-2 gap-6">
-        {cards.map(({ accentColor, icon: Icon, eyebrow, title, body }) => (
-          <div
-            key={eyebrow}
-            className="p-8 lg:p-10 rounded-2xl border shadow-sm flex gap-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#113658] group cursor-pointer"
-            style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, borderLeft: `6px solid ${accentColor}` }}
+          <Link
+            href="/group-companies/roys-roys/products"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
-            <div
-              className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-[#113658] group-hover:text-white group-hover:scale-110 group-hover:shadow-lg"
-              style={{ backgroundColor: `${accentColor}15`, color: accentColor }}
-            >
-              <Icon size={28} className="transition-colors duration-300" />
-            </div>
-            <div>
-              <span className="text-[11px] font-black tracking-widest uppercase mb-2 block text-[#B49438] group-hover:text-[#009088] transition-colors">
-                {eyebrow}
+            <span>Explore All Products &amp; Solutions</span>
+            <ArrowRight size={14} />
+          </Link>
+        </div>
+      </section>
+
+      {/* ─── 10. INTERACTIVE CONFIGURATOR BOX ───────────────────────────────── */}
+      <section className="py-16 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-3xl bg-[#0c2340] text-white p-8 lg:p-12 shadow-2xl grid lg:grid-cols-12 gap-8 items-center">
+            {/* Left: Accordion Selection */}
+            <div className="lg:col-span-6 space-y-6">
+              <span className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-[#B49438] block">
+                CUSTOMIZED. SCALABLE. RELIABLE.
               </span>
-              <h3 className="text-[18px] font-extrabold mb-3 text-black group-hover:text-[#113658] transition-colors">
-                {title}
-              </h3>
-              <p className="text-[15.5px] leading-relaxed text-slate-700">
-                {body}
+              <h2 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+                Configure Your Healthcare &amp; Institutional Solution
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                We offer tailor-made solutions to meet the unique demands of your healthcare facility. From design to deployment, we&apos;ve got you covered.
               </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
 
-function TurnkeyLifecycleSection() {
-  return (
-    <section className="py-16 px-6 bg-[#f8fafc] border-t border-b border-[#e2e8f0]">
-      <div className="mx-auto max-w-screen-xl">
-        <SectionHeading
-          eyebrow="TURNKEY ENGINEERING LIFECYCLE"
-          title="How We Deliver Healthcare Infrastructure"
-        />
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
-          {LIFECYCLE_STEPS.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.step}
-                className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#113658] group flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-3xl font-black text-[#113658]/20 group-hover:text-[#B49438] transition-colors font-mono">
-                      {item.step}
-                    </span>
-                    <div className="w-12 h-12 rounded-2xl bg-[#113658]/10 text-[#113658] group-hover:bg-[#113658] group-hover:text-white transition-all duration-300 flex items-center justify-center group-hover:scale-110 shadow-xs">
-                      <Icon size={22} />
-                    </div>
-                  </div>
-
-                  <h4 className="text-[17px] font-black text-[#113658] group-hover:text-[#009088] transition-colors mb-3 leading-snug">
-                    {item.title}
-                  </h4>
-                  <p className="text-[14px] leading-relaxed text-slate-600 mb-6">
-                    {item.desc}
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100">
-                  {item.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 text-[10.5px] font-extrabold"
+              {/* Accordions */}
+              <div className="space-y-2.5 pt-2">
+                {CONFIGURATOR_ACCORDIONS.map((acc) => {
+                  const active = acc.id === activeAccordion;
+                  return (
+                    <div
+                      key={acc.id}
+                      onClick={() => setActiveAccordion(acc.id)}
+                      className={
+                        "p-3.5 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between " +
+                        (active
+                          ? "bg-[#1d4ed8] border-[#38bdf8] text-white shadow-md"
+                          : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white")
+                      }
                     >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhatWeDoSection() {
-  return (
-    <section id="what-we-do" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl">
-        <SectionHeading eyebrow="WHAT WE DO" title="Our Service Offerings" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          {OFFERINGS_LIST.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={item.slug}
-                href={`/group-companies/roys-roys/what-we-do/${item.slug}`}
-                className="rounded-lg border bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group flex items-center justify-between no-underline"
-                style={{ borderColor: COLORS.border }}
-              >
-                <div className="flex items-center gap-3.5">
-                  <div
-                    className="w-11 h-11 rounded-lg flex items-center justify-center transition-colors duration-300 group-hover:bg-[#113658] group-hover:text-white shrink-0"
-                    style={{ backgroundColor: `${COLORS.primary}10`, color: COLORS.primary }}
-                  >
-                    <Icon size={20} />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#B49438] block mb-0.5">
-                      Service #{item.number}
-                    </span>
-                    <p className="text-[14px] font-bold leading-snug group-hover:text-[#113658] transition-colors" style={{ color: COLORS.black }}>
-                      {item.title}
-                    </p>
-                  </div>
-                </div>
-                <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#B49438] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
-              </Link>
-            );
-          })}
-        </div>
-        <div className="flex justify-center">
-          <PrimaryButton href="/group-companies/roys-roys/what-we-do">
-            View All 15 Services &amp; Capabilities <ArrowRight size={15} />
-          </PrimaryButton>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CoreBusinessSection() {
-  return (
-    <section id="solutions" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl">
-        <SectionHeading eyebrow="CORE ACTIVITIES" title="Core Business Areas" />
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-8">
-          {CORE_BUSINESS_AREAS.map(({ icon, label, slug }) => (
-            <IconCard
-              key={label}
-              icon={icon}
-              label={label}
-              href={`/group-companies/roys-roys/services/${slug}`}
-              iconSize={20}
-              containerSize="w-12 h-12"
-            />
-          ))}
-        </div>
-        <div className="flex justify-center">
-          <PrimaryButton href="/group-companies/roys-roys/services">
-            Explore All Healthcare Solutions <ArrowRight size={15} />
-          </PrimaryButton>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, onSlideRight }) {
-  const activeCategory = PRODUCTS_TABS[activeTab];
-  const filteredProducts = PRODUCTS.filter(p => p.category === activeCategory);
-
-  return (
-    <section id="products" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl">
-        <SectionHeading eyebrow="PORTFOLIO &amp; CAPABILITIES" title="Products &amp; Solutions" />
-
-        {/* Tab bar */}
-        <div className="flex flex-wrap gap-2.5 mb-8 justify-center border-b pb-4" style={{ borderColor: COLORS.border }}>
-          {PRODUCTS_TABS.map((tab, idx) => {
-            const isActive = idx === activeTab;
-            return (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(idx)}
-                className="px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider rounded-lg transition-all cursor-pointer shadow-xs"
-                style={{
-                  backgroundColor: isActive ? COLORS.primary : "#f8fafc",
-                  color: isActive ? COLORS.white : "#334155",
-                  border: isActive ? `1.5px solid ${COLORS.primary}` : `1.5px solid ${COLORS.border}`,
-                }}
-              >
-                {tab}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Carousel with Navigation Arrows */}
-        <div className="relative mb-10">
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between absolute -top-12 right-2 gap-2 z-10 hidden sm:flex">
-            <button
-              onClick={onSlideLeft}
-              className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-200 bg-white hover:bg-[#113658] hover:text-white cursor-pointer shadow-xs"
-              style={{ borderColor: COLORS.border, color: COLORS.primary }}
-              aria-label="Previous Products"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={onSlideRight}
-              className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-200 bg-white hover:bg-[#113658] hover:text-white cursor-pointer shadow-xs"
-              style={{ borderColor: COLORS.border, color: COLORS.primary }}
-              aria-label="Next Products"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-
-          <div className="w-full overflow-hidden px-2 py-2">
-            <div
-              className="flex gap-6 transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${productIndex * 300}px)`, width: "max-content" }}
-            >
-              {filteredProducts.map((product, pIdx) => (
-                <div
-                  key={product.name}
-                  className="w-[270px] sm:w-[290px] rounded-2xl overflow-hidden border bg-white flex-shrink-0 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 group flex flex-col justify-between"
-                  style={{ borderColor: COLORS.border, boxShadow: "0 4px 18px rgba(0,0,0,0.05)" }}
-                >
-                  <div>
-                    <div className="relative h-[180px] w-full overflow-hidden bg-slate-900">
-                      <Image
-                        src={product.img}
-                        alt={product.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-108"
-                        sizes="290px"
+                      <span className="text-xs sm:text-sm font-bold">{acc.title}</span>
+                      <ChevronDown
+                        size={16}
+                        className={
+                          "transition-transform duration-200 " +
+                          (active ? "rotate-180 text-white" : "text-slate-400")
+                        }
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
-                      <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#113658]/90 text-[#B49438] text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-xs">
-                        Item 0{pIdx + 1}
-                      </span>
                     </div>
-                    <div className="p-5" style={{ borderTop: `3px solid ${COLORS.primary}` }}>
-                      <h4 className="text-[15.5px] font-black mb-2 text-[#113658] group-hover:text-[#009088] transition-colors leading-snug">
-                        {product.name}
-                      </h4>
-                      <p className="text-[13px] leading-relaxed text-slate-600">
-                        {product.desc}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="px-5 pb-5 pt-0">
-                    <Link
-                      href="/group-companies/roys-roys/contact"
-                      className="w-full py-2.5 rounded-lg bg-[#f1f5f9] group-hover:bg-[#113658] group-hover:text-white text-[#113658] text-[11.5px] font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300"
-                    >
-                      <span>Inquire Specifications</span>
-                      <ArrowRight size={13} />
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-center">
-          <PrimaryButton href="/group-companies/roys-roys/products">
-            Browse Full Product Portfolio <ArrowRight size={15} />
-          </PrimaryButton>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function IndustriesSection() {
-  return (
-    <section id="industries" className="py-6 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl">
-        <SectionHeading eyebrow="MARKET SECTORS" title="Industries We Serve" />
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-9 gap-4 mb-8">
-          {INDUSTRIES.map(({ icon: Icon, label, slug }) => (
-            <Link
-              key={label}
-              href={`/group-companies/roys-roys/industries/${slug}`}
-              className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group cursor-pointer no-underline select-none h-full"
-              style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = COLORS.primary;
-                const span = e.currentTarget.querySelector('span');
-                if (span) span.style.color = '#ffffff';
-                const svg = e.currentTarget.querySelector('svg');
-                if (svg) svg.style.color = '#ffffff';
-                if (e.currentTarget.children[0]) {
-                  e.currentTarget.children[0].style.backgroundColor = 'rgba(255,255,255,0.2)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = COLORS.white;
-                const span = e.currentTarget.querySelector('span');
-                if (span) span.style.color = COLORS.black;
-                const svg = e.currentTarget.querySelector('svg');
-                if (svg) svg.style.color = COLORS.primary;
-                if (e.currentTarget.children[0]) {
-                  e.currentTarget.children[0].style.backgroundColor = `${COLORS.primary}10`;
-                }
-              }}
-            >
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center mb-3 transition-colors duration-300"
-                style={{ backgroundColor: `${COLORS.primary}10` }}
-              >
-                <Icon size={39} style={{ color: COLORS.primary }} className="transition-colors duration-300" />
-              </div>
-              <span className="text-[15px] font-black whitespace-pre-line leading-normal transition-colors duration-300" style={{ color: COLORS.black }}>
-                {label}
-              </span>
-            </Link>
-          ))}
-        </div>
-        <div className="flex justify-center">
-          <PrimaryButton href="/group-companies/roys-roys/industries">
-            Explore All Industry Sectors <ArrowRight size={15} />
-          </PrimaryButton>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhyChooseSection() {
-  return (
-    <section className="py-8 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl">
-        <SectionHeading eyebrow="COMPETITIVE VALUE" title="Why Choose Roys & Roys International?" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {WHY_CHOOSE.map(({ icon: Icon, title, desc }) => (
-            <div
-              key={title}
-              className="p-5 border border-[#e2e8f0] rounded-lg flex gap-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#113658]"
-              style={{ backgroundColor: COLORS.white }}
-            >
-              <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: COLORS.primary }}>
-                <Icon size={22} style={{ color: COLORS.white }} />
-              </div>
-              <div>
-                <h4 className="text-[15.5px] font-extrabold mb-1.5" style={{ color: COLORS.black }}>{title}</h4>
-                <p className="text-[14px] leading-relaxed" style={{ color: COLORS.black }}>{desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function QuickEstimatorSection() {
-  const [selectedSector, setSelectedSector] = useState(ESTIMATOR_OPTIONS.sectors[0].id);
-  const [selectedSolution, setSelectedSolution] = useState(ESTIMATOR_OPTIONS.solutions[0].id);
-
-  const currentSector = ESTIMATOR_OPTIONS.sectors.find(s => s.id === selectedSector);
-  const currentSolution = ESTIMATOR_OPTIONS.solutions.find(s => s.id === selectedSolution);
-
-  return (
-    <section className="py-16 px-6 bg-[#0a192f] text-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#009088]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#B49438]/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="mx-auto max-w-screen-xl relative z-10">
-        <div className="text-center mb-10 max-w-3xl mx-auto">
-          <span className="text-[12px] font-black uppercase tracking-[0.25em] text-[#B49438] block mb-3">
-            INTERACTIVE PROJECT ESTIMATOR
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-4">
-            Configure Your Healthcare &amp; Institutional Solution
-          </h2>
-          <p className="text-slate-300 text-[15.5px] leading-relaxed">
-            Select your organization sector and target technical requirements to get an instant scope breakdown and international compliance specifications.
-          </p>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          {/* Step 1 & 2 Selectors */}
-          <div className="lg:col-span-6 space-y-6">
-            {/* Sector Selector */}
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <label className="text-[11px] font-black uppercase tracking-wider text-[#B49438] block mb-3">
-                Step 1: Select Your Organization Sector
-              </label>
-              <div className="grid sm:grid-cols-2 gap-2.5">
-                {ESTIMATOR_OPTIONS.sectors.map((sec) => {
-                  const Icon = sec.icon;
-                  const active = sec.id === selectedSector;
-                  return (
-                    <button
-                      key={sec.id}
-                      type="button"
-                      onClick={() => setSelectedSector(sec.id)}
-                      className={`p-3.5 rounded-xl border text-left flex items-center gap-3 transition-all duration-200 cursor-pointer ${
-                        active
-                          ? "bg-[#113658] border-[#B49438] text-white shadow-lg"
-                          : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white"
-                      }`}
-                    >
-                      <Icon size={18} className={active ? "text-[#B49438]" : "text-slate-400"} />
-                      <span className="text-[13px] font-bold leading-tight">{sec.name}</span>
-                    </button>
                   );
                 })}
-              </div>
-            </div>
-
-            {/* Solution Selector */}
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-              <label className="text-[11px] font-black uppercase tracking-wider text-[#B49438] block mb-3">
-                Step 2: Select Technical Scope &amp; Solution Area
-              </label>
-              <div className="space-y-2">
-                {ESTIMATOR_OPTIONS.solutions.map((sol) => {
-                  const active = sol.id === selectedSolution;
-                  return (
-                    <button
-                      key={sol.id}
-                      type="button"
-                      onClick={() => setSelectedSolution(sol.id)}
-                      className={`w-full p-3.5 rounded-xl border text-left flex items-center justify-between transition-all duration-200 cursor-pointer ${
-                        active
-                          ? "bg-[#113658] border-[#009088] text-white shadow-lg"
-                          : "bg-white/5 border-white/10 text-slate-300 hover:bg-white/10 hover:text-white"
-                      }`}
-                    >
-                      <span className="text-[14px] font-bold">{sol.name}</span>
-                      <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded ${active ? "bg-[#009088] text-white" : "bg-white/10 text-slate-400"}`}>
-                        {active ? "Active" : "Select"}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* Results Card */}
-          <div className="lg:col-span-6">
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-[#113658] to-[#0b2138] border border-white/20 shadow-2xl space-y-6">
-              <div className="flex items-center justify-between border-b border-white/15 pb-4">
-                <div>
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#B49438] block mb-1">
-                    PROJECT BLUEPRINT • {currentSector?.name}
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-black text-white">
-                    {currentSolution?.name}
-                  </h3>
-                </div>
-                <div className="w-12 h-12 rounded-2xl bg-[#B49438]/20 flex items-center justify-center text-[#B49438]">
-                  <Activity size={24} />
-                </div>
-              </div>
-
-              <div>
-                <p className="text-[11px] font-black uppercase tracking-wider text-slate-300 mb-2">
-                  Recommended Equipment &amp; Technical Scope:
-                </p>
-                <p className="text-[15px] text-white/90 leading-relaxed bg-black/20 p-4 rounded-xl border border-white/10">
-                  {currentSolution?.scope}
-                </p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <p className="text-[10px] font-black uppercase tracking-wider text-[#B49438] mb-1">
-                    Applicable Compliance Standards:
-                  </p>
-                  <p className="text-[12.5px] font-bold text-slate-200">
-                    {currentSolution?.standards}
-                  </p>
-                </div>
-                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
-                  <p className="text-[10px] font-black uppercase tracking-wider text-[#009088] mb-1">
-                    Estimated Delivery &amp; Handover:
-                  </p>
-                  <p className="text-[12.5px] font-bold text-slate-200">
-                    {currentSolution?.timeline}
-                  </p>
-                </div>
               </div>
 
               <div className="pt-2">
                 <Link
                   href="/group-companies/roys-roys/contact"
-                  className="w-full py-4 rounded-xl bg-[#B49438] hover:bg-[#009088] text-white text-[13px] font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-all duration-300 shadow-xl cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#B49438] hover:bg-[#9a7d2d] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-md"
                 >
-                  <span>Request Official Commercial Quotation</span>
-                  <ArrowRight size={16} />
+                  <span>Tailor-Made Proposal</span>
+                  <ArrowRight size={14} />
                 </Link>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
-function ValuesAndCorporateSection() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const selectedValue = VALUES[selectedIndex];
-
-  return (
-    <section className="py-12 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
-      <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-8 items-start">
-
-        {/* LEFT: Selected Value box + Value Cards below */}
-        <div className="lg:col-span-5">
-          {/* Selected Value box - top left */}
-          <div className="border rounded-lg p-5 shadow-sm mb-6" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
-            <span className="text-[10px] font-bold uppercase tracking-wider block mb-2 text-neutral-500">Selected Value</span>
-            <h4 className="text-xl font-extrabold mb-2" style={{ color: COLORS.black }}>{selectedValue.label}</h4>
-            <p className="text-[15px] leading-relaxed" style={{ color: COLORS.black }}>{selectedValue.desc}</p>
-          </div>
-
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
-            WHAT WE STAND FOR
-          </span>
-          <h3 className="text-2xl font-extrabold mb-6 uppercase" style={{ color: COLORS.black }}>Our Values</h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            {VALUES.map(({ icon: Icon, label }, idx) => (
-              <button
-                key={label}
-                type="button"
-                onClick={() => setSelectedIndex(idx)}
-                className="p-5 border rounded-lg text-center flex flex-col items-center justify-center shadow-sm transition-all duration-300 bg-white"
-                style={{ borderColor: selectedIndex === idx ? COLORS.primary : COLORS.border }}
-              >
-                <Icon size={20} className="mb-3" style={{ color: COLORS.primary }} />
-                <span className="text-[11.5px] font-extrabold leading-tight text-neutral-800 whitespace-pre-line">{label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT: Corporate Info only */}
-        <div className="lg:col-span-7">
-          <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
-            OFFICIAL DETAILS
-          </span>
-          <h3 className="text-2xl font-extrabold mb-8 uppercase" style={{ color: COLORS.black }}>Corporate Info</h3>
-
-          <div className="border rounded-lg p-6 shadow-sm" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
-            {CORPORATE_INFO.map(({ label, val }, idx) => (
-              <div
-                key={label}
-                className={`pb-3.5 mb-3.5 ${idx < CORPORATE_INFO.length - 1 ? "border-b" : ""}`}
-                style={{ borderColor: COLORS.border }}
-              >
-                <span className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-neutral-500">{label}</span>
-                <span className="text-[14.5px] font-extrabold" style={{ color: COLORS.black }}>{val}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CtaSection() {
-  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", service: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) { setError("Please fill in your name, email, and message."); return; }
-    setError("");
-    try {
-      const res = await fetch("/group-companies/roys-roys/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.message || "Failed to send.");
-      setSubmitted(true);
-    } catch (err) {
-      setError(err.message || "Error sending message. Please try again.");
-    }
-  };
-
-  return (
-    <section
-      id="contact"
-      className="relative overflow-hidden py-12 px-6"
-      style={{ backgroundColor: COLORS.white, borderTop: `1px solid ${COLORS.border}`, borderBottom: `1px solid ${COLORS.border}` }}
-    >
-      <div className="absolute inset-y-0 right-0 hidden lg:block w-[45%]">
-        <div className="relative h-full">
-          <Image
-            src="/roysandroys contact.png"
-            alt="Roys & Roys contact image"
-            fill
-            className="object-cover object-right"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-l from-white/95 via-white/75 to-transparent" />
-        </div>
-      </div>
-
-      <div className="relative mx-auto max-w-screen-xl">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-start">
-          <div className="max-w-2xl">
-            <span className="text-[13px] font-black uppercase tracking-[0.25em] block mb-3" style={{ color: COLORS.primary }}>
-              CONTACT US
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-5 leading-tight" style={{ color: COLORS.black }}>
-              Let&apos;s Build Stronger Partnerships Together
-            </h2>
-            <p className="text-[17px] sm:text-[18px] lg:text-[19px] leading-relaxed max-w-3xl font-normal" style={{ color: COLORS.black }}>
-              Whether you&apos;re looking for a trusted partner in government contracting, international trade, healthcare solutions, manufacturing, or consultancy, ROYS &amp; ROYS International is ready to support your business with reliable, innovative, and high-quality solutions.
-            </p>
-
-            <div className="grid gap-4 sm:grid-cols-2 mt-10">
-              {[
-                { title: "Trusted Partner", description: "Reliable collaboration you can count on." },
-                { title: "Quality Solutions", description: "High-quality services built for your success." },
-                { title: "Global Reach", description: "International expertise with local understanding." },
-                { title: "Dedicated Support", description: "Our team is here to assist you always." },
-              ].map((item) => (
-                <div key={item.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-                  <h4 className="text-[16px] font-black mb-2" style={{ color: COLORS.primary }}>{item.title}</h4>
-                  <p className="text-[15px] leading-relaxed text-slate-700">{item.description}</p>
+            {/* Right: Featured Preview Card */}
+            <div className="lg:col-span-6">
+              <div className="p-6 sm:p-7 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md space-y-5 shadow-xl">
+                <div>
+                  <h3 className="text-base sm:text-lg font-black text-white mb-2">
+                    {selectedAccordionData.featuredTitle}
+                  </h3>
+                  <p className="text-xs text-slate-200 leading-relaxed">
+                    {selectedAccordionData.featuredDesc}
+                  </p>
                 </div>
-              ))}
+
+                <div className="space-y-2">
+                  {selectedAccordionData.points.map((pt) => (
+                    <div key={pt} className="flex items-center gap-2 text-xs text-slate-200">
+                      <div className="w-4 h-4 rounded bg-[#38bdf8]/20 text-[#38bdf8] flex items-center justify-center shrink-0">
+                        <Check size={11} strokeWidth={3} />
+                      </div>
+                      <span>{pt}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href="/group-companies/roys-roys/contact"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#B49438] hover:bg-[#9a7d2d] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-xs"
+                >
+                  <span>Request a Feature Solution</span>
+                  <ArrowUpRight size={14} />
+                </Link>
+
+                <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden border border-white/20 mt-3">
+                  <Image
+                    src={selectedAccordionData.img}
+                    alt={selectedAccordionData.featuredTitle}
+                    fill
+                    className="object-cover"
+                    sizes="500px"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 11. INDUSTRIES WE SERVE (8 GRID CARDS) ────────────────────────── */}
+      <section className="py-16 px-6 bg-[#f8fafc] border-t border-slate-200">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+            INDUSTRIES WE SERVE
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 mb-10">
+            {INDUSTRIES_8.map((ind) => {
+              const Icon = ind.icon;
+              return (
+                <Link
+                  key={ind.title}
+                  href={"/group-companies/roys-roys/industries/" + ind.slug}
+                  className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group no-underline"
+                >
+                  <div className="w-10 h-10 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center mb-2">
+                    <Icon size={18} />
+                  </div>
+                  <span className="text-[11px] font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors leading-tight">
+                    {ind.title}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+
+          <Link
+            href="/group-companies/roys-roys/industries"
+            className="inline-flex items-center gap-2 px-7 py-3 rounded-md bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+          >
+            <span>Explore All Industries</span>
+            <ArrowRight size={14} />
+          </Link>
+        </div>
+      </section>
+
+      {/* ─── 12. WHY CHOOSE ROYS & ROYS INTERNATIONAL? (8 CARDS) ───────────── */}
+      <section className="py-16 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+            WHY CHOOSE ROYS &amp; ROYS INTERNATIONAL?
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            {WHY_CHOOSE_8.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="p-5 rounded-2xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#2563eb] flex items-center justify-center mb-3">
+                      <Icon size={20} />
+                    </div>
+                    <h3 className="text-sm font-black text-[#0f2b48] mb-1.5">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 13. 3-PANEL CORPORATE BAR (VALUES, INFO, CERTIFICATIONS) ───────── */}
+      <section className="py-10 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
+        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-6 items-center">
+          {/* Panel 1: Our Values */}
+          <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#B49438] block mb-3">
+              OUR VALUES
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {VALUES_5.map((v) => {
+                const Icon = v.icon;
+                return (
+                  <span
+                    key={v.label}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-slate-100 text-slate-700 text-[11px] font-bold"
+                  >
+                    <Icon size={13} className="text-[#2563eb]" />
+                    <span>{v.label}</span>
+                  </span>
+                );
+              })}
             </div>
           </div>
 
-          <div className="relative z-10">
-            <div className="rounded-[32px] border border-slate-200 bg-white p-8 sm:p-10 shadow-2xl">
-              <div className="mb-8">
-                <h3 className="text-2xl sm:text-3xl font-black mb-2" style={{ color: COLORS.black }}>
-                  Send Us a Message
-                </h3>
-                <p className="text-[16px] sm:text-[17px] leading-relaxed text-slate-700">
-                  Share your requirements and our team will get back to you shortly.
+          {/* Panel 2: Corporate Info */}
+          <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#B49438] block mb-2">
+              CORPORATE INFO
+            </span>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-600">
+              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">About Us</Link>
+              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">Overview</Link>
+              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">Leadership</Link>
+              <Link href="/group-companies/roys-roys/contact" className="hover:text-[#2563eb]">Clients</Link>
+              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">Careers</Link>
+              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">Partners</Link>
+              <Link href="/group-companies/roys-roys/about" className="hover:text-[#2563eb]">News &amp; Media</Link>
+            </div>
+          </div>
+
+          {/* Panel 3: Certifications */}
+          <div className="lg:col-span-4 p-5 rounded-xl bg-white border border-slate-200 shadow-xs">
+            <span className="text-[10px] font-black uppercase tracking-widest text-[#B49438] block mb-2">
+              CERTIFICATIONS &amp; MEMBERSHIPS
+            </span>
+            <ul className="text-xs text-slate-600 space-y-1">
+              <li>• ISO 9001:2015 Certified Organization</li>
+              <li>• Registered with Pakistan Engineering Council (PEC)</li>
+              <li>• Member: FPCCI, PHA &amp; Global Trade Associations</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 14. CONTACT / LEAD CAPTURE SECTION ─────────────────────────────── */}
+      <section id="contact" className="py-16 lg:py-20 px-6 bg-white">
+        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-12 items-start">
+          {/* Left: Info */}
+          <div className="lg:col-span-5 space-y-6">
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0f2b48] leading-tight">
+              Let&apos;s Build Stronger Partnerships Together
+            </h2>
+            <p className="text-sm text-slate-600 leading-relaxed font-normal">
+              Whether you&apos;re looking for a complete healthcare solution or a reliable partner for your procurement, our team is ready to collaborate with you.
+            </p>
+
+            <div className="grid grid-cols-3 gap-3 pt-2">
+              <div className="p-3.5 rounded-xl bg-[#f8fafc] border border-slate-200">
+                <p className="text-xs font-black text-[#0f2b48] mb-1">Global Reach</p>
+                <p className="text-[10.5px] text-slate-500 leading-tight">
+                  Serving healthcare facilities worldwide.
                 </p>
               </div>
+              <div className="p-3.5 rounded-xl bg-[#f8fafc] border border-slate-200">
+                <p className="text-xs font-black text-[#0f2b48] mb-1">Quality Solutions</p>
+                <p className="text-[10.5px] text-slate-500 leading-tight">
+                  Built to highest industry standards.
+                </p>
+              </div>
+              <div className="p-3.5 rounded-xl bg-[#f8fafc] border border-slate-200">
+                <p className="text-xs font-black text-[#0f2b48] mb-1">Dedicated Support</p>
+                <p className="text-[10.5px] text-slate-500 leading-tight">
+                  We&apos;re with you, every step of the way.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Form */}
+          <div className="lg:col-span-7">
+            <div className="p-7 sm:p-8 rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-md">
+              <h3 className="text-lg font-black text-[#0f2b48] mb-5">
+                Send Us a Message
+              </h3>
 
               {submitted ? (
-                <div className="text-center py-8">
-                  <div className="w-16 h-16 rounded-full bg-[#E6F4F1] text-[#113658] mx-auto flex items-center justify-center mb-5">
-                    <CheckCircle2 size={32} />
+                <div className="p-6 text-center rounded-xl bg-white border border-slate-200">
+                  <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-3">
+                    <CheckCircle2 size={24} />
                   </div>
-                  <h3 className="text-2xl font-black mb-3" style={{ color: COLORS.black }}>Thank You!</h3>
-                  <p className="text-base leading-relaxed" style={{ color: COLORS.black }}>
-                    Your message has been received. Our team will contact you shortly.
-                  </p>
+                  <p className="text-sm font-black text-[#0f2b48] mb-1">Thank You!</p>
+                  <p className="text-xs text-slate-600">Your message has been received. Our directors will contact you shortly.</p>
                 </div>
               ) : (
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  <div className="grid gap-4 sm:grid-cols-2">
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
                     <input
                       type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Full Name *"
+                      name="fullName"
+                      placeholder="Full Name"
                       required
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                      value={form.fullName}
+                      onChange={handleFormChange}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                      required
+                      value={form.email}
+                      onChange={handleFormChange}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
+                    />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone Number"
+                      value={form.phone}
+                      onChange={handleFormChange}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
                     />
                     <input
                       type="text"
                       name="company"
+                      placeholder="Company / Organization"
                       value={form.company}
-                      onChange={handleChange}
-                      placeholder="Company Name"
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                      onChange={handleFormChange}
+                      className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors"
                     />
                   </div>
-                  <input
-                    type="email"
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="Email Address *"
-                    required
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    placeholder="Phone Number"
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                  />
-                  <select
-                    name="service"
-                    value={form.service}
-                    onChange={handleChange}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
-                  >
-                    <option value="">Select Service</option>
-                    {OFFERINGS_LIST.map((item) => (
-                      <option key={item.slug} value={item.title}>
-                        {item.title}
-                      </option>
-                    ))}
-                  </select>
+
                   <textarea
-                    rows={5}
+                    rows={4}
                     name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Your Message *"
+                    placeholder="Your Message"
                     required
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-[15px] sm:text-[16px] outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
+                    value={form.message}
+                    onChange={handleFormChange}
+                    className="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-[#2563eb] transition-colors resize-none"
                   />
-                  {error && <p className="text-sm text-red-600">{error}</p>}
+
                   <button
                     type="submit"
-                    className="w-full rounded-xl bg-[#113658] px-6 py-4 text-[15px] sm:text-[16px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-[#0d2c4f] shadow-lg cursor-pointer"
+                    className="w-full py-3.5 rounded-lg bg-[#0f2b48] hover:bg-[#2563eb] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors duration-200 shadow-sm cursor-pointer"
                   >
-                    Send Message
+                    <span>Send Message</span>
+                    <Send size={13} />
                   </button>
                 </form>
               )}
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-
-
-// ─── Page Component ───────────────────────────────────────────────────────────
-
-export default function RoysRoysPage() {
-  const [activeTab, setActiveTab]       = useState(0);
-  const [productIndex, setProductIndex] = useState(0);
-
-  // Page-scoped body class for theme isolation
-  useEffect(() => {
-    document.body.classList.add("roys-roys-theme");
-
-    const sections = document.querySelectorAll("section");
-    sections.forEach((sec) => sec.classList.add("section-animate"));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-section-fade");
-          }
-        });
-      },
-      { threshold: 0.08 }
-    );
-
-    sections.forEach((sec) => observer.observe(sec));
-
-    return () => {
-      document.body.classList.remove("roys-roys-theme");
-      observer.disconnect();
-    };
-  }, []);
-
-  const activeCategory = PRODUCTS_TABS[activeTab];
-  const filteredProductsCount = PRODUCTS.filter(p => p.category === activeCategory).length;
-
-  const handleSlideLeft  = () => setProductIndex((prev) => (prev === 0 ? Math.max(0, filteredProductsCount - 1) : prev - 1));
-  const handleSlideRight = () => setProductIndex((prev) => (prev === Math.max(0, filteredProductsCount - 1) ? 0 : prev + 1));
-
-  const handleTabChange = (idx) => {
-    setActiveTab(idx);
-    setProductIndex(0);
-  };
-
-  return (
-    <main className="min-h-screen" style={{ backgroundColor: COLORS.white, color: COLORS.black }}>
-      <style>{`
-        @keyframes sectionFadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(55px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .section-animate {
-          opacity: 0;
-          will-change: transform, opacity;
-        }
-        .animate-section-fade {
-          animation: sectionFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-      `}</style>
-      <RoysNavbar active="Home" />
-      <HeroSection />
-      <TrustedBanner />
-      <AboutSection />
-      <VisionMissionSection />
-      <TurnkeyLifecycleSection />
-      <WhatWeDoSection />
-      <CoreBusinessSection />
-      <ProductsSection
-        activeTab={activeTab}
-        setActiveTab={handleTabChange}
-        productIndex={productIndex}
-        onSlideLeft={handleSlideLeft}
-        onSlideRight={handleSlideRight}
-      />
-      <QuickEstimatorSection />
-      <IndustriesSection />
-      <WhyChooseSection />
-      <ValuesAndCorporateSection />
-      <CtaSection />
+      {/* ─── 15. FOOTER ────────────────────────────────────────────────────── */}
       <RoysFooter />
     </main>
   );
