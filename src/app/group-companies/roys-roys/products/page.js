@@ -176,16 +176,16 @@ function CategoryCard({ cat }) {
         </div>
 
         <h3 style={{ color: COLORS.primary, fontSize: "20px", fontWeight: "900", marginBottom: "10px" }}>{cat.title}</h3>
-        <p style={{ color: COLORS.primary, fontSize: "14px", lineHeight: "1.75", marginBottom: "22px", opacity: 0.85 }}>{cat.desc}</p>
+        <p style={{ color: COLORS.primary, fontSize: "15.5px", lineHeight: "1.8", marginBottom: "22px", opacity: 0.9 }}>{cat.desc}</p>
 
-        <p style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "12px" }}>
+        <p style={{ color: COLORS.gold, fontSize: "11.5px", fontWeight: "800", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "12px" }}>
           INCLUDED CATEGORIES
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", marginBottom: "28px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "28px" }}>
           {cat.items.map((item) => (
             <div key={item} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: COLORS.primary, flexShrink: 0 }} />
-              <span style={{ color: COLORS.primary, fontSize: "13px", fontWeight: "600" }}>{item}</span>
+              <span style={{ color: COLORS.primary, fontSize: "14.5px", fontWeight: "600" }}>{item}</span>
             </div>
           ))}
         </div>
@@ -199,7 +199,7 @@ function CategoryCard({ cat }) {
             alignItems: "center",
             gap: "8px",
             color: COLORS.primary,
-            fontSize: "12px",
+            fontSize: "13px",
             fontWeight: "800",
             textTransform: "uppercase",
             letterSpacing: "0.08em",
@@ -254,7 +254,7 @@ export default function ProductsPage() {
               <p style={{ color: COLORS.white, fontSize: "clamp(1.1rem, 2vw, 1.3rem)", fontWeight: "700", marginBottom: "18px" }}>
                 Professional Medical, Laboratory, Surgical &amp; Hospital Products
               </p>
-              <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "15.5px", lineHeight: "1.85", maxWidth: "640px", marginBottom: "36px" }}>
+              <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "clamp(1.05rem, 1.5vw, 1.25rem)", lineHeight: "1.85", maxWidth: "640px", marginBottom: "36px" }}>
                 Explore our portfolio of healthcare products designed to support hospitals, laboratories, clinics, government institutions, and professional healthcare organizations.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>
@@ -277,7 +277,7 @@ export default function ProductsPage() {
               ].map((s) => (
                 <div key={s.lbl} style={{ backgroundColor: COLORS.white, border: `1.5px solid ${COLORS.border}`, borderRadius: "6px", padding: "20px 18px", textAlign: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.18)" }}>
                   <div style={{ color: COLORS.primary, fontSize: "clamp(1.5rem, 2vw, 2rem)", fontWeight: "900", lineHeight: "1" }}>{s.val}</div>
-                  <div style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: "5px" }}>{s.lbl}</div>
+                  <div style={{ color: COLORS.gold, fontSize: "11.5px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: "5px" }}>{s.lbl}</div>
                 </div>
               ))}
             </div>
@@ -310,7 +310,7 @@ export default function ProductsPage() {
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}
               >
                 <Icon size={18} color={COLORS.primary} />
-                <span style={{ color: COLORS.primary, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", textAlign: "center" }}>
+                <span style={{ color: COLORS.primary, fontSize: "12px", fontWeight: "800", textTransform: "uppercase", textAlign: "center" }}>
                   {cat.title}
                 </span>
               </a>
@@ -364,8 +364,8 @@ export default function ProductsPage() {
                   <div style={{ width: "48px", height: "48px", borderRadius: "50%", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "18px" }}>
                     <Icon size={22} color={COLORS.primary} />
                   </div>
-                  <h3 style={{ color: COLORS.primary, fontSize: "17px", fontWeight: "900", marginBottom: "10px" }}>{item.title}</h3>
-                  <p style={{ color: COLORS.primary, fontSize: "13.5px", lineHeight: "1.75", opacity: 0.85 }}>{item.desc}</p>
+                  <h3 style={{ color: COLORS.primary, fontSize: "18px", fontWeight: "900", marginBottom: "10px" }}>{item.title}</h3>
+                  <p style={{ color: COLORS.primary, fontSize: "14.5px", lineHeight: "1.8", opacity: 0.9 }}>{item.desc}</p>
                 </div>
               );
             })}
@@ -380,7 +380,7 @@ export default function ProductsPage() {
             <h2 style={{ color: COLORS.primary, fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: "900", marginBottom: "10px" }}>
               Looking for a Product We Haven't Listed?
             </h2>
-            <p style={{ color: COLORS.primary, fontSize: "15px", maxWidth: "620px", opacity: 0.85 }}>
+            <p style={{ color: COLORS.primary, fontSize: "16px", maxWidth: "620px", opacity: 0.9 }}>
               Our team can source a wide range of medical, laboratory, surgical, and hospital products. Contact us with your requirements.
             </p>
           </div>

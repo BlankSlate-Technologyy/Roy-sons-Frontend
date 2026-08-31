@@ -93,7 +93,7 @@ export default function ServiceDetailPage({ params }) {
               {service.title}
             </h1>
 
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-8">
+            <p className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed mb-8">
               {service.tagline}
             </p>
 
@@ -173,7 +173,7 @@ export default function ServiceDetailPage({ params }) {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#113658] tracking-tight leading-snug mb-6">
               Delivering Excellence in {service.title}
             </h2>
-            <div className="space-y-4 text-[#475569] leading-relaxed text-sm sm:text-base">
+            <div className="space-y-4 text-[#334155] leading-relaxed text-base sm:text-[17px]">
               {service.overview.map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}
@@ -217,7 +217,7 @@ export default function ServiceDetailPage({ params }) {
                   <MainIcon size={24} className="text-[#B49438]" />
                   <h3 className="text-lg font-black">{service.title}</h3>
                 </div>
-                <p className="text-xs text-white/80 leading-relaxed">
+                <p className="text-sm text-white/90 leading-relaxed">
                   Backed by Roys & Roys International’s 15+ years of engineering excellence and global supply chain partnerships.
                 </p>
               </div>
@@ -250,7 +250,7 @@ export default function ServiceDetailPage({ params }) {
                     <h3 className="text-lg font-black text-[#113658] mb-2.5 group-hover:text-[#009088] transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#64748b] leading-relaxed">
+                    <p className="text-sm sm:text-[15px] text-[#475569] leading-relaxed">
                       {pillar.desc}
                     </p>
                   </div>
@@ -287,7 +287,7 @@ export default function ServiceDetailPage({ params }) {
                 <div className="w-8 h-8 rounded-full bg-[#B49438]/20 flex items-center justify-center shrink-0 text-[#B49438]">
                   <CheckCircle2 size={16} />
                 </div>
-                <span className="text-sm font-semibold text-white/90 leading-snug">
+                <span className="text-[14.5px] font-semibold text-white/95 leading-snug">
                   {tech}
                 </span>
               </div>
@@ -317,7 +317,7 @@ export default function ServiceDetailPage({ params }) {
                 <h3 className="text-base font-black text-[#113658] mb-2">
                   {w.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#64748b] leading-relaxed">
+                <p className="text-sm sm:text-[14.5px] text-[#64748b] leading-relaxed">
                   {w.desc}
                 </p>
                 <div className="w-8 h-0.5 bg-[#009088] mt-4 rounded-full" />
@@ -345,7 +345,7 @@ export default function ServiceDetailPage({ params }) {
                   <div className="w-5 h-5 rounded-full bg-[#009088]/10 text-[#009088] flex items-center justify-center shrink-0 mt-0.5">
                     <CheckCircle2 size={13} />
                   </div>
-                  <p className="text-xs sm:text-sm text-[#475569] font-medium leading-relaxed">
+                  <p className="text-sm sm:text-[15px] text-[#475569] font-medium leading-relaxed">
                     {benefit}
                   </p>
                 </div>
@@ -367,7 +367,7 @@ export default function ServiceDetailPage({ params }) {
                 {service.industries.map((ind, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 text-xs sm:text-sm font-semibold text-white/90"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/10 text-sm font-semibold text-white/95"
                   >
                     <Building2 size={15} className="text-[#B49438] shrink-0" />
                     <span>{ind}</span>
@@ -420,7 +420,7 @@ export default function ServiceDetailPage({ params }) {
                     />
                   </button>
                   {isOpen && (
-                    <div className="p-4 sm:p-5 pt-0 bg-[#f8fafc] text-xs sm:text-sm text-[#64748b] leading-relaxed border-t border-[#f1f5f9]">
+                    <div className="p-4 sm:p-5 pt-0 bg-[#f8fafc] text-sm sm:text-[15px] text-[#475569] leading-relaxed border-t border-[#f1f5f9]">
                       {faq.a}
                     </div>
                   )}

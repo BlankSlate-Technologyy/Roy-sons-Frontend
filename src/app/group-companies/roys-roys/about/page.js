@@ -131,7 +131,7 @@ export default function AboutPage() {
               <h1 style={{ color: COLORS.white, fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: "900", lineHeight: "1.15", marginBottom: "20px", letterSpacing: "-0.01em" }}>
                 Building Trusted Connections Between Global Healthcare Technology and Local Healthcare Needs.
               </h1>
-              <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "16px", lineHeight: "1.85", marginBottom: "36px" }}>
+              <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "clamp(1.05rem, 1.5vw, 1.25rem)", lineHeight: "1.85", marginBottom: "36px" }}>
                 Roys &amp; Roys International is a healthcare solutions and international trading company providing medical, laboratory, surgical, and hospital engineering solutions to healthcare institutions, government organizations, and professional clients.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>
@@ -170,7 +170,7 @@ export default function AboutPage() {
                   }}
                 >
                   <div style={{ color: COLORS.primary, fontSize: "clamp(1.8rem, 2.5vw, 2.4rem)", fontWeight: "900", lineHeight: "1" }}>{s.value}</div>
-                  <div style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: "8px" }}>{s.label}</div>
+                  <div style={{ color: COLORS.gold, fontSize: "12px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: "8px" }}>{s.label}</div>
                 </div>
               ))}
             </div>
@@ -188,10 +188,10 @@ export default function AboutPage() {
               Your Trusted Healthcare Solutions Partner
             </h2>
             <div style={{ width: "48px", height: "4px", backgroundColor: COLORS.primary, borderRadius: "2px", marginBottom: "28px" }} />
-            <p style={{ color: COLORS.primary, fontSize: "15px", lineHeight: "1.9", marginBottom: "18px", opacity: 0.9 }}>
+            <p style={{ color: COLORS.primary, fontSize: "16.5px", lineHeight: "1.9", marginBottom: "18px", opacity: 0.95 }}>
               Our company focuses on identifying, sourcing, supplying, and supporting healthcare products and technologies that meet the requirements of modern medical facilities.
             </p>
-            <p style={{ color: COLORS.primary, fontSize: "15px", lineHeight: "1.9", marginBottom: "32px", opacity: 0.9 }}>
+            <p style={{ color: COLORS.primary, fontSize: "16.5px", lineHeight: "1.9", marginBottom: "32px", opacity: 0.95 }}>
               With a solutions-oriented approach, we aim to simplify healthcare procurement while maintaining high standards of quality, reliability, and professional service.
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
@@ -201,9 +201,9 @@ export default function AboutPage() {
                 "Hospital engineering solutions",
                 "Government procurement support",
               ].map((point) => (
-                <div key={point} style={{ display: "flex", alignItems: "flex-start", gap: "10px", padding: "10px 14px", backgroundColor: COLORS.light, borderRadius: "4px", border: `1px solid ${COLORS.border}` }}>
-                  <CheckCircle2 size={16} color={COLORS.primary} style={{ marginTop: "2px", flexShrink: 0 }} />
-                  <span style={{ fontSize: "13px", color: COLORS.primary, fontWeight: "700" }}>{point}</span>
+                <div key={point} style={{ display: "flex", alignItems: "flex-start", gap: "10px", padding: "12px 16px", backgroundColor: COLORS.light, borderRadius: "4px", border: `1px solid ${COLORS.border}` }}>
+                  <CheckCircle2 size={18} color={COLORS.primary} style={{ marginTop: "2px", flexShrink: 0 }} />
+                  <span style={{ fontSize: "14.5px", color: COLORS.primary, fontWeight: "700" }}>{point}</span>
                 </div>
               ))}
             </div>
@@ -216,7 +216,7 @@ export default function AboutPage() {
                 <Building2 size={32} color={COLORS.primary} />
               </div>
               <h3 style={{ color: COLORS.primary, fontSize: "22px", fontWeight: "900", marginBottom: "12px" }}>Corporate Overview</h3>
-              <p style={{ color: COLORS.primary, fontSize: "14px", lineHeight: "1.8", marginBottom: "28px", opacity: 0.9 }}>
+              <p style={{ color: COLORS.primary, fontSize: "15.5px", lineHeight: "1.85", marginBottom: "28px", opacity: 0.95 }}>
                 ROYS &amp; ROYS International is an international business enterprise specializing in healthcare technologies, government contracting, and turnkey hospital development.
               </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
@@ -228,7 +228,7 @@ export default function AboutPage() {
                 ].map((s) => (
                   <div key={s.lbl} style={{ backgroundColor: COLORS.white, borderRadius: "4px", padding: "14px 16px", textAlign: "center", border: `1px solid ${COLORS.border}` }}>
                     <div style={{ color: COLORS.primary, fontSize: "20px", fontWeight: "900" }}>{s.val}</div>
-                    <div style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "700", textTransform: "uppercase", marginTop: "4px" }}>{s.lbl}</div>
+                    <div style={{ color: COLORS.gold, fontSize: "11.5px", fontWeight: "800", textTransform: "uppercase", marginTop: "4px" }}>{s.lbl}</div>
                   </div>
                 ))}
               </div>
@@ -250,7 +250,7 @@ export default function AboutPage() {
               </div>
               <p style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "10px" }}>OUR MISSION</p>
               <h3 style={{ color: COLORS.primary, fontSize: "22px", fontWeight: "900", marginBottom: "14px", lineHeight: "1.3" }}>Improving Access to Reliable Healthcare Solutions</h3>
-              <p style={{ color: COLORS.primary, fontSize: "15px", lineHeight: "1.85", opacity: 0.88 }}>
+              <p style={{ color: COLORS.primary, fontSize: "16px", lineHeight: "1.9", opacity: 0.9 }}>
                 Our mission is to provide healthcare organizations with dependable products, professional services, and international solutions that contribute to better healthcare infrastructure and operational efficiency.
               </p>
             </div>
@@ -262,7 +262,7 @@ export default function AboutPage() {
               </div>
               <p style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "10px" }}>OUR VISION</p>
               <h3 style={{ color: COLORS.primary, fontSize: "22px", fontWeight: "900", marginBottom: "14px", lineHeight: "1.3" }}>A Stronger Healthcare Future</h3>
-              <p style={{ color: COLORS.primary, fontSize: "15px", lineHeight: "1.85", opacity: 0.88 }}>
+              <p style={{ color: COLORS.primary, fontSize: "16px", lineHeight: "1.9", opacity: 0.9 }}>
                 To become a trusted healthcare solutions and international trading partner recognized for quality, reliability, innovation, and long-term relationships with clients across the globe.
               </p>
             </div>
@@ -302,8 +302,8 @@ export default function AboutPage() {
                   <div style={{ width: "48px", height: "48px", borderRadius: "50%", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "18px" }}>
                     <Icon size={22} color={COLORS.primary} />
                   </div>
-                  <h3 style={{ color: COLORS.primary, fontSize: "17px", fontWeight: "900", marginBottom: "10px" }}>{val.title}</h3>
-                  <p style={{ color: COLORS.primary, fontSize: "13.5px", lineHeight: "1.75", opacity: 0.85 }}>{val.desc}</p>
+                  <h3 style={{ color: COLORS.primary, fontSize: "18px", fontWeight: "900", marginBottom: "10px" }}>{val.title}</h3>
+                  <p style={{ color: COLORS.primary, fontSize: "14.5px", lineHeight: "1.8", opacity: 0.9 }}>{val.desc}</p>
                 </div>
               );
             })}
@@ -327,8 +327,8 @@ export default function AboutPage() {
                     </div>
                     <span style={{ color: COLORS.gold, fontSize: "28px", fontWeight: "900" }}>{step.step}</span>
                   </div>
-                  <h3 style={{ color: COLORS.primary, fontSize: "18px", fontWeight: "900", marginBottom: "10px" }}>{step.title}</h3>
-                  <p style={{ color: COLORS.primary, fontSize: "14px", lineHeight: "1.75", opacity: 0.85 }}>{step.desc}</p>
+                  <h3 style={{ color: COLORS.primary, fontSize: "18.5px", fontWeight: "900", marginBottom: "10px" }}>{step.title}</h3>
+                  <p style={{ color: COLORS.primary, fontSize: "15px", lineHeight: "1.8", opacity: 0.9 }}>{step.desc}</p>
                 </div>
               );
             })}
@@ -343,7 +343,7 @@ export default function AboutPage() {
             <h2 style={{ color: COLORS.primary, fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: "900", marginBottom: "10px" }}>
               Ready to Partner With Roys &amp; Roys International?
             </h2>
-            <p style={{ color: COLORS.primary, fontSize: "15px", maxWidth: "620px", opacity: 0.85 }}>
+            <p style={{ color: COLORS.primary, fontSize: "16px", maxWidth: "620px", opacity: 0.9 }}>
               Get in touch with our team for product inquiries, procurement support, and tailored healthcare solutions.
             </p>
           </div>

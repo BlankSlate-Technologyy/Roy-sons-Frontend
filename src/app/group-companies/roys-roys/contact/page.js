@@ -82,7 +82,7 @@ function ContactForm() {
   const inputStyle = (field) => ({
     width: "100%",
     padding: "13px 16px",
-    fontSize: "14px",
+    fontSize: "15px",
     border: `1.5px solid ${focused === field ? COLORS.primary : COLORS.border}`,
     borderRadius: "3px",
     outline: "none",
@@ -97,7 +97,7 @@ function ContactForm() {
   const labelStyle = {
     display: "block",
     color: COLORS.primary,
-    fontSize: "12px",
+    fontSize: "13px",
     fontWeight: "800",
     textTransform: "uppercase",
     letterSpacing: "0.06em",
@@ -239,7 +239,7 @@ export default function ContactPage() {
               <h1 style={{ color: COLORS.white, fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: "900", lineHeight: "1.15", marginBottom: "18px", letterSpacing: "-0.01em" }}>
                 Let's Build Better Healthcare Solutions
               </h1>
-              <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "16px", lineHeight: "1.85", marginBottom: "32px" }}>
+              <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "clamp(1.05rem, 1.5vw, 1.25rem)", lineHeight: "1.85", marginBottom: "32px" }}>
                 Whether you need medical equipment, laboratory products, surgical supplies, hospital engineering solutions, or support for a healthcare project — our team is ready to discuss your requirements.
               </p>
 
@@ -255,7 +255,7 @@ export default function ContactPage() {
                       <div style={{ width: "38px", height: "38px", borderRadius: "50%", backgroundColor: "rgba(255,255,255,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         <Icon size={18} color={COLORS.gold} />
                       </div>
-                      <span style={{ color: COLORS.white, fontSize: "14.5px", fontWeight: "700" }}>{item.text}</span>
+                      <span style={{ color: COLORS.white, fontSize: "15px", fontWeight: "700" }}>{item.text}</span>
                     </div>
                   );
                 })}
@@ -272,7 +272,7 @@ export default function ContactPage() {
               ].map((s) => (
                 <div key={s.lbl} style={{ backgroundColor: COLORS.white, border: `1.5px solid ${COLORS.border}`, borderRadius: "6px", padding: "26px 20px", textAlign: "center", boxShadow: "0 10px 30px rgba(0,0,0,0.18)" }}>
                   <div style={{ color: COLORS.primary, fontSize: "clamp(1.5rem, 2vw, 2.2rem)", fontWeight: "900", lineHeight: "1" }}>{s.val}</div>
-                  <div style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: "6px" }}>{s.lbl}</div>
+                  <div style={{ color: COLORS.gold, fontSize: "11.5px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: "6px" }}>{s.lbl}</div>
                 </div>
               ))}
             </div>
@@ -306,9 +306,9 @@ export default function ContactPage() {
                       <Icon size={20} color={COLORS.primary} />
                     </div>
                     <div>
-                      <p style={{ color: COLORS.gold, fontSize: "10px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px" }}>{info.label}</p>
-                      <p style={{ color: COLORS.primary, fontSize: "15px", fontWeight: "800", marginBottom: "3px" }}>{info.value}</p>
-                      <p style={{ color: COLORS.muted, fontSize: "12px" }}>{info.sub}</p>
+                      <p style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "4px" }}>{info.label}</p>
+                      <p style={{ color: COLORS.primary, fontSize: "15.5px", fontWeight: "800", marginBottom: "3px" }}>{info.value}</p>
+                      <p style={{ color: COLORS.muted, fontSize: "13.5px" }}>{info.sub}</p>
                     </div>
                   </div>
                 );
@@ -317,7 +317,7 @@ export default function ContactPage() {
 
             {/* What to expect */}
             <div style={{ backgroundColor: COLORS.white, border: `1.5px solid ${COLORS.border}`, borderRadius: "6px", padding: "28px 26px" }}>
-              <h3 style={{ color: COLORS.primary, fontSize: "16px", fontWeight: "900", marginBottom: "14px" }}>What to Expect</h3>
+              <h3 style={{ color: COLORS.primary, fontSize: "17px", fontWeight: "900", marginBottom: "14px" }}>What to Expect</h3>
               {[
                 "We acknowledge your inquiry promptly",
                 "Our team reviews your requirements",
@@ -325,8 +325,8 @@ export default function ContactPage() {
                 "We support your full procurement process",
               ].map((point) => (
                 <div key={point} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "10px" }}>
-                  <CheckCircle2 size={16} color={COLORS.primary} style={{ flexShrink: 0, marginTop: "2px" }} />
-                  <span style={{ color: COLORS.primary, fontSize: "13.5px", fontWeight: "600" }}>{point}</span>
+                  <CheckCircle2 size={18} color={COLORS.primary} style={{ flexShrink: 0, marginTop: "2px" }} />
+                  <span style={{ color: COLORS.primary, fontSize: "14.5px", fontWeight: "600" }}>{point}</span>
                 </div>
               ))}
             </div>
@@ -383,8 +383,8 @@ export default function ContactPage() {
                 }}
               >
                 <div style={{ fontSize: "28px", marginBottom: "10px" }}>{item.emoji}</div>
-                <h3 style={{ color: COLORS.primary, fontSize: "15px", fontWeight: "900", marginBottom: "6px" }}>{item.title}</h3>
-                <p style={{ color: COLORS.primary, fontSize: "12.5px", lineHeight: "1.6", opacity: 0.8 }}>{item.desc}</p>
+                <h3 style={{ color: COLORS.primary, fontSize: "16px", fontWeight: "900", marginBottom: "6px" }}>{item.title}</h3>
+                <p style={{ color: COLORS.primary, fontSize: "13.5px", lineHeight: "1.7", opacity: 0.85 }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -397,7 +397,7 @@ export default function ContactPage() {
           <h2 style={{ color: COLORS.primary, fontSize: "clamp(1.4rem, 2.5vw, 1.8rem)", fontWeight: "900", marginBottom: "10px" }}>
             Prefer to Browse First?
           </h2>
-          <p style={{ color: COLORS.primary, fontSize: "15px", marginBottom: "28px", opacity: 0.85 }}>
+          <p style={{ color: COLORS.primary, fontSize: "16px", marginBottom: "28px", opacity: 0.9 }}>
             Explore our solutions, products, and industry capabilities before reaching out.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center" }}>

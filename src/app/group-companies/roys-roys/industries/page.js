@@ -72,7 +72,7 @@ function IndustryCard({ industry, index }) {
           <h3 style={{ color: COLORS.primary, fontSize: "clamp(1.3rem, 2vw, 1.65rem)", fontWeight: "900", lineHeight: "1.25", marginBottom: "14px" }}>
             {industry.title}
           </h3>
-          <p style={{ color: COLORS.primary, fontSize: "14px", lineHeight: "1.75", opacity: 0.85, marginBottom: "20px" }}>
+          <p style={{ color: COLORS.primary, fontSize: "16px", lineHeight: "1.8", opacity: 0.9, marginBottom: "20px" }}>
             {industry.tagline}
           </p>
         </div>
@@ -86,7 +86,7 @@ function IndustryCard({ industry, index }) {
               gap: "8px",
               backgroundColor: COLORS.primary,
               color: COLORS.white,
-              fontSize: "12px",
+              fontSize: "13px",
               fontWeight: "800",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
@@ -105,7 +105,7 @@ function IndustryCard({ industry, index }) {
 
       {/* Right panel: Core Capabilities & Tech */}
       <div style={{ backgroundColor: COLORS.light, padding: "44px 36px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <p style={{ color: COLORS.primary, fontSize: "11px", fontWeight: "800", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "18px" }}>
+        <p style={{ color: COLORS.primary, fontSize: "11.5px", fontWeight: "800", letterSpacing: "0.25em", textTransform: "uppercase", marginBottom: "18px" }}>
           FEATURED CAPABILITIES &amp; SYSTEMS
         </p>
 
@@ -114,8 +114,8 @@ function IndustryCard({ industry, index }) {
             <div key={pillar.title} style={{ display: "flex", alignItems: "flex-start", gap: "10px", padding: "10px 0", borderBottom: `1px solid ${COLORS.border}` }}>
               <CheckCircle2 size={16} color={COLORS.teal} style={{ flexShrink: 0, marginTop: "2px" }} />
               <div>
-                <span style={{ color: COLORS.primary, fontSize: "13.5px", fontWeight: "800", display: "block" }}>{pillar.title}</span>
-                <span style={{ color: COLORS.muted, fontSize: "12px", lineHeight: "1.5" }}>{pillar.desc}</span>
+                <span style={{ color: COLORS.primary, fontSize: "14.5px", fontWeight: "800", display: "block" }}>{pillar.title}</span>
+                <span style={{ color: COLORS.muted, fontSize: "13.5px", lineHeight: "1.6" }}>{pillar.desc}</span>
               </div>
             </div>
           ))}
@@ -123,7 +123,7 @@ function IndustryCard({ industry, index }) {
 
         <Link
           href={`/group-companies/roys-roys/industries/${industry.slug}`}
-          style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: COLORS.primary, fontSize: "12px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", transition: "color 0.2s" }}
+          style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: COLORS.primary, fontSize: "13px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", transition: "color 0.2s" }}
           onMouseEnter={e => (e.currentTarget.style.color = COLORS.teal)}
           onMouseLeave={e => (e.currentTarget.style.color = COLORS.primary)}
         >
@@ -171,7 +171,7 @@ export default function IndustriesPage() {
               <p style={{ color: COLORS.white, fontSize: "clamp(1.1rem, 2vw, 1.3rem)", fontWeight: "700", marginBottom: "18px" }}>
                 Healthcare Solutions Across 9 Critical Medical &amp; Institutional Sectors
               </p>
-              <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "15.5px", lineHeight: "1.85", maxWidth: "640px", marginBottom: "36px" }}>
+              <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "clamp(1.05rem, 1.5vw, 1.25rem)", lineHeight: "1.85", maxWidth: "640px", marginBottom: "36px" }}>
                 Roys &amp; Roys International delivers tailored medical technologies, sterile cleanrooms, laboratory equipment, and engineering infrastructure to hospitals, defense forces, universities, pharma plants, and international relief bodies.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>

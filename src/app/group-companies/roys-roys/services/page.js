@@ -47,7 +47,7 @@ export default function ServicesHubPage() {
             Core Business Areas &amp; Specialized Services
           </h1>
 
-          <p className="text-white/80 text-base sm:text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+          <p className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed max-w-3xl mx-auto mb-8">
             Explore our end-to-end healthcare technologies, hospital engineering, sterile cleanroom systems, laboratory diagnostics, pharmaceutical consultancy, global procurement, and biomedical maintenance solutions.
           </p>
 
@@ -99,14 +99,14 @@ export default function ServicesHubPage() {
                       </h3>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-[#64748b] leading-relaxed mb-6">
+                    <p className="text-sm sm:text-[15px] text-[#475569] leading-relaxed mb-6">
                       {service.tagline}
                     </p>
 
                     <div className="space-y-2.5 pt-4 border-t border-[#f1f5f9]">
                       {service.keyPillars.slice(0, 3).map((pillar, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs font-semibold text-[#334155]">
-                          <CheckCircle2 size={13} className="text-[#009088] shrink-0" />
+                        <div key={i} className="flex items-center gap-2 text-[13.5px] font-semibold text-[#334155]">
+                          <CheckCircle2 size={15} className="text-[#009088] shrink-0" />
                           <span className="truncate">{pillar.title}</span>
                         </div>
                       ))}
@@ -138,7 +138,7 @@ export default function ServicesHubPage() {
           <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
             Trusted by Health Ministries, Military, &amp; Global Healthcare Leaders
           </h2>
-          <p className="text-white/70 text-sm sm:text-base max-w-2xl mx-auto mb-10">
+          <p className="text-white/85 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             All our services and installations comply with international quality benchmarks including WHO-GMP, ISO 13485, CE, FDA, and HTM 02-01 standards.
           </p>
 

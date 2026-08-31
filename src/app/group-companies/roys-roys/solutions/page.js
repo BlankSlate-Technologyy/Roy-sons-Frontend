@@ -153,27 +153,27 @@ function SolutionCard({ solution, index }) {
         <h3 style={{ color: COLORS.primary, fontSize: "clamp(1.25rem, 2vw, 1.6rem)", fontWeight: "900", lineHeight: "1.3", marginBottom: "16px" }}>
           {solution.title}
         </h3>
-        <p style={{ color: COLORS.primary, fontSize: "14.5px", lineHeight: "1.85", opacity: 0.88 }}>
+        <p style={{ color: COLORS.primary, fontSize: "16px", lineHeight: "1.85", opacity: 0.95 }}>
           {solution.desc}
         </p>
       </div>
 
       {/* Right panel: Solution Areas */}
       <div style={{ backgroundColor: COLORS.light, padding: "48px 44px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-        <p style={{ color: COLORS.primary, fontSize: "11px", fontWeight: "800", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "18px" }}>
+        <p style={{ color: COLORS.primary, fontSize: "11.5px", fontWeight: "800", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "18px" }}>
           SOLUTION AREAS
         </p>
         <div style={{ marginBottom: "28px" }}>
           {solution.areas.map((area) => (
-            <div key={area} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "11px 0", borderBottom: `1px solid ${COLORS.border}` }}>
-              <CheckCircle2 size={15} color={COLORS.primary} style={{ flexShrink: 0 }} />
-              <span style={{ color: COLORS.primary, fontSize: "14px", fontWeight: "700" }}>{area}</span>
+            <div key={area} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "12px 0", borderBottom: `1px solid ${COLORS.border}` }}>
+              <CheckCircle2 size={16} color={COLORS.primary} style={{ flexShrink: 0 }} />
+              <span style={{ color: COLORS.primary, fontSize: "15px", fontWeight: "700" }}>{area}</span>
             </div>
           ))}
         </div>
         <Link
           href="/group-companies/roys-roys/contact"
-          style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: COLORS.primary, fontSize: "12px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", transition: "color 0.2s" }}
+          style={{ display: "inline-flex", alignItems: "center", gap: "8px", color: COLORS.primary, fontSize: "13px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", transition: "color 0.2s" }}
           onMouseEnter={e => (e.currentTarget.style.color = COLORS.teal)}
           onMouseLeave={e => (e.currentTarget.style.color = COLORS.primary)}
         >
@@ -217,7 +217,7 @@ export default function SolutionsPage() {
           <h1 style={{ color: COLORS.white, fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: "900", lineHeight: "1.15", maxWidth: "820px", marginBottom: "20px", letterSpacing: "-0.01em" }}>
             Healthcare Solutions Designed Around Your Needs
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "16px", lineHeight: "1.85", maxWidth: "680px", marginBottom: "36px" }}>
+          <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "clamp(1.05rem, 1.5vw, 1.25rem)", lineHeight: "1.85", maxWidth: "680px", marginBottom: "36px" }}>
             From medical equipment and laboratory technologies to surgical products and hospital engineering, we provide solutions that support the complete healthcare environment.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "14px" }}>
@@ -256,7 +256,7 @@ export default function SolutionsPage() {
                 onMouseLeave={e => (e.currentTarget.style.backgroundColor = "transparent")}
               >
                 <Icon size={20} color={COLORS.primary} />
-                <span style={{ color: COLORS.primary, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", textAlign: "center" }}>
+                <span style={{ color: COLORS.primary, fontSize: "12px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.06em", textAlign: "center" }}>
                   {s.eyebrow.replace(/ SOLUTIONS| ENGINEERING/, "")}
                 </span>
               </a>
@@ -294,8 +294,8 @@ export default function SolutionsPage() {
                     </div>
                     <span style={{ color: COLORS.gold, fontSize: "28px", fontWeight: "900" }}>{step.num}</span>
                   </div>
-                  <h3 style={{ color: COLORS.primary, fontSize: "18px", fontWeight: "900", marginBottom: "10px" }}>{step.title}</h3>
-                  <p style={{ color: COLORS.primary, fontSize: "14px", lineHeight: "1.75", opacity: 0.85 }}>{step.desc}</p>
+                  <h3 style={{ color: COLORS.primary, fontSize: "18.5px", fontWeight: "900", marginBottom: "10px" }}>{step.title}</h3>
+                  <p style={{ color: COLORS.primary, fontSize: "15px", lineHeight: "1.8", opacity: 0.9 }}>{step.desc}</p>
                 </div>
               );
             })}
@@ -335,8 +335,8 @@ export default function SolutionsPage() {
                   <div style={{ width: "48px", height: "48px", borderRadius: "50%", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "18px" }}>
                     <Icon size={22} color={COLORS.primary} />
                   </div>
-                  <h3 style={{ color: COLORS.primary, fontSize: "17px", fontWeight: "900", marginBottom: "10px" }}>{item.title}</h3>
-                  <p style={{ color: COLORS.primary, fontSize: "13.5px", lineHeight: "1.75", opacity: 0.85 }}>{item.desc}</p>
+                  <h3 style={{ color: COLORS.primary, fontSize: "18px", fontWeight: "900", marginBottom: "10px" }}>{item.title}</h3>
+                  <p style={{ color: COLORS.primary, fontSize: "14.5px", lineHeight: "1.8", opacity: 0.9 }}>{item.desc}</p>
                 </div>
               );
             })}
@@ -353,7 +353,7 @@ export default function SolutionsPage() {
           <h2 style={{ color: COLORS.primary, fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: "900", lineHeight: "1.2", marginBottom: "14px" }}>
             Discuss Your Healthcare Requirements
           </h2>
-          <p style={{ color: COLORS.primary, fontSize: "15px", lineHeight: "1.8", maxWidth: "600px", margin: "0 auto 32px", opacity: 0.85 }}>
+          <p style={{ color: COLORS.primary, fontSize: "16px", lineHeight: "1.85", maxWidth: "600px", margin: "0 auto 32px", opacity: 0.9 }}>
             Every healthcare facility has unique needs. Contact our team to discuss your project scope, product requirements, and procurement goals.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "14px", justifyContent: "center" }}>

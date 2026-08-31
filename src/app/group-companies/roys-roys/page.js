@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { RoysNavbar, RoysFooter } from "./_shared";
+import { OFFERINGS_LIST } from "./offerings-data";
 
 // ─── Design Tokens ──────────────────────────────────────────────────────────
 
@@ -373,7 +374,7 @@ function HeroSection() {
           <h1 className="text-2xl lg:text-4xl font-black leading-tight mb-6" style={{ color: COLORS.white }}>
             Delivering Excellence Through Global Trade, Innovation & Strategic Partnerships
           </h1>
-          <p className="text-[16px] leading-relaxed mb-10 max-w-2xl" style={{ color: "rgba(255,255,255,0.85)" }}>
+          <p className="text-base sm:text-lg lg:text-xl leading-relaxed mb-10 max-w-2xl text-white/90">
             ROYS & ROYS International is a diversified international business company specializing in government contracting, import & export, consultancy, manufacturing, medical devices, veterinary healthcare, vaccines, surgical disposables, and healthcare infrastructure. We deliver reliable, innovative, and sustainable solutions to public and private sector organizations worldwide.
           </p>
           <div className="flex flex-wrap gap-4">
@@ -471,19 +472,19 @@ function AboutSection() {
           <h2 className="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight" style={{ color: COLORS.black }}>
             Delivering Excellence Through Global Trade, Innovation & Strategic Partnerships
           </h2>
-          <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
+          <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
             ROYS & ROYS International is a diversified international business company committed to delivering world-class solutions across government contracting, international trade, healthcare, manufacturing, consultancy, and engineering. As the flagship company of ROYS Group of Companies, we serve public and private sector organizations with a strong focus on quality, innovation, reliability, and sustainable growth.
           </p>
-          <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
+          <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
             With extensive experience in government procurement, import and export operations, strategic consultancy, manufacturing, medical device supplies, veterinary healthcare, vaccines, surgical disposables, laboratory solutions, and hospital infrastructure, we provide comprehensive solutions tailored to the evolving needs of our clients.
           </p>
-          <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
+          <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
             Our global sourcing network and strategic partnerships enable us to deliver premium-quality products and services while maintaining international standards of excellence. From supplying advanced medical equipment and veterinary solutions to managing turnkey healthcare projects and government contracts, we are committed to creating long-term value for our customers and stakeholders.
           </p>
-          <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
+          <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
             At ROYS & ROYS International, we believe that trust, integrity, innovation, and customer satisfaction are the foundations of every successful partnership. Our multidisciplinary team works closely with government agencies, healthcare institutions, industries, research organizations, and commercial enterprises to deliver reliable, cost-effective, and future-ready solutions.
           </p>
-          <p className="text-[14px] leading-relaxed mb-8" style={{ color: COLORS.black }}>
+          <p className="text-[16px] leading-relaxed mb-8" style={{ color: COLORS.black }}>
             Driven by a vision to become a globally recognized leader, we continue to expand our capabilities across international markets while contributing to economic development, technological advancement, and community well-being.
           </p>
           <div className="space-y-4 mb-8">
@@ -493,11 +494,11 @@ function AboutSection() {
                   className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5"
                   style={{ backgroundColor: `${COLORS.primary}15` }}
                 >
-                  <CheckCircle2 size={15} style={{ color: COLORS.primary }} />
+                  <CheckCircle2 size={16} style={{ color: COLORS.primary }} />
                 </div>
                 <div>
-                  <h4 className="text-[13px] font-extrabold" style={{ color: COLORS.black }}>{label}</h4>
-                  <p className="text-[12px]" style={{ color: COLORS.black }}>{desc}</p>
+                  <h4 className="text-[14.5px] font-extrabold" style={{ color: COLORS.black }}>{label}</h4>
+                  <p className="text-[13.5px]" style={{ color: COLORS.black }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -606,11 +607,11 @@ function VisionMissionSection() {
               <Icon size={28} style={{ color: accentColor }} />
             </div>
             <div>
-              <span className="text-[10px] font-black tracking-widest uppercase mb-2 block" style={{ color: accentColor }}>
+              <span className="text-[11px] font-black tracking-widest uppercase mb-2 block" style={{ color: accentColor }}>
                 {eyebrow}
               </span>
-              <h3 className="text-[16px] font-extrabold mb-3" style={{ color: COLORS.black }}>{title}</h3>
-              <p className="text-[13px] leading-relaxed" style={{ color: COLORS.black }}>{body}</p>
+              <h3 className="text-[17px] font-extrabold mb-3" style={{ color: COLORS.black }}>{title}</h3>
+              <p className="text-[15.5px] leading-relaxed" style={{ color: COLORS.black }}>{body}</p>
             </div>
           </div>
         ))}
@@ -621,25 +622,43 @@ function VisionMissionSection() {
 
 function WhatWeDoSection() {
   return (
-    <section id="what-we-do" className="py-8 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section id="what-we-do" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="WHAT WE DO" title="Our Service Offerings" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-          {WHAT_WE_DO.map((item) => (
-            <div
-              key={item}
-              className="rounded-lg border bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              style={{ borderColor: COLORS.border }}
-            >
-              <p className="text-[14px] font-semibold leading-tight" style={{ color: COLORS.black }}>
-                {item}
-              </p>
-            </div>
-          ))}
+          {OFFERINGS_LIST.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.slug}
+                href={`/group-companies/roys-roys/what-we-do/${item.slug}`}
+                className="rounded-lg border bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg group flex items-center justify-between no-underline"
+                style={{ borderColor: COLORS.border }}
+              >
+                <div className="flex items-center gap-3.5">
+                  <div
+                    className="w-11 h-11 rounded-lg flex items-center justify-center transition-colors duration-300 group-hover:bg-[#113658] group-hover:text-white shrink-0"
+                    style={{ backgroundColor: `${COLORS.primary}10`, color: COLORS.primary }}
+                  >
+                    <Icon size={20} />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#B49438] block mb-0.5">
+                      Service #{item.number}
+                    </span>
+                    <p className="text-[14px] font-bold leading-snug group-hover:text-[#113658] transition-colors" style={{ color: COLORS.black }}>
+                      {item.title}
+                    </p>
+                  </div>
+                </div>
+                <ArrowRight size={16} className="text-neutral-400 group-hover:text-[#B49438] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+              </Link>
+            );
+          })}
         </div>
         <div className="flex justify-center">
           <PrimaryButton href="/group-companies/roys-roys/what-we-do">
-            View All Services &amp; Capabilities <ArrowRight size={15} />
+            View All 15 Services &amp; Capabilities <ArrowRight size={15} />
           </PrimaryButton>
         </div>
       </div>
@@ -810,8 +829,8 @@ function WhyChooseSection() {
                 <Icon size={22} style={{ color: COLORS.white }} />
               </div>
               <div>
-                <h4 className="text-[14px] font-extrabold mb-1.5" style={{ color: COLORS.black }}>{title}</h4>
-                <p className="text-[12.5px] leading-relaxed" style={{ color: COLORS.black }}>{desc}</p>
+                <h4 className="text-[15.5px] font-extrabold mb-1.5" style={{ color: COLORS.black }}>{title}</h4>
+                <p className="text-[14px] leading-relaxed" style={{ color: COLORS.black }}>{desc}</p>
               </div>
             </div>
           ))}
@@ -835,7 +854,7 @@ function ValuesAndCorporateSection() {
           <div className="border rounded-lg p-5 shadow-sm mb-6" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
             <span className="text-[10px] font-bold uppercase tracking-wider block mb-2 text-neutral-500">Selected Value</span>
             <h4 className="text-xl font-extrabold mb-2" style={{ color: COLORS.black }}>{selectedValue.label}</h4>
-            <p className="text-[13px] leading-relaxed" style={{ color: COLORS.black }}>{selectedValue.desc}</p>
+            <p className="text-[15px] leading-relaxed" style={{ color: COLORS.black }}>{selectedValue.desc}</p>
           </div>
 
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
@@ -852,7 +871,7 @@ function ValuesAndCorporateSection() {
                 style={{ borderColor: selectedIndex === idx ? COLORS.primary : COLORS.border }}
               >
                 <Icon size={20} className="mb-3" style={{ color: COLORS.primary }} />
-                <span className="text-[11px] font-extrabold leading-tight text-neutral-800 whitespace-pre-line">{label}</span>
+                <span className="text-[11.5px] font-extrabold leading-tight text-neutral-800 whitespace-pre-line">{label}</span>
               </button>
             ))}
           </div>
@@ -872,8 +891,8 @@ function ValuesAndCorporateSection() {
                 className={`pb-3.5 mb-3.5 ${idx < CORPORATE_INFO.length - 1 ? "border-b" : ""}`}
                 style={{ borderColor: COLORS.border }}
               >
-                <span className="text-[10px] font-bold uppercase tracking-wider block mb-1 text-neutral-500">{label}</span>
-                <span className="text-[13px] font-extrabold" style={{ color: COLORS.black }}>{val}</span>
+                <span className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-neutral-500">{label}</span>
+                <span className="text-[14.5px] font-extrabold" style={{ color: COLORS.black }}>{val}</span>
               </div>
             ))}
           </div>
@@ -936,7 +955,7 @@ function CtaSection() {
             <h2 className="text-3xl lg:text-4xl font-black mb-5 leading-tight" style={{ color: COLORS.black }}>
               Let&apos;s Build Stronger Partnerships Together
             </h2>
-            <p className="text-[15px] leading-relaxed max-w-3xl" style={{ color: COLORS.black }}>
+            <p className="text-[16px] sm:text-[17px] leading-relaxed max-w-3xl" style={{ color: COLORS.black }}>
               Whether you&apos;re looking for a trusted partner in government contracting, international trade, healthcare solutions, manufacturing, or consultancy, ROYS &amp; ROYS International is ready to support your business with reliable, innovative, and high-quality solutions.
             </p>
 
@@ -948,8 +967,8 @@ function CtaSection() {
                 { title: "Dedicated Support", description: "Our team is here to assist you always." },
               ].map((item) => (
                 <div key={item.title} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-                  <h4 className="text-[13px] font-black mb-2" style={{ color: COLORS.primary }}>{item.title}</h4>
-                  <p className="text-[13px] leading-relaxed" style={{ color: COLORS.black }}>{item.description}</p>
+                  <h4 className="text-[14px] font-black mb-2" style={{ color: COLORS.primary }}>{item.title}</h4>
+                  <p className="text-[14px] leading-relaxed" style={{ color: COLORS.black }}>{item.description}</p>
                 </div>
               ))}
             </div>
@@ -961,7 +980,7 @@ function CtaSection() {
                 <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.black }}>
                   Send Us a Message
                 </h3>
-                <p className="text-[14px] leading-relaxed" style={{ color: COLORS.black }}>
+                <p className="text-[15px] leading-relaxed" style={{ color: COLORS.black }}>
                   Share your requirements and our team will get back to you shortly.
                 </p>
               </div>
@@ -1021,8 +1040,10 @@ function CtaSection() {
                     className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none transition focus:border-[#113658] focus:ring-2 focus:ring-[#113658]/20"
                   >
                     <option value="">Select Service</option>
-                    {WHAT_WE_DO.map((item) => (
-                      <option key={item}>{item}</option>
+                    {OFFERINGS_LIST.map((item) => (
+                      <option key={item.slug} value={item.title}>
+                        {item.title}
+                      </option>
                     ))}
                   </select>
                   <textarea
