@@ -224,7 +224,7 @@ export const CORPORATE_STATS = [
 ];
 
 export const CORPORATE_HOLDINGS = [
-  { name: "Roys & Roys International", subtitle: "Healthcare Solutions & International Trade", tagline: "Providing advanced medical, laboratory, surgical, and hospital engineering solutions for healthcare institutions and government organizations.", href: "/group-companies/roys-roys", image: "/logos/1.png" },
+  { name: "Roys & Roys International", subtitle: "Healthcare Solutions & International Trade", tagline: "Providing advanced medical, laboratory, surgical, and hospital engineering solutions for healthcare institutions and government organizations.", href: "/group-companies/roys-roys", image: "/logos/r&r.png" },
   { name: "Vet Vac Pharma", subtitle: "Veterinary Vaccines & Animal Healthcare", tagline: "Delivering innovative veterinary vaccines, biological products, and livestock healthcare solutions for modern farming and animal health.", href: "/group-companies/Vetvacpharma", image: "/logos/3.png" },
   { name: "Bio Max Corporation", subtitle: "Biotechnology & Laboratory Solutions", tagline: "Supplying scientific equipment, laboratory systems, and biotechnology solutions for research and diagnostic institutions.", href: "/group-companies/biomax", image: "/logos/22.png" },
   { name: "Gateway Pharmaceuticals Consultants", subtitle: "Pharmaceutical Regulatory Consultancy", tagline: "Offering licensing, compliance, regulatory affairs, and consultancy services for pharmaceutical organizations.", href: "/group-companies/gateway", image: "/logos/9.png" },

@@ -59,7 +59,7 @@ export function RoysNavbar({ active = "" }) {
         <Link href="/group-companies/roys-roys" className="flex items-center gap-2.5 select-none group">
           <div className="relative flex items-center">
             <Image
-              src="/roys logo.png"
+              src="/logos/r&r.png"
               alt="ROYS & ROYS INTERNATIONAL"
               width={260}
               height={80}
@@ -211,7 +211,7 @@ export function RoysFooter() {
         {/* Brand Column */}
         <div style={{ maxWidth: "340px" }}>
           <Image
-            src="/roys logo.png"
+            src="/logos/r&r.png"
             alt="ROYS & ROYS INTERNATIONAL"
             width={200}
             height={60}
