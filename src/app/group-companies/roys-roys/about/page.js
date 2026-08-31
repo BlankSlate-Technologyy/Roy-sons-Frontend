@@ -244,24 +244,36 @@ export default function AboutPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "28px" }}>
             {/* Mission */}
-            <div style={{ backgroundColor: COLORS.white, borderRadius: "6px", padding: "48px 40px", border: `1px solid ${COLORS.border}`, borderTopWidth: "4px", borderTopColor: COLORS.primary, boxShadow: "0 4px 20px rgba(0,0,0,0.05)" }}>
-              <div style={{ width: "54px", height: "54px", borderRadius: "50%", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "22px" }}>
-                <Target size={26} color={COLORS.primary} />
+            <div
+              className="group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
+              style={{ backgroundColor: COLORS.white, borderRadius: "12px", padding: "48px 40px", border: `1.5px solid ${COLORS.border}`, borderTopWidth: "5px", borderTopColor: COLORS.primary, boxShadow: "0 4px 20px rgba(0,0,0,0.05)" }}
+            >
+              <div
+                className="transition-all duration-300 group-hover:scale-110 group-hover:bg-[#113658] group-hover:text-white"
+                style={{ width: "54px", height: "54px", borderRadius: "50%", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "22px" }}
+              >
+                <Target size={26} className="text-[#113658] group-hover:text-white transition-colors" />
               </div>
               <p style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "10px" }}>OUR MISSION</p>
-              <h3 style={{ color: COLORS.primary, fontSize: "22px", fontWeight: "900", marginBottom: "14px", lineHeight: "1.3" }}>Improving Access to Reliable Healthcare Solutions</h3>
+              <h3 className="group-hover:text-[#113658] transition-colors" style={{ color: COLORS.primary, fontSize: "22px", fontWeight: "900", marginBottom: "14px", lineHeight: "1.3" }}>Improving Access to Reliable Healthcare Solutions</h3>
               <p style={{ color: COLORS.primary, fontSize: "16px", lineHeight: "1.9", opacity: 0.9 }}>
                 Our mission is to provide healthcare organizations with dependable products, professional services, and international solutions that contribute to better healthcare infrastructure and operational efficiency.
               </p>
             </div>
 
             {/* Vision */}
-            <div style={{ backgroundColor: COLORS.white, borderRadius: "6px", padding: "48px 40px", border: `1px solid ${COLORS.border}`, borderTopWidth: "4px", borderTopColor: COLORS.gold, boxShadow: "0 4px 20px rgba(0,0,0,0.05)" }}>
-              <div style={{ width: "54px", height: "54px", borderRadius: "50%", backgroundColor: "rgba(180,148,56,0.15)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "22px" }}>
-                <Eye size={26} color={COLORS.gold} />
+            <div
+              className="group transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
+              style={{ backgroundColor: COLORS.white, borderRadius: "12px", padding: "48px 40px", border: `1.5px solid ${COLORS.border}`, borderTopWidth: "5px", borderTopColor: COLORS.gold, boxShadow: "0 4px 20px rgba(0,0,0,0.05)" }}
+            >
+              <div
+                className="transition-all duration-300 group-hover:scale-110 group-hover:bg-[#B49438] group-hover:text-white"
+                style={{ width: "54px", height: "54px", borderRadius: "50%", backgroundColor: "rgba(180,148,56,0.15)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "22px" }}
+              >
+                <Eye size={26} className="text-[#B49438] group-hover:text-white transition-colors" />
               </div>
               <p style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "10px" }}>OUR VISION</p>
-              <h3 style={{ color: COLORS.primary, fontSize: "22px", fontWeight: "900", marginBottom: "14px", lineHeight: "1.3" }}>A Stronger Healthcare Future</h3>
+              <h3 className="group-hover:text-[#B49438] transition-colors" style={{ color: COLORS.primary, fontSize: "22px", fontWeight: "900", marginBottom: "14px", lineHeight: "1.3" }}>A Stronger Healthcare Future</h3>
               <p style={{ color: COLORS.primary, fontSize: "16px", lineHeight: "1.9", opacity: 0.9 }}>
                 To become a trusted healthcare solutions and international trading partner recognized for quality, reliability, innovation, and long-term relationships with clients across the globe.
               </p>

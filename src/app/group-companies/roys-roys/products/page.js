@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ChevronRight,
@@ -38,6 +39,7 @@ const CATEGORIES = [
   {
     id: "medical",
     icon: HeartPulse,
+    image: "/biomax_diagnostic_equipment_ai.jpg",
     title: "Medical Equipment",
     subtitle: "Patient Care & Clinical Operations",
     desc: "Equipment supporting patient care, clinical operations, monitoring, and medical procedures in hospitals, clinics, and healthcare centres.",
@@ -55,6 +57,7 @@ const CATEGORIES = [
   {
     id: "laboratory",
     icon: FlaskConical,
+    image: "/biomax_lab_equipment_ai.jpg",
     title: "Laboratory Equipment",
     subtitle: "Diagnostics, Testing & Research",
     desc: "Professional instruments and equipment for laboratories, diagnostics, testing, and research operations in clinical and institutional settings.",
@@ -72,6 +75,7 @@ const CATEGORIES = [
   {
     id: "surgical",
     icon: Scissors,
+    image: "/pakmedical-card2.png",
     title: "Surgical Instruments",
     subtitle: "Operating Rooms & Clinical Environments",
     desc: "Surgical instruments and accessories for operating rooms and clinical environments, supporting precision and safety across all specialties.",
@@ -89,6 +93,7 @@ const CATEGORIES = [
   {
     id: "hospital",
     icon: Building2,
+    image: "/roys_hospital_interior.png",
     title: "Hospital Equipment",
     subtitle: "Hospital Operations & Patient Care",
     desc: "Essential equipment and solutions supporting hospital operations and patient-care environments, from furniture to facility-wide systems.",
@@ -106,6 +111,7 @@ const CATEGORIES = [
   {
     id: "supplies",
     icon: Package,
+    image: "/biomax_consumables_ai.jpg",
     title: "Medical Supplies",
     subtitle: "Clinical & Institutional Consumables",
     desc: "Healthcare supplies and consumables for day-to-day clinical and institutional requirements, ensuring uninterrupted operations.",
@@ -123,6 +129,7 @@ const CATEGORIES = [
   {
     id: "engineering",
     icon: Wrench,
+    image: "/biomax_rnd_hero_ai.jpg",
     title: "Engineering Solutions",
     subtitle: "Healthcare Infrastructure & Facility",
     desc: "Technical products and systems supporting healthcare infrastructure and facility requirements for modern, compliant healthcare environments.",
@@ -155,9 +162,9 @@ function CategoryCard({ cat }) {
       id={cat.id}
       style={{
         backgroundColor: COLORS.white,
-        borderRadius: "8px",
+        borderRadius: "12px",
         border: `1.5px solid ${hovered ? COLORS.primary : COLORS.border}`,
-        padding: "36px 32px",
+        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -167,31 +174,41 @@ function CategoryCard({ cat }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "18px" }}>
-          <div style={{ width: "52px", height: "52px", borderRadius: "50%", backgroundColor: `${COLORS.primary}12`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Icon size={24} color={COLORS.primary} />
-          </div>
-          <span style={{ color: COLORS.gold, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.08em" }}>{cat.subtitle}</span>
+      {/* Category Image Banner */}
+      <div style={{ position: "relative", height: "180px", width: "100%", overflow: "hidden", backgroundColor: COLORS.primaryDark }}>
+        <Image
+          src={cat.image || "/roys_hospital_interior.png"}
+          alt={cat.title}
+          fill
+          className="object-cover transition-transform duration-500"
+          style={{ transform: hovered ? "scale(1.05)" : "scale(1)" }}
+          sizes="(max-width: 768px) 100vw, 400px"
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(2,15,31,0.85) 0%, rgba(2,15,31,0.2) 60%, transparent 100%)" }} />
+        <div style={{ position: "absolute", top: "14px", left: "14px", display: "flex", alignItems: "center", gap: "6px", backgroundColor: "rgba(17,54,88,0.9)", padding: "5px 12px", borderRadius: "6px", border: "1px solid rgba(255,255,255,0.2)" }}>
+          <Icon size={14} color={COLORS.gold} />
+          <span style={{ color: COLORS.white, fontSize: "11px", fontWeight: "800", textTransform: "uppercase", letterSpacing: "0.08em" }}>{cat.subtitle}</span>
         </div>
+      </div>
 
-        <h3 style={{ color: COLORS.primary, fontSize: "20px", fontWeight: "900", marginBottom: "10px" }}>{cat.title}</h3>
+      <div style={{ padding: "32px 28px", flexGrow: 1, display: "flex", flexDirection: "column" }}>
+        <h3 style={{ color: COLORS.primary, fontSize: "21px", fontWeight: "900", marginBottom: "10px" }}>{cat.title}</h3>
         <p style={{ color: COLORS.primary, fontSize: "15.5px", lineHeight: "1.8", marginBottom: "22px", opacity: 0.9 }}>{cat.desc}</p>
 
         <p style={{ color: COLORS.gold, fontSize: "11.5px", fontWeight: "800", letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: "12px" }}>
-          INCLUDED CATEGORIES
+          INCLUDED CAPABILITIES &amp; PRODUCTS
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "28px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "24px" }}>
           {cat.items.map((item) => (
             <div key={item} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <div style={{ width: "5px", height: "5px", borderRadius: "50%", backgroundColor: COLORS.primary, flexShrink: 0 }} />
-              <span style={{ color: COLORS.primary, fontSize: "14.5px", fontWeight: "600" }}>{item}</span>
+              <CheckCircle2 size={15} color={COLORS.teal} style={{ flexShrink: 0 }} />
+              <span style={{ color: COLORS.primary, fontSize: "14px", fontWeight: "600" }}>{item}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div style={{ borderTop: `1px solid ${COLORS.border}`, paddingTop: "18px" }}>
+      <div style={{ padding: "18px 28px", borderTop: `1px solid ${COLORS.border}`, backgroundColor: COLORS.light }}>
         <Link
           href="/group-companies/roys-roys/contact"
           style={{
@@ -209,7 +226,7 @@ function CategoryCard({ cat }) {
           onMouseEnter={e => (e.currentTarget.style.color = COLORS.teal)}
           onMouseLeave={e => (e.currentTarget.style.color = COLORS.primary)}
         >
-          Enquire Now <ArrowRight size={14} />
+          Enquire Specifications <ArrowRight size={14} />
         </Link>
       </div>
     </div>

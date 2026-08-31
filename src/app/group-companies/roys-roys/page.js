@@ -68,36 +68,46 @@ const PRODUCTS_TABS = [
 
 const PRODUCTS = [
   // Diagnostic Imaging
-  { category: "Diagnostic Imaging", name: "X-Ray Systems",       desc: "Advanced digital radiography systems for accurate imaging.",    img: "/roys_hospital_interior.png" },
-  { category: "Diagnostic Imaging", name: "Ultrasound Machines", desc: "High-performance advanced ultrasound for all applications.",    img: "/roys_ultrasound.png" },
-  { category: "Diagnostic Imaging", name: "CT Scan Machines",    desc: "Advanced CT systems for precise diagnostics.",                  img: "/roys_ct_scan.png" },
-  { category: "Diagnostic Imaging", name: "MRI Systems",         desc: "High-field MRI for detailed medical imaging.",                  img: "/roys_mri_scanner.png" },
-  { category: "Diagnostic Imaging", name: "Mammography Systems", desc: "Digital mammography for early detection.",                      img: "/roys_hospital_interior.png" },
+  { category: "Diagnostic Imaging", name: "Digital X-Ray Radiography", desc: "High-frequency digital radiography suite for rapid clinical diagnostic imaging.", img: "/biomax_diagnostic_equipment_ai.jpg" },
+  { category: "Diagnostic Imaging", name: "4D Color Doppler Ultrasound", desc: "High-performance ultrasound platform for multi-specialty clinical diagnostics.", img: "/roys_ultrasound.png" },
+  { category: "Diagnostic Imaging", name: "128-Slice CT Scanner", desc: "Multi-slice computed tomography system for sub-millimeter precision scanning.", img: "/roys_ct_scan.png" },
+  { category: "Diagnostic Imaging", name: "1.5T Superconducting MRI", desc: "High-field magnetic resonance imaging system with advanced neurological mapping.", img: "/roys_mri_scanner.png" },
+  { category: "Diagnostic Imaging", name: "Digital 3D Mammography", desc: "Low-dose full-field digital mammography for high-resolution breast screening.", img: "/biomax_products_hero_ai.jpg" },
   
   // OT Solutions
-  { category: "OT Solutions", name: "Operating Tables",    desc: "State-of-the-art operating tables for surgical precision.",     img: "/roys_ct_scan.png" },
-  { category: "OT Solutions", name: "Surgical Lights",     desc: "High-intensity shadowless surgical lighting systems.",          img: "/roys_hospital_interior.png" },
-  { category: "OT Solutions", name: "Anesthesia Machines", desc: "Advanced anesthesia delivery and monitoring systems.",          img: "/roys_mri_scanner.png" },
+  { category: "OT Solutions", name: "Hydraulic Surgical Table", desc: "Electro-hydraulic multi-position surgical table with carbon-fiber radiological top.", img: "/pakmedical-card2.png" },
+  { category: "OT Solutions", name: "Shadowless Dual-Dome LED Lights", desc: "High-intensity surgical illumination with laminar flow aerodynamic design.", img: "/biomax_ind_healthcare_ai.jpg" },
+  { category: "OT Solutions", name: "Integrated Anesthesia Workstation", desc: "Advanced anesthesia delivery system with electronic gas mixing and spirometry.", img: "/pakmedical-card4.png" },
+  { category: "OT Solutions", name: "4K Laparoscopic Endoscopy Tower", desc: "Ultra HD minimally invasive surgical camera system, insufflator, and LED light source.", img: "/biomax_ind_hero_ai.jpg" },
+  { category: "OT Solutions", name: "Turnkey Modular OT Suite", desc: "Prefabricated sterile operating theater with integrated hermetic sliding doors.", img: "/roys_hospital_interior.png" },
   
   // ICU & Critical Care
-  { category: "ICU & Critical Care", name: "Patient Monitors",    desc: "Advanced patient monitoring systems for intensive care.",       img: "/roys_ultrasound.png" },
-  { category: "ICU & Critical Care", name: "Ventilators",         desc: "High-performance ventilators for critical life support.",       img: "/roys_mri_scanner.png" },
-  { category: "ICU & Critical Care", name: "Infusion Pumps",      desc: "Precise volumetric infusion pumps for critical medication.",    img: "/roys_ct_scan.png" },
+  { category: "ICU & Critical Care", name: "Multi-Parameter ICU Monitor", desc: "15-inch touch screen bedside patient vital signs monitoring with ECG & arrhythmia analysis.", img: "/biomax_consumables_ai.jpg" },
+  { category: "ICU & Critical Care", name: "Intelligent ICU Ventilator", desc: "Non-invasive and invasive high-end respiratory ventilator with lung protective modes.", img: "/pakmedical-card1.png" },
+  { category: "ICU & Critical Care", name: "Syringe & Infusion Pump Workstation", desc: "Docking station with programmable micro-infusion and volumetric syringe pumps.", img: "/healthcare_infrastructure.jpg" },
+  { category: "ICU & Critical Care", name: "Biphasic Defibrillator Monitor", desc: "Emergency external defibrillator with pacing, CPR coaching, and automated AED mode.", img: "/biomax_qa_scientist_ai.jpg" },
+  { category: "ICU & Critical Care", name: "Central ICU Telemetry Station", desc: "Centralized wireless networking hub monitoring up to 64 critical care patient beds.", img: "/pakmedical-card5.png" },
 
   // Lab Equipment
-  { category: "Lab Equipment", name: "Chemistry Analyzers", desc: "Automated chemistry analyzers for fast and accurate results.",  img: "/roys_ct_scan.png" },
-  { category: "Lab Equipment", name: "Microscopes",         desc: "High-resolution microscopes for detailed laboratory analysis.", img: "/roys_hospital_interior.png" },
-  { category: "Lab Equipment", name: "Centrifuges",         desc: "High-speed laboratory centrifuges for sample separation.",      img: "/roys_ultrasound.png" },
+  { category: "Lab Equipment", name: "Automated Chemistry Analyzer", desc: "High-throughput clinical chemistry analyzer delivering 800 tests/hour with ISE module.", img: "/biomax_lab_equipment_ai.jpg" },
+  { category: "Lab Equipment", name: "5-Part Hematology Counter", desc: "Laser flow cytometry hematology analyzer with automated 3D cell scattergram profiling.", img: "/biomax_scientific_instruments_ai.jpg" },
+  { category: "Lab Equipment", name: "Research Binocular Microscope", desc: "Infinity optical system laboratory microscope with digital fluorescence imaging.", img: "/biomax_research_lab.jpg" },
+  { category: "Lab Equipment", name: "Refrigerated Benchtop Centrifuge", desc: "High-speed microprocessor controlled centrifuge with brushless induction drive.", img: "/biomax_quality_lab.jpg" },
+  { category: "Lab Equipment", name: "Real-Time PCR Thermal Cycler", desc: "Multi-channel quantitative molecular diagnostics system for pathogen detection.", img: "/biomax_biotech_solutions_ai.jpg" },
 
   // Hospital Furniture
-  { category: "Hospital Furniture", name: "Hospital Beds",       desc: "Ergonomic and adjustable beds for patient comfort.",            img: "/roys_ultrasound.png" },
-  { category: "Hospital Furniture", name: "Overbed Tables",      desc: "Adjustable overbed tables for patient convenience.",            img: "/roys_hospital_interior.png" },
-  { category: "Hospital Furniture", name: "Medical Cabinets",    desc: "Secure and sterile medical storage cabinets.",                  img: "/roys_ct_scan.png" },
+  { category: "Hospital Furniture", name: "5-Function Electric ICU Bed", desc: "Motorized critical care hospital bed with cardiac chair position and CPR release.", img: "/roys_hospital_interior.png" },
+  { category: "Hospital Furniture", name: "Emergency Mobile Crash Cart", desc: "Stainless steel resuscitation emergency trolley with medication locks and oxygen holder.", img: "/pakmedical-card5.png" },
+  { category: "Hospital Furniture", name: "Sterile Medical Storage Cabinet", desc: "Heavy-duty antibacterial steel pharmacy storage with tamper-proof locking glass doors.", img: "/pakmedical-card3.png" },
+  { category: "Hospital Furniture", name: "Hydraulic Gas-Spring Overbed Table", desc: "Smooth height-adjustable antimicrobial overbed table with spill-containment rim.", img: "/pakmedical-card6.png" },
+  { category: "Hospital Furniture", name: "Emergency Transport Stretcher", desc: "Hydraulic emergency patient transport trolley with foldable side rails and IV pole.", img: "/pakmedical-card1.png" },
 
   // Clean Room Systems
-  { category: "Clean Room Systems", name: "Modular OT Panels",   desc: "Seamless modular panels for sterile environments.",             img: "/roys_mri_scanner.png" },
-  { category: "Clean Room Systems", name: "Laminar Air Flow",    desc: "Laminar flow systems to prevent airborne contamination.",       img: "/roys_hospital_interior.png" },
-  { category: "Clean Room Systems", name: "Pass Boxes",          desc: "Dynamic and static pass boxes for material transfer.",          img: "/roys_ct_scan.png" },
+  { category: "Clean Room Systems", name: "Modular Antibacterial OT Panels", desc: "Seamless powder-coated galvanized steel cleanroom wall and ceiling panels.", img: "/biomax_rnd_hero_ai.jpg" },
+  { category: "Clean Room Systems", name: "Laminar Air Flow Plenum Hood", desc: "HEPA filtered ceiling supply system providing Class 100 sterile ultra-clean airflow.", img: "/biomax_rnd_objective_ai.jpg" },
+  { category: "Clean Room Systems", name: "Dynamic UV Transfer Pass Box", desc: "Electromagnetic interlocked stainless steel pass-through hatch with germicidal UV lamp.", img: "/offerings/roys_supply_chain.jpg" },
+  { category: "Clean Room Systems", name: "Digital Bed Head Supply Unit", desc: "Extruded aluminum medical gas pipeline wall unit with electrical and nurse call ports.", img: "/offerings/roys_gov_contracting.jpg" },
+  { category: "Clean Room Systems", name: "CSSD Steam Autoclave System", desc: "Heavy-duty hospital sterilizer with double vacuum door for sterile department processing.", img: "/offerings/roys_import_export.jpg" },
 ];
 
 const INDUSTRIES = [
@@ -403,7 +413,7 @@ function TrustedBanner() {
   return (
     <section className="py-6 md:py-8 px-6 border-b" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl">
-        <p className="text-center text-[11px] font-black tracking-[0.24em] text-neutral-500 uppercase mb-4">
+        <p className="text-center text-sm sm:text-base md:text-lg lg:text-xl font-black tracking-[0.22em] text-[#113658] uppercase mb-5">
           TRUSTED BY LEADING ORGANIZATIONS
         </p>
 
@@ -462,32 +472,24 @@ function AboutSection() {
   ];
 
   return (
-    <section id="about-us" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-10 items-center">
+    <section id="about-us" className="py-14 px-6" style={{ backgroundColor: COLORS.white }}>
+      <div className="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-12 items-center">
         {/* Left: Text */}
-        <div className="flex-1 max-w-lg">
-          <span className="text-[20px] font-extrabold uppercase tracking-widest block mb-3" style={{ color: COLORS.primary }}>
+        <div className="flex-1 max-w-xl">
+          <span className="text-[14px] font-extrabold uppercase tracking-[0.25em] block mb-3" style={{ color: COLORS.primary }}>
             ABOUT US
           </span>
-          <h2 className="text-3xl lg:text-4xl font-extrabold mb-6 leading-tight" style={{ color: COLORS.black }}>
-            Delivering Excellence Through Global Trade, Innovation & Strategic Partnerships
+          <h2 className="text-3xl lg:text-4xl font-extrabold mb-5 leading-tight" style={{ color: COLORS.black }}>
+            Delivering Excellence Through Global Trade, Innovation &amp; Strategic Partnerships
           </h2>
-          <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
-            ROYS & ROYS International is a diversified international business company committed to delivering world-class solutions across government contracting, international trade, healthcare, manufacturing, consultancy, and engineering. As the flagship company of ROYS Group of Companies, we serve public and private sector organizations with a strong focus on quality, innovation, reliability, and sustainable growth.
+          <p className="text-[16px] leading-relaxed mb-4" style={{ color: COLORS.black }}>
+            ROYS &amp; ROYS International is a diversified international business company and the flagship enterprise of ROYS Group of Companies, delivering world-class solutions across government contracting, international trade, healthcare, manufacturing, consultancy, and engineering.
           </p>
           <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
-            With extensive experience in government procurement, import and export operations, strategic consultancy, manufacturing, medical device supplies, veterinary healthcare, vaccines, surgical disposables, laboratory solutions, and hospital infrastructure, we provide comprehensive solutions tailored to the evolving needs of our clients.
+            Backed by a global sourcing network and strategic partnerships, we provide end-to-end medical equipment, hospital infrastructure, veterinary healthcare, and turnkey project management compliant with international FDA, CE, and ISO standards.
           </p>
-          <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
-            Our global sourcing network and strategic partnerships enable us to deliver premium-quality products and services while maintaining international standards of excellence. From supplying advanced medical equipment and veterinary solutions to managing turnkey healthcare projects and government contracts, we are committed to creating long-term value for our customers and stakeholders.
-          </p>
-          <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.black }}>
-            At ROYS & ROYS International, we believe that trust, integrity, innovation, and customer satisfaction are the foundations of every successful partnership. Our multidisciplinary team works closely with government agencies, healthcare institutions, industries, research organizations, and commercial enterprises to deliver reliable, cost-effective, and future-ready solutions.
-          </p>
-          <p className="text-[16px] leading-relaxed mb-8" style={{ color: COLORS.black }}>
-            Driven by a vision to become a globally recognized leader, we continue to expand our capabilities across international markets while contributing to economic development, technological advancement, and community well-being.
-          </p>
-          <div className="space-y-4 mb-8">
+
+          <div className="space-y-3.5 mb-8">
             {highlights.map(({ label, desc }) => (
               <div key={label} className="flex gap-3.5">
                 <div
@@ -503,6 +505,7 @@ function AboutSection() {
               </div>
             ))}
           </div>
+
           <div className="flex flex-wrap gap-4">
             <PrimaryButton href="/group-companies/roys-roys/about" className="w-fit">
               Read More About Us <ArrowRight size={15} />
@@ -514,30 +517,8 @@ function AboutSection() {
         </div>
 
         {/* Right: Image showcase */}
-        <div className="flex-1 w-full grid gap-4">
-          {/* Duplicated top images (same as bottom) */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
-              <Image
-                src="/roys_mri_scanner.png"
-                alt="MRI scanning room setup"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-            <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
-              <Image
-                src="/roys_ct_scan.png"
-                alt="CT scanner system installation"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-          {/* Main large image */}
-          <div className="relative h-[520px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
+        <div className="flex-1 w-full">
+          <div className="relative h-[420px] lg:h-[480px] rounded-[28px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
             <Image
               src="/roys_hospital_interior.png"
               alt="Hospital interior operations"
@@ -545,26 +526,16 @@ function AboutSection() {
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-          </div>
-          {/* Bottom images */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
-              <Image
-                src="/roys_mri_scanner.png"
-                alt="MRI scanning room setup"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-            <div className="relative h-[260px] rounded-[32px] overflow-hidden shadow-2xl border" style={{ borderColor: COLORS.border }}>
-              <Image
-                src="/roys_ct_scan.png"
-                alt="CT scanner system installation"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020f1f]/85 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-[#113658]/90 backdrop-blur-md border border-white/20 text-white flex items-center justify-between shadow-xl">
+              <div>
+                <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#B49438]">Institutional Excellence</p>
+                <p className="text-base font-black text-white">Turnkey Healthcare &amp; Global Trade</p>
+              </div>
+              <div className="text-right pl-4 border-l border-white/20">
+                <span className="text-2xl font-black text-[#B49438]">15+</span>
+                <p className="text-[10px] text-white/80 uppercase font-bold tracking-wider">Years Experience</p>
+              </div>
             </div>
           </div>
         </div>
@@ -597,21 +568,25 @@ function VisionMissionSection() {
         {cards.map(({ accentColor, icon: Icon, eyebrow, title, body }) => (
           <div
             key={eyebrow}
-            className="p-8 lg:p-10 rounded-lg border shadow-sm flex gap-5"
-            style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, borderLeft: `5px solid ${accentColor}` }}
+            className="p-8 lg:p-10 rounded-2xl border shadow-sm flex gap-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-[#113658] group cursor-pointer"
+            style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, borderLeft: `6px solid ${accentColor}` }}
           >
             <div
-              className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
-              style={{ backgroundColor: `${accentColor}15` }}
+              className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-[#113658] group-hover:text-white group-hover:scale-110 group-hover:shadow-lg"
+              style={{ backgroundColor: `${accentColor}15`, color: accentColor }}
             >
-              <Icon size={28} style={{ color: accentColor }} />
+              <Icon size={28} className="transition-colors duration-300" />
             </div>
             <div>
-              <span className="text-[11px] font-black tracking-widest uppercase mb-2 block" style={{ color: accentColor }}>
+              <span className="text-[11px] font-black tracking-widest uppercase mb-2 block text-[#B49438] group-hover:text-[#009088] transition-colors">
                 {eyebrow}
               </span>
-              <h3 className="text-[17px] font-extrabold mb-3" style={{ color: COLORS.black }}>{title}</h3>
-              <p className="text-[15.5px] leading-relaxed" style={{ color: COLORS.black }}>{body}</p>
+              <h3 className="text-[18px] font-extrabold mb-3 text-black group-hover:text-[#113658] transition-colors">
+                {title}
+              </h3>
+              <p className="text-[15.5px] leading-relaxed text-slate-700">
+                {body}
+              </p>
             </div>
           </div>
         ))}
@@ -698,23 +673,23 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
   const filteredProducts = PRODUCTS.filter(p => p.category === activeCategory);
 
   return (
-    <section id="products" className="py-6 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section id="products" className="py-12 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
-        <SectionHeading eyebrow="PORTFOLIO" title="Products & Solutions" />
+        <SectionHeading eyebrow="PORTFOLIO &amp; CAPABILITIES" title="Products &amp; Solutions" />
 
         {/* Tab bar */}
-        <div className="flex flex-wrap gap-2 mb-5 justify-center border-b pb-3" style={{ borderColor: COLORS.border }}>
+        <div className="flex flex-wrap gap-2.5 mb-8 justify-center border-b pb-4" style={{ borderColor: COLORS.border }}>
           {PRODUCTS_TABS.map((tab, idx) => {
             const isActive = idx === activeTab;
             return (
               <button
                 key={tab}
                 onClick={() => setActiveTab(idx)}
-                className="px-5 py-2.5 text-[11.5px] font-extrabold uppercase tracking-wider rounded-sm transition-all cursor-pointer hover:opacity-80"
+                className="px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider rounded-lg transition-all cursor-pointer shadow-xs"
                 style={{
-                  backgroundColor: isActive ? COLORS.primary : "transparent",
-                  color: isActive ? COLORS.white : COLORS.black,
-                  border: isActive ? "none" : `1px solid ${COLORS.border}`,
+                  backgroundColor: isActive ? COLORS.primary : "#f8fafc",
+                  color: isActive ? COLORS.white : "#334155",
+                  border: isActive ? `1.5px solid ${COLORS.primary}` : `1.5px solid ${COLORS.border}`,
                 }}
               >
                 {tab}
@@ -723,31 +698,78 @@ function ProductsSection({ activeTab, setActiveTab, productIndex, onSlideLeft, o
           })}
         </div>
 
-        {/* Carousel */}
-        <div className="flex items-center justify-center mb-8">
-          <div className="w-full overflow-hidden px-6">
-            <div
-              className="flex gap-4 transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${productIndex * 260}px)`, width: "max-content" }}
+        {/* Carousel with Navigation Arrows */}
+        <div className="relative mb-10">
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between absolute -top-12 right-2 gap-2 z-10 hidden sm:flex">
+            <button
+              onClick={onSlideLeft}
+              className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-200 bg-white hover:bg-[#113658] hover:text-white cursor-pointer shadow-xs"
+              style={{ borderColor: COLORS.border, color: COLORS.primary }}
+              aria-label="Previous Products"
             >
-              {filteredProducts.map((product) => (
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={onSlideRight}
+              className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-200 bg-white hover:bg-[#113658] hover:text-white cursor-pointer shadow-xs"
+              style={{ borderColor: COLORS.border, color: COLORS.primary }}
+              aria-label="Next Products"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+
+          <div className="w-full overflow-hidden px-2 py-2">
+            <div
+              className="flex gap-6 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${productIndex * 300}px)`, width: "max-content" }}
+            >
+              {filteredProducts.map((product, pIdx) => (
                 <div
                   key={product.name}
-                  className="w-[240px] rounded-lg overflow-hidden border flex-shrink-0"
-                  style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, boxShadow: "0 4px 16px rgba(0,0,0,0.06)" }}
+                  className="w-[270px] sm:w-[290px] rounded-2xl overflow-hidden border bg-white flex-shrink-0 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1.5 group flex flex-col justify-between"
+                  style={{ borderColor: COLORS.border, boxShadow: "0 4px 18px rgba(0,0,0,0.05)" }}
                 >
-                  <div className="relative h-[160px] w-full">
-                    <Image src={product.img} alt={product.name} fill className="object-cover" sizes="240px" />
+                  <div>
+                    <div className="relative h-[180px] w-full overflow-hidden bg-slate-900">
+                      <Image
+                        src={product.img}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-108"
+                        sizes="290px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+                      <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#113658]/90 text-[#B49438] text-[10px] font-extrabold uppercase tracking-wider backdrop-blur-xs">
+                        Item 0{pIdx + 1}
+                      </span>
+                    </div>
+                    <div className="p-5" style={{ borderTop: `3px solid ${COLORS.primary}` }}>
+                      <h4 className="text-[15.5px] font-black mb-2 text-[#113658] group-hover:text-[#009088] transition-colors leading-snug">
+                        {product.name}
+                      </h4>
+                      <p className="text-[13px] leading-relaxed text-slate-600">
+                        {product.desc}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-4" style={{ borderTop: `3px solid ${COLORS.primary}` }}>
-                    <h4 className="text-[13.5px] font-extrabold mb-1" style={{ color: COLORS.primary }}>{product.name}</h4>
-                    <p className="text-[11.5px] leading-relaxed" style={{ color: COLORS.primary, opacity: 0.75 }}>{product.desc}</p>
+
+                  <div className="px-5 pb-5 pt-0">
+                    <Link
+                      href="/group-companies/roys-roys/contact"
+                      className="w-full py-2.5 rounded-lg bg-[#f1f5f9] group-hover:bg-[#113658] group-hover:text-white text-[#113658] text-[11.5px] font-extrabold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300"
+                    >
+                      <span>Inquire Specifications</span>
+                      <ArrowRight size={13} />
+                    </Link>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </div>
+
         <div className="flex justify-center">
           <PrimaryButton href="/group-companies/roys-roys/products">
             Browse Full Product Portfolio <ArrowRight size={15} />
