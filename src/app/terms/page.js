@@ -166,7 +166,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 2. Acceptance of Terms */}
             <section id="acceptance" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">2.</span> Acceptance of Terms
               </h2>
               <p className="mb-3">
@@ -182,7 +182,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 3. Website Use */}
             <section id="use" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">3.</span> Website Use
               </h2>
               <p className="mb-4">
@@ -211,7 +211,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 4. Website Information */}
             <section id="information" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">4.</span> Website Information
               </h2>
               <p className="mb-3">
@@ -227,7 +227,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 5. Products & Services */}
             <section id="products" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">5.</span> Products & Services
               </h2>
               <p className="mb-3">
@@ -243,7 +243,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 6. Government Contracting & Procurement */}
             <section id="government" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">6.</span> Government Contracting & Procurement
               </h2>
               <p className="mb-3">
@@ -259,7 +259,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 7. International Trade */}
             <section id="trade" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">7.</span> International Trade
               </h2>
               <p className="mb-3">
@@ -275,7 +275,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 8. Healthcare & Medical Products */}
             <section id="healthcare" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">8.</span> Healthcare & Medical Products
               </h2>
               <p className="mb-3">
@@ -291,7 +291,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 9. Intellectual Property */}
             <section id="ip" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">9.</span> Intellectual Property
               </h2>
               <p className="mb-3">
@@ -304,7 +304,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 10. ROYSONS Brand & Third-Party Brands */}
             <section id="brands" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">10.</span> ROYSONS Brand & Third-Party Brands
               </h2>
               <p className="mb-3">
@@ -317,7 +317,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 11. Third-Party Links */}
             <section id="links" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">11.</span> Third-Party Links
               </h2>
               <p className="mb-3">
@@ -330,7 +330,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 12. User Submissions & Contact Forms */}
             <section id="submissions" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">12.</span> User Submissions & Contact Forms
               </h2>
               <p className="mb-3">
@@ -343,7 +343,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 13. Confidential Information */}
             <section id="confidential" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">13.</span> Confidential Information
               </h2>
               <p className="mb-3">
@@ -356,7 +356,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 14. Privacy */}
             <section id="privacy" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">14.</span> Privacy
               </h2>
               <p>
@@ -366,7 +366,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 15. Website Security */}
             <section id="security" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">15.</span> Website Security
               </h2>
               <p className="mb-3">
@@ -379,7 +379,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 16. Disclaimer */}
             <section id="disclaimer" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">16.</span> Disclaimer
               </h2>
               <p className="mb-3">
@@ -396,7 +396,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 17. Limitation of Liability */}
             <section id="liability" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">17.</span> Limitation of Liability
               </h2>
               <p className="mb-3">
@@ -412,7 +412,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 18. Indemnification */}
             <section id="indemnification" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">18.</span> Indemnification
               </h2>
               <p>
@@ -422,7 +422,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 19. Availability of Services */}
             <section id="availability" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">19.</span> Availability of Services
               </h2>
               <p className="mb-3">
@@ -435,7 +435,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 20. Business Agreements */}
             <section id="agreements" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">20.</span> Business Agreements
               </h2>
               <p>
@@ -445,7 +445,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 21. Governing Law */}
             <section id="law" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">21.</span> Governing Law
               </h2>
               <p className="mb-3">
@@ -458,7 +458,7 @@ export default function TermsAndConditionsPage() {
 
             {/* 22. Changes to These Terms */}
             <section id="changes" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">22.</span> Changes to These Terms
               </h2>
               <p>
@@ -467,7 +467,7 @@ export default function TermsAndConditionsPage() {
             </section>
 
             {/* 23. Contact Us */}
-            <section id="contact" className="mt-14 p-8 bg-neutral-900 text-white rounded-sm border border-neutral-800 scroll-mt-28">
+            <section id="contact" className="mt-14 p-8 bg-[#1a2127] text-white rounded-sm border border-[#dfb753]/30 scroll-mt-28">
               <div className="flex items-center gap-2 text-[#dfb753] text-[11px] font-black uppercase tracking-[0.2em] mb-3">
                 <Building2 size={15} />
                 <span>Legal & Corporate Inquiries</span>
