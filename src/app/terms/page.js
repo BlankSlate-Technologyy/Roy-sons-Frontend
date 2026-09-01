@@ -63,7 +63,7 @@ const SECTIONS = [
 
 export default function TermsAndConditionsPage() {
   return (
-    <main className="min-h-screen bg-white font-sans selection:bg-[#dfb753]/30 selection:text-neutral-900">
+    <main className="min-h-screen bg-[#101518] text-[#F7F5F0] font-sans selection:bg-[#dfb753]/30 selection:text-neutral-900">
       <HeaderNavbar activeRoute="/terms" />
 
       {/* Header Banner */}
@@ -101,29 +101,29 @@ export default function TermsAndConditionsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Quick Navigation Sticky Sidebar */}
-          <aside className="hidden lg:block lg:col-span-4 sticky top-28 bg-neutral-50 p-6 rounded-sm border border-neutral-200">
-            <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-neutral-900 mb-4 pb-3 border-b border-neutral-200">
+          <aside className="hidden lg:block lg:col-span-4 sticky top-28 bg-[#1a2127] p-6 rounded-sm border border-[#dfb753]/25">
+            <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] text-[#dfb753] mb-4 pb-3 border-b border-[#dfb753]/20">
               <FileText size={14} className="text-[#dfb753]" />
               <span>Table of Contents</span>
             </div>
             
-            <nav className="space-y-1 max-h-[70vh] overflow-y-auto pr-2 text-[12.5px] text-neutral-600 font-medium">
+            <nav className="space-y-1 max-h-[70vh] overflow-y-auto pr-2 text-[12.5px] text-neutral-300 font-medium">
               {SECTIONS.map((sec) => (
                 <a
                   key={sec.id}
                   href={`#${sec.id}`}
-                  className="block py-1.5 px-2.5 rounded hover:bg-white hover:text-black hover:translate-x-1 transition-all duration-200"
+                  className="block py-1.5 px-2.5 rounded hover:bg-[#252c33] hover:text-[#dfb753] hover:translate-x-1 transition-all duration-200"
                 >
                   {sec.title}
                 </a>
               ))}
             </nav>
 
-            <div className="mt-6 pt-4 border-t border-neutral-200">
-              <p className="text-[11px] text-neutral-500 mb-2">Need legal clarification?</p>
+            <div className="mt-6 pt-4 border-t border-[#dfb753]/20">
+              <p className="text-[11px] text-neutral-400 mb-2">Need legal clarification?</p>
               <Link
                 href="/contact"
-                className="text-[11px] font-bold text-[#dfb753] hover:text-black uppercase tracking-wider inline-flex items-center gap-1"
+                className="text-[11px] font-bold text-[#dfb753] hover:text-white uppercase tracking-wider inline-flex items-center gap-1"
               >
                 Contact Advisory Desk →
               </Link>
@@ -131,35 +131,35 @@ export default function TermsAndConditionsPage() {
           </aside>
 
           {/* Legal Document Content */}
-          <div className="lg:col-span-8 text-neutral-700 text-[15px] sm:text-[15.5px] leading-[1.8]">
+          <div className="lg:col-span-8 text-neutral-200 text-[15px] sm:text-[15.5px] leading-[1.8]">
             
             {/* Intro Alert Box */}
-            <div className="bg-[#fcfbf7] border-l-4 border-[#dfb753] p-6 mb-12 shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
-              <p className="mb-3 font-semibold text-neutral-900">
+            <div className="bg-[#1a2127] border-l-4 border-[#dfb753] border-y border-r border-[#dfb753]/20 p-6 mb-12 shadow-lg rounded-sm">
+              <p className="mb-3 font-bold text-[#F7F5F0] text-[15.5px] leading-relaxed">
                 Welcome to the official website of ROYSONS Pvt. Ltd. (“ROYSONS”, “we”, “us”, or “our”).
               </p>
-              <p className="text-neutral-600 text-[14px]">
+              <p className="text-neutral-300 text-[14px] leading-relaxed">
                 These Terms & Conditions govern your access to and use of our website, content, services, and digital resources. By accessing or using this website, you acknowledge that you have read, understood, and agreed to these Terms & Conditions. If you do not agree with any part of these terms, please discontinue use of the website.
               </p>
             </div>
 
             {/* 1. About ROYSONS */}
             <section id="about" className="mb-12 scroll-mt-28">
-              <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight mb-4 flex items-center gap-2.5">
+              <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                 <span className="text-[#dfb753]">1.</span> About ROYSONS
               </h2>
-              <p className="mb-4">
+              <p className="mb-4 text-neutral-300">
                 ROYSONS Pvt. Ltd. is a diversified multi-sector enterprise operating through various businesses, subsidiaries, partners, and associated organizations across sectors including:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-6">
                 {SECTORS.map((sector, idx) => (
-                  <div key={idx} className="flex items-center gap-2 p-2.5 bg-neutral-50 border border-neutral-100 rounded-sm text-[13.5px] font-medium text-neutral-800">
-                    <CheckCircle2 size={14} className="text-[#dfb753] flex-shrink-0" />
+                  <div key={idx} className="flex items-center gap-2.5 p-3 bg-[#1a2127] border border-[#dfb753]/20 rounded-sm text-[13.5px] font-medium text-neutral-200">
+                    <CheckCircle2 size={15} className="text-[#dfb753] flex-shrink-0" />
                     <span>{sector}</span>
                   </div>
                 ))}
               </div>
-              <p>
+              <p className="text-neutral-300">
                 Information presented on this website is intended to provide a general overview of our organization, businesses, products, capabilities, and services.
               </p>
             </section>

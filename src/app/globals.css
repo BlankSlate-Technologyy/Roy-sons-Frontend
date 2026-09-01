@@ -2052,3 +2052,125 @@ body.vetvac-pharma-theme .text-white:hover * {
 body.vetvac-pharma-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL RESPONSIVE MOBILE BUTTON TEXT & SINGLE-LINE ENFORCEMENT
+   Applies across ALL 25+ themes and pages on mobile view (< 768px / < 640px / < 480px)
+───────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  /* All standard button elements, CTA links, and action triggers */
+  button:not([class*="text-left"]):not([class*="text-start"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Menu"]):not([aria-label*="menu"]):not([aria-label*="Close"]):not([aria-label*="close"]),
+  .btn,
+  .rs-cta-btn,
+  .vetvac-primary-btn,
+  [role="button"]:not([class*="text-left"]):not([class*="text-start"]),
+  input[type="button"],
+  input[type="submit"],
+  #cta-consultation-btn,
+  #view-all-projects-btn,
+  #query-submit-btn,
+  a.rs-cta-btn,
+  a.vetvac-primary-btn,
+  a[class*="rounded"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-sm"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-md"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-lg"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-xl"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-2xl"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-full"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="bg-"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="border"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="shadow"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  button[class*="bg-"]:not([class*="text-left"]):not([class*="text-start"]),
+  button[class*="border"]:not([class*="text-left"]):not([class*="text-start"]),
+  button[type="submit"]:not([class*="text-left"]):not([class*="text-start"]) {
+    white-space: nowrap !important;
+    font-size: clamp(10px, 2.6vw, 12px) !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.04em !important;
+    padding-left: clamp(8px, 2.2vw, 14px) !important;
+    padding-right: clamp(8px, 2.2vw, 14px) !important;
+    padding-top: clamp(6px, 1.8vw, 10px) !important;
+    padding-bottom: clamp(6px, 1.8vw, 10px) !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Target spans, strongs, b, and labels inside these buttons */
+  button:not([class*="text-left"]):not([class*="text-start"]) span,
+  button:not([class*="text-left"]):not([class*="text-start"]) p,
+  .btn span,
+  .rs-cta-btn span,
+  .vetvac-primary-btn span,
+  [role="button"]:not([class*="text-left"]):not([class*="text-start"]) span,
+  a[class*="rounded"][class*="px-"] span,
+  a[class*="bg-"][class*="px-"] span,
+  a[class*="border"][class*="px-"] span {
+    white-space: nowrap !important;
+    font-size: inherit !important;
+    letter-spacing: inherit !important;
+    line-height: inherit !important;
+  }
+
+  /* Ensure button icons scale proportionally on mobile */
+  button:not([class*="text-left"]):not([class*="text-start"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Menu"]):not([aria-label*="menu"]):not([aria-label*="Close"]):not([aria-label*="close"]) svg,
+  .btn svg,
+  .rs-cta-btn svg,
+  .vetvac-primary-btn svg,
+  a[class*="rounded"][class*="px-"] svg,
+  a[class*="bg-"][class*="px-"] svg,
+  a[class*="border"][class*="px-"] svg {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+    min-height: 12px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Tighter gap between multiple action buttons on mobile */
+  .flex.flex-wrap.items-center.gap-3,
+  .flex.flex-wrap.items-center.gap-4,
+  .flex.flex-wrap.gap-3,
+  .flex.flex-wrap.gap-4,
+  .flex.flex-wrap.items-center.justify-center.gap-3,
+  .flex.flex-wrap.items-center.justify-center.gap-4 {
+    gap: 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra compact mobile optimization (phones under 480px) */
+  button:not([class*="text-left"]):not([class*="text-start"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Menu"]):not([aria-label*="menu"]):not([aria-label*="Close"]):not([aria-label*="close"]),
+  .btn,
+  .rs-cta-btn,
+  .vetvac-primary-btn,
+  [role="button"]:not([class*="text-left"]):not([class*="text-start"]),
+  input[type="button"],
+  input[type="submit"],
+  #cta-consultation-btn,
+  #view-all-projects-btn,
+  #query-submit-btn,
+  a.rs-cta-btn,
+  a.vetvac-primary-btn,
+  a[class*="rounded"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-sm"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-md"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-lg"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-xl"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-2xl"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="rounded-full"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="bg-"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="border"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  a[class*="shadow"][class*="px-"]:not([class*="text-left"]):not([class*="text-start"]),
+  button[class*="bg-"]:not([class*="text-left"]):not([class*="text-start"]),
+  button[class*="border"]:not([class*="text-left"]):not([class*="text-start"]),
+  button[type="submit"]:not([class*="text-left"]):not([class*="text-start"]) {
+    font-size: 10.5px !important;
+    letter-spacing: 0.025em !important;
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+}
