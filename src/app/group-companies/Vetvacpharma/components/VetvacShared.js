@@ -35,9 +35,9 @@ const COLORS = {
 const NAV_LINKS = [
   { label: "Home", href: "/group-companies/Vetvacpharma" },
   { label: "About Us", href: "/group-companies/Vetvacpharma/about" },
+  { label: "Services", href: "/group-companies/Vetvacpharma/services" },
   { label: "Products & Solutions", href: "/group-companies/Vetvacpharma/solutions" },
   { label: "R&D & Quality", href: "/group-companies/Vetvacpharma/rnd" },
-  { label: "Industries", href: "/group-companies/Vetvacpharma/industries" },
   { label: "Contact Us", href: "/group-companies/Vetvacpharma/contact" },
 ];
 
@@ -132,28 +132,28 @@ export function VetvacNavbar() {
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/group-companies/Vetvacpharma" className="flex items-center">
+        <Link href="/group-companies/Vetvacpharma" className="flex items-center shrink-0">
           <div className="relative flex items-center">
             <Image
               src="/logos/3.png"
               alt="VET VAC PHARMA Logo"
-              width={260}
-              height={80}
-              className="h-14 sm:h-16 lg:h-[68px] w-auto object-contain"
+              width={220}
+              height={65}
+              className="h-10 sm:h-11 lg:h-12 w-auto object-contain"
               priority
             />
           </div>
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        <nav className="hidden lg:flex items-center gap-2 xl:gap-3.5 2xl:gap-4.5">
           {NAV_LINKS.map((item) => {
             const isActive = pathname === item.href;
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="relative text-[11.5px] xl:text-xs font-bold uppercase tracking-wider py-1 px-1 transition-colors hover:text-[#1E855C]"
+                className="relative text-[10.5px] xl:text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider py-1 px-1.5 whitespace-nowrap transition-colors hover:text-[#1E855C]"
                 style={{
                   color: isActive ? COLORS.primary : COLORS.green,
                 }}
@@ -171,10 +171,10 @@ export function VetvacNavbar() {
         </nav>
 
         {/* CTA Button */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <Link
             href="/group-companies/Vetvacpharma/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[10.5px] xl:text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"
             style={{ backgroundColor: COLORS.primary }}
           >
             <span>Inquire Now</span>

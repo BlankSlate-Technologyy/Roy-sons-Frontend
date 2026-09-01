@@ -2174,3 +2174,15 @@ body.vetvac-pharma-theme svg:not([fill="currentColor"]) {
     padding-bottom: 6px !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL HEADER & NAVBAR SINGLE-LINE NAVIGATION RULES
+───────────────────────────────────────────────────────────── */
+header nav a,
+header nav li a,
+nav[aria-label*="Navigation"] a,
+nav.hidden.lg\:flex a,
+.biomax-theme header nav a {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}

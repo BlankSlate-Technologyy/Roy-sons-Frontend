@@ -25,6 +25,12 @@ body.biomax-theme header,
 .biomax-theme header {
   background-color: #ffffff !important;
   color: #165B7E;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+body.biomax-theme header {
+  width: 100%;
 }
 
 body.biomax-theme .cursor-pointer,

@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Phone,
   Mail,
@@ -137,23 +138,51 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="flex items-center gap-2 text-sm font-medium transition-all duration-200 group"
-                    style={{ color: "rgba(255,255,255,0.75)" }}
-                  >
-                    <ArrowRight
-                      size={12}
-                      className="transition-transform duration-200 group-hover:translate-x-1 text-white"
-                    />
-                    <span className="group-hover:text-white transition-colors duration-200">
-                      {link.label}
-                    </span>
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link
+                  href="/group-companies/gateway"
+                  className="flex items-center gap-2 text-sm font-medium transition-all duration-200 group text-white/80 hover:text-white"
+                >
+                  <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-1 text-white" />
+                  <span>Home</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/group-companies/gateway/about"
+                  className="flex items-center gap-2 text-sm font-medium transition-all duration-200 group text-white/80 hover:text-white"
+                >
+                  <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-1 text-white" />
+                  <span>About Us</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/group-companies/gateway/services"
+                  className="flex items-center gap-2 text-sm font-medium transition-all duration-200 group text-white/80 hover:text-white"
+                >
+                  <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-1 text-white" />
+                  <span>Our Services</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/group-companies/gateway/industries"
+                  className="flex items-center gap-2 text-sm font-medium transition-all duration-200 group text-white/80 hover:text-white"
+                >
+                  <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-1 text-white" />
+                  <span>Industries We Serve</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/group-companies/gateway/expertise"
+                  className="flex items-center gap-2 text-sm font-medium transition-all duration-200 group text-white/80 hover:text-white"
+                >
+                  <ArrowRight size={12} className="transition-transform duration-200 group-hover:translate-x-1 text-white" />
+                  <span>Our Expertise</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -167,10 +196,9 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               {QUICK_SERVICES.map((svc) => (
                 <li key={svc.label}>
-                  <a
-                    href="#services"
-                    className="flex items-center gap-2 text-sm font-medium transition-all duration-200 group"
-                    style={{ color: "rgba(255,255,255,0.75)" }}
+                  <Link
+                    href="/group-companies/gateway/services"
+                    className="flex items-center gap-2 text-sm font-medium transition-all duration-200 group text-white/80 hover:text-white"
                   >
                     <ArrowRight
                       size={12}
@@ -179,7 +207,7 @@ export default function Footer() {
                     <span className="group-hover:text-white transition-colors duration-200">
                       {svc.label}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

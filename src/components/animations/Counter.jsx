@@ -11,7 +11,7 @@ export default function Counter({
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [displayValue, setDisplayValue] = useState("0");
+  const [displayValue, setDisplayValue] = useState(value);
 
   useEffect(() => {
     if (!isInView) return;
@@ -33,7 +33,7 @@ export default function Counter({
       ease: [0.16, 1, 0.3, 1],
       onUpdate(val) {
         const rounded = Math.floor(val);
-        const formatted = hasComma ? rounded.toLocaleString() : String(rounded);
+        const formatted = hasComma ? rounded.toLocaleString("en-US") : String(rounded);
         setDisplayValue(formatted + suffix);
       },
     });

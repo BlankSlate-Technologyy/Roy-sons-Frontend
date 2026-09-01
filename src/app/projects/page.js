@@ -81,31 +81,33 @@ const STATS = [
 
 function ProjectCard({ image, category, title, description, href }) {
   return (
-    <div className="group flex flex-col bg-white border border-neutral-200 overflow-hidden hover:border-neutral-950 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] transition-all duration-300">
+    <div className="group flex flex-col bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[#C6A15A] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500">
       <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transform scale-[1.20] transition-transform duration-700 ease-out group-hover:scale-100"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
       </div>
 
-      <div className="p-5 flex flex-col flex-1">
-        <span className="text-[9.5px] font-black uppercase tracking-[0.2em] text-neutral-400 mb-1.55">
+      <div className="p-6 flex flex-col flex-1">
+        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#C6A15A] mb-1.5">
           {category}
         </span>
-        <h3 className="text-[13px] font-black uppercase tracking-[0.08em] text-neutral-950 mb-2 leading-snug">
+        <h3 className="text-[15px] font-black uppercase tracking-tight text-neutral-950 mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors">
           {title}
         </h3>
-        <p className="text-[11.5px] text-neutral-500 leading-relaxed flex-1 mb-4">
+        <p className="text-[12.5px] text-neutral-600 leading-relaxed flex-1 mb-5">
           {description}
         </p>
         <Link
           href={href}
-          className="inline-flex items-center gap-1.5 text-[10.5px] font-bold uppercase tracking-[0.12em] text-black border-b border-black pb-0.5 self-start hover:gap-3 transition-all duration-200"
+          className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.16em] text-neutral-950 hover:text-[#C6A15A] self-start transition-all duration-200 group-hover:translate-x-1"
         >
-          View Details <ArrowRight size={11} strokeWidth={2.5} />
+          <span>View Project Details</span>
+          <ArrowRight size={12} strokeWidth={2.5} />
         </Link>
       </div>
     </div>

@@ -25,6 +25,9 @@ export default function Navbar() {
     if (link.label === "Services") {
       return "/group-companies/gateway/services";
     }
+    if (link.label === "Industries") {
+      return "/group-companies/gateway/industries";
+    }
     if (link.label === "Expertise") {
       return "/group-companies/gateway/expertise";
     }
@@ -90,9 +93,10 @@ export default function Navbar() {
           {NAV_LINKS.map((link) => {
             const href = getHref(link);
             const isActive =
-              (link.label === "About Us" && pathname === "/group-companies/gateway/about") ||
-              (link.label === "Services" && pathname === "/group-companies/gateway/services") ||
-              (link.label === "Expertise" && pathname === "/group-companies/gateway/expertise") ||
+              (link.label === "About Us" && pathname?.startsWith("/group-companies/gateway/about")) ||
+              (link.label === "Services" && pathname?.startsWith("/group-companies/gateway/services")) ||
+              (link.label === "Industries" && pathname?.startsWith("/group-companies/gateway/industries")) ||
+              (link.label === "Expertise" && pathname?.startsWith("/group-companies/gateway/expertise")) ||
               (link.label === "Home" && isHomePage);
 
             return (

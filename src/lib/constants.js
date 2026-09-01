@@ -347,29 +347,46 @@ export const CORPORATE_SERVICES = [
 
 export const FEATURED_STRUCTURAL_WORKS = [
   {
-    image: "/logos/banu mukhar.jpg.jpeg",
-    title: "BANU MUKHAR",
+    image: "/project-commercial-complex.jpg",
+    title: "Commercial Complex",
+    client: "BANU MUKHAR",
+    category: "Commercial Development",
     href: "/projects/commercial-complex",
   },
   {
-    image: "/logos/fangrow.jpg.jpeg",
-    title: "FANGROW",
+    image: "/project-residential-towers.jpg",
+    title: "Residential Towers",
+    client: "FANGROW",
+    category: "Residential Architecture",
     href: "/projects/residential-towers",
   },
   {
-    image: "/logos/go.jpg.jpeg",
-    title: "GO",
+    image: "/project-industrial.png",
+    title: "Pre-Engineered Industrial Plant",
+    client: "GO",
+    category: "Industrial Infrastructure",
     href: "/projects/industrial-plant",
   },
   {
-    image: "/logos/Gourmet foods.jpg.jpeg",
-    title: "GOURMET FOODS",
-    href: "/projects/infrastructure",
+    image: "/project-gourmet-foods.jpg",
+    title: "Gourmet Foods Infrastructure",
+    client: "GOURMET FOODS",
+    category: "Food Processing Infrastructure",
+    href: "/projects/gourmet-foods",
   },
   {
-    image: "/logos/roysons.jpg.jpeg",
-    title: "ROYSONS PVT. LTD.",
+    image: "/project-roysons-infrastructure.jpg",
+    title: "Roysons Corporate Infrastructure",
+    client: "ROYSONS PVT. LTD.",
+    category: "Logistics & Facilities",
     href: "/projects/roysons-infrastructure",
+  },
+  {
+    image: "/healthcare_infrastructure.jpg",
+    title: "Specialized Healthcare Facility",
+    client: "ROYS HEALTHCARE",
+    category: "Medical & Cleanrooms",
+    href: "/projects/commercial-complex",
   },
 ];
 

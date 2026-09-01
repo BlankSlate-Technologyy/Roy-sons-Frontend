@@ -295,11 +295,18 @@ export default function BiomaxIndustriesPage() {
                       />
                     </div>
 
-                    {/* Description Paragraph (Exact from Image) */}
-                    <div className="p-4 text-center">
-                      <p className="text-[12px] leading-relaxed" style={{ color: COLORS.muted }}>
+                    {/* Description Paragraph */}
+                    <div className="p-3.5 text-center">
+                      <p className="text-[11.5px] leading-relaxed mb-3" style={{ color: COLORS.muted }}>
                         {ind.desc}
                       </p>
+                      <Link
+                        href={`/group-companies/biomax/industries/${ind.id}`}
+                        className="w-full py-2 px-2.5 rounded-lg text-[10.5px] font-extrabold uppercase tracking-wider text-white bg-[#165B7E] hover:bg-[#1D906C] transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                      >
+                        <span>View Details</span>
+                        <ArrowRight size={11} />
+                      </Link>
                     </div>
                   </div>
 

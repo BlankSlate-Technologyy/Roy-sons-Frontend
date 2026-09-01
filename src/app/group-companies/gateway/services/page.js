@@ -538,20 +538,34 @@ export default function GatewayServicesPage() {
                   }}
                 >
                   <div>
-                    {/* Top Header */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div
-                        className="w-14 h-14 rounded-2xl flex items-center justify-center transition-colors group-hover:scale-110 duration-300"
-                        style={{ backgroundColor: `${COLORS.primary}12` }}
-                      >
-                        <Icon size={26} style={{ color: COLORS.primary }} />
+                    {/* Top Image Showcase with Hover Zoom Out Effect */}
+                    <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-6 bg-slate-100 border border-slate-100">
+                      <Image
+                        src={svc.image || "/gatway about.png"}
+                        alt={svc.title}
+                        fill
+                        className="object-cover object-center transition-transform duration-700 ease-out scale-115 group-hover:scale-100"
+                        sizes="(max-width: 768px) 100vw, 500px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/70 via-transparent to-transparent" />
+                      
+                      <div className="absolute top-3 left-3">
+                        <span
+                          className="text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 text-[#173F8A] shadow-xs backdrop-blur-xs"
+                        >
+                          {svc.tag}
+                        </span>
                       </div>
-                      <span
-                        className="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border bg-slate-50"
-                        style={{ color: COLORS.secondary, borderColor: COLORS.border }}
-                      >
-                        {svc.tag}
-                      </span>
+
+                      <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                            <Icon size={18} />
+                          </div>
+                          <span className="text-xs font-bold text-slate-200">Gateway Pharma</span>
+                        </div>
+                        <span className="text-xs font-extrabold text-white/80">0{idx + 1}</span>
+                      </div>
                     </div>
 
                     {/* Title & Description */}
@@ -583,17 +597,32 @@ export default function GatewayServicesPage() {
                     </div>
                   </div>
 
-                  {/* Card Bottom Actions */}
-                  <div className="pt-4 border-t flex items-center justify-between" style={{ borderColor: COLORS.border }}>
+                  {/* Card Bottom Actions with Direct Dynamic Detail Link */}
+                  <div className="pt-4 border-t flex flex-col sm:flex-row items-center justify-between gap-3" style={{ borderColor: COLORS.border }}>
+                    <Link
+                      href={
+                        svc.id === "licensing" ? "/group-companies/gateway/services/pharmaceutical-licensing" :
+                        svc.id === "registration" ? "/group-companies/gateway/services/product-registration" :
+                        svc.id === "affairs" ? "/group-companies/gateway/services/regulatory-affairs-management" :
+                        svc.id === "compliance" ? "/group-companies/gateway/services/compliance-consultancy" :
+                        svc.id === "documentation" ? "/group-companies/gateway/services/dossier-preparation-submission" :
+                        svc.id === "consultancy" ? "/group-companies/gateway/services/strategic-regulatory-consultancy" :
+                        svc.id === "support" ? "/group-companies/gateway/services/compliance-consultancy" :
+                        svc.id === "strategy" ? "/group-companies/gateway/services/strategic-regulatory-consultancy" :
+                        "/group-companies/gateway/services/pharmaceutical-licensing"
+                      }
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white shadow-xs hover:bg-[#12316B] transition-all cursor-pointer"
+                      style={{ backgroundColor: COLORS.primary }}
+                    >
+                      <span>View Service Details</span>
+                      <ArrowRight size={13} />
+                    </Link>
                     <a
                       href="/group-companies/gateway#contact"
-                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider hover:underline cursor-pointer"
-                      style={{ color: COLORS.primary }}
+                      className="text-xs font-bold text-slate-500 hover:text-[#173F8A] transition-colors"
                     >
-                      <span>Inquire About This Service</span>
-                      <ArrowRight size={14} />
+                      Inquire Now →
                     </a>
-                    <span className="text-xs font-extrabold text-slate-300">0{idx + 1}</span>
                   </div>
                 </div>
               );

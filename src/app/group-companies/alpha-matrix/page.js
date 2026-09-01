@@ -30,27 +30,27 @@ const stats = [
 ];
 
 const solutions = [
-  { icon: Camera,       title: "Surveillance Systems",       desc: "AI-powered CCTV, thermal imaging, long-range cameras, and intelligent video analytics.", href: "/group-companies/alpha-matrix/solutions#surveillance" },
-  { icon: Landmark,     title: "Border Security",            desc: "Integrated border surveillance, intrusion detection, radar systems, and monitoring platforms.", href: "/group-companies/alpha-matrix/solutions#border-security" },
-  { icon: Server,       title: "Command & Control Centers",  desc: "Real-time monitoring, C4ISR data visualization, emergency response, and operational intelligence.", href: "/group-companies/alpha-matrix/solutions#command-control" },
-  { icon: Fingerprint,  title: "Access Control",              desc: "Biometric authentication, smart identity management, vehicle access systems, and visitor management.", href: "/group-companies/alpha-matrix/solutions#access-control" },
-  { icon: Shield,       title: "Perimeter Protection",        desc: "Fence detection, fiber optic sensors, microwave barriers, smart alarms, and intrusion prevention.", href: "/group-companies/alpha-matrix/solutions#perimeter-protection" },
-  { icon: Network,      title: "Cyber Defense",               desc: "Network security, threat intelligence, incident response, digital infrastructure protection, and cyber resilience.", href: "/group-companies/alpha-matrix/solutions#cyber-defense" },
+  { icon: Camera,       title: "Surveillance Systems",       desc: "AI-powered CCTV, thermal imaging, long-range cameras, and intelligent video analytics.", href: "/group-companies/alpha-matrix/solutions/surveillance-systems" },
+  { icon: Landmark,     title: "Border Security",            desc: "Integrated border surveillance, intrusion detection, radar systems, and monitoring platforms.", href: "/group-companies/alpha-matrix/solutions/border-security" },
+  { icon: Server,       title: "Command & Control Centers",  desc: "Real-time monitoring, C4ISR data visualization, emergency response, and operational intelligence.", href: "/group-companies/alpha-matrix/solutions/command-and-control-centers" },
+  { icon: Fingerprint,  title: "Access Control",              desc: "Biometric authentication, smart identity management, vehicle access systems, and visitor management.", href: "/group-companies/alpha-matrix/solutions/access-control" },
+  { icon: Shield,       title: "Perimeter Protection",        desc: "Fence detection, fiber optic sensors, microwave barriers, smart alarms, and intrusion prevention.", href: "/group-companies/alpha-matrix/solutions/perimeter-protection" },
+  { icon: Network,      title: "Cyber Defense",               desc: "Network security, threat intelligence, incident response, digital infrastructure protection, and cyber resilience.", href: "/group-companies/alpha-matrix/solutions/cyber-defense" },
 ];
 
 const industries = [
-  { icon: ShieldCheck, label: "Military &\nArmed Forces", href: "/group-companies/alpha-matrix/industries#military" },
-  { icon: Landmark,    label: "Government\nOrganizations", href: "/group-companies/alpha-matrix/industries#government" },
-  { icon: MapPin,      label: "Border\nSecurity",         href: "/group-companies/alpha-matrix/industries#border" },
-  { icon: Plane,       label: "Airports &\nAviation",     href: "/group-companies/alpha-matrix/industries#airports" },
-  { icon: Ship,        label: "Seaports &\nMaritime",     href: "/group-companies/alpha-matrix/industries#seaports" },
-  { icon: Flame,       label: "Oil & Gas\nRefineries",    href: "/group-companies/alpha-matrix/industries#oil-gas" },
-  { icon: Zap,         label: "Power Plants\n& Utilities", href: "/group-companies/alpha-matrix/industries#power-plants" },
-  { icon: Building2,   label: "Smart\nCities",            href: "/group-companies/alpha-matrix/industries#smart-cities" },
-  { icon: Server,      label: "Data Centers\n& Telecom",  href: "/group-companies/alpha-matrix/industries#data-centers" },
-  { icon: Network,     label: "Critical\nInfrastructure", href: "/group-companies/alpha-matrix/industries#critical-infra" },
-  { icon: Building,    label: "Transportation\n& Rail",   href: "/group-companies/alpha-matrix/industries#transportation" },
-  { icon: Wrench,      label: "Defense\nManufacturing",   href: "/group-companies/alpha-matrix/industries#manufacturing" },
+  { icon: ShieldCheck, label: "Military &\nArmed Forces", href: "/group-companies/alpha-matrix/industries/military-and-armed-forces" },
+  { icon: Landmark,    label: "Government\nOrganizations", href: "/group-companies/alpha-matrix/industries/government-organizations" },
+  { icon: MapPin,      label: "Border\nSecurity",         href: "/group-companies/alpha-matrix/industries/border-security-sector" },
+  { icon: Plane,       label: "Airports &\nAviation",     href: "/group-companies/alpha-matrix/industries/airports-and-aviation" },
+  { icon: Ship,        label: "Seaports &\nMaritime",     href: "/group-companies/alpha-matrix/industries/seaports-and-maritime" },
+  { icon: Flame,       label: "Oil & Gas\nRefineries",    href: "/group-companies/alpha-matrix/industries/oil-and-gas-refineries" },
+  { icon: Zap,         label: "Power Plants\n& Utilities", href: "/group-companies/alpha-matrix/industries/power-plants-and-utilities" },
+  { icon: Building2,   label: "Smart\nCities",            href: "/group-companies/alpha-matrix/industries/smart-cities" },
+  { icon: Server,      label: "Data Centers\n& Telecom",  href: "/group-companies/alpha-matrix/industries/data-centers-and-telecom" },
+  { icon: Network,     label: "Critical\nInfrastructure", href: "/group-companies/alpha-matrix/industries/critical-infrastructure" },
+  { icon: Building,    label: "Transportation\n& Rail",   href: "/group-companies/alpha-matrix/industries/transportation-and-rail" },
+  { icon: Wrench,      label: "Defense\nManufacturing",   href: "/group-companies/alpha-matrix/industries/defense-manufacturing" },
 ];
 
 const whyChooseReasons = [
@@ -162,7 +162,11 @@ function AnimatedCounter({ value, duration = 1800 }) {
   const prefix = match ? value.slice(0, value.indexOf(match[1])) : "";
   const suffix = match ? match[2] : "";
 
-  const [display, setDisplay] = useState((0).toFixed(decimals));
+  const [display, setDisplay] = useState(target.toFixed(decimals));
+
+  useEffect(() => {
+    setDisplay((0).toFixed(decimals));
+  }, [decimals]);
 
   useEffect(() => {
     const el = ref.current;
@@ -194,7 +198,7 @@ function AnimatedCounter({ value, duration = 1800 }) {
   }, [started, duration, target, decimals]);
 
   return (
-    <span ref={ref}>
+    <span ref={ref} suppressHydrationWarning>
       {prefix}
       {display}
       {suffix}
@@ -207,6 +211,7 @@ function StatCard({ icon: Icon, value, label }) {
   return (
     <div
       ref={ref}
+      suppressHydrationWarning
       className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center text-center gap-2 p-5 rounded-xl border transition-all duration-300 hover:-translate-y-1.5 hover:border-[#005691]/60 hover:shadow-md bg-white`}
       style={{ borderColor: theme.border }}
     >
@@ -227,6 +232,7 @@ function SolutionCard({ icon: Icon, title, desc, href }) {
     <Link
       href={href}
       ref={ref}
+      suppressHydrationWarning
       className={`reveal ${visible ? "is-visible" : ""} group p-6 rounded-xl border flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[#005691]/60 bg-white`}
       style={{ borderColor: theme.border }}
     >
@@ -251,6 +257,7 @@ function IndustryCard({ icon: Icon, label, href }) {
     <Link
       href={href}
       ref={ref}
+      suppressHydrationWarning
       className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-xl border text-center transition-all duration-300 hover:border-[#005691]/60 hover:-translate-y-1 hover:scale-105 hover:shadow-md bg-white`}
       style={{ borderColor: theme.border }}
     >
@@ -268,6 +275,7 @@ function FeaturedCard({ title, desc, image, href = "/group-companies/alpha-matri
     <Link
       href={href}
       ref={ref}
+      suppressHydrationWarning
       className={`reveal ${visible ? "is-visible" : ""} group rounded-2xl border overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#005691]/50 flex flex-col bg-white`}
       style={{ borderColor: theme.border }}
     >
@@ -290,7 +298,7 @@ function FeaturedCard({ title, desc, image, href = "/group-companies/alpha-matri
 function ProcessStep({ step, icon: Icon, title, isLast }) {
   const [ref, visible] = useReveal();
   return (
-    <div ref={ref} className={`reveal ${visible ? "is-visible" : ""} flex flex-col items-center text-center relative flex-1 min-w-[100px] group`}>
+    <div ref={ref} suppressHydrationWarning className={`reveal ${visible ? "is-visible" : ""} flex flex-col items-center text-center relative flex-1 min-w-[100px] group`}>
       {!isLast && (
         <div className="hidden lg:block absolute top-7 left-[calc(50%+28px)] w-[calc(100%-56px)] h-[2px] border-t-2 border-dashed z-0 transition-colors group-hover:border-[#005691]/60" style={{ borderColor: theme.border }} />
       )}

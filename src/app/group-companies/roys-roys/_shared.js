@@ -76,14 +76,14 @@ export function RoysNavbar({ active = "Home" }) {
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
           {NAV_LINKS.map((item) => {
             const isActive = item.label.toLowerCase() === active.toLowerCase();
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[15px] font-bold tracking-normal transition-colors relative py-1.5 px-1"
+                className="text-[13.5px] xl:text-[14.5px] font-bold tracking-normal transition-colors relative py-1.5 px-1 whitespace-nowrap"
                 style={{
                   color: isActive ? "#2563eb" : "#0f2b48",
                 }}

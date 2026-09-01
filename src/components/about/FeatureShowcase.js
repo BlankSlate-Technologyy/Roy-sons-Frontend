@@ -16,6 +16,16 @@ const SHOWCASE_ITEMS = [
     linkedinHref: "https://www.linkedin.com/company/roysonspvtltd"
   },
   {
+    id: "dr-ahsan-sardar",
+    badge: "Director",
+    title: "Dr Ahsan Sardar",
+    description: "Dr. Ahsan Sardar serves as a Director at Roys Group, contributing to strategic growth and business expansion across multiple sectors. He is the Senior Vice President of the Pakistan Medical Companies Association and an Executive Member of the Lahore Chamber of Commerce & Industry (LCCI). With a strong blend of medical expertise and corporate leadership, he focuses on building strategic partnerships, driving innovation, and delivering sustainable value for the organization.",
+    image: "/logos/ashan sardar.jpeg",
+    imageAlt: "Dr Ahsan Sardar - Director, ROYSONS Pvt. Ltd.",
+    profileHref: "",
+    linkedinHref: "https://www.linkedin.com/company/roysonspvtltd"
+  },
+  {
     id: "hesham-sultan-ijaz",
     badge: "Director",
     title: "Hesham Sultan Ijaz",
@@ -34,16 +44,6 @@ const SHOWCASE_ITEMS = [
     imageAlt: "Yahya Sultan Ijaz - Director ROYSONS Pvt. Ltd.",
     profileHref: "",
     linkedinHref: "https://www.linkedin.com/company/roysonspvtltd"
-  },
-  {
-    id: "board-director",
-    badge: "Director",
-    title: "Dr Ahsan Sardar",
-    description: "Dr. Ahsan Sardar serves as a Director at Roys Group, contributing to strategic growth and business expansion across multiple sectors. He is the Senior Vice President of the Pakistan Medical Companies Association and an Executive Member of the Lahore Chamber of Commerce & Industry (LCCI)With a strong blend of medical expertise and corporate leadership, he focuses on building strategic partnerships, driving innovation, and delivering sustainable value for the organization.",
-    image: "/logos/ashan sardar.jpeg",
-    imageAlt: "Director - ROYSONS Pvt. Ltd.",
-    profileHref: "",
-    linkedinHref: "https://www.linkedin.com/company/roysonspvtltd"
   }
 ];
 
@@ -53,15 +53,15 @@ export default function FeatureShowcase() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-6" data-aos="fade-up" data-aos-delay="100">
-          <span className="text-[11px] font-black tracking-[0.25em] text-[#C6A15A] uppercase mb-2 block">
+        <div className="text-center max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
+          <span className="text-xs font-black tracking-[0.25em] text-[#C6A15A] uppercase mb-2.5 block">
             LEADERSHIP THAT DRIVES OUR VISION
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white uppercase tracking-tight mb-3">
             Board of Directors
           </h2>
           <div className="mx-auto h-[3px] w-12 bg-[#C6A15A] mb-4" />
-          <p className="text-[13.5px] sm:text-[14.5px] text-neutral-300 leading-relaxed font-normal">
+          <p className="text-[15px] sm:text-[16px] text-neutral-200 leading-relaxed font-normal">
             The Board of Directors of ROYSONS Pvt. Ltd. provides strategic leadership and direction, guiding the organization toward sustainable growth, innovation, diversification, and long-term value creation across its expanding portfolio of businesses.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function FeatureShowcase() {
                 {/* Content Side */}
                 <div className="flex-1 w-full flex flex-col justify-center text-center lg:text-left">
                   {/* Badge Pill */}
-                  <div className="inline-flex items-center bg-white/5 border border-[#C6A15A]/40 px-3.5 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
+                  <div className="inline-flex items-center bg-white/5 border border-[#C6A15A]/40 px-4 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
                     <span className="text-[11px] font-black uppercase tracking-widest text-[#C6A15A]">
                       {item.badge}
                     </span>
@@ -95,17 +95,17 @@ export default function FeatureShowcase() {
                     {item.title}
                   </h3>
 
-                  {/* Description Paragraph */}
-                  <p className="text-neutral-300 text-[14px] sm:text-[14.5px] leading-relaxed font-normal whitespace-pre-line mb-6">
+                  {/* Description Paragraph (Larger than 14px -> 15.5px - 16px) */}
+                  <p className="text-neutral-200 text-[15px] sm:text-[15.5px] lg:text-[16px] leading-[1.75] font-normal whitespace-pre-line mb-6">
                     {item.description}
                   </p>
 
                   {/* Action Buttons: View Profile & LinkedIn */}
-                  <div className="flex flex-wrap items-center gap-3 justify-center lg:justify-start">
+                  <div className="flex flex-wrap items-center gap-3.5 justify-center lg:justify-start">
                     {item.profileHref && (
                       <Link
                         href={item.profileHref}
-                        className="rs-cta-btn inline-flex items-center justify-center gap-2.5 px-6 py-3 border-2 border-[#C6A15A] bg-transparent text-[#C6A15A] hover:bg-[#C6A15A] hover:text-[#101518] text-[11px] font-black uppercase tracking-[0.18em] rounded-[2px] transition-all duration-300 group/btn shadow-xs"
+                        className="rs-cta-btn inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border-2 border-[#C6A15A] bg-transparent text-[#C6A15A] hover:bg-[#C6A15A] hover:text-[#101518] text-xs font-black uppercase tracking-[0.18em] rounded-[2px] transition-all duration-300 group/btn shadow-xs"
                       >
                         <span>VIEW PROFILE</span>
                         <ArrowRight size={14} strokeWidth={2.5} className="group-hover/btn:translate-x-1 transition-transform duration-300" />

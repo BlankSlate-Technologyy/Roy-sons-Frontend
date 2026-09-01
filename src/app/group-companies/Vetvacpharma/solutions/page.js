@@ -179,19 +179,41 @@ export default function SolutionsPage() {
                   </div>
                 ))}
               </div>
+
+              <div className="pt-4 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/group-companies/Vetvacpharma/solutions/veterinary-vaccines"
+                  className="px-6 py-3 rounded-lg text-[13px] font-bold text-white bg-[#1E855C] hover:bg-[#156344] transition-all flex items-center gap-2 shadow-md cursor-pointer"
+                >
+                  <span>Explore Veterinary Vaccines Details</span>
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
             </div>
 
             <div className="lg:col-span-6">
               <div
-                className="relative w-full h-[380px] rounded-2xl overflow-hidden shadow-md border"
+                className="relative w-full h-[380px] rounded-2xl overflow-hidden shadow-md border group"
                 style={{ borderColor: COLORS.border }}
               >
                 <Image
                   src="/vetvac_vaccines_ai.jpg"
                   alt="VET VAC PHARMA Veterinary Vaccines Sterile Bottling"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071B30]/70 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-md bg-white/90 backdrop-blur-xs text-[#094C80] font-black text-xs uppercase tracking-wider">
+                    Preventive Immunity &amp; Controlled Quality
+                  </span>
+                  <Link
+                    href="/group-companies/Vetvacpharma/solutions/veterinary-vaccines"
+                    className="p-2 rounded-full bg-[#1E855C] text-white hover:scale-110 transition-transform"
+                  >
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -200,15 +222,27 @@ export default function SolutionsPage() {
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-6 order-2 lg:order-1">
               <div
-                className="relative w-full h-[380px] rounded-2xl overflow-hidden shadow-md border"
+                className="relative w-full h-[380px] rounded-2xl overflow-hidden shadow-md border group"
                 style={{ borderColor: COLORS.border }}
               >
                 <Image
                   src="/vetvac_biologics_ai.jpg"
                   alt="VET VAC PHARMA Biological Products Laboratory"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071B30]/70 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-md bg-white/90 backdrop-blur-xs text-[#094C80] font-black text-xs uppercase tracking-wider">
+                    Safe, Effective &amp; Responsible Farming
+                  </span>
+                  <Link
+                    href="/group-companies/Vetvacpharma/solutions/biological-products"
+                    className="p-2 rounded-full bg-[#1E855C] text-white hover:scale-110 transition-transform"
+                  >
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -229,13 +263,23 @@ export default function SolutionsPage() {
                 We focus on solutions that contribute to improved animal health while supporting responsible and effective farming practices.
               </p>
 
-              <div className="p-4 rounded-xl border" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
-                <h4 className="text-[14px] font-black mb-2" style={{ color: COLORS.green }}>
+              <div className="p-4 rounded-xl border space-y-2" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+                <h4 className="text-[14px] font-black" style={{ color: COLORS.green }}>
                   Biosecurity &amp; Non-Antibiotic Balance
                 </h4>
                 <p className="text-[12.5px] leading-relaxed" style={{ color: COLORS.green }}>
                   Formulated to enhance cellular immunity, optimize gut microbiome stability, and protect flocks and herds without inducing antimicrobial resistance.
                 </p>
+              </div>
+
+              <div className="pt-2 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/group-companies/Vetvacpharma/solutions/biological-products"
+                  className="px-6 py-3 rounded-lg text-[13px] font-bold text-white bg-[#094C80] hover:bg-[#1E855C] transition-all flex items-center gap-2 shadow-md cursor-pointer"
+                >
+                  <span>Explore Biologicals Details</span>
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </div>
           </div>
@@ -244,25 +288,33 @@ export default function SolutionsPage() {
           <div className="grid md:grid-cols-2 gap-8 pt-6">
             {/* Poultry */}
             <div
-              className="p-8 rounded-2xl border bg-white shadow-sm flex flex-col justify-between"
+              className="p-8 rounded-2xl border bg-white shadow-sm flex flex-col justify-between hover:shadow-lg hover:border-[#1E855C] transition-all duration-300 group"
               style={{ borderColor: COLORS.border }}
             >
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: COLORS.white }}
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#EAF6F0]"
+                    >
+                      <Bird size={26} style={{ color: COLORS.green }} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black" style={{ color: COLORS.green }}>
+                        Poultry Health Solutions
+                      </h3>
+                      <p className="text-[12px] font-bold" style={{ color: COLORS.green }}>
+                        Healthier Flocks • Stronger Production
+                      </p>
+                    </div>
+                  </div>
+                  <Link
+                    href="/group-companies/Vetvacpharma/solutions/poultry-health-solutions"
+                    className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-[#1E855C] hover:text-[#094C80]"
                   >
-                    <Bird size={26} style={{ color: COLORS.green }} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-black" style={{ color: COLORS.green }}>
-                      Poultry Health Solutions
-                    </h3>
-                    <p className="text-[12px] font-bold" style={{ color: COLORS.green }}>
-                      Healthier Flocks • Stronger Production
-                    </p>
-                  </div>
+                    <span>Details</span>
+                    <ArrowRight size={12} />
+                  </Link>
                 </div>
                 <p className="text-[13.5px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
                   Modern poultry farming requires effective prevention and health-management strategies. Our poultry-focused solutions are designed to help address common health challenges and support healthier flocks and more efficient production.
@@ -272,39 +324,61 @@ export default function SolutionsPage() {
                   style={{ borderColor: COLORS.border }}
                 >
                   <Image
-                    src="/vetvac_poultry_ai.jpg"
+                    src="/vetvac_poultry_service.jpg"
                     alt="Commercial Poultry Flock Health"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </div>
-              <div className="p-3 rounded-lg border text-center text-[12.5px] font-bold" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, color: COLORS.green }}>
-                Tailored flock immunization schedules
+              <div className="space-y-3 pt-2">
+                <div className="grid grid-cols-2 gap-2 text-[12px] font-bold" style={{ color: COLORS.green }}>
+                  <div className="p-2.5 rounded border text-center" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+                    ✓ Viral &amp; Bacterial Vaccines
+                  </div>
+                  <div className="p-2.5 rounded border text-center" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
+                    ✓ Flock Immunity Support
+                  </div>
+                </div>
+                <Link
+                  href="/group-companies/Vetvacpharma/solutions/poultry-health-solutions"
+                  className="w-full py-3 rounded-lg text-[12.5px] font-extrabold uppercase tracking-wider text-white bg-[#1E855C] hover:bg-[#156344] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                >
+                  <span>View Poultry Health Detail Page</span>
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </div>
 
             {/* Livestock */}
             <div
-              className="p-8 rounded-2xl border bg-white shadow-sm flex flex-col justify-between"
+              className="p-8 rounded-2xl border bg-white shadow-sm flex flex-col justify-between hover:shadow-lg hover:border-[#1E855C] transition-all duration-300 group"
               style={{ borderColor: COLORS.border }}
             >
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: COLORS.white }}
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#EAF6F0]"
+                    >
+                      <Wheat size={26} style={{ color: COLORS.green }} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black" style={{ color: COLORS.green }}>
+                        Livestock Health Solutions
+                      </h3>
+                      <p className="text-[12px] font-bold" style={{ color: COLORS.green }}>
+                        Cattle • Dairy • Herd Wellbeing
+                      </p>
+                    </div>
+                  </div>
+                  <Link
+                    href="/group-companies/Vetvacpharma/solutions/livestock-health-solutions"
+                    className="hidden sm:inline-flex items-center gap-1 text-[11px] font-bold text-[#1E855C] hover:text-[#094C80]"
                   >
-                    <Wheat size={26} style={{ color: COLORS.green }} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-black" style={{ color: COLORS.green }}>
-                      Livestock Health Solutions
-                    </h3>
-                    <p className="text-[12px] font-bold" style={{ color: COLORS.green }}>
-                      Cattle • Dairy • Herd Wellbeing
-                    </p>
-                  </div>
+                    <span>Details</span>
+                    <ArrowRight size={12} />
+                  </Link>
                 </div>
                 <p className="text-[13.5px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
                   We support livestock producers with healthcare solutions focused on maintaining animal wellbeing and reducing the impact of preventable diseases.
@@ -315,11 +389,11 @@ export default function SolutionsPage() {
                 </p>
                 <div className="space-y-2 mb-4">
                   {[
-                    "Cattle health",
-                    "Dairy operations",
-                    "Commercial livestock",
-                    "Farm disease prevention",
-                    "Animal wellness programs",
+                    "Cattle health management",
+                    "Dairy operations & mastitis defense",
+                    "Commercial livestock & feedlot growth",
+                    "Farm disease prevention protocols",
+                    "Animal wellness & parasite eradication",
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-2 text-[13px] font-semibold" style={{ color: COLORS.green }}>
                       <CheckCircle2 size={16} style={{ color: COLORS.green }} />
@@ -328,8 +402,14 @@ export default function SolutionsPage() {
                   ))}
                 </div>
               </div>
-              <div className="p-3 rounded-lg border text-center text-[12.5px] font-bold" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, color: COLORS.green }}>
-                Comprehensive Herd Wellness Protocols
+              <div className="space-y-3 pt-2">
+                <Link
+                  href="/group-companies/Vetvacpharma/solutions/livestock-health-solutions"
+                  className="w-full py-3 rounded-lg text-[12.5px] font-extrabold uppercase tracking-wider text-white bg-[#094C80] hover:bg-[#1E855C] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                >
+                  <span>View Livestock Health Detail Page</span>
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </div>
           </div>

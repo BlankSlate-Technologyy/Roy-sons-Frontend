@@ -549,6 +549,13 @@ export default function BiomaxSolutionsPage() {
 
                     {/* Action Buttons */}
                     <div className="flex flex-wrap gap-3 pt-2">
+                      <Link
+                        href={`/group-companies/biomax/solutions/${cat.id}`}
+                        className="px-6 py-3 rounded-lg text-[13.5px] font-bold text-white flex items-center gap-2 shadow-md bg-[#1D906C] hover:bg-[#136B50] transition-all cursor-pointer"
+                      >
+                        <span>View {cat.title} Details</span>
+                        <ArrowRight size={15} />
+                      </Link>
                       <button
                         onClick={() => scrollToInquiry(cat.title)}
                         className="px-6 py-3 rounded-lg text-[13.5px] font-bold text-white flex items-center gap-2 shadow-md hover:opacity-90 transition-opacity cursor-pointer"

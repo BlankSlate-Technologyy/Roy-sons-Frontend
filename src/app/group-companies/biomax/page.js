@@ -64,14 +64,14 @@ const CORE_VALUES = [
 ];
 
 const SOLUTIONS = [
-  { icon: Microscope,       title: "Laboratory Equipment",              desc: "Advanced instruments and machinery for research, testing, and analysis." },
-  { icon: HeartPulse,       title: "Diagnostic Systems",                desc: "Precise diagnostic technologies for accurate clinical and research results." },
-  { icon: Dna,              title: "Biotechnology Solutions",           desc: "Innovative biological tools and reagents supporting cutting-edge research." },
-  { icon: TestTube,         title: "Molecular & Genetic Testing Equipment", desc: "Specialized systems for PCR, sequencing, and genetic analysis." },
-  { icon: FlaskConical,     title: "Laboratory Consumables & Reagents", desc: "High-quality supplies for consistent and reliable lab operations." },
-  { icon: Target,           title: "Research Instruments",              desc: "Precision tools designed for academic and scientific research institutions." },
-  { icon: Building2,        title: "Clinical Laboratory Solutions",     desc: "Complete systems supporting hospital and diagnostic laboratory workflows." },
-  { icon: Settings,         title: "Calibration & Maintenance Services",desc: "Ensuring equipment accuracy and long-term operational reliability." },
+  { icon: Microscope,       title: "Laboratory Equipment",              desc: "Advanced instruments and machinery for research, testing, and analysis.", href: "/group-companies/biomax/solutions/lab-equipment" },
+  { icon: HeartPulse,       title: "Diagnostic Systems",                desc: "Precise diagnostic technologies for accurate clinical and research results.", href: "/group-companies/biomax/solutions/diagnostic-equipment" },
+  { icon: Dna,              title: "Biotechnology Solutions",           desc: "Innovative biological tools and reagents supporting cutting-edge research.", href: "/group-companies/biomax/solutions/biotech-solutions" },
+  { icon: TestTube,         title: "Molecular & Genetic Testing Equipment", desc: "Specialized systems for PCR, sequencing, and genetic analysis.", href: "/group-companies/biomax/solutions/biotech-solutions" },
+  { icon: FlaskConical,     title: "Laboratory Consumables & Reagents", desc: "High-quality supplies for consistent and reliable lab operations.", href: "/group-companies/biomax/solutions/consumables" },
+  { icon: Target,           title: "Research Instruments",              desc: "Precision tools designed for academic and scientific research institutions.", href: "/group-companies/biomax/solutions/scientific-instruments" },
+  { icon: Building2,        title: "Clinical Laboratory Solutions",     desc: "Complete systems supporting hospital and diagnostic laboratory workflows.", href: "/group-companies/biomax/solutions/diagnostic-equipment" },
+  { icon: Settings,         title: "Calibration & Maintenance Services",desc: "Ensuring equipment accuracy and long-term operational reliability.", href: "/group-companies/biomax/solutions/lab-equipment" },
 ];
 
 const WHY_CHOOSE = [
@@ -84,14 +84,14 @@ const WHY_CHOOSE = [
 ];
 
 const INDUSTRIES = [
-  { icon: FlaskConical,  label: "Research Laboratories" },
-  { icon: HeartPulse,    label: "Diagnostic Centers" },
-  { icon: Building2,     label: "Hospitals & Clinics" },
-  { icon: GraduationCap, label: "Universities & Academic Institutes" },
-  { icon: Pill,          label: "Pharmaceutical Companies" },
-  { icon: Dna,           label: "Biotechnology Firms" },
-  { icon: Landmark,      label: "Government Health Institutions" },
-  { icon: TestTube,      label: "Forensic Laboratories" },
+  { icon: FlaskConical,  label: "Research Laboratories", href: "/group-companies/biomax/industries/research-institutions" },
+  { icon: HeartPulse,    label: "Diagnostic Centers", href: "/group-companies/biomax/industries/healthcare-diagnostics" },
+  { icon: Building2,     label: "Hospitals & Clinics", href: "/group-companies/biomax/industries/healthcare-diagnostics" },
+  { icon: GraduationCap, label: "Universities & Academic Institutes", href: "/group-companies/biomax/industries/universities-education" },
+  { icon: Pill,          label: "Pharmaceutical Companies", href: "/group-companies/biomax/industries/pharmaceutical-industry" },
+  { icon: Dna,           label: "Biotechnology Firms", href: "/group-companies/biomax/industries/biotechnology" },
+  { icon: Landmark,      label: "Government Health Institutions", href: "/group-companies/biomax/industries/research-institutions" },
+  { icon: TestTube,      label: "Industrial Testing Laboratories", href: "/group-companies/biomax/industries/industrial-laboratories" },
 ];
 
 const PROCESS_STEPS = [
@@ -199,15 +199,15 @@ function OutlineButton({ href, children, className = "" }) {
 // ─── Animated Counter Helpers ───────────────────────────────────────────────
 
 function parseStatValue(val) {
-  const raw = val.replace(/,/g, "");
+  const raw = String(val).replace(/,/g, "");
   const suffix = raw.match(/[+%]$/)?.[0] ?? "";
   const num = parseFloat(raw);
-  const hasComma = val.includes(",");
+  const hasComma = String(val).includes(",");
   return { num, suffix, hasComma };
 }
 
 function useCountUp(target, duration = 1800, shouldStart = false) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   useEffect(() => {
     if (!shouldStart) return;
     let start = null;
@@ -241,7 +241,7 @@ function AnimatedStatBiomax({ value, label, accentColor }) {
     return () => observer.disconnect();
   }, []);
 
-  const display = hasComma ? count.toLocaleString() : count;
+  const display = hasComma ? count.toLocaleString("en-US") : count;
 
   return (
     <div
@@ -279,70 +279,6 @@ function scrollToSection(e, href) {
 }
 
 const BIOMAX_SECTION_IDS = ["home", "about", "solutions", "rnd", "quality", "industries", "contact"];
-
-function Navbar() {
-  const activeSection = useActiveSection(BIOMAX_SECTION_IDS, 120);
-
-  return (
-    <div className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b transition-all" style={{ borderColor: COLORS.border }}>
-      <div className="mx-auto max-w-screen-xl px-6 py-3 flex items-center justify-between">
-        <Link href="/group-companies" className="flex items-center">
-          <div className="relative flex items-center py-1">
-            <Image 
-              src="/logo.png" 
-              alt="BIO MAX CORPORATION Logo" 
-              width={260} 
-              height={85} 
-              className="h-16 sm:h-20 w-auto object-contain" 
-              priority
-            />
-          </div>
-        </Link>
-
-        <nav className="hidden lg:flex items-center gap-7">
-          {NAV_LINKS.map((item) => {
-            const isRoute = item.href.startsWith("/");
-            const targetId = item.href.replace("#", "");
-            const isActive = activeSection === targetId;
-            if (isRoute) {
-              return (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="relative text-[16px] font-bold py-1 transition-colors hover:text-[#2C6FC9]"
-                  style={{ color: COLORS.ink }}
-                >
-                  {item.label}
-                </Link>
-              );
-            }
-            return (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="relative text-[16px] font-bold py-1 transition-colors hover:text-[#2C6FC9] cursor-pointer"
-                style={{ color: isActive ? COLORS.accent : COLORS.ink }}
-              >
-                {item.label}
-                {isActive && (
-                  <motion.div
-                    layoutId="biomaxUnderline"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full"
-                    style={{ backgroundColor: COLORS.accent }}
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </a>
-            );
-          })}
-        </nav>
-
-        <PrimaryButton href="#solutions" className="hidden md:flex">Our Services</PrimaryButton>
-      </div>
-    </div>
-  );
-}
 
 function HeroSection() {
   return (
@@ -609,18 +545,25 @@ function SolutionsSection() {
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="OUR SOLUTIONS" title="Complete Biotechnology & Laboratory Portfolio" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {SOLUTIONS.map(({ icon: Icon, title, desc }) => (
-            <div
+          {SOLUTIONS.map(({ icon: Icon, title, desc, href }) => (
+            <Link
               key={title}
-              className="p-5 rounded-lg border bg-white shadow-sm hover:-translate-y-1 transition-transform"
+              href={href || "/group-companies/biomax/solutions"}
+              className="p-5 rounded-xl border bg-white shadow-sm hover:shadow-md hover:border-[#1D906C] hover:-translate-y-1.5 transition-all flex flex-col justify-between group cursor-pointer"
               style={{ borderColor: COLORS.border }}
             >
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: `${COLORS.primary}12` }}>
-                <Icon size={30} style={{ color: COLORS.primary }} />
+              <div>
+                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style={{ backgroundColor: `${COLORS.primary}12` }}>
+                  <Icon size={26} style={{ color: COLORS.primary }} />
+                </div>
+                <h4 className="text-[13.5px] font-extrabold mb-1.5 group-hover:text-[#1D906C] transition-colors" style={{ color: COLORS.primary }}>{title}</h4>
+                <p className="text-[11.5px] leading-relaxed mb-3" style={{ color: COLORS.muted }}>{desc}</p>
               </div>
-              <h4 className="text-[13px] font-extrabold mb-1.5" style={{ color: COLORS.primary }}>{title}</h4>
-              <p className="text-[11.5px] leading-relaxed" style={{ color: COLORS.muted }}>{desc}</p>
-            </div>
+              <div className="pt-2 text-[11px] font-extrabold text-[#1D906C] flex items-center gap-1">
+                <span>View Details</span>
+                <ArrowRight size={11} />
+              </div>
+            </Link>
           ))}
         </div>
 
@@ -639,7 +582,7 @@ function SolutionsSection() {
           </div>
           <Link
             href="/group-companies/biomax/solutions"
-            className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold text-white flex items-center gap-2 shadow-md hover:bg-[#1D906C] transition-all flex-shrink-0"
+            className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold text-white flex items-center gap-2 shadow-md hover:bg-[#1D906C] transition-all flex-shrink-0 cursor-pointer"
             style={{ backgroundColor: COLORS.primary }}
           >
             <span>Explore Products &amp; Solutions</span>
@@ -673,25 +616,34 @@ function WhyIndustriesProcessSection() {
         </div>
 
         {/* Industries We Serve */}
-        <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
-          <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>INDUSTRIES WE SERVE</span>
-          <h3 id="industries" className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>Sectors We Support</h3>
-          <div className="space-y-3.5 mb-6">
-            {INDUSTRIES.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3.5">
-                <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: `${COLORS.primary}15` }}
+        <div className="p-8 rounded-xl border shadow-md flex flex-col justify-between" style={{ borderColor: COLORS.border }}>
+          <div>
+            <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>INDUSTRIES WE SERVE</span>
+            <h3 id="industries" className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>Sectors We Support</h3>
+            <div className="space-y-2.5 mb-6">
+              {INDUSTRIES.map(({ icon: Icon, label, href }) => (
+                <Link
+                  key={label}
+                  href={href || "/group-companies/biomax/industries"}
+                  className="flex items-center justify-between p-2 rounded-lg hover:bg-[#F0F7FA] transition-colors group cursor-pointer"
                 >
-                  <Icon size={17} style={{ color: COLORS.primary }} />
-                </div>
-                <span className="text-[13.5px] font-semibold" style={{ color: COLORS.ink }}>{label}</span>
-              </div>
-            ))}
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                      style={{ backgroundColor: `${COLORS.primary}15` }}
+                    >
+                      <Icon size={16} style={{ color: COLORS.primary }} />
+                    </div>
+                    <span className="text-[13px] font-bold group-hover:text-[#1D906C] transition-colors" style={{ color: COLORS.ink }}>{label}</span>
+                  </div>
+                  <ChevronRight size={13} className="text-[#1D906C] opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
+              ))}
+            </div>
           </div>
           <Link
             href="/group-companies/biomax/industries"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-[12px] font-bold text-white shadow-sm hover:opacity-90 transition-opacity"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-[12px] font-bold text-white shadow-sm hover:bg-[#1D906C] transition-all"
             style={{ backgroundColor: COLORS.primary }}
           >
             <span>Explore All 7 Sectors</span>
