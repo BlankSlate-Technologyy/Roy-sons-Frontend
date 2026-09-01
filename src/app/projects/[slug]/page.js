@@ -227,13 +227,13 @@ export default function ProjectDetailPage({ params }) {
                 </p>
               </div>
 
-              <div className="p-6 bg-[#fcfbf7] border border-[#dfb753]/30 rounded-sm">
+              <div className="p-6 bg-[#1a2127] border border-[#dfb753]/30 rounded-sm text-white">
                 <div className="flex items-center gap-2 text-[#dfb753] text-[11px] font-black uppercase tracking-widest mb-3">
                   <Building2 size={14} />
                   <span>Delivery Milestone</span>
                 </div>
-                <h4 className="text-lg font-black text-neutral-950 mb-2">Project Outcome</h4>
-                <p className="text-[13.5px] text-neutral-700 leading-relaxed">
+                <h4 className="text-lg font-black text-white mb-2">Project Outcome</h4>
+                <p className="text-[13.5px] text-neutral-300 leading-relaxed">
                   {project.projectOutcome}
                 </p>
               </div>
