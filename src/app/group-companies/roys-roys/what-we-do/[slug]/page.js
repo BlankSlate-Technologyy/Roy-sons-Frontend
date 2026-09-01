@@ -35,7 +35,7 @@ export default function OfferingDetailPage({ params }) {
   const MainIcon = offering.icon;
 
   return (
-    <div className="min-h-screen flex flex-col bg-white text-[#111827]">
+    <div className="min-h-screen flex flex-col bg-white text-[#111827] overflow-hidden">
       <RoysNavbar active="What We Do" />
 
       {/* ─── Breadcrumb ─────────────────────────────────────────────────────────── */}
@@ -57,7 +57,7 @@ export default function OfferingDetailPage({ params }) {
       <section className="relative bg-[#0b2138] text-white py-16 lg:py-20 px-6 overflow-hidden">
         {/* Ambient Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#071728] via-[#0b2138] to-[#113658] opacity-95" />
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none hidden lg:block">
+        <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none hidden lg:block" data-aos="fade-left" data-aos-duration="1000">
           <Image
             src={offering.image || "/roys_hospital_interior.png"}
             alt={offering.title}
@@ -68,24 +68,42 @@ export default function OfferingDetailPage({ params }) {
 
         <div className="relative z-10 mx-auto max-w-screen-xl">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#B49438] text-xs font-bold uppercase tracking-widest mb-4">
+            <div
+              data-aos="fade-down"
+              data-aos-duration="600"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#B49438] text-xs font-bold uppercase tracking-widest mb-4"
+            >
               <MainIcon size={15} />
               <span>{offering.badge || "Service Offering"} • Service #{offering.number}</span>
             </div>
 
-            <p className="text-[#B49438] text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] mb-2">
+            <p
+              data-aos="fade-up"
+              data-aos-delay="50"
+              className="text-[#B49438] text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] mb-2"
+            >
               {offering.eyebrow}
             </p>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-5 text-white">
+            <h1
+              data-aos="fade-up"
+              data-aos-delay="100"
+              data-aos-duration="700"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-5 text-white"
+            >
               {offering.title}
             </h1>
 
-            <p className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed mb-8">
+            <p
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-aos-duration="700"
+              className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed mb-8"
+            >
               {offering.tagline}
             </p>
 
-            <div className="flex flex-wrap items-center gap-4">
+            <div data-aos="fade-up" data-aos-delay="300" className="flex flex-wrap items-center gap-4">
               <Link
                 href="/group-companies/roys-roys/contact"
                 className="px-6 py-3.5 rounded-sm bg-[#B49438] hover:bg-[#113658] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg shadow-black/20"
@@ -107,7 +125,12 @@ export default function OfferingDetailPage({ params }) {
           {offering.stats && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-10 border-t border-white/10">
               {offering.stats.map((stat, i) => (
-                <div key={i} className="p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
+                <div
+                  key={i}
+                  data-aos="fade-up"
+                  data-aos-delay={350 + i * 80}
+                  className="p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs"
+                >
                   <p className="text-2xl sm:text-3xl font-black text-[#B49438] tracking-tight mb-1">
                     {stat.value}
                   </p>
@@ -122,7 +145,7 @@ export default function OfferingDetailPage({ params }) {
       </section>
 
       {/* ─── Service Switcher Tabs ────────────────────────────────────────────── */}
-      <section className="bg-white border-b border-[#e2e8f0] sticky top-[68px] z-40 shadow-xs hidden md:block">
+      <section data-aos="fade-up" className="bg-white border-b border-[#e2e8f0] sticky top-[68px] z-40 shadow-xs hidden md:block">
         <div className="mx-auto max-w-screen-xl px-6">
           <div className="flex items-center gap-2 overflow-x-auto py-3 no-scrollbar">
             <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#64748b] mr-2 shrink-0">
@@ -153,7 +176,7 @@ export default function OfferingDetailPage({ params }) {
       {/* ─── Detailed Overview Section ────────────────────────────────────────── */}
       <section className="py-16 px-6 bg-[#f8fafc]">
         <div className="mx-auto max-w-screen-xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7" data-aos="fade-right" data-aos-duration="700">
             <div className="inline-flex items-center gap-2 text-[#009088] text-xs font-extrabold uppercase tracking-[0.2em] mb-3">
               <Sparkles size={14} />
               <span>COMPREHENSIVE OFFERING OVERVIEW</span>
@@ -189,7 +212,7 @@ export default function OfferingDetailPage({ params }) {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5" data-aos="fade-left" data-aos-duration="800">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-[#113658]">
               <div className="relative h-80 sm:h-96 w-full">
                 <Image
@@ -229,6 +252,8 @@ export default function OfferingDetailPage({ params }) {
               return (
                 <div
                   key={idx}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 100}
                   className="p-6 rounded-xl border border-[#e2e8f0] bg-white hover:border-[#113658] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
                 >
                   <div>
@@ -256,7 +281,7 @@ export default function OfferingDetailPage({ params }) {
       {/* ─── Scope of Services Portfolio ──────────────────────────────────────── */}
       <section className="py-16 px-6 bg-[#0c233c] text-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <div data-aos="fade-up" className="text-center max-w-3xl mx-auto mb-12">
             <p className="text-[#B49438] text-xs font-extrabold uppercase tracking-[0.25em] mb-2">
               COMPREHENSIVE PORTFOLIO
             </p>
@@ -270,6 +295,8 @@ export default function OfferingDetailPage({ params }) {
             {offering.scopeOfServices.map((scope, idx) => (
               <div
                 key={idx}
+                data-aos="zoom-in"
+                data-aos-delay={idx * 60}
                 className="flex items-center gap-3.5 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
               >
                 <div className="w-8 h-8 rounded-full bg-[#B49438]/20 flex items-center justify-center shrink-0 text-[#B49438]">
@@ -297,6 +324,8 @@ export default function OfferingDetailPage({ params }) {
             {offering.workflow.map((w, idx) => (
               <div
                 key={idx}
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
                 className="relative p-6 rounded-xl bg-[#f8fafc] border border-[#e2e8f0] hover:shadow-lg transition-all duration-300"
               >
                 <div className="text-3xl font-black text-[#113658]/20 mb-3 font-mono">
@@ -319,7 +348,7 @@ export default function OfferingDetailPage({ params }) {
       <section className="py-16 px-6 bg-[#f8fafc] border-y border-[#e2e8f0]">
         <div className="mx-auto max-w-screen-xl grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Key Advantages */}
-          <div className="p-8 rounded-2xl bg-white border border-[#e2e8f0] shadow-sm">
+          <div data-aos="fade-right" data-aos-duration="700" className="p-8 rounded-2xl bg-white border border-[#e2e8f0] shadow-sm">
             <div className="inline-flex items-center gap-2 text-[#009088] text-xs font-extrabold uppercase tracking-widest mb-3">
               <Award size={16} />
               <span>KEY VALUE ADVANTAGES</span>
@@ -342,7 +371,7 @@ export default function OfferingDetailPage({ params }) {
           </div>
 
           {/* Target Industries */}
-          <div className="p-8 rounded-2xl bg-[#113658] text-white shadow-xl flex flex-col justify-between">
+          <div data-aos="fade-left" data-aos-duration="700" className="p-8 rounded-2xl bg-[#113658] text-white shadow-xl flex flex-col justify-between">
             <div>
               <div className="inline-flex items-center gap-2 text-[#B49438] text-xs font-extrabold uppercase tracking-widest mb-3">
                 <Building2 size={16} />
@@ -391,6 +420,8 @@ export default function OfferingDetailPage({ params }) {
               return (
                 <div
                   key={idx}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 80}
                   className="rounded-lg border border-[#e2e8f0] overflow-hidden transition-colors"
                 >
                   <button
@@ -420,7 +451,7 @@ export default function OfferingDetailPage({ params }) {
       </section>
 
       {/* ─── CTA Banner ───────────────────────────────────────────────────────── */}
-      <section className="py-16 px-6 bg-[#020f1f] text-white">
+      <section data-aos="fade-up" data-aos-duration="700" className="py-16 px-6 bg-[#020f1f] text-white">
         <div className="mx-auto max-w-screen-xl text-center">
           <p className="text-[#B49438] text-xs font-extrabold uppercase tracking-[0.3em] mb-3">
             GET IN TOUCH WITH OUR SPECIALISTS

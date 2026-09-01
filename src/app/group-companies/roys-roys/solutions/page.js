@@ -50,19 +50,33 @@ const TURNKEY_SOLUTIONS = [
 
 export default function SolutionsPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
+    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white overflow-hidden">
       <RoysNavbar active="Solutions" />
 
       {/* ─── Hero Section ─────────────────────────────────────────────────── */}
       <section className="relative bg-[#07152b] text-white pt-12 pb-16 lg:pt-16 lg:pb-20 px-6 overflow-hidden">
         <div className="relative z-10 mx-auto max-w-screen-xl text-center">
-          <div className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4">
+          <div
+            data-aos="fade-down"
+            data-aos-duration="600"
+            className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4"
+          >
             TURNKEY HEALTHCARE SOLUTIONS
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4 max-w-3xl mx-auto">
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-aos-duration="700"
+            className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4 max-w-3xl mx-auto"
+          >
             Configurable &amp; Scalable Institutional Solutions
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7 font-normal">
+          <p
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="700"
+            className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7 font-normal"
+          >
             Turnkey execution engineered for clinical safety, architectural flexibility, and fast-track institutional deployment.
           </p>
         </div>
@@ -76,6 +90,8 @@ export default function SolutionsPage() {
             return (
               <div
                 key={sol.id}
+                data-aos={isEven ? "fade-right" : "fade-left"}
+                data-aos-duration="800"
                 className={"grid lg:grid-cols-12 gap-8 items-center p-7 rounded-3xl border border-slate-200 bg-[#f8fafc] shadow-xs " + (isEven ? "" : "lg:flex-row-reverse")}
               >
                 <div className={"lg:col-span-6 space-y-4 " + (isEven ? "lg:order-1" : "lg:order-2")}>

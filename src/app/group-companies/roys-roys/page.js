@@ -257,7 +257,7 @@ export default function RoysRoysPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
+    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white overflow-hidden">
       {/* ─── 1. TOP NAVBAR ─────────────────────────────────────────────────── */}
       <RoysNavbar active="Home" />
 
@@ -273,12 +273,21 @@ export default function RoysRoysPage() {
             {/* Left: Content */}
             <div className="lg:col-span-7">
               {/* Gold pill badge */}
-              <div className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-5">
+              <div
+                data-aos="fade-down"
+                data-aos-duration="600"
+                className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-5"
+              >
                 GLOBAL HEALTHCARE ENGINEERING &amp; INSTITUTIONAL CONTRACTING
               </div>
 
               {/* H1 Heading */}
-              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-5">
+              <h1
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="700"
+                className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-5"
+              >
                 Delivering Excellence Through
                 <span className="block text-[#38bdf8] font-black text-2xl sm:text-3xl lg:text-4xl my-1">
                   &amp;
@@ -287,12 +296,17 @@ export default function RoysRoysPage() {
               </h1>
 
               {/* Subtitle */}
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-7 font-normal">
+              <p
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-duration="700"
+                className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-7 font-normal"
+              >
                 Roys &amp; Roys™ International is a diversified enterprise specializing in turnkey hospital engineering, integrated healthcare infrastructure, and institutional contracting solutions across 30+ nations.
               </p>
 
               {/* Hero Action Buttons (Compact, Sleek, Pixel-Perfect) */}
-              <div className="flex flex-wrap items-center gap-3 mb-10">
+              <div data-aos="fade-up" data-aos-delay="300" className="flex flex-wrap items-center gap-3 mb-10">
                 <Link
                   href="/group-companies/roys-roys/what-we-do"
                   className="px-5 py-2.5 rounded bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow flex items-center gap-1.5"
@@ -311,11 +325,13 @@ export default function RoysRoysPage() {
 
               {/* 4 Stat Cards in Row */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-5 border-t border-white/15">
-                {HERO_STATS.map((st) => {
+                {HERO_STATS.map((st, idx) => {
                   const Icon = st.icon;
                   return (
                     <div
                       key={st.label}
+                      data-aos="fade-up"
+                      data-aos-delay={350 + idx * 80}
                       className="p-3 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs flex items-center gap-2.5"
                     >
                       <div className="w-8 h-8 rounded bg-blue-500/20 text-[#38bdf8] flex items-center justify-center shrink-0">
@@ -336,7 +352,7 @@ export default function RoysRoysPage() {
             </div>
 
             {/* Right: Hospital Building Graphic with Glowing Network Nodes */}
-            <div className="lg:col-span-5 hidden lg:block">
+            <div className="lg:col-span-5 hidden lg:block" data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
               <div className="relative h-[430px] w-full rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-gradient-to-b from-blue-950 to-slate-950">
                 <Image
                   src="/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg"
@@ -352,15 +368,17 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 3. TRUSTED BY LEADING ORGANIZATIONS ───────────────────────────── */}
-      <section className="py-8 px-6 bg-white border-b border-[#e2e8f0]">
+      <section className="py-8 px-6 bg-white border-b border-[#e2e8f0]" data-aos="fade-up" data-aos-duration="600">
         <div className="mx-auto max-w-screen-xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#0f2b48] mb-6">
             TRUSTED BY LEADING ORGANIZATIONS
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center max-w-4xl mx-auto">
-            {TRUSTED_LOGOS.map((logo) => (
+            {TRUSTED_LOGOS.map((logo, idx) => (
               <div
                 key={logo.name}
+                data-aos="zoom-in"
+                data-aos-delay={idx * 100}
                 className="h-14 px-4 py-2 flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity"
               >
                 {logo.img ? (
@@ -388,7 +406,7 @@ export default function RoysRoysPage() {
       <section className="py-14 lg:py-18 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10 items-center">
           {/* Left: Content */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6" data-aos="fade-right" data-aos-duration="700">
             <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-xs font-bold uppercase tracking-wider mb-3">
               ABOUT US
             </span>
@@ -407,8 +425,13 @@ export default function RoysRoysPage() {
                 { title: "Turnkey Solutions", desc: "End-to-end delivery from concept to commissioning." },
                 { title: "Innovation-Driven", desc: "Advanced technology for better patient outcomes." },
                 { title: "Commitment to Excellence", desc: "Quality, safety, and sustainability in every project." },
-              ].map((point) => (
-                <div key={point.title} className="flex items-start gap-2.5">
+              ].map((point, idx) => (
+                <div
+                  key={point.title}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 80}
+                  className="flex items-start gap-2.5"
+                >
                   <div className="w-5 h-5 rounded-full bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0 mt-0.5">
                     <Check size={12} strokeWidth={3} />
                   </div>
@@ -421,6 +444,8 @@ export default function RoysRoysPage() {
 
             <Link
               href="/group-companies/roys-roys/about"
+              data-aos="fade-up"
+              data-aos-delay="300"
               className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
             >
               <span>More About Us</span>
@@ -429,7 +454,7 @@ export default function RoysRoysPage() {
           </div>
 
           {/* Right: Hospital Image Showcase with Floating Badge */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6" data-aos="fade-left" data-aos-duration="800">
             <div className="relative h-[360px] sm:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-slate-200">
               <Image
                 src="/roys_hospital_interior.png"
@@ -440,7 +465,11 @@ export default function RoysRoysPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#061527]/90 via-transparent to-transparent" />
 
-              <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-[#0f2b48]/95 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-xl">
+              <div
+                data-aos="zoom-in"
+                data-aos-delay="300"
+                className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-[#0f2b48]/95 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-xl"
+              >
                 <div>
                   <p className="text-sm font-bold text-white">
                     Turnkey Healthcare &amp; Global Trade
@@ -462,7 +491,11 @@ export default function RoysRoysPage() {
       <section className="py-4 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl grid md:grid-cols-2 gap-5">
           {/* Mission Card */}
-          <div className="p-6 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
+          <div
+            data-aos="fade-right"
+            data-aos-delay="100"
+            className="p-6 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow"
+          >
             <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
               <Target size={20} />
             </div>
@@ -475,7 +508,11 @@ export default function RoysRoysPage() {
           </div>
 
           {/* Vision Card */}
-          <div className="p-6 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="200"
+            className="p-6 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow"
+          >
             <div className="w-10 h-10 rounded-lg bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
               <Eye size={20} />
             </div>
@@ -492,16 +529,21 @@ export default function RoysRoysPage() {
       {/* ─── 6. HOW WE DELIVER HEALTHCARE INFRASTRUCTURE ────────────────────── */}
       <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+          <h2
+            data-aos="fade-up"
+            className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10"
+          >
             HOW WE DELIVER HEALTHCARE INFRASTRUCTURE
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
-            {WORKFLOW_STEPS.map((step) => {
+            {WORKFLOW_STEPS.map((step, idx) => {
               const Icon = step.icon;
               return (
                 <div
                   key={step.num}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 100}
                   className="p-6 rounded-xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
@@ -530,17 +572,22 @@ export default function RoysRoysPage() {
       {/* ─── 7. OUR SERVICE OFFERINGS (12 CARDS GRID) ──────────────────────── */}
       <section className="py-14 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-9">
+          <h2
+            data-aos="fade-up"
+            className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-9"
+          >
             OUR SERVICE OFFERINGS
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5 text-left mb-9">
-            {SERVICE_OFFERINGS_12.map((srv) => {
+            {SERVICE_OFFERINGS_12.map((srv, idx) => {
               const Icon = srv.icon;
               return (
                 <Link
                   key={srv.title}
                   href={"/group-companies/roys-roys/what-we-do/" + srv.slug}
+                  data-aos="fade-up"
+                  data-aos-delay={(idx % 4) * 60 + Math.floor(idx / 4) * 50}
                   className="p-3.5 rounded-lg border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-sm transition-all duration-200 flex items-center justify-between group no-underline"
                 >
                   <div className="flex items-center gap-3">
@@ -559,6 +606,7 @@ export default function RoysRoysPage() {
 
           <Link
             href="/group-companies/roys-roys/what-we-do"
+            data-aos="fade-up"
             className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
             <span>View All Services</span>
@@ -570,16 +618,21 @@ export default function RoysRoysPage() {
       {/* ─── 8. CORE BUSINESS AREAS (7 PILL CARDS) ─────────────────────────── */}
       <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10">
+          <h2
+            data-aos="fade-up"
+            className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10"
+          >
             CORE BUSINESS AREAS
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3.5 sm:gap-4">
-            {CORE_BUSINESS_7.map((area) => {
+            {CORE_BUSINESS_7.map((area, idx) => {
               const Icon = area.icon;
               return (
                 <div
                   key={area.title}
+                  data-aos="zoom-in"
+                  data-aos-delay={idx * 60}
                   className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
                 >
                   <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-200 flex items-center justify-center mb-3 shadow-xs">
@@ -598,12 +651,15 @@ export default function RoysRoysPage() {
       {/* ─── 9. PRODUCTS & SOLUTIONS (TABS + 4 CARDS) ───────────────────────── */}
       <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-6">
+          <h2
+            data-aos="fade-up"
+            className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-6"
+          >
             PRODUCTS &amp; SOLUTIONS
           </h2>
 
           {/* Product Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-9">
+          <div data-aos="fade-up" data-aos-delay="100" className="flex flex-wrap justify-center gap-2 mb-9">
             {PRODUCT_TABS.map((tab) => {
               const active = tab === productTab;
               return (
@@ -625,9 +681,11 @@ export default function RoysRoysPage() {
 
           {/* 4 Products Cards Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left mb-9">
-            {(PRODUCTS_BY_TAB[productTab] || PRODUCTS_BY_TAB["Diagnostic Imaging"]).map((prod) => (
+            {(PRODUCTS_BY_TAB[productTab] || PRODUCTS_BY_TAB["Diagnostic Imaging"]).map((prod, idx) => (
               <div
                 key={prod.name}
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
                 className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
@@ -665,6 +723,7 @@ export default function RoysRoysPage() {
 
           <Link
             href="/group-companies/roys-roys/products"
+            data-aos="fade-up"
             className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
             <span>Explore All Products &amp; Solutions</span>
@@ -676,9 +735,13 @@ export default function RoysRoysPage() {
       {/* ─── 10. INTERACTIVE CONFIGURATOR BOX ───────────────────────────────── */}
       <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-2xl bg-[#091d34] text-white p-7 lg:p-10 shadow-2xl grid lg:grid-cols-12 gap-8 items-center">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            className="rounded-2xl bg-[#091d34] text-white p-7 lg:p-10 shadow-2xl grid lg:grid-cols-12 gap-8 items-center"
+          >
             {/* Left: Accordion Selection */}
-            <div className="lg:col-span-6 space-y-5">
+            <div className="lg:col-span-6 space-y-5" data-aos="fade-right" data-aos-delay="100">
               <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#B49438] block">
                 CUSTOMIZED. SCALABLE. RELIABLE.
               </span>
@@ -729,7 +792,7 @@ export default function RoysRoysPage() {
             </div>
 
             {/* Right: Featured Preview Card */}
-            <div className="lg:col-span-6">
+            <div className="lg:col-span-6" data-aos="fade-left" data-aos-delay="200">
               <div className="p-6 rounded-xl bg-white/10 border border-white/20 backdrop-blur-md space-y-4 shadow-xl">
                 <div>
                   <h3 className="text-base font-bold text-white mb-1.5">
@@ -777,17 +840,22 @@ export default function RoysRoysPage() {
       {/* ─── 11. INDUSTRIES WE SERVE (8 GRID CARDS) ────────────────────────── */}
       <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10">
+          <h2
+            data-aos="fade-up"
+            className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10"
+          >
             INDUSTRIES WE SERVE
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 sm:gap-4 mb-10">
-            {INDUSTRIES_8.map((ind) => {
+            {INDUSTRIES_8.map((ind, idx) => {
               const Icon = ind.icon;
               return (
                 <Link
                   key={ind.title}
                   href={"/group-companies/roys-roys/industries/" + ind.slug}
+                  data-aos="zoom-in"
+                  data-aos-delay={idx * 50}
                   className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group no-underline"
                 >
                   <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-200 flex items-center justify-center mb-3 shadow-xs">
@@ -803,6 +871,7 @@ export default function RoysRoysPage() {
 
           <Link
             href="/group-companies/roys-roys/industries"
+            data-aos="fade-up"
             className="inline-flex items-center gap-2 px-7 py-3 rounded-lg bg-[#0f2b48] hover:bg-[#2563eb] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
             <span>Explore All Industries</span>
@@ -814,16 +883,21 @@ export default function RoysRoysPage() {
       {/* ─── 12. WHY CHOOSE ROYS & ROYS INTERNATIONAL? (8 CARDS) ───────────── */}
       <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10">
+          <h2
+            data-aos="fade-up"
+            className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10"
+          >
             WHY CHOOSE ROYS &amp; ROYS INTERNATIONAL?
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 text-left">
-            {WHY_CHOOSE_8.map((item) => {
+            {WHY_CHOOSE_8.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.title}
+                  data-aos="fade-up"
+                  data-aos-delay={(idx % 4) * 80 + Math.floor(idx / 4) * 60}
                   className="p-6 rounded-2xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
@@ -848,7 +922,11 @@ export default function RoysRoysPage() {
       <section className="py-10 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
         <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-6 items-stretch">
           {/* Panel 1: Our Values */}
-          <div className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between"
+          >
             <div>
               <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
                 OUR VALUES
@@ -871,7 +949,11 @@ export default function RoysRoysPage() {
           </div>
 
           {/* Panel 2: Corporate Info */}
-          <div className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between"
+          >
             <div>
               <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
                 CORPORATE INFO
@@ -889,7 +971,11 @@ export default function RoysRoysPage() {
           </div>
 
           {/* Panel 3: Certifications */}
-          <div className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="300"
+            className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between"
+          >
             <div>
               <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
                 CERTIFICATIONS &amp; MEMBERSHIPS
@@ -917,7 +1003,7 @@ export default function RoysRoysPage() {
       <section id="contact" className="py-14 lg:py-18 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10 items-start">
           {/* Left: Info */}
-          <div className="lg:col-span-5 space-y-5">
+          <div className="lg:col-span-5 space-y-5" data-aos="fade-right" data-aos-duration="700">
             <h2 className="text-2xl sm:text-3xl font-black text-[#0f2b48] leading-tight">
               Let&apos;s Build Stronger Partnerships Together
             </h2>
@@ -957,7 +1043,7 @@ export default function RoysRoysPage() {
           </div>
 
           {/* Right: Form */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7" data-aos="fade-left" data-aos-duration="700">
             <div className="p-6 sm:p-7 rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-md">
               <h3 className="text-base sm:text-lg font-bold text-[#0f2b48] mb-4">
                 Send Us a Message

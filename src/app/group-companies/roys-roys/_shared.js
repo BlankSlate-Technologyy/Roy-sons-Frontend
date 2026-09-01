@@ -208,11 +208,11 @@ export function RoysFooter() {
   ];
 
   return (
-    <footer style={{ backgroundColor: "#061527" }} className="text-white">
+    <footer style={{ backgroundColor: "#061527" }} className="text-white" data-aos="fade-up" data-aos-duration="700">
       {/* Upper Footer (6 Columns Grid) */}
       <div className="mx-auto max-w-screen-xl px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
         {/* Column 1: Brand */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1" data-aos="fade-up" data-aos-delay="50">
           <Link href="/group-companies/roys-roys" className="inline-flex items-center gap-3 mb-4 select-none group">
             <Image
               src="/logos/r&r.png"
@@ -246,8 +246,8 @@ export function RoysFooter() {
         </div>
 
         {/* Columns 2-5: Nav Columns */}
-        {footerNav.map((sec) => (
-          <div key={sec.heading}>
+        {footerNav.map((sec, i) => (
+          <div key={sec.heading} data-aos="fade-up" data-aos-delay={100 + i * 50}>
             <h4 className="text-[13.5px] font-extrabold uppercase tracking-wider text-white mb-4">
               {sec.heading}
             </h4>
@@ -267,7 +267,7 @@ export function RoysFooter() {
         ))}
 
         {/* Column 6: Contact Us */}
-        <div>
+        <div data-aos="fade-up" data-aos-delay="300">
           <h4 className="text-[13.5px] font-extrabold uppercase tracking-wider text-white mb-4">
             Contact Us
           </h4>
@@ -409,7 +409,11 @@ export function RoysButton({ href, onClick, children, variant = "primary", style
 // ─── Section Heading helper ───────────────────────────────────────────────────
 export function SectionHeading({ eyebrow, title, light = false, centered = true, subtitle }) {
   return (
-    <div style={{ marginBottom: "52px", textAlign: centered ? "center" : "left" }}>
+    <div
+      data-aos="fade-up"
+      data-aos-duration="600"
+      style={{ marginBottom: "52px", textAlign: centered ? "center" : "left" }}
+    >
       {eyebrow && (
         <p
           style={{

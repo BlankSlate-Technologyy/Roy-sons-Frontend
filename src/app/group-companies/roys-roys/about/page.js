@@ -54,7 +54,7 @@ const VALUES = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
+    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white overflow-hidden">
       <RoysNavbar active="About Us" />
 
       {/* ─── Hero Section ─────────────────────────────────────────────────── */}
@@ -64,20 +64,34 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto max-w-screen-xl">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7">
-              <div className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4">
+              <div
+                data-aos="fade-down"
+                data-aos-duration="600"
+                className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4"
+              >
                 ABOUT ROYS &amp; ROYS INTERNATIONAL
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4">
+              <h1
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="700"
+                className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4"
+              >
                 Building World-Class
                 <span className="block text-[#38bdf8] font-black text-2xl sm:text-3xl lg:text-4xl my-1">
                   Healthcare &amp; Institutional
                 </span>
                 Infrastructure Worldwide
               </h1>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-7 font-normal">
+              <p
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-duration="700"
+                className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-7 font-normal"
+              >
                 Roys &amp; Roys™ International is a diversified enterprise specializing in turnkey hospital engineering, integrated healthcare infrastructure, medical equipment procurement, and institutional contracting.
               </p>
-              <div className="flex flex-wrap items-center gap-3">
+              <div data-aos="fade-up" data-aos-delay="300" className="flex flex-wrap items-center gap-3">
                 <Link
                   href="/group-companies/roys-roys/services"
                   className="px-5 py-2.5 rounded bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow flex items-center gap-1.5"
@@ -95,7 +109,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 hidden lg:block">
+            <div className="lg:col-span-5 hidden lg:block" data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
               <div className="relative h-[360px] w-full rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
                 <Image
                   src="/roys_hospital_interior.png"
@@ -104,7 +118,11 @@ export default function AboutPage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07152b]/80 via-transparent to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5 p-3.5 rounded-xl bg-[#0f2b48]/90 backdrop-blur-md border border-white/20 text-white flex items-center justify-between">
+                <div
+                  data-aos="zoom-in"
+                  data-aos-delay="350"
+                  className="absolute bottom-5 left-5 right-5 p-3.5 rounded-xl bg-[#0f2b48]/90 backdrop-blur-md border border-white/20 text-white flex items-center justify-between"
+                >
                   <div>
                     <p className="text-xs font-extrabold uppercase text-[#B49438]">Established Heritage</p>
                     <p className="text-sm font-bold text-white">30+ Years Global Presence</p>
@@ -117,11 +135,13 @@ export default function AboutPage() {
 
           {/* 4 Stats */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-8 mt-10 border-t border-white/15">
-            {STATS.map((st) => {
+            {STATS.map((st, idx) => {
               const Icon = st.icon;
               return (
                 <div
                   key={st.label}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 100}
                   className="p-3.5 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs flex items-center gap-3"
                 >
                   <div className="w-8 h-8 rounded bg-blue-500/20 text-[#38bdf8] flex items-center justify-center shrink-0">
@@ -145,7 +165,11 @@ export default function AboutPage() {
       {/* ─── Mission & Vision ──────────────────────────────────────────────── */}
       <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl grid md:grid-cols-2 gap-6">
-          <div className="p-7 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
+          <div
+            data-aos="fade-right"
+            data-aos-delay="100"
+            className="p-7 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow"
+          >
             <div className="w-11 h-11 rounded-lg bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
               <Target size={22} />
             </div>
@@ -157,7 +181,11 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="p-7 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="200"
+            className="p-7 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs flex items-start gap-4 hover:shadow-md transition-shadow"
+          >
             <div className="w-11 h-11 rounded-lg bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0">
               <Eye size={22} />
             </div>
@@ -174,15 +202,20 @@ export default function AboutPage() {
       {/* ─── Core Values ───────────────────────────────────────────────────── */}
       <section className="py-14 px-6 bg-[#f8fafc] border-t border-b border-slate-200">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+          <h2
+            data-aos="fade-up"
+            className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10"
+          >
             OUR CORE VALUES
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
-            {VALUES.map((val) => {
+            {VALUES.map((val, idx) => {
               const Icon = val.icon;
               return (
                 <div
                   key={val.title}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 100}
                   className="p-5 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
                 >
                   <div>

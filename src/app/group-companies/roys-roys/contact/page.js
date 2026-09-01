@@ -37,19 +37,33 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
+    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white overflow-hidden">
       <RoysNavbar active="Contact" />
 
       {/* ─── Hero Section ─────────────────────────────────────────────────── */}
       <section className="relative bg-[#07152b] text-white pt-12 pb-16 lg:pt-16 lg:pb-20 px-6 overflow-hidden">
         <div className="relative z-10 mx-auto max-w-screen-xl text-center">
-          <div className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4">
+          <div
+            data-aos="fade-down"
+            data-aos-duration="600"
+            className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4"
+          >
             GLOBAL HEADQUARTERS &amp; INQUIRIES
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4 max-w-3xl mx-auto">
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-aos-duration="700"
+            className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4 max-w-3xl mx-auto"
+          >
             Connect With Our Institutional Advisory Team
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7 font-normal">
+          <p
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="700"
+            className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7 font-normal"
+          >
             Whether inquiring about turnkey healthcare infrastructure, medical equipment procurement, or strategic international trade partnerships.
           </p>
         </div>
@@ -59,7 +73,7 @@ export default function ContactPage() {
       <section className="py-14 px-6 bg-[#f8fafc]">
         <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10 items-start">
           {/* Left info cards */}
-          <div className="lg:col-span-5 space-y-5">
+          <div className="lg:col-span-5 space-y-5" data-aos="fade-right" data-aos-duration="700">
             <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4">
               <h3 className="text-base font-bold text-[#0f2b48]">Corporate Headquarters</h3>
               
@@ -118,7 +132,7 @@ export default function ContactPage() {
           </div>
 
           {/* Right form */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7" data-aos="fade-left" data-aos-duration="700">
             <div className="p-7 sm:p-8 rounded-2xl border border-slate-200 bg-white shadow-md">
               <h3 className="text-lg font-bold text-[#0f2b48] mb-5">
                 Send Us a Proposal Request

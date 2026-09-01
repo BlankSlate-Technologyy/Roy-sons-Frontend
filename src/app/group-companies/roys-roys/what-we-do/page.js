@@ -49,19 +49,33 @@ const WORKFLOW_STEPS = [
 
 export default function WhatWeDoPage() {
   return (
-    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white">
+    <main className="min-h-screen bg-white text-[#0f2b48] font-sans antialiased selection:bg-[#2563eb] selection:text-white overflow-hidden">
       <RoysNavbar active="Resources" />
 
       {/* ─── Hero Section ─────────────────────────────────────────────────── */}
       <section className="relative bg-[#07152b] text-white pt-12 pb-16 lg:pt-16 lg:pb-20 px-6 overflow-hidden">
         <div className="relative z-10 mx-auto max-w-screen-xl text-center">
-          <div className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4">
+          <div
+            data-aos="fade-down"
+            data-aos-duration="600"
+            className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4"
+          >
             RESOURCES &amp; METHODOLOGY
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4 max-w-3xl mx-auto">
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="100"
+            data-aos-duration="700"
+            className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-4 max-w-3xl mx-auto"
+          >
             How Roys &amp; Roys Delivers Excellence Globally
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7 font-normal">
+          <p
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-duration="700"
+            className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-7 font-normal"
+          >
             Explore our rigorous delivery framework, case studies, technical whitepapers, and international contracting capabilities.
           </p>
         </div>
@@ -70,16 +84,21 @@ export default function WhatWeDoPage() {
       {/* ─── 4 Steps Process ───────────────────────────────────────────────── */}
       <section className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10">
+          <h2
+            data-aos="fade-up"
+            className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-10"
+          >
             OUR 4-STAGE DELIVERY FRAMEWORK
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left mb-12">
-            {WORKFLOW_STEPS.map((step) => {
+            {WORKFLOW_STEPS.map((step, idx) => {
               const Icon = step.icon;
               return (
                 <div
                   key={step.num}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 100}
                   className="p-6 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
@@ -102,7 +121,7 @@ export default function WhatWeDoPage() {
       {/* ─── Offerings Cards ───────────────────────────────────────────────── */}
       <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center mb-10">
+          <div data-aos="fade-up" className="text-center mb-10">
             <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-3">
               Strategic Procurement &amp; Trade Resources
             </h2>
@@ -112,9 +131,11 @@ export default function WhatWeDoPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {OFFERINGS_LIST.map((off) => (
+            {OFFERINGS_LIST.map((off, idx) => (
               <div
                 key={off.slug}
+                data-aos="fade-up"
+                data-aos-delay={(idx % 3) * 100 + Math.floor(idx / 3) * 50}
                 className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-lg transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
