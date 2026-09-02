@@ -28,99 +28,7 @@ import {
   SectionHeading,
   AnimatedCounter,
 } from "../components/WaltonShared";
-
-const CONSTRUCTION_SERVICES = [
-  {
-    id: "civil-engineering",
-    title: "Civil Engineering & Structural Superstructures",
-    subtitle: "High-Rise Commercial Towers, RCC Frames & Deep Foundations",
-    desc: "Executing complex reinforced concrete (RCC) structural superstructures, post-tensioned floor slabs, deep bored pile foundations, and architectural glass curtain walls.",
-    image: "/walton_hero_construction.svg",
-    tag: "Civil Superstructures",
-    icon: Building2,
-    deliverables: [
-      "Deep rotary bored piling and diaphragm wall retention systems for deep basements",
-      "High-strength post-tensioned (PT) concrete floor slabs maximizing column-free spans",
-      "High-rise dual shear wall and moment-resisting frame seismic engineering to UBC-97",
-      "Integrated double-glazed thermal curtain wall glazing and architectural cladding",
-    ],
-  },
-  {
-    id: "epc-projects",
-    title: "Turnkey EPC Heavy Industrial Projects",
-    subtitle: "End-to-End Engineering, Sourcing, Construction & Handover",
-    desc: "Single-point turnkey EPC delivery for multi-acre industrial manufacturing plants, processing facilities, captive power plants, and industrial utility corridors.",
-    image: "/walton_hero_construction.svg",
-    tag: "Turnkey EPC Contracting",
-    icon: Truck,
-    deliverables: [
-      "Process plant structural design, heavy machine dynamic vibration foundation casting",
-      "Procurement and heavy mechanical rigging of industrial reactors, silos, and boilers",
-      "High-voltage electrical substations, industrial piping networks, and fire safety rings",
-      "Comprehensive testing, cold/hot dry runs, commissioning, and client staff training",
-    ],
-  },
-  {
-    id: "infrastructure-development",
-    title: "Highways, Bridges & Transportation Corridors",
-    subtitle: "Prestressed Concrete Girders, Flyovers & Highway Interchanges",
-    desc: "Constructing multi-lane expressways, prestressed concrete highway bridges, railway overpasses, stormwater culverts, and heavy-duty asphalt pavements.",
-    image: "/walton_hero_construction.svg",
-    tag: "Highways & Infrastructure",
-    icon: Layers,
-    deliverables: [
-      "High-speed asphalt paving utilizing Superpave performance grade bitumen designs",
-      "Precast prestressed concrete I-girders and box-girder bridge construction",
-      "Mechanically Stabilized Earth (MSE) retaining walls and bridge abutments",
-      "Highway drainage networks, intelligent traffic telemetry, and toll plaza infrastructure",
-    ],
-  },
-  {
-    id: "industrial-construction",
-    title: "Pre-Engineered Buildings (PEB) & Warehouses",
-    subtitle: "Structural Steel Fabrication, Logistics Hubs & Cold Storage",
-    desc: "Fabricating and erecting large-span pre-engineered steel buildings, logistics distribution warehouses, overhead crane gantries, and temperature-controlled storage.",
-    image: "/walton_hero_construction.svg",
-    tag: "PEB Steel Construction",
-    icon: Wrench,
-    deliverables: [
-      "High-yield structural steel frame fabrication with automated submerged arc welding",
-      "Clear-span steel portal frames up to 60 meters without internal support columns",
-      "High-density insulated sandwich roof and wall cladding panels with fire ratings",
-      "Heavy industrial concrete laser screed superflat floor slabs with quartz hardeners",
-    ],
-  },
-  {
-    id: "project-management",
-    title: "Project Management & BIM QA/QC Supervision",
-    subtitle: "Primavera P6 Scheduling, 3D BIM Coordination & Material Testing",
-    desc: "Professional construction management ensuring strict budget compliance, milestone scheduling, automated clash detection, and independent concrete quality control.",
-    image: "/walton_hero_construction.svg",
-    tag: "BIM & Project Management",
-    icon: ClipboardList,
-    deliverables: [
-      "3D BIM clash detection and 4D construction schedule sequencing simulations",
-      "Critical Path Method (CPM) project scheduling and earned value cost telemetry",
-      "On-site laboratory testing for concrete compressive strength, steel tensile rebar, and compaction",
-      "Strict compliance with ISO 9001 and OSHA safety and environmental standards",
-    ],
-  },
-  {
-    id: "engineering-consultancy",
-    title: "Engineering Consultancy & Feasibility Studies",
-    subtitle: "Geotechnical Surveys, Structural Peer Reviews & BOQs",
-    desc: "Providing technical advisory services including geotechnical core drilling, finite element structural analysis, environmental impact assessments (EIA), and tender BOQs.",
-    image: "/walton_hero_construction.svg",
-    tag: "Engineering Advisory",
-    icon: Hammer,
-    deliverables: [
-      "Geotechnical soil boring, plate load tests, and seismic hazard micro-zonation studies",
-      "ETABS / SAP2000 structural modeling, finite element analysis, and value engineering",
-      "Comprehensive Bill of Quantities (BOQ) preparation and contractor tender evaluation",
-      "Statutory building authority NOC approvals and environmental clearance documentation",
-    ],
-  },
-];
+import { WALTON_SERVICES } from "../services-data";
 
 const SERVICE_STATS = [
   { value: "25+", label: "Years Experience", icon: Award },
@@ -132,10 +40,10 @@ const SERVICE_STATS = [
 export default function WaltonServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = CONSTRUCTION_SERVICES.filter(
+  const filtered = WALTON_SERVICES.filter(
     (s) =>
       s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
       s.tag.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -151,7 +59,7 @@ export default function WaltonServicesPage() {
             <div className="lg:col-span-7">
               <SectionLabel>Civil Engineering &amp; General Contracting</SectionLabel>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
+              <h1 className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-black tracking-tight leading-[1.2] uppercase mb-5" style={{ color: theme.navyDark }}>
                 Comprehensive Construction Solutions For <span style={{ color: theme.navy }}>Infrastructure &amp; Industry</span>
               </h1>
 
@@ -238,9 +146,9 @@ export default function WaltonServicesPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <SectionLabel center>Our Core Divisions</SectionLabel>
-            <SectionHeading center className="mb-4">Specialized Engineering &amp; EPC Capabilities</SectionHeading>
+            <SectionHeading center className="mb-4">Specialized Engineering Offerings</SectionHeading>
             <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              Engineered in accordance with international Building Code of Pakistan (BCP), ACI 318, and ASTM standards.
+              Engineered with advanced structural analysis, computerized batching plants, and certified OSHA safety protocols.
             </p>
 
             {/* Live Search */}
@@ -249,7 +157,7 @@ export default function WaltonServicesPage() {
                 <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Search engineering services (e.g. Civil, High-Rise, Bridges, PEB, BIM)..."
+                  placeholder="Search engineering divisions (e.g. Civil, EPC, Bridges, PEB)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-11 pr-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] transition-all bg-white shadow-xs"
@@ -265,16 +173,19 @@ export default function WaltonServicesPage() {
               const Icon = svc.icon;
               return (
                 <div
-                  key={svc.id}
+                  key={svc.slug}
                   id={svc.id}
                   className="walton-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
                     {/* Card Image */}
-                    <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    <Link
+                      href={`/group-companies/walton-consultants-contracting/services/${svc.slug}`}
+                      className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                    >
                       <Image
-                        src={svc.image}
+                        src={svc.heroImage}
                         alt={svc.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -284,7 +195,7 @@ export default function WaltonServicesPage() {
                           {svc.tag}
                         </span>
                       </div>
-                    </div>
+                    </Link>
 
                     {/* Content */}
                     <div className="p-7">
@@ -293,27 +204,29 @@ export default function WaltonServicesPage() {
                           <Icon size={20} style={{ color: theme.navy }} />
                         </div>
                         <div>
-                          <h3 className="text-lg font-black leading-tight" style={{ color: theme.navyDark }}>
-                            {svc.title}
-                          </h3>
+                          <Link href={`/group-companies/walton-consultants-contracting/services/${svc.slug}`}>
+                            <h3 className="text-lg font-black leading-tight hover:text-[#0E2A47] transition-colors cursor-pointer" style={{ color: theme.navyDark }}>
+                              {svc.title}
+                            </h3>
+                          </Link>
                         </div>
                       </div>
 
-                      <p className="text-xs font-bold uppercase tracking-wider mb-3 text-[#A6823B]">
+                      <p className="text-xs font-bold uppercase tracking-wider mb-3 text-[#C5A059]">
                         {svc.subtitle}
                       </p>
 
                       <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                        {svc.desc}
+                        {svc.overview}
                       </p>
 
                       {/* Deliverables */}
                       <div className="space-y-2.5 pt-4 border-t" style={{ borderColor: "rgba(216, 226, 236, 0.7)" }}>
                         <p className="text-xs font-extrabold uppercase tracking-wider" style={{ color: theme.navyDark }}>
-                          Key Engineering Deliverables:
+                          Key Technical Deliverables:
                         </p>
-                        {svc.deliverables.map((d) => (
-                          <div key={d} className="flex items-start gap-2">
+                        {svc.deliverables.slice(0, 3).map((d, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
                             <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5 text-[#C5A059]" />
                             <span className="text-xs font-medium text-slate-700 leading-snug">{d}</span>
                           </div>
@@ -322,14 +235,22 @@ export default function WaltonServicesPage() {
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  <div className="p-7 pt-0 flex gap-2">
                     <Link
-                      href="/group-companies/walton-consultants-contracting/contact"
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      href={`/group-companies/walton-consultants-contracting/services/${svc.slug}`}
+                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                       style={{ borderColor: theme.border, color: theme.navyDark }}
                     >
-                      <span>Inquire About This Division</span>
+                      <span>Explore Division</span>
                       <ArrowRight size={14} />
+                    </Link>
+                    <Link
+                      href="/group-companies/walton-consultants-contracting/contact"
+                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                      style={{ backgroundColor: theme.navy }}
+                      title="Request Proposal"
+                    >
+                      <span>Quote</span>
                     </Link>
                   </div>
                 </div>
@@ -345,13 +266,13 @@ export default function WaltonServicesPage() {
           <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
             <div>
               <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#A6823B]">
-                TURNKEY CIVIL &amp; INDUSTRIAL CONTRACTING
+                CIVIL GENERAL CONTRACTING &amp; EPC TENDERS
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navyDark }}>
-                Constructing A New Industrial Facility Or Commercial Tower?
+                Require Turnkey Civil Construction Execution?
               </h2>
               <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Speak with our chief construction director to conduct architectural review, structural BOQ estimation, and construction scheduling.
+                Speak directly with our Chief Engineer to review structural drawings, BOQ rate analyses, and milestone execution schedules.
               </p>
             </div>
 
@@ -361,7 +282,7 @@ export default function WaltonServicesPage() {
                 className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
                 style={{ backgroundColor: theme.navy }}
               >
-                <span>Request Construction Proposal</span>
+                <span>Request Construction Quote</span>
                 <ArrowRight size={15} />
               </Link>
               <a

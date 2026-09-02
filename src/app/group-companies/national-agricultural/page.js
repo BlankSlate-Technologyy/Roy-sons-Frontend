@@ -60,42 +60,42 @@ const SERVICES = [
     icon: Wheat,
     title: "Agricultural Development",
     desc: "Precision mechanized farming, GPS laser land leveling, high-capacity tractors, and combine harvesting fleets.",
-    href: "/group-companies/national-agricultural/services#agri-development",
+    href: "/group-companies/national-agricultural/services/agricultural-development-mechanization",
     img: "/agri_hero_farm.svg",
   },
   {
     icon: Building2,
     title: "Dairy Development",
     desc: "Automated milking parlors, rapid bulk milk chillers, silage packing, and village collection networks.",
-    href: "/group-companies/national-agricultural/services#dairy-development",
+    href: "/group-companies/national-agricultural/services/dairy-development-cold-chain",
     img: "/agri_dairy_livestock.svg",
   },
   {
     icon: Droplets,
     title: "Smart Irrigation Systems",
     desc: "Solar center-pivot sprinklers and precision drip irrigation reducing water consumption by 50%.",
-    href: "/group-companies/national-agricultural/services#irrigation",
+    href: "/group-companies/national-agricultural/services/smart-irrigation-water-systems",
     img: "/agri_hero_farm.svg",
   },
   {
     icon: Leaf,
     title: "Livestock Management",
     desc: "Elite pedigree Holstein-Friesian & Sahiwal genetics, artificial insemination, and herd veterinary healthcare.",
-    href: "/group-companies/national-agricultural/services#livestock",
+    href: "/group-companies/national-agricultural/services/livestock-management-breeding-genetics",
     img: "/agri_dairy_livestock.svg",
   },
   {
     icon: FlaskConical,
     title: "Seed Tech & Crop Nutrition",
     desc: "Certified high-germination hybrid seeds, organic liquid bio-fertilizers, and custom N-P-K nutrient blends.",
-    href: "/group-companies/national-agricultural/services#seed-tech",
+    href: "/group-companies/national-agricultural/services/seed-technology-crop-nutrition",
     img: "/agri_hero_farm.svg",
   },
   {
     icon: Tractor,
     title: "Agribusiness Advisory",
     desc: "Corporate farm planning, financial modeling, climate-smart greenhouses, and food supply chain logistics.",
-    href: "/group-companies/national-agricultural/services#consultancy",
+    href: "/group-companies/national-agricultural/services/agribusiness-advisory-farm-setup",
     img: "/agri_dairy_livestock.svg",
   },
 ];
@@ -313,23 +313,28 @@ export default function NationalAgriculturalHomePage() {
                   style={{ borderColor: theme.border }}
                 >
                   <div>
-                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                    <Link
+                      href={svc.href}
+                      className="relative block w-full h-48 bg-slate-100 overflow-hidden group cursor-pointer"
+                    >
                       <Image
                         src={svc.img}
                         alt={svc.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                    </div>
+                    </Link>
 
                     <div className="p-7">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.primary}10` }}>
                         <Icon size={20} style={{ color: theme.primary }} />
                       </div>
 
-                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.primary }}>
-                        {svc.title}
-                      </h3>
+                      <Link href={svc.href}>
+                        <h3 className="text-lg font-black mb-2.5 hover:text-[#E8A800] transition-colors cursor-pointer" style={{ color: theme.primary }}>
+                          {svc.title}
+                        </h3>
+                      </Link>
 
                       <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
                         {svc.desc}
@@ -337,14 +342,22 @@ export default function NationalAgriculturalHomePage() {
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  <div className="p-7 pt-0 flex gap-2">
                     <Link
                       href={svc.href}
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                       style={{ borderColor: theme.border, color: theme.primary }}
                     >
-                      <span>Explore Capability</span>
+                      <span>Explore Details</span>
                       <ArrowRight size={14} />
+                    </Link>
+                    <Link
+                      href="/group-companies/national-agricultural/contact"
+                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                      style={{ backgroundColor: theme.primary }}
+                      title="Request Proposal"
+                    >
+                      <span>Quote</span>
                     </Link>
                   </div>
                 </div>

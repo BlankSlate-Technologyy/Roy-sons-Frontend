@@ -81,8 +81,8 @@ export default function FeatureShowcase() {
                   isEven ? "lg:flex-row" : "lg:flex-row-reverse"
                 }`}
               >
-                {/* Content Side */}
-                <div className="flex-1 w-full flex flex-col justify-center text-center lg:text-left">
+                {/* Content Side (order-2 on mobile, order-none on desktop) */}
+                <div className="flex-1 w-full flex flex-col justify-center text-center lg:text-left order-2 lg:order-none">
                   {/* Badge Pill */}
                   <div className="inline-flex items-center bg-white/5 border border-[#C6A15A]/40 px-4 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
                     <span className="text-[11px] font-black uppercase tracking-widest text-[#C6A15A]">
@@ -126,8 +126,8 @@ export default function FeatureShowcase() {
                   </div>
                 </div>
 
-                {/* Image Side */}
-                <div className="flex-1 w-full flex items-center justify-center">
+                {/* Image Side (order-1 on mobile, order-none on desktop) */}
+                <div className="flex-1 w-full flex items-center justify-center order-1 lg:order-none">
                   <div className="relative w-full max-w-[320px] sm:max-w-[380px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-900 group">
                     <Image
                       src={item.image}

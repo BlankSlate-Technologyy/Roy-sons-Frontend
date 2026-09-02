@@ -54,6 +54,7 @@ export const NAV_LINKS = [
   { label: "About Us", href: "/group-companies/national-mines/about" },
   { label: "Services", href: "/group-companies/national-mines/services" },
   { label: "Minerals", href: "/group-companies/national-mines/minerals" },
+  { label: "Industries", href: "/group-companies/national-mines/industries" },
   { label: "Sustainability", href: "/group-companies/national-mines/sustainability" },
   { label: "Contact", href: "/group-companies/national-mines/contact" },
 ];
@@ -68,16 +69,16 @@ export const FOOTER_SERVICES = [
 ];
 
 export const MINERALS_LIST = [
-  { name: "Gold (Au)", desc: "High-purity raw ore & refined bullion nuggets", grade: "99.4% Purity", img: "/mine gold.png", tag: "Precious Metals" },
-  { name: "Copper (Cu)", desc: "High-grade copper concentrate & cathode sheets", grade: "28–32% Concentrate", img: "/mine copper.png", tag: "Industrial Base Metals" },
-  { name: "Iron Ore (Fe)", desc: "Magnetite & hematite lumps for steel plants", grade: "62–65% Fe Content", img: "/mine gold.png", tag: "Ferrous Minerals" },
-  { name: "Coal", desc: "Anthracite & bituminous for power & cement", grade: "6,200+ kcal/kg", img: "/mine copper.png", tag: "Energy Resources" },
-  { name: "Limestone", desc: "High calcium limestone for cement & flux", grade: "94%+ CaCO3", img: "/mine gold.png", tag: "Construction Materials" },
-  { name: "Gypsum", desc: "Natural raw gypsum for plaster & wallboard", grade: "92%+ Purity", img: "/mine copper.png", tag: "Industrial Minerals" },
-  { name: "Chromite", desc: "Metallurgical grade for refractory & alloys", grade: "46–48% Cr2O3", img: "/mine gold.png", tag: "Strategic Minerals" },
-  { name: "Marble & Onyx", desc: "Premium architectural slabs & blocks", grade: "Grade-A Dimension Stone", img: "/mine copper.png", tag: "Architectural Stones" },
-  { name: "Granite", desc: "Heavy-duty commercial & decorative granite", grade: "Export Quality", img: "/mine gold.png", tag: "Architectural Stones" },
-  { name: "Silica Sand", desc: "High-purity washed sand for glass & foundry", grade: "99.2% SiO2", img: "/mine copper.png", tag: "Industrial Minerals" },
+  { slug: "gold-au", name: "Gold (Au)", desc: "High-purity raw ore & refined bullion nuggets", grade: "99.4% Purity", img: "/mine gold.png", tag: "Precious Metals" },
+  { slug: "copper-cu", name: "Copper (Cu)", desc: "High-grade copper concentrate & cathode sheets", grade: "28–32% Concentrate", img: "/mine copper.png", tag: "Industrial Base Metals" },
+  { slug: "iron-ore-fe", name: "Iron Ore (Fe)", desc: "Magnetite & hematite lumps for steel plants", grade: "62–65% Fe Content", img: "/mine gold.png", tag: "Ferrous Minerals" },
+  { slug: "coal-anthracite-bituminous", name: "Coal", desc: "Anthracite & bituminous for power & cement", grade: "6,200+ kcal/kg", img: "/mine copper.png", tag: "Energy Resources" },
+  { slug: "limestone-caco3", name: "Limestone", desc: "High calcium limestone for cement & flux", grade: "94%+ CaCO3", img: "/mine gold.png", tag: "Construction Materials" },
+  { slug: "gypsum-caso4", name: "Gypsum", desc: "Natural raw gypsum for plaster & wallboard", grade: "92%+ Purity", img: "/mine copper.png", tag: "Industrial Minerals" },
+  { slug: "chromite-cr2o3", name: "Chromite", desc: "Metallurgical grade for refractory & alloys", grade: "46–48% Cr2O3", img: "/mine gold.png", tag: "Strategic Minerals" },
+  { slug: "marble-and-onyx", name: "Marble & Onyx", desc: "Premium architectural slabs & blocks", grade: "Grade-A Dimension Stone", img: "/mine copper.png", tag: "Architectural Stones" },
+  { slug: "granite-dimensional-stone", name: "Granite", desc: "Heavy-duty commercial & decorative granite", grade: "Export Quality", img: "/mine gold.png", tag: "Architectural Stones" },
+  { slug: "silica-sand-sio2", name: "Silica Sand", desc: "High-purity washed sand for glass & foundry", grade: "99.2% SiO2", img: "/mine copper.png", tag: "Industrial Minerals" },
 ];
 
 export function SectionLabel({ children, center }) {

@@ -26,99 +26,7 @@ import {
   SectionHeading,
   AnimatedCounter,
 } from "../components/SwissFarmShared";
-
-const DAIRY_SERVICES = [
-  {
-    id: "dairy-production",
-    title: "High-Volume Dairy Production",
-    subtitle: "Automated Rotary Milking & Instant Cold Chain Chilling",
-    desc: "Utilizing modern electronic rotary milking parlors that milk thousands of cows daily with zero human contact, immediately chilling fresh milk to 4°C within seconds to preserve peak nutritional purity.",
-    image: "/swiss-card1.png",
-    tag: "Milk Production",
-    icon: Truck,
-    deliverables: [
-      "Rotary milking parlors with computerized yield and conductivity sensors",
-      "Direct-expansion rapid bulk milk coolers maintaining strict 4°C temperatures",
-      "Automated CIP (Clean-In-Place) chemical sanitization between every batch",
-      "Daily microbiological assays verifying low somatic cell and bacterial counts",
-    ],
-  },
-  {
-    id: "livestock",
-    title: "Livestock Herd Management & Housing",
-    subtitle: "Climate-Controlled Sheds & Comfort-First Husbandry",
-    desc: "Housing over 25,000 head of healthy cattle in modern cross-ventilated sheds with fine mist cooling fans, deep sand bedding, and automated robotic alley scrapers.",
-    image: "/swiss-card2.png",
-    tag: "Herd Care",
-    icon: Users,
-    deliverables: [
-      "Cross-ventilated dairy barns with high-volume low-speed (HVLS) fans",
-      "Inorganic deep sand bedding providing superior joint and udder comfort",
-      "Electronic RFID ear-tagging monitoring ruminating hours and step activity",
-      "Separate maternity, calf nursery, and convalescent veterinary wards",
-    ],
-  },
-  {
-    id: "breeding",
-    title: "Genetic Breeding & Reproduction",
-    subtitle: "Elite Pedigree Artificial Insemination & Embryo Transfer",
-    desc: "Accelerating genetic gain through imported pedigree sexed semen, genomic testing, and embryo transfer programs to breed high-yielding, heat-resilient dairy cows.",
-    image: "/swiss-card3.png",
-    tag: "Breeding Genetics",
-    icon: Leaf,
-    deliverables: [
-      "100% sexed semen artificial insemination yielding 90%+ female calves",
-      "Genomic profiling identifying high-butterfat and disease-resistant traits",
-      "Sahiwal and Red Sindhi indigenous preservation cross-breeding programs",
-      "Computerized estrus detection collars ensuring optimal insemination timing",
-    ],
-  },
-  {
-    id: "veterinary",
-    title: "Veterinary Healthcare & Disease Prevention",
-    subtitle: "On-Site Laboratory & Preventative Vaccination Protocols",
-    desc: "Staffed 24/7 by licensed veterinary surgeons, our on-farm medical hospital delivers preventative vaccination protocols, routine diagnostic blood work, and hoof trimming care.",
-    image: "/swiss-card1.png",
-    tag: "Veterinary Care",
-    icon: HeartPulse,
-    deliverables: [
-      "Strict biosecurity quarantine barriers and vehicle disinfection baths",
-      "Automated real-time milk conductivity alerts for early mastitis detection",
-      "Scheduled hoof health trimming and preventative therapeutic footbaths",
-      "Zero-antibiotic residue milk testing before every dispatch tanker release",
-    ],
-  },
-  {
-    id: "nutrition",
-    title: "Animal Nutrition & Silage Rations",
-    subtitle: "Total Mixed Ration (TMR) Precision Formulations",
-    desc: "Feeding our cattle a scientifically balanced diet formulated by international animal nutritionists, utilizing high-protein alfalfa hay, corn silage, and custom mineral premixes.",
-    image: "/swiss-card2.png",
-    tag: "Feed & Silage",
-    icon: Sparkles,
-    deliverables: [
-      "Precision computerized Total Mixed Ration (TMR) feed wagon mixing",
-      "High-energy whole-crop corn silage fermented in anaerobic bunker pits",
-      "Custom bypass protein, rumen-protected fats, and vitamin-mineral licks",
-      "Near-Infrared (NIR) feed testing ensuring consistent nutrient density",
-    ],
-  },
-  {
-    id: "sustainability",
-    title: "Sustainable Bio-Energy & Farm Infrastructure",
-    subtitle: "Manure Biogas Digesters & Organic Compost Production",
-    desc: "Implementing circular economy practices by transforming cattle manure into clean biogas energy to power farm operations and producing premium organic compost for green crop fertilizing.",
-    image: "/swiss-card3.png",
-    tag: "Circular Agritech",
-    icon: Zap,
-    deliverables: [
-      "Anaerobic bio-digesters producing green electricity and thermal energy",
-      "Mechanical solid-liquid manure separators generating organic fertilizer",
-      "Solar-powered submersible tube-wells and water recycling wash pads",
-      "Tree shelterbelts around farm boundaries reducing ambient summer heat",
-    ],
-  },
-];
+import { SWISS_FARM_SERVICES } from "../services-data";
 
 const SERVICE_STATS = [
   { value: "30+", label: "Years Experience", icon: Award },
@@ -130,10 +38,10 @@ const SERVICE_STATS = [
 export default function SwissFarmServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = DAIRY_SERVICES.filter(
+  const filtered = SWISS_FARM_SERVICES.filter(
     (s) =>
       s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
       s.tag.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -263,16 +171,19 @@ export default function SwissFarmServicesPage() {
               const Icon = svc.icon;
               return (
                 <div
-                  key={svc.id}
+                  key={svc.slug}
                   id={svc.id}
                   className="swiss-farm-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
                     {/* Card Image */}
-                    <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    <Link
+                      href={`/group-companies/swiss-farm/services/${svc.slug}`}
+                      className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                    >
                       <Image
-                        src={svc.image}
+                        src={svc.heroImage}
                         alt={svc.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -282,7 +193,7 @@ export default function SwissFarmServicesPage() {
                           {svc.tag}
                         </span>
                       </div>
-                    </div>
+                    </Link>
 
                     {/* Content */}
                     <div className="p-7">
@@ -291,9 +202,11 @@ export default function SwissFarmServicesPage() {
                           <Icon size={20} style={{ color: theme.primary }} />
                         </div>
                         <div>
-                          <h3 className="text-lg font-black leading-tight" style={{ color: theme.primary }}>
-                            {svc.title}
-                          </h3>
+                          <Link href={`/group-companies/swiss-farm/services/${svc.slug}`}>
+                            <h3 className="text-lg font-black leading-tight hover:text-[#C5A059] transition-colors cursor-pointer" style={{ color: theme.primary }}>
+                              {svc.title}
+                            </h3>
+                          </Link>
                         </div>
                       </div>
 
@@ -302,7 +215,7 @@ export default function SwissFarmServicesPage() {
                       </p>
 
                       <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                        {svc.desc}
+                        {svc.overview}
                       </p>
 
                       {/* Deliverables */}
@@ -310,8 +223,8 @@ export default function SwissFarmServicesPage() {
                         <p className="text-xs font-extrabold uppercase tracking-wider" style={{ color: theme.primary }}>
                           Key Technical Standards:
                         </p>
-                        {svc.deliverables.map((d) => (
-                          <div key={d} className="flex items-start gap-2">
+                        {svc.deliverables.slice(0, 3).map((d, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
                             <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5 text-[#C5A059]" />
                             <span className="text-xs font-medium text-slate-700 leading-snug">{d}</span>
                           </div>
@@ -320,14 +233,22 @@ export default function SwissFarmServicesPage() {
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  <div className="p-7 pt-0 flex gap-2">
                     <Link
-                      href="/group-companies/swiss-farm/contact"
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      href={`/group-companies/swiss-farm/services/${svc.slug}`}
+                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                       style={{ borderColor: theme.border, color: theme.primary }}
                     >
-                      <span>Inquire About This Capability</span>
+                      <span>Explore Details</span>
                       <ArrowRight size={14} />
+                    </Link>
+                    <Link
+                      href="/group-companies/swiss-farm/contact"
+                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                      style={{ backgroundColor: theme.primary }}
+                      title="Request Proposal"
+                    >
+                      <span>Quote</span>
                     </Link>
                   </div>
                 </div>

@@ -61,12 +61,12 @@ export const NAV_LINKS = [
 ];
 
 export const FOOTER_SERVICES = [
-  { label: "Agricultural Development & Mechanization", href: "/group-companies/national-agricultural/services#agri-development" },
-  { label: "Dairy & Livestock Development", href: "/group-companies/national-agricultural/services#dairy-development" },
-  { label: "Precision Irrigation & Water Systems", href: "/group-companies/national-agricultural/services#irrigation" },
-  { label: "Livestock Healthcare & Breeding", href: "/group-companies/national-agricultural/services#livestock" },
-  { label: "Seed Technology & Crop Nutrition", href: "/group-companies/national-agricultural/services#seed-tech" },
-  { label: "Agribusiness Advisory & Farm Setup", href: "/group-companies/national-agricultural/services#consultancy" },
+  { label: "Agricultural Development & Mechanization", href: "/group-companies/national-agricultural/services/agricultural-development-mechanization" },
+  { label: "Dairy & Livestock Development", href: "/group-companies/national-agricultural/services/dairy-development-cold-chain" },
+  { label: "Precision Irrigation & Water Systems", href: "/group-companies/national-agricultural/services/smart-irrigation-water-systems" },
+  { label: "Livestock Healthcare & Breeding", href: "/group-companies/national-agricultural/services/livestock-management-breeding-genetics" },
+  { label: "Seed Technology & Crop Nutrition", href: "/group-companies/national-agricultural/services/seed-technology-crop-nutrition" },
+  { label: "Agribusiness Advisory & Farm Setup", href: "/group-companies/national-agricultural/services/agribusiness-advisory-farm-setup" },
 ];
 
 export function SectionLabel({ children, center }) {

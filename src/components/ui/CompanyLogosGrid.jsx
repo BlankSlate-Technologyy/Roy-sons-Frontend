@@ -51,7 +51,7 @@ export default function CompanyLogosGrid() {
               onClick={() => setShowAllMobile(!showAllMobile)}
               className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#C6A15A] bg-[#C6A15A] text-[#101518] text-[16px] font-extrabold uppercase tracking-widest rounded-[2px] active:scale-95 transition-all shadow-md"
             >
-              <span>{showAllMobile ? "SHOW LESS" : "VIEW ALL CARDS"}</span>
+              <span>{showAllMobile ? "SHOW LESS" : "VIEW ALL"}</span>
               {showAllMobile ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
             </button>
           </div>

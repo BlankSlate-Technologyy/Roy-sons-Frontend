@@ -28,99 +28,7 @@ import {
   SectionHeading,
   AnimatedCounter,
 } from "../components/NationalAgriculturalShared";
-
-const AGRI_SERVICES = [
-  {
-    id: "agri-development",
-    title: "Agricultural Development & Mechanization",
-    subtitle: "Precision Laser Leveling, High-Tech Tractors & Harvesters",
-    desc: "Modernizing crop production through mechanized farm equipment, GPS-guided autosteer tractors, pneumatic seed drills, and automated combine harvesters that boost farm efficiency by 40%.",
-    image: "/agri_hero_farm.svg",
-    tag: "Farm Mechanization",
-    icon: Tractor,
-    deliverables: [
-      "GPS satellite-guided laser land leveling reducing irrigation loss",
-      "Modern pneumatic precision seed planting and fertilizing drills",
-      "High-capacity grain combine harvesting fleets and threshers",
-      "Farm equipment leasing and technical operator training",
-    ],
-  },
-  {
-    id: "dairy-development",
-    title: "Dairy Development & Cold Chain Hubs",
-    subtitle: "Automated Milking Parlors & Rapid Milk Chilling Networks",
-    desc: "Turnkey engineering of commercial dairy farms, herringbone milking parlors, rapid bulk milk coolers, and temperature-controlled refrigerated transport fleets.",
-    image: "/agri_dairy_livestock.svg",
-    tag: "Dairy Infrastructure",
-    icon: Building2,
-    deliverables: [
-      "Automated electronic milking parlors with yield metering",
-      "Direct-expansion bulk milk chillers preserving 4°C hygiene",
-      "Total Mixed Ration (TMR) feed mixers and corn silage packing",
-      "Village-level milk collection centers (MCC) with digital fat testing",
-    ],
-  },
-  {
-    id: "irrigation",
-    title: "Smart Irrigation & Water Systems",
-    subtitle: "Center-Pivot Sprinklers & Solar-Powered Drip Networks",
-    desc: "Designing and installing high-efficiency pressurized irrigation networks that cut agricultural water consumption by 50% while delivering targeted fertigation directly to plant roots.",
-    image: "/agri_hero_farm.svg",
-    tag: "Water Management",
-    icon: Droplets,
-    deliverables: [
-      "Center-pivot automated circular irrigation for large acreages",
-      "Subsurface and surface pressure-compensated drip irrigation",
-      "Solar-powered submersible tube-wells with automatic pressure valves",
-      "Geotextile lined water storage ponds and telemetry soil moisture sensors",
-    ],
-  },
-  {
-    id: "livestock",
-    title: "Livestock Management & Breeding Genetics",
-    subtitle: "High-Yield Genetic Improvement & Veterinary Healthcare",
-    desc: "Comprehensive animal husbandry programs featuring elite Holstein-Friesian and pure Sahiwal genetics, artificial insemination, and veterinary health management.",
-    image: "/agri_dairy_livestock.svg",
-    tag: "Animal Husbandry",
-    icon: Leaf,
-    deliverables: [
-      "Pedigree sexed semen artificial insemination and embryo transfer",
-      "Preventative herd vaccination schedules and mastitis control",
-      "Balanced nutritional silage formulas and mineral lick supplements",
-      "RFID digital ear-tagging and computerized herd health tracking",
-    ],
-  },
-  {
-    id: "seed-tech",
-    title: "Seed Technology & Crop Nutrition",
-    subtitle: "Certified Hybrid Seeds & Organic Bio-Fertilizers",
-    desc: "Supplying certified drought-tolerant and pest-resistant hybrid seed varieties for wheat, cotton, maize, rice, and canola, coupled with organic bio-fertilizer formulations.",
-    image: "/agri_hero_farm.svg",
-    tag: "Crop Nutrition",
-    icon: FlaskConical,
-    deliverables: [
-      "High-germination (>95%) certified hybrid wheat and maize seeds",
-      "Organic liquid humic acid and foliar micronutrient blends",
-      "Integrated Pest Management (IPM) reducing synthetic chemical spray",
-      "Soil laboratory N-P-K nutrient testing and recommendations",
-    ],
-  },
-  {
-    id: "consultancy",
-    title: "Agribusiness Advisory & Farm Setup",
-    subtitle: "Turnkey Corporate Farm Planning & Feasibility Audits",
-    desc: "Strategic technical consultancy for corporate investors, institutional landholders, and government agricultural bodies looking to establish profitable farming enterprises.",
-    image: "/agri_dairy_livestock.svg",
-    tag: "Agri Consultancy",
-    icon: Wheat,
-    deliverables: [
-      "Comprehensive bankable farm business plans and financial modeling",
-      "Climate-controlled tunnel greenhouse design and hydroponics",
-      "Crop yield benchmarking, harvest logistics, and market linkages",
-      "Organic farm certifications and export quality compliance",
-    ],
-  },
-];
+import { NATIONAL_AGRICULTURAL_SERVICES } from "../services-data";
 
 const SERVICE_STATS = [
   { value: "1M+", label: "Acres Supported", icon: Wheat },
@@ -132,10 +40,10 @@ const SERVICE_STATS = [
 export default function NationalAgriculturalServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = AGRI_SERVICES.filter(
+  const filtered = NATIONAL_AGRICULTURAL_SERVICES.filter(
     (s) =>
       s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
       s.tag.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -265,16 +173,19 @@ export default function NationalAgriculturalServicesPage() {
               const Icon = svc.icon;
               return (
                 <div
-                  key={svc.id}
+                  key={svc.slug}
                   id={svc.id}
                   className="nac-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
                     {/* Card Image */}
-                    <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    <Link
+                      href={`/group-companies/national-agricultural/services/${svc.slug}`}
+                      className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                    >
                       <Image
-                        src={svc.image}
+                        src={svc.heroImage}
                         alt={svc.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -284,7 +195,7 @@ export default function NationalAgriculturalServicesPage() {
                           {svc.tag}
                         </span>
                       </div>
-                    </div>
+                    </Link>
 
                     {/* Content */}
                     <div className="p-7">
@@ -293,9 +204,11 @@ export default function NationalAgriculturalServicesPage() {
                           <Icon size={20} style={{ color: theme.primary }} />
                         </div>
                         <div>
-                          <h3 className="text-lg font-black leading-tight" style={{ color: theme.primary }}>
-                            {svc.title}
-                          </h3>
+                          <Link href={`/group-companies/national-agricultural/services/${svc.slug}`}>
+                            <h3 className="text-lg font-black leading-tight hover:text-[#E8A800] transition-colors cursor-pointer" style={{ color: theme.primary }}>
+                              {svc.title}
+                            </h3>
+                          </Link>
                         </div>
                       </div>
 
@@ -304,7 +217,7 @@ export default function NationalAgriculturalServicesPage() {
                       </p>
 
                       <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                        {svc.desc}
+                        {svc.overview}
                       </p>
 
                       {/* Deliverables */}
@@ -312,8 +225,8 @@ export default function NationalAgriculturalServicesPage() {
                         <p className="text-xs font-extrabold uppercase tracking-wider" style={{ color: theme.primary }}>
                           Key Technical Deliverables:
                         </p>
-                        {svc.deliverables.map((d) => (
-                          <div key={d} className="flex items-start gap-2">
+                        {svc.deliverables.slice(0, 3).map((d, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
                             <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5" style={{ color: theme.accent }} />
                             <span className="text-xs font-medium text-slate-700 leading-snug">{d}</span>
                           </div>
@@ -322,14 +235,22 @@ export default function NationalAgriculturalServicesPage() {
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  <div className="p-7 pt-0 flex gap-2">
                     <Link
-                      href="/group-companies/national-agricultural/contact"
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      href={`/group-companies/national-agricultural/services/${svc.slug}`}
+                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                       style={{ borderColor: theme.border, color: theme.primary }}
                     >
-                      <span>Inquire About This Service</span>
+                      <span>Explore Service</span>
                       <ArrowRight size={14} />
+                    </Link>
+                    <Link
+                      href="/group-companies/national-agricultural/contact"
+                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                      style={{ backgroundColor: theme.primary }}
+                      title="Request Proposal"
+                    >
+                      <span>Quote</span>
                     </Link>
                   </div>
                 </div>
@@ -344,7 +265,7 @@ export default function NationalAgriculturalServicesPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
             <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2" style={{ color: theme.accent }}>
+              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#E8A800]">
                 COMMERCIAL FARM &amp; IRRIGATION SETUP
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.primary }}>

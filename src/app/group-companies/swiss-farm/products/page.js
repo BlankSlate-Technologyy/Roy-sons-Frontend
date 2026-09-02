@@ -24,6 +24,7 @@ import {
   SectionLabel,
   SectionHeading,
 } from "../components/SwissFarmShared";
+import { SWISS_FARM_PRODUCTS } from "../products-data";
 
 const CATEGORIES = [
   "All",
@@ -34,66 +35,15 @@ const CATEGORIES = [
   "Organic Fertilizers",
 ];
 
-const DAIRY_PRODUCTS = [
-  {
-    name: "Grade-A Bulk Raw Chilled Milk",
-    category: "Bulk Raw Milk",
-    specs: ["Butterfat: 3.8% – 4.2%", "SNF: Minimum 8.5%", "Temperature: Chilled to 3.5°C"],
-    desc: "Direct farm-fresh raw milk extracted through automated rotaries and transferred immediately into insulated refrigerated road tankers for corporate dairy and cheese processors.",
-    image: "/swiss-card1.png",
-    tag: "Commercial B2B Supply",
-  },
-  {
-    name: "HTST Pasteurized Institutional Milk",
-    category: "Pasteurized Dairy",
-    specs: ["Standardized Fat: 3.5%", "Shelf Life: Extended Refrigerated", "Packaging: 20L / 50L Food-Grade Drums"],
-    desc: "High-Temperature Short-Time (HTST) pasteurized milk sanitized against all pathogens while preserving natural vitamins, enzymes, and fresh farm taste for hotels and institutions.",
-    image: "/swiss-card2.png",
-    tag: "Hygienic Pasteurized",
-  },
-  {
-    name: "Pedigree Holstein-Friesian Heifers",
-    category: "Breeding Genetics",
-    specs: ["Genetics: 100% US/EU Pedigree", "Health: Certified Disease-Free", "Vaccinations: Complete Lifetime Record"],
-    desc: "Top-tier pregnant and maiden dairy heifers genetically screened for high milk production, structural longevity, and easy calving characteristics.",
-    image: "/swiss-card3.png",
-    tag: "Elite Live Cattle",
-  },
-  {
-    name: "Sexed Bovine Semen Straws",
-    category: "Breeding Genetics",
-    specs: ["Purity: > 90% Female Probability", "TPI Rating: Top 1% Global Bulls", "Storage: Liquid Nitrogen Cryo-Flasks"],
-    desc: "Cryogenically preserved sexed semen from world-champion breeding bulls, engineered to guarantee female replacement calves and boost herd productivity.",
-    image: "/swiss-farm-hero.png",
-    tag: "Genetic Technology",
-  },
-  {
-    name: "High-Energy Whole-Crop Corn Silage",
-    category: "Cattle Feed & Silage",
-    specs: ["Dry Matter: 32% – 35%", "Crude Protein: 8.5% – 9.2%", "Packaging: 500kg & 1000kg Vacuum Bales"],
-    desc: "Precision-chopped whole maize crop inoculated with lactic acid bacteria and vacuum-packed to ensure high palatability and sustained lactation milk yield.",
-    image: "/swiss-card1.png",
-    tag: "Animal Nutrition",
-  },
-  {
-    name: "Matured Bovine Bio-Compost",
-    category: "Organic Fertilizers",
-    specs: ["Organic Matter: > 45%", "C:N Ratio: Optimal 18:1", "Packaging: 50kg Bags / Bulk Tankers"],
-    desc: "Fully aerobically composted cattle manure free of weed seeds and pathogens, enriching agricultural soils with essential nitrogen, phosphorus, and microbial flora.",
-    image: "/swiss-farm-about.png",
-    tag: "Eco Soil Enhancer",
-  },
-];
-
 export default function SwissFarmProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = DAIRY_PRODUCTS.filter((p) => {
+  const filtered = SWISS_FARM_PRODUCTS.filter((p) => {
     const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
     const matchesSearch =
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
@@ -165,15 +115,19 @@ export default function SwissFarmProductsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((prod) => (
               <div
-                key={prod.name}
+                key={prod.slug}
+                id={prod.id}
                 className="swiss-farm-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
                 style={{ borderColor: theme.border }}
               >
                 <div>
                   {/* Card Image */}
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                  <Link
+                    href={`/group-companies/swiss-farm/products/${prod.slug}`}
+                    className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                  >
                     <Image
-                      src={prod.image}
+                      src={prod.heroImage}
                       alt={prod.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -183,41 +137,57 @@ export default function SwissFarmProductsPage() {
                         {prod.tag}
                       </span>
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Body Content */}
                   <div className="p-7">
-                    <h3 className="text-xl font-black mb-3" style={{ color: theme.primary }}>
-                      {prod.name}
-                    </h3>
+                    <Link href={`/group-companies/swiss-farm/products/${prod.slug}`}>
+                      <h3 className="text-xl font-black mb-1.5 hover:text-[#C5A059] transition-colors cursor-pointer" style={{ color: theme.primary }}>
+                        {prod.name}
+                      </h3>
+                    </Link>
 
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                      {prod.desc}
+                    <p className="text-xs font-bold uppercase tracking-wider mb-3 text-[#C5A059]">
+                      {prod.subtitle}
                     </p>
 
-                    {/* Specs List */}
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                      {prod.overview}
+                    </p>
+
+                    {/* Technical Specs List */}
                     <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(214, 229, 215, 0.7)" }}>
                       <p className="text-xs font-bold uppercase tracking-wider" style={{ color: theme.primary }}>
-                        Technical Specifications:
+                        Key Technical Benchmarks:
                       </p>
-                      {prod.specs.map((s) => (
-                        <div key={s} className="flex items-center gap-2">
-                          <CheckCircle2 size={14} className="flex-shrink-0 text-[#C5A059]" />
-                          <span className="text-xs font-medium text-slate-700">{s}</span>
+                      {prod.technicalSpecs.slice(0, 3).map((s, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5 text-[#C5A059]" />
+                          <span className="text-xs font-medium text-slate-700 leading-snug">
+                            <strong>{s.key}:</strong> {s.value}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="p-7 pt-0">
+                <div className="p-7 pt-0 flex gap-2">
                   <Link
-                    href="/group-companies/swiss-farm/contact"
-                    className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                    href={`/group-companies/swiss-farm/products/${prod.slug}`}
+                    className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                     style={{ borderColor: theme.border, color: theme.primary }}
                   >
-                    <span>Request Quotation &amp; Lab Assay</span>
+                    <span>View Specifications</span>
                     <ArrowRight size={14} />
+                  </Link>
+                  <Link
+                    href="/group-companies/swiss-farm/contact"
+                    className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                    style={{ backgroundColor: theme.primary }}
+                    title="Request Proposal"
+                  >
+                    <span>Quote</span>
                   </Link>
                 </div>
               </div>

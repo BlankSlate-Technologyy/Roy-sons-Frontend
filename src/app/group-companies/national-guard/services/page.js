@@ -295,7 +295,10 @@ export default function NationalGuardServicesPage() {
                 >
                   <div>
                     {/* Card Top Image */}
-                    <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    <Link
+                      href={`/group-companies/national-guard/services/${svc.id}`}
+                      className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                    >
                       <Image
                         src={svc.image}
                         alt={svc.title}
@@ -307,7 +310,7 @@ export default function NationalGuardServicesPage() {
                           {svc.tag}
                         </span>
                       </div>
-                    </div>
+                    </Link>
 
                     {/* Card Content */}
                     <div className="p-7">
@@ -316,9 +319,11 @@ export default function NationalGuardServicesPage() {
                           <Icon size={20} style={{ color: theme.navy }} />
                         </div>
                         <div>
-                          <h3 className="text-lg font-black leading-tight" style={{ color: theme.navy }}>
-                            {svc.title}
-                          </h3>
+                          <Link href={`/group-companies/national-guard/services/${svc.id}`}>
+                            <h3 className="text-lg font-black leading-tight hover:text-[#C5A059] transition-colors cursor-pointer" style={{ color: theme.navy }}>
+                              {svc.title}
+                            </h3>
+                          </Link>
                         </div>
                       </div>
 
@@ -346,14 +351,22 @@ export default function NationalGuardServicesPage() {
                   </div>
 
                   {/* Card Action Link */}
-                  <div className="p-7 pt-0">
+                  <div className="p-7 pt-0 flex gap-2">
                     <Link
-                      href="/group-companies/national-guard/contact"
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      href={`/group-companies/national-guard/services/${svc.id}`}
+                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                       style={{ borderColor: theme.border, color: theme.navy }}
                     >
-                      <span>Inquire About This Service</span>
+                      <span>Explore Details</span>
                       <ArrowRight size={14} />
+                    </Link>
+                    <Link
+                      href="/group-companies/national-guard/contact"
+                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1 text-white transition-opacity hover:opacity-95 cursor-pointer"
+                      style={{ backgroundColor: theme.navy }}
+                      title="Request Quotation"
+                    >
+                      <span>Quote</span>
                     </Link>
                   </div>
                 </div>

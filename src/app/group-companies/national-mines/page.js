@@ -100,16 +100,16 @@ const SERVICES = [
 ];
 
 const INDUSTRIES = [
-  { icon: Building, label: "Construction &\nAggregates" },
-  { icon: Landmark, label: "Infrastructure\nDevelopment" },
-  { icon: Factory, label: "Steel & Alloys\nManufacturing" },
-  { icon: Building2, label: "Cement &\nBuilding Materials" },
-  { icon: Zap, label: "Energy & Captive\nPower Generation" },
-  { icon: Layers, label: "Industrial Chemicals\n& Foundry" },
-  { icon: Globe, label: "International Bulk\nExport Markets" },
-  { icon: Landmark, label: "Government\nStrategic Projects" },
-  { icon: HardHat, label: "Heavy Machinery\n& Metallurgy" },
-  { icon: TrendingUp, label: "Gemological &\nPrecious Metals" },
+  { icon: Building, label: "Construction &\nAggregates", href: "/group-companies/national-mines/industries/construction-aggregates" },
+  { icon: Landmark, label: "Infrastructure\nDevelopment", href: "/group-companies/national-mines/industries/infrastructure-development" },
+  { icon: Factory, label: "Steel & Alloys\nManufacturing", href: "/group-companies/national-mines/industries/steel-alloys-manufacturing" },
+  { icon: Building2, label: "Cement &\nBuilding Materials", href: "/group-companies/national-mines/industries/cement-building-materials" },
+  { icon: Zap, label: "Energy & Captive\nPower Generation", href: "/group-companies/national-mines/industries/energy-power-generation" },
+  { icon: Layers, label: "Industrial Chemicals\n& Foundry", href: "/group-companies/national-mines/industries/industrial-chemicals-foundry" },
+  { icon: Globe, label: "International Bulk\nExport Markets", href: "/group-companies/national-mines/industries/international-bulk-exports" },
+  { icon: Landmark, label: "Government\nStrategic Projects", href: "/group-companies/national-mines/industries/government-strategic-projects" },
+  { icon: HardHat, label: "Heavy Machinery\n& Metallurgy", href: "/group-companies/national-mines/industries/heavy-machinery-metallurgy" },
+  { icon: TrendingUp, label: "Gemological &\nPrecious Metals", href: "/group-companies/national-mines/industries/gemological-precious-metals" },
 ];
 
 const PROCESS_STEPS = [
@@ -319,12 +319,15 @@ export default function NationalMinesHomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {MINERALS_LIST.slice(0, 4).map((m) => (
               <div
-                key={m.name}
+                key={m.slug}
                 className="nmc-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
                 style={{ borderColor: theme.border }}
               >
                 <div>
-                  <div className="relative w-full h-44 bg-slate-100 overflow-hidden group">
+                  <Link
+                    href={`/group-companies/national-mines/minerals/${m.slug}`}
+                    className="relative block w-full h-44 bg-slate-100 overflow-hidden group cursor-pointer"
+                  >
                     <Image
                       src={m.img}
                       alt={m.name}
@@ -336,35 +339,90 @@ export default function NationalMinesHomePage() {
                         {m.tag}
                       </span>
                     </div>
-                  </div>
+                  </Link>
 
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-lg font-black" style={{ color: theme.navy }}>
-                        {m.name}
-                      </h3>
+                      <Link href={`/group-companies/national-mines/minerals/${m.slug}`}>
+                        <h3 className="text-lg font-black hover:text-[#C59B27] transition-colors cursor-pointer" style={{ color: theme.navy }}>
+                          {m.name}
+                        </h3>
+                      </Link>
                       <span className="text-[10.5px] font-black uppercase text-[#C59B27] px-2 py-0.5 rounded bg-[#C59B27]/10">
                         {m.grade}
                       </span>
                     </div>
-                    <p className="text-xs font-medium leading-relaxed text-slate-600 mb-4">
+                    <p className="text-xs font-medium leading-relaxed text-slate-600 mb-4 line-clamp-2">
                       {m.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-6 pt-0">
+                <div className="p-6 pt-0 flex gap-2">
                   <Link
-                    href="/group-companies/national-mines/contact"
-                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
+                    href={`/group-companies/national-mines/minerals/${m.slug}`}
+                    className="flex-1 py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                     style={{ borderColor: theme.border, color: theme.navy }}
                   >
-                    <span>Request Assay</span>
+                    <span>Details</span>
                     <ArrowRight size={13} />
+                  </Link>
+                  <Link
+                    href="/group-companies/national-mines/contact"
+                    className="px-3.5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                    style={{ backgroundColor: theme.navy }}
+                    title="Request Assay & Quote"
+                  >
+                    <span>Quote</span>
                   </Link>
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Supply Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Sector Coverage</SectionLabel>
+            <SectionHeading center className="mb-4">Industries We Supply</SectionHeading>
+            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+              Delivering customized mineral commodity matrices designed specifically for diverse industrial processing requirements.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {INDUSTRIES.map((ind) => {
+              const Icon = ind.icon;
+              return (
+                <Link
+                  key={ind.label}
+                  href={ind.href}
+                  className="nmc-counter-box p-5 rounded-2xl border flex flex-col items-center justify-center text-center group bg-white shadow-xs cursor-pointer hover:border-[#C59B27]"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform" style={{ backgroundColor: `${theme.navy}10` }}>
+                    <Icon size={18} style={{ color: theme.navy }} />
+                  </div>
+                  <p className="text-[11px] font-bold leading-tight uppercase tracking-wider whitespace-pre-line text-slate-800">
+                    {ind.label}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/group-companies/national-mines/industries"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider transition-all hover:bg-slate-50"
+              style={{ borderColor: theme.border, color: theme.navy }}
+            >
+              <span>Explore All 10 Industry Sectors</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>

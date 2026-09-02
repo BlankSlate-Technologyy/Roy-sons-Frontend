@@ -60,12 +60,12 @@ export const NAV_LINKS = [
 ];
 
 export const FOOTER_SERVICES = [
-  { label: "Manned Guarding", href: "/group-companies/national-guard/services#manned-guarding" },
-  { label: "Mobile Patrol Services", href: "/group-companies/national-guard/services#mobile-patrol" },
-  { label: "CCTV & Central Monitoring", href: "/group-companies/national-guard/services#cctv-monitoring" },
-  { label: "Risk Assessment & Audits", href: "/group-companies/national-guard/services#risk-assessment" },
-  { label: "Event & VIP Protection", href: "/group-companies/national-guard/services#event-security" },
-  { label: "Facility & Corporate Security", href: "/group-companies/national-guard/services#facility-protection" },
+  { label: "Manned Guarding", href: "/group-companies/national-guard/services/manned-guarding" },
+  { label: "Mobile Patrol Services", href: "/group-companies/national-guard/services/mobile-patrol" },
+  { label: "CCTV & Central Monitoring", href: "/group-companies/national-guard/services/cctv-monitoring" },
+  { label: "Risk Assessment & Audits", href: "/group-companies/national-guard/services/risk-assessment" },
+  { label: "Event & VIP Protection", href: "/group-companies/national-guard/services/event-security" },
+  { label: "Facility & Corporate Security", href: "/group-companies/national-guard/services/facility-protection" },
 ];
 
 export function SectionLabel({ children, center }) {

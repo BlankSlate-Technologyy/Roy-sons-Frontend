@@ -24,6 +24,7 @@ import {
   SectionLabel,
   SectionHeading,
 } from "../components/WaltonShared";
+import { WALTON_SOLUTIONS } from "../solutions-data";
 
 const CATEGORIES = [
   "All",
@@ -34,66 +35,15 @@ const CATEGORIES = [
   "Healthcare & Campuses",
 ];
 
-const INFRASTRUCTURE_SOLUTIONS = [
-  {
-    name: "WaltonTower Commercial High-Rise Superstructure",
-    category: "Commercial High-Rises",
-    specs: ["Height: Up to 45 Storeys Commercial / Residential", "Structure: Dual Shear Wall & Post-Tensioned Slabs", "Basement: Up to 4 Underground Parking Levels"],
-    desc: "Turnkey structural construction of corporate mega-towers featuring rotary bored piling, post-tensioned floor plates, and modern curtain wall facades.",
-    image: "/walton_hero_construction.svg",
-    tag: "Commercial Superstructure",
-  },
-  {
-    name: "WaltonPlant Turnkey Industrial Manufacturing Complex",
-    category: "Industrial Factories",
-    specs: ["Area: 50,000 to 500,000+ Sq Ft Industrial Space", "Foundation: Heavy Machine Dynamic Isolation Slabs", "Utilities: Central Substation, Steam, & Compressed Air"],
-    desc: "Single-point EPC delivery of industrial factories, chemical processing plants, textile mills, and food manufacturing facilities with full MEP.",
-    image: "/walton_hero_construction.svg",
-    tag: "Industrial EPC Plant",
-  },
-  {
-    name: "WaltonWay Highway, Interchange & Bridge Corridor",
-    category: "Highways & Bridges",
-    specs: ["Pavement: Superpave Performance-Grade Asphalt", "Bridges: Precast Prestressed Concrete Box Girders", "Earthwork: Laser-Guided Motor Graders & Compactors"],
-    desc: "Engineering and construction of multi-lane motorways, urban flyovers, river bridges, and grade-separated highway interchanges.",
-    image: "/walton_hero_construction.svg",
-    tag: "Transportation Infrastructure",
-  },
-  {
-    name: "WaltonHub Mega Logistics Distribution Center & PEB",
-    category: "Logistics & PEB Steel",
-    specs: ["Clear-Span: Up to 60 Meters Column-Free Width", "Floor Slab: Laser Screed FM2 Superflat Floor Finish", "Cladding: Insulated PIR / PUF Fire-Rated Panels"],
-    desc: "Large-span pre-engineered structural steel warehouses, automated fulfillment centers, overhead crane bays, and temperature-controlled cold chains.",
-    image: "/walton_hero_construction.svg",
-    tag: "Logistics & PEB Hub",
-  },
-  {
-    name: "WaltonCampus Institutional University & Healthcare",
-    category: "Healthcare & Campuses",
-    specs: ["Facilities: Multi-Story Academic Blocks & Hospitals", "MEP: Integrated Central HVAC, Fire Fighting, & BMS", "Acoustics: Engineered Sound Insulation & Clean Finishes"],
-    desc: "Construction of medical colleges, university campuses, specialized teaching hospitals, and research facilities engineered for heavy community traffic.",
-    image: "/walton_hero_construction.svg",
-    tag: "Institutional Campuses",
-  },
-  {
-    name: "WaltonUrban Municipal Infrastructure & Stormwater",
-    category: "Highways & Bridges",
-    specs: ["Drainage: Reinforced Concrete Box Culverts", "Utilities: Underground Water, Sewerage, & Power Grids", "Roads: Heavy-Duty Paved Arterials & Footpaths"],
-    desc: "Development of modern housing societies, special economic zones (SEZ), underground utility corridors, and gravity stormwater drainage networks.",
-    image: "/walton_hero_construction.svg",
-    tag: "Urban Infrastructure",
-  },
-];
-
 export default function WaltonSolutionsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = INFRASTRUCTURE_SOLUTIONS.filter((p) => {
+  const filtered = WALTON_SOLUTIONS.filter((p) => {
     const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
     const matchesSearch =
       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
@@ -108,7 +58,7 @@ export default function WaltonSolutionsPage() {
           <div className="text-center max-w-3xl mx-auto">
             <SectionLabel center>Engineered Sectors &amp; Infrastructure Packages</SectionLabel>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
+            <h1 className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-black tracking-tight leading-[1.2] uppercase mb-5" style={{ color: theme.navyDark }}>
               Turnkey Infrastructure &amp; <span style={{ color: theme.navy }}>Building Solutions</span>
             </h1>
 
@@ -165,15 +115,19 @@ export default function WaltonSolutionsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((prod) => (
               <div
-                key={prod.name}
+                key={prod.slug}
+                id={prod.id}
                 className="walton-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
                 style={{ borderColor: theme.border }}
               >
                 <div>
                   {/* Card Image */}
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                  <Link
+                    href={`/group-companies/walton-consultants-contracting/solutions/${prod.slug}`}
+                    className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                  >
                     <Image
-                      src={prod.image}
+                      src={prod.heroImage}
                       alt={prod.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -183,41 +137,57 @@ export default function WaltonSolutionsPage() {
                         {prod.tag}
                       </span>
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Body Content */}
                   <div className="p-7">
-                    <h3 className="text-xl font-black mb-3" style={{ color: theme.navyDark }}>
-                      {prod.name}
-                    </h3>
+                    <Link href={`/group-companies/walton-consultants-contracting/solutions/${prod.slug}`}>
+                      <h3 className="text-xl font-black mb-1.5 hover:text-[#0E2A47] transition-colors cursor-pointer" style={{ color: theme.navyDark }}>
+                        {prod.name}
+                      </h3>
+                    </Link>
 
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                      {prod.desc}
+                    <p className="text-xs font-bold uppercase tracking-wider mb-3 text-[#C5A059]">
+                      {prod.subtitle}
                     </p>
 
-                    {/* Specs List */}
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                      {prod.overview}
+                    </p>
+
+                    {/* Technical Specs List */}
                     <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(216, 226, 236, 0.7)" }}>
                       <p className="text-xs font-bold uppercase tracking-wider" style={{ color: theme.navyDark }}>
-                        Technical Specifications:
+                        Key Technical Parameters:
                       </p>
-                      {prod.specs.map((s) => (
-                        <div key={s} className="flex items-center gap-2">
-                          <CheckCircle2 size={14} className="flex-shrink-0 text-[#C5A059]" />
-                          <span className="text-xs font-medium text-slate-700">{s}</span>
+                      {prod.technicalSpecs.slice(0, 3).map((s, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5 text-[#C5A059]" />
+                          <span className="text-xs font-medium text-slate-700 leading-snug">
+                            <strong>{s.key}:</strong> {s.value}
+                          </span>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="p-7 pt-0">
+                <div className="p-7 pt-0 flex gap-2">
                   <Link
-                    href="/group-companies/walton-consultants-contracting/contact"
-                    className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                    href={`/group-companies/walton-consultants-contracting/solutions/${prod.slug}`}
+                    className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                     style={{ borderColor: theme.border, color: theme.navyDark }}
                   >
-                    <span>Request Engineering Proposal</span>
+                    <span>View Specifications</span>
                     <ArrowRight size={14} />
+                  </Link>
+                  <Link
+                    href="/group-companies/walton-consultants-contracting/contact"
+                    className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                    style={{ backgroundColor: theme.navy }}
+                    title="Request Proposal"
+                  >
+                    <span>Quote</span>
                   </Link>
                 </div>
               </div>

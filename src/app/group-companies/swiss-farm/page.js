@@ -61,42 +61,42 @@ const SERVICES = [
     icon: Truck,
     title: "Commercial Dairy Production",
     desc: "Automated rotary milking parlors producing fresh milk chilled to 4°C within seconds with zero human contact.",
-    href: "/group-companies/swiss-farm/services#dairy-production",
+    href: "/group-companies/swiss-farm/services/high-volume-dairy-production",
     img: "/swiss-card1.png",
   },
   {
     icon: Users,
     title: "Livestock Herd Management",
     desc: "Climate-controlled cross-ventilated barns with sand bedding, robotic grooming brushes, and RFID health tracking.",
-    href: "/group-companies/swiss-farm/services#livestock",
+    href: "/group-companies/swiss-farm/services/livestock-management-housing",
     img: "/swiss-card2.png",
   },
   {
     icon: Leaf,
     title: "Genetic Breeding Programs",
     desc: "Pedigree sexed semen artificial insemination and genomic selection producing high-yielding dairy heifers.",
-    href: "/group-companies/swiss-farm/services#breeding",
+    href: "/group-companies/swiss-farm/services/genetic-breeding-reproduction",
     img: "/swiss-card3.png",
   },
   {
     icon: HeartPulse,
     title: "Veterinary Healthcare",
     desc: "Comprehensive on-farm veterinary hospital, preventative vaccinations, automated mastitis testing, and hoof care.",
-    href: "/group-companies/swiss-farm/services#veterinary",
+    href: "/group-companies/swiss-farm/services/veterinary-healthcare-disease-prevention",
     img: "/swiss-card1.png",
   },
   {
     icon: Sparkles,
     title: "Animal Nutrition & Silage",
     desc: "Total Mixed Ration (TMR) computerized feed formulas, anaerobic corn silage pits, and custom mineral premixes.",
-    href: "/group-companies/swiss-farm/services#nutrition",
+    href: "/group-companies/swiss-farm/services/animal-nutrition-silage-rations",
     img: "/swiss-card2.png",
   },
   {
     icon: Zap,
     title: "Sustainable Bio-Energy",
     desc: "Anaerobic bio-digesters converting cattle manure into clean electricity and premium organic compost fertilizer.",
-    href: "/group-companies/swiss-farm/sustainability",
+    href: "/group-companies/swiss-farm/services/sustainable-bio-energy-farm-infrastructure",
     img: "/swiss-card3.png",
   },
 ];
@@ -106,18 +106,21 @@ const PRODUCTS_PREVIEW = [
     name: "Grade-A Bulk Raw Milk",
     tag: "Commercial Milk Supply",
     desc: "Chilled to 3.5°C immediately at milking, tested for 3.8%+ Butterfat and 8.5%+ SNF for industrial processors.",
+    href: "/group-companies/swiss-farm/products/grade-a-bulk-raw-chilled-milk",
     img: "/swiss-card1.png",
   },
   {
     name: "Holstein-Friesian Heifers",
     tag: "Pedigree Breeding Stock",
     desc: "Certified disease-free pregnant and maiden heifers with verified US/European genomic lineages.",
+    href: "/group-companies/swiss-farm/products/pedigree-holstein-friesian-heifers",
     img: "/swiss-card2.png",
   },
   {
     name: "High-Energy Corn Silage",
     tag: "Animal Nutrition Bales",
     desc: "Precision-chopped whole maize crop vacuum-baled for maximum protein and energy lactation density.",
+    href: "/group-companies/swiss-farm/products/high-energy-whole-crop-corn-silage",
     img: "/swiss-card3.png",
   },
 ];
@@ -335,23 +338,28 @@ export default function SwissFarmHomePage() {
                   style={{ borderColor: theme.border }}
                 >
                   <div>
-                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                    <Link
+                      href={svc.href}
+                      className="relative block w-full h-48 bg-slate-100 overflow-hidden group cursor-pointer"
+                    >
                       <Image
                         src={svc.img}
                         alt={svc.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                    </div>
+                    </Link>
 
                     <div className="p-7">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.primary}10` }}>
                         <Icon size={20} style={{ color: theme.primary }} />
                       </div>
 
-                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.primary }}>
-                        {svc.title}
-                      </h3>
+                      <Link href={svc.href}>
+                        <h3 className="text-lg font-black mb-2.5 hover:text-[#C5A059] transition-colors cursor-pointer" style={{ color: theme.primary }}>
+                          {svc.title}
+                        </h3>
+                      </Link>
 
                       <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
                         {svc.desc}
@@ -359,14 +367,22 @@ export default function SwissFarmHomePage() {
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  <div className="p-7 pt-0 flex gap-2">
                     <Link
                       href={svc.href}
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                       style={{ borderColor: theme.border, color: theme.primary }}
                     >
-                      <span>Explore Capability</span>
+                      <span>Explore Details</span>
                       <ArrowRight size={14} />
+                    </Link>
+                    <Link
+                      href="/group-companies/swiss-farm/contact"
+                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                      style={{ backgroundColor: theme.primary }}
+                      title="Request Proposal"
+                    >
+                      <span>Quote</span>
                     </Link>
                   </div>
                 </div>
@@ -403,35 +419,48 @@ export default function SwissFarmHomePage() {
                 style={{ borderColor: theme.border }}
               >
                 <div>
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                  <Link
+                    href={p.href}
+                    className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                  >
                     <Image
                       src={p.img}
                       alt={p.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                  </div>
+                  </Link>
                   <div className="p-7">
                     <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#C5A059]/10 text-[#C5A059] inline-block mb-3">
                       {p.tag}
                     </span>
-                    <h3 className="text-xl font-black mb-2" style={{ color: theme.primary }}>
-                      {p.name}
-                    </h3>
+                    <Link href={p.href}>
+                      <h3 className="text-xl font-black mb-2 hover:text-[#C5A059] transition-colors cursor-pointer" style={{ color: theme.primary }}>
+                        {p.name}
+                      </h3>
+                    </Link>
                     <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
                       {p.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-7 pt-0">
+                <div className="p-7 pt-0 flex gap-2">
                   <Link
-                    href="/group-companies/swiss-farm/contact"
-                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
+                    href={p.href}
+                    className="flex-1 py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                     style={{ borderColor: theme.border, color: theme.primary }}
                   >
-                    <span>Request Assay</span>
+                    <span>View Specifications</span>
                     <ArrowRight size={13} />
+                  </Link>
+                  <Link
+                    href="/group-companies/swiss-farm/contact"
+                    className="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                    style={{ backgroundColor: theme.primary }}
+                    title="Request Proposal"
+                  >
+                    <span>Quote</span>
                   </Link>
                 </div>
               </div>

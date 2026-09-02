@@ -54,12 +54,12 @@ export const NAV_LINKS = [
 ];
 
 export const FOOTER_SERVICES = [
-  { label: "High-Volume Dairy Production", href: "/group-companies/swiss-farm/services#dairy-production" },
-  { label: "Livestock Management & Housing", href: "/group-companies/swiss-farm/services#livestock" },
-  { label: "Genetic Breeding & Reproduction", href: "/group-companies/swiss-farm/services#breeding" },
-  { label: "Veterinary Healthcare & Vaccines", href: "/group-companies/swiss-farm/services#veterinary" },
-  { label: "Animal Nutrition & Silage Rations", href: "/group-companies/swiss-farm/services#nutrition" },
-  { label: "Sustainable Farm Infrastructure", href: "/group-companies/swiss-farm/sustainability" },
+  { label: "High-Volume Dairy Production", href: "/group-companies/swiss-farm/services/high-volume-dairy-production" },
+  { label: "Livestock Management & Housing", href: "/group-companies/swiss-farm/services/livestock-management-housing" },
+  { label: "Genetic Breeding & Reproduction", href: "/group-companies/swiss-farm/services/genetic-breeding-reproduction" },
+  { label: "Veterinary Healthcare & Vaccines", href: "/group-companies/swiss-farm/services/veterinary-healthcare-disease-prevention" },
+  { label: "Animal Nutrition & Silage Rations", href: "/group-companies/swiss-farm/services/animal-nutrition-silage-rations" },
+  { label: "Sustainable Farm Infrastructure", href: "/group-companies/swiss-farm/services/sustainable-bio-energy-farm-infrastructure" },
 ];
 
 export function SectionLabel({ children, center }) {
@@ -172,38 +172,38 @@ export function SwissFarmNavbar() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="mx-auto max-w-screen-2xl px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between gap-3 lg:gap-4 xl:gap-6">
         {/* Brand Logo */}
-        <Link href="/group-companies/swiss-farm" className="flex items-center gap-3 select-none group">
-          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+        <Link href="/group-companies/swiss-farm" className="flex items-center gap-2.5 sm:gap-3 select-none group shrink-0 mr-1 lg:mr-2">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/6.png"
               alt="Swiss Farms Logo"
-              width={80}
-              height={80}
+              width={64}
+              height={64}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.primary }}>
+          <div className="flex flex-col shrink-0">
+            <span className="text-xs sm:text-sm lg:text-[13.5px] xl:text-[15px] font-black tracking-tight leading-tight uppercase whitespace-nowrap" style={{ color: theme.primary }}>
               Swiss Farms
             </span>
-            <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.accentGold }}>
+            <span className="text-[8px] sm:text-[8.5px] lg:text-[9px] xl:text-[9.5px] font-bold tracking-widest uppercase mt-0.5 whitespace-nowrap" style={{ color: theme.accentGold }}>
               Dairy &amp; Livestock
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#C5A059] cursor-pointer"
+                className="text-[10px] xl:text-[11px] 2xl:text-[11.5px] font-extrabold tracking-wider uppercase transition-all duration-200 relative py-1 px-1.5 xl:px-2 hover:text-[#C5A059] cursor-pointer whitespace-nowrap"
                 style={{
                   color: active ? theme.accentGold : theme.primary,
                 }}
@@ -215,14 +215,14 @@ export function SwissFarmNavbar() {
         </nav>
 
         {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <Link
             href="/group-companies/swiss-farm/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-[10px] xl:text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap shrink-0"
             style={{ backgroundColor: theme.primary }}
           >
             <span>Dairy Sourcing</span>
-            <ArrowRight size={13} />
+            <ArrowRight size={13} className="shrink-0" />
           </Link>
 
           <button

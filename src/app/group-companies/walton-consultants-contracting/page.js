@@ -45,43 +45,43 @@ const SERVICES = [
   {
     icon: Building2,
     title: "Civil Engineering & Superstructures",
-    desc: "Design and construction of commercial towers, deep pile foundations, post-tensioned slabs, and public buildings.",
-    href: "/group-companies/walton-consultants-contracting/services#civil-engineering",
+    desc: "Reinforced concrete high-rises, post-tensioned floor slabs, deep bored pile foundations, and architectural curtain walls.",
+    href: "/group-companies/walton-consultants-contracting/services/civil-engineering-structural-superstructures",
     img: "/walton_hero_construction.svg",
   },
   {
     icon: Truck,
-    title: "Turnkey EPC Projects",
+    title: "Turnkey EPC Industrial Projects",
     desc: "Complete engineering, procurement, and construction solutions for complex industrial and infrastructure developments.",
-    href: "/group-companies/walton-consultants-contracting/services#epc-projects",
+    href: "/group-companies/walton-consultants-contracting/services/turnkey-epc-heavy-industrial-projects",
     img: "/walton_hero_construction.svg",
   },
   {
     icon: Layers,
     title: "Highways & Infrastructure Corridors",
     desc: "Construction of multi-lane expressways, prestressed concrete bridges, flyovers, and stormwater utilities.",
-    href: "/group-companies/walton-consultants-contracting/services#infrastructure-development",
+    href: "/group-companies/walton-consultants-contracting/services/highways-bridges-transportation-corridors",
     img: "/walton_hero_construction.svg",
   },
   {
     icon: Wrench,
     title: "Pre-Engineered Buildings (PEB)",
     desc: "High-yield structural steel portal frames, mega logistics distribution warehouses, and industrial manufacturing plants.",
-    href: "/group-companies/walton-consultants-contracting/services#industrial-construction",
+    href: "/group-companies/walton-consultants-contracting/services/pre-engineered-buildings-peb-warehouses",
     img: "/walton_hero_construction.svg",
   },
   {
     icon: ClipboardList,
     title: "Project Management & BIM QA/QC",
     desc: "3D BIM clash detection, Primavera P6 project scheduling, on-site materials testing, and quality supervision.",
-    href: "/group-companies/walton-consultants-contracting/services#project-management",
+    href: "/group-companies/walton-consultants-contracting/services/project-management-bim-qa-qc-supervision",
     img: "/walton_hero_construction.svg",
   },
   {
     icon: Hammer,
     title: "Engineering Consultancy & Feasibility",
     desc: "Geotechnical soil surveys, structural peer reviews, seismic hazard analysis, and comprehensive BOQ preparation.",
-    href: "/group-companies/walton-consultants-contracting/services#engineering-consultancy",
+    href: "/group-companies/walton-consultants-contracting/services/engineering-consultancy-feasibility-studies",
     img: "/walton_hero_construction.svg",
   },
 ];
@@ -91,18 +91,21 @@ const SOLUTIONS_PREVIEW = [
     name: "WaltonTower High-Rise Superstructure",
     tag: "Commercial High-Rise",
     desc: "Up to 45 storeys commercial/residential towers with post-tensioned slabs and 4-level deep basements.",
+    href: "/group-companies/walton-consultants-contracting/solutions/commercial-high-rise-superstructures",
     img: "/walton_hero_construction.svg",
   },
   {
     name: "WaltonPlant Turnkey Industrial Complex",
     tag: "Industrial EPC Plant",
     desc: "50,000 to 500,000+ sq ft heavy manufacturing plants with dynamic machine foundation beds.",
+    href: "/group-companies/walton-consultants-contracting/solutions/turnkey-industrial-manufacturing-plants",
     img: "/walton_hero_construction.svg",
   },
   {
     name: "WaltonWay Highway & Bridge Corridor",
     tag: "Transportation Infrastructure",
     desc: "Multi-lane expressways, prestressed concrete box girders, and grade-separated highway interchanges.",
+    href: "/group-companies/walton-consultants-contracting/solutions/highway-interchanges-bridge-corridors",
     img: "/walton_hero_construction.svg",
   },
 ];
@@ -150,7 +153,7 @@ export default function WaltonHomePage() {
             <div className="lg:col-span-7">
               <SectionLabel>Trusted Engineering &amp; Infrastructure Development</SectionLabel>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
+              <h1 className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-black tracking-tight leading-[1.2] uppercase mb-5" style={{ color: theme.navyDark }}>
                 Engineering Excellence. <span style={{ color: theme.navy }}>Building Tomorrow&apos;s Infrastructure.</span>
               </h1>
 
@@ -320,23 +323,28 @@ export default function WaltonHomePage() {
                   style={{ borderColor: theme.border }}
                 >
                   <div>
-                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                    <Link
+                      href={svc.href}
+                      className="relative block w-full h-48 bg-slate-100 overflow-hidden group cursor-pointer"
+                    >
                       <Image
                         src={svc.img}
                         alt={svc.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                    </div>
+                    </Link>
 
                     <div className="p-7">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.navy}10` }}>
                         <Icon size={20} style={{ color: theme.navy }} />
                       </div>
 
-                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.navyDark }}>
-                        {svc.title}
-                      </h3>
+                      <Link href={svc.href}>
+                        <h3 className="text-lg font-black mb-2.5 hover:text-[#0E2A47] transition-colors cursor-pointer" style={{ color: theme.navyDark }}>
+                          {svc.title}
+                        </h3>
+                      </Link>
 
                       <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
                         {svc.desc}
@@ -344,14 +352,22 @@ export default function WaltonHomePage() {
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  <div className="p-7 pt-0 flex gap-2">
                     <Link
                       href={svc.href}
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                       style={{ borderColor: theme.border, color: theme.navyDark }}
                     >
                       <span>Explore Division</span>
                       <ArrowRight size={14} />
+                    </Link>
+                    <Link
+                      href="/group-companies/walton-consultants-contracting/contact"
+                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                      style={{ backgroundColor: theme.navy }}
+                      title="Request Proposal"
+                    >
+                      <span>Quote</span>
                     </Link>
                   </div>
                 </div>
@@ -388,35 +404,48 @@ export default function WaltonHomePage() {
                 style={{ borderColor: theme.border }}
               >
                 <div>
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                  <Link
+                    href={p.href}
+                    className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                  >
                     <Image
                       src={p.img}
                       alt={p.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                  </div>
+                  </Link>
                   <div className="p-7">
                     <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#C5A059]/15 text-[#A6823B] inline-block mb-3">
                       {p.tag}
                     </span>
-                    <h3 className="text-xl font-black mb-2" style={{ color: theme.navyDark }}>
-                      {p.name}
-                    </h3>
+                    <Link href={p.href}>
+                      <h3 className="text-xl font-black mb-2 hover:text-[#0E2A47] transition-colors cursor-pointer" style={{ color: theme.navyDark }}>
+                        {p.name}
+                      </h3>
+                    </Link>
                     <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
                       {p.desc}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-7 pt-0">
+                <div className="p-7 pt-0 flex gap-2">
                   <Link
-                    href="/group-companies/walton-consultants-contracting/contact"
-                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
+                    href={p.href}
+                    className="flex-1 py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                     style={{ borderColor: theme.border, color: theme.navyDark }}
                   >
-                    <span>Request Specs</span>
+                    <span>View Specifications</span>
                     <ArrowRight size={13} />
+                  </Link>
+                  <Link
+                    href="/group-companies/walton-consultants-contracting/contact"
+                    className="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                    style={{ backgroundColor: theme.navy }}
+                    title="Request Proposal"
+                  >
+                    <span>Quote</span>
                   </Link>
                 </div>
               </div>

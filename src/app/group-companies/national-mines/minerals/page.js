@@ -22,8 +22,8 @@ import {
   NationalMinesFooter,
   SectionLabel,
   SectionHeading,
-  MINERALS_LIST,
 } from "../components/NationalMinesShared";
+import { NATIONAL_MINES_MINERALS } from "../minerals-data";
 
 const CATEGORIES = [
   "All",
@@ -37,108 +37,15 @@ const CATEGORIES = [
   "Architectural Stones",
 ];
 
-const EXTENDED_MINERALS = [
-  {
-    name: "Gold (Au)",
-    category: "Precious Metals",
-    grade: "99.4% Certified Assay",
-    origin: "Chagai & Northern Concessions",
-    desc: "Extracted from high-grade quartz vein systems and alluvial placer deposits, processed via gravity separation and metallurgical smelting into certified bullion nuggets and bars.",
-    specs: ["Assay Purity: Up to 99.4% Au", "Form: Dory bars & raw ore concentrate", "Packaging: High-security bullion transport"],
-    img: "/mine gold.png",
-  },
-  {
-    name: "Copper (Cu)",
-    category: "Industrial Base Metals",
-    grade: "28% – 32% Concentrate",
-    origin: "Balochistan Porphyry Belt",
-    desc: "Mined from extensive copper porphyry deposits. Beneficiated through advanced multi-stage froth flotation circuits into export-grade chalcopyrite copper concentrate.",
-    specs: ["Concentrate Grade: 28% – 32% Cu", "Moisture: < 8.5%", "Supply: Bulk containerized / bulk vessel charter"],
-    img: "/mine copper.png",
-  },
-  {
-    name: "Iron Ore (Fe)",
-    category: "Ferrous Minerals",
-    grade: "62% – 65% Fe Content",
-    origin: "Kalabagh & Chigendik Reserves",
-    desc: "High-grade magnetite and hematite ore crushed to precision lump and fines specifications for domestic steel manufacturing plants and blast furnaces.",
-    specs: ["Fe Content: 62% to 65% Min", "Silica (SiO2): < 4.5%", "Size: 10mm–40mm Lumps & 0–10mm Fines"],
-    img: "/mine gold.png",
-  },
-  {
-    name: "Coal (Anthracite & Bituminous)",
-    category: "Energy Resources",
-    grade: "6,200+ kcal/kg GCV",
-    origin: "Salt Range & Lakhra Fields",
-    desc: "High-energy industrial coal with low moisture and high fixed carbon, ideal for cement kilns, brick kilns, and captive industrial thermal power plants.",
-    specs: ["Gross Calorific Value: 6,200 – 6,800 kcal/kg", "Volatile Matter: 32% – 38%", "Sulfur Content: Controlled low"],
-    img: "/mine copper.png",
-  },
-  {
-    name: "Limestone (CaCO3)",
-    category: "Construction Materials",
-    grade: "94%+ Calcium Carbonate",
-    origin: "Margalla & Salt Range Quarries",
-    desc: "Massive uniform deposits of pure white limestone extracted for cement manufacturers, steel flux additives, paper fillers, and flue-gas desulfurization.",
-    specs: ["CaCO3: > 94.5%", "Magnesium Oxide (MgO): < 1.8%", "Crushed Aggregates: Custom mesh sizes"],
-    img: "/mine gold.png",
-  },
-  {
-    name: "Gypsum (CaSO4·2H2O)",
-    category: "Industrial Minerals",
-    grade: "92%+ Purity",
-    origin: "Daudkhel & Kohat Formations",
-    desc: "High-purity crystalline and rock gypsum supplying the construction drywall industry, agricultural soil conditioning, and Portland cement retarding agents.",
-    specs: ["Purity: > 92% Dihydrate", "Color: Bright White / Light Grey", "Form: Raw boulders or fine powder"],
-    img: "/mine copper.png",
-  },
-  {
-    name: "Chromite (Cr2O3)",
-    category: "Strategic Minerals",
-    grade: "46% – 48% Metallurgical Grade",
-    origin: "Muslim Bagh Mineral Belt",
-    desc: "High chromium-to-iron ratio metallurgical and refractory chromite ore extracted for ferrochrome production, stainless steel alloys, and refractory bricks.",
-    specs: ["Cr2O3 Content: 46% – 48% Min", "Cr:Fe Ratio: 3.0:1", "Size: Lumpy hard ore"],
-    img: "/mine gold.png",
-  },
-  {
-    name: "Marble & Onyx",
-    category: "Architectural Stones",
-    grade: "Grade-A Export Slabs",
-    origin: "Chagai & Mohmand Quarries",
-    desc: "World-renowned green onyx, dark emperador, ziarat white, and golden marble extracted using diamond wire saws into uncracked, high-dimension blocks.",
-    specs: ["Density: 2.7 g/cm³", "Compressive Strength: > 100 MPa", "Finishes: Raw block, polished slab, custom tile"],
-    img: "/mine copper.png",
-  },
-  {
-    name: "Granite",
-    category: "Architectural Stones",
-    grade: "Heavy-Duty Architectural Block",
-    origin: "Nagar Parkar & Mansehra Formations",
-    desc: "Ultra-durable igneous granite with uniform speckling, high abrasion resistance, and deep natural polish, supplied for mega infrastructure facades and pavements.",
-    specs: ["Water Absorption: < 0.2%", "Hardness: 6.5–7 Mohs", "Colors: Royal Pink, Platinum Grey, Jet Black"],
-    img: "/mine gold.png",
-  },
-  {
-    name: "Silica Sand (SiO2)",
-    category: "Industrial Minerals",
-    grade: "99.2% Washed Silica",
-    origin: "Mianwali & Surghar Range",
-    desc: "Double-washed, low-iron silica sand engineered for high-transmission solar glass, container bottles, foundry casting molds, and chemical silicate synthesis.",
-    specs: ["SiO2 Content: > 99.2%", "Iron Oxide (Fe2O3): < 0.025%", "Grain Size: Uniform AFS 45–55"],
-    img: "/mine copper.png",
-  },
-];
-
 export default function NationalMinesMineralsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = EXTENDED_MINERALS.filter((m) => {
+  const filtered = NATIONAL_MINES_MINERALS.filter((m) => {
     const matchesCategory = selectedCategory === "All" || m.category === selectedCategory;
     const matchesSearch =
       m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      m.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      m.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
       m.origin.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
@@ -210,15 +117,18 @@ export default function NationalMinesMineralsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((mineral) => (
               <div
-                key={mineral.name}
+                key={mineral.slug}
                 className="nmc-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
                 style={{ borderColor: theme.border }}
               >
                 <div>
                   {/* Image & Badge */}
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                  <Link
+                    href={`/group-companies/national-mines/minerals/${mineral.slug}`}
+                    className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
+                  >
                     <Image
-                      src={mineral.img}
+                      src={mineral.heroImage}
                       alt={mineral.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -228,14 +138,16 @@ export default function NationalMinesMineralsPage() {
                         {mineral.category}
                       </span>
                     </div>
-                  </div>
+                  </Link>
 
                   {/* Body Content */}
                   <div className="p-7">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-black" style={{ color: theme.navy }}>
-                        {mineral.name}
-                      </h3>
+                      <Link href={`/group-companies/national-mines/minerals/${mineral.slug}`}>
+                        <h3 className="text-xl font-black hover:text-[#C59B27] transition-colors cursor-pointer" style={{ color: theme.navy }}>
+                          {mineral.name}
+                        </h3>
+                      </Link>
                       <span className="text-xs font-black uppercase tracking-wider text-[#C59B27] px-2.5 py-0.5 rounded-md bg-[#C59B27]/10">
                         {mineral.grade}
                       </span>
@@ -246,32 +158,40 @@ export default function NationalMinesMineralsPage() {
                     </p>
 
                     <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                      {mineral.desc}
+                      {mineral.overview}
                     </p>
 
-                    {/* Specs List */}
+                    {/* Deliverables / Specs List */}
                     <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(226, 232, 240, 0.7)" }}>
                       <p className="text-xs font-bold uppercase tracking-wider" style={{ color: theme.navy }}>
-                        Technical Specifications:
+                        Key Specifications:
                       </p>
-                      {mineral.specs.map((s) => (
-                        <div key={s} className="flex items-center gap-2">
-                          <CheckCircle2 size={14} className="flex-shrink-0" style={{ color: theme.gold }} />
-                          <span className="text-xs font-medium text-slate-700">{s}</span>
+                      {mineral.deliverables.slice(0, 3).map((s, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: theme.gold }} />
+                          <span className="text-xs font-medium text-slate-700 leading-snug">{s}</span>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="p-7 pt-0">
+                <div className="p-7 pt-0 flex gap-2">
                   <Link
-                    href="/group-companies/national-mines/contact"
-                    className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
+                    href={`/group-companies/national-mines/minerals/${mineral.slug}`}
+                    className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
                     style={{ borderColor: theme.border, color: theme.navy }}
                   >
-                    <span>Request Quotation &amp; Assay</span>
+                    <span>View Details</span>
                     <ArrowRight size={14} />
+                  </Link>
+                  <Link
+                    href="/group-companies/national-mines/contact"
+                    className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
+                    style={{ backgroundColor: theme.navy }}
+                    title="Request Assay & Quote"
+                  >
+                    <span>Quote</span>
                   </Link>
                 </div>
               </div>

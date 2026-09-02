@@ -71,7 +71,7 @@ export default function WaltonAboutPage() {
             <div className="lg:col-span-7">
               <SectionLabel>About Walton Consultants &amp; Contracting</SectionLabel>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
+              <h1 className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-black tracking-tight leading-[1.2] uppercase mb-5" style={{ color: theme.navyDark }}>
                 Engineering Excellence. <span style={{ color: theme.navy }}>Building Tomorrow&apos;s Infrastructure.</span>
               </h1>
 

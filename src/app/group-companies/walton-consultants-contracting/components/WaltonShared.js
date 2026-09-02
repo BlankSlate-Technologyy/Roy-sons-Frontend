@@ -45,21 +45,21 @@ export const theme = {
 
 export const NAV_LINKS = [
   { label: "Home", href: "/group-companies/walton-consultants-contracting" },
-  { label: "About Us", href: "/group-companies/walton-consultants-contracting/about" },
+  { label: "About", href: "/group-companies/walton-consultants-contracting/about" },
   { label: "Services", href: "/group-companies/walton-consultants-contracting/services" },
-  { label: "Sectors & Solutions", href: "/group-companies/walton-consultants-contracting/solutions" },
+  { label: "Solutions", href: "/group-companies/walton-consultants-contracting/solutions" },
   { label: "Projects", href: "/group-companies/walton-consultants-contracting/projects" },
   { label: "Sustainability", href: "/group-companies/walton-consultants-contracting/sustainability" },
   { label: "Contact", href: "/group-companies/walton-consultants-contracting/contact" },
 ];
 
 export const FOOTER_SERVICES = [
-  { label: "Civil Engineering & Structural Superstructures", href: "/group-companies/walton-consultants-contracting/services#civil-engineering" },
-  { label: "Turnkey EPC Heavy Industrial Construction", href: "/group-companies/walton-consultants-contracting/services#epc-projects" },
-  { label: "Highways, Bridges & Transportation Corridors", href: "/group-companies/walton-consultants-contracting/services#infrastructure-development" },
-  { label: "Industrial Warehouses & Steel Fabrication", href: "/group-companies/walton-consultants-contracting/services#industrial-construction" },
-  { label: "Project Management & BIM Quality Assurance", href: "/group-companies/walton-consultants-contracting/services#project-management" },
-  { label: "Engineering Consultancy & Feasibility Studies", href: "/group-companies/walton-consultants-contracting/services#engineering-consultancy" },
+  { label: "Civil Engineering & Structural Superstructures", href: "/group-companies/walton-consultants-contracting/services/civil-engineering-structural-superstructures" },
+  { label: "Turnkey EPC Heavy Industrial Construction", href: "/group-companies/walton-consultants-contracting/services/turnkey-epc-heavy-industrial-projects" },
+  { label: "Highways, Bridges & Transportation Corridors", href: "/group-companies/walton-consultants-contracting/services/highways-bridges-transportation-corridors" },
+  { label: "Industrial Warehouses & Steel Fabrication", href: "/group-companies/walton-consultants-contracting/services/pre-engineered-buildings-peb-warehouses" },
+  { label: "Project Management & BIM Quality Assurance", href: "/group-companies/walton-consultants-contracting/services/project-management-bim-qa-qc-supervision" },
+  { label: "Engineering Consultancy & Feasibility Studies", href: "/group-companies/walton-consultants-contracting/services/engineering-consultancy-feasibility-studies" },
 ];
 
 export function SectionLabel({ children, center }) {
@@ -172,38 +172,38 @@ export function WaltonNavbar() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="mx-auto max-w-full px-2 sm:px-4 lg:px-4 xl:px-6 2xl:max-w-screen-2xl 2xl:px-8 flex items-center justify-between gap-1.5 lg:gap-2 xl:gap-4">
         {/* Brand Logo */}
-        <Link href="/group-companies/walton-consultants-contracting" className="flex items-center gap-3 select-none group">
-          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+        <Link href="/group-companies/walton-consultants-contracting" className="flex items-center gap-2 sm:gap-2.5 select-none group shrink-0">
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 lg:w-9 lg:h-9 xl:w-11 xl:h-11 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/5.png"
-              alt="Walton Consultants & Contracting Logo"
-              width={80}
-              height={80}
+              alt="Walton Consultants &amp; Contracting Logo"
+              width={56}
+              height={56}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.navyDark }}>
+          <div className="flex flex-col shrink-0">
+            <span className="text-xs sm:text-[13px] lg:text-[12px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight leading-tight uppercase whitespace-nowrap" style={{ color: theme.navyDark }}>
               Walton Consultants
             </span>
-            <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.gold }}>
+            <span className="text-[7.5px] sm:text-[8px] lg:text-[8px] xl:text-[9px] 2xl:text-[9.5px] font-bold tracking-widest uppercase mt-0.5 whitespace-nowrap" style={{ color: theme.gold }}>
               Engineering &amp; Contracting
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#0E2A47] cursor-pointer"
+                className="text-[9.5px] xl:text-[10.5px] 2xl:text-[11.5px] font-extrabold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 xl:px-1.5 2xl:px-2 hover:text-[#0E2A47] cursor-pointer whitespace-nowrap"
                 style={{
                   color: active ? theme.navy : theme.charcoal,
                 }}
@@ -221,14 +221,14 @@ export function WaltonNavbar() {
         </nav>
 
         {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 shrink-0">
           <Link
             href="/group-companies/walton-consultants-contracting/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 xl:px-3.5 xl:py-2 rounded-lg text-[9.5px] xl:text-[10.5px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap shrink-0"
             style={{ backgroundColor: theme.navy }}
           >
             <span>Engineering Desk</span>
-            <ArrowRight size={13} />
+            <ArrowRight size={12} className="shrink-0" />
           </Link>
 
           <button

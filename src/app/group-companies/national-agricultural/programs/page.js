@@ -28,6 +28,7 @@ import {
   SectionHeading,
   AnimatedCounter,
 } from "../components/NationalAgriculturalShared";
+import { NATIONAL_AGRICULTURAL_PROGRAMS } from "../programs-data";
 
 const PROGRAM_STATS = [
   { value: "10K+", label: "Farmers Enrolled\nin Programs", icon: Users },
@@ -36,81 +37,13 @@ const PROGRAM_STATS = [
   { value: "50%", label: "Irrigation Water\nConserved", icon: Droplets },
 ];
 
-const FLAGSHIP_PROGRAMS = [
-  {
-    id: "mechanization",
-    title: "Smallholder Farmer Mechanization Program",
-    category: "Farm Technology",
-    desc: "Providing small and medium landholders with affordable access to heavy tractors, pneumatic seeders, laser leveling rigs, and combine harvesters on an on-demand rental basis.",
-    benefits: [
-      "Subsidized hourly rates for laser land leveling",
-      "Pneumatic precision planters reducing seed waste by 30%",
-      "Rapid harvesting support preventing post-monsoon crop losses",
-      "Free technical training for local tractor operators",
-    ],
-    image: "/agri_hero_farm.svg",
-  },
-  {
-    id: "solar-irrigation",
-    title: "Solar Drip Irrigation & Water Security Initiative",
-    category: "Water Conservation",
-    desc: "Transforming barren and water-stressed lands into productive orchards and grain fields through solar-powered submersible pumps and automated drip irrigation lines.",
-    benefits: [
-      "Zero grid electricity dependency with solar hybrid pumps",
-      "Targeted water delivery directly to root zones saving 50% water",
-      "Integrated automated fertigation fertilizer dosing tanks",
-      "10-year warranty on UV-resistant drip pipe infrastructure",
-    ],
-    image: "/agri_hero_farm.svg",
-  },
-  {
-    id: "dairy-genetics",
-    title: "Dairy Herd Genetic Improvement Program",
-    category: "Livestock & Dairy",
-    desc: "Elevating rural household dairy incomes by upgrading local cattle genetics through pedigree Holstein-Friesian and Sahiwal artificial insemination and veterinary support.",
-    benefits: [
-      "High-genetic merit sexed semen artificial insemination",
-      "Village-level milk chilling centers with same-day digital payments",
-      "Subsidized mineral supplements and silage feed rations",
-      "Free mobile veterinary vaccination and deworming camps",
-    ],
-    image: "/agri_dairy_livestock.svg",
-  },
-  {
-    id: "soil-testing",
-    title: "Mobile Soil Testing & Crop Health Clinics",
-    category: "Agritech & Soil",
-    desc: "Deploying fully equipped mobile laboratory vans directly to farmers' fields to provide 30-minute soil nutrient N-P-K assays, pH testing, and custom fertilizer cards.",
-    benefits: [
-      "Instant on-site soil fertility and salinity testing",
-      "Customized fertilizer prescriptions preventing nutrient over-use",
-      "Soil organic matter analysis and compost recommendations",
-      "Digital SMS advisory updates on pest alerts and weather forecasts",
-    ],
-    image: "/agri_hero_farm.svg",
-  },
-  {
-    id: "women-agri",
-    title: "Women in Agriculture & Agribusiness Empowerment",
-    category: "Rural Development",
-    desc: "Empowering female rural workers through training in tunnel vegetable farming, hygienic livestock milking, organic poultry farming, and post-harvest produce packaging.",
-    benefits: [
-      "Hands-on greenhouse vegetable cultivation training",
-      "Small poultry rearing and egg collection kits provided",
-      "Hygiene standards training for dairy milk handlers",
-      "Direct market access for artisanal food and farm products",
-    ],
-    image: "/agri_dairy_livestock.svg",
-  },
-];
-
 export default function NationalAgriculturalProgramsPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = FLAGSHIP_PROGRAMS.filter(
+  const filtered = NATIONAL_AGRICULTURAL_PROGRAMS.filter(
     (p) =>
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -184,7 +117,8 @@ export default function NationalAgriculturalProgramsPage() {
           <div className="space-y-8 max-w-5xl mx-auto">
             {filtered.map((prog, idx) => (
               <div
-                key={prog.id}
+                key={prog.slug}
+                id={prog.id}
                 className="nac-card-hover rounded-3xl border p-8 md:p-10 bg-white shadow-xs flex flex-col lg:flex-row gap-8 items-center justify-between"
                 style={{ borderColor: theme.border }}
               >
@@ -196,17 +130,19 @@ export default function NationalAgriculturalProgramsPage() {
                     <span className="text-xs font-bold text-slate-400">Initiative 0{idx + 1}</span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-black" style={{ color: theme.primary }}>
-                    {prog.title}
-                  </h3>
+                  <Link href={`/group-companies/national-agricultural/programs/${prog.slug}`}>
+                    <h3 className="text-xl sm:text-2xl font-black hover:text-[#E8A800] transition-colors cursor-pointer" style={{ color: theme.primary }}>
+                      {prog.title}
+                    </h3>
+                  </Link>
 
                   <p className="text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                    {prog.desc}
+                    {prog.overview}
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-3 border-t" style={{ borderColor: "rgba(212, 232, 208, 0.7)" }}>
-                    {prog.benefits.map((b) => (
-                      <div key={b} className="flex items-start gap-2">
+                    {prog.benefits.slice(0, 4).map((b, bIdx) => (
+                      <div key={bIdx} className="flex items-start gap-2">
                         <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5 text-[#E8A800]" />
                         <span className="text-xs font-medium text-slate-700">{b}</span>
                       </div>
@@ -214,14 +150,21 @@ export default function NationalAgriculturalProgramsPage() {
                   </div>
                 </div>
 
-                <div className="flex-shrink-0 w-full lg:w-auto">
+                <div className="flex-shrink-0 w-full lg:w-auto flex flex-col sm:flex-row lg:flex-col gap-3">
+                  <Link
+                    href={`/group-companies/national-agricultural/programs/${prog.slug}`}
+                    className="w-full lg:w-auto px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider border flex items-center justify-center gap-2 hover:bg-slate-50 transition-all cursor-pointer"
+                    style={{ borderColor: theme.border, color: theme.primary }}
+                  >
+                    <span>View Initiative</span>
+                    <ArrowRight size={14} />
+                  </Link>
                   <Link
                     href="/group-companies/national-agricultural/contact"
                     className="w-full lg:w-auto px-7 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-sm flex items-center justify-center gap-2 hover:opacity-95 transition-all cursor-pointer"
                     style={{ backgroundColor: theme.primary }}
                   >
-                    <span>Partner / Enroll</span>
-                    <ArrowRight size={14} />
+                    <span>Enroll Now</span>
                   </Link>
                 </div>
               </div>
