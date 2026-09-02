@@ -354,7 +354,7 @@ export default function AboutPage() {
           {/* Centered Badge */}
           <div data-aos="fade-up" data-aos-delay="150" className="inline-flex items-center border border-[#C6A15A]/40 bg-white/5 px-4 py-1.5 rounded-full mb-4">
             <span className="text-xs sm:text-[13px] font-black uppercase tracking-[0.25em] text-[#C6A15A]">
-              Chairman
+              Chairperson
             </span>
           </div>
 
