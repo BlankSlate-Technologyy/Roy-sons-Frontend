@@ -528,7 +528,7 @@ export default function SwissFarmServiceDetailPage({ params }) {
               className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider"
               style={{ color: theme.primary }}
             >
-              <span>View All 6 Capabilities</span>
+              <span>View All</span>
               <ArrowRight size={14} />
             </Link>
           </div>

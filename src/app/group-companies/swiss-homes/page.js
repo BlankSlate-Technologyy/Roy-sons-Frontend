@@ -331,7 +331,7 @@ export default function SwissHomesHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.charcoal }}
             >
-              <span>View All 6 Capabilities</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -401,7 +401,7 @@ export default function SwissHomesHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.red }}
             >
-              <span>View All Projects</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>

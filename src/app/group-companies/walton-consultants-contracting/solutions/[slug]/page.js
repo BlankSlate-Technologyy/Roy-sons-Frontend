@@ -526,7 +526,7 @@ export default function WaltonSolutionDetailPage({ params }) {
               href="/group-companies/walton-consultants-contracting/solutions"
               className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#0E2A47]"
             >
-              <span>View All 6 Packages</span>
+              <span>View All</span>
               <ArrowRight size={14} />
             </Link>
           </div>

@@ -321,7 +321,7 @@ export default function PakMedicalHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.royalBlueDark }}
             >
-              <span>View All 8 Divisions</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -391,7 +391,7 @@ export default function PakMedicalHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.royalBlue }}
             >
-              <span>View All Solutions</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>

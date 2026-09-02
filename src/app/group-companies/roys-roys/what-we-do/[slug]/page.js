@@ -475,7 +475,7 @@ export default function OfferingDetailPage({ params }) {
               href="/group-companies/roys-roys/what-we-do"
               className="px-6 py-4 rounded-sm border border-white/30 hover:bg-white hover:text-[#020f1f] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300"
             >
-              <span>View All 15 Service Offerings</span>
+              <span>View All</span>
             </Link>
           </div>
         </div>

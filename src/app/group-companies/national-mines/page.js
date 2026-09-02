@@ -311,7 +311,7 @@ export default function NationalMinesHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.navy }}
             >
-              <span>View All 10 Minerals</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -420,7 +420,7 @@ export default function NationalMinesHomePage() {
               className="inline-flex items-center gap-2 px-7 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider transition-all hover:bg-slate-50"
               style={{ borderColor: theme.border, color: theme.navy }}
             >
-              <span>Explore All 10 Industry Sectors</span>
+              <span>View All</span>
               <ArrowRight size={14} />
             </Link>
           </div>
@@ -441,7 +441,7 @@ export default function NationalMinesHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.navy }}
             >
-              <span>View All 6 Capabilities</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>

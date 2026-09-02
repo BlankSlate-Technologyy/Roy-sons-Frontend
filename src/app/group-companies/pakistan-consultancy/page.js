@@ -304,7 +304,7 @@ export default function PakConsultHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.slateDark }}
             >
-              <span>View All 6 Divisions</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -374,7 +374,7 @@ export default function PakConsultHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.slate }}
             >
-              <span>View All Solutions</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>

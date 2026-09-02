@@ -335,7 +335,7 @@ export default function NationalGuardHomePage() {
               className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
               style={{ color: theme.navy }}
             >
-              <span>View All 6 Services</span>
+              <span>View All</span>
               <ArrowRight size={16} />
             </Link>
           </div>

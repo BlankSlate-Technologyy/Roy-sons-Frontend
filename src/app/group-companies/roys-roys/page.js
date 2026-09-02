@@ -609,7 +609,7 @@ export default function RoysRoysPage() {
             data-aos="fade-up"
             className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
           >
-            <span>View All Services</span>
+            <span>View All</span>
             <ArrowRight size={14} />
           </Link>
         </div>

@@ -527,7 +527,7 @@ export default function SwissFarmProductDetailPage({ params }) {
               href="/group-companies/swiss-farm/products"
               className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#C5A059]"
             >
-              <span>View All 6 Products</span>
+              <span>View All</span>
               <ArrowRight size={14} />
             </Link>
           </div>

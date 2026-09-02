@@ -528,7 +528,7 @@ export default function NationalAgriculturalServiceDetailPage({ params }) {
               className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider"
               style={{ color: theme.primary }}
             >
-              <span>View All 6 Services</span>
+              <span>View All</span>
               <ArrowRight size={14} />
             </Link>
           </div>

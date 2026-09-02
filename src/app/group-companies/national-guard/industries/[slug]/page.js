@@ -472,7 +472,7 @@ export default function NationalGuardIndustryDetailPage({ params }) {
               className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider"
               style={{ color: theme.navy }}
             >
-              <span>View All 12 Industries</span>
+              <span>View All</span>
               <ArrowRight size={14} />
             </Link>
           </div>
