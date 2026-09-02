@@ -52,7 +52,7 @@ const HERO_STATS = [
 const TRUSTED_LOGOS = [
   { name: "World Health Organization", abbr: "WHO",     img: "/logos/worldhealth.png" },
   { name: "UNICEF",                    abbr: "UNICEF",  img: "/logos/unicef.png" },
-  { name: "Government of Pakistan",    abbr: "Govt of Pakistan", img: "/pak.png" },
+  { name: "Government of Pakistan",    abbr: "Govt of Pakistan", img: "/logo/pak.png" },
   { name: "SIEMENS Healthineers",      abbr: "Siemens", img: "/logos/siemens.png" },
 ];
 
