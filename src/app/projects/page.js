@@ -253,7 +253,7 @@ export default function ProjectsPage() {
 
             <div className="hidden lg:block w-[500px] xl:w-[580px] relative overflow-hidden">
               <Image
-                src="/hero-building.png"
+                src="/bright-corporate-building.jpg"
                 alt="Roy Sons project portfolio"
                 fill
                 className="object-cover"

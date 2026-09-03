@@ -174,12 +174,12 @@ export default function CareersPage() {
       <HeaderNavbar activeRoute="/careers" />
 
       {/* Hero Section */}
-      <section className="relative bg-[#101518] py-20 sm:py-24 px-4 sm:px-6 overflow-hidden border-b border-neutral-800">
+      <section className="relative bg-[#042E3A] py-20 sm:py-24 px-4 sm:px-6 overflow-hidden border-b border-neutral-800">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/hero-building.png')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-35"
+          style={{ backgroundImage: "url('/bright-corporate-panoramic.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#101518] via-[#101518]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#042E3A] via-[#042E3A]/80 to-transparent" />
 
         <div className="relative mx-auto max-w-screen-xl z-10">
           {/* Breadcrumb */}

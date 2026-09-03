@@ -72,13 +72,13 @@ export default function ContactPage() {
       <HeaderNavbar activeRoute="/contact" />
 
       {/* Hero Section */}
-      <section className="relative bg-neutral-950 py-24 px-6 overflow-hidden">
+      <section className="relative bg-[#042E3A] py-24 px-6 overflow-hidden">
         {/* Background Image Overlay */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: "url('/hero-building.png')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-40"
+          style={{ backgroundImage: "url('/bright-corporate-panoramic.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#042E3A] via-[#042E3A]/80 to-transparent" />
         
         <div className="relative mx-auto max-w-screen-xl z-10">
           {/* Breadcrumb */}

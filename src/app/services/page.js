@@ -330,8 +330,8 @@ export default function ServicesPage() {
 
             <div className="hidden lg:block w-[480px] xl:w-[560px] relative overflow-hidden">
               <Image
-                src="/hero-building.png"
-                alt="Roy Sons modern construction building"
+                src="/bright-corporate-skyscraper.jpg"
+                alt="Roy Sons modern corporate architecture"
                 fill
                 className="object-cover"
                 priority
