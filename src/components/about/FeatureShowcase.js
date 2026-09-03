@@ -6,16 +6,6 @@ import { ArrowRight, Linkedin } from "lucide-react";
 
 const SHOWCASE_ITEMS = [
   {
-    id: "ijaz-naseer",
-    badge: "President",
-    title: "Ijaz Naseer",
-    description: "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade. With a strong commitment to innovation, quality, and sustainable growth, the company continues to expand its capabilities and build strategic partnerships both locally and internationally. Through its diverse portfolio and professional expertise, ROYSONS aims to create lasting value for its clients, partners, and communities while contributing to economic and industrial development.",
-    image: "/chairman.jpeg",
-    imageAlt: "Ijaz Naseer - Chairman & CEO, ROYSONS Pvt. Ltd.",
-    profileHref: "/about/chairmans-message",
-    linkedinHref: "https://www.linkedin.com/company/roysonspvtltd"
-  },
-  {
     id: "dr-ahsan-sardar",
     badge: "Director",
     title: "Dr Ahsan Sardar",
@@ -84,8 +74,8 @@ export default function FeatureShowcase() {
                 {/* Content Side (order-2 on mobile, order-none on desktop) */}
                 <div className="flex-1 w-full flex flex-col justify-center text-center lg:text-left order-2 lg:order-none">
                   {/* Badge Pill */}
-                  <div className="inline-flex items-center bg-white/5 border border-[#C6A15A]/40 px-4 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-[#C6A15A]">
+                  <div className="inline-flex items-center bg-[#f0fdfa] border border-[#0a7a8c]/30 px-4 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
+                    <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider text-[#0a7a8c]">
                       {item.badge}
                     </span>
                   </div>
@@ -95,8 +85,8 @@ export default function FeatureShowcase() {
                     {item.title}
                   </h3>
 
-                  {/* Description Paragraph (Larger than 14px -> 15.5px - 16px) */}
-                  <p className="text-neutral-200 text-[15px] sm:text-[15.5px] lg:text-[16px] leading-[1.75] font-normal whitespace-pre-line mb-6">
+                  {/* Description Paragraph - Clear & Readable */}
+                  <p className="text-neutral-200 text-[16px] sm:text-[17.5px] lg:text-[18.5px] leading-[1.8] font-normal whitespace-pre-line mb-6">
                     {item.description}
                   </p>
 

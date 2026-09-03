@@ -90,30 +90,30 @@ export default function ChairmanMessagePage() {
             <div className="flex-1 text-left">
 
               {/* Intro paragraphs */}
-              <p className="text-[14px] text-neutral-600 leading-relaxed mb-5">
+              <p className="text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-[1.8] mb-5">
                 Ijaz Naseer founded Roysons Pvt. Ltd. with a vision to establish a diversified
                 organization capable of delivering world-class solutions across multiple industries.
               </p>
-              <p className="text-[14px] text-neutral-600 leading-relaxed mb-8">
+              <p className="text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-[1.8] mb-8">
                 Today, Roysons Pvt. Ltd. stands as a multi-sector enterprise operating in healthcare,
                 engineering, technology, defense, agriculture, mining, energy, infrastructure,
                 and international trade.
               </p>
 
               {/* Commitment heading */}
-              <p className="text-[14px] font-black text-neutral-950 mb-6">
+              <p className="text-[16px] font-black text-neutral-950 mb-6">
                 Our commitment remains focused on:
               </p>
 
               {/* Five commitment icons */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 border border-neutral-200 rounded-[2px] mb-8 overflow-hidden divide-x divide-y divide-neutral-200">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 border border-[#0a7a8c]/20 bg-[#f0fdfa]/40 rounded-[2px] mb-8 overflow-hidden divide-x divide-y divide-[#0a7a8c]/15">
                 {COMMITMENTS.map(({ icon: Icon, label }) => (
                   <div
                     key={label}
                     className="flex flex-col items-center justify-center gap-3 py-5 sm:py-6 px-3 sm:px-4"
                   >
-                    <Icon size={28} strokeWidth={1.4} className="text-[#C6A15A]" />
-                    <span className="text-[11.5px] font-medium text-neutral-700 text-center whitespace-pre-line leading-snug">
+                    <Icon size={28} strokeWidth={1.5} className="text-[#0a7a8c]" />
+                    <span className="text-[12.5px] font-bold text-[#042E3A] text-center whitespace-pre-line leading-snug">
                       {label}
                     </span>
                   </div>
@@ -121,7 +121,7 @@ export default function ChairmanMessagePage() {
               </div>
 
               {/* Mid paragraph */}
-              <p className="text-[14px] text-neutral-600 leading-relaxed mb-8">
+              <p className="text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-[1.8] mb-8">
                 We strive to build long-term relationships with our clients and partners while
                 contributing positively to Pakistan&apos;s economic growth and technological advancement.
               </p>
@@ -129,7 +129,7 @@ export default function ChairmanMessagePage() {
               <div className="h-px w-full bg-neutral-200 mb-8" />
 
               {/* Future strategy paragraph */}
-              <p className="text-[14px] text-neutral-600 leading-relaxed">
+              <p className="text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-[1.8]">
                 The Group&apos;s future growth strategy focuses on healthcare technologies, artificial
                 intelligence, hospital engineering, renewable energy, electric mobility, agriculture
                 modernization, and international business expansion.

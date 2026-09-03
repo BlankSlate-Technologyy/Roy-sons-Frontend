@@ -300,7 +300,7 @@ export default function AboutPage() {
                 }}
               >
                 <Image 
-                  src="/roysons-trust-building.png" 
+                  src="/logos/roysons logo mockup building.png" 
                   alt="ROYSONS TRUST" 
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -330,7 +330,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2nd Section: Chairman, ROYSONS Trust (Zeba Ijaz) */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#101518] text-white border-t border-neutral-800 relative overflow-hidden" data-aos="fade-up">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white text-neutral-900 border-t border-neutral-200 relative overflow-hidden" data-aos="fade-up">
         {/* Subtle Ambient Teal Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0a7a8c]/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -347,24 +347,24 @@ export default function AboutPage() {
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                 priority
               />
-              <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none" />
             </div>
           </div>
 
           {/* Centered Title (Name on top) */}
-          <h2 data-aos="fade-up" data-aos-delay="150" className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 tracking-tight">
+          <h2 data-aos="fade-up" data-aos-delay="150" className="text-3xl sm:text-4xl lg:text-[46px] font-black text-[#042E3A] mb-3 tracking-tight">
             Zeba Ijaz
           </h2>
 
-          {/* Centered Badge (Label below name, reduced letter spacing) */}
-          <div data-aos="fade-up" data-aos-delay="200" className="inline-flex items-center border border-[#0a7a8c]/40 bg-white/5 px-4 py-1.5 rounded-full mb-6">
-            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#0d9488]">
+          {/* Centered Badge (Label below name, clear readable size) */}
+          <div data-aos="fade-up" data-aos-delay="200" className="inline-flex items-center border border-[#0a7a8c]/30 bg-[#f0fdfa] px-5 py-1.5 rounded-full mb-6 shadow-xs">
+            <span className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-[#0a7a8c]">
               Chairperson
             </span>
           </div>
 
-          {/* Centered Bio Description */}
-          <p data-aos="fade-up" data-aos-delay="250" className="text-[16px] sm:text-[17px] lg:text-[18px] text-neutral-200 leading-[1.85] font-normal max-w-4xl text-center">
+          {/* Centered Bio Description - Big & Readable */}
+          <p data-aos="fade-up" data-aos-delay="250" className="text-[17px] sm:text-[19px] lg:text-[21px] text-[#042E3A]/85 leading-[1.85] font-normal max-w-4xl text-center">
             Zeba Ijaz leads ROYSONS Trust with a vision to establish a purpose-driven institution committed to creating lasting social and economic value for future generations. Under her leadership, the Trust aims to support initiatives across education, healthcare, community development, research, skills development, sustainability, and social welfare. With a strong commitment to responsible stewardship, compassion, and long-term development, ROYSONS Trust seeks to strengthen the foundation behind the ROYSONS enterprise while contributing to meaningful progress in society. Through strategic leadership and a people-centered vision, Zeba Ijaz is committed to building an institution that creates opportunities, supports communities, and leaves a lasting positive legacy.
           </p>
 
@@ -376,16 +376,16 @@ export default function AboutPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
             <div className="flex-1 flex flex-col justify-center" data-aos="fade-right" data-aos-delay="100">
-              <span className="text-[13px] sm:text-[14px] font-black tracking-[0.3em] text-[#C6A15A] uppercase mb-3">
+              <span className="text-[13px] sm:text-[14px] font-black tracking-[0.3em] text-[#0a7a8c] uppercase mb-3">
                 WHO WE ARE
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-950 mb-5 leading-[1.08] tracking-tight">
                ROYSONS Pvt. Ltd.
               </h2>
-              <p className="text-[15.5px] sm:text-[16.5px] lg:text-[17px] text-neutral-700 leading-[1.8] font-normal mb-5">
+              <p className="text-[16.5px] sm:text-[18px] lg:text-[19px] text-neutral-700 leading-[1.8] font-normal mb-5">
                 ROYSONS Pvt. Ltd. is a diversified multi-sector enterprise built with a vision to establish a dynamic organization capable of delivering world-class solutions across multiple industries. With a growing portfolio of specialized companies and business divisions, ROYSONS operates across healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, international trade, manufacturing, real estate, food, and consultancy.
               </p>
-              <p className="text-[16px] sm:text-[17px] lg:text-[17.5px] text-neutral-950 font-bold leading-[1.8] border-l-4 border-[#C6A15A] pl-5">
+              <p className="text-[17px] sm:text-[18.5px] lg:text-[19.5px] text-neutral-950 font-bold leading-[1.8] border-l-4 border-[#0a7a8c] pl-5">
                 Our strength lies in bringing diverse expertise together under one corporate platform. Through our specialized companies, strategic partnerships, and industry-focused teams, we deliver products, services, and integrated solutions designed to meet the evolving needs of governments, institutions, businesses, and communities.
               </p>
             </div>
@@ -393,8 +393,8 @@ export default function AboutPage() {
               <div 
                 className="h-full w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] overflow-hidden rounded-[2px] bg-[#1a1f24]"
                 style={{
-                  border: "2px solid #C6A15A",
-                  boxShadow: "0 0 20px rgba(198,161,90,0.25), 4px 4px 0px #C6A15A",
+                  border: "2px solid #0a7a8c",
+                  boxShadow: "0 0 20px rgba(10,122,140,0.25), 4px 4px 0px #0a7a8c",
                   borderRadius: "2px",
                 }}
               >
@@ -412,6 +412,46 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white text-neutral-900 border-t border-neutral-200 relative overflow-hidden" data-aos="fade-up">
+        {/* Subtle Ambient Teal Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0a7a8c]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="mx-auto max-w-5xl relative z-10 flex flex-col items-center text-center">
+          
+          {/* Centered Picture at Top */}
+          <div className="mb-8" data-aos="zoom-in" data-aos-delay="100">
+            <div className="relative w-[260px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#0a7a8c]/30 bg-neutral-900 group">
+              <Image
+                src="/logos/chairman.jpeg"
+                alt="Ijaz Naseer - President, ROYSONS Pvt. Ltd."
+                fill
+                sizes="(max-width: 768px) 320px, 360px"
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                priority
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none" />
+            </div>
+          </div>
+
+          {/* Centered Title (Name on top) */}
+          <h2 data-aos="fade-up" data-aos-delay="150" className="text-3xl sm:text-4xl lg:text-[46px] font-black text-[#042E3A] mb-3 tracking-tight">
+            Ijaz Naseer
+          </h2>
+
+          {/* Centered Badge (Label below name, clear readable size) */}
+          <div data-aos="fade-up" data-aos-delay="200" className="inline-flex items-center border border-[#0a7a8c]/30 bg-[#f0fdfa] px-5 py-1.5 rounded-full mb-6 shadow-xs">
+            <span className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-[#0a7a8c]">
+             President
+            </span>
+          </div>
+
+          {/* Centered Bio Description - Big & Readable */}
+          <p data-aos="fade-up" data-aos-delay="250" className="text-[17px] sm:text-[19px] lg:text-[21px] text-[#042E3A]/85 leading-[1.85] font-normal max-w-4xl text-center">
+            Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade. With a strong commitment to innovation, quality, and sustainable growth, the company continues to expand its capabilities and build strategic partnerships both locally and internationally. Through its diverse portfolio and professional expertise, ROYSONS aims to create lasting value for its clients, partners, and communities while contributing to economic and industrial development.
+          </p>
+
+        </div>
+      </section>
       {/* 4th Section: Board of Directors Feature Showcase */}
       <FeatureShowcase />
 
