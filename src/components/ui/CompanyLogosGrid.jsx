@@ -34,7 +34,7 @@ export default function CompanyLogosGrid() {
                     />
                   </div>
                   <div className="w-full pt-3 mt-2 border-t border-neutral-100 flex items-center justify-center text-center">
-                    <h3 className="text-[18.5px] sm:text-[19.5px] font-black uppercase tracking-wide text-neutral-900 group-hover:text-[#C6A15A] transition-colors line-clamp-2">
+                    <h3 className="text-[18.5px] sm:text-[19.5px] font-black uppercase tracking-wide text-[#042E3A] group-hover:text-[#0a7a8c] transition-colors line-clamp-2">
                       {company.name}
                     </h3>
                   </div>
@@ -49,10 +49,10 @@ export default function CompanyLogosGrid() {
             <button
               type="button"
               onClick={() => setShowAllMobile(!showAllMobile)}
-              className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#C6A15A] bg-[#C6A15A] text-[#101518] text-[16px] font-extrabold uppercase tracking-widest rounded-[2px] active:scale-95 transition-all shadow-md"
+              className="flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-[#0a7a8c] bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white text-[15px] font-black uppercase tracking-widest rounded-[3px] active:scale-95 transition-all shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
             >
-              <span>{showAllMobile ? "SHOW LESS" : "VIEW ALL"}</span>
-              {showAllMobile ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              <span className="text-white font-black">{showAllMobile ? "SHOW LESS" : "VIEW ALL"}</span>
+              {showAllMobile ? <ChevronUp size={18} className="text-white" /> : <ChevronDown size={18} className="text-white" />}
             </button>
           </div>
         )}

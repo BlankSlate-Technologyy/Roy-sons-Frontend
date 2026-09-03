@@ -60,54 +60,54 @@ export default function CorporateFooter({
   };
 
   return (
-    <footer className="bg-neutral-950 text-white font-sans border-t border-neutral-900" data-aos="fade-up">
+    <footer className="bg-white text-[#042E3A] font-sans border-t border-[#0a7a8c]/15" data-aos="fade-up">
       {/* Top Newsletter Bar */}
-      <div className="border-b border-neutral-900 bg-neutral-950/60 py-8 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-delay="100">
+      <div className="border-b border-[#0a7a8c]/15 bg-[#f0fdfa] py-8 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-delay="100">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <span className="text-[15px] font-black uppercase tracking-[0.2em] text-[#C6A15A] block mb-1">
+            <span className="text-[15px] font-black uppercase tracking-[0.2em] text-[#0a7a8c] block mb-1">
               Stay Informed
             </span>
-            <h3 className="text-base sm:text-lg font-bold text-white">
+            <h3 className="text-base sm:text-lg font-bold text-[#042E3A]">
               Subscribe to Roysons Corporate Insights &amp; Market Reports
             </h3>
           </div>
 
           <form onSubmit={handleNewsletterSubmit} className="w-full md:w-auto flex-1 max-w-md flex flex-col gap-2">
-            <div className="flex rounded-xl overflow-hidden border border-neutral-800 bg-neutral-900/80 focus-within:border-[#C6A15A] transition-colors p-1">
+            <div className="flex rounded-xl overflow-hidden border border-[#0a7a8c]/25 bg-white focus-within:border-[#0d9488] focus-within:shadow-[0_0_14px_rgba(13,148,136,0.2)] transition-all p-1">
               <input
                 type="email"
                 required
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Enter corporate email..."
-                className="w-full px-4 py-2 bg-transparent text-xs text-white placeholder-neutral-500 focus:outline-none"
+                className="w-full px-4 py-2 bg-transparent text-xs text-[#042E3A] placeholder-[#042E3A]/50 focus:outline-none"
               />
               <button
                 type="submit"
                 disabled={isSubscribing}
-                className="px-5 py-2.5 rounded-lg text-xs font-bold bg-[#C6A15A] text-neutral-950 flex items-center gap-1.5 hover:bg-[#d4b069] transition-colors disabled:opacity-50 cursor-pointer flex-shrink-0"
+                className="px-6 py-2.5 rounded-lg text-xs font-black bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white flex items-center gap-1.5 transition-all duration-300 shadow-[0_4px_14px_rgba(10,122,140,0.35)] hover:shadow-[0_6px_22px_rgba(13,148,136,0.55)] disabled:opacity-50 cursor-pointer flex-shrink-0"
               >
                 {isSubscribing ? (
-                  <Loader2 size={14} className="animate-spin" />
+                  <Loader2 size={14} className="animate-spin text-white" />
                 ) : (
                   <>
-                    <span>Subscribe</span>
-                    <Send size={12} />
+                    <span className="text-white font-black">Subscribe</span>
+                    <Send size={12} className="text-white" />
                   </>
                 )}
               </button>
             </div>
 
             {newsletterStatus.type === "success" && (
-              <div className="flex items-center gap-1.5 text-[15px] font-semibold text-emerald-400">
+              <div className="flex items-center gap-1.5 text-[15px] font-semibold text-emerald-600">
                 <CheckCircle2 size={13} className="flex-shrink-0" />
                 <span>{newsletterStatus.message}</span>
               </div>
             )}
 
             {newsletterStatus.type === "error" && (
-              <div className="flex items-center gap-1.5 text-[15px] font-semibold text-rose-400">
+              <div className="flex items-center gap-1.5 text-[15px] font-semibold text-rose-500">
                 <AlertCircle size={13} className="flex-shrink-0" />
                 <span>{newsletterStatus.message}</span>
               </div>
@@ -121,14 +121,14 @@ export default function CorporateFooter({
         <div className="lg:col-span-1 flex flex-col pr-0 lg:pr-6" data-aos="fade-up" data-aos-delay="100">
           <Link href="/" className="inline-block mb-4">
             <Image
-              src="/logos/Roysons logo_logo variation 2 png.png"
+              src="/logos/roysons-main.png"
               alt="Roy Sons Logo"
               width={180}
               height={80}
               className="w-auto h-12 md:h-14 lg:h-14 object-contain"
             />
           </Link>
-          <p className="text-xs text-neutral-400 leading-relaxed font-normal mb-6">
+          <p className="text-xs text-[#042E3A]/80 leading-relaxed font-normal mb-6">
             {caption}
           </p>
 
@@ -142,9 +142,9 @@ export default function CorporateFooter({
                   aria-label={handle.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-9 h-9 rounded-lg border border-[#C6A15A]/30 bg-white/5 flex items-center justify-center transition-all duration-300 hover:bg-[#C6A15A] hover:border-[#C6A15A] hover:scale-105"
+                  className="group w-9 h-9 rounded-lg border border-[#0a7a8c]/25 bg-[#f0fdfa] flex items-center justify-center transition-all duration-300 hover:bg-gradient-to-br hover:from-[#042E3A] hover:to-[#0a7a8c] hover:border-[#0a7a8c] hover:shadow-[0_4px_14px_rgba(10,122,140,0.3)] hover:scale-105"
                 >
-                  <SocialIcon size={15} className="text-[#C6A15A] group-hover:text-neutral-950 transition-colors duration-300" />
+                  <SocialIcon size={15} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                 </a>
               );
             })}
@@ -152,7 +152,7 @@ export default function CorporateFooter({
         </div>
 
         <div data-aos="fade-up" data-aos-delay="200">
-          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
+          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-[#042E3A] mb-5">
             Quick Links
           </h4>
           <ul className="space-y-3">
@@ -160,7 +160,7 @@ export default function CorporateFooter({
               <li key={index}>
                 <Link
                   href={link.destination}
-                  className="text-xs text-neutral-400 font-medium hover:text-[#C6A15A] transition-colors duration-200"
+                  className="text-xs text-[#042E3A]/75 font-medium hover:text-[#0a7a8c] transition-colors duration-200"
                 >
                   {link.text}
                 </Link>
@@ -170,7 +170,7 @@ export default function CorporateFooter({
         </div>
 
         <div data-aos="fade-up" data-aos-delay="300">
-          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
+          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-[#042E3A] mb-5">
             Our Services
           </h4>
           <ul className="space-y-3">
@@ -178,7 +178,7 @@ export default function CorporateFooter({
               <li key={index}>
                 <Link
                   href={link.destination}
-                  className="text-xs text-neutral-400 font-medium hover:text-[#C6A15A] transition-colors duration-200"
+                  className="text-xs text-[#042E3A]/75 font-medium hover:text-[#0a7a8c] transition-colors duration-200"
                 >
                   {link.text}
                 </Link>
@@ -188,7 +188,7 @@ export default function CorporateFooter({
         </div>
 
         <div data-aos="fade-up" data-aos-delay="400">
-          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-white mb-5">
+          <h4 className="text-[14px] font-black uppercase tracking-[0.24em] text-[#042E3A] mb-5">
             Contact Us
           </h4>
           <ul className="space-y-4">
@@ -196,10 +196,10 @@ export default function CorporateFooter({
               const DetailIcon = detail.icon;
               return (
                 <li key={index} className="flex gap-3 items-start group">
-                  <div className="p-1.5 rounded-md bg-white/5 border border-[#C6A15A]/20 transition-all duration-300 group-hover:bg-[#C6A15A] group-hover:border-[#C6A15A] mt-0.5 flex-shrink-0">
-                    <DetailIcon size={13} className="text-[#C6A15A] group-hover:text-neutral-950 transition-colors duration-300" />
+                  <div className="p-1.5 rounded-md bg-[#f0fdfa] border border-[#0a7a8c]/25 transition-all duration-300 group-hover:bg-[#0a7a8c] group-hover:border-[#0a7a8c] group-hover:shadow-[0_2px_8px_rgba(10,122,140,0.3)] mt-0.5 flex-shrink-0">
+                    <DetailIcon size={13} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <span className="text-xs text-neutral-400 whitespace-pre-line leading-relaxed font-medium group-hover:text-[#C6A15A] transition-colors duration-200">
+                  <span className="text-xs text-[#042E3A]/75 whitespace-pre-line leading-relaxed font-medium group-hover:text-[#0a7a8c] transition-colors duration-200">
                     {detail.value}
                   </span>
                 </li>
@@ -210,16 +210,16 @@ export default function CorporateFooter({
       </div>
 
       {/* Copyright Sub-bar */}
-      <div className="border-t border-neutral-900 bg-neutral-950 py-6 px-4 sm:px-6 lg:px-8">
+      <div className="border-t border-[#042E3A]/10 bg-white py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-neutral-500 font-semibold tracking-wider text-center md:text-left">
+          <p className="text-xs text-[#042E3A]/60 font-semibold tracking-wider text-center md:text-left">
             &copy; {currentYear} ROYSONS Pvt. Ltd. All Rights Reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="/privacy" className="text-xs text-neutral-500 font-medium hover:text-[#C6A15A] transition-colors duration-200">
+            <Link href="/privacy" className="text-xs text-[#042E3A]/60 font-medium hover:text-[#0a7a8c] transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-xs text-neutral-500 font-medium hover:text-[#C6A15A] transition-colors duration-200">
+            <Link href="/terms" className="text-xs text-[#042E3A]/60 font-medium hover:text-[#0a7a8c] transition-colors duration-200">
               Terms &amp; Conditions
             </Link>
           </div>

@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-sans: "Times New Roman", Times, serif;
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-cormorant), Georgia, serif;
+  --font-heading: "Times New Roman", Times, serif;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -69,56 +69,62 @@
 
 /* ─────────────────────────────────────────────
    Roy Sons Brand Palette
-   Corporate Charcoal  #2D3136  — backgrounds
-   Champagne Gold      #C6A15A  — accents / text
-   Satin Champagne     #D8D0C3  — muted elements
-   Graphite Shadow     #4B4F54  — secondary surfaces
-   Ivory White         #F7F5F0  — high‑contrast text
+   White Background          #ffffff  — crisp white foundation
+   Refreshing Mint-Wash Base #f0fdfa  — bright attractive surface wash
+   Deep Navy Teal            #042E3A  — corporate branding & primary text
+   Vibrant Ocean Teal        #0a7a8c  — primary greenish-bluish buttons & accents
+   Radiant Teal Glow         #0d9488  — hover glow & vibrant highlights
+   Electric Aquamarine       #06b6d4  — micro-accent / active glow
+   Border Tint               rgba(10, 122, 140, 0.18) — subtle modern lines
 ───────────────────────────────────────────── */
 
 :root {
-  --rs-bg:           #101518;   /* Corporate Charcoal */
-  --rs-bg-deep:      #252830;   /* slightly darker variant */
-  --rs-bg-surface:   #343840;   /* card / surface variant */
-  --rs-gold:         #C6A15A;   /* Champagne Gold */
-  --rs-gold-light:   #D9B87A;   /* lighter gold for gradients */
-  --rs-gold-dim:     #A07E3E;   /* darker gold for depth */
-  --rs-satin:        #D8D0C3;   /* Satin Champagne */
-  --rs-graphite:     #4B4F54;   /* Graphite Shadow */
-  --rs-ivory:        #F7F5F0;   /* Ivory White */
+  --rs-bg:           #ffffff;   /* Pure Crisp White */
+  --rs-bg-deep:      #f0fdfa;   /* Refreshing bright sea-mint wash */
+  --rs-bg-surface:   #ffffff;   /* Card Surface */
+  --rs-gold:         #0a7a8c;   /* Vibrant Greenish-Bluish */
+  --rs-gold-light:   #0d9488;   /* Radiant Teal */
+  --rs-gold-dim:     #042E3A;   /* Deep Navy Teal */
+  --rs-satin:        #042E3A;   /* Text */
+  --rs-graphite:     #042E3A;   /* Text */
+  --rs-ivory:        #042E3A;   /* Text */
 
-  --background: var(--rs-bg);
-  --foreground: var(--rs-gold);
-  --card: var(--rs-bg-surface);
-  --card-foreground: var(--rs-gold);
-  --popover: var(--rs-bg);
-  --popover-foreground: var(--rs-gold);
-  --primary: var(--rs-gold);
-  --primary-foreground: var(--rs-bg);
-  --secondary: var(--rs-bg-surface);
-  --secondary-foreground: var(--rs-gold-light);
-  --muted: var(--rs-graphite);
-  --muted-foreground: var(--rs-satin);
-  --accent: var(--rs-bg-surface);
-  --accent-foreground: var(--rs-gold-light);
+  --background: #ffffff;
+  --foreground: #042E3A;
+  --card: #ffffff;
+  --card-foreground: #042E3A;
+  --popover: #ffffff;
+  --popover-foreground: #042E3A;
+  --primary: #042E3A;
+  --primary-foreground: #ffffff;
+  --secondary: #f0fdfa;
+  --secondary-foreground: #042E3A;
+  --muted: #f0fdfa;
+  --muted-foreground: #042E3A;
+  --accent: #0a7a8c;
+  --accent-foreground: #ffffff;
   --destructive: #ef4444;
-  --border: rgba(198, 161, 90, 0.25);
-  --input: var(--rs-bg-surface);
-  --ring: var(--rs-gold);
+  --border: rgba(10, 122, 140, 0.18);
+  --input: #ffffff;
+  --ring: #0a7a8c;
   --radius: 0.25rem;
-  --sidebar: var(--rs-bg);
-  --sidebar-foreground: var(--rs-gold);
-  --sidebar-primary: var(--rs-gold);
-  --sidebar-primary-foreground: var(--rs-bg);
-  --sidebar-accent: var(--rs-bg-surface);
-  --sidebar-accent-foreground: var(--rs-gold);
-  --sidebar-border: rgba(198, 161, 90, 0.25);
-  --sidebar-ring: var(--rs-gold);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #042E3A;
+  --sidebar-primary: #042E3A;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f0fdfa;
+  --sidebar-accent-foreground: #042E3A;
+  --sidebar-border: rgba(10, 122, 140, 0.18);
+  --sidebar-ring: #0a7a8c;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #ffffff;
+    color: #042E3A;
   }
 
   * {
@@ -127,8 +133,12 @@
   }
 
   body {
-    font-family: var(--font-inter), system-ui, sans-serif;
-    overflow-x: hidden;
+    font-family: "Times New Roman", Times, serif !important;
+    min-height: 100vh;
+    overflow-x: clip;
+    overflow-y: visible !important;
+    background-color: #ffffff;
+    color: #042E3A;
   }
 
   /* AOS Animation GPU acceleration and precision easing matching Banu Mukhtar */
@@ -154,109 +164,118 @@
     transform: scale(1);
   }
 
-  /* Navlinks are preserved at their original standard size */
-  header nav a {
-    font-size: 15px !important;
-  }
-
-  header nav[aria-label="Mobile Navigation"] a {
-    font-size: 13px !important;
-  }
-
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-cormorant), Georgia, serif;
+    font-family: "Times New Roman", Times, serif !important;
   }
 
   body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) {
-    background-color: #101518 !important;
-    color: #C6A15A !important;
+    background-color: #ffffff !important;
+    color: #042E3A !important;
+    font-family: "Times New Roman", Times, serif !important;
   }
 }
 
-/* --- Roy Sons Premium Charcoal & Champagne Gold Theme Engine --- */
+/* --- Roy Sons White & Greenish-Bluish Theme Engine --- */
 
 body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) {
 
-  /* Charcoal Backgrounds */
+  /* White Backgrounds Across Roysons */
   &,
   html,
   main,
-  section,
+  section:not([aria-label="Featured Showcase Slider"]),
   header,
+  footer,
   legend,
   .bg-white,
   .bg-neutral-50,
   .bg-neutral-100,
   .bg-neutral-150,
   .bg-neutral-200,
+  .bg-neutral-900,
   .bg-neutral-950,
-  .bg-stone-950,
+  .bg-stone-950:not([aria-label="Featured Showcase Slider"]),
+  .bg-\[\#101518\],
+  .bg-\[\#141b20\],
+  .bg-\[\#161c20\]\/60,
+  .bg-\[\#1a2127\],
+  .bg-\[\#252830\],
+  .bg-\[\#343840\],
+  .bg-\[\#2D3136\],
+  .bg-neutral-50\/10,
   .bg-neutral-50\/20,
   .bg-neutral-50\/50,
-  .bg-neutral-950\/50 {
-    background-color: #101518 !important;
+  .bg-neutral-950\/50,
+  .bg-neutral-950\/60 {
+    background-color: #ffffff !important;
   }
 
-  /* ── Logo-matched Text Colors ──
-     Gold  #C6A15A → Headings, links, buttons (logo "Sons" / "INDUSTRIES" colour)
-     Silver #C0C0C0 → Body text  (logo "Roy" / tagline metallic-silver colour)
-  ─────────────────────────────── */
+  /* Reset Dark Background Gradients on containers */
+  main,
+  section:not([aria-label="Featured Showcase Slider"]),
+  header,
+  footer {
+    background-image: none !important;
+  }
 
-  /* Ivory White — Headings */
+  /* Global Times New Roman Font */
+  &,
+  h1, h2, h3, h4, h5, h6,
+  p, span, li, a, button, label,
+  input, textarea, select, option,
+  th, td, time {
+    font-family: "Times New Roman", Times, serif !important;
+  }
+
+  /* ── Headings: Deep Navy Teal (#042E3A) ── */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    color: #F7F5F0 !important;
-    -webkit-text-fill-color: #F7F5F0 !important;
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
     background-image: none !important;
     background-clip: unset !important;
     -webkit-background-clip: unset !important;
-    text-shadow: 0 0 20px rgba(198, 161, 90, 0.40), 0 0 8px rgba(198, 161, 90, 0.22), 0 1px 4px rgba(198, 161, 90, 0.15) !important;
+    text-shadow: none !important;
   }
 
-  /* Gold — Links, labels, buttons */
-  a,
+  /* ── Regular links, labels, table headers (excluding buttons) ── */
+  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]),
   label,
-  button,
   th {
-    color: #C6A15A !important;
-    -webkit-text-fill-color: #C6A15A !important;
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
     background-image: none !important;
     background-clip: unset !important;
     -webkit-background-clip: unset !important;
-    text-shadow: 0 0 14px rgba(198, 161, 90, 0.28), 0 1px 3px rgba(198, 161, 90, 0.15) !important;
+    text-shadow: none !important;
+    transition: color 0.25s ease !important;
   }
 
-  /* Ivory White — Body / paragraph / secondary text */
-  p,
-  span,
-  li,
+  /* Hover on normal links: Vibrant Greenish-Bluish (#0a7a8c) */
+  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):hover {
+    color: #0a7a8c !important;
+    -webkit-text-fill-color: #0a7a8c !important;
+  }
+
+  /* ── Body text (EXCLUDING buttons, pills, white text) ── */
+  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]),
+  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not(.badge),
+  li:not(button *):not(a.rs-cta-btn *):not(a[class*="bg-"] *),
   time,
-  input,
-  textarea,
-  select,
-  option,
   td {
-    color: #F7F5F0 !important;
-    -webkit-text-fill-color: #F7F5F0 !important;
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
     background-image: none !important;
     background-clip: unset !important;
     -webkit-background-clip: unset !important;
-    text-shadow: 0 0 12px rgba(198, 161, 90, 0.20), 0 1px 3px rgba(198, 161, 90, 0.12) !important;
+    text-shadow: none !important;
   }
 
-  /* Muted / Secondary text (for visual depth) */
-  p,
-  li,
-  span,
-  time {
-    opacity: 0.95;
-  }
-
-  /* Champagne Gold Borders */
+  /* Borders: Subtle Greenish-Blue Tint */
   hr,
   .border,
   .border-t,
@@ -273,164 +292,337 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   .border-white\/10,
   .border-white\/40,
   .border-white\/50 {
-    border-color: rgba(198, 161, 90, 0.25) !important;
+    border-color: rgba(10, 122, 140, 0.18) !important;
   }
 
-  /* Dividers & Lines */
+  /* Dividers & Accent Lines: Greenish-Bluish Gradient */
   .h-\[3px\],
+  .h-\[3\.5px\],
   .h-px,
-  .rs-section-divider,
-  .after\:bg-black::after {
-    background-color: #C6A15A !important;
+  .rs-section-divider {
+    background: linear-gradient(90deg, #042E3A 0%, #0a7a8c 50%, #0d9488 100%) !important;
   }
 
-  /* Active navigation line indicator */
-  .after\:bg-black::after {
+  /* Active Navigation Line Indicator */
+  .after\:bg-black::after,
+  .after\:bg-\[\#042E3A\]::after,
+  .after\:bg-\[\#C6A15A\]::after {
+    background: linear-gradient(90deg, #042E3A, #0d9488) !important;
+    box-shadow: 0 2px 8px rgba(13, 148, 136, 0.4) !important;
     content: "";
     display: block;
   }
 
-  /* Hover effects for text when hovering buttons/links (switches to Charcoal #2D3136 on gold background) */
-  .hover\:text-black:hover,
-  .hover\:text-black:hover *,
-  .group:hover .group-hover\:text-black,
-  .group:hover .group-hover\:text-black * {
-    color: #2D3136 !important;
-    -webkit-text-fill-color: #2D3136 !important;
-    fill: #2D3136 !important;
-    background-image: none !important;
+  /* ── Interactive Card Shadows with Greenish-Bluish Glow ── */
+  .shadow-sm,
+  .shadow-md,
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl,
+  .rounded-sm.border,
+  .rounded-md.border,
+  .rounded-lg.border,
+  .rounded-xl.border,
+  .rounded-2xl.border {
+    box-shadow: 0 4px 20px -2px rgba(4, 46, 58, 0.07), 0 2px 8px -1px rgba(10, 122, 140, 0.06);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
-  /* Buttons (CTA & Submit buttons — solid gold background with charcoal text) */
-  .bg-white.text-black,
-  .bg-white.text-black *,
-  .bg-white.text-black\/95,
-  .bg-white.text-black\/95 *,
+  /* Hover Elevation & Greenish-Bluish Glow Shadow on Cards */
+  .rounded-sm.border:hover,
+  .rounded-md.border:hover,
+  .rounded-lg.border:hover,
+  .rounded-xl.border:hover,
+  .rounded-2xl.border:hover,
+  .group:hover .rounded-sm,
+  .group:hover .rounded-md,
+  .group:hover .rounded-lg,
+  .group:hover .rounded-xl,
+  .group:hover .rounded-2xl {
+    box-shadow: 0 16px 36px -4px rgba(4, 46, 58, 0.12), 0 8px 20px -2px rgba(13, 148, 136, 0.25) !important;
+    border-color: rgba(13, 148, 136, 0.45) !important;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     HEADER NAVIGATION LINKS: STRICTLY CLEAN TEXT (NO BOX, NO BORDER, NO SHADOW)
+  ───────────────────────────────────────────────────────────── */
+  header nav a:not(#navbar-inquire-btn),
+  header nav li a,
+  .nav-text-link,
+  header .nav-text-link,
+  nav[aria-label="Desktop Navigation"] a,
+  nav[aria-label="Mobile Navigation"] a {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    border-radius: 0 !important;
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
+  }
+
+  header nav a:not(#navbar-inquire-btn):hover,
+  header nav li a:hover,
+  .nav-text-link:hover,
+  header .nav-text-link:hover,
+  nav[aria-label="Desktop Navigation"] a:hover,
+  nav[aria-label="Mobile Navigation"] a:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    color: #0a7a8c !important;
+    -webkit-text-fill-color: #0a7a8c !important;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     UNIVERSAL BUTTON & CTA SYSTEM (100% TEXT VISIBILITY & GREENISH-BLUISH GLOW)
+  ───────────────────────────────────────────────────────────── */
+
+  /* All Primary Buttons & CTA Links */
+  button:not([class*="bg-transparent"]):not([class*="bg-white"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Close"]):not([aria-label*="close"]):not(#navbar-search-btn):not(#navbar-mobile-btn),
+  .btn:not([class*="bg-transparent"]):not([class*="bg-white"]),
+  .rs-cta-btn,
   #cta-consultation-btn,
-  #cta-consultation-btn *,
-  .bg-neutral-950.text-white.hover\:bg-neutral-900,
-  .bg-neutral-950.text-white.hover\:bg-neutral-900 *,
+  #navbar-inquire-btn,
+  #view-all-projects-btn,
   button[type="submit"],
-  button[type="submit"] * {
-    background-image: none !important;
-    background-clip: unset !important;
-    -webkit-background-clip: unset !important;
-    -webkit-text-fill-color: #2D3136 !important;
-    color: #2D3136 !important;
-    fill: #2D3136 !important;
+  input[type="submit"],
+  a[class*="bg-[#042E3A]"]:not(header nav a):not(.nav-text-link),
+  a[class*="bg-black"]:not(header nav a):not(.nav-text-link),
+  a[class*="bg-neutral-950"]:not(header nav a):not(.nav-text-link),
+  a[class*="bg-neutral-900"]:not(header nav a):not(.nav-text-link),
+  button[class*="bg-black"],
+  button[class*="bg-[#C6A15A]"],
+  button[class*="bg-neutral-950"] {
+    background: linear-gradient(135deg, #042E3A 0%, #075d6d 50%, #0a7a8c 100%) !important;
+    background-color: #042E3A !important;
+    border: 1.5px solid #0a7a8c !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+    box-shadow: 0 4px 16px 0 rgba(10, 122, 140, 0.35) !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
-  .bg-white.text-black,
-  .bg-white.text-black\/95,
-  #cta-consultation-btn,
-  .bg-neutral-950.text-white.hover\:bg-neutral-900,
-  button[type="submit"] {
-    background-color: #C6A15A !important;
-    border: 1px solid #C6A15A !important;
+  /* Explicit Single-Line Text for Inquire Now Button */
+  #navbar-inquire-btn,
+  #navbar-inquire-btn * {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    flex-shrink: 0 !important;
   }
 
-  /* Universal Button & Link Hover text state to #2D3136 when button background becomes Gold */
-  button:hover,
-  button:hover *,
-  .btn:hover,
-  .btn:hover *,
-  .group:hover button,
-  .group:hover button *,
-  a.rs-cta-btn:hover,
-  a.rs-cta-btn:hover *,
-  .group:hover a.rs-cta-btn,
-  .group:hover a.rs-cta-btn *,
+  /* GUARANTEED 100% VISIBLE: Text and All Nested Elements in Buttons are Pure White */
+  button:not([class*="bg-transparent"]):not([class*="bg-white"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Close"]):not([aria-label*="close"]):not(#navbar-search-btn):not(#navbar-mobile-btn) *,
+  .btn:not([class*="bg-transparent"]):not([class*="bg-white"]) *,
+  .rs-cta-btn *,
+  #cta-consultation-btn *,
+  #navbar-inquire-btn *,
+  #view-all-projects-btn *,
+  button[type="submit"] *,
+  input[type="submit"] *,
+  a[class*="bg-[#042E3A]"]:not(header nav a):not(.nav-text-link) *,
+  a[class*="bg-black"]:not(header nav a):not(.nav-text-link) *,
+  a[class*="bg-neutral-950"]:not(header nav a):not(.nav-text-link) *,
+  a[class*="bg-neutral-900"]:not(header nav a):not(.nav-text-link) *,
+  button[class*="bg-black"] *,
+  button[class*="bg-[#C6A15A]"] *,
+  button[class*="bg-neutral-950"] * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    white-space: nowrap !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  /* Radiant Greenish-Bluish Hover Effect for All Buttons */
+  button:not([class*="bg-transparent"]):not([class*="bg-white"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Close"]):not([aria-label*="close"]):not(#navbar-search-btn):not(#navbar-mobile-btn):hover,
+  .btn:not([class*="bg-transparent"]):not([class*="bg-white"]):hover,
+  .rs-cta-btn:hover,
+  #cta-consultation-btn:hover,
+  #navbar-inquire-btn:hover,
+  #view-all-projects-btn:hover,
   button[type="submit"]:hover,
-  button[type="submit"]:hover * {
+  input[type="submit"]:hover,
+  a[class*="bg-[#042E3A]"]:not(header nav a):not(.nav-text-link):hover,
+  a[class*="bg-black"]:not(header nav a):not(.nav-text-link):hover,
+  a[class*="bg-neutral-950"]:not(header nav a):not(.nav-text-link):hover,
+  a[class*="bg-neutral-900"]:not(header nav a):not(.nav-text-link):hover,
+  button[class*="bg-black"]:hover,
+  button[class*="bg-[#C6A15A]"]:hover,
+  button[class*="bg-neutral-950"]:hover {
+    background: linear-gradient(135deg, #087f94 0%, #0a9396 50%, #0d9488 100%) !important;
+    background-color: #087f94 !important;
+    border-color: #14b8a6 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 8px 26px 0 rgba(13, 148, 136, 0.55), 0 0 0 3px rgba(6, 182, 212, 0.25) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  button:not([class*="bg-transparent"]):not([class*="bg-white"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Close"]):not([aria-label*="close"]):not(#navbar-search-btn):not(#navbar-mobile-btn):hover *,
+  .btn:not([class*="bg-transparent"]):not([class*="bg-white"]):hover *,
+  .rs-cta-btn:hover *,
+  #cta-consultation-btn:hover *,
+  #navbar-inquire-btn:hover *,
+  #view-all-projects-btn:hover *,
+  button[type="submit"]:hover *,
+  input[type="submit"]:hover *,
+  a[class*="bg-[#042E3A]"]:not(header nav a):not(.nav-text-link):hover *,
+  a[class*="bg-black"]:not(header nav a):not(.nav-text-link):hover *,
+  a[class*="bg-neutral-950"]:not(header nav a):not(.nav-text-link):hover *,
+  a[class*="bg-neutral-900"]:not(header nav a):not(.nav-text-link):hover *,
+  button[class*="bg-black"]:hover *,
+  button[class*="bg-[#C6A15A]"]:hover *,
+  button[class*="bg-neutral-950"]:hover * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+    opacity: 1 !important;
+  }
+
+  /* Outline / Secondary Action Buttons */
+  .rs-cta-btn-secondary,
+  a[class*="border"][class*="bg-transparent"]:not([aria-label="Featured Showcase Slider"] a):not(header nav a):not(.nav-text-link) {
+    border: 1.5px solid #0a7a8c !important;
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
+    background-color: transparent !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .rs-cta-btn-secondary *,
+  a[class*="border"][class*="bg-transparent"]:not([aria-label="Featured Showcase Slider"] a):not(header nav a):not(.nav-text-link) * {
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
+  }
+
+  .rs-cta-btn-secondary:hover,
+  a[class*="border"][class*="bg-transparent"]:not([aria-label="Featured Showcase Slider"] a):not(header nav a):not(.nav-text-link):hover {
+    background: linear-gradient(135deg, #042E3A 0%, #0a7a8c 100%) !important;
+    border-color: #0a7a8c !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(10, 122, 140, 0.4) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  .rs-cta-btn-secondary:hover *,
+  a[class*="border"][class*="bg-transparent"]:not([aria-label="Featured Showcase Slider"] a):not(header nav a):not(.nav-text-link):hover * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+  }
+
+  /* Header navigation links (NO BOX, NO BORDER, NO SHADOW, NO BUTTON STYLING) */
+  header nav a:not(#navbar-inquire-btn),
+  header nav a:not(#navbar-inquire-btn) *,
+  .nav-text-link,
+  .nav-text-link * {
+    background: none !important;
+    background-color: transparent !important;
     background-image: none !important;
-    background-clip: unset !important;
-    -webkit-background-clip: unset !important;
-    -webkit-text-fill-color: #2D3136 !important;
-    color: #2D3136 !important;
-    fill: #2D3136 !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transform: none !important;
   }
 
-  /* Footer submit button */
-  footer button[type="submit"] {
-    background-color: #C6A15A !important;
-    color: #2D3136 !important;
-    border: 1px solid #C6A15A !important;
-  }
-
-  footer button[type="submit"]:hover,
-  footer button[type="submit"]:hover * {
-    background-color: #C6A15A !important;
-    color: #2D3136 !important;
-    -webkit-text-fill-color: #2D3136 !important;
-    border-color: #C6A15A !important;
-  }
-
-  footer a:not(.group):hover,
-  footer a:not(.group):hover * {
+  header nav a:not(#navbar-inquire-btn):hover,
+  header nav a:not(#navbar-inquire-btn):hover *,
+  .nav-text-link:hover,
+  .nav-text-link:hover * {
+    background: none !important;
     background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    color: #0a7a8c !important;
+    -webkit-text-fill-color: #0a7a8c !important;
   }
 
-  /* Header navigation links — keep background completely transparent on hover */
-  header nav a,
-  header nav a:hover,
-  header nav a:hover * {
-    background-color: transparent !important;
-  }
-
-  /* Navbar search button — remove hover effect completely */
+  /* Navbar search button */
   #navbar-search-btn,
   #navbar-search-btn *,
   #navbar-search-btn:hover,
   #navbar-search-btn:hover * {
     background-color: transparent !important;
     background-image: none !important;
-    color: #C6A15A !important;
-    -webkit-text-fill-color: #C6A15A !important;
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
     fill: none !important;
-    stroke: #C6A15A !important;
+    stroke: #042E3A !important;
     box-shadow: none !important;
     outline: none !important;
     border-color: transparent !important;
     transform: none !important;
   }
 
-  .hover\:bg-neutral-50:hover,
-  .hover\:bg-neutral-50\/50:hover,
-  .hover\:bg-neutral-50\/70:hover {
-    background-color: rgba(198, 161, 90, 0.12) !important;
-  }
-
   /* Form inputs & areas styling */
   input,
   textarea,
   select {
-    border: 1px solid rgba(198, 161, 90, 0.3) !important;
-    background-color: #343840 !important;
-    color: #C6A15A !important;
+    border: 1px solid rgba(10, 122, 140, 0.25) !important;
+    background-color: #ffffff !important;
+    color: #042E3A !important;
+    border-radius: 4px !important;
+    transition: all 0.25s ease !important;
   }
 
   input:focus,
   textarea:focus,
   select:focus {
-    border-color: #C6A15A !important;
+    border-color: #0d9488 !important;
     outline: none !important;
-    box-shadow: 0 0 0 1px #C6A15A !important;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2) !important;
   }
 
   input::placeholder,
   textarea::placeholder {
-    color: #8B7248 !important;
+    color: rgba(4, 46, 58, 0.5) !important;
   }
 
-  /* Roy Sons Section Heading styling */
-  .rs-section-title {
-    @apply text-center text-2xl font-bold uppercase tracking-widest mb-1;
-    color: #C6A15A !important;
+  /* Hero Slider Banner Text Exception (preserves high-contrast white text over photo/video slides) */
+  section[aria-label="Featured Showcase Slider"] h1,
+  section[aria-label="Featured Showcase Slider"] h2,
+  section[aria-label="Featured Showcase Slider"] p,
+  section[aria-label="Featured Showcase Slider"] span:not(.rs-cta-btn span) {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.7) !important;
   }
 
-  .rs-section-divider {
-    @apply mx-auto mb-10 h-[3px] w-16;
-    background-color: #C6A15A !important;
+  section[aria-label="Featured Showcase Slider"] .rs-cta-btn {
+    background: linear-gradient(135deg, #042E3A 0%, #0a7a8c 100%) !important;
+    border: 1.5px solid #0d9488 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(10, 122, 140, 0.45) !important;
+  }
+
+  section[aria-label="Featured Showcase Slider"] .rs-cta-btn * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+  }
+
+  section[aria-label="Featured Showcase Slider"] .rs-cta-btn:hover {
+    background: linear-gradient(135deg, #087f94 0%, #0d9488 100%) !important;
+    border-color: #14b8a6 !important;
+    box-shadow: 0 8px 28px rgba(13, 148, 136, 0.65) !important;
+    transform: translateY(-2px) !important;
   }
 }
 
@@ -451,19 +643,32 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   animation: fadeInUp 0.8s ease forwards;
 }
 
-/* ── CTA Button: Default state — gold border + transparent bg ── */
+/* ── CTA Button: Default state (Radiant Greenish-Bluish) ── */
 .rs-cta-btn {
-  background-color: transparent !important;
-  border-color: #C6A15A !important;
+  background: linear-gradient(135deg, #042E3A 0%, #075d6d 50%, #0a7a8c 100%) !important;
+  border: 1.5px solid #0a7a8c !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(10, 122, 140, 0.35) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* ── CTA Button: Hover state — gold fill + charcoal text ── */
+.rs-cta-btn * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  fill: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* ── CTA Button: Hover state (Radiant Greenish-Bluish Glow & Lift) ── */
 body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) .rs-cta-btn:hover {
-  background-color: #C6A15A !important;
-  background-image: none !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
-  border-color: #C6A15A !important;
+  background: linear-gradient(135deg, #087f94 0%, #0a9396 50%, #0d9488 100%) !important;
+  border-color: #14b8a6 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 8px 26px rgba(13, 148, 136, 0.55), 0 0 0 3px rgba(6, 182, 212, 0.25) !important;
+  transform: translateY(-2px) !important;
 }
 
 body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) .rs-cta-btn:hover span,
@@ -472,9 +677,9 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   background-image: none !important;
   background-clip: unset !important;
   -webkit-background-clip: unset !important;
-  -webkit-text-fill-color: #2D3136 !important;
-  color: #2D3136 !important;
-  fill: #2D3136 !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+  fill: #ffffff !important;
   opacity: 1 !important;
 }
 

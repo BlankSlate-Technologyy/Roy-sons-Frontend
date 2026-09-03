@@ -210,10 +210,10 @@ export default function CareersPage() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#open-positions"
-                className="inline-flex items-center gap-2 bg-[#C6A15A] hover:bg-[#b5924d] text-neutral-950 font-bold px-6 py-3 text-[11px] tracking-[0.16em] uppercase rounded-sm transition-all duration-300 shadow-md hover:shadow-lg"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white font-black px-7 py-3.5 text-[11px] tracking-[0.16em] uppercase rounded-[3px] transition-all duration-300 shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] hover:-translate-y-0.5"
               >
-                <span>View Open Positions</span>
-                <ArrowRight size={14} strokeWidth={2.5} />
+                <span className="text-white font-black">View Open Positions</span>
+                <ArrowRight size={14} strokeWidth={2.5} className="text-white" />
               </a>
               <a
                 href="#application-form"
@@ -326,10 +326,10 @@ export default function CareersPage() {
 
                     <button
                       onClick={() => handleApplyClick(job.title)}
-                      className="inline-flex items-center gap-1.5 text-[10.5px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] hover:text-white transition-colors duration-200 cursor-pointer"
+                      className="inline-flex items-center gap-1.5 text-[11px] font-black tracking-[0.15em] uppercase text-[#0a7a8c] hover:text-[#0d9488] transition-colors duration-200 cursor-pointer group/btn"
                     >
-                      <span>Apply Now</span>
-                      <ArrowRight size={13} strokeWidth={2.5} />
+                      <span className="text-[#0a7a8c] group-hover/btn:text-[#0d9488]">Apply Now</span>
+                      <ArrowRight size={13} strokeWidth={2.5} className="text-[#0a7a8c] group-hover/btn:text-[#0d9488] group-hover/btn:translate-x-0.5 transition-all duration-200" />
                     </button>
                   </div>
                 </div>
@@ -557,10 +557,10 @@ export default function CareersPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="inline-flex items-center gap-2.5 bg-[#C6A15A] hover:bg-[#b5924d] disabled:bg-neutral-400 text-neutral-950 font-bold px-8 py-3.5 text-[11px] tracking-[0.18em] uppercase rounded-sm transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                      className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] disabled:opacity-50 text-white font-black px-9 py-4 text-[11px] tracking-[0.18em] uppercase rounded-[3px] transition-all duration-300 cursor-pointer shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] hover:-translate-y-0.5"
                     >
-                      <span>{isSubmitting ? "Submitting..." : "Submit Application"}</span>
-                      <Send size={13} strokeWidth={2.5} />
+                      <span className="text-white font-black">{isSubmitting ? "Submitting..." : "Submit Application"}</span>
+                      <Send size={13} strokeWidth={2.5} className="text-white" />
                     </button>
                   </div>
                 </form>

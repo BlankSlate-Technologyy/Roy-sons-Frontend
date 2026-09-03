@@ -99,33 +99,33 @@ export default function SearchModal({ isOpen, onClose }) {
       <div
         className="relative w-full max-w-3xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh] z-10 border animate-scale-up"
         style={{
-          backgroundColor: "#1F2328",
-          borderColor: "rgba(198, 161, 90, 0.3)",
+          backgroundColor: "#ffffff",
+          borderColor: "rgba(4, 46, 58, 0.15)",
         }}
       >
         {/* Top Header & Search Bar */}
         <div
           className="p-4 sm:p-5 border-b"
           style={{
-            backgroundColor: "#272B31",
-            borderColor: "rgba(255, 255, 255, 0.08)",
+            backgroundColor: "#f8fafc",
+            borderColor: "rgba(4, 46, 58, 0.1)",
           }}
         >
           <div className="relative flex items-center">
-            <Search className="absolute left-3.5 text-[#C6A15A] pointer-events-none" size={20} />
+            <Search className="absolute left-3.5 text-[#042E3A] pointer-events-none" size={20} />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search companies, services, projects, keywords..."
-              className="w-full pl-11 pr-10 py-3 rounded-lg bg-black/40 text-white placeholder-neutral-400 text-sm sm:text-base font-medium outline-none border border-white/10 focus:border-[#C6A15A] transition-colors"
+              className="w-full pl-11 pr-10 py-3 rounded-lg bg-white text-[#042E3A] placeholder-[#042E3A]/50 text-sm sm:text-base font-medium outline-none border border-[#042E3A]/20 focus:border-[#042E3A] transition-colors"
             />
             {query ? (
               <button
                 type="button"
                 onClick={() => setQuery("")}
-                className="absolute right-3 p-1 rounded-md text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="absolute right-3 p-1 rounded-md text-[#042E3A]/60 hover:text-[#042E3A] hover:bg-[#042E3A]/5 transition-colors"
                 aria-label="Clear search"
               >
                 <X size={16} />
@@ -134,7 +134,7 @@ export default function SearchModal({ isOpen, onClose }) {
               <button
                 type="button"
                 onClick={onClose}
-                className="absolute right-3 p-1 rounded-md text-neutral-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="absolute right-3 p-1 rounded-md text-[#042E3A]/60 hover:text-[#042E3A] hover:bg-[#042E3A]/5 transition-colors"
                 aria-label="Close search"
               >
                 <X size={18} />
@@ -154,14 +154,14 @@ export default function SearchModal({ isOpen, onClose }) {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`px-3 py-1.5 rounded-md text-[15px] sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
                     isActive
-                      ? "bg-[#C6A15A] text-[#121518] shadow-sm"
-                      : "bg-white/5 text-neutral-300 hover:bg-white/10 hover:text-white border border-white/10"
+                      ? "bg-[#042E3A] text-white shadow-sm"
+                      : "bg-[#042E3A]/5 text-[#042E3A] hover:bg-[#042E3A]/10 border border-[#042E3A]/15"
                   }`}
                 >
                   <span>{cat.label}</span>
                   <span
                     className={`text-[14px] px-1.5 py-0.2 rounded-full font-extrabold ${
-                      isActive ? "bg-black/20 text-[#121518]" : "bg-black/40 text-neutral-400"
+                      isActive ? "bg-white/20 text-white" : "bg-[#042E3A]/10 text-[#042E3A]"
                     }`}
                   >
                     {count}
@@ -174,16 +174,16 @@ export default function SearchModal({ isOpen, onClose }) {
 
         {/* Popular searches suggestions if query is empty */}
         {!query && (
-          <div className="px-5 py-3 border-b border-white/5 bg-black/20 flex items-center gap-2 flex-wrap">
-            <span className="text-[15px] font-bold text-neutral-400 flex items-center gap-1 uppercase tracking-wider">
-              <Sparkles size={13} className="text-[#C6A15A]" /> Popular:
+          <div className="px-5 py-3 border-b border-[#042E3A]/10 bg-[#f8fafc] flex items-center gap-2 flex-wrap">
+            <span className="text-[15px] font-bold text-[#042E3A]/70 flex items-center gap-1 uppercase tracking-wider">
+              <Sparkles size={13} className="text-[#042E3A]" /> Popular:
             </span>
             {POPULAR_SEARCH_TERMS.map((term) => (
               <button
                 key={term}
                 type="button"
                 onClick={() => setQuery(term)}
-                className="text-[15px] px-2.5 py-0.5 rounded-full bg-white/5 text-neutral-300 hover:text-[#C6A15A] hover:bg-white/10 transition-colors border border-white/5 cursor-pointer"
+                className="text-[15px] px-2.5 py-0.5 rounded-full bg-white text-[#042E3A] hover:bg-[#042E3A] hover:text-white transition-colors border border-[#042E3A]/15 cursor-pointer shadow-2xs"
               >
                 {term}
               </button>
@@ -192,18 +192,18 @@ export default function SearchModal({ isOpen, onClose }) {
         )}
 
         {/* Results Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-2.5 divide-y divide-white/5">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-2.5 divide-y divide-[#042E3A]/10">
           {filteredResults.length > 0 ? (
             filteredResults.map((item) => (
               <Link
                 key={item.id}
                 href={item.href}
                 onClick={onClose}
-                className="group flex items-start justify-between gap-4 p-3 rounded-lg hover:bg-white/5 transition-all border border-transparent hover:border-white/10 pt-3"
+                className="group flex items-start justify-between gap-4 p-3 rounded-lg hover:bg-[#042E3A]/5 transition-all border border-transparent hover:border-[#042E3A]/15 pt-3"
               >
                 <div className="flex items-start gap-3.5 min-w-0">
                   {item.image ? (
-                    <div className="relative w-11 h-11 rounded-md bg-white p-1 flex-shrink-0 flex items-center justify-center border border-white/20">
+                    <div className="relative w-11 h-11 rounded-md bg-white p-1 flex-shrink-0 flex items-center justify-center border border-[#042E3A]/15 shadow-2xs">
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -213,7 +213,7 @@ export default function SearchModal({ isOpen, onClose }) {
                       />
                     </div>
                   ) : (
-                    <div className="w-10 h-10 rounded-md bg-white/10 flex-shrink-0 flex items-center justify-center text-[#C6A15A] border border-white/10">
+                    <div className="w-10 h-10 rounded-md bg-[#042E3A]/5 flex-shrink-0 flex items-center justify-center text-[#042E3A] border border-[#042E3A]/15">
                       {item.category === "services" && <Briefcase size={18} />}
                       {item.category === "projects" && <Layers size={18} />}
                       {item.category === "pages" && <FileText size={18} />}
@@ -223,7 +223,7 @@ export default function SearchModal({ isOpen, onClose }) {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                      <h4 className="text-sm sm:text-[18.5px] font-black text-white group-hover:text-[#C6A15A] transition-colors leading-tight">
+                      <h4 className="text-sm sm:text-[18.5px] font-black text-[#042E3A] group-hover:text-[#074656] transition-colors leading-tight">
                         {item.title}
                       </h4>
                       <span
@@ -234,34 +234,34 @@ export default function SearchModal({ isOpen, onClose }) {
                     </div>
 
                     {item.subtitle && (
-                      <p className="text-[15.5px] font-semibold text-neutral-400 mb-1 leading-snug">
+                      <p className="text-[15.5px] font-semibold text-[#042E3A]/70 mb-1 leading-snug">
                         {item.subtitle}
                       </p>
                     )}
 
                     {item.description && (
-                      <p className="text-[16px] text-neutral-400 line-clamp-2 leading-relaxed font-normal">
+                      <p className="text-[16px] text-[#042E3A]/80 line-clamp-2 leading-relaxed font-normal">
                         {item.description}
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div className="flex items-center self-center text-neutral-500 group-hover:text-[#C6A15A] group-hover:translate-x-1 transition-all flex-shrink-0">
+                <div className="flex items-center self-center text-[#042E3A]/60 group-hover:text-[#042E3A] group-hover:translate-x-1 transition-all flex-shrink-0">
                   <ArrowRight size={17} />
                 </div>
               </Link>
             ))
           ) : (
             <div className="py-12 px-4 text-center">
-              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-3 text-neutral-400">
+              <div className="w-12 h-12 rounded-full bg-[#042E3A]/5 border border-[#042E3A]/15 flex items-center justify-center mx-auto mb-3 text-[#042E3A]/60">
                 <Search size={22} />
               </div>
-              <h4 className="text-base font-bold text-white mb-1">
+              <h4 className="text-base font-bold text-[#042E3A] mb-1">
                 No matching results found
               </h4>
-              <p className="text-xs text-neutral-400 max-w-sm mx-auto mb-4">
-                We couldn&apos;t find any matches for &ldquo;<span className="text-[#C6A15A] font-semibold">{query}</span>&rdquo; in {activeCategory === "all" ? "the website" : activeCategory}. Try a different keyword or browse all categories.
+              <p className="text-xs text-[#042E3A]/70 max-w-sm mx-auto mb-4">
+                We couldn&apos;t find any matches for &ldquo;<span className="text-[#042E3A] font-semibold">{query}</span>&rdquo; in {activeCategory === "all" ? "the website" : activeCategory}. Try a different keyword or browse all categories.
               </p>
               <button
                 type="button"
@@ -269,7 +269,7 @@ export default function SearchModal({ isOpen, onClose }) {
                   setQuery("");
                   setActiveCategory("all");
                 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-[#C6A15A] text-[#101518] text-xs font-bold uppercase tracking-wider hover:opacity-95 transition-opacity"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-[#042E3A] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#074656] transition-colors"
               >
                 Reset Search Filters
               </button>
@@ -279,26 +279,26 @@ export default function SearchModal({ isOpen, onClose }) {
 
         {/* Footer info */}
         <div
-          className="p-3 px-5 border-t flex items-center justify-between text-[15px] text-neutral-400"
+          className="p-3 px-5 border-t flex items-center justify-between text-[15px] text-[#042E3A]/70"
           style={{
-            backgroundColor: "#252830",
-            borderColor: "rgba(255, 255, 255, 0.08)",
+            backgroundColor: "#f8fafc",
+            borderColor: "rgba(4, 46, 58, 0.1)",
           }}
         >
           <div className="flex items-center gap-4">
             <span>
-              Showing <strong className="text-white">{filteredResults.length}</strong> results
+              Showing <strong className="text-[#042E3A]">{filteredResults.length}</strong> results
             </span>
-            <span className="hidden sm:inline text-neutral-500">•</span>
+            <span className="hidden sm:inline text-[#042E3A]/40">•</span>
             <span className="hidden sm:inline">
-              Press <kbd className="px-1.5 py-0.5 rounded bg-black/40 text-neutral-300 border border-white/10 font-mono text-[14px]">Esc</kbd> to close
+              Press <kbd className="px-1.5 py-0.5 rounded bg-white text-[#042E3A] border border-[#042E3A]/20 font-mono text-[14px]">Esc</kbd> to close
             </span>
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="text-[#C6A15A] hover:underline font-bold uppercase text-[14.5px] tracking-wider cursor-pointer"
+            className="text-[#042E3A] hover:underline font-bold uppercase text-[14.5px] tracking-wider cursor-pointer"
           >
             Close Search
           </button>

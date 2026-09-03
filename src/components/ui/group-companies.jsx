@@ -40,21 +40,21 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal 
 
       {hasText && (
         <div className="px-4 pb-5 pt-1 text-center flex flex-col items-center">
-          <h3 className="text-[20px] font-black tracking-[0.04em] uppercase text-black leading-snug">
+          <h3 className="text-[20px] font-black tracking-[0.04em] uppercase text-[#042E3A] leading-snug">
             {name}
           </h3>
           {subtitle && (
             <>
-              <div className="w-12 h-[2px] bg-[#C6A15A] my-2.5 rounded-full flex-shrink-0" />
-              <p className="text-[15px] font-bold tracking-[0.12em] uppercase text-neutral-700">
+              <div className="w-12 h-[2px] bg-gradient-to-r from-[#042E3A] to-[#0d9488] my-2.5 rounded-full flex-shrink-0" />
+              <p className="text-[15px] font-bold tracking-[0.12em] uppercase text-[#042E3A]/80">
                 {subtitle}
               </p>
             </>
           )}
           {tagline && (
             <>
-              <div className="w-12 h-[2px] bg-[#C6A15A] my-2.5 rounded-full flex-shrink-0" />
-              <p className="text-[15px] text-neutral-700 leading-relaxed font-normal">
+              <div className="w-12 h-[2px] bg-gradient-to-r from-[#042E3A] to-[#0d9488] my-2.5 rounded-full flex-shrink-0" />
+              <p className="text-[15px] text-[#042E3A]/80 leading-relaxed font-normal">
                 {tagline}
               </p>
             </>
@@ -71,13 +71,13 @@ export default function SubsidiariesHoldingsGrid({
   const [showAllMobile, setShowAllMobile] = useState(false);
 
   return (
-    <section className="py-16 bg-neutral-50/20 font-sans" data-aos="fade-up">
+    <section className="py-16 bg-white font-sans" data-aos="fade-up">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-14" data-aos="fade-up" data-aos-delay="100">
-          <h4 className="text-[15px] font-bold tracking-[0.25em] uppercase text-neutral-700 mb-4">
+          <h4 className="text-[15px] font-bold tracking-[0.25em] uppercase text-[#0a7a8c] mb-4">
             OUR COMPANIES
           </h4>
-          <h2 className="text-xl md:text-3xl lg:text-[38px] font-black tracking-[0.05em] uppercase text-neutral-950 leading-snug md:leading-snug lg:leading-tight">
+          <h2 className="text-xl md:text-3xl lg:text-[38px] font-black tracking-[0.05em] uppercase text-[#042E3A] leading-snug md:leading-snug lg:leading-tight">
             ROYSONS holding is a Diverse group <br className="hidden sm:block" />
            of INDUSTRY-LEADING BUSINESSES
           </h2>
@@ -114,10 +114,10 @@ export default function SubsidiariesHoldingsGrid({
             <button
               type="button"
               onClick={() => setShowAllMobile(!showAllMobile)}
-              className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#C6A15A] bg-[#C6A15A] text-[#101518] text-[16px] font-extrabold uppercase tracking-widest rounded-[2px] active:scale-95 transition-all shadow-md"
+              className="flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-[#0a7a8c] bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white text-[15px] font-black uppercase tracking-widest rounded-[3px] active:scale-95 transition-all shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
             >
-              <span>{showAllMobile ? "SHOW LESS" : "VIEW ALL"}</span>
-              {showAllMobile ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+              <span className="text-white font-black">{showAllMobile ? "SHOW LESS" : "VIEW ALL"}</span>
+              {showAllMobile ? <ChevronUp size={18} className="text-white" /> : <ChevronDown size={18} className="text-white" />}
             </button>
           </div>
         )}

@@ -75,7 +75,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${cormorantGaramond.variable}`}>
-      <body suppressHydrationWarning className="min-h-full flex flex-col bg-white text-[#111]">
+      <body suppressHydrationWarning className="min-h-screen flex flex-col bg-white text-[#042E3A]">
         <Preloader />
         <AOSProvider>{children}</AOSProvider>
       </body>

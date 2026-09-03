@@ -121,18 +121,18 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
             <div className={`flex flex-wrap gap-3 transition-all duration-500 delay-200 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               <Link
                 href={activeSlide.cta1?.href || activeSlide.cta?.href || "/"}
-                className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase px-6 py-3 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+                className="rs-cta-btn inline-flex items-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] border-2 border-[#0d9488]/60 text-[12px] md:text-[13px] font-black tracking-[0.2em] uppercase px-7 py-3.5 rounded-[3px] transition-all duration-300 shadow-[0_4px_20px_rgba(10,122,140,0.45)] hover:shadow-[0_8px_28px_rgba(13,148,136,0.65)] hover:-translate-y-0.5 group"
               >
-                <span className="text-[#C6A15A] group-hover:text-black transition-colors duration-300">{activeSlide.cta1?.label || activeSlide.cta?.label}</span>
-                <ArrowRight size={13} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+                <span className="text-white group-hover:text-white transition-colors duration-300">{activeSlide.cta1?.label || activeSlide.cta?.label}</span>
+                <ArrowRight size={13} strokeWidth={2.4} className="text-white group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
               </Link>
               {activeSlide.cta2 && (
                 <Link
                   href={activeSlide.cta2.href}
-                  className="rs-cta-btn inline-flex items-center gap-3 bg-transparent border-2 border-[#C6A15A] text-[12px] md:text-[13px] font-bold tracking-[0.2em] uppercase px-6 py-3 hover:bg-[#C6A15A] hover:border-[#C6A15A] transition-all duration-300 group"
+                  className="rs-cta-btn-secondary inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border-2 border-white/80 hover:border-white text-[12px] md:text-[13px] font-black tracking-[0.2em] uppercase px-7 py-3.5 rounded-[3px] hover:bg-white text-white hover:text-[#042E3A] transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.3)] hover:-translate-y-0.5 group"
                 >
-                  <span className="text-[#C6A15A] group-hover:text-black transition-colors duration-300">{activeSlide.cta2.label}</span>
-                  <ArrowRight size={13} strokeWidth={2.4} className="text-[#C6A15A] group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+                  <span className="text-white group-hover:text-[#042E3A] transition-colors duration-300">{activeSlide.cta2.label}</span>
+                  <ArrowRight size={13} strokeWidth={2.4} className="text-white group-hover:text-[#042E3A] group-hover:translate-x-1 transition-all duration-300" />
                 </Link>
               )}
             </div>
