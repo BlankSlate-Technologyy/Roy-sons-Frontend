@@ -57,18 +57,6 @@ export default function Preloader() {
 
           {/* Center Logo Content */}
           <div className="relative z-10 flex flex-col items-center px-6 text-center">
-            {/* Top Corporate Line */}
-            <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="flex items-center gap-3 mb-5"
-            >
-              <div className="w-8 sm:w-12 h-[1px] bg-gradient-to-r from-transparent to-[#0a7a8c]/60" />
-            
-              <div className="w-8 sm:w-12 h-[1px] bg-gradient-to-l from-transparent to-[#0a7a8c]/60" />
-            </motion.div>
-
             {/* Enlarged Roy Sons Logo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.88, y: 15 }}

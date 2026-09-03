@@ -158,7 +158,7 @@ export default function FeaturedHoldingsShowcase({
             id="view-all-projects-btn"
             className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] transition-all duration-300 shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] hover:-translate-y-0.5"
           >
-            <span className="text-white font-black">View All Projects</span>
+            <span className="text-white font-black">View All</span>
             <ArrowRight size={14} className="text-white" />
           </Link>
         </div>

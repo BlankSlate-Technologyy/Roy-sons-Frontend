@@ -331,17 +331,17 @@ export default function AboutPage() {
 
       {/* 2nd Section: Chairman, ROYSONS Trust (Zeba Ijaz) */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 bg-[#101518] text-white border-t border-neutral-800 relative overflow-hidden" data-aos="fade-up">
-        {/* Subtle Ambient Gold Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#C6A15A]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle Ambient Teal Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0a7a8c]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-5xl relative z-10 flex flex-col items-center text-center">
           
           {/* Centered Picture at Top */}
           <div className="mb-8" data-aos="zoom-in" data-aos-delay="100">
-            <div className="relative w-[260px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C6A15A]/30 bg-neutral-900 group">
+            <div className="relative w-[260px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#0a7a8c]/30 bg-neutral-900 group">
               <Image
                 src="/logos/ijaz.jpeg"
-                alt="Zeba Ijaz - Chairman, ROYSONS Trust"
+                alt="Zeba Ijaz - Chairperson, ROYSONS Trust"
                 fill
                 sizes="(max-width: 768px) 320px, 360px"
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
@@ -351,17 +351,17 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Centered Badge */}
-          <div data-aos="fade-up" data-aos-delay="150" className="inline-flex items-center border border-[#C6A15A]/40 bg-white/5 px-4 py-1.5 rounded-full mb-4">
-            <span className="text-xs sm:text-[13px] font-black uppercase tracking-[0.25em] text-[#C6A15A]">
+          {/* Centered Title (Name on top) */}
+          <h2 data-aos="fade-up" data-aos-delay="150" className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3 tracking-tight">
+            Zeba Ijaz
+          </h2>
+
+          {/* Centered Badge (Label below name, reduced letter spacing) */}
+          <div data-aos="fade-up" data-aos-delay="200" className="inline-flex items-center border border-[#0a7a8c]/40 bg-white/5 px-4 py-1.5 rounded-full mb-6">
+            <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-[#0d9488]">
               Chairperson
             </span>
           </div>
-
-          {/* Centered Title */}
-          <h2 data-aos="fade-up" data-aos-delay="200" className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight">
-            Zeba Ijaz
-          </h2>
 
           {/* Centered Bio Description */}
           <p data-aos="fade-up" data-aos-delay="250" className="text-[16px] sm:text-[17px] lg:text-[18px] text-neutral-200 leading-[1.85] font-normal max-w-4xl text-center">

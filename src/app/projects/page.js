@@ -286,7 +286,7 @@ export default function ProjectsPage() {
                   id="view-all-projects-btn"
                   className="inline-flex items-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white px-9 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
                 >
-                  View All Projects <ArrowRight size={13} strokeWidth={2.5} />
+                  View All <ArrowRight size={13} strokeWidth={2.5} />
                 </Link>
               </div>
             </div>
