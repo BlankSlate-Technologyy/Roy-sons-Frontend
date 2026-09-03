@@ -441,7 +441,7 @@ export default function AboutPage() {
           {/* Centered Badge (Label below name, clear readable size) */}
           <div data-aos="fade-up" data-aos-delay="200" className="inline-flex items-center border border-[#0a7a8c]/30 bg-[#f0fdfa] px-5 py-1.5 rounded-full mb-6 shadow-xs">
             <span className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-[#0a7a8c]">
-             President
+            Chairman
             </span>
           </div>
 
@@ -449,6 +449,21 @@ export default function AboutPage() {
           <p data-aos="fade-up" data-aos-delay="250" className="text-[17px] sm:text-[19px] lg:text-[21px] text-[#042E3A]/85 leading-[1.85] font-normal max-w-4xl text-center">
             Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade. With a strong commitment to innovation, quality, and sustainable growth, the company continues to expand its capabilities and build strategic partnerships both locally and internationally. Through its diverse portfolio and professional expertise, ROYSONS aims to create lasting value for its clients, partners, and communities while contributing to economic and industrial development.
           </p>
+
+          {/* Premium Corporate Section Separator */}
+          <div className="w-full max-w-4xl mx-auto mt-14 sm:mt-16 flex items-center justify-center gap-3 sm:gap-4 select-none" data-aos="fade-up" data-aos-delay="300">
+            <div className="flex-1 h-[1.5px] bg-gradient-to-r from-transparent via-[#0a7a8c]/30 to-[#0a7a8c]/80" />
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f0fdfa] border border-[#0a7a8c]/30 shadow-[0_2px_12px_rgba(10,122,140,0.12)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0a7a8c]/50" />
+              <div className="w-2 h-2 rotate-45 bg-[#0a7a8c]/70" />
+              <div className="w-3.5 h-3.5 rotate-45 border border-[#0a7a8c] bg-white flex items-center justify-center shadow-xs">
+                <div className="w-1.5 h-1.5 bg-[#042E3A]" />
+              </div>
+              <div className="w-2 h-2 rotate-45 bg-[#0a7a8c]/70" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0a7a8c]/50" />
+            </div>
+            <div className="flex-1 h-[1.5px] bg-gradient-to-l from-transparent via-[#0a7a8c]/30 to-[#0a7a8c]/80" />
+          </div>
 
         </div>
       </section>
