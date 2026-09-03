@@ -38,33 +38,6 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
 
-  /* Global +4px Font Size Scale */
-  --text-xs: 1rem; /* 12px + 4px = 16px */
-  --text-xs--line-height: calc(16 / 16 * 1.5rem);
-  --text-sm: 1.125rem; /* 14px + 4px = 18px */
-  --text-sm--line-height: calc(18 / 16 * 1.5rem);
-  --text-base: 1.25rem; /* 16px + 4px = 20px */
-  --text-base--line-height: calc(20 / 16 * 1.5rem);
-  --text-lg: 1.375rem; /* 18px + 4px = 22px */
-  --text-lg--line-height: calc(22 / 16 * 1.5rem);
-  --text-xl: 1.5rem; /* 20px + 4px = 24px */
-  --text-xl--line-height: calc(24 / 16 * 1.4rem);
-  --text-2xl: 1.75rem; /* 24px + 4px = 28px */
-  --text-2xl--line-height: calc(28 / 16 * 1.35rem);
-  --text-3xl: 2.125rem; /* 30px + 4px = 34px */
-  --text-3xl--line-height: calc(34 / 16 * 1.3rem);
-  --text-4xl: 2.5rem; /* 36px + 4px = 40px */
-  --text-4xl--line-height: calc(40 / 16 * 1.25rem);
-  --text-5xl: 3.25rem; /* 48px + 4px = 52px */
-  --text-5xl--line-height: 1.15;
-  --text-6xl: 4rem; /* 60px + 4px = 64px */
-  --text-6xl--line-height: 1.1;
-  --text-7xl: 4.75rem; /* 72px + 4px = 76px */
-  --text-7xl--line-height: 1.05;
-  --text-8xl: 6.25rem; /* 96px + 4px = 100px */
-  --text-8xl--line-height: 1;
-  --text-9xl: 8.25rem; /* 128px + 4px = 132px */
-  --text-9xl--line-height: 1;
 }
 
 /* ─────────────────────────────────────────────

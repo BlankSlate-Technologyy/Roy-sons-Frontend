@@ -141,31 +141,31 @@ function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="flex flex-row items-start gap-4 group">
       {/* Icon Box */}
-      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 border border-neutral-800 bg-[#161c20]/60 rounded-[2px] flex items-center justify-center group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127] transition-all duration-300">
+      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-sm flex items-center justify-center group-hover:border-[#0d9488] group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:shadow-[0_6px_20px_rgba(10,122,140,0.3)] transition-all duration-300">
         <Icon
           size={24}
-          strokeWidth={1.5}
-          className="text-white group-hover:text-[#C6A15A] transition-colors duration-300"
+          strokeWidth={1.6}
+          className="text-[#0a7a8c] group-hover:text-white group-hover:scale-110 transition-all duration-300"
         />
       </div>
 
       {/* Text & Action */}
       <div className="flex-1 flex flex-col justify-start">
-        <h3 className="text-lg sm:text-xl font-black tracking-[0.05em] uppercase text-white mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
+        <h3 className="text-base sm:text-lg font-black tracking-[0.05em] uppercase text-[#042E3A] mb-2 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-[15px] sm:text-[16px] text-neutral-300 leading-relaxed font-normal mb-3">
+        <p className="text-[13px] sm:text-[14px] text-[#042E3A]/75 leading-relaxed font-normal mb-3">
           {description}
         </p>
         <Link
           href={href || "#"}
-          className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-bold tracking-[0.16em] uppercase text-[#C6A15A] hover:text-white transition-all duration-300 group/link"
+          className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-bold tracking-[0.16em] uppercase text-[#0a7a8c] hover:text-[#0d9488] transition-all duration-300 group/link"
         >
           <span>LEARN MORE</span>
           <ArrowRight
             size={12}
             strokeWidth={2}
-            className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#C6A15A]"
+            className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#0a7a8c]"
           />
         </Link>
       </div>
@@ -189,7 +189,7 @@ function FormField({ label, placeholder, type = "text", required = false, id, va
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+        className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
       />
     </div>
   );
@@ -212,17 +212,17 @@ function FormSelect({ label, options, required = false, id, value, onSelect }) {
       >
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full bg-neutral-950 border ${isOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-3.5 py-2.5 text-xs sm:text-sm text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
+          className={`w-full bg-[#f0fdfa] border ${isOpen ? 'border-[#0a7a8c] ring-2 ring-[#0a7a8c]/20' : 'border-[#0a7a8c]/30'} px-3.5 py-2.5 text-xs sm:text-sm text-[#042E3A] font-medium outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
         >
           <span>{value || 'Select a service'}</span>
-          <ChevronDown size={14} className={`text-[#a3a3a3] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+          <ChevronDown size={14} className={`text-[#0a7a8c] transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
         </div>
 
         {isOpen && (
-          <div className="absolute z-50 w-full mt-1 bg-neutral-950 border border-neutral-800 rounded-[2px] max-h-60 overflow-y-auto shadow-xl">
+          <div className="absolute z-50 w-full mt-1 bg-white border border-[#0a7a8c]/30 rounded-[2px] max-h-60 overflow-y-auto shadow-xl">
             <div
               onClick={() => { onSelect(''); setIsOpen(false); }}
-              className="px-3.5 py-2 text-xs sm:text-sm text-[#dfb753] opacity-50 hover:bg-[#dfb753] hover:text-black hover:opacity-100 cursor-pointer transition-colors"
+              className="px-3.5 py-2 text-xs sm:text-sm text-[#042E3A]/50 hover:bg-[#0a7a8c] hover:text-white cursor-pointer transition-colors"
             >
               Select a service
             </div>
@@ -230,7 +230,7 @@ function FormSelect({ label, options, required = false, id, value, onSelect }) {
               <div
                 key={opt}
                 onClick={() => { onSelect(opt); setIsOpen(false); }}
-                className="px-3.5 py-2 text-xs sm:text-sm text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
+                className="px-3.5 py-2 text-xs sm:text-sm text-[#042E3A] hover:bg-[#0a7a8c] hover:text-white cursor-pointer transition-colors"
               >
                 {opt}
               </div>
@@ -342,16 +342,16 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 bg-[#101518] font-sans border-t border-b border-neutral-800/60">
+      <section className="py-16 sm:py-24 bg-white font-sans border-t border-b border-[#0a7a8c]/15">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14 sm:mb-20">
-            <h4 className="text-xs sm:text-sm font-black tracking-[0.28em] uppercase text-[#C6A15A] mb-3.5">
+            <h4 className="text-xs sm:text-sm font-black tracking-[0.28em] uppercase text-[#0a7a8c] mb-3.5">
               WHAT WE OFFER
             </h4>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-[0.16em] text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-[0.16em] text-[#042E3A]">
               Our Core Services
             </h2>
-            <div className="mx-auto mt-5 h-[3.5px] w-16 bg-[#C6A15A]" />
+            <div className="mx-auto mt-5 h-[3.5px] w-16 bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488]" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
@@ -375,13 +375,13 @@ export default function ServicesPage() {
         <div className="max-w-screen-xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             <div className="lg:w-[300px] flex-shrink-0">
-              <div className="w-10 h-10 bg-black rounded-sm flex items-center justify-center mb-5">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#042E3A] to-[#0a7a8c] rounded-sm flex items-center justify-center mb-5 shadow-sm">
                 <MessageSquare size={18} className="text-white" strokeWidth={1.8} />
               </div>
               <h2 className="text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight mb-3 leading-snug">
                 Request a Query
               </h2>
-              <div className="h-[3px] w-10 bg-neutral-950 mb-4" />
+              <div className="h-[3px] w-10 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-4" />
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
                 Have a question or need more information about our services? Fill
                 out the form and our team will get back to you shortly.
@@ -392,7 +392,7 @@ export default function ServicesPage() {
               {formSubmitted ? (
                 <div className="flex items-center justify-center h-full min-h-[280px] bg-white border border-neutral-200 rounded-[3px]">
                   <div className="text-center">
-                    <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-14 h-14 bg-[#0a7a8c] rounded-full flex items-center justify-center mx-auto mb-4">
                       <ArrowRight size={22} className="text-white" />
                     </div>
                     <p className="text-sm sm:text-base font-black uppercase tracking-widest text-neutral-950">
@@ -472,7 +472,7 @@ export default function ServicesPage() {
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px] resize-none"
+                      className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px] resize-none"
                     />
                   </div>
 
@@ -487,7 +487,7 @@ export default function ServicesPage() {
                       type="submit"
                       id="query-submit-btn"
                       disabled={isSubmitting}
-                      className="inline-flex items-center gap-2.5 bg-[#dfb753] hover:bg-[#c6a15a] disabled:bg-neutral-400 text-neutral-950 font-black px-8 py-3 text-xs uppercase tracking-[0.16em] transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
+                      className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] disabled:bg-neutral-400 text-white font-black px-8 py-3 text-xs uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] cursor-pointer disabled:cursor-not-allowed shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
                     >
                       {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={13} strokeWidth={2.5} />
                     </button>

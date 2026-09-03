@@ -111,18 +111,18 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="relative px-6 z-20 -mt-10" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="bg-white border border-neutral-200 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.04)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-neutral-205">
+          <div className="bg-white border border-neutral-200 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.04)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200">
             
             {/* Our Office */}
             <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-              <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
+              <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
                 <MapPin size={22} strokeWidth={2} />
               </div>
               <div>
-                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
+                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors">
                   Our Office
                 </h4>
-                <p className="text-[13.5px] text-neutral-600 leading-relaxed">
+                <p className="text-[13px] text-neutral-600 leading-relaxed">
                   1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
                 </p>
               </div>
@@ -130,14 +130,14 @@ export default function ContactPage() {
 
             {/* Call Us */}
             <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-              <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
+              <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
                 <Phone size={22} strokeWidth={2} />
               </div>
               <div>
-                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
+                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors">
                   Call Us
                 </h4>
-                <div className="text-[13.5px] text-neutral-600 leading-relaxed space-y-1">
+                <div className="text-[13px] text-neutral-600 leading-relaxed space-y-1">
                   <p className="font-bold text-neutral-900">Phone: 0092-42-38924737</p>
                   <p>WhatsApp: 0092-304-7527498</p>
                   <p className="lg:pl-[78px]">0092-321-8431665</p>
@@ -147,14 +147,14 @@ export default function ContactPage() {
 
             {/* Email Us */}
             <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-              <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
+              <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
                 <Mail size={22} strokeWidth={2} />
               </div>
               <div>
-                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
+                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors">
                   Email Us
                 </h4>
-                <div className="text-[13.5px] text-neutral-600 leading-relaxed space-y-1">
+                <div className="text-[13px] text-neutral-600 leading-relaxed space-y-1">
                   <p className="text-neutral-900 font-bold">info@roysons.org</p>
                   <p>support@roysons.org</p>
                 </div>
@@ -163,14 +163,14 @@ export default function ContactPage() {
 
             {/* Business Hours */}
             <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-              <div className="w-12 h-12 bg-neutral-950 border-2 border-[#dfb753] rounded-full flex items-center justify-center flex-shrink-0 text-[#dfb753] transition-all duration-300 group-hover:bg-[#dfb753] group-hover:text-black">
+              <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
                 <Clock size={22} strokeWidth={2} />
               </div>
               <div>
-                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2">
+                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors">
                   Business Hours
                 </h4>
-                <div className="text-[13.5px] text-neutral-600 leading-relaxed space-y-1">
+                <div className="text-[13px] text-neutral-600 leading-relaxed space-y-1">
                   <p>Monday - Friday</p>
                   <p className="font-bold text-neutral-900">9:00 AM - 6:00 PM</p>
                   <p>Saturday - 9:00 AM - 1:00 PM</p>
@@ -268,7 +268,7 @@ export default function ContactPage() {
                       >
                         <div
                           onClick={() => setIsSubjectOpen(!isSubjectOpen)}
-                          className={`w-full bg-neutral-950 border ${isSubjectOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-4 py-3 text-[12px] text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
+                          className={`w-full bg-[#f0fdfa] border ${isSubjectOpen ? 'border-[#0a7a8c] ring-2 ring-[#0a7a8c]/20' : 'border-[#0a7a8c]/30'} px-4 py-3 text-[12px] text-[#042E3A] font-medium outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
                         >
                           <span>{formData.subject ? {
                             general: 'General Inquiries',
@@ -276,10 +276,10 @@ export default function ContactPage() {
                             partnership: 'Partnership Opportunities',
                             support: 'Support & Assistance'
                           }[formData.subject] : 'Select a subject'}</span>
-                          <ChevronDown size={14} className={`text-[#a3a3a3] transition-transform duration-300 ${isSubjectOpen ? 'rotate-180' : ''}`} />
+                          <ChevronDown size={14} className={`text-[#0a7a8c] transition-transform duration-300 ${isSubjectOpen ? 'rotate-180' : ''}`} />
                         </div>
                         {isSubjectOpen && (
-                          <div className="absolute z-50 w-full mt-1 bg-neutral-950 border border-neutral-800 rounded-[2px] shadow-xl">
+                          <div className="absolute z-50 w-full mt-1 bg-white border border-[#0a7a8c]/30 rounded-[2px] shadow-xl overflow-hidden">
                             {[
                               { value: 'general', label: 'General Inquiries' },
                               { value: 'services', label: 'Service Information' },
@@ -289,7 +289,7 @@ export default function ContactPage() {
                               <div
                                 key={opt.value}
                                 onClick={() => { setFormData({ ...formData, subject: opt.value }); setIsSubjectOpen(false); }}
-                                className="px-4 py-3 text-[12px] text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
+                                className="px-4 py-3 text-[12px] text-[#042E3A] hover:bg-[#0a7a8c] hover:text-white cursor-pointer transition-colors"
                               >
                                 {opt.label}
                               </div>
@@ -389,14 +389,14 @@ export default function ContactPage() {
                   href="https://maps.app.goo.gl/skeG9WX8Vxfxp2X29" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-start gap-3 bg-neutral-50 border border-neutral-200 p-3 hover:border-black transition-colors rounded-[2px]"
+                  className="flex items-start gap-3 bg-[#f0fdfa] border border-[#0a7a8c]/25 p-3 hover:border-[#0a7a8c] transition-colors rounded-[2px]"
                 >
-                  <MapPin size={16} className="text-neutral-500 flex-shrink-0 mt-0.5" />
+                  <MapPin size={16} className="text-[#0a7a8c] flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="text-[11.5px] font-black uppercase tracking-wider text-neutral-950">
                       Roy Sons Pvt. Ltd.
                     </p>
-                    <p className="text-[10px] text-neutral-500 leading-tight mt-0.5">
+                    <p className="text-[10px] text-neutral-600 leading-tight mt-0.5">
                       1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Lahore.
                     </p>
                   </div>
@@ -416,25 +416,25 @@ export default function ContactPage() {
                 {/* Checklist */}
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-neutral-950 flex-shrink-0" strokeWidth={2.2} />
+                    <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
                     <span className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-800">
                       General Inquiries
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-neutral-950 flex-shrink-0" strokeWidth={2.2} />
+                    <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
                     <span className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-800">
                       Service Information
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-neutral-950 flex-shrink-0" strokeWidth={2.2} />
+                    <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
                     <span className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-800">
                       Partnership Opportunities
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-neutral-950 flex-shrink-0" strokeWidth={2.2} />
+                    <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
                     <span className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-800">
                       Support & Assistance
                     </span>

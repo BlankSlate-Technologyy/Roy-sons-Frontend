@@ -81,7 +81,7 @@ const STATS = [
 
 function ProjectCard({ image, category, title, description, href }) {
   return (
-    <div className="group flex flex-col bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[#C6A15A] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500">
+    <div className="group flex flex-col bg-white border border-neutral-200 rounded-2xl overflow-hidden hover:border-[#0a7a8c] hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500">
       <div className="relative aspect-[4/3] overflow-hidden bg-neutral-100">
         <Image
           src={image}
@@ -93,10 +93,10 @@ function ProjectCard({ image, category, title, description, href }) {
       </div>
 
       <div className="p-6 flex flex-col flex-1">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#C6A15A] mb-1.5">
+        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a7a8c] mb-1.5">
           {category}
         </span>
-        <h3 className="text-[15px] font-black uppercase tracking-tight text-neutral-950 mb-2 leading-snug group-hover:text-[#C6A15A] transition-colors">
+        <h3 className="text-[15px] font-black uppercase tracking-tight text-neutral-950 mb-2 leading-snug group-hover:text-[#0a7a8c] transition-colors">
           {title}
         </h3>
         <p className="text-[12.5px] text-neutral-600 leading-relaxed flex-1 mb-5">
@@ -104,7 +104,7 @@ function ProjectCard({ image, category, title, description, href }) {
         </p>
         <Link
           href={href}
-          className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.16em] text-neutral-950 hover:text-[#C6A15A] self-start transition-all duration-200 group-hover:translate-x-1"
+          className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.16em] text-neutral-950 hover:text-[#0a7a8c] self-start transition-all duration-200 group-hover:translate-x-1"
         >
           <span>View Project Details</span>
           <ArrowRight size={12} strokeWidth={2.5} />
@@ -272,7 +272,7 @@ export default function ProjectsPage() {
               <h2 className="text-[16px] font-black uppercase tracking-[0.18em] text-neutral-950 mb-1">
                 Featured Projects
               </h2>
-              <div className="h-[3px] w-10 bg-neutral-950 mb-8" />
+              <div className="h-[3px] w-10 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-8" />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {FEATURED_PROJECTS.map((project, idx) => (
@@ -284,7 +284,7 @@ export default function ProjectsPage() {
                 <Link
                   href="/projects/all"
                   id="view-all-projects-btn"
-                  className="inline-flex items-center gap-3 bg-black text-white px-9 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] hover:bg-neutral-800 transition-colors rounded-[2px]"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white px-9 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
                 >
                   View All Projects <ArrowRight size={13} strokeWidth={2.5} />
                 </Link>
@@ -294,8 +294,8 @@ export default function ProjectsPage() {
             <div className="lg:w-[300px] flex-shrink-0">
               <div className="bg-white border border-neutral-200 p-6 sticky top-24">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 bg-[#dfb753] rounded-sm flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:bg-neutral-950 group cursor-pointer">
-                    <Shield size={17} className="text-black transition-colors duration-300 group-hover:text-[#dfb753]" strokeWidth={1.8} />
+                  <div className="w-9 h-9 bg-[#f0fdfa] border border-[#0a7a8c]/30 rounded-sm flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:bg-gradient-to-br hover:from-[#042E3A] hover:to-[#0a7a8c] group cursor-pointer">
+                    <Shield size={17} className="text-[#0a7a8c] transition-colors duration-300 group-hover:text-white" strokeWidth={1.8} />
                   </div>
                   <div>
                     <h3 className="text-[13px] font-black uppercase tracking-[0.1em] text-neutral-950 leading-tight">
@@ -310,7 +310,7 @@ export default function ProjectsPage() {
 
                 {submitted ? (
                   <div className="flex flex-col items-center justify-center py-8 gap-3">
-                    <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-[#0a7a8c] rounded-full flex items-center justify-center">
                       <ArrowRight size={16} className="text-white" />
                     </div>
                     <p className="text-[11px] font-black uppercase tracking-widest text-neutral-950 text-center">
@@ -369,7 +369,7 @@ export default function ProjectsPage() {
                         required
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-3 py-2.5 text-[11.5px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px] resize-none"
+                        className="w-full bg-white border border-neutral-200 px-3 py-2.5 text-[11.5px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px] resize-none"
                       />
                     </div>
 
@@ -383,7 +383,7 @@ export default function ProjectsPage() {
                       type="submit"
                       id="sidebar-query-submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2.5 bg-black hover:bg-neutral-800 disabled:bg-neutral-400 text-white py-3 text-[10px] font-black uppercase tracking-[0.18em] transition-colors rounded-[2px] cursor-pointer disabled:cursor-not-allowed"
+                      className="w-full flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] disabled:bg-neutral-400 text-white py-3 text-[10px] font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] cursor-pointer disabled:cursor-not-allowed shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
                     >
                       {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={12} strokeWidth={2.5} />
                     </button>
@@ -400,23 +400,23 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="py-14 bg-neutral-50 border-t border-neutral-100">
+      <section className="py-14 bg-[#f0fdfa] border-t border-[#0a7a8c]/15">
         <div className="max-w-screen-xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {STATS.map(({ icon: Icon, count, label }, idx) => (
               <div key={idx} className="flex items-center gap-4 group cursor-pointer">
-                <div className="w-14 h-14 rounded-full bg-[#dfb753] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-neutral-950 group-hover:border-2 group-hover:border-[#dfb753]">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#042E3A] via-[#075d6d] to-[#0a7a8c] border-2 border-[#0d9488]/40 shadow-[0_4px_16px_rgba(10,122,140,0.3)] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_22px_rgba(13,148,136,0.5)]">
                   <Icon
-                    size={28}
-                    strokeWidth={1.4}
-                    className="text-black transition-colors duration-300 group-hover:text-[#dfb753]"
+                    size={26}
+                    strokeWidth={1.8}
+                    className="text-white transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
                 <div>
-                  <p className="text-3xl font-black text-neutral-950 leading-none">
+                  <p className="text-2xl sm:text-3xl font-black text-[#042E3A] leading-none">
                     {count}
                   </p>
-                  <p className="text-[11px] text-neutral-500 font-medium tracking-wide mt-1">
+                  <p className="text-[11px] text-[#042E3A]/75 font-medium tracking-wide mt-1">
                     {label}
                   </p>
                 </div>

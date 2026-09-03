@@ -438,12 +438,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/government-sector/federal-ministries"
               data-aos="fade-up"
               data-aos-delay="100"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Landmark className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Landmark className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Federal Ministries
               </h4>
             </Link>
@@ -453,12 +453,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/government-sector/provincial-governments"
               data-aos="fade-up"
               data-aos-delay="150"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <MapPin className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <MapPin className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Provincial Governments
               </h4>
             </Link>
@@ -468,12 +468,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/government-sector/armed-forces"
               data-aos="fade-up"
               data-aos-delay="200"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Shield className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Shield className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Armed Forces
               </h4>
             </Link>
@@ -483,12 +483,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/government-sector/universities"
               data-aos="fade-up"
               data-aos-delay="250"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <GraduationCap className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <GraduationCap className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Universities
               </h4>
             </Link>
@@ -498,12 +498,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/government-sector/research-institutes"
               data-aos="fade-up"
               data-aos-delay="300"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Microscope className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Microscope className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Research Institutes
               </h4>
             </Link>
@@ -513,12 +513,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/government-sector/public-sector-organizations"
               data-aos="fade-up"
               data-aos-delay="350"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Network className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Network className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Public Sector Organizations
               </h4>
             </Link>
@@ -550,12 +550,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/private-sector/hospitals"
               data-aos="fade-up"
               data-aos-delay="100"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Hospital className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Hospital className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Hospitals
               </h4>
             </Link>
@@ -565,12 +565,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/private-sector/pharmaceutical-industries"
               data-aos="fade-up"
               data-aos-delay="150"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Pill className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Pill className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Pharmaceutical Industries
               </h4>
             </Link>
@@ -580,12 +580,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/private-sector/manufacturing-industries"
               data-aos="fade-up"
               data-aos-delay="200"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Layers className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Layers className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Manufacturing Industries
               </h4>
             </Link>
@@ -595,12 +595,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/private-sector/construction-companies"
               data-aos="fade-up"
               data-aos-delay="250"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <HardHat className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <HardHat className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Construction Companies
               </h4>
             </Link>
@@ -610,12 +610,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/private-sector/agricultural-enterprises"
               data-aos="fade-up"
               data-aos-delay="300"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Sprout className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Sprout className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Agricultural Enterprises
               </h4>
             </Link>
@@ -625,12 +625,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/private-sector/technology-companies"
               data-aos="fade-up"
               data-aos-delay="350"
-              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-neutral-50 border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Monitor className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Monitor className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Technology Companies
               </h4>
             </Link>
@@ -662,12 +662,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/international-clients/importers"
               data-aos="fade-up"
               data-aos-delay="100"
-              className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Globe className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Globe className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Importers
               </h4>
             </Link>
@@ -677,12 +677,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/international-clients/exporters"
               data-aos="fade-up"
               data-aos-delay="150"
-              className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Users className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Users className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Exporters
               </h4>
             </Link>
@@ -692,12 +692,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/international-clients/manufacturers"
               data-aos="fade-up"
               data-aos-delay="200"
-              className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Star className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Star className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Manufacturers
               </h4>
             </Link>
@@ -707,12 +707,12 @@ INDUSTRY-LEADING BUSINESSES
               href="/international-clients/development-agencies"
               data-aos="fade-up"
               data-aos-delay="250"
-              className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-neutral-950 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
+              className="flex flex-col items-center gap-4 bg-white border border-neutral-200 p-6 rounded-sm hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer no-underline select-none"
             >
-              <div className="w-16 h-16 bg-neutral-950 flex items-center justify-center rounded-sm shadow-sm">
-                <Lightbulb className="text-[#dfb753]" size={32} strokeWidth={1.5} />
+              <div className="w-16 h-16 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm shadow-sm transition-colors group-hover:bg-[#0a7a8c]">
+                <Lightbulb className="text-[#0a7a8c] group-hover:text-white transition-colors" size={32} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#dfb753] transition-colors">
+              <h4 className="text-[14px] font-black uppercase tracking-wider text-neutral-950 text-center leading-tight group-hover:text-[#0a7a8c] transition-colors">
                 Development Agencies
               </h4>
             </Link>
@@ -728,8 +728,8 @@ INDUSTRY-LEADING BUSINESSES
             {/* Vision */}
             <div className="bg-neutral-950 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300" data-aos="fade-right" data-aos-delay="100">
               <div>
-                <div className="w-12 h-12 border border-neutral-800 flex items-center justify-center mb-5">
-                  <Target size={24} className="text-[#dfb753]" strokeWidth={1.5} />
+                <div className="w-12 h-12 border border-[#0a7a8c]/40 bg-[#f0fdfa]/5 flex items-center justify-center mb-5 rounded-sm">
+                  <Target size={24} className="text-[#0d9488]" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-[20px] font-black uppercase tracking-[0.14em] text-white mb-6">
                   Vision Statement
@@ -739,14 +739,14 @@ INDUSTRY-LEADING BUSINESSES
                   sustainable and technology-driven solutions across multiple industries.
                 </p>
               </div>
-              <div className="mt-12 h-1 w-20 bg-[#dfb753]" />
+              <div className="mt-12 h-1 w-20 bg-gradient-to-r from-[#042E3A] to-[#0d9488]" />
             </div>
 
             {/* Mission */}
             <div className="bg-neutral-950 border border-neutral-800 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300" data-aos="fade-left" data-aos-delay="150">
               <div>
-                <div className="w-12 h-12 flex items-center mb-5">
-                  <Award size={24} className="text-[#dfb753]" strokeWidth={1.5} />
+                <div className="w-12 h-12 border border-[#0a7a8c]/40 bg-[#f0fdfa]/5 flex items-center justify-center mb-5 rounded-sm">
+                  <Award size={24} className="text-[#0d9488]" strokeWidth={1.5} />
                 </div>
                 <h3 className="text-[20px] font-black uppercase tracking-[0.14em] text-white mb-6">
                   Mission Statement
@@ -757,7 +757,7 @@ INDUSTRY-LEADING BUSINESSES
                   shareholders and society.
                 </p>
               </div>
-              <div className="mt-12 h-1 w-20 bg-[#dfb753]" />
+              <div className="mt-12 h-1 w-20 bg-gradient-to-r from-[#042E3A] to-[#0d9488]" />
             </div>
           </div>
         </div>
@@ -823,12 +823,12 @@ INDUSTRY-LEADING BUSINESSES
                   href={div.href || "/services"}
                   data-aos="fade-up"
                   data-aos-delay={staggerDelay}
-                  className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-[#C6A15A] hover:shadow-sm transition-all duration-300 cursor-pointer group"
+                  className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:border-[#0a7a8c] hover:shadow-sm transition-all duration-300 cursor-pointer group"
                 >
-                  <div className="w-12 h-12 bg-neutral-950 border border-neutral-800 flex items-center justify-center rounded-sm transition-all duration-300 group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127]">
-                    <Icon size={22} className="text-white group-hover:text-[#C6A15A] transition-colors duration-300" strokeWidth={1.5} />
+                  <div className="w-12 h-12 bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center rounded-sm transition-all duration-300 group-hover:border-[#0a7a8c] group-hover:bg-[#0a7a8c]">
+                    <Icon size={22} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
                   </div>
-                  <h4 className="text-[15px] font-black uppercase tracking-wider text-neutral-950 group-hover:text-[#C6A15A] transition-colors duration-300 leading-tight">
+                  <h4 className="text-[15px] font-black uppercase tracking-wider text-neutral-950 group-hover:text-[#0a7a8c] transition-colors duration-300 leading-tight">
                     {div.title}
                   </h4>
                 </Link>
@@ -850,7 +850,7 @@ INDUSTRY-LEADING BUSINESSES
               <h2 className="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight uppercase tracking-wider">
               Why ROYSONS Pvt.Ltd.?
               </h2>
-              <div className="h-1 w-14 bg-[#dfb753] mb-6 mx-auto" />
+              <div className="h-1 w-14 bg-gradient-to-r from-[#042E3A] to-[#0d9488] mb-6 mx-auto" />
               <p className="text-[12.5px] text-neutral-400 leading-relaxed font-light">
                 Our operations are founded on trust, domain expertise, and a multi-tiered supply network. 
                 We combine government-certified credentials with structured global partnerships to deliver turnkey performance.
@@ -866,7 +866,7 @@ INDUSTRY-LEADING BUSINESSES
                     data-aos-delay={(index % 2) * 100 + 100}
                     className="flex items-center gap-3 border-b border-neutral-800 pb-3 flex-row"
                   >
-                    <CheckCircle2 size={16} className="text-[#dfb753] flex-shrink-0" strokeWidth={2} />
+                    <CheckCircle2 size={16} className="text-[#0d9488] flex-shrink-0" strokeWidth={2} />
                     <span className="text-[12px] font-bold uppercase tracking-wider text-white">
                       {point}
                     </span>
@@ -885,13 +885,13 @@ INDUSTRY-LEADING BUSINESSES
           <div className="bg-white border border-neutral-200 overflow-hidden flex flex-col lg:flex-row rounded-sm" data-aos="zoom-in" data-aos-delay="100">
             <div className="lg:w-1/3 bg-neutral-50 p-10 lg:p-12 border-r border-neutral-200 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="150">
               <div>
-                <div className="w-10 h-10 bg-black rounded-sm flex items-center justify-center mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-[#042E3A] to-[#0a7a8c] rounded-sm flex items-center justify-center mb-6 shadow-sm">
                   <MessageSquare className="text-white" size={20} />
                 </div>
                 <h3 className="text-[20px] font-black text-neutral-950 tracking-tight mb-4 uppercase">
                   Request Consultation
                 </h3>
-                <div className="h-[2px] w-8 bg-neutral-950 mb-6" />
+                <div className="h-[2px] w-8 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-6" />
                 <p className="text-[12.5px] text-neutral-500 leading-relaxed font-normal mb-8">
                   Get in touch with our experts to discuss your requirements. We offer bespoke services and turnkey operations tailored to your business sector.
                 </p>
@@ -922,7 +922,7 @@ INDUSTRY-LEADING BUSINESSES
             <div className="flex-1 p-10 lg:p-12">
               {formSubmitted ? (
                 <div className="flex flex-col items-center justify-center h-full min-h-[300px] text-center">
-                  <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center mb-4">
+                  <div className="w-14 h-14 bg-[#0a7a8c] rounded-full flex items-center justify-center mb-4">
                     <CheckCircle2 size={24} className="text-white" />
                   </div>
                   <h4 className="text-[14px] font-black uppercase tracking-wider text-black">
@@ -945,7 +945,7 @@ INDUSTRY-LEADING BUSINESSES
                         required
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -958,7 +958,7 @@ INDUSTRY-LEADING BUSINESSES
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
                       />
                     </div>
                   </div>
@@ -973,7 +973,7 @@ INDUSTRY-LEADING BUSINESSES
                         placeholder="Company name" 
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -983,17 +983,17 @@ INDUSTRY-LEADING BUSINESSES
                       <div className="relative" tabIndex={0} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setIsDropdownOpen(false); }}>
                         <div
                           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                          className={`w-full bg-neutral-950 border ${isDropdownOpen ? 'border-[#dfb753]' : 'border-neutral-800'} px-4 py-3 text-[12px] text-[#dfb753] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
+                          className={`w-full bg-[#f0fdfa] border ${isDropdownOpen ? 'border-[#0a7a8c] ring-2 ring-[#0a7a8c]/20' : 'border-[#0a7a8c]/30'} px-4 py-3 text-[12px] text-[#042E3A] font-medium outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
                         >
                           <span>{formData.division ? STRATEGIC_DIVISIONS.find(d => d.title.toLowerCase().replace(/\s+/g, "-") === formData.division)?.title : "Select a division"}</span>
-                          <ChevronRight size={13} className={`text-[#a3a3a3] transition-transform duration-300 ${isDropdownOpen ? '-rotate-90' : 'rotate-90'}`} />
+                          <ChevronRight size={13} className={`text-[#0a7a8c] transition-transform duration-300 ${isDropdownOpen ? '-rotate-90' : 'rotate-90'}`} />
                         </div>
                         
                         {isDropdownOpen && (
-                          <div className="absolute z-50 w-full mt-1 bg-neutral-950 border border-neutral-800 rounded-[2px] max-h-60 overflow-y-auto shadow-xl">
+                          <div className="absolute z-50 w-full mt-1 bg-white border border-[#0a7a8c]/30 rounded-[2px] max-h-60 overflow-y-auto shadow-xl">
                             <div 
                               onClick={() => { setFormData({ ...formData, division: "" }); setIsDropdownOpen(false); }}
-                              className="px-4 py-3 text-[12px] text-[#dfb753] opacity-50 hover:bg-[#dfb753] hover:text-black hover:opacity-100 cursor-pointer transition-colors"
+                              className="px-4 py-3 text-[12px] text-[#042E3A]/50 hover:bg-[#0a7a8c] hover:text-white cursor-pointer transition-colors"
                             >
                               Select a division
                             </div>
@@ -1004,7 +1004,7 @@ INDUSTRY-LEADING BUSINESSES
                                   setFormData({ ...formData, division: division.title.toLowerCase().replace(/\s+/g, "-") });
                                   setIsDropdownOpen(false);
                                 }}
-                                className="px-4 py-3 text-[12px] text-[#dfb753] hover:bg-[#dfb753] hover:text-black cursor-pointer transition-colors"
+                                className="px-4 py-3 text-[12px] text-[#042E3A] hover:bg-[#0a7a8c] hover:text-white cursor-pointer transition-colors"
                               >
                                 {division.title}
                               </div>
@@ -1023,7 +1023,7 @@ INDUSTRY-LEADING BUSINESSES
 
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[10px] font-bold text-neutral-950 uppercase tracking-[0.14em]">
-                      Your Requirements / Description <span className="text-red-555">*</span>
+                      Your Requirements / Description <span className="text-red-500">*</span>
                     </label>
                     <textarea 
                       rows={5}
@@ -1031,7 +1031,7 @@ INDUSTRY-LEADING BUSINESSES
                       placeholder="Outline your project scope or equipment requirements..."
                       value={formData.requirements}
                       onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-                      className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors resize-none rounded-[2px]"
+                      className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors resize-none rounded-[2px]"
                     />
                   </div>
 
@@ -1042,7 +1042,7 @@ INDUSTRY-LEADING BUSINESSES
                   )}
 
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-2">
-                    <div className="flex items-center gap-2 text-neutral-450 text-[10.5px]">
+                    <div className="flex items-center gap-2 text-neutral-400 text-[10.5px]">
                       <Lock size={12} />
                       <span>All requests are handled under strict confidentiality protocols.</span>
                     </div>
