@@ -1,41 +1,42 @@
 import Link from "next/link";
-import { Headphones, ArrowRight } from "lucide-react";
 
 export default function ConsultationBanner({
-  title = "Let's build something great together.",
-  subtitle = "HAVE A PROJECT IN MIND?",
-  buttonLabel = "REQUEST A CONSULTATION",
+  title = "Ready to Build the Future?",
+  subtitle = "Partner with ROYSONS.",
+  buttonLabel = "Request Consultation",
   href = "/contact",
 }) {
   return (
-    <section className="bg-gradient-to-r from-[#f0fdfa] via-white to-[#f0fdfa] border-y border-[#0a7a8c]/20 py-14 font-sans shadow-[0_4px_20px_rgba(10,122,140,0.05)]" data-aos="zoom-in" data-aos-delay="100">
-      <div className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-        
-        <div className="flex items-center gap-5 w-full md:w-auto" data-aos="fade-right" data-aos-delay="150">
-          <div className="w-14 h-14 bg-[#f0fdfa] rounded-full flex items-center justify-center flex-shrink-0 border border-[#0a7a8c]/30 shadow-sm">
-            <Headphones size={24} className="text-[#0a7a8c]" strokeWidth={2} />
-          </div>
-          <div>
-            <p className="text-[14px] font-bold tracking-[0.25em] uppercase text-[#0a7a8c] mb-1">
-              {subtitle}
-            </p>
-            <h2 className="text-xl md:text-2xl font-black text-[#042E3A] tracking-tight leading-tight">
-              {title}
+    <section className="py-10 sm:py-16 px-4 sm:px-6 bg-white font-sans overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
+      <div className="max-w-screen-xl mx-auto">
+        <div 
+          className="relative overflow-hidden rounded-2xl sm:rounded-3xl py-12 sm:py-16 lg:py-20 px-6 sm:px-12 text-center flex flex-col items-center justify-center border border-white/20 shadow-xl"
+          style={{
+            background: "linear-gradient(90deg, #0077b6 0%, #009688 50%, #02b875 100%)",
+          }}
+        >
+          {/* Subtle Ambient Light Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+
+          {/* Heading Content */}
+          <div className="relative z-10 max-w-3xl mx-auto mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white leading-[1.25] tracking-tight">
+              {title && <span className="block">{title}</span>}
+              {subtitle && <span className="block mt-1 sm:mt-2">{subtitle}</span>}
             </h2>
           </div>
-        </div>
 
-        <Link
-          href={href}
-          id="cta-consultation-btn"
-          data-aos="fade-left"
-          data-aos-delay="200"
-          className="rs-cta-btn flex-shrink-0 inline-flex items-center gap-3.5 border-2 border-[#0a7a8c] bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white px-8 py-4 text-[13px] font-black tracking-[0.2em] uppercase rounded-[3px] transition-all duration-300 shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] hover:-translate-y-0.5 group"
-        >
-          <span className="text-white font-black transition-colors duration-300">{buttonLabel}</span>
-          <ArrowRight size={13} strokeWidth={2.4} className="text-white group-hover:translate-x-1 transition-all duration-300" />
-        </Link>
-        
+          {/* White Pill Action Button */}
+          <div className="relative z-10">
+            <Link
+              href={href}
+              id="cta-consultation-pill-btn"
+              className="btn-white-pill inline-flex items-center justify-center bg-white text-[#042630] font-bold text-[14px] sm:text-[15px] px-8 sm:px-10 py-3.5 sm:py-4 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300"
+            >
+              <span>{buttonLabel}</span>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

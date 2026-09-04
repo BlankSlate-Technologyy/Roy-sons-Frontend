@@ -59,19 +59,19 @@ export default function GroupCompaniesPage() {
       <CompanyLogosGrid />
 
       {/* Regional Offices */}
-      <section className="py-20 px-6 bg-neutral-950 text-white border-t border-neutral-850">
+      <section className="py-16 sm:py-20 px-6 bg-white border-t border-neutral-200">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch">
 
             <div className="lg:w-2/5 flex flex-col justify-center">
-              <span className="text-[10px] font-black tracking-[0.24em] text-neutral-450 uppercase mb-3 block">
+              <span className="text-[12px] font-black tracking-[0.24em] text-[#0a7a8c] uppercase mb-3 block">
                 NATIONWIDE NETWORK
               </span>
-              <h2 className="text-3xl font-black text-white leading-tight uppercase tracking-wider mb-6">
+              <h2 className="text-3xl lg:text-4xl font-black text-[#042E3A] leading-tight uppercase tracking-wider mb-4">
                 Regional Presence
               </h2>
-              <div className="h-1 w-12 bg-white mb-6" />
-              <p className="text-[12.5px] text-neutral-400 leading-relaxed font-light">
+              <div className="h-1 w-14 bg-gradient-to-r from-[#0077b6] to-[#02b875] mb-6 rounded-full" />
+              <p className="text-[15px] text-neutral-700 leading-relaxed font-normal">
                 Our companies coordinate operations through specialized regional offices that manage government pipelines,
                 port imports, trade customs, and local client consultancies.
               </p>
@@ -80,15 +80,15 @@ export default function GroupCompaniesPage() {
             <div className="flex-1 lg:w-3/5 w-full flex flex-col gap-6 justify-center">
               <div className="grid gap-4">
                 {REGIONAL_OFFICES.map((office, index) => (
-                  <div key={index} className="bg-neutral-900 border border-neutral-800 p-6 rounded-sm flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center flex-shrink-0 text-white font-black text-[12px] mt-0.5">
+                  <div key={index} className="bg-[#f0fdfa] border border-[#0a7a8c]/20 hover:border-[#0a7a8c] p-6 rounded-lg flex items-start gap-4 shadow-sm hover:shadow-md transition-all duration-300">
+                    <div className="w-10 h-10 rounded-full bg-[#0a7a8c] text-white flex items-center justify-center flex-shrink-0 font-black text-[13px] shadow-sm">
                       0{index + 1}
                     </div>
                     <div>
-                      <h4 className="text-[13px] font-black uppercase tracking-wider text-white mb-1">
+                      <h4 className="text-[16px] font-black uppercase tracking-wider text-[#042E3A] mb-1">
                         {office.city} Office
                       </h4>
-                      <p className="text-[12px] text-neutral-400 font-light">
+                      <p className="text-[14px] text-neutral-700 font-normal">
                         {office.detail}
                       </p>
                     </div>

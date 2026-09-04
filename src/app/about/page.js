@@ -290,13 +290,12 @@ export default function AboutPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
             {/* Left: Image with Gold Border */}
-            <div className="flex-1 w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] order-2 lg:order-1" data-aos="fade-right" data-aos-delay="100">
+            <div className="flex-1 w-full relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto lg:min-h-[440px] order-2 lg:order-1" data-aos="fade-right" data-aos-delay="100">
               <div 
-                className="h-full w-full relative min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] overflow-hidden rounded-[2px] bg-[#1a1f24]"
+                className="h-full w-full relative overflow-hidden rounded-[4px] bg-[#1a1f24]"
                 style={{
                   border: "2px solid #C6A15A",
                   boxShadow: "0 0 20px rgba(198,161,90,0.25), 4px 4px 0px #C6A15A",
-                  borderRadius: "2px",
                 }}
               >
                 <Image 
@@ -304,7 +303,8 @@ export default function AboutPage() {
                   alt="ROYSONS TRUST" 
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  quality={95}
+                  className="object-cover object-left lg:object-center"
                   priority
                 />
               </div>
@@ -777,42 +777,42 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Vision & Mission Elegant Side-by-Side block */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-950" data-aos="fade-up">
+      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Vision */}
-            <div className="bg-neutral-950 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300" data-aos="fade-right" data-aos-delay="100">
+            <div className="bg-white border border-neutral-200 hover:border-[#0a7a8c] shadow-sm hover:shadow-lg p-8 sm:p-12 rounded-lg flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300" data-aos="fade-right" data-aos-delay="100">
               <div>
-                <div className="w-12 h-12 border border-[#0a7a8c]/40 bg-[#f0fdfa]/5 flex items-center justify-center mb-5 rounded-sm">
-                  <Target size={24} className="text-[#0d9488]" strokeWidth={1.5} />
+                <div className="w-12 h-12 border border-[#0a7a8c]/40 bg-[#f0fdfa] flex items-center justify-center mb-5 rounded-md shadow-xs">
+                  <Target size={24} className="text-[#0a7a8c]" strokeWidth={2} />
                 </div>
-                <h3 className="text-[20px] font-black uppercase tracking-[0.14em] text-white mb-6">
+                <h3 className="text-[20px] sm:text-[22px] font-black uppercase tracking-[0.14em] text-[#042E3A] mb-4">
                   Vision Statement
                 </h3>
-                <p className="text-[13.5px] text-neutral-300 leading-relaxed font-light">
+                <p className="text-[15px] sm:text-[16px] text-neutral-700 leading-relaxed font-normal">
                   To become a globally recognized diversified business group delivering innovative, 
                   sustainable and technology-driven solutions across multiple industries.
                 </p>
               </div>
-              <div className="mt-12 h-1 w-20 bg-gradient-to-r from-[#042E3A] to-[#0d9488]" />
+              <div className="mt-8 sm:mt-12 h-1 w-20 bg-gradient-to-r from-[#0077b6] to-[#02b875] rounded-full" />
             </div>
 
             {/* Mission */}
-            <div className="bg-neutral-950 border border-neutral-800 text-white p-12 rounded-sm flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300" data-aos="fade-left" data-aos-delay="150">
+            <div className="bg-white border border-neutral-200 hover:border-[#0a7a8c] shadow-sm hover:shadow-lg p-8 sm:p-12 rounded-lg flex flex-col justify-between group hover:-translate-y-1 transition-all duration-300" data-aos="fade-left" data-aos-delay="150">
               <div>
-                <div className="w-12 h-12 border border-[#0a7a8c]/40 bg-[#f0fdfa]/5 flex items-center justify-center mb-5 rounded-sm">
-                  <Award size={24} className="text-[#0d9488]" strokeWidth={1.5} />
+                <div className="w-12 h-12 border border-[#0a7a8c]/40 bg-[#f0fdfa] flex items-center justify-center mb-5 rounded-md shadow-xs">
+                  <Award size={24} className="text-[#0a7a8c]" strokeWidth={2} />
                 </div>
-                <h3 className="text-[20px] font-black uppercase tracking-[0.14em] text-white mb-6">
+                <h3 className="text-[20px] sm:text-[22px] font-black uppercase tracking-[0.14em] text-[#042E3A] mb-4">
                   Mission Statement
                 </h3>
-                <p className="text-[13.5px] text-neutral-300 leading-relaxed font-light">
+                <p className="text-[15px] sm:text-[16px] text-neutral-700 leading-relaxed font-normal">
                   To provide world-class products and services through innovation, quality, integrity 
                   and strategic partnerships while creating value for customers, employees, 
                   shareholders and society.
                 </p>
               </div>
-              <div className="mt-12 h-1 w-20 bg-gradient-to-r from-[#042E3A] to-[#0d9488]" />
+              <div className="mt-8 sm:mt-12 h-1 w-20 bg-gradient-to-r from-[#0077b6] to-[#02b875] rounded-full" />
             </div>
           </div>
         </div>
@@ -894,35 +894,35 @@ INDUSTRY-LEADING BUSINESSES
       </section>
 
       {/* Why Roys Group list section */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-950 text-white" data-aos="fade-up">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-white border-t border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col gap-12 lg:gap-16">
+          <div className="flex flex-col gap-10 lg:gap-14">
             
             <div className="text-center max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-              <span className="text-[10px] font-black tracking-[0.24em] text-neutral-400 uppercase mb-3 block">
+              <span className="text-[12px] font-black tracking-[0.24em] text-[#0a7a8c] uppercase mb-3 block">
                 COMPETITIVE ADVANTAGE
               </span>
-              <h2 className="text-3xl lg:text-4xl font-black text-white mb-6 leading-tight uppercase tracking-wider">
-              Why ROYSONS Pvt.Ltd.?
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#042E3A] mb-4 leading-tight uppercase tracking-wider">
+                Why ROYSONS Pvt.Ltd.?
               </h2>
-              <div className="h-1 w-14 bg-gradient-to-r from-[#042E3A] to-[#0d9488] mb-6 mx-auto" />
-              <p className="text-[12.5px] text-neutral-400 leading-relaxed font-light">
+              <div className="h-1 w-16 bg-gradient-to-r from-[#0077b6] to-[#02b875] mb-5 mx-auto rounded-full" />
+              <p className="text-[15px] sm:text-[16px] text-neutral-700 leading-relaxed font-normal">
                 Our operations are founded on trust, domain expertise, and a multi-tiered supply network. 
                 We combine government-certified credentials with structured global partnerships to deliver turnkey performance.
               </p>
             </div>
 
             <div className="w-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
                 {WHY_ROYS_GROUP.map((point, index) => (
                   <div
                     key={index}
                     data-aos="fade-up"
                     data-aos-delay={(index % 2) * 100 + 100}
-                    className="flex items-center gap-3 border-b border-neutral-800 pb-3 flex-row"
+                    className="flex items-center gap-3.5 border-b border-neutral-200 pb-3.5 flex-row"
                   >
-                    <CheckCircle2 size={16} className="text-[#0d9488] flex-shrink-0" strokeWidth={2} />
-                    <span className="text-[12px] font-bold uppercase tracking-wider text-white">
+                    <CheckCircle2 size={18} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
+                    <span className="text-[14px] sm:text-[15px] font-bold text-[#042E3A] tracking-normal">
                       {point}
                     </span>
                   </div>

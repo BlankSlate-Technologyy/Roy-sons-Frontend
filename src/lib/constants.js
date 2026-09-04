@@ -67,7 +67,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
   {
     id: "slide-one",
     type: "image",
-    src: "/slide-1.jpeg",
+    src: "/logos/slide1.png",
     subtitle: "ROYSONS Pvt.Ltd.",
     title: "Building Industries.",
     highlight: "Empowering Nations.",

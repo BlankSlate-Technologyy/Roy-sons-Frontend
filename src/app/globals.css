@@ -185,7 +185,7 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   main,
   section:not([aria-label="Featured Showcase Slider"]):not([class*="bg-gradient-"]):not(.services-hero-gradient):not(.gradient-banner),
   header,
-  footer,
+  footer:not(.roysons-dark-footer),
   legend,
   .bg-white,
   .bg-neutral-50,
@@ -214,7 +214,7 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   main,
   section:not([aria-label="Featured Showcase Slider"]):not([class*="bg-gradient-"]):not(.services-hero-gradient):not(.gradient-banner),
   header,
-  footer {
+  footer:not(.roysons-dark-footer) {
     background-image: none !important;
   }
 
@@ -227,19 +227,115 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     font-family: "Times New Roman", Times, serif !important;
   }
 
-  /* ── Headings: Deep Navy Teal (#042E3A) (exempting white/light text) ── */
-  h1:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
-  h2:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
-  h3:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
-  h4:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
-  h5:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
-  h6:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white) {
+  /* ── Headings: Deep Navy Teal (#042E3A) (exempting white/light text and dark footer) ── */
+  h1:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *),
+  h2:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *),
+  h3:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *),
+  h4:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *),
+  h5:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *),
+  h6:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *) {
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
     background-image: none !important;
     background-clip: unset !important;
     -webkit-background-clip: unset !important;
     text-shadow: none !important;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     ROYSONS DARK TEAL FOOTER (MATCHING USER CORPORATE BRAND IMAGE)
+  ───────────────────────────────────────────────────────────── */
+  footer.roysons-dark-footer,
+  .roysons-dark-footer {
+    background: #042630 !important;
+    background-color: #042630 !important;
+    background-image: linear-gradient(180deg, #052e37 0%, #042630 60%, #031e26 100%) !important;
+    color: #ffffff !important;
+    border-top: 1px solid rgba(45, 212, 191, 0.25) !important;
+  }
+
+  .roysons-dark-footer .footer-newsletter-bar {
+    background-color: #031e25 !important;
+    border-bottom: 1px solid rgba(45, 212, 191, 0.15) !important;
+  }
+
+  .roysons-dark-footer .footer-newsletter-bar h3 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .roysons-dark-footer .footer-newsletter-bar span.newsletter-tag {
+    color: #2dd4bf !important;
+    -webkit-text-fill-color: #2dd4bf !important;
+  }
+
+  .roysons-dark-footer .footer-heading {
+    color: #2dd4bf !important;
+    -webkit-text-fill-color: #2dd4bf !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.18em !important;
+    text-transform: uppercase !important;
+  }
+
+  .roysons-dark-footer .footer-link,
+  .roysons-dark-footer .footer-link * {
+    color: #2dd4bf !important;
+    -webkit-text-fill-color: #2dd4bf !important;
+    transition: all 0.25s ease !important;
+  }
+
+  .roysons-dark-footer .footer-link:hover,
+  .roysons-dark-footer .footer-link:hover * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .roysons-dark-footer p.footer-caption {
+    color: rgba(255, 255, 255, 0.75) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
+  }
+
+  .roysons-dark-footer .footer-contact-item span {
+    color: rgba(255, 255, 255, 0.85) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  .roysons-dark-footer .footer-contact-item:hover span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .roysons-dark-footer .footer-social-icon {
+    background-color: #063340 !important;
+    border: 1px solid rgba(45, 212, 191, 0.3) !important;
+    color: #2dd4bf !important;
+  }
+
+  .roysons-dark-footer .footer-social-icon:hover {
+    background: linear-gradient(135deg, #0a7a8c 0%, #0d9488 100%) !important;
+    border-color: #14b8a6 !important;
+    color: #ffffff !important;
+  }
+
+  .roysons-dark-footer .footer-copyright-bar {
+    background-color: #021a20 !important;
+    border-top: 1px solid rgba(45, 212, 191, 0.15) !important;
+  }
+
+  .roysons-dark-footer .footer-copyright-bar p {
+    color: rgba(255, 255, 255, 0.6) !important;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .roysons-dark-footer .footer-legal-link {
+    color: #2dd4bf !important;
+    -webkit-text-fill-color: #2dd4bf !important;
+    transition: color 0.25s ease !important;
+  }
+
+  .roysons-dark-footer .footer-legal-link:hover {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
 
   /* ── Regular links, labels, table headers (excluding buttons, white/light text) ── */
@@ -382,14 +478,13 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   /* ─────────────────────────────────────────────────────────────
-     UNIVERSAL BUTTON & CTA SYSTEM (ATTRACTIVE GLOW, HOVER LIFTS, 100% VISIBILITY)
+     UNIVERSAL BUTTON & CTA SYSTEM (EXACT BLUE-TO-GREEN GRADIENT AS PER USER DESIGN)
   ───────────────────────────────────────────────────────────── */
 
   /* All Primary Buttons & CTA Links */
   button:not([class*="bg-transparent"]):not([class*="bg-white"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Close"]):not([aria-label*="close"]):not(#navbar-search-btn):not(#navbar-mobile-btn):not(#services-hero-cta):not(.btn-white-pill),
   .btn:not([class*="bg-transparent"]):not([class*="bg-white"]):not(.btn-white-pill),
   .rs-cta-btn,
-  #cta-consultation-btn,
   #navbar-inquire-btn,
   #view-all-projects-btn,
   #query-submit-btn,
@@ -403,13 +498,14 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   button[class*="bg-black"],
   button[class*="bg-[#C6A15A]"],
   button[class*="bg-neutral-950"] {
-    background: linear-gradient(135deg, #042E3A 0%, #065463 45%, #0a7a8c 100%) !important;
-    background-color: #042E3A !important;
-    border: 1.5px solid rgba(13, 148, 136, 0.7) !important;
+    background: linear-gradient(90deg, #0077b6 0%, #009688 50%, #02b875 100%) !important;
+    background-color: #0077b6 !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 8px !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     fill: #ffffff !important;
-    box-shadow: 0 4px 18px 0 rgba(10, 122, 140, 0.38), 0 1px 3px 0 rgba(0, 0, 0, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 4px 16px 0 rgba(0, 119, 182, 0.35), 0 2px 6px 0 rgba(2, 184, 117, 0.25) !important;
     cursor: pointer !important;
     white-space: nowrap !important;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -425,11 +521,33 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     flex-shrink: 0 !important;
   }
 
-  /* GUARANTEED 100% VISIBLE: Text and All Nested Elements in Buttons are Pure White */
+  /* UNIVERSAL BUTTON TYPOGRAPHY: Times New Roman & Uniform Size Across All Buttons */
+  button,
+  .btn,
+  .rs-cta-btn,
+  .rs-cta-btn-secondary,
+  #navbar-inquire-btn,
+  #view-all-projects-btn,
+  #query-submit-btn,
+  #services-hero-cta,
+  .btn-white-pill,
+  button[type="submit"],
+  input[type="submit"],
+  a[class*="bg-[#042E3A]"]:not(header nav a):not(.nav-text-link),
+  a[class*="bg-black"]:not(header nav a):not(.nav-text-link),
+  a[class*="bg-neutral-950"]:not(header nav a):not(.nav-text-link),
+  a[class*="bg-neutral-900"]:not(header nav a):not(.nav-text-link) {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+  }
+
+  /* GUARANTEED 100% VISIBLE: Text and All Nested Elements in Buttons are Pure White & Times New Roman */
   button:not([class*="bg-transparent"]):not([class*="bg-white"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Close"]):not([aria-label*="close"]):not(#navbar-search-btn):not(#navbar-mobile-btn):not(#services-hero-cta):not(.btn-white-pill) *,
   .btn:not([class*="bg-transparent"]):not([class*="bg-white"]):not(.btn-white-pill) *,
   .rs-cta-btn *,
-  #cta-consultation-btn *,
   #navbar-inquire-btn *,
   #view-all-projects-btn *,
   #query-submit-btn *,
@@ -443,6 +561,11 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   button[class*="bg-black"] *,
   button[class*="bg-[#C6A15A]"] *,
   button[class*="bg-neutral-950"] * {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     fill: #ffffff !important;
@@ -455,17 +578,15 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   /* Icon Micro-motion inside Primary Buttons */
   button:not([class*="bg-transparent"]):not([class*="bg-white"]) svg,
   .rs-cta-btn svg,
-  #cta-consultation-btn svg,
   #view-all-projects-btn svg,
   button[type="submit"] svg {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
-  /* Radiant Greenish-Bluish Hover Effect for All Primary Buttons */
+  /* Radiant Blue-Teal-Green Hover Effect for All Primary Buttons */
   button:not([class*="bg-transparent"]):not([class*="bg-white"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Close"]):not([aria-label*="close"]):not(#navbar-search-btn):not(#navbar-mobile-btn):not(#services-hero-cta):not(.btn-white-pill):hover,
   .btn:not([class*="bg-transparent"]):not([class*="bg-white"]):not(.btn-white-pill):hover,
   .rs-cta-btn:hover,
-  #cta-consultation-btn:hover,
   #navbar-inquire-btn:hover,
   #view-all-projects-btn:hover,
   #query-submit-btn:hover,
@@ -479,19 +600,18 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   button[class*="bg-black"]:hover,
   button[class*="bg-[#C6A15A]"]:hover,
   button[class*="bg-neutral-950"]:hover {
-    background: linear-gradient(135deg, #087f94 0%, #0a9396 45%, #0d9488 100%) !important;
-    background-color: #087f94 !important;
-    border-color: #14b8a6 !important;
+    background: linear-gradient(90deg, #0284c7 0%, #0891b2 50%, #10b981 100%) !important;
+    background-color: #0284c7 !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    box-shadow: 0 10px 30px 0 rgba(13, 148, 136, 0.6), 0 0 0 3.5px rgba(6, 182, 212, 0.25) !important;
-    transform: translateY(-2.5px) scale(1.02) !important;
+    box-shadow: 0 8px 24px 0 rgba(2, 132, 199, 0.5), 0 0 0 3px rgba(16, 185, 129, 0.3) !important;
+    transform: translateY(-2px) scale(1.02) !important;
   }
 
   button:not([class*="bg-transparent"]):not([class*="bg-white"]):not([aria-label*="Toggle"]):not([aria-label*="toggle"]):not([aria-label*="Close"]):not([aria-label*="close"]):not(#navbar-search-btn):not(#navbar-mobile-btn):not(#services-hero-cta):not(.btn-white-pill):hover *,
   .btn:not([class*="bg-transparent"]):not([class*="bg-white"]):not(.btn-white-pill):hover *,
   .rs-cta-btn:hover *,
-  #cta-consultation-btn:hover *,
   #navbar-inquire-btn:hover *,
   #view-all-projects-btn:hover *,
   #query-submit-btn:hover *,
@@ -511,12 +631,17 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     opacity: 1 !important;
   }
 
-  button:not([class*="bg-transparent"]):not([class*="bg-white"]):hover svg,
-  .rs-cta-btn:hover svg,
+  button:not([class*="bg-transparent"]):not([class*="bg-white"]):not(#scroll-to-top-btn):hover svg,
+  .rs-cta-btn:not(#scroll-to-top-btn):hover svg,
   #cta-consultation-btn:hover svg,
   #view-all-projects-btn:hover svg,
   button[type="submit"]:hover svg {
     transform: translateX(3px) !important;
+  }
+
+  /* Scroll to Top Upward Arrow Motion on Hover */
+  #scroll-to-top-btn:hover svg {
+    transform: translateY(-3px) !important;
   }
 
   /* Active / Press State for All Buttons */
@@ -550,6 +675,11 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   #services-hero-cta *,
   .btn-white-pill *,
   a.btn-white-pill * {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
     fill: #042E3A !important;
@@ -572,6 +702,11 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   #services-hero-cta:hover *,
   .btn-white-pill:hover *,
   a.btn-white-pill:hover * {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
   }
@@ -579,6 +714,11 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   /* Outline / Secondary Action Buttons */
   .rs-cta-btn-secondary,
   a[class*="border"][class*="bg-transparent"]:not([aria-label="Featured Showcase Slider"] a):not(header nav a):not(.nav-text-link) {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
     border: 1.5px solid #0a7a8c !important;
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
@@ -588,6 +728,11 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
 
   .rs-cta-btn-secondary *,
   a[class*="border"][class*="bg-transparent"]:not([aria-label="Featured Showcase Slider"] a):not(header nav a):not(.nav-text-link) * {
+    font-family: "Times New Roman", Times, serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
   }
@@ -727,18 +872,25 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   animation: fadeInUp 0.8s ease forwards;
 }
 
-/* ── CTA Button: Default state (Radiant Greenish-Bluish) ── */
+/* ── CTA Button: Default state (Radiant Blue-to-Green Gradient) ── */
 .rs-cta-btn {
-  background: linear-gradient(135deg, #042E3A 0%, #065463 45%, #0a7a8c 100%) !important;
-  border: 1.5px solid rgba(13, 148, 136, 0.7) !important;
+  background: linear-gradient(90deg, #0077b6 0%, #009688 50%, #02b875 100%) !important;
+  background-color: #0077b6 !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 8px !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   fill: #ffffff !important;
-  box-shadow: 0 4px 18px 0 rgba(10, 122, 140, 0.38), 0 1px 3px 0 rgba(0, 0, 0, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 16px 0 rgba(0, 119, 182, 0.35), 0 2px 6px 0 rgba(2, 184, 117, 0.25) !important;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .rs-cta-btn * {
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   fill: #ffffff !important;
@@ -746,14 +898,15 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* ── CTA Button: Hover state (Radiant Greenish-Bluish Glow & Lift) ── */
+/* ── CTA Button: Hover state (Radiant Blue-to-Green Glow & Lift) ── */
 body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.neom-city-theme):not(.max-wood-theme):not(.desert-development-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) .rs-cta-btn:hover {
-  background: linear-gradient(135deg, #087f94 0%, #0a9396 45%, #0d9488 100%) !important;
-  border-color: #14b8a6 !important;
+  background: linear-gradient(90deg, #0284c7 0%, #0891b2 50%, #10b981 100%) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  border-radius: 8px !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
-  box-shadow: 0 10px 30px 0 rgba(13, 148, 136, 0.6), 0 0 0 3.5px rgba(6, 182, 212, 0.25) !important;
-  transform: translateY(-2.5px) scale(1.02) !important;
+  box-shadow: 0 8px 24px 0 rgba(2, 132, 199, 0.5), 0 0 0 3px rgba(16, 185, 129, 0.3) !important;
+  transform: translateY(-2px) scale(1.02) !important;
 }
 
 body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.neom-recruitment-theme):not(.max-pak-theme):not(.inverse-union-theme):not(.national-mines-theme):not(.vetvac-pharma-theme):not(.biomax-theme):not(.alpha-matrix-theme):not(.national-guard-theme):not(.national-agricultural-theme):not(.national-agricalture-theme):not(.swiss-farm-theme):not(.swiss-farms-theme):not(.gtx-theme):not(.tdrc-theme):not(.max-power-theme):not(.pak-medical-theme):not(.pak-janitorial-theme):not(.pakistan-medical-theme):not(.walton-theme):not(.walton-consultants-theme):not(.digitalzone-theme):not(.digital-zoning-theme):not(.pakistan-consultancy-theme):not(.pak-consultancy-theme):not(.national-food-theme):not(.nfs-food-theme):not(.nfs-theme):not(.walton-mirror-food-theme):not(.walton-food-theme):not(.walton-morris-theme) .rs-cta-btn:hover span,

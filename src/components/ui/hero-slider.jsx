@@ -74,14 +74,20 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
             <source src={activeSlide.src} type="video/mp4" />
           </video>
         ) : (
-          <Image
-            key={activeSlide.src}
-            src={activeSlide.src}
-            alt={`${activeSlide.title} ${activeSlide.highlight}`}
-            fill
-            className="object-cover"
-            priority
-          />
+          <div className="relative w-full h-full">
+            <Image
+              key={activeSlide.src}
+              src={activeSlide.src}
+              alt={`${activeSlide.title} ${activeSlide.highlight}`}
+              fill
+              sizes="100vw"
+              quality={95}
+              priority
+              className="object-cover object-center"
+            />
+            {/* Ambient Dark Overlay to enhance text contrast and image clarity */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/30 pointer-events-none" />
+          </div>
         )}
       </div>
 
