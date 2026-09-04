@@ -1,61 +1,56 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { FEATURED_STRUCTURAL_WORKS } from "@/lib/constants";
 
-function ProjectCard({ project, index, isActive, onMouseEnter, onMouseLeave }) {
+function ProjectCard({ project, index }) {
   return (
     <Link
       href={project.href}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className={`group block shrink-0 transition-all duration-500 select-none ${
-        isActive
-          ? "w-[280px] sm:w-[320px] md:w-[340px] lg:w-[360px] -translate-y-2 z-10"
-          : "w-[240px] sm:w-[270px] md:w-[290px] lg:w-[300px] opacity-95 hover:opacity-100 hover:-translate-y-1.5"
-      }`}
+      className="group block shrink-0 w-[260px] sm:w-[300px] md:w-[320px] lg:w-[340px] transition-all duration-400 select-none hover:-translate-y-2"
     >
-      {/* Image Container with Zoom Out Effect */}
-      <div
-        className={`relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 transition-all duration-500 ${
-          isActive
-            ? "shadow-2xl ring-2 ring-[#0a7a8c] border-transparent"
-            : "shadow-md border border-neutral-200/80 hover:shadow-xl hover:border-[#0d9488]/70"
-        }`}
-      >
+      {/* Image Container */}
+      <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-neutral-100 shadow-md border border-neutral-200/80 group-hover:shadow-2xl group-hover:border-[#0d9488]/40 transition-all duration-400">
         {/*
-          HOVER ZOOM OUT EFFECT:
-          Starts zoomed in (scale-[1.22]) and zooms out to scale-100 on group-hover for a smooth wide reveal!
+          SMOOTH ZOOM: Starts at natural scale, zooms in slightly on hover for a gentle effect
         */}
         <Image
           src={project.image}
           alt={project.title}
           fill
-          sizes="(max-width: 768px) 80vw, 360px"
-          className="object-cover transform scale-[1.22] transition-transform duration-700 ease-out group-hover:scale-100"
+          sizes="(max-width: 768px) 80vw, 340px"
+          className="object-cover transform scale-100 transition-transform duration-700 ease-in-out group-hover:scale-110"
         />
 
-        {/* Subtle Ambient Vignette Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
+        {/* Bottom gradient for text readability — only visible, no harsh overlay on full image */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        {/* Category Tag pill */}
+        {/* Category Tag pill — always readable */}
         {project.category && (
-          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[#042E3A]/85 backdrop-blur-md border border-[#0d9488]/40 text-white text-[10px] font-extrabold uppercase tracking-wider">
+          <div
+            className="project-category-tag absolute top-3 left-3 px-3 py-1.5 rounded-md text-[11px] font-extrabold uppercase shadow-lg !text-white"
+            style={{ backgroundColor: "rgba(0,0,0,0.85)", color: "#ffffff", letterSpacing: "0.12em" }}
+          >
             {project.category}
           </div>
         )}
+
+        {/* Arrow icon on hover */}
+        <div className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
+          <ArrowRight size={14} className="text-[#042E3A]" />
+        </div>
       </div>
 
-      {/* Project Title and Client Label (Centered below picture) */}
-      <div className="mt-3.5 px-2 text-center transition-transform duration-300">
+      {/* Project Title and Client Label */}
+      <div className="mt-3.5 px-1 text-center">
         <h3 className="text-sm sm:text-base font-black text-[#042E3A] tracking-tight leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
           {project.title}
         </h3>
         {project.client && (
-          <p className="text-[11px] sm:text-xs font-bold text-[#042E3A]/70 uppercase tracking-wider mt-0.5 group-hover:text-[#0a7a8c] transition-colors">
+          <p className="text-[11px] sm:text-xs font-semibold text-[#042E3A]/60 uppercase tracking-wider mt-0.5 group-hover:text-[#0a7a8c]/80 transition-colors">
             {project.client}
           </p>
         )}
@@ -64,17 +59,17 @@ function ProjectCard({ project, index, isActive, onMouseEnter, onMouseLeave }) {
   );
 }
 
+
 export default function FeaturedHoldingsShowcase({
   projects = FEATURED_STRUCTURAL_WORKS,
   allProjectsPath = "/projects",
 }) {
   const scrollContainerRef = useRef(null);
-  const [hoveredIdx, setHoveredIdx] = useState(null);
 
   // Scroll left and right
   const handleScroll = (direction) => {
     if (scrollContainerRef.current) {
-      const scrollAmount = direction === "left" ? -340 : 340;
+      const scrollAmount = direction === "left" ? -360 : 360;
       scrollContainerRef.current.scrollBy({
         left: scrollAmount,
         behavior: "smooth",
@@ -102,7 +97,7 @@ export default function FeaturedHoldingsShowcase({
           </p>
         </div>
 
-        {/* ─── Projects Showcase Carousel with Hover Zoom Out ─── */}
+        {/* ─── Projects Showcase Carousel ─── */}
         <div className="relative group/carousel">
           
           {/* Left Arrow Button */}
@@ -132,22 +127,13 @@ export default function FeaturedHoldingsShowcase({
               msOverflowStyle: "none",
             }}
           >
-            {projects.map((project, idx) => {
-              // Default middle item is slightly prominent if none is hovered
-              const defaultActiveIdx = Math.floor(projects.length / 2);
-              const isActive = hoveredIdx !== null ? hoveredIdx === idx : idx === defaultActiveIdx;
-
-              return (
-                <ProjectCard
-                  key={idx}
-                  project={project}
-                  index={idx}
-                  isActive={isActive}
-                  onMouseEnter={() => setHoveredIdx(idx)}
-                  onMouseLeave={() => setHoveredIdx(null)}
-                />
-              );
-            })}
+            {projects.map((project, idx) => (
+              <ProjectCard
+                key={idx}
+                project={project}
+                index={idx}
+              />
+            ))}
           </div>
         </div>
 
@@ -167,3 +153,4 @@ export default function FeaturedHoldingsShowcase({
     </section>
   );
 }
+

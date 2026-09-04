@@ -245,6 +245,14 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   /* ─────────────────────────────────────────────────────────────
      ROYSONS DARK TEAL FOOTER (MATCHING USER CORPORATE BRAND IMAGE)
   ───────────────────────────────────────────────────────────── */
+
+  /* ── Project Card Category Tag: always white text ── */
+  .project-category-tag,
+  .project-category-tag * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
   footer.roysons-dark-footer,
   .roysons-dark-footer {
     background: #042630 !important;

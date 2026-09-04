@@ -11,7 +11,7 @@ function ArticleTile({ image, date, title, href }) {
           src={image}
           alt={title}
           fill
-          className="object-cover grayscale transition-all duration-700 ease-in-out hover:grayscale-0 hover:scale-[1.03]"
+          className="object-cover transition-transform duration-700 ease-in-out hover:scale-[1.05]"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
       </div>
@@ -69,7 +69,7 @@ export default function CorporateNewsDesk({ news = CORPORATE_BROADCAST_NEWS }) {
             href="/news"
             className="rs-cta-btn inline-flex items-center gap-2.5 px-8 py-3.5 text-[14px] font-black tracking-[0.18em] uppercase border-2 border-[#0a7a8c] bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white transition-all duration-300 rounded-[3px] shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] hover:-translate-y-0.5"
           >
-            <span className="text-white font-black">VIEW ALL NEWS &amp; INSIGHTS</span>
+            <span className="text-white font-black">VIEW ALL</span>
             <ArrowRight size={13} strokeWidth={2.4} className="text-white" />
           </Link>
         </div>

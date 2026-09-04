@@ -3,12 +3,12 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, X, ArrowRight, Building2, Briefcase, FileText, Layers, Sparkles } from "lucide-react";
-import { SEARCHABLE_ITEMS, SEARCH_CATEGORIES, POPULAR_SEARCH_TERMS } from "@/lib/search-data";
+import { Search, X, ArrowRight, Building2, Briefcase, FileText, Layers } from "lucide-react";
+import { SEARCHABLE_ITEMS } from "@/lib/search-data";
+import BrandLogo from "@/components/ui/logo";
 
 export default function SearchModal({ isOpen, onClose }) {
   const [query, setQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState("all");
   const inputRef = useRef(null);
 
   // Focus input when opened and lock body scroll
@@ -19,7 +19,6 @@ export default function SearchModal({ isOpen, onClose }) {
     } else {
       document.body.style.overflow = "unset";
       setQuery("");
-      setActiveCategory("all");
     }
     return () => {
       document.body.style.overflow = "unset";
@@ -37,21 +36,14 @@ export default function SearchModal({ isOpen, onClose }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Filter items based on query & category
+  // Filter items based on query
   const filteredResults = useMemo(() => {
     const trimmed = query.trim().toLowerCase();
-    
+    if (!trimmed) {
+      return [];
+    }
+
     return SEARCHABLE_ITEMS.filter((item) => {
-      // Category check
-      if (activeCategory !== "all" && item.category !== activeCategory) {
-        return false;
-      }
-
-      // If query is empty, return top items in this category or all
-      if (!trimmed) {
-        return true;
-      }
-
       const matchTitle = item.title?.toLowerCase().includes(trimmed);
       const matchSubtitle = item.subtitle?.toLowerCase().includes(trimmed);
       const matchDescription = item.description?.toLowerCase().includes(trimmed);
@@ -59,36 +51,12 @@ export default function SearchModal({ isOpen, onClose }) {
 
       return matchTitle || matchSubtitle || matchDescription || matchKeywords;
     });
-  }, [query, activeCategory]);
-
-  // Category counts
-  const categoryCounts = useMemo(() => {
-    const trimmed = query.trim().toLowerCase();
-    const counts = { all: 0, companies: 0, services: 0, projects: 0, pages: 0 };
-
-    SEARCHABLE_ITEMS.forEach((item) => {
-      const match =
-        !trimmed ||
-        item.title?.toLowerCase().includes(trimmed) ||
-        item.subtitle?.toLowerCase().includes(trimmed) ||
-        item.description?.toLowerCase().includes(trimmed) ||
-        item.keywords?.toLowerCase().includes(trimmed);
-
-      if (match) {
-        counts.all += 1;
-        if (counts[item.category] !== undefined) {
-          counts[item.category] += 1;
-        }
-      }
-    });
-
-    return counts;
   }, [query]);
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-start justify-center p-3 sm:p-6 lg:p-10">
+    <div className="fixed inset-0 z-[9999] flex items-start justify-center p-3 sm:p-6 lg:p-10 pt-16 sm:pt-20">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity animate-fade-in"
@@ -97,21 +65,39 @@ export default function SearchModal({ isOpen, onClose }) {
 
       {/* Modal Dialog */}
       <div
-        className="relative w-full max-w-3xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh] z-10 border animate-scale-up"
+        className="relative w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] z-10 border animate-scale-up"
         style={{
           backgroundColor: "#ffffff",
           borderColor: "rgba(4, 46, 58, 0.15)",
         }}
       >
-        {/* Top Header & Search Bar */}
+        {/* Top Header with Roysons Logo and Close button */}
         <div
-          className="p-4 sm:p-5 border-b"
+          className="p-5 sm:p-6 border-b relative flex flex-col items-center"
           style={{
             backgroundColor: "#f8fafc",
             borderColor: "rgba(4, 46, 58, 0.1)",
           }}
         >
-          <div className="relative flex items-center">
+          {/* Top Right Close Button */}
+          <button
+            type="button"
+            onClick={onClose}
+            className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 p-1.5 rounded-lg text-[#042E3A]/60 hover:text-[#042E3A] hover:bg-[#042E3A]/5 transition-colors cursor-pointer"
+            aria-label="Close search"
+          >
+            <X size={20} />
+          </button>
+
+          {/* Roysons Logo above search bar */}
+          <div className="mb-4 flex items-center justify-center">
+            <Link href="/" onClick={onClose} className="inline-block transition-transform hover:scale-102">
+              <BrandLogo />
+            </Link>
+          </div>
+
+          {/* Search Input Bar */}
+          <div className="relative flex items-center w-full">
             <Search className="absolute left-3.5 text-[#042E3A] pointer-events-none" size={20} />
             <input
               ref={inputRef}
@@ -119,81 +105,36 @@ export default function SearchModal({ isOpen, onClose }) {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search companies, services, projects, keywords..."
-              className="w-full pl-11 pr-10 py-3 rounded-lg bg-white text-[#042E3A] placeholder-[#042E3A]/50 text-sm sm:text-base font-medium outline-none border border-[#042E3A]/20 focus:border-[#042E3A] transition-colors"
+              className="w-full pl-11 pr-10 py-3 rounded-lg bg-white text-[#042E3A] placeholder-[#042E3A]/50 text-sm sm:text-base font-medium outline-none border border-[#042E3A]/20 focus:border-[#042E3A] transition-colors shadow-xs"
             />
-            {query ? (
+            {query && (
               <button
                 type="button"
                 onClick={() => setQuery("")}
-                className="absolute right-3 p-1 rounded-md text-[#042E3A]/60 hover:text-[#042E3A] hover:bg-[#042E3A]/5 transition-colors"
+                className="absolute right-3 p-1 rounded-md text-[#042E3A]/60 hover:text-[#042E3A] hover:bg-[#042E3A]/5 transition-colors cursor-pointer"
                 aria-label="Clear search"
               >
                 <X size={16} />
               </button>
-            ) : (
-              <button
-                type="button"
-                onClick={onClose}
-                className="absolute right-3 p-1 rounded-md text-[#042E3A]/60 hover:text-[#042E3A] hover:bg-[#042E3A]/5 transition-colors"
-                aria-label="Close search"
-              >
-                <X size={18} />
-              </button>
             )}
-          </div>
-
-          {/* Category Filter Chips */}
-          <div className="flex items-center gap-1.5 sm:gap-2 mt-3.5 overflow-x-auto pb-1 no-scrollbar">
-            {SEARCH_CATEGORIES.map((cat) => {
-              const isActive = activeCategory === cat.id;
-              const count = categoryCounts[cat.id] || 0;
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  onClick={() => setActiveCategory(cat.id)}
-                  className={`px-3 py-1.5 rounded-md text-[15px] sm:text-sm font-bold uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
-                    isActive
-                      ? "bg-[#042E3A] text-white shadow-sm"
-                      : "bg-[#042E3A]/5 text-[#042E3A] hover:bg-[#042E3A]/10 border border-[#042E3A]/15"
-                  }`}
-                >
-                  <span>{cat.label}</span>
-                  <span
-                    className={`text-[14px] px-1.5 py-0.2 rounded-full font-extrabold ${
-                      isActive ? "bg-white/20 text-white" : "bg-[#042E3A]/10 text-[#042E3A]"
-                    }`}
-                  >
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
           </div>
         </div>
 
-        {/* Popular searches suggestions if query is empty */}
-        {!query && (
-          <div className="px-5 py-3 border-b border-[#042E3A]/10 bg-[#f8fafc] flex items-center gap-2 flex-wrap">
-            <span className="text-[15px] font-bold text-[#042E3A]/70 flex items-center gap-1 uppercase tracking-wider">
-              <Sparkles size={13} className="text-[#042E3A]" /> Popular:
-            </span>
-            {POPULAR_SEARCH_TERMS.map((term) => (
-              <button
-                key={term}
-                type="button"
-                onClick={() => setQuery(term)}
-                className="text-[15px] px-2.5 py-0.5 rounded-full bg-white text-[#042E3A] hover:bg-[#042E3A] hover:text-white transition-colors border border-[#042E3A]/15 cursor-pointer shadow-2xs"
-              >
-                {term}
-              </button>
-            ))}
-          </div>
-        )}
-
         {/* Results Body */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-2.5 divide-y divide-[#042E3A]/10">
-          {filteredResults.length > 0 ? (
+          {query.trim() === "" ? (
+            <div className="py-10 px-4 text-center">
+              <div className="w-12 h-12 rounded-full bg-[#042E3A]/5 border border-[#042E3A]/15 flex items-center justify-center mx-auto mb-3 text-[#042E3A]/60">
+                <Search size={22} />
+              </div>
+              <h4 className="text-base font-bold text-[#042E3A] mb-1">
+                Search Roysons Holding
+              </h4>
+              <p className="text-xs text-[#042E3A]/70 max-w-sm mx-auto">
+                Type any company, subsidiary, service, project, or keyword to find what you need.
+              </p>
+            </div>
+          ) : filteredResults.length > 0 ? (
             filteredResults.map((item) => (
               <Link
                 key={item.id}
@@ -253,7 +194,7 @@ export default function SearchModal({ isOpen, onClose }) {
               </Link>
             ))
           ) : (
-            <div className="py-12 px-4 text-center">
+            <div className="py-10 px-4 text-center">
               <div className="w-12 h-12 rounded-full bg-[#042E3A]/5 border border-[#042E3A]/15 flex items-center justify-center mx-auto mb-3 text-[#042E3A]/60">
                 <Search size={22} />
               </div>
@@ -261,17 +202,14 @@ export default function SearchModal({ isOpen, onClose }) {
                 No matching results found
               </h4>
               <p className="text-xs text-[#042E3A]/70 max-w-sm mx-auto mb-4">
-                We couldn&apos;t find any matches for &ldquo;<span className="text-[#042E3A] font-semibold">{query}</span>&rdquo; in {activeCategory === "all" ? "the website" : activeCategory}. Try a different keyword or browse all categories.
+                We couldn&apos;t find any matches for &ldquo;<span className="text-[#042E3A] font-semibold">{query}</span>&rdquo;. Try another keyword.
               </p>
               <button
                 type="button"
-                onClick={() => {
-                  setQuery("");
-                  setActiveCategory("all");
-                }}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-[#042E3A] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#074656] transition-colors"
+                onClick={() => setQuery("")}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md bg-[#042E3A] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#074656] transition-colors cursor-pointer"
               >
-                Reset Search Filters
+                Clear Search
               </button>
             </div>
           )}
@@ -279,29 +217,25 @@ export default function SearchModal({ isOpen, onClose }) {
 
         {/* Footer info */}
         <div
-          className="p-3 px-5 border-t flex items-center justify-between text-[15px] text-[#042E3A]/70"
+          className="p-3 px-5 border-t flex items-center justify-between text-[14px] sm:text-[15px] text-[#042E3A]/70"
           style={{
             backgroundColor: "#f8fafc",
             borderColor: "rgba(4, 46, 58, 0.1)",
           }}
         >
-          <div className="flex items-center gap-4">
+          {query.trim() !== "" ? (
             <span>
               Showing <strong className="text-[#042E3A]">{filteredResults.length}</strong> results
             </span>
-            <span className="hidden sm:inline text-[#042E3A]/40">•</span>
-            <span className="hidden sm:inline">
-              Press <kbd className="px-1.5 py-0.5 rounded bg-white text-[#042E3A] border border-[#042E3A]/20 font-mono text-[14px]">Esc</kbd> to close
+          ) : (
+            <span>
+              Search across all companies & services
             </span>
-          </div>
+          )}
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-[#042E3A] hover:underline font-bold uppercase text-[14.5px] tracking-wider cursor-pointer"
-          >
-            Close Search
-          </button>
+          <span className="text-xs text-[#042E3A]/60 flex items-center gap-1.5">
+            Press <kbd className="px-1.5 py-0.5 rounded bg-white text-[#042E3A] border border-[#042E3A]/20 font-mono text-[12px] sm:text-[13px]">Esc</kbd> to close
+          </span>
         </div>
       </div>
     </div>
