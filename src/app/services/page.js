@@ -302,41 +302,50 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-white font-sans">
       <HeaderNavbar activeRoute="/services" />
 
-      <section className="bg-white border-b border-neutral-100">
-        <div className="max-w-screen-xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-stretch min-h-[280px]">
-            <div className="flex-1 py-10 sm:py-12 pr-0 lg:pr-16 flex flex-col justify-center">
-              <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-neutral-500 mb-2.5">
-                WHAT WE DO
-              </p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-950 tracking-tight mb-3.5 leading-tight">
-                Our Services
-              </h1>
-              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed max-w-lg mb-6 font-normal">
-                ROYSONS Pvt. Ltd. offers a wide range of innovative and
-                reliable services to meet the diverse needs of our clients
-                across multiple industries.
-              </p>
-              <div>
-                <Link
-                  href="#request-query"
-                  id="services-hero-cta"
-                  className="inline-flex items-center gap-2.5 bg-black text-white px-6 py-3 text-xs font-bold uppercase tracking-[0.16em] hover:bg-neutral-800 transition-colors rounded-[2px]"
-                >
-                  Request a Query <ArrowRight size={13} strokeWidth={2.5} />
-                </Link>
-              </div>
-            </div>
+      {/* Services Hero Banner */}
+      <section className="relative bg-white border-b border-[#042E3A]/10 overflow-hidden min-h-[360px] sm:min-h-[420px] lg:min-h-[460px] flex items-center">
+        {/* Full 16:9 AI Generated Background Hero Banner */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/services-hero-banner.jpg"
+            alt="ROYSONS Pvt. Ltd. Diversified Services & Industries"
+            fill
+            className="object-cover object-center lg:object-right"
+            priority
+          />
+          {/* Subtle soft white wash on the left for maximum text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent sm:from-white/95 sm:via-white/60 sm:to-transparent lg:w-3/5" />
+        </div>
 
-            <div className="hidden lg:block w-[480px] xl:w-[560px] relative overflow-hidden">
-              <Image
-                src="/bright-corporate-skyscraper.jpg"
-                alt="Roy Sons modern corporate architecture"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-6 w-full py-10 sm:py-12 lg:py-14">
+          <div className="max-w-xl">
+            {/* Top Tag */}
+            <p className="text-[11px] sm:text-xs font-black uppercase tracking-[0.28em] text-[#0a7a8c] mb-1.5">
+              WHAT WE DO
+            </p>
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#042E3A] tracking-tight mb-2.5 leading-tight">
+              Our Services
+            </h1>
+
+            <div className="h-[3.5px] w-14 bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488] mb-3.5 rounded-full" />
+
+            <p className="text-[15px] sm:text-[17px] text-[#042E3A]/85 leading-relaxed max-w-lg mb-5 font-normal">
+              ROYSONS Pvt. Ltd. offers a wide range of innovative and
+              reliable services to meet the diverse needs of our clients
+              across multiple industries.
+            </p>
+
+            <div>
+              <Link
+                href="#request-query"
+                id="services-hero-cta"
+                className="rs-cta-btn inline-flex items-center gap-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white px-7 py-3.5 text-xs font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[3px] hover:-translate-y-0.5"
+                style={{ boxShadow: "none" }}
+              >
+                <span className="text-white font-black">Request a Query</span>
+                <ArrowRight size={14} strokeWidth={2.4} className="text-white" />
+              </Link>
             </div>
           </div>
         </div>
