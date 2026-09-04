@@ -302,51 +302,33 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-white font-sans">
       <HeaderNavbar activeRoute="/services" />
 
-      {/* Services Hero Banner */}
-      <section className="relative bg-white border-b border-[#042E3A]/10 overflow-hidden min-h-[360px] sm:min-h-[420px] lg:min-h-[460px] flex items-center">
-        {/* Full 16:9 AI Generated Background Hero Banner */}
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src="/services-hero-banner.jpg"
-            alt="ROYSONS Pvt. Ltd. Diversified Services & Industries"
-            fill
-            className="object-cover object-center lg:object-right"
-            priority
-          />
-          {/* Subtle soft white wash on the left for maximum text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-transparent sm:from-white/95 sm:via-white/60 sm:to-transparent lg:w-3/5" />
-        </div>
+      {/* Services Hero Banner - Centered Gradient Design */}
+      <section className="relative bg-gradient-to-r from-[#024959] via-[#087f94] to-[#059669] py-16 sm:py-20 lg:py-24 px-6 overflow-hidden text-center flex flex-col items-center justify-center">
+        <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
+          {/* Top Tag */}
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-white/80 mb-2.5 block">
+            WHAT WE DO
+          </span>
 
-        <div className="relative z-10 max-w-screen-xl mx-auto px-6 w-full py-10 sm:py-12 lg:py-14">
-          <div className="max-w-xl">
-            {/* Top Tag */}
-            <p className="text-[11px] sm:text-xs font-black uppercase tracking-[0.28em] text-[#0a7a8c] mb-1.5">
-              WHAT WE DO
-            </p>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 leading-tight">
+            Our Services
+          </h1>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#042E3A] tracking-tight mb-2.5 leading-tight">
-              Our Services
-            </h1>
+          <p className="text-[15px] sm:text-[17px] text-white/90 leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+            ROYSONS Pvt. Ltd. offers a wide range of innovative and
+            reliable services to meet the diverse needs of our clients
+            across multiple industries.
+          </p>
 
-            <div className="h-[3.5px] w-14 bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488] mb-3.5 rounded-full" />
-
-            <p className="text-[15px] sm:text-[17px] text-[#042E3A]/85 leading-relaxed max-w-lg mb-5 font-normal">
-              ROYSONS Pvt. Ltd. offers a wide range of innovative and
-              reliable services to meet the diverse needs of our clients
-              across multiple industries.
-            </p>
-
-            <div>
-              <Link
-                href="#request-query"
-                id="services-hero-cta"
-                className="rs-cta-btn inline-flex items-center gap-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white px-7 py-3.5 text-xs font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[3px] hover:-translate-y-0.5"
-                style={{ boxShadow: "none" }}
-              >
-                <span className="text-white font-black">Request a Query</span>
-                <ArrowRight size={14} strokeWidth={2.4} className="text-white" />
-              </Link>
-            </div>
+          <div>
+            <Link
+              href="#request-query"
+              id="services-hero-cta"
+              className="inline-flex items-center justify-center bg-white hover:bg-neutral-100 text-[#042E3A] font-bold px-8 py-3.5 text-sm sm:text-[15px] rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95"
+              style={{ borderRadius: "9999px", backgroundColor: "#ffffff", color: "#042E3A" }}
+            >
+              <span className="text-[#042E3A] font-bold">Request a Query</span>
+            </Link>
           </div>
         </div>
       </section>

@@ -121,7 +121,7 @@ export default function CorporateFooter({
         <div className="lg:col-span-1 flex flex-col pr-0 lg:pr-6" data-aos="fade-up" data-aos-delay="100">
           <Link href="/" className="inline-block mb-4">
             <Image
-              src="/logos/roysons-main.png"
+              src="/logos/royson-hoding.png"
               alt="Roy Sons Logo"
               width={180}
               height={80}
