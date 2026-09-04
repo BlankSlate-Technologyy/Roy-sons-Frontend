@@ -77,24 +77,6 @@ export default function AOSProvider({ children }) {
 
       {/* Main App Content */}
       {children}
-
-      {/* Banu Mukhtar Style Floating Back-to-Top Button */}
-      <button
-        type="button"
-        onClick={scrollToTop}
-        aria-label="Scroll to top"
-        className={`fixed bottom-6 right-6 z-50 w-11 h-11 rounded-[3px] border-2 border-[#C6A15A] bg-[#101518]/90 text-[#C6A15A] flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.5)] backdrop-blur-sm cursor-pointer transition-all duration-500 group hover:bg-[#C6A15A] hover:text-[#101518] hover:-translate-y-1 ${
-          showScrollTop
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 translate-y-8 pointer-events-none"
-        }`}
-      >
-        <ChevronUp
-          size={22}
-          strokeWidth={2.5}
-          className="transition-transform duration-300 group-hover:-translate-y-0.5"
-        />
-      </button>
     </>
   );
 }

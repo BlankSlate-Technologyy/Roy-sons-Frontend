@@ -26,14 +26,14 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal 
               alt={name}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-contain transform group-hover:scale-110 transition-transform duration-300"
+              className="object-contain transform group-hover:scale-90 transition-transform duration-300"
             />
           </div>
         ) : (
           <Building2
             size={76}
             strokeWidth={1.2}
-            className="text-neutral-400 group-hover:scale-110 transition-all duration-300"
+            className="text-neutral-400 group-hover:scale-90 transition-all duration-300"
           />
         )}
       </div>

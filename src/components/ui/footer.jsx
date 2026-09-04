@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, AlertCircle, Loader2, ChevronUp } from "lucide-react";
 import {
   FOOTER_QUICK_LINKS,
   FOOTER_SERVICES_LINKS,
@@ -59,14 +59,23 @@ export default function CorporateFooter({
     }
   };
 
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <footer className="bg-white text-[#042E3A] font-sans border-t border-[#0a7a8c]/15" data-aos="fade-up">
       {/* Top Newsletter Bar */}
       <div className="border-b border-[#0a7a8c]/15 bg-[#f0fdfa] py-8 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-delay="100">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <span className="text-[15px] font-black uppercase tracking-[0.2em] text-[#0a7a8c] block mb-1">
-              Stay Informed
+          <div className="flex flex-col gap-1 text-center md:text-left">
+            <span className="text-xs font-black uppercase tracking-[0.2em] text-[#0a7a8c]">
+              STAY INFORMED
             </span>
             <h3 className="text-base sm:text-lg font-bold text-[#042E3A]">
               Subscribe to Roysons Corporate Insights &amp; Market Reports
@@ -211,17 +220,32 @@ export default function CorporateFooter({
 
       {/* Copyright Sub-bar */}
       <div className="border-t border-[#042E3A]/10 bg-white py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5">
           <p className="text-xs text-[#042E3A]/60 font-semibold tracking-wider text-center md:text-left">
             &copy; {currentYear} ROYSONS Pvt. Ltd. All Rights Reserved.
           </p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="text-xs text-[#042E3A]/60 font-medium hover:text-[#0a7a8c] transition-colors duration-200">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-xs text-[#042E3A]/60 font-medium hover:text-[#0a7a8c] transition-colors duration-200">
-              Terms &amp; Conditions
-            </Link>
+
+          {/* Right Section: Privacy Policy & Terms & Conditions with Back-to-Top Button underneath */}
+          <div className="flex flex-col items-center md:items-end gap-2.5">
+            <div className="flex items-center gap-6">
+              <Link href="/privacy" className="text-xs text-[#042E3A]/60 font-medium hover:text-[#0a7a8c] transition-colors duration-200">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-xs text-[#042E3A]/60 font-medium hover:text-[#0a7a8c] transition-colors duration-200">
+                Terms &amp; Conditions
+              </Link>
+            </div>
+
+            {/* Back to top button under Terms & Conditions */}
+            <button
+              type="button"
+              id="scroll-to-top-btn"
+              onClick={scrollToTop}
+              aria-label="Scroll to top"
+              className="w-10 h-10 rounded-[3px] border-2 border-[#0a7a8c] bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white flex items-center justify-center shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] transition-all duration-300 group cursor-pointer hover:-translate-y-0.5"
+            >
+              <ChevronUp size={20} strokeWidth={2.6} className="text-white transition-transform duration-300 group-hover:-translate-y-0.5" />
+            </button>
           </div>
         </div>
       </div>

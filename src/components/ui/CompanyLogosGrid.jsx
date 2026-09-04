@@ -30,7 +30,7 @@ export default function CompanyLogosGrid() {
                       alt={company.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
-                      className="object-contain group-hover:scale-105 transition-transform duration-300 p-2"
+                      className="object-contain group-hover:scale-90 transition-transform duration-300 p-2"
                     />
                   </div>
                   <div className="w-full pt-3 mt-2 border-t border-neutral-100 flex items-center justify-center text-center">

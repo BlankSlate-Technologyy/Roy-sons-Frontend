@@ -101,8 +101,8 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
             <Link
               href="/contact"
               id="navbar-inquire-btn"
-              className="hidden sm:inline-flex items-center justify-center px-4 xl:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white text-[11px] xl:text-[12px] font-black uppercase tracking-wider rounded-[3px] transition-all duration-300 active:scale-95 whitespace-nowrap flex-shrink-0"
-              style={{ whiteSpace: "nowrap", boxShadow: "none" }}
+              className="hidden sm:inline-flex items-center justify-center px-4 xl:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white text-[11px] xl:text-[12px] font-black uppercase tracking-wider rounded-[3px] transition-all duration-300 active:scale-95 whitespace-nowrap flex-shrink-0 shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)]"
+              style={{ whiteSpace: "nowrap" }}
             >
               <span className="text-white font-black whitespace-nowrap inline-block" style={{ whiteSpace: "nowrap" }}>Inquire Now</span>
             </Link>

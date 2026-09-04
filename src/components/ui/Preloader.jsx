@@ -65,7 +65,7 @@ export default function Preloader() {
               className="relative mb-8"
             >
               <Image
-                src="/logo/Roysons-03.png"
+                src="/logos/Roysons-03.png"
                 alt="Roy Sons Corporate Logo"
                 width={500}
                 height={200}

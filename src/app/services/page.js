@@ -303,18 +303,33 @@ export default function ServicesPage() {
       <HeaderNavbar activeRoute="/services" />
 
       {/* Services Hero Banner - Centered Gradient Design */}
-      <section className="relative bg-gradient-to-r from-[#024959] via-[#087f94] to-[#059669] py-16 sm:py-20 lg:py-24 px-6 overflow-hidden text-center flex flex-col items-center justify-center">
+      <section 
+        className="services-hero-gradient relative py-16 sm:py-20 lg:py-24 px-6 overflow-hidden text-center flex flex-col items-center justify-center border-b border-[#0a7a8c]/20"
+        style={{
+          background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
+          backgroundColor: "#088192",
+        }}
+      >
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
           {/* Top Tag */}
-          <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-white/80 mb-2.5 block">
+          <span 
+            className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-white/85 mb-2.5 block"
+            style={{ color: "rgba(255, 255, 255, 0.85)" }}
+          >
             WHAT WE DO
           </span>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 leading-tight">
+          <h1 
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4 leading-tight drop-shadow-sm"
+            style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+          >
             Our Services
           </h1>
 
-          <p className="text-[15px] sm:text-[17px] text-white/90 leading-relaxed max-w-2xl mx-auto mb-8 font-normal">
+          <p 
+            className="text-[15px] sm:text-[17px] text-white/95 leading-relaxed max-w-2xl mx-auto mb-8 font-normal drop-shadow-sm"
+            style={{ color: "rgba(255, 255, 255, 0.95)", WebkitTextFillColor: "rgba(255, 255, 255, 0.95)" }}
+          >
             ROYSONS Pvt. Ltd. offers a wide range of innovative and
             reliable services to meet the diverse needs of our clients
             across multiple industries.
