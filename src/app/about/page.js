@@ -136,8 +136,10 @@ function AnimatedStatValue({ value }) {
     const match = rawValue.match(/(\d+(?:\.\d+)?)/);
 
     if (!match) {
-      setDisplayValue(rawValue);
-      return undefined;
+      const timer = setTimeout(() => {
+        setDisplayValue(rawValue);
+      }, 0);
+      return () => clearTimeout(timer);
     }
 
     const numericTarget = parseFloat(match[1].replace(/,/g, ""));
@@ -893,41 +895,80 @@ INDUSTRY-LEADING BUSINESSES
         </div>
       </section>
 
-      {/* Why Roys Group list section */}
-      <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-white border-t border-neutral-100" data-aos="fade-up">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col gap-10 lg:gap-14">
+      {/* Why Roys Group list section - Prominent Corporate Showcase */}
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9]/50 to-white border-t border-b border-[#0a7a8c]/15 relative overflow-hidden" data-aos="fade-up">
+        {/* Subtle background glow */}
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-[#0a7a8c]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+        <div className="mx-auto max-w-screen-xl relative z-10">
+          <div className="flex flex-col gap-12 lg:gap-16">
             
+            {/* Header Block */}
             <div className="text-center max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-              <span className="text-[12px] font-black tracking-[0.24em] text-[#0a7a8c] uppercase mb-3 block">
-                COMPETITIVE ADVANTAGE
-              </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#042E3A] mb-4 leading-tight uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a7a8c]/10 border border-[#0a7a8c]/25 text-[#0a7a8c] text-[11.5px] font-black uppercase tracking-[0.24em] mb-4 shadow-sm">
+                <ShieldCheck size={15} strokeWidth={2.4} />
+                <span>COMPETITIVE ADVANTAGE</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black text-[#042E3A] mb-4 leading-tight uppercase tracking-wider">
                 Why ROYSONS Pvt.Ltd.?
               </h2>
-              <div className="h-1 w-16 bg-gradient-to-r from-[#0077b6] to-[#02b875] mb-5 mx-auto rounded-full" />
-              <p className="text-[15px] sm:text-[16px] text-neutral-700 leading-relaxed font-normal">
-                Our operations are founded on trust, domain expertise, and a multi-tiered supply network. 
+              <div className="h-[4px] w-20 bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488] mb-6 mx-auto rounded-full shadow-sm" />
+              <p className="text-[16px] sm:text-[17.5px] text-[#042E3A]/85 leading-relaxed font-medium">
+                Our operations are founded on <strong className="text-[#042E3A] font-black">trust</strong>, <strong className="text-[#042E3A] font-black">domain expertise</strong>, and a <strong className="text-[#042E3A] font-black">multi-tiered supply network</strong>. 
                 We combine government-certified credentials with structured global partnerships to deliver turnkey performance.
               </p>
             </div>
 
-            <div className="w-full">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4">
+            {/* Prominent Cards Grid */}
+            <div className="w-full bg-white rounded-2xl border-2 border-[#0a7a8c]/20 p-6 sm:p-9 lg:p-12 shadow-[0_15px_45px_rgba(4,46,58,0.08)]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 lg:gap-6">
                 {WHY_ROYS_GROUP.map((point, index) => (
                   <div
                     key={index}
                     data-aos="fade-up"
                     data-aos-delay={(index % 2) * 100 + 100}
-                    className="flex items-center gap-3.5 border-b border-neutral-200 pb-3.5 flex-row"
+                    className="group flex items-center justify-between p-4 sm:p-5 rounded-xl bg-gradient-to-r from-slate-50/80 to-white hover:from-[#f0fdfa] hover:to-white border-2 border-slate-200/90 hover:border-[#0a7a8c] shadow-sm hover:shadow-[0_8px_24px_rgba(10,122,140,0.18)] transition-all duration-300 cursor-default"
                   >
-                    <CheckCircle2 size={18} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
-                    <span className="text-[14px] sm:text-[15px] font-bold text-[#042E3A] tracking-normal">
-                      {point}
+                    <div className="flex items-center gap-3.5 sm:gap-4">
+                      {/* Stylized Icon Badge */}
+                      <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[#042E3A] via-[#075d6d] to-[#0a7a8c] text-white flex items-center justify-center shadow-md group-hover:scale-110 group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.4)] transition-all duration-300 flex-shrink-0">
+                        <CheckCircle2 size={22} className="text-[#38bdf8]" strokeWidth={2.6} />
+                      </div>
+
+                      {/* Text */}
+                      <span className="text-[15px] sm:text-[16.5px] lg:text-[17px] font-black text-[#042E3A] group-hover:text-[#0a7a8c] transition-colors duration-300 tracking-tight">
+                        {point}
+                      </span>
+                    </div>
+
+                    {/* Numeric Indicator */}
+                    <span className="text-[12px] font-black tracking-widest text-[#0a7a8c]/50 group-hover:text-[#0a7a8c] transition-colors duration-300 flex-shrink-0 ml-3 bg-[#0a7a8c]/5 px-2.5 py-1 rounded-md border border-[#0a7a8c]/15">
+                      #{String(index + 1).padStart(2, "0")}
                     </span>
                   </div>
                 ))}
               </div>
+
+              {/* Executive Trust Banner Strip at bottom of card */}
+              <div className="mt-8 pt-8 border-t border-slate-200/90 grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+                <div className="flex flex-col items-center p-3.5 rounded-lg bg-slate-50/70 border border-slate-200/70">
+                  <span className="text-xl sm:text-2xl font-black text-[#042E3A]">25+ Years</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#0a7a8c] mt-0.5">Industry Experience</span>
+                </div>
+                <div className="flex flex-col items-center p-3.5 rounded-lg bg-slate-50/70 border border-slate-200/70">
+                  <span className="text-xl sm:text-2xl font-black text-[#042E3A]">100%</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#0a7a8c] mt-0.5">Turnkey Execution</span>
+                </div>
+                <div className="flex flex-col items-center p-3.5 rounded-lg bg-slate-50/70 border border-slate-200/70">
+                  <span className="text-xl sm:text-2xl font-black text-[#042E3A]">Tier-1</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#0a7a8c] mt-0.5">Global Partnerships</span>
+                </div>
+                <div className="flex flex-col items-center p-3.5 rounded-lg bg-slate-50/70 border border-slate-200/70">
+                  <span className="text-xl sm:text-2xl font-black text-[#042E3A]">Certified</span>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#0a7a8c] mt-0.5">Government Contractor</span>
+                </div>
+              </div>
+
             </div>
 
           </div>
