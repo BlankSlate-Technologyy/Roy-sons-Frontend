@@ -82,7 +82,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
   {
     id: "slide-two",
     type: "image",
-    src: "/ROYSONS Slider image 2.jpeg",
+    src: "/logos/slide 2.png",
     subtitle: "HEALTHCARE DIVISION",
     title: "Advancing Healthcare",
     highlight: "Through Innovation.",
@@ -97,7 +97,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
   {
     id: "slide-three",
     type: "image",
-    src: "/ROYSONS Slider Image 3.jpeg",
+    src: "/logos/slider 3.png",
     subtitle: "TECHNOLOGY & INNOVATION",
     title: "Engineering the Future",
     highlight: "of Smart Industries.",

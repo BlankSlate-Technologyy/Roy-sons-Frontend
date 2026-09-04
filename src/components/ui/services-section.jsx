@@ -8,7 +8,7 @@ function ServiceItem({ icon: Icon, title, description, href }) {
   return (
     <div className="flex flex-row items-start gap-4 group">
       {/* Icon Box */}
-      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-sm flex items-center justify-center group-hover:border-[#0d9488] group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:shadow-[0_6px_20px_rgba(10,122,140,0.3)] transition-all duration-300">
+      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-sm flex items-center justify-center group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-[#0a7a8c] group-hover:via-[#0d9488] group-hover:to-[#10b981] group-hover:shadow-[0_6px_20px_rgba(10,122,140,0.4)] transition-all duration-300">
         <Icon
           size={24}
           strokeWidth={1.6}
@@ -50,13 +50,13 @@ export default function CorporateCapabilitiesPanel({ services = CORPORATE_SERVIC
           <h4 className="text-xs sm:text-sm font-black tracking-[0.28em] uppercase text-[#0a7a8c] mb-3.5">
             OUR CAPABILITIES
           </h4>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-[0.16em] text-[#042E3A]">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-[0.16em] text-[#042E3A]">
             Core Business Sectors
           </h2>
           <div className="mx-auto mt-5 h-[3.5px] w-16 bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488]" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-20 gap-y-20">
           {services.map((service, index) => {
             const staggerDelay = ((index % 4) + 1) * 100;
             return (
