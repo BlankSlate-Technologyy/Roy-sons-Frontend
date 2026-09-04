@@ -412,14 +412,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white text-neutral-900 border-t border-neutral-200 relative overflow-hidden" data-aos="fade-up">
+      <section className="pt-12 sm:pt-16 pb-4 sm:pb-6 px-4 sm:px-6 bg-white text-neutral-900 border-t border-neutral-200 relative overflow-hidden" data-aos="fade-up">
         {/* Subtle Ambient Teal Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0a7a8c]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="mx-auto max-w-5xl relative z-10 flex flex-col items-center text-center">
           
           {/* Centered Picture at Top */}
-          <div className="mb-8" data-aos="zoom-in" data-aos-delay="100">
+          <div className="mb-6 sm:mb-8" data-aos="zoom-in" data-aos-delay="100">
             <div className="relative w-[260px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#0a7a8c]/30 bg-neutral-900 group">
               <Image
                 src="/logos/chairman.jpeg"
@@ -451,7 +451,7 @@ export default function AboutPage() {
           </p>
 
           {/* Premium Corporate Section Separator */}
-          <div className="w-full max-w-4xl mx-auto mt-14 sm:mt-16 flex items-center justify-center gap-3 sm:gap-4 select-none" data-aos="fade-up" data-aos-delay="300">
+          <div className="w-full max-w-4xl mx-auto mt-6 sm:mt-8 mb-2 flex items-center justify-center gap-3 sm:gap-4 select-none" data-aos="fade-up" data-aos-delay="300">
             <div className="flex-1 h-[1.5px] bg-gradient-to-r from-transparent via-[#0a7a8c]/30 to-[#0a7a8c]/80" />
             <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f0fdfa] border border-[#0a7a8c]/30 shadow-[0_2px_12px_rgba(10,122,140,0.12)]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#0a7a8c]/50" />

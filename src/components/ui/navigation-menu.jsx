@@ -43,9 +43,10 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled
-            ? "border-b border-[#0a7a8c]/15 shadow-[0_6px_24px_rgba(4,46,58,0.08)] bg-white/95 backdrop-blur-md"
-            : "border-b border-[#042E3A]/10 shadow-[0_1px_6px_rgba(10,122,140,0.05)] bg-white"
+            ? "border-b border-[#0a7a8c]/15 bg-white/95 backdrop-blur-md shadow-none"
+            : "border-b border-[#042E3A]/10 bg-white shadow-none"
         }`}
+        style={{ boxShadow: "none" }}
       >
         <div
           className={`mx-auto flex w-full max-w-screen-2xl items-center justify-between px-3 sm:px-5 lg:px-6 xl:px-8 transition-all duration-300 ${
@@ -67,7 +68,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                       href={route.path}
                       className={`nav-text-link px-2 xl:px-3 py-1.5 text-[12px] xl:text-[13.5px] 2xl:text-[14.5px] font-bold tracking-[0.02em] xl:tracking-[0.06em] uppercase transition-all duration-300 relative whitespace-nowrap !bg-transparent hover:!bg-transparent !border-none !shadow-none
                         ${isActive
-                          ? "!text-[#042E3A] after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-6 xl:after:w-7 after:h-[3px] after:bg-[#0a7a8c] after:rounded-full after:shadow-[0_2px_8px_rgba(10,122,140,0.35)]"
+                          ? "!text-[#042E3A] after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-6 xl:after:w-7 after:h-[3px] after:bg-[#0a7a8c] after:rounded-full"
                           : "!text-[#042E3A]/80 hover:!text-[#0a7a8c] after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-[#0a7a8c] hover:after:w-6 xl:hover:after:w-7 after:rounded-full after:transition-all after:duration-300"
                         }`}
                       style={{
@@ -91,7 +92,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
               id="navbar-search-btn"
               aria-label="Toggle search bar"
               onClick={() => setIsSearchOpen(true)}
-              className="p-1.5 sm:p-2 text-[#042E3A] hover:text-[#0891b2] bg-transparent hover:bg-[#042E3A]/5 hover:shadow-[0_2px_8px_rgba(10,122,140,0.15)] rounded-lg transition-all cursor-pointer flex-shrink-0"
+              className="p-1.5 sm:p-2 text-[#042E3A] hover:text-[#0891b2] bg-transparent hover:bg-[#042E3A]/5 rounded-lg transition-all cursor-pointer flex-shrink-0"
               title="Search website (Ctrl + K)"
             >
               <Search size={18} strokeWidth={2.2} />
@@ -100,8 +101,8 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
             <Link
               href="/contact"
               id="navbar-inquire-btn"
-              className="hidden sm:inline-flex items-center justify-center px-4 xl:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white text-[11px] xl:text-[12px] font-black uppercase tracking-wider rounded-[3px] transition-all duration-300 shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_6px_24px_rgba(13,148,136,0.55)] hover:-translate-y-0.5 active:scale-95 whitespace-nowrap flex-shrink-0"
-              style={{ whiteSpace: "nowrap" }}
+              className="hidden sm:inline-flex items-center justify-center px-4 xl:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white text-[11px] xl:text-[12px] font-black uppercase tracking-wider rounded-[3px] transition-all duration-300 active:scale-95 whitespace-nowrap flex-shrink-0"
+              style={{ whiteSpace: "nowrap", boxShadow: "none" }}
             >
               <span className="text-white font-black whitespace-nowrap inline-block" style={{ whiteSpace: "nowrap" }}>Inquire Now</span>
             </Link>

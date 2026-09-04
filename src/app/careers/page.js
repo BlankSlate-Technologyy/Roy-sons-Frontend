@@ -176,35 +176,35 @@ export default function CareersPage() {
       {/* Hero Section */}
       <section className="relative bg-[#042E3A] py-20 sm:py-24 px-4 sm:px-6 overflow-hidden border-b border-neutral-800">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-35"
+          className="absolute inset-0 bg-cover bg-center opacity-70 sm:opacity-75 transition-opacity"
           style={{ backgroundImage: "url('/bright-corporate-panoramic.jpg')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#042E3A] via-[#042E3A]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#042E3A]/85 via-[#042E3A]/55 to-[#042E3A]/10 sm:from-[#042E3A]/80 sm:via-[#042E3A]/45 sm:to-transparent" />
 
         <div className="relative mx-auto max-w-screen-xl z-10">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex items-center gap-1.5 text-[11px] text-neutral-400 font-bold uppercase tracking-widest">
+            <ol className="flex items-center gap-1.5 text-[11px] text-white/80 font-bold uppercase tracking-widest drop-shadow-sm">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">
                   Home
                 </Link>
               </li>
               <li className="flex items-center gap-1">
-                <ChevronRight size={10} className="text-[#C6A15A]" />
-                <span className="text-[#C6A15A]">Careers</span>
+                <ChevronRight size={11} className="text-[#0d9488]" />
+                <span className="text-[#0d9488]">Careers</span>
               </li>
             </ol>
           </nav>
 
           <div className="max-w-2xl">
-            <span className="text-[11px] font-bold tracking-[0.25em] text-[#C6A15A] uppercase mb-3 block">
+            <span className="text-[11px] font-bold tracking-[0.25em] text-[#0d9488] uppercase mb-3 block">
               JOIN ROYSONS GROUP
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-[0.12em] text-white mb-5 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-[0.12em] text-white mb-5 leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
               Build Your Future With Us
             </h1>
-            <p className="text-[13px] sm:text-[14px] text-neutral-300 leading-relaxed font-light mb-8">
+            <p className="text-[13px] sm:text-[14px] text-white/90 leading-relaxed font-light mb-8 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
               Be a part of a forward-thinking conglomerate driving innovation across 26+ group companies. We empower visionary professionals to solve critical challenges and shape national industries.
             </p>
             <div className="flex flex-wrap gap-4">

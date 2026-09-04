@@ -39,19 +39,19 @@ const SHOWCASE_ITEMS = [
 
 export default function FeatureShowcase() {
   return (
-    <section className="w-full py-12 sm:py-16 bg-[#0c1013] text-white border-b border-neutral-800 font-sans" data-aos="fade-up">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14">
+    <section className="w-full pt-2 sm:pt-4 pb-12 sm:pb-16 bg-white border-b border-neutral-150 font-sans" data-aos="fade-up" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="100">
-          <span className="text-xs font-black tracking-[0.25em] text-[#C6A15A] uppercase mb-2.5 block">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8" data-aos="fade-up" data-aos-delay="100">
+          <span className="text-xs sm:text-sm font-black tracking-[0.25em] text-[#0a7a8c] uppercase mb-2 block" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
             LEADERSHIP THAT DRIVES OUR VISION
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white uppercase tracking-tight mb-3">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#042E3A] uppercase tracking-tight mb-2.5" style={{ fontFamily: '"Times New Roman", Times, serif', color: '#042E3A' }}>
             Board of Directors
           </h2>
-          <div className="mx-auto h-[3px] w-12 bg-[#C6A15A] mb-4" />
-          <p className="text-[15px] sm:text-[16px] text-neutral-200 leading-relaxed font-normal">
+          <div className="mx-auto h-[3px] w-12 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-3.5" />
+          <p className="text-[16px] sm:text-[18px] text-[#042E3A]/85 leading-[1.85] font-normal" style={{ fontFamily: '"Times New Roman", Times, serif', color: '#042E3A' }}>
             The Board of Directors of ROYSONS Pvt. Ltd. provides strategic leadership and direction, guiding the organization toward sustainable growth, innovation, diversification, and long-term value creation across its expanding portfolio of businesses.
           </p>
         </div>
@@ -64,7 +64,7 @@ export default function FeatureShowcase() {
               key={index}
               data-aos="fade-up"
               data-aos-delay={(index + 1) * 100}
-              className="rounded-2xl p-6 sm:p-10 lg:p-12 border border-neutral-800 bg-[#101518] shadow-xl hover:border-[#C6A15A]/40 transition-all duration-300"
+              className="rounded-2xl p-6 sm:p-10 lg:p-12 border border-neutral-200 bg-white shadow-sm hover:border-[#0a7a8c]/40 hover:shadow-md transition-all duration-300"
             >
               <div
                 className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-14 ${
@@ -75,18 +75,18 @@ export default function FeatureShowcase() {
                 <div className="flex-1 w-full flex flex-col justify-center text-center lg:text-left order-2 lg:order-none">
                   {/* Badge Pill */}
                   <div className="inline-flex items-center bg-[#f0fdfa] border border-[#0a7a8c]/30 px-4 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
-                    <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider text-[#0a7a8c]">
+                    <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider text-[#0a7a8c]" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
                       {item.badge}
                     </span>
                   </div>
 
                   {/* Heading */}
-                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-snug tracking-tight mb-4">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#042E3A] leading-snug tracking-tight mb-4" style={{ fontFamily: '"Times New Roman", Times, serif', color: '#042E3A' }}>
                     {item.title}
                   </h3>
 
-                  {/* Description Paragraph - Clear & Readable */}
-                  <p className="text-neutral-200 text-[16px] sm:text-[17.5px] lg:text-[18.5px] leading-[1.8] font-normal whitespace-pre-line mb-6">
+                  {/* Description Paragraph - Same Font & Style as Chairman Bio */}
+                  <p className="text-[16.5px] sm:text-[18px] lg:text-[19px] text-[#042E3A]/85 leading-[1.85] font-normal whitespace-pre-line mb-6" style={{ fontFamily: '"Times New Roman", Times, serif', color: '#042E3A' }}>
                     {item.description}
                   </p>
 
@@ -95,10 +95,11 @@ export default function FeatureShowcase() {
                     {item.profileHref && (
                       <Link
                         href={item.profileHref}
-                        className="rs-cta-btn inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border-2 border-[#C6A15A] bg-transparent text-[#C6A15A] hover:bg-[#C6A15A] hover:text-[#101518] text-xs font-black uppercase tracking-[0.18em] rounded-[2px] transition-all duration-300 group/btn shadow-xs"
+                        className="rs-cta-btn inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border-2 border-[#0a7a8c] bg-[#042E3A] hover:bg-[#0a7a8c] text-white text-xs font-black uppercase tracking-[0.18em] rounded-[2px] transition-all duration-300 group/btn shadow-xs"
+                        style={{ fontFamily: '"Times New Roman", Times, serif' }}
                       >
-                        <span>VIEW PROFILE</span>
-                        <ArrowRight size={14} strokeWidth={2.5} className="group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        <span className="text-white">VIEW PROFILE</span>
+                        <ArrowRight size={14} strokeWidth={2.5} className="text-white group-hover/btn:translate-x-1 transition-transform duration-300" />
                       </Link>
                     )}
 
@@ -108,7 +109,7 @@ export default function FeatureShowcase() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${item.title} LinkedIn Profile`}
-                        className="inline-flex items-center justify-center w-11 h-11 border border-[#C6A15A]/40 bg-white/5 hover:bg-[#C6A15A] text-[#C6A15A] hover:text-[#101518] rounded-[2px] transition-all duration-300 shadow-xs"
+                        className="inline-flex items-center justify-center w-11 h-11 border border-[#0a7a8c]/40 bg-[#f0fdfa] hover:bg-[#0a7a8c] text-[#0a7a8c] hover:text-white rounded-[2px] transition-all duration-300 shadow-xs"
                       >
                         <Linkedin size={18} strokeWidth={1.8} />
                       </a>
@@ -118,7 +119,7 @@ export default function FeatureShowcase() {
 
                 {/* Image Side (order-1 on mobile, order-none on desktop) */}
                 <div className="flex-1 w-full flex items-center justify-center order-1 lg:order-none">
-                  <div className="relative w-full max-w-[320px] sm:max-w-[380px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-900 group">
+                  <div className="relative w-full max-w-[320px] sm:max-w-[380px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-2 border-[#0a7a8c]/30 bg-neutral-900 group">
                     <Image
                       src={item.image}
                       alt={item.imageAlt}

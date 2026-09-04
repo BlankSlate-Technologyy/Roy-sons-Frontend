@@ -72,35 +72,28 @@ export default function ContactPage() {
       <HeaderNavbar activeRoute="/contact" />
 
       {/* Hero Section */}
-      <section className="relative bg-[#042E3A] py-24 px-6 overflow-hidden">
-        {/* Background Image Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{ backgroundImage: "url('/bright-corporate-panoramic.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#042E3A] via-[#042E3A]/80 to-transparent" />
-        
+      <section className="relative bg-white py-12 sm:py-16 px-6 border-b border-[#042E3A]/10">
         <div className="relative mx-auto max-w-screen-xl z-10">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex items-center gap-1.5 text-[11px] text-neutral-400 font-bold uppercase tracking-widest">
+            <ol className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-[#042E3A]/70">
               <li>
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="text-[#042E3A]/70 hover:text-[#0a7a8c] transition-colors">Home</Link>
               </li>
               <li className="flex items-center gap-1">
-                <ChevronRight size={10} className="text-neutral-500" />
-                <span className="text-white">Contact Us</span>
+                <ChevronRight size={11} className="text-[#0a7a8c]" />
+                <span className="text-[#042E3A] font-bold">Contact Us</span>
               </li>
             </ol>
           </nav>
 
           {/* Title */}
           <div className="max-w-2xl">
-            <h1 className="text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
+            <h1 className="text-4xl lg:text-5xl font-black text-[#042E3A] mb-4 tracking-tight">
               Contact Us
             </h1>
-            <div className="h-[3px] w-12 bg-white mb-6" />
-            <p className="text-[13.5px] text-neutral-300 leading-relaxed font-normal">
+            <div className="h-[3.5px] w-14 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-5 rounded-full" />
+            <p className="text-[15px] sm:text-[16px] text-[#042E3A]/85 leading-relaxed font-normal">
               We would love to hear from you. Reach out to us for any inquiries, collaboration, 
               or support. Our team is here to help you.
             </p>

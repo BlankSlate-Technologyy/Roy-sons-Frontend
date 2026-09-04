@@ -227,13 +227,13 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     font-family: "Times New Roman", Times, serif !important;
   }
 
-  /* ── Headings: Deep Navy Teal (#042E3A) ── */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  /* ── Headings: Deep Navy Teal (#042E3A) (exempting white/light text) ── */
+  h1:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
+  h2:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
+  h3:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
+  h4:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
+  h5:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white),
+  h6:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white) {
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
     background-image: none !important;
@@ -242,9 +242,9 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     text-shadow: none !important;
   }
 
-  /* ── Regular links, labels, table headers (excluding buttons) ── */
-  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]),
-  label,
+  /* ── Regular links, labels, table headers (excluding buttons, white/light text) ── */
+  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):not(.text-white),
+  label:not([class*="text-white"]),
   th {
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
@@ -256,15 +256,15 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   /* Hover on normal links: Vibrant Greenish-Bluish (#0a7a8c) */
-  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):hover {
+  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):hover {
     color: #0a7a8c !important;
     -webkit-text-fill-color: #0a7a8c !important;
   }
 
-  /* ── Body text (EXCLUDING buttons, pills, white text) ── */
-  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]),
-  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not(.badge),
-  li:not(button *):not(a.rs-cta-btn *):not(a[class*="bg-"] *),
+  /* ── Body text (EXCLUDING buttons, pills, white text, light tints) ── */
+  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]),
+  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.badge),
+  li:not(button *):not(a.rs-cta-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]),
   time,
   td {
     color: #042E3A !important;
