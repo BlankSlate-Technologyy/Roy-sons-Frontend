@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { DEFAULT_BILLBOARD_SLIDES } from "@/lib/constants";
 
 export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, videoSrc }) {
@@ -92,8 +92,8 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
       </div>
 
       <div className="relative z-10 w-full py-16 md:py-20 flex items-center">
-        <div className="max-w-screen-xl mx-auto px-6 w-full">
-          <div className="max-w-[820px]">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-[840px]">
             <p className={`text-[13px] md:text-[14px] font-bold tracking-[0.28em] uppercase text-white mb-3 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] transition-all duration-500 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               {activeSlide.subtitle}
             </p>
@@ -126,7 +126,7 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
             <div className={`flex flex-wrap gap-3 transition-all duration-500 delay-200 transform ${isTransitioning ? "opacity-0 translate-y-3" : "opacity-100 translate-y-0"}`}>
               <Link
                 href={activeSlide.cta1?.href || activeSlide.cta?.href || "/"}
-                className="rs-cta-btn inline-flex items-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] border-2 border-[#0d9488]/60 text-[12px] md:text-[13px] font-black tracking-[0.2em] uppercase px-7 py-3.5 rounded-[3px] transition-all duration-300 hover:-translate-y-0.5 group"
+                className="rs-cta-btn inline-flex items-center gap-3 bg-gradient-to-r from-[#0284c7] via-[#0891b2] to-[#10b981] hover:from-[#0369a1] hover:to-[#059669] border-2 border-white/30 text-[12px] md:text-[13px] font-black tracking-[0.2em] uppercase px-7 py-3.5 rounded-[3px] transition-all duration-300 hover:-translate-y-0.5 group shadow-[0_4px_16px_rgba(2,132,199,0.35)]"
               >
                 <span className="text-white group-hover:text-white transition-colors duration-300">{activeSlide.cta1?.label || activeSlide.cta?.label}</span>
                 <ArrowRight size={13} strokeWidth={2.4} className="text-white group-hover:text-white group-hover:translate-x-1.5 transition-all duration-300" />
@@ -145,14 +145,17 @@ export default function BillboardSlider({ slides = DEFAULT_BILLBOARD_SLIDES, vid
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2.5">
+      {/* Clean Pagination Indicators for all slides */}
+      <div className="absolute bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 max-w-full px-4 overflow-x-auto">
         {resolvedSlides.map((_, index) => (
           <button
             key={index}
             onClick={() => navigateToSlide(index)}
             aria-label={`Switch to slide ${index + 1}`}
-            className={`w-2.5 h-2.5 rounded-full border border-white/50 transition-all duration-300 cursor-pointer ${
-              index === activeSlideIndex ? "bg-white scale-110" : "bg-transparent hover:bg-white/20"
+            className={`transition-all duration-300 cursor-pointer flex-shrink-0 ${
+              index === activeSlideIndex
+                ? "w-6 sm:w-7 h-2 rounded-full bg-gradient-to-r from-[#0a7a8c] to-[#38bdf8] shadow-[0_0_10px_rgba(56,189,248,0.7)]"
+                : "w-2 h-2 rounded-full bg-white/40 hover:bg-white/80 border border-white/30"
             }`}
           />
         ))}

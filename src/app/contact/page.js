@@ -72,16 +72,16 @@ export default function ContactPage() {
       <HeaderNavbar activeRoute="/contact" />
 
       {/* Hero Section */}
-      <section className="relative bg-white py-12 sm:py-16 px-6 border-b border-[#042E3A]/10">
+      <section className="relative bg-white py-14 sm:py-18 px-6 border-b border-[#042E3A]/10">
         <div className="relative mx-auto max-w-screen-xl z-10">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-4">
-            <ol className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-[#042E3A]/70">
+            <ol className="flex items-center gap-1.5 text-[13px] sm:text-[14px] font-bold uppercase tracking-widest text-[#042E3A]/70">
               <li>
                 <Link href="/" className="text-[#042E3A]/70 hover:text-[#0a7a8c] transition-colors">Home</Link>
               </li>
               <li className="flex items-center gap-1">
-                <ChevronRight size={11} className="text-[#0a7a8c]" />
+                <ChevronRight size={13} className="text-[#0a7a8c]" />
                 <span className="text-[#042E3A] font-bold">Contact Us</span>
               </li>
             </ol>
@@ -89,11 +89,11 @@ export default function ContactPage() {
 
           {/* Title */}
           <div className="max-w-2xl">
-            <h1 className="text-4xl lg:text-5xl font-black text-[#042E3A] mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#042E3A] mb-4 tracking-tight">
               Contact Us
             </h1>
-            <div className="h-[3.5px] w-14 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-5 rounded-full" />
-            <p className="text-[15px] sm:text-[16px] text-[#042E3A]/85 leading-relaxed font-normal">
+            <div className="h-[4px] w-16 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-5 rounded-full" />
+            <p className="text-[17px] sm:text-[19px] text-[#042E3A]/90 leading-relaxed font-normal">
               We would love to hear from you. Reach out to us for any inquiries, collaboration, 
               or support. Our team is here to help you.
             </p>
@@ -104,68 +104,68 @@ export default function ContactPage() {
       {/* Contact Info Cards */}
       <section className="relative px-6 z-20 -mt-10" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
-          <div className="bg-white border border-neutral-200 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.04)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200">
+          <div className="bg-white border border-neutral-200 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.06)] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-neutral-200">
             
             {/* Our Office */}
-            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-              <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
-                <MapPin size={22} strokeWidth={2} />
+            <div className="p-7 sm:p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+              <div className="w-14 h-14 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
+                <MapPin size={26} strokeWidth={2.2} />
               </div>
               <div>
-                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors">
+                <h4 className="text-[17px] sm:text-[18.5px] font-black uppercase tracking-[0.14em] text-[#042E3A] mb-2.5 group-hover:text-[#0a7a8c] transition-colors">
                   Our Office
                 </h4>
-                <p className="text-[13px] text-neutral-600 leading-relaxed">
+                <p className="text-[15.5px] sm:text-[16.5px] text-neutral-700 leading-relaxed">
                   1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
                 </p>
               </div>
             </div>
 
             {/* Call Us */}
-            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-              <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
-                <Phone size={22} strokeWidth={2} />
+            <div className="p-7 sm:p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+              <div className="w-14 h-14 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
+                <Phone size={26} strokeWidth={2.2} />
               </div>
               <div>
-                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors">
+                <h4 className="text-[17px] sm:text-[18.5px] font-black uppercase tracking-[0.14em] text-[#042E3A] mb-2.5 group-hover:text-[#0a7a8c] transition-colors">
                   Call Us
                 </h4>
-                <div className="text-[13px] text-neutral-600 leading-relaxed space-y-1">
-                  <p className="font-bold text-neutral-900">Phone: 0092-42-38924737</p>
+                <div className="text-[15.5px] sm:text-[16.5px] text-neutral-700 leading-relaxed space-y-1">
+                  <p className="font-bold text-[#042E3A]">Phone: 0092-42-38924737</p>
                   <p>WhatsApp: 0092-304-7527498</p>
-                  <p className="lg:pl-[78px]">0092-321-8431665</p>
+                  <p className="lg:pl-[86px]">0092-321-8431665</p>
                 </div>
               </div>
             </div>
 
             {/* Email Us */}
-            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-              <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
-                <Mail size={22} strokeWidth={2} />
+            <div className="p-7 sm:p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="300">
+              <div className="w-14 h-14 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
+                <Mail size={26} strokeWidth={2.2} />
               </div>
               <div>
-                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors">
+                <h4 className="text-[17px] sm:text-[18.5px] font-black uppercase tracking-[0.14em] text-[#042E3A] mb-2.5 group-hover:text-[#0a7a8c] transition-colors">
                   Email Us
                 </h4>
-                <div className="text-[13px] text-neutral-600 leading-relaxed space-y-1">
-                  <p className="text-neutral-900 font-bold">info@roysons.org</p>
+                <div className="text-[15.5px] sm:text-[16.5px] text-neutral-700 leading-relaxed space-y-1">
+                  <p className="text-[#042E3A] font-bold">info@roysons.org</p>
                   <p>support@roysons.org</p>
                 </div>
               </div>
             </div>
 
             {/* Business Hours */}
-            <div className="p-7 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="400">
-              <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
-                <Clock size={22} strokeWidth={2} />
+            <div className="p-7 sm:p-8 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 group cursor-pointer" data-aos="fade-up" data-aos-delay="400">
+              <div className="w-14 h-14 bg-[#f0fdfa] border-2 border-[#0a7a8c] rounded-full flex items-center justify-center flex-shrink-0 text-[#0a7a8c] transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)]">
+                <Clock size={26} strokeWidth={2.2} />
               </div>
               <div>
-                <h4 className="text-[14px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors">
+                <h4 className="text-[17px] sm:text-[18.5px] font-black uppercase tracking-[0.14em] text-[#042E3A] mb-2.5 group-hover:text-[#0a7a8c] transition-colors">
                   Business Hours
                 </h4>
-                <div className="text-[13px] text-neutral-600 leading-relaxed space-y-1">
+                <div className="text-[15.5px] sm:text-[16.5px] text-neutral-700 leading-relaxed space-y-1">
                   <p>Monday - Friday</p>
-                  <p className="font-bold text-neutral-900">9:00 AM - 6:00 PM</p>
+                  <p className="font-bold text-[#042E3A]">9:00 AM - 6:00 PM</p>
                   <p>Saturday - 9:00 AM - 1:00 PM</p>
                   <p className="text-neutral-400">(Sunday Closed)</p>
                 </div>
@@ -183,32 +183,32 @@ export default function ContactPage() {
             
             {/* Form Panel (Left Col, 3/5 cols) */}
             <div className="lg:col-span-3 bg-white border border-neutral-200 p-8 sm:p-10 rounded-sm" data-aos="fade-right" data-aos-delay="100">
-              <h2 className="text-[20px] font-black uppercase tracking-wider text-neutral-950 mb-3">
-                Contact Us
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#042E3A] mb-3">
+                Send Us A Message
               </h2>
-              <p className="text-[12.5px] text-neutral-500 leading-relaxed mb-8">
+              <p className="text-[16px] sm:text-[17px] text-neutral-600 leading-relaxed mb-8">
                 Have a question or need assistance? Fill out the form and our team will get 
                 back to you as soon as possible.
               </p>
 
               {formSubmitted ? (
                 <div className="flex flex-col items-center justify-center min-h-[300px] text-center">
-                  <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center mb-4">
-                    <CheckCircle2 size={22} className="text-white" />
+                  <div className="w-14 h-14 bg-black rounded-full flex items-center justify-center mb-4">
+                    <CheckCircle2 size={26} className="text-white" />
                   </div>
-                  <h4 className="text-[13.5px] font-black uppercase tracking-wider text-black">
+                  <h4 className="text-[17px] sm:text-[19px] font-black uppercase tracking-wider text-black">
                     Message Transmitted
                   </h4>
-                  <p className="text-[11.5px] text-neutral-550 mt-1 max-w-xs">
+                  <p className="text-[14px] sm:text-[15px] text-neutral-600 mt-2 max-w-sm">
                     Thank you. We have received your query and will reply to your email address as soon as possible.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name and Email */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-black text-neutral-950 uppercase tracking-[0.14em]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[13px] sm:text-[14px] font-black text-[#042E3A] uppercase tracking-[0.12em]">
                         Full Name <span className="text-red-500">*</span>
                       </label>
                       <input 
@@ -217,11 +217,11 @@ export default function ContactPage() {
                         required
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-300 px-4 py-3.5 text-[15px] sm:text-[16px] text-neutral-900 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] focus:ring-1 focus:ring-[#0a7a8c] transition-all rounded-[2px]"
                       />
                     </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-black text-neutral-950 uppercase tracking-[0.14em]">
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[13px] sm:text-[14px] font-black text-[#042E3A] uppercase tracking-[0.12em]">
                         Email Address <span className="text-red-500">*</span>
                       </label>
                       <input 
@@ -230,15 +230,15 @@ export default function ContactPage() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-300 px-4 py-3.5 text-[15px] sm:text-[16px] text-neutral-900 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] focus:ring-1 focus:ring-[#0a7a8c] transition-all rounded-[2px]"
                       />
                     </div>
                   </div>
 
                   {/* Phone and Subject */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-black text-neutral-950 uppercase tracking-[0.14em]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[13px] sm:text-[14px] font-black text-[#042E3A] uppercase tracking-[0.12em]">
                         Phone Number <span className="text-red-500">*</span>
                       </label>
                       <input 
@@ -247,11 +247,11 @@ export default function ContactPage() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-300 px-4 py-3.5 text-[15px] sm:text-[16px] text-neutral-900 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] focus:ring-1 focus:ring-[#0a7a8c] transition-all rounded-[2px]"
                       />
                     </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-black text-neutral-950 uppercase tracking-[0.14em]">
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[13px] sm:text-[14px] font-black text-[#042E3A] uppercase tracking-[0.12em]">
                         Subject <span className="text-red-500">*</span>
                       </label>
                       <div
@@ -261,7 +261,7 @@ export default function ContactPage() {
                       >
                         <div
                           onClick={() => setIsSubjectOpen(!isSubjectOpen)}
-                          className={`w-full bg-[#f0fdfa] border ${isSubjectOpen ? 'border-[#0a7a8c] ring-2 ring-[#0a7a8c]/20' : 'border-[#0a7a8c]/30'} px-4 py-3 text-[12px] text-[#042E3A] font-medium outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
+                          className={`w-full bg-[#f0fdfa] border ${isSubjectOpen ? 'border-[#0a7a8c] ring-2 ring-[#0a7a8c]/20' : 'border-[#0a7a8c]/40'} px-4 py-3.5 text-[15px] sm:text-[16px] text-[#042E3A] font-medium outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
                         >
                           <span>{formData.subject ? {
                             general: 'General Inquiries',
@@ -269,7 +269,7 @@ export default function ContactPage() {
                             partnership: 'Partnership Opportunities',
                             support: 'Support & Assistance'
                           }[formData.subject] : 'Select a subject'}</span>
-                          <ChevronDown size={14} className={`text-[#0a7a8c] transition-transform duration-300 ${isSubjectOpen ? 'rotate-180' : ''}`} />
+                          <ChevronDown size={16} className={`text-[#0a7a8c] transition-transform duration-300 ${isSubjectOpen ? 'rotate-180' : ''}`} />
                         </div>
                         {isSubjectOpen && (
                           <div className="absolute z-50 w-full mt-1 bg-white border border-[#0a7a8c]/30 rounded-[2px] shadow-xl overflow-hidden">
@@ -282,7 +282,7 @@ export default function ContactPage() {
                               <div
                                 key={opt.value}
                                 onClick={() => { setFormData({ ...formData, subject: opt.value }); setIsSubjectOpen(false); }}
-                                className="px-4 py-3 text-[12px] text-[#042E3A] hover:bg-[#0a7a8c] hover:text-white cursor-pointer transition-colors"
+                                className="px-4 py-3.5 text-[14.5px] sm:text-[15.5px] text-[#042E3A] hover:bg-[#0a7a8c] hover:text-white cursor-pointer transition-colors"
                               >
                                 {opt.label}
                               </div>
@@ -301,8 +301,8 @@ export default function ContactPage() {
                   </div>
 
                   {/* Company */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-black text-neutral-950 uppercase tracking-[0.14em]">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-[13px] sm:text-[14px] font-black text-[#042E3A] uppercase tracking-[0.12em]">
                       Company / Organization
                     </label>
                     <input 
@@ -310,13 +310,13 @@ export default function ContactPage() {
                       placeholder="Enter your company name" 
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+                      className="w-full bg-white border border-neutral-300 px-4 py-3.5 text-[15px] sm:text-[16px] text-neutral-900 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] focus:ring-1 focus:ring-[#0a7a8c] transition-all rounded-[2px]"
                     />
                   </div>
 
                   {/* Message */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-black text-neutral-950 uppercase tracking-[0.14em]">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-[13px] sm:text-[14px] font-black text-[#042E3A] uppercase tracking-[0.12em]">
                       Your Message <span className="text-red-500">*</span>
                     </label>
                     <textarea 
@@ -325,12 +325,12 @@ export default function ContactPage() {
                       placeholder="Write your message here..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors resize-none rounded-[2px]"
+                      className="w-full bg-white border border-neutral-300 px-4 py-3.5 text-[15px] sm:text-[16px] text-neutral-900 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] focus:ring-1 focus:ring-[#0a7a8c] transition-all resize-none rounded-[2px]"
                     />
                   </div>
 
                   {submitError && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-[2px] text-[11.5px] font-medium tracking-wide">
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3.5 rounded-[2px] text-[14px] font-medium tracking-wide">
                       ⚠️ {submitError}
                     </div>
                   )}
@@ -340,13 +340,13 @@ export default function ContactPage() {
                     <button 
                       type="submit" 
                       disabled={isSubmitting}
-                      className="bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] disabled:opacity-50 text-white px-10 py-4 text-[11px] font-black uppercase tracking-[0.18em] flex items-center gap-3 transition-all duration-300 rounded-[3px] shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] hover:-translate-y-0.5 cursor-pointer disabled:cursor-not-allowed"
+                      className="bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] disabled:opacity-50 text-white px-12 py-4 text-[14px] sm:text-[15px] font-black uppercase tracking-[0.16em] flex items-center gap-3 transition-all duration-300 rounded-[3px] shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] hover:-translate-y-0.5 cursor-pointer disabled:cursor-not-allowed"
                     >
                       <span className="text-white font-black">{isSubmitting ? "Sending..." : "Send Message"}</span>
-                      <ArrowRight size={13} strokeWidth={2.5} className="text-white" />
+                      <ArrowRight size={16} strokeWidth={2.5} className="text-white" />
                     </button>
-                    <div className="flex items-center gap-2 text-neutral-400 text-[10px]">
-                      <Lock size={12} />
+                    <div className="flex items-center gap-2 text-neutral-500 text-[13px]">
+                      <Lock size={14} />
                       <span>Your information is safe with us. We respect your privacy.</span>
                     </div>
                   </div>
@@ -358,14 +358,13 @@ export default function ContactPage() {
             <div className="lg:col-span-2 flex flex-col gap-8" data-aos="fade-left" data-aos-delay="150">
               
               {/* Find Us Card */}
-              <div className="bg-white border border-neutral-200 p-6 rounded-sm">
-                <h3 className="text-[13px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-4 pb-2 border-b border-neutral-200">
+              <div className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-sm">
+                <h3 className="text-[16px] sm:text-[17px] font-black uppercase tracking-[0.14em] text-[#042E3A] mb-4 pb-2 border-b border-neutral-200">
                   Find ROYSONS on Google Map
                 </h3>
 
                 {/* Google Maps Iframe */}
                 <div className="relative w-full h-[240px] bg-neutral-100 border border-neutral-200 overflow-hidden mb-4">
-                  {/* Styled google map iframe based on the maps.google.com coordinates query which targets their exact Zakir Tikka Ring Road location */}
                   <iframe 
                     src="https://maps.google.com/maps?q=Rehman%20Centre-2,%20Zakir%20Tikka%20Lahore&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                     width="100%" 
@@ -382,14 +381,14 @@ export default function ContactPage() {
                   href="https://maps.app.goo.gl/skeG9WX8Vxfxp2X29" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-start gap-3 bg-[#f0fdfa] border border-[#0a7a8c]/25 p-3 hover:border-[#0a7a8c] transition-colors rounded-[2px]"
+                  className="flex items-start gap-3 bg-[#f0fdfa] border border-[#0a7a8c]/25 p-3.5 hover:border-[#0a7a8c] transition-colors rounded-[2px]"
                 >
-                  <MapPin size={16} className="text-[#0a7a8c] flex-shrink-0 mt-0.5" />
+                  <MapPin size={18} className="text-[#0a7a8c] flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-[11.5px] font-black uppercase tracking-wider text-neutral-950">
+                    <p className="text-[14.5px] font-black uppercase tracking-wider text-[#042E3A]">
                       Roy Sons Pvt. Ltd.
                     </p>
-                    <p className="text-[10px] text-neutral-600 leading-tight mt-0.5">
+                    <p className="text-[13px] text-neutral-600 leading-normal mt-0.5">
                       1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Lahore.
                     </p>
                   </div>
@@ -397,11 +396,11 @@ export default function ContactPage() {
               </div>
 
               {/* Get in Touch Checkmarks */}
-              <div className="bg-white border border-neutral-200 p-6 rounded-sm flex-1 flex flex-col justify-center">
-                <h3 className="text-[13px] font-black uppercase tracking-[0.16em] text-neutral-950 mb-4 pb-2 border-b border-neutral-200">
+              <div className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-sm flex-1 flex flex-col justify-center">
+                <h3 className="text-[16px] sm:text-[17px] font-black uppercase tracking-[0.14em] text-[#042E3A] mb-4 pb-2 border-b border-neutral-200">
                   Get In Touch
                 </h3>
-                <p className="text-[12px] text-neutral-500 leading-relaxed mb-6">
+                <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed mb-6">
                   Whether you have a question about our services, partnerships, or anything else, 
                   our team is ready to answer all your questions.
                 </p>
@@ -409,26 +408,26 @@ export default function ContactPage() {
                 {/* Checklist */}
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
-                    <span className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-800">
+                    <CheckCircle2 size={19} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.4} />
+                    <span className="text-[14.5px] sm:text-[15.5px] font-bold uppercase tracking-wider text-[#042E3A]">
                       General Inquiries
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
-                    <span className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-800">
+                    <CheckCircle2 size={19} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.4} />
+                    <span className="text-[14.5px] sm:text-[15.5px] font-bold uppercase tracking-wider text-[#042E3A]">
                       Service Information
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
-                    <span className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-800">
+                    <CheckCircle2 size={19} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.4} />
+                    <span className="text-[14.5px] sm:text-[15.5px] font-bold uppercase tracking-wider text-[#042E3A]">
                       Partnership Opportunities
                     </span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.2} />
-                    <span className="text-[11.5px] font-bold uppercase tracking-wider text-neutral-800">
+                    <CheckCircle2 size={19} className="text-[#0a7a8c] flex-shrink-0" strokeWidth={2.4} />
+                    <span className="text-[14.5px] sm:text-[15.5px] font-bold uppercase tracking-wider text-[#042E3A]">
                       Support & Assistance
                     </span>
                   </li>

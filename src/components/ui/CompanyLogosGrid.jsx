@@ -22,7 +22,7 @@ export default function CompanyLogosGrid() {
                   href={company.href}
                   target={isExt ? "_blank" : undefined}
                   rel={isExt ? "noopener noreferrer" : undefined}
-                  className="flex flex-col items-center justify-between bg-white border border-neutral-200 rounded-lg p-4 group hover:border-black hover:shadow-[0_6px_18px_rgba(0,0,0,0.06)] transition-all duration-300 h-full"
+                  className="flex flex-col items-center justify-between bg-white border border-neutral-200 rounded-lg p-4 group hover:border-[#0a7a8c] hover:shadow-[0_8px_24px_rgba(10,122,140,0.18)] transition-all duration-300 h-full"
                 >
                   <div className="relative w-full h-32 flex items-center justify-center">
                     <Image

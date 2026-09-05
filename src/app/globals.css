@@ -253,6 +253,16 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     -webkit-text-fill-color: #ffffff !important;
   }
 
+  /* ── Consultation Banner: always white heading text ── */
+  #cta-consultation-banner,
+  #cta-consultation-banner h2,
+  #cta-consultation-banner h2 *,
+  #cta-consultation-banner span:not(#cta-consultation-pill-btn *) {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) !important;
+  }
+
   footer.roysons-dark-footer,
   .roysons-dark-footer {
     background: #042630 !important;
@@ -346,8 +356,8 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     -webkit-text-fill-color: #ffffff !important;
   }
 
-  /* ── Regular links, labels, table headers (excluding buttons, white/light text) ── */
-  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):not(.text-white),
+  /* ── Regular links, labels, table headers (excluding buttons, white/light text, and services dropdown) ── */
+  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):not(.text-white):not(.services-dropdown-link):not([data-services-menu] a):not(.whatsapp-float-btn),
   label:not([class*="text-white"]),
   th {
     color: #042E3A !important;
@@ -360,15 +370,15 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   /* Hover on normal links: Vibrant Greenish-Bluish (#0a7a8c) */
-  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):hover {
+  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):not(.services-dropdown-link):not([data-services-menu] a):hover {
     color: #0a7a8c !important;
     -webkit-text-fill-color: #0a7a8c !important;
   }
 
-  /* ── Body text (EXCLUDING buttons, pills, white text, light tints) ── */
-  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]),
-  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.badge),
-  li:not(button *):not(a.rs-cta-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]),
+  /* ── Body text (EXCLUDING buttons, pills, white text, light tints, and services dropdown) ── */
+  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.services-dropdown-link *):not([data-services-menu] *),
+  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.badge):not(.services-dropdown-link *):not([data-services-menu] *),
+  li:not(button *):not(a.rs-cta-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not(.services-dropdown-link *):not([data-services-menu] *),
   time,
   td {
     color: #042E3A !important;
@@ -483,6 +493,102 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     transform: none !important;
     color: #0a7a8c !important;
     -webkit-text-fill-color: #0a7a8c !important;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     SERVICES MEGA-MENU DROPDOWN: LIGHT THEME CRISP CONTRAST
+  ───────────────────────────────────────────────────────────── */
+  .services-dropdown-link,
+  .services-dropdown-link *,
+  [data-services-menu] a,
+  [data-services-menu] a * {
+    text-decoration: none !important;
+  }
+
+  .services-dropdown-link,
+  [data-services-menu] a {
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .services-dropdown-link .services-item-title,
+  .services-dropdown-link span.services-item-title,
+  [data-services-menu] .services-item-title {
+    color: #042E3A !important;
+    -webkit-text-fill-color: #042E3A !important;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+    transition: color 0.25s ease, -webkit-text-fill-color 0.25s ease, transform 0.25s ease !important;
+  }
+
+  .services-dropdown-link:hover .services-item-title,
+  .services-dropdown-link.is-active .services-item-title,
+  [data-services-menu] a:hover .services-item-title,
+  [data-services-menu] a.is-active .services-item-title {
+    color: #0a7a8c !important;
+    -webkit-text-fill-color: #0a7a8c !important;
+    opacity: 1 !important;
+  }
+
+  .services-dropdown-link .services-item-arrow,
+  [data-services-menu] .services-item-arrow {
+    color: rgba(4, 46, 58, 0.65) !important;
+    stroke: rgba(4, 46, 58, 0.65) !important;
+    transition: color 0.25s ease, stroke 0.25s ease, transform 0.25s ease !important;
+  }
+
+  .services-dropdown-link:hover .services-item-arrow,
+  .services-dropdown-link.is-active .services-item-arrow,
+  [data-services-menu] a:hover .services-item-arrow,
+  [data-services-menu] a.is-active .services-item-arrow {
+    color: #0a7a8c !important;
+    stroke: #0a7a8c !important;
+    transform: translateX(4px) !important;
+  }
+
+  .services-dropdown-link .services-item-badge,
+  [data-services-menu] .services-item-badge {
+    color: #0a7a8c !important;
+    -webkit-text-fill-color: #0a7a8c !important;
+    background-color: rgba(10, 122, 140, 0.12) !important;
+    border: 1px solid rgba(10, 122, 140, 0.3) !important;
+  }
+
+  .services-dropdown-link:hover .services-item-badge,
+  [data-services-menu] a:hover .services-item-badge {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-color: #0a7a8c !important;
+    border-color: #0a7a8c !important;
+  }
+
+  /* ─────────────────────────────────────────────────────────────
+     FLOATING WHATSAPP CTA SYSTEM (ALL PAGES ON SCROLL)
+  ───────────────────────────────────────────────────────────── */
+  .whatsapp-float-btn,
+  a.whatsapp-float-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%) !important;
+    background-color: #25D366 !important;
+    border-radius: 9999px !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45), 0 4px 12px rgba(7, 94, 84, 0.3) !important;
+    text-decoration: none !important;
+  }
+
+  .whatsapp-float-btn:hover,
+  a.whatsapp-float-btn:hover {
+    background: linear-gradient(135deg, #2bf075 0%, #17b3a1 50%, #0a7a6e 100%) !important;
+    box-shadow: 0 12px 36px rgba(37, 211, 102, 0.65), 0 0 0 4px rgba(37, 211, 102, 0.3) !important;
+    transform: translateY(-3px) scale(1.08) !important;
+  }
+
+  .whatsapp-float-btn svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
   }
 
   /* ─────────────────────────────────────────────────────────────

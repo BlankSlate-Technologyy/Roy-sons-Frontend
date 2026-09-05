@@ -78,7 +78,7 @@ export default function FeaturedHoldingsShowcase({
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-white text-[#042E3A] overflow-hidden font-sans border-t border-[#0a7a8c]/15" data-aos="fade-up">
+    <section className="pt-14 sm:pt-20 pb-4 sm:pb-6 bg-white text-[#042E3A] overflow-hidden font-sans border-t border-[#0a7a8c]/15" data-aos="fade-up">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ─── Centered Header Section ─── */}
@@ -138,11 +138,11 @@ export default function FeaturedHoldingsShowcase({
         </div>
 
         {/* ─── Bottom CTA Button ─── */}
-        <div className="text-center mt-8 sm:mt-10" data-aos="fade-up" data-aos-delay="150">
+        <div className="text-center mt-5 sm:mt-6 mb-2" data-aos="fade-up" data-aos-delay="150">
           <Link
             href={allProjectsPath}
             id="view-all-projects-btn"
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] transition-all duration-300 shadow-[0_4px_16px_rgba(10,122,140,0.35)] hover:shadow-[0_8px_26px_rgba(13,148,136,0.55)] hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-xs font-black uppercase tracking-[0.18em] text-white bg-gradient-to-r from-[#0284c7] via-[#0891b2] to-[#10b981] hover:from-[#0369a1] hover:to-[#059669] transition-all duration-300 shadow-[0_4px_16px_rgba(2,132,199,0.35)] hover:shadow-[0_8px_26px_rgba(16,185,129,0.55)] hover:-translate-y-0.5"
           >
             <span className="text-white font-black">View All</span>
             <ArrowRight size={14} className="text-white" />

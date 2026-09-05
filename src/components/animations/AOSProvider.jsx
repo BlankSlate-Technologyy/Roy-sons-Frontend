@@ -67,10 +67,10 @@ export default function AOSProvider({ children }) {
     <>
       {/* Scroll Progress Bar at the top */}
       <div
-        className="fixed top-0 left-0 h-[3px] bg-[#C6A15A] z-[9999] transition-all duration-150 ease-out pointer-events-none"
+        className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488] z-[9999] transition-all duration-150 ease-out pointer-events-none"
         style={{
           width: `${scrollProgress}%`,
-          boxShadow: "0 0 10px rgba(198, 161, 90, 0.7)",
+          boxShadow: "0 0 12px rgba(10, 122, 140, 0.75)",
         }}
         aria-hidden="true"
       />

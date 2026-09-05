@@ -11,7 +11,7 @@ export default function BrandLogo({ isDarkTheme = false, showSubtitle = false, c
         alt="Roy Sons Logo"
         width={180}
         height={80}
-        className="w-auto h-12 md:h-14 lg:h-14 object-contain"
+        className="w-auto h-10 sm:h-12 md:h-14 lg:h-14 object-contain"
         priority
       />
     </div>

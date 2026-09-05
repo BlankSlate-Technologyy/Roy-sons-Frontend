@@ -379,7 +379,7 @@ export default function HealthcareMedicalServicePage() {
   };
 
   return (
-    <main className="min-h-screen bg-white font-sans selection:bg-[#C6A15A] selection:text-white">
+    <main className="min-h-screen bg-white font-sans selection:bg-[#0a7a8c] selection:text-white">
       <HeaderNavbar activeRoute="/services" />
 
       {/* Breadcrumb */}
@@ -413,14 +413,14 @@ export default function HealthcareMedicalServicePage() {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C6A15A_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0a7a8c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-[#C6A15A]/15 border border-[#C6A15A]/40 text-[#C6A15A] text-xs font-bold uppercase tracking-[0.2em] mb-5 self-start">
-                <HeartPulse size={15} className="text-[#C6A15A]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-[#0a7a8c]/15 border border-[#0a7a8c]/40 text-[#0a7a8c] text-xs font-bold uppercase tracking-[0.2em] mb-5 self-start">
+                <HeartPulse size={15} className="text-[#0a7a8c]" />
                 <span>Sector 01 • Medical Solutions</span>
               </div>
 
@@ -428,11 +428,11 @@ export default function HealthcareMedicalServicePage() {
                 Healthcare &amp; Medical Technologies
               </h1>
 
-              <p className="text-base sm:text-lg font-bold text-[#C6A15A] uppercase tracking-wide mb-4">
+              <p className="text-base sm:text-lg font-bold text-[#0a7a8c] uppercase tracking-wide mb-4">
                 Advancing Healthcare Through Innovative Medical Solutions
               </p>
 
-              <div className="h-[3px] w-16 bg-[#C6A15A] mb-5" />
+              <div className="h-[3px] w-16 bg-[#0a7a8c] mb-5" />
 
               <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal mb-6 max-w-2xl">
                 ROYSONS delivers advanced healthcare and medical technology solutions designed to support hospitals, clinics, laboratories, government institutions, and healthcare organizations. We combine international sourcing, technical expertise, and project support to provide reliable medical technologies that improve patient care and operational efficiency.
@@ -441,7 +441,7 @@ export default function HealthcareMedicalServicePage() {
               <div className="flex flex-wrap gap-3.5 items-center">
                 <Link
                   href="#cta-consultation"
-                  className="group inline-flex items-center gap-2.5 bg-[#C6A15A] hover:bg-white text-white hover:text-black font-bold px-5 py-2.5 text-xs uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#C6A15A]/20"
+                  className="group inline-flex items-center gap-2.5 bg-[#0a7a8c] hover:bg-white text-white hover:text-black font-bold px-5 py-2.5 text-xs uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#0a7a8c]/20"
                 >
                   <span className="text-white group-hover:text-black transition-colors duration-300">
                     Build Better Healthcare
@@ -455,7 +455,7 @@ export default function HealthcareMedicalServicePage() {
 
                 <Link
                   href="#key-solutions"
-                  className="inline-flex items-center gap-2 bg-transparent hover:bg-white/5 border border-neutral-700 hover:border-[#C6A15A] text-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all rounded-[2px]"
+                  className="inline-flex items-center gap-2 bg-transparent hover:bg-white/5 border border-neutral-700 hover:border-[#0a7a8c] text-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all rounded-[2px]"
                 >
                   Explore Key Solutions
                 </Link>
@@ -464,7 +464,7 @@ export default function HealthcareMedicalServicePage() {
 
             {/* Right Media Card */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-[2px] p-1 bg-gradient-to-b from-[#C6A15A]/40 via-neutral-800 to-[#C6A15A]/20 shadow-xl">
+              <div className="relative rounded-[2px] p-1 bg-gradient-to-b from-[#0a7a8c]/40 via-neutral-800 to-[#0a7a8c]/20 shadow-xl">
                 <div className="relative h-[300px] sm:h-[380px] w-full overflow-hidden rounded-[2px] bg-neutral-900">
                   <Image
                     src="/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg"
@@ -476,8 +476,8 @@ export default function HealthcareMedicalServicePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
 
-                  <div className="absolute bottom-4 left-4 right-4 p-4 bg-neutral-950/85 backdrop-blur-md border border-[#C6A15A]/40 rounded-[2px]">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#C6A15A] mb-1">
+                  <div className="absolute bottom-4 left-4 right-4 p-4 bg-neutral-950/85 backdrop-blur-md border border-[#0a7a8c]/40 rounded-[2px]">
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#0a7a8c] mb-1">
                       International Quality Standards
                     </p>
                     <p className="text-sm sm:text-base font-bold text-white leading-snug">
@@ -495,28 +495,28 @@ export default function HealthcareMedicalServicePage() {
       <section className="bg-white border-b border-neutral-200 py-10">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-            <div className="border-l-2 border-[#C6A15A] pl-4 py-0.5">
+            <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
               <AnimatedStatValue value="15+" />
               <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
                 Years of Excellence
               </p>
             </div>
 
-            <div className="border-l-2 border-[#C6A15A] pl-4 py-0.5">
+            <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
               <AnimatedStatValue value="1,000+" />
               <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
                 Medical Systems Delivered
               </p>
             </div>
 
-            <div className="border-l-2 border-[#C6A15A] pl-4 py-0.5">
+            <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
               <AnimatedStatValue value="100%" />
               <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
                 ISO &amp; CE Compliance
               </p>
             </div>
 
-            <div className="border-l-2 border-[#C6A15A] pl-4 py-0.5">
+            <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
               <AnimatedStatValue value="24/7" />
               <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
                 Biomedical Support
@@ -530,7 +530,7 @@ export default function HealthcareMedicalServicePage() {
       <section id="capabilities" className="py-14 sm:py-18 bg-neutral-50 border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C6A15A] mb-2 block">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
               COMPREHENSIVE EXPERTISE
             </span>
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">
@@ -548,17 +548,17 @@ export default function HealthcareMedicalServicePage() {
               return (
                 <div
                   key={index}
-                  className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#C6A15A] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   <div>
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#C6A15A]/60 transition-all duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#0a7a8c]/60 transition-all duration-300">
                       <Icon
                         size={24}
                         strokeWidth={1.5}
-                        className="text-[#C6A15A] group-hover:scale-110 transition-transform duration-300"
+                        className="text-[#0a7a8c] group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#C6A15A] transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
                       {cap.title}
                     </h3>
                     <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
@@ -576,13 +576,13 @@ export default function HealthcareMedicalServicePage() {
       <section id="key-solutions" className="py-14 sm:py-18 bg-[#101518] text-white border-b border-neutral-800">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C6A15A] mb-2 block">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
               SPECIALIZED OFFERINGS
             </span>
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-3">
               Key Solutions
             </h2>
-            <div className="mx-auto h-[3px] w-14 bg-[#C6A15A] mb-4" />
+            <div className="mx-auto h-[3px] w-14 bg-[#0a7a8c] mb-4" />
             <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal">
               High-performance technologies tailored to radiology departments, critical care units, operating rooms, and analytical laboratories.
             </p>
@@ -598,7 +598,7 @@ export default function HealthcareMedicalServicePage() {
                   onClick={() => setActiveSolutionTab(idx)}
                   className={`px-4 py-2 rounded-[2px] text-xs font-bold uppercase tracking-[0.14em] transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "bg-[#C6A15A] text-black shadow-md shadow-[#C6A15A]/20"
+                      ? "bg-[#0a7a8c] text-black shadow-md shadow-[#0a7a8c]/20"
                       : "bg-[#161c20] text-neutral-400 border border-neutral-800 hover:text-white hover:border-neutral-700"
                   }`}
                   style={isActive ? { color: "#000000" } : {}}
@@ -616,13 +616,13 @@ export default function HealthcareMedicalServicePage() {
               <div className="bg-[#161c20] border border-neutral-800 rounded-[2px] p-6 sm:p-8 lg:p-10 transition-all duration-500">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
                   <div className="lg:col-span-7 flex flex-col justify-center">
-                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C6A15A] mb-2 block">
+                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
                       {currentSol.tagline}
                     </span>
                     <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white mb-3">
                       {currentSol.title}
                     </h3>
-                    <div className="h-[2.5px] w-12 bg-[#C6A15A] mb-4" />
+                    <div className="h-[2.5px] w-12 bg-[#0a7a8c] mb-4" />
                     <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal mb-6">
                       {currentSol.description}
                     </p>
@@ -636,7 +636,7 @@ export default function HealthcareMedicalServicePage() {
                         <div key={fIdx} className="flex items-start gap-2.5">
                           <CheckCircle2
                             size={16}
-                            className="text-[#C6A15A] flex-shrink-0 mt-0.5"
+                            className="text-[#0a7a8c] flex-shrink-0 mt-0.5"
                             strokeWidth={2}
                           />
                           <span className="text-xs sm:text-sm text-neutral-200 font-medium">
@@ -649,7 +649,7 @@ export default function HealthcareMedicalServicePage() {
                     <div>
                       <Link
                         href="#cta-consultation"
-                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#C6A15A] hover:text-white transition-colors"
+                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#0a7a8c] hover:text-white transition-colors"
                       >
                         <span>Inquire About {currentSol.title}</span>
                         <ArrowRight size={14} strokeWidth={2.5} />
@@ -668,7 +668,7 @@ export default function HealthcareMedicalServicePage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
                       <div className="absolute bottom-3 left-3 right-3">
-                        <span className="px-2.5 py-1 bg-black/80 backdrop-blur-sm border border-[#C6A15A]/40 text-[#C6A15A] text-xs font-bold uppercase tracking-wider rounded-[2px]">
+                        <span className="px-2.5 py-1 bg-black/80 backdrop-blur-sm border border-[#0a7a8c]/40 text-[#0a7a8c] text-xs font-bold uppercase tracking-wider rounded-[2px]">
                           ROYSONS Medical Solution Suite
                         </span>
                       </div>
@@ -685,7 +685,7 @@ export default function HealthcareMedicalServicePage() {
       <section id="industries" className="py-14 sm:py-18 bg-white border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C6A15A] mb-2 block">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
               CLIENT SECTORS
             </span>
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">
@@ -705,14 +705,14 @@ export default function HealthcareMedicalServicePage() {
                   key={index}
                   className="p-6 sm:p-7 rounded-[2px] border border-neutral-200 bg-neutral-50/50 hover:bg-white hover:border-neutral-950 hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="w-11 h-11 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-4 group-hover:border-[#C6A15A]/70 group-hover:bg-[#101518] transition-colors duration-300">
+                  <div className="w-11 h-11 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-4 group-hover:border-[#0a7a8c]/70 group-hover:bg-[#101518] transition-colors duration-300">
                     <Icon
                       size={22}
                       strokeWidth={1.5}
-                      className="text-white group-hover:text-[#C6A15A] transition-colors duration-300"
+                      className="text-white group-hover:text-[#0a7a8c] transition-colors duration-300"
                     />
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-neutral-950 mb-2 group-hover:text-[#C6A15A] transition-colors duration-300">
+                  <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors duration-300">
                     {ind.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
@@ -730,18 +730,18 @@ export default function HealthcareMedicalServicePage() {
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-5">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#C6A15A] mb-2 block">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
                 COMPETITIVE ADVANTAGE
               </span>
               <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-4 leading-tight">
                 Why Partner With ROYSONS For Healthcare?
               </h2>
-              <div className="h-[3px] w-14 bg-[#C6A15A] mb-5" />
+              <div className="h-[3px] w-14 bg-[#0a7a8c] mb-5" />
               <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal mb-6">
                 We combine deep technical engineering capabilities with robust global procurement networks, ensuring every medical installation operates at peak clinical precision with complete regulatory assurance.
               </p>
               <div className="p-5 sm:p-6 bg-white/5 border border-neutral-800 rounded-[2px]">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#C6A15A] mb-1.5">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#0a7a8c] mb-1.5">
                   Institutional Reliability
                 </p>
                 <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
@@ -756,10 +756,10 @@ export default function HealthcareMedicalServicePage() {
                 return (
                   <div
                     key={idx}
-                    className="p-5 sm:p-6 bg-[#161c20] border border-neutral-800 rounded-[2px] hover:border-[#C6A15A] transition-colors duration-300"
+                    className="p-5 sm:p-6 bg-[#161c20] border border-neutral-800 rounded-[2px] hover:border-[#0a7a8c] transition-colors duration-300"
                   >
-                    <div className="w-10 h-10 rounded-[2px] bg-white/5 border border-[#C6A15A]/30 flex items-center justify-center mb-3.5">
-                      <Icon size={20} className="text-[#C6A15A]" strokeWidth={1.6} />
+                    <div className="w-10 h-10 rounded-[2px] bg-white/5 border border-[#0a7a8c]/30 flex items-center justify-center mb-3.5">
+                      <Icon size={20} className="text-[#0a7a8c]" strokeWidth={1.6} />
                     </div>
                     <h3 className="text-sm sm:text-base font-bold uppercase tracking-wider text-white mb-2">
                       {item.title}
@@ -783,7 +783,7 @@ export default function HealthcareMedicalServicePage() {
               {/* Left Column: CTA Pitch */}
               <div className="lg:col-span-5 bg-neutral-950 text-white p-6 sm:p-8 lg:p-10 flex flex-col justify-between">
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] bg-[#C6A15A]/15 border border-[#C6A15A]/40 text-[#C6A15A] text-xs font-bold uppercase tracking-[0.2em] mb-5">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] bg-[#0a7a8c]/15 border border-[#0a7a8c]/40 text-[#0a7a8c] text-xs font-bold uppercase tracking-[0.2em] mb-5">
                     <Sparkles size={14} />
                     <span>Get In Touch</span>
                   </div>
@@ -792,7 +792,7 @@ export default function HealthcareMedicalServicePage() {
                     Build Better Healthcare With ROYSONS
                   </h2>
 
-                  <div className="h-[3px] w-14 bg-[#C6A15A] mb-4" />
+                  <div className="h-[3px] w-14 bg-[#0a7a8c] mb-4" />
 
                   <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal mb-6">
                     Discuss your medical facility requirements, equipment procurement plans, or turnkey hospital engineering projects with our biomedical consultants.
@@ -800,22 +800,22 @@ export default function HealthcareMedicalServicePage() {
 
                   <div className="space-y-4 pt-6 border-t border-neutral-800">
                     <div className="flex items-center gap-3.5 text-neutral-200">
-                      <Phone size={20} className="text-[#C6A15A]" />
+                      <Phone size={20} className="text-[#0a7a8c]" />
                       <span className="text-base sm:text-lg font-medium">+92 300 1234567</span>
                     </div>
                     <div className="flex items-center gap-3.5 text-neutral-200">
-                      <Mail size={20} className="text-[#C6A15A]" />
+                      <Mail size={20} className="text-[#0a7a8c]" />
                       <span className="text-base sm:text-lg font-medium">info@roysons.org</span>
                     </div>
                     <div className="flex items-center gap-3.5 text-neutral-200">
-                      <Clock size={20} className="text-[#C6A15A]" />
+                      <Clock size={20} className="text-[#0a7a8c]" />
                       <span className="text-base sm:text-lg font-medium">Mon - Sat: 9:00 AM - 6:00 PM</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-12 pt-6 border-t border-neutral-800 flex items-center gap-2.5 text-neutral-400 text-sm sm:text-base">
-                  <Lock size={16} className="text-[#C6A15A]" />
+                  <Lock size={16} className="text-[#0a7a8c]" />
                   <span>Confidential &amp; Verified Institutional Consultation</span>
                 </div>
               </div>
@@ -824,8 +824,8 @@ export default function HealthcareMedicalServicePage() {
               <div className="lg:col-span-7 p-8 sm:p-12 lg:p-14 bg-white">
                 {formSubmitted ? (
                   <div className="flex flex-col items-center justify-center h-full min-h-[360px] text-center p-6">
-                    <div className="w-16 h-16 bg-neutral-950 border-2 border-[#C6A15A] rounded-full flex items-center justify-center mb-4">
-                      <CheckCircle2 size={32} className="text-[#C6A15A]" />
+                    <div className="w-16 h-16 bg-neutral-950 border-2 border-[#0a7a8c] rounded-full flex items-center justify-center mb-4">
+                      <CheckCircle2 size={32} className="text-[#0a7a8c]" />
                     </div>
                     <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-neutral-950 mb-2">
                       Inquiry Submitted Successfully

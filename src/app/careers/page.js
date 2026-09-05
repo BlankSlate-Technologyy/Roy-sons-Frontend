@@ -236,7 +236,7 @@ export default function CareersPage() {
             <h2 className="text-[24px] sm:text-[28px] font-black uppercase tracking-[0.16em] text-neutral-950">
               Life at ROYSONS
             </h2>
-            <div className="mx-auto mt-4 h-[3px] w-12 bg-[#C6A15A]" />
+            <div className="mx-auto mt-4 h-[3px] w-12 bg-[#0a7a8c]" />
             <p className="text-[13px] text-neutral-500 mt-4 max-w-xl mx-auto leading-relaxed">
               We foster an environment of continuous learning, entrepreneurial spirit, and merit-based recognition.
             </p>
@@ -251,12 +251,12 @@ export default function CareersPage() {
                   key={index}
                   data-aos="fade-up"
                   data-aos-delay={staggerDelay}
-                  className="bg-white border border-neutral-200 p-7 rounded-sm hover:border-[#C6A15A] hover:shadow-md transition-all duration-300 group"
+                  className="bg-white border border-neutral-200 p-7 rounded-sm hover:border-[#0a7a8c] hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="w-12 h-12 bg-[#101518] border border-neutral-800 rounded-sm flex items-center justify-center mb-5 group-hover:border-[#C6A15A]/70 group-hover:bg-[#1a2127] transition-all duration-300">
-                    <Icon size={22} className="text-white group-hover:text-[#C6A15A] transition-colors duration-300" strokeWidth={1.5} />
+                  <div className="w-12 h-12 bg-[#101518] border border-neutral-800 rounded-sm flex items-center justify-center mb-5 group-hover:border-[#0a7a8c]/70 group-hover:bg-[#1a2127] transition-all duration-300">
+                    <Icon size={22} className="text-white group-hover:text-[#0a7a8c] transition-colors duration-300" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-[15px] font-bold uppercase tracking-wider text-neutral-950 mb-2 group-hover:text-[#C6A15A] transition-colors duration-300">
+                  <h3 className="text-[15px] font-bold uppercase tracking-wider text-neutral-950 mb-2 group-hover:text-[#0a7a8c] transition-colors duration-300">
                     {benefit.title}
                   </h3>
                   <p className="text-[12.5px] text-neutral-500 leading-relaxed font-normal">
@@ -273,13 +273,13 @@ export default function CareersPage() {
       <section id="open-positions" className="py-16 sm:py-20 bg-[#101518] text-white border-b border-neutral-800" data-aos="fade-up">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
-            <span className="text-[10px] font-bold tracking-[0.25em] text-[#C6A15A] uppercase mb-3 block">
+            <span className="text-[10px] font-bold tracking-[0.25em] text-[#0a7a8c] uppercase mb-3 block">
               CURRENT OPPORTUNITIES
             </span>
             <h2 className="text-[24px] sm:text-[28px] font-black uppercase tracking-[0.16em] text-white">
               Open Positions
             </h2>
-            <div className="mx-auto mt-4 h-[3px] w-12 bg-[#C6A15A]" />
+            <div className="mx-auto mt-4 h-[3px] w-12 bg-[#0a7a8c]" />
             <p className="text-[13px] text-neutral-400 mt-4 max-w-xl mx-auto leading-relaxed font-light">
               Explore open roles across our corporate headquarters and specialized subsidiaries.
             </p>
@@ -293,19 +293,19 @@ export default function CareersPage() {
                   key={job.id}
                   data-aos="fade-up"
                   data-aos-delay={staggerDelay}
-                  className="bg-[#161c20]/90 border border-neutral-800 p-6 sm:p-7 rounded-sm hover:border-[#C6A15A]/60 hover:bg-[#1a2127] transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-[#161c20]/90 border border-neutral-800 p-6 sm:p-7 rounded-sm hover:border-[#0a7a8c]/60 hover:bg-[#1a2127] transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                      <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#C6A15A] bg-[#C6A15A]/10 px-2.5 py-1 rounded-sm border border-[#C6A15A]/30">
+                      <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#0a7a8c] bg-[#0a7a8c]/10 px-2.5 py-1 rounded-sm border border-[#0a7a8c]/30">
                         {job.department}
                       </span>
                       <span className="text-[11px] text-neutral-400 flex items-center gap-1 font-medium">
-                        <Clock size={12} className="text-[#C6A15A]" /> {job.type}
+                        <Clock size={12} className="text-[#0a7a8c]" /> {job.type}
                       </span>
                     </div>
 
-                    <h3 className="text-[16px] sm:text-[17px] font-bold uppercase tracking-wide text-white mb-2.5 group-hover:text-[#C6A15A] transition-colors duration-300">
+                    <h3 className="text-[16px] sm:text-[17px] font-bold uppercase tracking-wide text-white mb-2.5 group-hover:text-[#0a7a8c] transition-colors duration-300">
                       {job.title}
                     </h3>
 
@@ -317,10 +317,10 @@ export default function CareersPage() {
                   <div className="pt-4 border-t border-neutral-800 flex flex-wrap items-center justify-between gap-4">
                     <div className="flex items-center gap-4 text-[11.5px] text-neutral-400">
                       <span className="flex items-center gap-1">
-                        <MapPin size={13} className="text-[#C6A15A]" /> {job.location}
+                        <MapPin size={13} className="text-[#0a7a8c]" /> {job.location}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Briefcase size={13} className="text-[#C6A15A]" /> {job.experience}
+                        <Briefcase size={13} className="text-[#0a7a8c]" /> {job.experience}
                       </span>
                     </div>
 
@@ -347,27 +347,27 @@ export default function CareersPage() {
             <div className="lg:w-1/3 bg-[#101518] text-white p-8 sm:p-10 flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 border border-neutral-800 bg-[#161c20] rounded-sm flex items-center justify-center mb-6">
-                  <Sparkles size={18} className="text-[#C6A15A]" />
+                  <Sparkles size={18} className="text-[#0a7a8c]" />
                 </div>
                 <h3 className="text-[20px] font-black uppercase tracking-[0.14em] text-white mb-3">
                   Submit Your Application
                 </h3>
-                <div className="h-[2px] w-8 bg-[#C6A15A] mb-5" />
+                <div className="h-[2px] w-8 bg-[#0a7a8c] mb-5" />
                 <p className="text-[12.5px] text-neutral-400 leading-relaxed font-light mb-8">
                   Didn&apos;t find an exact match for your profile? Submit your resume for our executive talent pool and we will reach out when a relevant position opens.
                 </p>
 
                 <div className="space-y-4 pt-4 border-t border-neutral-800">
                   <div className="flex items-center gap-3 text-[12px] text-neutral-300">
-                    <Mail size={15} className="text-[#C6A15A] flex-shrink-0" />
+                    <Mail size={15} className="text-[#0a7a8c] flex-shrink-0" />
                     <span>careers@roysons.com</span>
                   </div>
                   <div className="flex items-center gap-3 text-[12px] text-neutral-300">
-                    <Phone size={15} className="text-[#C6A15A] flex-shrink-0" />
+                    <Phone size={15} className="text-[#0a7a8c] flex-shrink-0" />
                     <span>+92 (42) 111-769-766</span>
                   </div>
                   <div className="flex items-center gap-3 text-[12px] text-neutral-300">
-                    <MapPin size={15} className="text-[#C6A15A] flex-shrink-0" />
+                    <MapPin size={15} className="text-[#0a7a8c] flex-shrink-0" />
                     <span>ROYSONS Corporate Tower, Lahore, Pakistan</span>
                   </div>
                 </div>
@@ -384,8 +384,8 @@ export default function CareersPage() {
             <div className="flex-1 p-8 sm:p-10 lg:p-12">
               {formSubmitted ? (
                 <div className="flex flex-col items-center justify-center h-full min-h-[350px] text-center">
-                  <div className="w-16 h-16 bg-[#101518] border border-[#C6A15A] rounded-full flex items-center justify-center mb-4">
-                    <CheckCircle2 size={28} className="text-[#C6A15A]" />
+                  <div className="w-16 h-16 bg-[#101518] border border-[#0a7a8c] rounded-full flex items-center justify-center mb-4">
+                    <CheckCircle2 size={28} className="text-[#0a7a8c]" />
                   </div>
                   <h4 className="text-[18px] font-black uppercase tracking-wider text-neutral-950 mb-2">
                     Application Received!
@@ -395,7 +395,7 @@ export default function CareersPage() {
                   </p>
                   <button
                     onClick={() => setFormSubmitted(false)}
-                    className="text-[11px] font-bold uppercase tracking-widest text-[#C6A15A] hover:underline cursor-pointer"
+                    className="text-[11px] font-bold uppercase tracking-widest text-[#0a7a8c] hover:underline cursor-pointer"
                   >
                     Submit Another Application
                   </button>
@@ -413,7 +413,7 @@ export default function CareersPage() {
                         placeholder="John Doe"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#C6A15A] transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
                       />
                     </div>
 
@@ -427,7 +427,7 @@ export default function CareersPage() {
                         placeholder="john@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#C6A15A] transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
                       />
                     </div>
                   </div>
@@ -443,7 +443,7 @@ export default function CareersPage() {
                         placeholder="+92 300 1234567"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#C6A15A] transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
                       />
                     </div>
 
@@ -457,7 +457,7 @@ export default function CareersPage() {
                         placeholder="e.g. 4 Years"
                         value={formData.experience}
                         onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#C6A15A] transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
                       />
                     </div>
                   </div>
@@ -477,8 +477,8 @@ export default function CareersPage() {
                         <div
                           onClick={() => setIsRoleDropdownOpen(!isRoleDropdownOpen)}
                           className={`w-full bg-[#101518] border ${
-                            isRoleDropdownOpen ? "border-[#C6A15A]" : "border-neutral-800"
-                          } px-4 py-3 text-[12px] text-[#C6A15A] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
+                            isRoleDropdownOpen ? "border-[#0a7a8c]" : "border-neutral-800"
+                          } px-4 py-3 text-[12px] text-[#0a7a8c] outline-none transition-colors rounded-[2px] cursor-pointer flex justify-between items-center`}
                         >
                           <span className="truncate">
                             {formData.position || "Select a Position / Domain"}
@@ -498,7 +498,7 @@ export default function CareersPage() {
                                 setFormData({ ...formData, position: "General / Other Role" });
                                 setIsRoleDropdownOpen(false);
                               }}
-                              className="px-4 py-2.5 text-[11.5px] text-[#C6A15A] hover:bg-[#C6A15A] hover:text-black cursor-pointer transition-colors"
+                              className="px-4 py-2.5 text-[11.5px] text-[#0a7a8c] hover:bg-[#0a7a8c] hover:text-black cursor-pointer transition-colors"
                             >
                               General / Executive Pool
                             </div>
@@ -509,7 +509,7 @@ export default function CareersPage() {
                                   setFormData({ ...formData, position: p.title });
                                   setIsRoleDropdownOpen(false);
                                 }}
-                                className="px-4 py-2.5 text-[11.5px] text-white hover:bg-[#C6A15A] hover:text-black cursor-pointer transition-colors"
+                                className="px-4 py-2.5 text-[11.5px] text-white hover:bg-[#0a7a8c] hover:text-black cursor-pointer transition-colors"
                               >
                                 {p.title}
                               </div>
@@ -528,7 +528,7 @@ export default function CareersPage() {
                         placeholder="https://linkedin.com/in/username"
                         value={formData.linkedin}
                         onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#C6A15A] transition-colors rounded-[2px]"
+                        className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
                       />
                     </div>
                   </div>
@@ -543,7 +543,7 @@ export default function CareersPage() {
                       placeholder="Briefly highlight your key achievements, areas of expertise, and why you wish to join ROYSONS..."
                       value={formData.coverNote}
                       onChange={(e) => setFormData({ ...formData, coverNote: e.target.value })}
-                      className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#C6A15A] transition-colors rounded-[2px] resize-none"
+                      className="w-full bg-white border border-neutral-200 px-4 py-3 text-[12px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px] resize-none"
                     />
                   </div>
 

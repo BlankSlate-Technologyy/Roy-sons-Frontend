@@ -7,22 +7,40 @@ export default function ConsultationBanner({
   href = "/contact",
 }) {
   return (
-    <section className="py-10 sm:py-16 px-4 sm:px-6 bg-white font-sans overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
+    <section className="pt-2 sm:pt-4 pb-8 sm:pb-12 px-4 sm:px-6 bg-white font-sans overflow-hidden" data-aos="zoom-in" data-aos-delay="100">
       <div className="max-w-screen-xl mx-auto">
         <div 
-          className="relative overflow-hidden rounded-2xl sm:rounded-3xl py-12 sm:py-16 lg:py-20 px-6 sm:px-12 text-center flex flex-col items-center justify-center border border-white/20 shadow-xl"
+          id="cta-consultation-banner"
+          className="relative overflow-hidden rounded-2xl sm:rounded-3xl py-10 sm:py-14 lg:py-16 px-6 sm:px-12 text-center flex flex-col items-center justify-center border border-white/20 shadow-xl"
           style={{
-            background: "linear-gradient(90deg, #0077b6 0%, #009688 50%, #02b875 100%)",
+            background: "linear-gradient(90deg, #0284c7 0%, #0891b2 50%, #10b981 100%)",
           }}
         >
           {/* Subtle Ambient Light Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/15 to-transparent pointer-events-none" />
 
-          {/* Heading Content */}
+          {/* Heading Content - Explicit White Color */}
           <div className="relative z-10 max-w-3xl mx-auto mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-white leading-[1.25] tracking-tight">
-              {title && <span className="block">{title}</span>}
-              {subtitle && <span className="block mt-1 sm:mt-2">{subtitle}</span>}
+            <h2 
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold !text-white leading-[1.25] tracking-tight"
+              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+            >
+              {title && (
+                <span 
+                  className="block text-white !text-white" 
+                  style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                >
+                  {title}
+                </span>
+              )}
+              {subtitle && (
+                <span 
+                  className="block mt-1 sm:mt-2 text-white !text-white" 
+                  style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                >
+                  {subtitle}
+                </span>
+              )}
             </h2>
           </div>
 

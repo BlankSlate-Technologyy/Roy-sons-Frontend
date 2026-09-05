@@ -31,7 +31,7 @@ export const SEARCHABLE_ITEMS = [
     href: company.href,
     category: "companies",
     badge: "Subsidiary",
-    badgeColor: "bg-[#C6A15A]/15 text-[#C6A15A] border-[#C6A15A]/30",
+    badgeColor: "bg-[#0a7a8c]/15 text-[#0a7a8c] border-[#0a7a8c]/30",
     image: company.image,
     keywords: `${company.name} ${company.subtitle} ${company.tagline} group company subsidiary holding roysons`,
   })),
@@ -97,7 +97,7 @@ export const SEARCHABLE_ITEMS = [
     href: "/group-companies",
     category: "pages",
     badge: "Directory",
-    badgeColor: "bg-[#C6A15A]/15 text-[#C6A15A] border-[#C6A15A]/30",
+    badgeColor: "bg-[#0a7a8c]/15 text-[#0a7a8c] border-[#0a7a8c]/30",
     keywords: "group companies subsidiaries list directory all businesses entities",
   },
   {

@@ -2,6 +2,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Preloader from "@/components/ui/Preloader";
 import AOSProvider from "@/components/animations/AOSProvider";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning className="min-h-screen flex flex-col bg-white text-[#042E3A]">
         <Preloader />
         <AOSProvider>{children}</AOSProvider>
+        <WhatsAppButton />
       </body>
     </html>
   );

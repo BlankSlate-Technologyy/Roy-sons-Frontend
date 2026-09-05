@@ -40,16 +40,16 @@ const CORE_SERVICES = [
     href: "/services/hospital-engineering",
   },
   {
-    icon: Pill,
-    title: "Pharmaceutical Consultancy",
-    description: "Professional consulting and quality systems for pharmaceuticals.",
-    href: "/services/pharmaceutical-consultancy",
-  },
-  {
     icon: PawPrint,
     title: "Veterinary & Livestock Solutions",
     description: "Comprehensive animal healthcare and livestock management solutions.",
     href: "/services/veterinary-livestock",
+  },
+  {
+    icon: Pill,
+    title: "Pharmaceutical Consultancy",
+    description: "Professional consulting and quality systems for pharmaceuticals.",
+    href: "/services/pharmaceutical-consultancy",
   },
   {
     icon: Monitor,
@@ -122,8 +122,8 @@ const CORE_SERVICES = [
 const SERVICE_OPTIONS = [
   "Healthcare & Medical Technologies",
   "Hospital Engineering & Clean Rooms",
-  "Pharmaceutical Consultancy",
   "Veterinary & Livestock Solutions",
+  "Pharmaceutical Consultancy",
   "Information Technology & AI",
   "Electrical & Power Systems",
   "Renewable Energy",
