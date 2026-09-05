@@ -419,8 +419,8 @@ export default function HealthcareMedicalServicePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-[#0a7a8c]/15 border border-[#0a7a8c]/40 text-[#0a7a8c] text-xs font-bold uppercase tracking-[0.2em] mb-5 self-start">
-                <HeartPulse size={15} className="text-[#0a7a8c]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/50 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-[0_0_15px_rgba(34,211,238,0.15)]">
+                <HeartPulse size={15} className="text-cyan-400" />
                 <span>Sector 01 • Medical Solutions</span>
               </div>
 
@@ -428,11 +428,11 @@ export default function HealthcareMedicalServicePage() {
                 Healthcare &amp; Medical Technologies
               </h1>
 
-              <p className="text-base sm:text-lg font-bold text-[#0a7a8c] uppercase tracking-wide mb-4">
+              <p className="text-base sm:text-lg lg:text-xl font-extrabold text-cyan-400 uppercase tracking-wide mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                 Advancing Healthcare Through Innovative Medical Solutions
               </p>
 
-              <div className="h-[3px] w-16 bg-[#0a7a8c] mb-5" />
+              <div className="h-[3px] w-16 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-5" />
 
               <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal mb-6 max-w-2xl">
                 ROYSONS delivers advanced healthcare and medical technology solutions designed to support hospitals, clinics, laboratories, government institutions, and healthcare organizations. We combine international sourcing, technical expertise, and project support to provide reliable medical technologies that improve patient care and operational efficiency.
@@ -477,7 +477,7 @@ export default function HealthcareMedicalServicePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
 
                   <div className="absolute bottom-4 left-4 right-4 p-4 bg-neutral-950/85 backdrop-blur-md border border-[#0a7a8c]/40 rounded-[2px]">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#0a7a8c] mb-1">
+                    <p className="text-xs font-extrabold uppercase tracking-wider text-cyan-400 mb-1">
                       International Quality Standards
                     </p>
                     <p className="text-sm sm:text-base font-bold text-white leading-snug">
@@ -576,13 +576,13 @@ export default function HealthcareMedicalServicePage() {
       <section id="key-solutions" className="py-14 sm:py-18 bg-[#101518] text-white border-b border-neutral-800">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
+            <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400 mb-2 block">
               SPECIALIZED OFFERINGS
             </span>
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-3">
               Key Solutions
             </h2>
-            <div className="mx-auto h-[3px] w-14 bg-[#0a7a8c] mb-4" />
+            <div className="mx-auto h-[3px] w-14 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-4" />
             <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal">
               High-performance technologies tailored to radiology departments, critical care units, operating rooms, and analytical laboratories.
             </p>
@@ -668,7 +668,7 @@ export default function HealthcareMedicalServicePage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
                       <div className="absolute bottom-3 left-3 right-3">
-                        <span className="px-2.5 py-1 bg-black/80 backdrop-blur-sm border border-[#0a7a8c]/40 text-[#0a7a8c] text-xs font-bold uppercase tracking-wider rounded-[2px]">
+                        <span className="px-2.5 py-1 bg-black/80 backdrop-blur-sm border border-cyan-400/40 text-cyan-300 text-xs font-bold uppercase tracking-wider rounded-[2px]">
                           ROYSONS Medical Solution Suite
                         </span>
                       </div>
@@ -730,13 +730,13 @@ export default function HealthcareMedicalServicePage() {
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-5">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
+              <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400 mb-2 block">
                 COMPETITIVE ADVANTAGE
               </span>
               <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-4 leading-tight">
                 Why Partner With ROYSONS For Healthcare?
               </h2>
-              <div className="h-[3px] w-14 bg-[#0a7a8c] mb-5" />
+              <div className="h-[3px] w-14 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-5" />
               <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal mb-6">
                 We combine deep technical engineering capabilities with robust global procurement networks, ensuring every medical installation operates at peak clinical precision with complete regulatory assurance.
               </p>

@@ -202,7 +202,7 @@ export const BLOG_POSTS = {
   },
   "building-diversified-future": {
     slug: "building-diversified-future",
-    title: "Building a Diversified Future: Why Multi-Sector Businesses Drive Sustainable Growth",
+    title: "Diversified Future: Why Multi-Sector Businesses Drive Sustainable Growth",
     category: "Business & Corporate Strategy",
     readTime: "6–8 min read",
     date: "August 18, 2026",

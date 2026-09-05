@@ -105,11 +105,11 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
       >
         <div
           className={`mx-auto flex w-full max-w-screen-2xl items-center justify-between px-3 sm:px-5 lg:px-6 xl:px-8 transition-all duration-300 ${
-            isScrolled ? "h-16 md:h-20 lg:h-[84px]" : "h-20 md:h-24 lg:h-[104px]"
+            isScrolled ? "h-14 sm:h-16 md:h-20 lg:h-[84px]" : "h-16 sm:h-18 md:h-22 lg:h-[104px]"
           }`}
         >
           
-          <Link href="/" className="inline-block flex-shrink-0 pr-2 xl:pr-4">
+          <Link href="/" className="inline-block flex-shrink-0 pr-1 xl:pr-4">
             <BrandLogo />
           </Link>
 
@@ -165,7 +165,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 xl:gap-3 flex-shrink-0 pl-2">
+          <div className="flex items-center gap-1 sm:gap-2 xl:gap-3 flex-shrink-0">
             <button
               id="navbar-search-btn"
               aria-label="Toggle search bar"
@@ -180,7 +180,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
               id="navbar-mobile-btn"
               aria-label="Toggle menu"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-[#042E3A] bg-transparent cursor-pointer"
+              className="lg:hidden p-1.5 sm:p-2 text-[#042E3A] bg-transparent cursor-pointer rounded-lg hover:bg-[#042E3A]/5 transition-colors"
             >
               {isMobileMenuOpen ? <X size={21} strokeWidth={2.2} /> : <Menu size={21} strokeWidth={2.2} />}
             </button>
@@ -323,13 +323,17 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
 
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
-          <nav aria-label="Mobile Navigation" className="lg:hidden border-t bg-white" style={{backgroundColor:'#ffffff', borderColor:'rgba(4,46,58,0.15)'}}>
-            <ul className="flex flex-col py-2">
+          <nav
+            aria-label="Mobile Navigation"
+            className="lg:hidden border-t bg-white max-h-[calc(100vh-64px)] overflow-y-auto shadow-xl"
+            style={{ backgroundColor: "#ffffff", borderColor: "rgba(4,46,58,0.15)" }}
+          >
+            <ul className="flex flex-col py-1">
               {HEADER_ROUTES.map((route) => {
                 if (route.path === "/services") {
                   return (
                     <li key={route.path} className="border-b border-[#042E3A]/10">
-                      <div className="flex items-center justify-between px-6 py-3.5">
+                      <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3">
                         <Link
                           href="/services"
                           onClick={() => setIsMobileMenuOpen(false)}
@@ -355,8 +359,8 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
 
                       {/* Expandable Mobile Services Sub-list */}
                       {isMobileServicesOpen && (
-                        <div className="bg-[#042E3A]/5 px-6 py-2 border-t border-[#042E3A]/5">
-                          <ul className="flex flex-col space-y-1">
+                        <div className="bg-[#042E3A]/5 px-4 sm:px-6 py-1 border-t border-[#042E3A]/5">
+                          <ul className="flex flex-col space-y-0.5">
                             {SERVICES_DROPDOWN_ITEMS.map((item, idx) => (
                               <li key={idx} className="border-b border-[#042E3A]/10 last:border-b-0">
                                 <Link
@@ -386,7 +390,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                     <Link
                       href={route.path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="nav-text-link block px-6 py-3.5 text-[13px] font-bold tracking-[0.16em] uppercase !text-[#042E3A] hover:!text-[#0a7a8c] !bg-transparent hover:!bg-[#042E3A]/5 border-b border-[#042E3A]/10 transition-colors"
+                      className="nav-text-link block px-4 sm:px-6 py-2.5 sm:py-3 text-[13px] font-bold tracking-[0.16em] uppercase !text-[#042E3A] hover:!text-[#0a7a8c] !bg-transparent hover:!bg-[#042E3A]/5 border-b border-[#042E3A]/10 transition-colors"
                       style={{
                         background: "none",
                         backgroundColor: "transparent",

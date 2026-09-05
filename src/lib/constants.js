@@ -38,6 +38,7 @@ export const HEADER_ROUTES = [
   { path: "/services", title: "Services" },
   { path: "/projects", title: "Projects" },
   { path: "/group-companies", title: "Group Companies" },
+   { path: "#roysons-holding", title: "Roysons Holding" },
   { path: "/roysons-trust", title: "Roysons Trust" },
   { path: "/contact", title: "Contact Us" },
 ];
@@ -438,7 +439,7 @@ export const CORPORATE_BROADCAST_NEWS = [
   {
     image: "/diversified_future_growth.jpg",
     date: "August 18, 2026",
-    title: "Building a Diversified Future: Why Multi-Sector Businesses Drive Sustainable Growth",
+    title: "Diversified Future: Why Multi-Sector Businesses Drive Sustainable Growth",
     href: "/news/building-diversified-future",
   },
 ];

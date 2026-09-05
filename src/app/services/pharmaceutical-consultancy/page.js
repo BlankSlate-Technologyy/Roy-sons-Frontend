@@ -229,8 +229,8 @@ export default function PharmaceuticalConsultancyPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-[#0a7a8c]/15 border border-[#0a7a8c]/40 text-[#0a7a8c] text-xs font-bold uppercase tracking-[0.2em] mb-5 self-start">
-                <FlaskConical size={15} className="text-[#0a7a8c]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/50 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-[0_0_15px_rgba(34,211,238,0.15)]">
+                <FlaskConical size={15} className="text-cyan-400" />
                 <span>Sector 03 • Pharmaceutical &amp; Compliance</span>
               </div>
 
@@ -238,11 +238,11 @@ export default function PharmaceuticalConsultancyPage() {
                 Pharmaceutical Consultancy
               </h1>
 
-              <p className="text-base sm:text-lg font-bold text-[#0a7a8c] uppercase tracking-wide mb-4">
+              <p className="text-base sm:text-lg lg:text-xl font-extrabold text-cyan-400 uppercase tracking-wide mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                 Strategic, Regulatory &amp; Quality Solutions for Pharmaceutical Excellence
               </p>
 
-              <div className="h-[3px] w-16 bg-[#0a7a8c] mb-5" />
+              <div className="h-[3px] w-16 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-5" />
 
               <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal mb-6 max-w-2xl">
                 ROYSONS provides professional consultancy services to pharmaceutical, biotechnology, medical device, and healthcare organizations. We support clients throughout facility planning, regulatory compliance, quality management, documentation, and operational development.
