@@ -358,6 +358,17 @@ export default function AboutPage() {
           <p data-aos="fade-up" data-aos-delay="250" className="text-[17px] sm:text-[19px] lg:text-[21px] text-[#042E3A]/85 leading-[1.85] font-normal max-w-4xl text-center">
             Zeba Ijaz leads ROYSONS Trust with a vision to establish a purpose-driven institution committed to creating lasting social and economic value for future generations. Under her leadership, the Trust aims to support initiatives across education, healthcare, community development, research, skills development, sustainability, and social welfare. With a strong commitment to responsible stewardship, compassion, and long-term development, ROYSONS Trust seeks to strengthen the foundation behind the ROYSONS enterprise while contributing to meaningful progress in society. Through strategic leadership and a people-centered vision, Zeba Ijaz is committed to building an institution that creates opportunities, supports communities, and leaves a lasting positive legacy.
           </p>
+
+          {/* Visit Trust CTA Button */}
+          <div data-aos="fade-up" data-aos-delay="300" className="mt-8 sm:mt-10">
+            <Link
+              href="/roysons-trust"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-md bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#042E3A] text-white text-sm sm:text-base font-bold uppercase tracking-wider shadow-lg hover:shadow-xl hover:shadow-[#0a7a8c]/25 transition-all duration-300 active:scale-95 group"
+            >
+              <span>Visit Trust</span>
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
         </div>
       </section>
 

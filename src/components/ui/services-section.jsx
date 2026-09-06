@@ -44,9 +44,9 @@ function ServiceItem({ icon: Icon, title, description, href }) {
 
 export default function CorporateCapabilitiesPanel({ services = CORPORATE_SERVICES }) {
   return (
-    <section className="py-16 sm:py-24 bg-white font-sans border-t border-b border-[#0a7a8c]/15" data-aos="fade-up">
+    <section className="py-12 sm:py-16 bg-white font-sans border-t border-b border-[#0a7a8c]/15" data-aos="fade-up">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-14 sm:mb-20" data-aos="fade-up" data-aos-delay="100">
+        <div className="text-center mb-10 sm:mb-12" data-aos="fade-up" data-aos-delay="100">
           <h4 className="text-xs sm:text-sm font-black tracking-[0.28em] uppercase text-[#0a7a8c] mb-3.5">
             OUR CAPABILITIES
           </h4>
@@ -56,7 +56,7 @@ export default function CorporateCapabilitiesPanel({ services = CORPORATE_SERVIC
           <div className="mx-auto mt-5 h-[3.5px] w-16 bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488]" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-20 gap-y-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 sm:gap-x-8 gap-y-8 sm:gap-y-10">
           {services.map((service, index) => {
             const staggerDelay = ((index % 4) + 1) * 100;
             return (

@@ -325,11 +325,42 @@ const WHY_CHOOSE_ROYSONS = [
   },
 ];
 
+const HERO_SLIDES = [
+  {
+    image: "/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg",
+    tag: "International Quality Standards",
+    title: "Turnkey Medical Equipment, Diagnostics & Biomedical Support",
+  },
+  {
+    image: "/roys_mri_scanner.png",
+    tag: "Diagnostic Imaging Suites",
+    title: "High-Field MRI, CT Scanners & Advanced Radiology Technologies",
+  },
+  {
+    image: "/roys_hospital_interior.png",
+    tag: "Surgical & OT Infrastructure",
+    title: "Modular Operating Theatres, ICU Life Support & Hospital Fit-Outs",
+  },
+  {
+    image: "/roys_ct_scan.png",
+    tag: "Precision Diagnostics & Labs",
+    title: "Turnkey Laboratory Systems, Analytical Instrumentation & Support",
+  },
+];
+
 export default function HealthcareMedicalServicePage() {
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const [activeSolutionTab, setActiveSolutionTab] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -467,26 +498,73 @@ export default function HealthcareMedicalServicePage() {
               </div>
             </div>
 
-            {/* Right Media Card */}
+            {/* Right Media Card - Pure Auto-Advancing Image Slider */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-[2px] p-1 bg-gradient-to-b from-[#0a7a8c]/40 via-neutral-800 to-[#0a7a8c]/20 shadow-xl">
-                <div className="relative h-[300px] sm:h-[380px] w-full overflow-hidden rounded-[2px] bg-neutral-900">
-                  <Image
-                    src="/ROYS & ROYS INTERNATIONAL HERO IMAGE.jpeg"
-                    alt="Advanced Healthcare and Medical Technologies by ROYSONS"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
+              <div className="relative rounded-[3px] p-1 bg-gradient-to-b from-cyan-500/40 via-neutral-800 to-[#0a7a8c]/30 shadow-2xl shadow-cyan-950/50 group select-none">
+                <div className="relative h-[340px] sm:h-[400px] lg:h-[420px] w-full overflow-hidden rounded-[2px] bg-neutral-950">
+                  {/* Slides */}
+                  {HERO_SLIDES.map((slide, idx) => (
+                    <div
+                      key={idx}
+                      className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                        activeHeroSlide === idx
+                          ? "opacity-100 scale-100 pointer-events-auto z-10"
+                          : "opacity-0 scale-105 pointer-events-none z-0"
+                      }`}
+                    >
+                      <Image
+                        src={slide.image}
+                        alt={slide.title}
+                        fill
+                        priority={idx === 0}
+                        sizes="(max-width: 1024px) 100vw, 45vw"
+                        className="object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-black/30" />
+                    </div>
+                  ))}
 
-                  <div className="absolute bottom-4 left-4 right-4 p-4 bg-neutral-950/90 backdrop-blur-md border border-cyan-400/50 rounded-[2px]">
-                    <p className="text-xs font-extrabold uppercase tracking-wider text-cyan-400 mb-1">
-                      International Quality Standards
-                    </p>
-                    <p className="text-sm sm:text-base font-bold text-white leading-snug">
-                      Turnkey Medical Equipment, Diagnostics &amp; Biomedical Support
+                  {/* Top Bar: Status & Counter */}
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-20 pointer-events-none">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] bg-neutral-950/80 backdrop-blur-md border border-cyan-400/40 text-cyan-300 text-[11px] font-bold uppercase tracking-wider shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                      <span>HEALTHCARE SHOWCASE</span>
+                    </div>
+
+                    <div className="px-2.5 py-1 rounded-[2px] bg-neutral-950/80 backdrop-blur-md border border-cyan-400/40 text-white text-[11px] font-bold tracking-widest">
+                      <span className="text-cyan-400 font-extrabold">0{activeHeroSlide + 1}</span>
+                      <span className="text-neutral-400 mx-1">/</span>
+                      <span className="text-neutral-400">0{HERO_SLIDES.length}</span>
+                    </div>
+                  </div>
+
+                  {/* Bottom Caption Card & Indicators */}
+                  <div className="absolute bottom-3 left-3 right-3 p-3.5 sm:p-4 bg-neutral-950/90 backdrop-blur-md border border-cyan-400/50 rounded-[2px] z-20">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <p className="text-xs font-extrabold uppercase tracking-wider text-cyan-300">
+                        {HERO_SLIDES[activeHeroSlide].tag}
+                      </p>
+                      {/* Dots / Pills */}
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        {HERO_SLIDES.map((_, dotIdx) => (
+                          <span
+                            key={dotIdx}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setActiveHeroSlide(dotIdx);
+                            }}
+                            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                              activeHeroSlide === dotIdx
+                                ? "w-6 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                                : "w-2 bg-white/40 hover:bg-white/80"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-xs sm:text-[14px] font-bold text-white leading-snug">
+                      {HERO_SLIDES[activeHeroSlide].title}
                     </p>
                   </div>
                 </div>
@@ -502,29 +580,33 @@ export default function HealthcareMedicalServicePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
               <AnimatedStatValue value="15+" />
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
-                Years of Excellence
+              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5 leading-snug">
+                Years of <br />
+                Excellence
               </p>
             </div>
 
             <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
               <AnimatedStatValue value="1,000+" />
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
-                Medical Systems Delivered
+              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5 leading-snug">
+                Medical Systems <br />
+                Delivered
               </p>
             </div>
 
             <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
               <AnimatedStatValue value="100%" />
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
-                ISO &amp; CE Compliance
+              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5 leading-snug">
+                ISO &amp; CE <br />
+                Compliance
               </p>
             </div>
 
             <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
               <AnimatedStatValue value="24/7" />
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
-                Biomedical Support
+              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5 leading-snug">
+                Biomedical <br />
+                Support
               </p>
             </div>
           </div>
@@ -553,20 +635,20 @@ export default function HealthcareMedicalServicePage() {
               return (
                 <div
                   key={index}
-                  className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="relative bg-white border border-neutral-200 p-6 sm:p-7 rounded-[3px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:shadow-[0_12px_32px_rgba(10,122,140,0.18)] hover:-translate-y-1.5 hover:bg-gradient-to-b hover:from-[#f0fdfa]/60 hover:to-white transition-all duration-300 overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-[3px] before:bg-gradient-to-r before:from-[#042E3A] before:via-[#0a7a8c] before:to-[#0d9488] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300"
                 >
                   <div>
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#0a7a8c]/60 transition-all duration-300">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/30 flex items-center justify-center mb-5 transition-all duration-300 shadow-xs group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:via-[#075d6d] group-hover:to-[#0a7a8c] group-hover:border-[#0a7a8c] group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)] group-hover:scale-105">
                       <Icon
-                        size={24}
-                        strokeWidth={1.5}
-                        className="text-[#0a7a8c] group-hover:scale-110 transition-transform duration-300"
+                        size={25}
+                        strokeWidth={1.7}
+                        className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300"
                       />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-[#042E3A] mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
                       {cap.title}
                     </h3>
-                    <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
+                    <p className="text-[15px] sm:text-[16px] text-neutral-600 group-hover:text-[#042E3A] leading-relaxed font-normal transition-colors duration-300">
                       {cap.description}
                     </p>
                   </div>
@@ -713,9 +795,9 @@ export default function HealthcareMedicalServicePage() {
               return (
                 <div
                   key={index}
-                  className="p-6 sm:p-7 rounded-[2px] border border-neutral-200 bg-neutral-50/50 hover:bg-white hover:border-[#0a7a8c] hover:shadow-md transition-all duration-300 group"
+                  className="relative p-6 sm:p-7 rounded-[3px] border border-neutral-200 bg-white hover:border-[#0a7a8c] hover:shadow-[0_12px_32px_rgba(10,122,140,0.18)] hover:-translate-y-1.5 hover:bg-gradient-to-b hover:from-[#f0fdfa]/60 hover:to-white transition-all duration-300 group overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-[3px] before:bg-gradient-to-r before:from-[#042E3A] before:via-[#0a7a8c] before:to-[#0d9488] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300"
                 >
-                  <div className="w-12 h-12 rounded-[2px] bg-[#f0fdfa] border border-[#0a7a8c]/35 flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] transition-all duration-300 shadow-xs">
+                  <div className="w-12 h-12 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/35 flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:via-[#075d6d] group-hover:to-[#0a7a8c] group-hover:border-[#0a7a8c] group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)] group-hover:scale-105 transition-all duration-300 shadow-xs">
                     <Icon
                       size={24}
                       strokeWidth={1.8}
@@ -725,7 +807,7 @@ export default function HealthcareMedicalServicePage() {
                   <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-[#042E3A] mb-2 group-hover:text-[#0a7a8c] transition-colors duration-300">
                     {ind.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-neutral-600 group-hover:text-[#042E3A] leading-relaxed font-normal transition-colors duration-300">
                     {ind.description}
                   </p>
                 </div>
