@@ -287,93 +287,7 @@ export default function AboutPage() {
           </nav>
         </div>
       </section>
-      {/* 1st Section: ROYSONS TRUST (Image Left, Content Right) */}
-      <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white" data-aos="fade-up">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
-            {/* Left: Image with Brand Teal/Navy Border */}
-            <div className="flex-1 w-full relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-auto lg:min-h-[440px] order-2 lg:order-1" data-aos="fade-right" data-aos-delay="100">
-              <div 
-                className="h-full w-full relative overflow-hidden rounded-[4px] bg-[#042E3A]"
-                style={{
-                  border: "2px solid #0a7a8c",
-                  boxShadow: "0 0 24px rgba(10,122,140,0.3), 4px 4px 0px #042E3A",
-                }}
-              >
-                <Image 
-                  src="/logos/roysons logo mockup building.png" 
-                  alt="ROYSONS TRUST" 
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={95}
-                  className="object-cover object-left lg:object-center"
-                  priority
-                />
-              </div>
-            </div>
-
-            {/* Right: Content */}
-            <div className="flex-1 flex flex-col justify-center order-1 lg:order-2" data-aos="fade-left" data-aos-delay="150">
-              <span className="text-[13px] sm:text-[14px] font-black tracking-[0.3em] uppercase mb-3 block bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488] bg-clip-text text-transparent">
-                Building Institutions
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-neutral-950 mb-5 leading-[1.12] tracking-tight">
-                 ROYSONS TRUST 
-              </h2>
-              <p className="text-[17px] sm:text-[18.5px] lg:text-[19px] text-neutral-950 font-bold leading-relaxed mb-4">
-                A Purpose-Led Institution Behind a Diversified Enterprise
-              </p>
-              <p className="text-[15.5px] sm:text-[16.5px] lg:text-[17px] text-neutral-700 leading-[1.8] font-normal">
-                ROYSONS Trust is envisioned as the purpose-driven institution supporting the long-term development, stewardship, and social impact of the ROYSONS enterprise. The Trust is designed around a simple philosophy: business growth should create lasting value for people, communities, and future generations. Through its relationship with ROYSONS Pvt. Ltd., the Trust aims to support responsible enterprise development, strengthen long-term institutional ownership, and channel resources toward initiatives in education, healthcare, community development, skills, research, sustainability, and other areas of public benefit. Our ambition is to build an institution that can outlive individual businesses and generations—creating a sustainable foundation for economic development and social progress.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2nd Section: Chairman, ROYSONS Trust (Zeba Ijaz) */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white text-neutral-900 border-t border-neutral-200 relative overflow-hidden" data-aos="fade-up">
-        {/* Subtle Ambient Teal Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0a7a8c]/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="mx-auto max-w-5xl relative z-10 flex flex-col items-center text-center">
-          
-          {/* Centered Picture at Top */}
-          <div className="mb-8" data-aos="zoom-in" data-aos-delay="100">
-            <div className="relative w-[260px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#0a7a8c]/30 bg-neutral-900 group">
-              <Image
-                src="/logos/ijaz.jpeg"
-                alt="Zeba Ijaz - Chairperson, ROYSONS Trust"
-                fill
-                sizes="(max-width: 768px) 320px, 360px"
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                priority
-              />
-              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none" />
-            </div>
-          </div>
-
-          {/* Centered Title (Name on top) */}
-          <h2 data-aos="fade-up" data-aos-delay="150" className="text-3xl sm:text-4xl lg:text-[46px] font-black text-[#042E3A] mb-3 tracking-tight">
-            Zeba Ijaz
-          </h2>
-
-          {/* Centered Badge (Label below name, clear readable size) */}
-          <div data-aos="fade-up" data-aos-delay="200" className="inline-flex items-center border border-[#0a7a8c]/30 bg-[#f0fdfa] px-5 py-1.5 rounded-full mb-6 shadow-xs">
-            <span className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-[#0a7a8c]">
-              Chairperson
-            </span>
-          </div>
-
-          {/* Centered Bio Description - Big & Readable */}
-          <p data-aos="fade-up" data-aos-delay="250" className="text-[17px] sm:text-[19px] lg:text-[21px] text-[#042E3A]/85 leading-[1.85] font-normal max-w-4xl text-center">
-            Zeba Ijaz leads ROYSONS Trust with a vision to establish a purpose-driven institution committed to creating lasting social and economic value for future generations. Under her leadership, the Trust aims to support initiatives across education, healthcare, community development, research, skills development, sustainability, and social welfare. With a strong commitment to responsible stewardship, compassion, and long-term development, ROYSONS Trust seeks to strengthen the foundation behind the ROYSONS enterprise while contributing to meaningful progress in society. Through strategic leadership and a people-centered vision, Zeba Ijaz is committed to building an institution that creates opportunities, supports communities, and leaves a lasting positive legacy.
-          </p>
-
-        </div>
-      </section>
-
-      {/* 3rd Section: About ROYSONS Pvt. Ltd. (Content Left, Image Right) */}
+      {/* 1st Section: About ROYSONS Pvt. Ltd. (Content Left, Image Right) */}
       <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-t border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-16">
@@ -414,6 +328,40 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* 2nd Section: Zeba Ijaz, Chairperson, ROYSONS Trust */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 bg-white text-neutral-900 border-t border-neutral-200 relative overflow-hidden" data-aos="fade-up">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0a7a8c]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="mx-auto max-w-5xl relative z-10 flex flex-col items-center text-center">
+          <div className="mb-8" data-aos="zoom-in" data-aos-delay="100">
+            <div className="relative w-[260px] sm:w-[320px] md:w-[360px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#0a7a8c]/30 bg-neutral-900 group">
+              <Image
+                src="/logos/ijaz.jpeg"
+                alt="Zeba Ijaz - Chairperson, ROYSONS Trust"
+                fill
+                sizes="(max-width: 768px) 320px, 360px"
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                priority
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-2xl pointer-events-none" />
+            </div>
+          </div>
+
+          <h2 data-aos="fade-up" data-aos-delay="150" className="text-3xl sm:text-4xl lg:text-[46px] font-black text-[#042E3A] mb-3 tracking-tight">
+            Zeba Ijaz
+          </h2>
+          <div data-aos="fade-up" data-aos-delay="200" className="inline-flex items-center border border-[#0a7a8c]/30 bg-[#f0fdfa] px-5 py-1.5 rounded-full mb-6 shadow-xs">
+            <span className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-[#0a7a8c]">
+              Chairperson
+            </span>
+          </div>
+          <p data-aos="fade-up" data-aos-delay="250" className="text-[17px] sm:text-[19px] lg:text-[21px] text-[#042E3A]/85 leading-[1.85] font-normal max-w-4xl text-center">
+            Zeba Ijaz leads ROYSONS Trust with a vision to establish a purpose-driven institution committed to creating lasting social and economic value for future generations. Under her leadership, the Trust aims to support initiatives across education, healthcare, community development, research, skills development, sustainability, and social welfare. With a strong commitment to responsible stewardship, compassion, and long-term development, ROYSONS Trust seeks to strengthen the foundation behind the ROYSONS enterprise while contributing to meaningful progress in society. Through strategic leadership and a people-centered vision, Zeba Ijaz is committed to building an institution that creates opportunities, supports communities, and leaves a lasting positive legacy.
+          </p>
+        </div>
+      </section>
+
+      {/* 3rd Section: Chairman, ROYSONS Pvt. Ltd. */}
       <section className="pt-12 sm:pt-16 pb-4 sm:pb-6 px-4 sm:px-6 bg-white text-neutral-900 border-t border-neutral-200 relative overflow-hidden" data-aos="fade-up">
         {/* Subtle Ambient Teal Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#0a7a8c]/10 rounded-full blur-3xl pointer-events-none" />
