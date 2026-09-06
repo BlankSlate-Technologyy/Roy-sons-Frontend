@@ -33,7 +33,7 @@ export const CORE_CAPABILITIES = [
     number: "01",
     title: "Hospital Planning & Engineering",
     icon: Building2,
-    image: "/pakmedical-hero.png",
+    image: "/roys_hospital_interior.png",
     imageAlt: "Hospital architectural planning and clinical facility layout coordination",
     shortDescription:
       "Comprehensive architectural planning, clinical layout zoning, patient/staff movement optimization, and MEP technical infrastructure coordination.",
@@ -122,7 +122,7 @@ export const CORE_CAPABILITIES = [
     number: "05",
     title: "Operation Theatre Engineering",
     icon: Activity,
-    image: "/roys_hospital_interior.png",
+    image: "/roys_operation_theatre.png",
     imageAlt: "Turnkey modular operation theatre with laminar airflow ceiling and surgical lights",
     shortDescription:
       "Turnkey modular OT construction with laminar airflow canopies, medical pendants, surgical lights, and hermetic sealing for ultra-clean surgical suites.",

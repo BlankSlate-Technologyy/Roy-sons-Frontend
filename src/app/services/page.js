@@ -139,11 +139,11 @@ const SERVICE_OPTIONS = [
 
 function ServiceCard({ icon: Icon, title, description, href }) {
   return (
-    <div className="flex flex-row items-start gap-4 group">
+    <div className="flex flex-row items-start gap-4 group" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
       {/* Icon Box */}
-      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-sm flex items-center justify-center group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-[#0078b4] group-hover:via-[#009588] group-hover:to-[#01b576] group-hover:shadow-[0_6px_20px_rgba(1,181,118,0.4)] transition-all duration-300">
+      <div className="flex-shrink-0 w-13 h-13 sm:w-14 sm:h-14 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-sm flex items-center justify-center group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-[#0078b4] group-hover:via-[#009588] group-hover:to-[#01b576] group-hover:shadow-[0_6px_20px_rgba(1,181,118,0.4)] transition-all duration-300 p-2.5">
         <Icon
-          size={24}
+          size={26}
           strokeWidth={1.6}
           className="text-[#0a7a8c] group-hover:text-white group-hover:scale-110 transition-all duration-300"
         />
@@ -151,19 +151,19 @@ function ServiceCard({ icon: Icon, title, description, href }) {
 
       {/* Text & Action */}
       <div className="flex-1 flex flex-col justify-start">
-        <h3 className="text-base sm:text-lg font-black tracking-[0.05em] uppercase text-[#042E3A] mb-2 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
+        <h3 className="text-[18px] sm:text-[20px] font-black tracking-[0.03em] uppercase text-[#042E3A] mb-2 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-[13px] sm:text-[14px] text-[#042E3A]/75 leading-relaxed font-normal mb-3">
+        <p className="text-[16px] sm:text-[17px] text-[#042E3A]/90 leading-[1.2] font-normal mb-3">
           {description}
         </p>
         <Link
           href={href || "#"}
-          className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] font-bold tracking-[0.16em] uppercase text-[#0a7a8c] hover:text-[#0d9488] transition-all duration-300 group/link"
+          className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-bold tracking-[0.16em] uppercase text-[#0a7a8c] hover:text-[#0d9488] transition-all duration-300 group/link"
         >
           <span>LEARN MORE</span>
           <ArrowRight
-            size={12}
+            size={13}
             strokeWidth={2}
             className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#0a7a8c]"
           />

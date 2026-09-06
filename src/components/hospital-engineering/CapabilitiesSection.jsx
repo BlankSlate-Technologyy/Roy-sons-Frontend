@@ -70,7 +70,7 @@ export default function CapabilitiesSection({ onSelectCapability }) {
                     </h3>
 
                     {/* Overview Text */}
-                    <p className="text-[16px] sm:text-[17px] text-slate-600 leading-relaxed font-normal mb-5">
+                    <p className="text-[16px] sm:text-[17px] text-slate-600 leading-[1.25] font-normal mb-5">
                       {cap.shortDescription}
                     </p>
 

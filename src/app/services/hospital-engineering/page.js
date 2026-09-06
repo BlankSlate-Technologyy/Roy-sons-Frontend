@@ -6,7 +6,6 @@ import Link from "next/link";
 import {
   BriefcaseMedical,
   Building2,
-  ArrowRight,
   ChevronRight,
   ShieldCheck,
   CheckCircle2,
@@ -98,10 +97,41 @@ function AnimatedStatValue({ value }) {
   );
 }
 
+const ENGINEERING_HERO_SLIDES = [
+  {
+    image: "/roys_operation_theatre.png",
+    tag: "Turnkey Clean Room Infrastructure",
+    title: "Modular Clean Rooms, ISO 14644 Wall Systems & Walkable Ceilings",
+  },
+  {
+    image: "/roys_hospital_interior.png",
+    tag: "Modular Operation Theatres",
+    title: "Laminar Airflow Ceilings, Hermetic Doors & Ultra-Clean OT Suites",
+  },
+  {
+    image: "/pakmedical-card1.png",
+    tag: "Healthcare HVAC & Filtration",
+    title: "Dedicated Air Handling Units (AHU) & Certified H14 HEPA Systems",
+  },
+  {
+    image: "/pakmedical-card3.png",
+    tag: "Medical Gas & Environmental Control",
+    title: "HTM 02-01 MGPS Networks, Differential Pressure & BMS Telemetry",
+  },
+];
+
 export default function HospitalEngineeringServicePage() {
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveHeroSlide((prev) => (prev + 1) % ENGINEERING_HERO_SLIDES.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -224,87 +254,103 @@ export default function HospitalEngineeringServicePage() {
       </section>
 
       {/* Hero Section */}
-      <div
+      <section
         data-dark-section="true"
-        style={{
-          backgroundColor: "#042E3A",
-          color: "#ffffff",
-          fontFamily: '"Times New Roman", Times, serif',
-        }}
-        className="roysons-preserve-dark relative !bg-[#042E3A] text-white py-12 sm:py-14 lg:py-16 border-b border-teal-900 overflow-hidden shadow-xl"
+        className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden roysons-preserve-dark"
       >
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0a7a8c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Left Column Narrative */}
+            {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0a7a8c]/25 border border-[#01b576]/50 text-[#01b576] text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-3 self-start backdrop-blur-sm">
-                <BriefcaseMedical size={15} className="text-[#01b576]" />
-                <span>Sector 02 • Healthcare Infrastructure &amp; Controlled Environments</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/80 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-4 self-start shadow-[0_0_15px_rgba(34,211,238,0.25)]">
+                <BriefcaseMedical size={16} className="text-cyan-300 flex-shrink-0" />
+                <span className="text-cyan-300 font-bold uppercase tracking-[0.2em]">Sector 02 • Clean Rooms &amp; Hospital Engineering</span>
               </div>
 
-              <h1
-                style={{ color: "#ffffff" }}
-                className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight !text-white leading-[1.1] mb-2 sm:mb-2.5"
-              >
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white leading-tight mb-4">
                 Hospital Engineering &amp; Clean Rooms
               </h1>
 
-              <p
-                style={{ color: "#01b576" }}
-                className="text-base sm:text-lg lg:text-xl font-extrabold !text-[#01b576] uppercase tracking-wide leading-snug mb-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
-              >
+              <p className="text-base sm:text-lg lg:text-xl font-extrabold text-cyan-400 uppercase tracking-wide mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                 Engineering Healthcare Environments Built for Precision, Safety &amp; Compliance
               </p>
 
-              <div className="h-[3px] w-16 bg-gradient-to-r from-[#01b576] to-[#0a7a8c] mb-3.5" />
+              <div className="h-[3px] w-16 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-5" />
 
-              <p
-                style={{ color: "#e2e8f0" }}
-                className="text-[15px] sm:text-[17px] !text-slate-200 leading-normal sm:leading-relaxed font-normal mb-5 max-w-2xl"
-              >
+              <p className="text-sm sm:text-base text-neutral-100 leading-relaxed font-normal max-w-2xl">
                 ROYSONS provides specialized hospital engineering, clean room, HVAC, medical infrastructure, and controlled-environment solutions for healthcare, pharmaceutical, biotechnology, laboratory, research, and medical manufacturing facilities.
               </p>
-
-              <div className="flex flex-wrap gap-3.5 items-center">
-                <a
-                  href="#engineering-consultation"
-                  className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0078b4] via-[#009588] to-[#01b576] hover:brightness-110 !text-white font-bold px-7 py-3.5 text-[14px] uppercase tracking-[0.14em] transition-all duration-300 rounded-xl shadow-lg shadow-[#01b576]/35 hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
-                >
-                  <span>Request Consultation</span>
-                  <ArrowRight size={15} className="text-white" />
-                </a>
-
-                <a
-                  href="#equipment-portfolio"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-gradient-to-r hover:from-[#0078b4]/30 hover:to-[#01b576]/30 border border-white/30 hover:border-[#01b576]/60 !text-white px-7 py-3.5 text-[14px] font-bold uppercase tracking-[0.14em] transition-all duration-300 rounded-xl backdrop-blur-sm cursor-pointer"
-                >
-                  <span>Equipment Portfolio</span>
-                </a>
-              </div>
             </div>
 
-            {/* Right Media Showcase */}
+            {/* Right Media Card - Pure Auto-Advancing Image Slider */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-3xl p-1 bg-gradient-to-b from-[#0a7a8c]/50 via-teal-900 to-[#0a7a8c]/20 shadow-2xl overflow-hidden border border-white/15">
-                <div className="relative h-[320px] sm:h-[400px] w-full overflow-hidden rounded-[22px] bg-neutral-900">
-                  <Image
-                    src="/pakmedical-hero.png"
-                    alt="Hospital Engineering and Clean Room Solutions by ROYSONS"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent" />
+              <div className="relative rounded-[3px] p-1 bg-gradient-to-b from-cyan-500/40 via-neutral-800 to-[#0a7a8c]/30 shadow-2xl shadow-cyan-950/50 group select-none">
+                <div className="relative h-[340px] sm:h-[400px] lg:h-[420px] w-full overflow-hidden rounded-[2px] bg-neutral-950">
+                  {/* Slides */}
+                  {ENGINEERING_HERO_SLIDES.map((slide, idx) => (
+                    <div
+                      key={idx}
+                      className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                        activeHeroSlide === idx
+                          ? "opacity-100 scale-100 pointer-events-auto z-10"
+                          : "opacity-0 scale-105 pointer-events-none z-0"
+                      }`}
+                    >
+                      <Image
+                        src={slide.image}
+                        alt={slide.title}
+                        fill
+                        priority={idx === 0}
+                        sizes="(max-width: 1024px) 100vw, 45vw"
+                        className="object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/40 to-black/30" />
+                    </div>
+                  ))}
 
-                  <div className="absolute bottom-5 left-5 right-5 p-4 bg-black/85 backdrop-blur-md border border-[#0a7a8c]/40 rounded-2xl">
-                    <p className="text-[12px] font-bold uppercase tracking-wider text-[#01b576] mb-1">
-                      ISO 14644 &amp; cGMP Compliant
-                    </p>
-                    <p className="text-[15px] sm:text-[16px] font-bold text-white leading-snug">
-                      Turnkey HVAC, Modular Panels &amp; Environmental Control Systems
+                  {/* Top Bar: Status & Counter */}
+                  <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-20 pointer-events-none">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] bg-neutral-950/80 backdrop-blur-md border border-cyan-400/40 text-cyan-300 text-[11px] font-bold uppercase tracking-wider shadow-sm">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                      <span>HEALTHCARE SHOWCASE</span>
+                    </div>
+
+                    <div className="px-2.5 py-1 rounded-[2px] bg-neutral-950/80 backdrop-blur-md border border-cyan-400/40 text-white text-[11px] font-bold tracking-widest">
+                      <span className="text-cyan-400 font-extrabold">0{activeHeroSlide + 1}</span>
+                      <span className="text-neutral-400 mx-1">/</span>
+                      <span className="text-neutral-400">0{ENGINEERING_HERO_SLIDES.length}</span>
+                    </div>
+                  </div>
+
+                  {/* Bottom Caption Card & Indicators */}
+                  <div className="absolute bottom-3 left-3 right-3 p-3.5 sm:p-4 bg-neutral-950/90 backdrop-blur-md border border-cyan-400/50 rounded-[2px] z-20">
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <p className="text-xs font-extrabold uppercase tracking-wider text-cyan-300">
+                        {ENGINEERING_HERO_SLIDES[activeHeroSlide].tag}
+                      </p>
+                      {/* Dots / Pills */}
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        {ENGINEERING_HERO_SLIDES.map((_, dotIdx) => (
+                          <span
+                            key={dotIdx}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setActiveHeroSlide(dotIdx);
+                            }}
+                            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                              activeHeroSlide === dotIdx
+                                ? "w-6 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+                                : "w-2 bg-white/40 hover:bg-white/80"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-xs sm:text-[13px] font-semibold text-white line-clamp-1">
+                      {ENGINEERING_HERO_SLIDES[activeHeroSlide].title}
                     </p>
                   </div>
                 </div>
@@ -312,7 +358,7 @@ export default function HospitalEngineeringServicePage() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Metrics Banner */}
       <section className="bg-white border-b border-neutral-200 py-10 sm:py-12">

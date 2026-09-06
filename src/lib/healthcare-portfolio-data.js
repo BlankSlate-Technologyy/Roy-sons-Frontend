@@ -388,7 +388,7 @@ export const HEALTHCARE_EQUIPMENT = [
     name: "Central Patient Monitoring Systems",
     categoryId: "patient-monitoring",
     categoryTitle: "Patient Monitoring Systems",
-    image: "/pakmedical-hero.png",
+    image: "/roys_hospital_interior.png",
     imageAlt: "Central nurses station multi-screen patient monitoring console",
     shortDescription: "Centralized multi-bed monitoring station consolidating live clinical data from multiple patient bedsides.",
     overview: "Central nursing station monitoring consoles enabling staff to continuously supervise vital data from up to 32 bedsides simultaneously, improving rapid emergency detection and response times.",
