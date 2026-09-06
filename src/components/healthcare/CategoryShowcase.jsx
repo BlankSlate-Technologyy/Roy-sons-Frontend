@@ -36,17 +36,26 @@ export default function CategoryShowcase({
               {category.number}
             </span>
             <div className="h-4 w-px bg-slate-300" />
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-semibold bg-[#0a7a8c]/10 text-[#0a7a8c] border border-[#0a7a8c]/20">
-              <Layers className="w-3 h-3" />
+            <span
+              style={{ fontFamily: '"Times New Roman", Times, serif' }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[14px] font-semibold bg-[#0a7a8c]/10 text-[#0a7a8c] border border-[#0a7a8c]/20"
+            >
+              <Layers className="w-3.5 h-3.5" />
               {equipmentList.length} Systems Available
             </span>
           </div>
 
-          <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight leading-snug">
+          <h3
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+            className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-snug"
+          >
             {category.title}
           </h3>
 
-          <p className="mt-3 text-[14px] sm:text-[15px] text-slate-600 leading-relaxed max-w-xl">
+          <p
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+            className="mt-3.5 text-[17px] sm:text-[18px] text-slate-700 leading-relaxed max-w-xl font-normal"
+          >
             {category.description}
           </p>
         </div>

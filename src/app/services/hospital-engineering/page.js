@@ -1,35 +1,32 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   BriefcaseMedical,
   Building2,
-  Fan,
-  Wind,
-  ShieldCheck,
-  Activity,
-  Layers,
-  Gauge,
-  ThermometerSnowflake,
   ArrowRight,
   ChevronRight,
-  Hospital,
-  FlaskConical,
-  Pill,
-  Factory,
-  Cpu,
-  Wrench,
-  Airplay,
-  Award,
+  ShieldCheck,
+  CheckCircle2,
+  Lock,
+  Send,
+  Phone,
+  Mail,
+  Clock,
+  Layers,
   Sparkles,
-  Workflow,
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
-import ConsultationBanner from "@/components/ui/cta-banner";
-
+import CapabilitiesSection from "@/components/hospital-engineering/CapabilitiesSection";
+import CleanRoomApplicationsSection from "@/components/hospital-engineering/CleanRoomApplicationsSection";
+import EquipmentPortfolioShowcase from "@/components/hospital-engineering/EquipmentPortfolioShowcase";
+import ProjectLifecycleTimeline from "@/components/hospital-engineering/ProjectLifecycleTimeline";
+import StandardsMatrixSection from "@/components/hospital-engineering/StandardsMatrixSection";
+import HospitalEngineeringTrustCTA from "@/components/hospital-engineering/HospitalEngineeringTrustCTA";
+import IndustriesServedSection from "@/components/hospital-engineering/IndustriesServedSection";
 
 function AnimatedStatValue({ value }) {
   const [displayValue, setDisplayValue] = useState("0");
@@ -91,183 +88,66 @@ function AnimatedStatValue({ value }) {
   }, [value]);
 
   return (
-    <span ref={elementRef} className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
+    <span
+      ref={elementRef}
+      style={{ fontFamily: '"Times New Roman", Times, serif' }}
+      className="block text-3xl sm:text-4xl font-black text-neutral-950 tracking-tight"
+    >
       {displayValue}
     </span>
   );
 }
 
-const CAPABILITIES = [
-  {
-    icon: Building2,
-    title: "Hospital Planning & Engineering",
-    description:
-      "Comprehensive architectural healthcare layout design, patient flow optimization, MEP infrastructure, and regulatory structural planning.",
-  },
-  {
-    icon: Layers,
-    title: "Clean Room Design",
-    description:
-      "Engineered modular wall & ceiling panels, anti-microbial surfaces, flush doors, and airtight containment for ISO 14644 compliance.",
-  },
-  {
-    icon: Fan,
-    title: "HVAC Systems",
-    description:
-      "Specialized healthcare HVAC systems, dedicated AHUs, laminar air distribution, and constant fresh air exchange management.",
-  },
-  {
-    icon: Wind,
-    title: "HEPA Filtration",
-    description:
-      "Multi-stage air filtration utilizing certified H14 HEPA and ULPA filters with 99.997% particle capture efficiency at 0.3 microns.",
-  },
-  {
-    icon: Activity,
-    title: "Operation Theatre Engineering",
-    description:
-      "Turnkey modular OT construction with laminar air flow canopies, medical pendant integration, surgical lights, and hermetic sealing.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "ICU Infrastructure",
-    description:
-      "Controlled intensive care environments with dedicated isolation cubicles, continuous air exchange, and medical gas integration.",
-  },
-  {
-    icon: Sparkles,
-    title: "CSSD Planning",
-    description:
-      "Central Sterile Services Department (CSSD) zoning with strict three-zone workflows: decontamination, packing, and sterile storage.",
-  },
-  {
-    icon: Airplay,
-    title: "Medical Gas Systems",
-    description:
-      "Medical Gas Pipeline Systems (MGPS) complying with HTM 02-01 standards for Oxygen, Nitrous Oxide, Medical Air, Vacuum, and AGSS.",
-  },
-  {
-    icon: Gauge,
-    title: "Pressure Control Systems",
-    description:
-      "Precision differential room pressurization maintaining positive pressure in sterile zones and negative pressure in isolation rooms.",
-  },
-  {
-    icon: Award,
-    title: "Clean Room Validation",
-    description:
-      "Rigorous third-party validation covering particle counts, filter integrity DOP tests, air velocity, recovery times, and GMP certification.",
-  },
-  {
-    icon: ThermometerSnowflake,
-    title: "Temperature & Humidity Control",
-    description:
-      "Automated microclimate regulation maintaining precise temperature (18°C-22°C) and relative humidity (45%-55%) 24/7.",
-  },
-  {
-    icon: Workflow,
-    title: "Turnkey Project Execution",
-    description:
-      "Single-source accountability from concept design, procurement, ducting fabrication, installation to final handover and commissioning.",
-  },
-];
-
-const CLEAN_ROOM_SOLUTIONS = [
-  {
-    icon: Pill,
-    title: "Pharmaceutical Manufacturing",
-    badge: "cGMP Grade A - D",
-    description:
-      "Sterile compounding suites, oral solid dosage (OSD) facilities, aseptic filling clean rooms, and automated packaging lines engineered to FDA and WHO-GMP standards.",
-    image: "/pakmedical-card1.png",
-  },
-  {
-    icon: Factory,
-    title: "Medical Device Manufacturing",
-    badge: "ISO Class 5 - 8",
-    description:
-      "Ultra-clean production environments for orthopedic implants, disposable syringes, vascular catheters, and diagnostic kit assembly.",
-    image: "/pakmedical-card2.png",
-  },
-  {
-    icon: Activity,
-    title: "Operating Theatres",
-    badge: "Ultra-Clean OT Suite",
-    description:
-      "Class I surgical suites with laminar flow ceilings delivering sterile air velocity of 0.38 m/s directly over the operating table.",
-    image: "/roys_hospital_interior.png",
-  },
-  {
-    icon: Hospital,
-    title: "Intensive Care Units",
-    badge: "Negative & Positive Pressure",
-    description:
-      "Infection-controlled critical care wards, airborne infection isolation rooms (AIIR), and protective environment (PE) units.",
-    image: "/roys_ultrasound.png",
-  },
-  {
-    icon: FlaskConical,
-    title: "Laboratories",
-    badge: "BSL-1 to BSL-3",
-    description:
-      "Clinical biochemistry, histology, and pathology laboratories equipped with bio-safety cabinets, ductless hoods, and specialized exhaust systems.",
-    image: "/pakmedical-card3.png",
-  },
-  {
-    icon: Cpu,
-    title: "Research Facilities",
-    badge: "High-Containment Clean Suite",
-    description:
-      "Controlled scientific environments with vibration isolation, electromagnetic shielding, and particulate-free atmosphere for precision testing.",
-    image: "/pakmedical-card4.png",
-  },
-  {
-    icon: Sparkles,
-    title: "Biotechnology",
-    badge: "Bio-Clean Sterile Zone",
-    description:
-      "Genetic engineering, vaccine processing, cell culture facilities, and fermentation suites with strict biosecurity protocols.",
-    image: "/pakmedical-card5.png",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Sterile Processing",
-    badge: "CSSD Sterile Processing",
-    description:
-      "Complete sterile barrier systems, steam sterilizer integration, pass-through autoclaves, and continuous bio-burden monitoring.",
-    image: "/pakmedical-card6.png",
-  },
-];
-
-const ENGINEERING_WORKFLOW = [
-  {
-    step: "01",
-    title: "Concept & Architectural Design",
-    description:
-      "Detailed facility layout planning, 3D BIM modeling, clean room zoning, material flow diagrams, and regulatory compliance mapping.",
-  },
-  {
-    step: "02",
-    title: "HVAC & Mechanical Engineering",
-    description:
-      "Psychrometric thermal load calculations, AHU sizing, airflow distribution ductwork fabrication, and differential pressure design.",
-  },
-  {
-    step: "03",
-    title: "Modular Installation & Integration",
-    description:
-      "On-site installation of sandwich panels, walkable ceilings, hermetic doors, epoxy flooring, HEPA filters, and medical gas lines.",
-  },
-  {
-    step: "04",
-    title: "Testing, Validation & Commissioning",
-    description:
-      "Comprehensive DQ/IQ/OQ/PQ qualification, DOP filter leak testing, particle count verification, and final compliance certification.",
-  },
-];
-
 export default function HospitalEngineeringServicePage() {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    company: "",
+    service: "Hospital Engineering & Clean Rooms",
+    subject: "Clean Room Engineering Inquiry",
+    message: "",
+  });
+
+  const handleSelectSystem = (systemName) => {
+    setFormData((prev) => ({
+      ...prev,
+      subject: `Inquiry: ${systemName}`,
+      message: `We are requesting technical specifications, design drawings, and quotation proposals for: ${systemName}.\n\nPlease provide system parameters and lead times.`,
+    }));
+    const el = document.getElementById("engineering-consultation");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleSelectApplication = (applicationTitle) => {
+    setFormData((prev) => ({
+      ...prev,
+      subject: `Project Inquiry: ${applicationTitle}`,
+      message: `We are planning an engineering / clean-room facility for: ${applicationTitle}.\n\nPlease arrange a technical consultation to discuss spatial layout, HVAC requirements, and validation protocols.`,
+    }));
+    const el = document.getElementById("engineering-consultation");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleSelectCapability = (capabilityTitle) => {
+    setFormData((prev) => ({
+      ...prev,
+      subject: `Engineering Scope Inquiry: ${capabilityTitle}`,
+      message: `We are requesting technical specifications, engineering deliverables, and spatial planning consultations for: ${capabilityTitle}.\n\nPlease arrange a technical consultation with your engineering team.`,
+    }));
+    const el = document.getElementById("engineering-consultation");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -308,12 +188,15 @@ export default function HospitalEngineeringServicePage() {
   };
 
   return (
-    <main className="min-h-screen bg-white font-sans selection:bg-[#0a7a8c] selection:text-white">
+    <main
+      style={{ fontFamily: '"Times New Roman", Times, serif' }}
+      className="min-h-screen bg-white font-serif selection:bg-[#0a7a8c] selection:text-white"
+    >
       <HeaderNavbar activeRoute="/services" />
 
-      {/* Breadcrumb */}
+      {/* Breadcrumb Navigation */}
       <section className="bg-neutral-50 border-b border-neutral-200 py-3 px-4 sm:px-6">
-        <div className="max-w-screen-xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center flex-wrap gap-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-500">
               <li>
@@ -341,60 +224,71 @@ export default function HospitalEngineeringServicePage() {
       </section>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden">
+      <div
+        data-dark-section="true"
+        style={{
+          backgroundColor: "#042E3A",
+          color: "#ffffff",
+          fontFamily: '"Times New Roman", Times, serif',
+        }}
+        className="roysons-preserve-dark relative !bg-[#042E3A] text-white py-12 sm:py-14 lg:py-16 border-b border-teal-900 overflow-hidden shadow-xl"
+      >
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0a7a8c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Left Content */}
+            {/* Left Column Narrative */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/50 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-[0_0_15px_rgba(34,211,238,0.15)]">
-                <BriefcaseMedical size={15} className="text-cyan-400" />
-                <span>Sector 02 • Healthcare Infrastructure</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0a7a8c]/25 border border-[#01b576]/50 text-[#01b576] text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-3 self-start backdrop-blur-sm">
+                <BriefcaseMedical size={15} className="text-[#01b576]" />
+                <span>Sector 02 • Healthcare Infrastructure &amp; Controlled Environments</span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white leading-tight mb-4">
+              <h1
+                style={{ color: "#ffffff" }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight !text-white leading-[1.1] mb-2 sm:mb-2.5"
+              >
                 Hospital Engineering &amp; Clean Rooms
               </h1>
 
-              <p className="text-base sm:text-lg lg:text-xl font-extrabold text-cyan-400 uppercase tracking-wide mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+              <p
+                style={{ color: "#01b576" }}
+                className="text-base sm:text-lg lg:text-xl font-extrabold !text-[#01b576] uppercase tracking-wide leading-snug mb-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+              >
                 Engineering Healthcare Environments Built for Precision, Safety &amp; Compliance
               </p>
 
-              <div className="h-[3px] w-16 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-5" />
+              <div className="h-[3px] w-16 bg-gradient-to-r from-[#01b576] to-[#0a7a8c] mb-3.5" />
 
-              <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal mb-6 max-w-2xl">
-                ROYSONS provides specialized hospital engineering and clean room solutions for healthcare, pharmaceutical, biotechnology, and research facilities. Our solutions integrate architectural planning, HVAC engineering, clean room technology, medical infrastructure, and environmental control.
+              <p
+                style={{ color: "#e2e8f0" }}
+                className="text-[15px] sm:text-[17px] !text-slate-200 leading-normal sm:leading-relaxed font-normal mb-5 max-w-2xl"
+              >
+                ROYSONS provides specialized hospital engineering, clean room, HVAC, medical infrastructure, and controlled-environment solutions for healthcare, pharmaceutical, biotechnology, laboratory, research, and medical manufacturing facilities.
               </p>
 
               <div className="flex flex-wrap gap-3.5 items-center">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center gap-2.5 bg-[#0a7a8c] hover:bg-white text-white hover:text-black font-bold px-5 py-2.5 text-xs uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#0a7a8c]/20"
+                <a
+                  href="#engineering-consultation"
+                  className="inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0078b4] via-[#009588] to-[#01b576] hover:brightness-110 !text-white font-bold px-7 py-3.5 text-[14px] uppercase tracking-[0.14em] transition-all duration-300 rounded-xl shadow-lg shadow-[#01b576]/35 hover:shadow-xl hover:-translate-y-0.5 cursor-pointer"
                 >
-                  <span className="text-white group-hover:text-black transition-colors duration-300">
-                    Engineer Your Facility
-                  </span>
-                  <ArrowRight
-                    size={14}
-                    strokeWidth={2.5}
-                    className="text-white group-hover:text-black group-hover:translate-x-1 transition-all duration-300"
-                  />
-                </Link>
+                  <span>Request Consultation</span>
+                  <ArrowRight size={15} className="text-white" />
+                </a>
 
-                <Link
-                  href="#clean-room-solutions"
-                  className="inline-flex items-center gap-2 bg-transparent hover:bg-white/5 border border-neutral-700 hover:border-[#0a7a8c] text-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all rounded-[2px]"
+                <a
+                  href="#equipment-portfolio"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-gradient-to-r hover:from-[#0078b4]/30 hover:to-[#01b576]/30 border border-white/30 hover:border-[#01b576]/60 !text-white px-7 py-3.5 text-[14px] font-bold uppercase tracking-[0.14em] transition-all duration-300 rounded-xl backdrop-blur-sm cursor-pointer"
                 >
-                  Clean Room Solutions
-                </Link>
+                  <span>Equipment Portfolio</span>
+                </a>
               </div>
             </div>
 
-            {/* Right Media Card */}
+            {/* Right Media Showcase */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-[2px] p-1 bg-gradient-to-b from-[#0a7a8c]/40 via-neutral-800 to-[#0a7a8c]/20 shadow-xl">
-                <div className="relative h-[300px] sm:h-[380px] w-full overflow-hidden rounded-[2px] bg-neutral-900">
+              <div className="relative rounded-3xl p-1 bg-gradient-to-b from-[#0a7a8c]/50 via-teal-900 to-[#0a7a8c]/20 shadow-2xl overflow-hidden border border-white/15">
+                <div className="relative h-[320px] sm:h-[400px] w-full overflow-hidden rounded-[22px] bg-neutral-900">
                   <Image
                     src="/pakmedical-hero.png"
                     alt="Hospital Engineering and Clean Room Solutions by ROYSONS"
@@ -403,13 +297,13 @@ export default function HospitalEngineeringServicePage() {
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover object-center transition-transform duration-700 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent" />
 
-                  <div className="absolute bottom-4 left-4 right-4 p-4 bg-neutral-950/85 backdrop-blur-md border border-[#0a7a8c]/40 rounded-[2px]">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#0a7a8c] mb-1">
+                  <div className="absolute bottom-5 left-5 right-5 p-4 bg-black/85 backdrop-blur-md border border-[#0a7a8c]/40 rounded-2xl">
+                    <p className="text-[12px] font-bold uppercase tracking-wider text-[#01b576] mb-1">
                       ISO 14644 &amp; cGMP Compliant
                     </p>
-                    <p className="text-sm sm:text-base font-bold text-white leading-snug">
+                    <p className="text-[15px] sm:text-[16px] font-bold text-white leading-snug">
                       Turnkey HVAC, Modular Panels &amp; Environmental Control Systems
                     </p>
                   </div>
@@ -418,36 +312,36 @@ export default function HospitalEngineeringServicePage() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Metrics Banner with Animated Counter */}
-      <section className="bg-white border-b border-neutral-200 py-10">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
+      {/* Metrics Banner */}
+      <section className="bg-white border-b border-neutral-200 py-10 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-            <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
+            <div className="border-l-3 border-[#0a7a8c] pl-4 sm:pl-5 py-1">
               <AnimatedStatValue value="20+" />
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
+              <p className="text-[14px] font-bold uppercase tracking-wider text-neutral-600 mt-1.5">
                 Years of Engineering
               </p>
             </div>
 
-            <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
+            <div className="border-l-3 border-[#0a7a8c] pl-4 sm:pl-5 py-1">
               <AnimatedStatValue value="150+" />
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
+              <p className="text-[14px] font-bold uppercase tracking-wider text-neutral-600 mt-1.5">
                 Clean Rooms Executed
               </p>
             </div>
 
-            <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
+            <div className="border-l-3 border-[#0a7a8c] pl-4 sm:pl-5 py-1">
               <AnimatedStatValue value="99.997%" />
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
+              <p className="text-[14px] font-bold uppercase tracking-wider text-neutral-600 mt-1.5">
                 HEPA H14 Filtration
               </p>
             </div>
 
-            <div className="border-l-2 border-[#0a7a8c] pl-4 py-0.5">
+            <div className="border-l-3 border-[#0a7a8c] pl-4 sm:pl-5 py-1">
               <AnimatedStatValue value="100%" />
-              <p className="text-xs font-bold uppercase tracking-wider text-neutral-500 mt-1.5">
+              <p className="text-[14px] font-bold uppercase tracking-wider text-neutral-600 mt-1.5">
                 cGMP &amp; ISO Validation
               </p>
             </div>
@@ -455,173 +349,261 @@ export default function HospitalEngineeringServicePage() {
         </div>
       </section>
 
-      {/* Our Capabilities Grid */}
-      <section id="capabilities" className="py-14 sm:py-18 bg-neutral-50 border-b border-neutral-200">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
-              FULL-SPECTRUM EXPERTISE
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">
-              Our Capabilities
-            </h2>
-            <div className="mx-auto h-[3px] w-14 bg-neutral-950 mb-4" />
-            <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
-              Specialized engineering services combining clinical planning, high-efficiency mechanical systems, and precision containment technology.
-            </p>
-          </div>
+      {/* 1. Core Capabilities Section (All 11 Capabilities) */}
+      <CapabilitiesSection onSelectCapability={handleSelectCapability} />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {CAPABILITIES.map((cap, index) => {
-              const Icon = cap.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+      {/* 2. Clean Room Applications Section (8 Specialized Sectors) */}
+      <CleanRoomApplicationsSection onSelectApplication={handleSelectApplication} />
+
+      {/* 3. Dedicated Equipment & Systems Portfolio (Interactive) */}
+      <EquipmentPortfolioShowcase onRequestConsultation={handleSelectSystem} />
+
+      {/* 4. Engineering Project Lifecycle (4-Phase Turnkey Delivery) */}
+      <ProjectLifecycleTimeline />
+
+      {/* 5. Standards & Compliance Matrix */}
+      <StandardsMatrixSection />
+
+      {/* 6. Why ROYSONS? & Trust CTA */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <HospitalEngineeringTrustCTA />
+      </div>
+
+      {/* 7. Industries & Facilities We Serve */}
+      <IndustriesServedSection />
+
+      {/* 8. Interactive Engineering Consultation Form */}
+      <section id="engineering-consultation" className="py-16 sm:py-20 bg-neutral-50 border-t border-neutral-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl border border-neutral-200 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+            {/* Left Advisory Column */}
+            <div
+              data-dark-section="true"
+              style={{
+                backgroundColor: "#042E3A",
+                color: "#ffffff",
+                fontFamily: '"Times New Roman", Times, serif',
+              }}
+              className="roysons-preserve-dark lg:col-span-5 p-8 sm:p-10 lg:p-12 !bg-[#042E3A] text-white flex flex-col justify-between"
+            >
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[12px] font-bold uppercase tracking-wider bg-[#0a7a8c]/30 text-[#01b576] border border-[#01b576]/30 mb-6">
+                  <BriefcaseMedical className="w-3.5 h-3.5" />
+                  <span>Technical Engineering Desk</span>
+                </div>
+
+                <h3
+                  style={{ color: "#ffffff" }}
+                  className="text-2xl sm:text-3xl font-black uppercase tracking-tight !text-white leading-snug mb-4"
                 >
-                  <div>
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#0a7a8c]/60 transition-all duration-300">
-                      <Icon
-                        size={24}
-                        strokeWidth={1.5}
-                        className="text-[#0a7a8c] group-hover:scale-110 transition-transform duration-300"
+                  Consult With Our Hospital Engineering Specialists
+                </h3>
+
+                <p
+                  style={{ color: "#cbd5e1" }}
+                  className="text-[15px] sm:text-[16px] !text-slate-300 leading-relaxed font-normal mb-8"
+                >
+                  Discuss your hospital layout planning, modular clean-room specifications, HVAC ductwork design, medical gas installations, or validation protocols directly with ROYSONS biomedical and mechanical engineers.
+                </p>
+
+                <div className="space-y-4 pt-6 border-t border-white/15">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-5 h-5 text-[#01b576] shrink-0" />
+                    <span className="text-[15px] font-semibold text-white">+92 300 0000000 / Direct Engineering Line</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-5 h-5 text-[#01b576] shrink-0" />
+                    <span className="text-[15px] font-semibold text-white">engineering@roysons.com</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Clock className="w-5 h-5 text-[#01b576] shrink-0" />
+                    <span className="text-[15px] font-semibold text-white">Mon – Sat: 9:00 AM – 6:00 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/15 flex items-center gap-2 text-white/80 text-[12px] font-medium">
+                <Lock size={14} className="text-[#01b576] shrink-0" />
+                <span>Confidential &amp; Verified Institutional Consultation</span>
+              </div>
+            </div>
+
+            {/* Right Form Column */}
+            <div className="lg:col-span-7 p-8 sm:p-10 lg:p-12 bg-white">
+              {formSubmitted ? (
+                <div className="flex flex-col items-center justify-center h-full min-h-[360px] text-center p-6">
+                  <div className="w-16 h-16 bg-[#042E3A] border-2 border-[#01b576] rounded-full flex items-center justify-center mb-5">
+                    <CheckCircle2 size={32} className="text-[#01b576]" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-neutral-950 mb-3">
+                    Inquiry Submitted Successfully
+                  </h3>
+                  <p className="text-[16px] text-neutral-600 max-w-md leading-relaxed mb-6 font-normal">
+                    Thank you for contacting ROYSONS Hospital Engineering Division. Our engineering leadership will review your facility requirements and respond promptly.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setFormSubmitted(false)}
+                    className="px-8 py-3.5 bg-gradient-to-r from-[#0078b4] via-[#009588] to-[#01b576] hover:brightness-110 text-white text-[14px] font-bold uppercase tracking-[0.14em] rounded-xl transition-all shadow-md hover:shadow-lg shadow-[#01b576]/30 cursor-pointer"
+                  >
+                    Submit Another Inquiry
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-wide text-[#042E3A] mb-2 leading-snug">
+                    Request an Engineering Consultation
+                  </h3>
+                  <p className="text-[15px] sm:text-[16px] text-neutral-600 mb-8 font-normal leading-relaxed">
+                    Provide project parameters below to receive preliminary technical layouts, budgetary estimations, and compliance review.
+                  </p>
+
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="flex flex-col gap-1.5">
+                        <label
+                          htmlFor="he-fullname"
+                          className="text-[12px] font-bold text-[#042E3A] uppercase tracking-[0.12em]"
+                        >
+                          Full Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          id="he-fullname"
+                          type="text"
+                          required
+                          placeholder="e.g. Eng. Tariq Mehmood"
+                          value={formData.fullName}
+                          onChange={(e) =>
+                            setFormData({ ...formData, fullName: e.target.value })
+                          }
+                          className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3 text-[15px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-xl shadow-xs"
+                        />
+                      </div>
+
+                      <div className="flex flex-col gap-1.5">
+                        <label
+                          htmlFor="he-email"
+                          className="text-[12px] font-bold text-[#042E3A] uppercase tracking-[0.12em]"
+                        >
+                          Email Address <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          id="he-email"
+                          type="email"
+                          required
+                          placeholder="name@hospital.com"
+                          value={formData.email}
+                          onChange={(e) =>
+                            setFormData({ ...formData, email: e.target.value })
+                          }
+                          className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3 text-[15px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-xl shadow-xs"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="flex flex-col gap-1.5">
+                        <label
+                          htmlFor="he-phone"
+                          className="text-[12px] font-bold text-[#042E3A] uppercase tracking-[0.12em]"
+                        >
+                          Phone Number <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          id="he-phone"
+                          type="tel"
+                          required
+                          placeholder="+92 300 0000000"
+                          value={formData.phone}
+                          onChange={(e) =>
+                            setFormData({ ...formData, phone: e.target.value })
+                          }
+                          className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3 text-[15px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-xl shadow-xs"
+                        />
+                      </div>
+
+                      <div className="flex flex-col gap-1.5">
+                        <label
+                          htmlFor="he-company"
+                          className="text-[12px] font-bold text-[#042E3A] uppercase tracking-[0.12em]"
+                        >
+                          Hospital / Organization <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          id="he-company"
+                          type="text"
+                          required
+                          placeholder="Hospital or Manufacturing Facility"
+                          value={formData.company}
+                          onChange={(e) =>
+                            setFormData({ ...formData, company: e.target.value })
+                          }
+                          className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3 text-[15px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-xl shadow-xs"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label
+                        htmlFor="he-subject"
+                        className="text-[12px] font-bold text-[#042E3A] uppercase tracking-[0.12em]"
+                      >
+                        Project Scope / Area of Interest
+                      </label>
+                      <input
+                        id="he-subject"
+                        type="text"
+                        value={formData.subject}
+                        onChange={(e) =>
+                          setFormData({ ...formData, subject: e.target.value })
+                        }
+                        className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3 text-[15px] text-neutral-900 font-medium outline-none transition-all rounded-xl shadow-xs"
                       />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
-                      {cap.title}
-                    </h3>
-                    <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
-                      {cap.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Clean Room Solutions Section */}
-      <section id="clean-room-solutions" className="py-14 sm:py-18 bg-[#101518] text-white border-b border-neutral-800">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
-              CONTROLLED ENVIRONMENTS
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-3">
-              Clean Room Solutions
-            </h2>
-            <div className="mx-auto h-[3px] w-14 bg-[#0a7a8c] mb-4" />
-            <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal">
-              Custom-engineered controlled atmospheres ensuring optimal particulate count, microclimate balance, and zero cross-contamination.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {CLEAN_ROOM_SOLUTIONS.map((sol, index) => {
-              const Icon = sol.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-[#161c20] border border-neutral-800 rounded-[2px] overflow-hidden group hover:border-[#0a7a8c] transition-all duration-300 flex flex-col"
-                >
-                  <div className="relative h-40 w-full bg-neutral-900 overflow-hidden">
-                    <Image
-                      src={sol.image}
-                      alt={sol.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 25vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#161c20] via-transparent to-transparent" />
-                    <div className="absolute top-2.5 right-2.5">
-                      <span className="px-2 py-0.5 bg-black/80 backdrop-blur-sm border border-[#0a7a8c]/40 text-[#0a7a8c] text-xs font-bold uppercase tracking-wider rounded-[2px]">
-                        {sol.badge}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-2.5 mb-2.5">
-                        <div className="w-8 h-8 rounded-[2px] bg-white/5 border border-[#0a7a8c]/30 flex items-center justify-center">
-                          <Icon size={16} className="text-[#0a7a8c]" />
-                        </div>
-                        <h3 className="text-sm sm:text-base font-bold uppercase tracking-wider text-white group-hover:text-[#0a7a8c] transition-colors duration-300">
-                          {sol.title}
-                        </h3>
-                      </div>
-                      <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-                        {sol.description}
-                      </p>
-                    </div>
-
-                    <div className="mt-4 pt-2.5 border-t border-neutral-800/80">
-                      <Link
-                        href="/contact"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#0a7a8c] hover:text-white transition-colors"
+                    <div className="flex flex-col gap-1.5">
+                      <label
+                        htmlFor="he-message"
+                        className="text-[12px] font-bold text-[#042E3A] uppercase tracking-[0.12em]"
                       >
-                        <span>Inquire Solution</span>
-                        <ArrowRight size={12} strokeWidth={2.5} />
-                      </Link>
+                        Message / Technical Requirements <span className="text-red-500">*</span>
+                      </label>
+                      <textarea
+                        id="he-message"
+                        rows={4}
+                        required
+                        placeholder="Please describe facility square footage, clean room class (ISO/GMP), project location, or desired commissioning timeline..."
+                        value={formData.message}
+                        onChange={(e) =>
+                          setFormData({ ...formData, message: e.target.value })
+                        }
+                        className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3 text-[15px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-xl resize-none shadow-xs"
+                      />
                     </div>
-                  </div>
+
+                    {submitError && (
+                      <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-[14px] font-medium">
+                        ⚠️ {submitError}
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-[#0078b4] via-[#009588] to-[#01b576] hover:brightness-110 text-white text-[15px] font-bold uppercase tracking-[0.14em] rounded-xl transition-all shadow-lg shadow-[#01b576]/30 hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-50 cursor-pointer"
+                    >
+                      <Send size={16} />
+                      <span>
+                        {isSubmitting ? "Submitting Inquiry..." : "Submit Engineering Inquiry"}
+                      </span>
+                    </button>
+                  </form>
                 </div>
-              );
-            })}
+              )}
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Engineering Services Workflow */}
-      <section id="engineering-services" className="py-14 sm:py-18 bg-white border-b border-neutral-200">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
-              END-TO-END PROJECT LIFECYCLE
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">
-              Engineering Services
-            </h2>
-            <div className="mx-auto h-[3px] w-14 bg-neutral-950 mb-4" />
-            <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal">
-              From concept and design to installation, testing, validation, and commissioning, our multidisciplinary approach ensures complete project support.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {ENGINEERING_WORKFLOW.map((wf, idx) => (
-              <div
-                key={idx}
-                className="relative p-7 sm:p-8 rounded-[2px] border border-neutral-200 bg-neutral-50/50 hover:bg-white hover:border-neutral-950 hover:shadow-md transition-all duration-300 group"
-              >
-                <div className="flex items-center justify-between mb-5">
-                  <span className="text-3xl font-black text-[#0a7a8c] tracking-wider">
-                    {wf.step}
-                  </span>
-                  <div className="w-10 h-10 rounded-[2px] bg-neutral-950 flex items-center justify-center group-hover:border group-hover:border-[#0a7a8c]/70 transition-colors">
-                    <Wrench size={18} className="text-white group-hover:text-[#0a7a8c] transition-colors" />
-                  </div>
-                </div>
-                <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors">
-                  {wf.title}
-                </h3>
-                <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
-                  {wf.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Banner */}
-      <ConsultationBanner
-        subtitle="HOSPITAL ENGINEERING & CLEAN ROOMS"
-        title="Engineer Your Healthcare Facility With Confidence"
-        buttonLabel="Request Consultation"
-        href="/contact"
-      />
 
       <CorporateFooter />
     </main>

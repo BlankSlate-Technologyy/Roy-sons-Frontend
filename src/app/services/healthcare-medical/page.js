@@ -185,12 +185,6 @@ const CAPABILITIES = [
     description:
       "Expert on-site installation, facility integration, rigorous safety testing, and staff operational training conducted by certified engineers.",
   },
-  {
-    icon: Headphones,
-    title: "Maintenance & Technical Support",
-    description:
-      "24/7 responsive technical support, annual maintenance contracts (AMC), OEM spare parts provisioning, and rapid breakdown response.",
-  },
 ];
 
 const INDUSTRIES_SERVED = [

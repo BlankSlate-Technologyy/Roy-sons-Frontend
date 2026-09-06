@@ -72,6 +72,7 @@ export default function EquipmentDetailModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-equipment-title"
+        style={{ fontFamily: '"Times New Roman", Times, serif' }}
         className="relative w-full max-w-4xl max-h-[92vh] bg-white rounded-3xl shadow-2xl overflow-y-auto z-10 border border-slate-100 flex flex-col focus:outline-none animate-in fade-in zoom-in-95 duration-200"
       >
         {/* Sticky Header Bar */}
@@ -124,11 +125,11 @@ export default function EquipmentDetailModal({
               <div>
                 <h3
                   id="modal-equipment-title"
-                  className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight leading-tight"
+                  className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-tight"
                 >
                   {equipment.name}
                 </h3>
-                <p className="mt-3 text-[14px] sm:text-[15px] text-slate-600 leading-relaxed">
+                <p className="mt-3 text-[16px] sm:text-[17px] text-slate-700 leading-relaxed font-normal">
                   {equipment.shortDescription}
                 </p>
               </div>
@@ -136,9 +137,9 @@ export default function EquipmentDetailModal({
               {/* Verified Clinical Standard Tag */}
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex items-start gap-3">
                 <ShieldCheck className="w-5 h-5 text-[#0a7a8c] shrink-0 mt-0.5" />
-                <div className="text-[13px] text-slate-700 leading-snug">
+                <div className="text-[14px] text-slate-700 leading-snug">
                   <span className="font-semibold text-slate-900">Verified Clinical Standard</span>
-                  <p className="text-slate-500 mt-0.5">
+                  <p className="text-slate-600 mt-0.5 text-[13px]">
                     Evaluated and supplied in adherence with verified hospital procurement standards.
                   </p>
                 </div>
@@ -148,7 +149,7 @@ export default function EquipmentDetailModal({
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={handleRequestClick}
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#0a7a8c] text-white text-[14px] font-semibold hover:bg-[#005f6e] transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0a7a8c] focus:ring-offset-2"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#0a7a8c] text-white text-[15px] font-semibold hover:bg-[#005f6e] transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#0a7a8c] focus:ring-offset-2 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   <span>Request Specifications</span>
@@ -159,11 +160,11 @@ export default function EquipmentDetailModal({
 
           {/* Clinical Overview */}
           <div className="border-t border-slate-100 pt-6">
-            <h4 className="text-[16px] font-bold text-slate-900 flex items-center gap-2 mb-3">
-              <Stethoscope className="w-4 h-4 text-[#0a7a8c]" />
+            <h4 className="text-[19px] font-bold text-slate-900 flex items-center gap-2 mb-3">
+              <Stethoscope className="w-5 h-5 text-[#0a7a8c]" />
               Clinical Overview
             </h4>
-            <p className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed">
+            <p className="text-[16px] sm:text-[17px] text-slate-700 leading-relaxed font-normal">
               {equipment.overview}
             </p>
           </div>
@@ -172,14 +173,14 @@ export default function EquipmentDetailModal({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-slate-100 pt-6">
             {/* Clinical Applications */}
             <div className="bg-slate-50/70 p-5 rounded-2xl border border-slate-200/60">
-              <h4 className="text-[15px] font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#0a7a8c]" />
+              <h4 className="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#0a7a8c]" />
                 Clinical Applications
               </h4>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {equipment.applications?.map((app, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-[13px] text-slate-700 leading-snug">
-                    <CheckCircle2 className="w-4 h-4 text-[#01b576] shrink-0 mt-0.5" />
+                  <li key={idx} className="flex items-start gap-2.5 text-[15px] sm:text-[16px] text-slate-700 leading-normal">
+                    <CheckCircle2 className="w-4 h-4 text-[#01b576] shrink-0 mt-1" />
                     <span>{app}</span>
                   </li>
                 ))}
@@ -188,14 +189,14 @@ export default function EquipmentDetailModal({
 
             {/* Verified Technical Features */}
             <div className="bg-slate-50/70 p-5 rounded-2xl border border-slate-200/60">
-              <h4 className="text-[15px] font-bold text-slate-900 mb-3 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#01b576]" />
+              <h4 className="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#01b576]" />
                 Equipment Capabilities
               </h4>
-              <ul className="space-y-2.5">
+              <ul className="space-y-3">
                 {equipment.features?.map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-[13px] text-slate-700 leading-snug">
-                    <CheckCircle2 className="w-4 h-4 text-[#0a7a8c] shrink-0 mt-0.5" />
+                  <li key={idx} className="flex items-start gap-2.5 text-[15px] sm:text-[16px] text-slate-700 leading-normal">
+                    <CheckCircle2 className="w-4 h-4 text-[#0a7a8c] shrink-0 mt-1" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -206,15 +207,15 @@ export default function EquipmentDetailModal({
           {/* Healthcare Environments */}
           {equipment.healthcareEnvironment && equipment.healthcareEnvironment.length > 0 && (
             <div className="border-t border-slate-100 pt-6">
-              <h4 className="text-[14px] font-bold text-slate-900 flex items-center gap-2 mb-3">
+              <h4 className="text-[17px] font-bold text-slate-900 flex items-center gap-2 mb-3">
                 <Building2 className="w-4 h-4 text-[#0a7a8c]" />
                 Target Healthcare Environments
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2.5">
                 {equipment.healthcareEnvironment.map((env, idx) => (
                   <span
                     key={idx}
-                    className="inline-flex items-center px-3 py-1.5 rounded-lg text-[12px] font-medium bg-[#0a7a8c]/5 text-[#0a7a8c] border border-[#0a7a8c]/20"
+                    className="inline-flex items-center px-3.5 py-1.5 rounded-lg text-[13px] sm:text-[14px] font-medium bg-[#0a7a8c]/5 text-[#0a7a8c] border border-[#0a7a8c]/20"
                   >
                     {env}
                   </span>
