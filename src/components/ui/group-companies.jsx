@@ -54,7 +54,7 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal 
           {tagline && (
             <>
               <div className="w-12 h-[2px] bg-gradient-to-r from-[#042E3A] to-[#0d9488] my-2.5 rounded-full flex-shrink-0" />
-              <p className="text-[15px] text-[#042E3A]/80 leading-relaxed font-normal">
+              <p className="text-[15px] sm:text-[16px] text-[#042E3A]/80 leading-[1.7] font-normal">
                 {tagline}
               </p>
             </>
