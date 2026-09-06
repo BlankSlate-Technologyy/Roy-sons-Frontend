@@ -468,25 +468,9 @@ export default function HealthcareMedicalServicePage() {
 
               <div className="h-[3px] w-16 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-5" />
 
-              <p className="text-sm sm:text-base text-neutral-100 leading-relaxed font-normal mb-6 max-w-2xl">
+              <p className="text-sm sm:text-base text-neutral-100 leading-relaxed font-normal max-w-2xl">
                 ROYSONS delivers advanced healthcare and medical technology solutions designed to support hospitals, clinics, laboratories, government institutions, and healthcare organizations. We combine international sourcing, technical expertise, and project support to provide reliable medical technologies that improve patient care and operational efficiency.
               </p>
-
-              <div className="flex flex-wrap gap-3.5 items-center">
-                <Link
-                  href="#cta-consultation"
-                  className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0a7a8c] to-[#0a7a8c] hover:from-[#0078b4] hover:via-[#009588] hover:to-[#01b576] text-white font-bold px-7 py-3.5 text-xs sm:text-sm uppercase tracking-[0.16em] transition-all duration-300 rounded-[3px] shadow-lg shadow-[#0a7a8c]/30 hover:shadow-[0_8px_25px_rgba(1,181,118,0.45)] hover:scale-[1.02] active:scale-95 border border-cyan-400/30 hover:border-transparent"
-                >
-                  <span className="text-white font-bold tracking-[0.16em]">
-                    Build Better Healthcare
-                  </span>
-                  <ArrowRight
-                    size={15}
-                    strokeWidth={2.5}
-                    className="text-white group-hover:translate-x-1.5 transition-transform duration-300"
-                  />
-                </Link>
-              </div>
             </div>
 
             {/* Right Media Card - Pure Auto-Advancing Image Slider */}
@@ -877,81 +861,81 @@ export default function HealthcareMedicalServicePage() {
                     <span>Get In Touch</span>
                   </div>
 
-                  <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-3 leading-tight">
+                  <h2 className="text-[19px] sm:text-[22px] lg:text-[24px] font-black uppercase tracking-tight text-white mb-3 leading-snug">
                     Build Better Healthcare With ROYSONS
                   </h2>
 
-                  <div className="h-[3px] w-14 bg-cyan-400 mb-4" />
+                  <div className="h-[2.5px] w-12 bg-cyan-400 mb-3.5" />
 
-                  <p className="text-sm sm:text-base text-white/90 leading-relaxed font-normal mb-6">
+                  <p className="text-[13px] sm:text-[14px] text-white/90 leading-relaxed font-normal mb-6">
                     Discuss your medical facility requirements, equipment procurement plans, or turnkey hospital engineering projects with our biomedical consultants.
                   </p>
 
-                  <div className="space-y-4 pt-6 border-t border-white/15">
-                    <div className="flex items-center gap-3.5 text-white">
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <Phone size={18} className="text-cyan-300" />
+                  <div className="space-y-3 pt-5 border-t border-white/15">
+                    <div className="flex items-center gap-3 text-white">
+                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <Phone size={15} className="text-cyan-300" />
                       </div>
-                      <span className="text-base sm:text-lg font-bold tracking-wide">+92 300 1234567</span>
+                      <span className="text-[13px] sm:text-[14px] font-bold tracking-wide">+92 300 1234567</span>
                     </div>
-                    <div className="flex items-center gap-3.5 text-white">
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <Mail size={18} className="text-cyan-300" />
+                    <div className="flex items-center gap-3 text-white">
+                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <Mail size={15} className="text-cyan-300" />
                       </div>
-                      <span className="text-base sm:text-lg font-bold tracking-wide">info@roysons.org</span>
+                      <span className="text-[13px] sm:text-[14px] font-bold tracking-wide">info@roysons.org</span>
                     </div>
-                    <div className="flex items-center gap-3.5 text-white">
-                      <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <Clock size={18} className="text-cyan-300" />
+                    <div className="flex items-center gap-3 text-white">
+                      <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <Clock size={15} className="text-cyan-300" />
                       </div>
-                      <span className="text-base sm:text-lg font-bold tracking-wide">Mon - Sat: 9:00 AM - 6:00 PM</span>
+                      <span className="text-[13px] sm:text-[14px] font-bold tracking-wide">Mon - Sat: 9:00 AM - 6:00 PM</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-12 pt-6 border-t border-white/15 flex items-center gap-2.5 text-white/80 text-sm sm:text-base font-medium">
-                  <Lock size={16} className="text-cyan-300 flex-shrink-0" />
+                <div className="mt-8 pt-5 border-t border-white/15 flex items-center gap-2 text-white/80 text-[11px] sm:text-[12px] font-medium">
+                  <Lock size={14} className="text-cyan-300 flex-shrink-0" />
                   <span>Confidential &amp; Verified Institutional Consultation</span>
                 </div>
               </div>
 
 
               {/* Right Column: Inquiry Form */}
-              <div className="lg:col-span-7 p-8 sm:p-12 lg:p-14 bg-white">
+              <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 bg-white">
                 {formSubmitted ? (
                   <div className="flex flex-col items-center justify-center h-full min-h-[360px] text-center p-6">
-                    <div className="w-16 h-16 bg-neutral-950 border-2 border-[#0a7a8c] rounded-full flex items-center justify-center mb-4">
-                      <CheckCircle2 size={32} className="text-[#0a7a8c]" />
+                    <div className="w-14 h-14 bg-neutral-950 border-2 border-[#0a7a8c] rounded-full flex items-center justify-center mb-4">
+                      <CheckCircle2 size={28} className="text-[#0a7a8c]" />
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-neutral-950 mb-2">
+                    <h3 className="text-xl sm:text-2xl font-black uppercase tracking-wider text-neutral-950 mb-2">
                       Inquiry Submitted Successfully
                     </h3>
-                    <p className="text-base sm:text-lg text-neutral-600 max-w-md leading-relaxed mb-8">
+                    <p className="text-[13px] sm:text-[14px] text-neutral-600 max-w-md leading-relaxed mb-6">
                       Thank you for contacting ROYSONS Healthcare Division. Our biomedical specialists will review your requirements and respond promptly.
                     </p>
                     <button
                       type="button"
                       onClick={() => setFormSubmitted(false)}
-                      className="px-8 py-4 bg-neutral-950 hover:bg-neutral-800 text-white text-sm sm:text-base font-black uppercase tracking-[0.14em] rounded-[2px] transition-colors cursor-pointer"
+                      className="px-6 py-3 bg-neutral-950 hover:bg-neutral-800 text-white text-xs sm:text-[13px] font-black uppercase tracking-[0.14em] rounded-[2px] transition-colors cursor-pointer"
                     >
                       Submit Another Inquiry
                     </button>
                   </div>
                 ) : (
                   <div>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-wide text-neutral-950 mb-3">
+                    <h3 className="text-[19px] sm:text-[22px] lg:text-[24px] font-black uppercase tracking-wide text-[#042E3A] mb-1.5 leading-snug">
                       Request a Healthcare Consultation
                     </h3>
-                    <p className="text-base sm:text-lg text-neutral-600 mb-8 font-normal">
+                    <p className="text-[13px] sm:text-[14px] text-neutral-600 mb-6 font-normal leading-relaxed">
                       Please fill out the form below to receive detailed technical specifications and procurement proposals.
                     </p>
 
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <div className="flex flex-col gap-2">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1.5">
                           <label
                             htmlFor="hc-fullname"
-                            className="text-xs sm:text-sm font-black text-[#042E3A] uppercase tracking-[0.14em]"
+                            className="text-[11px] sm:text-[12px] font-black text-[#042E3A] uppercase tracking-[0.12em]"
                           >
                             Full Name <span className="text-red-500">*</span>
                           </label>
@@ -964,14 +948,14 @@ export default function HealthcareMedicalServicePage() {
                             onChange={(e) =>
                               setFormData({ ...formData, fullName: e.target.value })
                             }
-                            className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3.5 text-base sm:text-lg text-neutral-900 placeholder-neutral-500 font-medium outline-none transition-all rounded-[2px] shadow-xs"
+                            className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-3.5 py-2.5 text-[13px] sm:text-[14px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-[2px] shadow-xs"
                           />
                         </div>
 
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-1.5">
                           <label
                             htmlFor="hc-email"
-                            className="text-xs sm:text-sm font-black text-[#042E3A] uppercase tracking-[0.14em]"
+                            className="text-[11px] sm:text-[12px] font-black text-[#042E3A] uppercase tracking-[0.12em]"
                           >
                             Email Address <span className="text-red-500">*</span>
                           </label>
@@ -984,16 +968,16 @@ export default function HealthcareMedicalServicePage() {
                             onChange={(e) =>
                               setFormData({ ...formData, email: e.target.value })
                             }
-                            className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3.5 text-base sm:text-lg text-neutral-900 placeholder-neutral-500 font-medium outline-none transition-all rounded-[2px] shadow-xs"
+                            className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-3.5 py-2.5 text-[13px] sm:text-[14px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-[2px] shadow-xs"
                           />
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <div className="flex flex-col gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1.5">
                           <label
                             htmlFor="hc-phone"
-                            className="text-xs sm:text-sm font-black text-[#042E3A] uppercase tracking-[0.14em]"
+                            className="text-[11px] sm:text-[12px] font-black text-[#042E3A] uppercase tracking-[0.12em]"
                           >
                             Phone Number <span className="text-red-500">*</span>
                           </label>
@@ -1006,14 +990,14 @@ export default function HealthcareMedicalServicePage() {
                             onChange={(e) =>
                               setFormData({ ...formData, phone: e.target.value })
                             }
-                            className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3.5 text-base sm:text-lg text-neutral-900 placeholder-neutral-500 font-medium outline-none transition-all rounded-[2px] shadow-xs"
+                            className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-3.5 py-2.5 text-[13px] sm:text-[14px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-[2px] shadow-xs"
                           />
                         </div>
 
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-1.5">
                           <label
                             htmlFor="hc-company"
-                            className="text-xs sm:text-sm font-black text-[#042E3A] uppercase tracking-[0.14em]"
+                            className="text-[11px] sm:text-[12px] font-black text-[#042E3A] uppercase tracking-[0.12em]"
                           >
                             Hospital / Organization <span className="text-red-500">*</span>
                           </label>
@@ -1026,15 +1010,15 @@ export default function HealthcareMedicalServicePage() {
                             onChange={(e) =>
                               setFormData({ ...formData, company: e.target.value })
                             }
-                            className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3.5 text-base sm:text-lg text-neutral-900 placeholder-neutral-500 font-medium outline-none transition-all rounded-[2px] shadow-xs"
+                            className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-3.5 py-2.5 text-[13px] sm:text-[14px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-[2px] shadow-xs"
                           />
                         </div>
                       </div>
 
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1.5">
                         <label
                           htmlFor="hc-subject"
-                          className="text-xs sm:text-sm font-black text-[#042E3A] uppercase tracking-[0.14em]"
+                          className="text-[11px] sm:text-[12px] font-black text-[#042E3A] uppercase tracking-[0.12em]"
                         >
                           Solution Area of Interest
                         </label>
@@ -1044,7 +1028,7 @@ export default function HealthcareMedicalServicePage() {
                           onChange={(e) =>
                             setFormData({ ...formData, subject: e.target.value })
                           }
-                          className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3.5 text-base sm:text-lg text-neutral-900 font-medium outline-none transition-all rounded-[2px] shadow-xs"
+                          className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-3.5 py-2.5 text-[13px] sm:text-[14px] text-neutral-900 font-medium outline-none transition-all rounded-[2px] shadow-xs"
                         >
                           <option value="Healthcare Solution Inquiry">
                             All Healthcare &amp; Medical Technologies
@@ -1067,28 +1051,28 @@ export default function HealthcareMedicalServicePage() {
                         </select>
                       </div>
 
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-1.5">
                         <label
                           htmlFor="hc-message"
-                          className="text-xs sm:text-sm font-black text-[#042E3A] uppercase tracking-[0.14em]"
+                          className="text-[11px] sm:text-[12px] font-black text-[#042E3A] uppercase tracking-[0.12em]"
                         >
                           Message / Technical Requirements <span className="text-red-500">*</span>
                         </label>
                         <textarea
                           id="hc-message"
-                          rows={4}
+                          rows={3}
                           required
                           placeholder="Please provide details about your facility requirements, required quantities, or project timeline..."
                           value={formData.message}
                           onChange={(e) =>
                             setFormData({ ...formData, message: e.target.value })
                           }
-                          className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-4 py-3.5 text-base sm:text-lg text-neutral-900 placeholder-neutral-500 font-medium outline-none transition-all rounded-[2px] resize-none shadow-xs"
+                          className="w-full bg-white border border-neutral-300 focus:border-[#0a7a8c] focus:ring-2 focus:ring-[#0a7a8c]/20 px-3.5 py-2.5 text-[13px] sm:text-[14px] text-neutral-900 placeholder-neutral-400 font-medium outline-none transition-all rounded-[2px] resize-none shadow-xs"
                         />
                       </div>
 
                       {submitError && (
-                        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-[2px] text-sm sm:text-base font-medium">
+                        <div className="bg-red-50 border border-red-200 text-red-700 px-3.5 py-2.5 rounded-[2px] text-xs sm:text-[13px] font-medium">
                           ⚠️ {submitError}
                         </div>
                       )}
@@ -1096,10 +1080,10 @@ export default function HealthcareMedicalServicePage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0078b4] hover:via-[#009588] hover:to-[#01b576] disabled:opacity-50 text-white py-4.5 text-sm sm:text-base font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-md hover:shadow-lg hover:shadow-[#01b576]/25 cursor-pointer disabled:cursor-not-allowed mt-3"
+                        className="w-full flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0078b4] hover:via-[#009588] hover:to-[#01b576] disabled:opacity-50 text-white py-3.5 text-xs sm:text-[13px] font-black uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-md hover:shadow-lg hover:shadow-[#01b576]/25 cursor-pointer disabled:cursor-not-allowed mt-2"
                       >
                         <span>{isSubmitting ? "Submitting Inquiry..." : "Submit Healthcare Inquiry"}</span>
-                        <ArrowRight size={16} strokeWidth={2.5} />
+                        <ArrowRight size={15} strokeWidth={2.5} />
                       </button>
                     </form>
                   </div>

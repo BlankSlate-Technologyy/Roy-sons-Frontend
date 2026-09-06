@@ -400,13 +400,6 @@ export const FEATURED_STRUCTURAL_WORKS = [
     href: "/projects/industrial-plant",
   },
   {
-    image: "/project-gourmet-foods.jpg",
-    title: "Gourmet Foods Infrastructure",
-    client: "GOURMET FOODS",
-    category: "Food Processing Infrastructure",
-    href: "/projects/gourmet-foods",
-  },
-  {
     image: "/project-roysons-infrastructure.jpg",
     title: "Roysons Corporate Infrastructure",
     client: "ROYSONS PVT. LTD.",
