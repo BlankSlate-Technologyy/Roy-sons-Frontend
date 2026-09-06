@@ -357,8 +357,8 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   /* ── Regular links, labels, table headers (excluding buttons, white/light text, and services dropdown) ── */
-  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):not(.text-white):not(.services-dropdown-link):not([data-services-menu] a):not(.whatsapp-float-btn),
-  label:not([class*="text-white"]),
+  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):not(.text-white):not(.services-dropdown-link):not([data-services-menu] a):not(.whatsapp-float-btn):not([data-dark-section] *):not(.roysons-preserve-dark *),
+  label:not([class*="text-white"]):not([data-dark-section] *):not(.roysons-preserve-dark *),
   th {
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
@@ -370,15 +370,15 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   /* Hover on normal links: Vibrant Greenish-Bluish (#0a7a8c) */
-  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):not(.services-dropdown-link):not([data-services-menu] a):hover {
+  a:not(.rs-cta-btn):not(.btn):not(#cta-consultation-btn):not(#navbar-inquire-btn):not(#view-all-projects-btn):not([class*="bg-"]):not([class*="text-white"]):not([class*="text-neutral-"]):not(.services-dropdown-link):not([data-services-menu] a):not([data-dark-section] *):not(.roysons-preserve-dark *):hover {
     color: #0a7a8c !important;
     -webkit-text-fill-color: #0a7a8c !important;
   }
 
   /* ── Body text (EXCLUDING buttons, pills, white text, light tints, and services dropdown) ── */
-  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.services-dropdown-link *):not([data-services-menu] *),
-  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.badge):not(.services-dropdown-link *):not([data-services-menu] *),
-  li:not(button *):not(a.rs-cta-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not(.services-dropdown-link *):not([data-services-menu] *),
+  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.services-dropdown-link *):not([data-services-menu] *):not([data-dark-section] *):not(.roysons-preserve-dark *),
+  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.badge):not(.services-dropdown-link *):not([data-services-menu] *):not([data-dark-section] *):not(.roysons-preserve-dark *),
+  li:not(button *):not(a.rs-cta-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not(.services-dropdown-link *):not([data-services-menu] *):not([data-dark-section] *):not(.roysons-preserve-dark *),
   time,
   td {
     color: #042E3A !important;
@@ -389,23 +389,40 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     text-shadow: none !important;
   }
 
+  /* ── Preserved Dark Sections (e.g. Services Hero, Dark Feature Sections) ── */
+  [data-dark-section],
+  .roysons-preserve-dark {
+    color: #ffffff;
+  }
+
+  [data-dark-section] p,
+  [data-dark-section] span,
+  [data-dark-section] a,
+  [data-dark-section] div,
+  .roysons-preserve-dark p,
+  .roysons-preserve-dark span,
+  .roysons-preserve-dark a,
+  .roysons-preserve-dark div {
+    -webkit-text-fill-color: initial;
+  }
+
   /* Borders: Subtle Greenish-Blue Tint */
-  hr,
-  .border,
-  .border-t,
-  .border-b,
-  .border-r,
-  .border-l,
-  .border-neutral-100,
-  .border-neutral-200,
-  .border-neutral-300,
-  .border-neutral-800,
-  .border-neutral-900,
-  .border-border,
-  .border-input,
-  .border-white\/10,
-  .border-white\/40,
-  .border-white\/50 {
+  hr:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-t:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-b:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-r:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-l:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-neutral-100:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-neutral-200:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-neutral-300:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-neutral-800:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-neutral-900:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-border:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-input:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-white\/10:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-white\/40:not([data-dark-section] *):not(.roysons-preserve-dark *),
+  .border-white\/50:not([data-dark-section] *):not(.roysons-preserve-dark *) {
     border-color: rgba(10, 122, 140, 0.18) !important;
   }
 

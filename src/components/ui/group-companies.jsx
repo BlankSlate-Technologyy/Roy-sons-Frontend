@@ -39,22 +39,22 @@ function HoldingDivisionItem({ name, subtitle, tagline, href, image, isExternal 
       </div>
 
       {hasText && (
-        <div className="px-4 pb-5 pt-1 text-center flex flex-col items-center">
+        <div className="px-4 pb-6 pt-1 text-center flex flex-col items-center flex-grow">
           <h3 className="text-[20px] font-black tracking-[0.04em] uppercase text-[#042E3A] leading-snug">
             {name}
           </h3>
           {subtitle && (
             <>
-              <div className="w-12 h-[2px] bg-gradient-to-r from-[#042E3A] to-[#0d9488] my-2.5 rounded-full flex-shrink-0" />
-              <p className="text-[15px] font-bold tracking-[0.12em] uppercase text-[#042E3A]/80">
+              <div className="w-12 h-[2px] bg-gradient-to-r from-[#042E3A] to-[#0d9488] my-3 rounded-full flex-shrink-0" />
+              <p className="text-[15px] sm:text-[16px] font-bold tracking-[0.12em] uppercase text-[#0a7a8c]">
                 {subtitle}
               </p>
             </>
           )}
           {tagline && (
             <>
-              <div className="w-12 h-[2px] bg-gradient-to-r from-[#042E3A] to-[#0d9488] my-2.5 rounded-full flex-shrink-0" />
-              <p className="text-[15px] sm:text-[16px] text-[#042E3A]/80 leading-[1.7] font-normal">
+              <div className="w-12 h-[2px] bg-gradient-to-r from-[#042E3A] to-[#0d9488] my-3 rounded-full flex-shrink-0" />
+              <p className="text-[16px] sm:text-[17px] text-[#042E3A] leading-relaxed font-normal">
                 {tagline}
               </p>
             </>

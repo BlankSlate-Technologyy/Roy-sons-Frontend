@@ -135,16 +135,15 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                           closeServicesDropdown();
                         }
                       }}
-                      className={`nav-text-link px-2 xl:px-3 py-1.5 text-[12px] xl:text-[13.5px] 2xl:text-[14.5px] font-bold tracking-[0.02em] xl:tracking-[0.06em] uppercase transition-all duration-300 relative whitespace-nowrap !bg-transparent hover:!bg-transparent !border-none !shadow-none flex items-center gap-1.5
+                      className={`nav-text-link relative flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border px-2.5 py-2 text-[12px] font-bold uppercase tracking-[0.02em] transition-all duration-300 xl:px-3 xl:text-[13.5px] xl:tracking-[0.06em] 2xl:text-[14.5px]
                         ${isActive
-                          ? "!text-[#042E3A] after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-6 xl:after:w-7 after:h-[3px] after:bg-[#0a7a8c] after:rounded-full"
-                          : "!text-[#042E3A]/80 hover:!text-[#0a7a8c] after:absolute after:bottom-[-22px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-[#0a7a8c] hover:after:w-6 xl:hover:after:w-7 after:rounded-full after:transition-all after:duration-300"
+                          ? "border-[#0a7a8c]/20 bg-[#0a7a8c]/6 !text-[#042E3A] shadow-sm after:absolute after:bottom-[-18px] after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-[3px] after:bg-[#0a7a8c] after:rounded-full"
+                          : "border-transparent bg-transparent !text-[#042E3A]/80 hover:border-[#0a7a8c]/15 hover:bg-[#0a7a8c]/5 hover:!text-[#0a7a8c] after:absolute after:bottom-[-18px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-[#0a7a8c] hover:after:w-6 after:rounded-full after:transition-all after:duration-300"
                         }`}
                       style={{
                         background: "none",
                         backgroundColor: "transparent",
                         backgroundImage: "none",
-                        border: "none",
                         boxShadow: "none",
                       }}
                     >
@@ -390,7 +389,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                     <Link
                       href={route.path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="nav-text-link block px-4 sm:px-6 py-2.5 sm:py-3 text-[13px] font-bold tracking-[0.16em] uppercase !text-[#042E3A] hover:!text-[#0a7a8c] !bg-transparent hover:!bg-[#042E3A]/5 border-b border-[#042E3A]/10 transition-colors"
+                      className="nav-text-link block cursor-pointer rounded-md border-b border-[#042E3A]/10 bg-transparent px-4 py-2.5 text-[13px] font-bold uppercase tracking-[0.16em] !text-[#042E3A] transition-all duration-200 hover:bg-[#042E3A]/5 hover:!text-[#0a7a8c] sm:px-6 sm:py-3"
                       style={{
                         background: "none",
                         backgroundColor: "transparent",

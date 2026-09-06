@@ -412,16 +412,19 @@ export default function HealthcareMedicalServicePage() {
       </section>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden">
+      <section
+        data-dark-section="true"
+        className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden roysons-preserve-dark"
+      >
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0a7a8c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/50 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-[0_0_15px_rgba(34,211,238,0.15)]">
-                <HeartPulse size={15} className="text-cyan-400" />
-                <span>Sector 01 • Medical Solutions</span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/80 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-[0_0_15px_rgba(34,211,238,0.25)]">
+                <HeartPulse size={16} className="text-cyan-300 flex-shrink-0" />
+                <span className="text-cyan-300 font-bold uppercase tracking-[0.2em]">Sector 01 • Medical Solutions</span>
               </div>
 
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white leading-tight mb-4">
@@ -434,30 +437,32 @@ export default function HealthcareMedicalServicePage() {
 
               <div className="h-[3px] w-16 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-5" />
 
-              <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal mb-6 max-w-2xl">
+              <p className="text-sm sm:text-base text-neutral-100 leading-relaxed font-normal mb-6 max-w-2xl">
                 ROYSONS delivers advanced healthcare and medical technology solutions designed to support hospitals, clinics, laboratories, government institutions, and healthcare organizations. We combine international sourcing, technical expertise, and project support to provide reliable medical technologies that improve patient care and operational efficiency.
               </p>
 
               <div className="flex flex-wrap gap-3.5 items-center">
                 <Link
                   href="#cta-consultation"
-                  className="group inline-flex items-center gap-2.5 bg-[#0a7a8c] hover:bg-white text-white hover:text-black font-bold px-5 py-2.5 text-xs uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#0a7a8c]/20"
+                  className="group inline-flex items-center gap-2.5 bg-[#0a7a8c] hover:bg-white text-white hover:text-[#042E3A] font-bold px-6 py-3 text-xs sm:text-sm uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#0a7a8c]/30"
                 >
-                  <span className="text-white group-hover:text-black transition-colors duration-300">
+                  <span className="text-white group-hover:text-[#042E3A] transition-colors duration-300 font-bold">
                     Build Better Healthcare
                   </span>
                   <ArrowRight
-                    size={14}
+                    size={15}
                     strokeWidth={2.5}
-                    className="text-white group-hover:text-black group-hover:translate-x-1 transition-all duration-300"
+                    className="text-white group-hover:text-[#042E3A] group-hover:translate-x-1 transition-all duration-300"
                   />
                 </Link>
 
                 <Link
                   href="#key-solutions"
-                  className="inline-flex items-center gap-2 bg-transparent hover:bg-white/5 border border-neutral-700 hover:border-[#0a7a8c] text-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all rounded-[2px]"
+                  className="group inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border-2 border-cyan-400/80 hover:border-cyan-300 text-white px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-[0_0_15px_rgba(34,211,238,0.2)]"
                 >
-                  Explore Key Solutions
+                  <span className="text-white group-hover:text-cyan-200 transition-colors duration-300 font-bold tracking-[0.16em]">
+                    Explore Key Solutions
+                  </span>
                 </Link>
               </div>
             </div>
@@ -476,7 +481,7 @@ export default function HealthcareMedicalServicePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
 
-                  <div className="absolute bottom-4 left-4 right-4 p-4 bg-neutral-950/85 backdrop-blur-md border border-[#0a7a8c]/40 rounded-[2px]">
+                  <div className="absolute bottom-4 left-4 right-4 p-4 bg-neutral-950/90 backdrop-blur-md border border-cyan-400/50 rounded-[2px]">
                     <p className="text-xs font-extrabold uppercase tracking-wider text-cyan-400 mb-1">
                       International Quality Standards
                     </p>
