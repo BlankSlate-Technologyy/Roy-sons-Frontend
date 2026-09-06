@@ -37,6 +37,7 @@ import {
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
+import HealthcarePortfolio from "@/components/healthcare/HealthcarePortfolio";
 
 function AnimatedStatValue({ value }) {
   const [displayValue, setDisplayValue] = useState("0");
@@ -192,73 +193,6 @@ const CAPABILITIES = [
   },
 ];
 
-const KEY_SOLUTIONS = [
-  {
-    id: "diagnostic-imaging",
-    title: "Diagnostic Imaging",
-    tagline: "High-Precision Medical Imaging & Radiology Technologies",
-    description:
-      "X-Ray, ultrasound, CT, MRI, C-Arm, mammography, and other diagnostic imaging technologies engineered to provide clinicians with unparalleled image quality, rapid processing, and accurate diagnostic confidence.",
-    image: "/roys_mri_scanner.png",
-    features: [
-      "Digital Radiography & Fluoroscopy Systems",
-      "High-Resolution 3D/4D Ultrasound Scanners",
-      "High-Slice Multi-Detector CT Systems",
-      "Advanced 1.5T & 3.0T High-Field MRI Suites",
-      "Mobile Surgical C-Arm Systems for OT Guidance",
-      "High-Precision Full-Field Digital Mammography",
-    ],
-  },
-  {
-    id: "critical-care",
-    title: "Critical Care",
-    tagline: "Advanced Life Support & Intensive Care Solutions",
-    description:
-      "Ventilators, patient monitors, defibrillators, infusion pumps, ICU beds, and emergency equipment built to meet rigorous critical care requirements and support intensive patient management in high-dependency units.",
-    image: "/roys_ultrasound.png",
-    features: [
-      "Invasive & Non-Invasive ICU Ventilators",
-      "Modular Multi-Parameter Patient Monitors",
-      "Biphasic Defibrillators with External Pacing",
-      "Precision Volumetric Infusion & Syringe Pumps",
-      "Multi-Function Motorized ICU & CCU Beds",
-      "Emergency Crash Carts & Resuscitation Equipment",
-    ],
-  },
-  {
-    id: "surgical-ot",
-    title: "Surgical & OT Solutions",
-    tagline: "Integrated Operating Room Infrastructure & Systems",
-    description:
-      "Operating theatre equipment, surgical systems, anesthesia equipment, surgical lights, and operating tables providing an ergonomic, sterile, and technologically advanced surgical environment.",
-    image: "/roys_hospital_interior.png",
-    features: [
-      "Electro-Hydraulic Universal Operating Tables",
-      "Shadowless Multi-Head LED Surgical Lights",
-      "Integrated Workstation Anesthesia Delivery Systems",
-      "Electrosurgical Units & Vessel Sealing Generators",
-      "HD & 4K Laparoscopy & Endoscopy Towers",
-      "Sterile Laminar Airflow & Modular OT Panels",
-    ],
-  },
-  {
-    id: "laboratory-solutions",
-    title: "Laboratory Solutions",
-    tagline: "Precision Diagnostic & Analytical Technologies",
-    description:
-      "Scientific instruments, laboratory equipment, diagnostic systems, and research technologies delivering high-throughput processing, reproducible accuracy, and seamless Laboratory Information System (LIS) integration.",
-    image: "/roys_ct_scan.png",
-    features: [
-      "Automated Clinical Chemistry & Immunoassay Analyzers",
-      "Hematology Counters & Coagulation Analyzers",
-      "Molecular Diagnostics & PCR Amplification Systems",
-      "Biological Safety Cabinets & Clean Laminar Hoods",
-      "High-Speed Centrifuges & Temperature Incubators",
-      "Certified Lab Reagents, Controls & Consumables",
-    ],
-  },
-];
-
 const INDUSTRIES_SERVED = [
   {
     icon: Hospital,
@@ -350,7 +284,6 @@ const HERO_SLIDES = [
 
 export default function HealthcareMedicalServicePage() {
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
-  const [activeSolutionTab, setActiveSolutionTab] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
@@ -370,6 +303,32 @@ export default function HealthcareMedicalServicePage() {
     subject: "Healthcare Solution Inquiry",
     message: "",
   });
+
+  const handleSelectQuoteEquipment = (equipment) => {
+    if (!equipment) return;
+    let matchedSubject = "Healthcare Solution Inquiry";
+    if (equipment.categoryId === "diagnostic-imaging") {
+      matchedSubject = "Diagnostic Imaging Inquiry";
+    } else if (
+      equipment.categoryId === "icu-critical-care" ||
+      equipment.categoryId === "patient-monitoring"
+    ) {
+      matchedSubject = "Critical Care Inquiry";
+    } else if (
+      equipment.categoryId === "operation-theatre" ||
+      equipment.categoryId === "surgical-equipment"
+    ) {
+      matchedSubject = "Surgical & OT Inquiry";
+    } else if (equipment.categoryId === "laboratory-diagnostics") {
+      matchedSubject = "Laboratory Solutions Inquiry";
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      subject: matchedSubject,
+      message: `Inquiry for ${equipment.name} (${equipment.categoryTitle}):\n\nWe would like to request technical specifications, procurement options, and hospital supply availability for our facility.`,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -634,119 +593,9 @@ export default function HealthcareMedicalServicePage() {
         </div>
       </section>
 
-      {/* Key Solutions Interactive Tabs & Showcase */}
-      <section
-        id="key-solutions"
-        data-dark-section="true"
-        className="py-14 sm:py-18 bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white border-b border-neutral-800"
-      >
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400 mb-2 block">
-              SPECIALIZED OFFERINGS
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-3">
-              Key Solutions
-            </h2>
-            <div className="mx-auto h-[3px] w-14 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-4" />
-            <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal">
-              High-performance technologies tailored to radiology departments, critical care units, operating rooms, and analytical laboratories.
-            </p>
-          </div>
+      {/* Healthcare & Medical Equipment Portfolio Section */}
+      <HealthcarePortfolio onSelectQuoteEquipment={handleSelectQuoteEquipment} />
 
-          {/* Navigation Tabs */}
-          <div className="flex flex-wrap justify-center gap-2.5 sm:gap-3 mb-10">
-            {KEY_SOLUTIONS.map((sol, idx) => {
-              const isActive = activeSolutionTab === idx;
-              return (
-                <button
-                  key={sol.id}
-                  onClick={() => setActiveSolutionTab(idx)}
-                  className={`px-5 py-2.5 rounded-[4px] text-xs font-black uppercase tracking-[0.14em] transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? "bg-gradient-to-r from-[#0078b4] via-[#009588] to-[#01b576] text-white border border-emerald-400/50 shadow-lg shadow-[#01b576]/35 scale-105"
-                      : "bg-[#161c20] text-neutral-300 border border-neutral-700 hover:text-white hover:border-transparent hover:bg-gradient-to-r hover:from-[#0078b4] hover:via-[#009588] hover:to-[#01b576] hover:shadow-md hover:shadow-[#01b576]/25 hover:scale-105"
-                  }`}
-                >
-                  {sol.title}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active Solution Content Display */}
-          {(() => {
-            const currentSol = KEY_SOLUTIONS[activeSolutionTab];
-            return (
-              <div className="bg-[#161c20] border border-neutral-800 rounded-[2px] p-6 sm:p-8 lg:p-10 transition-all duration-500">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-                  <div className="lg:col-span-7 flex flex-col justify-center">
-                    <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-cyan-400 mb-2 block">
-                      {currentSol.tagline}
-                    </span>
-                    <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white mb-3">
-                      {currentSol.title}
-                    </h3>
-                    <div className="h-[2.5px] w-12 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-4" />
-                    <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal mb-6">
-                      {currentSol.description}
-                    </p>
-
-                    <h4 className="text-xs sm:text-sm font-bold uppercase tracking-[0.14em] text-white mb-3">
-                      Featured Systems &amp; Equipment:
-                    </h4>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                      {currentSol.features.map((feat, fIdx) => (
-                        <div key={fIdx} className="flex items-start gap-2.5">
-                          <CheckCircle2
-                            size={16}
-                            className="text-cyan-400 flex-shrink-0 mt-0.5"
-                            strokeWidth={2.2}
-                          />
-                          <span className="text-xs sm:text-sm text-neutral-200 font-medium">
-                            {feat}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div>
-                      <Link
-                        href="#cta-consultation"
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black uppercase tracking-[0.16em] text-cyan-400 hover:text-white transition-all group"
-                      >
-                        <span className="border-b border-cyan-400/50 group-hover:border-white transition-colors">
-                          Inquire About {currentSol.title}
-                        </span>
-                        <ArrowRight size={14} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="lg:col-span-5">
-                    <div className="relative h-[250px] sm:h-[320px] w-full rounded-[2px] overflow-hidden border border-neutral-700 bg-neutral-900 shadow-lg">
-                      <Image
-                        src={currentSol.image}
-                        alt={currentSol.title}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 40vw"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent" />
-                      <div className="absolute bottom-3 left-3 right-3">
-                        <span className="px-2.5 py-1 bg-black/80 backdrop-blur-sm border border-cyan-400/40 text-cyan-300 text-xs font-bold uppercase tracking-wider rounded-[2px]">
-                          ROYSONS Medical Solution Suite
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
-        </div>
-      </section>
 
       {/* Industries We Serve */}
       <section id="industries" className="py-14 sm:py-18 bg-white border-b border-neutral-200">
