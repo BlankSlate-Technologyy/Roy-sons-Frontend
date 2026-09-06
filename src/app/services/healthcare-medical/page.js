@@ -475,25 +475,16 @@ export default function HealthcareMedicalServicePage() {
               <div className="flex flex-wrap gap-3.5 items-center">
                 <Link
                   href="#cta-consultation"
-                  className="group inline-flex items-center gap-2.5 bg-[#0a7a8c] hover:bg-white text-white hover:text-[#042E3A] font-bold px-6 py-3 text-xs sm:text-sm uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#0a7a8c]/30"
+                  className="group inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0a7a8c] to-[#0a7a8c] hover:from-[#0078b4] hover:via-[#009588] hover:to-[#01b576] text-white font-bold px-7 py-3.5 text-xs sm:text-sm uppercase tracking-[0.16em] transition-all duration-300 rounded-[3px] shadow-lg shadow-[#0a7a8c]/30 hover:shadow-[0_8px_25px_rgba(1,181,118,0.45)] hover:scale-[1.02] active:scale-95 border border-cyan-400/30 hover:border-transparent"
                 >
-                  <span className="text-white group-hover:text-[#042E3A] transition-colors duration-300 font-bold">
+                  <span className="text-white font-bold tracking-[0.16em]">
                     Build Better Healthcare
                   </span>
                   <ArrowRight
                     size={15}
                     strokeWidth={2.5}
-                    className="text-white group-hover:text-[#042E3A] group-hover:translate-x-1 transition-all duration-300"
+                    className="text-white group-hover:translate-x-1.5 transition-transform duration-300"
                   />
-                </Link>
-
-                <Link
-                  href="#key-solutions"
-                  className="group inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border-2 border-cyan-400/80 hover:border-cyan-300 text-white px-6 py-3 text-xs sm:text-sm font-bold uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-[0_0_15px_rgba(34,211,238,0.2)]"
-                >
-                  <span className="text-white group-hover:text-cyan-200 transition-colors duration-300 font-bold tracking-[0.16em]">
-                    Explore Key Solutions
-                  </span>
                 </Link>
               </div>
             </div>
@@ -635,10 +626,10 @@ export default function HealthcareMedicalServicePage() {
               return (
                 <div
                   key={index}
-                  className="relative bg-white border border-neutral-200 p-6 sm:p-7 rounded-[3px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:shadow-[0_12px_32px_rgba(10,122,140,0.18)] hover:-translate-y-1.5 hover:bg-gradient-to-b hover:from-[#f0fdfa]/60 hover:to-white transition-all duration-300 overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-[3px] before:bg-gradient-to-r before:from-[#042E3A] before:via-[#0a7a8c] before:to-[#0d9488] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300"
+                  className="relative bg-white border border-neutral-200 p-6 sm:p-7 rounded-[3px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:shadow-[0_12px_32px_rgba(10,122,140,0.18)] hover:-translate-y-1.5 hover:bg-gradient-to-b hover:from-[#f0fdfa]/60 hover:to-white transition-all duration-300 overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-[3px] before:bg-gradient-to-r before:from-[#0078b4] before:via-[#009588] before:to-[#01b576] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300"
                 >
                   <div>
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/30 flex items-center justify-center mb-5 transition-all duration-300 shadow-xs group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:via-[#075d6d] group-hover:to-[#0a7a8c] group-hover:border-[#0a7a8c] group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)] group-hover:scale-105">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/30 flex items-center justify-center mb-5 transition-all duration-300 shadow-xs group-hover:bg-gradient-to-br group-hover:from-[#0078b4] group-hover:via-[#009588] group-hover:to-[#01b576] group-hover:border-transparent group-hover:shadow-[0_4px_18px_rgba(1,181,118,0.45)] group-hover:scale-105">
                       <Icon
                         size={25}
                         strokeWidth={1.7}
@@ -687,10 +678,10 @@ export default function HealthcareMedicalServicePage() {
                 <button
                   key={sol.id}
                   onClick={() => setActiveSolutionTab(idx)}
-                  className={`px-4 py-2 rounded-[2px] text-xs font-black uppercase tracking-[0.14em] transition-all duration-300 cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-[4px] text-xs font-black uppercase tracking-[0.14em] transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? "bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] border border-cyan-400/50 text-white shadow-lg shadow-[#0a7a8c]/30"
-                      : "bg-[#161c20] text-neutral-300 border border-neutral-700 hover:text-white hover:border-[#0a7a8c]"
+                      ? "bg-gradient-to-r from-[#0078b4] via-[#009588] to-[#01b576] text-white border border-emerald-400/50 shadow-lg shadow-[#01b576]/35 scale-105"
+                      : "bg-[#161c20] text-neutral-300 border border-neutral-700 hover:text-white hover:border-transparent hover:bg-gradient-to-r hover:from-[#0078b4] hover:via-[#009588] hover:to-[#01b576] hover:shadow-md hover:shadow-[#01b576]/25 hover:scale-105"
                   }`}
                 >
                   {sol.title}
@@ -795,9 +786,9 @@ export default function HealthcareMedicalServicePage() {
               return (
                 <div
                   key={index}
-                  className="relative p-6 sm:p-7 rounded-[3px] border border-neutral-200 bg-white hover:border-[#0a7a8c] hover:shadow-[0_12px_32px_rgba(10,122,140,0.18)] hover:-translate-y-1.5 hover:bg-gradient-to-b hover:from-[#f0fdfa]/60 hover:to-white transition-all duration-300 group overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-[3px] before:bg-gradient-to-r before:from-[#042E3A] before:via-[#0a7a8c] before:to-[#0d9488] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300"
+                  className="relative p-6 sm:p-7 rounded-[3px] border border-neutral-200 bg-white hover:border-[#0a7a8c] hover:shadow-[0_12px_32px_rgba(10,122,140,0.18)] hover:-translate-y-1.5 hover:bg-gradient-to-b hover:from-[#f0fdfa]/60 hover:to-white transition-all duration-300 group overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-[3px] before:bg-gradient-to-r before:from-[#0078b4] before:via-[#009588] before:to-[#01b576] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300"
                 >
-                  <div className="w-12 h-12 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/35 flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:via-[#075d6d] group-hover:to-[#0a7a8c] group-hover:border-[#0a7a8c] group-hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)] group-hover:scale-105 transition-all duration-300 shadow-xs">
+                  <div className="w-12 h-12 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/35 flex items-center justify-center mb-4 group-hover:bg-gradient-to-br group-hover:from-[#0078b4] group-hover:via-[#009588] group-hover:to-[#01b576] group-hover:border-transparent group-hover:shadow-[0_4px_18px_rgba(1,181,118,0.45)] group-hover:scale-105 transition-all duration-300 shadow-xs">
                     <Icon
                       size={24}
                       strokeWidth={1.8}
@@ -1105,7 +1096,7 @@ export default function HealthcareMedicalServicePage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] disabled:opacity-50 text-white py-4.5 text-sm sm:text-base font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-md hover:shadow-lg cursor-pointer disabled:cursor-not-allowed mt-3"
+                        className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0078b4] hover:via-[#009588] hover:to-[#01b576] disabled:opacity-50 text-white py-4.5 text-sm sm:text-base font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-md hover:shadow-lg hover:shadow-[#01b576]/25 cursor-pointer disabled:cursor-not-allowed mt-3"
                       >
                         <span>{isSubmitting ? "Submitting Inquiry..." : "Submit Healthcare Inquiry"}</span>
                         <ArrowRight size={16} strokeWidth={2.5} />

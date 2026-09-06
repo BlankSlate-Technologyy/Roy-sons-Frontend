@@ -141,7 +141,7 @@ function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="flex flex-row items-start gap-4 group">
       {/* Icon Box */}
-      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-sm flex items-center justify-center group-hover:border-[#0d9488] group-hover:bg-gradient-to-br group-hover:from-[#042E3A] group-hover:to-[#0a7a8c] group-hover:shadow-[0_6px_20px_rgba(10,122,140,0.3)] transition-all duration-300">
+      <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-sm flex items-center justify-center group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-[#0078b4] group-hover:via-[#009588] group-hover:to-[#01b576] group-hover:shadow-[0_6px_20px_rgba(1,181,118,0.4)] transition-all duration-300">
         <Icon
           size={24}
           strokeWidth={1.6}
