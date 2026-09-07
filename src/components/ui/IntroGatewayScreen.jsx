@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   ArrowRight,
   Sparkles,
@@ -12,6 +13,20 @@ import {
 } from "lucide-react";
 
 export default function IntroGatewayScreen({ onEnterHome }) {
+  const router = useRouter();
+
+  const handleEnter = () => {
+    try {
+      sessionStorage.setItem("roysons_intro_entered", "true");
+    } catch {
+      // ignore storage errors
+    }
+    if (onEnterHome) {
+      onEnterHome();
+    } else {
+      router.push("/");
+    }
+  };
   return (
     <div
       className="min-h-screen w-full bg-gradient-to-b from-[#f0fdfa] via-[#f8fafc] to-[#ffffff] text-[#042E3A] flex flex-col justify-between relative overflow-x-hidden selection:bg-[#0a7a8c] selection:text-white intro-gateway-root"
@@ -249,7 +264,7 @@ Together, they form one integrated platform built around purpose, enterprise, in
                 <div>
                   <button
                     type="button"
-                    onClick={onEnterHome}
+                    onClick={handleEnter}
                     className="intro-card-btn-2 inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-[2px] text-[14px] sm:text-[15px] font-black uppercase tracking-wider shadow-md w-full sm:w-auto cursor-pointer"
                   >
                     <span>Enter Main Website</span>

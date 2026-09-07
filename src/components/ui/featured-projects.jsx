@@ -1,8 +1,9 @@
 "use client";
 
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { FEATURED_STRUCTURAL_WORKS } from "@/lib/constants";
 
 function ProjectCard({ project, index }) {
@@ -63,6 +64,62 @@ export default function FeaturedHoldingsShowcase({
   projects = FEATURED_STRUCTURAL_WORKS,
   allProjectsPath = "/projects",
 }) {
+  const carouselRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = useCallback(() => {
+    if (!carouselRef.current) return;
+    const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+    setCanScrollLeft(scrollLeft > 15);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+  }, []);
+
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      el.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [updateScrollState, projects]);
+
+  const handleScroll = (direction) => {
+    if (!carouselRef.current) return;
+    const container = carouselRef.current;
+    const firstCard = container.querySelector("a");
+    const scrollStep = firstCard ? firstCard.offsetWidth + 28 : 360;
+
+    if (direction === "left") {
+      if (container.scrollLeft <= 15) {
+        container.scrollTo({
+          left: container.scrollWidth - container.clientWidth,
+          behavior: "smooth",
+        });
+      } else {
+        container.scrollBy({
+          left: -scrollStep,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      const maxScroll = container.scrollWidth - container.clientWidth - 15;
+      if (container.scrollLeft >= maxScroll) {
+        container.scrollTo({
+          left: 0,
+          behavior: "smooth",
+        });
+      } else {
+        container.scrollBy({
+          left: scrollStep,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   return (
     <section className="pt-14 sm:pt-20 pb-4 sm:pb-6 bg-white text-[#042E3A] overflow-hidden font-sans border-t border-[#0a7a8c]/15" data-aos="fade-up">
@@ -86,9 +143,30 @@ export default function FeaturedHoldingsShowcase({
 
         {/* ─── Projects Showcase Carousel ─── */}
         <div className="relative group/carousel">
+          {/* Left Navigation Arrow */}
+          <button
+            type="button"
+            onClick={() => handleScroll("left")}
+            aria-label="Previous project"
+            className="absolute -left-2 sm:-left-3 lg:-left-5 top-[39%] -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full bg-white/95 backdrop-blur-md border border-neutral-200/90 shadow-[0_4px_20px_rgba(4,46,58,0.18)] flex items-center justify-center text-[#042E3A] hover:bg-[#042E3A] hover:text-white hover:border-[#042E3A] hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0a7a8c]/40 cursor-pointer group/arrow"
+          >
+            <ChevronLeft size={24} strokeWidth={2.5} className="group-hover/arrow:-translate-x-0.5 transition-transform duration-200" />
+          </button>
+
+          {/* Right Navigation Arrow */}
+          <button
+            type="button"
+            onClick={() => handleScroll("right")}
+            aria-label="Next project"
+            className="absolute -right-2 sm:-right-3 lg:-right-5 top-[39%] -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full bg-white/95 backdrop-blur-md border border-neutral-200/90 shadow-[0_4px_20px_rgba(4,46,58,0.18)] flex items-center justify-center text-[#042E3A] hover:bg-[#042E3A] hover:text-white hover:border-[#042E3A] hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0a7a8c]/40 cursor-pointer group/arrow"
+          >
+            <ChevronRight size={24} strokeWidth={2.5} className="group-hover/arrow:translate-x-0.5 transition-transform duration-200" />
+          </button>
+
           {/* Horizontal Scrolling Track */}
           <div
-            className="flex items-center justify-start lg:justify-center gap-5 sm:gap-7 overflow-x-auto pb-8 pt-4 px-4 no-scrollbar scroll-smooth"
+            ref={carouselRef}
+            className="flex items-center justify-start gap-5 sm:gap-7 overflow-x-auto pb-8 pt-4 px-2 sm:px-4 no-scrollbar scroll-smooth"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",

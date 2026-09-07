@@ -9,7 +9,6 @@ export default function CategoryShowcase({
   category,
   index = 0,
   equipmentList = [],
-  onSelectEquipment,
 }) {
   if (!category) return null;
 
@@ -94,7 +93,6 @@ export default function CategoryShowcase({
           <EquipmentCard
             key={item.id}
             equipment={item}
-            onSelect={onSelectEquipment}
           />
         ))}
       </div>

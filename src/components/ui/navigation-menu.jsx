@@ -165,6 +165,29 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
           </nav>
 
           <div className="flex items-center gap-1 sm:gap-2 xl:gap-3 flex-shrink-0">
+            {/* ROYSONS Ecosystem Portal 'R' Icon Button */}
+            <Link
+              href="/portal"
+              aria-label="ROYSONS Ecosystem Portal"
+              title="ROYSONS Ecosystem Portal (Trust & Holdings)"
+              className={`group relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg border transition-all duration-300 cursor-pointer flex-shrink-0 active:scale-95 ${
+                currentPath === "/portal"
+                  ? "border-[#0a7a8c] bg-[#0a7a8c]/10 shadow-xs"
+                  : "border-[#042E3A]/15 hover:border-[#0a7a8c] hover:bg-[#0a7a8c]/5 hover:shadow-xs"
+              }`}
+            >
+              <div className="relative w-4.5 h-4.5 sm:w-5 sm:h-5 md:w-5.5 md:h-5.5 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <Image
+                  src="/logos/roysons-r-icon.png"
+                  alt="ROYSONS Ecosystem Portal"
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              </div>
+            </Link>
+
             <button
               id="navbar-search-btn"
               aria-label="Toggle search bar"
@@ -333,6 +356,32 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
             style={{ backgroundColor: "#ffffff", borderColor: "rgba(4,46,58,0.15)" }}
           >
             <ul className="flex flex-col py-1">
+              {/* Featured ROYSONS Ecosystem Portal shortcut */}
+              <li className="border-b border-[#042E3A]/10 bg-gradient-to-r from-[#0a7a8c]/10 to-transparent">
+                <Link
+                  href="/portal"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex items-center justify-between px-4 sm:px-6 py-3 transition-colors hover:bg-[#0a7a8c]/10"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-5 h-5 flex-shrink-0">
+                      <Image
+                        src="/logos/roysons-r-icon.png"
+                        alt="ROYSONS Ecosystem"
+                        width={20}
+                        height={20}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <span className="text-[14px] sm:text-[15px] font-bold uppercase tracking-[0.08em] text-[#042E3A]">
+                      ROYSONS Ecosystem
+                    </span>
+                  </div>
+                  <span className="text-[10px] uppercase font-black px-2 py-0.5 rounded bg-[#0a7a8c]/15 text-[#0a7a8c] border border-[#0a7a8c]/30">
+                    Portal
+                  </span>
+                </Link>
+              </li>
               {HEADER_ROUTES.map((route) => {
                 if (route.path === "/services") {
                   return (

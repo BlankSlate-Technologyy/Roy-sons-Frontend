@@ -301,15 +301,15 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
 
   .roysons-dark-footer .footer-link,
   .roysons-dark-footer .footer-link * {
-    color: #2dd4bf !important;
-    -webkit-text-fill-color: #2dd4bf !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     transition: all 0.25s ease !important;
   }
 
   .roysons-dark-footer .footer-link:hover,
   .roysons-dark-footer .footer-link:hover * {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
+    color: #2dd4bf !important;
+    -webkit-text-fill-color: #2dd4bf !important;
   }
 
   .roysons-dark-footer p.footer-caption {
@@ -369,14 +369,14 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   .roysons-dark-footer .footer-legal-link {
-    color: #2dd4bf !important;
-    -webkit-text-fill-color: #2dd4bf !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     transition: color 0.25s ease !important;
   }
 
   .roysons-dark-footer .footer-legal-link:hover {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
+    color: #2dd4bf !important;
+    -webkit-text-fill-color: #2dd4bf !important;
   }
 
   /* ── Regular links, labels, table headers (excluding buttons, white/light text, and services dropdown) ── */

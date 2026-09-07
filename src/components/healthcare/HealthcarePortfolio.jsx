@@ -6,7 +6,6 @@ import {
   HEALTHCARE_EQUIPMENT,
 } from "@/lib/healthcare-portfolio-data";
 import EquipmentCard from "./EquipmentCard";
-import EquipmentDetailModal from "./EquipmentDetailModal";
 import PortfolioFilterBar from "./PortfolioFilterBar";
 import CategoryShowcase from "./CategoryShowcase";
 import HealthcareTrustCTA from "./HealthcareTrustCTA";
@@ -15,7 +14,6 @@ import { Sparkles, ArrowDown, Stethoscope, SearchX } from "lucide-react";
 export default function HealthcarePortfolio({ onSelectQuoteEquipment }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("featured");
-  const [activeModalEquipment, setActiveModalEquipment] = useState(null);
 
   // Filtered & Sorted Equipment
   const filteredEquipment = useMemo(() => {
@@ -52,28 +50,6 @@ export default function HealthcarePortfolio({ onSelectQuoteEquipment }) {
 
     return list;
   }, [searchQuery, sortBy]);
-
-  // Handle Opening Modal
-  const handleOpenModal = (equipment) => {
-    setActiveModalEquipment(equipment);
-  };
-
-  // Handle Closing Modal
-  const handleCloseModal = () => {
-    setActiveModalEquipment(null);
-  };
-
-  // Handle Switch to Related Item in Modal
-  const handleSelectRelated = (equipment) => {
-    setActiveModalEquipment(equipment);
-  };
-
-  // Handle Request Quote CTA from Modal
-  const handleRequestQuote = (equipment) => {
-    if (onSelectQuoteEquipment) {
-      onSelectQuoteEquipment(equipment);
-    }
-  };
 
   // Reset Filters
   const handleResetFilters = () => {
@@ -168,7 +144,6 @@ export default function HealthcarePortfolio({ onSelectQuoteEquipment }) {
                   category={category}
                   index={idx}
                   equipmentList={categoryItems}
-                  onSelectEquipment={handleOpenModal}
                 />
               );
             })}
@@ -204,7 +179,6 @@ export default function HealthcarePortfolio({ onSelectQuoteEquipment }) {
                   <EquipmentCard
                     key={item.id}
                     equipment={item}
-                    onSelect={handleOpenModal}
                   />
                 ))}
               </div>
@@ -232,15 +206,6 @@ export default function HealthcarePortfolio({ onSelectQuoteEquipment }) {
         {/* Reassuring Trust CTA Section */}
         <HealthcareTrustCTA />
       </div>
-
-      {/* Equipment Detail Modal */}
-      <EquipmentDetailModal
-        equipment={activeModalEquipment}
-        isOpen={Boolean(activeModalEquipment)}
-        onClose={handleCloseModal}
-        onSelectRelated={handleSelectRelated}
-        onRequestQuote={handleRequestQuote}
-      />
     </div>
   );
 }

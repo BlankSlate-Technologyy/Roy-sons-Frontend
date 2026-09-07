@@ -169,7 +169,7 @@ export default function CorporateFooter({
               <li key={index}>
                 <Link
                   href={link.destination}
-                  className="footer-link text-xs text-[#2dd4bf] hover:text-white font-medium transition-colors duration-200 inline-block"
+                  className="footer-link text-xs text-white hover:text-[#2dd4bf] font-medium transition-colors duration-200 inline-block"
                 >
                   {link.text}
                 </Link>
@@ -187,7 +187,7 @@ export default function CorporateFooter({
               <li key={index}>
                 <Link
                   href={link.destination}
-                  className="footer-link text-xs text-[#2dd4bf] hover:text-white font-medium transition-colors duration-200 inline-block"
+                  className="footer-link text-xs text-white hover:text-[#2dd4bf] font-medium transition-colors duration-200 inline-block"
                 >
                   {link.text}
                 </Link>
@@ -227,10 +227,10 @@ export default function CorporateFooter({
 
           {/* Right Section: Privacy Policy, Terms & Conditions, and Scroll to Top Button aligned horizontally */}
           <div className="flex items-center gap-4 sm:gap-6">
-            <Link href="/privacy" className="footer-legal-link text-xs text-[#2dd4bf] font-medium hover:text-white transition-colors duration-200">
+            <Link href="/privacy" className="footer-legal-link text-xs text-white font-medium hover:text-[#2dd4bf] transition-colors duration-200">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="footer-legal-link text-xs text-[#2dd4bf] font-medium hover:text-white transition-colors duration-200">
+            <Link href="/terms" className="footer-legal-link text-xs text-white font-medium hover:text-[#2dd4bf] transition-colors duration-200">
               Terms &amp; Conditions
             </Link>
 

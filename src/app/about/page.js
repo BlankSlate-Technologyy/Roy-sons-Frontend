@@ -235,7 +235,7 @@ export default function AboutPage() {
                 }}
               >
                 <Image 
-                  src="/About-us-hero.jpeg" 
+                  src="/logos/ROYSONS Building Elevation.jpeg" 
                   alt="Roys Group Headquarters" 
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

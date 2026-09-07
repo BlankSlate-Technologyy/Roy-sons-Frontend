@@ -4,24 +4,15 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 
-export default function EquipmentCard({ equipment, onSelect }) {
+export default function EquipmentCard({ equipment }) {
   const [imageError, setImageError] = useState(false);
 
   if (!equipment) return null;
 
   return (
     <div
-      onClick={() => onSelect && onSelect(equipment)}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onSelect && onSelect(equipment);
-        }
-      }}
-      role="button"
-      tabIndex={0}
       style={{ fontFamily: '"Times New Roman", Times, serif' }}
-      className="group relative flex flex-col h-full bg-white rounded-2xl border border-slate-200/90 overflow-hidden text-left cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:border-[#0a7a8c]/50 hover:shadow-[0_14px_32px_rgba(10,122,140,0.14)] focus:outline-none focus:ring-2 focus:ring-[#0a7a8c] focus:ring-offset-2"
+      className="group relative flex flex-col h-full bg-white rounded-2xl border border-slate-200/90 overflow-hidden text-left cursor-default select-none transition-all duration-300 hover:border-[#0a7a8c]/40 hover:shadow-lg"
     >
       {/* 4:3 Aspect Ratio Image Container */}
       <div className="relative w-full aspect-[4/3] bg-slate-100 overflow-hidden border-b border-slate-100">
