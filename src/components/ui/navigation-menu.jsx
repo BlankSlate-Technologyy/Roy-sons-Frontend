@@ -226,56 +226,56 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
             boxShadow: "0 25px 45px -12px rgba(4, 46, 58, 0.18), 0 0 25px rgba(10, 122, 140, 0.08)",
           }}
         >
-          <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8 py-7 lg:py-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+          <div className="mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-stretch">
               
-              {/* Left Column: Image Banner + Intro Box (Light theme with mint/cyan accent) */}
-              <div className="lg:col-span-7 flex flex-col sm:flex-row rounded-md overflow-hidden border border-[#0a7a8c]/20 shadow-lg bg-white">
+              {/* Left Column: Image Banner + Intro Box (Light theme with mint/cyan accent - compact height) */}
+              <div className="lg:col-span-7 flex flex-col sm:flex-row rounded-md overflow-hidden border border-[#0a7a8c]/20 shadow-md bg-white">
                 {/* Photo on left of banner */}
-                <div className="relative sm:w-[44%] min-h-[200px] sm:min-h-[240px] overflow-hidden group/img">
+                <div className="relative sm:w-[40%] min-h-[140px] sm:min-h-[170px] overflow-hidden group/img">
                   <Image
                     src="/ROYSONS Slide Image 10.jpeg"
                     alt="ROYSONS Construction & Infrastructure Services"
                     fill
                     className="object-cover transition-transform duration-500 group-hover/img:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 400px"
+                    sizes="(max-width: 1024px) 100vw, 350px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#042E3A]/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#042E3A]/30 via-transparent to-transparent" />
                 </div>
 
                 {/* Light Soft Mint/Teal Box with Intro Text */}
-                <div className="sm:w-[56%] p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-br from-[#f0fdfa] to-[#e6fffa] border-t sm:border-t-0 sm:border-l border-[#0a7a8c]/15">
+                <div className="sm:w-[60%] p-4 sm:p-5 flex flex-col justify-between bg-gradient-to-br from-[#f0fdfa] to-[#e6fffa] border-t sm:border-t-0 sm:border-l border-[#0a7a8c]/15">
                   <div>
-                    <div className="flex items-center gap-2 mb-2.5">
-                      <Sparkles size={14} className="text-[#0a7a8c]" />
-                      <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.22em] text-[#0a7a8c]">
+                    <div className="flex items-center gap-1.5 mb-1.5">
+                      <Sparkles size={13} className="text-[#0a7a8c]" />
+                      <span className="text-[10.5px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-[#0a7a8c]">
                         Roysons Portfolio
                       </span>
                     </div>
-                    <p className="text-[15px] sm:text-[15.5px] xl:text-[16.5px] text-[#042E3A]/90 leading-[1.72] font-normal">
-                      ROYSONS Pvt. Ltd. offers a comprehensive list of professional engineering, healthcare, technology, and infrastructure services for projects across public and private sectors. We serve our clients from early planning stages through project closeout.
+                    <p className="text-[13px] sm:text-[13.5px] text-[#042E3A]/90 leading-snug font-normal">
+                      ROYSONS Pvt. Ltd. provides professional engineering, healthcare, technology, and infrastructure services for public and private sector projects from concept to completion.
                     </p>
                   </div>
 
                   <Link
                     href="/services"
                     onClick={closeServicesDropdown}
-                    className="rs-cta-btn mt-5 inline-flex items-center gap-2 text-xs sm:text-[12.5px] font-black uppercase tracking-wider text-white px-5 py-2.5 rounded-lg transition-all self-start shadow-md hover:shadow-[0_4px_16px_rgba(0,119,182,0.35)] active:scale-95 whitespace-nowrap"
+                    className="rs-cta-btn mt-3 inline-flex items-center gap-2 text-[11px] sm:text-[11.5px] font-bold uppercase tracking-wider text-white px-4 py-2 rounded-md transition-all self-start shadow-sm hover:shadow-[0_4px_14px_rgba(0,119,182,0.3)] active:scale-95 whitespace-nowrap"
                     style={{
                       background: "linear-gradient(90deg, #0077b6 0%, #009688 50%, #02b875 100%)",
                       color: "#ffffff",
-                      borderRadius: "8px",
+                      borderRadius: "6px",
                     }}
                   >
                     <span className="whitespace-nowrap text-white font-bold">Explore All Services</span>
-                    <ArrowRight size={14} strokeWidth={2.4} className="shrink-0 text-white" />
+                    <ArrowRight size={13} strokeWidth={2.4} className="shrink-0 text-white" />
                   </Link>
                 </div>
               </div>
 
               {/* Right Column: Vertical List of Services with Horizontal Dividers */}
-              <div className="lg:col-span-5 flex flex-col justify-center py-1">
-                <ul className="flex flex-col w-full space-y-1">
+              <div className="lg:col-span-5 flex flex-col justify-center">
+                <ul className="flex flex-col w-full space-y-0.5">
                   {SERVICES_DROPDOWN_ITEMS.map((item, index) => {
                     const isItemActive =
                       currentPath === item.path ||
@@ -286,7 +286,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                         <Link
                           href={item.path}
                           onClick={closeServicesDropdown}
-                          className={`services-dropdown-link group/item flex items-center justify-between py-2.5 transition-all text-[#042E3A] hover:text-[#0a7a8c] ${
+                          className={`services-dropdown-link group/item flex items-center justify-between py-1.5 transition-all text-[#042E3A] hover:text-[#0a7a8c] ${
                             isItemActive ? "is-active" : ""
                           }`}
                           style={{
@@ -294,9 +294,9 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                             WebkitTextFillColor: isItemActive ? "#0a7a8c" : "#042E3A",
                           }}
                         >
-                          <div className="flex items-center gap-2.5">
+                          <div className="flex items-center gap-2">
                             <span
-                              className={`services-item-title text-[14px] sm:text-[14.5px] xl:text-[15.5px] font-medium tracking-[0.01em] transition-colors duration-300 ${
+                              className={`services-item-title text-[13.5px] sm:text-[14px] font-medium tracking-[0.01em] transition-colors duration-300 ${
                                 isItemActive
                                   ? "text-[#0a7a8c]"
                                   : "text-[#042E3A] group-hover/item:text-[#0a7a8c]"
@@ -310,7 +310,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                             </span>
                             {item.isOther && (
                               <span
-                                className="services-item-badge text-[10.5px] sm:text-[11px] uppercase font-extrabold tracking-widest px-2.5 py-0.5 rounded-full bg-[#0a7a8c]/10 text-[#0a7a8c] border border-[#0a7a8c]/30 group-hover/item:bg-[#0a7a8c] group-hover/item:text-white transition-colors"
+                                className="services-item-badge text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#0a7a8c]/10 text-[#0a7a8c] border border-[#0a7a8c]/30 group-hover/item:bg-[#0a7a8c] group-hover/item:text-white transition-colors"
                                 style={{
                                   color: "#0a7a8c",
                                   WebkitTextFillColor: "#0a7a8c",
@@ -322,7 +322,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                           </div>
 
                           <ArrowRight
-                            size={16}
+                            size={14}
                             strokeWidth={2.4}
                             className={`services-item-arrow transition-all duration-300 ${
                               isItemActive

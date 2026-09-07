@@ -43,8 +43,15 @@ export default function NewsIndexPage() {
       <HeaderNavbar activeRoute="/news" />
 
       {/* Hero Header Section */}
-      <section className="pt-32 pb-16 bg-[#0e1215] text-white border-b border-neutral-800 relative overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#dfb753]/10 rounded-full blur-3xl pointer-events-none" />
+      <section 
+        data-dark-section="true"
+        className="roysons-preserve-dark pt-32 pb-16 text-white border-b border-neutral-800 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold text-neutral-400 mb-4 uppercase tracking-wider">
@@ -253,21 +260,28 @@ export default function NewsIndexPage() {
       </section>
 
       {/* Corporate Call To Action Banner */}
-      <section className="py-16 bg-[#101518] text-white border-t border-neutral-800">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 text-center">
+      <section 
+        data-dark-section="true"
+        className="roysons-preserve-dark py-16 text-white border-t border-teal-800/30 relative overflow-hidden"
+        style={{
+          background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/15 pointer-events-none" />
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <div className="max-w-2xl mx-auto">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[#dfb753] mb-3">
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-teal-200 mb-3">
               JOIN THE CONVERSATION
             </p>
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-4">
               Building Strategic Solutions Across Industries
             </h2>
-            <p className="text-[14px] text-neutral-400 leading-relaxed mb-8">
+            <p className="text-[15px] text-teal-50/90 leading-relaxed mb-8 font-normal">
               Whether you require healthcare engineering, government contracting, IT infrastructure, or global trade solutions, ROYSONS brings together the capabilities to deliver excellence.
             </p>
             <Link
               href="/contact"
-              className="rs-cta-btn inline-flex items-center gap-2.5 px-8 py-4 text-[11.5px] font-black tracking-[0.16em] uppercase text-black border-2 border-[#dfb753] bg-[#dfb753] hover:bg-black hover:text-[#dfb753] hover:border-black transition-all duration-300 rounded-[2px]"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 text-[12px] font-bold tracking-wider uppercase text-[#042E3A] bg-white hover:bg-teal-50 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full"
             >
               <span>Connect with Our Executive Team</span>
               <ArrowRight size={14} strokeWidth={2.5} />

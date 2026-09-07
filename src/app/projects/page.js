@@ -93,21 +93,21 @@ function ProjectCard({ image, category, title, description, href }) {
       </div>
 
       <div className="p-6 flex flex-col flex-1">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0a7a8c] mb-1.5">
+        <span className="text-xs font-black uppercase tracking-[0.2em] text-[#0a7a8c] mb-2">
           {category}
         </span>
-        <h3 className="text-[15px] font-black uppercase tracking-tight text-neutral-950 mb-2 leading-snug group-hover:text-[#0a7a8c] transition-colors">
+        <h3 className="text-lg sm:text-[19px] font-black uppercase tracking-tight text-neutral-950 mb-2.5 leading-snug group-hover:text-[#0a7a8c] transition-colors">
           {title}
         </h3>
-        <p className="text-[12.5px] text-neutral-600 leading-relaxed flex-1 mb-5">
+        <p className="text-sm text-neutral-600 leading-relaxed flex-1 mb-5">
           {description}
         </p>
         <Link
           href={href}
-          className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.16em] text-neutral-950 hover:text-[#0a7a8c] self-start transition-all duration-200 group-hover:translate-x-1"
+          className="inline-flex items-center gap-2 text-xs sm:text-[13px] font-black uppercase tracking-[0.16em] text-neutral-950 hover:text-[#0a7a8c] self-start transition-all duration-200 group-hover:translate-x-1"
         >
           <span>View Project Details</span>
-          <ArrowRight size={12} strokeWidth={2.5} />
+          <ArrowRight size={14} strokeWidth={2.5} />
         </Link>
       </div>
     </div>
@@ -116,10 +116,10 @@ function ProjectCard({ image, category, title, description, href }) {
 
 function QueryFormField({ id, label, placeholder, type = "text", required = false, value, onChange }) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="text-[10px] font-bold text-neutral-950 uppercase tracking-[0.12em]"
+        className="text-xs font-bold text-neutral-950 uppercase tracking-[0.12em]"
       >
         {label} {required && <span className="text-red-500">*</span>}
       </label>
@@ -130,7 +130,7 @@ function QueryFormField({ id, label, placeholder, type = "text", required = fals
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full bg-white border border-neutral-200 px-3 py-2.5 text-[11.5px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-neutral-950 transition-colors rounded-[2px]"
+        className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-[13px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px]"
       />
     </div>
   );
@@ -138,10 +138,10 @@ function QueryFormField({ id, label, placeholder, type = "text", required = fals
 
 function QueryFormSelect({ id, label, options, required = false, value, onChange }) {
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1.5">
       <label
         htmlFor={id}
-        className="text-[10px] font-bold text-neutral-950 uppercase tracking-[0.12em]"
+        className="text-xs font-bold text-neutral-950 uppercase tracking-[0.12em]"
       >
         {label} {required && <span className="text-red-500">*</span>}
       </label>
@@ -151,19 +151,19 @@ function QueryFormSelect({ id, label, options, required = false, value, onChange
           value={value}
           onChange={onChange}
           required={required}
-          className="w-full bg-white border border-neutral-200 px-3 py-2.5 text-[11.5px] text-neutral-500 outline-none focus:border-neutral-950 transition-colors rounded-[2px] appearance-none cursor-pointer"
+          className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-[13px] text-neutral-700 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px] appearance-none cursor-pointer"
         >
           <option value="" disabled>
             Select a subject
           </option>
           {options.map((opt) => (
-            <option key={opt} value={opt} className="text-black">
+            <option key={opt} value={opt} className="text-neutral-900 text-xs sm:text-[13px]">
               {opt}
             </option>
           ))}
         </select>
         <ChevronDown
-          size={13}
+          size={14}
           className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none"
         />
       </div>
@@ -225,7 +225,7 @@ export default function ProjectsPage() {
 
       {/* Projects Hero Banner - Centered Gradient Design */}
       <section 
-        className="projects-hero-gradient services-hero-gradient relative py-8 sm:py-10 lg:py-12 px-6 overflow-hidden text-center flex flex-col items-center justify-center border-b border-[#0a7a8c]/20"
+        className="projects-hero-gradient services-hero-gradient relative py-10 sm:py-12 lg:py-16 px-6 overflow-hidden text-center flex flex-col items-center justify-center border-b border-[#0a7a8c]/20"
         style={{
           background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
           backgroundColor: "#088192",
@@ -234,21 +234,21 @@ export default function ProjectsPage() {
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
           {/* Top Tag */}
           <span 
-            className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-white/85 mb-1.5 block"
-            style={{ color: "rgba(255, 255, 255, 0.85)" }}
+            className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-white/90 mb-2 block"
+            style={{ color: "rgba(255, 255, 255, 0.9)" }}
           >
             WHAT WE DO
           </span>
 
           <h1 
-            className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-2.5 leading-tight drop-shadow-sm"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3 leading-tight drop-shadow-sm"
             style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
           >
             Our Projects
           </h1>
 
           <p 
-            className="text-[14px] sm:text-[15.5px] text-white/95 leading-relaxed max-w-2xl mx-auto mb-5 font-normal drop-shadow-sm"
+            className="text-base sm:text-lg md:text-xl lg:text-[21px] text-white/95 leading-relaxed max-w-3xl mx-auto mb-6 sm:mb-7 font-normal drop-shadow-sm"
             style={{ color: "rgba(255, 255, 255, 0.95)", WebkitTextFillColor: "rgba(255, 255, 255, 0.95)" }}
           >
             ROYSONS Pvt. Ltd. offers a wide range of innovative and
@@ -260,10 +260,10 @@ export default function ProjectsPage() {
             <Link
               href="#project-query-section"
               id="projects-hero-cta"
-              className="inline-flex items-center justify-center bg-white hover:bg-neutral-100 text-[#042E3A] font-bold px-7 py-2.5 sm:py-3 text-xs sm:text-sm rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 whitespace-nowrap"
+              className="inline-flex items-center justify-center bg-white hover:bg-neutral-100 text-[#042E3A] font-bold px-8 py-3 sm:py-3.5 text-xs sm:text-sm rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 whitespace-nowrap"
               style={{ borderRadius: "9999px", backgroundColor: "#ffffff", color: "#042E3A" }}
             >
-              <span className="text-[#042E3A] font-bold uppercase tracking-wider text-xs sm:text-[13px] whitespace-nowrap">Request a Query</span>
+              <span className="text-[#042E3A] font-bold uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap">Request a Query</span>
             </Link>
           </div>
         </div>
@@ -273,41 +273,41 @@ export default function ProjectsPage() {
         <div className="max-w-screen-xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="flex-1 min-w-0">
-              <h2 className="text-[16px] font-black uppercase tracking-[0.18em] text-neutral-950 mb-1">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-neutral-950 mb-2">
                 Featured Projects
               </h2>
-              <div className="h-[3px] w-10 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-8" />
+              <div className="h-[3px] w-14 bg-gradient-to-r from-[#042E3A] to-[#0a7a8c] mb-8" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {FEATURED_PROJECTS.map((project, idx) => (
                   <ProjectCard key={idx} {...project} />
                 ))}
               </div>
 
-              <div className="flex justify-center mt-10">
+              <div className="flex justify-center mt-12">
                 <Link
                   href="/projects/all"
                   id="view-all-projects-btn"
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white px-9 py-3.5 text-[10.5px] font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] text-white px-10 py-3.5 text-xs sm:text-sm font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
                 >
-                  View All <ArrowRight size={13} strokeWidth={2.5} />
+                  View All <ArrowRight size={15} strokeWidth={2.5} />
                 </Link>
               </div>
             </div>
 
-            <div id="project-query-section" className="lg:w-[300px] flex-shrink-0 scroll-mt-24">
-              <div className="bg-white border border-neutral-200 p-6 sticky top-24">
+            <div id="project-query-section" className="lg:w-[320px] flex-shrink-0 scroll-mt-24">
+              <div className="bg-white border border-neutral-200 p-6 sm:p-7 sticky top-24 rounded-lg shadow-sm">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 bg-[#f0fdfa] border border-[#0a7a8c]/30 rounded-sm flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:bg-gradient-to-br hover:from-[#042E3A] hover:to-[#0a7a8c] group cursor-pointer">
-                    <Shield size={17} className="text-[#0a7a8c] transition-colors duration-300 group-hover:text-white" strokeWidth={1.8} />
+                  <div className="w-10 h-10 bg-[#f0fdfa] border border-[#0a7a8c]/30 rounded-md flex items-center justify-center flex-shrink-0 transition-all duration-300 hover:bg-gradient-to-br hover:from-[#042E3A] hover:to-[#0a7a8c] group cursor-pointer">
+                    <Shield size={18} className="text-[#0a7a8c] transition-colors duration-300 group-hover:text-white" strokeWidth={1.8} />
                   </div>
                   <div>
-                    <h3 className="text-[13px] font-black uppercase tracking-[0.1em] text-neutral-950 leading-tight">
+                    <h3 className="text-base sm:text-lg font-black uppercase tracking-[0.1em] text-neutral-950 leading-tight">
                       General Query
                     </h3>
                   </div>
                 </div>
-                <p className="text-[11px] text-neutral-500 leading-relaxed mb-5">
+                <p className="text-xs sm:text-[13px] text-neutral-500 leading-relaxed mb-5">
                   Have a question or need more information? Fill out the form and
                   our team will get back to you shortly.
                 </p>
@@ -317,15 +317,15 @@ export default function ProjectsPage() {
                     <div className="w-10 h-10 bg-[#0a7a8c] rounded-full flex items-center justify-center">
                       <ArrowRight size={16} className="text-white" />
                     </div>
-                    <p className="text-[11px] font-black uppercase tracking-widest text-neutral-950 text-center">
+                    <p className="text-sm font-black uppercase tracking-widest text-neutral-950 text-center">
                       Query Submitted!
                     </p>
-                    <p className="text-[10.5px] text-neutral-500 text-center">
+                    <p className="text-xs text-neutral-500 text-center">
                       We&apos;ll get back to you shortly.
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-3.5">
+                  <form onSubmit={handleSubmit} className="space-y-4">
                     <QueryFormField
                       id="sidebar-fullname"
                       label="Full Name"
@@ -359,10 +359,10 @@ export default function ProjectsPage() {
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     />
 
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1.5">
                       <label
                         htmlFor="sidebar-message"
-                        className="text-[10px] font-bold text-neutral-950 uppercase tracking-[0.12em]"
+                        className="text-xs font-bold text-neutral-950 uppercase tracking-[0.12em]"
                       >
                         Your Message <span className="text-red-500">*</span>
                       </label>
@@ -373,12 +373,12 @@ export default function ProjectsPage() {
                         required
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full bg-white border border-neutral-200 px-3 py-2.5 text-[11.5px] text-neutral-700 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px] resize-none"
+                        className="w-full bg-white border border-neutral-200 px-3.5 py-2.5 text-xs sm:text-[13px] text-neutral-800 placeholder-neutral-400 outline-none focus:border-[#0a7a8c] transition-colors rounded-[2px] resize-none"
                       />
                     </div>
 
                     {submitError && (
-                      <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-[2px] text-[11px] font-medium tracking-wide">
+                      <div className="bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-[2px] text-xs font-medium tracking-wide">
                         ⚠️ {submitError}
                       </div>
                     )}
@@ -387,13 +387,13 @@ export default function ProjectsPage() {
                       type="submit"
                       id="sidebar-query-submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] disabled:bg-neutral-400 text-white py-3 text-[10px] font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] cursor-pointer disabled:cursor-not-allowed shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
+                      className="w-full flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] disabled:bg-neutral-400 text-white py-3.5 text-xs sm:text-[13px] font-black uppercase tracking-[0.18em] transition-all duration-300 rounded-[2px] cursor-pointer disabled:cursor-not-allowed shadow-[0_4px_16px_rgba(10,122,140,0.35)]"
                     >
-                      {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={12} strokeWidth={2.5} />
+                      {isSubmitting ? "Submitting..." : "Submit Query"} <ArrowRight size={14} strokeWidth={2.5} />
                     </button>
 
-                    <div className="flex items-center gap-2 text-neutral-400 text-[10px] font-medium pt-1">
-                      <Lock size={11} />
+                    <div className="flex items-center gap-2 text-neutral-400 text-xs font-medium pt-1">
+                      <Lock size={13} />
                       <span>Your information is safe with us. We respect your privacy.</span>
                     </div>
                   </form>
@@ -404,23 +404,37 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="py-14 bg-[#f0fdfa] border-t border-[#0a7a8c]/15">
-        <div className="max-w-screen-xl mx-auto px-6">
+      {/* Stats Counter Strip - Button Gradient Design */}
+      <section 
+        data-dark-section="true"
+        className="roysons-preserve-dark relative py-12 sm:py-16 overflow-hidden border-t border-b border-[#0a7a8c]/30 shadow-md"
+        style={{
+          background: "linear-gradient(90deg, #042E3A 0%, #075d6d 50%, #0a7a8c 100%)",
+          backgroundColor: "#075d6d",
+        }}
+      >
+        <div className="max-w-screen-xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {STATS.map(({ icon: Icon, count, label }, idx) => (
-              <div key={idx} className="flex items-center gap-4 group cursor-pointer">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#042E3A] via-[#075d6d] to-[#0a7a8c] border-2 border-[#0d9488]/40 shadow-[0_4px_16px_rgba(10,122,140,0.3)] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:shadow-[0_6px_22px_rgba(13,148,136,0.5)]">
+              <div key={idx} className="flex items-center gap-4 sm:gap-5 group cursor-pointer">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/10 border border-white/25 backdrop-blur-sm shadow-[0_4px_16px_rgba(0,0,0,0.2)] flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20 group-hover:border-white/40">
                   <Icon
-                    size={26}
+                    size={28}
                     strokeWidth={1.8}
-                    className="text-white transition-transform duration-300 group-hover:scale-105"
+                    className="text-white transition-transform duration-300 group-hover:scale-105 drop-shadow-sm"
                   />
                 </div>
                 <div>
-                  <p className="text-2xl sm:text-3xl font-black text-[#042E3A] leading-none">
+                  <p 
+                    className="text-3xl sm:text-4xl font-black text-white leading-none tracking-tight drop-shadow-sm"
+                    style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                  >
                     {count}
                   </p>
-                  <p className="text-[11px] text-[#042E3A]/75 font-medium tracking-wide mt-1">
+                  <p 
+                    className="text-xs sm:text-[13px] text-white/90 font-bold tracking-wider mt-2 uppercase"
+                    style={{ color: "rgba(255, 255, 255, 0.9)", WebkitTextFillColor: "rgba(255, 255, 255, 0.9)" }}
+                  >
                     {label}
                   </p>
                 </div>

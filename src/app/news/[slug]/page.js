@@ -38,20 +38,20 @@ export default function BlogPostPage({ params }) {
     return (
       <main className="min-h-screen bg-white font-sans">
         <HeaderNavbar activeRoute="/news" />
-        <div className="pt-36 pb-20 max-w-screen-md mx-auto px-6 text-center min-h-[60vh] flex flex-col justify-center items-center">
-          <div className="w-16 h-16 rounded-full bg-neutral-100 flex items-center justify-center mb-6 text-neutral-400">
+        <div className="pt-32 pb-20 max-w-screen-md mx-auto px-6 text-center min-h-[60vh] flex flex-col justify-center items-center">
+          <div className="w-16 h-16 rounded-full bg-[#f0fdfa] border border-[#0a7a8c]/20 flex items-center justify-center mb-5 text-[#0a7a8c]">
             <BookOpen size={28} />
           </div>
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.25em] text-[#dfb753] mb-2">ROYSONS INSIGHTS</p>
-          <h1 className="text-3xl sm:text-4xl font-black text-neutral-950 uppercase tracking-tight mb-4">
+          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#0a7a8c] mb-2">ROYSONS INSIGHTS</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-neutral-950 uppercase tracking-tight mb-3">
             Article Not Found
           </h1>
-          <p className="text-neutral-500 text-sm max-w-md mb-8">
+          <p className="text-neutral-600 text-sm sm:text-base max-w-md mb-6 leading-relaxed">
             The article you are looking for may have been moved, updated, or is currently under editorial review.
           </p>
           <Link 
             href="/news" 
-            className="inline-flex items-center gap-2.5 px-6 py-3 text-[11px] font-black tracking-[0.18em] uppercase text-black bg-[#dfb753] hover:bg-black hover:text-[#dfb753] transition-all duration-300 rounded-[2px]"
+            className="inline-flex items-center gap-2.5 px-7 py-3 text-xs font-black tracking-[0.16em] uppercase text-white bg-gradient-to-r from-[#042E3A] via-[#075d6d] to-[#0a7a8c] hover:from-[#0a7a8c] hover:to-[#0d9488] transition-all duration-300 rounded-full shadow-md"
           >
             <ArrowLeft size={14} />
             BACK TO ALL INSIGHTS
@@ -66,61 +66,75 @@ export default function BlogPostPage({ params }) {
   const relatedArticles = Object.values(BLOG_POSTS).filter(p => p.slug !== slug);
 
   return (
-    <main className="min-h-screen bg-white font-sans selection:bg-[#dfb753]/30 selection:text-neutral-900">
+    <main className="min-h-screen bg-white font-sans selection:bg-[#0a7a8c]/20 selection:text-[#042E3A]">
       <HeaderNavbar activeRoute="/news" />
       
-      {/* Top Header & Breadcrumbs Bar */}
-      <section className="pt-28 pb-8 bg-[#0e1215] text-white border-b border-neutral-800">
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold text-neutral-400 mb-6 uppercase tracking-wider">
-            <Link href="/" className="hover:text-[#dfb753] transition-colors">Home</Link>
-            <ChevronRight size={12} className="text-neutral-600" />
-            <Link href="/news" className="hover:text-[#dfb753] transition-colors">News & Insights</Link>
-            <ChevronRight size={12} className="text-neutral-600" />
-            <span className="text-[#dfb753] truncate max-w-[200px] sm:max-w-xs">{post.category}</span>
+      {/* Top Header & Breadcrumbs Bar - Gradient Header for high visibility */}
+      <section 
+        data-dark-section="true"
+        className="roysons-preserve-dark relative pt-24 sm:pt-28 pb-8 sm:pb-10 px-4 sm:px-6 overflow-hidden text-white border-b border-[#0a7a8c]/25 shadow-sm"
+        style={{
+          background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
+          backgroundColor: "#088192",
+        }}
+      >
+        <div className="max-w-4xl mx-auto">
+          {/* Breadcrumbs */}
+          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-white/80 mb-4 uppercase tracking-wider">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight size={12} className="text-white/60" />
+            <Link href="/news" className="hover:text-white transition-colors">News &amp; Insights</Link>
+            <ChevronRight size={12} className="text-white/60" />
+            <span className="text-white font-bold truncate max-w-[200px] sm:max-w-xs">{post.category}</span>
           </div>
 
-          <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a2127] border border-[#dfb753]/40 rounded-full mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#dfb753] animate-pulse" />
-              <span className="text-[10.5px] font-bold uppercase tracking-[0.15em] text-[#dfb753]">
+          <div>
+            {/* Category Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-white/20 border border-white/30 backdrop-blur-sm rounded-full mb-3.5 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              <span className="text-[11px] font-black uppercase tracking-[0.16em] text-white">
                 {post.category}
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl lg:text-[44px] font-black text-white tracking-tight leading-[1.15] mb-6">
+            {/* Article Title */}
+            <h1 
+              className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-5 drop-shadow-sm"
+              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+            >
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-neutral-800/80 text-[12px] text-neutral-300">
+            {/* Metadata Bar */}
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-white/20 text-xs sm:text-[13px] text-white/90">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-[#dfb753]/20 border border-[#dfb753]/40 flex items-center justify-center text-[#dfb753]">
-                  <Building2 size={14} />
+                <div className="w-8 h-8 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-white">
+                  <Building2 size={15} />
                 </div>
                 <div>
                   <p className="font-bold text-white leading-tight">ROYSONS Strategic Desk</p>
-                  <p className="text-[10px] text-neutral-400 uppercase tracking-wider">Corporate Research</p>
+                  <p className="text-[10.5px] text-white/75 uppercase tracking-wider">Corporate Research</p>
                 </div>
               </div>
 
-              <div className="h-4 w-px bg-neutral-800 hidden sm:block" />
+              <div className="h-4 w-px bg-white/30 hidden sm:block" />
 
-              <div className="flex items-center gap-1.5 text-neutral-400">
-                <Calendar size={13} className="text-[#dfb753]" />
+              <div className="flex items-center gap-1.5 text-white/90">
+                <Calendar size={14} className="text-white" />
                 <span>{post.date}</span>
               </div>
 
-              <div className="flex items-center gap-1.5 text-neutral-400">
-                <Clock size={13} className="text-[#dfb753]" />
+              <div className="flex items-center gap-1.5 text-white/90">
+                <Clock size={14} className="text-white" />
                 <span>{post.readTime}</span>
               </div>
 
               <button
                 onClick={handleShare}
-                className="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#161c20] hover:bg-[#20282e] border border-neutral-700 hover:border-[#dfb753]/50 text-neutral-200 text-[11px] font-semibold rounded transition-all duration-200"
+                className="ml-auto inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/20 hover:bg-white/30 border border-white/35 text-white text-xs font-bold rounded-full transition-all duration-200 cursor-pointer shadow-2xs"
                 title="Copy link to clipboard"
               >
-                {copied ? <Check size={13} className="text-emerald-400" /> : <Share2 size={13} className="text-[#dfb753]" />}
+                {copied ? <Check size={13} className="text-emerald-300" /> : <Share2 size={13} className="text-white" />}
                 <span>{copied ? "Link Copied!" : "Share Article"}</span>
               </button>
             </div>
@@ -128,132 +142,137 @@ export default function BlogPostPage({ params }) {
         </div>
       </section>
 
-      {/* Main Image Banner */}
-      <section className="bg-neutral-50/50 py-8 sm:py-12 border-b border-neutral-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-neutral-900 rounded-sm overflow-hidden shadow-2xl border border-neutral-200/80">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-          </div>
+      {/* Article Content Layout - Zero Excess Space */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-12 sm:pb-16">
+        {/* Main Featured Image directly integrated */}
+        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-neutral-900 rounded-xl overflow-hidden shadow-lg border border-[#0a7a8c]/20 mb-8 sm:mb-10">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
         </div>
-      </section>
 
-      {/* Article Content Layout */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="flex flex-col lg:flex-row gap-12 items-start">
-          
-          {/* Main Article Column */}
-          <article className="w-full text-neutral-700 text-[16.5px] leading-[1.8] font-normal">
-            {post.content}
+        {/* Main Article Text */}
+        <article className="w-full text-neutral-800 text-[17px] sm:text-[18px] leading-[1.8] font-normal">
+          {post.content}
 
-            {/* Bottom Executive CTA Box */}
-            <div className="mt-14 p-8 bg-gradient-to-br from-[#101518] to-[#1a2127] rounded-sm border border-neutral-800 text-white relative overflow-hidden shadow-xl">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#dfb753]/10 rounded-full blur-3xl pointer-events-none" />
-              
-              <div className="relative z-10">
-                <div className="flex items-center gap-2 text-[#dfb753] text-[11px] font-black uppercase tracking-[0.2em] mb-2">
-                  <Sparkles size={14} />
-                  <span>Integrated Solutions</span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-black tracking-tight text-white mb-3">
-                  Partner with ROYSONS for Next-Generation Execution
-                </h3>
-                <p className="text-[14px] text-neutral-300 leading-relaxed mb-6 max-w-xl">
-                  Connect with our sector specialists to discover how our integrated procurement, engineering, and infrastructure solutions can drive sustainable growth for your enterprise.
-                </p>
+          {/* Bottom Executive CTA Box */}
+          <div 
+            data-dark-section="true"
+            className="roysons-preserve-dark mt-10 sm:mt-12 p-6 sm:p-8 rounded-xl text-white relative overflow-hidden shadow-xl border border-[#0a7a8c]/30"
+            style={{
+              background: "linear-gradient(135deg, #042E3A 0%, #075d6d 50%, #0a7a8c 100%)",
+              backgroundColor: "#042E3A",
+            }}
+          >
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 text-[#2dd4bf] text-xs font-black uppercase tracking-[0.2em] mb-2.5">
+                <Sparkles size={14} />
+                <span>Integrated Solutions</span>
+              </div>
+              <h3 
+                className="text-xl sm:text-2xl lg:text-[26px] font-black tracking-tight text-white mb-2.5 leading-snug"
+                style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              >
+                Partner with ROYSONS for Next-Generation Execution
+              </h3>
+              <p 
+                className="text-sm sm:text-base text-white/90 leading-relaxed mb-6 max-w-xl"
+                style={{ color: "rgba(255, 255, 255, 0.9)", WebkitTextFillColor: "rgba(255, 255, 255, 0.9)" }}
+              >
+                Connect with our sector specialists to discover how our integrated procurement, engineering, and infrastructure solutions can drive sustainable growth for your enterprise.
+              </p>
 
-                <div className="flex flex-wrap items-center gap-4">
-                  <Link
-                    href={post.ctaLink || "/contact"}
-                    className="rs-cta-btn inline-flex items-center gap-2.5 px-6 py-3.5 text-[11.5px] font-black tracking-[0.16em] uppercase text-black border-2 border-[#dfb753] bg-[#dfb753] hover:bg-black hover:text-[#dfb753] hover:border-black transition-all duration-300 rounded-[2px]"
-                  >
-                    <span>{post.ctaText || "Connect With Us"}</span>
-                    <ArrowRight size={14} strokeWidth={2.4} />
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 px-5 py-3.5 text-[11.5px] font-bold tracking-[0.14em] uppercase text-white hover:text-[#dfb753] border border-neutral-700 hover:border-[#dfb753] transition-all duration-300 rounded-[2px]"
-                  >
-                    <span>Contact Advisory Desk</span>
-                  </Link>
-                </div>
+              <div className="flex flex-wrap items-center gap-3.5">
+                <Link
+                  href={post.ctaLink || "/contact"}
+                  className="inline-flex items-center gap-2.5 px-6 py-3 text-xs sm:text-[13px] font-bold tracking-[0.14em] uppercase text-[#042E3A] bg-white hover:bg-neutral-100 transition-all duration-300 rounded-full shadow-md hover:scale-105"
+                  style={{ backgroundColor: "#ffffff", color: "#042E3A" }}
+                >
+                  <span className="font-black">{post.ctaText || "Connect With Us"}</span>
+                  <ArrowRight size={14} strokeWidth={2.5} />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-5 py-3 text-xs sm:text-[13px] font-bold tracking-[0.14em] uppercase text-white hover:text-white border border-white/40 hover:bg-white/10 transition-all duration-300 rounded-full"
+                >
+                  <span>Contact Advisory Desk</span>
+                </Link>
               </div>
             </div>
-          </article>
-        </div>
+          </div>
+        </article>
       </div>
 
-      {/* Related Insights Carousel/Grid */}
+      {/* Related Insights Grid - Clean and Visible */}
       {relatedArticles.length > 0 && (
-        <section className="py-16 bg-[#0e1215] border-t border-neutral-800 font-sans text-white">
+        <section className="py-12 sm:py-16 bg-[#f8fafc] border-t border-neutral-200 font-sans">
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-neutral-800">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-3.5 border-b border-neutral-200">
               <div>
-                <p className="text-[10.5px] font-extrabold uppercase tracking-[0.25em] text-[#dfb753] mb-1.5">
+                <p className="text-xs font-black uppercase tracking-[0.25em] text-[#0a7a8c] mb-1.5">
                   KEEP EXPLORING
                 </p>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">
-                  Related Perspectives & Insights
+                <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#042E3A]">
+                  Related Perspectives &amp; Insights
                 </h2>
               </div>
               <Link 
                 href="/news" 
-                className="mt-4 sm:mt-0 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-[#dfb753] hover:text-white transition-colors"
+                className="mt-3 sm:mt-0 inline-flex items-center gap-2 text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-[#0a7a8c] hover:text-[#042E3A] transition-colors"
               >
                 <span>View All Articles</span>
-                <ArrowRight size={13} strokeWidth={2.5} />
+                <ArrowRight size={14} strokeWidth={2.5} />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {relatedArticles.map((item, idx) => (
                 <div 
                   key={idx}
-                  className="group bg-[#161c20] border border-neutral-800 hover:border-[#dfb753]/60 rounded-sm overflow-hidden flex flex-col transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+                  className="group bg-white border border-neutral-200 hover:border-[#0a7a8c] rounded-xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 >
-                  <div className="relative w-full h-52 overflow-hidden bg-neutral-900">
+                  <div className="relative w-full h-52 sm:h-56 overflow-hidden bg-neutral-100">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute top-3 left-3 bg-[#0e1215]/90 border border-[#dfb753]/40 backdrop-blur-sm px-2.5 py-1 rounded text-[10px] font-bold text-[#dfb753] uppercase tracking-wider">
+                    <div className="absolute top-3 left-3 bg-white/95 border border-[#0a7a8c]/30 backdrop-blur-sm px-3 py-1 rounded-full text-[10.5px] font-black text-[#0a7a8c] uppercase tracking-wider shadow-xs">
                       {item.category}
                     </div>
                   </div>
 
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center gap-3 text-[11px] text-neutral-400 font-medium mb-3">
-                        <span className="flex items-center gap-1">
-                          <Calendar size={11} className="text-[#dfb753]" />
+                      <div className="flex items-center gap-3 text-xs text-neutral-500 font-medium mb-3">
+                        <span className="flex items-center gap-1.5">
+                          <Calendar size={12} className="text-[#0a7a8c]" />
                           {item.date}
                         </span>
                         <span>•</span>
-                        <span className="flex items-center gap-1">
-                          <Clock size={11} className="text-[#dfb753]" />
+                        <span className="flex items-center gap-1.5">
+                          <Clock size={12} className="text-[#0a7a8c]" />
                           {item.readTime}
                         </span>
                       </div>
 
-                      <h3 className="text-lg font-black text-white group-hover:text-[#dfb753] transition-colors line-clamp-2 leading-snug mb-4">
+                      <h3 className="text-base sm:text-lg font-black text-neutral-950 group-hover:text-[#0a7a8c] transition-colors line-clamp-2 leading-snug mb-4">
                         {item.title}
                       </h3>
                     </div>
 
                     <Link
                       href={`/news/${item.slug}`}
-                      className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.16em] uppercase text-[#dfb753] group-hover:text-white transition-colors pt-4 border-t border-neutral-800/80"
+                      className="inline-flex items-center gap-2 text-xs font-black tracking-[0.16em] uppercase text-[#0a7a8c] group-hover:text-[#042E3A] transition-colors pt-4 border-t border-neutral-100"
                     >
                       <span>Read Full Insight</span>
-                      <ArrowRight size={12} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={13} strokeWidth={2.5} className="group-hover:translate-x-1.5 transition-transform" />
                     </Link>
                   </div>
                 </div>

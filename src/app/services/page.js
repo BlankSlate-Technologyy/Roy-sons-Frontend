@@ -304,7 +304,7 @@ export default function ServicesPage() {
 
       {/* Services Hero Banner - Centered Gradient Design */}
       <section 
-        className="services-hero-gradient relative py-8 sm:py-10 lg:py-12 px-6 overflow-hidden text-center flex flex-col items-center justify-center border-b border-[#0a7a8c]/20"
+        className="services-hero-gradient relative py-10 sm:py-12 lg:py-16 px-6 overflow-hidden text-center flex flex-col items-center justify-center border-b border-[#0a7a8c]/20"
         style={{
           background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
           backgroundColor: "#088192",
@@ -313,21 +313,21 @@ export default function ServicesPage() {
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
           {/* Top Tag */}
           <span 
-            className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-white/85 mb-1.5 block"
-            style={{ color: "rgba(255, 255, 255, 0.85)" }}
+            className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-white/90 mb-2 block"
+            style={{ color: "rgba(255, 255, 255, 0.9)" }}
           >
             WHAT WE DO
           </span>
 
           <h1 
-            className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-2.5 leading-tight drop-shadow-sm"
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3 leading-tight drop-shadow-sm"
             style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
           >
             Our Services
           </h1>
 
           <p 
-            className="text-[14px] sm:text-[15.5px] text-white/95 leading-relaxed max-w-2xl mx-auto mb-5 font-normal drop-shadow-sm"
+            className="text-base sm:text-lg md:text-xl lg:text-[21px] text-white/95 leading-relaxed max-w-3xl mx-auto mb-6 sm:mb-7 font-normal drop-shadow-sm"
             style={{ color: "rgba(255, 255, 255, 0.95)", WebkitTextFillColor: "rgba(255, 255, 255, 0.95)" }}
           >
             ROYSONS Pvt. Ltd. offers a wide range of innovative and
@@ -339,10 +339,10 @@ export default function ServicesPage() {
             <Link
               href="#request-query"
               id="services-hero-cta"
-              className="inline-flex items-center justify-center bg-white hover:bg-neutral-100 text-[#042E3A] font-bold px-7 py-2.5 sm:py-3 text-xs sm:text-sm rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 whitespace-nowrap"
+              className="inline-flex items-center justify-center bg-white hover:bg-neutral-100 text-[#042E3A] font-bold px-8 py-3 sm:py-3.5 text-xs sm:text-sm rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 whitespace-nowrap"
               style={{ borderRadius: "9999px", backgroundColor: "#ffffff", color: "#042E3A" }}
             >
-              <span className="text-[#042E3A] font-bold uppercase tracking-wider text-xs sm:text-[13px] whitespace-nowrap">Request a Query</span>
+              <span className="text-[#042E3A] font-bold uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap">Request a Query</span>
             </Link>
           </div>
         </div>

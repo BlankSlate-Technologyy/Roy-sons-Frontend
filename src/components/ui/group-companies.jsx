@@ -74,12 +74,12 @@ export default function SubsidiariesHoldingsGrid({
     <section className="py-16 bg-white font-sans" data-aos="fade-up">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-10 sm:mb-14" data-aos="fade-up" data-aos-delay="100">
-          <h4 className="text-[15px] font-bold tracking-[0.25em] uppercase text-[#0a7a8c] mb-4">
+          <h4 className="text-xs sm:text-sm md:text-[14px] font-black tracking-[0.25em] uppercase text-[#0a7a8c] mb-3">
             OUR COMPANIES
           </h4>
-          <h2 className="text-xl md:text-3xl lg:text-[38px] font-black tracking-[0.05em] uppercase text-[#042E3A] leading-snug md:leading-snug lg:leading-tight">
-            ROYSONS holding is a Diverse group <br className="hidden sm:block" />
-           of INDUSTRY-LEADING BUSINESSES
+          <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-black tracking-[0.05em] uppercase text-[#042E3A] leading-snug md:leading-snug lg:leading-tight">
+            ROYSONS HOLDING IS A DIVERSE GROUP <br className="hidden sm:block" />
+            OF INDUSTRY-LEADING BUSINESSES
           </h2>
         </div>
 

@@ -25,6 +25,22 @@ import {
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
 import ConsultationBanner from "@/components/ui/cta-banner";
+import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
+
+const HERO_SLIDES = [
+  {
+    src: "/services/renewable-1.jpg",
+    alt: "Utility-Scale Solar Farm and Wind Turbines",
+    tag: "Solar & Wind Clean Energy",
+    title: "Commercial Solar Farms & Integrated Wind Energy Generation",
+  },
+  {
+    src: "/services/renewable-2.jpg",
+    alt: "Battery Energy Storage Systems Facility",
+    tag: "BESS & Grid Storage",
+    title: "Utility-Scale Battery Storage, Inverters & Microgrid Engineering",
+  },
+];
 
 /* ─── Animated Counter ──────────────────────────────────────────── */
 function AnimatedStatValue({ value }) {
@@ -134,7 +150,7 @@ const SECTORS = [
 /* ─── Page ──────────────────────────────────────────────────────── */
 export default function RenewableEnergyPage() {
   return (
-    <main className="min-h-screen bg-white font-sans selection:bg-[#0a7a8c] selection:text-white">
+    <main className="min-h-screen bg-white font-['Times_New_Roman',_Times,_serif] selection:bg-[#0a7a8c] selection:text-white">
       <HeaderNavbar activeRoute="/services" />
 
       {/* Breadcrumb */}
@@ -153,63 +169,57 @@ export default function RenewableEnergyPage() {
       </section>
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0a7a8c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
+      <section 
+        data-dark-section="true"
+        className="roysons-preserve-dark relative py-16 sm:py-20 lg:py-24 text-white border-b border-[#0a7a8c]/25 overflow-hidden shadow-sm"
+        style={{
+          background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
+          backgroundColor: "#088192",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/50 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-[0_0_15px_rgba(34,211,238,0.15)]">
-                <Sun size={15} className="text-cyan-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-xs backdrop-blur-xs">
+                <Sun size={15} className="text-teal-200" />
                 <span>Sector 07 • Renewable Energy</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-white leading-tight mb-4">
-                Renewable Energy
+
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight mb-4 drop-shadow-sm">
+                Renewable &amp; Clean Energy
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl font-extrabold text-cyan-400 uppercase tracking-wide mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+
+              <p className="text-lg sm:text-xl lg:text-2xl font-black text-teal-100 uppercase tracking-wide mb-4 drop-shadow-sm">
                 Building a Cleaner &amp; More Sustainable Energy Future
               </p>
-              <div className="h-[3px] w-16 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-5" />
-              <p className="text-sm sm:text-base text-neutral-200 leading-relaxed font-normal mb-6 max-w-2xl">
+
+              <div className="h-[3px] w-20 bg-gradient-to-r from-teal-200 to-white mb-6" />
+
+              <p className="text-[16px] sm:text-[17.5px] text-white/95 leading-relaxed font-normal mb-8 max-w-2xl drop-shadow-xs">
                 ROYSONS develops sustainable energy solutions designed to reduce dependence on conventional energy sources while improving energy efficiency and long-term operational sustainability.
               </p>
-              <div className="flex flex-wrap gap-3.5">
+
+              <div className="flex flex-wrap gap-4">
                 <Link
                   href="/contact"
-                  className="group self-start inline-flex items-center gap-2.5 bg-[#0a7a8c] hover:bg-white font-bold px-5 py-2.5 text-xs uppercase tracking-[0.16em] transition-all duration-300 rounded-[2px] shadow-lg shadow-[#0a7a8c]/20"
+                  className="group self-start inline-flex items-center gap-2.5 bg-white hover:bg-teal-50 text-[#042E3A] font-black px-7 py-3.5 text-xs sm:text-[13px] uppercase tracking-[0.16em] transition-all duration-300 rounded-full shadow-lg hover:scale-105"
                 >
-                  <span className="text-white group-hover:text-black transition-colors duration-300">Start Clean Transition</span>
-                  <ArrowRight size={14} strokeWidth={2.5} className="text-white group-hover:text-black group-hover:translate-x-1 transition-all duration-300" />
+                  <span>Start Clean Transition</span>
+                  <ArrowRight size={14} strokeWidth={2.5} className="text-[#042E3A] group-hover:translate-x-1 transition-all duration-300" />
                 </Link>
                 <Link
                   href="#capabilities"
-                  className="self-start inline-flex items-center gap-2 bg-transparent hover:bg-white/5 border border-neutral-700 hover:border-[#0a7a8c] text-white px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] transition-all rounded-[2px]"
+                  className="self-start inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/40 text-white px-6 py-3.5 text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] transition-all rounded-full backdrop-blur-xs"
                 >
                   Our Capabilities
                 </Link>
               </div>
             </div>
+
             <div className="lg:col-span-5">
-              <div className="relative rounded-[2px] p-1 bg-gradient-to-b from-[#0a7a8c]/40 via-neutral-800 to-[#0a7a8c]/20 shadow-xl">
-                <div className="relative h-[300px] sm:h-[380px] w-full overflow-hidden rounded-[2px] bg-neutral-900">
-                  <Image
-                    src="/pakmedical-card4.png"
-                    alt="Renewable Energy Solutions by ROYSONS"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 p-4 bg-neutral-950/85 backdrop-blur-md border border-[#0a7a8c]/40 rounded-[2px]">
-                    <p className="text-xs font-bold uppercase tracking-wider text-[#0a7a8c] mb-1">
-                      Solar · Wind · BESS · Hybrid · EPC
-                    </p>
-                    <p className="text-sm sm:text-base font-bold text-white leading-snug">
-                      Turnkey Clean Energy Project Solutions
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <ServiceHeroSlider slides={HERO_SLIDES} defaultTag="RENEWABLE ENERGY" />
             </div>
           </div>
         </div>

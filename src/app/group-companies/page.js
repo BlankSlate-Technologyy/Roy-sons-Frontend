@@ -23,13 +23,13 @@ export default function GroupCompaniesPage() {
       <section className="pt-8 pb-4 px-6 border-b border-neutral-100">
         <div className="mx-auto max-w-screen-xl">
           <nav aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2 text-[10.5px] text-neutral-400 font-bold uppercase tracking-wider">
+            <ol className="flex items-center gap-2 text-xs sm:text-sm text-neutral-500 font-semibold uppercase tracking-wider">
               <li>
                 <Link href="/" className="hover:text-black transition-colors">Home</Link>
               </li>
               <li className="flex items-center gap-1.5">
-                <ChevronRight size={11} className="text-neutral-300" />
-                <span className="text-neutral-950">  Group Companies</span>
+                <ChevronRight size={14} className="text-neutral-400" />
+                <span className="text-neutral-950 font-bold">Group Companies</span>
               </li>
             </ol>
           </nav>
@@ -37,17 +37,17 @@ export default function GroupCompaniesPage() {
       </section>
 
       {/* Page Header */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-14 sm:py-16 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <div className="max-w-5xl">
-            <span className="text-[10px] font-black tracking-[0.3em] text-neutral-400 uppercase mb-3 block">
+            <span className="text-xs sm:text-sm md:text-[14px] font-black tracking-[0.25em] text-[#0a7a8c] uppercase mb-3 block">
               OUR SUBSIDIARIES
             </span>
-            <h1 className="text-2xl sm:text-3xl lg:text-[38px] font-black text-neutral-950 mb-6 leading-tight tracking-tight uppercase">
-              ROYSONS holding is a Diverse group<br />
-              of INDUSTRY-LEADING BUSINESSES
+            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-black text-[#042E3A] mb-5 leading-tight tracking-tight uppercase">
+              ROYSONS HOLDING IS A DIVERSE GROUP<br />
+              OF INDUSTRY-LEADING BUSINESSES
             </h1>
-            <p className="text-[14px] text-neutral-500 leading-relaxed font-normal max-w-2xl">
+            <p className="text-base sm:text-lg lg:text-[19px] text-neutral-700 leading-relaxed font-normal max-w-3xl">
               ROYSONS Pvt.Ltd comprises 26 specialized corporate entities and divisions working in tandem.
               Together, we cover all strategic business sectors to deliver turnkey capabilities for critical government,
               private, and international operations.
@@ -64,14 +64,14 @@ export default function GroupCompaniesPage() {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-stretch">
 
             <div className="lg:w-2/5 flex flex-col justify-center">
-              <span className="text-[12px] font-black tracking-[0.24em] text-[#0a7a8c] uppercase mb-3 block">
+              <span className="text-xs sm:text-sm font-black tracking-[0.24em] text-[#0a7a8c] uppercase mb-3 block">
                 NATIONWIDE NETWORK
               </span>
               <h2 className="text-3xl lg:text-4xl font-black text-[#042E3A] leading-tight uppercase tracking-wider mb-4">
                 Regional Presence
               </h2>
               <div className="h-1 w-14 bg-gradient-to-r from-[#0077b6] to-[#02b875] mb-6 rounded-full" />
-              <p className="text-[15px] text-neutral-700 leading-relaxed font-normal">
+              <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-normal">
                 Our companies coordinate operations through specialized regional offices that manage government pipelines,
                 port imports, trade customs, and local client consultancies.
               </p>
@@ -85,10 +85,10 @@ export default function GroupCompaniesPage() {
                       0{index + 1}
                     </div>
                     <div>
-                      <h4 className="text-[16px] font-black uppercase tracking-wider text-[#042E3A] mb-1">
+                      <h4 className="text-[17px] sm:text-[18px] font-black uppercase tracking-wider text-[#042E3A] mb-1">
                         {office.city} Office
                       </h4>
-                      <p className="text-[14px] text-neutral-700 font-normal">
+                      <p className="text-[15px] sm:text-[16px] text-neutral-700 font-normal">
                         {office.detail}
                       </p>
                     </div>
