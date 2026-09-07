@@ -183,7 +183,7 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   &,
   html,
   main,
-  section:not([aria-label="Featured Showcase Slider"]):not([class*="bg-gradient-"]):not(.services-hero-gradient):not(.gradient-banner):not([data-dark-section]):not(.roysons-preserve-dark),
+  section:not([aria-label="Featured Showcase Slider"]):not([class*="bg-gradient-"]):not(.services-hero-gradient):not(.projects-hero-gradient):not(.gradient-banner):not([data-dark-section]):not(.roysons-preserve-dark),
   header,
   footer:not(.roysons-dark-footer),
   legend,
@@ -212,7 +212,7 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
 
   /* Reset Dark Background Gradients on containers */
   main,
-  section:not([aria-label="Featured Showcase Slider"]):not([class*="bg-gradient-"]):not(.services-hero-gradient):not(.gradient-banner):not([data-dark-section]):not(.roysons-preserve-dark),
+  section:not([aria-label="Featured Showcase Slider"]):not([class*="bg-gradient-"]):not(.services-hero-gradient):not(.projects-hero-gradient):not(.gradient-banner):not([data-dark-section]):not(.roysons-preserve-dark),
   header,
   footer:not(.roysons-dark-footer) {
     background-image: none !important;
