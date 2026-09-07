@@ -49,7 +49,7 @@ export const metadata = {
     siteName: "Roy Sons Group",
     images: [
       {
-        url: "/favicon.png",
+        url: "/logos/roysons-r-icon.png",
         width: 512,
         height: 512,
         alt: "Roy Sons Pvt. Ltd. Corporate Emblem",
