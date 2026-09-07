@@ -357,14 +357,14 @@ export default function AboutPage() {
       <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
-            <span className="text-xs sm:text-[13px] font-black tracking-[0.25em] text-[#0a7a8c] uppercase mb-3 block">
+            <span className="text-[13.5px] sm:text-[15px] font-black tracking-[0.25em] text-[#0a7a8c] uppercase mb-3 block">
              ROYSONS holding is a Diverse group of INDUSTRY-LEADING BUSINESSES
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black uppercase tracking-[0.12em] text-[#042E3A]">
               Government Sector
             </h2>
             <div className="mx-auto mt-4 h-[3.5px] w-16 bg-gradient-to-r from-[#0284c7] via-[#0891b2] to-[#10b981] rounded-full" />
-            <p className="text-[15.5px] sm:text-[17px] text-[#042E3A]/80 mt-5 max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-[18px] sm:text-[20px] lg:text-[21.5px] text-[#042E3A]/90 mt-5 max-w-3xl mx-auto leading-relaxed font-normal">
               ROYSON.Pvt.Ltd proudly serves a wide range of government institutions, delivering trusted solutions across Pakistan&apos;s public sector landscape.
             </p>
           </div>
@@ -468,14 +468,14 @@ export default function AboutPage() {
       <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-white border-b border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
-            <span className="text-xs sm:text-[13px] font-black tracking-[0.25em] text-[#0a7a8c] uppercase mb-3 block">
+            <span className="text-[13.5px] sm:text-[15px] font-black tracking-[0.25em] text-[#0a7a8c] uppercase mb-3 block">
               PRIVATE SECTOR
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black uppercase tracking-[0.12em] text-[#042E3A]">
               Private Sector Clients
             </h2>
             <div className="mx-auto mt-4 h-[3.5px] w-16 bg-gradient-to-r from-[#0284c7] via-[#0891b2] to-[#10b981] rounded-full" />
-            <p className="text-[15.5px] sm:text-[17px] text-[#042E3A]/80 mt-5 max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-[18px] sm:text-[20px] lg:text-[21.5px] text-[#042E3A]/90 mt-5 max-w-3xl mx-auto leading-relaxed font-normal">
               We partner with leading private enterprises across healthcare, manufacturing, construction, agriculture, and technology.
             </p>
           </div>
@@ -580,14 +580,14 @@ export default function AboutPage() {
       <section className="py-10 sm:py-14 lg:py-16 px-4 sm:px-6 bg-neutral-50 border-b border-neutral-100" data-aos="fade-up">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center mb-14" data-aos="fade-up" data-aos-delay="100">
-            <span className="text-xs sm:text-[13px] font-black tracking-[0.25em] text-[#0a7a8c] uppercase mb-3 block">
+            <span className="text-[13.5px] sm:text-[15px] font-black tracking-[0.25em] text-[#0a7a8c] uppercase mb-3 block">
               INTERNATIONAL CLIENTS
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black uppercase tracking-[0.12em] text-[#042E3A]">
               International Client Partnerships
             </h2>
             <div className="mx-auto mt-4 h-[3.5px] w-16 bg-gradient-to-r from-[#0284c7] via-[#0891b2] to-[#10b981] rounded-full" />
-            <p className="text-[15.5px] sm:text-[17px] text-[#042E3A]/80 mt-5 max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-[18px] sm:text-[20px] lg:text-[21.5px] text-[#042E3A]/90 mt-5 max-w-3xl mx-auto leading-relaxed font-normal">
               We support international clients across imports, exports, manufacturing, and development initiatives.
             </p>
           </div>

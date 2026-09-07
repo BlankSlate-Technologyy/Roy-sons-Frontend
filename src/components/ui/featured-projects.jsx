@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { FEATURED_STRUCTURAL_WORKS } from "@/lib/constants";
 
 function ProjectCard({ project, index }) {
@@ -64,18 +63,6 @@ export default function FeaturedHoldingsShowcase({
   projects = FEATURED_STRUCTURAL_WORKS,
   allProjectsPath = "/projects",
 }) {
-  const scrollContainerRef = useRef(null);
-
-  // Scroll left and right
-  const handleScroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = direction === "left" ? -360 : 360;
-      scrollContainerRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <section className="pt-14 sm:pt-20 pb-4 sm:pb-6 bg-white text-[#042E3A] overflow-hidden font-sans border-t border-[#0a7a8c]/15" data-aos="fade-up">
@@ -99,28 +86,8 @@ export default function FeaturedHoldingsShowcase({
 
         {/* ─── Projects Showcase Carousel ─── */}
         <div className="relative group/carousel">
-          
-          {/* Left Arrow Button */}
-          <button
-            onClick={() => handleScroll("left")}
-            aria-label="Previous Projects"
-            className="absolute -left-2 sm:left-2 top-[38%] -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/95 border border-[#0a7a8c]/25 shadow-xl flex items-center justify-center text-[#042E3A] hover:bg-gradient-to-r hover:from-[#042E3A] hover:to-[#0a7a8c] hover:text-white hover:border-transparent hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)] transition-all duration-300 cursor-pointer hidden md:flex"
-          >
-            <ChevronLeft size={22} />
-          </button>
-
-          {/* Right Arrow Button */}
-          <button
-            onClick={() => handleScroll("right")}
-            aria-label="Next Projects"
-            className="absolute -right-2 sm:right-2 top-[38%] -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/95 border border-[#0a7a8c]/25 shadow-xl flex items-center justify-center text-[#042E3A] hover:bg-gradient-to-r hover:from-[#042E3A] hover:to-[#0a7a8c] hover:text-white hover:border-transparent hover:shadow-[0_4px_16px_rgba(10,122,140,0.35)] transition-all duration-300 cursor-pointer hidden md:flex"
-          >
-            <ChevronRight size={22} />
-          </button>
-
           {/* Horizontal Scrolling Track */}
           <div
-            ref={scrollContainerRef}
             className="flex items-center justify-start lg:justify-center gap-5 sm:gap-7 overflow-x-auto pb-8 pt-4 px-4 no-scrollbar scroll-smooth"
             style={{
               scrollbarWidth: "none",

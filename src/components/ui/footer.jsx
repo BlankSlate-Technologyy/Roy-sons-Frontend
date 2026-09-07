@@ -83,14 +83,14 @@ export default function CorporateFooter({
           </div>
 
           <form onSubmit={handleNewsletterSubmit} className="w-full md:w-auto flex-1 max-w-md flex flex-col gap-2">
-            <div className="flex rounded-xl overflow-hidden border border-[#0a7a8c]/40 bg-[#052831] focus-within:border-[#2dd4bf] focus-within:shadow-[0_0_14px_rgba(45,212,191,0.25)] transition-all p-1">
+            <div className="newsletter-input-container flex items-center gap-3 sm:gap-3.5 rounded-xl border border-[#0a7a8c]/40 bg-[#052831] focus-within:border-[#2dd4bf] focus-within:shadow-[0_0_14px_rgba(45,212,191,0.25)] transition-all p-1.5">
               <input
                 type="email"
                 required
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Enter corporate email..."
-                className="w-full px-4 py-2 bg-transparent text-xs text-white placeholder-teal-200/50 focus:outline-none"
+                className="w-full flex-1 min-w-0 px-4 py-2 bg-transparent text-xs text-white placeholder-teal-200/50 focus:outline-none"
               />
               <button
                 type="submit"
@@ -127,8 +127,8 @@ export default function CorporateFooter({
 
       {/* Main Footer Links */}
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-        <div className="lg:col-span-1 flex flex-col pr-0 lg:pr-6" data-aos="fade-up" data-aos-delay="100">
-          <Link href="/" className="inline-block mb-4">
+        <div className="lg:col-span-1 flex flex-col items-center text-center pr-0 lg:pr-6" data-aos="fade-up" data-aos-delay="100">
+          <Link href="/" className="inline-flex justify-center mb-4">
             <Image
               src="/logos/royson-hoding.png"
               alt="Roy Sons Logo"
@@ -137,11 +137,11 @@ export default function CorporateFooter({
               className="w-auto h-12 md:h-14 lg:h-14 object-contain brightness-0 invert"
             />
           </Link>
-          <p className="footer-caption text-xs text-teal-100/75 leading-relaxed font-normal mb-6">
+          <p className="footer-caption text-xs text-white text-center leading-relaxed font-normal mb-6 max-w-sm">
             {caption}
           </p>
 
-          <div className="flex gap-2.5">
+          <div className="flex justify-center gap-2.5">
             {SOCIAL_MEDIA_HANDLES.map((handle, index) => {
               const SocialIcon = handle.icon;
               return (
@@ -153,7 +153,7 @@ export default function CorporateFooter({
                   rel="noopener noreferrer"
                   className="footer-social-icon group w-9 h-9 rounded-lg border border-[#0a7a8c]/30 bg-[#063340] flex items-center justify-center transition-all duration-300 hover:bg-gradient-to-br hover:from-[#0a7a8c] hover:to-[#0d9488] hover:border-[#14b8a6] hover:shadow-[0_4px_14px_rgba(10,122,140,0.3)] hover:scale-105"
                 >
-                  <SocialIcon size={15} className="text-[#2dd4bf] group-hover:text-white transition-colors duration-300" />
+                  <SocialIcon size={15} className="text-white transition-colors duration-300" />
                 </a>
               );
             })}
@@ -206,7 +206,7 @@ export default function CorporateFooter({
               return (
                 <li key={index} className="footer-contact-item flex gap-3 items-start group">
                   <div className="p-1.5 rounded-md bg-[#063340] border border-[#0a7a8c]/30 transition-all duration-300 group-hover:bg-[#0a7a8c] group-hover:border-[#14b8a6] group-hover:shadow-[0_2px_8px_rgba(10,122,140,0.3)] mt-0.5 flex-shrink-0">
-                    <DetailIcon size={13} className="text-[#2dd4bf] group-hover:text-white transition-colors duration-300" />
+                    <DetailIcon size={13} className="text-white transition-colors duration-300" />
                   </div>
                   <span className="text-xs text-teal-100/85 whitespace-pre-line leading-relaxed font-medium group-hover:text-white transition-colors duration-200">
                     {detail.value}

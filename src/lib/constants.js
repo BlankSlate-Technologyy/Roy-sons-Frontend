@@ -79,7 +79,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "Backed by decades of multidisciplinary engineering excellence, ROYSONS builds enduring national foundations through precision construction management and sustainable EPC contracting.",
     cta1: { label: "Explore Projects", href: "/projects" },
-    cta2: { label: "Infrastructure Services", href: "/services/construction-infrastructure" },
   },
   {
     id: "slide-it-ai",
@@ -94,7 +93,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "Through our advanced technology holdings, ROYSONS empowers government ministries and global enterprises with secure digital transformations, neural computing, and smart city architecture.",
     cta1: { label: "Discover AI & Tech", href: "/services/it-ai" },
-    cta2: { label: "Our Tech Holdings", href: "/group-companies" },
   },
   {
     id: "slide-renewable-energy",
@@ -109,7 +107,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "ROYSONS is committed to global decarbonization and reliable clean power, deploying resilient renewable energy infrastructure that powers industries while preserving our planet.",
     cta1: { label: "Renewable Energy", href: "/services/renewable-energy" },
-    cta2: { label: "All Corporate Services", href: "/services" },
   },
   {
     id: "slide-defense-security",
@@ -124,7 +121,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "ROYSONS defense division combines state-of-the-art sensory technology, professional protection expertise, and command centers to safeguard critical infrastructure and national assets.",
     cta1: { label: "Defense Solutions", href: "/services/defense-security" },
-    cta2: { label: "Security Holdings", href: "/group-companies/alpha-matrix" },
   },
   {
     id: "slide-electric-mobility",
@@ -139,7 +135,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "German Technology Xperts (GTX), a ROYSONS company, leads the decarbonization of transit networks with high-efficiency commercial EVs, charging networks, and smart fleet management.",
     cta1: { label: "Explore EV Mobility", href: "/services/electric-mobility" },
-    cta2: { label: "GTX Holdings", href: "/group-companies/GTX" },
   },
   {
     id: "slide-agriculture-dairy",
@@ -154,7 +149,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "Through National Agricultural Corporation and Swiss Farms, ROYSONS strengthens food security with advanced agro-technology, livestock genetics, and modernized dairy management.",
     cta1: { label: "Agri & Dairy Services", href: "/services/agriculture-dairy-development" },
-    cta2: { label: "Agricultural Holdings", href: "/group-companies/national-agricultural" },
   },
   {
     id: "slide-food-processing",
@@ -169,7 +163,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "Delivering premium quality nutrition and packaged foods through certified international standards, advanced food technology, and automated hygienic production lines.",
     cta1: { label: "Food Processing", href: "/services/food-processing" },
-    cta2: { label: "Our Food Companies", href: "/group-companies/walton-mirror-food" },
   },
   {
     id: "slide-power-systems",
@@ -184,7 +177,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "ROYSONS delivers turnkey electrical contracting, heavy power infrastructure, and grid reliability solutions that keep mission-critical industries operating without interruption.",
     cta1: { label: "Power Systems", href: "/services/electrical-power-systems" },
-    cta2: { label: "Explore Services", href: "/services" },
   },
   {
     id: "slide-mining-minerals",
@@ -199,7 +191,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "Through National Mines Corporation, ROYSONS applies cutting-edge excavation technology and rigorous environmental standards to extract vital minerals powering global industry.",
     cta1: { label: "Mining & Minerals", href: "/services/mining-minerals" },
-    cta2: { label: "National Mines Holding", href: "/group-companies/national-mines" },
   },
   {
     id: "slide-real-estate",
@@ -214,7 +205,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "ROYSONS real estate division blends contemporary architecture, smart city amenities, and sustainable green construction to create premier living and business addresses.",
     cta1: { label: "Real Estate Solutions", href: "/services/real-estate-development" },
-    cta2: { label: "View Projects", href: "/projects" },
   },
   {
     id: "slide-international-trade",
@@ -229,7 +219,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "With an established worldwide network and robust logistics infrastructure, ROYSONS connects domestic producers to high-growth international export markets.",
     cta1: { label: "Trade & Exports", href: "/services/international-trade-exports" },
-    cta2: { label: "Global Presence", href: "/international-clients" },
   },
   {
     id: "slide-veterinary",
@@ -244,7 +233,6 @@ export const DEFAULT_BILLBOARD_SLIDES = [
     supportingText:
       "Vet Vac Pharma, a proud subsidiary of ROYSONS, develops GMP-certified animal vaccines and therapeutic solutions supporting commercial farmers and animal welfare nationwide.",
     cta1: { label: "Veterinary Healthcare", href: "/services/veterinary-livestock" },
-    cta2: { label: "Vet Vac Pharma", href: "/group-companies/Vetvacpharma" },
   },
 ];
 

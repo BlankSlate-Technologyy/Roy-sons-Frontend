@@ -56,9 +56,9 @@ export default function WhatsAppButton() {
         </svg>
 
         {/* Hover Tooltip Badge */}
-        <span className="absolute right-full mr-3.5 px-3 py-1.5 bg-[#042E3A] text-white text-[12px] font-bold rounded-md whitespace-nowrap shadow-xl opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none border border-white/10 flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#25D366] inline-block" />
-          Chat on WhatsApp
+        <span className="whatsapp-tooltip-badge absolute right-full mr-3.5 px-3.5 py-1.5 bg-[#042E3A] text-white text-[12px] font-bold rounded-md whitespace-nowrap shadow-xl opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none border border-white/20 flex items-center justify-center text-center gap-1.5 z-50">
+          <span className="w-2 h-2 rounded-full bg-[#25D366] inline-block shrink-0" />
+          <span className="text-white font-bold tracking-wide" style={{ color: "#ffffff" }}>Chat on WhatsApp</span>
         </span>
       </a>
     </div>

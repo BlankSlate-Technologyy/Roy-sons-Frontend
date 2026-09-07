@@ -282,6 +282,10 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     -webkit-text-fill-color: #ffffff !important;
   }
 
+  .roysons-dark-footer .footer-newsletter-bar .newsletter-input-container {
+    gap: 0.85rem !important;
+  }
+
   .roysons-dark-footer .footer-newsletter-bar span.newsletter-tag {
     color: #2dd4bf !important;
     -webkit-text-fill-color: #2dd4bf !important;
@@ -309,8 +313,9 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   .roysons-dark-footer p.footer-caption {
-    color: rgba(255, 255, 255, 0.75) !important;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    text-align: center !important;
   }
 
   .roysons-dark-footer .footer-contact-item span {
@@ -326,13 +331,31 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   .roysons-dark-footer .footer-social-icon {
     background-color: #063340 !important;
     border: 1px solid rgba(45, 212, 191, 0.3) !important;
-    color: #2dd4bf !important;
+    color: #ffffff !important;
+  }
+
+  .roysons-dark-footer .footer-social-icon svg,
+  .roysons-dark-footer .footer-social-icon * {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
   }
 
   .roysons-dark-footer .footer-social-icon:hover {
     background: linear-gradient(135deg, #0a7a8c 0%, #0d9488 100%) !important;
     border-color: #14b8a6 !important;
     color: #ffffff !important;
+  }
+
+  .roysons-dark-footer .footer-social-icon:hover svg,
+  .roysons-dark-footer .footer-social-icon:hover * {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+  }
+
+  .roysons-dark-footer .footer-contact-item svg,
+  .roysons-dark-footer .footer-contact-item svg * {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
   }
 
   .roysons-dark-footer .footer-copyright-bar {
@@ -376,8 +399,8 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   /* ── Body text (EXCLUDING buttons, pills, white text, light tints, and services dropdown) ── */
-  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.services-dropdown-link *):not([data-services-menu] *):not([data-dark-section] *):not(.roysons-preserve-dark *),
-  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.badge):not(.services-dropdown-link *):not([data-services-menu] *):not([data-dark-section] *):not(.roysons-preserve-dark *),
+  p:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.services-dropdown-link *):not([data-services-menu] *):not([data-dark-section] *):not(.roysons-preserve-dark *):not(.whatsapp-float-btn *):not(.whatsapp-tooltip-badge *),
+  span:not(button *):not(a.rs-cta-btn *):not(.btn *):not(#cta-consultation-btn *):not(#navbar-inquire-btn *):not(#view-all-projects-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not([class*="text-[#"]):not([class*="text-cyan-"]):not([class*="text-teal-"]):not(.badge):not(.services-dropdown-link *):not([data-services-menu] *):not([data-dark-section] *):not(.roysons-preserve-dark *):not(.whatsapp-float-btn *):not(.whatsapp-tooltip-badge *),
   li:not(button *):not(a.rs-cta-btn *):not(a[class*="bg-"] *):not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not([class*="text-neutral-400"]):not(.services-dropdown-link *):not([data-services-menu] *):not([data-dark-section] *):not(.roysons-preserve-dark *),
   time,
   td {
@@ -387,6 +410,15 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     background-clip: unset !important;
     -webkit-background-clip: unset !important;
     text-shadow: none !important;
+  }
+
+  /* WhatsApp Floating Button Tooltip Text: Always Centered Pure White */
+  .whatsapp-tooltip-badge,
+  .whatsapp-tooltip-badge *,
+  .whatsapp-float-btn,
+  .whatsapp-float-btn * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
 
   /* ── Preserved Dark Sections (e.g. Services Hero, Dark Feature Sections) ── */
