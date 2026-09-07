@@ -135,7 +135,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                           closeServicesDropdown();
                         }
                       }}
-                      className={`nav-text-link relative flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border px-2.5 py-2 text-[12px] font-bold uppercase tracking-[0.02em] transition-all duration-300 xl:px-3 xl:text-[13.5px] xl:tracking-[0.06em] 2xl:text-[14.5px]
+                      className={`nav-text-link relative flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-md border px-2.5 py-2 text-[13px] font-bold uppercase tracking-[0.02em] transition-all duration-300 xl:px-3.5 xl:text-[14.5px] xl:tracking-[0.05em] 2xl:text-[15.5px]
                         ${isActive
                           ? "border-[#0a7a8c]/20 bg-[#0a7a8c]/6 !text-[#042E3A] shadow-sm after:absolute after:bottom-[-18px] after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-[3px] after:bg-[#0a7a8c] after:rounded-full"
                           : "border-transparent bg-transparent !text-[#042E3A]/80 hover:border-[#0a7a8c]/15 hover:bg-[#0a7a8c]/5 hover:!text-[#0a7a8c] after:absolute after:bottom-[-18px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-[#0a7a8c] hover:after:w-6 after:rounded-full after:transition-all after:duration-300"
@@ -209,7 +209,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
               {/* Left Column: Image Banner + Intro Box (Light theme with mint/cyan accent) */}
               <div className="lg:col-span-7 flex flex-col sm:flex-row rounded-md overflow-hidden border border-[#0a7a8c]/20 shadow-lg bg-white">
                 {/* Photo on left of banner */}
-                <div className="relative sm:w-[46%] min-h-[190px] sm:min-h-[220px] overflow-hidden group/img">
+                <div className="relative sm:w-[44%] min-h-[200px] sm:min-h-[240px] overflow-hidden group/img">
                   <Image
                     src="/ROYSONS Slide Image 10.jpeg"
                     alt="ROYSONS Construction & Infrastructure Services"
@@ -221,15 +221,15 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                 </div>
 
                 {/* Light Soft Mint/Teal Box with Intro Text */}
-                <div className="sm:w-[54%] p-5 sm:p-6 flex flex-col justify-between bg-gradient-to-br from-[#f0fdfa] to-[#e6fffa] border-t sm:border-t-0 sm:border-l border-[#0a7a8c]/15">
+                <div className="sm:w-[56%] p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-br from-[#f0fdfa] to-[#e6fffa] border-t sm:border-t-0 sm:border-l border-[#0a7a8c]/15">
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <Sparkles size={13} className="text-[#0a7a8c]" />
-                      <span className="text-[11px] font-black uppercase tracking-[0.22em] text-[#0a7a8c]">
+                    <div className="flex items-center gap-2 mb-2.5">
+                      <Sparkles size={14} className="text-[#0a7a8c]" />
+                      <span className="text-[11px] sm:text-xs font-black uppercase tracking-[0.22em] text-[#0a7a8c]">
                         Roysons Portfolio
                       </span>
                     </div>
-                    <p className="text-[12.5px] xl:text-[13px] text-[#042E3A]/85 leading-relaxed font-medium">
+                    <p className="text-[15px] sm:text-[15.5px] xl:text-[16.5px] text-[#042E3A]/90 leading-[1.72] font-normal">
                       ROYSONS Pvt. Ltd. offers a comprehensive list of professional engineering, healthcare, technology, and infrastructure services for projects across public and private sectors. We serve our clients from early planning stages through project closeout.
                     </p>
                   </div>
@@ -237,10 +237,15 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                   <Link
                     href="/services"
                     onClick={closeServicesDropdown}
-                    className="mt-4 inline-flex items-center gap-2 text-[11px] xl:text-[12px] font-black uppercase tracking-wider text-white bg-gradient-to-r from-[#042E3A] via-[#0a7a8c] to-[#0d9488] hover:from-[#0a7a8c] hover:to-[#042E3A] px-4 py-2 rounded-[3px] transition-all self-start shadow-md hover:shadow-cyan-900/20 active:scale-95"
+                    className="rs-cta-btn mt-5 inline-flex items-center gap-2 text-xs sm:text-[12.5px] font-black uppercase tracking-wider text-white px-5 py-2.5 rounded-lg transition-all self-start shadow-md hover:shadow-[0_4px_16px_rgba(0,119,182,0.35)] active:scale-95 whitespace-nowrap"
+                    style={{
+                      background: "linear-gradient(90deg, #0077b6 0%, #009688 50%, #02b875 100%)",
+                      color: "#ffffff",
+                      borderRadius: "8px",
+                    }}
                   >
-                    <span>Explore All Services</span>
-                    <ArrowRight size={13} strokeWidth={2.4} />
+                    <span className="whitespace-nowrap text-white font-bold">Explore All Services</span>
+                    <ArrowRight size={14} strokeWidth={2.4} className="shrink-0 text-white" />
                   </Link>
                 </div>
               </div>
@@ -268,7 +273,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                         >
                           <div className="flex items-center gap-2.5">
                             <span
-                              className={`services-item-title text-[14.5px] xl:text-[16px] font-bold tracking-[0.02em] transition-colors duration-300 ${
+                              className={`services-item-title text-[14px] sm:text-[14.5px] xl:text-[15.5px] font-medium tracking-[0.01em] transition-colors duration-300 ${
                                 isItemActive
                                   ? "text-[#0a7a8c]"
                                   : "text-[#042E3A] group-hover/item:text-[#0a7a8c]"
@@ -282,7 +287,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                             </span>
                             {item.isOther && (
                               <span
-                                className="services-item-badge text-[10.5px] uppercase font-extrabold tracking-widest px-2.5 py-0.5 rounded-full bg-[#0a7a8c]/10 text-[#0a7a8c] border border-[#0a7a8c]/30 group-hover/item:bg-[#0a7a8c] group-hover/item:text-white transition-colors"
+                                className="services-item-badge text-[10.5px] sm:text-[11px] uppercase font-extrabold tracking-widest px-2.5 py-0.5 rounded-full bg-[#0a7a8c]/10 text-[#0a7a8c] border border-[#0a7a8c]/30 group-hover/item:bg-[#0a7a8c] group-hover/item:text-white transition-colors"
                                 style={{
                                   color: "#0a7a8c",
                                   WebkitTextFillColor: "#0a7a8c",
@@ -336,7 +341,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                         <Link
                           href="/services"
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="nav-text-link text-[13px] font-bold tracking-[0.16em] uppercase !text-[#042E3A] hover:!text-[#0a7a8c]"
+                          className="nav-text-link text-[15px] sm:text-[16px] font-bold tracking-[0.12em] uppercase !text-[#042E3A] hover:!text-[#0a7a8c]"
                         >
                           {route.title}
                         </Link>
@@ -347,7 +352,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                           aria-label="Toggle Services sub-menu"
                         >
                           <ChevronDown
-                            size={18}
+                            size={20}
                             strokeWidth={2.4}
                             className={`transition-transform duration-300 ${
                               isMobileServicesOpen ? "rotate-180 text-[#0a7a8c]" : ""
@@ -368,12 +373,12 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                                     setIsMobileServicesOpen(false);
                                     setIsMobileMenuOpen(false);
                                   }}
-                                  className="flex items-center justify-between py-2 text-[12px] font-semibold text-[#042E3A]/85 hover:text-[#0a7a8c] transition-colors"
+                                  className="flex items-center justify-between py-2.5 text-[13.5px] sm:text-[14.5px] font-semibold text-[#042E3A]/85 hover:text-[#0a7a8c] transition-colors"
                                 >
                                   <span className={item.isOther ? "text-[#0a7a8c] font-black" : ""}>
                                     {item.title}
                                   </span>
-                                  <ArrowRight size={13} className="text-[#0a7a8c]" />
+                                  <ArrowRight size={15} className="text-[#0a7a8c]" />
                                 </Link>
                               </li>
                             ))}
@@ -389,7 +394,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                     <Link
                       href={route.path}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="nav-text-link block cursor-pointer rounded-md border-b border-[#042E3A]/10 bg-transparent px-4 py-2.5 text-[13px] font-bold uppercase tracking-[0.16em] !text-[#042E3A] transition-all duration-200 hover:bg-[#042E3A]/5 hover:!text-[#0a7a8c] sm:px-6 sm:py-3"
+                      className="nav-text-link block cursor-pointer rounded-md border-b border-[#042E3A]/10 bg-transparent px-4 py-3 text-[15px] sm:text-[16px] font-bold uppercase tracking-[0.12em] !text-[#042E3A] transition-all duration-200 hover:bg-[#042E3A]/5 hover:!text-[#0a7a8c] sm:px-6"
                       style={{
                         background: "none",
                         backgroundColor: "transparent",

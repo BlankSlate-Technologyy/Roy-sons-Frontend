@@ -201,8 +201,13 @@ Together, they form one integrated platform built around purpose, enterprise, in
                 <p className="text-[15px] sm:text-[17px] text-[#042E3A]/85 leading-relaxed font-normal mb-5">
                   ROYSONS Trust is envisioned as the purpose-driven institution supporting the long-term development, stewardship, and social impact of the ROYSONS enterprise. The Trust is designed around a simple philosophy: business growth should create lasting value for people, communities, and future generations. Through its relationship with ROYSONS Pvt. Ltd., the Trust aims to support responsible enterprise development, strengthen long-term institutional ownership, and channel resources toward initiatives in education, healthcare, community development, skills, research, sustainability, and other areas of public benefit.</p>
                 {/* CTA Button */}
-               <div>
-                  <Link href="/roysons-trust">
+                <div>
+                  <a
+                    href="https://roysons-trust.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block w-full sm:w-auto"
+                  >
                     <button
                       type="button"
                       className="intro-card-btn-2 inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-[2px] text-[14px] sm:text-[15px] font-black uppercase tracking-wider shadow-md w-full sm:w-auto cursor-pointer"
@@ -210,7 +215,7 @@ Together, they form one integrated platform built around purpose, enterprise, in
                       <span>Explore Website</span>
                       <ArrowRight size={17} />
                     </button>
-                  </Link>
+                  </a>
                 </div>
               </div>
 

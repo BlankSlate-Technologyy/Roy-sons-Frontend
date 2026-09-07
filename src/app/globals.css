@@ -523,13 +523,33 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   .services-dropdown-link,
-  [data-services-menu] a {
+  [data-services-menu] a.services-dropdown-link {
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
     background: transparent !important;
     background-color: transparent !important;
     border: none !important;
     box-shadow: none !important;
+  }
+
+  /* Keep radiant gradient background on CTA button inside services menu */
+  [data-services-menu] .rs-cta-btn,
+  [data-services-menu] a.rs-cta-btn {
+    background: linear-gradient(90deg, #0077b6 0%, #009688 50%, #02b875 100%) !important;
+    background-color: #009688 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    border-radius: 8px !important;
+    border: none !important;
+    box-shadow: 0 4px 16px rgba(0, 119, 182, 0.35) !important;
+    display: inline-flex !important;
+  }
+
+  [data-services-menu] .rs-cta-btn:hover,
+  [data-services-menu] a.rs-cta-btn:hover {
+    background: linear-gradient(90deg, #0284c7 0%, #0891b2 50%, #10b981 100%) !important;
+    background-color: #0891b2 !important;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.5) !important;
   }
 
   .services-dropdown-link .services-item-title,
@@ -544,8 +564,8 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
 
   .services-dropdown-link:hover .services-item-title,
   .services-dropdown-link.is-active .services-item-title,
-  [data-services-menu] a:hover .services-item-title,
-  [data-services-menu] a.is-active .services-item-title {
+  [data-services-menu] a.services-dropdown-link:hover .services-item-title,
+  [data-services-menu] a.services-dropdown-link.is-active .services-item-title {
     color: #0a7a8c !important;
     -webkit-text-fill-color: #0a7a8c !important;
     opacity: 1 !important;
@@ -560,8 +580,8 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
 
   .services-dropdown-link:hover .services-item-arrow,
   .services-dropdown-link.is-active .services-item-arrow,
-  [data-services-menu] a:hover .services-item-arrow,
-  [data-services-menu] a.is-active .services-item-arrow {
+  [data-services-menu] a.services-dropdown-link:hover .services-item-arrow,
+  [data-services-menu] a.services-dropdown-link.is-active .services-item-arrow {
     color: #0a7a8c !important;
     stroke: #0a7a8c !important;
     transform: translateX(4px) !important;
@@ -620,9 +640,16 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   #view-all-projects-btn,
   #query-submit-btn,
   #scroll-to-top-btn,
+  .intro-card-btn-1,
+  .intro-card-btn-2,
+  .intro-card-btn-3,
   button[type="submit"],
   input[type="submit"],
   a[class*="bg-[#042E3A]"]:not(header nav a):not(.nav-text-link),
+  a[class*="from-[#042E3A]"]:not(header nav a):not(.nav-text-link),
+  button[class*="from-[#042E3A]"],
+  a[class*="from-[#0a7a8c]"]:not(header nav a):not(.nav-text-link),
+  button[class*="from-[#0a7a8c]"],
   a[class*="bg-black"]:not(header nav a):not(.nav-text-link),
   a[class*="bg-neutral-950"]:not(header nav a):not(.nav-text-link),
   a[class*="bg-neutral-900"]:not(header nav a):not(.nav-text-link),
@@ -722,9 +749,16 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   #view-all-projects-btn:hover,
   #query-submit-btn:hover,
   #scroll-to-top-btn:hover,
+  .intro-card-btn-1:hover,
+  .intro-card-btn-2:hover,
+  .intro-card-btn-3:hover,
   button[type="submit"]:hover,
   input[type="submit"]:hover,
   a[class*="bg-[#042E3A]"]:not(header nav a):not(.nav-text-link):hover,
+  a[class*="from-[#042E3A]"]:not(header nav a):not(.nav-text-link):hover,
+  button[class*="from-[#042E3A]"]:hover,
+  a[class*="from-[#0a7a8c]"]:not(header nav a):not(.nav-text-link):hover,
+  button[class*="from-[#0a7a8c]"]:hover,
   a[class*="bg-black"]:not(header nav a):not(.nav-text-link):hover,
   a[class*="bg-neutral-950"]:not(header nav a):not(.nav-text-link):hover,
   a[class*="bg-neutral-900"]:not(header nav a):not(.nav-text-link):hover,
@@ -965,24 +999,30 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
   }
 
   section[aria-label="Featured Showcase Slider"] .rs-cta-btn {
-    background: linear-gradient(135deg, #042E3A 0%, #0a7a8c 100%) !important;
-    border: 1.5px solid #0d9488 !important;
+    background: linear-gradient(90deg, #0077b6 0%, #009688 50%, #02b875 100%) !important;
+    background-color: #0077b6 !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 8px !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    box-shadow: 0 4px 20px rgba(10, 122, 140, 0.45) !important;
+    box-shadow: 0 4px 16px 0 rgba(0, 119, 182, 0.35), 0 2px 6px 0 rgba(2, 184, 117, 0.25) !important;
+    white-space: nowrap !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   section[aria-label="Featured Showcase Slider"] .rs-cta-btn * {
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     fill: #ffffff !important;
+    white-space: nowrap !important;
   }
 
   section[aria-label="Featured Showcase Slider"] .rs-cta-btn:hover {
-    background: linear-gradient(135deg, #087f94 0%, #0d9488 100%) !important;
-    border-color: #14b8a6 !important;
-    box-shadow: 0 8px 28px rgba(13, 148, 136, 0.65) !important;
-    transform: translateY(-2px) !important;
+    background: linear-gradient(90deg, #0284c7 0%, #0891b2 50%, #10b981 100%) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 24px 0 rgba(2, 132, 199, 0.5), 0 0 0 3px rgba(16, 185, 129, 0.3) !important;
+    transform: translateY(-2px) scale(1.02) !important;
   }
 }
 
