@@ -35,7 +35,7 @@ import {
 export const HEADER_ROUTES = [
   { path: "/", title: "Home" },
   { path: "/about", title: "About Us" },
-  { path: "/services", title: "Services" },
+  { path: "/sector", title: "Sectors" },
   { path: "/projects", title: "Projects" },
   { path: "/group-companies", title: "Group Companies" },
   { path: "/contact", title: "Contact Us" },
@@ -44,7 +44,7 @@ export const HEADER_ROUTES = [
 export const FOOTER_QUICK_LINKS = [
   { text: "Home", destination: "/" },
   { text: "About Us", destination: "/about" },
-  { text: "Services", destination: "/services" },
+  { text: "Sectors", destination: "/sector" },
   { text: "Projects", destination: "/projects" },
   { text: "Group Companies", destination: "/group-companies" },
   { text: "Roysons Pvt. Ltd.", destination: "/roysons" },
@@ -55,13 +55,13 @@ export const FOOTER_QUICK_LINKS = [
 ];
 
 export const FOOTER_SERVICES_LINKS = [
-  { text: "Healthcare & Medical", destination: "/services/healthcare-medical" },
-  { text: "Hospital Engineering", destination: "/services/hospital-engineering" },
-  { text: "Pharmaceutical Consultancy", destination: "/services/pharmaceutical-consultancy" },
-  { text: "IT & Artificial Intelligence", destination: "/services/it-ai" },
-  { text: "Electrical & Power Systems", destination: "/services/electrical-power-systems" },
-  { text: "Construction & Infrastructure", destination: "/services/construction-infrastructure" },
-  { text: "Architecture", destination: "/services/architecture" },
+  { text: "Healthcare & Medical", destination: "/sector/healthcare-medical" },
+  { text: "Hospital Engineering", destination: "/sector/hospital-engineering" },
+  { text: "Pharmaceutical Consultancy", destination: "/sector/pharmaceutical-consultancy" },
+  { text: "IT & Artificial Intelligence", destination: "/sector/it-ai" },
+  { text: "Electrical & Power Systems", destination: "/sector/electrical-power-systems" },
+  { text: "Construction & Infrastructure", destination: "/sector/construction-infrastructure" },
+  { text: "Architecture", destination: "/sector/architecture" },
 
 ];
 
@@ -92,7 +92,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Pioneering enterprise artificial intelligence, intelligent mission-control operations, automated predictive analytics, and next-generation sovereign cyber defense systems.",
     supportingText:
       "Through our advanced technology holdings, ROYSONS empowers government ministries and global enterprises with secure digital transformations, neural computing, and smart city architecture.",
-    cta1: { label: "Discover AI & Tech", href: "/services/it-ai" },
+    cta1: { label: "Discover AI & Tech", href: "/sector/it-ai" },
   },
   {
     id: "slide-renewable-energy",
@@ -106,7 +106,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Accelerating the global transition toward clean energy independence through utility-scale photovoltaic solar parks, advanced wind turbine arrays, and smart power distribution networks.",
     supportingText:
       "ROYSONS is committed to global decarbonization and reliable clean power, deploying resilient renewable energy infrastructure that powers industries while preserving our planet.",
-    cta1: { label: "Renewable Energy", href: "/services/renewable-energy" },
+    cta1: { label: "Renewable Energy", href: "/sector/renewable-energy" },
   },
   {
     id: "slide-defense-security",
@@ -120,7 +120,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Providing advanced electronic surveillance, perimeter security systems, border monitoring solutions, and strategic defense technologies for critical national infrastructure.",
     supportingText:
       "ROYSONS defense division combines state-of-the-art sensory technology, professional protection expertise, and command centers to safeguard critical infrastructure and national assets.",
-    cta1: { label: "Defense Solutions", href: "/services/defense-security" },
+    cta1: { label: "Defense Solutions", href: "/sector/defense-security" },
   },
   {
     id: "slide-electric-mobility",
@@ -134,7 +134,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Developing commercial electric transit vehicles, advanced EV battery systems, solar-powered ultra-fast charging corridors, and connected zero-emission public transportation.",
     supportingText:
       "German Technology Xperts (GTX), a ROYSONS company, leads the decarbonization of transit networks with high-efficiency commercial EVs, charging networks, and smart fleet management.",
-    cta1: { label: "Explore EV Mobility", href: "/services/electric-mobility" },
+    cta1: { label: "Explore EV Mobility", href: "/sector/electric-mobility" },
   },
   {
     id: "slide-agriculture-dairy",
@@ -148,7 +148,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Empowering agricultural sustainability through IoT crop monitoring, automated center-pivot irrigation, high-yield dairy production systems, and modern grain storage silos.",
     supportingText:
       "Through National Agricultural Corporation and Swiss Farms, ROYSONS strengthens food security with advanced agro-technology, livestock genetics, and modernized dairy management.",
-    cta1: { label: "Agri & Dairy Services", href: "/services/agriculture-dairy-development" },
+    cta1: { label: "Agri & Dairy Services", href: "/sector/agriculture-dairy-development" },
   },
   {
     id: "slide-food-processing",
@@ -162,7 +162,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Operating high-capacity industrial food processing, automated packaging facilities, international food safety protocols, and temperature-controlled supply chains.",
     supportingText:
       "Delivering premium quality nutrition and packaged foods through certified international standards, advanced food technology, and automated hygienic production lines.",
-    cta1: { label: "Food Processing", href: "/services/food-processing" },
+    cta1: { label: "Food Processing", href: "/sector/food-processing" },
   },
   {
     id: "slide-power-systems",
@@ -176,7 +176,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Engineering high-voltage transmission lines, automated electrical substations, industrial power distribution switchgear, and smart grid synchronization systems.",
     supportingText:
       "ROYSONS delivers turnkey electrical contracting, heavy power infrastructure, and grid reliability solutions that keep mission-critical industries operating without interruption.",
-    cta1: { label: "Power Systems", href: "/services/electrical-power-systems" },
+    cta1: { label: "Power Systems", href: "/sector/electrical-power-systems" },
   },
   {
     id: "slide-mining-minerals",
@@ -190,7 +190,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Pioneering responsible mineral extraction, comprehensive geological surveying, modern mineral processing plants, and strategic national resource development.",
     supportingText:
       "Through National Mines Corporation, ROYSONS applies cutting-edge excavation technology and rigorous environmental standards to extract vital minerals powering global industry.",
-    cta1: { label: "Mining & Minerals", href: "/services/mining-minerals" },
+    cta1: { label: "Mining & Minerals", href: "/sector/mining-minerals" },
   },
   {
     id: "slide-real-estate",
@@ -204,7 +204,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Designing and developing iconic commercial skyscrapers, master-planned residential communities, luxury gated villas, and integrated mixed-use urban developments.",
     supportingText:
       "ROYSONS real estate division blends contemporary architecture, smart city amenities, and sustainable green construction to create premier living and business addresses.",
-    cta1: { label: "Real Estate Solutions", href: "/services/real-estate-development" },
+    cta1: { label: "Real Estate Solutions", href: "/sector/real-estate-development" },
   },
   {
     id: "slide-international-trade",
@@ -218,7 +218,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Facilitating cross-border commodity trade, intermodal freight logistics, maritime shipping solutions, and international customs clearance across major global ports.",
     supportingText:
       "With an established worldwide network and robust logistics infrastructure, ROYSONS connects domestic producers to high-growth international export markets.",
-    cta1: { label: "Trade & Exports", href: "/services/international-trade-exports" },
+    cta1: { label: "Trade & Exports", href: "/sector/international-trade-exports" },
   },
   {
     id: "slide-veterinary",
@@ -232,7 +232,7 @@ export const DEFAULT_BILLBOARD_SLIDES = [
       "Producing research-grade veterinary pharmaceuticals, specialized poultry vaccines, cattle biologics, and modern animal diagnostics to safeguard livestock.",
     supportingText:
       "Vet Vac Pharma, a proud subsidiary of ROYSONS, develops GMP-certified animal vaccines and therapeutic solutions supporting commercial farmers and animal welfare nationwide.",
-    cta1: { label: "Veterinary Healthcare", href: "/services/veterinary-livestock" },
+    cta1: { label: "Veterinary Healthcare", href: "/sector/veterinary-livestock" },
   },
 ];
 
@@ -277,91 +277,91 @@ export const CORPORATE_SERVICES = [
     icon: HeartPulse,
     title: "Healthcare & Medical Technologies",
     description: "Innovative medical systems and healthcare technology solutions.",
-    href: "/services/healthcare-medical",
+    href: "/sector/healthcare-medical",
   },
   {
     icon: BriefcaseMedical,
     title: "Hospital Engineering & Clean Rooms",
     description: "Advanced engineering design and planning for healthcare clean rooms.",
-    href: "/services/hospital-engineering",
+    href: "/sector/hospital-engineering",
   },
   {
     icon: PawPrint,
     title: "Veterinary & Livestock Solutions",
     description: "Comprehensive animal healthcare and livestock management solutions.",
-    href: "/services/veterinary-livestock",
+    href: "/sector/veterinary-livestock",
   },
   {
     icon: Pill,
     title: "Pharmaceutical Consultancy",
     description: "Professional consulting and quality systems for pharmaceuticals.",
-    href: "/services/pharmaceutical-consultancy",
+    href: "/sector/pharmaceutical-consultancy",
   },
   {
     icon: Monitor,
     title: "Information Technology & AI",
     description: "Enterprise software, cloud networks, and smart AI solutions.",
-    href: "/services/it-ai",
+    href: "/sector/it-ai",
   },
   {
     icon: Zap,
     title: "Electrical & Power Systems",
     description: "Transmission infrastructure, power distribution, and grid systems.",
-    href: "/services/electrical-power-systems",
+    href: "/sector/electrical-power-systems",
   },
   {
     icon: Sun,
     title: "Renewable Energy",
     description: "Sustainable solar, wind, and green energy infrastructure.",
-    href: "/services/renewable-energy",
+    href: "/sector/renewable-energy",
   },
   {
     icon: PlugZap,
     title: "Electric Mobility",
     description: "EV charging stations and electric vehicle transportation networks.",
-    href: "/services/electric-mobility",
+    href: "/sector/electric-mobility",
   },
   {
     icon: Shield,
     title: "Defense & Security",
     description: "Advanced safety, defense systems, and security solutions.",
-    href: "/services/defense-security",
+    href: "/sector/defense-security",
   },
   {
     icon: Sprout,
     title: "Agriculture & Dairy Development",
     description: "Modern agritech, crop management, and dairy development solutions.",
-    href: "/services/agriculture-dairy-development",
+    href: "/sector/agriculture-dairy-development",
   },
   {
     icon: Gem,
     title: "Mining & Minerals",
     description: "Resource exploration, extraction, and mineral processing.",
-    href: "/services/mining-minerals",
+    href: "/sector/mining-minerals",
   },
   {
     icon: HardHat,
     title: "Construction & Infrastructure",
     description: "Civil engineering, roadworks, and modern infrastructure systems.",
-    href: "/services/construction-infrastructure",
+    href: "/sector/construction-infrastructure",
   },
   {
     icon: Utensils,
     title: "Food Processing",
     description: "State-of-the-art agricultural food safety, packaging, and processing.",
-    href: "/services/food-processing",
+    href: "/sector/food-processing",
   },
   {
     icon: Globe,
     title: "International Trade & Exports",
     description: "Global import-export trade processes and supply chain logistics.",
-    href: "/services/international-trade-exports",
+    href: "/sector/international-trade-exports",
   },
   {
     icon: Building2,
     title: "Real Estate & Development",
     description: "Smart housing, residential communities, and property development.",
-    href: "/services/real-estate-development",
+    href: "/sector/real-estate-development",
   },
 ];
 

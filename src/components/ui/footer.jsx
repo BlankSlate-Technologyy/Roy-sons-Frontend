@@ -180,7 +180,7 @@ export default function CorporateFooter({
 
         <div data-aos="fade-up" data-aos-delay="300">
           <h4 className="footer-heading text-[14px] font-black uppercase tracking-[0.24em] text-[#2dd4bf] mb-5">
-            Our Services
+            Our Sectors
           </h4>
           <ul className="space-y-3">
             {FOOTER_SERVICES_LINKS.map((link, index) => (

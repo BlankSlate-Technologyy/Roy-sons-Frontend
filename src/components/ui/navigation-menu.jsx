@@ -12,23 +12,23 @@ import SearchModal from "@/components/ui/SearchModal";
 const SERVICES_DROPDOWN_ITEMS = [
   {
     title: "Healthcare & Medical Technologies",
-    path: "/services/healthcare-medical",
+    path: "/sector/healthcare-medical",
   },
   {
     title: "Hospital Engineering & Clean Rooms",
-    path: "/services/hospital-engineering",
+    path: "/sector/hospital-engineering",
   },
   {
     title: "Veterinary & Livestock Solutions",
-    path: "/services/veterinary-livestock",
+    path: "/sector/veterinary-livestock",
   },
   {
     title: "Pharmaceutical Consultancy",
-    path: "/services/pharmaceutical-consultancy",
+    path: "/sector/pharmaceutical-consultancy",
   },
   {
     title: "Other",
-    path: "/services",
+    path: "/sector",
     isOther: true,
   },
 ];
@@ -116,10 +116,10 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
           <nav aria-label="Desktop Navigation" className="hidden lg:flex h-full items-center justify-center flex-1 px-1 xl:px-3">
             <ul className="flex h-full items-center gap-0 xl:gap-1">
               {HEADER_ROUTES.map((route) => {
-                const isServicesRoute = route.path === "/services";
+                const isServicesRoute = route.path === "/sector";
                 const isActive =
                   activeRoute === route.path ||
-                  (isServicesRoute && (activeRoute.startsWith("/services") || isServicesDropdownOpen));
+                  (isServicesRoute && (activeRoute.startsWith("/sector") || isServicesDropdownOpen));
 
                 return (
                   <li
@@ -258,7 +258,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                   </div>
 
                   <Link
-                    href="/services"
+                    href="/sector"
                     onClick={closeServicesDropdown}
                     className="rs-cta-btn mt-4 inline-flex items-center gap-2 text-xs sm:text-[13px] font-bold uppercase tracking-wider text-white px-5 py-2.5 rounded-md transition-all self-start shadow-sm hover:shadow-[0_4px_14px_rgba(0,119,182,0.3)] active:scale-95 whitespace-nowrap"
                     style={{
@@ -267,7 +267,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                       borderRadius: "6px",
                     }}
                   >
-                    <span className="whitespace-nowrap text-white font-bold">Explore All Services</span>
+                    <span className="whitespace-nowrap text-white font-bold">Explore All Sectors</span>
                     <ArrowRight size={14} strokeWidth={2.4} className="shrink-0 text-white" />
                   </Link>
                 </div>
@@ -279,7 +279,7 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                   {SERVICES_DROPDOWN_ITEMS.map((item, index) => {
                     const isItemActive =
                       currentPath === item.path ||
-                      (item.path !== "/services" && currentPath.startsWith(item.path));
+                      (item.path !== "/sector" && currentPath.startsWith(item.path));
 
                     return (
                       <li key={item.path + index} className="w-full">
@@ -383,12 +383,12 @@ export default function HeaderNavbar({ activeRoute = "/" }) {
                 </Link>
               </li>
               {HEADER_ROUTES.map((route) => {
-                if (route.path === "/services") {
+                if (route.path === "/sector") {
                   return (
                     <li key={route.path} className="border-b border-[#042E3A]/10">
                       <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 sm:py-3">
                         <Link
-                          href="/services"
+                          href="/sector"
                           onClick={() => setIsMobileMenuOpen(false)}
                           className="nav-text-link text-[15px] sm:text-[16px] font-bold tracking-[0.12em] uppercase !text-[#042E3A] hover:!text-[#0a7a8c]"
                         >

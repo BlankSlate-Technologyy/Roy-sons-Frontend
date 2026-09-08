@@ -85,21 +85,21 @@ const CLIENTS_SERVED = [
 ];
 
 const STRATEGIC_DIVISIONS = [
-  { title: "Healthcare & Medical Technologies", icon: HeartPulse, href: "/services/healthcare-medical" },
-  { title: "Hospital Engineering & Clean Rooms", icon: BriefcaseMedical, href: "/services/hospital-engineering" },
-  { title: "Veterinary & Livestock Solutions", icon: PawPrint, href: "/services/veterinary-livestock" },
-  { title: "Pharmaceutical Consultancy", icon: Pill, href: "/services/pharmaceutical-consultancy" },
-  { title: "Information Technology & AI", icon: Monitor, href: "/services/it-ai" },
-  { title: "Electrical & Power Systems", icon: Zap, href: "/services/electrical-power-systems" },
-  { title: "Renewable Energy", icon: Sun, href: "/services/renewable-energy" },
-  { title: "Electric Mobility", icon: PlugZap, href: "/services/electric-mobility" },
-  { title: "Defense & Security", icon: Shield, href: "/services/defense-security" },
-  { title: "Agriculture & Dairy Development", icon: Sprout, href: "/services/agriculture-dairy-development" },
-  { title: "Mining & Minerals", icon: Gem, href: "/services/mining-minerals" },
-  { title: "Construction & Infrastructure", icon: HardHat, href: "/services/construction-infrastructure" },
-  { title: "Food Processing", icon: Utensils, href: "/services/food-processing" },
-  { title: "International Trade & Exports", icon: Globe, href: "/services/international-trade-exports" },
-  { title: "Real Estate & Development", icon: Building2, href: "/services/real-estate-development" }
+  { title: "Healthcare & Medical Technologies", icon: HeartPulse, href: "/sector/healthcare-medical" },
+  { title: "Hospital Engineering & Clean Rooms", icon: BriefcaseMedical, href: "/sector/hospital-engineering" },
+  { title: "Veterinary & Livestock Solutions", icon: PawPrint, href: "/sector/veterinary-livestock" },
+  { title: "Pharmaceutical Consultancy", icon: Pill, href: "/sector/pharmaceutical-consultancy" },
+  { title: "Information Technology & AI", icon: Monitor, href: "/sector/it-ai" },
+  { title: "Electrical & Power Systems", icon: Zap, href: "/sector/electrical-power-systems" },
+  { title: "Renewable Energy", icon: Sun, href: "/sector/renewable-energy" },
+  { title: "Electric Mobility", icon: PlugZap, href: "/sector/electric-mobility" },
+  { title: "Defense & Security", icon: Shield, href: "/sector/defense-security" },
+  { title: "Agriculture & Dairy Development", icon: Sprout, href: "/sector/agriculture-dairy-development" },
+  { title: "Mining & Minerals", icon: Gem, href: "/sector/mining-minerals" },
+  { title: "Construction & Infrastructure", icon: HardHat, href: "/sector/construction-infrastructure" },
+  { title: "Food Processing", icon: Utensils, href: "/sector/food-processing" },
+  { title: "International Trade & Exports", icon: Globe, href: "/sector/international-trade-exports" },
+  { title: "Real Estate & Development", icon: Building2, href: "/sector/real-estate-development" }
 ];
 
 const WHY_ROYS_GROUP = [
@@ -721,7 +721,7 @@ export default function AboutPage() {
               return (
                 <Link
                   key={index}
-                  href={div.href || "/services"}
+                  href={div.href || "/sector"}
                   data-aos="fade-up"
                   data-aos-delay={staggerDelay}
                   className="flex items-center gap-4 bg-white border border-neutral-200 p-5 rounded-sm hover:bg-gradient-to-r hover:from-[#0284c7] hover:via-[#0891b2] hover:to-[#10b981] hover:border-transparent hover:shadow-[0_12px_26px_rgba(2,132,199,0.35)] hover:-translate-y-1 transition-all duration-300 cursor-pointer group"

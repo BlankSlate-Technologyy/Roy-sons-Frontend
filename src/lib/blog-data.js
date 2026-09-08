@@ -102,7 +102,7 @@ export const BLOG_POSTS = {
       </>
     ),
     ctaText: "Explore ROYSONS Healthcare Solutions",
-    ctaLink: "/services/healthcare-medical"
+    ctaLink: "/sector/healthcare-medical"
   },
   "global-trade-supply-chains": {
     slug: "global-trade-supply-chains",
@@ -238,7 +238,7 @@ export const BLOG_POSTS = {
       </>
     ),
     ctaText: "Partner With ROYSONS for Global Trade & Procurement",
-    ctaLink: "/services/international-trade-exports"
+    ctaLink: "/sector/international-trade-exports"
   },
   "building-diversified-future": {
     slug: "building-diversified-future",
