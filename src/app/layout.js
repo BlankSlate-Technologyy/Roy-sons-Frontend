@@ -63,9 +63,9 @@ export const metadata = {
       "Diversified conglomerate delivering excellence across civil infrastructure, healthcare, energy, and engineering.",
   },
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/logos/roysons-r-icon.png",
+    shortcut: "/logos/roysons-r-icon.png",
+    apple: "/logos/roysons-r-icon.png",
   },
   robots: {
     index: true,
