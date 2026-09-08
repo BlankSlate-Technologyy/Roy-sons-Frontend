@@ -199,7 +199,7 @@ Together, they form one integrated platform built around purpose, enterprise, in
               <div className="w-full lg:w-1/2 order-1 lg:order-1">
                 <div className="relative w-full h-64 sm:h-80 lg:h-[380px] rounded-[4px] overflow-hidden border border-neutral-200 shadow-sm">
                   <Image
-                    src="/logos/roysons logo mockup building.png"
+                    src="/logos/roysons logo mockup.png"
                     alt="ROYSONS Trust Headquarters Building"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"

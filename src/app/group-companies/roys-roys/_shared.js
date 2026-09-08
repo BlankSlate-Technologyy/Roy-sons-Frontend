@@ -56,34 +56,34 @@ export function RoysNavbar({ active = "Home" }) {
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/group-companies/roys-roys" className="flex items-center gap-2.5 sm:gap-3 select-none group">
+        <Link href="/group-companies/roys-roys" className="flex items-center gap-3 sm:gap-4 select-none group">
           <Image
             src="/logos/r&r.png"
             alt="ROYS & ROYS"
-            width={48}
-            height={48}
-            className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+            width={64}
+            height={64}
+            className="h-12 sm:h-14 md:h-16 w-auto object-contain group-hover:opacity-90 transition-opacity"
             priority
           />
           <div className="flex flex-col justify-center">
-            <span className="text-[15px] sm:text-[16px] font-black tracking-tight leading-none text-[#0f2b48]">
+            <span className="text-[17px] sm:text-[19px] md:text-[21px] font-black tracking-tight leading-none text-[#0f2b48]">
               ROYS &amp; ROYS
             </span>
-            <span className="text-[10px] sm:text-[10.5px] font-black tracking-[0.20em] uppercase leading-none text-[#0f2b48] mt-1">
+            <span className="text-[11px] sm:text-[12px] md:text-[13px] font-black tracking-[0.24em] uppercase leading-none text-[#0f2b48] mt-1.5">
               INTERNATIONAL
             </span>
           </div>
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
           {NAV_LINKS.map((item) => {
             const isActive = item.label.toLowerCase() === active.toLowerCase();
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[13.5px] xl:text-[14.5px] font-bold tracking-normal transition-colors relative py-1.5 px-1 whitespace-nowrap"
+                className="text-[15px] xl:text-[16px] font-bold tracking-normal transition-colors relative py-1.5 px-1 whitespace-nowrap"
                 style={{
                   color: isActive ? "#2563eb" : "#0f2b48",
                 }}
@@ -103,7 +103,7 @@ export function RoysNavbar({ active = "Home" }) {
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
             href="/group-companies/roys-roys/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded text-xs font-semibold text-white shadow-xs transition-all duration-200 hover:bg-[#091b2c] cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded text-sm font-bold text-white shadow-xs transition-all duration-200 hover:bg-[#091b2c] cursor-pointer"
             style={{ backgroundColor: "#0f2b48" }}
           >
             <span>Request a Quote</span>

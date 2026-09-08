@@ -36,6 +36,17 @@ import {
   GraduationCap,
   Building,
   Factory,
+  Zap,
+  ShoppingBag,
+  Thermometer,
+  Truck,
+  UserCheck,
+  Settings,
+  BarChart3,
+  Phone,
+  Package,
+  Cpu,
+  Beaker,
 } from "lucide-react";
 
 import { RoysNavbar, RoysFooter } from "./_shared";
@@ -230,7 +241,48 @@ const VALUES_5 = [
   { label: "Commitment",  icon: Target },
 ];
 
-// ─── Main Landing Page Component ──────────────────────────────────────────────
+const BUSINESS_VERTICALS = [
+  { title: "Medical Equipment",             icon: Stethoscope,     desc: "Comprehensive medical equipment supply for hospitals and clinical settings." },
+  { title: "Surgical Equipment",            icon: BriefcaseMedical,desc: "Precision surgical tools and instruments for modern operating theatres." },
+  { title: "Medical Devices",               icon: Activity,        desc: "Advanced medical devices including diagnostic and monitoring systems." },
+  { title: "Laboratory & Research",         icon: FlaskConical,    desc: "Analytical, research, and quality control laboratory equipment and glassware." },
+  { title: "Pharmaceutical & Vaccines",     icon: Pill,            desc: "Vaccine production solutions, oil adjuvants, and pharmaceutical support systems." },
+  { title: "Healthcare Infrastructure",     icon: Building2,       desc: "End-to-end healthcare facility planning, design, and development." },
+  { title: "Hospital Engineering",          icon: Wrench,          desc: "MEP, utilities, biomedical and hospital engineering solutions." },
+  { title: "Clean Room & HVAC",             icon: Layers,          desc: "ISO-classified clean rooms, HEPA filtration and HVAC systems for healthcare." },
+  { title: "Institutional Supply",          icon: Package,         desc: "Disposables, consumables, and general healthcare institutional procurement." },
+  { title: "Electrical Equipment",          icon: Zap,             desc: "Industrial and general electrical equipment supply." },
+  { title: "Security Equipment",            icon: ShieldCheck,     desc: "Professional security systems and equipment for institutions." },
+  { title: "Fresh Fruit & Vegetable Export",icon: Truck,           desc: "Export of quality fresh produce for international markets." },
+];
+
+const LEADERSHIP = {
+  name: "Mr. Brig (R) Ijaz Naseer",
+  title: "Chairman",
+  company: "Roys & Roys International",
+  message: "Our focus has always been to supply the right products, at the right prices, at the right time — while building lasting relationships with our clients across healthcare, laboratory and institutional sectors. We remain committed to being a reputable and diversified healthcare organization in Pakistan.",
+  expertise: [
+    "Healthcare Business Development",
+    "Medical Equipment Procurement",
+    "Strategic Business Planning",
+    "Market Research & Product Development",
+    "Client Relationship Management",
+    "Institutional Leadership",
+  ],
+};
+
+const TEAM_ROLES = [
+  { role: "Healthcare Specialists",      icon: HeartPulse,   image: "", desc: "Subject-matter experts in clinical and hospital healthcare solutions." },
+  { role: "Medical Equipment Experts",   icon: Stethoscope,  image: "", desc: "Professionals specializing in medical device supply and integration." },
+  { role: "Laboratory Professionals",    icon: Microscope,   image: "", desc: "Experts in laboratory systems, research equipment and analytical instruments." },
+  { role: "Project Engineers",           icon: Settings,     image: "", desc: "Engineers managing hospital infrastructure and turnkey project delivery." },
+  { role: "Procurement Specialists",     icon: ShoppingBag,  image: "", desc: "Procurement professionals ensuring quality supply at competitive pricing." },
+  { role: "Technical Support Team",      icon: Cpu,          image: "", desc: "Field technicians providing installation, calibration and AMC support." },
+  { role: "Project Management",          icon: BarChart3,    image: "", desc: "Project managers overseeing concept-to-commissioning delivery." },
+  { role: "Client Services",             icon: UserCheck,    image: "", desc: "Dedicated client service professionals ensuring satisfaction at every stage." },
+];
+
+
 
 export default function RoysRoysPage() {
   const [productTab, setProductTab] = useState("Diagnostic Imaging");
@@ -412,19 +464,19 @@ export default function RoysRoysPage() {
             </span>
 
             <h2 className="text-2xl sm:text-3xl font-black text-[#0f2b48] leading-[1.22] tracking-tight mb-4">
-              Delivering Excellence Through Global Trade, Innovation &amp; Strategic Partnerships
+              Integrated Healthcare Solutions, Medical Equipment & Infrastructure
             </h2>
 
             <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
-              At Roys &amp; Roys™ International, we combine global expertise with local insight to deliver world-class healthcare infrastructure and institutional solutions. With decades of experience and commitment to quality, we transform visions into operational realities across the globe.
+              Roys &amp; Roys™ International is a diversified healthcare company operating across medical equipment supply, laboratory solutions, pharmaceutical products, healthcare infrastructure, hospital engineering and institutional procurement. We combine strategic supplier relationships with end-to-end project execution to deliver complete solutions for hospitals, laboratories, and healthcare institutions.
             </p>
 
             <div className="space-y-3 mb-7">
               {[
-                { title: "Global Expertise", desc: "Decades of experience in healthcare innovation." },
-                { title: "Turnkey Solutions", desc: "End-to-end delivery from concept to commissioning." },
-                { title: "Innovation-Driven", desc: "Advanced technology for better patient outcomes." },
-                { title: "Commitment to Excellence", desc: "Quality, safety, and sustainability in every project." },
+                { title: "Medical & Surgical Equipment", desc: "Supply of medical devices, surgical instruments, diagnostic and hospital equipment." },
+                { title: "Laboratory Solutions", desc: "Analytical, research and quality control laboratory equipment and glassware." },
+                { title: "Healthcare Infrastructure", desc: "Turnkey hospital planning, engineering, clean rooms and HVAC systems." },
+                { title: "Institutional Procurement", desc: "Disposables, consumables and general institutional healthcare supply." },
               ].map((point, idx) => (
                 <div
                   key={point.title}
@@ -502,7 +554,7 @@ export default function RoysRoysPage() {
             <div>
               <h3 className="text-base font-bold text-[#0f2b48] mb-1.5">Our Mission</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                To build a healthier tomorrow by delivering innovative, sustainable, and patient-centric healthcare infrastructure solutions globally.
+                To extend services beyond client expectations to ensure we supply the right products, at the right prices, at the right time.
               </p>
             </div>
           </div>
@@ -519,7 +571,7 @@ export default function RoysRoysPage() {
             <div>
               <h3 className="text-base font-bold text-[#0f2b48] mb-1.5">Our Vision</h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                To be a global leader in healthcare solutions and exceed expectations through innovation, integrity, and unwavering commitment.
+                To be a reputable and diversified healthcare company in Pakistan.
               </p>
             </div>
           </div>
@@ -1123,7 +1175,175 @@ export default function RoysRoysPage() {
         </div>
       </section>
 
-      {/* ─── 15. FOOTER ────────────────────────────────────────────────────── */}
+      {/* ─── 15. BUSINESS VERTICALS ─────────────────────────────────────────── */}
+      <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-xs font-bold uppercase tracking-wider mb-3" data-aos="fade-up">
+            WHAT WE DO
+          </span>
+          <h2
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-3"
+          >
+            OUR BUSINESS VERTICALS
+          </h2>
+          <p data-aos="fade-up" data-aos-delay="150" className="text-sm text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+            ROYS &amp; ROYS International operates across a broad spectrum of healthcare, laboratory, pharmaceutical, and institutional business verticals.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 text-left">
+            {BUSINESS_VERTICALS.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  data-aos="fade-up"
+                  data-aos-delay={(idx % 4) * 60}
+                  className="p-5 rounded-xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col gap-3 group"
+                >
+                  <div className="w-11 h-11 rounded-lg bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-200 flex items-center justify-center shrink-0">
+                    <Icon size={22} />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors mb-1 leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 16. LEADERSHIP ─────────────────────────────────────────────────── */}
+      <section className="py-14 lg:py-18 px-6 bg-white border-t border-slate-200">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center mb-10">
+            <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-xs font-bold uppercase tracking-wider mb-3" data-aos="fade-up">
+              LEADERSHIP
+            </span>
+            <h2
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48]"
+            >
+              OUR LEADERSHIP
+            </h2>
+          </div>
+
+          {/* Chairman Card — 2-col on desktop, stacked on mobile */}
+          <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            className="max-w-4xl mx-auto rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-md overflow-hidden grid lg:grid-cols-2 gap-0"
+          >
+            {/* Left: Photo / Avatar area */}
+            <div className="relative bg-gradient-to-br from-[#0f2b48] to-[#2563eb] flex flex-col items-center justify-center py-14 px-8 text-center">
+              {/* Professional avatar placeholder — replace with real photo */}
+              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-white/15 border-4 border-white/30 flex items-center justify-center mb-5 shadow-xl">
+                <Users size={56} className="text-white/70" />
+              </div>
+              <p className="text-white font-black text-lg sm:text-xl leading-tight mb-1">
+                {LEADERSHIP.name}
+              </p>
+              <p className="text-[#B49438] font-bold text-sm uppercase tracking-wider mb-1">
+                {LEADERSHIP.title}
+              </p>
+              <p className="text-white/60 text-xs font-medium">
+                {LEADERSHIP.company}
+              </p>
+            </div>
+
+            {/* Right: Message & Expertise */}
+            <div className="p-7 sm:p-9 flex flex-col justify-center">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#B49438] block mb-3">
+                CHAIRMAN&apos;S MESSAGE
+              </span>
+              <blockquote className="text-sm sm:text-base text-slate-700 leading-relaxed italic border-l-4 border-[#2563eb] pl-4 mb-6">
+                &ldquo;{LEADERSHIP.message}&rdquo;
+              </blockquote>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider text-[#0f2b48] mb-3">
+                  Areas of Expertise
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {LEADERSHIP.expertise.map((ex) => (
+                    <span
+                      key={ex}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-[#2563eb] text-xs font-semibold"
+                    >
+                      <Check size={11} strokeWidth={3} />
+                      {ex}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-slate-400 mt-4">
+            * Official photograph to be updated upon availability.
+          </p>
+        </div>
+      </section>
+
+      {/* ─── 17. OUR TEAM ───────────────────────────────────────────────────── */}
+      <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
+        <div className="mx-auto max-w-screen-xl text-center">
+          <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-xs font-bold uppercase tracking-wider mb-3" data-aos="fade-up">
+            THE TEAM
+          </span>
+          <h2
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-3"
+          >
+            OUR TEAM
+          </h2>
+          <p data-aos="fade-up" data-aos-delay="150" className="text-sm text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+            A dedicated team of healthcare specialists, engineers, procurement professionals and technical experts working together to deliver excellence.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {TEAM_ROLES.map((member, idx) => {
+              const Icon = member.icon;
+              return (
+                <div
+                  key={member.role}
+                  data-aos="fade-up"
+                  data-aos-delay={(idx % 4) * 70}
+                  className="p-6 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center text-center group"
+                >
+                  {member.image ? (
+                    <div className="relative w-full h-44 rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50">
+                      <Image
+                        src={member.image}
+                        alt={member.role}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-14 h-14 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-200 flex items-center justify-center mb-4 shadow-xs">
+                      <Icon size={26} />
+                    </div>
+                  )}
+                  <h3 className="text-sm font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors mb-2 leading-snug">
+                    {member.role}
+                  </h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{member.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 18. FOOTER ─────────────────────────────────────────────────────── */}
       <RoysFooter />
     </main>
   );
