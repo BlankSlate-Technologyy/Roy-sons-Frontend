@@ -23,15 +23,13 @@ import {
   ScanSearch,
   Layers,
   ChevronRight,
-  ArrowRight,
-  Building2,
+  HeartPulse,
+  Landmark,
   GraduationCap,
   Factory,
-  Landmark,
   Truck,
   Sprout,
   ShoppingCart,
-  HeartPulse,
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -268,13 +266,13 @@ export default function ITAIServicePage() {
               return (
                 <div
                   key={index}
-                  className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#009688] hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
                 >
                   <div>
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#0a7a8c]/60 transition-all duration-300">
-                      <Icon size={24} strokeWidth={1.5} className="text-[#0a7a8c] group-hover:scale-110 transition-transform duration-300" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-5 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                      <Icon size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white group-hover:scale-110 transition-all duration-300" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#009688] transition-colors duration-300">
                       {cap.title}
                     </h3>
                     <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
@@ -291,19 +289,18 @@ export default function ITAIServicePage() {
       {/* AI Solutions */}
       <section 
         id="ai-solutions" 
-        data-dark-section="true"
-        className="roysons-preserve-dark py-14 sm:py-18 bg-[#042E3A] text-white border-b border-teal-800/30"
+        className="py-14 sm:py-18 bg-white border-b border-neutral-200"
       >
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
               ARTIFICIAL INTELLIGENCE
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mb-3">
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">
               AI Solutions
             </h2>
-            <div className="mx-auto h-[3px] w-14 bg-[#0a7a8c] mb-4" />
-            <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal">
+            <div className="mx-auto h-[3px] w-14 bg-neutral-950 mb-4" />
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-normal">
               Purpose-built AI solutions that convert raw data into actionable intelligence, automating decisions and accelerating growth.
             </p>
           </div>
@@ -314,17 +311,19 @@ export default function ITAIServicePage() {
               return (
                 <div
                   key={index}
-                  className="bg-[#161c20] border border-neutral-800 p-5 sm:p-6 rounded-[2px] group hover:border-[#0a7a8c] transition-all duration-300"
+                  className="bg-neutral-50 border border-neutral-200 p-5 sm:p-6 rounded-[2px] group hover:border-[#009688] hover:bg-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
                 >
-                  <div className="w-10 h-10 rounded-[2px] bg-white/5 border border-[#0a7a8c]/30 flex items-center justify-center mb-4">
-                    <Icon size={20} strokeWidth={1.5} className="text-[#0a7a8c]" />
+                  <div>
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-4 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                      <Icon size={30} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-neutral-950 mb-2 group-hover:text-[#009688] transition-colors duration-300">
+                      {sol.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+                      {sol.description}
+                    </p>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-white mb-2 group-hover:text-[#0a7a8c] transition-colors duration-300">
-                    {sol.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal">
-                    {sol.description}
-                  </p>
                 </div>
               );
             })}
@@ -345,18 +344,18 @@ export default function ITAIServicePage() {
             <div className="mx-auto h-[3px] w-14 bg-neutral-950 mb-4" />
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
             {INDUSTRIES.map((ind, i) => {
               const Icon = ind.icon;
               return (
                 <div
                   key={i}
-                  className="flex flex-col items-center gap-2.5 p-3.5 sm:p-4 bg-white border border-neutral-200 rounded-[2px] group hover:border-[#0a7a8c] hover:shadow-md transition-all duration-300"
+                  className="flex flex-col items-center gap-3 p-4 sm:p-5 bg-white border border-neutral-200 rounded-[2px] group hover:border-[#009688] hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-[2px] bg-neutral-950 flex items-center justify-center group-hover:bg-[#101518] group-hover:border group-hover:border-[#0a7a8c]/60 transition-all">
-                    <Icon size={18} strokeWidth={1.5} className="text-[#0a7a8c]" />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                    <Icon size={34} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-700 text-center group-hover:text-neutral-950 transition-colors">
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-800 text-center group-hover:text-[#009688] transition-colors">
                     {ind.label}
                   </span>
                 </div>

@@ -89,12 +89,12 @@ export default function GovernmentSectorHubPage() {
               return (
                 <div
                   key={sector.slug}
-                  className="rounded-xl border border-[#0a7a8c]/20 bg-white overflow-hidden shadow-xs hover:shadow-2xl hover:border-[#0a7a8c]/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5"
+                  className="rounded-xl border border-[#0a7a8c]/20 bg-white overflow-hidden shadow-xs hover:shadow-2xl hover:border-[#009688] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5"
                 >
                   <div className="p-8">
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-14 h-14 rounded-xl bg-[#f0fdfa] border border-[#0a7a8c]/30 text-[#0a7a8c] flex items-center justify-center group-hover:scale-105 group-hover:bg-[#0a7a8c] group-hover:text-white transition-all duration-300 shadow-sm">
-                        <SectorIcon size={28} />
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 text-[#0a7a8c] flex items-center justify-center group-hover:scale-105 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                        <SectorIcon size={34} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                       </div>
                       <span className="text-lg font-mono font-black text-[#0a7a8c]/40">
                         0{idx + 1}
@@ -105,7 +105,7 @@ export default function GovernmentSectorHubPage() {
                       <span className="text-xs font-black text-[#0a7a8c] uppercase tracking-wider block mb-1">
                         {sector.badge}
                       </span>
-                      <h3 className="text-xl font-black uppercase tracking-wider text-[#042E3A] group-hover:text-[#0a7a8c] transition-colors">
+                      <h3 className="text-xl font-black uppercase tracking-wider text-[#042E3A] group-hover:text-[#009688] transition-colors">
                         {sector.title}
                       </h3>
                     </div>

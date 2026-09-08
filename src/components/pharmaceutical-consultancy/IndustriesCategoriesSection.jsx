@@ -33,7 +33,7 @@ export default function IndustriesCategoriesSection({ onSelectCategory }) {
             return (
               <div
                 key={idx}
-                className="rounded-[4px] bg-white border border-neutral-300 hover:border-[#0a7a8c] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden"
+                className="rounded-[4px] bg-white border border-neutral-300 hover:border-[#009688] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden"
               >
                 {/* Image Banner */}
                 <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-neutral-900">
@@ -54,7 +54,7 @@ export default function IndustriesCategoriesSection({ onSelectCategory }) {
                   </div>
 
                   {/* Icon Badge */}
-                  <div className="absolute top-3 right-3 w-10 h-10 rounded-[2px] bg-neutral-950/85 backdrop-blur-md border border-cyan-400/50 flex items-center justify-center text-cyan-300 group-hover:bg-[#0a7a8c] group-hover:text-white transition-colors duration-300 shadow-md">
+                  <div className="absolute top-3 right-3 w-11 h-11 rounded-[4px] bg-neutral-950/85 backdrop-blur-md border border-cyan-400/50 flex items-center justify-center text-cyan-300 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:text-white transition-all duration-300 shadow-md">
                     <Icon className="w-5 h-5" strokeWidth={2} />
                   </div>
 

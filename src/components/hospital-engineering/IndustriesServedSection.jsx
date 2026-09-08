@@ -31,12 +31,12 @@ export default function IndustriesServedSection() {
           {INDUSTRIES_SERVED.map((ind, idx) => (
             <div
               key={idx}
-              className="relative flex items-center gap-3.5 p-4 sm:p-4.5 rounded-2xl bg-white border border-slate-200 hover:border-[#009588] hover:shadow-[0_10px_24px_rgba(10,122,140,0.14)] hover:-translate-y-1 hover:bg-gradient-to-b hover:from-[#f0fdfa]/50 hover:to-white transition-all duration-300 group overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-[2.5px] before:bg-gradient-to-r before:from-[#0078b4] before:via-[#009588] before:to-[#01b576] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300"
+              className="relative flex items-center gap-3.5 p-4 sm:p-4.5 rounded-[4px] bg-white border border-slate-200 hover:border-[#009688] hover:shadow-[0_10px_24px_rgba(10,122,140,0.14)] hover:-translate-y-1 hover:bg-gradient-to-b hover:from-[#f0fdfa]/50 hover:to-white transition-all duration-300 group overflow-hidden before:absolute before:top-0 before:left-0 before:right-0 before:h-[2.5px] before:bg-gradient-to-r before:from-[#0077b6] before:via-[#009688] before:to-[#02b875] before:opacity-0 group-hover:before:opacity-100 before:transition-opacity before:duration-300"
             >
-              <div className="w-9 h-9 rounded-xl bg-[#f0fdfa] border border-[#0a7a8c]/25 text-[#0a7a8c] flex items-center justify-center shrink-0 group-hover:bg-gradient-to-br group-hover:from-[#0078b4] group-hover:via-[#009588] group-hover:to-[#01b576] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_3px_12px_rgba(1,181,118,0.4)] transition-all duration-300">
-                <CheckCircle2 className="w-5 h-5" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 text-[#0a7a8c] flex items-center justify-center shrink-0 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:text-white group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                <CheckCircle2 size={34} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
               </div>
-              <span className="text-[16px] sm:text-[17px] font-bold text-slate-800 group-hover:text-[#009588] transition-colors">
+              <span className="text-[16px] sm:text-[17px] font-bold text-slate-800 group-hover:text-[#009688] transition-colors">
                 {ind}
               </span>
             </div>

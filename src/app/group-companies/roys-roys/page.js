@@ -847,7 +847,7 @@ export default function RoysRoysPage() {
             INDUSTRIES WE SERVE
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5 sm:gap-4 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4 sm:gap-5 mb-10">
             {INDUSTRIES_8.map((ind, idx) => {
               const Icon = ind.icon;
               return (
@@ -856,12 +856,12 @@ export default function RoysRoysPage() {
                   href={"/group-companies/roys-roys/industries/" + ind.slug}
                   data-aos="zoom-in"
                   data-aos-delay={idx * 50}
-                  className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group no-underline"
+                  className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#009688] hover:shadow-lg transition-all duration-200 flex flex-col items-center justify-center text-center group no-underline"
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-200 flex items-center justify-center mb-3 shadow-xs">
-                    <Icon size={26} />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-blue-50 text-[#0077b6] group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:text-white group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-200 flex items-center justify-center mb-3 shadow-xs">
+                    <Icon size={34} strokeWidth={1.8} />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors leading-snug">
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0f2b48] group-hover:text-[#009688] transition-colors leading-snug">
                     {ind.title}
                   </span>
                 </Link>

@@ -234,10 +234,10 @@ export default function ConstructionInfrastructurePage() {
             <div className="grid grid-cols-2 md:grid-cols-6 gap-4 sm:gap-6 relative z-10">
               {LIFECYCLE_STEPS.map((step, idx) => (
                 <div key={idx} className="flex flex-col items-center group">
-                  <div className="w-12 h-12 bg-white border-2 border-neutral-200 rounded-full flex items-center justify-center text-neutral-400 group-hover:border-[#0a7a8c] group-hover:text-[#0a7a8c] group-hover:shadow-md transition-all duration-300 mb-3">
+                  <div className="w-12 h-12 bg-[#f0fdfa] border-2 border-[#0a7a8c]/30 rounded-full flex items-center justify-center text-[#0a7a8c] group-hover:border-transparent group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 mb-3">
                     <CheckCircle2 size={24} strokeWidth={2} />
                   </div>
-                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-950 text-center">
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-950 text-center group-hover:text-[#009688] transition-colors">
                     {step}
                   </span>
                 </div>
@@ -259,12 +259,12 @@ export default function ConstructionInfrastructurePage() {
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (
-                <div key={index} className="bg-neutral-50 border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:bg-white hover:shadow-lg transition-all duration-300">
+                <div key={index} className="bg-neutral-50 border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#009688] hover:bg-white hover:shadow-lg transition-all duration-300">
                   <div>
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#0a7a8c]/60 transition-all duration-300">
-                      <Icon size={24} strokeWidth={1.5} className="text-[#0a7a8c] group-hover:scale-110 transition-transform duration-300" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-5 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                      <Icon size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white group-hover:scale-110 transition-all duration-300" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">{cap.title}</h3>
+                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#009688] transition-colors duration-300">{cap.title}</h3>
                     <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">{cap.description}</p>
                   </div>
                 </div>

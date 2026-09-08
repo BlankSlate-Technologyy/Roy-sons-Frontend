@@ -63,20 +63,20 @@ export default function IndustriesPage() {
                 href={"/group-companies/roys-roys/industries/" + ind.slug}
                 data-aos="zoom-in"
                 data-aos-delay={(idx % 4) * 80 + Math.floor(idx / 4) * 60}
-                className="p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-lg transition-all duration-200 flex flex-col justify-between group no-underline"
+                className="p-5 rounded-[4px] border border-slate-200 bg-white hover:border-[#009688] hover:shadow-lg transition-all duration-300 flex flex-col justify-between group no-underline"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-colors flex items-center justify-center mb-3.5">
-                    <ind.icon size={22} />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-3.5 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                    <ind.icon size={34} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="text-base font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors mb-1.5">
+                  <h3 className="text-base font-bold text-[#0f2b48] group-hover:text-[#009688] transition-colors mb-1.5">
                     {ind.title}
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed mb-3">
                     {ind.desc}
                   </p>
                 </div>
-                <span className="inline-flex items-center gap-1 text-xs font-bold text-[#2563eb] group-hover:translate-x-0.5 transition-transform mt-2">
+                <span className="inline-flex items-center gap-1 text-xs font-bold text-[#0a7a8c] group-hover:text-[#009688] group-hover:translate-x-0.5 transition-all mt-2">
                   <span>Learn More</span>
                   <ArrowRight size={12} />
                 </span>

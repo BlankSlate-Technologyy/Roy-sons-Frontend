@@ -23,18 +23,18 @@ export default function Industries() {
               <Link
                 key={ind.slug}
                 href={`/group-companies/gateway/industries/${ind.slug}`}
-                className="flex items-center justify-between p-5 rounded-2xl bg-white border shadow-xs hover:shadow-lg hover:border-[#173F8A] hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+                className="flex items-center justify-between p-5 rounded-2xl bg-white border shadow-xs hover:shadow-lg hover:border-[#009688] hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
                 style={{ borderColor: COLORS.border }}
               >
                 <div className="flex items-center gap-3.5">
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 bg-blue-50 text-[#173F8A] group-hover:bg-[#173F8A] group-hover:text-white"
+                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-300 bg-blue-50 text-[#0077b6] group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:text-white group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] shadow-xs"
                   >
-                    <Icon size={20} />
+                    <Icon size={34} strokeWidth={1.8} />
                   </div>
                   <div>
                     <h3
-                      className="text-xs sm:text-sm font-black leading-snug group-hover:text-[#173F8A] transition-colors"
+                      className="text-xs sm:text-sm font-black leading-snug group-hover:text-[#009688] transition-colors"
                       style={{ color: COLORS.textDark }}
                     >
                       {ind.title}

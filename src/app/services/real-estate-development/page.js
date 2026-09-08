@@ -212,13 +212,13 @@ export default function RealEstateDevelopmentPage() {
       {/* Development Philosophy Highlight */}
       <section className="py-14 sm:py-18 bg-neutral-50 border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-col md:flex-row items-center gap-8 bg-white border border-neutral-200 p-6 sm:p-8 lg:p-10 rounded-[2px]">
-            <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-[2px] bg-neutral-950 flex items-center justify-center flex-shrink-0">
-              <HeartHandshake size={28} className="text-[#0a7a8c]" />
+          <div className="flex flex-col md:flex-row items-center gap-8 bg-white border border-neutral-200 p-6 sm:p-8 lg:p-10 rounded-[2px] group hover:border-[#009688] transition-all duration-300">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center flex-shrink-0 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300">
+              <HeartHandshake size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
             </div>
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">OUR VISION</span>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">Development Philosophy</h2>
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3 group-hover:text-[#009688] transition-colors">Development Philosophy</h2>
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal max-w-3xl">
                 Our real estate approach combines thoughtful planning, modern infrastructure, sustainable development, and long-term investment value to create communities designed for future generations.
               </p>
@@ -239,11 +239,11 @@ export default function RealEstateDevelopmentPage() {
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (
-                <div key={index} className="bg-neutral-50 border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col group hover:border-[#0a7a8c] hover:bg-white hover:shadow-lg transition-all duration-300">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border group-hover:border-[#0a7a8c]/60 transition-all duration-300">
-                    <Icon size={22} strokeWidth={1.5} className="text-[#0a7a8c]" />
+                <div key={index} className="bg-neutral-50 border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col group hover:border-[#009688] hover:bg-white hover:shadow-lg transition-all duration-300">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-5 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                    <Icon size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">{cap.title}</h3>
+                  <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#009688] transition-colors duration-300">{cap.title}</h3>
                   <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal flex-grow">{cap.description}</p>
                 </div>
               );

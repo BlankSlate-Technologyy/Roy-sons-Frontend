@@ -34,7 +34,7 @@ export default function WhoWeServeSection() {
             return (
               <div
                 key={idx}
-                className="rounded-[4px] bg-white border border-neutral-300 hover:border-[#0a7a8c] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden"
+                className="rounded-[4px] bg-white border border-neutral-300 hover:border-[#009688] hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden"
               >
                 {/* Image Header */}
                 <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-neutral-900">
@@ -55,7 +55,7 @@ export default function WhoWeServeSection() {
                   </div>
 
                   {/* Icon */}
-                  <div className="absolute top-3 right-3 w-10 h-10 rounded-[2px] bg-neutral-950/85 backdrop-blur-md border border-cyan-400/50 flex items-center justify-center text-cyan-300 group-hover:bg-[#0a7a8c] group-hover:text-white transition-colors duration-300 shadow-md">
+                  <div className="absolute top-3 right-3 w-11 h-11 rounded-[4px] bg-neutral-950/85 backdrop-blur-md border border-cyan-400/50 flex items-center justify-center text-cyan-300 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:text-white transition-all duration-300 shadow-md">
                     <Icon className="w-5 h-5" strokeWidth={2} />
                   </div>
 
@@ -72,7 +72,7 @@ export default function WhoWeServeSection() {
                     {client.description}
                   </p>
 
-                  <div className="mt-4 pt-3 border-t border-neutral-200 flex items-center gap-1.5 text-xs font-bold text-[#0a7a8c]">
+                  <div className="mt-4 pt-3 border-t border-neutral-200 flex items-center gap-1.5 text-xs font-bold text-[#0a7a8c] group-hover:text-[#009688] transition-colors">
                     <CheckCircle2 size={14} />
                     <span>Specialized Advisory Protocol</span>
                   </div>
@@ -91,10 +91,10 @@ export default function WhoWeServeSection() {
             {ADDITIONAL_ORGANIZATIONS.map((org, i) => (
               <div
                 key={i}
-                className="p-3.5 bg-neutral-50 border border-neutral-300 rounded-[2px] flex items-center gap-2.5 hover:border-[#0a7a8c] hover:bg-white transition-all"
+                className="p-3.5 bg-neutral-50 border border-neutral-300 rounded-[2px] flex items-center gap-2.5 hover:border-[#009688] hover:bg-white transition-all group"
               >
-                <CheckCircle2 className="w-4 h-4 text-[#0a7a8c] shrink-0" />
-                <span className="text-xs sm:text-[13px] font-bold text-neutral-800 leading-tight">
+                <CheckCircle2 className="w-4 h-4 text-[#0a7a8c] group-hover:text-[#009688] shrink-0 transition-colors" />
+                <span className="text-xs sm:text-[13px] font-bold text-neutral-800 leading-tight group-hover:text-[#009688] transition-colors">
                   {org}
                 </span>
               </div>

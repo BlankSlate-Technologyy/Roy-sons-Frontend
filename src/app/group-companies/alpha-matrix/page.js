@@ -258,13 +258,13 @@ function IndustryCard({ icon: Icon, label, href }) {
       href={href}
       ref={ref}
       suppressHydrationWarning
-      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-xl border text-center transition-all duration-300 hover:border-[#005691]/60 hover:-translate-y-1 hover:scale-105 hover:shadow-md bg-white`}
+      className={`reveal ${visible ? "is-visible" : ""} group flex flex-col items-center justify-center p-4 rounded-xl border text-center transition-all duration-300 hover:border-[#009688] hover:-translate-y-1 hover:scale-105 hover:shadow-lg bg-white`}
       style={{ borderColor: theme.border }}
     >
-      <div className="w-11 h-11 rounded-full flex items-center justify-center mb-3 border transition-all duration-300 group-hover:bg-[#005691]/15 group-hover:scale-110" style={{ borderColor: theme.border, backgroundColor: hexToRgba(theme.gold, 0.06) }}>
-        <Icon size={17} style={{ color: theme.gold }} />
+      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] flex items-center justify-center mb-3 border transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:scale-105 group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] shadow-xs" style={{ borderColor: theme.border, backgroundColor: hexToRgba(theme.gold, 0.06) }}>
+        <Icon size={34} strokeWidth={1.8} className="group-hover:text-white transition-colors duration-300" style={{ color: theme.gold }} />
       </div>
-      <p className="text-[10.5px] font-bold leading-snug uppercase tracking-wide whitespace-pre-line" style={{ color: theme.navy }}>{label}</p>
+      <p className="text-xs sm:text-sm font-bold leading-snug uppercase tracking-wider whitespace-pre-line group-hover:text-[#009688] transition-colors" style={{ color: theme.navy }}>{label}</p>
     </Link>
   );
 }

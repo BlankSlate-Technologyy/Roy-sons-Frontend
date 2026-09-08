@@ -287,12 +287,12 @@ export default function VeterinaryLivestockServicePage() {
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (
-                <div key={index} className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#0a7a8c] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div key={index} className="bg-white border border-neutral-200 p-6 sm:p-7 rounded-[2px] flex flex-col justify-between group hover:border-[#009688] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div>
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[2px] bg-neutral-950 border border-neutral-800 flex items-center justify-center mb-5 group-hover:bg-[#101518] group-hover:border-[#0a7a8c]/60 transition-all duration-300">
-                      <Icon size={24} strokeWidth={1.5} className="text-[#0a7a8c] group-hover:scale-110 transition-transform duration-300" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-5 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                      <Icon size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.05em] text-neutral-950 mb-3 leading-snug group-hover:text-[#009688] transition-colors duration-300">
                       {cap.title}
                     </h3>
                     <p className="text-[15px] sm:text-[16px] text-neutral-600 leading-relaxed font-normal">
@@ -310,16 +310,16 @@ export default function VeterinaryLivestockServicePage() {
       <section className="py-14 sm:py-18 bg-white border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-neutral-50 p-6 sm:p-7 rounded-[2px] border border-neutral-200 hover:border-[#0a7a8c] transition-all">
-              <h3 className="text-lg sm:text-xl font-black uppercase tracking-wide text-neutral-950 mb-2">Animal Healthcare</h3>
+            <div className="bg-neutral-50 p-6 sm:p-7 rounded-[2px] border border-neutral-200 group hover:border-[#009688] hover:bg-white hover:shadow-md transition-all">
+              <h3 className="text-lg sm:text-xl font-black uppercase tracking-wide text-neutral-950 mb-2 group-hover:text-[#009688] transition-colors">Animal Healthcare</h3>
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">Supporting veterinarians and livestock owners with reliable healthcare products and technologies.</p>
             </div>
-            <div className="bg-neutral-50 p-6 sm:p-7 rounded-[2px] border border-neutral-200 hover:border-[#0a7a8c] transition-all">
-              <h3 className="text-lg sm:text-xl font-black uppercase tracking-wide text-neutral-950 mb-2">Dairy Development</h3>
+            <div className="bg-neutral-50 p-6 sm:p-7 rounded-[2px] border border-neutral-200 group hover:border-[#009688] hover:bg-white hover:shadow-md transition-all">
+              <h3 className="text-lg sm:text-xl font-black uppercase tracking-wide text-neutral-950 mb-2 group-hover:text-[#009688] transition-colors">Dairy Development</h3>
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">Solutions designed to improve herd health, productivity, nutrition, and farm management.</p>
             </div>
-            <div className="bg-neutral-50 p-6 sm:p-7 rounded-[2px] border border-neutral-200 hover:border-[#0a7a8c] font-normal transition-all">
-              <h3 className="text-lg sm:text-xl font-black uppercase tracking-wide text-neutral-950 mb-2">Biosecurity</h3>
+            <div className="bg-neutral-50 p-6 sm:p-7 rounded-[2px] border border-neutral-200 group hover:border-[#009688] hover:bg-white hover:shadow-md transition-all">
+              <h3 className="text-lg sm:text-xl font-black uppercase tracking-wide text-neutral-950 mb-2 group-hover:text-[#009688] transition-colors">Biosecurity</h3>
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">Supporting disease prevention through controlled farm environments, vaccination programs, and hygiene systems.</p>
             </div>
           </div>

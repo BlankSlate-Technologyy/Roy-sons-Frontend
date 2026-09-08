@@ -141,17 +141,17 @@ function ServiceCard({ icon: Icon, title, description, href }) {
   return (
     <div className="flex flex-row items-start gap-4 group" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
       {/* Icon Box */}
-      <div className="flex-shrink-0 w-13 h-13 sm:w-14 sm:h-14 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-sm flex items-center justify-center group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-[#0078b4] group-hover:via-[#009588] group-hover:to-[#01b576] group-hover:shadow-[0_6px_20px_rgba(1,181,118,0.4)] transition-all duration-300 p-2.5">
+      <div className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 border border-[#0a7a8c]/25 bg-[#f0fdfa] rounded-[4px] flex items-center justify-center group-hover:border-transparent group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
         <Icon
-          size={26}
-          strokeWidth={1.6}
+          size={34}
+          strokeWidth={1.8}
           className="text-[#0a7a8c] group-hover:text-white group-hover:scale-110 transition-all duration-300"
         />
       </div>
 
       {/* Text & Action */}
       <div className="flex-1 flex flex-col justify-start">
-        <h3 className="text-[18px] sm:text-[20px] font-black tracking-[0.03em] uppercase text-[#042E3A] mb-2 leading-snug group-hover:text-[#0a7a8c] transition-colors duration-300">
+        <h3 className="text-[18px] sm:text-[20px] font-black tracking-[0.03em] uppercase text-[#042E3A] mb-2 leading-snug group-hover:text-[#009688] transition-colors duration-300">
           {title}
         </h3>
         <p className="text-[16px] sm:text-[17px] text-[#042E3A]/90 leading-[1.2] font-normal mb-3">
@@ -159,13 +159,13 @@ function ServiceCard({ icon: Icon, title, description, href }) {
         </p>
         <Link
           href={href || "#"}
-          className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-bold tracking-[0.16em] uppercase text-[#0a7a8c] hover:text-[#0d9488] transition-all duration-300 group/link"
+          className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-bold tracking-[0.16em] uppercase text-[#0a7a8c] hover:text-[#009688] transition-all duration-300 group/link"
         >
           <span>LEARN MORE</span>
           <ArrowRight
             size={13}
             strokeWidth={2}
-            className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#0a7a8c]"
+            className="group-hover/link:translate-x-1 transition-transform duration-300 text-[#0a7a8c] group-hover/link:text-[#009688]"
           />
         </Link>
       </div>
@@ -302,9 +302,9 @@ export default function ServicesPage() {
     <main className="min-h-screen bg-white font-sans">
       <HeaderNavbar activeRoute="/services" />
 
-      {/* Services Hero Banner - Centered Gradient Design */}
+      {/* Services Hero Banner - Centered Gradient Design (Compact Spacing) */}
       <section 
-        className="services-hero-gradient relative py-10 sm:py-12 lg:py-16 px-6 overflow-hidden text-center flex flex-col items-center justify-center border-b border-[#0a7a8c]/20"
+        className="services-hero-gradient relative py-6 sm:py-7 lg:py-9 px-6 overflow-hidden text-center flex flex-col items-center justify-center border-b border-[#0a7a8c]/20"
         style={{
           background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
           backgroundColor: "#088192",
@@ -313,21 +313,21 @@ export default function ServicesPage() {
         <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center">
           {/* Top Tag */}
           <span 
-            className="text-xs sm:text-sm font-bold uppercase tracking-[0.25em] text-white/90 mb-2 block"
+            className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-white/90 mb-1.5 block"
             style={{ color: "rgba(255, 255, 255, 0.9)" }}
           >
             WHAT WE DO
           </span>
 
           <h1 
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3 leading-tight drop-shadow-sm"
+            className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-2 leading-tight drop-shadow-sm"
             style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
           >
             Our Services
           </h1>
 
           <p 
-            className="text-base sm:text-lg md:text-xl lg:text-[21px] text-white/95 leading-relaxed max-w-3xl mx-auto mb-6 sm:mb-7 font-normal drop-shadow-sm"
+            className="text-sm sm:text-base lg:text-[17px] text-white/95 leading-relaxed max-w-2xl mx-auto mb-4 sm:mb-5 font-normal drop-shadow-sm"
             style={{ color: "rgba(255, 255, 255, 0.95)", WebkitTextFillColor: "rgba(255, 255, 255, 0.95)" }}
           >
             ROYSONS Pvt. Ltd. offers a wide range of innovative and
@@ -339,10 +339,10 @@ export default function ServicesPage() {
             <Link
               href="#request-query"
               id="services-hero-cta"
-              className="inline-flex items-center justify-center bg-white hover:bg-neutral-100 text-[#042E3A] font-bold px-8 py-3 sm:py-3.5 text-xs sm:text-sm rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 whitespace-nowrap"
+              className="inline-flex items-center justify-center bg-white hover:bg-neutral-100 text-[#042E3A] font-bold px-6 py-2 sm:py-2.5 text-xs sm:text-[13px] rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_24px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 whitespace-nowrap"
               style={{ borderRadius: "9999px", backgroundColor: "#ffffff", color: "#042E3A" }}
             >
-              <span className="text-[#042E3A] font-bold uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap">Request a Query</span>
+              <span className="text-[#042E3A] font-bold uppercase tracking-wider text-xs sm:text-[13px] whitespace-nowrap">Request a Query</span>
             </Link>
           </div>
         </div>
