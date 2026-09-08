@@ -192,14 +192,14 @@ export default function FoodProcessingPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/contact"
-                  className="group self-start inline-flex items-center gap-2.5 bg-white hover:bg-teal-50 text-[#042E3A] font-black px-7 py-3.5 text-xs sm:text-[13px] uppercase tracking-[0.16em] transition-all duration-300 rounded-full shadow-lg hover:scale-105"
+                  className="group self-start inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0a7a8c] via-[#0d9488] to-[#10b981] hover:from-[#042E3A] hover:via-[#075d6d] hover:to-[#0a7a8c] border border-white/40 text-white font-bold px-7 py-3.5 text-xs sm:text-[13.5px] uppercase tracking-[0.16em] transition-all duration-300 rounded-lg shadow-lg hover:shadow-[0_8px_25px_rgba(4,46,58,0.45)] hover:scale-105"
                 >
-                  <span>Upgrade Your Facility</span>
-                  <ArrowRight size={14} strokeWidth={2.5} className="text-[#042E3A] group-hover:translate-x-1 transition-all duration-300" />
+                  <span className="text-white">Upgrade Your Facility</span>
+                  <ArrowRight size={15} strokeWidth={2.5} className="text-white group-hover:translate-x-1 transition-all duration-300" />
                 </Link>
                 <Link
                   href="#capabilities"
-                  className="self-start inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/40 text-white px-6 py-3.5 text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] transition-all rounded-full backdrop-blur-xs"
+                  className="self-start inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/40 text-white px-6 py-3.5 text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.16em] transition-all rounded-lg backdrop-blur-xs hover:scale-105"
                 >
                   Our Capabilities
                 </Link>
