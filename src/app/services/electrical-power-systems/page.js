@@ -215,20 +215,16 @@ export default function ElectricalPowerSystemsPage() {
       {/* Hero */}
       <section 
         data-dark-section="true"
-        className="roysons-preserve-dark relative py-16 sm:py-20 lg:py-24 text-white border-b border-[#0a7a8c]/25 overflow-hidden shadow-sm"
-        style={{
-          background: "linear-gradient(90deg, #005f77 0%, #088192 50%, #009e75 100%)",
-          backgroundColor: "#088192",
-        }}
+        className="roysons-preserve-dark relative bg-gradient-to-b from-[#101518] via-[#141b20] to-[#101518] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0a7a8c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/20 border border-white/30 text-white text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-xs backdrop-blur-xs">
-                <Zap size={15} className="text-teal-200" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/80 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.2em] mb-5 self-start shadow-[0_0_15px_rgba(34,211,238,0.25)]">
+                <Zap size={15} className="text-cyan-400" />
                 <span>Sector 06 • Electrical &amp; Power Engineering</span>
               </div>
 
@@ -236,31 +232,15 @@ export default function ElectricalPowerSystemsPage() {
                 Electrical &amp; Power Systems
               </h1>
 
-              <p className="text-lg sm:text-xl lg:text-2xl font-black text-teal-100 uppercase tracking-wide mb-4 drop-shadow-sm">
+              <p className="text-lg sm:text-xl lg:text-2xl font-extrabold text-cyan-400 uppercase tracking-wide mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
                 Powering Critical Infrastructure With Reliable Engineering
               </p>
 
-              <div className="h-[3px] w-20 bg-gradient-to-r from-teal-200 to-white mb-6" />
+              <div className="h-[3px] w-20 bg-gradient-to-r from-cyan-400 to-[#0a7a8c] mb-6" />
 
-              <p className="text-[16px] sm:text-[17.5px] text-white/95 leading-relaxed font-normal mb-8 max-w-2xl drop-shadow-xs">
+              <p className="text-[16px] sm:text-[17.5px] text-neutral-100 leading-relaxed font-normal max-w-2xl">
                 ROYSONS provides electrical engineering and power infrastructure solutions for industrial, commercial, institutional, and public sector projects. Our engineering teams support projects from feasibility and design through procurement, installation, testing, and commissioning.
               </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="group self-start inline-flex items-center gap-2.5 bg-gradient-to-r from-[#0a7a8c] via-[#0d9488] to-[#10b981] hover:from-[#042E3A] hover:via-[#075d6d] hover:to-[#0a7a8c] border border-white/40 text-white font-bold px-7 py-3.5 text-xs sm:text-[13.5px] uppercase tracking-[0.16em] transition-all duration-300 rounded-lg shadow-lg hover:shadow-[0_8px_25px_rgba(4,46,58,0.45)] hover:scale-105"
-                >
-                  <span className="text-white">Start Your Project</span>
-                  <ArrowRight size={15} strokeWidth={2.5} className="text-white group-hover:translate-x-1 transition-all duration-300" />
-                </Link>
-                <Link
-                  href="#capabilities"
-                  className="self-start inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/40 text-white px-6 py-3.5 text-xs sm:text-[13.5px] font-bold uppercase tracking-[0.16em] transition-all rounded-lg backdrop-blur-xs hover:scale-105"
-                >
-                  Our Capabilities
-                </Link>
-              </div>
             </div>
 
             {/* Right Image Card */}

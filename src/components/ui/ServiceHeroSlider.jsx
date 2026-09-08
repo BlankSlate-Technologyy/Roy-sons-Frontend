@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ServiceHeroSlider({ slides = [], defaultTag = "ROYSONS SOLUTIONS" }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,16 +15,6 @@ export default function ServiceHeroSlider({ slides = [], defaultTag = "ROYSONS S
     }, 4500);
     return () => clearInterval(interval);
   }, [total, isHovered]);
-
-  const handlePrev = (e) => {
-    e?.stopPropagation();
-    setCurrentIndex((prev) => (prev - 1 + total) % total);
-  };
-
-  const handleNext = (e) => {
-    e?.stopPropagation();
-    setCurrentIndex((prev) => (prev + 1) % total);
-  };
 
   if (!slides || slides.length === 0) return null;
 
@@ -71,28 +60,6 @@ export default function ServiceHeroSlider({ slides = [], defaultTag = "ROYSONS S
             </div>
           );
         })}
-
-        {/* Navigation Arrows */}
-        {total > 1 && (
-          <>
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous Slide"
-              className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/60 hover:bg-[#005f77] border border-white/30 text-white flex items-center justify-center backdrop-blur-sm transition-all duration-200 cursor-pointer shadow-md hover:scale-110"
-            >
-              <ChevronLeft size={18} strokeWidth={2.5} />
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next Slide"
-              className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/60 hover:bg-[#005f77] border border-white/30 text-white flex items-center justify-center backdrop-blur-sm transition-all duration-200 cursor-pointer shadow-md hover:scale-110"
-            >
-              <ChevronRight size={18} strokeWidth={2.5} />
-            </button>
-          </>
-        )}
 
         {/* Pagination Dots */}
         {total > 1 && (
