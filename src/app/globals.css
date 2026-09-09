@@ -1320,8 +1320,8 @@ body.swiss-homes-theme li {
    RESET FOR ALL LIGHT-THEME SUBSIDIARIES
    Allows inline styles and classes to work properly
 ───────────────────────────────────────────── */
-body.roys-roys-theme a,
-body.roys-roys-theme button,
+body.roys-roys-theme a:not(.whatsapp-float-btn),
+body.roys-roys-theme button:not(.whatsapp-float-btn),
 body.roys-roys-theme label,
 body.roys-roys-theme h1,
 body.roys-roys-theme h2,
@@ -1329,11 +1329,11 @@ body.roys-roys-theme h3,
 body.roys-roys-theme h4,
 body.roys-roys-theme h5,
 body.roys-roys-theme h6,
-body.roys-roys-theme p,
-body.roys-roys-theme span,
+body.roys-roys-theme p:not(.whatsapp-tooltip-badge *),
+body.roys-roys-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.roys-roys-theme li,
-body.vetvac-pharma-theme a,
-body.vetvac-pharma-theme button,
+body.vetvac-pharma-theme a:not(.whatsapp-float-btn),
+body.vetvac-pharma-theme button:not(.whatsapp-float-btn),
 body.vetvac-pharma-theme label,
 body.vetvac-pharma-theme h1,
 body.vetvac-pharma-theme h2,
@@ -1341,11 +1341,11 @@ body.vetvac-pharma-theme h3,
 body.vetvac-pharma-theme h4,
 body.vetvac-pharma-theme h5,
 body.vetvac-pharma-theme h6,
-body.vetvac-pharma-theme p,
-body.vetvac-pharma-theme span,
+body.vetvac-pharma-theme p:not(.whatsapp-tooltip-badge *),
+body.vetvac-pharma-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.vetvac-pharma-theme li,
-body.biomax-theme a,
-body.biomax-theme button,
+body.biomax-theme a:not(.whatsapp-float-btn),
+body.biomax-theme button:not(.whatsapp-float-btn),
 body.biomax-theme label,
 body.biomax-theme h1,
 body.biomax-theme h2,
@@ -1353,11 +1353,11 @@ body.biomax-theme h3,
 body.biomax-theme h4,
 body.biomax-theme h5,
 body.biomax-theme h6,
-body.biomax-theme p,
-body.biomax-theme span,
+body.biomax-theme p:not(.whatsapp-tooltip-badge *),
+body.biomax-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.biomax-theme li,
-body.alpha-matrix-theme a,
-body.alpha-matrix-theme button,
+body.alpha-matrix-theme a:not(.whatsapp-float-btn),
+body.alpha-matrix-theme button:not(.whatsapp-float-btn),
 body.alpha-matrix-theme label,
 body.alpha-matrix-theme h1,
 body.alpha-matrix-theme h2,
@@ -1365,11 +1365,11 @@ body.alpha-matrix-theme h3,
 body.alpha-matrix-theme h4,
 body.alpha-matrix-theme h5,
 body.alpha-matrix-theme h6,
-body.alpha-matrix-theme p,
-body.alpha-matrix-theme span,
+body.alpha-matrix-theme p:not(.whatsapp-tooltip-badge *),
+body.alpha-matrix-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.alpha-matrix-theme li,
-body.national-guard-theme a,
-body.national-guard-theme button,
+body.national-guard-theme a:not(.whatsapp-float-btn),
+body.national-guard-theme button:not(.whatsapp-float-btn),
 body.national-guard-theme label,
 body.national-guard-theme h1,
 body.national-guard-theme h2,
@@ -1377,11 +1377,11 @@ body.national-guard-theme h3,
 body.national-guard-theme h4,
 body.national-guard-theme h5,
 body.national-guard-theme h6,
-body.national-guard-theme p,
-body.national-guard-theme span,
+body.national-guard-theme p:not(.whatsapp-tooltip-badge *),
+body.national-guard-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.national-guard-theme li,
-body.national-mines-theme a,
-body.national-mines-theme button,
+body.national-mines-theme a:not(.whatsapp-float-btn),
+body.national-mines-theme button:not(.whatsapp-float-btn),
 body.national-mines-theme label,
 body.national-mines-theme h1,
 body.national-mines-theme h2,
@@ -1389,11 +1389,11 @@ body.national-mines-theme h3,
 body.national-mines-theme h4,
 body.national-mines-theme h5,
 body.national-mines-theme h6,
-body.national-mines-theme p,
-body.national-mines-theme span,
+body.national-mines-theme p:not(.whatsapp-tooltip-badge *),
+body.national-mines-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.national-mines-theme li,
-body.national-agricultural-theme a,
-body.national-agricultural-theme button,
+body.national-agricultural-theme a:not(.whatsapp-float-btn),
+body.national-agricultural-theme button:not(.whatsapp-float-btn),
 body.national-agricultural-theme label,
 body.national-agricultural-theme h1,
 body.national-agricultural-theme h2,
@@ -1401,11 +1401,11 @@ body.national-agricultural-theme h3,
 body.national-agricultural-theme h4,
 body.national-agricultural-theme h5,
 body.national-agricultural-theme h6,
-body.national-agricultural-theme p,
-body.national-agricultural-theme span,
+body.national-agricultural-theme p:not(.whatsapp-tooltip-badge *),
+body.national-agricultural-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.national-agricultural-theme li,
-body.national-agricalture-theme a,
-body.national-agricalture-theme button,
+body.national-agricalture-theme a:not(.whatsapp-float-btn),
+body.national-agricalture-theme button:not(.whatsapp-float-btn),
 body.national-agricalture-theme label,
 body.national-agricalture-theme h1,
 body.national-agricalture-theme h2,
@@ -1413,11 +1413,11 @@ body.national-agricalture-theme h3,
 body.national-agricalture-theme h4,
 body.national-agricalture-theme h5,
 body.national-agricalture-theme h6,
-body.national-agricalture-theme p,
-body.national-agricalture-theme span,
+body.national-agricalture-theme p:not(.whatsapp-tooltip-badge *),
+body.national-agricalture-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.national-agricalture-theme li,
-body.swiss-homes-theme a,
-body.swiss-homes-theme button,
+body.swiss-homes-theme a:not(.whatsapp-float-btn),
+body.swiss-homes-theme button:not(.whatsapp-float-btn),
 body.swiss-homes-theme label,
 body.swiss-homes-theme h1,
 body.swiss-homes-theme h2,
@@ -1425,8 +1425,8 @@ body.swiss-homes-theme h3,
 body.swiss-homes-theme h4,
 body.swiss-homes-theme h5,
 body.swiss-homes-theme h6,
-body.swiss-homes-theme p,
-body.swiss-homes-theme span,
+body.swiss-homes-theme p:not(.whatsapp-tooltip-badge *),
+body.swiss-homes-theme span:not(.whatsapp-tooltip-badge *):not(.whatsapp-float-btn *),
 body.swiss-homes-theme li {
   -webkit-text-fill-color: inherit;
   text-shadow: none !important;
@@ -2831,4 +2831,73 @@ nav.hidden.lg\:flex a,
 .biomax-theme header nav a {
   white-space: nowrap !important;
   word-break: keep-all !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   UNIVERSAL FLOATING WHATSAPP CTA SYSTEM (ALL PAGES & THEMES)
+   Enforces vivid green gradient and crisp white icon visibility
+   across all subsidiary themes (including Roys & Roys International)
+───────────────────────────────────────────────────────────── */
+.whatsapp-float-btn,
+a.whatsapp-float-btn,
+body .whatsapp-float-btn,
+body a.whatsapp-float-btn,
+body.roys-roys-theme .whatsapp-float-btn,
+body.roys-roys-theme a.whatsapp-float-btn {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%) !important;
+  background-image: linear-gradient(135deg, #25D366 0%, #128C7E 50%, #075E54 100%) !important;
+  background-color: #25D366 !important;
+  border-radius: 9999px !important;
+  border: 2px solid rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5), 0 4px 12px rgba(7, 94, 84, 0.35) !important;
+  text-decoration: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.whatsapp-float-btn:hover,
+a.whatsapp-float-btn:hover,
+body .whatsapp-float-btn:hover,
+body a.whatsapp-float-btn:hover,
+body.roys-roys-theme .whatsapp-float-btn:hover,
+body.roys-roys-theme a.whatsapp-float-btn:hover {
+  background: linear-gradient(135deg, #2bf075 0%, #17b3a1 50%, #0a7a6e 100%) !important;
+  background-image: linear-gradient(135deg, #2bf075 0%, #17b3a1 50%, #0a7a6e 100%) !important;
+  box-shadow: 0 12px 36px rgba(37, 211, 102, 0.7), 0 0 0 4px rgba(37, 211, 102, 0.35) !important;
+  transform: translateY(-3px) scale(1.08) !important;
+}
+
+.whatsapp-float-btn svg,
+body .whatsapp-float-btn svg,
+body.roys-roys-theme .whatsapp-float-btn svg,
+body.roys-roys-theme a.whatsapp-float-btn svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3)) !important;
+}
+
+.whatsapp-float-btn svg path,
+body .whatsapp-float-btn svg path,
+body.roys-roys-theme .whatsapp-float-btn svg path,
+body.roys-roys-theme a.whatsapp-float-btn svg path {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.whatsapp-tooltip-badge,
+.whatsapp-tooltip-badge *,
+body .whatsapp-tooltip-badge,
+body .whatsapp-tooltip-badge *,
+body.roys-roys-theme .whatsapp-tooltip-badge,
+body.roys-roys-theme .whatsapp-tooltip-badge * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }

@@ -19,6 +19,7 @@ import {
   Clock,
   Briefcase,
   Check,
+  Linkedin,
   HeartPulse,
   Stethoscope,
   Microscope,
@@ -61,9 +62,11 @@ const VALUES = [
 ];
 
 const LEADERSHIP = {
-  name: "Mr. Brig (R) Ijaz Naseer",
+  name: "Ijaz Naseer",
   title: "Chairman",
-  company: "Roys & Roys International",
+  company: "ROYSONS Group & Roys & Roys International",
+  photo: "/logos/chairman.jpeg",
+  bio: "Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade. With a strong commitment to innovation, quality, and sustainable growth, the company continues to expand its capabilities and build strategic partnerships both locally and internationally. Through its diverse portfolio and professional expertise, ROYSONS aims to create lasting value for its clients, partners, and communities while contributing to economic and industrial development.",
   message: "Our focus has always been to supply the right products, at the right prices, at the right time — while building lasting relationships with our clients across healthcare, laboratory and institutional sectors. We remain committed to being a reputable and diversified healthcare organization in Pakistan.",
   expertise: [
     "Healthcare Business Development",
@@ -76,14 +79,14 @@ const LEADERSHIP = {
 };
 
 const TEAM_ROLES = [
-  { role: "Healthcare Specialists",      icon: HeartPulse,   image: "", desc: "Subject-matter experts in clinical and hospital healthcare solutions." },
-  { role: "Medical Equipment Experts",   icon: Stethoscope,  image: "", desc: "Professionals specializing in medical device supply and integration." },
-  { role: "Laboratory Professionals",    icon: Microscope,   image: "", desc: "Experts in laboratory systems, research equipment and analytical instruments." },
-  { role: "Project Engineers",           icon: Settings,     image: "", desc: "Engineers managing hospital infrastructure and turnkey project delivery." },
-  { role: "Procurement Specialists",     icon: ShoppingBag,  image: "", desc: "Procurement professionals ensuring quality supply at competitive pricing." },
-  { role: "Technical Support Team",      icon: Cpu,          image: "", desc: "Field technicians providing installation, calibration and AMC support." },
-  { role: "Project Management",          icon: BarChart3,    image: "", desc: "Project managers overseeing concept-to-commissioning delivery." },
-  { role: "Client Services",             icon: UserCheck,    image: "", desc: "Dedicated client service professionals ensuring satisfaction at every stage." },
+  { role: "Healthcare Specialists",      icon: HeartPulse,   image: "/team/healthcare_specialist.jpg",   desc: "Subject-matter experts in clinical and hospital healthcare solutions." },
+  { role: "Medical Equipment Experts",   icon: Stethoscope,  image: "/team/medical_equipment.jpg",       desc: "Professionals specializing in medical device supply and integration." },
+  { role: "Laboratory Professionals",    icon: Microscope,   image: "/team/laboratory_professional.jpg", desc: "Experts in laboratory systems, research equipment and analytical instruments." },
+  { role: "Project Engineers",           icon: Settings,     image: "/team/project_engineer.jpg",        desc: "Engineers managing hospital infrastructure and turnkey project delivery." },
+  { role: "Procurement Specialists",     icon: ShoppingBag,  image: "/team/procurement_specialist.jpg",  desc: "Procurement professionals ensuring quality supply at competitive pricing." },
+  { role: "Technical Support Team",      icon: Cpu,          image: "/team/technical_support.jpg",       desc: "Field technicians providing installation, calibration and AMC support." },
+  { role: "Project Management",          icon: BarChart3,    image: "/team/project_management.jpg",      desc: "Project managers overseeing concept-to-commissioning delivery." },
+  { role: "Client Services",             icon: UserCheck,    image: "/team/client_services.jpg",         desc: "Dedicated client service professionals ensuring satisfaction at every stage." },
 ];
 
 export default function AboutPage() {
@@ -197,8 +200,8 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Leadership (CEO / Chairman Section) ──────────────────────────── */}
-      <section className="py-14 lg:py-18 px-6 bg-white">
-        <div className="mx-auto max-w-screen-xl">
+      <section className="py-14 lg:py-18 px-4 sm:px-6 lg:px-10 bg-white w-full">
+        <div className="w-full max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <span className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3" data-aos="fade-down">
               EXECUTIVE LEADERSHIP
@@ -213,57 +216,74 @@ export default function AboutPage() {
             <div className="h-1 w-16 bg-[#2563eb] mx-auto mt-3 rounded-full" />
           </div>
 
-          {/* Premium Chairman Profile Card */}
+          {/* Chairman Showcase Card: Exact Match to Showcase Style */}
           <div
             data-aos="fade-up"
             data-aos-duration="700"
-            className="max-w-4xl mx-auto rounded-2xl border border-slate-200 bg-[#f8fafc] shadow-lg overflow-hidden grid lg:grid-cols-2 gap-0"
+            className="w-full rounded-2xl p-6 sm:p-10 lg:p-12 border border-neutral-200 bg-white shadow-sm hover:border-[#0a7a8c]/40 hover:shadow-md transition-all duration-300"
           >
-            {/* Left: Portrait / Avatar */}
-            <div className="relative bg-gradient-to-br from-[#07152b] via-[#0f2b48] to-[#1e3a8a] flex flex-col items-center justify-center py-14 px-8 text-center text-white">
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-white/10 border-4 border-[#B49438]/60 flex items-center justify-center mb-5 shadow-2xl backdrop-blur-sm">
-                <Users size={54} className="text-[#38bdf8]" />
+            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
+              {/* Image Side (Left) */}
+              <div className="flex-1 w-full flex items-center justify-center">
+                <div className="relative w-full max-w-[320px] sm:max-w-[380px] aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-2 border-[#0a7a8c]/30 bg-neutral-900 group">
+                  <Image
+                    src={LEADERSHIP.photo}
+                    alt={`${LEADERSHIP.name} - ${LEADERSHIP.title}`}
+                    fill
+                    sizes="(max-width: 768px) 320px, 380px"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    priority
+                  />
+                </div>
               </div>
-              <h3 className="text-white font-black text-xl sm:text-2xl leading-tight mb-1">
-                {LEADERSHIP.name}
-              </h3>
-              <p className="text-[#d4af37] font-bold text-sm uppercase tracking-widest mb-1.5">
-                {LEADERSHIP.title}
-              </p>
-              <p className="text-slate-300 text-xs font-medium">
-                {LEADERSHIP.company}
-              </p>
-            </div>
 
-            {/* Right: Message & Expertise */}
-            <div className="p-7 sm:p-9 flex flex-col justify-center bg-white">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#B49438] block mb-3">
-                CHAIRMAN&apos;S MESSAGE
-              </span>
-              <blockquote className="text-sm sm:text-base text-slate-700 leading-relaxed italic border-l-4 border-[#2563eb] pl-4 mb-6">
-                &ldquo;{LEADERSHIP.message}&rdquo;
-              </blockquote>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-[#0f2b48] mb-3">
-                  Strategic Areas of Focus
+              {/* Content Side (Right) */}
+              <div className="flex-1 w-full flex flex-col justify-center text-center lg:text-left">
+                {/* Badge Pill */}
+                <div className="inline-flex items-center bg-[#f0fdfa] border border-[#0a7a8c]/30 px-4 py-1 rounded-full w-fit mb-4 mx-auto lg:mx-0">
+                  <span className="text-[12px] sm:text-[13px] font-bold uppercase tracking-wider text-[#0a7a8c]">
+                    {LEADERSHIP.title}
+                  </span>
+                </div>
+
+                {/* Heading */}
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#042E3A] leading-snug tracking-tight mb-4">
+                  {LEADERSHIP.name}
+                </h3>
+
+                {/* Description Paragraph 1 */}
+                <p className="text-[15.5px] sm:text-[17px] lg:text-[18px] text-[#042E3A]/85 leading-[1.85] font-normal mb-4 text-justify lg:text-left">
+                  Ijaz Naseer founded ROYSONS Pvt. Ltd. with a vision to establish a diversified organization capable of delivering world-class solutions across multiple industries. Today, ROYSONS stands as a multi-sector enterprise operating in healthcare, engineering, technology, defense, agriculture, mining, energy, infrastructure, and international trade. With a strong commitment to innovation, quality, and sustainable growth, the company continues to expand its capabilities and build strategic partnerships both locally and internationally.
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {LEADERSHIP.expertise.map((ex) => (
-                    <span
-                      key={ex}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 text-[#2563eb] text-xs font-semibold"
-                    >
-                      <Check size={11} strokeWidth={3} />
-                      {ex}
-                    </span>
-                  ))}
+
+                {/* Description Paragraph 2 */}
+                <p className="text-[15.5px] sm:text-[17px] lg:text-[18px] text-[#042E3A]/85 leading-[1.85] font-normal mb-6 text-justify lg:text-left">
+                  Through its diverse portfolio and professional expertise, ROYSONS aims to create lasting value for its clients, partners, and communities while contributing to economic and industrial development.
+                </p>
+
+                {/* Action Buttons: View Profile & LinkedIn */}
+                <div className="flex flex-wrap items-center gap-3.5 justify-center lg:justify-start">
+                  <Link
+                    href="/about/chairmans-message"
+                    className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 border-2 border-[#0a7a8c] bg-[#042E3A] hover:bg-[#0a7a8c] text-white text-xs font-black uppercase tracking-[0.18em] rounded-[2px] transition-all duration-300 group/btn shadow-xs cursor-pointer"
+                  >
+                    <span className="text-white">VIEW PROFILE</span>
+                    <ArrowRight size={14} strokeWidth={2.5} className="text-white group-hover/btn:translate-x-1 transition-transform duration-300" />
+                  </Link>
+
+                  <a
+                    href="https://www.linkedin.com/company/roysonspvtltd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${LEADERSHIP.name} LinkedIn Profile`}
+                    className="inline-flex items-center justify-center w-11 h-11 border border-[#0a7a8c]/40 bg-[#f0fdfa] hover:bg-[#0a7a8c] text-[#0a7a8c] hover:text-white rounded-[2px] transition-all duration-300 shadow-xs cursor-pointer"
+                  >
+                    <Linkedin size={18} strokeWidth={1.8} />
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-          <p className="text-center text-xs text-slate-400 mt-4">
-            * Official photograph to be updated upon availability.
-          </p>
         </div>
       </section>
 
@@ -292,15 +312,15 @@ export default function AboutPage() {
                   key={member.role}
                   data-aos="fade-up"
                   data-aos-delay={(idx % 4) * 70}
-                  className="p-6 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-start group"
+                  className="p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-lg transition-all duration-300 flex flex-col items-start group"
                 >
                   {member.image ? (
-                    <div className="relative w-full h-44 rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50">
+                    <div className="relative w-full h-48 rounded-xl overflow-hidden mb-4 border border-slate-100 bg-slate-50 shadow-xs">
                       <Image
                         src={member.image}
                         alt={member.role}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
                     </div>
