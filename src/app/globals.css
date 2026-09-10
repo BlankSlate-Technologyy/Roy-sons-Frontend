@@ -218,28 +218,81 @@ body:not(.roys-roys-theme):not(.swiss-homes-theme):not(.swiss-huts-theme):not(.n
     background-image: none !important;
   }
 
-  /* Global Times New Roman Font */
-  &,
-  h1, h2, h3, h4, h5, h6,
-  p, span, li, a, button, label,
+  /* Global Times New Roman Font Across Entire Website */
+  *,
+  html, body, div, p, span, h1, h2, h3, h4, h5, h6,
+  ul, ol, li, a, button, label,
   input, textarea, select, option,
   th, td, time {
     font-family: "Times New Roman", Times, serif !important;
   }
 
+  /* ── Enhanced Global Typography Sizes ── */
+  p {
+    font-size: 1.1875rem;
+    line-height: 1.7;
+  }
+
+  li {
+    font-size: 1.125rem;
+    line-height: 1.65;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    line-height: 1.15;
+    font-weight: 900;
+  }
+
+  h2 {
+    font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  h3 {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    line-height: 1.25;
+    font-weight: 800;
+  }
+
+  h4 {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  h6 {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
   /* ── Headings: Deep Navy Teal (#042E3A) (exempting white/light text, dark sections and dark footer) ── */
-  h1:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not(.roysons-preserve-dark *),
-  h2:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not(.roysons-preserve-dark *),
-  h3:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not(.roysons-preserve-dark *),
-  h4:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not(.roysons-preserve-dark *),
-  h5:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not(.roysons-preserve-dark *),
-  h6:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not(.roysons-preserve-dark *) {
+  h1:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not([data-dark-card] *):not(.roysons-preserve-dark *),
+  h2:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not([data-dark-card] *):not(.roysons-preserve-dark *),
+  h3:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not([data-dark-card] *):not(.roysons-preserve-dark *),
+  h4:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not([data-dark-card] *):not(.roysons-preserve-dark *),
+  h5:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not([data-dark-card] *):not(.roysons-preserve-dark *),
+  h6:not([class*="text-white"]):not([class*="text-neutral-100"]):not([class*="text-neutral-200"]):not([class*="text-neutral-300"]):not(.text-white):not(.roysons-dark-footer *):not([data-dark-section] *):not([data-dark-card] *):not(.roysons-preserve-dark *) {
     color: #042E3A !important;
     -webkit-text-fill-color: #042E3A !important;
     background-image: none !important;
     background-clip: unset !important;
     -webkit-background-clip: unset !important;
     text-shadow: none !important;
+  }
+
+  /* Exemption for dark sections, cards, and roysons-preserve-dark */
+  [data-dark-section] h1, [data-dark-section] h2, [data-dark-section] h3, [data-dark-section] h4, [data-dark-section] h5, [data-dark-section] h6,
+  [data-dark-card] h1, [data-dark-card] h2, [data-dark-card] h3, [data-dark-card] h4, [data-dark-card] h5, [data-dark-card] h6,
+  .roysons-preserve-dark h1, .roysons-preserve-dark h2, .roysons-preserve-dark h3, .roysons-preserve-dark h4, .roysons-preserve-dark h5, .roysons-preserve-dark h6 {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
 
   /* ─────────────────────────────────────────────────────────────

@@ -41,7 +41,7 @@ const HERO_SLIDES = [
 
 /* ─── Animated Counter ──────────────────────────────────────────── */
 function AnimatedStatValue({ value }) {
-  const [displayValue, setDisplayValue] = useState("0");
+  const [displayValue, setDisplayValue] = useState(value);
   const elementRef = useRef(null);
 
   useEffect(() => {
@@ -107,7 +107,7 @@ function AnimatedStatValue({ value }) {
   }, [value]);
 
   return (
-    <span ref={elementRef} className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
+    <span ref={elementRef} suppressHydrationWarning className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
       {displayValue}
     </span>
   );

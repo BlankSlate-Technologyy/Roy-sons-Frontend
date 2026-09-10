@@ -28,7 +28,7 @@ import HospitalEngineeringTrustCTA from "@/components/hospital-engineering/Hospi
 import IndustriesServedSection from "@/components/hospital-engineering/IndustriesServedSection";
 
 function AnimatedStatValue({ value }) {
-  const [displayValue, setDisplayValue] = useState("0");
+  const [displayValue, setDisplayValue] = useState(value);
   const elementRef = useRef(null);
 
   useEffect(() => {

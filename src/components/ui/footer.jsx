@@ -221,7 +221,7 @@ export default function CorporateFooter({
       {/* Copyright Sub-bar */}
       <div className="footer-copyright-bar border-t border-[#0a7a8c]/20 bg-[#021a20] py-3 sm:py-3.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-          <p className="text-xs text-teal-200/60 font-semibold tracking-wider text-center sm:text-left">
+          <p suppressHydrationWarning className="text-xs text-teal-200/60 font-semibold tracking-wider text-center sm:text-left">
             &copy; {currentYear} ROYSONS Pvt. Ltd. All Rights Reserved.
           </p>
 
