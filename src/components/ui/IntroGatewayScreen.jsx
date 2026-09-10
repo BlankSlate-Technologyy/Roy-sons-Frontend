@@ -267,7 +267,7 @@ Together, they form one integrated platform built around purpose, enterprise, in
                     onClick={handleEnter}
                     className="intro-card-btn-2 inline-flex items-center justify-center gap-3 px-8 py-3.5 sm:py-4 rounded-[2px] text-[14px] sm:text-[15px] font-black uppercase tracking-wider shadow-md w-full sm:w-auto cursor-pointer"
                   >
-                    <span>Enter Main Website</span>
+                    <span>Explore Website</span>
                     <ArrowRight size={17} />
                   </button>
                 </div>
