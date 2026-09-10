@@ -25,13 +25,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/trade-1.jpg",
+    src: "/services/trade-1.jpg",
     alt: "Global Container Port and Cargo Logistics Hub",
     tag: "Global Trade & Supply Chains",
     title: "International Sourcing, Intermodal Maritime Logistics & Cargo Clearance",
   },
   {
-    src: "/sector/trade-2.jpg",
+    src: "/services/trade-2.jpg",
     alt: "Cross-Border Commercial Trade and Commodity Distribution",
     tag: "Commercial Distribution",
     title: "Bilateral Trade Representation, Export Documentation & Global Commodity Supply",

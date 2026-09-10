@@ -29,13 +29,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/renewable-1.jpg",
+    src: "/services/renewable-1.jpg",
     alt: "Utility-Scale Solar Farm and Wind Turbines",
     tag: "Solar & Wind Clean Energy",
     title: "Commercial Solar Farms & Integrated Wind Energy Generation",
   },
   {
-    src: "/sector/renewable-2.jpg",
+    src: "/services/renewable-2.jpg",
     alt: "Battery Energy Storage Systems Facility",
     tag: "BESS & Grid Storage",
     title: "Utility-Scale Battery Storage, Inverters & Microgrid Engineering",

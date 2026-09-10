@@ -75,10 +75,32 @@ export default function VetvacServicesOverviewPage() {
             <p
               data-aos="fade-up"
               data-aos-delay="200"
-              className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl"
+              className="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl font-normal"
             >
               Delivering pharmaceutical-grade biologics, targeted vaccines, and advanced disease management architectures across commercial poultry, livestock, dairy, clinical veterinary practice, and industrial farming.
             </p>
+
+            {/* Gradient Action Button matching user reference image */}
+            <div data-aos="fade-up" data-aos-delay="300" className="pt-3 flex flex-wrap items-center gap-4">
+              <Link
+                href="/group-companies/Vetvacpharma"
+                className="inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-lg font-black text-white uppercase tracking-[0.14em] text-xs sm:text-sm bg-gradient-to-r from-[#0077b6] via-[#009688] to-[#00ab66] hover:from-[#0088cc] hover:via-[#00a896] hover:to-[#02c074] shadow-[0_4px_20px_rgba(0,150,136,0.35)] hover:shadow-[0_6px_28px_rgba(0,150,136,0.55)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
+              >
+                <span className="tracking-widest">EXPLORE WEBSITE</span>
+                <ArrowRight
+                  size={17}
+                  strokeWidth={2.6}
+                  className="text-white group-hover:translate-x-1.5 transition-transform duration-300"
+                />
+              </Link>
+              <Link
+                href="/group-companies/Vetvacpharma/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg font-bold text-white text-xs sm:text-sm uppercase tracking-wider bg-white/10 hover:bg-white hover:text-[#0B2745] border border-white/20 transition-all duration-300"
+              >
+                <span>Request Clinical Consultation</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -180,7 +202,18 @@ export default function VetvacServicesOverviewPage() {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
+            <Link
+              href="/group-companies/Vetvacpharma"
+              className="inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-lg font-black text-white uppercase tracking-[0.14em] text-xs sm:text-sm bg-gradient-to-r from-[#0077b6] via-[#009688] to-[#00ab66] hover:from-[#0088cc] hover:via-[#00a896] hover:to-[#02c074] shadow-[0_4px_20px_rgba(0,150,136,0.35)] hover:shadow-[0_6px_28px_rgba(0,150,136,0.55)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer group"
+            >
+              <span className="tracking-widest">EXPLORE WEBSITE</span>
+              <ArrowRight
+                size={17}
+                strokeWidth={2.6}
+                className="text-white group-hover:translate-x-1.5 transition-transform duration-300"
+              />
+            </Link>
             <Link
               href="/group-companies/Vetvacpharma/contact"
               className="vetvac-primary-btn px-7 py-3.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white bg-[#1E855C] hover:bg-[#156344] shadow-xl transition-all duration-300 cursor-pointer flex items-center gap-2"

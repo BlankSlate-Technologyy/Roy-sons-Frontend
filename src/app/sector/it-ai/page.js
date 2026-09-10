@@ -38,13 +38,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/it-ai-1.jpg",
+    src: "/services/it-ai-1.jpg",
     alt: "AI & Neural Processing Data Center",
     tag: "AI & Deep Learning",
     title: "Autonomous Decision Support & Enterprise Machine Intelligence",
   },
   {
-    src: "/sector/it-ai-2.jpg",
+    src: "/services/it-ai-2.jpg",
     alt: "Cybersecurity & Cloud Operations Center",
     tag: "Cloud & Cybersecurity",
     title: "Mission-Critical SOC Operations & Hybrid Cloud Architecture",

@@ -25,13 +25,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/ev-1.jpg",
+    src: "/services/ev-1.jpg",
     alt: "Commercial EV Charging Hub and Fleet Systems",
     tag: "EV Charging Infrastructure",
     title: "High-Power DC Charging Hubs, Fleet Electrification & Microgrid Integration",
   },
   {
-    src: "/sector/ev-2.jpg",
+    src: "/services/ev-2.jpg",
     alt: "Electric Vehicle Battery Production & Assembly Line",
     tag: "Battery Technology & Assembly",
     title: "Advanced Battery Pack Engineering, Testing & Clean Mobility Solutions",

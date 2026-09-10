@@ -25,13 +25,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/defense-1.jpg",
+    src: "/services/defense-1.jpg",
     alt: "Strategic Defense & Aerospace Surveillance Systems",
     tag: "Defense & Surveillance",
     title: "Tactical Defense Infrastructure, C4ISR Communications & Perimeter Security",
   },
   {
-    src: "/sector/defense-2.jpg",
+    src: "/services/defense-2.jpg",
     alt: "Command & Control Operations Center",
     tag: "Command & Control",
     title: "State-of-the-Art Operations Control, Access Security & Critical Site Protection",

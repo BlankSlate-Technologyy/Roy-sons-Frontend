@@ -31,13 +31,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/electrical-1.jpg",
+    src: "/services/electrical-1.jpg",
     alt: "High-Voltage Power Transmission Substation",
     tag: "Grid & Transmission",
     title: "High-Voltage Substations & Smart Grid Distribution Engineering",
   },
   {
-    src: "/sector/electrical-2.jpg",
+    src: "/services/electrical-2.jpg",
     alt: "Industrial SCADA & Power Control Facility",
     tag: "SCADA & Industrial Power",
     title: "Real-Time Switchgear Monitoring, Automation & Protection Systems",

@@ -25,13 +25,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/food-1.jpg",
+    src: "/services/food-1.jpg",
     alt: "Automated Food Processing & Packaging Facility",
     tag: "Agro-Industrial Food Processing",
     title: "High-Volume Automated Processing, Food Grade Packaging & Cold Chain",
   },
   {
-    src: "/sector/food-2.jpg",
+    src: "/services/food-2.jpg",
     alt: "Hygienic Food Manufacturing & Quality Control",
     tag: "Quality & Safety Standards",
     title: "ISO & HACCP Certified Hygiene Lines, Flash Freezing & Export Packaging",

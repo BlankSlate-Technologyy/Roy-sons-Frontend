@@ -26,13 +26,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/realestate-1.jpg",
+    src: "/services/realestate-1.jpg",
     alt: "Corporate Commercial Skyscrapers and Architectural Landmarks",
     tag: "Commercial & Corporate Real Estate",
     title: "Class-A Corporate Towers, Commercial Centers & Master-Planned Developments",
   },
   {
-    src: "/sector/realestate-2.jpg",
+    src: "/services/realestate-2.jpg",
     alt: "Luxury Residential Towers and Mixed-Use Complexes",
     tag: "Residential & Mixed-Use Projects",
     title: "Sustainable Residential Communities, Urban Mixed-Use Developments & Asset Management",

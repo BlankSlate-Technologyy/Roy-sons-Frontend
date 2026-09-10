@@ -27,13 +27,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/mining-1.jpg",
+    src: "/services/mining-1.jpg",
     alt: "Modern Mineral Extraction and Heavy Haul Fleet",
     tag: "Extraction & Quarrying",
     title: "Terraced Open-Pit Mining, Heavy Earthmoving & Resource Extraction",
   },
   {
-    src: "/sector/mining-2.jpg",
+    src: "/services/mining-2.jpg",
     alt: "Automated Flotation & Mineral Refining Facility",
     tag: "Mineral Processing & Metallurgy",
     title: "High-Tech Flotation Cells, Beneficiation & Metallurgical Quality Testing",

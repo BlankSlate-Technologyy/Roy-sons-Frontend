@@ -27,13 +27,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/construction-1.jpg",
+    src: "/services/construction-1.jpg",
     alt: "Mega Infrastructure Construction and Cable Bridge Engineering",
     tag: "Civil & Infrastructure Engineering",
     title: "Towering Cable Bridges, Urban Sky-Scrapers & Heavy Civil Engineering",
   },
   {
-    src: "/sector/construction-2.jpg",
+    src: "/services/construction-2.jpg",
     alt: "Highways, Roads and Transport Interchange Project",
     tag: "Highways & Public Works",
     title: "Modern Highways, Intelligent Transportation Networks & Civil Contracting",

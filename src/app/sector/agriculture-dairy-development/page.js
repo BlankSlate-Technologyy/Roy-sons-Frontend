@@ -25,13 +25,13 @@ import ServiceHeroSlider from "@/components/ui/ServiceHeroSlider";
 
 const HERO_SLIDES = [
   {
-    src: "/sector/agriculture-1.jpg",
+    src: "/services/agriculture-1.jpg",
     alt: "Commercial Automated Dairy Facility",
     tag: "Dairy & Livestock Infrastructure",
     title: "Automated Milking Systems, Climate-Controlled Sheds & Herd Management",
   },
   {
-    src: "/sector/agriculture-2.jpg",
+    src: "/services/agriculture-2.jpg",
     alt: "Modern Precision Agriculture & Crop Harvesting",
     tag: "Precision Agriculture",
     title: "GPS-Guided Precision Harvesting, Pivot Irrigation & Crop Science",
