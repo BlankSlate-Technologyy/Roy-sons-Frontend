@@ -63,7 +63,7 @@ const HERO_STATS = [
 const TRUSTED_LOGOS = [
   { name: "World Health Organization", abbr: "WHO",     img: "/logos/worldhealth.png" },
   { name: "UNICEF",                    abbr: "UNICEF",  img: "/logos/unicef.png" },
-  { name: "Government of Pakistan",    abbr: "Govt of Pakistan", img: "/logo/pak.png" },
+  { name: "Government of Pakistan",    abbr: "Govt of Pakistan", img: "/logos/pak.png" },
   { name: "SIEMENS Healthineers",      abbr: "Siemens", img: "/logos/siemens.png" },
 ];
 
@@ -376,31 +376,31 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 3. TRUSTED BY LEADING ORGANIZATIONS ───────────────────────────── */}
-      <section className="py-8 px-6 bg-white border-b border-[#e2e8f0]" data-aos="fade-up" data-aos-duration="600">
+      <section className="py-10 sm:py-12 px-6 bg-white border-b border-[#e2e8f0]" data-aos="fade-up" data-aos-duration="600">
         <div className="mx-auto max-w-screen-xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#0f2b48] mb-6">
+          <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.24em] text-[#0f2b48] mb-8">
             TRUSTED BY LEADING ORGANIZATIONS
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-center max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-center justify-center max-w-5xl mx-auto">
             {TRUSTED_LOGOS.map((logo, idx) => (
               <div
                 key={logo.name}
                 data-aos="zoom-in"
                 data-aos-delay={idx * 100}
-                className="h-14 px-4 py-2 flex items-center justify-center opacity-85 hover:opacity-100 transition-opacity"
+                className="h-20 sm:h-24 px-4 py-2 flex items-center justify-center transition-all duration-300 hover:scale-105"
               >
                 {logo.img ? (
-                  <div className="relative w-full h-12">
+                  <div className="relative w-full h-16 sm:h-20">
                     <Image
                       src={logo.img}
                       alt={logo.name}
                       fill
                       className="object-contain"
-                      sizes="200px"
+                      sizes="(max-width: 768px) 180px, 260px"
                     />
                   </div>
                 ) : (
-                  <span className="text-sm font-black text-slate-700 tracking-wider">
+                  <span className="text-sm sm:text-base font-black text-slate-700 tracking-wider">
                     {logo.abbr}
                   </span>
                 )}
