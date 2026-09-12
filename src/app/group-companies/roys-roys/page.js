@@ -110,13 +110,13 @@ const SERVICE_OFFERINGS_12 = [
 ];
 
 const CORE_BUSINESS_7 = [
-  { title: "Hospital\nInfrastructure", icon: Building2 },
-  { title: "Medical\nEngineering",      icon: Stethoscope },
-  { title: "Facility\nManagement",      icon: Building },
-  { title: "Turnkey\nProjects",         icon: Layers },
-  { title: "Consultancy &\nAdvisory",   icon: Lightbulb },
-  { title: "Equipment\nSolutions",      icon: Activity },
-  { title: "Institutional\nSupport",    icon: ShieldCheck },
+  { title: "Hospital\nInfrastructure", icon: Building2, slug: "hospital-infrastructure" },
+  { title: "Medical\nEngineering",      icon: Stethoscope, slug: "medical-engineering" },
+  { title: "Facility\nManagement",      icon: Building, slug: "facility-management" },
+  { title: "Turnkey\nProjects",         icon: Layers, slug: "turnkey-projects" },
+  { title: "Consultancy &\nAdvisory",   icon: Lightbulb, slug: "consultancy-advisory" },
+  { title: "Equipment\nSolutions",      icon: Activity, slug: "equipment-solutions" },
+  { title: "Institutional\nSupport",    icon: ShieldCheck, slug: "institutional-support" },
 ];
 
 const PRODUCT_TABS = [
@@ -624,34 +624,55 @@ export default function RoysRoysPage() {
       </section>
 
       {/* ─── 8. CORE BUSINESS AREAS (7 PILL CARDS) ─────────────────────────── */}
-      <section className="py-14 px-6 bg-white">
+      <section className="py-14 sm:py-16 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl text-center">
           <h2
             data-aos="fade-up"
-            className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-8 sm:mb-10"
+            className="text-2xl sm:text-3xl font-black uppercase tracking-wider text-[#0f2b48] mb-2 sm:mb-3"
           >
             CORE BUSINESS AREAS
           </h2>
+          <p
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto mb-8 sm:mb-10"
+          >
+            Delivering specialized healthcare engineering, turnkey project execution, and institutional contracting.
+          </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3.5 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3.5 sm:gap-4">
             {CORE_BUSINESS_7.map((area, idx) => {
               const Icon = area.icon;
               return (
-                <div
+                <Link
                   key={area.title}
+                  href={`/group-companies/roys-roys/core-business/${area.slug}`}
                   data-aos="zoom-in"
                   data-aos-delay={idx * 60}
-                  className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-md transition-all duration-200 flex flex-col items-center justify-center text-center group cursor-pointer"
+                  className="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-[#2563eb] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center justify-between text-center group cursor-pointer no-underline min-h-[160px] sm:min-h-[180px]"
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white transition-all duration-200 flex items-center justify-center mb-3 shadow-xs">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-50 text-[#2563eb] group-hover:bg-[#2563eb] group-hover:text-white group-hover:scale-105 transition-all duration-300 flex items-center justify-center mb-3 shadow-xs">
                     <Icon size={26} />
                   </div>
                   <p className="text-xs sm:text-sm font-bold text-[#0f2b48] group-hover:text-[#2563eb] transition-colors whitespace-pre-line leading-snug">
                     {area.title}
                   </p>
-                </div>
+                  <span className="mt-2 text-[10px] font-bold text-[#2563eb] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-0.5">
+                    Explore <ChevronRight size={11} />
+                  </span>
+                </Link>
               );
             })}
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200" className="mt-8 sm:mt-10">
+            <Link
+              href="/group-companies/roys-roys/core-business"
+              className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+            >
+              <span>Explore All 7 Divisions</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
@@ -936,7 +957,7 @@ export default function RoysRoysPage() {
             className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between"
           >
             <div>
-              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#2563eb] block mb-3.5">
                 OUR VALUES
               </span>
               <div className="flex flex-wrap gap-2.5">
@@ -963,7 +984,7 @@ export default function RoysRoysPage() {
             className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between"
           >
             <div>
-              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#2563eb] block mb-3.5">
                 CORPORATE INFO
               </span>
               <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-sm text-slate-600 font-medium">
@@ -985,20 +1006,20 @@ export default function RoysRoysPage() {
             className="lg:col-span-4 p-6 rounded-2xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between"
           >
             <div>
-              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#B49438] block mb-3.5">
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#2563eb] block mb-3.5">
                 CERTIFICATIONS &amp; MEMBERSHIPS
               </span>
               <ul className="text-xs sm:text-sm text-slate-600 space-y-2 font-medium">
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#B49438] shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#2563eb] shrink-0" />
                   <span>ISO 9001:2015 Certified Organization</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#B49438] shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#2563eb] shrink-0" />
                   <span>Registered with Pakistan Engineering Council (PEC)</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#B49438] shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#2563eb] shrink-0" />
                   <span>Member: FPCCI, PHA &amp; Other Associations</span>
                 </li>
               </ul>

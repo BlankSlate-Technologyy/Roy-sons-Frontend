@@ -215,11 +215,11 @@ export function RoysFooter() {
         <div className="col-span-2 sm:col-span-3 lg:col-span-1" data-aos="fade-up" data-aos-delay="50">
           <Link href="/group-companies/roys-roys" className="inline-flex items-center gap-3 mb-4 select-none group">
             <Image
-              src="/logos/r&r.png"
+              src="/logos/r&r-white.png"
               alt="ROYS & ROYS"
               width={52}
               height={52}
-              className="h-11 sm:h-12 w-auto object-contain brightness-110"
+              className="h-11 sm:h-12 w-auto object-contain brightness-0 invert"
             />
             <div className="flex flex-col justify-center">
               <span className="text-[19px] sm:text-[21px] font-black tracking-tight leading-none text-white">
