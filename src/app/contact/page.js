@@ -116,7 +116,7 @@ export default function ContactPage() {
                   Our Office
                 </h4>
                 <p className="text-[15.5px] sm:text-[16.5px] text-neutral-700 leading-relaxed">
-                  1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
+                Rehman Centre 2, DHA Phase 5, Ring Road Service Lane, Natha Singh Wala, Lahore
                 </p>
               </div>
             </div>
