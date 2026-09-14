@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -20,6 +20,11 @@ import {
   Phone,
   Search,
   Sparkles,
+  Eye,
+  X,
+  ChevronRight,
+  Filter,
+  Check,
 } from "lucide-react";
 import {
   theme,
@@ -28,244 +33,387 @@ import {
   SectionLabel,
   SectionHeading,
 } from "../components/DesertDevShared";
-
-const CATEGORIES = [
-  "All",
-  "Government Authorities",
-  "Environmental Agencies",
-  "Renewable Energy",
-  "Agriculture & Farming",
-  "Infrastructure Developers",
-  "Mining & Industrial",
-];
-
-const REHABILITATION_SOLUTIONS = [
-  {
-    name: "Mega-Afforestation & Green Barrier Shelterbelt Suite",
-    category: "Government Authorities",
-    specs: ["Density: 500,000+ Native Tree Saplings Per 1,000 Hectares", "Flora: Acacia Nilotica, Prosopis Cineraria, Tamarix & Wild Olive", "Irrigation: Solar Subsurface Drip System with 98% Water Efficiency"],
-    desc: "Large-scale bio-diverse green walls designed to halt desert encroachment, sequester carbon, and restore native bird and wildlife habitats.",
-    image: "/desertdev_hero_rehab.svg",
-    tag: "Green Wall Corridor",
-  },
-  {
-    name: "Solar Brackish Desalination & Precision Drip Hub",
-    category: "Agriculture & Farming",
-    specs: ["Capacity: 1,500 m³/Day Solar-Powered Reverse Osmosis Filtration", "Power: 120 kW Dedicated Photovoltaic Solar Array with Battery Backup", "Salinity: Reducing 12,000 PPM Brackish Water to &lt;200 PPM Potable Water"],
-    desc: "Turnkey arid water generation and precision drip networks providing abundant fresh water for agricultural crops and local desert communities.",
-    image: "/desertdev_hero_rehab.svg",
-    tag: "Water Generation",
-  },
-  {
-    name: "Sand Dune Fixation & Mechanical Soil Matrix",
-    category: "Infrastructure Developers",
-    specs: ["Grid: 1m x 1m Straw & Geo-Textile Wind-Breaking Checkerboards", "Stabilization: Natural Biological Soil Crust Microbial Inoculants", "Coverage: 10,000 Hectares Continuous Mobile Dune Drift Arrest"],
-    desc: "Engineered sand dune stabilization systems protecting highways, railways, pipelines, and urban settlements from blowing sand and desert drift.",
-    image: "/desertdev_hero_rehab.svg",
-    tag: "Dune Fixation",
-  },
-  {
-    name: "Desert Agro-Forestry & Olive Orchard Reclamation",
-    category: "Agriculture & Farming",
-    specs: ["Orchard: High-Density Spanish & Italian Arid Olive Cultivars", "Soil: Biochar & Compost Subsoil Injections Boosting Organic Carbon", "Yield: High-Value Extra Virgin Olive Oil & Medjool Date Production"],
-    desc: "Converting barren arid lands into high-revenue commercial olive, date palm, and jojoba plantations utilizing precision fertigation.",
-    image: "/desertdev_hero_rehab.svg",
-    tag: "Agro-Forestry",
-  },
-  {
-    name: "Utility-Scale Desert Solar & Agrivoltaic Dual-Use Park",
-    category: "Renewable Energy",
-    specs: ["Output: 50MW+ High-Efficiency Bifacial Solar Photovoltaic Generation", "Agrivoltaics: Shade-Tolerant Aloe Vera, Saffron & Fodder Under Panels", "Maintenance: Waterless Robotic AI-Guided Dust Cleaning Systems"],
-    desc: "Dual-purpose clean energy generation and shade farming that triples desert land productivity while generating clean renewable electricity.",
-    image: "/desertdev_hero_rehab.svg",
-    tag: "Agrivoltaics",
-  },
-  {
-    name: "Mining Corridor Ecological Remediation & Revegetation",
-    category: "Mining & Industrial",
-    specs: ["Remediation: Neutralizing Heavy Metal Tailings with Bio-Phytoremediation", "Dust: Bio-Polymer Eco-Sealants Suppressing 99% Airborne Particulates", "Restoration: Native Shrub & Grass Revegetation Over Disturbed Strata"],
-    desc: "Comprehensive environmental rehabilitation of mining quarry sites, industrial waste corridors, and mineral processing buffer zones.",
-    image: "/desertdev_hero_rehab.svg",
-    tag: "Mining Remediation",
-  },
-];
+import {
+  TERRAIN_CATEGORIES,
+  FULL_CATALOG_LISTINGS,
+} from "../desert-dev-data";
 
 export default function DesertDevSolutionsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedTerrain, setSelectedTerrain] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeModalItem, setActiveModalItem] = useState(null);
 
-  const filtered = REHABILITATION_SOLUTIONS.filter((p) => {
-    const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
-    const matchesSearch =
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  // Extract unique terrain types
+  const uniqueTerrains = useMemo(() => {
+    const set = new Set();
+    FULL_CATALOG_LISTINGS.forEach((item) => {
+      if (item.terrain) set.add(item.terrain);
+    });
+    return ["All", ...Array.from(set)];
+  }, []);
+
+  // Filter listings based on search, category, and terrain
+  const filteredListings = useMemo(() => {
+    return FULL_CATALOG_LISTINGS.filter((item) => {
+      const matchesCat =
+        selectedCategory === "All" || item.category === selectedCategory;
+      const matchesTerrain =
+        selectedTerrain === "All" || item.terrain === selectedTerrain;
+      const query = searchQuery.toLowerCase();
+      const matchesSearch =
+        !query ||
+        item.title.toLowerCase().includes(query) ||
+        item.sku.toLowerCase().includes(query) ||
+        item.description.toLowerCase().includes(query) ||
+        item.terrain.toLowerCase().includes(query) ||
+        item.soilType.toLowerCase().includes(query);
+
+      return matchesCat && matchesTerrain && matchesSearch;
+    });
+  }, [selectedCategory, selectedTerrain, searchQuery]);
 
   return (
-    <main className="min-h-screen bg-white text-[#425C52] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#425C52] font-sans antialiased selection:bg-[#2D7D62] selection:text-white">
       <DesertDevNavbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 1. PAGE HEADER BANNER ─── */}
+      <section
+        className="relative py-20 px-4 sm:px-6 lg:px-8 border-b bg-white"
+        style={{ borderColor: theme.border }}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto">
-            <SectionLabel center>Turnkey Arid Solutions &amp; Packages</SectionLabel>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.darkGreen }}>
-              Desert Reclamation &amp; <span style={{ color: theme.primary }}>Turnkey Solutions</span>
+          <div className="max-w-3xl">
+            <SectionLabel>Full Solutions Catalog</SectionLabel>
+            <h1
+              className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight mb-4"
+              style={{ color: theme.darkGreen }}
+            >
+              24+ Turnkey Land Development &amp; Ecological Solutions
             </h1>
-
-            <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-              Explore our turnkey environmental packages: mega-afforestation green belts, solar brackish desalination hubs, sand dune stabilization matrices, and agrivoltaic clean energy parks.
+            <p className="text-base sm:text-lg font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+              Explore our complete inventory of engineered desert rehabilitation systems, deep aquifer solar water stations, mechanical sand dune checkerboards, mega-afforestation corridors, and utility agrivoltaics.
             </p>
-
-            {/* Live Search */}
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-md">
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search solutions (e.g. Afforestation, Desalination, Dune, Olive, Solar, Mining)..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1B4D3E] transition-all bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
-                />
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Category Pills */}
-      <section className="py-6 px-4 sm:px-6 lg:px-8 border-b bg-emerald-50/40" style={{ borderColor: theme.border }}>
+      {/* ─── 2. SEARCH & FILTER CONTROLS ─── */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 border-b bg-[#F7FBF9]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-            {CATEGORIES.map((cat) => {
-              const active = selectedCategory === cat;
+          {/* Top Search Bar & Terrain Select */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mb-6">
+            <div className="md:col-span-8 relative">
+              <Search
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+              />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search solutions by keyword, SKU (e.g. DDC-DUNE), soil type, or technology..."
+                className="w-full pl-11 pr-4 py-3 rounded-2xl border bg-white text-xs sm:text-sm font-medium focus:outline-[#1B4D3E] shadow-xs"
+                style={{ borderColor: theme.border }}
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-600"
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+
+            <div className="md:col-span-4">
+              <select
+                value={selectedTerrain}
+                onChange={(e) => setSelectedTerrain(e.target.value)}
+                className="w-full py-3 px-4 rounded-2xl border bg-white text-xs sm:text-sm font-bold text-slate-700 focus:outline-[#1B4D3E] shadow-xs cursor-pointer"
+                style={{ borderColor: theme.border }}
+              >
+                <option value="All">All Terrain Geomorphologies</option>
+                {uniqueTerrains.filter(t => t !== "All").map((terrain) => (
+                  <option key={terrain} value={terrain}>
+                    {terrain}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Category Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+            {TERRAIN_CATEGORIES.map((cat) => {
+              const count =
+                cat === "All"
+                  ? FULL_CATALOG_LISTINGS.length
+                  : FULL_CATALOG_LISTINGS.filter((p) => p.category === cat).length;
               return (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-pointer ${
-                    active
-                      ? "bg-[#1B4D3E] text-white shadow-md"
-                      : "bg-white border text-slate-700 hover:border-[#1B4D3E]"
+                  className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                    selectedCategory === cat
+                      ? "bg-[#1B4D3E] text-white shadow-sm"
+                      : "bg-white text-slate-700 hover:bg-slate-100 border"
                   }`}
-                  style={{ borderColor: active ? theme.primary : theme.border }}
+                  style={{ borderColor: theme.border }}
                 >
-                  {cat}
+                  <span>{cat}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                      selectedCategory === cat
+                        ? "bg-white/25 text-white"
+                        : "bg-slate-100 text-slate-600"
+                    }`}
+                  >
+                    {count}
+                  </span>
                 </button>
               );
             })}
           </div>
+
+          {/* Results Summary */}
+          <div className="flex items-center justify-between text-xs font-semibold text-slate-500 pt-4 border-t mt-4" style={{ borderColor: theme.border }}>
+            <span>
+              Showing <strong>{filteredListings.length}</strong> of <strong>{FULL_CATALOG_LISTINGS.length}</strong> solutions
+            </span>
+            {(selectedCategory !== "All" || selectedTerrain !== "All" || searchQuery) && (
+              <button
+                onClick={() => {
+                  setSelectedCategory("All");
+                  setSelectedTerrain("All");
+                  setSearchQuery("");
+                }}
+                className="text-[#1B4D3E] font-bold hover:underline cursor-pointer"
+              >
+                Reset All Filters
+              </button>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* Solutions Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 3. LISTINGS GRID ─── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filtered.map((sol) => (
-              <div
-                key={sol.name}
-                className="dd-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                style={{ borderColor: theme.border }}
+          {filteredListings.length === 0 ? (
+            <div className="text-center py-20 p-8 rounded-3xl border bg-slate-50" style={{ borderColor: theme.border }}>
+              <Sprout size={36} className="mx-auto text-slate-400 mb-3" />
+              <h3 className="text-lg font-black uppercase text-slate-700 mb-1">
+                No Matching Solutions Found
+              </h3>
+              <p className="text-xs text-slate-500 mb-4">
+                Try loosening your search filters or clearing the terrain selector.
+              </p>
+              <button
+                onClick={() => {
+                  setSelectedCategory("All");
+                  setSelectedTerrain("All");
+                  setSearchQuery("");
+                }}
+                className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-[#1B4D3E]"
               >
-                <div>
-                  {/* Card Image */}
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                Reset Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredListings.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-3xl border overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col group"
+                  style={{ borderColor: theme.border }}
+                >
+                  {/* Photo with Overlay Badge */}
+                  <div className="relative h-56 w-full overflow-hidden">
                     <Image
-                      src={sol.image}
-                      alt={sol.name}
+                      src={item.image}
+                      alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 border shadow-sm text-[#1B4D3E]" style={{ borderColor: theme.border }}>
-                        {sol.tag}
-                      </span>
+                    <div className="absolute top-3.5 left-3.5 bg-black/65 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md">
+                      {item.sku}
+                    </div>
+                    <div className="absolute top-3.5 right-3.5 bg-emerald-600/90 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full">
+                      {item.accreditation}
                     </div>
                   </div>
 
                   {/* Body Content */}
-                  <div className="p-7">
-                    <h3 className="text-xl font-black mb-3" style={{ color: theme.darkGreen }}>
-                      {sol.name}
-                    </h3>
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-[#2D7D62] mb-1">
+                        <span>{item.terrain}</span>
+                        <span className="text-slate-400 font-medium">{item.soilType}</span>
+                      </div>
 
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                      {sol.desc}
-                    </p>
+                      <h3 className="text-lg font-black uppercase tracking-tight mb-2.5 leading-snug" style={{ color: theme.darkGreen }}>
+                        {item.title}
+                      </h3>
 
-                    {/* Specs List */}
-                    <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(212, 229, 221, 0.7)" }}>
-                      <p className="text-xs font-bold uppercase tracking-wider" style={{ color: theme.darkGreen }}>
-                        Engineering Specifications &amp; Metrics:
+                      <p className="text-xs sm:text-sm font-medium text-slate-600 leading-relaxed mb-5 line-clamp-3">
+                        {item.description}
                       </p>
-                      {sol.specs.map((s) => (
-                        <div key={s} className="flex items-center gap-2">
-                          <CheckCircle2 size={14} className="flex-shrink-0 text-[#2D7D62]" />
-                          <span className="text-xs font-medium text-slate-700">{s}</span>
+
+                      {/* Technical Specs Metric Strip */}
+                      <div className="grid grid-cols-2 gap-2 text-xs py-3 px-3.5 rounded-xl bg-emerald-50/50 mb-5">
+                        <div>
+                          <span className="text-slate-400 block text-[9.5px] uppercase font-bold">Efficiency</span>
+                          <span className="font-extrabold text-[#0D3025]">{item.efficiency}</span>
                         </div>
-                      ))}
+                        <div>
+                          <span className="text-slate-400 block text-[9.5px] uppercase font-bold">Capacity</span>
+                          <span className="font-extrabold text-[#0D3025]">{item.capacity}</span>
+                        </div>
+                      </div>
+
+                      {/* Deliverables Checklist */}
+                      <div className="space-y-1.5 mb-6">
+                        {item.features.slice(0, 2).map((feat, idx) => (
+                          <div key={idx} className="flex items-start gap-2 text-[11.5px] text-slate-700 font-medium">
+                            <CheckCircle2 size={13} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                            <span className="line-clamp-1">{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-2.5 pt-4 border-t border-slate-100">
+                      <button
+                        onClick={() => setActiveModalItem(item)}
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl text-xs font-bold border border-[#1B4D3E] text-[#1B4D3E] hover:bg-[#1B4D3E] hover:text-white transition-colors cursor-pointer"
+                      >
+                        <Eye size={14} />
+                        <span>Quick View Spec</span>
+                      </button>
+
+                      <Link
+                        href="/group-companies/desert-development/contact"
+                        className="py-2.5 px-4 rounded-xl text-xs font-bold text-white bg-[#1B4D3E] hover:opacity-95 transition-opacity cursor-pointer whitespace-nowrap"
+                      >
+                        <span>Inquire</span>
+                      </Link>
                     </div>
                   </div>
                 </div>
-
-                <div className="p-7 pt-0">
-                  <Link
-                    href="/group-companies/desert-development/contact"
-                    className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-emerald-50/50 transition-colors cursor-pointer"
-                    style={{ borderColor: theme.border, color: theme.darkGreen }}
-                  >
-                    <span>Request Environmental Proposal</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#2D7D62]">
-                GOVERNMENT AUTHORITIES &amp; ARID LAND DEVELOPERS
+      {/* ─── 4. QUICK-VIEW SPECIFICATION MODAL ─── */}
+      {activeModalItem && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-xs">
+          <div
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border"
+            style={{ borderColor: theme.border }}
+          >
+            <button
+              onClick={() => setActiveModalItem(null)}
+              className="absolute top-5 right-5 p-2 rounded-full hover:bg-slate-100 text-slate-500 cursor-pointer"
+              aria-label="Close Modal"
+            >
+              <X size={20} />
+            </button>
+
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[10px] font-black uppercase tracking-widest text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md">
+                {activeModalItem.sku}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.darkGreen }}>
-                Turnkey Arid Land Engineering Tailored To Your Region
-              </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                We provide complete GIS soil mapping, deep hydrology drilling, solar irrigation engineering, and multi-year maintenance across Pakistan.
-              </p>
+              <span className="text-[10px] font-bold text-slate-400">
+                {activeModalItem.category}
+              </span>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight mb-4" style={{ color: theme.darkGreen }}>
+              {activeModalItem.title}
+            </h3>
+
+            <div className="relative h-64 w-full rounded-2xl overflow-hidden mb-6">
+              <Image
+                src={activeModalItem.image}
+                alt={activeModalItem.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+              {activeModalItem.description}
+            </p>
+
+            <div className="mb-6">
+              <h4 className="text-xs font-black uppercase tracking-wider mb-2.5" style={{ color: theme.darkGreen }}>
+                Key Engineering Deliverables
+              </h4>
+              <ul className="space-y-1.5">
+                {activeModalItem.features.map((feat, i) => (
+                  <li key={i} className="flex items-start gap-2 text-xs text-slate-700">
+                    <CheckCircle2 size={13} className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border mb-6" style={{ borderColor: theme.border }}>
+              <h4 className="text-xs font-black uppercase tracking-wider mb-2 text-slate-700">
+                Technical Specifications
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                {Object.entries(activeModalItem.specs).map(([k, v]) => (
+                  <div key={k}>
+                    <span className="text-slate-400 block text-[10px]">{k}</span>
+                    <span className="font-bold text-slate-800">{v}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t" style={{ borderColor: theme.border }}>
+              <div>
+                <span className="text-[10px] uppercase font-bold text-slate-400 block">Warranty / Guarantee</span>
+                <span className="text-xs font-bold text-emerald-800">{activeModalItem.warranty}</span>
+              </div>
               <Link
                 href="/group-companies/desert-development/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
+                onClick={() => setActiveModalItem(null)}
+                className="py-2.5 px-5 rounded-xl text-xs font-black uppercase tracking-wider text-white shadow-sm hover:opacity-90 transition-opacity"
                 style={{ backgroundColor: theme.primary }}
               >
-                <span>Request Feasibility Study</span>
-                <ArrowRight size={15} />
+                <span>Request Project Proposal</span>
               </Link>
-              <a
-                href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-emerald-50/50 cursor-pointer"
-                style={{ borderColor: theme.primary, color: theme.primary }}
-              >
-                <Phone size={15} />
-                <span>0092-42-38924737</span>
-              </a>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ─── 5. BOTTOM CTA BANNER ─── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-t bg-[#F7FBF9]" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl text-center">
+          <SectionLabel center>Tailored Engineering</SectionLabel>
+          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight mb-4" style={{ color: theme.darkGreen }}>
+            Need A Custom Arid Rehabilitation Solution?
+          </h2>
+          <p className="text-sm font-medium text-slate-600 max-w-xl mx-auto mb-8">
+            Our multi-disciplinary team of hydrologists, GIS remote sensing specialists, and civil earthwork contractors design bespoke land development packages.
+          </p>
+          <Link
+            href="/group-companies/desert-development/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-xs font-black uppercase tracking-widest text-white shadow-md hover:shadow-lg transition-all duration-300 hover:scale-[1.02]"
+            style={{ backgroundColor: theme.primary }}
+          >
+            <span>Consult Our Senior Engineers</span>
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </section>
 

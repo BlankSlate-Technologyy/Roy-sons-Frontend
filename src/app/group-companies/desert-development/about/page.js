@@ -108,8 +108,8 @@ export default function DesertDevAboutPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-emerald-50/50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/desertdev_hero_rehab.svg"
-                  alt="Desert Development & Rehabilitation Ecological Command"
+                  src="/desertdev/hero_afforestation.jpg"
+                  alt="Desert Development Corporation Ecological Command"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
@@ -120,7 +120,7 @@ export default function DesertDevAboutPage() {
                       UNCCD Compliant &amp; ISO 14001
                     </p>
                     <p className="text-sm font-bold" style={{ color: theme.darkGreen }}>
-                      5M+ Trees Planted · 200+ Projects Completed
+                      12M+ Trees Planted · 250+ Projects Completed
                     </p>
                   </div>
                 </div>

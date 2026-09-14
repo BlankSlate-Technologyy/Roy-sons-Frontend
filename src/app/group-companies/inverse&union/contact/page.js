@@ -85,7 +85,7 @@ export default function InverseUnionContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           companySlug: "inverse&union",
-          companyName: "Inverse & Union Corporation",
+          companyName: "Inverse and Union Trading",
           fullName: formData.name,
           email: formData.email,
           phone: formData.phone,

@@ -128,8 +128,8 @@ export default function InverseUnionSustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-sky-50/50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/inverseunion_hero_trade.svg"
-                  alt="Green Global Supply Chain and Maritime Logistics"
+                  src="/inverseunion/intermodal_rail_freight.jpg"
+                  alt="Green Global Supply Chain and Intermodal Freight Logistics"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority

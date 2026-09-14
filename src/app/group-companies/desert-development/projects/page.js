@@ -49,7 +49,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 2.5 Million Native Trees Planted",
     desc: "Large-scale ecological restoration project establishing a 100,000-hectare green wall barrier against desertification, supported by automated seeding drones and solar-powered subsurface drip irrigation.",
     specs: ["Trees: 2,500,000 Native Acacia, Kandi & Ber Saplings", "Survival: 97.4% High Plant Survival Rate Over 4 Years", "Carbon: Estimated 140,000 Tons CO2e Sequestered Annually"],
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/hero_afforestation.jpg",
     tag: "Green Wall Corridor",
   },
   {
@@ -59,7 +59,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 18 Solar Deep Tube Wells Operational",
     desc: "Installation of 18 solar photovoltaic deep aquifer extraction stations, brackish water reverse osmosis desalination units, and communal livestock hydration points.",
     specs: ["Discharge: 2,200,000 Gallons Per Day Clean Potable Water", "Farming: 8,000 Hectares of Date Palm & Arid Fodder Irrigated", "Power: 100% Off-Grid 240 kW Solar PV Field Array"],
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/solar_irrigation.jpg",
     tag: "Solar Hydrology",
   },
   {
@@ -69,7 +69,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 15,000 Hectares Coastal Sand Fixed",
     desc: "Deploying mechanical straw checkerboards, biological microbial crumbing, and salt-tolerant coastal halophyte vegetation to protect Gwadar Free Zone highways and ports.",
     specs: ["Dunes: 15,000 Hectares of Shifting Coastal Sand Stabilized", "Flora: 400,000 Avicennia Marina Mangroves & Halophytes Planted", "Infrastructure: Zero Sand Ingress on Port Access Expressways"],
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/sand_dune_fixation.jpg",
     tag: "Coastal Stabilization",
   },
   {
@@ -79,7 +79,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 20,000 Hectares Reclaimed for Farming",
     desc: "Reclaiming hypersaline desert scrubland into high-yield commercial Spanish and Italian olive orchards, date palms, and jojoba plantations utilizing organic biochar amending.",
     specs: ["Area: 20,000 Hectares Barren Scrub Converted to Fertile Land", "Orchards: 650,000 High-Yield Olive Trees Producing Extra Virgin Oil", "Water: 80% Reduction in Water Use via Subsurface Drip"],
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/arid_agriculture.jpg",
     tag: "Olive Agro-Forestry",
   },
   {
@@ -89,7 +89,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 120 km Highway Linear Forest Belt",
     desc: "Planting multi-tier continuous shelterbelts along both sides of the M-9 motorway to arrest crosswind sand drift, improve driver visibility, and lower ambient roadside temperatures.",
     specs: ["Length: 120 Kilometers Continuous Multi-Row Shelterbelt", "Trees: 800,000 Fast-Growing Conocarpus & Tamarisk Trees", "Safety: 99% Reduction in Sand Accumulation on Highway Lanes"],
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/hero_afforestation.jpg",
     tag: "Highway Shelterbelt",
   },
   {
@@ -98,8 +98,8 @@ const SIGNATURE_PROJECTS = [
     location: "Reko Diq & Saindak Mineral Corridor, Chagai, Balochistan",
     status: "Active Execution – Mine Buffer Zone Revegetation",
     desc: "Comprehensive environmental remediation of heavy metal tailings, application of eco-friendly bio-polymer dust binders, and re-establishment of native desert gazelle habitats.",
-    specs: ["Remediation: 12,000 Hectares Mining Buffer Zone Restored", "Dust Control: Bio-Polymer Sealants Reducing PM10 Dust by 98%", "Monitoring: IoT Soil Micro-Chemistry & Groundwater Piezometers"],
-    image: "/desertdev_hero_rehab.svg",
+    specs: ["Remediation: Neutralizing Heavy Metal Tailings with Bio-Phytoremediation", "Dust: Bio-Polymer Eco-Sealants Suppressing 99% Airborne Particulates", "Restoration: Native Shrub & Grass Revegetation Over Disturbed Strata"],
+    image: "/desertdev/mining_rehabilitation.jpg",
     tag: "Mining Remediation",
   },
 ];

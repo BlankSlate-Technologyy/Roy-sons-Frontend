@@ -173,9 +173,9 @@ export function MaxWoodNavbar() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="w-full px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between gap-3">
+      <div className="w-full px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between gap-4">
         {/* Brand Logo - Aligned to left, no unwanted whitespace */}
-        <Link href="/group-companies/max-wood" className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0">
+        <Link href="/group-companies/max-wood" className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0 mr-4">
           <div className="relative w-11 h-11 sm:w-13 sm:h-13 lg:w-14 lg:h-14 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/00.png"
@@ -197,14 +197,14 @@ export function MaxWoodNavbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center justify-end gap-3 xl:gap-5 2xl:gap-6 flex-1">
+        <nav className="hidden lg:flex items-center justify-end gap-2 xl:gap-2.5 2xl:gap-3 flex-1">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[12px] xl:text-[13px] 2xl:text-[13.5px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1.5 xl:px-2 whitespace-nowrap hover:text-[#5C3A21] cursor-pointer"
+                className="text-[11.5px] xl:text-[12px] 2xl:text-[12.5px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 xl:px-1.5 whitespace-nowrap hover:text-[#5C3A21] cursor-pointer"
                 style={{
                   color: active ? theme.primary : theme.textMuted,
                 }}

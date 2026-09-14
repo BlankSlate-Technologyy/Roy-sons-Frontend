@@ -51,7 +51,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/group-companies/desert-development" },
   { label: "About Us", href: "/group-companies/desert-development/about" },
   { label: "Services", href: "/group-companies/desert-development/services" },
-  { label: "Sectors & Solutions", href: "/group-companies/desert-development/solutions" },
+  { label: "Sectors & Solutions", shortLabel: "Solutions", href: "/group-companies/desert-development/solutions" },
   { label: "Projects", href: "/group-companies/desert-development/projects" },
   { label: "Sustainability", href: "/group-companies/desert-development/sustainability" },
   { label: "Contact", href: "/group-companies/desert-development/contact" },
@@ -176,43 +176,50 @@ export function DesertDevNavbar() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="w-full px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between gap-3">
         {/* Brand Logo */}
-        <Link href="/group-companies/desert-development" className="flex items-center gap-3 select-none group">
-          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+        <Link href="/group-companies/desert-development" className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0">
+          <div className="relative w-11 h-11 sm:w-13 sm:h-13 lg:w-14 lg:h-14 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/14.png"
-              alt="Desert Development & Rehabilitation Logo"
-              width={80}
-              height={80}
+              alt="Desert Development Corporation Logo"
+              width={70}
+              height={70}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.darkGreen }}>
+            <span className="text-[13px] sm:text-base lg:text-base xl:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.darkGreen }}>
               Desert Development
             </span>
-            <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.emerald }}>
-              &amp; Rehabilitation Solutions
+            <span className="text-[8.5px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.emerald }}>
+              Corporation
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        <nav className="hidden lg:flex items-center justify-center gap-1.5 xl:gap-3 2xl:gap-5 flex-1 px-2">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#1B4D3E] cursor-pointer"
+                className="text-[11px] xl:text-[12px] 2xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1.5 xl:px-2 whitespace-nowrap hover:text-[#1B4D3E] cursor-pointer"
                 style={{
                   color: active ? theme.primary : theme.textMuted,
                 }}
               >
-                {link.label}
+                {link.shortLabel ? (
+                  <>
+                    <span className="inline 2xl:hidden">{link.shortLabel}</span>
+                    <span className="hidden 2xl:inline">{link.label}</span>
+                  </>
+                ) : (
+                  link.label
+                )}
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
                     active ? "w-full" : "w-0 hover:w-full"
@@ -225,19 +232,19 @@ export function DesertDevNavbar() {
         </nav>
 
         {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           <Link
             href="/group-companies/desert-development/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap flex-shrink-0"
             style={{ backgroundColor: theme.primary }}
           >
             <span>Consultation</span>
-            <ArrowRight size={13} />
+            <ArrowRight size={13} className="hidden sm:inline-block" />
           </Link>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer flex-shrink-0"
             style={{ borderColor: theme.border, color: theme.darkGreen }}
             aria-label="Toggle Menu"
           >
@@ -315,7 +322,10 @@ export function DesertDevFooter() {
                   Desert Development
                 </p>
                 <p className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: theme.emerald }}>
-                  &amp; Rehabilitation Solutions
+                  Corporation
+                </p>
+                <p className="text-[9px] font-medium tracking-wider uppercase mt-0.5 text-emerald-800">
+                  Land Development &amp; Environmental Solutions
                 </p>
               </div>
             </Link>

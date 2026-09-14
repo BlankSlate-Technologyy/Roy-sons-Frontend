@@ -128,7 +128,7 @@ export default function DesertDevSustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-emerald-50/50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/desertdev_hero_rehab.svg"
+                  src="/desertdev/desert_greening.jpg"
                   alt="Ecological Restoration and Arid Sustainability"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

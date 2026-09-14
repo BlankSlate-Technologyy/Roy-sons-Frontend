@@ -38,7 +38,7 @@ const DESERT_SERVICES = [
     title: "Scientific Desert Rehabilitation & Dune Stabilization",
     subtitle: "Mechanical Checkerboards, Biological Crusts & Windbreaks",
     desc: "Arresting desert expansion through engineered sand dune fixation, mechanical clay checkerboards, and fast-growing native botanical stabilization.",
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/sand_dune_fixation.jpg",
     tag: "Dune Stabilization",
     icon: Sprout,
     deliverables: [
@@ -53,7 +53,7 @@ const DESERT_SERVICES = [
     title: "Arid Land Reclamation & Soil Regeneration",
     subtitle: "Biochar Inoculation, Salinity Leaching & Organic Enrichment",
     desc: "Transforming hypersaline, barren arid soils into productive agricultural and commercial development acreage through scientific soil remediation.",
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/sustainable_earthworks.jpg",
     tag: "Soil Reclamation",
     icon: Layers,
     deliverables: [
@@ -68,7 +68,7 @@ const DESERT_SERVICES = [
     title: "Sustainable Arid Infrastructure & Earthworks",
     subtitle: "Thermal-Resilient Roadways, Flood Diversion & Eco-Bettlements",
     desc: "Engineering heavy civil works, access roads, eco-friendly modular structures, and flash-flood wadi diversion channels optimized for harsh desert climates.",
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/sustainable_earthworks.jpg",
     tag: "Arid Infrastructure",
     icon: HardHat,
     deliverables: [
@@ -83,7 +83,7 @@ const DESERT_SERVICES = [
     title: "Deep Aquifer & Solar Drip Water Management",
     subtitle: "Subsurface Drip, Solar Deep Wells & Aquifer Recharge",
     desc: "Comprehensive arid water hydrology covering solar-powered deep tube wells, brackish water desalination, and zero-evaporation subsurface drip systems.",
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/solar_irrigation.jpg",
     tag: "Water Hydrology",
     icon: Droplets,
     deliverables: [
@@ -98,7 +98,7 @@ const DESERT_SERVICES = [
     title: "Large-Scale Afforestation & Green Belts",
     subtitle: "Native Acacia, Prosopis, Tamarisk & Olive Plantation",
     desc: "Designing and planting mega-scale green wall corridors and bio-diverse forest belts to sequester carbon, restore wildlife habitats, and cool microclimates.",
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/hero_afforestation.jpg",
     tag: "Afforestation",
     icon: Trees,
     deliverables: [
@@ -113,7 +113,7 @@ const DESERT_SERVICES = [
     title: "Desert Renewable Solar & Wind Development",
     subtitle: "Utility-Scale PV, Agrivoltaics & Off-Grid Wind Microgrids",
     desc: "Capitalizing on high desert solar irradiation to develop utility-scale photovoltaic farms, agrivoltaic dual-use land systems, and wind energy arrays.",
-    image: "/desertdev_hero_rehab.svg",
+    image: "/desertdev/renewable_solar_park.jpg",
     tag: "Clean Energy",
     icon: Sun,
     deliverables: [

@@ -47,7 +47,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 85 Heavy Machinery Units Dispatched",
     desc: "Turnkey procurement, pre-shipment SGS inspection, chartered breakbulk ocean vessel shipping, and customs clearance for 85 heavy hydraulic excavators, bulldozers, and asphalt paving plants.",
     specs: ["Machinery: 85 Tier-1 Certified Earthmoving & Road Paving Units", "Shipping: Dedicated Heavy-Lift Breakbulk Ocean Vessel Charter", "Clearance: 100% Green Channel Expedited Customs Release"],
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/hero_maritime_freight.jpg",
     tag: "Heavy Machinery",
   },
   {
@@ -57,7 +57,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 12 Extra-Heavy Power Transformers",
     desc: "Coordinating precision international heavy-lift ocean shipping and specialized multi-axle hydraulic road transport for twelve 180-ton 500kV grid transformers.",
     specs: ["Payload: 12 Units (180 Tons Per Transformer Extra-Heavy Cargo)", "Routing: Ocean Vessel to Karachi Port -> Multi-Axle Road Convoys", "Compliance: Zero-Vibration Transport with Accelerometer Telemetry"],
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/intermodal_rail_freight.jpg",
     tag: "Grid Power Trade",
   },
   {
@@ -67,7 +67,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 5 Bulk Panamax Cargo Vessels",
     desc: "International bulk procurement, chartering of 5 Panamax bulk cargo vessels, and rapid pneumatic discharge of 250,000 metric tons of premium milling wheat.",
     specs: ["Volume: 250,000 Metric Tons of Grade-1 Milling Wheat", "Assay: SGS Certified Clean Protein > 12.5% & Low Moisture", "Discharge: 10,000 MT / Day High-Speed Port Pneumatic Unloading"],
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/bulk_commodity_port.jpg",
     tag: "Bulk Agri-Grain",
   },
   {
@@ -77,7 +77,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 120 km High-Pressure Seamless Pipes",
     desc: "Direct procurement of 120 kilometers of API 5L Grade X65 seamless carbon steel pipeline casing, 3-layer polyethylene anti-corrosion coating, and ultrasonic NDT testing.",
     specs: ["Specifications: 24-inch API 5L X65 PSL-2 Seamless Steel Casings", "Testing: 100% Non-Destructive Ultrasonic & Hydrostatic Tests", "Corrosion: 3LPE High-Density External Anti-Corrosion Wrap"],
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/procurement_inspection.jpg",
     tag: "Oilfield Casings",
   },
   {
@@ -87,7 +87,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 650 High-Cube Containers",
     desc: "Consolidated ocean container shipping, freight insurance, customs tariff optimization, and container yard logistics for 380,000 Tier-1 N-Type TOPCon solar PV modules.",
     specs: ["Capacity: 200 Megawatt High-Efficiency Solar PV Installation", "Containers: 650 x 40ft High-Cube Shipping Containers Handled", "Clearance: Duty-Free Clean Energy SRO Customs Exemption"],
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/global_sourcing_warehouse.jpg",
     tag: "Solar Module Trade",
   },
   {
@@ -97,7 +97,7 @@ const SIGNATURE_PROJECTS = [
     status: "Active Execution – Weekly Just-In-Time Container Dispatches",
     desc: "Managing a multi-year global supply chain contract providing weekly Just-In-Time (JIT) container shipments of complete knock-down (CKD) automotive assemblies.",
     specs: ["Cadence: 45 Containers Weekly Delivery Guarantee", "Inventory: Bonded Customs Warehousing with Barcode Batch Tracking", "Lead-Time: Zero Production Line Stoppage Over 3 Years"],
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/overland_fleet.jpg",
     tag: "Automotive CKD",
   },
 ];

@@ -37,7 +37,7 @@ const TRADE_SERVICES = [
     title: "Global Sourcing & Direct Procurement",
     subtitle: "Supplier Vetting, Factory Audits & Factory-Gate Pricing",
     desc: "Identifying, vetting, and negotiating directly with certified international manufacturers and Tier-1 suppliers across 40+ countries to source quality goods at optimal cost.",
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/global_sourcing_warehouse.jpg",
     tag: "Global Sourcing",
     icon: Globe,
     deliverables: [
@@ -52,7 +52,7 @@ const TRADE_SERVICES = [
     title: "Import & Export Trade Management",
     subtitle: "Letters of Credit (LC), Commercial Invoicing & Export Documentation",
     desc: "Comprehensive cross-border trade administration managing documentary letters of credit, certificates of origin, phytosanitary permits, and commercial shipping contracts.",
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/customs_compliance.jpg",
     tag: "Import / Export",
     icon: FileText,
     deliverables: [
@@ -67,7 +67,7 @@ const TRADE_SERVICES = [
     title: "Multi-Modal Freight Logistics",
     subtitle: "Ocean FCL/LCL, Air Cargo Charters & Bonded Road Fleets",
     desc: "Seamless freight forwarding coordination across ocean container vessels, chartered air cargo flights, and temperature-controlled bonded road transport networks.",
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/hero_maritime_freight.jpg",
     tag: "Freight Forwarding",
     icon: Ship,
     deliverables: [
@@ -82,7 +82,7 @@ const TRADE_SERVICES = [
     title: "Trade Compliance & Customs Clearance",
     subtitle: "Harmonized System (HS) Codes, Tariff Optimization & WebOC Filing",
     desc: "Rapid customs clearance at all major air, sea, and dry ports in Pakistan utilizing automated WebOC electronic filing and precision tariff classification.",
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/procurement_inspection.jpg",
     tag: "Customs Clearance",
     icon: ShieldCheck,
     deliverables: [
@@ -97,7 +97,7 @@ const TRADE_SERVICES = [
     title: "Bulk Commodity Sourcing",
     subtitle: "Industrial Raw Materials, Agri-Grains, Steel & Energy",
     desc: "Large-volume procurement and trading of bulk commodities including construction rebar, industrial chemicals, mineral ores, wheat, rice, and energy equipment.",
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/bulk_commodity_port.jpg",
     tag: "Commodity Trading",
     icon: Search,
     deliverables: [
@@ -112,7 +112,7 @@ const TRADE_SERVICES = [
     title: "Supply Chain Risk Management & Finance",
     subtitle: "FX Hedging, Marine Insurance & Geopolitical Trade Resilience",
     desc: "Proactive risk assessment identifying geopolitical, currency, and logistical vulnerabilities, backed by comprehensive marine cargo insurance and trade finance structuring.",
-    image: "/inverseunion_hero_trade.svg",
+    image: "/inverseunion/smart_logistics_hub.jpg",
     tag: "Trade Risk Mitigation",
     icon: PackageCheck,
     deliverables: [
@@ -185,8 +185,8 @@ export default function InverseUnionServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-sky-50/50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/inverseunion_hero_trade.svg"
-                  alt="Inverse & Union Trading Sourcing Divisions"
+                  src="/inverseunion/hero_maritime_freight.jpg"
+                  alt="Inverse and Union Trading Sourcing Divisions"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority

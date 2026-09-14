@@ -84,7 +84,7 @@ export default function DesertDevContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           companySlug: "desert-development",
-          companyName: "Desert Development & Rehabilitation",
+          companyName: "Desert Development Corporation",
           fullName: formData.name,
           email: formData.email,
           phone: formData.phone,
