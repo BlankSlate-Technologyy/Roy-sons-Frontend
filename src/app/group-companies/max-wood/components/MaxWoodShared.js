@@ -197,26 +197,19 @@ export function MaxWoodNavbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center justify-center gap-1.5 xl:gap-3 2xl:gap-5 flex-1 px-2">
+        <nav className="hidden lg:flex items-center justify-end gap-3 xl:gap-5 2xl:gap-6 flex-1">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11px] xl:text-[12px] 2xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1.5 xl:px-2 whitespace-nowrap hover:text-[#5C3A21] cursor-pointer"
+                className="text-[12px] xl:text-[13px] 2xl:text-[13.5px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1.5 xl:px-2 whitespace-nowrap hover:text-[#5C3A21] cursor-pointer"
                 style={{
                   color: active ? theme.primary : theme.textMuted,
                 }}
               >
-                {link.shortLabel ? (
-                  <>
-                    <span className="inline 2xl:hidden">{link.shortLabel}</span>
-                    <span className="hidden 2xl:inline">{link.label}</span>
-                  </>
-                ) : (
-                  link.label
-                )}
+                {link.label}
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
                     active ? "w-full" : "w-0 hover:w-full"
@@ -228,20 +221,11 @@ export function MaxWoodNavbar() {
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          <Link
-            href="/group-companies/max-wood/contact"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap flex-shrink-0"
-            style={{ backgroundColor: theme.primary }}
-          >
-            <span>Interior Consult</span>
-            <ArrowRight size={13} className="hidden sm:inline-block" />
-          </Link>
-
+        {/* Mobile Menu Toggle */}
+        <div className="flex items-center lg:hidden">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer flex-shrink-0"
+            className="p-2 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: theme.border, color: theme.darkWood }}
             aria-label="Toggle Menu"
           >

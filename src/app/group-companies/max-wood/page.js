@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -30,6 +30,7 @@ import {
   Check,
   X,
   ExternalLink,
+  ChevronLeft,
   ChevronRight,
   Maximize2,
 } from "lucide-react";
@@ -51,11 +52,67 @@ import {
   FAQS,
 } from "./max-wood-data";
 
+const HERO_SLIDES = [
+  {
+    image: "/maxwood/hero_living.jpg",
+    tag: "Signature Living Room Suite",
+    title: "Solid American Walnut · 3D Fluted Wall Slats · Italian PU",
+    metric: "1,500+ Projects Completed",
+    href: "/group-companies/max-wood/solutions",
+  },
+  {
+    image: "/maxwood/executive_boardroom.jpg",
+    tag: "Corporate Executive Boardroom",
+    title: "20-Seater Burl Walnut Table · Inductive Wireless Charging",
+    metric: "450+ Corporate Fitouts",
+    href: "/group-companies/max-wood/solutions",
+  },
+  {
+    image: "/maxwood/modular_kitchen.jpg",
+    tag: "Haute Modular Kitchen",
+    title: "Smoked European Oak · Calacatta Marble Waterfall Island",
+    metric: "German Blum Dynamic Motion",
+    href: "/group-companies/max-wood/solutions",
+  },
+  {
+    image: "/maxwood/dining_suite.jpg",
+    tag: "Bespoke Dining Architecture",
+    title: "12-Seater Solid Oak Suite · Hand-Carved Artisan Joinery",
+    metric: "10-Year Structural Warranty",
+    href: "/group-companies/max-wood/solutions",
+  },
+  {
+    image: "/maxwood/hospitality_lounge.jpg",
+    tag: "Luxury Hospitality Suite",
+    title: "Curved Banquettes · Perimeter LED Acoustic Cladding",
+    metric: "5-Star Hotel Fitouts",
+    href: "/group-companies/max-wood/solutions",
+  },
+];
+
 export default function MaxWoodHomePage() {
   const [openFaq, setOpenFaq] = useState(0);
   const [selectedCatalogCategory, setSelectedCatalogCategory] = useState("All");
   const [activeModalItem, setActiveModalItem] = useState(null);
   const [activeTimberTab, setActiveTimberTab] = useState("american-walnut");
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+  const [isSliderHovered, setIsSliderHovered] = useState(false);
+
+  useEffect(() => {
+    if (isSliderHovered) return;
+    const timer = setInterval(() => {
+      setHeroSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isSliderHovered]);
+
+  const prevHeroSlide = () => {
+    setHeroSlideIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const nextHeroSlide = () => {
+    setHeroSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
 
   // Filter 6 featured items for the homepage preview
   const featuredListings = FULL_CATALOG_LISTINGS.filter((item) => {
@@ -79,8 +136,6 @@ export default function MaxWoodHomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Narrative */}
             <div className="lg:col-span-7" data-aos="fade-right" data-aos-duration="700">
-              <SectionLabel>Premium Furniture Manufacturing &amp; Interior Architecture</SectionLabel>
-
               <h1
                 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[54px] font-black tracking-tight leading-[1.12] uppercase mb-6"
                 style={{ color: theme.darkWood }}
@@ -147,46 +202,93 @@ export default function MaxWoodHomePage() {
               </div>
             </div>
 
-            {/* Right Hero Realistic Image Showcase */}
+            {/* Right Hero Realistic Image Showcase Slider */}
             <div
               className="lg:col-span-5 w-full flex justify-center"
               data-aos="fade-left"
               data-aos-duration="800"
             >
               <div
-                className="relative w-full max-w-[540px] h-[380px] sm:h-[460px] rounded-3xl overflow-hidden shadow-2xl border group"
+                className="relative w-full max-w-[540px] h-[390px] sm:h-[470px] rounded-3xl overflow-hidden shadow-2xl border group select-none"
                 style={{ borderColor: theme.border }}
+                onMouseEnter={() => setIsSliderHovered(true)}
+                onMouseLeave={() => setIsSliderHovered(false)}
               >
-                <Image
-                  src="/maxwood/hero_living.jpg"
-                  alt="MAX Wood Corporation Luxury Living Room Showcase"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#21140A]/90 via-[#21140A]/20 to-transparent flex items-end p-6 sm:p-7">
+                {/* Image Slides with Smooth Crossfade */}
+                {HERO_SLIDES.map((slide, idx) => (
                   <div
-                    className="bg-white/95 backdrop-blur-md rounded-2xl p-5 border shadow-xl w-full"
+                    key={slide.image}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                      idx === heroSlideIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                    }`}
+                  >
+                    <Image
+                      src={slide.image}
+                      alt={slide.tag}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-1000"
+                      priority={idx === 0}
+                      sizes="(max-width: 1024px) 100vw, 45vw"
+                    />
+                  </div>
+                ))}
+
+                {/* Slider Nav Arrows */}
+                <button
+                  type="button"
+                  onClick={prevHeroSlide}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg cursor-pointer opacity-70 group-hover:opacity-100"
+                  aria-label="Previous slide"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  type="button"
+                  onClick={nextHeroSlide}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg cursor-pointer opacity-70 group-hover:opacity-100"
+                  aria-label="Next slide"
+                >
+                  <ChevronRight size={20} />
+                </button>
+
+                {/* Pagination Dots */}
+                <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5 bg-black/45 backdrop-blur-md px-3 py-1.5 rounded-full">
+                  {HERO_SLIDES.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      type="button"
+                      onClick={() => setHeroSlideIndex(dotIdx)}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        dotIdx === heroSlideIndex ? "w-6 bg-amber-400" : "w-2 bg-white/60 hover:bg-white"
+                      }`}
+                      aria-label={`Go to slide ${dotIdx + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Bottom Info Glass Card */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#21140A]/95 via-[#21140A]/25 to-transparent flex items-end p-5 sm:p-6 z-20 pointer-events-none">
+                  <div
+                    className="bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 border shadow-xl w-full pointer-events-auto transition-all duration-500"
                     style={{ borderColor: theme.border }}
                   >
                     <div className="flex items-center justify-between mb-1.5">
                       <span className="text-xs font-black uppercase tracking-wider text-[#BA7A3E] flex items-center gap-1.5">
                         <Sparkles size={14} />
-                        Signature Living Room Suite
+                        {HERO_SLIDES[heroSlideIndex].tag}
                       </span>
                       <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                     </div>
-                    <p className="text-sm font-extrabold" style={{ color: theme.darkWood }}>
-                      Solid American Walnut · 3D Fluted Wall Slats · Italian PU
+                    <p className="text-xs sm:text-sm font-extrabold line-clamp-1 sm:line-clamp-none" style={{ color: theme.darkWood }}>
+                      {HERO_SLIDES[heroSlideIndex].title}
                     </p>
                     <div className="mt-2.5 flex items-center justify-between text-xs pt-2 border-t border-slate-100">
-                      <span className="text-slate-500">1,500+ Projects Completed</span>
+                      <span className="text-slate-500 font-medium">{HERO_SLIDES[heroSlideIndex].metric}</span>
                       <Link
-                        href="/group-companies/max-wood/solutions"
-                        className="font-bold text-[#5C3A21] hover:underline flex items-center gap-1"
+                        href={HERO_SLIDES[heroSlideIndex].href}
+                        className="font-bold text-[#5C3A21] hover:underline flex items-center gap-1 cursor-pointer"
                       >
-                        <span>View Details</span>
+                        <span>Explore Catalog</span>
                         <ChevronRight size={13} />
                       </Link>
                     </div>
