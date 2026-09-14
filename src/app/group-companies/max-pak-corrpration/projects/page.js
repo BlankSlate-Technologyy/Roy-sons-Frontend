@@ -49,7 +49,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – Turnkey Switchgear & High-Pressure Pumps Supplied",
     desc: "Complete procurement and site delivery of 132kV gas-insulated switchgear, high-pressure multistage boiler feed pumps, and 12,000 metric tons of structural steel framing.",
     specs: ["Equipment: 132kV GIS Switchgear & 50 MVA Power Transformers", "Structural: 12,000 Metric Tons ASTM Structural Steel Framing", "Reliability: Zero Lost-Time Incidents During 18-Month Deployment"],
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/electrical_switchgear.jpg",
     tag: "Power Plant Supply",
   },
   {
@@ -59,7 +59,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – Heavy Marine Gantry Steel & Linepipe Delivered",
     desc: "Supplying marine-grade epoxy coated structural columns, heavy container crane track rails, and API-5L Grade B carbon steel fuel linepipes for port expansion.",
     specs: ["Structural: 8,500 Tons Heavy Maritime-Grade Steel Profiles", "Coating: Marine Splash-Zone Anti-Corrosion Barrier Epoxies", "Inspection: 100% Ultrasonic & Radiographic NDT Weld Verification"],
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/mobile_crane.jpg",
     tag: "Port Infrastructure",
   },
   {
@@ -69,7 +69,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 50,000 Metric Tons ASTM Grade 60 Rebar Supplied",
     desc: "Continuous scheduled delivery of 50,000 tons ASTM A615 Grade 60 deformed rebar, bridge expansion joints, and high-early-strength Portland cement.",
     specs: ["Volume: 50,000 Metric Tons Deformed Steel Rebar (Grade 60)", "Logistics: Daily Scheduled Multi-Axle Fleet Drops Over 392 km", "Quality: Verified by National Highway Authority (NHA) Materials Lab"],
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/structural_steel_rebar.jpg",
     tag: "Highway Rebar",
   },
   {
@@ -79,7 +79,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – API-5L X65 Heavy-Wall Linepipe Package",
     desc: "Procurement of API-5L Grade X65 seamless high-temperature linepipes, Class 2500 forged steel motor-operated valves, and stainless steel heat exchanger tubes.",
     specs: ["Piping: 45 Kilometers API-5L Seamless Heavy-Wall Linepipe", "Valves: ANSI Class 1500 & 2500 Motor-Actuated Gate & Globe Valves", "Certifications: 3.1 Mill Test Certificates & DataFlow Inspection"],
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/industrial_valves_piping.jpg",
     tag: "Refinery Piping",
   },
   {
@@ -89,7 +89,7 @@ const SIGNATURE_PROJECTS = [
     status: "Completed – 5-Axis Stamping & Robotic Welding Fitout",
     desc: "Turnkey delivery, rigging, and installation supervision of 5-axis hydraulic stamping press lines, 24 robotic spot-welding cells, and overhead chain conveyor systems.",
     specs: ["Machinery: 2,000-Ton Hydraulic Stamping Press & 24 Robotic Cells", "Automation: Integrated Siemens PLC & SCADA Process Synchronization", "Commissioning: 100% On-Time Production Ramp-Up Verification"],
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/hero_heavy_industry.jpg",
     tag: "Automotive Plant",
   },
   {
@@ -99,7 +99,7 @@ const SIGNATURE_PROJECTS = [
     status: "Active Execution – Complete Utility Plant Supply",
     desc: "Supply of 350 kW VFD oil-free rotary screw compressor systems, refrigerated air dryers, stainless steel 316L chemical reaction tanks, and flame-proof motors.",
     specs: ["Air Plant: 4 x 350 kW High-Efficiency Oil-Free Screw Compressors", "Vessels: 12 x 50,000-Liter Stainless Steel 316L Chemical Reactors", "Safety: ATEX / IECEx Certified Explosion-Proof Electrical Switchgear"],
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/epc_plant.jpg",
     tag: "Chemical Plant Supply",
   },
 ];

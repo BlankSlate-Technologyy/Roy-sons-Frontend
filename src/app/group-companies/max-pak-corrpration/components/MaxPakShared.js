@@ -50,7 +50,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/group-companies/max-pak-corrpration" },
   { label: "About Us", href: "/group-companies/max-pak-corrpration/about" },
   { label: "Services", href: "/group-companies/max-pak-corrpration/services" },
-  { label: "Products & Solutions", href: "/group-companies/max-pak-corrpration/solutions" },
+  { label: "Products & Solutions", shortLabel: "Solutions", href: "/group-companies/max-pak-corrpration/solutions" },
   { label: "Projects", href: "/group-companies/max-pak-corrpration/projects" },
   { label: "Sustainability", href: "/group-companies/max-pak-corrpration/sustainability" },
   { label: "Contact", href: "/group-companies/max-pak-corrpration/contact" },
@@ -58,11 +58,11 @@ export const NAV_LINKS = [
 
 export const FOOTER_SERVICES = [
   { label: "Heavy Industrial Machinery & Equipment Trading", href: "/group-companies/max-pak-corrpration/services#industrial-equipment" },
-  { label: "Construction Materials, Rebar & Structural Steel", href: "/group-companies/max-pak-corrpration/services#construction-materials" },
-  { label: "Turnkey EPC Engineering Procurement & Sourcing", href: "/group-companies/max-pak-corrpration/services#engineering-procurement" },
-  { label: "Heavy Earthmoving Machinery & Lifting Plants", href: "/group-companies/max-pak-corrpration/services#heavy-machinery" },
-  { label: "Warehousing, Logistics & Supply Chain Solutions", href: "/group-companies/max-pak-corrpration/services#supply-chain" },
-  { label: "Industrial Technical Support & Spare Parts Support", href: "/group-companies/max-pak-corrpration/services#technical-support" },
+  { label: "ASTM Structural Steel & Rebar Supply", href: "/group-companies/max-pak-corrpration/services#structural-steel" },
+  { label: "Turnkey EPC Engineering Procurement", href: "/group-companies/max-pak-corrpration/services#engineering-procurement" },
+  { label: "Heavy Earthmoving & Lifting Machinery Fleet", href: "/group-companies/max-pak-corrpration/services#heavy-machinery" },
+  { label: "High-Pressure Pipeline Valves & Flanges", href: "/group-companies/max-pak-corrpration/services#valves-piping" },
+  { label: "11kV / 132kV Electrical Substation Switchgear", href: "/group-companies/max-pak-corrpration/services#electrical-power" },
 ];
 
 export function SectionLabel({ children, center }) {
@@ -73,7 +73,7 @@ export function SectionLabel({ children, center }) {
       }`}
       style={{ borderColor: theme.border, color: theme.navy }}
     >
-      <Settings size={14} style={{ color: theme.green }} />
+      <ShieldCheck size={14} style={{ color: theme.green }} />
       <span>{children}</span>
     </div>
   );
@@ -175,15 +175,15 @@ export function MaxPakNavbar() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="w-full px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/group-companies/max-pak-corrpration" className="flex items-center gap-3 select-none group">
-          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+        <Link href="/group-companies/max-pak-corrpration" className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0 mr-2 xl:mr-4">
+          <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-15 lg:h-15 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/7.png"
               alt="Max Pak Corporation Logo"
-              width={80}
-              height={80}
+              width={75}
+              height={75}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
@@ -192,36 +192,49 @@ export function MaxPakNavbar() {
             <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.navyDark }}>
               Max Pak
             </span>
-            <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.green }}>
+            <span className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.green }}>
               Industrial Supplies &amp; Trading
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 2xl:gap-3">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#1B365D] cursor-pointer"
+                className="text-[11px] xl:text-[11.5px] 2xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1.5 hover:text-[#1B365D] cursor-pointer whitespace-nowrap"
                 style={{
                   color: active ? theme.navy : theme.textMuted,
                 }}
               >
-                {link.label}
+                {link.shortLabel ? (
+                  <>
+                    <span className="hidden xl:inline">{link.label}</span>
+                    <span className="xl:hidden">{link.shortLabel}</span>
+                  </>
+                ) : (
+                  link.label
+                )}
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
+                    active ? "w-full" : "w-0 hover:w-full"
+                  }`}
+                  style={{ backgroundColor: theme.green }}
+                />
               </Link>
             );
           })}
         </nav>
 
         {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
           <Link
             href="/group-companies/max-pak-corrpration/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"
             style={{ backgroundColor: theme.navy }}
           >
             <span>Procurement Quote</span>

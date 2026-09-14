@@ -478,19 +478,13 @@ export default function InverseUnionHomePage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
-                    <button
-                      onClick={() => setActiveModalItem(item)}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold border border-[#0B2545] text-[#0B2545] hover:bg-[#0B2545] hover:text-white transition-colors cursor-pointer"
-                    >
-                      <Eye size={13} />
-                      <span>Quick View Spec</span>
-                    </button>
+                  <div className="pt-3 border-t border-slate-100">
                     <Link
                       href="/group-companies/inverse&union/contact"
-                      className="py-2 px-3 rounded-lg text-xs font-bold text-white bg-[#0080FF] hover:opacity-90 transition-opacity cursor-pointer"
+                      className="w-full py-2 px-3 rounded-lg text-xs font-bold text-white bg-[#0080FF] hover:opacity-90 transition-opacity cursor-pointer flex items-center justify-center gap-1.5 text-center"
                     >
                       <span>Inquire</span>
+                      <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>

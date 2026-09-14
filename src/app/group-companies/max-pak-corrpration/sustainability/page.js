@@ -128,7 +128,7 @@ export default function MaxPakSustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/maxpak_hero_industrial.svg"
+                  src="/maxpak/epc_plant.jpg"
                   alt="Sustainable Industrial Sourcing and Environmental Supply Chain"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

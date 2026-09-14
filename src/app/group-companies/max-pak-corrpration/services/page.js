@@ -37,7 +37,7 @@ const PROCUREMENT_SERVICES = [
     title: "Heavy Industrial Equipment & Machinery",
     subtitle: "CNC Machines, Turbines, Boilers & Automated Lines",
     desc: "Supplying precision industrial manufacturing machinery, high-pressure steam boilers, diesel/gas turbines, and automated processing lines from world-class global OEMs.",
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/cnc_workshop.jpg",
     tag: "Machinery Trading",
     icon: Settings,
     deliverables: [
@@ -52,7 +52,7 @@ const PROCUREMENT_SERVICES = [
     title: "Construction Materials & Structural Steel",
     subtitle: "ASTM A615 Rebar, H-Beams, Girders, Cement & Pipes",
     desc: "Bulk sourcing of certified deformed steel reinforcement rebar, structural universal columns, ERW/seamless carbon steel linepipes, and high-early-strength cement.",
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/structural_steel_rebar.jpg",
     tag: "Structural Materials",
     icon: HardHat,
     deliverables: [
@@ -67,7 +67,7 @@ const PROCUREMENT_SERVICES = [
     title: "Turnkey EPC Engineering Procurement",
     subtitle: "Global Vendor Sourcing, LC Financing & Quality Audits",
     desc: "End-to-end procurement management for mega civil and megawatt energy projects, managing global tenders, vendor pre-qualification, and quality inspections.",
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/epc_plant.jpg",
     tag: "EPC Procurement",
     icon: ClipboardList,
     deliverables: [
@@ -82,7 +82,7 @@ const PROCUREMENT_SERVICES = [
     title: "Heavy Earthmoving Machinery & Lifting Plants",
     subtitle: "Excavators, Wheel Loaders, Tower Cranes & Forklifts",
     desc: "Supplying new and certified refurbished heavy earthmoving equipment, 50-to-500-ton hydraulic mobile cranes, tower cranes, and material handling plant fleets.",
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/earthmoving_excavators.jpg",
     tag: "Heavy Fleet",
     icon: Truck,
     deliverables: [
@@ -97,7 +97,7 @@ const PROCUREMENT_SERVICES = [
     title: "Warehousing, Logistics & Supply Chain",
     subtitle: "Bonded Storage, Heavy Freight Transit & Just-In-Time Delivery",
     desc: "Operating modern central warehousing facilities in Lahore and Karachi with dedicated heavy transport trailer fleets for direct on-site project deliveries.",
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/commercial_warehouse.jpg",
     tag: "Supply Chain",
     icon: Package,
     deliverables: [
@@ -112,7 +112,7 @@ const PROCUREMENT_SERVICES = [
     title: "Technical Support, Commissioning & Spares",
     subtitle: "Installation Guidance, Predictive Maintenance & OEM Parts",
     desc: "Providing factory-trained mechanical and electrical engineers for equipment installation, commissioning, calibration, and long-term genuine spare parts buffer.",
-    image: "/maxpak_hero_industrial.svg",
+    image: "/maxpak/quality_inspection.jpg",
     tag: "Technical Support",
     icon: Wrench,
     deliverables: [
@@ -185,7 +185,7 @@ export default function MaxPakServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/maxpak_hero_industrial.svg"
+                  src="/maxpak/hero_heavy_industry.jpg"
                   alt="Max Pak Corporation Industrial Divisions"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

@@ -1,44 +1,33 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Award,
-  Bolt,
-  Building2,
-  CheckCircle2,
-  ChevronDown,
-  ClipboardCheck,
-  ClipboardList,
-  Clock,
-  Cog,
-  Compass,
-  Cpu,
-  Factory,
-  HardHat,
-  Headset,
-  Landmark,
-  Layers,
-  Leaf,
-  MapPin,
-  Package,
-  PackageCheck,
-  Phone,
-  Pipette,
-  Search,
-  Send,
-  Settings,
   ShieldCheck,
-  Ship,
-  Sparkles,
-  Sprout,
-  Star,
-  TrendingUp,
+  CheckCircle2,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  Layers,
+  Phone,
+  Settings,
+  HardHat,
   Truck,
   Wrench,
+  Factory,
   Zap,
-  ArrowRight,
+  Activity,
+  Eye,
+  X,
+  FileText,
+  MapPin,
+  Clock,
+  Sparkles,
+  Building2,
+  PackageCheck,
+  ClipboardList,
 } from "lucide-react";
 import {
   theme,
@@ -48,174 +37,193 @@ import {
   SectionHeading,
   AnimatedCounter,
 } from "./components/MaxPakShared";
-
-const STATS = [
-  { icon: ClipboardCheck, value: "30+", label: "Years of Industrial\nTrading Experience" },
-  { icon: Package, value: "10000+", label: "Products Supplied\nNationwide" },
-  { icon: ClipboardList, value: "2500+", label: "Completed Engineering\n& Sourcing Projects" },
-  { icon: Building2, value: "800+", label: "Corporate Industrial\n& EPC Clients" },
-  { icon: ShieldCheck, value: "99%", label: "On-Time Supply Chain\nDelivery Rate" },
-];
-
-const SERVICES = [
-  {
-    icon: Settings,
-    title: "Industrial Machinery & Equipment",
-    desc: "Supplying CNC machines, power generation turbines, steam boilers, automated lines, and precision tools from global OEMs.",
-    href: "/group-companies/max-pak-corrpration/services#industrial-equipment",
-    img: "/maxpak_hero_industrial.svg",
-  },
-  {
-    icon: HardHat,
-    title: "Construction Materials & Structural Steel",
-    desc: "Bulk sourcing of certified deformed steel rebar Grade 60, H-beams, structural channels, and carbon steel linepipes.",
-    href: "/group-companies/max-pak-corrpration/services#construction-materials",
-    img: "/maxpak_hero_industrial.svg",
-  },
-  {
-    icon: ClipboardList,
-    title: "Turnkey EPC Engineering Procurement",
-    desc: "End-to-end procurement covering vendor pre-qualification, MTC verification, third-party inspection, and customs clearance.",
-    href: "/group-companies/max-pak-corrpration/services#engineering-procurement",
-    img: "/maxpak_hero_industrial.svg",
-  },
-  {
-    icon: Truck,
-    title: "Heavy Machinery & Lifting Plants",
-    desc: "20-to-85-ton crawler excavators, wheel loaders, 500-ton mobile cranes, tower cranes, and industrial forklifts.",
-    href: "/group-companies/max-pak-corrpration/services#heavy-machinery",
-    img: "/maxpak_hero_industrial.svg",
-  },
-  {
-    icon: Package,
-    title: "Warehousing, Logistics & Supply Chain",
-    desc: "Central warehousing in Lahore and Karachi with dedicated multi-axle trailer fleets for JIT on-site deliveries.",
-    href: "/group-companies/max-pak-corrpration/services#supply-chain",
-    img: "/maxpak_hero_industrial.svg",
-  },
-  {
-    icon: Wrench,
-    title: "Technical Support, Installation & Spares",
-    desc: "On-site mechanical erection, commissioning, predictive maintenance programs, and 24-hour genuine OEM spare parts buffer.",
-    href: "/group-companies/max-pak-corrpration/services#technical-support",
-    img: "/maxpak_hero_industrial.svg",
-  },
-];
-
-const SOLUTIONS_PREVIEW = [
-  {
-    name: "Precision CNC & Fabrication Machinery",
-    tag: "CNC Machinery",
-    desc: "5-Axis CNC vertical centers, heavy lathes, and fiber laser cutters with ±0.005mm aerospace tolerance.",
-    img: "/maxpak_hero_industrial.svg",
-  },
-  {
-    name: "Certified ASTM Structural Steel & Rebar",
-    tag: "Structural Steel",
-    desc: "ASTM A615 Grade 60 high-yield deformed rebar, wide-flange H-beams, and heavy structural plates with MTCs.",
-    img: "/maxpak_hero_industrial.svg",
-  },
-  {
-    name: "Substation Switchgear & High-Voltage Power",
-    tag: "Power Switchgear",
-    desc: "11kV to 132kV gas-insulated switchgear, step-down transformers, and armored copper power cabling.",
-    img: "/maxpak_hero_industrial.svg",
-  },
-];
-
-const PROCESS_STEPS = [
-  { num: "01", title: "BOQ Technical Evaluation & Specification Review", desc: "Analyzing client engineering drawings, material grade standards (ASTM/DIN/API), and compliance parameters." },
-  { num: "02", title: "Global Vendor Sourcing & Cost Optimization", desc: "Leveraging direct tier-1 manufacturer networks across Europe, Japan, and the USA to secure competitive bulk pricing." },
-  { num: "03", title: "Mill Testing & Pre-Shipment Quality Audits", desc: "Conducting rigorous laboratory testing, ultrasonic NDT inspections, and 100% heat number certification." },
-  { num: "04", title: "Import Clearance & Bonded Freight Forwarding", desc: "Managing customs tariff optimization, bonded yard storage, and multi-modal maritime/overland transit." },
-  { num: "05", title: "Scheduled Site Drop & Unloading Logistics", desc: "Dispatching multi-axle heavy trailers with real-time GPS tracking for seamless on-site unloading." },
-  { num: "06", title: "Commissioning Support & Spare Parts Warranty", desc: "Providing factory-trained technical commissioning, warranty coverage, and long-term spare parts backing." },
-];
-
-const FAQS = [
-  {
-    q: "What industries does Max Pak Corporation supply?",
-    a: "We supply 12+ major industry sectors including Construction & Heavy Infrastructure, Power & Energy Utilities, Oil, Gas & Refining, Mining & Minerals, Automotive Assembly, Marine & Deepwater Ports, and Chemical Processing Plants.",
-  },
-  {
-    q: "Do your structural steel and linepipe products come with Mill Test Certificates (MTC)?",
-    a: "Yes. 100% of our structural steel rebar, H-beams, and carbon steel linepipes are supplied with full EN 10204 3.1 Mill Test Certificates (MTCs), complete chemical composition analysis, and mechanical tensile test reports.",
-  },
-  {
-    q: "Can Max Pak Corporation handle turnkey EPC procurement packages?",
-    a: "Absolutely. We specialize in turnkey procurement for large-scale energy and infrastructure projects, managing global manufacturer negotiations, import letters of credit (LC), customs clearance, and synchronized site deliveries.",
-  },
-  {
-    q: "What is your emergency delivery capability for critical industrial spare parts?",
-    a: "Through our central warehousing facilities in Lahore and Karachi, we maintain dedicated inventory buffers of critical valves, switchgear components, and machinery spares available for emergency 24-hour dispatch.",
-  },
-];
+import {
+  COMPANY_INFO,
+  HERO_SLIDES,
+  INDUSTRIAL_CATEGORIES,
+  FULL_CATALOG_LISTINGS,
+  PROCESS_STEPS,
+  PROJECT_CASE_STUDIES,
+  FAQS,
+} from "./maxpak-data";
 
 export default function MaxPakHomePage() {
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [isSliderHovered, setIsSliderHovered] = useState(false);
+  const [selectedCat, setSelectedCat] = useState("All");
+  const [activeModalItem, setActiveModalItem] = useState(null);
   const [openFaq, setOpenFaq] = useState(0);
 
+  // Auto-play slider
+  useEffect(() => {
+    if (isSliderHovered) return;
+    const interval = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isSliderHovered]);
+
+  const currentSlide = HERO_SLIDES[heroIndex];
+
+  const featuredListings = FULL_CATALOG_LISTINGS.filter((item) => {
+    if (selectedCat === "All") return true;
+    return item.category === selectedCat;
+  }).slice(0, 6);
+
   return (
-    <main className="min-h-screen bg-white text-[#475569] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#475569] font-sans antialiased overflow-x-hidden selection:bg-[#1B365D] selection:text-white">
       <MaxPakNavbar />
 
-      {/* Hero Section with Industrial Sourcing Console */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 1. HERO SECTION WITH INTERACTIVE 5-SLIDE AI IMAGE SLIDER ─── */}
+      <section
+        className="relative py-14 lg:py-20 px-4 sm:px-6 lg:px-8 border-b bg-gradient-to-b from-slate-50/60 to-white"
+        style={{ borderColor: theme.border }}
+        onMouseEnter={() => setIsSliderHovered(true)}
+        onMouseLeave={() => setIsSliderHovered(false)}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <SectionLabel>Trusted Industrial Trading &amp; Commercial Supply Company</SectionLabel>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left Narrative */}
+            <div className="lg:col-span-6 space-y-6">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-[11px] font-black uppercase tracking-[0.2em] bg-white shadow-xs text-[#1B365D]" style={{ borderColor: theme.border }}>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Premier Industrial Trading &amp; Commercial Supplies</span>
+              </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
-                Powering Industries. <span style={{ color: theme.navy }}>Supplying Excellence.</span>
+              <h1
+                className="text-3xl sm:text-4xl lg:text-5xl xl:text-[50px] font-black tracking-tight leading-[1.12] uppercase"
+                style={{ color: theme.navyDark }}
+              >
+                Max Pak Corporation.{" "}
+                <span className="block mt-2 text-[#16A34A]">
+                  Industrial Trading &amp; Commercial Supplies.
+                </span>
               </h1>
 
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                Max Pak Corporation is a leading industrial trading and commercial supply company specializing in industrial equipment, heavy machinery, construction materials, engineering products, and integrated procurement solutions across Pakistan.
+              <p
+                className="text-base sm:text-lg font-medium leading-relaxed max-w-xl"
+                style={{ color: theme.textMuted }}
+              >
+                Supplying heavy industrial machinery, ASTM construction steel, earthmoving fleets, high-pressure pipeline valves, and 11kV/132kV electrical substation switchgear across Pakistan.
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 pt-2">
                 <Link
                   href="/group-companies/max-pak-corrpration/solutions"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  className="px-7 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer flex items-center gap-2"
                   style={{ backgroundColor: theme.navy }}
                 >
-                  <span>Explore Product Suites</span>
-                  <ArrowRight size={16} />
+                  <span>Explore Product Catalog</span>
+                  <ArrowRight size={15} />
                 </Link>
 
                 <Link
                   href="/group-companies/max-pak-corrpration/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.navyDark }}
+                  className="px-7 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider border-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer flex items-center gap-2"
+                  style={{ borderColor: theme.navy, color: theme.navy }}
                 >
-                  <span>Request Industrial RFQ</span>
+                  <FileText size={15} />
+                  <span>Request RFQ Term Sheet</span>
                 </Link>
               </div>
+
+              {/* Trust Indicators */}
+              <div className="pt-4 border-t border-slate-100 grid grid-cols-3 gap-4">
+                <div>
+                  <span className="text-xl font-black block text-[#1B365D]">30+ Yrs</span>
+                  <span className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wider">Experience</span>
+                </div>
+                <div>
+                  <span className="text-xl font-black block text-[#16A34A]">10,000+</span>
+                  <span className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wider">Products</span>
+                </div>
+                <div>
+                  <span className="text-xl font-black block text-[#1B365D]">99.2%</span>
+                  <span className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wider">OTIF Delivery</span>
+                </div>
+              </div>
             </div>
 
-            {/* Right Hero Image Card */}
-            <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/maxpak_hero_industrial.svg"
-                  alt="Max Pak Corporation Industrial Supply Command"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#091424]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-black uppercase tracking-wider text-[#16A34A]">
-                        10,000+ Products Delivered
-                      </span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                    </div>
-                    <p className="text-sm font-bold" style={{ color: theme.navyDark }}>
-                      2,500+ Executed Projects · 800+ Corporate Clients
+            {/* Right Interactive Image Slider */}
+            <div className="lg:col-span-6 w-full">
+              <div
+                className="relative w-full h-[400px] sm:h-[460px] rounded-3xl overflow-hidden shadow-2xl border bg-slate-900 group"
+                style={{ borderColor: theme.border }}
+              >
+                {/* Images Crossfade */}
+                {HERO_SLIDES.map((slide, index) => (
+                  <div
+                    key={slide.id}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                      index === heroIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                    }`}
+                  >
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      fill
+                      priority={index === 0}
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-black/20" />
+                  </div>
+                ))}
+
+                {/* Top Badge Overlay */}
+                <div className="absolute top-5 left-5 z-20 flex items-center gap-2">
+                  <span className="text-[10.5px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 text-slate-900 shadow-sm border border-white/50 backdrop-blur-xs">
+                    {currentSlide.badge}
+                  </span>
+                  <span className="text-[10.5px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500 text-white shadow-sm">
+                    {currentSlide.statValue}
+                  </span>
+                </div>
+
+                {/* Slide Caption Bottom Overlay */}
+                <div className="absolute bottom-5 left-5 right-5 z-20">
+                  <div className="p-5 rounded-2xl bg-white/95 backdrop-blur-md border shadow-lg border-white/40">
+                    <p className="text-[10.5px] font-black uppercase tracking-widest text-[#16A34A] mb-1">
+                      {currentSlide.subtitle}
+                    </p>
+                    <h3 className="text-base sm:text-lg font-black leading-snug uppercase text-[#0F172A] line-clamp-1 mb-2">
+                      {currentSlide.title}
+                    </h3>
+                    <p className="text-xs font-medium text-slate-600 line-clamp-2">
+                      {currentSlide.description}
                     </p>
                   </div>
+                </div>
+
+                {/* Left / Right Slider Controls */}
+                <button
+                  onClick={() =>
+                    setHeroIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
+                  }
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/75 transition-all opacity-0 group-hover:opacity-100 cursor-pointer backdrop-blur-xs"
+                  aria-label="Previous Slide"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={() => setHeroIndex((prev) => (prev + 1) % HERO_SLIDES.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-black/40 text-white flex items-center justify-center hover:bg-black/75 transition-all opacity-0 group-hover:opacity-100 cursor-pointer backdrop-blur-xs"
+                  aria-label="Next Slide"
+                >
+                  <ChevronRight size={20} />
+                </button>
+
+                {/* Pagination Indicator Dots */}
+                <div className="absolute top-5 right-5 z-30 flex items-center gap-1.5 bg-black/40 px-2.5 py-1.5 rounded-full backdrop-blur-xs">
+                  {HERO_SLIDES.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setHeroIndex(i)}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        i === heroIndex ? "w-6 bg-emerald-400" : "w-2 bg-white/60 hover:bg-white"
+                      }`}
+                      aria-label={`Slide ${i + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -223,151 +231,161 @@ export default function MaxPakHomePage() {
         </div>
       </section>
 
-      {/* Stats Counter Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 2. ENTERPRISE PERFORMANCE METRICS ─── */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {STATS.map((stat, i) => {
-              const Icon = stat.icon;
-              return (
-                <div
-                  key={stat.label}
-                  className="mp-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
-                >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.navy}10` }}>
-                    <Icon size={22} style={{ color: theme.navy }} />
-                  </div>
-                  <div className="mb-1" style={{ color: theme.navyDark }}>
-                    <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
-                  </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
-                    {stat.label}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Visual */}
-            <div className="lg:col-span-6">
-              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/maxpak_hero_industrial.svg"
-                  alt="Industrial Procurement & Heavy Machinery"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#091424]/80 via-transparent to-transparent flex items-end p-6">
-                  <div className="text-white">
-                    <p className="text-xs font-black uppercase tracking-widest text-[#22C55E] mb-1">
-                      Industrial Supply Excellence
-                    </p>
-                    <h4 className="text-base font-bold">Delivering Reliable Industrial Supply Solutions</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Text */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
-              <SectionLabel>About Max Pak Corporation</SectionLabel>
-              <SectionHeading className="mb-6">Complete Industrial Procurement &amp; Sourcing</SectionHeading>
-
-              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                Max Pak Corporation provides complete industrial procurement and trading solutions for businesses across construction, manufacturing, energy, infrastructure, and engineering sectors. From product sourcing and quality inspection to warehousing, logistics, and after-sales support, we ensure efficiency, reliability, and long-term business value.
+            <div className="p-5 rounded-2xl border text-center bg-slate-50/50" style={{ borderColor: theme.border }}>
+              <span className="text-2xl sm:text-3xl font-black text-[#1B365D] block mb-1">
+                <AnimatedCounter targetValue="30+" duration={1400} />
+              </span>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                Years of Industrial Trading
               </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={18} className="text-[#16A34A] flex-shrink-0" />
-                  <span className="text-xs font-bold text-slate-800">ISO 9001:2015 Quality Certified</span>
-                </div>
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={18} className="text-[#16A34A] flex-shrink-0" />
-                  <span className="text-xs font-bold text-slate-800">10,000+ Products Supplied</span>
-                </div>
-              </div>
-
-              <Link
-                href="/group-companies/max-pak-corrpration/about"
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#1B365D]"
-              >
-                <span>Read Full Corporate Profile</span>
-                <ArrowRight size={16} />
-              </Link>
+            </div>
+            <div className="p-5 rounded-2xl border text-center bg-slate-50/50" style={{ borderColor: theme.border }}>
+              <span className="text-2xl sm:text-3xl font-black text-[#16A34A] block mb-1">
+                <AnimatedCounter targetValue="10000+" duration={1500} />
+              </span>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                Industrial Products Delivered
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl border text-center bg-slate-50/50" style={{ borderColor: theme.border }}>
+              <span className="text-2xl sm:text-3xl font-black text-[#1B365D] block mb-1">
+                <AnimatedCounter targetValue="2500+" duration={1600} />
+              </span>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                Completed EPC Projects
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl border text-center bg-slate-50/50" style={{ borderColor: theme.border }}>
+              <span className="text-2xl sm:text-3xl font-black text-[#1B365D] block mb-1">
+                <AnimatedCounter targetValue="800+" duration={1700} />
+              </span>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                Corporate Industrial Clients
+              </p>
+            </div>
+            <div className="p-5 rounded-2xl border text-center bg-slate-50/50 col-span-2 md:col-span-1" style={{ borderColor: theme.border }}>
+              <span className="text-2xl sm:text-3xl font-black text-[#16A34A] block mb-1">
+                <AnimatedCounter targetValue="99.2%" duration={1800} />
+              </span>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                On-Time In-Full Delivery
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 3. CORE INDUSTRIAL SUPPLY CAPABILITIES ─── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-slate-50/40" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <SectionLabel>What We Supply</SectionLabel>
-              <SectionHeading>Our Core Procurement Divisions</SectionHeading>
-            </div>
-
-            <Link
-              href="/group-companies/max-pak-corrpration/services"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
-              style={{ color: theme.navyDark }}
-            >
-              <span>View All</span>
-              <ArrowRight size={16} />
-            </Link>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Supply Divisions</SectionLabel>
+            <SectionHeading center>Comprehensive Industrial Trading Divisions</SectionHeading>
+            <p className="text-sm sm:text-base font-medium mt-3" style={{ color: theme.textMuted }}>
+              Supplying certified machinery, construction metals, heavy equipment fleets, valves, switchgear, and turnkey EPC packages backed by Mill Test Certificates and OEM warranties.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((svc) => {
-              const Icon = svc.icon;
+            {[
+              {
+                title: "Heavy Industrial Machinery & CNC Centers",
+                desc: "5-axis CNC milling centers, 12kW fiber laser cutters, 800-ton hydraulic deep drawing presses, and floor-type horizontal boring mills.",
+                image: "/maxpak/cnc_workshop.jpg",
+                tag: "Precision Machinery",
+                icon: Settings,
+                href: "/group-companies/max-pak-corrpration/solutions",
+              },
+              {
+                title: "ASTM Structural Steel & Deformed Rebar",
+                desc: "ASTM A615 Grade 60 rebar, wide-flange HEA/HEB H-beams, API 5L linepipes, and ASTM A516 boiler plates with EN 10204 3.1 MTCs.",
+                image: "/maxpak/structural_steel_rebar.jpg",
+                tag: "Structural Steel",
+                icon: HardHat,
+                href: "/group-companies/max-pak-corrpration/solutions",
+              },
+              {
+                title: "Heavy Earthmoving & 500-Ton Cranes",
+                desc: "50-ton crawler excavators, 6.0 m³ wheel loaders, 500-ton all-terrain mobile cranes, and 32-ton heavy industrial forklifts.",
+                image: "/maxpak/earthmoving_excavators.jpg",
+                tag: "Heavy Fleet",
+                icon: Truck,
+                href: "/group-companies/max-pak-corrpration/solutions",
+              },
+              {
+                title: "Industrial High-Pressure Valves & Piping",
+                desc: "API 6D trunnion ball valves, smart pneumatic control valves, ASME Class 1500 forged flanges, and chemical slurry pumps.",
+                image: "/maxpak/industrial_valves_piping.jpg",
+                tag: "Valves & Piping",
+                icon: Wrench,
+                href: "/group-companies/max-pak-corrpration/solutions",
+              },
+              {
+                title: "Electrical Switchgear & Power Systems",
+                desc: "11kV vacuum switchgear, 25 MVA grid transformers, low-voltage intelligent MCC panels, and 2,000 kVA containerized generator sets.",
+                image: "/maxpak/electrical_switchgear.jpg",
+                tag: "Power Systems",
+                icon: Zap,
+                href: "/group-companies/max-pak-corrpration/solutions",
+              },
+              {
+                title: "Turnkey EPC Plants & Commercial Supplies",
+                desc: "20 T/H steam boilers, ASME Section VIII pressure vessels, heavy warehouse pallet racking, and enterprise PPE safety suites.",
+                image: "/maxpak/epc_plant.jpg",
+                tag: "Turnkey Plants",
+                icon: Factory,
+                href: "/group-companies/max-pak-corrpration/solutions",
+              },
+            ].map((div, i) => {
+              const Icon = div.icon;
               return (
                 <div
-                  key={svc.title}
-                  className="mp-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                  key={i}
+                  className="rounded-3xl border bg-white overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
-                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
+                    <div className="relative w-full h-52 overflow-hidden bg-slate-100">
                       <Image
-                        src={svc.img}
-                        alt={svc.title}
+                        src={div.image}
+                        alt={div.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
+                      <div className="absolute top-3 left-3">
+                        <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 text-[#1B365D] shadow-xs">
+                          {div.tag}
+                        </span>
+                      </div>
                     </div>
 
-                    <div className="p-7">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.navy}10` }}>
-                        <Icon size={20} style={{ color: theme.navy }} />
+                    <div className="p-6">
+                      <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#16A34A] flex items-center justify-center mb-3">
+                        <Icon size={20} />
                       </div>
-
-                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.navyDark }}>
-                        {svc.title}
+                      <h3
+                        className="text-lg font-black uppercase leading-snug mb-2"
+                        style={{ color: theme.navyDark }}
+                      >
+                        {div.title}
                       </h3>
-
-                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
-                        {svc.desc}
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed text-slate-600">
+                        {div.desc}
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  <div className="p-6 pt-0">
                     <Link
-                      href={svc.href}
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
-                      style={{ borderColor: theme.border, color: theme.navyDark }}
+                      href={div.href}
+                      className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-[#1B365D] hover:text-[#16A34A] transition-colors"
                     >
-                      <span>Explore Division</span>
-                      <ArrowRight size={14} />
+                      <span>Explore Division Products</span>
+                      <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>
@@ -377,62 +395,109 @@ export default function MaxPakHomePage() {
         </div>
       </section>
 
-      {/* Featured Solutions Section */}
+      {/* ─── 4. INTERACTIVE PRODUCT CATALOG SHOWCASE ─── */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
-              <SectionLabel>Signature Suites</SectionLabel>
-              <SectionHeading>Featured Product Packages</SectionHeading>
+              <SectionLabel>Commercial Catalog</SectionLabel>
+              <SectionHeading>Featured Industrial Product Suites</SectionHeading>
+              <p className="text-sm font-medium mt-2 max-w-xl text-slate-500">
+                Explore real industrial equipment with direct factory warranties, Mill Test Certificates, and on-site commissioning.
+              </p>
             </div>
-
             <Link
               href="/group-companies/max-pak-corrpration/solutions"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
-              style={{ color: theme.navy }}
+              className="mt-4 md:mt-0 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#1B365D] hover:underline"
             >
-              <span>View All</span>
-              <ArrowRight size={16} />
+              <span>View Full 20+ Catalog</span>
+              <ArrowRight size={15} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {SOLUTIONS_PREVIEW.map((s) => (
+          {/* Category Filter Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+            {INDUSTRIAL_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCat(cat)}
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  selectedCat === cat
+                    ? "bg-[#1B365D] text-white shadow-sm"
+                    : "bg-white text-slate-700 hover:bg-slate-50 border"
+                }`}
+                style={{ borderColor: theme.border }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Listings Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredListings.map((item) => (
               <div
-                key={s.name}
-                className="mp-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                key={item.id}
+                className="bg-white rounded-2xl border overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                 style={{ borderColor: theme.border }}
               >
                 <div>
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
                     <Image
-                      src={s.img}
-                      alt={s.name}
+                      src={item.image}
+                      alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                    <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-xs text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md">
+                      {item.sku}
+                    </div>
+                    <div className="absolute top-3 right-3 bg-emerald-600/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-xs">
+                      {item.compliance.split(",")[0]}
+                    </div>
                   </div>
-                  <div className="p-7">
-                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#1B365D]/15 text-[#1B365D] inline-block mb-3">
-                      {s.tag}
+
+                  <div className="p-5">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#16A34A] block mb-1">
+                      {item.category}
                     </span>
-                    <h3 className="text-xl font-black mb-2" style={{ color: theme.navyDark }}>
-                      {s.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                      {s.desc}
+                    <h4
+                      className="text-base font-black uppercase tracking-tight mb-2 line-clamp-1"
+                      style={{ color: theme.navyDark }}
+                    >
+                      {item.title}
+                    </h4>
+                    <p className="text-xs font-medium text-slate-600 line-clamp-2 mb-4">
+                      {item.description}
                     </p>
+
+                    <div className="space-y-1.5 py-3 border-t border-slate-100">
+                      {(item.features || []).slice(0, 2).map((f, i) => (
+                        <div key={i} className="flex items-start gap-2">
+                          <CheckCircle2 size={13} className="text-[#16A34A] flex-shrink-0 mt-0.5" />
+                          <span className="text-[11px] font-medium text-slate-600 line-clamp-1">{f}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-7 pt-0">
-                  <Link
-                    href="/group-companies/max-pak-corrpration/contact"
-                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
-                    style={{ borderColor: theme.border, color: theme.navyDark }}
+                <div className="p-5 pt-0 flex gap-2">
+                  <button
+                    onClick={() => setActiveModalItem(item)}
+                    className="flex-1 py-2 px-3 rounded-lg text-xs font-bold border text-slate-800 hover:bg-slate-50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                    style={{ borderColor: theme.border }}
                   >
-                    <span>Request Product RFQ</span>
-                    <ArrowRight size={13} />
+                    <Eye size={13} />
+                    <span>Quick Spec</span>
+                  </button>
+                  <Link
+                    href={`/group-companies/max-pak-corrpration/contact?sku=${encodeURIComponent(
+                      item.sku
+                    )}`}
+                    className="py-2 px-3 rounded-lg text-xs font-bold text-white bg-[#1B365D] hover:opacity-90 transition-opacity cursor-pointer"
+                  >
+                    <span>Quote</span>
                   </Link>
                 </div>
               </div>
@@ -441,34 +506,100 @@ export default function MaxPakHomePage() {
         </div>
       </section>
 
-      {/* Process Pathway Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 5. TURNKEY 6-STEP SOURCING PIPELINE ─── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-slate-50/50" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <SectionLabel center>Rigorous Methodology</SectionLabel>
-            <SectionHeading center className="mb-4">6-Stage Industrial Procurement Lifecycle</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              From engineering drawing evaluations and global mill sourcing to third-party inspections and bonded site deliveries.
+            <SectionLabel center>Execution Rigor</SectionLabel>
+            <SectionHeading center>6-Step Turnkey Sourcing Pipeline</SectionHeading>
+            <p className="text-sm sm:text-base font-medium mt-3" style={{ color: theme.textMuted }}>
+              From initial engineering sizing to bonded heavy haulage and on-site mechanical commissioning, Max Pak ensures zero-defect supply delivery.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {PROCESS_STEPS.map((step) => (
               <div
                 key={step.num}
-                className="p-8 rounded-3xl border bg-white shadow-xs flex flex-col justify-between"
+                className="p-7 rounded-3xl border bg-white hover:border-[#16A34A] transition-colors shadow-xs group"
+                style={{ borderColor: theme.border }}
+              >
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#16A34A] font-black text-base flex items-center justify-center mb-5 group-hover:bg-[#16A34A] group-hover:text-white transition-colors">
+                  {step.num}
+                </div>
+                <h3 className="text-base font-black uppercase tracking-tight mb-2" style={{ color: theme.navyDark }}>
+                  {step.title}
+                </h3>
+                <p className="text-xs sm:text-sm font-medium leading-relaxed text-slate-600">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 6. SIGNATURE PROJECT CASE STUDIES ─── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Proven Track Record</SectionLabel>
+            <SectionHeading center>Signature Industrial Deployments</SectionHeading>
+            <p className="text-sm sm:text-base font-medium mt-3" style={{ color: theme.textMuted }}>
+              Delivering mega-tonnage equipment and critical infrastructure supplies for national highway corridors, 500kV electrical grids, and petrochemical plants.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {PROJECT_CASE_STUDIES.map((project) => (
+              <div
+                key={project.id}
+                className="rounded-3xl border bg-white overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
                 style={{ borderColor: theme.border }}
               >
                 <div>
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm text-white mb-6 shadow-sm" style={{ backgroundColor: theme.navy }}>
-                    {step.num}
+                  <div className="relative h-56 w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 bg-white/95 text-[#1B365D] text-[10.5px] font-black uppercase px-2.5 py-1 rounded-full shadow-xs">
+                      {project.tag}
+                    </div>
                   </div>
-                  <h4 className="text-base font-bold mb-3" style={{ color: theme.navyDark }}>
-                    {step.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                    {step.desc}
-                  </p>
+
+                  <div className="p-6">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#16A34A] block mb-1">
+                      {project.client}
+                    </span>
+                    <h3 className="text-lg font-black uppercase leading-snug mb-3" style={{ color: theme.navyDark }}>
+                      {project.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-medium leading-relaxed text-slate-600 mb-4">
+                      {project.desc}
+                    </p>
+
+                    <div className="space-y-1.5 pt-3 border-t border-slate-100">
+                      {project.metrics.map((m, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                          <CheckCircle2 size={13} className="text-[#16A34A]" />
+                          <span>{m}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-6 pt-0">
+                  <Link
+                    href="/group-companies/max-pak-corrpration/projects"
+                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider text-center block text-[#1B365D] hover:bg-slate-50 transition-colors"
+                    style={{ borderColor: theme.border }}
+                  >
+                    View Project Case Study
+                  </Link>
                 </div>
               </div>
             ))}
@@ -476,36 +607,39 @@ export default function MaxPakHomePage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 7. FREQUENTLY ASKED QUESTIONS ACCORDION ─── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-slate-50/50" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <SectionLabel center>Frequently Asked Questions</SectionLabel>
-            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
+            <SectionLabel center>Commercial &amp; Technical Clarity</SectionLabel>
+            <SectionHeading center>Frequently Asked Questions</SectionHeading>
+            <p className="text-sm font-medium mt-2" style={{ color: theme.textMuted }}>
+              Key parameters regarding procurement contracts, MTC quality testing, inventory reserves, and emergency delivery.
+            </p>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
-            {FAQS.map((faq, idx) => (
+          <div className="max-w-3xl mx-auto space-y-3">
+            {FAQS.map((faq, i) => (
               <div
-                key={faq.q}
-                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
+                key={i}
+                className="border rounded-2xl bg-white overflow-hidden transition-all shadow-xs"
                 style={{ borderColor: theme.border }}
               >
                 <button
-                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
+                  onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm cursor-pointer"
                   style={{ color: theme.navyDark }}
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
-                    size={18}
-                    className={`transition-transform duration-300 flex-shrink-0 ${
-                      openFaq === idx ? "rotate-180 text-[#16A34A]" : "text-slate-400"
+                    size={16}
+                    className={`transition-transform duration-200 text-slate-400 flex-shrink-0 ${
+                      openFaq === i ? "rotate-180 text-emerald-600" : ""
                     }`}
                   />
                 </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                {openFaq === i && (
+                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed text-slate-600 border-t border-slate-100 pt-3">
                     {faq.a}
                   </div>
                 )}
@@ -515,19 +649,22 @@ export default function MaxPakHomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* ─── 8. BOTTOM LANDED-COST RFQ BANNER ─── */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+          <div
+            className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white"
+            style={{ borderColor: theme.border }}
+          >
             <div>
               <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#16A34A]">
-                START YOUR INDUSTRIAL PROCUREMENT PROCESS TODAY
+                EPC CONTRACTORS &amp; INDUSTRIAL BUYERS
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navyDark }}>
-                Schedule An Industrial Procurement Consultation
+              <h2 className="text-2xl sm:text-3xl font-extrabold uppercase mb-2" style={{ color: theme.navyDark }}>
+                Initiate Your Industrial Supply Term Sheet Today
               </h2>
               <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Connect with our senior procurement engineers and supply chain directors to review your Bill of Quantities (BOQ), mill test certificates, and batch delivery schedules.
+                Speak with our engineering procurement specialists to review technical specifications, mill allocations, and scheduled on-site delivery.
               </p>
             </div>
 
@@ -537,7 +674,7 @@ export default function MaxPakHomePage() {
                 className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
                 style={{ backgroundColor: theme.navy }}
               >
-                <span>Request Custom RFQ</span>
+                <span>Request Quotation</span>
                 <ArrowRight size={15} />
               </Link>
               <a
@@ -552,6 +689,100 @@ export default function MaxPakHomePage() {
           </div>
         </div>
       </section>
+
+      {/* ─── QUICK SPECIFICATION MODAL ─── */}
+      {activeModalItem && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-xs animate-in fade-in"
+          onClick={() => setActiveModalItem(null)}
+        >
+          <div
+            className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative w-full h-64 bg-slate-900">
+              <Image
+                src={activeModalItem.image}
+                alt={activeModalItem.title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
+              <button
+                onClick={() => setActiveModalItem(null)}
+                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/80 transition-colors cursor-pointer"
+              >
+                <X size={18} />
+              </button>
+
+              <div className="absolute bottom-5 left-6 right-6 text-white">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded bg-emerald-600 text-white inline-block mb-2">
+                  {activeModalItem.sku} &bull; {activeModalItem.compliance.split(",")[0]}
+                </span>
+                <h3 className="text-xl sm:text-2xl font-black leading-tight">
+                  {activeModalItem.title}
+                </h3>
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8 space-y-6">
+              <div>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-[#16A34A] block mb-1">
+                  Category: {activeModalItem.category}
+                </span>
+                <p className="text-sm font-medium text-slate-600 leading-relaxed">
+                  {activeModalItem.description}
+                </p>
+              </div>
+
+              {/* Specs Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs">
+                {Object.entries(activeModalItem.specs).map(([k, v]) => (
+                  <div key={k}>
+                    <span className="text-slate-400 block text-[10px] font-bold uppercase">{k}</span>
+                    <span className="font-bold text-slate-800">{v}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Key Features */}
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wider mb-2.5" style={{ color: theme.navyDark }}>
+                  Key Engineering Deliverables
+                </h4>
+                <div className="space-y-1.5">
+                  {activeModalItem.features.map((f, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <CheckCircle2 size={13} className="text-[#16A34A] flex-shrink-0 mt-0.5" />
+                      <span className="text-xs font-medium text-slate-700">{f}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+                <Link
+                  href={`/group-companies/max-pak-corrpration/contact?sku=${encodeURIComponent(
+                    activeModalItem.sku
+                  )}`}
+                  className="flex-1 py-3.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 transition-all shadow-md hover:opacity-95 cursor-pointer"
+                  style={{ backgroundColor: theme.navy }}
+                >
+                  <span>Request Landed-Cost Quotation</span>
+                  <ArrowRight size={14} />
+                </Link>
+                <button
+                  onClick={() => setActiveModalItem(null)}
+                  className="px-6 py-3.5 rounded-xl text-xs font-extrabold uppercase tracking-wider border text-slate-700 hover:bg-slate-50 transition-colors cursor-pointer"
+                  style={{ borderColor: theme.border }}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <MaxPakFooter />
     </main>
