@@ -84,7 +84,7 @@ export default function MaxWoodContactPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           companySlug: "max-wood",
-          companyName: "Max Wood & Furniture",
+          companyName: "MAX Wood Corporation",
           fullName: formData.name,
           email: formData.email,
           phone: formData.phone,

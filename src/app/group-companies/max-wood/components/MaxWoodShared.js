@@ -188,10 +188,10 @@ export function MaxWoodNavbar() {
           </div>
           <div className="flex flex-col">
             <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.darkWood }}>
-              Max Wood
+              MAX Wood Corporation
             </span>
             <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.goldHover }}>
-              Furniture &amp; Interior Craft
+              Furniture &amp; Interior Architecture
             </span>
           </div>
         </Link>

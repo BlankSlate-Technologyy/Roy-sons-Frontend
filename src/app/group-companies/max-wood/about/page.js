@@ -106,8 +106,8 @@ export default function MaxWoodAboutPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-amber-50/50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/maxwood_hero_craft.svg"
-                  alt="Max Wood Corporation Woodworking Studio"
+                  src="/maxwood/wood_craft.jpg"
+                  alt="MAX Wood Corporation Precision Woodcraft Studio"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
@@ -163,8 +163,8 @@ export default function MaxWoodAboutPage() {
             {/* Left Graphic */}
             <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-amber-50/50" style={{ borderColor: theme.border }}>
               <Image
-                src="/maxwood_hero_craft.svg"
-                alt="Bespoke Luxury Furniture Workshop"
+                src="/maxwood/dining_suite.jpg"
+                alt="Bespoke Luxury Furniture Workshop & Dining Suite"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
