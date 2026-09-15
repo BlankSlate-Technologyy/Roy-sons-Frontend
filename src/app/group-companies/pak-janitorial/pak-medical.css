@@ -4,30 +4,26 @@
 ───────────────────────────────────────────────────────────── */
 
 :root {
+  --med-navy: #0A2540;          /* Deep Medical Corporate Navy */
   --med-royal: #1A4FA0;         /* Royal Medical Blue */
-  --med-royal-dark: #163D80;
+  --med-royal-dark: #0E3570;
   --med-sky: #2B8DD6;           /* Sky Blue Accent */
   --med-cyan: #0EA5E9;          /* Cyan Cleanroom Highlight */
+  --med-teal: #0D7C85;          /* Healthcare Teal */
   --med-charcoal: #1E2A3A;      /* Slate Charcoal Text */
   --med-charcoal-dark: #0F172A;
   --med-white: #ffffff;
   --med-offwhite: #F4F8FD;      /* Sterile Light Blue-Gray Tint */
   --med-border: #D2E4F5;
-  --med-text-muted: #3D5166;
-  --med-text-light: #5A7080;
+  --med-text-muted: #475569;
+  --med-text-light: #64748B;
 }
 
 body.pak-medical-theme,
 body.pak-janitorial-theme,
 .pak-medical-theme,
-.pak-janitorial-theme,
-body.pak-medical-theme main,
-body.pak-medical-theme section,
-body.pak-medical-theme header,
-.pak-medical-theme main,
-.pak-medical-theme section,
-.pak-medical-theme header {
-  background-color: #ffffff !important;
+.pak-janitorial-theme {
+  background-color: #ffffff;
   color: #1E2A3A;
 }
 
@@ -43,7 +39,7 @@ body.pak-medical-theme .cursor-pointer,
 .pakmed-card-hover:hover {
   transform: translateY(-5px) !important;
   border-color: #2B8DD6 !important;
-  box-shadow: 0 16px 32px -8px rgba(26, 79, 160, 0.16), 0 0 0 1px rgba(43, 141, 214, 0.25) !important;
+  box-shadow: 0 20px 35px -8px rgba(10, 37, 64, 0.12), 0 0 0 1px rgba(43, 141, 214, 0.25) !important;
 }
 
 /* Counter box */
@@ -53,7 +49,12 @@ body.pak-medical-theme .cursor-pointer,
 .pakmed-counter-box:hover {
   transform: translateY(-4px) !important;
   border-color: #2B8DD6 !important;
-  box-shadow: 0 10px 25px rgba(26, 79, 160, 0.1) !important;
+  box-shadow: 0 12px 28px rgba(10, 37, 64, 0.08) !important;
+}
+
+/* Mini Carousel Transitions */
+.card-slider-image {
+  transition: opacity 0.5s ease-in-out, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reset for Pakistan Medical components */
@@ -71,9 +72,6 @@ body.pak-medical-theme span,
 body.pak-medical-theme li {
   -webkit-text-fill-color: inherit;
   text-shadow: none !important;
-  background-image: none !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
 }
 
 body.pak-medical-theme svg:not([fill="currentColor"]) {

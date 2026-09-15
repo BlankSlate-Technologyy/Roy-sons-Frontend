@@ -1,44 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
   Award,
-  Briefcase,
-  Building,
   Building2,
   CheckCircle2,
   ChevronDown,
-  Clock,
+  ChevronLeft,
+  ChevronRight,
   Cpu,
-  FileText,
   FlaskConical,
   Gauge,
   Hammer,
   HeartPulse,
-  Landmark,
-  Layers,
-  Leaf,
-  LifeBuoy,
   Mail,
   MapPin,
-  MessageCircle,
-  Microscope,
   Phone,
-  Radio,
-  Search,
-  Send,
-  Shield,
   ShieldCheck,
   Sparkles,
-  Sun,
   Users2,
   Wind,
-  Wrench,
-  Zap,
   ArrowRight,
   BriefcaseMedical,
+  Layers,
+  Sliders,
+  Check,
 } from "lucide-react";
 import {
   theme,
@@ -47,184 +35,339 @@ import {
   SectionLabel,
   SectionHeading,
   AnimatedCounter,
+  CardImageSlider,
 } from "./components/PakMedicalShared";
 
-const STATS = [
-  { icon: Award, value: "20+", label: "Years of Industry\nExperience" },
-  { icon: HeartPulse, value: "300+", label: "Completed Healthcare\nProjects" },
-  { icon: Building2, value: "150+", label: "Hospital Facilities\nDelivered" },
-  { icon: Users2, value: "500+", label: "Biomedical & HVAC\nEngineers on Staff" },
-  { icon: ShieldCheck, value: "99%", label: "ISO 14644 & GMP\nQuality Compliance" },
+// ─── Hero Slider Data (5 Editorial Slides) ──────────────────────────
+const HERO_SLIDES = [
+  {
+    image: "/images/pakmedical/hero_hospital_engineering.jpg",
+    eyebrow: "Turnkey Hospital Engineering & Critical Infrastructure",
+    title: "ENGINEERING THE FUTURE OF HEALTHCARE",
+    desc: "Advanced hospital engineering, clean-room environments and critical healthcare infrastructure designed for safety, efficiency and uncompromising performance.",
+    tag: "Hospital Engineering",
+  },
+  {
+    image: "/images/pakmedical/hero_cleanroom.jpg",
+    eyebrow: "ISO 14644 & cGMP Cleanroom Environments",
+    title: "SMARTER HOSPITALS. ENGINEERED FOR EXCELLENCE.",
+    desc: "Precision laminar airflow ceilings, negative and positive pressure airlocks, and ultra-sterile biocontainment suites for surgical centers and pharmaceutical production.",
+    tag: "ISO Clean Rooms",
+  },
+  {
+    image: "/images/pakmedical/hero_medgas.jpg",
+    eyebrow: "HTM 02-01 & NFPA 99 Certified MGPS Networks",
+    title: "FAIL-SAFE MEDICAL GAS INFRASTRUCTURE",
+    desc: "Life-supporting medical gas distribution systems, duplex cryogenic oxygen manifolds, digital alarm telemetry, and zero-leak copper pipeline networks.",
+    tag: "Medical Gas Systems",
+  },
+  {
+    image: "/images/pakmedical/hero_operating_theatre.jpg",
+    eyebrow: "Turnkey Modular Operating Theatres",
+    title: "MODULAR SURGICAL SUITES OF TOMORROW",
+    desc: "Pre-engineered hermetic surgical suites equipped with articulated surgical pendants, touchless glass door systems, and integrated surgeon control panels.",
+    tag: "Modular OTs",
+  },
+  {
+    image: "/images/pakmedical/hero_hospital_exterior.jpg",
+    eyebrow: "National Healthcare Facility Development",
+    title: "COMPREHENSIVE HEALTHCARE FACILITY EPC",
+    desc: "Architectural planning, biomedical mechanical engineering, and turnkey execution for multi-specialty hospitals and tertiary medical centers across Pakistan.",
+    tag: "Facility EPC",
+  },
 ];
 
+// ─── Live Statistics ────────────────────────────────────────────────
+const STATS = [
+  { icon: Award, value: "20+", label: "Years of Medical\nEngineering Heritage" },
+  { icon: HeartPulse, value: "300+", label: "Completed Healthcare\n& Cleanroom Projects" },
+  { icon: Building2, value: "150+", label: "Hospital Facilities\nDelivered Nationwide" },
+  { icon: Users2, value: "500+", label: "Biomedical & HVAC\nEngineers on Staff" },
+  { icon: ShieldCheck, value: "99.9%", label: "ISO 14644 & HTM 02-01\nCompliance Rate" },
+];
+
+// ─── Practice Cards with Image Headers ──────────────────────────────
 const SERVICES = [
   {
-    icon: Building2,
+    id: "hospital-engineering",
     title: "Hospital Engineering & Modular OTs",
-    desc: "Comprehensive modular surgical suites, critical care units, and specialized hospital architectural engineering.",
+    category: "Modular Surgical Suites",
+    desc: "Turnkey pre-fabricated modular operation theatres with antimicrobial cladding, laminar airflow ceilings, and integrated surgeon consoles.",
+    image: "/images/pakmedical/service_hospital_engineering.jpg",
     href: "/group-companies/pak-janitorial/services#hospital-engineering",
-    img: "/pakmed_hero_engineering.svg",
+    highlights: ["Hermetic sliding doors", "Laminar airflow plenums", "Dual articulated pendants"],
   },
   {
-    icon: Hammer,
-    title: "Turnkey Healthcare Projects",
-    desc: "End-to-end planning, engineering, procurement, construction, installation, testing, and commissioning.",
-    href: "/group-companies/pak-janitorial/services#turnkey-projects",
-    img: "/pakmed_hero_engineering.svg",
-  },
-  {
-    icon: Wind,
-    title: "Clean Room Systems",
-    desc: "Design and construction of ISO 14644 and GMP-compliant clean rooms for pharmaceutical and biotechnology industries.",
+    id: "clean-room-solutions",
+    title: "Clean Room Solutions",
+    category: "ISO 14644 & cGMP",
+    desc: "Design and construction of ISO Class 4 to Class 8 clean rooms for pharmaceutical manufacturing, vaccine suites, and clinical research.",
+    image: "/images/pakmedical/service_cleanrooms.jpg",
     href: "/group-companies/pak-janitorial/services#clean-room-systems",
-    img: "/pakmed_hero_engineering.svg",
+    highlights: ["Flush antistatic coving", "Dynamic interlocking pass boxes", "H14 HEPA filtration"],
   },
   {
-    icon: Gauge,
-    title: "Hospital HVAC Engineering",
-    desc: "Advanced hygienic HVAC systems designed for hospitals, laboratories, operating theatres, and sterile environments.",
-    href: "/group-companies/pak-janitorial/services#hvac-engineering",
-    img: "/pakmed_hero_engineering.svg",
-  },
-  {
-    icon: FlaskConical,
-    title: "GMP Facility Development",
-    desc: "Construction of pharmaceutical manufacturing facilities that comply with international cGMP and PIC/S standards.",
-    href: "/group-companies/pak-janitorial/services#gmp-facilities",
-    img: "/pakmed_hero_engineering.svg",
-  },
-  {
-    icon: Cpu,
-    title: "Medical Gas Pipeline Systems",
-    desc: "Installation of central oxygen, vacuum, compressed medical air, nitrous oxide, and HTM 02-01 gas distribution networks.",
+    id: "medical-gas-systems",
+    title: "Medical Gas Systems (MGPS)",
+    category: "HTM 02-01 Pipeline",
+    desc: "Centralized cryogenic oxygen tanks, medical air compressors, vacuum plants, and digital zone monitoring alarm panels.",
+    image: "/images/pakmedical/service_medgas.jpg",
     href: "/group-companies/pak-janitorial/services#medical-gas-pipeline",
-    img: "/pakmed_hero_engineering.svg",
+    highlights: ["Degreased medical copper", "Master telemetry alarm panels", "Zero-leak terminal units"],
+  },
+  {
+    id: "hvac-ventilation",
+    title: "HVAC & Cleanroom Air Handling",
+    category: "Hygienic Climate Control",
+    desc: "Hospital-grade air handling units with multi-stage filtration, variable air volume (VAV), and strict positive/negative pressure cascades.",
+    image: "/images/pakmedical/service_hvac.jpg",
+    href: "/group-companies/pak-janitorial/services#hvac-engineering",
+    highlights: ["Run-around heat recovery", "EC plug fan technology", "Differential pressure sensors"],
+  },
+  {
+    id: "hospital-infrastructure",
+    title: "Hospital Infrastructure & MEP",
+    category: "Turnkey Medical EPC",
+    desc: "End-to-end electrical, plumbing, architectural layout, and infection control partitioning for tertiary hospitals and trauma centers.",
+    image: "/images/pakmedical/service_infrastructure.jpg",
+    href: "/group-companies/pak-janitorial/services#turnkey-projects",
+    highlights: ["Isolated power systems (IPS)", "Lead-lined radiation shielding", "Antimicrobial vinyl flooring"],
+  },
+  {
+    id: "healthcare-equipment",
+    title: "Healthcare Equipment & ICU Pendants",
+    category: "Biomedical Systems",
+    desc: "Ceiling-mounted surgical and anesthesia pendants, LED operating theatre lamps, and ICU patient bedhead units.",
+    image: "/images/pakmedical/service_equipment.jpg",
+    href: "/group-companies/pak-janitorial/services#equipment-installation",
+    highlights: ["High-lux surgical LED lights", "Multi-gas articulated pendants", "Bedhead trunking systems"],
   },
 ];
 
-const SOLUTIONS_PREVIEW = [
+// ─── Featured Solutions with Mini Card Sliders ──────────────────────
+const FEATURED_SOLUTIONS = [
   {
-    name: "PakMed UltraMOT Modular Operation Theatre",
-    tag: "Modular Surgical Suite",
-    desc: "Prefabricated HPL / stainless steel wall panels, laminar flow ceiling, touchless doors, and surgeon control panels.",
-    img: "/pakmed_hero_engineering.svg",
+    name: "PakMed UltraMOT Surgical Theatre Suite",
+    category: "Modular Operation Theatre",
+    desc: "A fully integrated surgical environment pre-engineered with antimicrobial wall cladding, laminar airflow ceiling, and touchless surgeon control console.",
+    images: [
+      "/images/pakmedical/solution_ot.jpg",
+      "/images/pakmedical/service_hospital_engineering.jpg",
+      "/images/pakmedical/hero_operating_theatre.jpg",
+    ],
+    specs: ["Antimicrobial HPL / SS304 Walls", "0.45 m/s Laminar Air Velocity", "Touchless Hermetic Sliding Doors"],
+    href: "/group-companies/pak-janitorial/solutions",
   },
   {
-    name: "PakMed CleanPro ISO Class 5–8 Clean Room",
-    tag: "ISO & GMP Clean Room",
-    desc: "50mm high-density PUF insulated sandwich panels, dynamic pass boxes, flush coving, and HEPA air filter units.",
-    img: "/pakmed_hero_engineering.svg",
+    name: "PakMed CleanPro ISO Clean Room Envelope",
+    category: "ISO 14644 Clean Rooms",
+    desc: "Turnkey pharmaceutical and biotechnology cleanroom suite engineered with flush double-glazed view panels, dynamic pass boxes, and cascading pressure airlocks.",
+    images: [
+      "/images/pakmedical/solution_cleanroom.jpg",
+      "/images/pakmedical/hero_cleanroom.jpg",
+      "/images/pakmedical/service_cleanrooms.jpg",
+    ],
+    specs: ["ISO Class 4–8 / GMP Grade A–D", "50mm High-Density PUF Panels", "Dynamic Interlocking Airlocks"],
+    href: "/group-companies/pak-janitorial/solutions",
   },
   {
-    name: "PakMed MediGas HTM 02-01 Gas Systems",
-    tag: "Medical Gas Pipeline",
-    desc: "Duplex medical vacuum stations, oil-free medical air skids, area valve service units, and degreased copper piping.",
-    img: "/pakmed_hero_engineering.svg",
+    name: "PakMed MediGas Central MGPS Network",
+    category: "Medical Gas Pipeline Systems",
+    desc: "Complete HTM 02-01 medical gas generation and pipeline network supplying hospital beds, ICUs, and surgical suites with uninterrupted clinical gases.",
+    images: [
+      "/images/pakmedical/solution_medgas.jpg",
+      "/images/pakmedical/hero_medgas.jpg",
+      "/images/pakmedical/service_medgas.jpg",
+    ],
+    specs: ["HTM 02-01 & NFPA 99 Compliant", "Duplex Oil-Free Air Compressors", "Digital Telemetry Zone Alarms"],
+    href: "/group-companies/pak-janitorial/solutions",
   },
 ];
 
-const PROCESS_STEPS = [
-  { num: "01", title: "Healthcare Needs Assessment", desc: "Analyzing clinical surgical volume, target ISO cleanroom class, and infectious disease containment requirements." },
-  { num: "02", title: "Architectural & MEP Engineering", desc: "Developing optimized hospital room layouts, laminar airflow CFD simulations, and medical gas pipeline schematics." },
-  { num: "03", title: "Precision Procurement", desc: "Sourcing certified antimicrobial wall panels, medical gas manifold stations, surgical pendants, and H14 HEPA filters." },
-  { num: "04", title: "Cleanroom & Superstructure Build", desc: "Executing sterile panel erection, seamless antistatic flooring, hermetic door installation, and ductwork sealing." },
-  { num: "05", title: "DOP Testing & ISO Validation", desc: "Comprehensive DOP filter integrity tests, airborne particle count verification, and DQ/IQ/OQ/PQ certification." },
-  { num: "06", title: "24/7 Biomedical Facility Support", desc: "Providing 24/7 on-site certified hospital engineers, preventive maintenance, and gas purity monitoring SLAs." },
+// ─── 6-Stage Engineering Lifecycle ──────────────────────────────────
+const LIFECYCLE_STAGES = [
+  {
+    step: "01",
+    title: "Clinical Feasibility & Layout",
+    desc: "Architectural zoning, cleanroom air cascade planning, and workflow isolation audits to prevent hospital cross-contamination.",
+  },
+  {
+    step: "02",
+    title: "Detailed Biomedical MEP",
+    desc: "Engineering calculations for medical gas sizing, laminar airflow CFM, heat loads, and isolated electrical grounding.",
+  },
+  {
+    step: "03",
+    title: "Modular Enclosure Fabrication",
+    desc: "Precision manufacturing of antimicrobial wall panels, hermetic doors, ceiling plenums, and antistatic flooring.",
+  },
+  {
+    step: "04",
+    title: "MEP & Pipeline Installation",
+    desc: "On-site installation of degreased copper gas lines, AHU ducting networks, surgical pendants, and electrical panels.",
+  },
+  {
+    step: "05",
+    title: "Testing, DOP & Validation",
+    desc: "Rigorous ISO 14644 airborne particle counting, DOP HEPA challenge tests, and HTM 02-01 gas pressure retention certification.",
+  },
+  {
+    step: "06",
+    title: "Handover & 24/7 AMC Support",
+    desc: "Staff operation training, comprehensive documentation dossiers, and 24/7 emergency response service contracts.",
+  },
 ];
 
+// ─── FAQ Accordion Data ─────────────────────────────────────────────
 const FAQS = [
   {
     q: "What standards do Pakistan Medical Supplies clean rooms comply with?",
-    a: "Our clean room systems strictly comply with ISO 14644 (Classes 4 to 8), EU GMP (Grades A, B, C, D), US Federal Standard 209E, WHO Good Manufacturing Practices, and DRAP regulatory guidelines.",
+    a: "Our clean rooms strictly adhere to ISO 14644-1 (Classes 4 through 8), EU cGMP (Grades A, B, C, D), PIC/S guidelines, and WHO Good Manufacturing Practice standards. Every installation undergoes rigorous particle counting, air velocity testing, and DOP/PAO HEPA integrity audits.",
   },
   {
     q: "Does Pakistan Medical Supplies deliver full Turnkey Modular Operation Theatres (MOT)?",
-    a: "Yes. We execute complete turnkey Modular Operation Theatres including antimicrobial wall cladding, laminar airflow ceiling plenums, surgical pendants, hermetic automatic sliding doors, surgeon control panels, and antistatic flooring.",
+    a: "Yes. We deliver complete turnkey Modular Operation Theatres, encompassing pre-fabricated antimicrobial wall paneling (HPL or Stainless Steel 304), laminar airflow ceiling plenums, hermetically sealed automatic doors, surgical control panels, surgical pendants, medical gas terminal outlets, and conductive antistatic vinyl flooring.",
   },
   {
-    q: "Are your Medical Gas Pipeline Systems (MGPS) HTM 02-01 certified?",
-    a: "Yes. Our medical gas distribution networks, cryogenic oxygen plants, vacuum pump skids, and area valve service units (AVSU) are engineered in full compliance with UK HTM 02-01 and NFPA 99 standards.",
+    q: "How do you ensure medical gas pipeline safety and leak-prevention?",
+    a: "All medical gas installations follow HTM 02-01 and NFPA 99 engineering codes. We utilize medical-grade degreased copper piping, silver-brazed joints with nitrogen purge, and multi-stage pressure retention leak testing before commissioning. Master digital alarm panels continuously monitor pressure in clinical zones.",
   },
   {
-    q: "Do you offer post-commissioning maintenance and DOP validation testing?",
-    a: "Yes. We provide scheduled Dispersed Oil Particulate (DOP/PAO) HEPA filter challenge testing, particle counter audits, air change verification, and 24/7 preventive maintenance contracts.",
+    q: "Do you provide scheduled maintenance and re-validation contracts?",
+    a: "Yes. We provide scheduled preventive maintenance (PPM), HEPA filter replacement, periodic air velocity balancing, DOP challenge audits, and 24/7 on-call emergency engineering support for critical care hospitals across Pakistan.",
   },
 ];
 
 export default function PakMedicalHomePage() {
+  const [activeSlide, setActiveSlide] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
+  const [isSliderHovered, setIsSliderHovered] = useState(false);
+
+  // Auto-advance Hero Slider every 5.5s
+  useEffect(() => {
+    if (isSliderHovered) return;
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5500);
+    return () => clearInterval(timer);
+  }, [isSliderHovered]);
 
   return (
     <main className="min-h-screen bg-white text-[#1E2A3A] font-sans antialiased overflow-x-hidden">
       <PakMedicalNavbar />
 
-      {/* Hero Section with Hospital Engineering Visual */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <SectionLabel>Trusted Healthcare Infrastructure &amp; Medical Engineering</SectionLabel>
+      {/* ─────────────────────────────────────────────────────────────
+          1. FULL-WIDTH HERO IMAGE SLIDER (5 Slides)
+      ───────────────────────────────────────────────────────────── */}
+      <section
+        className="relative w-full h-[580px] sm:h-[640px] lg:h-[720px] bg-slate-950 overflow-hidden select-none"
+        onMouseEnter={() => setIsSliderHovered(true)}
+        onMouseLeave={() => setIsSliderHovered(false)}
+      >
+        {/* Slides */}
+        {HERO_SLIDES.map((slide, idx) => (
+          <div
+            key={slide.title}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              idx === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+            }`}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              priority={idx === 0}
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+            {/* Dark contrast gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A2540]/95 via-[#0A2540]/80 to-[#0A2540]/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/30" />
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.royalBlueDark }}>
-                Engineering Healthcare. <span style={{ color: theme.royalBlue }}>Advancing Patient Care.</span>
-              </h1>
+            {/* Slide Content */}
+            <div className="relative z-20 h-full mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+              <div className="max-w-3xl">
+                {/* Eyebrow badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-[0.16em] text-cyan-300 mb-5">
+                  <HeartPulse size={14} className="text-[#0EA5E9]" />
+                  <span>{slide.eyebrow}</span>
+                </div>
 
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                Pakistan Medical Supplies is a leading healthcare engineering company specializing in hospital infrastructure, clean room technology, HVAC engineering, and turnkey medical facility development. We deliver innovative, sustainable, and internationally compliant healthcare environments.
-              </p>
+                {/* Main Headline */}
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white uppercase leading-tight mb-5 drop-shadow-md">
+                  {slide.title}
+                </h1>
 
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/group-companies/pak-janitorial/solutions"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.royalBlue }}
-                >
-                  <span>Explore Solutions</span>
-                  <ArrowRight size={16} />
-                </Link>
+                {/* Description */}
+                <p className="text-base sm:text-lg lg:text-xl text-slate-200 font-normal leading-relaxed mb-8 max-w-2xl drop-shadow-xs">
+                  {slide.desc}
+                </p>
 
-                <Link
-                  href="/group-companies/pak-janitorial/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.royalBlueDark }}
-                >
-                  <span>Consult Bio-Engineer</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Hero Image Card */}
-            <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/pakmed_hero_engineering.svg"
-                  alt="Hospital Engineering Suite"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E3B]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-black uppercase tracking-wider text-[#2B8DD6]">
-                        150+ Hospital Facilities
-                      </span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                    </div>
-                    <p className="text-sm font-bold" style={{ color: theme.royalBlueDark }}>
-                      Modular OTs · ISO Clean Rooms · Medical Gas
-                    </p>
-                  </div>
+                {/* Minimal Hero CTA buttons */}
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/group-companies/pak-janitorial/solutions"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-bold text-white bg-[#1A4FA0] hover:bg-[#0E3570] transition-all duration-200 shadow-lg shadow-blue-900/30 cursor-pointer"
+                  >
+                    <span>Explore Solutions</span>
+                    <ArrowRight size={16} />
+                  </Link>
+                  <Link
+                    href="/group-companies/pak-janitorial/contact"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 transition-all duration-200 cursor-pointer"
+                  >
+                    <span>Consult Bio-Engineer</span>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
+        ))}
+
+        {/* Slider Controls: Arrows */}
+        <div className="absolute inset-y-0 left-4 sm:left-6 flex items-center z-30">
+          <button
+            onClick={() => setActiveSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1))}
+            className="p-3 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-md border border-white/20 text-white transition-all duration-200 cursor-pointer"
+            aria-label="Previous Slide"
+          >
+            <ChevronLeft size={22} />
+          </button>
+        </div>
+        <div className="absolute inset-y-0 right-4 sm:right-6 flex items-center z-30">
+          <button
+            onClick={() => setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
+            className="p-3 rounded-full bg-white/10 hover:bg-white/25 backdrop-blur-md border border-white/20 text-white transition-all duration-200 cursor-pointer"
+            aria-label="Next Slide"
+          >
+            <ChevronRight size={22} />
+          </button>
+        </div>
+
+        {/* Bottom Bar: Dots & Slide Counter */}
+        <div className="absolute bottom-6 inset-x-0 z-30 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            {HERO_SLIDES.map((slide, idx) => (
+              <button
+                key={slide.title}
+                onClick={() => setActiveSlide(idx)}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  idx === activeSlide ? "w-8 bg-cyan-400" : "w-2.5 bg-white/40 hover:bg-white/70"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+          <div className="text-xs font-mono font-bold tracking-widest text-slate-300 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+            0{activeSlide + 1} / 0{HERO_SLIDES.length}
+          </div>
         </div>
       </section>
 
-      {/* Stats Counter Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          2. LIVE KPI COUNTER SECTION
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {STATS.map((stat, i) => {
@@ -232,16 +375,15 @@ export default function PakMedicalHomePage() {
               return (
                 <div
                   key={stat.label}
-                  className="pakmed-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="pakmed-counter-box rounded-2xl border border-slate-200 p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.royalBlue}10` }}>
-                    <Icon size={22} style={{ color: theme.royalBlue }} />
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3 bg-[#1A4FA0]/10">
+                    <Icon size={22} className="text-[#1A4FA0]" />
                   </div>
-                  <div className="mb-1" style={{ color: theme.royalBlueDark }}>
+                  <div className="mb-1 text-[#0A2540]">
                     <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600 whitespace-pre-line">
                     {stat.label}
                   </p>
                 </div>
@@ -251,188 +393,66 @@ export default function PakMedicalHomePage() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          3. SERVICES SECTION (Image-Based Cards)
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Visual */}
-            <div className="lg:col-span-6">
-              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/pakmed_hero_engineering.svg"
-                  alt="Hospital Engineering Capabilities"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1E3B]/80 via-transparent to-transparent flex items-end p-6">
-                  <div className="text-white">
-                    <p className="text-xs font-black uppercase tracking-widest text-[#38BDF8] mb-1">
-                      Turnkey Medical Infrastructure
-                    </p>
-                    <h4 className="text-base font-bold">Modular OTs, Clean Rooms, and Medical Gas Pipelines</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Text */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
-              <SectionLabel>About Our Enterprise</SectionLabel>
-              <SectionHeading className="mb-6">Advancing Healthcare Environments Across Pakistan</SectionHeading>
-
-              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                Pakistan Medical Supplies provides complete engineering solutions for hospitals, pharmaceutical clean rooms, and medical research institutions. We integrate architectural healthcare planning, precision HVAC engineering, medical gas pipeline systems (MGPS), and strict infection control protocols to create sterile, dependable medical spaces.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={18} className="text-[#2B8DD6] flex-shrink-0" />
-                  <span className="text-xs font-bold text-slate-800">ISO 14644 &amp; GMP Certified</span>
-                </div>
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={18} className="text-[#2B8DD6] flex-shrink-0" />
-                  <span className="text-xs font-bold text-slate-800">HTM 02-01 Medical Gas Compliance</span>
-                </div>
-              </div>
-
-              <Link
-                href="/group-companies/pak-janitorial/about"
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#1A4FA0]"
-              >
-                <span>Read Full Corporate Profile</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <SectionLabel>What We Deliver</SectionLabel>
-              <SectionHeading>Our Core Divisions</SectionHeading>
-            </div>
-
-            <Link
-              href="/group-companies/pak-janitorial/services"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
-              style={{ color: theme.royalBlueDark }}
-            >
-              <span>View All</span>
-              <ArrowRight size={16} />
-            </Link>
+          <div className="max-w-3xl mb-14">
+            <SectionLabel>Specialized Medical Practices</SectionLabel>
+            <SectionHeading>ENGINEERED FOR CRITICAL HEALTHCARE</SectionHeading>
+            <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed mt-4">
+              From hospital infrastructure to sterile environments and medical gas systems, we deliver integrated engineering solutions built around safety, reliability and performance.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((svc) => {
-              const Icon = svc.icon;
-              return (
-                <div
-                  key={svc.title}
-                  className="pakmed-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
-                >
-                  <div>
-                    <div className="relative w-full h-48 bg-slate-100 overflow-hidden group">
-                      <Image
-                        src={svc.img}
-                        alt={svc.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-
-                    <div className="p-7">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.royalBlue}10` }}>
-                        <Icon size={20} style={{ color: theme.royalBlue }} />
-                      </div>
-
-                      <h3 className="text-lg font-black mb-2.5" style={{ color: theme.royalBlueDark }}>
-                        {svc.title}
-                      </h3>
-
-                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
-                        {svc.desc}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-7 pt-0">
-                    <Link
-                      href={svc.href}
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
-                      style={{ borderColor: theme.border, color: theme.royalBlueDark }}
-                    >
-                      <span>Explore Division</span>
-                      <ArrowRight size={14} />
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Solutions Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <SectionLabel>Engineered Packages</SectionLabel>
-              <SectionHeading>Featured Healthcare Packages</SectionHeading>
-            </div>
-
-            <Link
-              href="/group-companies/pak-janitorial/solutions"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
-              style={{ color: theme.royalBlue }}
-            >
-              <span>View All</span>
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {SOLUTIONS_PREVIEW.map((p) => (
+            {SERVICES.map((srv) => (
               <div
-                key={p.name}
-                className="pakmed-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                style={{ borderColor: theme.border }}
+                key={srv.id}
+                className="pakmed-card-hover rounded-2xl border border-slate-200 bg-white overflow-hidden flex flex-col group shadow-sm hover:shadow-xl transition-all duration-300"
               >
-                <div>
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
-                    <Image
-                      src={p.img}
-                      alt={p.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                {/* Card Image Header with Zoom on Hover */}
+                <div className="relative w-full h-52 overflow-hidden bg-slate-100">
+                  <Image
+                    src={srv.image}
+                    alt={srv.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-[#0A2540] border border-slate-200 shadow-xs">
+                    {srv.category}
                   </div>
-                  <div className="p-7">
-                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#2B8DD6]/10 text-[#1A4FA0] inline-block mb-3">
-                      {p.tag}
-                    </span>
-                    <h3 className="text-xl font-black mb-2" style={{ color: theme.royalBlueDark }}>
-                      {p.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                      {p.desc}
-                    </p>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A2540]/60 via-transparent to-transparent pointer-events-none" />
                 </div>
 
-                <div className="p-7 pt-0">
+                {/* Card Body */}
+                <div className="p-6 flex flex-col flex-grow justify-between">
+                  <div>
+                    <h3 className="text-lg font-black uppercase tracking-tight text-[#0A2540] mb-3 group-hover:text-[#1A4FA0] transition-colors">
+                      {srv.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                      {srv.desc}
+                    </p>
+
+                    <div className="space-y-2 mb-6">
+                      {srv.highlights.map((h) => (
+                        <div key={h} className="flex items-center gap-2 text-xs font-medium text-slate-700">
+                          <Check size={14} className="text-[#0D7C85] flex-shrink-0" />
+                          <span>{h}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
                   <Link
-                    href="/group-companies/pak-janitorial/contact"
-                    className="w-full py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
-                    style={{ borderColor: theme.border, color: theme.royalBlueDark }}
+                    href={srv.href}
+                    className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#1A4FA0] hover:text-[#0E3570] group-hover:translate-x-1 transition-all"
                   >
-                    <span>Request Specs</span>
-                    <ArrowRight size={13} />
+                    <span>View Specifications</span>
+                    <ArrowRight size={14} />
                   </Link>
                 </div>
               </div>
@@ -441,34 +461,70 @@ export default function PakMedicalHomePage() {
         </div>
       </section>
 
-      {/* Process Pathway Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          4. FEATURED SOLUTIONS (Mini Card Image Slider)
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <SectionLabel center>Disciplined Engineering</SectionLabel>
-            <SectionHeading center className="mb-4">6-Stage Healthcare Project Lifecycle</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              From initial architectural infection modeling to cleanroom panel erection, DOP validation, and 24/7 maintenance.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div className="max-w-2xl">
+              <SectionLabel>Flagship Turnkey Packages</SectionLabel>
+              <SectionHeading>COMPLETE HEALTHCARE ENGINEERING SOLUTIONS</SectionHeading>
+              <p className="text-base text-slate-600 font-medium leading-relaxed mt-4">
+                Engineered for uncompromising clinical uptime, zero microbial infiltration, and full international certification compliance.
+              </p>
+            </div>
+            <Link
+              href="/group-companies/pak-janitorial/solutions"
+              className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#1A4FA0] hover:text-[#0E3570] transition-colors self-start md:self-auto"
+            >
+              <span>Explore All Solutions</span>
+              <ArrowRight size={14} />
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROCESS_STEPS.map((step) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {FEATURED_SOLUTIONS.map((item) => (
               <div
-                key={step.num}
-                className="p-8 rounded-3xl border bg-white shadow-xs flex flex-col justify-between"
-                style={{ borderColor: theme.border }}
+                key={item.name}
+                className="pakmed-card-hover rounded-2xl border border-slate-200 bg-white overflow-hidden flex flex-col group shadow-sm hover:shadow-xl transition-all"
               >
-                <div>
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm text-white mb-6 shadow-sm" style={{ backgroundColor: theme.royalBlue }}>
-                    {step.num}
+                {/* Mini Image Slider in Card Header */}
+                <CardImageSlider
+                  images={item.images}
+                  alt={item.name}
+                  height="h-56"
+                />
+
+                <div className="p-6 flex flex-col flex-grow justify-between">
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0D7C85] mb-2 block">
+                      {item.category}
+                    </span>
+                    <h3 className="text-base font-black uppercase tracking-tight text-[#0A2540] mb-3 group-hover:text-[#1A4FA0] transition-colors">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-5">
+                      {item.desc}
+                    </p>
+
+                    <div className="border-t border-slate-100 pt-4 space-y-2 mb-6">
+                      {item.specs.map((s) => (
+                        <div key={s} className="flex items-center gap-2 text-[11px] font-medium text-slate-700">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#1A4FA0]" />
+                          <span>{s}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <h4 className="text-base font-bold mb-3" style={{ color: theme.royalBlueDark }}>
-                    {step.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                    {step.desc}
-                  </p>
+
+                  <Link
+                    href={item.href}
+                    className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#1A4FA0] hover:text-[#0E3570] group-hover:translate-x-1 transition-all"
+                  >
+                    <span>Solution Details</span>
+                    <ArrowRight size={14} />
+                  </Link>
                 </div>
               </div>
             ))}
@@ -476,36 +532,73 @@ export default function PakMedicalHomePage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          5. 6-STAGE HEALTHCARE ENGINEERING LIFECYCLE
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <SectionLabel center>Frequently Asked Questions</SectionLabel>
-            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Integrated Turnkey EPC</SectionLabel>
+            <SectionHeading center>END-TO-END HEALTHCARE ENGINEERING LIFECYCLE</SectionHeading>
+            <p className="text-base text-slate-600 font-medium leading-relaxed mt-4">
+              From concept feasibility and clinical MEP sizing to cleanroom fabrication, ISO qualification, and 24/7 ongoing AMC.
+            </p>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
-            {FAQS.map((faq, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {LIFECYCLE_STAGES.map((stg) => (
+              <div
+                key={stg.step}
+                className="rounded-2xl border border-slate-200 p-7 bg-[#F8FAFC] hover:bg-white hover:border-[#2B8DD6] transition-all duration-300 group shadow-xs hover:shadow-md"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-2xl font-black font-mono text-[#0D7C85] group-hover:text-[#1A4FA0] transition-colors">
+                    {stg.step}
+                  </span>
+                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300 group-hover:bg-[#0EA5E9] transition-colors" />
+                </div>
+                <h4 className="text-base font-black uppercase tracking-tight text-[#0A2540] mb-2">
+                  {stg.title}
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {stg.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          6. INTERACTIVE FAQ ACCORDION
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-screen-lg">
+          <div className="text-center mb-12">
+            <SectionLabel center>Standards &amp; Assurance</SectionLabel>
+            <SectionHeading center>FREQUENTLY ASKED QUESTIONS</SectionHeading>
+          </div>
+
+          <div className="space-y-4">
+            {FAQS.map((faq, i) => (
               <div
                 key={faq.q}
-                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
-                style={{ borderColor: theme.border }}
+                className="border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all shadow-xs"
               >
                 <button
-                  onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
-                  style={{ color: theme.royalBlueDark }}
+                  onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#0A2540] hover:text-[#1A4FA0] transition-colors cursor-pointer"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
                     size={18}
-                    className={`transition-transform duration-300 flex-shrink-0 ${
-                      openFaq === idx ? "rotate-180 text-[#2B8DD6]" : "text-slate-400"
+                    className={`flex-shrink-0 transition-transform duration-300 text-[#0D7C85] ${
+                      openFaq === i ? "rotate-180" : ""
                     }`}
                   />
                 </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                {openFaq === i && (
+                  <div className="px-6 pb-6 pt-1 text-xs sm:text-sm leading-relaxed text-slate-600 border-t border-slate-100">
                     {faq.a}
                   </div>
                 )}
@@ -515,40 +608,40 @@ export default function PakMedicalHomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2" style={{ color: theme.skyBlue }}>
-                READY TO UPGRADE YOUR HEALTHCARE INFRASTRUCTURE?
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.royalBlueDark }}>
-                Schedule A Healthcare Engineering Consultation
-              </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Connect with our certified biomedical and HVAC engineers to review architectural layouts, cleanroom class ratings, and medical gas distribution schematics.
-              </p>
-            </div>
+      {/* ─────────────────────────────────────────────────────────────
+          7. CONVERSION CTA BANNER
+      ───────────────────────────────────────────────────────────── */}
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#0A2540] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A2540] via-[#0E3570] to-[#0A2540] opacity-90" />
+        <div className="relative z-10 mx-auto max-w-screen-xl text-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-[0.18em] text-cyan-300 mb-5">
+            <HeartPulse size={14} className="text-[#0EA5E9]" />
+            <span>Consultation &amp; Hospital Facility Scoping</span>
+          </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
-              <Link
-                href="/group-companies/pak-janitorial/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.royalBlue }}
-              >
-                <span>Request Project Proposal</span>
-                <ArrowRight size={15} />
-              </Link>
-              <a
-                href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.royalBlue, color: theme.royalBlue }}
-              >
-                <Phone size={15} />
-                <span>0092-42-38924737</span>
-              </a>
-            </div>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight mb-5 drop-shadow-md">
+            LET&apos;S BUILD BETTER HEALTHCARE ENVIRONMENTS
+          </h2>
+
+          <p className="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto mb-8 font-normal leading-relaxed">
+            Partner with Pakistan&apos;s foremost hospital engineering, modular clean room, and medical gas specialists. Connect with our principal biomedical engineers today.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/group-companies/pak-janitorial/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-extrabold uppercase tracking-wider text-[#0A2540] bg-white hover:bg-slate-100 transition-all shadow-lg cursor-pointer"
+            >
+              <span>Schedule Technical Consultation</span>
+              <ArrowRight size={16} />
+            </Link>
+            <a
+              href="tel:00924238924737"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-sm font-extrabold uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 transition-all cursor-pointer"
+            >
+              <Phone size={16} />
+              <span>0092-42-38924737</span>
+            </a>
           </div>
         </div>
       </section>

@@ -13,7 +13,7 @@ export async function POST(req) {
     }
     const contactDoc = await CompanyContact.create({
       companySlug: "pak-janitorial",
-      companyName: "Pak Janitorial",
+      companyName: "Pakistan Medical Supplies",
       fullName: applicantName,
       email,
       phone: phone || "",

@@ -14,6 +14,11 @@ import {
   Cloud,
   Cpu,
   Sparkles,
+  Server,
+  Zap,
+  Globe2,
+  Building2,
+  Scale,
 } from "lucide-react";
 import {
   theme,
@@ -26,140 +31,126 @@ import {
 
 const SUSTAINABILITY_STATS = [
   { value: "500+", label: "Sustainable Digital Systems\nDeployed Worldwide", icon: Cloud },
-  { value: "40%", label: "Compute Power Cut via\nIntelligent Auto-Scaling", icon: Leaf },
+  { value: "40%", label: "Compute Power Cut via\nIntelligent Auto-Scaling", icon: Zap },
   { value: "100%", label: "Compliance with ISO 14001 &\nCloud ESG Standards", icon: ShieldCheck },
   { value: "15+", label: "Years of Green Software\nEngineering Stewardship", icon: Award },
 ];
 
 const SUSTAINABILITY_PILLARS = [
   {
-    icon: Cloud,
-    title: "Green Cloud Computing & Server Dynamic Auto-Scaling",
-    desc: "We engineer cloud infrastructure utilizing containerized Kubernetes microservices and serverless architectures that dynamically scale computing nodes down to zero during idle periods, eliminating wasted energy.",
+    icon: Server,
+    title: "Green Data Centers & Renewable Cloud Infrastructure",
+    tag: "Green Cloud",
+    image: "/images/digitalzone/sustainability_datacenter.jpg",
+    desc: "We engineer cloud infrastructure utilizing containerized Kubernetes microservices and serverless architectures that dynamically scale computing nodes down to zero during idle periods, prioritizing 100% renewable-powered cloud regions.",
     features: [
-      "Eliminating zombie cloud instances and over-provisioned virtual servers",
+      "Eliminating zombie cloud compute instances and over-provisioned virtual servers",
       "Prioritizing AWS, Azure, and GCP carbon-neutral renewable energy datacenter regions",
-      "Substantial long-term cloud hosting cost savings alongside carbon footprint reductions",
+      "Intelligent liquid-cooled and thermodynamic server telemetry monitoring",
+      "Substantial cloud infrastructure cost savings alongside measurable carbon reductions",
+    ],
+  },
+  {
+    icon: Globe2,
+    title: "Sustainable Digital Infrastructure & Smart City Systems",
+    tag: "Smart Infrastructure",
+    image: "/images/digitalzone/sustainability_smart_city.jpg",
+    desc: "Developing intelligent IoT telemetry, smart transportation networks, connected energy grids, and green building management systems that optimize metropolitan resource allocation and minimize urban emissions.",
+    features: [
+      "Dynamic urban traffic signal optimization via edge computer vision algorithms",
+      "Smart utility smart-metering and automated water/power loss detection",
+      "Decentralized cloud connectivity reducing physical transportation requirements",
+      "High-efficiency building automation integrating solar microgrid inverters",
+    ],
+  },
+  {
+    icon: Brain,
+    title: "Responsible & Ethical Artificial Intelligence",
+    tag: "Responsible AI",
+    image: "/images/digitalzone/sustainability_responsible_ai.jpg",
+    desc: "Our machine learning research prioritizes algorithmic fairness, transparent explainability, data privacy governance, and energy-efficient neural model training using 8-bit quantization and model distillation.",
+    features: [
+      "Post-training model quantization (INT8/FP4) reducing inference electricity by up to 60%",
+      "Strict data lineage tracking and automated algorithmic bias auditing",
+      "Transparent model explainability (XAI) and human-in-the-loop validation",
+      "Scheduling intensive GPU training runs during regional renewable grid surplus hours",
     ],
   },
   {
     icon: Cpu,
-    title: "Carbon-Efficient AI Models & Quantized Neural Inference",
-    desc: "Our machine learning engineering optimizes model architectures using post-training 8-bit quantization (INT8), sparse matrix pruning, and model distillation, delivering lightning-fast inference with up to 60% less GPU electricity consumption.",
+    title: "Code Efficiency & High-Concurrency Software Design",
+    tag: "Efficient Code",
+    image: "/images/digitalzone/sustainability_hero.jpg",
+    desc: "Writing mathematically optimized, compiled backend services in Go, Rust, and optimized C++ runtimes that handle millions of transactions with a fraction of the CPU cycles and memory footprints required by legacy monolithic code.",
     features: [
-      "Lightweight edge AI computer vision models running on low-wattage hardware",
-      "Efficient transformer architectures minimizing floating-point compute operations per token",
-      "Green AI training pipelines scheduled during regional renewable grid surplus hours",
-    ],
-  },
-  {
-    icon: Leaf,
-    title: "100% Paperless Digital Enterprise Automation",
-    desc: "Our custom ERP platforms, digital document workflows, and e-invoicing systems eliminate physical paper trails, postage logistics, and warehouse filing cabinets for enterprises and government agencies.",
-    features: [
-      "Secure cryptographic digital signatures and automated cloud audit trails",
-      "Saving millions of sheets of paper and preserving forest ecosystems across client networks",
-      "Streamlining cross-departmental business processes from days down to seconds",
-    ],
-  },
-  {
-    icon: ShieldCheck,
-    title: "Circular Hardware Life Cycles & E-Waste Reduction",
-    desc: "By migrating legacy physical server rooms into managed virtual cloud environments, we help organizations reduce physical electronic hardware replacement cycles and dispose of obsolete tech through certified e-waste recycling programs.",
-    features: [
-      "Virtual cloud migration extending terminal workstation lifespans via thin-client apps",
-      "Zero landfill hazardous e-waste policy in all corporate research facilities",
-      "Continuous ESG carbon reporting telemetry integrated into client dashboards",
+      "Replacing bloated interpreted scripts with high-performance compiled microservices",
+      "Event-driven non-blocking I/O architectures using Redis and Kafka streaming",
+      "Zero-copy memory allocations minimizing CPU thermal generation",
+      "Continuous performance profiling and memory leak elimination in automated CI/CD",
     ],
   },
 ];
 
 export default function DigitalZoneSustainabilityPage() {
   return (
-    <main className="min-h-screen bg-white text-[#3E4F61] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-slate-700 font-sans antialiased overflow-x-hidden">
       <DigitalZoneNavbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <SectionLabel>Green Computing &amp; Sustainable AI</SectionLabel>
+      {/* ─── EDITORIAL HERO BANNER (USER'S CATCHY HEADLINE) ─────────────────── */}
+      <section className="relative min-h-[420px] lg:h-[460px] flex items-center overflow-hidden bg-slate-950">
+        <Image
+          src="/images/digitalzone/sustainability_hero.jpg"
+          alt="Digital Zoning Green Computing & Sustainable Technology"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061A30]/95 via-[#0A2540]/85 to-[#061A30]/50 z-10" />
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
-                Sustainable Software Engineering For <span style={{ color: theme.navy }}>A Carbon-Efficient Future</span>
-              </h1>
-
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                At Digital Zoning Corporation, sustainable computing is foundational to our architecture. Through green cloud infrastructure, optimized AI inference algorithms, paperless enterprise workflows, and e-waste circularity, we engineer software that maximizes performance while minimizing carbon footprint.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/group-companies/digitalzone/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.navy }}
-                >
-                  <span>Request Green Cloud Audit</span>
-                  <ArrowRight size={16} />
-                </Link>
-
-                <Link
-                  href="/group-companies/digitalzone/projects"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.navyDark }}
-                >
-                  <span>Explore Client Deployments</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Visual Card */}
-            <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/digitalzone_hero_tech.svg"
-                  alt="Sustainable Cloud Computing and AI Systems"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#062242]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1 text-[#38BDF8]">
-                      Green Cloud Engineering
-                    </p>
-                    <p className="text-sm font-bold" style={{ color: theme.navyDark }}>
-                      40% Energy Cut · Quantized AI Inference
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 w-full">
+          <div className="max-w-2xl lg:max-w-3xl">
+            <SectionLabel light>Green IT &amp; Responsible AI</SectionLabel>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+              Building Technology With A Smaller Footprint
+            </h1>
+            <p className="text-sm sm:text-base lg:text-lg text-slate-200 font-normal leading-relaxed mb-6 max-w-2xl">
+              We combine intelligent infrastructure, responsible AI and efficient digital systems to create technology that delivers business value while reducing unnecessary resource consumption.
+            </p>
+            <div className="flex items-center gap-3 text-xs text-slate-300 font-medium">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={15} className="text-[#00A8E8]" />
+                <span>Green Cloud &amp; Efficient AI</span>
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck size={15} className="text-[#00A8E8]" />
+                <span>ISO 14001 Standards</span>
+              </span>
+              <span>•</span>
+              <span>40% Compute Energy Cut</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Metrics Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {/* ─── STATS COUNTER STRIP ───────────────────────────────────────────── */}
+      <section className="py-10 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {SUSTAINABILITY_STATS.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="digitalzone-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="rounded-xl border border-slate-200 bg-white p-5 text-center flex flex-col items-center justify-center shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.navy}10` }}>
-                    <Icon size={22} style={{ color: theme.navy }} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2.5 bg-cyan-50 text-[#00A8E8]">
+                    <Icon size={20} />
                   </div>
-                  <div className="mb-2" style={{ color: theme.navyDark }}>
+                  <div className="text-[#061A30] mb-1">
                     <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
-                  <p className="text-xs font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11.5px] font-semibold text-slate-500 uppercase tracking-wider whitespace-pre-line leading-tight">
                     {stat.label}
                   </p>
                 </div>
@@ -169,14 +160,16 @@ export default function DigitalZoneSustainabilityPage() {
         </div>
       </section>
 
-      {/* Sustainability Pillars Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+      {/* ─── 4 SUSTAINABILITY PILLARS GRID ─────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <SectionLabel center>Strategic Framework</SectionLabel>
-            <SectionHeading center className="mb-4">Our 4 Pillars of Sustainable Software Engineering</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              Proven architectural methodologies designed to maximize computing throughput, energy efficiency, and digital carbon reduction.
+            <SectionLabel center>Engineering Architecture</SectionLabel>
+            <SectionHeading center className="mb-3">
+              The 4 Pillars of Sustainable Enterprise Technology
+            </SectionHeading>
+            <p className="text-sm sm:text-base text-slate-600 font-normal">
+              Empirical methodologies ensuring that every line of software, cloud cluster, and AI model delivers maximum enterprise throughput with minimum environmental overhead.
             </p>
           </div>
 
@@ -186,30 +179,61 @@ export default function DigitalZoneSustainabilityPage() {
               return (
                 <div
                   key={pillar.title}
-                  className="digitalzone-card-hover p-8 rounded-3xl border flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${theme.navy}10` }}>
-                      <Icon size={26} style={{ color: theme.navy }} />
+                    {/* Real Image Header */}
+                    <div className="relative w-full h-56 bg-slate-100 overflow-hidden">
+                      <Image
+                        src={pillar.image}
+                        alt={pillar.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3.5 left-3.5">
+                        <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-[#061A30]/90 text-white backdrop-blur-xs">
+                          {pillar.tag}
+                        </span>
+                      </div>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-3" style={{ color: theme.navyDark }}>
-                      {pillar.title}
-                    </h3>
+                    {/* Card Content */}
+                    <div className="p-6">
+                      <div className="w-8 h-8 rounded-lg bg-cyan-50 text-[#00A8E8] flex items-center justify-center mb-3">
+                        <Icon size={18} />
+                      </div>
 
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                      {pillar.desc}
-                    </p>
+                      <h3 className="text-[17px] font-bold text-[#061A30] mb-2 leading-snug">
+                        {pillar.title}
+                      </h3>
 
-                    <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(210, 227, 243, 0.7)" }}>
-                      {pillar.features.map((f) => (
-                        <div key={f} className="flex items-center gap-2">
-                          <CheckCircle2 size={15} className="flex-shrink-0 text-[#00A8E8]" />
-                          <span className="text-xs font-medium text-slate-700">{f}</span>
-                        </div>
-                      ))}
+                      <p className="text-[13px] text-slate-600 leading-relaxed mb-5 font-normal">
+                        {pillar.desc}
+                      </p>
+
+                      {/* Features */}
+                      <div className="space-y-2 pt-4 border-t border-slate-100">
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-[#061A30]">
+                          Practice Deliverables &amp; Controls:
+                        </p>
+                        {pillar.features.map((f) => (
+                          <div key={f} className="flex items-start gap-2">
+                            <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5 text-[#00A8E8]" />
+                            <span className="text-[12px] text-slate-600 leading-tight">{f}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
+                  </div>
+
+                  <div className="p-6 pt-0">
+                    <Link
+                      href="/group-companies/digitalzone/contact"
+                      className="w-full py-2.5 rounded-lg bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-[#00A8E8] text-xs font-bold text-[#061A30] hover:text-[#00A8E8] flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                    >
+                      <span>Request Green Cloud Audit</span>
+                      <ArrowRight size={13} />
+                    </Link>
                   </div>
                 </div>
               );
@@ -218,38 +242,35 @@ export default function DigitalZoneSustainabilityPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#0086BA]">
-                OPTIMIZE YOUR CLOUD INFRASTRUCTURE &amp; ESG TELEMETRY
+      {/* ─── CALL TO ACTION ────────────────────────────────────────────────── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="rounded-2xl p-8 sm:p-12 bg-gradient-to-r from-[#061A30] to-[#0A2540] text-white flex flex-col lg:flex-row items-center justify-between gap-8 shadow-lg">
+            <div className="max-w-xl">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#00A8E8] block mb-2">
+                Sustainable Infrastructure &amp; Green Computing
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navyDark }}>
-                Build Carbon-Efficient Enterprise Software &amp; AI
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+                Conduct A Green Cloud &amp; AI Efficiency Audit
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Receive full cloud cost audits, algorithm quantization assessments, and sustainable computing architecture recommendations.
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Connect with our cloud architects and AI researchers to assess your Kubernetes clusters, neural model quantization, and data center energy consumption.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-3.5 w-full lg:w-auto">
               <Link
                 href="/group-companies/digitalzone/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.navy }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3 rounded-lg bg-[#00A8E8] hover:bg-[#0086BA] text-white text-sm font-bold tracking-wide transition-all text-center cursor-pointer shadow-md"
               >
-                <span>Request Green Cloud Review</span>
-                <ArrowRight size={15} />
+                Schedule Green IT Audit
               </Link>
               <a
                 href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.navy, color: theme.navy }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/25 text-white text-sm font-semibold tracking-wide transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Phone size={15} />
-                <span>0092-42-38924737</span>
+                <span>042-38924737</span>
               </a>
             </div>
           </div>

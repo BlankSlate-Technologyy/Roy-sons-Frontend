@@ -17,6 +17,9 @@ import {
   Award,
   Users2,
   Sparkles,
+  Server,
+  Lock,
+  Cpu,
 } from "lucide-react";
 import {
   theme,
@@ -27,20 +30,21 @@ import {
   AnimatedCounter,
 } from "../components/DigitalZoneShared";
 
-const IT_SERVICES = [
+const ALL_SERVICES = [
   {
     id: "artificial-intelligence",
     title: "Artificial Intelligence & Machine Learning",
     subtitle: "Custom LLMs, Computer Vision & Predictive Neural Models",
-    desc: "Developing production-grade machine learning pipelines, fine-tuned large language models (LLMs), AI automation bots, and real-time computer vision telemetry.",
-    image: "/digitalzone_hero_tech.svg",
+    desc: "Developing production-grade machine learning pipelines, fine-tuned private large language models (LLMs), automated cognitive agents, and real-time computer vision telemetry.",
+    image: "/images/digitalzone/service_ai_ml.jpg",
     tag: "AI & Machine Learning",
     icon: Brain,
+    techStack: ["PyTorch", "Hugging Face", "LangChain", "CUDA", "vLLM", "Python"],
     deliverables: [
-      "Custom Enterprise Large Language Model (LLM) fine-tuning and RAG document intelligence",
-      "Real-time video analytics and automated computer vision object detection models",
-      "Predictive financial forecasting, fraud detection, and customer churn machine learning",
-      "Automated AI business workflow orchestrators with human-in-the-loop governance",
+      "Custom Enterprise Large Language Model (LLM) fine-tuning and private RAG document intelligence",
+      "Real-time video analytics and automated computer vision object detection pipelines",
+      "Predictive financial forecasting, fraud detection, and customer churn machine learning models",
+      "Autonomous AI business workflow orchestrators with human-in-the-loop governance",
     ],
   },
   {
@@ -48,24 +52,26 @@ const IT_SERVICES = [
     title: "Custom Enterprise Software & SaaS Platforms",
     subtitle: "Scalable Microservices, Next-Gen Web Apps & High-Load APIs",
     desc: "Engineering tailored enterprise web platforms, multi-tenant SaaS architectures, distributed microservices, and high-throughput real-time database backends.",
-    image: "/digitalzone_hero_tech.svg",
+    image: "/images/digitalzone/service_custom_software.jpg",
     tag: "Enterprise Engineering",
     icon: Code2,
+    techStack: ["Next.js", "TypeScript", "Node.js", "Go", "PostgreSQL", "Kafka"],
     deliverables: [
       "High-concurrency distributed backend systems built with Node.js, Go, Python, and PostgreSQL",
       "Modern responsive frontend user experiences with Next.js, React, and TypeScript",
       "Robust REST and GraphQL API gateways with rate limiting and automated documentation",
-      "Event-driven architectures using Apache Kafka, RabbitMQ, and Redis distributed caching",
+      "Event-driven streaming architectures using Apache Kafka, RabbitMQ, and Redis distributed caching",
     ],
   },
   {
     id: "erp-solutions",
     title: "Enterprise Resource Planning (ERP) Systems",
     subtitle: "Finance, Supply Chain, HRMS & Manufacturing Workflows",
-    desc: "Implementing centralized ERP platforms that connect financial accounting, multi-location inventory, procurement, manufacturing floor operations, and payroll.",
-    image: "/digitalzone_hero_tech.svg",
+    desc: "Implementing centralized ERP platforms that connect financial accounting, multi-location inventory, automated procurement, manufacturing floor operations, and payroll.",
+    image: "/images/digitalzone/service_erp.jpg",
     tag: "Enterprise ERP",
     icon: Layers,
+    techStack: ["CoreERP", "PostgreSQL", "Redis", "Docker", "Python", "React"],
     deliverables: [
       "General ledger accounting, automated tax invoicing, and multi-currency treasury modules",
       "Real-time barcoded inventory tracking, batch expiry management, and automated purchase orders",
@@ -78,14 +84,15 @@ const IT_SERVICES = [
     title: "Cloud Computing & DevOps Engineering",
     subtitle: "Multi-Cloud Migration, Kubernetes & Automated CI/CD Pipelines",
     desc: "Provisioning high-availability cloud infrastructure on AWS, Azure, and Google Cloud with automated Docker containerization, Kubernetes orchestration, and 99.99% uptime.",
-    image: "/digitalzone_hero_tech.svg",
+    image: "/images/digitalzone/service_cloud_devops.jpg",
     tag: "Cloud & DevOps",
     icon: Cloud,
+    techStack: ["Kubernetes", "AWS", "Azure", "Terraform", "Docker", "GitHub Actions"],
     deliverables: [
-      "Infrastructure as Code (IaC) utilizing Terraform, Ansible, and Helm charts",
-      "Auto-scaling Kubernetes (EKS/GKE/AKS) cluster deployments with zero downtime rollouts",
-      "Automated CI/CD deployment pipelines on GitHub Actions and GitLab CI with security scanning",
-      "Comprehensive cloud cost optimization, server monitoring, and distributed log aggregation",
+      "Infrastructure as Code (IaC) utilizing Terraform, Ansible, and Helm charts for reproducible environments",
+      "Auto-scaling Kubernetes (EKS/GKE/AKS) cluster deployments with zero-downtime blue-green rollouts",
+      "Automated CI/CD deployment pipelines on GitHub Actions and GitLab CI with automated vulnerability scanning",
+      "Cloud cost optimization, automated horizontal pod autoscaling, and Prometheus/Grafana telemetry",
     ],
   },
   {
@@ -93,14 +100,15 @@ const IT_SERVICES = [
     title: "Zero-Trust Cybersecurity & Threat Defense",
     subtitle: "SOC-2 Compliance, Penetration Testing & 24/7 SIEM Monitoring",
     desc: "Protecting mission-critical digital assets with proactive vulnerability assessments, penetration testing, endpoint threat detection, and zero-trust identity architectures.",
-    image: "/digitalzone_hero_tech.svg",
+    image: "/images/digitalzone/service_cybersecurity.jpg",
     tag: "Cyber Defense",
     icon: ShieldCheck,
+    techStack: ["SIEM", "Mutual TLS", "OAuth2/OIDC", "WAF", "CrowdStrike", "Vault"],
     deliverables: [
-      "Comprehensive web application, API, and network penetration testing (VAPT)",
-      "Zero-Trust Architecture (ZTA) implementation with mutual TLS and role-based access (RBAC)",
-      "24/7 Security Operations Center (SOC) telemetry, SIEM log analysis, and incident containment",
-      "Compliance audit readiness for ISO 27001, SOC-2 Type II, GDPR, and PCI-DSS",
+      "Comprehensive web application, API, and network vulnerability penetration testing (VAPT)",
+      "Zero-Trust Architecture (ZTA) implementation with mutual TLS and fine-grained role-based access (RBAC)",
+      "24/7 Security Operations Center (SOC) telemetry, SIEM log analysis, and automated incident containment",
+      "Compliance audit readiness for ISO 27001, SOC-2 Type II, GDPR, and PCI-DSS standards",
     ],
   },
   {
@@ -108,9 +116,10 @@ const IT_SERVICES = [
     title: "Native & Cross-Platform Mobile Applications",
     subtitle: "High-Performance iOS & Android Apps with Offline-First Sync",
     desc: "Crafting fluid, intuitive native and hybrid mobile applications for consumer engagement, field technician operations, executive dashboards, and secure mobile payments.",
-    image: "/digitalzone_hero_tech.svg",
+    image: "/images/digitalzone/service_mobile_apps.jpg",
     tag: "Mobile Development",
     icon: Smartphone,
+    techStack: ["Swift", "Kotlin", "React Native", "Flutter", "SQLite", "Firebase"],
     deliverables: [
       "Native iOS (Swift) and Android (Kotlin) development optimized for maximum hardware performance",
       "High-velocity cross-platform mobile apps built on React Native and Flutter frameworks",
@@ -124,104 +133,84 @@ const SERVICE_STATS = [
   { value: "15+", label: "Years Experience", icon: Award },
   { value: "500+", label: "Completed Projects", icon: Code2 },
   { value: "150+", label: "Engineers on Staff", icon: Users2 },
-  { value: "99%", label: "System Uptime", icon: ShieldCheck },
+  { value: "99.9%", label: "System Uptime", icon: ShieldCheck },
 ];
 
 export default function DigitalZoneServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState("all");
 
-  const filtered = IT_SERVICES.filter(
-    (s) =>
+  const tags = ["all", "AI & Machine Learning", "Enterprise Engineering", "Enterprise ERP", "Cloud & DevOps", "Cyber Defense", "Mobile Development"];
+
+  const filtered = ALL_SERVICES.filter((s) => {
+    const matchesSearch =
       s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       s.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.tag.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+      s.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.tag.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesTag = selectedTag === "all" || s.tag === selectedTag;
+    return matchesSearch && matchesTag;
+  });
 
   return (
-    <main className="min-h-screen bg-white text-[#3E4F61] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-slate-700 font-sans antialiased overflow-x-hidden">
       <DigitalZoneNavbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <SectionLabel>Enterprise Technology &amp; AI Engineering</SectionLabel>
+      {/* ─── EDITORIAL HERO BANNER ─────────────────────────────────────────── */}
+      <section className="relative min-h-[400px] lg:h-[440px] flex items-center overflow-hidden bg-slate-950">
+        <Image
+          src="/images/digitalzone/hero_cloud_infra.jpg"
+          alt="Digital Zoning Enterprise Technology Services"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061A30]/95 via-[#0A2540]/85 to-[#061A30]/50 z-10" />
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
-                Comprehensive IT Solutions For <span style={{ color: theme.navy }}>Global Enterprises</span>
-              </h1>
-
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                From production-grade artificial intelligence and custom SaaS platforms to unified ERP systems, multi-cloud Kubernetes infrastructure, and zero-trust cybersecurity, Digital Zoning delivers uncompromised software performance.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="#services-catalog"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.navy }}
-                >
-                  <span>Explore All 6 Divisions</span>
-                  <ArrowRight size={16} />
-                </a>
-
-                <Link
-                  href="/group-companies/digitalzone/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.navyDark }}
-                >
-                  <span>Consult AI Architect</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Hero Image Card */}
-            <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/digitalzone_hero_tech.svg"
-                  alt="Digital Zoning IT & Cloud Capabilities"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#062242]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1" style={{ color: theme.cyanHover }}>
-                      Enterprise Software Engineering
-                    </p>
-                    <p className="text-sm font-bold" style={{ color: theme.navyDark }}>
-                      Custom AI · ERP Systems · Cloud &amp; Security
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 w-full">
+          <div className="max-w-2xl lg:max-w-3xl">
+            <SectionLabel light>Engineering Practice Catalog</SectionLabel>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+              Technology That Moves Business Forward
+            </h1>
+            <p className="text-sm sm:text-base lg:text-lg text-slate-200 font-normal leading-relaxed mb-6 max-w-2xl">
+              From intelligent AI systems to enterprise ERP, cloud infrastructure and zero-trust security, we engineer digital solutions designed for performance, scale and long-term growth.
+            </p>
+            <div className="flex items-center gap-3 text-xs text-slate-300 font-medium">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={15} className="text-[#00A8E8]" />
+                <span>6 Core Technology Divisions</span>
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck size={15} className="text-[#00A8E8]" />
+                <span>ISO 27001 &amp; SOC-2 Certified</span>
+              </span>
+              <span>•</span>
+              <span>99.99% Cloud SRE SLA</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Metrics Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {/* ─── METRICS STRIP ─────────────────────────────────────────────────── */}
+      <section className="py-10 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {SERVICE_STATS.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="digitalzone-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="rounded-xl border border-slate-200 bg-white p-5 text-center flex flex-col items-center justify-center shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.navy}10` }}>
-                    <Icon size={22} style={{ color: theme.navy }} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 bg-cyan-50 text-[#00A8E8]">
+                    <Icon size={20} />
                   </div>
-                  <div className="mb-2" style={{ color: theme.navyDark }}>
+                  <div className="text-[#061A30] mb-1">
                     <AnimatedCounter targetValue={stat.value} duration={1400 + idx * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11.5px] font-semibold text-slate-500 uppercase tracking-wider">
                     {stat.label}
                   </p>
                 </div>
@@ -231,89 +220,110 @@ export default function DigitalZoneServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid Section */}
-      <section id="services-catalog" className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <SectionLabel center>Our Core Divisions</SectionLabel>
-            <SectionHeading center className="mb-4">Specialized Software &amp; AI Capabilities</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              Engineered in accordance with ISO 27001, SOC-2 Type II, and modern cloud microservices architectures.
-            </p>
+      {/* ─── SEARCH & FILTER CONTROLS ──────────────────────────────────────── */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Search Input */}
+            <div className="relative w-full md:w-96">
+              <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search capabilities (e.g. AI, ERP, Cloud, Security, Mobile)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-slate-200 text-sm font-medium focus:outline-none focus:border-[#00A8E8] focus:ring-1 focus:ring-[#00A8E8] bg-white transition-colors"
+              />
+            </div>
 
-            {/* Live Search */}
-            <div className="mt-8 flex justify-center">
-              <div className="relative w-full max-w-md">
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search IT capabilities (e.g. AI, ERP, Cloud, Security, Mobile)..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0A3A6B] transition-all bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
-                />
-              </div>
+            {/* Filter Pills */}
+            <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+              {tags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setSelectedTag(tag)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize transition-colors cursor-pointer ${
+                    selectedTag === tag
+                      ? "bg-[#061A30] text-white"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  }`}
+                >
+                  {tag}
+                </button>
+              ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* ─── 6 PRACTICE AREAS GRID ─────────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {filtered.map((svc) => {
               const Icon = svc.icon;
               return (
                 <div
                   key={svc.id}
                   id={svc.id}
-                  className="digitalzone-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
-                    {/* Card Image */}
-                    <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    {/* Real Image Header */}
+                    <div className="relative w-full h-56 bg-slate-100 overflow-hidden">
                       <Image
                         src={svc.image}
                         alt={svc.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute top-4 left-4">
-                        <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 border shadow-sm text-[#0A3A6B]" style={{ borderColor: theme.border }}>
+                        <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-md bg-[#061A30]/90 text-white backdrop-blur-xs">
                           {svc.tag}
                         </span>
                       </div>
                     </div>
 
-                    {/* Content */}
+                    {/* Card Content */}
                     <div className="p-7">
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.navy}10` }}>
-                          <Icon size={20} style={{ color: theme.navy }} />
+                        <div className="w-10 h-10 rounded-lg bg-cyan-50 text-[#00A8E8] flex items-center justify-center flex-shrink-0">
+                          <Icon size={20} />
                         </div>
-                        <div>
-                          <h3 className="text-lg font-black leading-tight" style={{ color: theme.navyDark }}>
-                            {svc.title}
-                          </h3>
-                        </div>
+                        <h3 className="text-lg font-bold text-[#061A30] leading-snug">
+                          {svc.title}
+                        </h3>
                       </div>
 
-                      <p className="text-xs font-bold uppercase tracking-wider mb-3 text-[#0086BA]">
+                      <p className="text-xs font-bold uppercase tracking-wider mb-3 text-[#00A8E8]">
                         {svc.subtitle}
                       </p>
 
-                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                      <p className="text-sm text-slate-600 leading-relaxed mb-5 font-normal">
                         {svc.desc}
                       </p>
 
-                      {/* Deliverables */}
-                      <div className="space-y-2.5 pt-4 border-t" style={{ borderColor: "rgba(210, 227, 243, 0.7)" }}>
-                        <p className="text-xs font-extrabold uppercase tracking-wider" style={{ color: theme.navyDark }}>
+                      {/* Tech Stack Pills */}
+                      <div className="flex flex-wrap gap-1.5 mb-5">
+                        {svc.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-[10.5px] font-semibold px-2.5 py-0.5 rounded bg-slate-100 text-slate-700"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Deliverables List */}
+                      <div className="space-y-2.5 pt-5 border-t border-slate-100">
+                        <p className="text-xs font-bold uppercase tracking-wider text-[#061A30]">
                           Key Engineering Deliverables:
                         </p>
                         {svc.deliverables.map((d) => (
-                          <div key={d} className="flex items-start gap-2">
+                          <div key={d} className="flex items-start gap-2.5">
                             <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5 text-[#00A8E8]" />
-                            <span className="text-xs font-medium text-slate-700 leading-snug">{d}</span>
+                            <span className="text-xs text-slate-600 leading-snug">{d}</span>
                           </div>
                         ))}
                       </div>
@@ -323,11 +333,10 @@ export default function DigitalZoneServicesPage() {
                   <div className="p-7 pt-0">
                     <Link
                       href="/group-companies/digitalzone/contact"
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
-                      style={{ borderColor: theme.border, color: theme.navyDark }}
+                      className="w-full py-2.5 rounded-lg bg-slate-50 hover:bg-cyan-50 border border-slate-200 hover:border-[#00A8E8] text-xs font-bold text-[#061A30] hover:text-[#00A8E8] flex items-center justify-center gap-2 transition-colors cursor-pointer"
                     >
-                      <span>Inquire About This Division</span>
-                      <ArrowRight size={14} />
+                      <span>Inquire With Solution Architect</span>
+                      <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>
@@ -337,38 +346,35 @@ export default function DigitalZoneServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#0086BA]">
-                ENTERPRISE DIGITAL TRANSFORMATION
+      {/* ─── CALL TO ACTION ────────────────────────────────────────────────── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="rounded-2xl p-8 sm:p-12 bg-gradient-to-r from-[#061A30] to-[#0A2540] text-white flex flex-col lg:flex-row items-center justify-between gap-8 shadow-lg">
+            <div className="max-w-xl">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#00A8E8] block mb-2">
+                Enterprise Engineering Consultation
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navyDark }}>
-                Ready To Modernize Your Enterprise Tech Stack?
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+                Need A Scalable Digital System Or Custom AI Model?
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Speak with our chief software director to conduct system architecture reviews, AI feasibility assessments, and software pricing.
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Connect with our senior architects to review your technical requirements, API blueprints, data governance protocols, and deployment timeline.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-3.5 w-full lg:w-auto">
               <Link
                 href="/group-companies/digitalzone/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.navy }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3 rounded-lg bg-[#00A8E8] hover:bg-[#0086BA] text-white text-sm font-bold tracking-wide transition-all text-center cursor-pointer shadow-md"
               >
-                <span>Request Software Proposal</span>
-                <ArrowRight size={15} />
+                Schedule Architecture Call
               </Link>
               <a
                 href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.navy, color: theme.navy }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/25 text-white text-sm font-semibold tracking-wide transition-all flex items-center gap-2 cursor-pointer"
               >
                 <Phone size={15} />
-                <span>0092-42-38924737</span>
+                <span>042-38924737</span>
               </a>
             </div>
           </div>

@@ -4,31 +4,22 @@
 ───────────────────────────────────────────────────────────── */
 
 :root {
-  --dz-navy: #0A3A6B;           /* Deep Tech Navy Blue */
-  --dz-navy-dark: #062242;
-  --dz-navy-soft: #0E4B8B;
-  --dz-cyan: #00A8E8;           /* Vibrant Cyan / Electric Blue */
+  --dz-navy: #061A30;
+  --dz-navy-card: #0A2540;
+  --dz-cyan: #00A8E8;
   --dz-cyan-hover: #0086BA;
-  --dz-slate: #3E4F61;          /* Slate Charcoal Text */
-  --dz-white: #ffffff;
-  --dz-bg-light: #F4F8FC;       /* Light Tech Background */
-  --dz-border: #D2E3F3;
-  --dz-text-muted: #3E4F61;
-  --dz-text-light: #6B7C90;
+  --dz-slate: #1E293B;
+  --dz-text-muted: #475569;
+  --dz-border: #E2E8F0;
+  --dz-bg-light: #F8FAFC;
 }
 
 body.digitalzone-theme,
 body.digital-zoning-theme,
 .digitalzone-theme,
-.digital-zoning-theme,
-body.digitalzone-theme main,
-body.digitalzone-theme section,
-body.digitalzone-theme header,
-.digitalzone-theme main,
-.digitalzone-theme section,
-.digitalzone-theme header {
-  background-color: #ffffff !important;
-  color: #3E4F61;
+.digital-zoning-theme {
+  background-color: #ffffff;
+  color: #334155;
 }
 
 body.digitalzone-theme .cursor-pointer,
@@ -38,25 +29,25 @@ body.digitalzone-theme .cursor-pointer,
 
 /* Card hover animation */
 .digitalzone-card-hover {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .digitalzone-card-hover:hover {
-  transform: translateY(-5px) !important;
+  transform: translateY(-4px);
   border-color: #00A8E8 !important;
-  box-shadow: 0 16px 32px -8px rgba(10, 58, 107, 0.16), 0 0 0 1px rgba(0, 168, 232, 0.25) !important;
+  box-shadow: 0 12px 28px -6px rgba(6, 26, 48, 0.14), 0 0 0 1px rgba(0, 168, 232, 0.22) !important;
 }
 
 /* Counter box */
 .digitalzone-counter-box {
-  transition: all 0.3s ease !important;
+  transition: all 0.25s ease;
 }
 .digitalzone-counter-box:hover {
-  transform: translateY(-4px) !important;
+  transform: translateY(-3px);
   border-color: #00A8E8 !important;
-  box-shadow: 0 10px 25px rgba(10, 58, 107, 0.1) !important;
+  box-shadow: 0 8px 20px rgba(6, 26, 48, 0.08) !important;
 }
 
-/* Reset for Digital Zoning components */
+/* Clean text rendering for corporate brand */
 body.digitalzone-theme a,
 body.digitalzone-theme button,
 body.digitalzone-theme label,
@@ -74,8 +65,4 @@ body.digitalzone-theme li {
   background-image: none !important;
   background-clip: unset !important;
   -webkit-background-clip: unset !important;
-}
-
-body.digitalzone-theme svg:not([fill="currentColor"]) {
-  fill: none !important;
 }
