@@ -21,6 +21,8 @@ import {
   Settings,
   Scale,
   MessageCircle,
+  Building2,
+  Lock,
 } from "lucide-react";
 import {
   theme,
@@ -32,17 +34,17 @@ import {
 
 const OFFICES = [
   {
-    city: "Lahore Headquarters (Principal Management Consulting & PMO Practice)",
-    address: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
+    city: "Lahore Headquarters (Principal Advisory & PMO Hub)",
+    address: "1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
     phone: "0092-42-38924737 / 0092-321-8431665",
     whatsapp: "0092-304-7527498",
     email: "info@roysons.org",
-    timing: "Mon – Sat: 9:00 AM – 6:00 PM (Transaction Team 24/7)",
+    timing: "Mon – Sat: 9:00 AM – 6:00 PM (Emergency Advisory 24/7)",
     tag: "Principal HQ",
   },
   {
-    city: "Islamabad Public Sector & Policy Advisory Center",
-    address: "Executive Corporate Tower, Jinnah Avenue, Blue Area, Islamabad",
+    city: "Islamabad Public Sector & Sovereign Policy Desk",
+    address: "Executive Corporate Suites, Jinnah Avenue, Blue Area, Islamabad",
     phone: "0092-321-8431665",
     whatsapp: "0092-304-7527498",
     email: "islamabad.consult@roysons.org",
@@ -50,8 +52,8 @@ const OFFICES = [
     tag: "Govt & PPP Desk",
   },
   {
-    city: "Karachi Financial & Transaction Structuring Hub",
-    address: "Financial Trade Center, Shahrah-e-Faisal / I.I. Chundrigar Road, Karachi",
+    city: "Karachi Financial & Transaction Advisory Desk",
+    address: "Financial Trade Center, Shahrah-e-Faisal / Clifton Block 4, Karachi",
     phone: "0092-42-38924737",
     whatsapp: "0092-304-7527498",
     email: "karachi.consult@roysons.org",
@@ -66,9 +68,9 @@ export default function PakConsultContactPage() {
     email: "",
     phone: "",
     organization: "",
-    sector: "Infrastructure & Real Estate Development",
+    sector: "Infrastructure & Transport",
     solution: "Techno-Economic Feasibility Studies",
-    scale: "100M to 1 Billion PKR Project",
+    scale: "PKR 100M – 1 Billion Scale",
     city: "Lahore",
     message: "",
   });
@@ -92,7 +94,7 @@ export default function PakConsultContactPage() {
           email: formData.email,
           phone: formData.phone,
           subject: `Consulting RFP: ${formData.solution} (${formData.sector})`,
-          message: formData.message || `Scale: ${formData.scale} in ${formData.city}`,
+          message: formData.message || `Program scale: ${formData.scale} in ${formData.city}`,
           additionalFields: {
             organization: formData.organization,
             sector: formData.sector,
@@ -107,29 +109,29 @@ export default function PakConsultContactPage() {
       if (res.ok && data.success) {
         setSubmitStatus({
           type: "success",
-          message: data.message || "Your consulting inquiry has been received. Our senior advisory partner will contact you within 24 hours.",
+          message: data.message || "Your consulting inquiry has been received. Our senior advisory partner will contact you within 24 business hours.",
         });
         setFormData({
           name: "",
           email: "",
           phone: "",
           organization: "",
-          sector: "Infrastructure & Real Estate Development",
+          sector: "Infrastructure & Transport",
           solution: "Techno-Economic Feasibility Studies",
-          scale: "100M to 1 Billion PKR Project",
+          scale: "PKR 100M – 1 Billion Scale",
           city: "Lahore",
           message: "",
         });
       } else {
         setSubmitStatus({
           type: "error",
-          message: data.message || "Failed to submit consulting inquiry. Please try again.",
+          message: data.message || "Failed to submit inquiry. Please check details and try again.",
         });
       }
     } catch {
       setSubmitStatus({
         type: "error",
-        message: "An unexpected network error occurred. Please try again or call our hotline.",
+        message: "An unexpected network error occurred. Please try again or reach our direct telephone desk.",
       });
     } finally {
       setIsSubmitting(false);
@@ -137,272 +139,316 @@ export default function PakConsultContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-[#48525D] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-slate-700 font-sans antialiased overflow-x-hidden">
       <PakConsultNavbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto">
-            <SectionLabel center>Strategic Advisory &amp; Transaction Desk</SectionLabel>
+      {/* ─── EDITORIAL HERO BANNER ─────────────────────────────────────────── */}
+      <section className="relative min-h-[420px] lg:h-[460px] flex items-center overflow-hidden bg-slate-900">
+        <Image
+          src="/images/pakconsult/contact_hero.jpg"
+          alt="Pakistan Consultancy Services Corporate Advisory Desks"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071727]/95 via-[#0A2540]/85 to-[#0A2540]/50 z-10" />
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.slateDark }}>
-              Commission Strategic Studies &amp; <span style={{ color: theme.slate }}>Consult Our Partners</span>
+        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 w-full">
+          <div className="max-w-2xl lg:max-w-3xl">
+            <SectionLabel light>Strategic Engagement Desk</SectionLabel>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+              Commission Strategic Advisory &amp; Consult Our Partners
             </h1>
-
-            <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-              Whether you are preparing a multi-billion PKR public-private partnership tender, restructuring corporate balance sheets, conducting techno-economic feasibility studies, or optimizing institutional operations, our senior partners are ready to assist.
+            <p className="text-sm sm:text-base lg:text-lg text-slate-200 font-normal leading-relaxed mb-6 max-w-2xl">
+              Whether structuring a multi-billion PKR public-private concession, drafting bankable feasibility studies, or establishing an institutional PMO, our senior partners across Pakistan are ready to assist.
             </p>
-
-            <div className="inline-flex flex-wrap items-center justify-center gap-4 p-4 rounded-2xl border bg-slate-50 shadow-xs" style={{ borderColor: theme.border }}>
-              <div className="flex items-center gap-2 text-xs font-bold" style={{ color: theme.slateDark }}>
-                <Phone size={16} className="text-[#334155]" />
-                <span>Advisory Hotline:</span>
-                <a href="tel:00924238924737" className="hover:underline text-sm font-extrabold text-[#334155]">
-                  0092-42-38924737
-                </a>
+            <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-300">
+              <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/20">
+                <Phone size={14} className="text-[#0D7C85]" />
+                <span>Lahore Desk: 042-38924737</span>
               </div>
-              <span className="hidden sm:inline text-slate-300">|</span>
-              <div className="flex items-center gap-2 text-xs font-bold" style={{ color: theme.slateDark }}>
-                <MessageCircle size={16} style={{ color: "#25D366" }} />
-                <span>WhatsApp:</span>
-                <a href="https://wa.me/923047527498" target="_blank" rel="noopener noreferrer" className="hover:underline font-extrabold text-[#334155]">
-                  0092-304-7527498
-                </a>
+              <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/20">
+                <Phone size={14} className="text-[#C5A059]" />
+                <span>Mobile Hotline: 0321-8431665</span>
+              </div>
+              <div className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/20">
+                <Mail size={14} className="text-[#0D7C85]" />
+                <span>info@roysons.org</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Quotation & Office Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+      {/* ─── CONTACT & RFP MAIN GRID ───────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left Contact Information */}
-            <div className="lg:col-span-5 space-y-8">
+            {/* Left Column: Coordinates & Visual Card */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Partner Consultation Visual */}
+              <div className="relative w-full h-56 rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
+                <Image
+                  src="/images/pakconsult/contact_meeting.jpg"
+                  alt="Senior Partner Strategy Consultation"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A2540]/85 via-[#0A2540]/20 to-transparent flex items-end p-5">
+                  <div className="text-white">
+                    <span className="text-[10.5px] font-bold uppercase tracking-widest text-[#C5A059] block mb-0.5">
+                      Direct Senior Access
+                    </span>
+                    <h4 className="text-sm font-bold">Confidential Partner-Led Consultations</h4>
+                  </div>
+                </div>
+              </div>
+
               <div>
-                <SectionLabel>Advisory Bureaus &amp; Practice Desks</SectionLabel>
-                <SectionHeading className="mb-4">Regional Advisory Desks</SectionHeading>
-                <p className="text-sm sm:text-base font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                  Our advisory directors maintain direct practice presence in key financial, regulatory, and provincial capitals across Pakistan.
+                <SectionLabel>National Footprint</SectionLabel>
+                <SectionHeading className="text-2xl sm:text-3xl mb-3">
+                  Regional Advisory Desks
+                </SectionHeading>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Our directors maintain permanent presence in Lahore, Islamabad, and Karachi for direct governmental liaison and client meetings.
                 </p>
               </div>
 
-              <div className="space-y-5">
+              {/* Regional Office Cards */}
+              <div className="space-y-4">
                 {OFFICES.map((office) => (
                   <div
                     key={office.city}
-                    className="p-6 rounded-3xl border bg-white shadow-xs hover:shadow-md transition-all space-y-3"
-                    style={{ borderColor: theme.border }}
+                    className="p-5 rounded-xl border border-slate-200 bg-white shadow-xs hover:border-[#0D7C85]/50 transition-colors space-y-2.5"
                   >
                     <div className="flex items-center justify-between">
-                      <h4 className="text-base font-black" style={{ color: theme.slateDark }}>
+                      <h4 className="text-[14px] font-bold text-[#0A2540]">
                         {office.city}
                       </h4>
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 border text-[#334155]" style={{ borderColor: theme.border }}>
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-700">
                         {office.tag}
                       </span>
                     </div>
 
-                    <div className="space-y-2 text-xs font-medium text-slate-600">
-                      <div className="flex items-start gap-2.5">
-                        <MapPin size={15} className="flex-shrink-0 mt-0.5 text-[#334155]" />
+                    <div className="space-y-1.5 text-xs text-slate-600">
+                      <div className="flex items-start gap-2">
+                        <MapPin size={14} className="flex-shrink-0 mt-0.5 text-[#0D7C85]" />
                         <span>{office.address}</span>
                       </div>
-                      <div className="flex items-center gap-2.5">
-                        <Phone size={15} className="flex-shrink-0 text-[#334155]" />
-                        <span className="font-bold text-slate-800">{office.phone}</span>
+                      <div className="flex items-center gap-2">
+                        <Phone size={14} className="flex-shrink-0 text-[#0D7C85]" />
+                        <span className="font-semibold text-slate-800">{office.phone}</span>
                       </div>
-                      <div className="flex items-center gap-2.5">
-                        <MessageCircle size={15} className="flex-shrink-0" style={{ color: "#25D366" }} />
-                        <span>{office.whatsapp}</span>
-                      </div>
-                      <div className="flex items-center gap-2.5">
-                        <Mail size={15} className="flex-shrink-0 text-[#334155]" />
+                      <div className="flex items-center gap-2">
+                        <Mail size={14} className="flex-shrink-0 text-[#0D7C85]" />
                         <span>{office.email}</span>
                       </div>
-                      <div className="flex items-center gap-2.5 pt-1">
-                        <Clock size={15} className="flex-shrink-0 text-[#334155]" />
-                        <span className="font-semibold text-slate-700">{office.timing}</span>
+                      <div className="flex items-center gap-2 pt-0.5 text-slate-500">
+                        <Clock size={14} className="flex-shrink-0 text-slate-400" />
+                        <span>{office.timing}</span>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
+
+              {/* Confidentiality Commitment */}
+              <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 flex items-start gap-3">
+                <Lock size={18} className="text-[#0D7C85] flex-shrink-0 mt-0.5" />
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  <strong className="text-slate-800 block">Strict Non-Disclosure Guarantee:</strong>
+                  All proprietary feasibility data, technical scopes, and business models are safeguarded under strict corporate confidentiality protocols.
+                </p>
+              </div>
             </div>
 
-            {/* Right Booking Form */}
+            {/* Right Column: RFP & Consultation Form */}
             <div className="lg:col-span-7">
-              <div className="p-8 sm:p-12 rounded-3xl border bg-white shadow-xl" style={{ borderColor: theme.border }}>
-                <div className="mb-8">
-                  <span className="text-xs font-black uppercase tracking-widest block mb-1 text-[#334155]">
-                    STRATEGIC ADVISORY &amp; ENGAGEMENT INQUIRY
+              <div className="p-7 sm:p-10 rounded-2xl border border-slate-200 bg-white shadow-md">
+                <div className="mb-6">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#0D7C85] block mb-1">
+                    Terms of Reference &amp; Proposal Inquiry
                   </span>
-                  <h3 className="text-2xl font-black uppercase" style={{ color: theme.slateDark }}>
-                    Commission Consulting Engagement
+                  <h3 className="text-2xl font-extrabold text-[#0A2540]">
+                    Commission Advisory Engagement
                   </h3>
-                  <p className="text-xs sm:text-sm font-medium text-slate-500 mt-1">
-                    Receive customized Terms of Reference (TOR) blueprints, timeline estimates, and team composition profiles.
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                    Provide your preliminary program parameters to receive customized Terms of Reference (ToR) blueprints and team profiles.
                   </p>
                 </div>
 
                 {submitStatus.type === "success" && (
-                  <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3 text-emerald-800 text-xs font-medium">
-                    <CheckCircle2 size={18} className="text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <span>{submitStatus.message}</span>
+                  <div className="mb-6 p-4 rounded-xl bg-teal-50 border border-teal-200 text-[#08545A] flex items-start gap-3 text-sm">
+                    <CheckCircle2 size={18} className="flex-shrink-0 mt-0.5 text-[#0D7C85]" />
+                    <div>
+                      <p className="font-bold">Inquiry Successfully Transmitted</p>
+                      <p className="text-xs mt-0.5">{submitStatus.message}</p>
+                    </div>
                   </div>
                 )}
 
                 {submitStatus.type === "error" && (
-                  <div className="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-start gap-3 text-rose-800 text-xs font-medium">
-                    <ShieldCheck size={18} className="text-rose-600 flex-shrink-0 mt-0.5" />
-                    <span>{submitStatus.message}</span>
+                  <div className="mb-6 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-sm">
+                    <p className="font-bold">Notice</p>
+                    <p className="text-xs mt-0.5">{submitStatus.message}</p>
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.slateDark }}>
-                        Your Full Name *
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Full Name / Senior Contact *
                       </label>
                       <input
                         type="text"
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Dr. Salman Qureshi"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#3A444E] bg-white"
-                        style={{ borderColor: theme.border }}
+                        placeholder="e.g. Engr. Tariq Mahmood"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.slateDark }}>
-                        Official Email *
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Corporate / Institutional Email *
                       </label>
                       <input
                         type="email"
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="salman@development-authority.gov.pk"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#3A444E] bg-white"
-                        style={{ borderColor: theme.border }}
+                        placeholder="tariq@enterprise.com"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.slateDark }}>
-                        Phone / WhatsApp *
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Phone Number / Mobile *
                       </label>
                       <input
                         type="tel"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="0092-300-1234567"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#3A444E] bg-white"
-                        style={{ borderColor: theme.border }}
+                        placeholder="0300-1234567"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.slateDark }}>
-                        Company / Government Entity
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Organization / Ministry / Sponsor
                       </label>
                       <input
                         type="text"
                         value={formData.organization}
                         onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                        placeholder="e.g. Infrastructure Development Authority"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#3A444E] bg-white"
-                        style={{ borderColor: theme.border }}
+                        placeholder="Company or Government Entity"
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.slateDark }}>
-                        Client Sector
-                      </label>
-                      <select
-                        value={formData.sector}
-                        onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
-                        className="w-full px-3 py-3 rounded-xl border text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#3A444E] bg-white cursor-pointer"
-                        style={{ borderColor: theme.border }}
-                      >
-                        <option value="Government & Public Sector (Federal/Provincial)">Government &amp; Public Sector</option>
-                        <option value="Infrastructure & Real Estate Development">Infrastructure &amp; Real Estate</option>
-                        <option value="Manufacturing & Special Economic Zones">Manufacturing &amp; SEZ</option>
-                        <option value="Energy, Renewable & Utilities">Energy &amp; Utilities</option>
-                        <option value="Banking, Financial Services & DFIs">Banking &amp; DFIs</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.slateDark }}>
-                        Required Advisory
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Primary Advisory Service
                       </label>
                       <select
                         value={formData.solution}
                         onChange={(e) => setFormData({ ...formData, solution: e.target.value })}
-                        className="w-full px-3 py-3 rounded-xl border text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#3A444E] bg-white cursor-pointer"
-                        style={{ borderColor: theme.border }}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
                       >
-                        <option value="Techno-Economic Feasibility Studies">Techno-Economic Feasibility</option>
-                        <option value="PPP Concession & Transaction Advisory">PPP Transaction Advisory</option>
-                        <option value="Project Management Office (PMO) Setup">PMO Setup &amp; Governance</option>
-                        <option value="Procurement & FIDIC Contract Advisory">Procurement &amp; PPRA</option>
-                        <option value="Corporate Restructuring & Strategy">Corporate Strategy &amp; BPR</option>
-                        <option value="ESG & Environmental Impact Study">ESG &amp; EIA Feasibility</option>
+                        <option value="Techno-Economic Feasibility Studies">Techno-Economic Feasibility Studies</option>
+                        <option value="Investment Structuring & PPP Concessions">Investment Structuring &amp; PPP Concessions</option>
+                        <option value="PMO Setup & Governance">PMO Setup &amp; Governance</option>
+                        <option value="Strategic Advisory & Policy Development">Strategic Advisory &amp; Policy Development</option>
+                        <option value="Infrastructure & Engineering Advisory">Infrastructure &amp; Engineering Advisory</option>
+                        <option value="ESG, Environmental & Climate Resilience">ESG, Environmental &amp; Climate Resilience</option>
+                        <option value="Water Resources & Hydrological Planning">Water Resources &amp; Hydrological Planning</option>
+                        <option value="Industrial & SEZ Master Planning">Industrial &amp; SEZ Master Planning</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.slateDark }}>
-                        Project Capex Scale
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Target Industry / Sector
+                      </label>
+                      <select
+                        value={formData.sector}
+                        onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
+                      >
+                        <option value="Infrastructure & Transport">Infrastructure &amp; Transport</option>
+                        <option value="Energy & Renewables">Energy &amp; Renewables</option>
+                        <option value="Real Estate & Urban Development">Real Estate &amp; Urban Development</option>
+                        <option value="Industrial & Special Economic Zones">Industrial &amp; Special Economic Zones</option>
+                        <option value="Water & Environmental Engineering">Water &amp; Environmental Engineering</option>
+                        <option value="Public Sector & Sovereign Bodies">Public Sector &amp; Sovereign Bodies</option>
+                        <option value="Banking & Project Finance">Banking &amp; Project Finance</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Estimated Capital Outlay
                       </label>
                       <select
                         value={formData.scale}
                         onChange={(e) => setFormData({ ...formData, scale: e.target.value })}
-                        className="w-full px-3 py-3 rounded-xl border text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#3A444E] bg-white cursor-pointer"
-                        style={{ borderColor: theme.border }}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
                       >
-                        <option value="Under 100M PKR Study">Under 100M PKR</option>
-                        <option value="100M to 1 Billion PKR Project">100M – 1 Billion PKR</option>
-                        <option value="1B to 10B+ PKR Mega Project">1B – 10B+ PKR Mega</option>
-                        <option value="Multilateral International Program">Multilateral DFI Program</option>
+                        <option value="Under PKR 100M Scale">Under PKR 100 Million</option>
+                        <option value="PKR 100M – 1 Billion Scale">PKR 100M – 1 Billion</option>
+                        <option value="PKR 1 Billion – 10 Billion Scale">PKR 1 Billion – 10 Billion</option>
+                        <option value="Exceeding PKR 10 Billion Mega Program">Exceeding PKR 10 Billion (Mega Program)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        Preferred Liaison City
+                      </label>
+                      <select
+                        value={formData.city}
+                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
+                      >
+                        <option value="Lahore">Lahore (Head Office)</option>
+                        <option value="Islamabad">Islamabad (Public Sector)</option>
+                        <option value="Karachi">Karachi (Financial Hub)</option>
+                        <option value="Other / Remote Video">Other / Video Conference</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.slateDark }}>
-                      Terms of Reference (TOR) &amp; Scope Details
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      Program Summary / Terms of Reference Brief
                     </label>
                     <textarea
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Please specify objectives, key deliverables expected, target completion timeline, and any existing baseline data..."
-                      className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#3A444E] bg-white"
-                      style={{ borderColor: theme.border }}
+                      placeholder="Outline preliminary objectives, site location, timeline expectations, or statutory deadlines..."
+                      className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-[#0D7C85] focus:ring-1 focus:ring-[#0D7C85] bg-white transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shadow-lg transition-all duration-300 hover:opacity-95 cursor-pointer disabled:opacity-50"
-                    style={{ backgroundColor: theme.slate }}
+                    className="w-full py-3.5 rounded-lg bg-[#0D7C85] hover:bg-[#08545A] text-white font-bold text-sm tracking-wide transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                   >
-                    <Send size={16} />
-                    <span>{isSubmitting ? "Transmitting Advisory Proposal Request..." : "Submit Strategic Proposal Request"}</span>
+                    <Send size={15} />
+                    <span>{isSubmitting ? "Transmitting RFP..." : "Submit Consulting Terms of Reference"}</span>
                   </button>
                 </form>
               </div>

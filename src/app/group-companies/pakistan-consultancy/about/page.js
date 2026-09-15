@@ -17,6 +17,10 @@ import {
   Users2,
   Scale,
   Sparkles,
+  Building2,
+  BarChart3,
+  Compass,
+  Check,
 } from "lucide-react";
 import {
   theme,
@@ -39,111 +43,104 @@ const CORE_VALUES = [
   {
     icon: FileSearch,
     title: "Data-Driven Analytical Rigor",
-    desc: "Every recommendation, financial model, and feasibility report is backed by empirical research, stress-tested cash flow forecasts, and regulatory due diligence.",
+    desc: "Every recommendation, econometric model, and feasibility report is backed by verifiable empirical field data, stress-tested cash flow forecasts, and regulatory due diligence.",
   },
   {
     icon: ShieldCheck,
     title: "Uncompromising Fiduciary Ethics",
-    desc: "Strict compliance with FIDIC ethical guidelines, PPRA public procurement transparency rules, and conflict-of-interest firewalls.",
+    desc: "Strict compliance with FIDIC ethical guidelines, statutory PPRA public procurement transparency rules, and unyielding conflict-of-interest firewalls.",
   },
   {
     icon: Handshake,
-    title: "Public-Private Partnership (PPP) Leadership",
-    desc: "Pioneering viable concession models, risk allocation frameworks, and bankable transaction structuring between state institutions and private investors.",
+    title: "PPP Transaction Leadership",
+    desc: "Pioneering viable concession models, risk allocation frameworks, and bankable transaction structuring between state institutions and institutional capital sponsors.",
   },
   {
     icon: TrendingUp,
     title: "Measurable Economic Value Creation",
-    desc: "Focusing on tangible business outcomes, capital expenditure optimization, operational restructuring, and sustained long-term return on investment (ROI).",
+    desc: "Focusing on tangible business outcomes, capital expenditure optimization, organizational restructuring, and sustained long-term return on capital.",
+  },
+];
+
+const WHY_CHOOSE_US = [
+  {
+    title: "FIDIC & PPRA Certified Practitioners",
+    desc: "Our contracts and procurement roadmaps strictly comply with FIDIC Yellow, Red, and Silver Books as well as federal and provincial PPRA statutes.",
+  },
+  {
+    title: "Multilateral Agency Benchmarks",
+    desc: "We formulate PC-I, PC-II, and feasibility documentation in full alignment with World Bank, Asian Development Bank (ADB), and Planning Commission standards.",
+  },
+  {
+    title: "Bankable Financial Engineering",
+    desc: "Robust 20-year Discounted Cash Flow (DCF), sensitivity testing, WACC calibration, and Viability Gap Funding (VGF) modeling for private and sovereign sponsors.",
+  },
+  {
+    title: "Turnkey Project Management Office (PMO)",
+    desc: "From concept design through EPC contractor oversight and earned value tracking, we deliver end-to-end program governance without cost overruns.",
   },
 ];
 
 export default function PakConsultAboutPage() {
   return (
-    <main className="min-h-screen bg-white text-[#48525D] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-slate-700 font-sans antialiased overflow-x-hidden">
       <PakConsultNavbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <SectionLabel>About Pakistani Consultancy Services</SectionLabel>
+      {/* ─── EDITORIAL HERO BANNER ─────────────────────────────────────────── */}
+      <section className="relative min-h-[420px] lg:h-[460px] flex items-center overflow-hidden bg-slate-900">
+        <Image
+          src="/images/pakconsult/about_hero.jpg"
+          alt="Pakistan Consultancy Services Corporate Headquarters"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071727]/95 via-[#0A2540]/85 to-[#0A2540]/50 z-10" />
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.slateDark }}>
-                Strategic Advisory. <span style={{ color: theme.slate }}>Transforming Vision Into Bankable Reality.</span>
-              </h1>
-
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                Pakistani Consultancy Services is a leading management consultancy, technical feasibility advisory, and project management firm. We partner with government ministries, multilateral financial institutions, and corporate conglomerates to design and govern large-scale development programs.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/group-companies/pakistan-consultancy/solutions"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.slate }}
-                >
-                  <span>Explore Sectors &amp; Solutions</span>
-                  <ArrowRight size={16} />
-                </Link>
-
-                <Link
-                  href="/group-companies/pakistan-consultancy/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.slateDark }}
-                >
-                  <span>Consult Senior Partner</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Hero Visual Card */}
-            <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/pakconsult_hero_strategy.svg"
-                  alt="Strategic Management Consultancy & Feasibility"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E242B]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1" style={{ color: theme.goldHover }}>
-                      FIDIC &amp; PPRA Compliant
-                    </p>
-                    <p className="text-sm font-bold" style={{ color: theme.slateDark }}>
-                      400+ Delivered Strategic Studies
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 w-full">
+          <div className="max-w-2xl lg:max-w-3xl">
+            <SectionLabel light>Corporate Profile &amp; Practice Overview</SectionLabel>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4">
+              Strategic Advisory &amp; Engineering Governance for Pakistan
+            </h1>
+            <p className="text-sm sm:text-base lg:text-lg text-slate-200 font-normal leading-relaxed mb-6 max-w-2xl">
+              Pakistan Consultancy Services is a premier corporate advisory, techno-economic feasibility, and project governance institution operating as a flagship entity within the Roy &amp; Sons enterprise portfolio.
+            </p>
+            <div className="flex items-center gap-3 text-xs text-slate-300 font-medium">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={15} className="text-[#0D7C85]" />
+                <span>Established 2011</span>
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck size={15} className="text-[#C5A059]" />
+                <span>FIDIC &amp; PPRA Advisory Desk</span>
+              </span>
+              <span>•</span>
+              <span>Lahore • Islamabad • Karachi</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Animated Number Counters */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      {/* ─── STATS STRIP ───────────────────────────────────────────────────── */}
+      <section className="py-10 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
             {ABOUT_STATS.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="pakconsult-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="rounded-xl border border-slate-200 bg-white p-5 text-center flex flex-col items-center justify-center shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.slate}10` }}>
-                    <Icon size={22} style={{ color: theme.slate }} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-2.5 bg-teal-50 text-[#0D7C85]">
+                    <Icon size={20} />
                   </div>
-                  <div className="mb-2" style={{ color: theme.slateDark }}>
+                  <div className="text-[#0A2540] mb-1">
                     <AnimatedCounter targetValue={stat.value} duration={1400 + idx * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider whitespace-pre-line leading-tight">
                     {stat.label}
                   </p>
                 </div>
@@ -153,43 +150,114 @@ export default function PakConsultAboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Graphic */}
-            <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
-              <Image
-                src="/pakconsult_hero_strategy.svg"
-                alt="Strategic Corporate Advisory and Feasibility"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1E242B]/85 via-transparent to-transparent flex items-end p-6">
-                <div className="text-white">
-                  <span className="text-xs font-black uppercase tracking-widest text-[#DFC48B] block mb-1">
-                    Premier Advisory Practice
-                  </span>
-                  <h4 className="text-base font-bold">15+ Years of National Infrastructure &amp; Corporate Stewardship</h4>
+      {/* ─── WHO WE ARE ────────────────────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Narrative */}
+            <div className="lg:col-span-6">
+              <SectionLabel>Who We Are</SectionLabel>
+              <SectionHeading className="mb-5">
+                Bridging Visionary Capital with Engineered Execution
+              </SectionHeading>
+
+              <div className="space-y-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                <p>
+                  Established to meet the growing demand for bankable feasibility modeling and disciplined project governance in Pakistan, Pakistan Consultancy Services (PCS) brings together senior chartered engineers, financial economists, FIDIC procurement attorneys, and environmental scientists.
+                </p>
+                <p>
+                  Over the past decade and a half, PCS has advised federal ministries, provincial departments, industrial conglomerates, and international investors on major transport corridors, special economic zones, hydropower installations, and municipal infrastructure.
+                </p>
+                <p>
+                  As part of the Roy &amp; Sons corporate ecosystem, we adhere to strict ethical codes, conflict-of-interest firewalls, and empirical research benchmarks that ensure our assessments withstand rigorous international scrutiny.
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#0A2540] bg-slate-50 px-4 py-2 rounded-lg border border-slate-200">
+                  <Award size={16} className="text-[#0D7C85]" />
+                  <span>Planning Commission PC-I Specialists</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-bold text-[#0A2540] bg-slate-50 px-4 py-2 rounded-lg border border-slate-200">
+                  <ShieldCheck size={16} className="text-[#C5A059]" />
+                  <span>Registered with Pakistan Engineering Council</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Text */}
-            <div className="space-y-8">
-              <div>
+            {/* Right Photography */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[400px] sm:h-[460px] rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
+                <Image
+                  src="/images/pakconsult/about_team.jpg"
+                  alt="Pakistan Consultancy Services Executive Advisory Team"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A2540]/90 via-[#0A2540]/20 to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#C5A059] block mb-1">
+                      Senior Executive Leadership
+                    </span>
+                    <h3 className="text-base sm:text-lg font-bold">
+                      Multidisciplinary Advisory Council
+                    </h3>
+                    <p className="text-xs text-slate-300 mt-1">
+                      Chartered engineers, economists, and legal advisors directing national-scale programs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── MISSION & VISION ──────────────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Image Card */}
+            <div className="lg:col-span-5">
+              <div className="relative w-full h-[380px] sm:h-[430px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
+                <Image
+                  src="/images/pakconsult/about_meeting.jpg"
+                  alt="Strategic Stakeholder Alignment & Planning"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A2540]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#C5A059] block mb-1">
+                      Governance Protocol
+                    </span>
+                    <p className="text-sm font-semibold">
+                      Fiduciary transparency and empirical research at every stage.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Mission & Vision Split */}
+            <div className="lg:col-span-7 space-y-8">
+              <div className="bg-white p-7 rounded-xl border border-slate-200 shadow-xs">
                 <SectionLabel>Our Core Purpose</SectionLabel>
-                <SectionHeading className="mb-4">Mission Statement</SectionHeading>
-                <p className="text-sm sm:text-base font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                  To empower decision-makers across government and industry with uncompromised economic research, technical feasibility assessments, transparent procurement frameworks, and professional project management that catalyze sustainable economic progress.
+                <h3 className="text-xl font-bold text-[#0A2540] mb-3">
+                  Mission Statement
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  To empower decision-makers across government and industry with uncompromised empirical research, techno-economic feasibility modeling, transparent procurement governance, and turnkey Project Management Office oversight that accelerate sustainable economic development across Pakistan.
                 </p>
               </div>
 
-              <div className="pt-6 border-t" style={{ borderColor: theme.border }}>
+              <div className="bg-white p-7 rounded-xl border border-slate-200 shadow-xs">
                 <SectionLabel>Strategic Horizon</SectionLabel>
-                <SectionHeading className="mb-4">Our Vision</SectionHeading>
-                <p className="text-sm sm:text-base font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                  To be Pakistan&apos;s most trusted strategic advisory and transaction structuring partner, setting international benchmarks for public-private partnerships, institutional governance, and capital efficiency.
+                <h3 className="text-xl font-bold text-[#0A2540] mb-3">
+                  Our Vision
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  To be Pakistan&apos;s definitive strategic advisory and transaction structuring partner, setting the national benchmark for public-private partnerships, institutional governance, capital efficiency, and climate-resilient engineering solutions.
                 </p>
               </div>
             </div>
@@ -197,14 +265,135 @@ export default function PakConsultAboutPage() {
         </div>
       </section>
 
-      {/* Core Values Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+      {/* ─── OUR APPROACH: DATA ANALYTICS & REGULATORY RIGOR ────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-6">
+              <SectionLabel>Disciplined Approach</SectionLabel>
+              <SectionHeading className="mb-5">
+                Empirical Analytics &amp; Regulatory Safeguards
+              </SectionHeading>
+
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
+                Unlike traditional conceptual consultancies, our approach couples rigorous quantitative econometric modeling with boots-on-the-ground engineering validation. Every study is pressure-tested against regulatory mandates, market cycles, and environmental constraints.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-teal-50 text-[#0D7C85] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check size={14} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#0A2540]">Econometric &amp; Sensitivity Modeling</h4>
+                    <p className="text-xs text-slate-500 mt-0.5">Stress-testing capital assumptions against inflation, currency volatility, and supply chain bottlenecks.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-teal-50 text-[#0D7C85] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check size={14} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#0A2540]">Independent Engineering Supervision</h4>
+                    <p className="text-xs text-slate-500 mt-0.5">Site-level technical audits preventing contractor drift, schedule slip, and unauthorized substitutions.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-teal-50 text-[#0D7C85] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check size={14} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[#0A2540]">Statutory Compliance Assured</h4>
+                    <p className="text-xs text-slate-500 mt-0.5">Full conformity with EPA environmental regulations, PPRA rules, and municipal bylaws.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[380px] sm:h-[440px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
+                <Image
+                  src="/images/pakconsult/about_analysis.jpg"
+                  alt="Data-Driven Analytical Modeling and Financial Engineering"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── WHY CHOOSE US ─────────────────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F8FAFC]">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Image */}
+            <div className="lg:col-span-5 order-2 lg:order-1">
+              <div className="relative w-full h-[380px] sm:h-[440px] rounded-2xl overflow-hidden border border-slate-200 shadow-sm group">
+                <Image
+                  src="/images/pakconsult/about_infrastructure.jpg"
+                  alt="Engineering & Infrastructure Leadership"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A2540]/85 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#C5A059] block mb-1">
+                      Infrastructure Benchmarks
+                    </span>
+                    <h4 className="text-sm sm:text-base font-bold">
+                      National Transport &amp; Energy Delivery
+                    </h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Grid */}
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <SectionLabel>Strategic Advantage</SectionLabel>
+              <SectionHeading className="mb-6">
+                Why Industry Leaders Choose Pakistan Consultancy
+              </SectionHeading>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {WHY_CHOOSE_US.map((item) => (
+                  <div
+                    key={item.title}
+                    className="p-5 rounded-xl border border-slate-200 bg-white shadow-xs"
+                  >
+                    <div className="w-7 h-7 rounded-md bg-teal-50 text-[#0D7C85] flex items-center justify-center mb-3">
+                      <CheckCircle2 size={16} />
+                    </div>
+                    <h4 className="text-sm font-bold text-[#0A2540] mb-1.5">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CORE VALUES ───────────────────────────────────────────────────── */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center max-w-3xl mx-auto mb-14">
             <SectionLabel center>Guiding Principles</SectionLabel>
-            <SectionHeading center className="mb-4">Our Core Values</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              The empirical rigor, transparency protocols, and strategic accountability that guide every advisory assignment we undertake.
+            <SectionHeading center className="mb-3">
+              Our Institutional Values
+            </SectionHeading>
+            <p className="text-sm text-slate-600">
+              The ethical compass, empirical discipline, and transparency standards that govern every engagement.
             </p>
           </div>
 
@@ -214,26 +403,22 @@ export default function PakConsultAboutPage() {
               return (
                 <div
                   key={val.title}
-                  className="pakconsult-card-hover p-8 rounded-3xl border flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="p-6 rounded-xl border border-slate-200 bg-white shadow-xs hover:border-[#0D7C85]/50 transition-colors flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${theme.slate}10` }}>
-                      <Icon size={26} style={{ color: theme.slate }} />
+                    <div className="w-10 h-10 rounded-lg bg-teal-50 text-[#0D7C85] flex items-center justify-center mb-4">
+                      <Icon size={20} />
                     </div>
-                    <h3 className="text-lg font-bold mb-3" style={{ color: theme.slateDark }}>
+                    <h3 className="text-[15px] font-bold text-[#0A2540] mb-2">
                       {val.title}
                     </h3>
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                    <p className="text-[12.5px] text-slate-600 leading-relaxed">
                       {val.desc}
                     </p>
                   </div>
-
-                  <div className="mt-6 pt-4 border-t flex items-center gap-2" style={{ borderColor: theme.border }}>
-                    <CheckCircle2 size={15} style={{ color: theme.gold }} />
-                    <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: theme.slate }}>
-                      FIDIC &amp; PPRA Standards
-                    </span>
+                  <div className="mt-5 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-[11px] font-bold text-[#C5A059] uppercase tracking-wider">
+                    <ShieldCheck size={13} />
+                    <span>Fiduciary Standard</span>
                   </div>
                 </div>
               );
@@ -242,39 +427,35 @@ export default function PakConsultAboutPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2" style={{ color: theme.goldHover }}>
-                PLANNING A MEGA PROJECT, FEASIBILITY STUDY, OR TRANSACTION?
+      {/* ─── CALL TO ACTION ────────────────────────────────────────────────── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="rounded-2xl p-8 sm:p-12 bg-gradient-to-r from-[#0A2540] to-[#0C1E2E] text-white flex flex-col lg:flex-row items-center justify-between gap-8 shadow-lg">
+            <div className="max-w-xl">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#C5A059] block mb-2">
+                Engage Our Advisory Council
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.slateDark }}>
-                Schedule A Strategic Advisory Consultation
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+                Discuss Your Initiative With Senior Partners
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Connect with our senior consulting partners to review Terms of Reference (TOR), financial modeling frameworks, and project governance roadmaps.
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Connect with our advisory teams in Lahore, Islamabad, or Karachi to review project mandates, feasibility requirements, and transaction structuring.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-3.5 w-full lg:w-auto">
               <Link
                 href="/group-companies/pakistan-consultancy/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.slate }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3 rounded-lg bg-[#0D7C85] hover:bg-[#08545A] text-white text-sm font-bold tracking-wide transition-all text-center cursor-pointer shadow-md"
               >
-                <span>Request Strategic Proposal</span>
-                <ArrowRight size={15} />
+                Schedule Meeting
               </Link>
-              <a
-                href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.slate, color: theme.slate }}
+              <Link
+                href="/group-companies/pakistan-consultancy/services"
+                className="flex-1 lg:flex-none justify-center px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/25 text-white text-sm font-semibold tracking-wide transition-all text-center cursor-pointer"
               >
-                <Phone size={15} />
-                <span>0092-42-38924737</span>
-              </a>
+                Explore Services
+              </Link>
             </div>
           </div>
         </div>
