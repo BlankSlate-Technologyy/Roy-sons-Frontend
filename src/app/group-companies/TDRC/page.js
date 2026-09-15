@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,6 +12,8 @@ import {
   Building2,
   CheckCircle2,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Cloud,
   Compass,
   Cpu,
@@ -66,6 +68,33 @@ import {
   AnimatedCounter,
 } from "./components/TDRCShared";
 
+const HERO_SLIDES = [
+  {
+    image: "/images/tdrc/hero_slider_1.jpg",
+    tag: "Thal Desert Agro-Forestry",
+    title: "Agro-Forestry Shelterbelts & Sand Dune Stabilization",
+    desc: "Organized rows of drought-resistant acacia and moringa halting desertification across Punjab, Pakistan.",
+  },
+  {
+    image: "/images/tdrc/hero_slider_2.jpg",
+    tag: "Field Ecological Research",
+    title: "Empirical Soil, Botanical & Environmental Sampling",
+    desc: "Multidisciplinary scientific teams conducting in-situ baseline surveys with GIS telemetry.",
+  },
+  {
+    image: "/images/tdrc/hero_slider_3.jpg",
+    tag: "Indus Basin Hydrology",
+    title: "Groundwater Aquifer Monitoring & Precision Irrigation",
+    desc: "120+ telemetric piezometers tracking water table recharge and managed aquifer dynamics.",
+  },
+  {
+    image: "/images/tdrc/hero_slider_4.jpg",
+    tag: "Climate Resilience",
+    title: "Solar-Powered Micro-Irrigation & Farmer Empowerment",
+    desc: "Sustainable development initiatives strengthening rural agrarian livelihoods against climate shocks.",
+  },
+];
+
 const STATS = [
   { icon: Award, value: "20+", label: "Years of Applied\nResearch Excellence" },
   { icon: Briefcase, value: "600+", label: "Completed Research\n& Policy Studies" },
@@ -80,42 +109,42 @@ const SERVICES = [
     title: "Applied Scientific Research",
     desc: "Conducting empirical research on arid land ecology, soil chemistry, botanical screening, and ecosystem restoration.",
     href: "/group-companies/TDRC/services#applied-research",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/service_applied_research.jpg",
   },
   {
     icon: Leaf,
     title: "Environmental Studies (EIA & IEE)",
     desc: "Comprehensive Environmental Impact Assessments, baseline air/water monitoring, and EPA statutory clearances.",
     href: "/group-companies/TDRC/services#environmental-studies",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/service_eia.jpg",
   },
   {
     icon: Sprout,
     title: "Climate Adaptation & Greening",
     desc: "Arid zone agro-forestry shelterbelts, sand dune stabilization, and solar-powered micro-drip irrigation programs.",
     href: "/group-companies/TDRC/services#sustainable-development",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/service_climate_greening.jpg",
   },
   {
     icon: Scale,
     title: "Evidence-Based Policy Research",
     desc: "Strategic policy analysis, governance frameworks, and econometric modeling for public ministries and donors.",
     href: "/group-companies/TDRC/services#policy-research",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/service_policy_research.jpg",
   },
   {
     icon: Users2,
     title: "Social Development & Livelihoods",
     desc: "Participatory community development, rural women agro-processing cooperatives, and food security initiatives.",
     href: "/group-companies/TDRC/services#social-programs",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/service_social_development.jpg",
   },
   {
     icon: GraduationCap,
     title: "GIS & Remote Sensing Surveys",
     desc: "Multispectral satellite spatial analysis, drone topographical modeling, and technical capacity-building masterclasses.",
     href: "/group-companies/TDRC/services#capacity-building",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/service_gis_remote_sensing.jpg",
   },
 ];
 
@@ -124,19 +153,19 @@ const PROGRAMS_PREVIEW = [
     name: "Thal Desert Agro-Forestry & Afforestation",
     tag: "Desert Greening",
     desc: "50,000+ restored acres planted with drought-hardy acacia and moringa shelterbelts mitigating sand migration.",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/project_agroforestry.jpg",
   },
   {
     name: "Indus Basin Groundwater Aquifer Telemetry",
     tag: "Hydrology & Water",
     desc: "120+ telemetric piezometers monitoring water table recharge, salinity flux, and managed aquifer recharge (MAR).",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/project_groundwater.jpg",
   },
   {
     name: "National Climate Resilience & Drought Warning",
     tag: "AI Climate Modeling",
     desc: "Satellite remote sensing delivering seasonal drought advisories to over 100,000 registered agrarian smallholders.",
-    img: "/tdrc_hero_research.svg",
+    img: "/images/tdrc/project_drought_warning.jpg",
   },
 ];
 
@@ -170,15 +199,33 @@ const FAQS = [
 
 export default function TDRCHomePage() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1));
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
 
   return (
     <main className="min-h-screen bg-white text-[#0E1F17] font-sans antialiased overflow-x-hidden">
       <TDRCNavbar />
 
-      {/* Hero Section with Research Complex Visual */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* Hero Section with Interactive Research Complex Visual Slider */}
+      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
               <SectionLabel>Scientific Research &amp; Development Solutions</SectionLabel>
@@ -211,27 +258,86 @@ export default function TDRCHomePage() {
               </div>
             </div>
 
-            {/* Right Hero Image Card */}
+            {/* Right Hero Image Slider */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/tdrc_hero_research.svg"
-                  alt="TDRC Applied Environmental Research Centre"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0E1F17]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
+              <div
+                className="relative w-full max-w-[540px] h-[380px] sm:h-[440px] rounded-3xl overflow-hidden shadow-2xl border group bg-slate-900"
+                style={{ borderColor: theme.border }}
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
+                {HERO_SLIDES.map((slide, idx) => (
+                  <div
+                    key={slide.tag}
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                      idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                    }`}
+                  >
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      fill
+                      className="object-cover"
+                      priority={idx === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E1F17]/90 via-[#0E1F17]/30 to-transparent" />
+                  </div>
+                ))}
+
+                {/* Top Badge & Slide Counter */}
+                <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+                  <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border shadow-sm text-[#0E1F17]">
+                    {HERO_SLIDES[currentSlide].tag}
+                  </span>
+                  <div className="px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md text-white text-[11px] font-bold">
+                    {currentSlide + 1} / {HERO_SLIDES.length}
+                  </div>
+                </div>
+
+                {/* Navigation Arrows */}
+                <button
+                  onClick={handlePrevSlide}
+                  aria-label="Previous Slide"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/85 hover:bg-white text-slate-800 flex items-center justify-center shadow-md transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  onClick={handleNextSlide}
+                  aria-label="Next Slide"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/85 hover:bg-white text-slate-800 flex items-center justify-center shadow-md transition-all opacity-0 group-hover:opacity-100 cursor-pointer"
+                >
+                  <ChevronRight size={18} />
+                </button>
+
+                {/* Bottom Overlay Card with Content & Indicators */}
+                <div className="absolute inset-x-0 bottom-0 z-20 p-4 sm:p-5">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg" style={{ borderColor: theme.border }}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-black uppercase tracking-wider text-[#1F7A3E]">
-                        600+ Completed Studies
-                      </span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <h3 className="text-xs sm:text-sm font-extrabold uppercase tracking-tight text-[#0E1F17] line-clamp-1">
+                        {HERO_SLIDES[currentSlide].title}
+                      </h3>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
                     </div>
-                    <p className="text-sm font-bold" style={{ color: theme.ink }}>
-                      EIA Studies · Climate Adaptation · GIS Telemetry
+                    <p className="text-[11.5px] font-medium text-slate-600 line-clamp-2 mb-2.5">
+                      {HERO_SLIDES[currentSlide].desc}
                     </p>
+
+                    {/* Progress Indicator Dots */}
+                    <div className="flex items-center gap-1.5 pt-1 border-t border-slate-100">
+                      {HERO_SLIDES.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setCurrentSlide(i)}
+                          aria-label={`Go to slide ${i + 1}`}
+                          className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                            i === currentSlide
+                              ? "w-7 bg-[#2E9E54]"
+                              : "w-2 bg-slate-300 hover:bg-slate-400"
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -276,7 +382,7 @@ export default function TDRCHomePage() {
             <div className="lg:col-span-6">
               <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/tdrc_hero_research.svg"
+                  src="/images/tdrc/about_main.jpg"
                   alt="TDRC Applied Environmental Research"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

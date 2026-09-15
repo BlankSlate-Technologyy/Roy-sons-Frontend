@@ -43,7 +43,7 @@ const PUBLICATIONS = [
     journal: "Journal of Arid Land Ecology & Desertification Studies",
     desc: "A 4-year empirical field study evaluating root tensile strength, sand migration mitigation, and micro-climate moderation of acacia, moringa, and ziziphus shelterbelts in the Thal Desert.",
     tag: "Peer-Reviewed Paper",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/pub_paper.jpg",
   },
   {
     title: "Indus Basin Groundwater Depletion Dynamics & Managed Aquifer Recharge Models",
@@ -53,7 +53,7 @@ const PUBLICATIONS = [
     journal: "TDRC Technical Hydrology Monograph No. 42",
     desc: "Comprehensive 120-piezometer telemetric assessment of groundwater drawdown, salinity stratification, and artificial check-dam recharge feasibility across the Indus-Jhelum Doab.",
     tag: "Hydrology Monograph",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/pub_hydrology.jpg",
   },
   {
     title: "National Policy Brief: Climate Change Adaptation in Arid Pastoral Zones",
@@ -63,7 +63,7 @@ const PUBLICATIONS = [
     journal: "Submitted to Federal Ministry of Climate Change & Environmental Coordination",
     desc: "Evidence-based strategic policy recommendations covering drought early warnings, livestock insurance, community water rights, and subsidized solar irrigation schemes.",
     tag: "Executive Policy Brief",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/pub_policy.jpg",
   },
   {
     title: "Standardized Environmental Impact Assessment (EIA) Guidelines for Solar Mega-Parks",
@@ -73,7 +73,7 @@ const PUBLICATIONS = [
     journal: "EPA Pakistan Certified EIA Practitioner Manual",
     desc: "Practical operational framework outlining baseline ecological surveying, biodiversity corridor preservation, dust suppression protocols, and decommissioning requirements for solar projects.",
     tag: "EIA Practitioner Manual",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/research_eia.jpg",
   },
   {
     title: "Community-Managed High-Efficiency Drip Irrigation in Arid Soils: A 5-Year Field Trial",
@@ -83,7 +83,7 @@ const PUBLICATIONS = [
     journal: "International Agro-Sciences & Water Management Journal",
     desc: "Detailed comparative trial documenting 65% water savings, root zone moisture dynamics, and 35% crop yield gains across high-density date-palm and olive orchards.",
     tag: "Agro-Sciences Study",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/pub_paper.jpg",
   },
   {
     title: "Socioeconomic Baseline and Gender Inclusivity in Punjab Desert Value Chains",
@@ -93,7 +93,7 @@ const PUBLICATIONS = [
     journal: "TDRC Rural Development Working Paper Series",
     desc: "In-depth survey of 3,500 rural households examining women participation in organic moringa processing, micro-finance access, and village-level climate resilience.",
     tag: "Social Research Paper",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/pub_policy.jpg",
   },
 ];
 
@@ -141,6 +141,27 @@ export default function TDRCPublicationsPage() {
                   className="w-full pl-11 pr-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#2E9E54] transition-all bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 />
+              </div>
+            </div>
+
+            {/* Publication Hero Visual Banner */}
+            <div className="relative w-full max-w-4xl mx-auto h-[220px] sm:h-[300px] rounded-3xl overflow-hidden border shadow-lg mt-10 group bg-slate-900" style={{ borderColor: theme.border }}>
+              <Image
+                src="/images/tdrc/pub_hero.jpg"
+                alt="TDRC Scientific Research Library & Knowledge Repository"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0E1F17]/85 via-[#0E1F17]/30 to-transparent flex items-end p-6 sm:p-8">
+                <div className="text-white text-left">
+                  <span className="text-[11px] font-black uppercase tracking-widest text-[#7BE0A0] block mb-1">
+                    Open-Access Academic Repository
+                  </span>
+                  <h3 className="text-base sm:text-xl font-bold">
+                    Empirical Arid Research, Hydrological Aquifer Monographs &amp; Statutory EIA Guidelines
+                  </h3>
+                </div>
               </div>
             </div>
           </div>

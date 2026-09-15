@@ -171,6 +171,27 @@ export default function TDRCContactPage() {
                 </a>
               </div>
             </div>
+
+            {/* Contact Hero Architectural Visual Banner */}
+            <div className="relative w-full max-w-4xl mx-auto h-[240px] sm:h-[320px] rounded-3xl overflow-hidden border shadow-lg mt-10 group bg-slate-900" style={{ borderColor: theme.border }}>
+              <Image
+                src="/images/tdrc/contact_hero.jpg"
+                alt="TDRC Scientific Research Institute Headquarters, Lahore"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0E1F17]/85 via-[#0E1F17]/30 to-transparent flex items-end p-6 sm:p-8">
+                <div className="text-white text-left">
+                  <span className="text-[11px] font-black uppercase tracking-widest text-[#7BE0A0] block mb-1">
+                    Principal Research Secretariat
+                  </span>
+                  <h3 className="text-base sm:text-xl font-bold">
+                    Lahore Institute Headquarters, Analytical Laboratories &amp; Geospatial Telemetry Wing
+                  </h3>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -184,9 +205,24 @@ export default function TDRCContactPage() {
               <div>
                 <SectionLabel>Scientific Centers &amp; Laboratories</SectionLabel>
                 <SectionHeading className="mb-4">Regional Research Desks</SectionHeading>
-                <p className="text-sm sm:text-base font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
                   Our research scientists maintain certified analytical testing laboratories, GIS satellite telemetry suites, and field stations across Pakistan's key agro-ecological zones.
                 </p>
+
+                {/* Research Centers Showcase Card */}
+                <div className="relative w-full h-48 rounded-2xl overflow-hidden border shadow-sm group bg-slate-900" style={{ borderColor: theme.border }}>
+                  <Image
+                    src="/images/tdrc/contact_centers.jpg"
+                    alt="TDRC Regional Research Stations & Demonstration Farm"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E1F17]/85 via-transparent to-transparent flex items-end p-4">
+                    <span className="text-xs font-bold text-white uppercase tracking-wider">
+                      Bhakkar Research Station · Layyah Hub · Lahore Secretariat
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-5">
@@ -235,6 +271,26 @@ export default function TDRCContactPage() {
             {/* Right Booking Form */}
             <div className="lg:col-span-7">
               <div className="p-8 sm:p-12 rounded-3xl border bg-white shadow-xl" style={{ borderColor: theme.border }}>
+                {/* Consultation Meeting Image Banner */}
+                <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-8 border shadow-xs group bg-slate-900" style={{ borderColor: theme.border }}>
+                  <Image
+                    src="/images/tdrc/contact_meeting.jpg"
+                    alt="Scientific Consultation & Research Planning"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0E1F17]/85 via-[#0E1F17]/25 to-transparent flex items-end p-5">
+                    <div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-[#7BE0A0] block mb-0.5">
+                        Scientific Advisory Session
+                      </span>
+                      <p className="text-xs sm:text-sm font-bold text-white">
+                        Direct consultation with PhD scientists, hydrologists &amp; policy experts
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="mb-8">
                   <span className="text-xs font-black uppercase tracking-widest block mb-1 text-[#0E5B37]">
                     SCIENTIFIC CONSULTATION &amp; STUDY INQUIRY

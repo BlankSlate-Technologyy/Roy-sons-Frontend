@@ -46,7 +46,7 @@ const SIGNATURE_PROGRAMS = [
     status: "Active Field Program – 50,000+ Acres Greenery",
     desc: "Large-scale ecological restoration planting drought-hardy acacia, moringa, and olive shelterbelts to arrest desert encroachment and build living windbreaks around agricultural farmlands.",
     specs: ["Species: Acacia, Moringa, Ziziphus, Olive", "Area: 50,000+ Restored Arid Acres", "Impact: 60% Reduction in Sand Migration"],
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/project_agroforestry.jpg",
     tag: "Agro-Forestry & Afforestation",
   },
   {
@@ -56,7 +56,7 @@ const SIGNATURE_PROGRAMS = [
     status: "Real-Time Telemetric Hydrological Mapping",
     desc: "Deployment of 120+ telemetric groundwater monitoring piezometers mapping aquifer drawdown, salinity stratification, and managed artificial aquifer recharge feasibility.",
     specs: ["Sensors: 120+ Telemetric Piezometers", "Data: Daily Water Table & Salinity Flux", "Beneficiaries: 500,000+ Water Consumers"],
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/project_groundwater.jpg",
     tag: "Hydrology & Groundwater",
   },
   {
@@ -66,7 +66,7 @@ const SIGNATURE_PROGRAMS = [
     status: "AI Climate Modeling & SMS Alerts",
     desc: "Integrating multi-spectral satellite remote sensing with predictive AI climate models to provide seasonal drought risk warnings and crop irrigation advisories to smallholder farmers.",
     specs: ["Coverage: 100,000+ Registered Farmers", "Frequency: Bi-Weekly Agro-Advisories", "Accuracy: 94% Precipitation Forecasting"],
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/project_drought_warning.jpg",
     tag: "Climate Modeling",
   },
   {
@@ -76,7 +76,7 @@ const SIGNATURE_PROGRAMS = [
     status: "65% Water Efficiency Demonstration Farm",
     desc: "Pilot demonstration facility demonstrating solar-powered pressurized drip and bubbler irrigation for high-value arid orchards including citrus, dates, and pomegranates in desert soils.",
     specs: ["Water Savings: 65% Compared to Flood Irrigation", "Energy: 100% Off-Grid Solar Pumping", "Yield: 35% Higher Crop Output"],
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/project_solar_irrigation.jpg",
     tag: "High-Efficiency Irrigation",
   },
   {
@@ -86,7 +86,7 @@ const SIGNATURE_PROGRAMS = [
     status: "Conservation & Species Restoration",
     desc: "Ecological research establishing protected wildlife migratory corridors, monitoring native flora regeneration, and safeguarding endangered desert fauna such as the Houbara bustard and chinkara gazelle.",
     specs: ["Habitat: 25,000 Hectares Protected Corridor", "Surveys: Annual Wildlife Census & Tagging", "Partners: WWF & Provincial Wildlife Dept"],
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/project_biodiversity.jpg",
     tag: "Wildlife Conservation",
   },
   {
@@ -96,7 +96,7 @@ const SIGNATURE_PROGRAMS = [
     status: "Empowered 3,500+ Rural Women",
     desc: "Community-driven economic program providing solar dehydrators, quality packaging equipment, and direct market linkage training for organic moringa leaf powder and premium dried date products.",
     specs: ["Beneficiaries: 3,500+ Rural Households", "Income: +45% Average Household Revenue", "Certification: Organic Field Certification"],
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/project_women_agro.jpg",
     tag: "Community Livelihoods",
   },
 ];

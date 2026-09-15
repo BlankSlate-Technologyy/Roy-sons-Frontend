@@ -37,7 +37,7 @@ const RESEARCH_SERVICES = [
     title: "Applied Scientific & Ecological Research",
     subtitle: "Arid Land Ecology, Soil Chemistry & Flora Studies",
     desc: "Conducting empirical field research on arid ecosystem resilience, sand dune stabilization, soil salinity reclamation, and indigenous drought-resistant botanicals.",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/research_soil.jpg",
     tag: "Applied Science",
     icon: FileSearch,
     deliverables: [
@@ -52,7 +52,7 @@ const RESEARCH_SERVICES = [
     title: "Environmental Impact Assessments (EIA & IEE)",
     subtitle: "Statutory Environmental Permitting & Compliance",
     desc: "Delivering complete Environmental Impact Assessments (EIA), Initial Environmental Examinations (IEE), and Environmental Management Plans (EMP) for mega infrastructure and energy projects.",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/research_eia.jpg",
     tag: "EIA & Compliance",
     icon: Leaf,
     deliverables: [
@@ -67,7 +67,7 @@ const RESEARCH_SERVICES = [
     title: "Climate Adaptation & Desert Greening",
     subtitle: "Agro-Forestry Shelterbelts & Water Conservation",
     desc: "Designing large-scale climate adaptation programs that integrate drought-hardy tree shelterbelts, solar-powered high-efficiency drip irrigation, and groundwater aquifer replenishment.",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/research_forestry.jpg",
     tag: "Climate & Forestry",
     icon: Sprout,
     deliverables: [
@@ -82,7 +82,7 @@ const RESEARCH_SERVICES = [
     title: "Evidence-Based Policy Research & Governance",
     subtitle: "Strategic Policy Briefs & Institutional Roadmaps",
     desc: "Providing government ministries, international donors, and development agencies with actionable policy analysis, economic cost-benefit evaluations, and governance frameworks.",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/research_policy.jpg",
     tag: "Policy & Strategy",
     icon: Scale,
     deliverables: [
@@ -97,7 +97,7 @@ const RESEARCH_SERVICES = [
     title: "Social Development & Rural Livelihoods",
     subtitle: "Community Empowerment, Food Security & Skills",
     desc: "Executing participatory community development programs focusing on climate-resilient agriculture, rural women entrepreneurship, clean water access, and food security.",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/research_rural.jpg",
     tag: "Social Development",
     icon: Users2,
     deliverables: [
@@ -112,7 +112,7 @@ const RESEARCH_SERVICES = [
     title: "GIS, Satellite Remote Sensing & Training",
     subtitle: "Spatial Mapping, Drone Surveys & Professional Academies",
     desc: "Utilizing advanced GIS mapping, satellite multi-spectral remote sensing, and drone aerial surveys alongside technical capacity-building workshops for public and private organizations.",
-    image: "/tdrc_hero_research.svg",
+    image: "/images/tdrc/research_gis.jpg",
     tag: "GIS & Capacity Building",
     icon: GraduationCap,
     deliverables: [
@@ -185,7 +185,7 @@ export default function TDRCServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/tdrc_hero_research.svg"
+                  src="/images/tdrc/hero_slider_2.jpg"
                   alt="TDRC Research Capabilities"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

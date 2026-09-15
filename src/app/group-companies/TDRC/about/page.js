@@ -106,7 +106,7 @@ export default function TDRCAboutPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/tdrc_hero_research.svg"
+                  src="/images/tdrc/about_main.jpg"
                   alt="TDRC Environmental Research Centre"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -163,7 +163,7 @@ export default function TDRCAboutPage() {
             {/* Left Graphic */}
             <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
               <Image
-                src="/tdrc_hero_research.svg"
+                src="/images/tdrc/about_mission_vision.jpg"
                 alt="TDRC Climate Research & Afforestation"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -203,12 +203,32 @@ export default function TDRCAboutPage() {
       {/* Core Values Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-12">
             <SectionLabel center>Guiding Principles</SectionLabel>
             <SectionHeading center className="mb-4">Our Core Values</SectionHeading>
             <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
               The foundational ethical and scientific standards that govern our research laboratories, field survey teams, and policy advisors.
             </p>
+          </div>
+
+          {/* Core Values Wide Visual Banner */}
+          <div className="relative w-full h-[240px] sm:h-[320px] rounded-3xl overflow-hidden border shadow-lg mb-12 group bg-slate-900" style={{ borderColor: theme.border }}>
+            <Image
+              src="/images/tdrc/about_core_values.jpg"
+              alt="TDRC Environmental Research Ethics & Values"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0E1F17]/85 via-[#0E1F17]/25 to-transparent flex items-end p-6 sm:p-8">
+              <div className="text-white">
+                <span className="text-[11px] font-black uppercase tracking-widest text-[#7BE0A0] block mb-1">
+                  Institutional Governance
+                </span>
+                <h3 className="text-base sm:text-xl font-black">
+                  Integrating Scientific Rigor, Ecological Conservation &amp; Community Development
+                </h3>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

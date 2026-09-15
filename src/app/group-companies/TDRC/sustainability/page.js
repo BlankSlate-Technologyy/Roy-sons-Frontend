@@ -38,6 +38,7 @@ const SUSTAINABILITY_PILLARS = [
     icon: TreePine,
     title: "Combatting Desertification & Soil Degradation (UN SDG 15)",
     desc: "By establishing dense biological windbreak shelterbelts of indigenous acacia, olive, and moringa trees, we arrest sand dune migration, reclaim saline soils, and restore vital desert ecological habitats.",
+    image: "/images/tdrc/sustainability_desert.jpg",
     features: [
       "Mitigating topsoil erosion and sandstorm encroachment onto farmlands",
       "Enhancing biological soil carbon sequestration through organic leaf litter",
@@ -48,6 +49,7 @@ const SUSTAINABILITY_PILLARS = [
     icon: Droplets,
     title: "Groundwater Aquifer Replenishment & Water Security (UN SDG 6)",
     desc: "Deploying high-density telemetric piezometers and constructing managed aquifer recharge (MAR) filtration pits that capture seasonal monsoon floods to replenish deep freshwater aquifers.",
+    image: "/images/tdrc/sustainability_water.jpg",
     features: [
       "Continuous telemetric monitoring of Indus-Jhelum Doab water table depths",
       "Eliminating destructive flood irrigation in favor of solar micro-drip networks",
@@ -58,6 +60,7 @@ const SUSTAINABILITY_PILLARS = [
     icon: Wind,
     title: "Climate Adaptation & Drought Early Warnings (UN SDG 13)",
     desc: "Combining high-resolution satellite remote sensing with predictive artificial intelligence models to deliver actionable climate vulnerability assessments and early drought alerts to agrarian communities.",
+    image: "/images/tdrc/sustainability_climate.jpg",
     features: [
       "Seasonal rainfall and temperature anomaly forecasting for farming clusters",
       "Screening climate-resilient crop cultivars tolerant to extreme heat and drought",
@@ -68,6 +71,7 @@ const SUSTAINABILITY_PILLARS = [
     icon: Users2,
     title: "Inclusive Rural Livelihoods & Gender Equality (UN SDG 1 & 5)",
     desc: "Ensuring that scientific innovations deliver tangible economic prosperity to marginalized rural communities through women-led agro-enterprises, fair trade packaging, and vocational capacity building.",
+    image: "/images/tdrc/sustainability_livelihoods.jpg",
     features: [
       "Establishing community-managed organic moringa and date-palm processing hubs",
       "Equipping over 3,500 rural women with technical post-harvest processing skills",
@@ -121,7 +125,7 @@ export default function TDRCSustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/tdrc_hero_research.svg"
+                  src="/images/tdrc/sustainability_hero.jpg"
                   alt="TDRC Environmental Restoration"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -188,29 +192,42 @@ export default function TDRCSustainabilityPage() {
               return (
                 <div
                   key={pillar.title}
-                  className="tdrc-card-hover p-8 rounded-3xl border flex flex-col justify-between bg-white shadow-xs"
+                  className="tdrc-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${theme.primary}15` }}>
-                      <Icon size={26} style={{ color: theme.primaryDark }} />
+                    {/* Pillar Card Image */}
+                    <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                      <Image
+                        src={pillar.image}
+                        alt={pillar.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <div className="w-11 h-11 rounded-2xl bg-white/95 backdrop-blur-md flex items-center justify-center shadow-md border" style={{ borderColor: theme.border }}>
+                          <Icon size={22} style={{ color: theme.primaryDark }} />
+                        </div>
+                      </div>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-3" style={{ color: theme.ink }}>
-                      {pillar.title}
-                    </h3>
+                    <div className="p-7">
+                      <h3 className="text-xl font-bold mb-3" style={{ color: theme.ink }}>
+                        {pillar.title}
+                      </h3>
 
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                      {pillar.desc}
-                    </p>
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                        {pillar.desc}
+                      </p>
 
-                    <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(225, 233, 227, 0.7)" }}>
-                      {pillar.features.map((f) => (
-                        <div key={f} className="flex items-center gap-2">
-                          <CheckCircle2 size={15} className="flex-shrink-0 text-[#2E9E54]" />
-                          <span className="text-xs font-medium text-slate-700">{f}</span>
-                        </div>
-                      ))}
+                      <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(225, 233, 227, 0.7)" }}>
+                        {pillar.features.map((f) => (
+                          <div key={f} className="flex items-center gap-2">
+                            <CheckCircle2 size={15} className="flex-shrink-0 text-[#2E9E54]" />
+                            <span className="text-xs font-medium text-slate-700">{f}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
