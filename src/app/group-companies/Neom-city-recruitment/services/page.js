@@ -37,7 +37,7 @@ const RECRUITMENT_SERVICES = [
     title: "Executive Search & C-Suite Headhunting",
     subtitle: "Boardroom Directors, CEOs, CTOs & General Managers",
     desc: "Discreet, retained executive search and leadership advisory identifying high-impact visionary executives to drive enterprise growth and transformation.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/hero_executive_search.jpg",
     tag: "Executive Search",
     icon: UserSearch,
     deliverables: [
@@ -52,7 +52,7 @@ const RECRUITMENT_SERVICES = [
     title: "Overseas Workforce Deployment",
     subtitle: "Saudi Arabia (NEOM / Red Sea), UAE, Qatar, UK & Europe",
     desc: "Bureau of Emigration certified mass overseas mobilization of skilled engineers, technicians, medical professionals, and construction trades.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/hero_mega_infra.jpg",
     tag: "Overseas Mobility",
     icon: Globe2,
     deliverables: [
@@ -67,7 +67,7 @@ const RECRUITMENT_SERVICES = [
     title: "Enterprise Talent Acquisition & RPO",
     subtitle: "Volume Hiring, Sourcing Campaigns & Candidate Screening",
     desc: "Recruitment Process Outsourcing (RPO) and full-cycle talent acquisition managing high-volume hiring campaigns with rapid time-to-fill turnaround.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/card_tech.jpg",
     tag: "Talent Acquisition",
     icon: Users,
     deliverables: [
@@ -82,7 +82,7 @@ const RECRUITMENT_SERVICES = [
     title: "Strategic HR Advisory & Policy Design",
     subtitle: "Organizational Design, Grading, Salary Surveys & Compliance",
     desc: "Consulting on organizational structure design, salary grading scales, employee handbooks, labor law compliance, and performance management systems.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/hero_trades.jpg",
     tag: "HR Consultancy",
     icon: MessageSquare,
     deliverables: [
@@ -97,7 +97,7 @@ const RECRUITMENT_SERVICES = [
     title: "Contractual & Project-Based Staffing",
     subtitle: "Flexible Manpower, Turnaround Teams & Temporary Staff",
     desc: "Supplying vetted contract professionals, site engineers, IT developers, and administrative personnel for project-based and seasonal enterprise requirements.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/card_oilfield.jpg",
     tag: "Contract Staffing",
     icon: ClipboardList,
     deliverables: [
@@ -112,7 +112,7 @@ const RECRUITMENT_SERVICES = [
     title: "Payroll & HR Operations Outsourcing",
     subtitle: "Tax Withholdings, EOBI / Social Security & Benefits Admin",
     desc: "Automated, cloud-based payroll processing, statutory tax compliance, employee benefits administration, and complete third-party personnel recordkeeping.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/card_mobilize.jpg",
     tag: "Payroll Outsourcing",
     icon: FileCheck,
     deliverables: [
@@ -134,12 +134,15 @@ const SERVICE_STATS = [
 export default function NeomRecruitmentServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = RECRUITMENT_SERVICES.filter(
-    (s) =>
-      s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.tag.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filtered = RECRUITMENT_SERVICES.filter((s) => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return true;
+    return (
+      (s.title && s.title.toLowerCase().includes(query)) ||
+      (s.desc && s.desc.toLowerCase().includes(query)) ||
+      (s.tag && s.tag.toLowerCase().includes(query))
+    );
+  });
 
   return (
     <main className="min-h-screen bg-white text-[#475569] font-sans antialiased overflow-x-hidden">
@@ -183,9 +186,9 @@ export default function NeomRecruitmentServicesPage() {
 
             {/* Right Hero Image Card */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-sky-50/50" style={{ borderColor: theme.border }}>
+              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-100" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/neomrecruitment_hero_talent.svg"
+                  src="/neomrecruitment/hero_executive_search.jpg"
                   alt="Neom City Recruitment HR Divisions"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

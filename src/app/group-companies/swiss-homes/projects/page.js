@@ -16,6 +16,8 @@ import {
   Layers,
   Award,
   ShieldCheck,
+  Eye,
+  SlidersHorizontal,
 } from "lucide-react";
 import {
   theme,
@@ -23,121 +25,77 @@ import {
   SwissHomesFooter,
   SectionLabel,
   SectionHeading,
+  PropertyInquiryModal,
+  PropertyDetailModal,
 } from "../components/SwissHomesShared";
+import { PROPERTY_LISTINGS } from "../swiss-homes-data";
 
 const CATEGORIES = [
   "All",
-  "Luxury Villas",
-  "Smart Apartments",
-  "Commercial Hubs",
-  "Master-Planned Enclaves",
-  "Eco-Estates",
-];
-
-const SIGNATURE_PROJECTS = [
-  {
-    name: "Swiss Enclave Luxury Villas",
-    category: "Luxury Villas",
-    location: "Ring Road Interchange / Phase-VI Corridor, Lahore",
-    status: "Under Construction & Ready-to-Move Units",
-    desc: "A boutique gated community offering 10 Marla and 1 Kanal smart architectural villas with floor-to-ceiling glass facades, private infinity plunge pools, and automated home systems.",
-    specs: ["Plot Sizes: 10 Marla & 1 Kanal", "Bedrooms: 4 & 5 Ensuite Luxury Suites", "Features: Private Pool & Solar System"],
-    image: "/swiss_hero_architecture.svg",
-    tag: "Exclusive Gated Enclave",
-  },
-  {
-    name: "Swiss Crest Smart Heights",
-    category: "Smart Apartments",
-    location: "Main Boulevard Commercial Avenue, Islamabad",
-    status: "Booking Open – 3-Year Installments",
-    desc: "A 24-story residential high-rise featuring 1, 2, and 3-bedroom smart serviced apartments, heated indoor swimming pools, rooftop fitness gym, and high-speed intelligent elevators.",
-    specs: ["Types: 1, 2 & 3 Bed Smart Apartments", "Floors: 24 Floors + 3 Basement Parking", "Amenities: Sky Lounge & Spa"],
-    image: "/swiss_master_planning.svg",
-    tag: "Luxury High-Rise Living",
-  },
-  {
-    name: "Swiss Executive Business Tower",
-    category: "Commercial Hubs",
-    location: "Financial & Corporate District, Karachi",
-    status: "Grade-A Corporate Offices & Retail",
-    desc: "Modern corporate tower offering double-height executive office suites, conference convention centers, high-street retail arcade, and integrated Building Management Systems (BMS).",
-    specs: ["Units: Executive Corporate Suites & Retail", "Security: Biometric Smart Turnstiles", "Power: 100% Dedicated Backup Gensets"],
-    image: "/swiss_hero_architecture.svg",
-    tag: "Corporate Commercial Hub",
-  },
-  {
-    name: "Alpine Meadows Gated Community",
-    category: "Master-Planned Enclaves",
-    location: "Green Belt Expressway, Rawalpindi / Islamabad",
-    status: "Master-Planned Community – 500+ Acres",
-    desc: "An eco-friendly master-planned smart city enclave featuring 5, 10, and 20 Marla residential plots, a central 25-acre botanical lake, underground utilities, and solar streetlights.",
-    specs: ["Total Area: 500+ Master-Planned Acres", "Infrastructure: 100% Underground Cabling", "Open Space: 40% Parks & Green Belts"],
-    image: "/swiss_master_planning.svg",
-    tag: "Eco-Smart City Enclave",
-  },
-  {
-    name: "Swiss Boulevard Commercial Arcade",
-    category: "Commercial Hubs",
-    location: "Prime Commercial Sector, Lahore",
-    status: "High-Street Retail & Dining Arcade",
-    desc: "A premium retail and commercial entertainment hub with double-frontage boutique outlets, open-air pedestrian promenades, cinema multiplexes, and rooftop open-air cafes.",
-    specs: ["Frontage: 120 ft Wide Main Boulevard", "Outlets: Fashion Flagships & Fine Dining", "Footfall: High-Traffic Commercial Zone"],
-    image: "/swiss_hero_architecture.svg",
-    tag: "High-Street Retail",
-  },
-  {
-    name: "Lakeview Eco-Villas & Resorts",
-    category: "Eco-Estates",
-    location: "Scenic Waterfront Foothills, Khanpur / Haripur",
-    status: "Waterfront Vacation & Retirement Villas",
-    desc: "Exclusive waterfront villas nestled along pristine lake shores, designed with timber-and-stone alpine architecture, private docks, and integrated organic olive orchards.",
-    specs: ["Units: 1 & 2 Kanal Waterfront Villas", "Power: 100% Off-Grid Solar Microgrid", "Leisure: Private Boating & Equestrian Club"],
-    image: "/swiss_master_planning.svg",
-    tag: "Waterfront Luxury",
-  },
+  "Residential Villas",
+  "Luxury Apartments",
+  "Gated Communities",
+  "Country Farmhouses",
+  "Commercial Plazas",
+  "Smart Townhouses",
 ];
 
 export default function SwissHomesProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortBy, setSortBy] = useState("featured");
 
-  const filtered = SIGNATURE_PROJECTS.filter((p) => {
-    const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+  // Modals
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
+  const [selectedPropertyForInquiry, setSelectedPropertyForInquiry] = useState(null);
+  const [activeDetailProperty, setActiveDetailProperty] = useState(null);
+
+  const filtered = PROPERTY_LISTINGS.filter((d) => {
+    const matchesCategory = selectedCategory === "All" || d.category === selectedCategory;
     const matchesSearch =
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.location.toLowerCase().includes(searchQuery.toLowerCase());
+      d.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      d.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      d.location.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
+  }).sort((a, b) => {
+    if (sortBy === "price-low") return a.priceNum - b.priceNum;
+    if (sortBy === "price-high") return b.priceNum - a.priceNum;
+    return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
   });
 
+  const handleOpenInquiry = (prop) => {
+    setSelectedPropertyForInquiry(prop);
+    setIsInquiryOpen(true);
+  };
+
   return (
-    <main className="min-h-screen bg-white text-[#2B2B2B] font-sans antialiased overflow-x-hidden">
-      <SwissHomesNavbar />
+    <main className="min-h-screen bg-white text-[#1F2937] font-sans antialiased overflow-x-hidden">
+      <SwissHomesNavbar onOpenInquiry={() => setIsInquiryOpen(true)} />
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+      <section className="relative py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b bg-gradient-to-b from-slate-50 to-white" style={{ borderColor: theme.border }}>
+        <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
-            <SectionLabel center>Real Estate Portfolio</SectionLabel>
+            <SectionLabel center>Properties &amp; Housing Deployments</SectionLabel>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.charcoal }}>
-              Signature Developments &amp; <span style={{ color: theme.red }}>Smart Communities</span>
+              Signature Developments &amp; <span style={{ color: theme.red }}>Real Estate Projects</span>
             </h1>
 
-            <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-              Explore our portfolio of master-planned smart communities, luxury contemporary villas, high-rise residential towers, and prime commercial retail hubs designed for superior lifestyle and capital appreciation.
+            <p className="text-base sm:text-lg font-medium leading-relaxed mb-8 text-slate-600">
+              Browse our master developments including luxury 10 Marla and 1 Kanal smart villas, skyline high-rise apartment towers, approved gated societies, countryside farmhouses, and prime commercial plots.
             </p>
 
             {/* Live Search */}
             <div className="flex justify-center">
-              <div className="relative w-full max-w-md">
+              <div className="relative w-full max-w-lg">
                 <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Search projects by name, location, or type..."
+                  placeholder="Search by development name, city, or sector..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#B01B2E] transition-all bg-white shadow-xs"
+                  className="w-full pl-11 pr-4 py-3.5 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#B01B2E] transition-all bg-white shadow-sm"
                   style={{ borderColor: theme.border }}
                 />
               </div>
@@ -146,20 +104,20 @@ export default function SwissHomesProjectsPage() {
         </div>
       </section>
 
-      {/* Category Filter Pills */}
-      <section className="py-6 px-4 sm:px-6 lg:px-8 border-b bg-slate-50/70" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+      {/* Category Filter Pills & Sort Bar */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 border-b bg-white sticky top-[65px] z-30 shadow-xs" style={{ borderColor: theme.border }}>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none w-full md:w-auto">
             {CATEGORIES.map((cat) => {
               const active = selectedCategory === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider whitespace-nowrap transition-all duration-200 cursor-pointer ${
                     active
                       ? "bg-[#B01B2E] text-white shadow-md"
-                      : "bg-white border text-slate-700 hover:border-[#B01B2E]"
+                      : "bg-slate-50 border text-slate-700 hover:border-[#B01B2E] hover:bg-white"
                   }`}
                   style={{ borderColor: active ? theme.red : theme.border }}
                 >
@@ -168,126 +126,195 @@ export default function SwissHomesProjectsPage() {
               );
             })}
           </div>
+
+          <div className="flex items-center gap-3 w-full md:w-auto justify-end">
+            <span className="text-xs font-bold text-slate-500 whitespace-nowrap">
+              {filtered.length} developments listed
+            </span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="px-3 py-1.5 rounded-xl border text-xs font-bold text-slate-700 bg-white"
+              style={{ borderColor: theme.border }}
+            >
+              <option value="featured">Featured First</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </div>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filtered.map((proj) => (
-              <div
-                key={proj.name}
-                className="swiss-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                style={{ borderColor: theme.border }}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b bg-slate-50/50" style={{ borderColor: theme.border }}>
+        <div className="max-w-7xl mx-auto">
+          {filtered.length === 0 ? (
+            <div className="text-center py-20 bg-white rounded-3xl border" style={{ borderColor: theme.border }}>
+              <HomeIcon className="mx-auto text-slate-300 mb-3" size={48} />
+              <h4 className="text-lg font-bold text-slate-800 mb-2">No properties match your filter</h4>
+              <p className="text-sm text-slate-500 mb-6">Try clearing your search query or choosing another category.</p>
+              <button
+                onClick={() => { setSelectedCategory("All"); setSearchQuery(""); }}
+                className="px-5 py-2.5 rounded-xl text-xs font-bold uppercase bg-[#B01B2E] text-white cursor-pointer"
               >
-                <div>
-                  {/* Card Image */}
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
-                    <Image
-                      src={proj.image}
-                      alt={proj.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 border shadow-sm" style={{ color: theme.charcoal, borderColor: theme.border }}>
-                        {proj.tag}
-                      </span>
+                Reset Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filtered.map((proj) => (
+                <div
+                  key={proj.id}
+                  className="rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-sm hover:shadow-xl transition-all duration-300 group"
+                  style={{ borderColor: theme.border }}
+                >
+                  <div>
+                    {/* Realistic Photo Card Image */}
+                    <div className="relative w-full h-56 bg-slate-900 overflow-hidden">
+                      <Image
+                        src={proj.image}
+                        alt={proj.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#111827]/85 via-transparent to-transparent" />
+                      <div className="absolute top-4 left-4">
+                        <span className="text-[10.5px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 text-[#1F2937] shadow-sm">
+                          {proj.category}
+                        </span>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#B01B2E] text-white shadow-xs">
+                          {proj.badge}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-3 left-4 right-4 text-white flex items-center justify-between">
+                        <span className="text-xs font-bold text-emerald-400">
+                          {proj.status}
+                        </span>
+                        <span className="text-xs font-bold text-slate-200">
+                          {proj.area}
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Body Content */}
-                  <div className="p-7">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-black" style={{ color: theme.charcoal }}>
-                        {proj.name}
+                    {/* Body Content */}
+                    <div className="p-6">
+                      <div className="flex items-start gap-1.5 text-xs font-semibold text-slate-500 mb-2">
+                        <MapPin size={14} className="flex-shrink-0 mt-0.5 text-[#B01B2E]" />
+                        <span>{proj.location}</span>
+                      </div>
+
+                      <h3 className="text-lg font-black leading-snug text-slate-900 mb-2 group-hover:text-[#B01B2E] transition-colors">
+                        {proj.title}
                       </h3>
-                    </div>
 
-                    <div className="flex items-start gap-1.5 text-xs font-semibold text-slate-500 mb-3">
-                      <MapPin size={14} className="flex-shrink-0 mt-0.5 text-[#B01B2E]" />
-                      <span>{proj.location}</span>
-                    </div>
-
-                    <div className="mb-4">
-                      <span className="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#B01B2E]/10 text-[#B01B2E]">
-                        {proj.status}
-                      </span>
-                    </div>
-
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                      {proj.desc}
-                    </p>
-
-                    {/* Specs List */}
-                    <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(232, 232, 232, 0.7)" }}>
-                      <p className="text-xs font-bold uppercase tracking-wider" style={{ color: theme.charcoal }}>
-                        Project Highlights:
+                      <p className="text-xs sm:text-sm font-medium leading-relaxed text-slate-600 mb-5 line-clamp-3">
+                        {proj.summary}
                       </p>
-                      {proj.specs.map((s) => (
-                        <div key={s} className="flex items-center gap-2">
-                          <CheckCircle2 size={14} className="flex-shrink-0 text-[#B01B2E]" />
-                          <span className="text-xs font-medium text-slate-700">{s}</span>
+
+                      {/* Specs / Features Preview */}
+                      {proj.features && (
+                        <div className="space-y-2 pt-4 border-t" style={{ borderColor: theme.border }}>
+                          <p className="text-[11px] font-black uppercase tracking-wider text-slate-500">
+                            Development Highlights:
+                          </p>
+                          {proj.features.slice(0, 3).map((f, idx) => (
+                            <div key={idx} className="flex items-center gap-2 text-xs font-medium text-slate-700">
+                              <CheckCircle2 size={13} className="text-[#B01B2E] flex-shrink-0" />
+                              <span>{f}</span>
+                            </div>
+                          ))}
                         </div>
-                      ))}
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="p-6 pt-0 border-t mt-4" style={{ borderColor: theme.border }}>
+                    <div className="flex items-baseline justify-between py-3">
+                      <div>
+                        <span className="text-[10px] font-bold text-slate-400 uppercase">Pricing / Booking</span>
+                        <p className="text-base font-black text-[#B01B2E]">{proj.price}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2.5">
+                      <button
+                        onClick={() => setActiveDetailProperty(proj)}
+                        className="flex-1 py-2.5 rounded-xl border text-xs font-extrabold uppercase tracking-wider text-slate-700 hover:bg-slate-50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                        style={{ borderColor: theme.border }}
+                      >
+                        <Eye size={13} />
+                        <span>Specs</span>
+                      </button>
+                      <button
+                        onClick={() => handleOpenInquiry(proj)}
+                        className="flex-1 py-2.5 rounded-xl text-xs font-extrabold uppercase tracking-wider text-white bg-[#B01B2E] hover:bg-[#8E1524] transition-colors shadow-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                      >
+                        <HomeIcon size={13} />
+                        <span>Inquire</span>
+                      </button>
                     </div>
                   </div>
                 </div>
-
-                <div className="p-7 pt-0">
-                  <Link
-                    href="/group-companies/swiss-homes/contact"
-                    className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
-                    style={{ borderColor: theme.border, color: theme.charcoal }}
-                  >
-                    <span>Request Floor Plan &amp; Prices</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+      {/* Investor Callout Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-slate-50" style={{ borderColor: theme.border }}>
             <div>
               <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#B01B2E]">
-                SCHEDULE AN ON-SITE TOUR
+                INVESTOR &amp; OVERSEAS LIAISON
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.charcoal }}>
-                Experience Our Model Villas &amp; Plots In Person
-              </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Our on-site site offices are open 7 days a week with dedicated customer relations managers to guide your property tour.
+              <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#1F2937] mb-2">
+                Seeking High-Yield Commercial Or Bulk Plot Portfolios?
+              </h3>
+              <p className="text-sm font-medium leading-relaxed text-slate-600 max-w-2xl">
+                Our Corporate Real Estate Division handles bulk institutional plot concessions, commercial pre-leased floors, and high-ROI joint ventures with guaranteed buyback agreements.
               </p>
             </div>
-
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-4 flex-shrink-0">
+              <button
+                onClick={() => setIsInquiryOpen(true)}
+                className="px-7 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-[#B01B2E] hover:bg-[#8E1524] transition-colors shadow-md cursor-pointer flex items-center gap-2"
+              >
+                <HomeIcon size={14} />
+                <span>Schedule Investor Consultation</span>
+              </button>
               <Link
                 href="/group-companies/swiss-homes/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.red }}
+                className="px-6 py-3.5 rounded-xl text-xs font-black uppercase tracking-wider text-slate-800 border border-slate-300 hover:bg-white transition-colors"
               >
-                <span>Book Site Inspection</span>
-                <ArrowRight size={15} />
+                Contact Sales HQ
               </Link>
-              <a
-                href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.charcoal, color: theme.charcoal }}
-              >
-                <Phone size={15} />
-                <span>0092-42-38924737</span>
-              </a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Modals */}
+      <PropertyInquiryModal
+        isOpen={isInquiryOpen}
+        onClose={() => {
+          setIsInquiryOpen(false);
+          setSelectedPropertyForInquiry(null);
+        }}
+        preselectedProperty={selectedPropertyForInquiry}
+      />
+
+      <PropertyDetailModal
+        property={activeDetailProperty}
+        onClose={() => setActiveDetailProperty(null)}
+        onInquireNow={(prop) => {
+          setSelectedPropertyForInquiry(prop);
+          setIsInquiryOpen(true);
+        }}
+      />
 
       <SwissHomesFooter />
     </main>

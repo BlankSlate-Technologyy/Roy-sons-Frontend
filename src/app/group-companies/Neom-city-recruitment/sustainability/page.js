@@ -121,9 +121,9 @@ export default function NeomRecruitmentSustainabilityPage() {
 
             {/* Right Visual Card */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-sky-50/50" style={{ borderColor: theme.border }}>
+              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-100" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/neomrecruitment_hero_talent.svg"
+                  src="/neomrecruitment/card_mobilize.jpg"
                   alt="Ethical Recruitment and Global Worker Welfare"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

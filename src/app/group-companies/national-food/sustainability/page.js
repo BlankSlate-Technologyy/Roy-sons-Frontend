@@ -119,7 +119,7 @@ export default function NFSSustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-rose-50/50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/nfs_hero_catering.svg"
+                  src="/nationalfood/hero_agricultural_trading.jpg"
                   alt="Sustainable Catering Operations and Green Kitchens"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

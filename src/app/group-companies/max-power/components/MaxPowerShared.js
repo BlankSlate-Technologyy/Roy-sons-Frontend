@@ -8,10 +8,6 @@ import {
   Phone,
   Mail,
   MapPin,
-  Facebook,
-  Linkedin,
-  Twitter,
-  Youtube,
   Menu,
   X,
   ArrowRight,
@@ -36,27 +32,36 @@ import {
 } from "lucide-react";
 
 export const theme = {
-  navy: "#0E4B7E", // Deep Electric Navy
-  navyDark: "#0A3860",
-  amber: "#F5A623", // Electric Amber / Gold
-  amberDark: "#D88E12",
-  charcoal: "#2D3748", // Slate Charcoal
-  charcoalDark: "#1A202C",
+  navy: "#0B2545", // Deep Navy typography & primary headings
+  navyDark: "#061527",
+  teal: "#0D7A82", // Modern Energy Teal
+  tealDark: "#095358",
+  green: "#059669", // Energy Green
+  greenDark: "#047857",
+  blue: "#0284C7", // High-Voltage Electric Blue
+  gold: "#D97706", // Subtle warm gold accent
+  goldLight: "#F59E0B",
   white: "#FFFFFF",
-  bgLight: "#F4F7FA",
-  border: "#D2E0EC",
-  textMuted: "#3E4C5E",
-  textLight: "#6B7A8E",
+  bgLight: "#F8FAFC",
+  border: "#E2E8F0",
+  borderLight: "#EDF2F7",
+  textMuted: "#475569",
+  textLight: "#64748B",
+  // Backward compatibility aliases:
+  amber: "#D97706",
+  amberDark: "#B45309",
+  charcoal: "#334155",
+  charcoalDark: "#0F172A",
 };
 
 export const NAV_LINKS = [
-  { label: "Home", href: "/group-companies/max-power" },
-  { label: "About Us", href: "/group-companies/max-power/about" },
-  { label: "Services", href: "/group-companies/max-power/services" },
-  { label: "Solutions & Products", href: "/group-companies/max-power/solutions" },
-  { label: "Projects", href: "/group-companies/max-power/projects" },
-  { label: "Sustainability", href: "/group-companies/max-power/sustainability" },
-  { label: "Contact", href: "/group-companies/max-power/contact" },
+  { label: "Home", shortLabel: "Home", href: "/group-companies/max-power" },
+  { label: "About Us", shortLabel: "About", href: "/group-companies/max-power/about" },
+  { label: "Services", shortLabel: "Services", href: "/group-companies/max-power/services" },
+  { label: "Solutions & Products", shortLabel: "Solutions", href: "/group-companies/max-power/solutions" },
+  { label: "Projects", shortLabel: "Projects", href: "/group-companies/max-power/projects" },
+  { label: "Sustainability", shortLabel: "Sustainability", href: "/group-companies/max-power/sustainability" },
+  { label: "Contact", shortLabel: "Contact", href: "/group-companies/max-power/contact" },
 ];
 
 export const FOOTER_SERVICES = [
@@ -71,12 +76,12 @@ export const FOOTER_SERVICES = [
 export function SectionLabel({ children, center }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-black uppercase tracking-[0.2em] mb-4 bg-slate-50 ${
+      className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-black uppercase tracking-[0.18em] mb-4 bg-[#F8FAFC] shadow-2xs ${
         center ? "mx-auto" : ""
       }`}
-      style={{ borderColor: theme.border, color: theme.navy }}
+      style={{ borderColor: theme.border, color: theme.teal }}
     >
-      <Zap size={14} style={{ color: theme.amber }} />
+      <Zap size={13} style={{ color: theme.green }} />
       <span>{children}</span>
     </div>
   );
@@ -88,7 +93,7 @@ export function SectionHeading({ children, className = "", center }) {
       className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight uppercase ${
         center ? "text-center" : ""
       } ${className}`}
-      style={{ color: theme.navyDark }}
+      style={{ color: theme.navy }}
     >
       {children}
     </h2>
@@ -141,7 +146,7 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
   }, [numericTarget, duration]);
 
   return (
-    <span ref={elementRef} className="font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight">
+    <span ref={elementRef} className="font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight" style={{ color: theme.navy }}>
       {count}
       {suffix}
     </span>
@@ -171,70 +176,68 @@ export function MaxPowerNavbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
+        scrolled ? "shadow-md py-1 sm:py-1.5" : "py-1.5 sm:py-2"
       }`}
       style={{
         borderBottom: `1px solid ${theme.border}`,
         backgroundColor: theme.white,
       }}
     >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/group-companies/max-power" className="flex items-center gap-3 select-none group">
-          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+        <Link href="/group-companies/max-power" className="flex items-center gap-2.5 select-none group py-0.5">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/12.png"
               alt="Max Power Logo"
-              width={80}
-              height={80}
+              width={56}
+              height={56}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.navyDark }}>
+            <span className="text-sm sm:text-[15px] font-black tracking-tight leading-none uppercase" style={{ color: theme.navy }}>
               Max Power
             </span>
-            <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.amberDark }}>
-              Energy &amp; Power Systems
+            <span className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-0.5" style={{ color: theme.teal }}>
+              Energy &amp; Power Infrastructure
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        {/* Desktop Navigation Links - Compact, balanced, NO navbar button */}
+        <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#0E4B7E] cursor-pointer"
+                className="text-[11px] xl:text-[12px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 cursor-pointer whitespace-nowrap"
                 style={{
-                  color: active ? theme.navy : theme.charcoal,
+                  color: active ? theme.teal : theme.textMuted,
                 }}
               >
-                {link.label}
+                <span className="hidden xl:inline">{link.label}</span>
+                <span className="xl:hidden">{link.shortLabel || link.label}</span>
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
+                    active ? "w-full" : "w-0 hover:w-full"
+                  }`}
+                  style={{ backgroundColor: theme.teal }}
+                />
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Link
-            href="/group-companies/max-power/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
-            style={{ backgroundColor: theme.navy }}
-          >
-            <span>Power Consultation</span>
-            <ArrowRight size={13} />
-          </Link>
-
+        {/* Mobile Menu Toggle */}
+        <div className="lg:hidden flex items-center">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
-            style={{ borderColor: theme.border, color: theme.navyDark }}
+            className="p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            style={{ borderColor: theme.border, color: theme.navy }}
             aria-label="Toggle Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -245,7 +248,7 @@ export function MaxPowerNavbar() {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
+          className="lg:hidden border-t px-5 py-4 space-y-1.5 bg-white shadow-xl"
           style={{ borderColor: theme.border }}
         >
           {NAV_LINKS.map((link) => {
@@ -257,25 +260,14 @@ export function MaxPowerNavbar() {
                 onClick={() => setMobileOpen(false)}
                 className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
                 style={{
-                  backgroundColor: active ? `${theme.navy}12` : "transparent",
-                  color: active ? theme.navy : theme.navyDark,
+                  backgroundColor: active ? `${theme.teal}14` : "transparent",
+                  color: active ? theme.teal : theme.navy,
                 }}
               >
                 {link.label}
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/max-power/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.navy }}
-            >
-              <span>Consult Power Engineers</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       )}
     </header>
@@ -292,41 +284,41 @@ export function MaxPowerFooter() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b" style={{ borderColor: theme.border }}>
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <Link href="/group-companies/max-power" className="flex items-center gap-3.5 mb-5 select-none">
-              <div className="w-13 h-13 rounded-xl bg-white p-1 border shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
+            <Link href="/group-companies/max-power" className="flex items-center gap-3 mb-5 select-none">
+              <div className="w-12 h-12 rounded-xl bg-white p-1 border shadow-2xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/max power.jpeg"
+                  src="/logos/12.png"
                   alt="Max Power Logo"
-                  width={52}
-                  height={52}
+                  width={48}
+                  height={48}
                   className="object-contain"
                 />
               </div>
               <div>
-                <p className="text-base font-black uppercase tracking-wider leading-tight" style={{ color: theme.navyDark }}>
+                <p className="text-base font-black uppercase tracking-wider leading-tight" style={{ color: theme.navy }}>
                   Max Power
                 </p>
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: theme.amberDark }}>
+                <p className="text-[10px] font-bold tracking-[0.18em] uppercase" style={{ color: theme.teal }}>
                   Max Power Corporation (Pvt) Ltd
                 </p>
               </div>
             </Link>
 
             <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-              Delivering turnkey renewable energy generation, high-voltage transmission substation EPC (132kV–500kV), industrial Battery Energy Storage Systems (BESS), and power engineering solutions across Pakistan.
+              Delivering turnkey utility-scale renewable energy generation, high-voltage transmission substation EPC (132kV–500kV), industrial Battery Energy Storage Systems (BESS), and power engineering solutions across Pakistan.
             </p>
 
-            <div className="flex items-center gap-2.5">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-slate-50" style={{ borderColor: theme.border, color: theme.navyDark }}>
-                <ShieldCheck size={14} style={{ color: theme.amber }} />
+            <div className="flex flex-wrap items-center gap-2.5">
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-[#F8FAFC]" style={{ borderColor: theme.border, color: theme.navy }}>
+                <ShieldCheck size={14} style={{ color: theme.green }} />
                 <span>PEC C-A No Limit EPC</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-slate-50" style={{ borderColor: theme.border, color: theme.navyDark }}>
-                <Zap size={14} style={{ color: theme.amber }} />
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-[#F8FAFC]" style={{ borderColor: theme.border, color: theme.navy }}>
+                <Zap size={14} style={{ color: theme.teal }} />
                 <span>2,000+ MW Capacity</span>
               </div>
             </div>
@@ -334,7 +326,7 @@ export function MaxPowerFooter() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navyDark }}>
+            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navy }}>
               Navigation
             </h4>
             <ul className="space-y-2.5 text-xs font-semibold">
@@ -342,10 +334,10 @@ export function MaxPowerFooter() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="hover:underline transition-colors hover:text-[#0E4B7E] flex items-center gap-1.5"
+                    className="hover:underline transition-colors flex items-center gap-1.5"
                     style={{ color: theme.textMuted }}
                   >
-                    <ChevronRight size={12} style={{ color: theme.amber }} />
+                    <ChevronRight size={12} style={{ color: theme.teal }} />
                     <span>{link.label}</span>
                   </Link>
                 </li>
@@ -355,7 +347,7 @@ export function MaxPowerFooter() {
 
           {/* Power Divisions */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navyDark }}>
+            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navy }}>
               Energy Divisions
             </h4>
             <ul className="space-y-2.5 text-xs font-semibold">
@@ -363,10 +355,10 @@ export function MaxPowerFooter() {
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="hover:underline transition-colors hover:text-[#0E4B7E] flex items-center gap-1.5"
+                    className="hover:underline transition-colors flex items-center gap-1.5"
                     style={{ color: theme.textMuted }}
                   >
-                    <ChevronRight size={12} style={{ color: theme.amber }} />
+                    <ChevronRight size={12} style={{ color: theme.teal }} />
                     <span>{s.label}</span>
                   </Link>
                 </li>
@@ -376,32 +368,32 @@ export function MaxPowerFooter() {
 
           {/* Contact Coordinates */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navyDark }}>
-              Power Engineering Desk
+            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navy }}>
+              Engineering Desk
             </h4>
             <div className="space-y-3 text-xs font-medium" style={{ color: theme.textMuted }}>
               <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.navy }} />
+                <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.teal }} />
                 <span>1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone size={16} className="flex-shrink-0" style={{ color: theme.navy }} />
-                <a href="tel:00924238924737" className="hover:underline font-bold" style={{ color: theme.navyDark }}>
+                <Phone size={16} className="flex-shrink-0" style={{ color: theme.teal }} />
+                <a href="tel:00924238924737" className="hover:underline font-bold" style={{ color: theme.navy }}>
                   0092-42-38924737 / 0092-321-8431665
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail size={16} className="flex-shrink-0" style={{ color: theme.navy }} />
+                <Mail size={16} className="flex-shrink-0" style={{ color: theme.teal }} />
                 <a href="mailto:info@roysons.org" className="hover:underline">
                   info@roysons.org
                 </a>
               </div>
             </div>
 
-            <div className="mt-5 p-3.5 rounded-xl border bg-slate-50 flex items-center gap-3" style={{ borderColor: theme.border }}>
-              <Headphones size={24} style={{ color: theme.navy }} />
+            <div className="mt-5 p-3.5 rounded-xl border bg-[#F8FAFC] flex items-center gap-3" style={{ borderColor: theme.border }}>
+              <Headphones size={24} style={{ color: theme.teal }} />
               <div>
-                <p className="text-[11px] font-bold uppercase" style={{ color: theme.navyDark }}>24/7 Grid Control Support</p>
+                <p className="text-[11px] font-bold uppercase" style={{ color: theme.navy }}>24/7 Grid Control Support</p>
                 <p className="text-[10.5px] font-medium" style={{ color: theme.textMuted }}>Emergency substation &amp; plant dispatch</p>
               </div>
             </div>
@@ -412,11 +404,11 @@ export function MaxPowerFooter() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium" style={{ color: theme.textLight }}>
           <p>&copy; 2026 Max Power Corporation (Pvt) Ltd. A Roy &amp; Sons Group Company.</p>
           <div className="flex items-center gap-4">
-            <Link href="/group-companies/max-power/contact" className="hover:underline hover:text-[#0E4B7E]">
+            <Link href="/group-companies/max-power/contact" className="hover:underline" style={{ color: theme.teal }}>
               Grid Interconnection Code
             </Link>
             <span>•</span>
-            <Link href="/group-companies/max-power/contact" className="hover:underline hover:text-[#0E4B7E]">
+            <Link href="/group-companies/max-power/contact" className="hover:underline" style={{ color: theme.teal }}>
               High-Voltage Safety Standards
             </Link>
           </div>

@@ -139,7 +139,7 @@ export default function WaltonFoodContactPage() {
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
             <SectionLabel center>Commercial &amp; Private Label Quotation Desk</SectionLabel>
 
@@ -174,7 +174,7 @@ export default function WaltonFoodContactPage() {
 
       {/* Main Quotation & Office Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Contact Information */}
             <div className="lg:col-span-5 space-y-8">

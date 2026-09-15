@@ -124,7 +124,7 @@ export default function NeomCitySustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/neomcity_hero_urban.svg"
+                  src="/neomcity/hero_eco_residential.jpg"
                   alt="Sustainable Smart City Planning and Green Infrastructure"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

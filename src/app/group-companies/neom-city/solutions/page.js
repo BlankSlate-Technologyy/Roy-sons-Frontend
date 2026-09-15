@@ -43,7 +43,7 @@ const SECTORS_SOLUTIONS = [
     category: "Smart Megacities",
     specs: ["Scope: 5,000+ Hectares Greenfield Smart City Master Planning", "Infrastructure: Subterranean Common Utility Duct Tunnels & Sponge Reservoirs", "Governance: Centralized Municipal Digital Twin & AI Traffic OS"],
     desc: "End-to-end master planning, civil construction, and concession stewardship for next-generation carbon-neutral smart metropolises.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_smart_city.jpg",
     tag: "Megacity Concession",
   },
   {
@@ -51,7 +51,7 @@ const SECTORS_SOLUTIONS = [
     category: "Financial Districts",
     specs: ["Density: Grade-A Commercial Skyscraper Towers (G+45 Floors)", "Efficiency: Centralized 20,000 TR District Cooling Plant Network", "Parking: 5,000+ Space Automated Smart Silos with EV Fast Chargers"],
     desc: "Developing high-density commercial centers, international banking headquarters, luxury corporate suites, and mixed-use public plazas.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_financial_district.jpg",
     tag: "Financial District",
   },
   {
@@ -59,7 +59,7 @@ const SECTORS_SOLUTIONS = [
     category: "Industrial SEZs",
     specs: ["Pavements: Heavy Concrete Roads Designed for 60-Ton Multi-Axle Trailers", "Power: Dedicated 132/11kV Substation & Clean Solar Hybrid Backup", "Customs: Automated Bonded Gate Terminals & Container Freight Depot"],
     desc: "Turnkey Special Economic Zones (SEZs) with bonded logistics terminals, high-capacity utility grids, and integrated industrial wastewater treatment.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/card_industrial_sez.jpg",
     tag: "Industrial SEZ",
   },
   {
@@ -67,7 +67,7 @@ const SECTORS_SOLUTIONS = [
     category: "Sustainable Communities",
     specs: ["Sustainability: LEED Neighborhood Development (ND) Platinum Standards", "Water: 100% Greywater Recycling for Linear Community Parks & Gardens", "Microgrid: Rooftop Solar PV & Centralized Battery Storage Integration"],
     desc: "Master-planned residential neighborhoods offering clean smart living, underground utilities, walkable shaded parks, and automated security.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_eco_residential.jpg",
     tag: "Eco-Living Community",
   },
   {
@@ -75,7 +75,7 @@ const SECTORS_SOLUTIONS = [
     category: "Transit & Mobility",
     specs: ["Corridors: Dedicated Grade-Separated Bus Rapid Transit (BRT) Expressways", "Signaling: AI-Synchronized Adaptive Traffic Lights with Priority Preemption", "Fleet: 100% Electric Mass Transit Depots & Mega Fast-Charging Plazas"],
     desc: "Designing high-capacity multi-modal transportation corridors that eliminate congestion and enable zero-emission autonomous urban transit.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_transit_infrastructure.jpg",
     tag: "Smart Transit Network",
   },
   {
@@ -83,7 +83,7 @@ const SECTORS_SOLUTIONS = [
     category: "Digital Twin & IoT",
     specs: ["Software: City-Wide Urban Operating System (Urban OS) with GIS Layering", "Sensors: 500,000+ IoT Sensors Monitoring Air, Water, Power & Traffic", "Facility: 24/7 Tier-IV Integrated Command and Control Center (ICCC)"],
     desc: "Deploying high-speed city fiber rings, municipal IoT sensor arrays, and centralized urban dashboards for automated municipal management.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_smart_city.jpg",
     tag: "Digital Twin Platform",
   },
 ];
@@ -94,10 +94,12 @@ export default function NeomCitySolutionsPage() {
 
   const filtered = SECTORS_SOLUTIONS.filter((p) => {
     const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+    const query = searchQuery.trim().toLowerCase();
     const matchesSearch =
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchQuery.toLowerCase());
+      !query ||
+      (p.name && p.name.toLowerCase().includes(query)) ||
+      (p.desc && p.desc.toLowerCase().includes(query)) ||
+      (p.category && p.category.toLowerCase().includes(query));
     return matchesCategory && matchesSearch;
   });
 

@@ -105,7 +105,7 @@ export default function NeomCityAboutPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/neomcity_hero_urban.svg"
+                  src="/neomcity/hero_smart_city.jpg"
                   alt="Neom City Corporation Urban Development"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -162,7 +162,7 @@ export default function NeomCityAboutPage() {
             {/* Left Graphic */}
             <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
               <Image
-                src="/neomcity_hero_urban.svg"
+                src="/neomcity/hero_financial_district.jpg"
                 alt="Smart City Master Plan and Transit Grid"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"

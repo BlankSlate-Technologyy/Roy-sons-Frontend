@@ -122,7 +122,7 @@ export default function MaxPowerSustainabilityPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/max_power_hero_energy.svg"
+                  src="/maxpower/hero_renewable_energy.jpg"
                   alt="Max Power Clean Energy and Solar Infrastructure"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

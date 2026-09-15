@@ -40,7 +40,7 @@ const CATERING_PACKAGES = [
     category: "Corporate Dining",
     specs: ["Capacity: 200 to 5,000+ Daily Corporate Meals", "Menu: Multi-Cuisine Rotating Daily Hot Buffet & Salad Bar", "Features: Cashless POS & Executive Boardroom Service"],
     desc: "Turnkey cafeteria management, fresh gourmet daily lunch buffets, and executive dining room service tailored for corporate headquarters.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/pkg_corporate_dining.jpg",
     tag: "Corporate Dining Suite",
   },
   {
@@ -48,7 +48,7 @@ const CATERING_PACKAGES = [
     category: "Hospital Nutrition",
     specs: ["Patients: 100 to 2,000+ Hospital Bed Capacities", "Diets: Diabetic, Renal, Cardiac, Soft & Pureed Formulations", "Hygiene: Sterile Isolation Prep & Thermal Tray Bed Delivery"],
     desc: "Specialized hospital food services managed by certified clinical dietitians to ensure strict therapeutic precision and patient recovery.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/pkg_clinical_nutrition.jpg",
     tag: "Clinical Nutrition Suite",
   },
   {
@@ -56,7 +56,7 @@ const CATERING_PACKAGES = [
     category: "University Campus",
     specs: ["Scale: 1,000 to 25,000+ Students Daily", "Nutrition: High-Protein & Balanced Student Fuel Menus", "Operations: Smart Student RFID Card & Mobile App Ordering"],
     desc: "Fast-throughput campus food courts, boarding school mess management, and nutritious snacks supporting student cognitive vitality.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/pkg_campus_dining.jpg",
     tag: "Campus Dining Suite",
   },
   {
@@ -64,7 +64,7 @@ const CATERING_PACKAGES = [
     category: "Industrial Shift",
     specs: ["Shifts: 3 Continuous 8-Hour Shift Coverage (24/7)", "Nutrition: Calorie-Dense (3,500+ kcal) Heavy Labor Fuel", "Logistics: Insulated Food Transporters to Factory Floor"],
     desc: "Robust catering solutions for textile mills, chemical manufacturing, and heavy industrial plants ensuring on-time workforce feeding.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/about_institutional_kitchen.jpg",
     tag: "Industrial Shift Catering",
   },
   {
@@ -72,7 +72,7 @@ const CATERING_PACKAGES = [
     category: "Remote Site Camp",
     specs: ["Environment: Desert, Dam, Mining & Remote Pipeline Camps", "Facilities: Self-Contained Containerized Kitchens & Cold Stores", "Coverage: 3 Daily Meals + Midnight Snack Packs for Labor"],
     desc: "End-to-end camp management, bulk water filtration, and continuous food supply chain for large infrastructure and energy project sites.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/hero_cold_chain.jpg",
     tag: "Remote Camp Suite",
   },
   {
@@ -80,7 +80,7 @@ const CATERING_PACKAGES = [
     category: "Executive Banquets",
     specs: ["Occasions: Annual Galas, AGMs, Product Launches & VIP Summits", "Capacity: 100 to 3,000+ Seated Guests", "Service: Silver Platter, Multi-Course Gourmet & Live Grills"],
     desc: "High-end banquet catering, VIP protocol dining, live barbecue carving stations, and customized dessert displays for corporate gatherings.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/hero_institutional_catering.jpg",
     tag: "Banqueting Suite",
   },
 ];

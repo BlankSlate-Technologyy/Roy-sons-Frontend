@@ -15,6 +15,9 @@ import {
   Phone,
   Users2,
   Sparkles,
+  Globe,
+  Truck,
+  Leaf,
 } from "lucide-react";
 import {
   theme,
@@ -26,10 +29,10 @@ import {
 } from "../components/WaltonFoodShared";
 
 const ABOUT_STATS = [
-  { value: "20+", label: "Years of Manufacturing\nExcellence", icon: Award },
+  { value: "25+", label: "Years of Food\nLeadership", icon: Award },
   { value: "400+", label: "Food Products\nManufactured", icon: Package },
   { value: "120000", label: "Tons Annual\nProduction Capacity", icon: Factory },
-  { value: "300+", label: "Skilled Food\nTechnologists", icon: Users2 },
+  { value: "35+", label: "Global Export\nDestinations", icon: Globe },
   { value: "99.8%", label: "Quality & Safety\nPass Rate", icon: ShieldCheck },
 ];
 
@@ -52,29 +55,29 @@ const CORE_VALUES = [
   {
     icon: Boxes,
     title: "Global Private Label Expertise",
-    desc: "Turnkey OEM co-packing and private label manufacturing for multinational retail supermarket chains and institutional food distributors across 25+ nations.",
+    desc: "Turnkey OEM co-packing and private label manufacturing for multinational retail supermarket chains and institutional food distributors across 35+ nations.",
   },
 ];
 
 export default function WaltonFoodAboutPage() {
   return (
-    <main className="min-h-screen bg-white text-[#3D4E44] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#475569] font-sans antialiased overflow-x-hidden">
       <WaltonFoodNavbar />
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
-              <SectionLabel>About Walton &amp; Morris Foods</SectionLabel>
+              <SectionLabel>About Walton &amp; Mirror Food</SectionLabel>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.greenDark }}>
-                Producing Quality Food. <span style={{ color: theme.green }}>Nourishing Every Generation.</span>
+                Producing Pure Quality Food. <span style={{ color: theme.green }}>Nourishing Every Generation.</span>
               </h1>
 
               <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                Walton &amp; Morris Foods (Pvt) Ltd is a premier food processing and FMCG manufacturing corporation. Operating high-throughput processing lines, cryogenic IQF freezing tunnels, and certified cleanroom packaging facilities, we supply premium consumer packaged foods to leading national supermarkets and global export markets.
+                Walton &amp; Mirror Food (Pvt) Ltd is a flagship food processing and FMCG manufacturing corporation of ROYSONS Group. Operating high-throughput processing lines, cryogenic IQF freezing tunnels, retort canning suites, and certified cleanroom packaging facilities, we supply premium consumer packaged foods to leading national supermarkets and global export markets.
               </p>
 
               <div className="flex flex-wrap gap-4">
@@ -99,22 +102,20 @@ export default function WaltonFoodAboutPage() {
 
             {/* Right Hero Visual Card */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-emerald-50/50" style={{ borderColor: theme.border }}>
+              <div className="relative w-full max-w-[480px] h-[360px] sm:h-[400px] rounded-3xl overflow-hidden border shadow-xl group bg-slate-900" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/waltonfood_hero_processing.svg"
-                  alt="Walton & Morris Foods Industrial Processing Facility"
+                  src="/waltonfood/hero_food_processing.jpg"
+                  alt="Industrial Food Processing Line"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#061022]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1" style={{ color: theme.ochre }}>
-                      ISO 22000 &amp; HACCP Certified
+                  <div className="text-white">
+                    <p className="text-xs font-black uppercase tracking-widest text-[#F3C677] mb-1">
+                      Industrial Processing Leadership
                     </p>
-                    <p className="text-sm font-bold" style={{ color: theme.greenDark }}>
-                      120,000 Tons Annual Capacity
-                    </p>
+                    <h4 className="text-lg font-bold">25+ Years of Food Engineering</h4>
                   </div>
                 </div>
               </div>
@@ -123,25 +124,25 @@ export default function WaltonFoodAboutPage() {
         </div>
       </section>
 
-      {/* Animated Number Counters */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+      {/* Stats Counter Bar */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {ABOUT_STATS.map((stat, idx) => {
+            {ABOUT_STATS.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="wm-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
+                  className="rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs hover:border-[#1E6B43] transition-colors"
                   style={{ borderColor: theme.border }}
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.green}10` }}>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.green}12` }}>
                     <Icon size={22} style={{ color: theme.green }} />
                   </div>
-                  <div className="mb-2" style={{ color: theme.greenDark }}>
-                    <AnimatedCounter targetValue={stat.value} duration={1400 + idx * 100} />
+                  <div className="mb-1" style={{ color: theme.greenDark }}>
+                    <AnimatedCounter targetValue={stat.value} duration={1400 + i * 150} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-xs font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
                     {stat.label}
                   </p>
                 </div>
@@ -151,45 +152,63 @@ export default function WaltonFoodAboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Graphic */}
-            <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-emerald-50/50" style={{ borderColor: theme.border }}>
-              <Image
-                src="/waltonfood_hero_processing.svg"
-                alt="Automated Food Manufacturing Plant"
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#061022]/85 via-transparent to-transparent flex items-end p-6">
-                <div className="text-white">
-                  <span className="text-xs font-black uppercase tracking-widest text-[#F3C677] block mb-1">
-                    Premier Food Processing
-                  </span>
-                  <h4 className="text-base font-bold">20+ Years of Manufacturing Leadership &amp; Global Exports</h4>
+      {/* Corporate Heritage Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAF8]" style={{ borderColor: theme.border }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Visual Left */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[400px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-900" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/waltonfood/card_quality_lab.jpg"
+                  alt="Quality Assurance Laboratory"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061022]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#1E6B43] text-white inline-block mb-2">
+                      Certified Laboratories
+                    </span>
+                    <h4 className="text-base font-bold">In-House Microbiology &amp; Spectrometry Testing</h4>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Text */}
-            <div className="space-y-8">
-              <div>
-                <SectionLabel>Our Core Purpose</SectionLabel>
-                <SectionHeading className="mb-4">Mission Statement</SectionHeading>
-                <p className="text-sm sm:text-base font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                  To manufacture wholesome, delicious, and innovative food products of uncompromising international quality, bridging sustainable agricultural harvests with modern convenience foods that nourish families and fuel lifestyle vitality.
-                </p>
+            {/* Text Right */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <SectionLabel>Our Commitment</SectionLabel>
+              <SectionHeading className="mb-6">Pure Sourcing to Global Export</SectionHeading>
+
+              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                Established with a vision to deliver world-standard packaged foods, Walton &amp; Mirror Food bridges direct contract farming with cutting-edge European processing technology. Our facilities transform raw agricultural crops, prime livestock, and farmstead dairy into shelf-stable delicacies and flash-frozen convenience foods.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <div className="p-4 rounded-2xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
+                  <div className="flex items-center gap-2 font-bold text-xs text-[#134A2D] mb-1">
+                    <CheckCircle2 size={16} className="text-[#1E6B43]" />
+                    <span>Halal Certified Supply Chain</span>
+                  </div>
+                  <p className="text-xs text-slate-500 font-medium">100% verified Islamic compliance across every processing bay.</p>
+                </div>
+                <div className="p-4 rounded-2xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
+                  <div className="flex items-center gap-2 font-bold text-xs text-[#134A2D] mb-1">
+                    <CheckCircle2 size={16} className="text-[#1E6B43]" />
+                    <span>Cold Chain Integrity</span>
+                  </div>
+                  <p className="text-xs text-slate-500 font-medium">Continuous -20°C holding across transport and warehouse logistics.</p>
+                </div>
               </div>
 
-              <div className="pt-6 border-t" style={{ borderColor: theme.border }}>
-                <SectionLabel>Industrial Horizon</SectionLabel>
-                <SectionHeading className="mb-4">Our Vision</SectionHeading>
-                <p className="text-sm sm:text-base font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                  To be Pakistan&apos;s leading agro-food processing conglomerate and the private label manufacturer of choice for global supermarket chains, celebrated for cutting-edge cryogenic IQF freezing, sustainable manufacturing, and zero-defect quality.
-                </p>
-              </div>
+              <Link
+                href="/group-companies/walton-mirror-food/services"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#1E6B43]"
+              >
+                <span>Discover Our Processing Capabilities</span>
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
         </div>
@@ -197,12 +216,12 @@ export default function WaltonFoodAboutPage() {
 
       {/* Core Values Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <SectionLabel center>Guiding Principles</SectionLabel>
-            <SectionHeading center className="mb-4">Our Core Values</SectionHeading>
+            <SectionLabel center>Core Principles</SectionLabel>
+            <SectionHeading center className="mb-4">Guiding Values of Food Manufacturing</SectionHeading>
             <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              The food science rigor, automated hygiene controls, and manufacturing ethics that govern our industrial processing plants.
+              Every process at Walton &amp; Mirror Food is guided by our dedication to consumer health, technological precision, and environmental stewardship.
             </p>
           </div>
 
@@ -212,68 +231,23 @@ export default function WaltonFoodAboutPage() {
               return (
                 <div
                   key={val.title}
-                  className="wm-card-hover p-8 rounded-3xl border flex flex-col justify-between bg-white shadow-xs"
+                  className="rounded-3xl border p-8 bg-white shadow-xs hover:shadow-xl hover:border-[#1E6B43] transition-all duration-300 flex flex-col justify-between"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${theme.green}10` }}>
-                      <Icon size={26} style={{ color: theme.green }} />
+                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${theme.green}12` }}>
+                      <Icon size={24} style={{ color: theme.green }} />
                     </div>
-                    <h3 className="text-lg font-bold mb-3" style={{ color: theme.greenDark }}>
+                    <h3 className="text-base font-black mb-3" style={{ color: theme.greenDark }}>
                       {val.title}
                     </h3>
                     <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
                       {val.desc}
                     </p>
                   </div>
-
-                  <div className="mt-6 pt-4 border-t flex items-center gap-2" style={{ borderColor: theme.border }}>
-                    <CheckCircle2 size={15} style={{ color: theme.ochre }} />
-                    <span className="text-[11px] font-bold uppercase tracking-wider" style={{ color: theme.green }}>
-                      ISO 22000 Certified
-                    </span>
-                  </div>
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2" style={{ color: theme.ochreHover }}>
-                PLANNING A FOOD MANUFACTURING OR PRIVATE LABEL CONTRACT?
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.greenDark }}>
-                Schedule A Production Scoping Consultation
-              </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Connect with our senior food technologists and OEM packaging engineers to review recipe formulation, batch sizing, and export logistics.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
-              <Link
-                href="/group-companies/walton-mirror-food/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.green }}
-              >
-                <span>Request OEM / B2B Quote</span>
-                <ArrowRight size={15} />
-              </Link>
-              <a
-                href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-emerald-50/50 cursor-pointer"
-                style={{ borderColor: theme.green, color: theme.green }}
-              >
-                <Phone size={15} />
-                <span>0092-42-38924737</span>
-              </a>
-            </div>
           </div>
         </div>
       </section>

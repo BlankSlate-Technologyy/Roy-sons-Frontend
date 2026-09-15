@@ -36,7 +36,7 @@ const HOSPITALITY_SERVICES = [
     title: "Hotel & Resort Operations Management",
     subtitle: "Complete Property Management & Revenue Optimization",
     desc: "Delivering end-to-end hotel operations, guest concierge services, AI-driven dynamic revenue management, and certified five-star housekeeping protocols for independent and branded hospitality properties.",
-    image: "/swiss_huts_hero_resort.svg",
+    image: "/swissshuts/hero_boutique_hotel.jpg",
     tag: "Operations & Management",
     icon: Building2,
     deliverables: [
@@ -51,7 +51,7 @@ const HOSPITALITY_SERVICES = [
     title: "Luxury Resort & Chalet Development",
     subtitle: "Turnkey Alpine Architecture & Leisure Facilities",
     desc: "Developing iconic alpine mountain chalets, lakeside boutique resorts, and eco-lodges designed with sustainable timber construction, infinity thermal jacuzzis, and panoramic mountain vistas.",
-    image: "/swiss_huts_hero_resort.svg",
+    image: "/swissshuts/hero_alpine_chalet.jpg",
     tag: "Resort Development",
     icon: Waves,
     deliverables: [
@@ -66,7 +66,7 @@ const HOSPITALITY_SERVICES = [
     title: "Premium Accommodation Suites",
     subtitle: "Executive Serviced Apartments & Family Chalets",
     desc: "Offering travelers a refined blend of home comfort and luxury hotel amenities with bespoke presidential suites, executive studio apartments, and private family chalets.",
-    image: "/swiss_huts_hero_resort.svg",
+    image: "/swissshuts/card_chalet_suite.jpg",
     tag: "Luxury Stays",
     icon: BedDouble,
     deliverables: [
@@ -81,7 +81,7 @@ const HOSPITALITY_SERVICES = [
     title: "Tourism Destination & Eco-Planning",
     subtitle: "Ecotourism Trails & Foreign Tourist Assistance",
     desc: "Crafting sustainable travel experiences, guided mountain expeditions, cultural heritage trails, and seamless VIP logistics for domestic and international travelers.",
-    image: "/swiss_huts_hero_resort.svg",
+    image: "/swissshuts/hero_mountain_resort.jpg",
     tag: "Tourism Solutions",
     icon: Compass,
     deliverables: [
@@ -96,7 +96,7 @@ const HOSPITALITY_SERVICES = [
     title: "Event & Conference Management",
     subtitle: "Corporate Galas, Board Retreats & Destination Weddings",
     desc: "Planning and hosting corporate conferences, executive board retreats, luxury destination weddings, and private banquets in pillarless ballrooms and scenic outdoor lawns.",
-    image: "/swiss_huts_hero_resort.svg",
+    image: "/swissshuts/card_dining_bistro.jpg",
     tag: "MICE & Weddings",
     icon: PartyPopper,
     deliverables: [
@@ -111,7 +111,7 @@ const HOSPITALITY_SERVICES = [
     title: "Hospitality Consultancy & Brand Advisory",
     subtitle: "Feasibility Studies & Luxury Staff Training Academies",
     desc: "Advising property developers and hotel owners on project feasibility, architectural zoning, brand positioning, and conducting world-class hospitality staff training.",
-    image: "/swiss_huts_hero_resort.svg",
+    image: "/swissshuts/hero_resort_panoramic.jpg",
     tag: "Advisory & Training",
     icon: ClipboardList,
     deliverables: [
@@ -133,12 +133,15 @@ const SERVICE_STATS = [
 export default function SwissHutsServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = HOSPITALITY_SERVICES.filter(
-    (s) =>
-      s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.tag.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filtered = HOSPITALITY_SERVICES.filter((s) => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return true;
+    return (
+      (s.title && s.title.toLowerCase().includes(query)) ||
+      (s.desc && s.desc.toLowerCase().includes(query)) ||
+      (s.tag && s.tag.toLowerCase().includes(query))
+    );
+  });
 
   return (
     <main className="min-h-screen bg-white text-[#2A323D] font-sans antialiased overflow-x-hidden">
@@ -184,7 +187,7 @@ export default function SwissHutsServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_huts_hero_resort.svg"
+                  src="/swissshuts/hero_alpine_chalet.jpg"
                   alt="Swiss Hut Luxury Resort Experience"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

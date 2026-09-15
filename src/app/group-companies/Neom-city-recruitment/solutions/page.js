@@ -52,7 +52,7 @@ const TALENT_PACKAGES = [
     category: "Construction & Mega-Infrastructure",
     specs: ["Roles: Project Directors, Chartered Civil/Structural Engineers, BIM Leads", "Trade Testing: Certified Hydraulic, Earthmoving & High-Voltage Electricians", "Mobilization: Fast-Track 30-Day Visa Clearance for KSA / NEOM Giga-Projects"],
     desc: "Complete turnkey workforce deployment for international giga-projects, high-speed rail, smart city construction, and port infrastructure.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/hero_mega_infra.jpg",
     tag: "Civil Engineering",
   },
   {
@@ -60,7 +60,7 @@ const TALENT_PACKAGES = [
     category: "Healthcare & Medical",
     specs: ["Specialists: UK/US Board Certified Consultants, Intensivists & Surgeons", "Nursing: Registered ICU, OT, Neonatal & Emergency Healthcare Nurses", "Licensing: Full Saudi Commission for Health Specialties (SCFHS) / DHA Verification"],
     desc: "Supplying accredited medical doctors, specialist clinicians, surgical nurses, and allied healthcare staff to prestigious international hospital networks.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/hero_healthcare.jpg",
     tag: "Healthcare Talent",
   },
   {
@@ -68,7 +68,7 @@ const TALENT_PACKAGES = [
     category: "Oil, Gas & Petrochemical",
     specs: ["Disciplines: Drilling Superintendents, API 510/570 Inspectors, HSE Directors", "Certifications: BOSIET, OPITO, NEBOSH & NDT Level-III Certified Specialists", "Deployment: Onshore Refineries, Offshore Rigs & LNG Processing Facilities"],
     desc: "Highly specialized technical manpower for upstream exploration, downstream refining, petrochemical pipelines, and power utility grids.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/card_oilfield.jpg",
     tag: "Oil & Gas Manpower",
   },
   {
@@ -76,7 +76,7 @@ const TALENT_PACKAGES = [
     category: "IT, AI & Software",
     specs: ["Talent: Principal Cloud DevOps, Full-Stack Architects & Cyber Security Leads", "Assessment: Automated Live Coding Challenges & System Architecture Audits", "Model: Dedicated Offshore Tech Centers (GCC/EU) or On-Site Relocation"],
     desc: "Building high-velocity software engineering and artificial intelligence teams for fintech unicorns, digital banking platforms, and enterprise SaaS firms.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/card_tech.jpg",
     tag: "Tech & AI Hiring",
   },
   {
@@ -84,7 +84,7 @@ const TALENT_PACKAGES = [
     category: "Hospitality & Tourism",
     specs: ["Executive: Executive Head Chefs, F&B Directors, Luxury Hotel GMs", "Operations: Guest Relations, Front Office, Sommeliers & Butler Teams", "Training: Pre-Departure International Hospitality Etiquette & Grooming"],
     desc: "Turnkey recruitment and pre-opening hotel staff mobilization for 5-star luxury resorts, private royal residences, and fine-dining restaurants.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/card_hospitality.jpg",
     tag: "Hospitality Staffing",
   },
   {
@@ -92,7 +92,7 @@ const TALENT_PACKAGES = [
     category: "Aviation & Logistics",
     specs: ["Aviation: EASA/FAA Licensed Aircraft Maintenance Engineers (LAME)", "Ports: Ship-to-Shore (STS) Crane Operators & Terminal Logistics Planners", "Compliance: IATA, Dangerous Goods Regulations (DGR) & Customs Clearance"],
     desc: "Supplying certified aviation maintenance technicians, commercial pilots, port logistics directors, and warehouse fleet controllers globally.",
-    image: "/neomrecruitment_hero_talent.svg",
+    image: "/neomrecruitment/card_mobilize.jpg",
     tag: "Aviation Logistics",
   },
 ];

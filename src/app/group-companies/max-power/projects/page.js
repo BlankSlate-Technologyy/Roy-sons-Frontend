@@ -44,7 +44,7 @@ const SIGNATURE_PROJECTS = [
     status: "Operational – Synchronized to National Grid",
     desc: "Turnkey EPC execution of 100MW utility solar PV plant utilizing Tier-1 bifacial panels, automated single-axis solar trackers, central inverter skids, and dedicated 132kV step-up substation.",
     specs: ["Capacity: 100 MWp Solar Photovoltaic", "Annual Output: 185 Million kWh Clean Power", "Substation: 132kV Step-Up Grid Yard"],
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/sol_maxsolar_100mw.jpg",
     tag: "100MW Utility Solar",
   },
   {
@@ -54,7 +54,7 @@ const SIGNATURE_PROJECTS = [
     status: "Commissioned – 220kV/132kV GIS Grid",
     desc: "Construction of a heavy 220kV Gas-Insulated Switchgear (GIS) substation evacuating 300MW of renewable wind energy from private IPPs directly into the NTDC national transmission network.",
     specs: ["Voltage: 220kV / 132kV Dual Busbar", "Power Transformers: 2x 250 MVA Auto-Transformers", "Protection: Full IEC 61850 Substation Automation"],
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/sol_maxgrid_substation.jpg",
     tag: "220kV Wind Grid Substation",
   },
   {
@@ -64,7 +64,7 @@ const SIGNATURE_PROJECTS = [
     status: "Continuous 24/7 Industrial Baseload",
     desc: "Complete engineering and commissioning of 50MW high-efficiency gas reciprocating engine power block with Heat Recovery Steam Generators (HRSG) generating 60 tons/hr of industrial steam.",
     specs: ["Output: 50 MW Electrical + 60 Tons/hr Steam", "Efficiency: ≥ 86% Total Co-Gen Thermal", "Availability: 99.6% Continuous Baseload SLA"],
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/hero_power_generation.jpg",
     tag: "50MW Industrial Co-Gen",
   },
   {
@@ -74,7 +74,7 @@ const SIGNATURE_PROJECTS = [
     status: "Operational – Sub-Second Frequency Response",
     desc: "Pakistan's landmark containerized Battery Energy Storage System (BESS) delivering sub-20 millisecond synthetic inertia, primary frequency regulation, and transmission line congestion relief.",
     specs: ["Storage: 20 MWh / 10 MW Power Conversion", "Chemistry: Tier-1 Liquid-Cooled LFP Cells", "Response: < 20 Millisecond Instant Response"],
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/sol_maxstorage_bess.jpg",
     tag: "20MWh Grid BESS",
   },
   {
@@ -84,7 +84,7 @@ const SIGNATURE_PROJECTS = [
     status: "Energized – 45 km Steel Lattice Corridor",
     desc: "Surveying, tower foundation casting, lattice tower erection, and ACSR Rail conductor stringing for 45 km double-circuit 132kV transmission line feeding the new industrial special economic zone.",
     specs: ["Length: 45 km Double-Circuit 132kV", "Towers: 140 Heavy Steel Lattice Pylons", "Capacity: 200 MVA Continuous Power Transfer"],
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_high_voltage.jpg",
     tag: "132kV Transmission Corridor",
   },
   {
@@ -94,7 +94,7 @@ const SIGNATURE_PROJECTS = [
     status: "Net-Metered Clean Industrial Solar",
     desc: "Multi-facility distributed solar photovoltaic rooftop microgrid across 12 heavy manufacturing warehouses and logistics centers with zero-export reverse power protection and smart inverters.",
     specs: ["Capacity: 30 MWp Total Across 12 Facilities", "Inverters: Smart String Inverters with Cloud Telemetry", "Carbon Offset: 42,000 Tons CO2 / Year"],
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_renewable_energy.jpg",
     tag: "Industrial Rooftop Microgrid",
   },
 ];

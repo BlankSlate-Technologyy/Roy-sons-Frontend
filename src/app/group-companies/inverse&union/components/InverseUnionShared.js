@@ -173,7 +173,7 @@ export function InverseUnionNavbar() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="w-full px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between gap-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         {/* Brand Logo */}
         <Link href="/group-companies/inverse&union" className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0 mr-4">
           <div className="relative w-11 h-11 sm:w-13 sm:h-13 lg:w-14 lg:h-14 flex items-center justify-center flex-shrink-0">

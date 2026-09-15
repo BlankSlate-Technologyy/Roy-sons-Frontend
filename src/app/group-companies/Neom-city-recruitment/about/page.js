@@ -105,9 +105,9 @@ export default function NeomRecruitmentAboutPage() {
 
             {/* Right Hero Visual Card */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-sky-50/50" style={{ borderColor: theme.border }}>
+              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-100" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/neomrecruitment_hero_talent.svg"
+                  src="/neomrecruitment/hero_executive_search.jpg"
                   alt="Neom City Recruitment Consultants Talent Command"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -162,9 +162,9 @@ export default function NeomRecruitmentAboutPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Graphic */}
-            <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-sky-50/50" style={{ borderColor: theme.border }}>
+            <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-100" style={{ borderColor: theme.border }}>
               <Image
-                src="/neomrecruitment_hero_talent.svg"
+                src="/neomrecruitment/hero_trades.jpg"
                 alt="Global Human Capital & Overseas Mobilization"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"

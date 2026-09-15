@@ -102,7 +102,7 @@ export default function NFSAboutPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-rose-50/50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/nfs_hero_catering.svg"
+                  src="/nationalfood/about_institutional_kitchen.jpg"
                   alt="National Food Services Institutional Culinary Kitchen"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -159,7 +159,7 @@ export default function NFSAboutPage() {
             {/* Left Graphic */}
             <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-rose-50/50" style={{ borderColor: theme.border }}>
               <Image
-                src="/nfs_hero_catering.svg"
+                src="/nationalfood/hero_institutional_catering.jpg"
                 alt="Institutional Catering Excellence and Quality Kitchens"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"

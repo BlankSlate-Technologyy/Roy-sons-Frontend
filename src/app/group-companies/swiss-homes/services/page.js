@@ -34,7 +34,7 @@ const REAL_ESTATE_SERVICES = [
     title: "Residential Communities & Luxury Villas",
     subtitle: "Master-Planned Gated Societies & High-End Living",
     desc: "Designing and developing premier residential communities featuring contemporary luxury villas, designer townhouses, and family-oriented neighborhoods with landscaped parks and modern amenities.",
-    image: "/swiss_hero_architecture.svg",
+    image: "/swisshomes/hero_luxury_villas.jpg",
     tag: "Residential Living",
     icon: HomeIcon,
     deliverables: [
@@ -49,7 +49,7 @@ const REAL_ESTATE_SERVICES = [
     title: "Commercial Towers & Business Parks",
     subtitle: "High-Yield Corporate Hubs & Retail Malls",
     desc: "Developing state-of-the-art corporate office buildings, shopping malls, and mixed-use commercial destinations located in prime urban commercial avenues.",
-    image: "/swiss_master_planning.svg",
+    image: "/swisshomes/hero_commercial_plaza.jpg",
     tag: "Commercial Developments",
     icon: Building2,
     deliverables: [
@@ -64,7 +64,7 @@ const REAL_ESTATE_SERVICES = [
     title: "Smart Housing & Master Planning",
     subtitle: "BIM 3D Modeling & Sustainable Urban Infrastructure",
     desc: "End-to-end urban master planning and civil design utilizing Building Information Modeling (BIM) to optimize land utilization, traffic flow, and environmental sustainability.",
-    image: "/swiss_master_planning.svg",
+    image: "/swisshomes/hero_master_community.jpg",
     tag: "Urban Design",
     icon: Compass,
     deliverables: [
@@ -79,7 +79,7 @@ const REAL_ESTATE_SERVICES = [
     title: "Property Investment & Asset Management",
     subtitle: "Secure Real Estate Portfolios With High ROI",
     desc: "Providing institutional and private investors with strategic real estate investment advisory, transparent installment payment structures, and high-capital-appreciation land assets.",
-    image: "/swiss_hero_architecture.svg",
+    image: "/swisshomes/card_gated_society.jpg",
     tag: "Investment Solutions",
     icon: TrendingUp,
     deliverables: [
@@ -94,7 +94,7 @@ const REAL_ESTATE_SERVICES = [
     title: "Turnkey Construction Management",
     subtitle: "Precision Civil Engineering & MEP Execution",
     desc: "Managing full-cycle construction execution from foundation excavation to structural gray framing, MEP services installation, and ultra-premium architectural finishing.",
-    image: "/swiss_hero_architecture.svg",
+    image: "/swisshomes/card_construction_engineering.jpg",
     tag: "Engineering & Build",
     icon: Hammer,
     deliverables: [
@@ -109,7 +109,7 @@ const REAL_ESTATE_SERVICES = [
     title: "Estate & Facility Management",
     subtitle: "24/7 Security, Maintenance & Community Services",
     desc: "Ensuring communities maintain pristine aesthetic value, operational efficiency, and security over decades through dedicated on-site facility management teams.",
-    image: "/swiss_master_planning.svg",
+    image: "/swisshomes/card_villa_exterior.jpg",
     tag: "Facility Services",
     icon: ClipboardCheck,
     deliverables: [
@@ -131,12 +131,15 @@ const SERVICE_STATS = [
 export default function SwissHomesServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = REAL_ESTATE_SERVICES.filter(
-    (s) =>
-      s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.tag.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filtered = REAL_ESTATE_SERVICES.filter((s) => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return true;
+    return (
+      (s.title && s.title.toLowerCase().includes(query)) ||
+      (s.desc && s.desc.toLowerCase().includes(query)) ||
+      (s.tag && s.tag.toLowerCase().includes(query))
+    );
+  });
 
   return (
     <main className="min-h-screen bg-white text-[#2B2B2B] font-sans antialiased overflow-x-hidden">
@@ -182,7 +185,7 @@ export default function SwissHomesServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_hero_architecture.svg"
+                  src="/swisshomes/hero_luxury_villas.jpg"
                   alt="Swiss Homes Architecture & Construction"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

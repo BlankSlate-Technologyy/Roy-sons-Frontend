@@ -105,7 +105,7 @@ export default function SwissHomesAboutPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_hero_architecture.svg"
+                  src="/swisshomes/hero_luxury_villas.jpg"
                   alt="Swiss Homes Modern Villa Architecture"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -162,7 +162,7 @@ export default function SwissHomesAboutPage() {
             {/* Left Graphic */}
             <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
               <Image
-                src="/swiss_master_planning.svg"
+                src="/swisshomes/hero_master_community.jpg"
                 alt="Swiss Homes Smart Master Planning and Infrastructure"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"

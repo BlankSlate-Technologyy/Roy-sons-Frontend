@@ -41,7 +41,7 @@ const POWER_SOLUTIONS = [
     category: "Utility Solar Farms",
     specs: ["Capacity: 50MW – 200MW Utility", "Modules: Tier-1 Bifacial Monocrystalline", "Tracking: AI Smart Single-Axis Trackers"],
     desc: "Complete turnkey design, procurement, civil construction, and 132kV grid connection for mega utility solar photovoltaic parks across Pakistan.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/sol_maxsolar_100mw.jpg",
     tag: "Utility Solar EPC",
   },
   {
@@ -49,7 +49,7 @@ const POWER_SOLUTIONS = [
     category: "High-Voltage Substations",
     specs: ["Voltage: 132kV / 220kV / 500kV", "Transformers: Up to 250 MVA Step-Up", "Protection: Redundant Numerical Relays"],
     desc: "Engineered high-voltage transmission substations featuring air-insulated (AIS) or compact gas-insulated (GIS) switchgear with automated SCADA control.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/sol_maxgrid_substation.jpg",
     tag: "High-Voltage Substations",
   },
   {
@@ -57,7 +57,7 @@ const POWER_SOLUTIONS = [
     category: "Battery Storage (BESS)",
     specs: ["Capacity: 5 MWh – 50 MWh Scalable", "Battery: Tier-1 LFP (6,000+ Cycles)", "Response: < 20 Milliseconds Sub-Second"],
     desc: "Utility-scale containerized battery energy storage systems engineered for frequency response, peak load shaving, and renewable intermittency smoothing.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/sol_maxstorage_bess.jpg",
     tag: "Utility-Scale BESS",
   },
   {
@@ -65,7 +65,7 @@ const POWER_SOLUTIONS = [
     category: "Co-Generation Power Plants",
     specs: ["Configuration: Combined-Cycle Gas Engine", "Efficiency: ≥ 85% Total Combined Thermal", "Steam: Heat Recovery Steam Generator (HRSG)"],
     desc: "High-efficiency captive power generation blocks designed for textile mills, chemical manufacturing, and heavy steel fabrication complexes.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/hero_power_generation.jpg",
     tag: "Industrial Co-Gen",
   },
   {
@@ -73,7 +73,7 @@ const POWER_SOLUTIONS = [
     category: "Switchgear & SCADA",
     specs: ["Rating: 11kV – 33kV, 630A – 4000A", "Short-Circuit: 31.5 kA for 3 Seconds", "Standard: IEC 62271-200 Type-Tested"],
     desc: "Metal-clad indoor and outdoor vacuum switchgear panels engineered for extreme industrial duty, substation control, and feeder distribution.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_switchgear_scada.jpg",
     tag: "Medium-Voltage Switchgear",
   },
   {
@@ -81,7 +81,7 @@ const POWER_SOLUTIONS = [
     category: "Switchgear & SCADA",
     specs: ["Protocol: IEC 61850 & Modbus TCP/IP", "Telemetry: Fiber Optic & Satellite Redundancy", "Analytics: AI-Driven Peak Load Forecasting"],
     desc: "Comprehensive plant and grid-level SCADA software allowing centralized real-time telemetry, automated generation dispatch, and protection monitoring.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_operations_maintenance.jpg",
     tag: "Grid SCADA Automation",
   },
 ];

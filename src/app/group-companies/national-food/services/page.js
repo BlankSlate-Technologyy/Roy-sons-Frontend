@@ -33,7 +33,7 @@ const FOOD_SERVICES = [
     title: "Institutional & Corporate Cafeteria Operations",
     subtitle: "Turnkey Corporate Dining, Executive Buffets & Live Kitchens",
     desc: "Managing full-scale employee dining halls, executive board room luncheons, and modern grab-and-go food kiosks with cashless POS ordering.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/svc_corporate_catering.jpg",
     tag: "Corporate Dining",
     icon: UtensilsCrossed,
     deliverables: [
@@ -48,7 +48,7 @@ const FOOD_SERVICES = [
     title: "Hospital & Healthcare Clinical Nutrition",
     subtitle: "Dietitian-Approved Therapeutic Meals & Sterile Isolation Prep",
     desc: "Preparing customized, disease-specific meals for hospital in-patients, ICU patient nutrition, and 24/7 hospital staff and visitor cafeterias.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/svc_healthcare_nutrition.jpg",
     tag: "Healthcare Nutrition",
     icon: Hotel,
     deliverables: [
@@ -63,7 +63,7 @@ const FOOD_SERVICES = [
     title: "Educational Campus & Student Dining",
     subtitle: "Nutritious, Affordable & High-Volume University Food Courts",
     desc: "Managing dining halls and food courts across schools, colleges, and university campuses serving up to 25,000 students daily.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/svc_educational_dining.jpg",
     tag: "Campus Dining",
     icon: Building2,
     deliverables: [
@@ -78,7 +78,7 @@ const FOOD_SERVICES = [
     title: "Refrigerated Cold Chain & Distribution",
     subtitle: "Temperature-Controlled Fleet & Rapid Bulk Logistics",
     desc: "Operating a dedicated fleet of 48+ multi-temperature refrigerated trucks with real-time GPS thermal monitoring (+2°C to +4°C).",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/svc_cold_chain_distribution.jpg",
     tag: "Cold Chain Logistics",
     icon: Truck,
     deliverables: [
@@ -93,7 +93,7 @@ const FOOD_SERVICES = [
     title: "Bulk Institutional Commodity Sourcing",
     subtitle: "Farm-to-Fork Direct Procurement & Raw Ingredient Supply",
     desc: "Direct farm procurement and wholesale distribution of export-grade basmati rice, wheat flour, pulses, cooking oils, fresh poultry, and vegetables.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/svc_bulk_commodity_sourcing.jpg",
     tag: "Bulk Commodity Sourcing",
     icon: Package,
     deliverables: [
@@ -108,7 +108,7 @@ const FOOD_SERVICES = [
     title: "HACCP & ISO 22000 Food Safety Audits",
     subtitle: "Microbiological Testing, ATP Swabs & Punjab Food Authority Compliance",
     desc: "Operating certified food testing laboratories conducting daily ATP hygiene swabs, water testing, and routine chef health screenings.",
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/svc_food_safety_audits.jpg",
     tag: "Food Safety Auditing",
     icon: ShieldCheck,
     deliverables: [
@@ -181,7 +181,7 @@ export default function NFSServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-rose-50/50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/nfs_hero_catering.svg"
+                  src="/nationalfood/hero_institutional_catering.jpg"
                   alt="National Food Services Catering Capabilities"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

@@ -42,7 +42,7 @@ const SIGNATURE_PROJECTS = [
     status: "Active Contract – 25,000 Meals Daily",
     desc: "Managing central campus dining halls and multi-cuisine student food courts across 4 major campuses with smart cashless student ID cards.",
     specs: ["Scale: 25,000+ Fresh Student Meals Prepared Daily", "Variety: 6 Live Food Stations & Hygienic Salad Bars", "Technology: Integrated RFID Student Meal Card System"],
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/pkg_campus_dining.jpg",
     tag: "Campus Dining Network",
   },
   {
@@ -52,7 +52,7 @@ const SIGNATURE_PROJECTS = [
     status: "Active Contract – 3,500 Hospital Beds Daily",
     desc: "Full-scale hospital patient dining preparing customized renal, diabetic, soft, and cardiac diets in sterile clinical kitchens with thermal bedside tray delivery.",
     specs: ["Capacity: 3,500 In-Patient Thermal Trays Served Daily", "Supervision: 24 Full-Time Certified Clinical Dietitians", "Hygiene: 100% Zero-Defect HACCP Sterile Kitchen Protocols"],
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/pkg_clinical_nutrition.jpg",
     tag: "Clinical Healthcare Dining",
   },
   {
@@ -62,7 +62,7 @@ const SIGNATURE_PROJECTS = [
     status: "Active Contract – 8,000 Meals Per Shift",
     desc: "Round-the-clock 3-shift catering for industrial manufacturing personnel featuring high-protein, calorie-dense balanced meals and automated roti baking.",
     specs: ["Throughput: 24,000 Meals Daily Across 3 Shifts", "Equipment: Automated 4,000 Roti/Hour Industrial Baking Lines", "Efficiency: 1,500 Workers Served Every 20 Minutes"],
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/about_institutional_kitchen.jpg",
     tag: "Industrial Shift Dining",
   },
   {
@@ -72,7 +72,7 @@ const SIGNATURE_PROJECTS = [
     status: "Active Contract – 1,800 Corporate Staff",
     desc: "Turnkey executive cafeteria management, artisanal barista coffee kiosks, daily multi-cuisine gourmet lunch buffets, and boardroom VIP dining.",
     specs: ["Scale: 1,800 Corporate Bankers & Executives Daily", "Offerings: Live Gourmet Pasta & Charcoal Grill Station", "Service: VIP Executive Boardroom Silver Service"],
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/pkg_corporate_dining.jpg",
     tag: "Executive Corporate Dining",
   },
   {
@@ -82,7 +82,7 @@ const SIGNATURE_PROJECTS = [
     status: "Active Contract – 3,200 Workforce Full-Board",
     desc: "Full-board remote mountain camp catering with self-contained containerized commercial kitchens, backup water purification, and refrigerated cold stores.",
     specs: ["Logistics: Continuous Cold-Chain Supply Convoys to Remote Site", "Facilities: Industrial Bakery, Butchery & 200-Ton Cold Stores", "Coverage: Breakfast, Lunch, Dinner & Midnight Shift Snacks"],
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/hero_cold_chain.jpg",
     tag: "Remote Camp Operations",
   },
   {
@@ -92,7 +92,7 @@ const SIGNATURE_PROJECTS = [
     status: "Executed – 500,000 Ready Ration Packs",
     desc: "Rapid procurement, hygienic preparation, and hermetic vacuum packaging of 500,000 emergency high-calorie nutrition ration kits for disaster relief.",
     specs: ["Volume: 500,000 Hermetically Sealed Relief Meal Kits", "Shelf-Life: 12-Month Ambient Temperature Storage Stability", "Nutrition: WHO-Compliant Essential Macro & Micronutrient Profile"],
-    image: "/nfs_hero_catering.svg",
+    image: "/nationalfood/svc_bulk_commodity_sourcing.jpg",
     tag: "Emergency Relief Logistics",
   },
 ];

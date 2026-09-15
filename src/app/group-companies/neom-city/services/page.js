@@ -36,7 +36,7 @@ const URBAN_SERVICES = [
     title: "Smart City Master Planning & GIS",
     subtitle: "Digital Twins, Parametric Land Zoning & 3D Spatial Modeling",
     desc: "Comprehensive master planning and spatial zoning for greenfield and brownfield smart cities using GIS analytics, drone photogrammetry, and demographic algorithms.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_smart_city.jpg",
     tag: "Master Planning",
     icon: Compass,
     deliverables: [
@@ -51,7 +51,7 @@ const URBAN_SERVICES = [
     title: "Urban Infrastructure & Civil Works",
     subtitle: "Subterranean Utility Tunnels, Arterial Highways & Sponge Drainage",
     desc: "Turnkey civil engineering and construction of heavy urban infrastructure, deep utility corridors, climate-resilient stormwater networks, and multi-tier interchanges.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_transit_infrastructure.jpg",
     tag: "Civil Infrastructure",
     icon: HardHat,
     deliverables: [
@@ -66,7 +66,7 @@ const URBAN_SERVICES = [
     title: "Commercial & Financial Districts",
     subtitle: "High-Rise Business Towers, Tech Hubs & Mixed-Use Promenades",
     desc: "Developing high-density commercial centers, international banking headquarters, luxury corporate suites, and smart retail ecosystems with integrated public plazas.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_financial_district.jpg",
     tag: "Commercial Districts",
     icon: Building2,
     deliverables: [
@@ -81,7 +81,7 @@ const URBAN_SERVICES = [
     title: "Special Economic Zones & Industrial Parks",
     subtitle: "Customs-Bonded Logistics Hubs & Heavy Manufacturing SEZs",
     desc: "Planning and building Special Economic Zones (SEZs), automated logistics hubs, dry ports, and heavy manufacturing clusters tailored for multi-national industries.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/card_industrial_sez.jpg",
     tag: "SEZ & Industrial",
     icon: Factory,
     deliverables: [
@@ -96,7 +96,7 @@ const URBAN_SERVICES = [
     title: "Smart Transportation & Transit",
     subtitle: "Grade-Separated BRT, Autonomous EV Corridors & AI Traffic Signals",
     desc: "Engineering next-generation urban mobility networks, automated mass transit systems, electric bus charging depots, and synchronized adaptive traffic systems.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_transit_infrastructure.jpg",
     tag: "Smart Mobility",
     icon: Zap,
     deliverables: [
@@ -111,7 +111,7 @@ const URBAN_SERVICES = [
     title: "Digital City Solutions & Microgrids",
     subtitle: "IoT Municipal Telemetry, Clean Solar Microgrids & Urban OS",
     desc: "Deploying high-speed city fiber networks, municipal IoT sensor arrays, centralized urban command centers, and net-zero solar microgrid integrations.",
-    image: "/neomcity_hero_urban.svg",
+    image: "/neomcity/hero_smart_city.jpg",
     tag: "Urban Digital Twin",
     icon: Cpu,
     deliverables: [
@@ -133,12 +133,15 @@ const SERVICE_STATS = [
 export default function NeomCityServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filtered = URBAN_SERVICES.filter(
-    (s) =>
-      s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.tag.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filtered = URBAN_SERVICES.filter((s) => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return true;
+    return (
+      (s.title && s.title.toLowerCase().includes(query)) ||
+      (s.desc && s.desc.toLowerCase().includes(query)) ||
+      (s.tag && s.tag.toLowerCase().includes(query))
+    );
+  });
 
   return (
     <main className="min-h-screen bg-white text-[#475569] font-sans antialiased overflow-x-hidden">
@@ -184,7 +187,7 @@ export default function NeomCityServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/neomcity_hero_urban.svg"
+                  src="/neomcity/hero_smart_city.jpg"
                   alt="Neom City Corporation Smart Urban Services"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

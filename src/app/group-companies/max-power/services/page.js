@@ -38,7 +38,7 @@ const POWER_SERVICES = [
     title: "Utility-Scale Solar & Wind Power Generation",
     subtitle: "10MW – 200MW Turnkey Renewable Energy EPC",
     desc: "Executing complete turn-key EPC of utility-scale solar photovoltaic farms, wind turbine power generation parks, and hybrid renewable energy plants with high-yield trackers.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_renewable_energy.jpg",
     tag: "Renewable Power EPC",
     icon: Sun,
     deliverables: [
@@ -53,7 +53,7 @@ const POWER_SERVICES = [
     title: "Thermal, Gas & Hybrid Power Plants",
     subtitle: "Combined-Cycle, Captive Co-Gen & Reciprocating Engines",
     desc: "Designing and building high-efficiency combined-cycle gas turbine (CCGT) power plants, heavy fuel oil (HFO) facilities, and industrial captive co-generation steam systems.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_power_generation.jpg",
     tag: "Power Generation",
     icon: Zap,
     deliverables: [
@@ -68,7 +68,7 @@ const POWER_SERVICES = [
     title: "High-Voltage Substations & Transmission (132kV–500kV)",
     subtitle: "AIS & GIS Grid Stations, Pylon Lines & Transformers",
     desc: "Turnkey EPC construction of 132kV, 220kV, and 500kV air-insulated (AIS) and gas-insulated (GIS) grid substations and high-tension overhead transmission line corridors.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_high_voltage.jpg",
     tag: "High-Voltage Grid EPC",
     icon: Radio,
     deliverables: [
@@ -83,7 +83,7 @@ const POWER_SERVICES = [
     title: "Industrial Battery Energy Storage Systems (BESS)",
     subtitle: "Utility-Scale LFP Storage for Grid Stabilization & Peak Shaving",
     desc: "Deploying containerized Battery Energy Storage Systems (1MWh to 50MWh) that provide instantaneous frequency response, peak load shaving, and renewable power smoothing.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_battery_storage.jpg",
     tag: "BESS & Microgrids",
     icon: Battery,
     deliverables: [
@@ -98,7 +98,7 @@ const POWER_SERVICES = [
     title: "Electrical Switchgear & SCADA Automation",
     subtitle: "Medium/Low Voltage Panels, Relay Coordination & DCS",
     desc: "Manufacturing and commissioning customized 11kV/33kV vacuum circuit breaker (VCB) switchgear panels, motor control centers (MCC), and plant-wide SCADA automation systems.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_switchgear_scada.jpg",
     tag: "Switchgear & SCADA",
     icon: Cpu,
     deliverables: [
@@ -113,7 +113,7 @@ const POWER_SERVICES = [
     title: "Plant Operations & Maintenance (O&M) Contracts",
     subtitle: "24/7 Generation Management & Predictive Asset Audits",
     desc: "Providing full-scope long-term operations, preventive maintenance, thermal imaging audits, transformer oil filtration, and spare parts management for utility and private power assets.",
-    image: "/max_power_hero_energy.svg",
+    image: "/maxpower/svc_operations_maintenance.jpg",
     tag: "O&M Services",
     icon: Wrench,
     deliverables: [
@@ -133,6 +133,7 @@ const SERVICE_STATS = [
 ];
 
 export default function MaxPowerServicesPage() {
+  const [activeTab, setActiveTab] = useState("renewable-energy");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filtered = POWER_SERVICES.filter(
@@ -152,25 +153,25 @@ export default function MaxPowerServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
-              <SectionLabel>Power Engineering &amp; Energy EPC</SectionLabel>
+              <SectionLabel>Full-Scope Turnkey Power Engineering</SectionLabel>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
-                Comprehensive Energy Solutions For <span style={{ color: theme.navy }}>Utilities &amp; Heavy Industry</span>
+                Our Power Divisions. <span style={{ color: theme.navy }}>Engineering The Grid.</span>
               </h1>
 
               <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                From multi-megawatt utility solar and wind farms to 500kV transmission grid stations, industrial BESS battery storage, and 24/7 plant O&amp;M, Max Power Corporation delivers turnkey power reliability.
+                From utility-scale solar parks and thermal power blocks to 500kV grid substations, BESS energy storage, and continuous 24/7 operations, Max Power Corporation delivers end-to-end electrical engineering excellence.
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="#services-catalog"
+                <Link
+                  href="/group-companies/max-power/contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
                   style={{ backgroundColor: theme.navy }}
                 >
-                  <span>Explore All 6 Divisions</span>
+                  <span>Request Engineering Proposal</span>
                   <ArrowRight size={16} />
-                </a>
+                </Link>
 
                 <Link
                   href="/group-companies/max-power/contact"
@@ -186,7 +187,7 @@ export default function MaxPowerServicesPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/max_power_hero_energy.svg"
+                  src="/maxpower/hero_power_generation.jpg"
                   alt="Max Power Energy Solutions"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

@@ -19,6 +19,8 @@ import {
   Phone,
   Search,
   Sparkles,
+  Eye,
+  Send,
 } from "lucide-react";
 import {
   theme,
@@ -26,65 +28,70 @@ import {
   WaltonFoodFooter,
   SectionLabel,
   SectionHeading,
+  ProductDetailModal,
+  WholesaleInquiryModal,
 } from "../components/WaltonFoodShared";
+import { FOOD_LISTINGS } from "../walton-food-data";
 
 const CATEGORIES = [
   "All",
-  "Frozen Foods & IQF",
-  "Ready-to-Eat Meals",
-  "Dairy Products",
-  "Bakery & Confectionery",
-  "Beverages & Juices",
+  "IQF Frozen Foods",
+  "Ready-to-Eat Retort Meals",
+  "Dairy & UHT Line",
+  "Beverages & Purees",
+  "Grains & Flours",
+  "Bakery & Snacks",
   "Sauces & Condiments",
+  "Private Label OEM",
 ];
 
 const PRODUCT_SUITES = [
   {
-    name: "Walton Gold Frozen Foods & IQF Appetizers",
-    category: "Frozen Foods & IQF",
-    specs: ["Technology: -38°C Cryogenic Individual Quick Freezing (IQF)", "Range: Crispy Fries, Green Peas, Sweet Corn, Parathas & Samosas", "Packaging: 400g / 1kg Retail Barrier Pouches & 10kg Foodservice"],
-    desc: "Flash-frozen at the peak of harvest to preserve cellular crispness, nutrients, and natural flavors with zero added preservatives.",
-    image: "/waltonfood_hero_processing.svg",
+    name: "Walton Gold Grade-A IQF Crispy French Fries & Frozen Produce",
+    category: "IQF Frozen Foods",
+    specs: ["Technology: -38°C Cryogenic Individual Quick Freezing (IQF)", "Range: Shoestring & Crinkle Fries, Sweet Peas, Corn & Parathas", "Packaging: 400g / 1kg Retail Barrier Pouches & 10kg Foodservice"],
+    desc: "Flash-frozen at peak harvest to preserve cellular crispness, vibrant natural color, and vitamins with zero added chemical preservatives.",
+    image: "/waltonfood/hero_gourmet_production.jpg",
     tag: "IQF Frozen Suite",
   },
   {
     name: "Walton Chef Gourmet Ready-to-Eat Retort Meals",
-    category: "Ready-to-Eat Meals",
+    category: "Ready-to-Eat Retort Meals",
     specs: ["Recipes: Authentic Biryani, Nihari, Chicken Karahi & Daal", "Shelf-Life: 12-Month Ambient Storage (No Refrigeration Required)", "Safety: Thermal Autoclave Retort Sterilization (F0 > 6.0)"],
     desc: "Authentic chef-formulated traditional Pakistani and continental meals packaged in shelf-stable multi-barrier retort pouches.",
-    image: "/waltonfood_hero_processing.svg",
+    image: "/waltonfood/card_retort_meals.jpg",
     tag: "Retort Ready Meals",
   },
   {
-    name: "Walton Dairy UHT Milk & Dairy Ingredients",
-    category: "Dairy Products",
-    specs: ["Processing: 138°C Direct Steam Injection UHT Pasteurization", "Portfolio: Full-Cream Milk, Low-Fat Milk, Butter, Cheese & Pure Ghee", "Packaging: 250ml & 1000ml Aseptic Tetra-Brik Cartons"],
+    name: "Walton Dairy UHT Pasteurized Milk & Cultured Dairy Line",
+    category: "Dairy & UHT Line",
+    specs: ["Processing: 142°C Direct Steam Injection UHT Pasteurization", "Portfolio: Full-Cream Milk, Cultured Butter, Desi Ghee & Mozzarella", "Packaging: 250ml & 1000ml Aseptic Tetra-Brik Cartons"],
     desc: "Pure, wholesome dairy sourced from disease-free modern farms, processed under sterile conditions for long ambient shelf stability.",
-    image: "/waltonfood_hero_processing.svg",
+    image: "/waltonfood/card_dairy_processing.jpg",
     tag: "UHT Dairy Suite",
   },
   {
-    name: "Walton Heritage Bakery & Confectionery",
-    category: "Bakery & Confectionery",
-    specs: ["Products: Butter Cookies, Traditional Rusk, Wafers & Toffees", "Standards: Non-Hydrogenated Vegetable Fats & Premium Flour", "Export: Nitrogen-Flushed Protective Tins & Master Cartons"],
-    desc: "Artisanal biscuits, crunchy rusk, and confectionery produced on automated European continuous tunnel oven baking lines.",
-    image: "/waltonfood_hero_processing.svg",
+    name: "Walton Heritage Artisan Bakery & High-Fiber Confectionery",
+    category: "Bakery & Snacks",
+    specs: ["Products: Whole-Wheat Digestive Biscuits, Honey Rusk & Wafers", "Standards: Non-Hydrogenated Vegetable Fats & Fortified Flour", "Export: Moisture-Proof OPP Flow Wrap & Protective Tins"],
+    desc: "Artisanal biscuits, crunchy rusk, and confectionery produced on automated continuous tunnel oven baking lines.",
+    image: "/waltonfood/card_culinary_specialty.jpg",
     tag: "Bakery & Biscuits",
   },
   {
-    name: "Walton Orchard 100% Natural Fruit Juices",
-    category: "Beverages & Juices",
-    specs: ["Varieties: Chaunsa Mango Nectar, Guava, Apple, Orange & Citrus", "Purity: 100% Natural Real Fruit Pulp Sourced From Local Orchards", "Bottling: Cold-Aseptic PET & Glass Bottle Lines"],
-    desc: "Refreshing, vitamin-rich fruit beverages and natural nectars processed with gentle pasteurization preserving authentic fruit aromas.",
-    image: "/waltonfood_hero_processing.svg",
-    tag: "Orchard Juices",
+    name: "Walton Orchard 100% Natural Fruit Pulps, Juices & Purees",
+    category: "Beverages & Purees",
+    specs: ["Varieties: Aseptic Chaunsa Mango Pulp, Kinnow Mandarin & Guava", "Purity: 100% Natural Real Fruit Pulp Sourced From Audited Orchards", "Bottling: 215kg Steel Aseptic Drums & Cold-Aseptic Retail Tetra"],
+    desc: "Refreshing, vitamin-rich fruit purees and natural nectars processed with gentle flash pasteurization preserving authentic aromas.",
+    image: "/waltonfood/hero_farm_sourcing.jpg",
+    tag: "Orchard Juices & Purees",
   },
   {
-    name: "Walton Spice Culinary Sauces & Condiments",
+    name: "Walton Spice Culinary Sauces, Tomato Pastes & Condiments",
     category: "Sauces & Condiments",
-    specs: ["Range: Rich Tomato Ketchup, Garlic Chili, Mayo & BBQ Sauce", "Quality: Thick Pureed Consistency with Premium Spice Extracts", "Form: 300g Glass Bottles, Squeeze Pouches & 5kg Foodservice Tubs"],
+    specs: ["Range: Rich Tomato Ketchup, Chili Garlic, Mustard & Pickles", "Quality: 28-30° Brix Cold-Break Paste with Zero Artificial Dyes", "Form: Ergonomic Squeeze PET Bottles & 4kg Foodservice Tubs"],
     desc: "Gourmet condiments, dipping sauces, and seasonings formulated for retail consumers, restaurant chains, and institutional kitchens.",
-    image: "/waltonfood_hero_processing.svg",
+    image: "/waltonfood/card_ready_meals.jpg",
     tag: "Sauces & Condiments",
   },
 ];
@@ -92,23 +99,27 @@ const PRODUCT_SUITES = [
 export default function WaltonFoodSolutionsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeDetailProduct, setActiveDetailProduct] = useState(null);
+  const [isWholesaleOpen, setIsWholesaleOpen] = useState(false);
 
   const filtered = PRODUCT_SUITES.filter((p) => {
     const matchesCategory = selectedCategory === "All" || p.category === selectedCategory;
+    const query = searchQuery.trim().toLowerCase();
     const matchesSearch =
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchQuery.toLowerCase());
+      !query ||
+      (p.name && p.name.toLowerCase().includes(query)) ||
+      (p.desc && p.desc.toLowerCase().includes(query)) ||
+      (p.category && p.category.toLowerCase().includes(query));
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <main className="min-h-screen bg-white text-[#3D4E44] font-sans antialiased overflow-x-hidden">
-      <WaltonFoodNavbar />
+    <main className="min-h-screen bg-white text-[#475569] font-sans antialiased overflow-x-hidden">
+      <WaltonFoodNavbar onOpenWholesaleModal={() => setIsWholesaleOpen(true)} />
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto">
             <SectionLabel center>Product Portfolio &amp; Consumer Brands</SectionLabel>
 
@@ -117,7 +128,7 @@ export default function WaltonFoodSolutionsPage() {
             </h1>
 
             <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-              Supplying IQF frozen vegetables, ready-to-eat retort meals, UHT dairy products, premium bakery biscuits, natural fruit juices, and culinary sauces across Pakistan and international export markets.
+              Supplying export-grade IQF frozen vegetables, shelf-stable ready-to-eat retort meals, UHT dairy products, premium bakery biscuits, natural fruit juices, and culinary sauces across Pakistan and international export markets.
             </p>
 
             {/* Live Search */}
@@ -140,7 +151,7 @@ export default function WaltonFoodSolutionsPage() {
 
       {/* Category Pills */}
       <section className="py-6 px-4 sm:px-6 lg:px-8 border-b bg-emerald-50/40" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+        <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             {CATEGORIES.map((cat) => {
               const active = selectedCategory === cat;
@@ -165,23 +176,24 @@ export default function WaltonFoodSolutionsPage() {
 
       {/* Solutions Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((prod) => (
               <div
                 key={prod.name}
-                className="wm-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
+                className="wm-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs hover:shadow-xl hover:border-[#1E6B43] transition-all duration-300"
                 style={{ borderColor: theme.border }}
               >
                 <div>
                   {/* Card Image */}
-                  <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                  <div className="relative w-full h-52 bg-slate-900 overflow-hidden group">
                     <Image
                       src={prod.image}
                       alt={prod.name}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#061022]/80 via-transparent to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 border shadow-sm text-[#1E6B43]" style={{ borderColor: theme.border }}>
                         {prod.tag}
@@ -200,9 +212,9 @@ export default function WaltonFoodSolutionsPage() {
                     </p>
 
                     {/* Specs List */}
-                    <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(211, 228, 219, 0.7)" }}>
+                    <div className="space-y-2 pt-4 border-t" style={{ borderColor: theme.border }}>
                       <p className="text-xs font-bold uppercase tracking-wider" style={{ color: theme.greenDark }}>
-                        Product Specifications &amp; Sizing:
+                        Product Specifications:
                       </p>
                       {prod.specs.map((s) => (
                         <div key={s} className="flex items-center gap-2">
@@ -215,14 +227,15 @@ export default function WaltonFoodSolutionsPage() {
                 </div>
 
                 <div className="p-7 pt-0">
-                  <Link
-                    href="/group-companies/walton-mirror-food/contact"
-                    className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-emerald-50/50 transition-colors cursor-pointer"
+                  <button
+                    type="button"
+                    onClick={() => setIsWholesaleOpen(true)}
+                    className="w-full py-3 rounded-xl border text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#1E6B43] hover:text-white transition-all cursor-pointer"
                     style={{ borderColor: theme.border, color: theme.greenDark }}
                   >
                     <span>Request Wholesale Catalog &amp; Pricing</span>
                     <ArrowRight size={14} />
-                  </Link>
+                  </button>
                 </div>
               </div>
             ))}
@@ -231,42 +244,49 @@ export default function WaltonFoodSolutionsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-[#F8FAF8]">
+        <div className="max-w-7xl mx-auto">
           <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
             <div>
               <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#BC8330]">
                 WHOLESALE &amp; EXPORT DISTRIBUTION INQUIRIES
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.greenDark }}>
-                Stock Walton &amp; Morris Food Brands In Your Stores
+                Stock Walton &amp; Mirror Food Brands In Your Stores
               </h2>
               <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                We provide competitive wholesale pricing, refrigerated container shipping, and complete marketing POS support for regional distributors.
+                We provide competitive wholesale pricing, refrigerated container shipping, and complete marketing POS support for regional and global distributors.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
-              <Link
-                href="/group-companies/walton-mirror-food/contact"
+              <button
+                type="button"
+                onClick={() => setIsWholesaleOpen(true)}
                 className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
                 style={{ backgroundColor: theme.green }}
               >
                 <span>Request Wholesale Catalog</span>
                 <ArrowRight size={15} />
-              </Link>
+              </button>
               <a
-                href="tel:00924238924737"
+                href="tel:00924235401280"
                 className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-emerald-50/50 cursor-pointer"
                 style={{ borderColor: theme.green, color: theme.green }}
               >
                 <Phone size={15} />
-                <span>0092-42-38924737</span>
+                <span>0092-42-35401280</span>
               </a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Wholesale Modal */}
+      <WholesaleInquiryModal
+        isOpen={isWholesaleOpen}
+        onClose={() => setIsWholesaleOpen(false)}
+      />
 
       <WaltonFoodFooter />
     </main>

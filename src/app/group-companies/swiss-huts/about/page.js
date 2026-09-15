@@ -105,7 +105,7 @@ export default function SwissHutsAboutPage() {
             <div className="lg:col-span-5 w-full flex justify-center">
               <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/swiss_huts_hero_resort.svg"
+                  src="/swissshuts/hero_alpine_chalet.jpg"
                   alt="Swiss Hut Alpine Mountain Resort & Chalets"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -162,7 +162,7 @@ export default function SwissHutsAboutPage() {
             {/* Left Graphic */}
             <div className="relative w-full h-[380px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
               <Image
-                src="/swiss_huts_hero_resort.svg"
+                src="/swissshuts/hero_boutique_hotel.jpg"
                 alt="Swiss Hut Mountain Hospitality Experience"
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
