@@ -24,110 +24,18 @@ import {
 
 export const NATIONAL_AGRICULTURAL_PROGRAMS = [
   {
-    id: "mechanization",
-    slug: "smallholder-farmer-mechanization-program",
-    title: "Smallholder Farmer Mechanization Program",
-    subtitle: "Shared Farm Equipment Pools, Laser Leveling & Precision Seeding",
-    eyebrow: "Rural Farmer Empowerment & Custom Machinery Pools",
-    category: "Farm Technology",
-    tag: "Machinery Access",
-    icon: Tractor,
-    heroImage: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80",
-    overview:
-      "The Smallholder Farmer Mechanization Program bridges the technological divide for small and medium landholders across Pakistan. By establishing village-level agricultural machinery hubs, farmers gain affordable, pay-per-acre access to GPS laser land levelers, pneumatic seed drills, high-horsepower tractors, and modern combine harvesters without high capital expenditure.",
-    metrics: [
-      { label: "Farmers Enrolled", value: "12K+ Farmers" },
-      { label: "Tillage Cost Saved", value: "35% Lower" },
-      { label: "Crop Yield Boost", value: "+30% Average" },
-      { label: "Acreage Covered", value: "200K+ Acres" },
-    ],
-    benefits: [
-      "Subsidized hourly and per-acre rental rates for GPS-guided laser land leveling equipment",
-      "Access to pneumatic precision seed planters reducing seed wastage by over 30%",
-      "On-demand combine harvesting support preventing post-monsoon crop spoiling and losses",
-      "Free hands-on technical training for rural youth to become certified farm equipment operators",
-      "Pay-after-harvest micro-credit financing partnerships for vulnerable subsistence farming families",
-      "GPS tracking and transparent digital booking via mobile app and village coordinator desks",
-    ],
-    operationalComponents: [
-      { key: "Target Demographic", value: "Smallholder farmers managing 1 to 25 acres of arable land" },
-      { key: "Machinery Pool", value: "Tractors (85–120 HP), Laser levelers, Seed drills, Rotavators & Combines" },
-      { key: "Booking Mechanism", value: "Village Community Coordinators & Dedicated USSD/WhatsApp Hotline" },
-      { key: "Operator Support", value: "Certified machinery operators and fuel provided with every booking" },
-      { key: "Payment Flexibility", value: "Cash on delivery or harvest-linked delayed settlement" },
-      { key: "Impact Verification", value: "Pre-season and post-harvest yield benchmarking and soil audits" },
-    ],
-    pillars: [
-      {
-        title: "Shared Capital Cost",
-        desc: "Small farmers benefit from expensive multimillion-rupee machinery through low-cost shared rentals.",
-        icon: Scale,
-      },
-      {
-        title: "Rapid Planting Timelines",
-        desc: "Mechanized sowing enables farmers to plant crops within the optimal 10-day seasonal weather window.",
-        icon: Sprout,
-      },
-      {
-        title: "Youth Technical Employment",
-        desc: "Training rural youth as professional machinery operators, creating sustainable village livelihoods.",
-        icon: Users,
-      },
-      {
-        title: "Zero-Harvest Crop Loss",
-        desc: "Guaranteed harvest scheduling ensures crops are cut and threshed before unexpected rain damage.",
-        icon: ShieldCheck,
-      },
-    ],
-    workflow: [
-      {
-        step: "01",
-        title: "Village Hub Enrollment",
-        desc: "Farmers register their land parcel details and seasonal crop schedule with the local coordinator.",
-      },
-      {
-        step: "02",
-        title: "Machinery Booking & Scheduling",
-        desc: "Farmers schedule laser levelers, planters, or combines via phone or coordinator 48 hours in advance.",
-      },
-      {
-        step: "03",
-        title: "Field Execution by Certified Team",
-        desc: "Certified machinery operators deploy to the field and complete the required tillage or harvesting.",
-      },
-      {
-        step: "04",
-        title: "Post-Service Yield Tracking",
-        desc: "Agronomists track germination, growth, and final grain yield to verify productivity gains.",
-      },
-    ],
-    faqs: [
-      {
-        q: "Who is eligible to participate in the Smallholder Mechanization Program?",
-        a: "Any smallholder farmer managing up to 25 acres of land in our operating districts can register for subsidized machinery services through their local village coordinator.",
-      },
-      {
-        q: "How are machinery booking rates calculated?",
-        a: "Rates are charged transparently on a per-acre basis inclusive of certified machinery, trained operator, and fuel, with no hidden maintenance fees.",
-      },
-      {
-        q: "Can farming cooperatives book machinery for entire villages?",
-        a: "Yes. We offer prioritized scheduling and discounted group rates for registered agricultural cooperatives and village farmer associations.",
-      },
-    ],
-  },
-  {
-    id: "solar-irrigation",
+    id: "sustainable-agri",
     slug: "solar-drip-irrigation-water-security-initiative",
-    title: "Solar Drip Irrigation & Water Security Initiative",
+    title: "Sustainable Agriculture",
+    fullTitle: "Sustainable Agriculture & Water Security Initiative",
     subtitle: "Reclaiming Arid Lands with Solar Power & Micro-Drip Technology",
     eyebrow: "Climate-Smart Water Conservation & Arid Zone Greening",
     category: "Water Conservation",
     tag: "Water Security",
     icon: Droplets,
-    heroImage: "/agri_hero_farm.svg",
+    heroImage: "/desertdev/arid_agriculture.jpg",
     overview:
-      "The Solar Drip Irrigation & Water Security Initiative transforms water-stressed, drought-vulnerable, and off-grid lands into high-yielding productive agro-ecosystems. By combining high-efficiency solar hybrid pumps with pressure-compensated drip irrigation lines, this program eliminates expensive diesel pumping costs and saves over 50% of precious groundwater.",
+      "The Sustainable Agriculture Initiative transforms water-stressed, drought-vulnerable, and off-grid lands into high-yielding productive agro-ecosystems. By combining high-efficiency solar hybrid pumps with pressure-compensated drip irrigation lines, this program eliminates expensive diesel pumping costs and saves over 50% of precious groundwater.",
     metrics: [
       { label: "Water Saved Annually", value: "1.2B Gallons" },
       { label: "Solar Systems Built", value: "650+ Units" },
@@ -146,7 +54,7 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
       { key: "Target Zones", value: "Canal-tail ends, arid zones (Thar, Thal, Cholistan), and off-grid farms" },
       { key: "Solar Array Specs", value: "Tier-1 mono-PERC solar panels with MPPT Variable Frequency Drives" },
       { key: "Drip Emitter Lifespan", value: "Self-flushing pressure-compensated drippers with 10+ year lifespan" },
-      { key: "Suitable Crops", value: "Citrus, Mango, Olive, Guava, Cotton, Vegetables, and High-Density Orchards" },
+      { key: "Suitable Crops", value: "Citrus, Mango, Olive, Dates, Cotton, Vegetables, and High-Density Orchards" },
       { key: "Subsidy Support", value: "Assistance with provincial government cost-sharing subsidy programs" },
       { key: "Warranty & Support", value: "3-year free on-site maintenance and seasonal system flushing audits" },
     ],
@@ -210,16 +118,17 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
     ],
   },
   {
-    id: "dairy-genetics",
+    id: "dairy-dev",
     slug: "dairy-herd-genetic-improvement-program",
-    title: "Dairy Herd Genetic Improvement Program",
+    title: "Dairy Development",
+    fullTitle: "Dairy Development & Herd Genetic Improvement",
     subtitle: "Upgrading Rural Cattle Genetics, Semen Viability & Milk Yield",
     eyebrow: "Sovereign Dairy Productivity & Progeny-Tested Bloodlines",
     tag: "Livestock & Dairy",
     icon: Leaf,
-    heroImage: "/agri_dairy_livestock.svg",
+    heroImage: "/vetvac_dairy_service.jpg",
     overview:
-      "The Dairy Herd Genetic Improvement Program is a transformative rural development initiative aimed at doubling milk production in smallholder dairy farming households. By delivering sexed semen artificial insemination from elite pedigree Holstein-Friesian and pure Sahiwal sires, combined with village-level veterinary health camps and transparent milk chilling hubs, we elevate household dairy incomes permanently.",
+      "The Dairy Development Program is a transformative rural development initiative aimed at doubling milk production in smallholder dairy farming households. By delivering sexed semen artificial insemination from elite pedigree Holstein-Friesian and pure Sahiwal sires, combined with village-level veterinary health camps and transparent milk chilling hubs, we elevate household dairy incomes permanently.",
     metrics: [
       { label: "Cattle Upgraded", value: "85K+ Cows" },
       { label: "Daily Milk Gain", value: "+8 to 12 Liters" },
@@ -302,16 +211,204 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
     ],
   },
   {
-    id: "soil-testing",
+    id: "farmer-dev",
+    slug: "smallholder-farmer-mechanization-program",
+    title: "Farmer Development",
+    fullTitle: "Smallholder Farmer Development & Mechanization",
+    subtitle: "Shared Farm Equipment Pools, Laser Leveling & Precision Seeding",
+    eyebrow: "Rural Farmer Empowerment & Custom Machinery Pools",
+    category: "Farm Technology",
+    tag: "Machinery Access",
+    icon: Tractor,
+    heroImage: "/services/agriculture-1.jpg",
+    overview:
+      "The Farmer Development Program bridges the technological divide for small and medium landholders across Pakistan. By establishing village-level agricultural machinery hubs, farmers gain affordable, pay-per-acre access to GPS laser land levelers, pneumatic seed drills, high-horsepower tractors, and modern combine harvesters without high capital expenditure.",
+    metrics: [
+      { label: "Farmers Enrolled", value: "12K+ Farmers" },
+      { label: "Tillage Cost Saved", value: "35% Lower" },
+      { label: "Crop Yield Boost", value: "+30% Average" },
+      { label: "Acreage Covered", value: "200K+ Acres" },
+    ],
+    benefits: [
+      "Subsidized hourly and per-acre rental rates for GPS-guided laser land leveling equipment",
+      "Access to pneumatic precision seed planters reducing seed wastage by over 30%",
+      "On-demand combine harvesting support preventing post-monsoon crop spoiling and losses",
+      "Free hands-on technical training for rural youth to become certified farm equipment operators",
+      "Pay-after-harvest micro-credit financing partnerships for vulnerable subsistence farming families",
+      "GPS tracking and transparent digital booking via mobile app and village coordinator desks",
+    ],
+    operationalComponents: [
+      { key: "Target Demographic", value: "Smallholder farmers managing 1 to 25 acres of arable land" },
+      { key: "Machinery Pool", value: "Tractors (85–120 HP), Laser levelers, Seed drills, Rotavators & Combines" },
+      { key: "Booking Mechanism", value: "Village Community Coordinators & Dedicated USSD/WhatsApp Hotline" },
+      { key: "Operator Support", value: "Certified machinery operators and fuel provided with every booking" },
+      { key: "Payment Flexibility", value: "Cash on delivery or harvest-linked delayed settlement" },
+      { key: "Impact Verification", value: "Pre-season and post-harvest yield benchmarking and soil audits" },
+    ],
+    pillars: [
+      {
+        title: "Shared Capital Cost",
+        desc: "Small farmers benefit from expensive multimillion-rupee machinery through low-cost shared rentals.",
+        icon: Scale,
+      },
+      {
+        title: "Rapid Planting Timelines",
+        desc: "Mechanized sowing enables farmers to plant crops within the optimal 10-day seasonal weather window.",
+        icon: Sprout,
+      },
+      {
+        title: "Youth Technical Employment",
+        desc: "Training rural youth as professional machinery operators, creating sustainable village livelihoods.",
+        icon: Users,
+      },
+      {
+        title: "Zero-Harvest Crop Loss",
+        desc: "Guaranteed harvest scheduling ensures crops are cut and threshed before unexpected rain damage.",
+        icon: ShieldCheck,
+      },
+    ],
+    workflow: [
+      {
+        step: "01",
+        title: "Village Hub Enrollment",
+        desc: "Farmers register their land parcel details and seasonal crop schedule with the local coordinator.",
+      },
+      {
+        step: "02",
+        title: "Machinery Booking & Scheduling",
+        desc: "Farmers schedule laser levelers, planters, or combines via phone or coordinator 48 hours in advance.",
+      },
+      {
+        step: "03",
+        title: "Field Execution by Certified Team",
+        desc: "Certified machinery operators deploy to the field and complete the required tillage or harvesting.",
+      },
+      {
+        step: "04",
+        title: "Post-Service Yield Tracking",
+        desc: "Agronomists track germination, growth, and final grain yield to verify productivity gains.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Who is eligible to participate in the Farmer Development Program?",
+        a: "Any smallholder farmer managing up to 25 acres of land in our operating districts can register for subsidized machinery services through their local village coordinator.",
+      },
+      {
+        q: "How are machinery booking rates calculated?",
+        a: "Rates are charged transparently on a per-acre basis inclusive of certified machinery, trained operator, and fuel, with no hidden maintenance fees.",
+      },
+      {
+        q: "Can farming cooperatives book machinery for entire villages?",
+        a: "Yes. We offer prioritized scheduling and discounted group rates for registered agricultural cooperatives and village farmer associations.",
+      },
+    ],
+  },
+  {
+    id: "rural-dev",
+    slug: "women-in-agriculture-empowerment-program",
+    title: "Rural Development",
+    fullTitle: "Rural Development & Women in Agriculture",
+    subtitle: "High-Tunnel Vegetables, Hygienic Milking & Organic Poultry Kits",
+    eyebrow: "Gender Inclusion, Micro-Agri Enterprises & Household Prosperity",
+    tag: "Rural Development",
+    icon: Users,
+    heroImage: "/swiss-farm-about.png",
+    overview:
+      "The Rural Development Initiative provides rural families and women farmers with specialized technical training, micro-farming starter kits, and direct market connectivity. Focusing on high-tunnel greenhouse vegetable farming, hygienic livestock milking, backyard poultry enterprises, and post-harvest food processing, the initiative builds financial independence and food security for rural households.",
+    metrics: [
+      { label: "Families Empowered", value: "6,500+ Families" },
+      { label: "Income Increase", value: "+65% Household" },
+      { label: "Micro-Kits Distributed", value: "4,000+ Kits" },
+      { label: "Villages Active", value: "180+ Villages" },
+    ],
+    benefits: [
+      "Hands-on technical training in off-season walk-in tunnel vegetable and herb cultivation",
+      "Free starter kits containing certified hybrid vegetable seeds, drip kits, and organic bio-fertilizers",
+      "Backyard organic poultry starter units with vaccinated dual-purpose layers and balanced feed",
+      "Hygienic dairy handling training, stainless steel milk pails, and sub-clinical mastitis detection kits",
+      "Post-harvest food processing training: solar fruit drying, pickling, jams, and clean produce packaging",
+      "Direct market linkage through cooperative aggregators selling fresh organic produce to urban markets",
+    ],
+    operationalComponents: [
+      { key: "Target Demographic", value: "Rural women farmers, female landless laborers, and smallholder farming families" },
+      { key: "Training Focus Areas", value: "Kitchen gardening, Tunnel farming, Dairy hygiene, Poultry, Food preservation" },
+      { key: "Starter Kit Types", value: "Tunnel Veg Kit, Backyard Poultry Kit (25 birds), Hygienic Milking Kit" },
+      { key: "Trainers", value: "Female master agricultural trainers and certified livestock health workers" },
+      { key: "Market Access", value: "Direct cooperative sales desks in district regional markets" },
+      { key: "Financial Inclusion", value: "Assistance with opening mobile digital bank accounts (JazzCash/Easypaisa)" },
+    ],
+    pillars: [
+      {
+        title: "Community Leadership",
+        desc: "Delivered by master agronomists respecting local cultural norms and community dynamics.",
+        icon: Users,
+      },
+      {
+        title: "High-Margin Micro-Farming",
+        desc: "Off-season vegetables and backyard poultry generate steady daily household cash flows from small backyard plots.",
+        icon: Sprout,
+      },
+      {
+        title: "Child Nutrition & Food Security",
+        desc: "Fresh organic eggs, vegetables, and clean dairy milk significantly improve maternal and child nutritional health.",
+        icon: HeartPulse,
+      },
+      {
+        title: "Digital Financial Independence",
+        desc: "Connecting women directly to mobile wallets ensures their earnings go directly to household education and savings.",
+        icon: Award,
+      },
+    ],
+    workflow: [
+      {
+        step: "01",
+        title: "Community Mobilization & Selection",
+        desc: "Field officers hold community meetings and identify motivated rural families for enrollment.",
+      },
+      {
+        step: "02",
+        title: "5-Day Practical Field Training",
+        desc: "Interactive hands-on training in greenhouse vegetable cultivation, dairy hygiene, and poultry care.",
+      },
+      {
+        step: "03",
+        title: "Starter Asset Kit Distribution",
+        desc: "Beneficiaries receive high-quality input kits (seeds, drip lines, vaccinated poultry, stainless milk pails).",
+      },
+      {
+        step: "04",
+        title: "Harvest Aggregation & Market Sale",
+        desc: "Produce is aggregated at village collection points and sold to premium supermarket and urban buyers.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What training programs are offered under the Rural Development initiative?",
+        a: "We offer practical courses in off-season tunnel vegetable cultivation, organic kitchen gardening, hygienic dairy milking and mastitis detection, backyard layer poultry farming, and solar food dehydration.",
+      },
+      {
+        q: "What is included in the starter asset kits?",
+        a: "Depending on the chosen track, kits include certified hybrid vegetable seeds, 100m drip irrigation lines, 25 vaccinated layer birds with feed, or food-grade stainless steel milk buckets and mastitis testing strips.",
+      },
+      {
+        q: "How does the program help families sell their produce?",
+        a: "We establish community aggregation centers where female cooperative members pool their fresh vegetables and eggs for bulk collection and transport to premium urban supermarket buyers.",
+      },
+    ],
+  },
+  {
+    id: "agri-innovation",
     slug: "mobile-soil-testing-crop-health-clinics",
-    title: "Mobile Soil Testing & Crop Health Clinics",
+    title: "Agricultural Innovation",
+    fullTitle: "Agricultural Innovation & Mobile Soil Health Clinics",
     subtitle: "Rapid 30-Minute On-Site Soil Assays & Precision Nutrient Prescriptions",
     eyebrow: "Scientific Soil Health Diagnostics & Fertilizer Cost Reduction",
     tag: "Agritech & Soil",
     icon: FlaskConical,
-    heroImage: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/services/agriculture-2.jpg",
     overview:
-      "The Mobile Soil Testing & Crop Health Clinics initiative deploys specialized mobile laboratory vans directly to farmers' fields. Equipped with computerized spectrophotometers and digital soil analyzers, our agronomists deliver instant 30-minute soil fertility reports (N-P-K, pH, EC, Organic Matter) and customized fertilizer prescriptions that cut input costs by up to 25% while restoring soil vitality.",
+      "The Agricultural Innovation initiative deploys specialized mobile laboratory vans directly to farmers' fields. Equipped with computerized spectrophotometers and digital soil analyzers, our agronomists deliver instant 30-minute soil fertility reports (N-P-K, pH, EC, Organic Matter) and customized fertilizer prescriptions that cut input costs by up to 25% while restoring soil vitality.",
     metrics: [
       { label: "Soil Tests Completed", value: "45K+ Assays" },
       { label: "Fertilizer Cost Saved", value: "25% Average" },
@@ -393,103 +490,14 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
       },
     ],
   },
-  {
-    id: "women-agri",
-    slug: "women-in-agriculture-empowerment-program",
-    title: "Women in Agriculture & Agribusiness Empowerment",
-    subtitle: "High-Tunnel Vegetables, Hygienic Milking & Organic Poultry Kits",
-    eyebrow: "Gender Inclusion, Micro-Agri Enterprises & Household Prosperity",
-    tag: "Rural Development",
-    icon: Users,
-    heroImage: "https://images.unsplash.com/photo-1527153857715-3908f2ae5e81?auto=format&fit=crop&w=800&q=80",
-    overview:
-      "The Women in Agriculture Empowerment Program provides rural women with specialized technical training, micro-farming starter kits, and direct market connectivity. Focusing on high-tunnel greenhouse vegetable farming, hygienic livestock milking, backyard poultry enterprises, and post-harvest food processing, the initiative builds financial independence and food security for rural households.",
-    metrics: [
-      { label: "Women Empowered", value: "6,500+ Women" },
-      { label: "Income Increase", value: "+65% Household" },
-      { label: "Micro-Kits Distributed", value: "4,000+ Kits" },
-      { label: "Villages Active", value: "180+ Villages" },
-    ],
-    benefits: [
-      "Hands-on technical training in off-season walk-in tunnel vegetable and herb cultivation",
-      "Free starter kits containing certified hybrid vegetable seeds, drip kits, and organic bio-fertilizers",
-      "Backyard organic poultry starter units with vaccinated dual-purpose layers and balanced feed",
-      "Hygienic dairy handling training, stainless steel milk pails, and sub-clinical mastitis detection kits",
-      "Post-harvest food processing training: solar fruit drying, pickling, jams, and clean produce packaging",
-      "Direct market linkage through cooperative aggregators selling fresh organic produce to urban markets",
-    ],
-    operationalComponents: [
-      { key: "Target Demographic", value: "Rural women farmers, female landless laborers, and female-headed households" },
-      { key: "Training Focus Areas", value: "Kitchen gardening, Tunnel farming, Dairy hygiene, Poultry, Food preservation" },
-      { key: "Starter Kit Types", value: "Tunnel Veg Kit, Backyard Poultry Kit (25 birds), Hygienic Milking Kit" },
-      { key: "Trainers", value: "Female master agricultural trainers and certified livestock health workers" },
-      { key: "Market Access", value: "Direct cooperative sales desks in district regional markets" },
-      { key: "Financial Inclusion", value: "Assistance with opening mobile digital bank accounts (JazzCash/Easypaisa)" },
-    ],
-    pillars: [
-      {
-        title: "Female Technical Leadership",
-        desc: "Delivered by female master agronomists respecting local cultural norms and community dynamics.",
-        icon: Users,
-      },
-      {
-        title: "High-Margin Micro-Farming",
-        desc: "Off-season vegetables and backyard poultry generate steady daily household cash flows from small backyard plots.",
-        icon: Sprout,
-      },
-      {
-        title: "Child Nutrition & Food Security",
-        desc: "Fresh organic eggs, vegetables, and clean dairy milk significantly improve maternal and child nutritional health.",
-        icon: HeartPulse,
-      },
-      {
-        title: "Digital Financial Independence",
-        desc: "Connecting women directly to mobile wallets ensures their earnings go directly to household education and savings.",
-        icon: Award,
-      },
-    ],
-    workflow: [
-      {
-        step: "01",
-        title: "Community Mobilization & Selection",
-        desc: "Female field officers hold community meetings and identify motivated rural women for enrollment.",
-      },
-      {
-        step: "02",
-        title: "5-Day Practical Field Training",
-        desc: "Interactive hands-on training in greenhouse vegetable cultivation, dairy hygiene, and poultry care.",
-      },
-      {
-        step: "03",
-        title: "Starter Asset Kit Distribution",
-        desc: "Beneficiaries receive high-quality input kits (seeds, drip lines, vaccinated poultry, stainless milk pails).",
-      },
-      {
-        step: "04",
-        title: "Harvest Aggregation & Market Sale",
-        desc: "Produce is aggregated at village collection points and sold to premium supermarket and urban buyers.",
-      },
-    ],
-    faqs: [
-      {
-        q: "What training programs are offered under the Women in Agriculture initiative?",
-        a: "We offer practical courses in off-season tunnel vegetable cultivation, organic kitchen gardening, hygienic dairy milking and mastitis detection, backyard layer poultry farming, and solar food dehydration.",
-      },
-      {
-        q: "What is included in the starter asset kits?",
-        a: "Depending on the chosen track, kits include certified hybrid vegetable seeds, 100m drip irrigation lines, 25 vaccinated layer birds with feed, or food-grade stainless steel milk buckets and mastitis testing strips.",
-      },
-      {
-        q: "How does the program help women sell their produce?",
-        a: "We establish community aggregation centers where female cooperative members pool their fresh vegetables and eggs for bulk collection and transport to premium urban supermarket buyers.",
-      },
-    ],
-  },
 ];
 
 export function getNationalAgriculturalProgramBySlug(slug) {
   if (!slug) return null;
   return NATIONAL_AGRICULTURAL_PROGRAMS.find(
-    (p) => p.slug.toLowerCase() === slug.toLowerCase() || p.id.toLowerCase() === slug.toLowerCase()
+    (p) =>
+      p.slug.toLowerCase() === slug.toLowerCase() ||
+      p.id.toLowerCase() === slug.toLowerCase() ||
+      p.title.toLowerCase().replace(/[^a-z0-9]/g, "-") === slug.toLowerCase()
   );
 }

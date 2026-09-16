@@ -10,12 +10,9 @@ import {
   Sprout,
   CheckCircle2,
   ArrowRight,
-  Phone,
   ShieldCheck,
-  Award,
-  Users,
-  Wheat,
-  Tractor,
+  Shield,
+  Zap,
 } from "lucide-react";
 import {
   theme,
@@ -35,105 +32,120 @@ const SUSTAINABILITY_STATS = [
 
 const SUSTAINABILITY_PILLARS = [
   {
-    icon: Droplets,
-    title: "Precision Water Management",
-    desc: "Pakistan faces severe water scarcity. We implement computerized drip systems, micro-sprinklers, and laser land leveling that reduce field water evaporation by up to 50% while boosting crop yield.",
-    features: [
-      "Subsurface drip irrigation lines with zero surface evaporation",
-      "Soil moisture capacitive sensors providing real-time irrigation data",
-      "Rainwater catchment reservoirs lined with impermeable geomembranes",
-    ],
-  },
-  {
     icon: Sprout,
-    title: "Regenerative Soil Stewardship",
-    desc: "Restoring depleted soil organic carbon through balanced organic compost, crop residue mulching, legume cover cropping, and biological nitrogen fixation.",
+    title: "Sustainable Agriculture",
+    subtitle: "Precision Agronomy & Natural Crop Rotation",
+    desc: "Implementing precision crop rotation schedules, cover cropping, and biological pest management that optimize crop productivity while safeguarding long-term agro-ecosystem vitality.",
     features: [
-      "Zero-tillage and minimum-tillage conservation techniques",
-      "Conversion of livestock manure into rich bio-organic humus",
-      "Natural biological pest control reducing synthetic insecticide use",
+      "Precision seed singulation and calibrated seed placement",
+      "Biological crop protection reducing reliance on synthetic pesticides",
+      "Integrated crop-livestock farming cycles maximizing nutrient efficiency",
     ],
   },
   {
-    icon: Sun,
-    title: "Clean Solar Farm Energy & Biogas",
-    desc: "Replacing diesel generators with high-efficiency bifacial solar pumping systems and converting cattle dairy waste into renewable biogas for farm energy independence.",
+    icon: Droplets,
+    title: "Water Conservation",
+    subtitle: "High-Efficiency Solar Drip & Laser Grading",
+    desc: "Addressing water scarcity across Pakistan's agricultural belts through precision laser leveling, subsurface drip lines, and geomembrane-lined rainwater collection ponds.",
     features: [
-      "Off-grid and grid-tied solar tube-wells operating with zero fuel costs",
-      "Anaerobic dairy manure biogas digesters generating clean electricity",
-      "Solar-powered cold storage units keeping fruit and vegetables fresh",
+      "Subsurface and pressure-compensated drip lines cutting water demand by 50%",
+      "Precision GPS laser grading eliminating irrigation water pooling and run-off",
+      "IoT capacitive soil moisture monitoring for scheduled automated watering",
     ],
   },
   {
     icon: Leaf,
-    title: "Agroforestry & Biodiversity",
-    desc: "Integrating native tree shelterbelts along farm perimeters to prevent wind erosion, create microclimates, and protect natural pollinator species essential for crop fertilization.",
+    title: "Soil Health",
+    subtitle: "Regenerative Soil Care & Bio-Nutrition",
+    desc: "Restoring depleted soil organic carbon and microflora through humic bio-fertilizers, organic cattle compost, subsoil decompaction, and regular on-site soil assays.",
     features: [
-      "Native tree planting acting as natural windbreaks and bird sanctuaries",
-      "Pollinator-friendly flowering borders promoting honeybee colonies",
-      "Erosion control along riverbanks and irrigation canal bunds",
+      "Application of organic compost revitalizing beneficial mycorrhizal fungi",
+      "Subsoil chisel plowing shattering dense subsurface hardpans",
+      "Scientific 8-parameter mobile soil testing preventing chemical over-application",
+    ],
+  },
+  {
+    icon: Sun,
+    title: "Renewable Energy",
+    subtitle: "Zero-Emission Solar Pumping & Dairy Biogas",
+    desc: "Replacing diesel generators with high-efficiency bifacial solar pumping systems and converting livestock manure into clean renewable biogas for rural energy security.",
+    features: [
+      "Off-grid MPPT variable frequency solar tubewells with zero diesel fuel costs",
+      "Commercial anaerobic dairy manure biogas digesters generating clean power",
+      "Solar-assisted milk chillers preserving cold chain integrity during grid outages",
+    ],
+  },
+  {
+    icon: Shield,
+    title: "Environmental Protection",
+    subtitle: "Biodiversity Reserves & Agroforestry Shelterbelts",
+    desc: "Safeguarding natural biodiversity through indigenous tree shelterbelts along farm perimeters, riverbank erosion stabilization, and protection of beneficial pollinator colonies.",
+    features: [
+      "Native tree windbreaks preventing wind erosion and protecting microclimates",
+      "Flowering hedgerows and buffer zones preserving pollinator honeybee habitats",
+      "Strict organic stewardship preventing agricultural chemical runoff into water tables",
     ],
   },
 ];
 
 export default function NationalAgriculturalSustainabilityPage() {
   return (
-    <main className="min-h-screen bg-white text-[#1A5C2A] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#0B2535] font-sans antialiased overflow-x-hidden">
       <NationalAgriculturalNavbar />
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
               <SectionLabel>Environmental Responsibility</SectionLabel>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.primary }}>
-                Climate-Resilient &amp; <span style={{ color: theme.accent }}>Sustainable Agriculture</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight leading-tight mb-5" style={{ color: theme.navy }}>
+                Climate-Resilient &amp; <span style={{ color: theme.primaryMid }}>Sustainable Agriculture</span>
               </h1>
 
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                Securing Pakistan&apos;s agricultural future requires harmonious coexistence with nature. Through water conservation, regenerative soil management, solar irrigation, and agroforestry, we ensure productive farmlands for generations to come.
+              <p className="text-sm sm:text-base font-normal leading-relaxed mb-8 max-w-2xl" style={{ color: theme.textMuted }}>
+                Securing Pakistan&apos;s agricultural future requires harmonious coexistence with nature. Through water conservation, regenerative soil management, clean solar energy, and biodiversity protection, we ensure productive farmlands for generations to come.
               </p>
 
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/group-companies/national-agricultural/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.primary }}
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href="#pillars-section"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  style={{ backgroundColor: theme.primaryMid }}
                 >
-                  <span>Inquire About Green Agritech</span>
-                  <ArrowRight size={16} />
-                </Link>
+                  <span>Explore 5 Core Pillars</span>
+                  <ArrowRight size={14} />
+                </a>
 
                 <Link
-                  href="/group-companies/national-agricultural/about"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.primary }}
+                  href="/group-companies/national-agricultural/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold border transition-all duration-300 hover:bg-white cursor-pointer"
+                  style={{ borderColor: theme.border, color: theme.navy }}
                 >
-                  <span>About Our Vision</span>
+                  <span>Inquire About Green Agritech</span>
                 </Link>
               </div>
             </div>
 
-            {/* Right Visual Card */}
+            {/* Right Hero Visual */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
+              <div className="relative w-full max-w-[480px] h-[320px] sm:h-[380px] rounded-2xl overflow-hidden shadow-md border agri-card bg-white" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/agri_hero_farm.svg"
+                  src="/desertdev/arid_agriculture.jpg"
                   alt="Sustainable Agriculture and Water Conservation"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A5C2A]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1 text-[#E8A800]">
-                      Climate-Smart Farming
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B2535]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-3.5 border shadow-sm w-full" style={{ borderColor: theme.border }}>
+                    <p className="text-[11px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: theme.accent }}>
+                      100% Sustainable Operations
                     </p>
-                    <p className="text-sm font-bold" style={{ color: theme.primary }}>
-                      50% Water Savings · 100% Solar-Powered Irrigation
+                    <p className="text-xs sm:text-[13px] font-medium" style={{ color: theme.navy }}>
+                      Solar Pumping · Soil Stewardship · Water Recycling
                     </p>
                   </div>
                 </div>
@@ -143,25 +155,24 @@ export default function NationalAgriculturalSustainabilityPage() {
         </div>
       </section>
 
-      {/* Metrics Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* Sustainability Metrics Section */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {SUSTAINABILITY_STATS.map((stat, i) => {
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {SUSTAINABILITY_STATS.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="nac-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="agri-card rounded-xl p-5 text-center flex flex-col items-center justify-center bg-white shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.primary}10` }}>
-                    <Icon size={22} style={{ color: theme.primary }} />
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2.5" style={{ backgroundColor: `${theme.primaryMid}10` }}>
+                    <Icon size={20} style={{ color: theme.primaryMid }} />
                   </div>
-                  <div className="mb-2" style={{ color: theme.primary }}>
-                    <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
+                  <div className="mb-1" style={{ color: theme.navy }}>
+                    <AnimatedCounter targetValue={stat.value} duration={1400 + idx * 100} />
                   </div>
-                  <p className="text-xs font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11px] font-medium tracking-wide uppercase whitespace-pre-line" style={{ color: theme.textMuted }}>
                     {stat.label}
                   </p>
                 </div>
@@ -171,44 +182,56 @@ export default function NationalAgriculturalSustainabilityPage() {
         </div>
       </section>
 
-      {/* Sustainability Pillars Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* 5 Core Pillars Section */}
+      <section id="pillars-section" className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <SectionLabel center>Strategic Framework</SectionLabel>
-            <SectionHeading center className="mb-4">Our 4 Pillars of Sustainable Agriculture</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              Practical technologies designed to protect natural resources while boosting farm output.
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <SectionLabel center>Core Environmental Framework</SectionLabel>
+            <SectionHeading center className="mb-3">Our 5 Sustainability Pillars</SectionHeading>
+            <p className="text-xs sm:text-sm font-normal" style={{ color: theme.textMuted }}>
+              Engineered strategies to build climate resilience, protect natural water systems, and restore agrarian vitality across Pakistan.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {SUSTAINABILITY_PILLARS.map((pillar) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SUSTAINABILITY_PILLARS.map((pillar, idx) => {
               const Icon = pillar.icon;
               return (
                 <div
                   key={pillar.title}
-                  className="nac-card-hover p-8 rounded-3xl border flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="agri-card rounded-2xl p-6 flex flex-col justify-between bg-white"
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${theme.primary}10` }}>
-                      <Icon size={26} style={{ color: theme.primary }} />
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                        <Icon size={18} style={{ color: theme.primaryMid }} />
+                      </div>
+                      <div>
+                        <span className="text-[10px] font-semibold uppercase tracking-wider block" style={{ color: theme.accent }}>
+                          Pillar 0{idx + 1}
+                        </span>
+                        <h3 className="text-[17px] font-semibold tracking-tight leading-snug" style={{ color: theme.navy }}>
+                          {pillar.title}
+                        </h3>
+                      </div>
                     </div>
 
-                    <h3 className="text-xl font-bold mb-3" style={{ color: theme.primary }}>
-                      {pillar.title}
-                    </h3>
+                    <p className="text-[11px] font-medium tracking-wide mb-2.5" style={{ color: theme.primaryMid }}>
+                      {pillar.subtitle}
+                    </p>
 
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                    <p className="text-xs sm:text-[13px] font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
                       {pillar.desc}
                     </p>
 
-                    <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(212, 232, 208, 0.7)" }}>
-                      {pillar.features.map((f) => (
-                        <div key={f} className="flex items-center gap-2">
-                          <CheckCircle2 size={15} className="flex-shrink-0 text-[#E8A800]" />
-                          <span className="text-xs font-medium text-slate-700">{f}</span>
+                    <div className="space-y-2 pt-3 border-t" style={{ borderColor: theme.borderLight }}>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: theme.navy }}>
+                        Key Commitments:
+                      </p>
+                      {pillar.features.map((feat, fIdx) => (
+                        <div key={fIdx} className="flex items-start gap-2">
+                          <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                          <span className="text-xs font-normal text-slate-700 leading-snug">{feat}</span>
                         </div>
                       ))}
                     </div>
@@ -220,39 +243,31 @@ export default function NationalAgriculturalSustainabilityPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Bottom CTA */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+          <div className="rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
             <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#E8A800]">
-                CLEAN ENERGY ON FARMS
+              <span className="text-[11px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
+                Clean Agricultural Transition
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.primary }}>
-                Upgrade Your Farm To Solar Drip Irrigation
+              <h2 className="text-xl sm:text-2xl font-bold mb-1.5" style={{ color: theme.navy }}>
+                Transition Your Farm to Climate-Smart Practices
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Cut electricity and diesel costs to zero while doubling crop uniformity with automated solar drip irrigation.
+              <p className="text-xs sm:text-sm font-normal max-w-xl" style={{ color: theme.textMuted }}>
+                Connect with our environmental engineers to calculate water savings, solar ROI, and organic certification pathways.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-3 flex-shrink-0">
               <Link
                 href="/group-companies/national-agricultural/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.primary }}
+                className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.primaryMid }}
               >
-                <span>Request Solar Drip Quote</span>
-                <ArrowRight size={15} />
+                <span>Consult Agronomists</span>
+                <ArrowRight size={13} />
               </Link>
-              <a
-                href="tel:+923218431665"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.primary, color: theme.primary }}
-              >
-                <Phone size={15} />
-                <span>+92 321 8431665</span>
-              </a>
             </div>
           </div>
         </div>

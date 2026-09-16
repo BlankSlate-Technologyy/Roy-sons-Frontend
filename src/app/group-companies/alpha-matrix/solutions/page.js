@@ -4,24 +4,17 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Camera,
-  Landmark,
-  Server,
-  Fingerprint,
-  Shield,
-  Network,
-  CheckCircle2,
-  ArrowRight,
-  ChevronRight,
   ShieldCheck,
   Search,
-  Sparkles,
+  ArrowRight,
+  ChevronRight,
+  CheckCircle2,
+  Lock,
   Layers,
-  Award,
+  Activity,
+  Cpu,
 } from "lucide-react";
 import {
-  theme,
-  hexToRgba,
   AlphaMatrixNavbar,
   AlphaMatrixFooter,
 } from "../components/AlphaMatrixShared";
@@ -40,197 +33,159 @@ export default function AlphaMatrixSolutionsOverviewPage() {
   });
 
   return (
-    <div className="alpha-matrix-theme min-h-screen font-sans selection:bg-[#005691] selection:text-white bg-white" style={{ backgroundColor: theme.bg, color: theme.navy }}>
-      {/* ─── Global Alpha Matrix Header ───────────────────────────────────── */}
+    <main className="alpha-matrix-theme min-h-screen font-sans bg-[#08182B] text-slate-100 selection:bg-[#0284C7] selection:text-white">
       <AlphaMatrixNavbar />
 
-      {/* ─── Breadcrumb Navigation Bar ────────────────────────────────────── */}
-      <div className="bg-[#F8FAFC] border-b" style={{ borderColor: theme.border }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <nav className="flex items-center gap-2 text-xs font-bold text-slate-500">
-            <Link href="/group-companies/alpha-matrix" className="hover:text-[#005691] transition-colors">
-              Alpha Matrix
-            </Link>
-            <ChevronRight size={13} className="text-slate-400 shrink-0" />
-            <span style={{ color: theme.gold }} className="font-extrabold">Defense Solutions</span>
-          </nav>
+      {/* Hero Banner - Dark Command Styling */}
+      <section className="relative pt-32 pb-20 lg:pt-36 lg:pb-24 px-6 overflow-hidden border-b border-white/10 bg-[#08182B]">
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(#0284C7_1px,transparent_1px)] [background-size:24px_24px]" />
         </div>
-      </div>
 
-      {/* ─── Hero Section ─────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-b from-[#F8FAFC] to-white py-14 lg:py-24 border-b overflow-hidden" style={{ borderColor: theme.border }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-7 space-y-5" data-aos="fade-right">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-blue-50 border border-blue-200 text-[#005691]">
-                <ShieldCheck size={14} style={{ color: theme.gold }} />
-                <span>MISSION-CRITICAL DEFENSE SUITE</span>
-              </div>
+        <div className="relative z-10 mx-auto max-w-screen-xl">
+          <div className="flex items-center gap-2 text-xs text-slate-400 mb-6 font-mono">
+            <Link href="/group-companies/alpha-matrix" className="hover:text-white transition-colors">
+              ALPHA MATRIX
+            </Link>
+            <ChevronRight size={12} className="text-slate-500" />
+            <span className="text-[#38BDF8]">SOLUTIONS</span>
+          </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] uppercase" style={{ color: theme.navy }}>
-                Advanced Defense &amp; <br />
-                <span style={{ color: theme.gold }}>Security Solutions</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 mb-4 text-[#38BDF8] text-[11px] font-medium tracking-wide">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
+            MISSION-CRITICAL DEFENSE SUITE
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-10 items-end">
+            <div className="lg:col-span-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-6">
+                Advanced Defense &amp; Security Architectures
               </h1>
-
-              <p className="text-[15px] sm:text-[16.5px] text-slate-600 leading-relaxed font-normal max-w-2xl">
-                Alpha Matrix delivers 6 specialized tactical defense architectures for sovereign borders, military bases, high-security government facilities, and critical infrastructure. Select a solution below to explore its dedicated technical breakdown and operational profile.
+              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-3xl">
+                Alpha Matrix engineers multi-domain tactical defense architectures for sovereign frontiers, military headquarters, secure government installations, and mission-critical infrastructure. Explore each domain below.
               </p>
-
-              {/* Statistics Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="p-3.5 rounded-xl bg-white border shadow-xs" style={{ borderColor: theme.border }}>
-                  <p className="text-[10.5px] font-bold text-slate-400 uppercase tracking-wider">Solutions</p>
-                  <p className="text-2xl font-black mt-0.5" style={{ color: theme.gold }}>6 Domains</p>
-                </div>
-                <div className="p-3.5 rounded-xl bg-white border shadow-xs" style={{ borderColor: theme.border }}>
-                  <p className="text-[10.5px] font-bold text-slate-400 uppercase tracking-wider">Uptime SLA</p>
-                  <p className="text-2xl font-black text-[#005691] mt-0.5">99.99%</p>
-                </div>
-                <div className="p-3.5 rounded-xl bg-white border shadow-xs" style={{ borderColor: theme.border }}>
-                  <p className="text-[10.5px] font-bold text-slate-400 uppercase tracking-wider">Deployments</p>
-                  <p className="text-2xl font-black mt-0.5" style={{ color: theme.gold }}>250+ Sites</p>
-                </div>
-                <div className="p-3.5 rounded-xl bg-white border shadow-xs" style={{ borderColor: theme.border }}>
-                  <p className="text-[10.5px] font-bold text-slate-400 uppercase tracking-wider">Encryption</p>
-                  <p className="text-2xl font-black text-[#005691] mt-0.5">AES-256</p>
-                </div>
-              </div>
             </div>
 
-            {/* Right Hero Image Card */}
-            <div className="lg:col-span-5" data-aos="fade-left">
-              <div className="relative group rounded-3xl overflow-hidden border shadow-xl bg-white" style={{ borderColor: theme.border }}>
-                <div className="relative w-full h-[320px] sm:h-[380px] overflow-hidden bg-slate-50">
-                  <Image
-                    src="/alpha_hero_defense.svg"
-                    alt="Alpha Matrix Defense Solutions"
-                    fill
-                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 500px"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#002244]/85 via-transparent to-transparent" />
-                  
-                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-white/40 shadow-lg">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-blue-50" style={{ color: theme.gold }}>
-                          <Award size={20} />
-                        </div>
-                        <div>
-                          <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">C4ISR Integrated Platform</p>
-                          <p className="text-xs font-black uppercase" style={{ color: theme.navy }}>Zero-Trust Certified Defense Systems</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            {/* Quick Stats Column */}
+            <div className="lg:col-span-4 grid grid-cols-2 gap-3">
+              <div className="p-3.5 rounded-xl border border-white/10 bg-white/5">
+                <p className="text-[11px] font-mono text-slate-400 uppercase">Core Domains</p>
+                <p className="text-xl font-medium text-white mt-0.5">6 Suites</p>
+              </div>
+              <div className="p-3.5 rounded-xl border border-white/10 bg-white/5">
+                <p className="text-[11px] font-mono text-slate-400 uppercase">Uptime SLA</p>
+                <p className="text-xl font-medium text-[#38BDF8] mt-0.5">99.99%</p>
+              </div>
+              <div className="p-3.5 rounded-xl border border-white/10 bg-white/5">
+                <p className="text-[11px] font-mono text-slate-400 uppercase">Deployments</p>
+                <p className="text-xl font-medium text-white mt-0.5">250+ Sites</p>
+              </div>
+              <div className="p-3.5 rounded-xl border border-white/10 bg-white/5">
+                <p className="text-[11px] font-mono text-slate-400 uppercase">Encryption</p>
+                <p className="text-xl font-medium text-[#38BDF8] mt-0.5">AES-256</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── Search & 6 Dedicated Solution Cards Grid ──────────────────────── */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-12" data-aos="fade-up">
+      {/* Solutions Grid - Light Rhythm Section */}
+      <section className="py-20 lg:py-24 px-6 bg-white text-slate-900 border-b border-slate-200">
+        <div className="mx-auto max-w-screen-xl">
+          {/* Header & Search Bar */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <span className="text-xs font-black uppercase tracking-[0.25em] block mb-1" style={{ color: theme.gold }}>
-                TACTICAL SOLUTIONS
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase" style={{ color: theme.navy }}>
-                Select a Solution to Open Its Dedicated Page
+              <span className="text-xs font-semibold tracking-wider text-[#0284C7] uppercase">Operational Systems</span>
+              <h2 className="text-2xl sm:text-3xl font-medium text-[#08182B] tracking-tight mt-1">
+                Tactical Defense Suites
               </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-normal mt-1">
+                Select any defense domain to inspect full technical specifications, hardware architectures, and deployment profiles.
+              </p>
             </div>
 
-            {/* Search Input Bar */}
-            <div className="relative w-full md:w-72">
+            {/* Filter Search */}
+            <div className="relative w-full md:w-80 shrink-0">
               <input
                 type="text"
-                placeholder="Search solutions..."
+                placeholder="Filter by capability, sensor, or title..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2.5 rounded-xl border text-xs font-semibold text-slate-700 focus:outline-none focus:border-[#005691] bg-slate-50 shadow-xs"
-                style={{ borderColor: theme.border }}
+                className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs font-normal text-slate-800 bg-slate-50 focus:outline-none focus:border-[#0284C7] focus:bg-white transition-colors"
               />
-              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             </div>
           </div>
 
-          {/* Grid of 6 Dedicated Solution Cards with Direct Detail Links */}
+          {/* 6 Solution Cards Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredSolutions.map((sol, idx) => {
+            {filteredSolutions.map((sol) => {
               const Icon = sol.icon;
               return (
                 <div
                   key={sol.slug}
-                  data-aos="fade-up"
-                  data-aos-delay={idx * 100}
-                  className="rounded-2xl border bg-white shadow-xs hover:shadow-xl hover:border-[#005691] transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:-translate-y-1.5"
-                  style={{ borderColor: theme.border }}
+                  className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-xl hover:border-[#0284C7]/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1"
                 >
-                  {/* Top Image Showcase with Hover Zoom Out Effect */}
-                  <div className="relative w-full h-48 overflow-hidden bg-slate-50">
+                  {/* Photo Banner with Zoom */}
+                  <div className="relative w-full h-52 overflow-hidden bg-slate-100 alpha-img-wrapper">
                     <Image
                       src={sol.heroImage}
                       alt={sol.title}
                       fill
-                      className="object-cover object-center transition-transform duration-700 ease-out scale-115 group-hover:scale-100"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 400px"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#002244]/70 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#08182B]/85 via-transparent to-transparent" />
                     
                     {/* Badge */}
                     <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-white/95 text-[#005691] shadow-xs backdrop-blur-xs">
+                      <span className="px-2.5 py-0.5 rounded-md text-[10px] font-mono uppercase tracking-wider bg-white/95 text-[#08182B] shadow-xs backdrop-blur-xs font-semibold">
                         {sol.tag}
                       </span>
                     </div>
 
                     <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
                       <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
-                          <Icon size={18} />
+                        <div className="w-7 h-7 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center text-[#38BDF8]">
+                          <Icon size={14} />
                         </div>
-                        <span className="text-xs font-bold text-slate-200">{sol.eyebrow}</span>
+                        <span className="text-[11px] font-normal text-slate-200">{sol.eyebrow}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Body Content */}
+                  {/* Content Body */}
                   <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-lg font-black uppercase group-hover:text-[#005691] transition-colors leading-snug" style={{ color: theme.navy }}>
+                      <h3 className="text-base font-semibold text-[#08182B] tracking-tight group-hover:text-[#0284C7] transition-colors">
                         {sol.title}
                       </h3>
-                      <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal mt-2">
+                      <p className="text-xs text-slate-600 font-normal leading-relaxed mt-2 line-clamp-3">
                         {sol.overview}
                       </p>
                     </div>
 
                     {/* Key Capabilities */}
-                    <div className="pt-2">
-                      <p className="text-[11px] font-black uppercase tracking-wider mb-2" style={{ color: theme.gold }}>Key Capabilities</p>
+                    <div className="pt-2 border-t border-slate-100 space-y-2">
+                      <p className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Core Capabilities</p>
                       <div className="space-y-1.5">
                         {sol.capabilities.slice(0, 3).map((cap, capIdx) => (
-                          <div key={capIdx} className="flex items-start gap-2 text-[11.5px] text-slate-700 font-medium">
-                            <CheckCircle2 size={13} className="text-[#005691] shrink-0 mt-0.5" />
+                          <div key={capIdx} className="flex items-start gap-2 text-[11px] text-slate-600 font-normal">
+                            <CheckCircle2 size={12} className="text-[#0284C7] shrink-0 mt-0.5" />
                             <span className="line-clamp-1">{cap}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* Direct Detail Link Button to Dedicated Separate Page */}
-                    <div className="pt-4 border-t border-slate-100">
+                    {/* Subtle Arrow Link (No heavy button) */}
+                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                       <Link
                         href={`/group-companies/alpha-matrix/solutions/${sol.slug}`}
-                        className="w-full py-3 px-4 rounded-xl text-xs font-black uppercase tracking-wider text-white transition-all flex items-center justify-center gap-2 group/btn cursor-pointer shadow-xs hover:bg-[#004070]"
-                        style={{ backgroundColor: theme.gold }}
+                        className="alpha-link-arrow text-xs font-medium text-[#0284C7] hover:text-[#08182B] transition-colors"
                       >
-                        <span>Open {sol.title} Page</span>
-                        <ArrowRight size={13} className="group-hover/btn:translate-x-1 transition-transform" />
+                        <span>Inspect Technical Architecture</span>
+                        <ArrowRight size={13} />
                       </Link>
                     </div>
                   </div>
@@ -241,36 +196,36 @@ export default function AlphaMatrixSolutionsOverviewPage() {
         </div>
       </section>
 
-      {/* ─── Bottom CTA Consultation Desk ──────────────────────────────────── */}
-      <section className="py-16 lg:py-20 bg-[#F8FAFC] border-t" style={{ borderColor: theme.border }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border p-8 sm:p-12 bg-gradient-to-r from-[#002244] to-[#005691] text-white shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8" data-aos="zoom-in">
+      {/* Technical Procurement Callout - Dark Section */}
+      <section className="py-20 px-6 bg-[#050E1A] border-t border-white/10">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-3xl border border-white/10 p-8 sm:p-12 bg-gradient-to-r from-[#08182B] to-[#050E1A] flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="max-w-2xl space-y-3">
-              <span className="text-xs font-black uppercase tracking-[0.25em] bg-white/10 px-3 py-1 rounded-full text-white">
+              <span className="text-[10px] font-mono tracking-widest text-[#38BDF8] uppercase">
                 DEFENSE CONSULTATION DESK
               </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight uppercase">
-                Need a Custom Defense Architecture?
+              <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-tight">
+                Require a Bespoke Defense Specification?
               </h2>
-              <p className="text-xs sm:text-sm text-blue-100 font-normal leading-relaxed">
-                Connect with our senior defense systems engineers for a confidential assessment and tactical security roadmap.
+              <p className="text-xs sm:text-sm text-slate-400 font-normal leading-relaxed">
+                Connect with our senior defense systems engineers for a confidential evaluation, site risk matrix, and turn-key operational deployment plan.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
+            <div className="shrink-0">
               <Link
                 href="/group-companies/alpha-matrix/contact"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider text-[#002244] bg-white hover:bg-slate-100 text-center transition-all shadow-md cursor-pointer"
+                className="alpha-link-arrow text-xs font-medium text-white px-6 py-3 rounded-lg bg-[#0284C7] hover:bg-[#0284C7]/90 transition-colors"
               >
-                Schedule Technical Briefing
+                <span>Schedule Technical Briefing</span>
+                <ArrowRight size={14} />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── Global Alpha Matrix Footer ───────────────────────────────────── */}
       <AlphaMatrixFooter />
-    </div>
+    </main>
   );
 }

@@ -1,18 +1,22 @@
 /* ─────────────────────────────────────────────────────────────
-   NATIONAL MINES CORPORATION — DEDICATED THEME STYLESHEET
+   NATIONAL MINES CORPORATION — REFINED CORPORATE THEME
    Location: src/app/group-companies/national-mines/national-mines.css
 ───────────────────────────────────────────────────────────── */
 
 :root {
-  --nmc-navy: #16243E;         /* NMC Dark Navy */
-  --nmc-slate: #4A607A;        /* Steel Slate Blue */
-  --nmc-gold: #C59B27;         /* Mineral Gold */
+  --nmc-navy: #0B1B2B;          /* NMC Dark Navy */
+  --nmc-navy-dark: #07111C;
+  --nmc-forest-green: #0F3826;  /* Deep Forest Green */
+  --nmc-forest-mid: #155238;
+  --nmc-gold: #C59B27;          /* Warm Mineral Gold / Copper */
   --nmc-gold-hover: #A8821D;
   --nmc-gold-light: #DDB338;
+  --nmc-black: #0A1118;
   --nmc-white: #ffffff;
   --nmc-offwhite: #F8FAFC;
   --nmc-border: #E2E8F0;
-  --nmc-text-muted: #334155;
+  --nmc-border-light: #EEF2F6;
+  --nmc-text-muted: #475569;
   --nmc-text-light: #64748B;
 }
 
@@ -25,7 +29,7 @@ body.national-mines-theme header,
 .national-mines-theme section,
 .national-mines-theme header {
   background-color: #ffffff !important;
-  color: #16243E;
+  color: var(--nmc-navy);
 }
 
 body.national-mines-theme .cursor-pointer,
@@ -33,27 +37,84 @@ body.national-mines-theme .cursor-pointer,
   cursor: pointer !important;
 }
 
-/* Card hover animation */
+/* Card hover animation with subtle border & soft shadow */
+.mine-card {
+  background-color: #ffffff;
+  border: 1px solid var(--nmc-border);
+  border-radius: 1rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+}
+
+.mine-card:hover {
+  transform: translateY(-4px);
+  border-color: #CBD5E1;
+  box-shadow: 0 12px 28px -6px rgba(11, 27, 43, 0.08), 0 4px 12px -2px rgba(11, 27, 43, 0.03);
+}
+
+/* Smooth Image Hover Zoom */
+.mine-img-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.mine-img-wrapper img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.mine-card:hover .mine-img-wrapper img,
+.group:hover .mine-img-zoom img,
+.group:hover img.mine-img-zoom {
+  transform: scale(1.05) !important;
+}
+
+/* Backward compatibility for existing hover classes */
 .nmc-card-hover {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background-color: #ffffff;
+  border: 1px solid var(--nmc-border);
+  border-radius: 1rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease !important;
 }
 .nmc-card-hover:hover {
-  transform: translateY(-5px) !important;
-  border-color: #C59B27 !important;
-  box-shadow: 0 16px 32px -8px rgba(22, 36, 62, 0.14), 0 0 0 1px rgba(197, 155, 39, 0.25) !important;
+  transform: translateY(-4px) !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 12px 28px -6px rgba(11, 27, 43, 0.08), 0 4px 12px -2px rgba(11, 27, 43, 0.03) !important;
 }
 
 /* Counter box */
 .nmc-counter-box {
+  background-color: #ffffff;
+  border: 1px solid var(--nmc-border);
+  border-radius: 1rem;
   transition: all 0.3s ease !important;
 }
 .nmc-counter-box:hover {
-  transform: translateY(-4px) !important;
-  border-color: #C59B27 !important;
-  box-shadow: 0 10px 25px rgba(22, 36, 62, 0.1) !important;
+  transform: translateY(-3px) !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 8px 20px rgba(11, 27, 43, 0.06) !important;
 }
 
-/* Reset for National Mines components */
+/* Subtle link arrow interaction */
+.mine-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--nmc-gold);
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.mine-link-arrow:hover,
+.group:hover .mine-link-arrow {
+  color: var(--nmc-navy);
+  gap: 0.5rem;
+}
+
+/* Typography resets */
 body.national-mines-theme a,
 body.national-mines-theme button,
 body.national-mines-theme label,

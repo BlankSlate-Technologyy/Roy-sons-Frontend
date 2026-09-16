@@ -62,6 +62,26 @@ const nextConfig = {
         destination: "/group-companies/Vetvacpharma",
         permanent: true,
       },
+      {
+        source: "/walton/:path*",
+        destination: "/group-companies/walton-consultants-contracting/:path*",
+        permanent: true,
+      },
+      {
+        source: "/walton",
+        destination: "/group-companies/walton-consultants-contracting",
+        permanent: true,
+      },
+      {
+        source: "/walton-consultants/:path*",
+        destination: "/group-companies/walton-consultants-contracting/:path*",
+        permanent: true,
+      },
+      {
+        source: "/walton-consultants",
+        destination: "/group-companies/walton-consultants-contracting",
+        permanent: true,
+      },
     ];
   },
 };

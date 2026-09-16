@@ -8,47 +8,33 @@ import {
   Phone,
   Mail,
   MapPin,
-  Facebook,
-  Linkedin,
-  Twitter,
-  Youtube,
   Menu,
   X,
   ArrowRight,
   ShieldCheck,
-  CheckCircle2,
-  Clock,
-  Send,
-  Headphones,
-  Award,
   ChevronRight,
-  Wheat,
-  Tractor,
-  Droplets,
-  Leaf,
-  FlaskConical,
-  Building2,
-  Users,
-  Shield,
   Sprout,
-  Sun,
-  Zap,
+  Headphones,
 } from "lucide-react";
 
 export const theme = {
-  primary: "#1A5C2A", // Dark Green from logo
-  primaryMid: "#2E7D32", // Medium Green
-  primaryLight: "#3D9140",
-  accent: "#E8A800", // Logo Warm Gold
-  accentHover: "#C68F00",
-  accentLight: "#F5C842",
+  navy: "#0B2535",          // Deep dark teal / navy
+  navyDark: "#071B27",      // Deepest midnight navy
+  primary: "#16462C",       // Deep forest green from logo
+  primaryMid: "#236B38",    // Elegant agricultural green
+  primaryLight: "#2E7D32",  // Fresh crop green
+  accent: "#C59B27",        // Subtle refined gold accent
+  accentHover: "#B8860B",   // Deep gold hover
+  accentLight: "#F3E8C8",   // Soft gold tint
   white: "#FFFFFF",
-  offWhite: "#F8FAFC",
-  border: "#D4E8D0",
-  textDark: "#111827",
-  textMid: "#1A5C2A",
-  textMuted: "#4B5563",
-  textLight: "#6B7280",
+  offWhite: "#F8FAFB",      // Crisp clean soft background
+  cardBg: "#FFFFFF",
+  border: "#E2E8F0",        // Crisp subtle border
+  borderLight: "#EEF2F6",
+  textDark: "#0F172A",      // Refined dark slate
+  textMid: "#1E293B",
+  textMuted: "#475569",     // Elegant slate muted
+  textLight: "#64748B",
 };
 
 export const NAV_LINKS = [
@@ -61,23 +47,31 @@ export const NAV_LINKS = [
 ];
 
 export const FOOTER_SERVICES = [
-  { label: "Agricultural Development & Mechanization", href: "/group-companies/national-agricultural/services/agricultural-development-mechanization" },
-  { label: "Dairy & Livestock Development", href: "/group-companies/national-agricultural/services/dairy-development-cold-chain" },
-  { label: "Precision Irrigation & Water Systems", href: "/group-companies/national-agricultural/services/smart-irrigation-water-systems" },
-  { label: "Livestock Healthcare & Breeding", href: "/group-companies/national-agricultural/services/livestock-management-breeding-genetics" },
-  { label: "Seed Technology & Crop Nutrition", href: "/group-companies/national-agricultural/services/seed-technology-crop-nutrition" },
-  { label: "Agribusiness Advisory & Farm Setup", href: "/group-companies/national-agricultural/services/agribusiness-advisory-farm-setup" },
+  { label: "Agriculture Development", href: "/group-companies/national-agricultural/services/agricultural-development-mechanization" },
+  { label: "Dairy Farming", href: "/group-companies/national-agricultural/services/dairy-development-cold-chain" },
+  { label: "Livestock Management", href: "/group-companies/national-agricultural/services/livestock-management-breeding-genetics" },
+  { label: "Irrigation & Water Management", href: "/group-companies/national-agricultural/services/smart-irrigation-water-systems" },
+  { label: "Agricultural Technology", href: "/group-companies/national-agricultural/services/seed-technology-crop-nutrition" },
+  { label: "Farm Management", href: "/group-companies/national-agricultural/services/agribusiness-advisory-farm-setup" },
+];
+
+export const FOOTER_PROGRAMS = [
+  { label: "Sustainable Agriculture", href: "/group-companies/national-agricultural/programs/solar-drip-irrigation-water-security-initiative" },
+  { label: "Dairy Development", href: "/group-companies/national-agricultural/programs/dairy-herd-genetic-improvement-program" },
+  { label: "Farmer Development", href: "/group-companies/national-agricultural/programs/smallholder-farmer-mechanization-program" },
+  { label: "Rural Development", href: "/group-companies/national-agricultural/programs/women-in-agriculture-empowerment-program" },
+  { label: "Agricultural Innovation", href: "/group-companies/national-agricultural/programs/mobile-soil-testing-crop-health-clinics" },
 ];
 
 export function SectionLabel({ children, center }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-black uppercase tracking-[0.2em] mb-4 bg-slate-50 ${
+      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[11px] font-semibold tracking-wider uppercase mb-3.5 bg-slate-50/80 ${
         center ? "mx-auto" : ""
       }`}
-      style={{ borderColor: theme.border, color: theme.primary }}
+      style={{ borderColor: theme.border, color: theme.primaryMid }}
     >
-      <Sprout size={14} style={{ color: theme.accent }} />
+      <Sprout size={13} style={{ color: theme.accent }} />
       <span>{children}</span>
     </div>
   );
@@ -86,10 +80,10 @@ export function SectionLabel({ children, center }) {
 export function SectionHeading({ children, className = "", center }) {
   return (
     <h2
-      className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight uppercase ${
+      className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight ${
         center ? "text-center" : ""
       } ${className}`}
-      style={{ color: theme.primary }}
+      style={{ color: theme.navy }}
     >
       {children}
     </h2>
@@ -142,7 +136,7 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
   }, [numericTarget, duration]);
 
   return (
-    <span ref={elementRef} className="font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight">
+    <span ref={elementRef} className="font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight">
       {count}
       {suffix}
     </span>
@@ -150,6 +144,14 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
 }
 
 // ─── Reusable Navbar ────────────────────────────────────────────────
+// Rules:
+// - Reduced navbar font size (13px - 14px)
+// - Clean professional typography
+// - Navigation: Home | About Us | Services | Programs | Sustainability | Contact
+// - REMOVE all navbar buttons (zero buttons in navbar)
+// - Keep existing logo clean and properly proportioned
+// - Sticky with subtle background transition on scroll
+// - Clean mobile hamburger menu
 export function NationalAgriculturalNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -171,71 +173,78 @@ export function NationalAgriculturalNavbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
+      className={`sticky top-0 z-50 transition-all duration-300 w-full ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-xs py-2"
+          : "bg-white py-2.5 sm:py-3"
       }`}
       style={{
         borderBottom: `1px solid ${theme.border}`,
-        backgroundColor: theme.white,
       }}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/group-companies/national-agricultural" className="flex items-center gap-3 select-none group">
-          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+        {/* Brand Logo & Name */}
+        <Link
+          href="/group-companies/national-agricultural"
+          className="flex items-center gap-3 select-none group cursor-pointer"
+        >
+          <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/2.png"
               alt="National Agricultural Corporation Logo"
-              width={80}
-              height={80}
+              width={56}
+              height={56}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.primary }}>
+            <span
+              className="text-[13.5px] sm:text-[15px] font-bold tracking-tight leading-none"
+              style={{ color: theme.navy }}
+            >
               National Agricultural
             </span>
-            <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.accent }}>
+            <span
+              className="text-[9.5px] sm:text-[10px] font-medium tracking-[0.16em] uppercase mt-1"
+              style={{ color: theme.primaryMid }}
+            >
               Corporation (Pvt) Ltd
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        {/* Desktop Navigation Links — NO BUTTONS */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#E8A800] cursor-pointer"
+                className="text-[13px] font-medium tracking-wide transition-colors relative py-1 cursor-pointer"
                 style={{
-                  color: active ? theme.accent : theme.primary,
+                  color: active ? theme.primaryMid : theme.navy,
                 }}
               >
                 {link.label}
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 w-full h-[2px] rounded-full"
+                    style={{ backgroundColor: theme.primaryMid }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Link
-            href="/group-companies/national-agricultural/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
-            style={{ backgroundColor: theme.primary }}
-          >
-            <span>Consult Agri Desk</span>
-            <ArrowRight size={13} />
-          </Link>
-
+        {/* Mobile Menu Toggle — NO CTA BUTTONS */}
+        <div className="lg:hidden flex items-center">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
-            style={{ borderColor: theme.border, color: theme.primary }}
+            className="p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            style={{ borderColor: theme.border, color: theme.navy }}
             aria-label="Toggle Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -243,10 +252,10 @@ export function NationalAgriculturalNavbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Clean Mobile Drawer — NO BUTTONS */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
+          className="lg:hidden border-t px-5 py-3 space-y-1 bg-white shadow-lg"
           style={{ borderColor: theme.border }}
         >
           {NAV_LINKS.map((link) => {
@@ -256,27 +265,16 @@ export function NationalAgriculturalNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-[13px] font-medium py-2.5 px-3 rounded-lg transition-colors cursor-pointer"
                 style={{
-                  backgroundColor: active ? `${theme.accent}15` : "transparent",
-                  color: active ? theme.accent : theme.primary,
+                  backgroundColor: active ? `${theme.primaryMid}10` : "transparent",
+                  color: active ? theme.primaryMid : theme.navy,
                 }}
               >
                 {link.label}
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/national-agricultural/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.primary }}
-            >
-              <span>Consult Agronomists</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       )}
     </header>
@@ -287,63 +285,62 @@ export function NationalAgriculturalNavbar() {
 export function NationalAgriculturalFooter() {
   return (
     <footer
-      className="border-t bg-white pt-16 pb-10"
+      className="border-t bg-white pt-14 pb-8"
       style={{
         borderColor: theme.border,
-        backgroundColor: theme.white,
       }}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b" style={{ borderColor: theme.border }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b" style={{ borderColor: theme.border }}>
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <Link href="/group-companies/national-agricultural" className="flex items-center gap-3.5 mb-5 select-none">
-              <div className="w-13 h-13 rounded-xl bg-white p-1 border shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
+            <Link href="/group-companies/national-agricultural" className="flex items-center gap-3 mb-4 select-none cursor-pointer">
+              <div className="w-11 h-11 rounded-lg bg-white p-1 border shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/national agricultural.jpeg"
+                  src="/logos/2.png"
                   alt="National Agricultural Corporation"
-                  width={52}
-                  height={52}
+                  width={44}
+                  height={44}
                   className="object-contain"
                 />
               </div>
               <div>
-                <p className="text-base font-black uppercase tracking-wider leading-tight" style={{ color: theme.primary }}>
+                <p className="text-sm sm:text-[15px] font-bold leading-tight" style={{ color: theme.navy }}>
                   National Agricultural
                 </p>
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: theme.accent }}>
+                <p className="text-[10px] font-medium tracking-[0.16em] uppercase" style={{ color: theme.primaryMid }}>
                   Corporation (Pvt) Ltd
                 </p>
               </div>
             </Link>
 
-            <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-              A pioneer in modern agribusiness, smart irrigation, high-yield dairy genetics, mechanized farm development, and sustainable rural livelihood initiatives across Pakistan.
+            <p className="text-xs sm:text-[13px] font-normal leading-relaxed mb-5" style={{ color: theme.textMuted }}>
+              An established leader in commercial agribusiness, smart irrigation, high-yield dairy genetics, mechanized farm development, and sustainable rural economic growth across Pakistan.
             </p>
 
-            <div className="flex items-center gap-2.5">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-slate-50" style={{ borderColor: theme.border, color: theme.primary }}>
-                <ShieldCheck size={14} style={{ color: theme.accent }} />
-                <span>Govt Licensed &amp; Verified</span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-medium bg-slate-50" style={{ borderColor: theme.border, color: theme.primaryMid }}>
+                <ShieldCheck size={13} style={{ color: theme.accent }} />
+                <span>Govt Licensed &amp; Certified</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-slate-50" style={{ borderColor: theme.border, color: theme.primary }}>
-                <Sprout size={14} style={{ color: theme.accent }} />
-                <span>100% Sustainable Agritech</span>
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-medium bg-slate-50" style={{ borderColor: theme.border, color: theme.primaryMid }}>
+                <Sprout size={13} style={{ color: theme.primaryMid }} />
+                <span>Sustainable Agritech</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.primary }}>
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
               Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
+            <ul className="space-y-2 text-[13px]">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="hover:underline transition-colors hover:text-[#E8A800] flex items-center gap-1.5"
+                    className="hover:underline transition-colors flex items-center gap-1.5 cursor-pointer"
                     style={{ color: theme.textMuted }}
                   >
                     <ChevronRight size={12} style={{ color: theme.accent }} />
@@ -356,15 +353,15 @@ export function NationalAgriculturalFooter() {
 
           {/* Core Services */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.primary }}>
-              Agribusiness Solutions
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
+              Our Services
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
+            <ul className="space-y-2 text-[13px]">
               {FOOTER_SERVICES.map((s) => (
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="hover:underline transition-colors hover:text-[#E8A800] flex items-center gap-1.5"
+                    className="hover:underline transition-colors flex items-center gap-1.5 cursor-pointer"
                     style={{ color: theme.textMuted }}
                   >
                     <ChevronRight size={12} style={{ color: theme.accent }} />
@@ -377,48 +374,48 @@ export function NationalAgriculturalFooter() {
 
           {/* Contact Coordinates */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.primary }}>
-              Corporate Agribusiness Desk
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
+              Corporate Office
             </h4>
-            <div className="space-y-3 text-xs font-medium" style={{ color: theme.textMuted }}>
+            <div className="space-y-2.5 text-[13px]" style={{ color: theme.textMuted }}>
               <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.accent }} />
+                <MapPin size={15} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
                 <span>Executive Agricultural Complex, Service Lane Ring Road, Lahore, Pakistan</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone size={16} className="flex-shrink-0" style={{ color: theme.accent }} />
-                <a href="tel:+923218431665" className="hover:underline font-bold" style={{ color: theme.primary }}>
+                <Phone size={15} className="flex-shrink-0" style={{ color: theme.primaryMid }} />
+                <a href="tel:+923218431665" className="hover:underline font-medium" style={{ color: theme.navy }}>
                   +92 321 8431665 / +92 42 38924737
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail size={16} className="flex-shrink-0" style={{ color: theme.accent }} />
+                <Mail size={15} className="flex-shrink-0" style={{ color: theme.primaryMid }} />
                 <a href="mailto:info@roysons.org" className="hover:underline">
                   info@roysons.org
                 </a>
               </div>
             </div>
 
-            <div className="mt-5 p-3.5 rounded-xl border bg-slate-50 flex items-center gap-3" style={{ borderColor: theme.border }}>
-              <Headphones size={24} style={{ color: theme.accent }} />
+            <div className="mt-4 p-3 rounded-xl border bg-slate-50/60 flex items-center gap-2.5" style={{ borderColor: theme.border }}>
+              <Headphones size={20} style={{ color: theme.accent }} />
               <div>
-                <p className="text-[11px] font-bold uppercase" style={{ color: theme.primary }}>Farmer Support Helpline</p>
-                <p className="text-[10.5px] font-medium" style={{ color: theme.textMuted }}>Direct agronomy and soil advisory</p>
+                <p className="text-[11px] font-semibold uppercase" style={{ color: theme.navy }}>Agribusiness Advisory</p>
+                <p className="text-[11px] font-normal" style={{ color: theme.textMuted }}>Direct agronomy &amp; farm setup support</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Copyright Sub-bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium" style={{ color: theme.textLight }}>
-          <p>&copy; 2026 National Agricultural Corporation (Pvt) Ltd. A Roy &amp; Sons Group Company.</p>
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs" style={{ color: theme.textLight }}>
+          <p>&copy; {new Date().getFullYear()} National Agricultural Corporation (Pvt) Ltd. A Roy &amp; Sons Group Company.</p>
           <div className="flex items-center gap-4">
-            <Link href="/group-companies/national-agricultural/contact" className="hover:underline hover:text-[#1A5C2A]">
+            <Link href="/group-companies/national-agricultural/contact" className="hover:underline hover:text-[#236B38]">
               Agritech Policy
             </Link>
             <span>•</span>
-            <Link href="/group-companies/national-agricultural/contact" className="hover:underline hover:text-[#1A5C2A]">
-              Farmer Partnership Terms
+            <Link href="/group-companies/national-agricultural/contact" className="hover:underline hover:text-[#236B38]">
+              Partnership Terms
             </Link>
           </div>
         </div>

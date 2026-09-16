@@ -19,6 +19,10 @@ import {
   HardHat,
   Users2,
   Sparkles,
+  Compass,
+  FileCheck2,
+  Calculator,
+  FileSpreadsheet,
 } from "lucide-react";
 import {
   theme,
@@ -39,72 +43,78 @@ const SERVICE_STATS = [
 
 export default function WaltonServicesPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filtered = WALTON_SERVICES.filter(
-    (s) =>
+  const categories = ["All", ...new Set(WALTON_SERVICES.map((s) => s.category))];
+
+  const filtered = WALTON_SERVICES.filter((s) => {
+    const matchesSearch =
       s.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       s.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      s.tag.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+      s.deliverables.some((d) => d.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchesCat = selectedCategory === "All" || s.category === selectedCategory;
+    return matchesSearch && matchesCat;
+  });
 
   return (
-    <main className="min-h-screen bg-white text-[#3A4E63] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#2C3E50] font-sans antialiased overflow-x-hidden">
       <WaltonNavbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          1. SERVICES HERO
+      ───────────────────────────────────────────────────────────── */}
+      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
-              <SectionLabel>Civil Engineering &amp; General Contracting</SectionLabel>
+              <SectionLabel>Multidisciplinary Engineering Divisions</SectionLabel>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-black tracking-tight leading-[1.2] uppercase mb-5" style={{ color: theme.navyDark }}>
-                Comprehensive Construction Solutions For <span style={{ color: theme.navy }}>Infrastructure &amp; Industry</span>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black tracking-tight leading-[1.15] uppercase mb-4 text-[#0A1E34]">
+                EXPERTISE THAT MOVES <span style={{ color: theme.navy }}>PROJECTS FORWARD</span>
               </h1>
 
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                From high-rise commercial towers and highway bridges to multi-acre turnkey industrial factories, structural steel PEBs, and BIM project management, Walton delivers uncompromised engineering quality.
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mb-8">
+                From technical consultancy and project management to infrastructure development and construction oversight, we bring engineering expertise to every stage of the project lifecycle.
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <a
-                  href="#services-catalog"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.navy }}
-                >
-                  <span>Explore All 6 Divisions</span>
-                  <ArrowRight size={16} />
-                </a>
-
                 <Link
                   href="/group-companies/walton-consultants-contracting/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.navyDark }}
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md transition-all hover:brightness-110"
+                  style={{ backgroundColor: theme.navy }}
                 >
-                  <span>Consult Chief Engineer</span>
+                  <span>Request Division Proposal</span>
+                  <ArrowRight size={15} />
+                </Link>
+                <Link
+                  href="/group-companies/walton-consultants-contracting/projects"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider border border-slate-300 text-[#0A1E34] hover:bg-slate-50 transition-all"
+                >
+                  <span>View Project Case Studies</span>
                 </Link>
               </div>
             </div>
 
             {/* Right Hero Image Card */}
-            <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
+            <div className="lg:col-span-5">
+              <div className="relative w-full h-[320px] sm:h-[380px] rounded-3xl overflow-hidden shadow-xl border border-slate-200 group bg-slate-50">
                 <Image
-                  src="/walton_hero_construction.svg"
-                  alt="Walton Civil Construction Capabilities"
+                  src="/images/walton/service_01_consultancy.jpg"
+                  alt="Engineering Consultancy & Inspection"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
+                  sizes="(max-width: 1024px) 100vw, 500px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#081B30]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1" style={{ color: theme.goldHover }}>
-                      Turnkey Civil Construction
-                    </p>
-                    <p className="text-sm font-bold" style={{ color: theme.navyDark }}>
-                      Commercial High-Rises · Bridges · PEB Steel
-                    </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/85 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white">
+                    <span className="text-[11px] font-black uppercase tracking-wider text-[#DFC48B] block mb-1">
+                      8 Specialized Divisions
+                    </span>
+                    <h4 className="text-base font-bold">
+                      Full-Lifecycle Engineering &amp; Infrastructure Governance
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -113,25 +123,20 @@ export default function WaltonServicesPage() {
         </div>
       </section>
 
-      {/* Metrics Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          2. STATS COUNTER BAR
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-10 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {SERVICE_STATS.map((stat, idx) => {
+            {SERVICE_STATS.map((stat, i) => {
               const Icon = stat.icon;
               return (
-                <div
-                  key={stat.label}
-                  className="walton-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
-                >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.navy}10` }}>
-                    <Icon size={22} style={{ color: theme.navy }} />
+                <div key={stat.label} className="text-center">
+                  <div className="mb-1" style={{ color: theme.navyDark }}>
+                    <AnimatedCounter targetValue={stat.value} duration={1300 + i * 100} />
                   </div>
-                  <div className="mb-2" style={{ color: theme.navyDark }}>
-                    <AnimatedCounter targetValue={stat.value} duration={1400 + idx * 100} />
-                  </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
                     {stat.label}
                   </p>
                 </div>
@@ -141,158 +146,194 @@ export default function WaltonServicesPage() {
         </div>
       </section>
 
-      {/* Services Grid Section */}
-      <section id="services-catalog" className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <SectionLabel center>Our Core Divisions</SectionLabel>
-            <SectionHeading center className="mb-4">Specialized Engineering Offerings</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              Engineered with advanced structural analysis, computerized batching plants, and certified OSHA safety protocols.
-            </p>
-
-            {/* Live Search */}
-            <div className="mt-8 flex justify-center">
-              <div className="relative w-full max-w-md">
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search engineering divisions (e.g. Civil, EPC, Bridges, PEB)..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] transition-all bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
-                />
-              </div>
-            </div>
+      {/* ─────────────────────────────────────────────────────────────
+          3. SEARCH & CATEGORY FILTER BAR
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white sticky top-14 sm:top-16 z-30 shadow-xs">
+        <div className="mx-auto max-w-screen-xl flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Search Input */}
+          <div className="relative w-full md:w-80">
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search engineering divisions..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-[#0A1E34] focus:outline-hidden focus:border-[#C5A059] transition-colors"
+            />
           </div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filtered.map((svc) => {
-              const Icon = svc.icon;
-              return (
-                <div
-                  key={svc.slug}
-                  id={svc.id}
-                  className="walton-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
-                >
-                  <div>
-                    {/* Card Image */}
-                    <Link
-                      href={`/group-companies/walton-consultants-contracting/services/${svc.slug}`}
-                      className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
-                    >
-                      <Image
-                        src={svc.heroImage}
-                        alt={svc.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 border shadow-sm text-[#0E2A47]" style={{ borderColor: theme.border }}>
-                          {svc.tag}
-                        </span>
-                      </div>
-                    </Link>
-
-                    {/* Content */}
-                    <div className="p-7">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.navy}10` }}>
-                          <Icon size={20} style={{ color: theme.navy }} />
-                        </div>
-                        <div>
-                          <Link href={`/group-companies/walton-consultants-contracting/services/${svc.slug}`}>
-                            <h3 className="text-lg font-black leading-tight hover:text-[#0E2A47] transition-colors cursor-pointer" style={{ color: theme.navyDark }}>
-                              {svc.title}
-                            </h3>
-                          </Link>
-                        </div>
-                      </div>
-
-                      <p className="text-xs font-bold uppercase tracking-wider mb-3 text-[#C5A059]">
-                        {svc.subtitle}
-                      </p>
-
-                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                        {svc.overview}
-                      </p>
-
-                      {/* Deliverables */}
-                      <div className="space-y-2.5 pt-4 border-t" style={{ borderColor: "rgba(216, 226, 236, 0.7)" }}>
-                        <p className="text-xs font-extrabold uppercase tracking-wider" style={{ color: theme.navyDark }}>
-                          Key Technical Deliverables:
-                        </p>
-                        {svc.deliverables.slice(0, 3).map((d, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5 text-[#C5A059]" />
-                            <span className="text-xs font-medium text-slate-700 leading-snug">{d}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-7 pt-0 flex gap-2">
-                    <Link
-                      href={`/group-companies/walton-consultants-contracting/services/${svc.slug}`}
-                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
-                      style={{ borderColor: theme.border, color: theme.navyDark }}
-                    >
-                      <span>Explore Division</span>
-                      <ArrowRight size={14} />
-                    </Link>
-                    <Link
-                      href="/group-companies/walton-consultants-contracting/contact"
-                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
-                      style={{ backgroundColor: theme.navy }}
-                      title="Request Proposal"
-                    >
-                      <span>Quote</span>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
+          {/* Category Tabs */}
+          <div className="flex flex-wrap items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
+                  selectedCategory === cat
+                    ? "bg-[#0E2A47] text-white shadow-xs"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* ─────────────────────────────────────────────────────────────
+          4. 8 VISUALLY RICH SERVICES SECTIONS
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-screen-xl space-y-20">
+          {filtered.map((svc, index) => {
+            const Icon = svc.icon;
+            const isEven = index % 2 === 0;
+
+            return (
+              <div
+                key={svc.id}
+                id={svc.id}
+                className="scroll-mt-32 p-6 sm:p-8 lg:p-10 rounded-3xl border border-slate-200 bg-white shadow-sm transition-all"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                  {/* Left or Right Image Header (4:3 aspect ratio) */}
+                  <div className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
+                    <div className="relative w-full h-[300px] sm:h-[360px] lg:h-[400px] rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
+                      <Image
+                        src={svc.image}
+                        alt={svc.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        sizes="(max-width: 1024px) 100vw, 500px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/70 via-transparent to-transparent" />
+                      <span className="absolute top-4 left-4 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-[#C5A059] text-white shadow-xs">
+                        {svc.category}
+                      </span>
+                    </div>
+
+                    {/* Metrics Grid below image */}
+                    <div className="grid grid-cols-2 gap-3 mt-4">
+                      {svc.metrics.map((m) => (
+                        <div key={m.label} className="p-3 rounded-xl border border-slate-200 bg-[#F4F7FA] text-center">
+                          <span className="text-xs sm:text-sm font-black text-[#0E2A47] block">{m.value}</span>
+                          <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">{m.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Text Content */}
+                  <div className={`lg:col-span-7 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white" style={{ backgroundColor: theme.navy }}>
+                        <Icon size={18} />
+                      </div>
+                      <span className="text-xs font-black uppercase tracking-[0.16em] text-[#C5A059]">
+                        Division 0{index + 1}
+                      </span>
+                    </div>
+
+                    <h2 className="text-2xl sm:text-3xl font-black text-[#0A1E34] uppercase tracking-tight mb-2">
+                      {svc.title}
+                    </h2>
+
+                    <p className="text-xs sm:text-sm font-bold text-[#0E2A47] uppercase tracking-wide mb-4">
+                      {svc.subtitle}
+                    </p>
+
+                    <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                      {svc.overview}
+                    </p>
+
+                    {/* Deliverables List */}
+                    <div className="mb-6">
+                      <h4 className="text-xs font-black uppercase tracking-[0.14em] text-[#0A1E34] mb-3">
+                        Key Engineering Scope &amp; Deliverables:
+                      </h4>
+                      <ul className="space-y-2">
+                        {svc.deliverables.slice(0, 4).map((del, dIdx) => (
+                          <li key={dIdx} className="flex items-start gap-2.5 text-xs text-slate-600">
+                            <CheckCircle2 size={14} className="text-[#C5A059] shrink-0 mt-0.5" />
+                            <span>{del}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Technical Specs Table */}
+                    <div className="p-4 rounded-xl border border-slate-200 bg-[#F4F7FA] mb-6">
+                      <h5 className="text-[11px] font-black uppercase tracking-wider text-[#0A1E34] mb-2.5">
+                        Technical Standards &amp; Codes:
+                      </h5>
+                      <div className="space-y-1.5 text-xs">
+                        {svc.technicalSpecs.slice(0, 3).map((spec) => (
+                          <div key={spec.key} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200/60 pb-1 last:border-0 last:pb-0">
+                            <span className="font-bold text-slate-700">{spec.key}:</span>
+                            <span className="text-slate-600 sm:text-right">{spec.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CTA link to proposal */}
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Link
+                        href="/group-companies/walton-consultants-contracting/contact"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:brightness-110 transition-all"
+                        style={{ backgroundColor: theme.navy }}
+                      >
+                        <span>Request Scope Quote</span>
+                        <ArrowRight size={13} />
+                      </Link>
+
+                      <Link
+                        href="/group-companies/walton-consultants-contracting/projects"
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider text-[#0A1E34] hover:bg-slate-50 transition-colors"
+                      >
+                        <span>Related Case Studies</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          5. FINAL CALL TO ACTION
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F4F7FA] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#A6823B]">
-                CIVIL GENERAL CONTRACTING &amp; EPC TENDERS
+          <div
+            className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-xl text-white relative overflow-hidden"
+            style={{ backgroundColor: theme.navyDark }}
+          >
+            <div className="relative z-10 max-w-2xl">
+              <span className="text-xs font-black uppercase tracking-[0.2em] text-[#C5A059] block mb-2">
+                LET&apos;S BUILD WHAT&apos;S NEXT
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navyDark }}>
-                Require Turnkey Civil Construction Execution?
+              <h2 className="text-2xl sm:text-3xl font-black uppercase leading-tight mb-2 text-white">
+                Require Engineering or Contracting Support?
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Speak directly with our Chief Engineer to review structural drawings, BOQ rate analyses, and milestone execution schedules.
+              <p className="text-sm text-slate-300 font-normal leading-relaxed">
+                Connect with our principal civil structural engineers to review architectural CAD drawings, structural BOQs, and turnkey EPC pricing.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="relative z-10 flex flex-wrap gap-4 shrink-0 w-full lg:w-auto">
               <Link
                 href="/group-companies/walton-consultants-contracting/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.navy }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2 transition-all shadow-md hover:brightness-110"
+                style={{ backgroundColor: theme.goldHover }}
               >
-                <span>Request Construction Quote</span>
+                <span>Request Project Proposal</span>
                 <ArrowRight size={15} />
               </Link>
-              <a
-                href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.navy, color: theme.navy }}
-              >
-                <Phone size={15} />
-                <span>0092-42-38924737</span>
-              </a>
             </div>
           </div>
         </div>

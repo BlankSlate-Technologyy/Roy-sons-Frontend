@@ -8,44 +8,33 @@ import {
   Phone,
   Mail,
   MapPin,
-  Facebook,
-  Linkedin,
-  Twitter,
-  Youtube,
   Menu,
   X,
   ArrowRight,
   ShieldCheck,
-  CheckCircle2,
-  Clock,
-  Send,
-  Headphones,
-  Award,
   ChevronRight,
   Mountain,
+  Headphones,
   HardHat,
-  Drill,
-  FlaskConical,
-  Leaf,
-  BarChart3,
-  Truck,
-  Building2,
-  Globe,
   Sparkles,
 } from "lucide-react";
 
 export const theme = {
-  navy: "#16243E", // NMC Deep Dark Navy
-  slate: "#4A607A", // Steel Slate Blue
-  gold: "#C59B27", // Rich Mineral Gold
+  navy: "#0B1B2B",          // NMC Dark Navy
+  navyDark: "#07111C",      // Deepest Midnight Navy
+  forestGreen: "#0F3826",   // Deep Forest Green from logo
+  forestGreenMid: "#155238",// Medium Forest Green
+  gold: "#C59B27",          // Warm Mineral Gold / Copper
   goldHover: "#A8821D",
   goldLight: "#DDB338",
-  goldPale: "#FFFDF2",
-  white: "#FFFFFF", // 100% Pure White
-  offWhite: "#F8FAFC",
-  border: "#E2E8F0",
-  textDark: "#16243E",
-  textMuted: "#334155",
+  goldPale: "#FDF9EE",      // Subtle gold tint
+  black: "#0A1118",         // Pure Industrial Black
+  white: "#FFFFFF",         // Pure White
+  offWhite: "#F8FAFC",      // Crisp background
+  border: "#E2E8F0",        // Crisp subtle border
+  borderDark: "#1E293B",
+  textDark: "#0B1B2B",
+  textMuted: "#475569",     // Refined slate
   textLight: "#64748B",
 };
 
@@ -60,20 +49,29 @@ export const NAV_LINKS = [
 ];
 
 export const FOOTER_SERVICES = [
-  { label: "Mineral Exploration & Drilling", href: "/group-companies/national-mines/services#exploration" },
-  { label: "Mine Planning & Development", href: "/group-companies/national-mines/services#planning" },
-  { label: "Mining Extraction Operations", href: "/group-companies/national-mines/services#extraction" },
-  { label: "Mineral Processing & Refining", href: "/group-companies/national-mines/services#processing" },
-  { label: "Environmental Management & ESG", href: "/group-companies/national-mines/sustainability" },
-  { label: "Geological Consulting & Audits", href: "/group-companies/national-mines/services#consultancy" },
+  { label: "Mining Operations", href: "/group-companies/national-mines/services#operations" },
+  { label: "Mineral Exploration", href: "/group-companies/national-mines/services#exploration" },
+  { label: "Mine Development", href: "/group-companies/national-mines/services#development" },
+  { label: "Resource Management", href: "/group-companies/national-mines/services#resource-mgmt" },
+  { label: "Geological Services", href: "/group-companies/national-mines/services#geological" },
+  { label: "Mineral Processing", href: "/group-companies/national-mines/services#processing" },
+];
+
+export const FOOTER_MINERALS = [
+  { label: "Copper (Cu)", href: "/group-companies/national-mines/minerals/copper-cu" },
+  { label: "Gold (Au)", href: "/group-companies/national-mines/minerals/gold-au" },
+  { label: "Iron Ore (Fe)", href: "/group-companies/national-mines/minerals/iron-ore-fe" },
+  { label: "Coal", href: "/group-companies/national-mines/minerals/coal-anthracite-bituminous" },
+  { label: "Limestone", href: "/group-companies/national-mines/minerals/limestone-caco3" },
+  { label: "Gypsum", href: "/group-companies/national-mines/minerals/gypsum-caso4" },
 ];
 
 export const MINERALS_LIST = [
-  { slug: "gold-au", name: "Gold (Au)", desc: "High-purity raw ore & refined bullion nuggets", grade: "99.4% Purity", img: "/mine gold.png", tag: "Precious Metals" },
+  { slug: "gold-au", name: "Gold (Au)", desc: "High-purity raw ore & refined doré bullion", grade: "99.4% Purity", img: "/mine gold.png", tag: "Precious Metals" },
   { slug: "copper-cu", name: "Copper (Cu)", desc: "High-grade copper concentrate & cathode sheets", grade: "28–32% Concentrate", img: "/mine copper.png", tag: "Industrial Base Metals" },
   { slug: "iron-ore-fe", name: "Iron Ore (Fe)", desc: "Magnetite & hematite lumps for steel plants", grade: "62–65% Fe Content", img: "/mine gold.png", tag: "Ferrous Minerals" },
   { slug: "coal-anthracite-bituminous", name: "Coal", desc: "Anthracite & bituminous for power & cement", grade: "6,200+ kcal/kg", img: "/mine copper.png", tag: "Energy Resources" },
-  { slug: "limestone-caco3", name: "Limestone", desc: "High calcium limestone for cement & flux", grade: "94%+ CaCO3", img: "/mine gold.png", tag: "Construction Materials" },
+  { slug: "limestone-caco3", name: "Limestone", desc: "High-calcium limestone for cement & flux", grade: "94%+ CaCO3", img: "/mine gold.png", tag: "Construction Materials" },
   { slug: "gypsum-caso4", name: "Gypsum", desc: "Natural raw gypsum for plaster & wallboard", grade: "92%+ Purity", img: "/mine copper.png", tag: "Industrial Minerals" },
   { slug: "chromite-cr2o3", name: "Chromite", desc: "Metallurgical grade for refractory & alloys", grade: "46–48% Cr2O3", img: "/mine gold.png", tag: "Strategic Minerals" },
   { slug: "marble-and-onyx", name: "Marble & Onyx", desc: "Premium architectural slabs & blocks", grade: "Grade-A Dimension Stone", img: "/mine copper.png", tag: "Architectural Stones" },
@@ -84,12 +82,12 @@ export const MINERALS_LIST = [
 export function SectionLabel({ children, center }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-black uppercase tracking-[0.2em] mb-4 bg-slate-50 ${
+      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[11px] font-semibold tracking-wider uppercase mb-3.5 bg-slate-50/80 ${
         center ? "mx-auto" : ""
       }`}
-      style={{ borderColor: theme.border, color: theme.gold }}
+      style={{ borderColor: theme.border, color: theme.forestGreen }}
     >
-      <Mountain size={14} style={{ color: theme.gold }} />
+      <Mountain size={13} style={{ color: theme.gold }} />
       <span>{children}</span>
     </div>
   );
@@ -98,7 +96,7 @@ export function SectionLabel({ children, center }) {
 export function SectionHeading({ children, className = "", center }) {
   return (
     <h2
-      className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight uppercase ${
+      className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight ${
         center ? "text-center" : ""
       } ${className}`}
       style={{ color: theme.navy }}
@@ -154,7 +152,7 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
   }, [numericTarget, duration]);
 
   return (
-    <span ref={elementRef} className="font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight">
+    <span ref={elementRef} className="font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight">
       {count}
       {suffix}
     </span>
@@ -162,6 +160,14 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
 }
 
 // ─── Reusable Navbar ────────────────────────────────────────────────
+// Rules:
+// - Reduced navbar font size (13px - 14px)
+// - Clean professional typography
+// - Navigation: Home | About Us | Services | Minerals | Industries | Sustainability | Contact
+// - REMOVE ALL unnecessary navbar buttons (Zero buttons)
+// - Keep existing logo clean and properly proportioned (/cropedlogo.png)
+// - Sticky with smooth background transition on scroll
+// - Clean mobile hamburger menu with no buttons
 export function NationalMinesNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -183,76 +189,77 @@ export function NationalMinesNavbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
+      className={`sticky top-0 z-50 transition-all duration-300 w-full ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-xs py-2"
+          : "bg-white py-2.5 sm:py-3"
       }`}
       style={{
         borderBottom: `1px solid ${theme.border}`,
-        backgroundColor: theme.white,
       }}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/group-companies/national-mines" className="flex items-center gap-3 select-none group">
-          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+        {/* Brand Logo & Name */}
+        <Link
+          href="/group-companies/national-mines"
+          className="flex items-center gap-3 select-none group cursor-pointer"
+        >
+          <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0">
             <Image
               src="/cropedlogo.png"
               alt="National Mines Corporation Logo"
-              width={80}
-              height={80}
+              width={56}
+              height={56}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.navy }}>
+            <span
+              className="text-[13.5px] sm:text-[15px] font-bold tracking-tight leading-none"
+              style={{ color: theme.navy }}
+            >
               National Mines
             </span>
-            <span className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.gold }}>
+            <span
+              className="text-[9.5px] sm:text-[10px] font-medium tracking-[0.16em] uppercase mt-1"
+              style={{ color: theme.gold }}
+            >
               Corporation (Pvt) Ltd
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        {/* Desktop Navigation Links — NO BUTTONS */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#C59B27] cursor-pointer"
+                className="text-[13px] font-medium tracking-wide transition-colors relative py-1 cursor-pointer"
                 style={{
                   color: active ? theme.gold : theme.navy,
                 }}
               >
                 {link.label}
-                <span
-                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    active ? "w-full" : "w-0 hover:w-full"
-                  }`}
-                  style={{ backgroundColor: theme.gold }}
-                />
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 w-full h-[2px] rounded-full"
+                    style={{ backgroundColor: theme.gold }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Link
-            href="/group-companies/national-mines/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
-            style={{ backgroundColor: theme.navy }}
-          >
-            <span>Procurement Quote</span>
-            <ArrowRight size={13} />
-          </Link>
-
+        {/* Mobile Menu Toggle — NO BUTTONS */}
+        <div className="lg:hidden flex items-center">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            className="p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: theme.border, color: theme.navy }}
             aria-label="Toggle Menu"
           >
@@ -261,10 +268,10 @@ export function NationalMinesNavbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Clean Mobile Drawer — NO BUTTONS */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
+          className="lg:hidden border-t px-5 py-3 space-y-1 bg-white shadow-lg"
           style={{ borderColor: theme.border }}
         >
           {NAV_LINKS.map((link) => {
@@ -274,9 +281,9 @@ export function NationalMinesNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-[13px] font-medium py-2.5 px-3 rounded-lg transition-colors cursor-pointer"
                 style={{
-                  backgroundColor: active ? `${theme.gold}15` : "transparent",
+                  backgroundColor: active ? `${theme.gold}12` : "transparent",
                   color: active ? theme.gold : theme.navy,
                 }}
               >
@@ -284,17 +291,6 @@ export function NationalMinesNavbar() {
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/national-mines/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.navy }}
-            >
-              <span>Submit Mineral Inquiry</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       )}
     </header>
@@ -305,63 +301,62 @@ export function NationalMinesNavbar() {
 export function NationalMinesFooter() {
   return (
     <footer
-      className="border-t bg-white pt-16 pb-10"
+      className="border-t bg-white pt-14 pb-8"
       style={{
         borderColor: theme.border,
-        backgroundColor: theme.white,
       }}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b" style={{ borderColor: theme.border }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b" style={{ borderColor: theme.border }}>
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <Link href="/group-companies/national-mines" className="flex items-center gap-3.5 mb-5 select-none">
-              <div className="w-13 h-13 rounded-xl bg-white p-1 border shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
+            <Link href="/group-companies/national-mines" className="flex items-center gap-3 mb-4 select-none cursor-pointer">
+              <div className="w-11 h-11 rounded-lg bg-white p-1 border shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
                 <Image
                   src="/cropedlogo.png"
                   alt="National Mines Corporation"
-                  width={52}
-                  height={52}
+                  width={44}
+                  height={44}
                   className="object-contain"
                 />
               </div>
               <div>
-                <p className="text-base font-black uppercase tracking-wider leading-tight" style={{ color: theme.navy }}>
+                <p className="text-sm sm:text-[15px] font-bold leading-tight" style={{ color: theme.navy }}>
                   National Mines
                 </p>
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: theme.gold }}>
+                <p className="text-[10px] font-medium tracking-[0.16em] uppercase" style={{ color: theme.gold }}>
                   Corporation (Pvt) Ltd
                 </p>
               </div>
             </Link>
 
-            <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-              A premier mining, mineral exploration, and resource development corporation in Pakistan, extracting, processing, and supplying high-purity Gold, Copper, Iron Ore, Coal, and industrial minerals with sustainable practices.
+            <p className="text-xs sm:text-[13px] font-normal leading-relaxed mb-5" style={{ color: theme.textMuted }}>
+              A leading exploration, heavy mineral extraction, and metallurgical processing enterprise. Fueling domestic infrastructure, heavy manufacturing, and global commodity export supply chains.
             </p>
 
-            <div className="flex items-center gap-2.5">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-slate-50" style={{ borderColor: theme.border, color: theme.navy }}>
-                <ShieldCheck size={14} style={{ color: theme.gold }} />
-                <span>ISO &amp; Govt Certified Mining</span>
+            <div className="flex items-center gap-2 flex-wrap">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-medium bg-slate-50" style={{ borderColor: theme.border, color: theme.forestGreen }}>
+                <ShieldCheck size={13} style={{ color: theme.gold }} />
+                <span>Certified Mineral Assays</span>
               </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-slate-50" style={{ borderColor: theme.border, color: theme.navy }}>
-                <Leaf size={14} style={{ color: theme.gold }} />
-                <span>Zero-Harm ESG Policy</span>
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-medium bg-slate-50" style={{ borderColor: theme.border, color: theme.forestGreen }}>
+                <HardHat size={13} style={{ color: theme.forestGreen }} />
+                <span>Zero-Harm Safety Mandate</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navy }}>
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
               Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
+            <ul className="space-y-2 text-[13px]">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="hover:underline transition-colors hover:text-[#C59B27] flex items-center gap-1.5"
+                    className="hover:underline transition-colors flex items-center gap-1.5 cursor-pointer"
                     style={{ color: theme.textMuted }}
                   >
                     <ChevronRight size={12} style={{ color: theme.gold }} />
@@ -372,17 +367,17 @@ export function NationalMinesFooter() {
             </ul>
           </div>
 
-          {/* Mining Capabilities */}
+          {/* Core Services */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navy }}>
-              Mining Capabilities
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
+              Core Operations
             </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
+            <ul className="space-y-2 text-[13px]">
               {FOOTER_SERVICES.map((s) => (
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="hover:underline transition-colors hover:text-[#C59B27] flex items-center gap-1.5"
+                    className="hover:underline transition-colors flex items-center gap-1.5 cursor-pointer"
                     style={{ color: theme.textMuted }}
                   >
                     <ChevronRight size={12} style={{ color: theme.gold }} />
@@ -393,50 +388,50 @@ export function NationalMinesFooter() {
             </ul>
           </div>
 
-          {/* Contact & Desk */}
+          {/* Contact Coordinates */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navy }}>
-              Corporate Operations
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
+              Headquarters Desk
             </h4>
-            <div className="space-y-3 text-xs font-medium" style={{ color: theme.textMuted }}>
+            <div className="space-y-2.5 text-[13px]" style={{ color: theme.textMuted }}>
               <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.gold }} />
-                <span>1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</span>
+                <MapPin size={15} className="flex-shrink-0 mt-0.5" style={{ color: theme.forestGreen }} />
+                <span>Executive Mineral Complex, Service Lane Ring Road, Lahore, Pakistan</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone size={16} className="flex-shrink-0" style={{ color: theme.gold }} />
-                <a href="tel:00924238924737" className="hover:underline font-bold" style={{ color: theme.navy }}>
-                  0092-42-38924737
+                <Phone size={15} className="flex-shrink-0" style={{ color: theme.forestGreen }} />
+                <a href="tel:+923218431665" className="hover:underline font-medium" style={{ color: theme.navy }}>
+                  +92 321 8431665 / +92 42 38924737
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail size={16} className="flex-shrink-0" style={{ color: theme.gold }} />
+                <Mail size={15} className="flex-shrink-0" style={{ color: theme.forestGreen }} />
                 <a href="mailto:info@roysons.org" className="hover:underline">
                   info@roysons.org
                 </a>
               </div>
             </div>
 
-            <div className="mt-5 p-3.5 rounded-xl border bg-slate-50 flex items-center gap-3" style={{ borderColor: theme.border }}>
-              <Headphones size={24} style={{ color: theme.gold }} />
+            <div className="mt-4 p-3 rounded-xl border bg-slate-50/60 flex items-center gap-2.5" style={{ borderColor: theme.border }}>
+              <Headphones size={20} style={{ color: theme.gold }} />
               <div>
-                <p className="text-[11px] font-bold uppercase" style={{ color: theme.navy }}>Mineral Sourcing Desk</p>
-                <p className="text-[10.5px] font-medium" style={{ color: theme.textMuted }}>Direct mine-to-port supply chains</p>
+                <p className="text-[11px] font-semibold uppercase" style={{ color: theme.navy }}>Mineral Trading Desk</p>
+                <p className="text-[11px] font-normal" style={{ color: theme.textMuted }}>Bulk allocation &amp; FOB export contracts</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Copyright Sub-bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium" style={{ color: theme.textLight }}>
-          <p>&copy; 2026 National Mines Corporation (Pvt) Ltd. A Roy &amp; Sons Group Company.</p>
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs" style={{ color: theme.textLight }}>
+          <p>&copy; {new Date().getFullYear()} National Mines Corporation (Pvt) Ltd. A Roy &amp; Sons Group Company.</p>
           <div className="flex items-center gap-4">
-            <Link href="/group-companies/national-mines/contact" className="hover:underline hover:text-[#16243E]">
-              Mining Compliance Policy
+            <Link href="/group-companies/national-mines/contact" className="hover:underline hover:text-[#0B1B2B]">
+              Mineral Concession Terms
             </Link>
             <span>•</span>
-            <Link href="/group-companies/national-mines/contact" className="hover:underline hover:text-[#16243E]">
-              Mineral Export Terms
+            <Link href="/group-companies/national-mines/contact" className="hover:underline hover:text-[#0B1B2B]">
+              Responsible Sourcing Policy
             </Link>
           </div>
         </div>

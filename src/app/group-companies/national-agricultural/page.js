@@ -4,39 +4,22 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Award,
-  BarChart3,
-  Building,
+  Wheat,
+  Tractor,
+  Droplets,
+  Leaf,
+  FlaskConical,
   Building2,
   CheckCircle2,
-  ChevronDown,
-  Droplets,
-  Factory,
-  FileText,
-  FlaskConical,
-  Globe,
-  HardHat,
-  Landmark,
-  Layers,
-  Leaf,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Mountain,
-  Phone,
-  Search,
-  Send,
-  Shield,
-  ShieldCheck,
-  Star,
-  TrendingUp,
-  Tractor,
-  Users,
-  Wheat,
-  Zap,
   ArrowRight,
-  Sprout,
+  Phone,
+  ShieldCheck,
+  Award,
+  Users,
   Sun,
+  Shield,
+  ChevronDown,
+  Sparkles,
 } from "lucide-react";
 import {
   theme,
@@ -46,85 +29,65 @@ import {
   SectionHeading,
   AnimatedCounter,
 } from "./components/NationalAgriculturalShared";
+import { NATIONAL_AGRICULTURAL_SERVICES } from "./services-data";
+import { NATIONAL_AGRICULTURAL_PROGRAMS } from "./programs-data";
 
 const STATS = [
-  { icon: Award, value: "25+", label: "Years of Agricultural\nExperience" },
-  { icon: Tractor, value: "500+", label: "Agricultural & Dairy\nProjects" },
+  { icon: Award, value: "25+", label: "Years of Agricultural\nExcellence" },
+  { icon: Tractor, value: "500+", label: "Commercial Farm\nProjects" },
   { icon: Wheat, value: "1M+", label: "Acres Supported &\nCultivated" },
   { icon: Users, value: "10K+", label: "Farmers Empowered\nNationwide" },
   { icon: ShieldCheck, value: "99%", label: "Quality & Safety\nStandards" },
 ];
 
-const SERVICES = [
+const SUSTAINABILITY_PILLARS = [
   {
-    icon: Wheat,
-    title: "Agricultural Development",
-    desc: "Precision mechanized farming, GPS laser land leveling, high-capacity tractors, and combine harvesting fleets.",
-    href: "/group-companies/national-agricultural/services/agricultural-development-mechanization",
-    img: "/agri_hero_farm.svg",
-  },
-  {
-    icon: Building2,
-    title: "Dairy Development",
-    desc: "Automated milking parlors, rapid bulk milk chillers, silage packing, and village collection networks.",
-    href: "/group-companies/national-agricultural/services/dairy-development-cold-chain",
-    img: "/agri_dairy_livestock.svg",
+    icon: Sprout,
+    title: "Sustainable Agriculture",
+    desc: "Precision agronomy, balanced crop rotations, and biological pest controls.",
   },
   {
     icon: Droplets,
-    title: "Smart Irrigation Systems",
-    desc: "Solar center-pivot sprinklers and precision drip irrigation reducing water consumption by 50%.",
-    href: "/group-companies/national-agricultural/services/smart-irrigation-water-systems",
-    img: "/agri_hero_farm.svg",
+    title: "Water Conservation",
+    desc: "Solar drip irrigation & laser land grading saving up to 50% groundwater.",
   },
   {
     icon: Leaf,
-    title: "Livestock Management",
-    desc: "Elite pedigree Holstein-Friesian & Sahiwal genetics, artificial insemination, and herd veterinary healthcare.",
-    href: "/group-companies/national-agricultural/services/livestock-management-breeding-genetics",
-    img: "/agri_dairy_livestock.svg",
+    title: "Soil Health",
+    desc: "Regenerative organic compost, bio-nutrition, and subsoil decompaction.",
   },
   {
-    icon: FlaskConical,
-    title: "Seed Tech & Crop Nutrition",
-    desc: "Certified high-germination hybrid seeds, organic liquid bio-fertilizers, and custom N-P-K nutrient blends.",
-    href: "/group-companies/national-agricultural/services/seed-technology-crop-nutrition",
-    img: "/agri_hero_farm.svg",
+    icon: Sun,
+    title: "Renewable Energy",
+    desc: "Zero-emission solar hybrid tube-wells and cattle dairy biogas digesters.",
   },
   {
-    icon: Tractor,
-    title: "Agribusiness Advisory",
-    desc: "Corporate farm planning, financial modeling, climate-smart greenhouses, and food supply chain logistics.",
-    href: "/group-companies/national-agricultural/services/agribusiness-advisory-farm-setup",
-    img: "/agri_dairy_livestock.svg",
+    icon: Shield,
+    title: "Environmental Protection",
+    desc: "Agroforestry tree belts, biodiversity zones, and zero chemical runoff.",
   },
 ];
 
-const PROCESS_STEPS = [
-  { num: "01", title: "Soil & Water Assessment", desc: "Comprehensive on-site soil chemistry assays, water salinity testing, and satellite topographical mapping." },
-  { num: "02", title: "Precision Engineering", desc: "Computerized irrigation layout design, laser land grading, and automated drainage system modeling." },
-  { num: "03", title: "Mechanized Implementation", desc: "Deploying high-efficiency solar tube-wells, drip networks, and modern planting machinery." },
-  { num: "04", title: "Crop & Herd Management", desc: "Certified hybrid seed planting, integrated pest control, and pedigree dairy herd nutrition." },
-  { num: "05", title: "Quality Harvesting & Cold Chain", desc: "Automated combine grain harvesting and rapid bulk milk cooling at 4°C." },
-  { num: "06", title: "Market Linkages & Growth", desc: "Connecting producers directly to national food processors, commodity buyers, and export channels." },
-];
+function Sprout(props) {
+  return <Leaf {...props} />;
+}
 
 const FAQS = [
   {
-    q: "What services does National Agricultural Corporation offer?",
-    a: "We provide end-to-end agribusiness solutions including mechanized farm development, solar drip and pivot irrigation, commercial dairy farm setup, pedigree livestock breeding, and certified hybrid seed supply.",
+    q: "What services does National Agricultural Corporation deliver?",
+    a: "We provide complete agribusiness engineering including mechanized farm development, solar drip and pivot irrigation, commercial dairy farm construction, pedigree livestock breeding, and certified hybrid seed supplies.",
   },
   {
-    q: "How much water can your solar drip irrigation systems save?",
-    a: "Our pressurized drip and micro-sprinkler irrigation systems deliver water directly to crop root zones, reducing water consumption and evaporation by up to 50% compared to traditional flood irrigation.",
+    q: "How much water can solar drip irrigation systems conserve?",
+    a: "Our pressurized drip networks deliver water directly to crop root zones, reducing evaporation and water consumption by up to 50% compared to traditional furrow or flood irrigation.",
   },
   {
-    q: "Do you provide turn-key commercial dairy farm setups?",
-    a: "Yes. We design and construct complete dairy facilities including automated electronic milking parlors, rapid milk chillers, silage packing systems, and veterinary herd management.",
+    q: "Do you engineer turnkey commercial dairy facilities?",
+    a: "Yes. We design and build complete dairy operations including automated electronic milking parlors, rapid bulk milk chillers (<4°C), silage packing machinery, and herd veterinary management.",
   },
   {
-    q: "How can farmers and corporate landholders partner with NAC?",
-    a: "You can submit an inquiry through our Commercial Desk or contact our Lahore headquarters to request on-site soil assays, irrigation proposals, and customized farm business plans.",
+    q: "How can corporate landholders and farmers partner with NAC?",
+    a: "You can submit an inquiry through our Commercial Desk or contact our Lahore headquarters to request on-site soil assays, customized farm layouts, and machinery deployments.",
   },
 ];
 
@@ -132,93 +95,78 @@ export default function NationalAgriculturalHomePage() {
   const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <main className="min-h-screen bg-white text-[#1A5C2A] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#0B2535] font-sans antialiased overflow-x-hidden">
       <NationalAgriculturalNavbar />
 
-      {/* Hero Section with Panoramic Farm Illustration */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <SectionLabel>Sustainable Agritech &amp; Food Security</SectionLabel>
+      {/* ─── 1. HIGH-IMPACT AGRICULTURAL HERO SECTION ─────────────────────── */}
+      <section className="relative min-h-[580px] lg:min-h-[640px] flex items-center justify-center border-b overflow-hidden" style={{ borderColor: theme.border }}>
+        {/* Background Image with Dark Teal/Navy Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/national agricature-header.png"
+            alt="National Agricultural Corporation High-Tech Farmlands"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071B27]/92 via-[#0B2535]/85 to-[#071B27]/75" />
+        </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.primary }}>
-                Empowering Pakistan&apos;s <span style={{ color: theme.accent }}>Agricultural Future</span>
-              </h1>
-
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                National Agricultural Corporation (Pvt) Ltd is a leader in modern agribusiness, smart irrigation, high-yield dairy genetics, and mechanized farm development. Transforming rural livelihoods and ensuring national food security.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/group-companies/national-agricultural/services"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.primary }}
-                >
-                  <span>Explore Agribusiness Services</span>
-                  <ArrowRight size={16} />
-                </Link>
-
-                <Link
-                  href="/group-companies/national-agricultural/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.primary }}
-                >
-                  <span>Request Farm Consultation</span>
-                </Link>
-              </div>
+        {/* Hero Content */}
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24 text-white">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-[11px] font-medium uppercase tracking-wider text-[#C59B27] mb-5">
+              <Sprout size={13} style={{ color: theme.accent }} />
+              <span className="text-white/90">Pioneering Sustainable Agribusiness &amp; Food Security</span>
             </div>
 
-            {/* Right Hero Image Card */}
-            <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/agri_hero_farm.svg"
-                  alt="Modern Agricultural Fields and Pivot Irrigation"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A5C2A]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-black uppercase tracking-wider text-[#E8A800]">
-                        1 Million+ Acres Supported
-                      </span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                    </div>
-                    <p className="text-sm font-bold" style={{ color: theme.primary }}>
-                      Mechanized Farming · Smart Irrigation · Dairy Hubs
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] mb-5 text-white">
+              Empowering Pakistan&apos;s <span style={{ color: theme.accent }}>Agricultural &amp; Dairy</span> Future
+            </h1>
+
+            <p className="text-sm sm:text-base font-normal leading-relaxed text-slate-200 mb-8 max-w-2xl">
+              National Agricultural Corporation (Pvt) Ltd is an established enterprise modernizing commercial crop cultivation, precision irrigation, high-yield dairy genetics, and rural livelihoods across Pakistan.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/group-companies/national-agricultural/services"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.primaryMid }}
+              >
+                <span>Explore Agribusiness Solutions</span>
+                <ArrowRight size={14} />
+              </Link>
+
+              <Link
+                href="/group-companies/national-agricultural/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold border border-white/30 text-white backdrop-blur-xs transition-all duration-300 hover:bg-white/10 cursor-pointer"
+              >
+                <span>Request Farm Consultation</span>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Counter Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 2. IMPACT / STATISTICS SECTION ──────────────────────────────── */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {STATS.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="nac-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="agri-card rounded-xl p-5 text-center flex flex-col items-center justify-center bg-white shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.primary}10` }}>
-                    <Icon size={22} style={{ color: theme.primary }} />
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2.5" style={{ backgroundColor: `${theme.primaryMid}10` }}>
+                    <Icon size={20} style={{ color: theme.primaryMid }} />
                   </div>
-                  <div className="mb-1" style={{ color: theme.primary }}>
+                  <div className="mb-1" style={{ color: theme.navy }}>
                     <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11px] font-medium tracking-wide uppercase whitespace-pre-line" style={{ color: theme.textMuted }}>
                     {stat.label}
                   </p>
                 </div>
@@ -228,136 +176,247 @@ export default function NationalAgriculturalHomePage() {
         </div>
       </section>
 
-      {/* About Company Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 3. ABOUT NATIONAL AGRICULTURAL CORPORATION ───────────────────── */}
+      <section className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Visual */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Visual */}
             <div className="lg:col-span-6">
-              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
+              <div className="relative w-full h-[360px] sm:h-[420px] rounded-2xl overflow-hidden border shadow-sm agri-card bg-white" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/agri_dairy_livestock.svg"
-                  alt="Modern Dairy and Livestock Facilities"
+                  src="/swiss-farm-about.png"
+                  alt="Established Commercial Farm Development"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A5C2A]/80 via-transparent to-transparent flex items-end p-6">
-                  <div className="text-white">
-                    <p className="text-xs font-black uppercase tracking-widest text-[#E8A800] mb-1">
-                      Advanced Dairy Technology
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B2535]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-3.5 border shadow-sm w-full" style={{ borderColor: theme.border }}>
+                    <p className="text-[11px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: theme.accent }}>
+                      Roy &amp; Sons Group Company
                     </p>
-                    <h4 className="text-base font-bold">Automated Milking &amp; Rapid Cold Chain Logistics</h4>
+                    <p className="text-xs sm:text-[13px] font-medium" style={{ color: theme.navy }}>
+                      Commercial Agribusiness · Modern Infrastructure · Dairy Hubs
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Text */}
+            {/* Narrative */}
             <div className="lg:col-span-6 flex flex-col justify-center">
               <SectionLabel>About Our Enterprise</SectionLabel>
-              <SectionHeading className="mb-6">Modern Agritech Engineered For High Productivity</SectionHeading>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" style={{ color: theme.navy }}>
+                Pioneering Modern Agribusiness Across Pakistan
+              </h2>
 
-              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                National Agricultural Corporation (Pvt) Ltd brings together certified agronomists, veterinary specialists, and irrigation engineers. We deliver mechanized agricultural infrastructure, climate-resilient farming, and dairy breeding programs that elevate national production.
+              <p className="text-xs sm:text-sm font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                National Agricultural Corporation (Pvt) Ltd brings together certified agronomists, veterinary specialists, and irrigation engineers. With over 25 years of operational heritage, we design and manage commercial agribusiness projects that maximize yield per acre and conserve natural water tables.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={18} className="text-[#E8A800] flex-shrink-0" />
-                  <span className="text-xs font-bold text-slate-800">50% Water Savings with Drip Irrigation</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                <div className="flex items-center gap-2.5 p-3 rounded-xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={16} style={{ color: theme.primaryMid }} className="flex-shrink-0" />
+                  <span className="text-xs font-medium text-slate-800">50% Water Savings via Drip Tech</span>
                 </div>
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={18} className="text-[#E8A800] flex-shrink-0" />
-                  <span className="text-xs font-bold text-slate-800">Certified Disease-Free Livestock Genetics</span>
+                <div className="flex items-center gap-2.5 p-3 rounded-xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={16} style={{ color: theme.primaryMid }} className="flex-shrink-0" />
+                  <span className="text-xs font-medium text-slate-800">Certified Dairy Semen &amp; Genetics</span>
                 </div>
               </div>
 
               <Link
                 href="/group-companies/national-agricultural/about"
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#E8A800]"
+                className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                style={{ color: theme.primaryMid }}
               >
-                <span>Read Full Corporate Profile</span>
-                <ArrowRight size={16} />
+                <span>Read complete corporate overview</span>
+                <ArrowRight size={13} />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Agribusiness Services Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 4. AGRICULTURE DEVELOPMENT SPOTLIGHT ─────────────────────────── */}
+      <section className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-6 flex flex-col justify-center order-2 lg:order-1">
+              <SectionLabel>Crop Cultivation &amp; Mechanization</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" style={{ color: theme.navy }}>
+                Agriculture Development &amp; Precision Machinery
+              </h2>
+
+              <p className="text-xs sm:text-sm font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                Modern crop yields depend on precision field preparation. Our fleets of GPS-guided laser land levelers, pneumatic seed drills, high-horsepower 4WD tractors, and automated combine harvesters accelerate turnaround times and cut per-acre field costs by up to 35%.
+              </p>
+
+              <div className="space-y-2 mb-6">
+                {[
+                  "GPS satellite-guided laser land leveling eliminating irrigation pooling",
+                  "Pneumatic precision seed drills ensuring uniform germination depth",
+                  "High-capacity grain combine harvesters preventing post-monsoon crop losses",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                    <span className="text-xs font-normal text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="/group-companies/national-agricultural/services/agricultural-development-mechanization"
+                className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                style={{ color: theme.primaryMid }}
+              >
+                <span>Explore agriculture development specifications</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            {/* Right Visual */}
+            <div className="lg:col-span-6 order-1 lg:order-2">
+              <div className="relative w-full h-[340px] sm:h-[400px] rounded-2xl overflow-hidden border shadow-sm agri-card bg-slate-50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/services/agriculture-1.jpg"
+                  alt="Mechanized Agriculture and Combine Harvesting"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 5. DAIRY DEVELOPMENT SPOTLIGHT ───────────────────────────────── */}
+      <section className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Left Visual */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[340px] sm:h-[400px] rounded-2xl overflow-hidden border shadow-sm agri-card bg-slate-50" style={{ borderColor: theme.border }}>
+                <Image
+                  src="/vetvac_dairy_service.jpg"
+                  alt="Modern Dairy Farm and Milking Facilities"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Right Content */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <SectionLabel>Commercial Dairy Infrastructure</SectionLabel>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4" style={{ color: theme.navy }}>
+                Dairy Development &amp; Cold Chain Networks
+              </h2>
+
+              <p className="text-xs sm:text-sm font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                We engineer turnkey commercial dairy farms ranging from 50-cow family herds up to 5,000-cow corporate estates. Incorporating automated electronic milking parlors, rapid bulk milk chillers (below 4°C), and village collection centers, we guarantee export-quality milk hygiene.
+              </p>
+
+              <div className="space-y-2 mb-6">
+                {[
+                  "Electronic herringbone & rotary milking parlors with yield meters",
+                  "Direct-expansion SS304 bulk milk chillers arresting bacterial growth",
+                  "TMR feed wagon mixers and high-density corn silage baling systems",
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                    <span className="text-xs font-normal text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="/group-companies/national-agricultural/services/dairy-development-cold-chain"
+                className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                style={{ color: theme.primaryMid }}
+              >
+                <span>Explore dairy development capabilities</span>
+                <ArrowRight size={13} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 6. OUR SERVICES PREVIEW (6 CARDS, NO BIG BUTTONS) ───────────── */}
+      <section className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
             <div>
-              <SectionLabel>What We Deliver</SectionLabel>
-              <SectionHeading>Our Core Capabilities</SectionHeading>
+              <SectionLabel>Commercial Capabilities</SectionLabel>
+              <SectionHeading>Our 6 Core Agribusiness Services</SectionHeading>
             </div>
 
             <Link
               href="/group-companies/national-agricultural/services"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
-              style={{ color: theme.primary }}
+              className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
+              style={{ color: theme.primaryMid }}
             >
-              <span>View All</span>
-              <ArrowRight size={16} />
+              <span>View all 6 services</span>
+              <ArrowRight size={13} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((svc) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {NATIONAL_AGRICULTURAL_SERVICES.map((svc) => {
               const Icon = svc.icon;
               return (
                 <div
-                  key={svc.title}
-                  className="nac-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  key={svc.slug}
+                  className="agri-card group rounded-2xl overflow-hidden flex flex-col justify-between bg-white"
                 >
                   <div>
+                    {/* Visual */}
                     <Link
-                      href={svc.href}
-                      className="relative block w-full h-48 bg-slate-100 overflow-hidden group cursor-pointer"
+                      href={`/group-companies/national-agricultural/services/${svc.slug}`}
+                      className="agri-img-wrapper block w-full h-44 bg-slate-100 relative cursor-pointer"
                     >
                       <Image
-                        src={svc.img}
+                        src={svc.heroImage}
                         alt={svc.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover"
                       />
+                      <div className="absolute top-3 left-3">
+                        <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
+                          {svc.tag}
+                        </span>
+                      </div>
                     </Link>
 
-                    <div className="p-7">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.primary}10` }}>
-                        <Icon size={20} style={{ color: theme.primary }} />
+                    {/* Content */}
+                    <div className="p-5">
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                          <Icon size={16} style={{ color: theme.primaryMid }} />
+                        </div>
+                        <h3 className="text-[16px] font-semibold tracking-tight" style={{ color: theme.navy }}>
+                          <Link href={`/group-companies/national-agricultural/services/${svc.slug}`} className="hover:text-[#236B38] transition-colors">
+                            {svc.title}
+                          </Link>
+                        </h3>
                       </div>
 
-                      <Link href={svc.href}>
-                        <h3 className="text-lg font-black mb-2.5 hover:text-[#E8A800] transition-colors cursor-pointer" style={{ color: theme.primary }}>
-                          {svc.title}
-                        </h3>
-                      </Link>
-
-                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
-                        {svc.desc}
+                      <p className="text-xs font-normal leading-relaxed line-clamp-3 mb-3" style={{ color: theme.textMuted }}>
+                        {svc.overview}
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0 flex gap-2">
+                  {/* Subtle Link */}
+                  <div className="px-5 pb-4 pt-1 border-t" style={{ borderColor: theme.borderLight }}>
                     <Link
-                      href={svc.href}
-                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
-                      style={{ borderColor: theme.border, color: theme.primary }}
+                      href={`/group-companies/national-agricultural/services/${svc.slug}`}
+                      className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      style={{ color: theme.primaryMid }}
                     >
-                      <span>Explore Details</span>
-                      <ArrowRight size={14} />
-                    </Link>
-                    <Link
-                      href="/group-companies/national-agricultural/contact"
-                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
-                      style={{ backgroundColor: theme.primary }}
-                      title="Request Proposal"
-                    >
-                      <span>Quote</span>
+                      <span>Explore specifications</span>
+                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -367,71 +426,166 @@ export default function NationalAgriculturalHomePage() {
         </div>
       </section>
 
-      {/* Process Pathway Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 7. PROGRAMS & INITIATIVES PREVIEW (5 CARDS) ──────────────────── */}
+      <section className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <SectionLabel center>Disciplined Protocol</SectionLabel>
-            <SectionHeading center className="mb-4">6-Stage Agribusiness Development Lifecycle</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              From initial soil chemistry tests to precision harvesting and direct market connectivity.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+            <div>
+              <SectionLabel>Impact &amp; Outreach</SectionLabel>
+              <SectionHeading>Our 5 Core Development Programs</SectionHeading>
+            </div>
+
+            <Link
+              href="/group-companies/national-agricultural/programs"
+              className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
+              style={{ color: theme.primaryMid }}
+            >
+              <span>View all programs</span>
+              <ArrowRight size={13} />
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROCESS_STEPS.map((step) => (
-              <div
-                key={step.num}
-                className="p-8 rounded-3xl border bg-white shadow-xs flex flex-col justify-between"
-                style={{ borderColor: theme.border }}
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm text-white mb-6 shadow-sm" style={{ backgroundColor: theme.primary }}>
-                    {step.num}
+            {NATIONAL_AGRICULTURAL_PROGRAMS.map((prog) => {
+              const Icon = prog.icon;
+              return (
+                <div
+                  key={prog.slug}
+                  className="agri-card group rounded-2xl overflow-hidden flex flex-col justify-between bg-white"
+                >
+                  <div>
+                    <Link
+                      href={`/group-companies/national-agricultural/programs/${prog.slug}`}
+                      className="agri-img-wrapper block w-full h-44 bg-slate-100 relative cursor-pointer"
+                    >
+                      <Image
+                        src={prog.heroImage}
+                        alt={prog.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
+                          {prog.tag}
+                        </span>
+                      </div>
+                    </Link>
+
+                    <div className="p-5">
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                          <Icon size={16} style={{ color: theme.primaryMid }} />
+                        </div>
+                        <h3 className="text-[16px] font-semibold tracking-tight" style={{ color: theme.navy }}>
+                          <Link href={`/group-companies/national-agricultural/programs/${prog.slug}`} className="hover:text-[#236B38] transition-colors">
+                            {prog.title}
+                          </Link>
+                        </h3>
+                      </div>
+
+                      <p className="text-xs font-normal leading-relaxed line-clamp-3 mb-3" style={{ color: theme.textMuted }}>
+                        {prog.overview}
+                      </p>
+                    </div>
                   </div>
-                  <h4 className="text-base font-bold mb-3" style={{ color: theme.primary }}>
-                    {step.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                    {step.desc}
-                  </p>
+
+                  <div className="px-5 pb-4 pt-1 border-t" style={{ borderColor: theme.borderLight }}>
+                    <Link
+                      href={`/group-companies/national-agricultural/programs/${prog.slug}`}
+                      className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      style={{ color: theme.primaryMid }}
+                    >
+                      <span>Explore initiative</span>
+                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─── 8. SUSTAINABILITY PREVIEW (5 PILLARS) ─────────────────────────── */}
+      <section className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <SectionLabel center>Frequently Asked Questions</SectionLabel>
-            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <SectionLabel center>Environmental Focus</SectionLabel>
+            <SectionHeading center className="mb-3">5 Pillars of Sustainability</SectionHeading>
+            <p className="text-xs sm:text-sm font-normal" style={{ color: theme.textMuted }}>
+              Restoring nature&apos;s balance across farmlands through regenerative agronomic engineering.
+            </p>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {SUSTAINABILITY_PILLARS.map((p, idx) => {
+              const Icon = p.icon;
+              return (
+                <div
+                  key={p.title}
+                  className="agri-card rounded-2xl p-5 bg-white flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.primaryMid}10` }}>
+                      <Icon size={16} style={{ color: theme.primaryMid }} />
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase tracking-wider block mb-1" style={{ color: theme.accent }}>
+                      Pillar 0{idx + 1}
+                    </span>
+                    <h4 className="text-[15px] font-semibold mb-1.5" style={{ color: theme.navy }}>
+                      {p.title}
+                    </h4>
+                    <p className="text-xs font-normal leading-relaxed" style={{ color: theme.textMuted }}>
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              href="/group-companies/national-agricultural/sustainability"
+              className="agri-link-arrow text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer"
+              style={{ color: theme.primaryMid }}
+            >
+              <span>Read complete sustainability framework</span>
+              <ArrowRight size={13} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 9. FAQS SECTION ──────────────────────────────────────────────── */}
+      <section className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <SectionLabel center>Common Questions</SectionLabel>
+            <SectionHeading center className="mb-3">Agribusiness FAQs</SectionHeading>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-3">
             {FAQS.map((faq, idx) => (
               <div
                 key={faq.q}
-                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
-                style={{ borderColor: theme.border }}
+                className="agri-card rounded-xl overflow-hidden bg-white shadow-xs"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
-                  style={{ color: theme.primary }}
+                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-semibold text-xs sm:text-sm cursor-pointer"
+                  style={{ color: theme.navy }}
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
-                    size={18}
+                    size={16}
                     className={`transition-transform duration-300 flex-shrink-0 ${
-                      openFaq === idx ? "rotate-180 text-[#E8A800]" : "text-slate-400"
+                      openFaq === idx ? "rotate-180 text-[#C59B27]" : "text-slate-400"
                     }`}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                  <div className="px-4 sm:px-5 pb-4 text-xs font-normal leading-relaxed border-t pt-3 text-slate-600" style={{ borderColor: theme.borderLight }}>
                     {faq.a}
                   </div>
                 )}
@@ -441,37 +595,37 @@ export default function NationalAgriculturalHomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* ─── 10. CLEAN CONTACT / PROPOSAL INQUIRY SECTION ──────────────────── */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+          <div className="rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
             <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#E8A800]">
-                READY TO MODERNIZE YOUR FARM OR DAIRY ESTATE?
+              <span className="text-[11px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
+                Agribusiness Feasibility &amp; Project Planning
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.primary }}>
-                Request A Confidential Farm Feasibility Study
+              <h2 className="text-xl sm:text-2xl font-bold mb-1.5" style={{ color: theme.navy }}>
+                Request A Confidential Farm Consultation
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Speak directly with our agronomy and dairy specialists to receive equipment quotes, water designs, and yield forecasts.
+              <p className="text-xs sm:text-sm font-normal max-w-xl" style={{ color: theme.textMuted }}>
+                Speak directly with our agronomy and dairy specialists to discuss equipment schedules, irrigation designs, and yield forecasts.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-3 flex-shrink-0">
               <Link
                 href="/group-companies/national-agricultural/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.primary }}
+                className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.primaryMid }}
               >
-                <span>Request Farm Quotation</span>
-                <ArrowRight size={15} />
+                <span>Request Quotation</span>
+                <ArrowRight size={13} />
               </Link>
               <a
                 href="tel:+923218431665"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.primary, color: theme.primary }}
+                className="px-4 py-2.5 rounded-xl text-xs font-semibold border flex items-center gap-2 transition-all hover:bg-white cursor-pointer"
+                style={{ borderColor: theme.border, color: theme.navy }}
               >
-                <Phone size={15} />
+                <Phone size={13} style={{ color: theme.primaryMid }} />
                 <span>+92 321 8431665</span>
               </a>
             </div>

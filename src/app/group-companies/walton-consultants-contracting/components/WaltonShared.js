@@ -13,34 +13,28 @@ import {
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
-  Clock,
-  Send,
-  Headphones,
-  Award,
+  HardHat,
+  ChevronLeft,
   ChevronRight,
   Building2,
-  Hammer,
-  Truck,
   Layers,
-  Wrench,
-  ClipboardList,
-  HardHat,
-  Sparkles,
+  Award,
 } from "lucide-react";
 
 export const theme = {
-  navy: "#0E2A47", // Official Walton Dark Navy Blue
-  navyDark: "#081B30",
-  navySoft: "#1A3C60",
-  gold: "#C5A059", // Official Walton Warm Gold
+  navy: "#0E2A47",
+  navyDark: "#0A1E34",
+  navyDeep: "#061423",
+  teal: "#0D485E",
+  gold: "#C5A059",
+  goldMuted: "#B89346",
   goldHover: "#A6823B",
-  charcoal: "#3A4E63", // Slate Text
-  charcoalDark: "#1E2A3A",
-  white: "#FFFFFF",
+  charcoal: "#2C3E50",
+  textMuted: "#4A5D70",
+  textLight: "#6E8294",
   bgLight: "#F4F7FA",
-  border: "#D8E2EC",
-  textMuted: "#3A4E63",
-  textLight: "#657B94",
+  border: "#DDE5ED",
+  white: "#FFFFFF",
 };
 
 export const NAV_LINKS = [
@@ -54,23 +48,25 @@ export const NAV_LINKS = [
 ];
 
 export const FOOTER_SERVICES = [
-  { label: "Civil Engineering & Structural Superstructures", href: "/group-companies/walton-consultants-contracting/services/civil-engineering-structural-superstructures" },
-  { label: "Turnkey EPC Heavy Industrial Construction", href: "/group-companies/walton-consultants-contracting/services/turnkey-epc-heavy-industrial-projects" },
-  { label: "Highways, Bridges & Transportation Corridors", href: "/group-companies/walton-consultants-contracting/services/highways-bridges-transportation-corridors" },
-  { label: "Industrial Warehouses & Steel Fabrication", href: "/group-companies/walton-consultants-contracting/services/pre-engineered-buildings-peb-warehouses" },
-  { label: "Project Management & BIM Quality Assurance", href: "/group-companies/walton-consultants-contracting/services/project-management-bim-qa-qc-supervision" },
-  { label: "Engineering Consultancy & Feasibility Studies", href: "/group-companies/walton-consultants-contracting/services/engineering-consultancy-feasibility-studies" },
+  { label: "Engineering Consultancy", href: "/group-companies/walton-consultants-contracting/services" },
+  { label: "Project Management", href: "/group-companies/walton-consultants-contracting/services" },
+  { label: "Construction Management", href: "/group-companies/walton-consultants-contracting/services" },
+  { label: "Infrastructure Development", href: "/group-companies/walton-consultants-contracting/services" },
+  { label: "Architecture & Planning", href: "/group-companies/walton-consultants-contracting/services" },
+  { label: "Feasibility & Technical Studies", href: "/group-companies/walton-consultants-contracting/services" },
+  { label: "Quantity Surveying", href: "/group-companies/walton-consultants-contracting/services" },
+  { label: "Procurement & Contract Management", href: "/group-companies/walton-consultants-contracting/services" },
 ];
 
 export function SectionLabel({ children, center }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-black uppercase tracking-[0.2em] mb-4 bg-slate-50 ${
+      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[11px] font-bold uppercase tracking-[0.18em] mb-3.5 bg-[#F4F7FA] ${
         center ? "mx-auto" : ""
       }`}
       style={{ borderColor: theme.border, color: theme.navy }}
     >
-      <HardHat size={14} style={{ color: theme.gold }} />
+      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.gold }} />
       <span>{children}</span>
     </div>
   );
@@ -79,7 +75,7 @@ export function SectionLabel({ children, center }) {
 export function SectionHeading({ children, className = "", center }) {
   return (
     <h2
-      className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight uppercase ${
+      className={`text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-[1.2] uppercase ${
         center ? "text-center" : ""
       } ${className}`}
       style={{ color: theme.navyDark }}
@@ -89,7 +85,7 @@ export function SectionHeading({ children, className = "", center }) {
   );
 }
 
-export function AnimatedCounter({ targetValue, duration = 1600 }) {
+export function AnimatedCounter({ targetValue, duration = 1500 }) {
   const [count, setCount] = useState(0);
   const elementRef = useRef(null);
   const hasAnimated = useRef(false);
@@ -108,7 +104,7 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
           const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const easeProgress = 1 - (1 - progress) * (1 - progress);
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
             setCount(Math.floor(easeProgress * numericTarget));
             if (progress < 1) {
               window.requestAnimationFrame(step);
@@ -142,111 +138,108 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
   );
 }
 
-// ─── Reusable Navbar ────────────────────────────────────────────────
+// ─── Compact, Premium Navbar (No Buttons, 13–14px typography, Sticky) ───
 export function WaltonNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 25);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isActive = (href) => {
     if (!pathname) return false;
     if (href === "/group-companies/walton-consultants-contracting") {
-      return pathname === "/group-companies/walton-consultants-contracting" || pathname === "/group-companies/walton-consultants-contracting/";
+      return (
+        pathname === "/group-companies/walton-consultants-contracting" ||
+        pathname === "/group-companies/walton-consultants-contracting/"
+      );
     }
     return pathname.startsWith(href);
   };
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-[0_2px_12px_rgba(10,30,52,0.06)] py-2"
+          : "bg-white border-b border-slate-200/60 py-2.5 sm:py-3"
       }`}
-      style={{
-        borderBottom: `1px solid ${theme.border}`,
-        backgroundColor: theme.white,
-      }}
     >
-      <div className="mx-auto max-w-full px-2 sm:px-4 lg:px-4 xl:px-6 2xl:max-w-screen-2xl 2xl:px-8 flex items-center justify-between gap-1.5 lg:gap-2 xl:gap-4">
-        {/* Brand Logo */}
-        <Link href="/group-companies/walton-consultants-contracting" className="flex items-center gap-2 sm:gap-2.5 select-none group shrink-0">
-          <div className="relative w-8 h-8 sm:w-9 sm:h-9 lg:w-9 lg:h-9 xl:w-11 xl:h-11 flex items-center justify-center flex-shrink-0">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Clean, properly proportioned Logo */}
+        <Link
+          href="/group-companies/walton-consultants-contracting"
+          className="flex items-center gap-2.5 sm:gap-3 group shrink-0"
+        >
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 lg:w-9 lg:h-9 flex items-center justify-center shrink-0">
             <Image
               src="/logos/5.png"
-              alt="Walton Consultants &amp; Contracting Logo"
-              width={56}
-              height={56}
+              alt="Walton Consultants & Contracting"
+              width={48}
+              height={48}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
-          <div className="flex flex-col shrink-0">
-            <span className="text-xs sm:text-[13px] lg:text-[12px] xl:text-[14px] 2xl:text-[15px] font-black tracking-tight leading-tight uppercase whitespace-nowrap" style={{ color: theme.navyDark }}>
+          <div className="flex flex-col">
+            <span
+              className="text-[13px] sm:text-[14px] lg:text-[14.5px] font-black tracking-tight leading-none uppercase"
+              style={{ color: theme.navyDark }}
+            >
               Walton Consultants
             </span>
-            <span className="text-[7.5px] sm:text-[8px] lg:text-[8px] xl:text-[9px] 2xl:text-[9.5px] font-bold tracking-widest uppercase mt-0.5 whitespace-nowrap" style={{ color: theme.gold }}>
-              Engineering &amp; Contracting
+            <span
+              className="text-[9px] sm:text-[9.5px] font-bold tracking-[0.16em] uppercase mt-0.5"
+              style={{ color: theme.goldMuted }}
+            >
+              Engineering &amp; Infrastructure
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3 shrink">
+        {/* Desktop Navigation Links: 13px–14px font, reduced spacing, clean hover */}
+        <nav className="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-5">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[9.5px] xl:text-[10.5px] 2xl:text-[11.5px] font-extrabold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 xl:px-1.5 2xl:px-2 hover:text-[#0E2A47] cursor-pointer whitespace-nowrap"
-                style={{
-                  color: active ? theme.navy : theme.charcoal,
-                }}
+                className={`relative py-1.5 px-2 text-[13px] xl:text-[13.5px] 2xl:text-[14px] font-semibold tracking-[0.03em] uppercase transition-colors duration-200 whitespace-nowrap cursor-pointer ${
+                  active ? "text-[#0E2A47]" : "text-[#4A5D70] hover:text-[#0E2A47]"
+                }`}
               >
-                {link.label}
+                <span>{link.label}</span>
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    active ? "w-full" : "w-0 hover:w-full"
+                  className={`absolute bottom-0 left-2 right-2 h-[2px] rounded-full transition-all duration-300 ${
+                    active ? "bg-[#C5A059] opacity-100 scale-x-100" : "bg-[#C5A059] opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
                   }`}
-                  style={{ backgroundColor: theme.gold }}
                 />
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 shrink-0">
-          <Link
-            href="/group-companies/walton-consultants-contracting/contact"
-            className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 xl:px-3.5 xl:py-2 rounded-lg text-[9.5px] xl:text-[10.5px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap shrink-0"
-            style={{ backgroundColor: theme.navy }}
-          >
-            <span>Engineering Desk</span>
-            <ArrowRight size={12} className="shrink-0" />
-          </Link>
-
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
-            style={{ borderColor: theme.border, color: theme.navyDark }}
-            aria-label="Toggle Menu"
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
+        {/* Clean Mobile Hamburger Menu Button (No other buttons on navbar) */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="lg:hidden p-1.5 sm:p-2 rounded-lg border border-slate-200 text-[#0A1E34] hover:bg-slate-50 transition-colors cursor-pointer"
+          aria-label="Toggle Navigation Menu"
+        >
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Clean Mobile Navigation Drawer */}
       {mobileOpen && (
-        <div
-          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
-          style={{ borderColor: theme.border }}
+        <nav
+          aria-label="Mobile Navigation Drawer"
+          className="lg:hidden border-t border-slate-200 bg-white shadow-xl px-5 py-3 space-y-1 animate-in fade-in slide-in-from-top-2 duration-200"
         >
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
@@ -255,172 +248,242 @@ export function WaltonNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
-                style={{
-                  backgroundColor: active ? `${theme.navy}12` : "transparent",
-                  color: active ? theme.navy : theme.navyDark,
-                }}
+                className={`block py-2.5 px-3 rounded-lg text-[13.5px] font-bold uppercase tracking-wider transition-colors ${
+                  active
+                    ? "bg-[#0E2A47]/8 text-[#0E2A47] border-l-3 border-[#C5A059]"
+                    : "text-[#4A5D70] hover:bg-slate-50 hover:text-[#0E2A47]"
+                }`}
               >
                 {link.label}
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/walton-consultants-contracting/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.navy }}
-            >
-              <span>Consult Chief Engineer</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
-        </div>
+        </nav>
       )}
     </header>
   );
 }
 
-// ─── Reusable Footer ────────────────────────────────────────────────
+// ─── Card Image Slider (for Featured Cards with 2–3 images, auto-rotation & dots) ───
+export function CardImageSlider({ images = [], alt = "Project visual", className = "h-52 sm:h-56" }) {
+  const [currentIdx, setCurrentIdx] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (!images || images.length <= 1 || isHovered) return;
+    const interval = setInterval(() => {
+      setCurrentIdx((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [images, isHovered]);
+
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div
+      className={`relative w-full overflow-hidden rounded-t-2xl bg-slate-100 ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {images.map((imgSrc, i) => (
+        <div
+          key={imgSrc + i}
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+            i === currentIdx ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+          }`}
+        >
+          <Image
+            src={imgSrc}
+            alt={`${alt} ${i + 1}`}
+            fill
+            className="object-cover walton-img-zoom transition-transform duration-700"
+            sizes="(max-width: 768px) 100vw, 400px"
+          />
+        </div>
+      ))}
+
+      {/* Dark gradient base overlay for text contrast if needed */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/30 via-transparent to-transparent pointer-events-none z-15" />
+
+      {/* Dots indicator if multiple images */}
+      {images.length > 1 && (
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-20">
+          {images.map((_, dotIdx) => (
+            <button
+              key={dotIdx}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setCurrentIdx(dotIdx);
+              }}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                dotIdx === currentIdx ? "w-5 bg-white shadow-xs" : "w-1.5 bg-white/50 hover:bg-white/80"
+              }`}
+              aria-label={`Go to slide ${dotIdx + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Optional subtle arrows on hover */}
+      {images.length > 1 && isHovered && (
+        <div className="absolute inset-y-0 inset-x-2 flex items-center justify-between z-20 pointer-events-none">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setCurrentIdx((prev) => (prev - 1 + images.length) % images.length);
+            }}
+            className="w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-xs hover:bg-black/60 pointer-events-auto transition-colors"
+            aria-label="Previous image"
+          >
+            <ChevronLeft size={16} />
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setCurrentIdx((prev) => (prev + 1) % images.length);
+            }}
+            className="w-7 h-7 rounded-full bg-black/40 text-white flex items-center justify-center backdrop-blur-xs hover:bg-black/60 pointer-events-auto transition-colors"
+            aria-label="Next image"
+          >
+            <ChevronRight size={16} />
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Corporate Footer ───
 export function WaltonFooter() {
   return (
-    <footer
-      className="border-t bg-white pt-16 pb-10"
-      style={{
-        borderColor: theme.border,
-        backgroundColor: theme.white,
-      }}
-    >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b" style={{ borderColor: theme.border }}>
-          {/* Brand Column */}
-          <div className="lg:col-span-4">
-            <Link href="/group-companies/walton-consultants-contracting" className="flex items-center gap-3.5 mb-5 select-none">
-              <div className="w-13 h-13 rounded-xl bg-white p-1 border shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/walton.jpeg"
-                  alt="Walton Consultants Logo"
-                  width={52}
-                  height={52}
-                  className="object-contain"
-                />
-              </div>
-              <div>
-                <p className="text-base font-black uppercase tracking-wider leading-tight" style={{ color: theme.navyDark }}>
-                  Walton Consultants
-                </p>
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase" style={{ color: theme.gold }}>
-                  Walton Consultants &amp; Contracting (Pvt) Ltd
-                </p>
-              </div>
-            </Link>
+    <footer className="bg-[#0A1E34] text-white border-t border-slate-800 antialiased">
+      {/* Top Credentials Bar */}
+      <div className="border-b border-white/10 py-6 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-xl flex flex-wrap items-center justify-between gap-4 text-xs">
+          <div className="flex items-center gap-2 text-[#C5A059] font-bold uppercase tracking-wider">
+            <Award size={16} />
+            <span>Pakistan Engineering Council (PEC) Category C-A (No Limit) Constructor</span>
+          </div>
+          <div className="flex items-center gap-6 text-slate-300">
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck size={14} className="text-[#C5A059]" /> ISO 9001:2015 Quality
+            </span>
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck size={14} className="text-[#C5A059]" /> ISO 45001:2018 Safety
+            </span>
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck size={14} className="text-[#C5A059]" /> LEED Accredited
+            </span>
+          </div>
+        </div>
+      </div>
 
-            <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-              Delivering turnkey civil engineering, mega infrastructure construction, high-rise commercial superstructures, industrial factories, and EPC project management across Pakistan.
-            </p>
-
-            <div className="flex items-center gap-2.5">
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-slate-50" style={{ borderColor: theme.border, color: theme.navyDark }}>
-                <ShieldCheck size={14} style={{ color: theme.gold }} />
-                <span>PEC C-A (No Limit) Constructor</span>
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-bold bg-slate-50" style={{ borderColor: theme.border, color: theme.navyDark }}>
-                <Building2 size={14} style={{ color: theme.gold }} />
-                <span>350+ Completed Projects</span>
-              </div>
+      {/* Main Footer Columns */}
+      <div className="mx-auto max-w-screen-xl py-14 px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
+        {/* Brand Summary */}
+        <div className="lg:col-span-4">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="relative w-9 h-9">
+              <Image
+                src="/logos/5.png"
+                alt="Walton Logo"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+            </div>
+            <div>
+              <h3 className="text-base font-black tracking-tight uppercase text-white">
+                Walton Consultants
+              </h3>
+              <p className="text-[10px] font-bold tracking-[0.16em] uppercase text-[#C5A059]">
+                Engineering &amp; Infrastructure
+              </p>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="lg:col-span-2">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navyDark }}>
-              Navigation
-            </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="hover:underline transition-colors hover:text-[#0E2A47] flex items-center gap-1.5"
-                    style={{ color: theme.textMuted }}
-                  >
-                    <ChevronRight size={12} style={{ color: theme.gold }} />
-                    <span>{link.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="text-sm text-slate-300 leading-relaxed mb-6">
+            A premier international engineering consultancy and general contracting firm delivering landmark civil infrastructure, highway corridors, commercial superstructures, and industrial EPC facilities.
+          </p>
 
-          {/* Core Engineering Divisions */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navyDark }}>
-              Engineering Divisions
-            </h4>
-            <ul className="space-y-2.5 text-xs font-semibold">
-              {FOOTER_SERVICES.map((s) => (
-                <li key={s.label}>
-                  <Link
-                    href={s.href}
-                    className="hover:underline transition-colors hover:text-[#0E2A47] flex items-center gap-1.5"
-                    style={{ color: theme.textMuted }}
-                  >
-                    <ChevronRight size={12} style={{ color: theme.gold }} />
-                    <span>{s.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact Coordinates */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest mb-4" style={{ color: theme.navyDark }}>
-              Construction &amp; EPC Desk
-            </h4>
-            <div className="space-y-3 text-xs font-medium" style={{ color: theme.textMuted }}>
-              <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.navy }} />
-                <span>1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone size={16} className="flex-shrink-0" style={{ color: theme.navy }} />
-                <a href="tel:00924238924737" className="hover:underline font-bold" style={{ color: theme.navyDark }}>
-                  0092-42-38924737 / 0092-321-8431665
-                </a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail size={16} className="flex-shrink-0" style={{ color: theme.navy }} />
-                <a href="mailto:info@roysons.org" className="hover:underline">
-                  info@roysons.org
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-5 p-3.5 rounded-xl border bg-slate-50 flex items-center gap-3" style={{ borderColor: theme.border }}>
-              <Headphones size={24} style={{ color: theme.navy }} />
-              <div>
-                <p className="text-[11px] font-bold uppercase" style={{ color: theme.navyDark }}>Civil Site Supervision Desk</p>
-                <p className="text-[10.5px] font-medium" style={{ color: theme.textMuted }}>Direct project manager coordination</p>
-              </div>
-            </div>
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Operational across major provincial infrastructure corridors</span>
           </div>
         </div>
 
-        {/* Copyright Sub-bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium" style={{ color: theme.textLight }}>
-          <p>&copy; 2026 Walton Consultants &amp; Contracting (Pvt) Ltd. A Roy &amp; Sons Group Company.</p>
-          <div className="flex items-center gap-4">
-            <Link href="/group-companies/walton-consultants-contracting/contact" className="hover:underline hover:text-[#0E2A47]">
-              PEC Code of Ethics &amp; Standards
-            </Link>
-            <span>•</span>
-            <Link href="/group-companies/walton-consultants-contracting/contact" className="hover:underline hover:text-[#0E2A47]">
-              BIM Structural Safety Protocol
-            </Link>
+        {/* Quick Links */}
+        <div className="lg:col-span-2">
+          <h4 className="text-xs font-black uppercase tracking-[0.15em] text-[#C5A059] mb-4">
+            Navigation
+          </h4>
+          <ul className="space-y-2.5 text-sm">
+            {NAV_LINKS.map((link) => (
+              <li key={link.label}>
+                <Link
+                  href={link.href}
+                  className="text-slate-300 hover:text-white transition-colors duration-200 inline-block"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Core Services */}
+        <div className="lg:col-span-3">
+          <h4 className="text-xs font-black uppercase tracking-[0.15em] text-[#C5A059] mb-4">
+            Core Divisions
+          </h4>
+          <ul className="space-y-2.5 text-sm">
+            {FOOTER_SERVICES.map((svc) => (
+              <li key={svc.label}>
+                <Link
+                  href={svc.href}
+                  className="text-slate-300 hover:text-white transition-colors duration-200 inline-block"
+                >
+                  {svc.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact Helpline */}
+        <div className="lg:col-span-3">
+          <h4 className="text-xs font-black uppercase tracking-[0.15em] text-[#C5A059] mb-4">
+            Engineering Desk
+          </h4>
+          <div className="space-y-3.5 text-sm text-slate-300">
+            <div className="flex items-start gap-3">
+              <MapPin size={16} className="text-[#C5A059] shrink-0 mt-0.5" />
+              <span>Walton Corporate Complex, DHA Phase 5, Ring Road Corridor, Lahore, Pakistan</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Phone size={16} className="text-[#C5A059] shrink-0" />
+              <a href="tel:00924238924737" className="hover:text-white transition-colors">
+                +92 (42) 3892-4737
+              </a>
+            </div>
+            <div className="flex items-center gap-3">
+              <Mail size={16} className="text-[#C5A059] shrink-0" />
+              <a href="mailto:info@waltonconsultants.com" className="hover:text-white transition-colors">
+                info@waltonconsultants.com
+              </a>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Bottom Legal */}
+      <div className="border-t border-white/10 py-5 px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-400">
+        <p>
+          &copy; {new Date().getFullYear()} Walton Consultants &amp; Contracting (Pvt) Ltd. All rights reserved. Engineering Excellence &middot; Infrastructure Development.
+        </p>
       </div>
     </footer>
   );

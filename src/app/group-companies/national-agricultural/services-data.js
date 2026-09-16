@@ -26,12 +26,13 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
   {
     id: "agri-development",
     slug: "agricultural-development-mechanization",
-    title: "Agricultural Development & Mechanization",
+    title: "Agriculture Development",
+    fullTitle: "Agriculture Development & Mechanization",
     subtitle: "Precision Laser Leveling, High-Tech Tractors & Harvesters",
     eyebrow: "Precision Farm Engineering & High-Capacity Machinery",
     tag: "Farm Mechanization",
     icon: Tractor,
-    heroImage: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/services/agriculture-1.jpg",
     overview:
       "National Agricultural Corporation modernizes crop cultivation through precision farm mechanization fleets. From GPS-guided laser land leveling that cuts irrigation losses by up to 35%, to computerized pneumatic seed drills, high-horsepower 4WD tractors, and automated combine harvesting fleets, we boost field operational efficiency, accelerate turnaround times, and maximize farm profitability.",
     metrics: [
@@ -116,14 +117,15 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     ],
   },
   {
-    id: "dairy-development",
+    id: "dairy-farming",
     slug: "dairy-development-cold-chain",
-    title: "Dairy Development & Cold Chain Hubs",
+    title: "Dairy Farming",
+    fullTitle: "Dairy Farming & Cold Chain Logistics",
     subtitle: "Automated Milking Parlors & Rapid Milk Chilling Networks",
     eyebrow: "Commercial Dairy Architecture & Farm-to-Processor Logistics",
     tag: "Dairy Infrastructure",
     icon: Building2,
-    heroImage: "https://images.unsplash.com/photo-1527153857715-3908f2ae5e81?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/vetvac_dairy_service.jpg",
     overview:
       "National Agricultural Corporation delivers end-to-end commercial dairy farm engineering. From climate-controlled free-stall sheds with evaporative cooling fans and automated electronic herringbone/rotary milking parlors, to rapid direct-expansion bulk milk chillers and village collection networks, we guarantee hygienic milk production meeting strict international food standards.",
     metrics: [
@@ -208,106 +210,15 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     ],
   },
   {
-    id: "irrigation",
-    slug: "smart-irrigation-water-systems",
-    title: "Smart Irrigation & Water Systems",
-    subtitle: "Center-Pivot Sprinklers & Solar-Powered Drip Networks",
-    eyebrow: "High-Efficiency Water Engineering & Solar Tube-Wells",
-    tag: "Water Management",
-    icon: Droplets,
-    heroImage: "/agri_hero_farm.svg",
-    overview:
-      "National Agricultural Corporation engineers climate-resilient water management solutions. Specializing in automated center-pivot sprinklers, subsurface and surface drip irrigation systems, solar hybrid pumping stations, and geomembrane-lined farm storage ponds, our systems cut water and energy consumption by up to 50% while increasing crop yields.",
-    metrics: [
-      { label: "Water Conserved", value: "Up to 50%" },
-      { label: "Acreage Under Drip", value: "120K+ Acres" },
-      { label: "Solar Pumping", value: "500+ Sites" },
-      { label: "Fertigation Savings", value: "40% Fertilizer" },
-    ],
-    deliverables: [
-      "Automated center-pivot irrigation systems irrigating 50 to 200 acres per machine in circular sweeps",
-      "Pressure-compensated drip irrigation lines for citrus orchards, olive groves, cotton, and vegetables",
-      "Solar-powered submersible tube-wells operating with high-efficiency MPPT variable frequency drives (VFD)",
-      "Automated fertigation Venturi dosing injection tanks delivering nutrients directly into irrigation lines",
-      "Heavy-duty HDPE geomembrane pond lining preventing seepage loss in sandy soils",
-      "Wireless IoT soil moisture sensors and weather station telemetry automating watering cycles",
-    ],
-    technicalSpecs: [
-      { key: "Water Efficiency", value: "90% – 95% application efficiency (vs 40% flood irrigation)" },
-      { key: "Drip Emitter Flow", value: "1.2 to 4.0 Liters/hour pressure-compensated emitters" },
-      { key: "Center Pivot Span", value: "Galvanized steel spans up to 60 meters each, covering up to 250 acres" },
-      { key: "Solar Pumping Power", value: "5 kW to 75 kW solar hybrid submersible pumping systems" },
-      { key: "Filter Systems", value: "Automatic backwashing disc filters, sand media filters & hydro-cyclones" },
-      { key: "Pipe Lifespan", value: "UV-stabilized virgin polyethylene with 10+ year outdoor warranty" },
-    ],
-    pillars: [
-      {
-        title: "Root-Zone Drip Precision",
-        desc: "Delivers exact water and fertilizer micro-doses directly to roots, eliminating weed growth and evaporation.",
-        icon: Droplets,
-      },
-      {
-        title: "Zero-Electricity Solar Power",
-        desc: "Solar VFD pumps draw water reliably throughout sunlight hours with zero diesel or grid electricity costs.",
-        icon: Sun,
-      },
-      {
-        title: "Center-Pivot Automation",
-        desc: "One single operator can irrigate 150 acres with computerized uniform rainfall simulation.",
-        icon: Tractor,
-      },
-      {
-        title: "Fertigation Fertilizer Savings",
-        desc: "Injecting soluble nutrients directly into irrigation lines cuts overall fertilizer wastage by 40%.",
-        icon: FlaskConical,
-      },
-    ],
-    workflow: [
-      {
-        step: "01",
-        title: "Hydraulic Survey & Water Testing",
-        desc: "Analyzing water discharge, salinity (EC/TDS), and field topography to calculate pipe sizing.",
-      },
-      {
-        step: "02",
-        title: "CAD Hydraulic System Design",
-        desc: "Designing mainlines, sub-mains, manifold stations, filtration units, and pressure-compensating dripper grids.",
-      },
-      {
-        step: "03",
-        title: "Installation & Solar Integration",
-        desc: "Trenching pipes, installing solar arrays, submersible pumps, automatic filter stations, and fertigation tanks.",
-      },
-      {
-        step: "04",
-        title: "Commissioning & Farmer Training",
-        desc: "Pressure testing, dripper flow calibration, and training farm staff on system maintenance and flushing.",
-      },
-    ],
-    faqs: [
-      {
-        q: "How much water and electricity does drip irrigation save?",
-        a: "Drip irrigation saves 40% to 50% of water compared to traditional canal/flood irrigation, and when paired with solar pumps, reduces electricity/diesel pumping costs to zero.",
-      },
-      {
-        q: "Can drip irrigation be used for field crops like cotton and maize as well as orchards?",
-        a: "Yes. We install permanent surface drip for orchards (citrus, mango, olive) and seasonal thin-wall drip tape for row crops like cotton, maize, sugarcane, and vegetables.",
-      },
-      {
-        q: "What maintenance does a smart drip irrigation system require?",
-        a: "Regular maintenance involves periodic filter backwashing, routine flush valve opening to clear sediment, and seasonal acid washing to prevent mineral scale build-up in emitters.",
-      },
-    ],
-  },
-  {
-    id: "livestock",
+    id: "livestock-management",
     slug: "livestock-management-breeding-genetics",
-    title: "Livestock Management & Breeding Genetics",
+    title: "Livestock Management",
+    fullTitle: "Livestock Management & Breeding Genetics",
     subtitle: "High-Yield Genetic Improvement & Veterinary Healthcare",
     eyebrow: "Elite Herd Genetics, Artificial Insemination & Herd Health",
     tag: "Animal Husbandry",
     icon: Leaf,
-    heroImage: "/agri_dairy_livestock.svg",
+    heroImage: "/vetvac_livestock_service.jpg",
     overview:
       "National Agricultural Corporation delivers comprehensive livestock genetic upgrade programs. Featuring imported pedigree Holstein-Friesian, Jersey, and certified pure Sahiwal semen, sexed semen artificial insemination (AI), computerized herd management, and preventative veterinary healthcare protocols, we transform herd milk yield and disease resistance.",
     metrics: [
@@ -392,14 +303,108 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     ],
   },
   {
-    id: "seed-tech",
+    id: "irrigation-water",
+    slug: "smart-irrigation-water-systems",
+    title: "Irrigation & Water Management",
+    fullTitle: "Irrigation & Smart Water Systems",
+    subtitle: "Center-Pivot Sprinklers & Solar-Powered Drip Networks",
+    eyebrow: "High-Efficiency Water Engineering & Solar Tube-Wells",
+    tag: "Water Management",
+    icon: Droplets,
+    heroImage: "/desertdev/arid_agriculture.jpg",
+    overview:
+      "National Agricultural Corporation engineers climate-resilient water management solutions. Specializing in automated center-pivot sprinklers, subsurface and surface drip irrigation systems, solar hybrid pumping stations, and geomembrane-lined farm storage ponds, our systems cut water and energy consumption by up to 50% while increasing crop yields.",
+    metrics: [
+      { label: "Water Conserved", value: "Up to 50%" },
+      { label: "Acreage Under Drip", value: "120K+ Acres" },
+      { label: "Solar Pumping", value: "500+ Sites" },
+      { label: "Fertigation Savings", value: "40% Fertilizer" },
+    ],
+    deliverables: [
+      "Automated center-pivot irrigation systems irrigating 50 to 200 acres per machine in circular sweeps",
+      "Pressure-compensated drip irrigation lines for citrus orchards, olive groves, cotton, and vegetables",
+      "Solar-powered submersible tube-wells operating with high-efficiency MPPT variable frequency drives (VFD)",
+      "Automated fertigation Venturi dosing injection tanks delivering nutrients directly into irrigation lines",
+      "Heavy-duty HDPE geomembrane pond lining preventing seepage loss in sandy soils",
+      "Wireless IoT soil moisture sensors and weather station telemetry automating watering cycles",
+    ],
+    technicalSpecs: [
+      { key: "Water Efficiency", value: "90% – 95% application efficiency (vs 40% flood irrigation)" },
+      { key: "Drip Emitter Flow", value: "1.2 to 4.0 Liters/hour pressure-compensated emitters" },
+      { key: "Center Pivot Span", value: "Galvanized steel spans up to 60 meters each, covering up to 250 acres" },
+      { key: "Solar Pumping Power", value: "5 kW to 75 kW solar hybrid submersible pumping systems" },
+      { key: "Filter Systems", value: "Automatic backwashing disc filters, sand media filters & hydro-cyclones" },
+      { key: "Pipe Lifespan", value: "UV-stabilized virgin polyethylene with 10+ year outdoor warranty" },
+    ],
+    pillars: [
+      {
+        title: "Root-Zone Drip Precision",
+        desc: "Delivers exact water and fertilizer micro-doses directly to roots, eliminating weed growth and evaporation.",
+        icon: Droplets,
+      },
+      {
+        title: "Zero-Electricity Solar Power",
+        desc: "Solar VFD pumps draw water reliably throughout sunlight hours with zero diesel or grid electricity costs.",
+        icon: Sun,
+      },
+      {
+        title: "Center-Pivot Automation",
+        desc: "One single operator can irrigate 150 acres with computerized uniform rainfall simulation.",
+        icon: Tractor,
+      },
+      {
+        title: "Fertigation Fertilizer Savings",
+        desc: "Injecting soluble nutrients directly into irrigation lines cuts overall fertilizer wastage by 40%.",
+        icon: FlaskConical,
+      },
+    ],
+    workflow: [
+      {
+        step: "01",
+        title: "Hydraulic Survey & Water Testing",
+        desc: "Analyzing water discharge, salinity (EC/TDS), and field topography to calculate pipe sizing.",
+      },
+      {
+        step: "02",
+        title: "CAD Hydraulic System Design",
+        desc: "Designing mainlines, sub-mains, manifold stations, filtration units, and pressure-compensating dripper grids.",
+      },
+      {
+        step: "03",
+        title: "Installation & Solar Integration",
+        desc: "Trenching pipes, installing solar arrays, submersible pumps, automatic filter stations, and fertigation tanks.",
+      },
+      {
+        step: "04",
+        title: "Commissioning & Farmer Training",
+        desc: "Pressure testing, dripper flow calibration, and training farm staff on system maintenance and flushing.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How much water and electricity does drip irrigation save?",
+        a: "Drip irrigation saves 40% to 50% of water compared to traditional canal/flood irrigation, and when paired with solar pumps, reduces electricity/diesel pumping costs to zero.",
+      },
+      {
+        q: "Can drip irrigation be used for field crops like cotton and maize as well as orchards?",
+        a: "Yes. We install permanent surface drip for orchards (citrus, mango, olive) and seasonal thin-wall drip tape for row crops like cotton, maize, sugarcane, and vegetables.",
+      },
+      {
+        q: "What maintenance does a smart drip irrigation system require?",
+        a: "Regular maintenance involves periodic filter backwashing, routine flush valve opening to clear sediment, and seasonal acid washing to prevent mineral scale build-up in emitters.",
+      },
+    ],
+  },
+  {
+    id: "agri-technology",
     slug: "seed-technology-crop-nutrition",
-    title: "Seed Technology & Crop Nutrition",
+    title: "Agricultural Technology",
+    fullTitle: "Agricultural Technology & Crop Nutrition",
     subtitle: "Certified Hybrid Seeds & Organic Bio-Fertilizers",
     eyebrow: "Drought-Resilient Hybrids & Balanced Soil Microbiology",
     tag: "Crop Nutrition",
     icon: FlaskConical,
-    heroImage: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/services/agriculture-2.jpg",
     overview:
       "National Agricultural Corporation supplies certified high-germination hybrid seeds and advanced crop nutrition solutions. Our research-backed hybrid varieties for wheat, cotton, maize, rice, and oilseeds deliver high drought and heat tolerance, while our organic liquid bio-fertilizers, humic acid, and micronutrient foliar sprays revitalize depleted soil microbiology.",
     metrics: [
@@ -484,14 +489,15 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     ],
   },
   {
-    id: "consultancy",
+    id: "farm-management",
     slug: "agribusiness-advisory-farm-setup",
-    title: "Agribusiness Advisory & Farm Setup",
+    title: "Farm Management",
+    fullTitle: "Farm Management & Agribusiness Advisory",
     subtitle: "Turnkey Corporate Farm Planning & Feasibility Audits",
     eyebrow: "Bankable Farm Feasibility, Greenhouse Tech & Supply Chain",
     tag: "Agri Consultancy",
     icon: Wheat,
-    heroImage: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/waltonfood/hero_farm_sourcing.jpg",
     overview:
       "National Agricultural Corporation provides strategic management consultancy and technical advisory for corporate farm investors, sovereign agricultural funds, institutional landholders, and progressive growers. We formulate bankable feasibility studies, design automated greenhouse operations, optimize supply chains, and secure organic export certifications.",
     metrics: [
@@ -580,6 +586,9 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
 export function getNationalAgriculturalServiceBySlug(slug) {
   if (!slug) return null;
   return NATIONAL_AGRICULTURAL_SERVICES.find(
-    (s) => s.slug.toLowerCase() === slug.toLowerCase() || s.id.toLowerCase() === slug.toLowerCase()
+    (s) =>
+      s.slug.toLowerCase() === slug.toLowerCase() ||
+      s.id.toLowerCase() === slug.toLowerCase() ||
+      s.title.toLowerCase().replace(/[^a-z0-9]/g, "-") === slug.toLowerCase()
   );
 }

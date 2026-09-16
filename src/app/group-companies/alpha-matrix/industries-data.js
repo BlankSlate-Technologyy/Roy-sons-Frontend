@@ -101,7 +101,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Ministries, Embassies & Diplomatic Enclaves",
     tag: "Government",
     icon: Landmark,
-    heroImage: "/alpha_about_facility.svg",
+    heroImage: "/federal_ministries_hero.jpg",
     overview:
       "Alpha Matrix designs and executes holistic physical security architectures for government secretariats, supreme courts, foreign embassies, and administrative compounds requiring zero-compromise access governance.",
     metrics: [
@@ -169,7 +169,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "International Frontiers & Customs Checkpoints",
     tag: "Border Defense",
     icon: MapPin,
-    heroImage: "/alpha_border_security.svg",
+    heroImage: "/national-guard-mobile-patrol.png",
     overview:
       "Alpha Matrix provides national border management solutions that combine long-range radar networks, thermal night vision towers, buried acoustic seismic sensors, and automated border crossing biometric portals.",
     metrics: [
@@ -237,7 +237,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Airfield Perimeters, Terminals & Airspace",
     tag: "Aviation",
     icon: Plane,
-    heroImage: "/alpha_airport_defense.svg",
+    heroImage: "/project-infrastructure.png",
     overview:
       "Alpha Matrix protects international civil and military airports through comprehensive perimeter intrusion detection, runway Foreign Object Debris (FOD) scanning, counter-drone airspace shields, and passenger flow analytics.",
     metrics: [
@@ -305,7 +305,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Container Terminals, Coastal Borders & Harbors",
     tag: "Maritime",
     icon: Ship,
-    heroImage: "/alpha_about_facility.svg",
+    heroImage: "/services/trade-2.jpg",
     overview:
       "Alpha Matrix delivers maritime security architectures for international deep-sea ports, container terminals, and oil tanker docks. We integrate coastal radar, container optical character recognition (OCR), underwater sonar, and automated gate systems.",
     metrics: [
@@ -373,7 +373,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Petrochemical Complexes & Cross-Country Pipelines",
     tag: "Oil & Gas",
     icon: Flame,
-    heroImage: "/alpha_refinery_security.svg",
+    heroImage: "/project-industrial-plant.jpg",
     overview:
       "Alpha Matrix secures petrochemical plants, oil refineries, LNG terminals, and vast cross-country pipelines with ATEX-certified explosion-proof cameras, Distributed Acoustic Sensing (DAS), and automated thermal flare/leak detection.",
     metrics: [
@@ -441,7 +441,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Nuclear, Hydroelectric, Thermal & Substation Grids",
     tag: "Energy & Utilities",
     icon: Zap,
-    heroImage: "/alpha_critical_infrastructure.svg",
+    heroImage: "/services/electrical-1.jpg",
     overview:
       "Alpha Matrix defends electrical generation plants, nuclear energy reactors, hydroelectric dams, and high-voltage transmission substations from physical sabotage, drone attacks, and thermal equipment failures.",
     metrics: [
@@ -509,7 +509,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Metropolitan Safe City Surveillance Grids",
     tag: "Smart Cities",
     icon: Building2,
-    heroImage: "/alpha_surveillance.svg",
+    heroImage: "/services/defense-2.jpg",
     overview:
       "Alpha Matrix deploys metropolitan-scale Safe City networks incorporating city-wide AI video surveillance, automated traffic flow optimization, license plate tracking, emergency public call boxes, and unified municipal command centers.",
     metrics: [
@@ -577,7 +577,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Mission-Critical Cloud Infrastructure & Colocation",
     tag: "Data Centers",
     icon: Server,
-    heroImage: "/alpha_command_center.svg",
+    heroImage: "/services/it-ai-2.jpg",
     overview:
       "Alpha Matrix engineers multi-tiered physical and cyber-physical security frameworks for Tier III and Tier IV data centers, telecommunications switching hubs, and submarine cable landing stations.",
     metrics: [
@@ -645,7 +645,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Water Reservoirs, Financial Reserves & Bridges",
     tag: "National Assets",
     icon: Network,
-    heroImage: "/alpha_critical_infrastructure.svg",
+    heroImage: "/project-infrastructure.png",
     overview:
       "Alpha Matrix safeguards high-value national assets including water treatment plants, central bank cash vaults, telecommunications backbones, and strategic bridge crossings from sabotage, terrorism, and unauthorized access.",
     metrics: [
@@ -713,7 +713,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Railways, Transit Stations & Freight Terminals",
     tag: "Transit & Rail",
     icon: Building,
-    heroImage: "/alpha_about_facility.svg",
+    heroImage: "/services/trade-2.jpg",
     overview:
       "Alpha Matrix delivers specialized railway track obstruction detection, high-throughput passenger turnstiles, freight yard container tracking, and train pantograph thermal safety cameras.",
     metrics: [
@@ -781,7 +781,7 @@ export const ALPHA_INDUSTRIES = [
     eyebrow: "Munitions Plants, Aerospace R&D & Heavy Industry",
     tag: "Defense Mfg",
     icon: Wrench,
-    heroImage: "/alpha_about_facility.svg",
+    heroImage: "/services/defense-1.jpg",
     overview:
       "Alpha Matrix secures munitions production facilities, aerospace defense R&D compounds, and military heavy engineering plants with classified cleanroom access controls, intellectual property safeguards, and perimeter shielding.",
     metrics: [

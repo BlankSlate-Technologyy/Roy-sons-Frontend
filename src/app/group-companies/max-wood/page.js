@@ -137,10 +137,10 @@ export default function MaxWoodHomePage() {
             {/* Left Narrative */}
             <div className="lg:col-span-7" data-aos="fade-right" data-aos-duration="700">
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl xl:text-[54px] font-black tracking-tight leading-[1.12] uppercase mb-6"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] xl:text-[46px] 2xl:text-[50px] font-black tracking-tight leading-[1.14] uppercase mb-6"
                 style={{ color: theme.darkWood }}
               >
-                MAX Wood Corporation.{" "}
+                <span className="inline-block whitespace-nowrap">MAX Wood Corporation.</span>{" "}
                 <span className="block mt-2" style={{ color: theme.primary }}>
                   Crafting Spaces of Distinction.
                 </span>

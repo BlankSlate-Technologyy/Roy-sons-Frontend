@@ -12,12 +12,14 @@ import {
   BarChart3,
   CheckCircle2,
   ArrowRight,
-  Phone,
   Search,
   Award,
   Truck,
   ShieldCheck,
   Zap,
+  Building2,
+  Layers,
+  Scale,
 } from "lucide-react";
 import {
   theme,
@@ -30,102 +32,132 @@ import {
 
 const MINING_SERVICES = [
   {
-    id: "exploration",
-    title: "Mineral Exploration & Core Drilling",
-    subtitle: "Satellite Hyperspectral Mapping & Diamond Core Assays",
-    desc: "Deploying deep exploration diamond core drilling rigs, seismic surveys, and geochemical laboratory testing to pinpoint high-grade ore deposits with sub-meter geological accuracy.",
-    image: "/mine_geology_core.svg",
-    tag: "Exploration & Geology",
-    icon: Mountain,
-    deliverables: [
-      "Diamond core drilling up to 1,500m depth with full core recovery",
-      "Satellite GIS & hyperspectral structural mapping",
-      "3D computerized ore body stratigraphy & block modeling",
-      "Certified geochemical lab assays and grade distribution reports",
-    ],
-  },
-  {
-    id: "planning",
-    title: "Mine Planning & Development",
-    subtitle: "Strategic Engineering & Economic Feasibility Studies",
-    desc: "Complete mine life-cycle engineering from pit limit optimization to geotechnical slope stability, haul road design, drainage networks, and environmental approvals.",
-    image: "/mine_hero_openpit.svg",
-    tag: "Mine Engineering",
-    icon: HardHat,
-    deliverables: [
-      "Open-pit optimization and underground tunnel design",
-      "Geotechnical stability modeling and rock mechanics analysis",
-      "Haul road, crushing pad, and water management layout design",
-      "Full bankable feasibility studies (BFS) compliant with global standards",
-    ],
-  },
-  {
-    id: "extraction",
-    title: "Heavy Mining Operations",
-    subtitle: "Open-Pit & Underground Bulk Material Extraction",
-    desc: "Utilizing modern electric excavators, rotary blast hole drills, and rigid-frame haul trucks to maintain high tonnage output while maintaining strict zero-harm safety standards.",
-    image: "/mine process.png",
-    tag: "Extraction Operations",
+    id: "operations",
+    title: "Mining Operations",
+    subtitle: "High-Tonnage Open-Pit & Underground Extraction",
+    desc: "Deploying rigid haul truck fleets, electric hydraulic excavators, and rotary blast drill rigs to maintain continuous, high-volume ore extraction under strict zero-harm safety standards.",
+    image: "/services/mining-1.jpg",
+    tag: "Extraction",
     icon: Drill,
     deliverables: [
-      "Precision controlled blasting minimizing flyrock and seismic vibration",
-      "High-capacity excavator fleets operating 24/7 in continuous shifts",
-      "Automated fleet dispatch with real-time GPS load telemetry",
-      "Continuous bench wall and slope radar monitoring",
+      "Precision controlled blasting minimizing ore dilution and seismic vibration",
+      "High-capacity 100-ton haulage truck fleets operating on 24/7 rotational shifts",
+      "Real-time GPS dispatch telemetry optimizing pit shovel-and-truck cycles",
+      "Automated continuous bench wall and slope radar stability monitoring",
+    ],
+  },
+  {
+    id: "exploration",
+    title: "Mineral Exploration",
+    subtitle: "Hyperspectral Satellite GIS & Diamond Core Drilling",
+    desc: "Locating high-grade ore deposits with sub-meter geological accuracy through satellite remote sensing, airborne geophysics, geochemical soil assays, and deep diamond core drilling.",
+    image: "/mine header.png",
+    tag: "Exploration",
+    icon: Mountain,
+    deliverables: [
+      "Diamond core wireline drilling up to 1,500m depth with complete core recovery",
+      "Hyperspectral satellite structural mapping identifying hydrothermal alteration zones",
+      "3D computerized ore body stratigraphy, grade distribution, and block modeling",
+      "Accredited geochemical laboratory assays (fire assay, ICP-MS, XRF)",
+    ],
+  },
+  {
+    id: "development",
+    title: "Mine Development",
+    subtitle: "Pit Limit Optimization & Bankable Engineering Design",
+    desc: "Comprehensive engineering from pit shell design to rock mechanics, slope stability, haul road grading, dewatering networks, and full bankable feasibility studies (BFS).",
+    image: "/services/mining-1.jpg",
+    tag: "Engineering",
+    icon: HardHat,
+    deliverables: [
+      "Computerized Lerchs-Grossmann open-pit optimization and underground decline design",
+      "Geotechnical numerical modeling and rock mass rating (RMR/Q-system) analysis",
+      "Heavy haul road geometry, drainage channels, and crushing pad civil engineering",
+      "Bankable feasibility studies compliant with JORC and NI 43-101 reporting codes",
+    ],
+  },
+  {
+    id: "resource-mgmt",
+    title: "Resource Management",
+    subtitle: "Mineral Economics & JORC-Compliant Reserve Modeling",
+    desc: "Rigorous geological modeling and mineral resource reconciliation ensuring maximum economic recovery, ore blending precision, and transparent reserve audits for sovereign and corporate stakeholders.",
+    image: "/services/mining-2.jpg",
+    tag: "Resource Economics",
+    icon: Scale,
+    deliverables: [
+      "Geostatistical grade kriging and 3D variography block modeling",
+      "Strategic ore blending to meet exact customer metallurgy and smelting requirements",
+      "Annual Competent Person resource reconciliation and depletion audits",
+      "Long-term mine life-of-asset (LOM) production schedule optimization",
+    ],
+  },
+  {
+    id: "geological",
+    title: "Geological Services",
+    subtitle: "Certified Laboratory Assays & Petrographic Structural Audits",
+    desc: "Independent geological advisory and laboratory testing providing precise elemental assays, mineralogical petrography, core logging, and statutory mineral concession valuations.",
+    image: "/mine process.png",
+    tag: "Geological Testing",
+    icon: Layers,
+    deliverables: [
+      "Certified laboratory fire assays for precious metals (Gold, Silver, Platinum)",
+      "High-precision X-Ray Fluorescence (XRF) and XRD mineralogical identification",
+      "Oriented diamond core structural logging and digital database management",
+      "Statutory mineral concession licensing and compliance due diligence audits",
+    ],
+  },
+  {
+    id: "infrastructure",
+    title: "Mining Infrastructure",
+    subtitle: "Heavy Haulage Corridors, Water Systems & Rail Loadouts",
+    desc: "Turnkey development of essential mining site infrastructure including heavy machinery maintenance shops, high-voltage substations, dry-stack tailings filtration, and rail freight sidings.",
+    image: "/services/mining-2.jpg",
+    tag: "Site Infrastructure",
+    icon: Building2,
+    deliverables: [
+      "Heavy vehicle workshop (HVWS) maintenance bays with high-tonnage overhead cranes",
+      "High-efficiency solar hybrid microgrids and diesel generator synchronization",
+      "Engineered dry-stack tailings filtration storage facilities with zero dam failure risk",
+      "Direct bulk rail siding integration with automated 2,000-ton train loadout silos",
+    ],
+  },
+  {
+    id: "equipment",
+    title: "Equipment & Operations",
+    subtitle: "Fleet Management, Telemetry & Predictive Maintenance",
+    desc: "Managing high-horsepower mining equipment fleets with real-time IoT sensors, computerized dispatch, predictive oil analysis, and certified machine operator training programs.",
+    image: "/mine header.png",
+    tag: "Heavy Fleet",
+    icon: Truck,
+    deliverables: [
+      "Continuous equipment telemetry tracking fuel burn, tire pressure, and engine health",
+      "Predictive vibration and tribology lubricant analysis preventing costly catastrophic failures",
+      "Structured OEM maintenance cycles ensuring 92%+ mechanical fleet availability",
+      "Certified equipment operator and heavy plant mechanic technical training schools",
     ],
   },
   {
     id: "processing",
-    title: "Mineral Processing & Refining",
-    subtitle: "Crushing, Froth Flotation & High-Purity Beneficiation",
-    desc: "State-of-the-art beneficiation facilities designed to maximize mineral recovery rates through primary crushing, ball milling, froth flotation cells, and magnetic separation.",
-    image: "/mine technology.png",
-    tag: "Refining & Metallurgy",
+    title: "Mineral Processing",
+    subtitle: "Closed-Loop Crushing, Froth Flotation & Smelting",
+    desc: "Engineering modern beneficiation facilities that maximize valuable mineral recovery through automated primary gyratory crushers, ball mills, selective flotation cells, and induction smelting.",
+    image: "/services/mining-2.jpg",
+    tag: "Beneficiation",
     icon: FlaskConical,
     deliverables: [
-      "Multi-stage primary and tertiary crushing & screening circuits",
-      "Froth flotation cells recovering high-grade copper and polymetallic ores",
-      "Gravity separation and smelting producing high-purity gold bullion",
-      "Automated quality control labs monitoring batch grade purity",
-    ],
-  },
-  {
-    id: "environmental",
-    title: "Environmental Management & ESG",
-    subtitle: "Progressive Rehabilitation, Water Recycling & Clean Tailings",
-    desc: "Integrating sustainable mining practices from day one through progressive backfilling, tree planting, closed-loop water treatment, and zero-leak tailings storage facilities.",
-    image: "/mine header.png",
-    tag: "ESG & Sustainability",
-    icon: Leaf,
-    deliverables: [
-      "Progressive re-contouring of spent benches and native flora planting",
-      "Closed-loop process water recycling reducing freshwater extraction",
-      "Dry-stack tailings filtration eliminating hazardous liquid dams",
-      "Continuous air, dust, and groundwater quality monitoring",
-    ],
-  },
-  {
-    id: "consultancy",
-    title: "Mining Consultancy & Audits",
-    subtitle: "Regulatory Licensing, Asset Valuation & JORC Compliance",
-    desc: "Providing high-level technical and advisory consultancy to mining concession holders, investment funds, and industrial conglomerates across Pakistan.",
-    image: "/mine_geology_core.svg",
-    tag: "Technical Advisory",
-    icon: BarChart3,
-    deliverables: [
-      "Government mining lease applications, renewals, and compliance audits",
-      "Independent technical expert reports (Competent Person&apos;s Report)",
-      "Mineral concession commercial asset valuation and due diligence",
-      "Mine closure plans and statutory environmental decommissioning",
+      "Multi-stage primary gyratory and secondary cone crushing & vibrating screen circuits",
+      "Automated froth flotation cells producing 28–32% high-grade copper concentrates",
+      "Centrifugal gravity Knelson concentrators and induction smelting for 99.4% gold doré",
+      "Automated slurry analyzers and computerized process control (SCADA) systems",
     ],
   },
 ];
 
 const SERVICE_STATS = [
-  { value: "5M+", label: "Tons Extracted", icon: Truck },
-  { value: "50+", label: "Mining Projects", icon: Mountain },
-  { value: "99%", label: "Safety Compliance", icon: ShieldCheck },
-  { value: "99.4%", label: "Refining Purity", icon: Award },
+  { value: "5M+", label: "Tons Mined &\nProcessed", icon: Truck },
+  { value: "50+", label: "Completed Mining\nProjects", icon: Mountain },
+  { value: "92%", label: "Process Water\nRecycled", icon: Zap },
+  { value: "99%", label: "Operational Safety\nCompliance", icon: ShieldCheck },
 ];
 
 export default function NationalMinesServicesPage() {
@@ -139,38 +171,38 @@ export default function NationalMinesServicesPage() {
   );
 
   return (
-    <main className="min-h-screen bg-white text-[#16243E] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#0B1B2B] font-sans antialiased overflow-x-hidden">
       <NationalMinesNavbar />
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
-              <SectionLabel>End-To-End Resource Solutions</SectionLabel>
+              <SectionLabel>Full-Spectrum Capabilities</SectionLabel>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navy }}>
-                Integrated Mining &amp; <span style={{ color: theme.gold }}>Mineral Processing Services</span>
+              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight leading-tight mb-5" style={{ color: theme.navy }}>
+                Specialized Services for <span style={{ color: theme.gold }}>Modern Mining</span>
               </h1>
 
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                From initial diamond core exploration and computerized geological modeling to heavy open-pit extraction, beneficiation plants, and environmental land rehabilitation.
+              <p className="text-sm sm:text-base font-normal leading-relaxed mb-8 max-w-2xl" style={{ color: theme.textMuted }}>
+                From grassroots satellite exploration and diamond core drilling to high-tonnage open-pit extraction, automated froth flotation, and site infrastructure, National Mines Corporation delivers end-to-end engineering excellence across the mining lifecycle.
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap items-center gap-4">
                 <a
                   href="#services-catalog"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.navy }}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  style={{ backgroundColor: theme.gold }}
                 >
-                  <span>Explore All 6 Capabilities</span>
-                  <ArrowRight size={16} />
+                  <span>Explore All 8 Services</span>
+                  <ArrowRight size={14} />
                 </a>
 
                 <Link
                   href="/group-companies/national-mines/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold border transition-all duration-300 hover:bg-white cursor-pointer"
                   style={{ borderColor: theme.border, color: theme.navy }}
                 >
                   <span>Request Technical Proposal</span>
@@ -178,23 +210,23 @@ export default function NationalMinesServicesPage() {
               </div>
             </div>
 
-            {/* Right Hero Image Card */}
+            {/* Right Hero Visual */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
+              <div className="relative w-full max-w-[480px] h-[320px] sm:h-[380px] rounded-2xl overflow-hidden shadow-md border mine-card bg-white" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/mine_hero_openpit.svg"
-                  alt="National Mines Heavy Excavation and Extraction"
+                  src="/services/mining-1.jpg"
+                  alt="Modern Mining Heavy Excavation Fleet"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#16243E]/80 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1" style={{ color: theme.gold }}>
-                      Heavy Extraction Operations
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07111C]/80 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-3.5 border shadow-sm w-full" style={{ borderColor: theme.border }}>
+                    <p className="text-[11px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: theme.gold }}>
+                      End-to-End Mining Operations
                     </p>
-                    <p className="text-sm font-bold" style={{ color: theme.navy }}>
-                      Open-Pit &amp; Underground Concessions in Pakistan
+                    <p className="text-xs sm:text-[13px] font-medium" style={{ color: theme.navy }}>
+                      Exploration · Extraction · Metallurgical Beneficiation
                     </p>
                   </div>
                 </div>
@@ -205,24 +237,23 @@ export default function NationalMinesServicesPage() {
       </section>
 
       {/* Numerical Metrics Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {SERVICE_STATS.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="nmc-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="mine-card rounded-xl p-5 text-center flex flex-col items-center justify-center bg-white shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.navy}10` }}>
-                    <Icon size={22} style={{ color: theme.navy }} />
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2.5" style={{ backgroundColor: `${theme.gold}15` }}>
+                    <Icon size={20} style={{ color: theme.gold }} />
                   </div>
-                  <div className="mb-2" style={{ color: theme.navy }}>
+                  <div className="mb-1" style={{ color: theme.navy }}>
                     <AnimatedCounter targetValue={stat.value} duration={1400 + idx * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11px] font-medium tracking-wide uppercase whitespace-pre-line" style={{ color: theme.textMuted }}>
                     {stat.label}
                   </p>
                 </div>
@@ -233,25 +264,25 @@ export default function NationalMinesServicesPage() {
       </section>
 
       {/* Services Grid Section */}
-      <section id="services-catalog" className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      <section id="services-catalog" className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <SectionLabel center>Our Core Capabilities</SectionLabel>
-            <SectionHeading center className="mb-4">Specialized Mining Solutions</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              Fully certified, equipped with advanced processing circuits and heavy machinery fleets.
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <SectionLabel center>Comprehensive Portfolio</SectionLabel>
+            <SectionHeading center className="mb-3">Our 8 Mining &amp; Mineral Services</SectionHeading>
+            <p className="text-xs sm:text-sm font-normal" style={{ color: theme.textMuted }}>
+              Engineered solutions covering the entire mineral value chain from exploration geophysics to export-ready processing.
             </p>
 
             {/* Live Search */}
-            <div className="mt-8 flex justify-center">
+            <div className="mt-6 flex justify-center">
               <div className="relative w-full max-w-md">
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Search mining services (e.g. Drilling, Processing, ESG)..."
+                  placeholder="Search services (e.g. Operations, Exploration, Processing)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#16243E] transition-all bg-white shadow-xs"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border text-xs sm:text-sm font-normal focus:outline-none focus:ring-1 focus:ring-[#C59B27] transition-all bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 />
               </div>
@@ -259,76 +290,71 @@ export default function NationalMinesServicesPage() {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filtered.map((svc) => {
               const Icon = svc.icon;
               return (
                 <div
                   key={svc.id}
                   id={svc.id}
-                  className="nmc-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="mine-card group rounded-2xl overflow-hidden flex flex-col justify-between bg-white"
                 >
                   <div>
-                    {/* Card Image */}
-                    <div className="relative w-full h-52 bg-slate-100 overflow-hidden group">
+                    {/* Image with subtle hover zoom */}
+                    <div className="mine-img-wrapper block w-full h-44 bg-slate-100 relative">
                       <Image
                         src={svc.image}
                         alt={svc.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover"
                       />
-                      <div className="absolute top-4 left-4">
-                        <span className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 border shadow-sm" style={{ color: theme.navy, borderColor: theme.border }}>
+                      <div className="absolute top-3 left-3">
+                        <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
                           {svc.tag}
                         </span>
                       </div>
                     </div>
 
                     {/* Content */}
-                    <div className="p-7">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.navy}10` }}>
-                          <Icon size={20} style={{ color: theme.navy }} />
+                    <div className="p-5">
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.gold}15` }}>
+                          <Icon size={16} style={{ color: theme.gold }} />
                         </div>
-                        <div>
-                          <h3 className="text-lg font-black leading-tight" style={{ color: theme.navy }}>
-                            {svc.title}
-                          </h3>
-                        </div>
+                        <h3 className="text-[16px] font-semibold tracking-tight" style={{ color: theme.navy }}>
+                          {svc.title}
+                        </h3>
                       </div>
 
-                      <p className="text-xs font-bold uppercase tracking-wider mb-3" style={{ color: theme.gold }}>
+                      <p className="text-[11px] font-medium tracking-wide mb-2 text-amber-700">
                         {svc.subtitle}
                       </p>
 
-                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                      <p className="text-xs font-normal leading-relaxed text-slate-500 mb-3 line-clamp-3">
                         {svc.desc}
                       </p>
 
                       {/* Deliverables */}
-                      <div className="space-y-2.5 pt-4 border-t" style={{ borderColor: "rgba(226, 232, 240, 0.7)" }}>
-                        <p className="text-xs font-extrabold uppercase tracking-wider" style={{ color: theme.navy }}>
-                          Key Technical Deliverables:
-                        </p>
-                        {svc.deliverables.map((d) => (
-                          <div key={d} className="flex items-start gap-2">
-                            <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5" style={{ color: theme.gold }} />
-                            <span className="text-xs font-medium text-slate-700 leading-snug">{d}</span>
+                      <div className="space-y-1.5 pt-3 border-t" style={{ borderColor: theme.borderLight }}>
+                        {svc.deliverables.slice(0, 2).map((d, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5" style={{ color: theme.forestGreenMid }} />
+                            <span className="text-xs font-normal text-slate-700 leading-snug">{d}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0">
+                  {/* Subtle Link — NO BIG BUTTONS */}
+                  <div className="px-5 pb-4 pt-2 border-t" style={{ borderColor: theme.borderLight }}>
                     <Link
                       href="/group-companies/national-mines/contact"
-                      className="w-full py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
-                      style={{ borderColor: theme.border, color: theme.navy }}
+                      className="mine-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      style={{ color: theme.gold }}
                     >
-                      <span>Inquire About This Capability</span>
-                      <ArrowRight size={14} />
+                      <span>Inquire about this capability</span>
+                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -338,39 +364,31 @@ export default function NationalMinesServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Bottom CTA / Inquiry Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+          <div className="rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
             <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2" style={{ color: theme.gold }}>
-                NEED TECHNICAL DRILLING OR MINING CONSULTANCY?
+              <span className="text-[11px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: theme.gold }}>
+                Technical Consulting &amp; Mine Operations
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navy }}>
-                Speak With Our Chief Geologists
+              <h2 className="text-xl sm:text-2xl font-bold mb-1.5" style={{ color: theme.navy }}>
+                Require Specialized Mining or Geological Contracting?
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Submit your mining concession details or raw material specifications to receive detailed assay data and operational quotes.
+              <p className="text-xs sm:text-sm font-normal max-w-xl" style={{ color: theme.textMuted }}>
+                Our team of senior mining engineers, geochemists, and fleet specialists conducts feasibility audits and turnkey contract mining operations.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-3 flex-shrink-0">
               <Link
                 href="/group-companies/national-mines/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
+                className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
                 style={{ backgroundColor: theme.navy }}
               >
-                <span>Consult Our Team</span>
-                <ArrowRight size={15} />
+                <span>Request Technical Assessment</span>
+                <ArrowRight size={13} />
               </Link>
-              <a
-                href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.navy, color: theme.navy }}
-              >
-                <Phone size={15} />
-                <span>0092-42-38924737</span>
-              </a>
             </div>
           </div>
         </div>

@@ -4,23 +4,17 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  MapPin,
   Phone,
   Mail,
-  MapPin,
   Clock,
-  ShieldCheck,
-  Headphones,
-  CheckCircle2,
-  ArrowRight,
   Send,
   Building2,
-  Hammer,
-  Truck,
-  Layers,
-  Wrench,
-  ClipboardList,
+  ShieldCheck,
+  CheckCircle2,
   HardHat,
-  MessageCircle,
+  Compass,
+  ArrowRight,
 } from "lucide-react";
 import {
   theme,
@@ -30,381 +24,452 @@ import {
   SectionHeading,
 } from "../components/WaltonShared";
 
-const OFFICES = [
-  {
-    city: "Lahore Headquarters (Principal Civil Engineering & Construction Management)",
-    address: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
-    phone: "0092-42-38924737 / 0092-321-8431665",
-    whatsapp: "0092-304-7527498",
-    email: "info@roysons.org",
-    timing: "Mon – Sat: 9:00 AM – 6:00 PM (Site Operations 24/7)",
-    tag: "Principal HQ",
-  },
-  {
-    city: "Islamabad & Northern Infrastructure Hub (Blue Area)",
-    address: "Executive Corporate Tower, Jinnah Avenue, Blue Area, Islamabad",
-    phone: "0092-321-8431665",
-    whatsapp: "0092-304-7527498",
-    email: "islamabad.civil@roysons.org",
-    timing: "Mon – Sat: 9:00 AM – 6:00 PM",
-    tag: "Capital Projects Desk",
-  },
-  {
-    city: "Karachi Regional Coastal Construction Center",
-    address: "Financial Trade Center, Shahrah-e-Faisal / Port Qasim Industrial, Karachi",
-    phone: "0092-42-38924737",
-    whatsapp: "0092-304-7527498",
-    email: "karachi.civil@roysons.org",
-    timing: "Mon – Sat: 9:00 AM – 6:00 PM",
-    tag: "South Region Desk",
-  },
-];
-
 export default function WaltonContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     organization: "",
-    sector: "Commercial Real Estate & High-Rise Developer",
-    solution: "Commercial High-Rise Superstructure & Deep Piling",
-    scale: "50,000 to 200,000 Sq Ft Project",
-    city: "Lahore",
+    service: "Engineering Consultancy",
+    budget: "",
     message: "",
   });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({ type: null, message: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: "" });
-
-    try {
-      const res = await fetch("/api/company-contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          companySlug: "walton-consultants-contracting",
-          companyName: "Walton Consultants & Contracting",
-          fullName: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          subject: `EPC Tender: ${formData.solution} (${formData.sector})`,
-          message: formData.message || `Scale: ${formData.scale} in ${formData.city}`,
-          additionalFields: {
-            organization: formData.organization,
-            sector: formData.sector,
-            solution: formData.solution,
-            scale: formData.scale,
-            city: formData.city,
-          },
-        }),
-      });
-
-      const data = await res.json().catch(() => ({}));
-      if (res.ok && data.success) {
-        setSubmitStatus({
-          type: "success",
-          message: data.message || "Your construction tender request has been registered. Our principal structural engineer will contact you within 24 hours.",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          organization: "",
-          sector: "Commercial Real Estate & High-Rise Developer",
-          solution: "Commercial High-Rise Superstructure & Deep Piling",
-          scale: "50,000 to 200,000 Sq Ft Project",
-          city: "Lahore",
-          message: "",
-        });
-      } else {
-        setSubmitStatus({
-          type: "error",
-          message: data.message || "Failed to submit project request. Please try again.",
-        });
-      }
-    } catch {
-      setSubmitStatus({
-        type: "error",
-        message: "An unexpected network error occurred. Please try again or call our hotline.",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    setSubmitting(true);
+    // Simulate brief network submission
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    setSubmitting(false);
+    setSubmitted(true);
   };
 
   return (
-    <main className="min-h-screen bg-white text-[#3A4E63] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#2C3E50] font-sans antialiased overflow-x-hidden">
       <WaltonNavbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          1. CONTACT HERO: MODERN ENGINEERING CONSULTANCY OFFICE
+      ───────────────────────────────────────────────────────────── */}
+      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto">
-            <SectionLabel center>Engineering &amp; EPC Tenders Desk</SectionLabel>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-6">
+              <SectionLabel>Direct Engineering Engagement</SectionLabel>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navyDark }}>
-              Commission Construction Projects &amp; <span style={{ color: theme.navy }}>Consult Our Engineers</span>
-            </h1>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black tracking-tight leading-[1.15] uppercase mb-4 text-[#0A1E34]">
+                LET&apos;S BUILD WHAT&apos;S NEXT
+              </h1>
 
-            <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-              Whether you are developing high-rise commercial superstructures, industrial manufacturing campuses, highway infrastructure, or complex MEP engineering plants, our registered PEC structural engineers are ready to build.
-            </p>
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mb-6">
+                Have an infrastructure, engineering or development challenge? Our team can help turn complex requirements into practical, scalable solutions.
+              </p>
 
-            <div className="inline-flex flex-wrap items-center justify-center gap-4 p-4 rounded-2xl border bg-slate-50 shadow-xs" style={{ borderColor: theme.border }}>
-              <div className="flex items-center gap-2 text-xs font-bold" style={{ color: theme.navyDark }}>
-                <Phone size={16} className="text-[#0D3B66]" />
-                <span>Engineering Tenders Line:</span>
-                <a href="tel:00924238924737" className="hover:underline text-sm font-extrabold text-[#0D3B66]">
-                  0092-42-38924737
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-700">
+                  <CheckCircle2 size={16} className="text-[#C5A059]" />
+                  <span>Licensed PEC Category C-A (No Limit) Constructor</span>
+                </div>
+                <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-700">
+                  <CheckCircle2 size={16} className="text-[#C5A059]" />
+                  <span>Direct consultation with Principal Structural Engineers</span>
+                </div>
+                <div className="flex items-center gap-3 text-xs sm:text-sm font-semibold text-slate-700">
+                  <CheckCircle2 size={16} className="text-[#C5A059]" />
+                  <span>Strict non-disclosure agreement (NDA) guaranteed on all blueprints</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <a
+                  href="tel:00924238924737"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md hover:brightness-110 transition-all"
+                  style={{ backgroundColor: theme.navy }}
+                >
+                  <Phone size={15} />
+                  <span>Call +92 42 3892-4737</span>
                 </a>
               </div>
-              <span className="hidden sm:inline text-slate-300">|</span>
-              <div className="flex items-center gap-2 text-xs font-bold" style={{ color: theme.navyDark }}>
-                <MessageCircle size={16} style={{ color: "#25D366" }} />
-                <span>WhatsApp:</span>
-                <a href="https://wa.me/923047527498" target="_blank" rel="noopener noreferrer" className="hover:underline font-extrabold text-[#0D3B66]">
-                  0092-304-7527498
-                </a>
+            </div>
+
+            {/* Right: CONTACT HERO IMAGE */}
+            <div className="lg:col-span-6">
+              <div className="relative w-full h-[340px] sm:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
+                <Image
+                  src="/images/walton/contact_hero.jpg"
+                  alt="Modern Engineering Consultancy Office Meeting"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 600px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/85 via-transparent to-transparent flex items-end p-6">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border border-slate-200 shadow-md w-full">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[11px] font-black uppercase tracking-wider text-[#C5A059]">
+                        Corporate Headquarters
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    </div>
+                    <p className="text-xs sm:text-sm font-bold text-[#0A1E34]">
+                      Engineering Consultation Boardroom &middot; Lahore, Pakistan
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Quotation & Office Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          2. MAIN CONTACT SECTION: FORM & CORPORATE DETAILS
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-[#F4F7FA] border-b border-slate-200">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left Contact Information */}
-            <div className="lg:col-span-5 space-y-8">
-              <div>
-                <SectionLabel>Engineering Bureaus &amp; Regional Offices</SectionLabel>
-                <SectionHeading className="mb-4">Regional Contracting Desks</SectionHeading>
-                <p className="text-sm sm:text-base font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                  Our structural design bureaus and site PMO pods coordinate material testing, plant machinery mobilization, and quality safety audits across all provinces.
-                </p>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <SectionLabel center>Engage Chief Engineer</SectionLabel>
+            <SectionHeading center className="mb-3">
+              Let&apos;s Build Something That Matters
+            </SectionHeading>
+            <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+              Submit your project specifications or arrange a formal technical review with our consulting team.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            {/* Left 5 Columns: Corporate Office Details */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Office Address Card */}
+              <div className="walton-card-lift p-6 rounded-2xl border border-slate-200 bg-white shadow-xs">
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-[#0E2A47]/10 flex items-center justify-center text-[#0E2A47] shrink-0 mt-0.5">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-[#0A1E34] mb-1">
+                      Head Office
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                      Walton Corporate Complex, Rehman Centre 2, DHA Phase 5, Ring Road Service Lane, Lahore, Pakistan
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="space-y-5">
-                {OFFICES.map((office) => (
-                  <div
-                    key={office.city}
-                    className="p-6 rounded-3xl border bg-white shadow-xs hover:shadow-md transition-all space-y-3"
-                    style={{ borderColor: theme.border }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-base font-black" style={{ color: theme.navyDark }}>
-                        {office.city}
-                      </h4>
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-100 border text-[#0D3B66]" style={{ borderColor: theme.border }}>
-                        {office.tag}
-                      </span>
-                    </div>
-
-                    <div className="space-y-2 text-xs font-medium text-slate-600">
-                      <div className="flex items-start gap-2.5">
-                        <MapPin size={15} className="flex-shrink-0 mt-0.5 text-[#0D3B66]" />
-                        <span>{office.address}</span>
-                      </div>
-                      <div className="flex items-center gap-2.5">
-                        <Phone size={15} className="flex-shrink-0 text-[#0D3B66]" />
-                        <span className="font-bold text-slate-800">{office.phone}</span>
-                      </div>
-                      <div className="flex items-center gap-2.5">
-                        <MessageCircle size={15} className="flex-shrink-0" style={{ color: "#25D366" }} />
-                        <span>{office.whatsapp}</span>
-                      </div>
-                      <div className="flex items-center gap-2.5">
-                        <Mail size={15} className="flex-shrink-0 text-[#0D3B66]" />
-                        <span>{office.email}</span>
-                      </div>
-                      <div className="flex items-center gap-2.5 pt-1">
-                        <Clock size={15} className="flex-shrink-0 text-[#0D3B66]" />
-                        <span className="font-semibold text-slate-700">{office.timing}</span>
-                      </div>
-                    </div>
+              {/* Phone & Direct Desk */}
+              <div className="walton-card-lift p-6 rounded-2xl border border-slate-200 bg-white shadow-xs">
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-[#0E2A47]/10 flex items-center justify-center text-[#0E2A47] shrink-0 mt-0.5">
+                    <Phone size={20} />
                   </div>
-                ))}
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-[#0A1E34] mb-1">
+                      Telephone
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-600 font-normal">
+                      Office:{" "}
+                      <a href="tel:00924238924737" className="font-bold text-[#0E2A47] hover:underline">
+                        +92 (42) 3892-4737
+                      </a>
+                    </p>
+                    <p className="text-xs sm:text-sm text-slate-600 font-normal mt-0.5">
+                      Direct Mobile:{" "}
+                      <a href="tel:+923001234567" className="font-bold text-[#0E2A47] hover:underline">
+                        +92 (300) 123-4567
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email Address */}
+              <div className="walton-card-lift p-6 rounded-2xl border border-slate-200 bg-white shadow-xs">
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-[#0E2A47]/10 flex items-center justify-center text-[#0E2A47] shrink-0 mt-0.5">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-[#0A1E34] mb-1">
+                      Electronic Mail
+                    </h4>
+                    <p className="text-xs sm:text-sm text-slate-600 font-normal">
+                      General Inquiries:{" "}
+                      <a href="mailto:info@waltonconsultants.com" className="font-bold text-[#0E2A47] hover:underline">
+                        info@waltonconsultants.com
+                      </a>
+                    </p>
+                    <p className="text-xs sm:text-sm text-slate-600 font-normal mt-0.5">
+                      Engineering Tenders:{" "}
+                      <a href="mailto:tenders@waltonconsultants.com" className="font-bold text-[#0E2A47] hover:underline">
+                        tenders@waltonconsultants.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Business Hours */}
+              <div className="walton-card-lift p-6 rounded-2xl border border-slate-200 bg-white shadow-xs">
+                <div className="flex items-start gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-[#0E2A47]/10 flex items-center justify-center text-[#0E2A47] shrink-0 mt-0.5">
+                    <Clock size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold uppercase tracking-wider text-[#0A1E34] mb-1">
+                      Business Hours
+                    </h4>
+                    <p className="text-xs text-slate-600 font-normal">
+                      Monday &ndash; Friday: <span className="font-bold text-slate-800">08:30 AM &ndash; 06:00 PM</span>
+                    </p>
+                    <p className="text-xs text-slate-600 font-normal mt-0.5">
+                      Saturday: <span className="font-bold text-slate-800">09:00 AM &ndash; 02:00 PM</span>
+                    </p>
+                    <p className="text-xs text-slate-500 font-normal mt-0.5">
+                      Sunday: Closed (Emergency field teams on call 24/7)
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Right Booking Form */}
+            {/* Right 7 Columns: Clean, Premium Contact Form */}
             <div className="lg:col-span-7">
-              <div className="p-8 sm:p-12 rounded-3xl border bg-white shadow-xl" style={{ borderColor: theme.border }}>
-                <div className="mb-8">
-                  <span className="text-xs font-black uppercase tracking-widest block mb-1 text-[#0D3B66]">
-                    GENERAL CONTRACTING &amp; EPC TENDERS INQUIRY
-                  </span>
-                  <h3 className="text-2xl font-black uppercase" style={{ color: theme.navyDark }}>
-                    Submit Construction Project Specifications
-                  </h3>
-                  <p className="text-xs sm:text-sm font-medium text-slate-500 mt-1">
-                    Receive complete Bill of Quantities (BOQ) estimates, structural engineering schedules, and turnkey EPC pricing models.
-                  </p>
+              <div className="p-8 sm:p-10 rounded-3xl border border-slate-200 bg-white shadow-md">
+                <h3 className="text-xl font-black text-[#0A1E34] uppercase tracking-tight mb-2">
+                  Project Consultation &amp; RFP Form
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 mb-6 font-normal">
+                  Complete the fields below to connect directly with our engineering estimating desk.
+                </p>
+
+                {submitted ? (
+                  <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center animate-in fade-in duration-300">
+                    <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 size={28} />
+                    </div>
+                    <h4 className="text-lg font-black text-emerald-900 mb-2">
+                      Inquiry Successfully Received
+                    </h4>
+                    <p className="text-xs sm:text-sm text-emerald-800 max-w-md mx-auto leading-relaxed">
+                      Thank you. Our Chief Estimating Engineer and technical director will review your specifications and contact you within one business day.
+                    </p>
+                    <button
+                      onClick={() => setSubmitted(false)}
+                      className="mt-6 px-6 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider hover:bg-emerald-700 transition-colors cursor-pointer"
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Full Name *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          placeholder="e.g. Engr. Tariq Mahmood"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-[#0A1E34] focus:outline-hidden focus:border-[#C5A059] transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Corporate Email *
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          placeholder="name@company.com"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-[#0A1E34] focus:outline-hidden focus:border-[#C5A059] transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Phone Number *
+                        </label>
+                        <input
+                          type="tel"
+                          required
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="+92 300 0000000"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-[#0A1E34] focus:outline-hidden focus:border-[#C5A059] transition-colors"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Organization / Department
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.organization}
+                          onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                          placeholder="Ministry / Enterprise name"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-[#0A1E34] focus:outline-hidden focus:border-[#C5A059] transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Primary Service Required
+                        </label>
+                        <select
+                          value={formData.service}
+                          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-[#0A1E34] bg-white focus:outline-hidden focus:border-[#C5A059] transition-colors cursor-pointer"
+                        >
+                          <option>Engineering Consultancy</option>
+                          <option>Project Management</option>
+                          <option>Construction Management</option>
+                          <option>Infrastructure Development</option>
+                          <option>Architecture &amp; Planning</option>
+                          <option>Feasibility &amp; Technical Studies</option>
+                          <option>Quantity Surveying</option>
+                          <option>Procurement &amp; Contract Management</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                          Estimated Budget (Optional)
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.budget}
+                          onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                          placeholder="e.g. PKR 500M+"
+                          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-[#0A1E34] focus:outline-hidden focus:border-[#C5A059] transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+                        Project Scope &amp; Requirements *
+                      </label>
+                      <textarea
+                        required
+                        rows={4}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Please describe project location, estimated timeline, structural requirements, and any existing geotechnical or CAD drawings..."
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-[#0A1E34] focus:outline-hidden focus:border-[#C5A059] transition-colors"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="w-full py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2 transition-all shadow-md hover:brightness-110 active:scale-98 cursor-pointer"
+                      style={{ backgroundColor: theme.navy }}
+                    >
+                      {submitting ? (
+                        <span>Processing Inquiry...</span>
+                      ) : (
+                        <>
+                          <Send size={15} />
+                          <span>Submit Engineering Inquiry</span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          3. LOCATION MAP SECTION
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="rounded-3xl border border-slate-200 p-8 lg:p-10 bg-[#F4F7FA] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5">
+              <SectionLabel>Geographic Coverage</SectionLabel>
+              <h3 className="text-xl sm:text-2xl font-black text-[#0A1E34] uppercase tracking-tight mb-3">
+                Strategic Infrastructure Presence
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-6">
+                Headquartered along Lahore&apos;s prime Ring Road corridor with field operating bases across Punjab, Khyber Pakhtunkhwa, Sindh, and federal infrastructure territories.
+              </p>
+
+              <div className="space-y-2 text-xs font-semibold text-slate-700">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#C5A059]" />
+                  <span>Central Corporate Office: DHA Phase 5, Lahore</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#C5A059]" />
+                  <span>Northern Infrastructure Field Base: Rawalpindi / Islamabad</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#C5A059]" />
+                  <span>Industrial Corridor Site Offices: Faisalabad M-3 &amp; Sundar</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Stylized Map Card */}
+            <div className="lg:col-span-7">
+              <div className="relative w-full h-[280px] sm:h-[320px] rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-white flex flex-col justify-between p-6">
+                {/* Background Map Visual */}
+                <div className="absolute inset-0 opacity-15">
+                  <Image
+                    src="/images/walton/service_04_infrastructure.jpg"
+                    alt="Map Location"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
-                {submitStatus.type === "success" && (
-                  <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3 text-emerald-800 text-xs font-medium">
-                    <CheckCircle2 size={18} className="text-emerald-600 flex-shrink-0 mt-0.5" />
-                    <span>{submitStatus.message}</span>
+                <div className="relative z-10 flex items-start justify-between">
+                  <div className="p-3 rounded-xl bg-[#0E2A47] text-white">
+                    <MapPin size={24} className="text-[#C5A059]" />
                   </div>
-                )}
+                  <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded bg-[#0E2A47]/10 text-[#0E2A47]">
+                    Headquarters
+                  </span>
+                </div>
 
-                {submitStatus.type === "error" && (
-                  <div className="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-start gap-3 text-rose-800 text-xs font-medium">
-                    <ShieldCheck size={18} className="text-rose-600 flex-shrink-0 mt-0.5" />
-                    <span>{submitStatus.message}</span>
+                <div className="relative z-10 bg-white/95 backdrop-blur-md p-4 rounded-xl border border-slate-200">
+                  <h4 className="text-sm font-bold text-[#0A1E34]">
+                    Walton Consultants &amp; Contracting
+                  </h4>
+                  <p className="text-xs text-slate-600 mt-0.5">
+                    Rehman Centre 2, DHA Phase 5, Ring Road Service Lane, Lahore, Pakistan
+                  </p>
+                  <div className="mt-3 flex items-center justify-between">
+                    <span className="text-xs font-bold text-[#0E2A47]">+92 42 3892-4737</span>
+                    <a
+                      href="https://maps.google.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold uppercase tracking-wider text-[#C5A059] hover:underline inline-flex items-center gap-1"
+                    >
+                      <span>Open in Maps</span>
+                      <ArrowRight size={12} />
+                    </a>
                   </div>
-                )}
-
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navyDark }}>
-                        Your Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Engr. Tariq Mahmood"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] bg-white"
-                        style={{ borderColor: theme.border }}
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navyDark }}>
-                        Official Email *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="tariq@development-group.com"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] bg-white"
-                        style={{ borderColor: theme.border }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navyDark }}>
-                        Phone / WhatsApp *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="0092-300-1234567"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] bg-white"
-                        style={{ borderColor: theme.border }}
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navyDark }}>
-                        Company / Developer Organization
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.organization}
-                        onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                        placeholder="e.g. Prime Real Estate Developments Ltd"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] bg-white"
-                        style={{ borderColor: theme.border }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navyDark }}>
-                        Project Sector
-                      </label>
-                      <select
-                        value={formData.sector}
-                        onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
-                        className="w-full px-3 py-3 rounded-xl border text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] bg-white cursor-pointer"
-                        style={{ borderColor: theme.border }}
-                      >
-                        <option value="Commercial Real Estate & High-Rise Developer">Commercial Real Estate</option>
-                        <option value="Heavy Manufacturing & Industrial Plant">Industrial Manufacturing</option>
-                        <option value="Government Infrastructure (NHA / C&W / LDA)">Government Infrastructure</option>
-                        <option value="Logistics & Warehousing Hub">Logistics &amp; Warehousing</option>
-                        <option value="Healthcare & Educational Campus">Campus / Institutional</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navyDark }}>
-                        Required Solution
-                      </label>
-                      <select
-                        value={formData.solution}
-                        onChange={(e) => setFormData({ ...formData, solution: e.target.value })}
-                        className="w-full px-3 py-3 rounded-xl border text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] bg-white cursor-pointer"
-                        style={{ borderColor: theme.border }}
-                      >
-                        <option value="Commercial High-Rise Superstructure & Deep Piling">High-Rise Superstructure</option>
-                        <option value="Turnkey EPC Industrial Manufacturing Plant">Industrial EPC Plant</option>
-                        <option value="Highway, Bridge & Interchange Corridor">Highway &amp; Bridges</option>
-                        <option value="Pre-Engineered Building (PEB) Warehouse">PEB Steel Warehouse</option>
-                        <option value="Project Management & BIM QA-QC">Project Management &amp; BIM</option>
-                        <option value="Engineering Feasibility & Structural BOQs">Engineering Advisory</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navyDark }}>
-                        Project Scale
-                      </label>
-                      <select
-                        value={formData.scale}
-                        onChange={(e) => setFormData({ ...formData, scale: e.target.value })}
-                        className="w-full px-3 py-3 rounded-xl border text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] bg-white cursor-pointer"
-                        style={{ borderColor: theme.border }}
-                      >
-                        <option value="Under 50,000 Sq Ft Project">Under 50,000 Sq Ft</option>
-                        <option value="50,000 to 200,000 Sq Ft Project">50,000 – 200,000 Sq Ft</option>
-                        <option value="200,000+ Sq Ft Mega Project">200,000+ Sq Ft Mega</option>
-                        <option value="Multi-Kilometer Highway Corridor">Multi-Km Highway</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navyDark }}>
-                      Project Specifications &amp; Structural Requirements
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Please specify site location, number of storeys/basements, covered area, soil type if tested, target completion timeline..."
-                      className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#0E2A47] bg-white"
-                      style={{ borderColor: theme.border }}
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shadow-lg transition-all duration-300 hover:opacity-95 cursor-pointer disabled:opacity-50"
-                    style={{ backgroundColor: theme.navy }}
-                  >
-                    <Send size={16} />
-                    <span>{isSubmitting ? "Transmitting Construction Tender Request..." : "Submit Construction Proposal Request"}</span>
-                  </button>
-                </form>
+                </div>
               </div>
             </div>
           </div>

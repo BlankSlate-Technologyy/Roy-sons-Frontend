@@ -1,58 +1,78 @@
 /* ─────────────────────────────────────────────────────────────
-   ALPHA MATRIX DEFENCE SYSTEMS — DEDICATED THEME STYLESHEET
+   ALPHA MATRIX DEFENCE SYSTEMS — CORPORATE THEME STYLESHEET
    Location: src/app/group-companies/alpha-matrix/alpha-matrix.css
 ───────────────────────────────────────────────────────────── */
 
 :root {
-  --alpha-primary: #0B1B36;       /* Alpha Matrix Deep Navy */
-  --alpha-navy-dark: #08182B;     /* Deep Command Navy */
-  --alpha-shield-blue: #005691;   /* Logo Shield Blue / Accent */
-  --alpha-gold-soft: #0E6BA8;     /* Soft Blue */
-  --alpha-text-muted: #3E5063;    /* Slate Text */
-  --alpha-text-faint: #5A6E7F;    /* Defence System Slate Grey */
-  --alpha-white: #ffffff;         /* Pure White */
+  --alpha-navy-dark: #050E1A;     /* Deep Command Midnight Navy */
+  --alpha-navy: #08182B;          /* Alpha Matrix Primary Navy */
+  --alpha-navy-soft: #0E243D;     /* Tactical Navy */
+  --alpha-shield-blue: #005691;   /* Logo Shield Blue */
+  --alpha-cyan-accent: #0284C7;   /* Cyan / Telemetry Highlight */
+  --alpha-steel: #3E5063;         /* Metallic Steel */
+  --alpha-steel-light: #64748B;   /* Slate Steel */
+  --alpha-white: #FFFFFF;         /* Pure White */
   --alpha-border: rgba(0, 86, 145, 0.16);
-  --alpha-border-soft: rgba(0, 86, 145, 0.08);
+  --alpha-border-dark: rgba(255, 255, 255, 0.1);
 }
 
-body.alpha-matrix-theme,
-.alpha-matrix-theme,
-body.alpha-matrix-theme main,
-body.alpha-matrix-theme section,
-body.alpha-matrix-theme header,
-.alpha-matrix-theme main,
-.alpha-matrix-theme section,
-.alpha-matrix-theme header {
-  background-color: #ffffff !important;
-  color: #0B1B36;
+.alpha-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.875rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-body.alpha-matrix-theme .cursor-pointer,
-.alpha-matrix-theme .cursor-pointer {
-  cursor: pointer !important;
+.alpha-card:hover {
+  border-color: rgba(0, 86, 145, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(8, 24, 43, 0.12);
+  transform: translateY(-2px);
 }
 
-/* Reset for Alpha Matrix components */
-body.alpha-matrix-theme a,
-body.alpha-matrix-theme button,
-body.alpha-matrix-theme label,
-body.alpha-matrix-theme h1,
-body.alpha-matrix-theme h2,
-body.alpha-matrix-theme h3,
-body.alpha-matrix-theme h4,
-body.alpha-matrix-theme h5,
-body.alpha-matrix-theme h6,
-body.alpha-matrix-theme p,
-body.alpha-matrix-theme span,
-body.alpha-matrix-theme li {
-  -webkit-text-fill-color: inherit;
-  text-shadow: none !important;
-  background-image: none !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
+.alpha-card-dark {
+  background-color: rgba(14, 36, 61, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.875rem;
+  backdrop-filter: blur(8px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Footer white background */
-body.alpha-matrix-theme footer {
-  background-color: #ffffff !important;
+.alpha-card-dark:hover {
+  border-color: rgba(2, 132, 199, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
 }
+
+.alpha-img-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.alpha-img-wrapper img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.alpha-card:hover .alpha-img-wrapper img,
+.alpha-card-dark:hover .alpha-img-wrapper img,
+.group:hover .alpha-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.alpha-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.25s ease;
+}
+
+.group:hover .alpha-link-arrow {
+  transform: translateX(3px);
+  color: #005691;
+}
+
+/* Subtle military telemetry grid overlay */
+.telemetry-grid {
+  background-image: radial-gradient(rgba(2, 132, 199, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+

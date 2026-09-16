@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -8,21 +8,21 @@ import {
   Building2,
   CheckCircle2,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ClipboardList,
-  Hammer,
+  Compass,
   HardHat,
   Layers,
+  Leaf,
   MapPin,
-  MessageCircle,
   Phone,
-  Search,
-  Send,
   ShieldCheck,
-  Sparkles,
   Truck,
   Users2,
-  Wrench,
   ArrowRight,
+  Sparkles,
+  ExternalLink,
 } from "lucide-react";
 import {
   theme,
@@ -31,204 +31,253 @@ import {
   SectionLabel,
   SectionHeading,
   AnimatedCounter,
+  CardImageSlider,
 } from "./components/WaltonShared";
+import { WALTON_SERVICES } from "./services-data";
+import { WALTON_SOLUTIONS } from "./solutions-data";
+import { WALTON_PROJECTS } from "./projects-data";
+
+// 5 Unique Cinematic Hero Slides
+const HERO_SLIDES = [
+  {
+    image: "/images/walton/hero_infrastructure.jpg",
+    eyebrow: "Engineering & Infrastructure Excellence",
+    headline: "ENGINEERING WHAT'S NEXT",
+    subheadline: "BUILT ON ENGINEERING. DRIVEN BY IMPACT.",
+    description:
+      "We deliver intelligent engineering, infrastructure and development solutions that transform ambitious ideas into high-performance, sustainable projects.",
+    primaryCta: { label: "Explore Projects", href: "/group-companies/walton-consultants-contracting/projects" },
+    secondaryCta: { label: "Our Divisions", href: "/group-companies/walton-consultants-contracting/services" },
+  },
+  {
+    image: "/images/walton/hero_engineering_team.jpg",
+    eyebrow: "PEC Category C-A (No Limit) Constructor",
+    headline: "EXPERTISE AT EVERY SCALE",
+    subheadline: "PRECISION EXECUTION. UNCOMPROMISING SAFETY.",
+    description:
+      "Our multidisciplinary civil structural engineers, project directors, and technical consultants supervise complex builds with single-point accountability.",
+    primaryCta: { label: "Technical Capabilities", href: "/group-companies/walton-consultants-contracting/services" },
+    secondaryCta: { label: "About Our Enterprise", href: "/group-companies/walton-consultants-contracting/about" },
+  },
+  {
+    image: "/images/walton/hero_modern_architecture.jpg",
+    eyebrow: "Commercial & Mixed-Use Superstructures",
+    headline: "SHAPING MODERN CITIES",
+    subheadline: "ARCHITECTURAL VISION. STRUCTURAL INTEGRITY.",
+    description:
+      "From high-rise commercial headquarters to integrated civic districts, we engineer iconic landmarks with post-tensioned floor systems and seismic resilience.",
+    primaryCta: { label: "Commercial Solutions", href: "/group-companies/walton-consultants-contracting/solutions" },
+    secondaryCta: { label: "View Portfolio", href: "/group-companies/walton-consultants-contracting/projects" },
+  },
+  {
+    image: "/images/walton/hero_transportation.jpg",
+    eyebrow: "Highways, Bridges & Corridors",
+    headline: "CONNECTING REGIONS & COMMERCE",
+    subheadline: "HEAVY CIVIL ROADWORKS & EXPRESSWAY NETWORKS.",
+    description:
+      "Building high-capacity highway interchanges, prestressed concrete river bridges, and multi-modal transit corridors that power regional economic productivity.",
+    primaryCta: { label: "Transportation Works", href: "/group-companies/walton-consultants-contracting/services" },
+    secondaryCta: { label: "Contact Engineering Desk", href: "/group-companies/walton-consultants-contracting/contact" },
+  },
+  {
+    image: "/images/walton/hero_sustainable_infra.jpg",
+    eyebrow: "Sustainable Urban Development",
+    headline: "INFRASTRUCTURE FOR THE FUTURE",
+    subheadline: "SUSTAINABLE ENGINEERING. RESILIENT COMMUNITIES.",
+    description:
+      "Combining solar renewable generation, water-sensitive drainage systems, green building envelopes, and smart urban infrastructure for generations to come.",
+    primaryCta: { label: "Sustainability Focus", href: "/group-companies/walton-consultants-contracting/sustainability" },
+    secondaryCta: { label: "Request Proposal", href: "/group-companies/walton-consultants-contracting/contact" },
+  },
+];
 
 const STATS = [
   { icon: Award, value: "25+", label: "Years of Engineering\nExcellence" },
   { icon: Building2, value: "350+", label: "Completed Civil &\nInfrastructure Projects" },
   { icon: Users2, value: "1200+", label: "Engineers & Technical\nSpecialists on Staff" },
   { icon: HardHat, value: "50+", label: "Industrial & Government\nCorporate Clients" },
-  { icon: ShieldCheck, value: "99%", label: "On-Time Project\nDelivery Success" },
-];
-
-const SERVICES = [
-  {
-    icon: Building2,
-    title: "Civil Engineering & Superstructures",
-    desc: "Reinforced concrete high-rises, post-tensioned floor slabs, deep bored pile foundations, and architectural curtain walls.",
-    href: "/group-companies/walton-consultants-contracting/services/civil-engineering-structural-superstructures",
-    img: "/walton_hero_construction.svg",
-  },
-  {
-    icon: Truck,
-    title: "Turnkey EPC Industrial Projects",
-    desc: "Complete engineering, procurement, and construction solutions for complex industrial and infrastructure developments.",
-    href: "/group-companies/walton-consultants-contracting/services/turnkey-epc-heavy-industrial-projects",
-    img: "/walton_hero_construction.svg",
-  },
-  {
-    icon: Layers,
-    title: "Highways & Infrastructure Corridors",
-    desc: "Construction of multi-lane expressways, prestressed concrete bridges, flyovers, and stormwater utilities.",
-    href: "/group-companies/walton-consultants-contracting/services/highways-bridges-transportation-corridors",
-    img: "/walton_hero_construction.svg",
-  },
-  {
-    icon: Wrench,
-    title: "Pre-Engineered Buildings (PEB)",
-    desc: "High-yield structural steel portal frames, mega logistics distribution warehouses, and industrial manufacturing plants.",
-    href: "/group-companies/walton-consultants-contracting/services/pre-engineered-buildings-peb-warehouses",
-    img: "/walton_hero_construction.svg",
-  },
-  {
-    icon: ClipboardList,
-    title: "Project Management & BIM QA/QC",
-    desc: "3D BIM clash detection, Primavera P6 project scheduling, on-site materials testing, and quality supervision.",
-    href: "/group-companies/walton-consultants-contracting/services/project-management-bim-qa-qc-supervision",
-    img: "/walton_hero_construction.svg",
-  },
-  {
-    icon: Hammer,
-    title: "Engineering Consultancy & Feasibility",
-    desc: "Geotechnical soil surveys, structural peer reviews, seismic hazard analysis, and comprehensive BOQ preparation.",
-    href: "/group-companies/walton-consultants-contracting/services/engineering-consultancy-feasibility-studies",
-    img: "/walton_hero_construction.svg",
-  },
-];
-
-const SOLUTIONS_PREVIEW = [
-  {
-    name: "WaltonTower High-Rise Superstructure",
-    tag: "Commercial High-Rise",
-    desc: "Up to 45 storeys commercial/residential towers with post-tensioned slabs and 4-level deep basements.",
-    href: "/group-companies/walton-consultants-contracting/solutions/commercial-high-rise-superstructures",
-    img: "/walton_hero_construction.svg",
-  },
-  {
-    name: "WaltonPlant Turnkey Industrial Complex",
-    tag: "Industrial EPC Plant",
-    desc: "50,000 to 500,000+ sq ft heavy manufacturing plants with dynamic machine foundation beds.",
-    href: "/group-companies/walton-consultants-contracting/solutions/turnkey-industrial-manufacturing-plants",
-    img: "/walton_hero_construction.svg",
-  },
-  {
-    name: "WaltonWay Highway & Bridge Corridor",
-    tag: "Transportation Infrastructure",
-    desc: "Multi-lane expressways, prestressed concrete box girders, and grade-separated highway interchanges.",
-    href: "/group-companies/walton-consultants-contracting/solutions/highway-interchanges-bridge-corridors",
-    img: "/walton_hero_construction.svg",
-  },
+  { icon: ShieldCheck, value: "99%", label: "On-Time Milestone\nDelivery Success" },
 ];
 
 const PROCESS_STEPS = [
-  { num: "01", title: "Site & Soil Geotechnical Study", desc: "Performing core soil boring, plate load bearing tests, and seismic hazard micro-zonation analysis." },
-  { num: "02", title: "Architectural & 3D BIM Design", desc: "Developing optimized structural models in ETABS / Revit with automated multi-discipline clash resolution." },
-  { num: "03", title: "Procurement & Fabrication", desc: "Sourcing certified ASTM steel rebar, high-grade Portland cement, and pre-engineered steel frames." },
-  { num: "04", title: "Foundation & Superstructure Build", desc: "Executing rotary bored piling, reinforced concrete floor casting, and steel frame erection." },
-  { num: "05", title: "QA/QC Non-Destructive Testing", desc: "Comprehensive concrete compressive testing, ultrasonic steel weld inspection, and MEP commissioning." },
-  { num: "06", title: "Handover & Facility Management", desc: "Providing full as-built documentation, building authority completion certificates, and warranty support." },
+  { num: "01", title: "Geotechnical & Soil Profiling", desc: "Core drilling, plate load bearing tests, and seismic hazard micro-zonation analysis." },
+  { num: "02", title: "Architectural & 3D BIM Modeling", desc: "Developing structural models in ETABS and Revit with multi-discipline clash resolution." },
+  { num: "03", title: "Procurement & Quality Sourcing", desc: "Certified ASTM Grade-60 steel rebar, high-grade Portland cement, and precast elements." },
+  { num: "04", title: "Heavy Civil & Superstructure Build", desc: "Rotary bored piling, mass concrete foundation pours, and hydraulic self-climbing forms." },
+  { num: "05", title: "Non-Destructive Testing (NDT)", desc: "Compressive concrete cylinder tests, ultrasonic steel weld inspection, and MEP commissioning." },
+  { num: "06", title: "Handover & Lifecycle Support", desc: "As-built drawings, statutory completion certifications, and structural warranty operations." },
 ];
 
 const FAQS = [
   {
-    q: "What PEC contractor category does Walton Consultants & Contracting hold?",
-    a: "Walton Consultants & Contracting holds Pakistan Engineering Council (PEC) Category C-A (No Limit) constructor licensing, authorized to execute civil and infrastructure projects of unlimited financial value.",
+    q: "What Pakistan Engineering Council (PEC) licensing does Walton hold?",
+    a: "Walton Consultants & Contracting holds Category C-A (No Limit) constructor licensing from the Pakistan Engineering Council, authorizing the execution of civil and infrastructure works of unlimited financial value.",
   },
   {
-    q: "Does Walton execute complete turnkey EPC industrial projects?",
-    a: "Yes. We offer single-point responsibility for industrial manufacturing facilities, including architectural design, heavy civil foundations, PEB steel erection, high-voltage MEP, and final commissioning.",
+    q: "Does Walton execute turnkey EPC industrial projects?",
+    a: "Yes. We take single-point responsibility for industrial facilities, including front-end engineering design, heavy equipment dynamic foundations, pre-engineered steel erection, 132kV substations, and integrated commissioning.",
   },
   {
-    q: "Can Walton construct commercial high-rise towers with deep basements?",
-    a: "Yes. We have specialized expertise in rotary bored piling, diaphragm earth retention walls, and post-tensioned (PT) concrete slabs for high-rises up to 45 storeys with multi-level basements.",
+    q: "Can Walton engineer high-rise towers in high seismic zones?",
+    a: "Yes. Our structural design teams implement ductile dual shear wall core systems, post-tensioned beam-less slabs, and deep bored cast-in-place piling in full compliance with ACI 318 and Building Code of Pakistan (BCP) Seismic Zones 2B, 3, and 4.",
   },
   {
-    q: "What digital construction tools does Walton deploy on site?",
-    a: "We utilize Building Information Modeling (BIM 3D/4D), Primavera P6 critical path scheduling, and drone topographic surveys to ensure milestone adherence and zero design clashes.",
+    q: "How does Walton ensure quality control during large concrete pours?",
+    a: "We maintain on-site computer-controlled batching plants with liquid nitrogen or flake ice chillers for mass pours, continuous slump/temperature verification, and third-party laboratory compressive testing at 7, 14, and 28 days.",
   },
 ];
 
 export default function WaltonHomePage() {
+  const [heroIdx, setHeroIdx] = useState(0);
+  const [heroPaused, setHeroPaused] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
 
+  // Smooth Autoplay for Hero Slider
+  useEffect(() => {
+    if (heroPaused) return;
+    const timer = setInterval(() => {
+      setHeroIdx((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroPaused]);
+
+  const activeSlide = HERO_SLIDES[heroIdx];
+
   return (
-    <main className="min-h-screen bg-white text-[#3A4E63] font-sans antialiased overflow-x-hidden">
+    <main className="min-h-screen bg-white text-[#2C3E50] font-sans antialiased overflow-x-hidden">
       <WaltonNavbar />
 
-      {/* Hero Section with Construction Superstructure Visual */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <SectionLabel>Trusted Engineering &amp; Infrastructure Development</SectionLabel>
+      {/* ─────────────────────────────────────────────────────────────
+          1. FULL-WIDTH CINEMATIC HERO IMAGE SLIDER
+      ───────────────────────────────────────────────────────────── */}
+      <section
+        className="relative w-full h-[620px] sm:h-[680px] lg:h-[740px] xl:h-[780px] overflow-hidden bg-[#0A1E34]"
+        onMouseEnter={() => setHeroPaused(true)}
+        onMouseLeave={() => setHeroPaused(false)}
+      >
+        {/* Slides Images with Smooth Cross-Fade and Zoom */}
+        {HERO_SLIDES.map((slide, i) => (
+          <div
+            key={slide.image + i}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              i === heroIdx ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+            }`}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.headline}
+              fill
+              className={`object-cover object-center transition-transform duration-[7000ms] ease-out ${
+                i === heroIdx ? "scale-105" : "scale-100"
+              }`}
+              priority={i === 0}
+              sizes="100vw"
+            />
+            {/* Cinematic Multi-Layer Dark Overlay for Maximum Text Contrast */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#061423]/92 via-[#0A1E34]/75 to-[#0A1E34]/35" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#061423]/90 via-transparent to-[#0A1E34]/30" />
+          </div>
+        ))}
 
-              <h1 className="text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] font-black tracking-tight leading-[1.2] uppercase mb-5" style={{ color: theme.navyDark }}>
-                Engineering Excellence. <span style={{ color: theme.navy }}>Building Tomorrow&apos;s Infrastructure.</span>
-              </h1>
-
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                Walton Consultants &amp; Contracting is a leading engineering and construction company specializing in civil engineering, EPC projects, industrial construction, and infrastructure development across Pakistan.
-              </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/group-companies/walton-consultants-contracting/solutions"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: theme.navy }}
-                >
-                  <span>Explore Solutions</span>
-                  <ArrowRight size={16} />
-                </Link>
-
-                <Link
-                  href="/group-companies/walton-consultants-contracting/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.navyDark }}
-                >
-                  <span>Consult Chief Engineer</span>
-                </Link>
-              </div>
+        {/* Hero Content Layer */}
+        <div className="relative z-20 mx-auto max-w-screen-xl h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+          <div className="max-w-2xl lg:max-w-3xl">
+            {/* Small Eyebrow Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#DFC48B] text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059] animate-pulse" />
+              <span>{activeSlide.eyebrow}</span>
             </div>
 
-            {/* Right Hero Image Card */}
-            <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/walton_hero_construction.svg"
-                  alt="Civil Construction & Engineering Infrastructure"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#081B30]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-black uppercase tracking-wider text-[#A6823B]">
-                        350+ Completed Projects
-                      </span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                    </div>
-                    <p className="text-sm font-bold" style={{ color: theme.navyDark }}>
-                      Commercial High-Rises · Bridges · Industrial EPC
-                    </p>
-                  </div>
-                </div>
-              </div>
+            {/* Powerful Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[56px] font-black tracking-tight text-white leading-[1.1] uppercase mb-3 drop-shadow-md">
+              {activeSlide.headline}
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-sm sm:text-base lg:text-lg font-bold uppercase tracking-wider text-[#C5A059] mb-4">
+              {activeSlide.subheadline}
+            </p>
+
+            {/* Short Description */}
+            <p className="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed font-normal mb-8 max-w-xl">
+              {activeSlide.description}
+            </p>
+
+            {/* Minimal CTA Buttons Inside Hero */}
+            <div className="flex flex-wrap items-center gap-3.5">
+              <Link
+                href={activeSlide.primaryCta.href}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all duration-300 hover:brightness-110 active:scale-95"
+                style={{ backgroundColor: theme.navy }}
+              >
+                <span>{activeSlide.primaryCta.label}</span>
+                <ArrowRight size={15} />
+              </Link>
+
+              <Link
+                href={activeSlide.secondaryCta.href}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-white/10 backdrop-blur-md border border-white/25 hover:bg-white/20 transition-all duration-300"
+              >
+                <span>{activeSlide.secondaryCta.label}</span>
+              </Link>
             </div>
           </div>
         </div>
+
+        {/* Slider Controls: Arrows */}
+        <button
+          onClick={() => setHeroIdx((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+          className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+          aria-label="Previous Hero Slide"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <button
+          onClick={() => setHeroIdx((prev) => (prev + 1) % HERO_SLIDES.length)}
+          className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/40 hover:bg-black/70 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+          aria-label="Next Hero Slide"
+        >
+          <ChevronRight size={20} />
+        </button>
+
+        {/* Slider Dots with Active Pill Indicator */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setHeroIdx(i)}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                i === heroIdx ? "w-8 bg-[#C5A059]" : "w-2 bg-white/50 hover:bg-white/80"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
       </section>
 
-      {/* Stats Counter Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          2. CORPORATE METRICS COUNTER SECTION
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {STATS.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="walton-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="walton-stat-card rounded-2xl border border-slate-200 p-5 text-center flex flex-col items-center justify-center bg-white shadow-xs"
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.navy}10` }}>
-                    <Icon size={22} style={{ color: theme.navy }} />
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-3"
+                    style={{ backgroundColor: `${theme.navy}10` }}
+                  >
+                    <Icon size={20} style={{ color: theme.navy }} />
                   </div>
                   <div className="mb-1" style={{ color: theme.navyDark }}>
                     <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600 whitespace-pre-line">
                     {stat.label}
                   </p>
                 </div>
@@ -238,136 +287,80 @@ export default function WaltonHomePage() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Visual */}
-            <div className="lg:col-span-6">
-              <div className="relative w-full h-[380px] sm:h-[440px] rounded-3xl overflow-hidden border shadow-lg group bg-slate-50" style={{ borderColor: theme.border }}>
-                <Image
-                  src="/walton_hero_construction.svg"
-                  alt="Civil Construction Capabilities"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#081B30]/80 via-transparent to-transparent flex items-end p-6">
-                  <div className="text-white">
-                    <p className="text-xs font-black uppercase tracking-widest text-[#DFC48B] mb-1">
-                      Turnkey Civil Construction
-                    </p>
-                    <h4 className="text-base font-bold">Over 25 Years of Landmark Infrastructure Execution</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Text */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
-              <SectionLabel>About Our Enterprise</SectionLabel>
-              <SectionHeading className="mb-6">Building Strong Foundations For The Future</SectionHeading>
-
-              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                Walton Consultants &amp; Contracting provides integrated engineering, procurement, construction, and infrastructure solutions across multiple industries. From concept and design to execution and project completion, we combine technical expertise, innovation, and operational excellence to deliver projects that meet the highest standards of quality and performance.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={18} className="text-[#C5A059] flex-shrink-0" />
-                  <span className="text-xs font-bold text-slate-800">PEC Category C-A (No Limit) Constructor</span>
-                </div>
-                <div className="flex items-center gap-3 p-3.5 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={18} className="text-[#C5A059] flex-shrink-0" />
-                  <span className="text-xs font-bold text-slate-800">350+ Delivered Infrastructure Projects</span>
-                </div>
-              </div>
-
-              <Link
-                href="/group-companies/walton-consultants-contracting/about"
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider transition-all hover:gap-3 text-[#0E2A47]"
-              >
-                <span>Read Full Corporate Profile</span>
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          3. HOME — SERVICES CARDS (LARGE IMAGE HEADERS + MINI SLIDERS)
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <SectionLabel>What We Deliver</SectionLabel>
-              <SectionHeading>Our Core Divisions</SectionHeading>
+            <div className="max-w-2xl">
+              <SectionLabel>Core Disciplines</SectionLabel>
+              <SectionHeading className="mb-3">
+                EXPERTISE THAT MOVES PROJECTS FORWARD
+              </SectionHeading>
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+                From technical consultancy and project management to infrastructure development and construction oversight, we bring engineering expertise to every stage of the project lifecycle.
+              </p>
             </div>
 
             <Link
               href="/group-companies/walton-consultants-contracting/services"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
-              style={{ color: theme.navyDark }}
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0E2A47] hover:text-[#C5A059] transition-colors shrink-0"
             >
-              <span>View All</span>
+              <span>Explore All 8 Divisions</span>
               <ArrowRight size={16} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((svc) => {
-              const Icon = svc.icon;
+          {/* 8 Service Cards Grid with Large Image Headers */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {WALTON_SERVICES.map((svc, idx) => {
+              const isFeatured = idx < 4; // First 4 are featured with mini-sliders
               return (
                 <div
-                  key={svc.title}
-                  className="walton-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  key={svc.id}
+                  className="walton-card-lift rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between bg-white shadow-xs group"
                 >
                   <div>
-                    <Link
-                      href={svc.href}
-                      className="relative block w-full h-48 bg-slate-100 overflow-hidden group cursor-pointer"
-                    >
-                      <Image
-                        src={svc.img}
-                        alt={svc.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </Link>
-
-                    <div className="p-7">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${theme.navy}10` }}>
-                        <Icon size={20} style={{ color: theme.navy }} />
+                    {/* Header: Mini Slider for featured cards, large image for others */}
+                    {isFeatured && svc.images && svc.images.length > 1 ? (
+                      <CardImageSlider images={svc.images} alt={svc.title} className="h-48" />
+                    ) : (
+                      <div className="relative w-full h-48 overflow-hidden bg-slate-100">
+                        <Image
+                          src={svc.image}
+                          alt={svc.title}
+                          fill
+                          className="object-cover walton-img-zoom transition-transform duration-700"
+                          sizes="(max-width: 768px) 100vw, 300px"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/40 via-transparent to-transparent pointer-events-none" />
                       </div>
+                    )}
 
-                      <Link href={svc.href}>
-                        <h3 className="text-lg font-black mb-2.5 hover:text-[#0E2A47] transition-colors cursor-pointer" style={{ color: theme.navyDark }}>
-                          {svc.title}
-                        </h3>
-                      </Link>
+                    {/* Content */}
+                    <div className="p-5">
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-[#0E2A47] inline-block mb-2.5">
+                        {svc.category}
+                      </span>
 
-                      <p className="text-xs sm:text-sm font-medium leading-relaxed mb-4" style={{ color: theme.textMuted }}>
-                        {svc.desc}
+                      <h3 className="text-base font-black text-[#0A1E34] leading-snug mb-2 group-hover:text-[#0E2A47] transition-colors">
+                        {svc.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                        {svc.overview}
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-7 pt-0 flex gap-2">
+                  <div className="p-5 pt-0">
                     <Link
-                      href={svc.href}
-                      className="flex-1 py-3 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
-                      style={{ borderColor: theme.border, color: theme.navyDark }}
+                      href={`/group-companies/walton-consultants-contracting/services#${svc.id}`}
+                      className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all"
                     >
-                      <span>Explore Division</span>
-                      <ArrowRight size={14} />
-                    </Link>
-                    <Link
-                      href="/group-companies/walton-consultants-contracting/contact"
-                      className="px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
-                      style={{ backgroundColor: theme.navy }}
-                      title="Request Proposal"
-                    >
-                      <span>Quote</span>
+                      <span>View Specifications</span>
+                      <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>
@@ -377,75 +370,78 @@ export default function WaltonHomePage() {
         </div>
       </section>
 
-      {/* Featured Solutions Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          4. SOLUTIONS PREVIEW SECTION
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
+            <div className="max-w-2xl">
               <SectionLabel>Engineered Packages</SectionLabel>
-              <SectionHeading>Featured Infrastructure Packages</SectionHeading>
+              <SectionHeading className="mb-3">
+                FROM COMPLEX CHALLENGES TO PRACTICAL SOLUTIONS
+              </SectionHeading>
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+                Integrated packages designed to deliver cost certainty, structural durability, and rapid commissioning across critical sectors.
+              </p>
             </div>
 
             <Link
               href="/group-companies/walton-consultants-contracting/solutions"
-              className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider"
-              style={{ color: theme.navy }}
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0E2A47] hover:text-[#C5A059] transition-colors shrink-0"
             >
-              <span>View All</span>
+              <span>View All Solutions</span>
               <ArrowRight size={16} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {SOLUTIONS_PREVIEW.map((p) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {WALTON_SOLUTIONS.slice(0, 4).map((sol) => (
               <div
-                key={p.name}
-                className="walton-card-hover rounded-3xl border overflow-hidden flex flex-col justify-between bg-white shadow-xs"
-                style={{ borderColor: theme.border }}
+                key={sol.id}
+                className="walton-card-lift rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between bg-white shadow-xs group"
               >
                 <div>
-                  <Link
-                    href={p.href}
-                    className="relative block w-full h-52 bg-slate-100 overflow-hidden group cursor-pointer"
-                  >
+                  <div className="relative w-full h-48 overflow-hidden bg-slate-100">
                     <Image
-                      src={p.img}
-                      alt={p.name}
+                      src={sol.image}
+                      alt={sol.name}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover walton-img-zoom transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, 300px"
                     />
-                  </Link>
-                  <div className="p-7">
-                    <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded bg-[#C5A059]/15 text-[#A6823B] inline-block mb-3">
-                      {p.tag}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/50 via-transparent to-transparent" />
+                    <span className="absolute bottom-3 left-3 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-white/90 text-[#0A1E34] backdrop-blur-xs">
+                      {sol.tag}
                     </span>
-                    <Link href={p.href}>
-                      <h3 className="text-xl font-black mb-2 hover:text-[#0E2A47] transition-colors cursor-pointer" style={{ color: theme.navyDark }}>
-                        {p.name}
-                      </h3>
-                    </Link>
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
-                      {p.desc}
+                  </div>
+
+                  <div className="p-5">
+                    <h3 className="text-base font-black text-[#0A1E34] leading-snug mb-2">
+                      {sol.name}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                      {sol.desc}
                     </p>
+
+                    <div className="grid grid-cols-2 gap-2 pt-3 border-t border-slate-100">
+                      {sol.stats.slice(0, 2).map((st) => (
+                        <div key={st.label}>
+                          <span className="text-xs font-black text-[#0E2A47] block">{st.value}</span>
+                          <span className="text-[10px] text-slate-500 font-semibold">{st.label}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-7 pt-0 flex gap-2">
+                <div className="p-5 pt-0">
                   <Link
-                    href={p.href}
-                    className="flex-1 py-2.5 rounded-xl border text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-slate-50 transition-colors cursor-pointer"
-                    style={{ borderColor: theme.border, color: theme.navyDark }}
+                    href="/group-companies/walton-consultants-contracting/solutions"
+                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 transition-colors"
                   >
-                    <span>View Specifications</span>
+                    <span>Explore Scope</span>
                     <ArrowRight size={13} />
-                  </Link>
-                  <Link
-                    href="/group-companies/walton-consultants-contracting/contact"
-                    className="px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center text-white transition-opacity hover:opacity-95 cursor-pointer"
-                    style={{ backgroundColor: theme.navy }}
-                    title="Request Proposal"
-                  >
-                    <span>Quote</span>
                   </Link>
                 </div>
               </div>
@@ -454,14 +450,99 @@ export default function WaltonHomePage() {
         </div>
       </section>
 
-      {/* Process Pathway Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          5. FEATURED PROJECTS SHOWCASE
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-screen-xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div className="max-w-2xl">
+              <SectionLabel>National Footprint</SectionLabel>
+              <SectionHeading className="mb-3">
+                PROJECTS BUILT TO MAKE AN IMPACT
+              </SectionHeading>
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+                Landmark bridges, highway interchanges, high-rise commercial superstructures, and industrial manufacturing plants executed across Pakistan.
+              </p>
+            </div>
+
+            <Link
+              href="/group-companies/walton-consultants-contracting/projects"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0E2A47] hover:text-[#C5A059] transition-colors shrink-0"
+            >
+              <span>View Full Portfolio</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {WALTON_PROJECTS.slice(0, 3).map((p) => (
+              <div
+                key={p.id}
+                className="walton-card-lift rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between bg-white shadow-xs group"
+              >
+                <div>
+                  <div className="relative w-full h-56 overflow-hidden bg-slate-100">
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className="object-cover walton-img-zoom transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, 400px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/70 via-transparent to-transparent" />
+                    <span className="absolute top-3 right-3 text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#C5A059] text-white">
+                      {p.category}
+                    </span>
+                    <div className="absolute bottom-3 left-3 text-white">
+                      <span className="text-[11px] font-bold text-slate-200 flex items-center gap-1">
+                        <MapPin size={12} className="text-[#C5A059]" /> {p.location}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-base font-black text-[#0A1E34] mb-2 leading-snug">
+                      {p.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                      {p.summary}
+                    </p>
+
+                    <div className="flex items-center justify-between text-xs py-2 border-t border-slate-100">
+                      <span className="text-slate-500 font-semibold">Client</span>
+                      <span className="font-bold text-[#0A1E34] text-right truncate max-w-[200px]">{p.client}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-6 pt-0">
+                  <Link
+                    href="/group-companies/walton-consultants-contracting/projects"
+                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 transition-colors"
+                  >
+                    <span>View Project Details</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          6. 6-STAGE CONSTRUCTION LIFECYCLE
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <SectionLabel center>Disciplined Protocol</SectionLabel>
-            <SectionHeading center className="mb-4">6-Stage Construction Lifecycle</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              From initial geotechnical soil boring to 3D BIM clash resolution, heavy concrete casting, and commissioning.
+            <SectionHeading center className="mb-3">
+              6-Stage Construction Lifecycle
+            </SectionHeading>
+            <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+              From geotechnical soil investigation to 3D BIM clash resolution, heavy structural build, and final statutory commissioning.
             </p>
           </div>
 
@@ -469,17 +550,19 @@ export default function WaltonHomePage() {
             {PROCESS_STEPS.map((step) => (
               <div
                 key={step.num}
-                className="p-8 rounded-3xl border bg-white shadow-xs flex flex-col justify-between"
-                style={{ borderColor: theme.border }}
+                className="walton-card-lift p-6 rounded-2xl border border-slate-200 bg-white shadow-xs flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm text-white mb-6 shadow-sm" style={{ backgroundColor: theme.navy }}>
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center font-black text-xs text-white mb-5 shadow-xs"
+                    style={{ backgroundColor: theme.navy }}
+                  >
                     {step.num}
                   </div>
-                  <h4 className="text-base font-bold mb-3" style={{ color: theme.navyDark }}>
+                  <h4 className="text-base font-bold text-[#0A1E34] mb-2">
                     {step.title}
                   </h4>
-                  <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
                     {step.desc}
                   </p>
                 </div>
@@ -489,36 +572,41 @@ export default function WaltonHomePage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* ─────────────────────────────────────────────────────────────
+          7. FAQ ACCORDION SECTION
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <SectionLabel center>Frequently Asked Questions</SectionLabel>
-            <SectionHeading center className="mb-4">Everything You Need To Know</SectionHeading>
+            <SectionLabel center>Clarity &amp; Governance</SectionLabel>
+            <SectionHeading center className="mb-3">
+              Frequently Asked Questions
+            </SectionHeading>
+            <p className="text-sm sm:text-base text-slate-600">
+              Essential technical and operational details on our contracting framework.
+            </p>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="max-w-3xl mx-auto space-y-3.5">
             {FAQS.map((faq, idx) => (
               <div
                 key={faq.q}
-                className="rounded-2xl border overflow-hidden bg-white shadow-xs transition-all"
-                style={{ borderColor: theme.border }}
+                className="rounded-2xl border border-slate-200 overflow-hidden bg-white shadow-xs transition-all"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
-                  style={{ color: theme.navyDark }}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#0A1E34] cursor-pointer"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
                     size={18}
-                    className={`transition-transform duration-300 flex-shrink-0 ${
+                    className={`transition-transform duration-300 shrink-0 ${
                       openFaq === idx ? "rotate-180 text-[#C5A059]" : "text-slate-400"
                     }`}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-4 text-slate-600" style={{ borderColor: theme.border }}>
+                  <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
                     {faq.a}
                   </div>
                 )}
@@ -528,38 +616,42 @@ export default function WaltonHomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* ─────────────────────────────────────────────────────────────
+          8. FINAL CALL TO ACTION BANNER
+      ───────────────────────────────────────────────────────────── */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
-            <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#A6823B]">
-                READY TO COMMENCE YOUR NEXT CONSTRUCTION VENTURE?
+          <div
+            className="rounded-3xl p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-xl text-white relative overflow-hidden"
+            style={{ backgroundColor: theme.navyDark }}
+          >
+            <div className="relative z-10 max-w-2xl">
+              <span className="text-xs font-black uppercase tracking-[0.2em] text-[#C5A059] block mb-2">
+                LET&apos;S BUILD WHAT&apos;S NEXT
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.navyDark }}>
-                Schedule An Engineering Consultation
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase leading-tight mb-3 text-white">
+                Let&apos;s Build Something That Matters
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
-                Connect with our principal civil structural engineers to review architectural CAD drawings, structural BOQs, and turnkey EPC pricing.
+              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+                Have an infrastructure, engineering or development challenge? Our team can help turn complex requirements into practical, scalable solutions.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="relative z-10 flex flex-wrap gap-4 shrink-0 w-full lg:w-auto">
               <Link
                 href="/group-companies/walton-consultants-contracting/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.navy }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2 transition-all shadow-md hover:brightness-110"
+                style={{ backgroundColor: theme.goldHover }}
               >
                 <span>Request Project Proposal</span>
                 <ArrowRight size={15} />
               </Link>
               <a
                 href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.navy, color: theme.navy }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider border border-white/30 text-white flex items-center gap-2 transition-all hover:bg-white/10"
               >
                 <Phone size={15} />
-                <span>0092-42-38924737</span>
+                <span>+92 42 3892-4737</span>
               </a>
             </div>
           </div>

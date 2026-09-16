@@ -31,7 +31,7 @@ export const ALPHA_SOLUTIONS = [
     eyebrow: "AI-Powered Optical & Thermal Vision",
     tag: "Surveillance",
     icon: Camera,
-    heroImage: "/alpha_surveillance.svg",
+    heroImage: "/services/defense-2.jpg",
     overview:
       "Alpha Matrix engineers mission-critical optical and thermal surveillance architectures equipped with edge AI video analytics. Our multi-spectral cameras, automated target recognition, and deep-learning video telemetry provide uninterrupted 24/7 situational awareness across military perimeters, high-threat borders, and urban centers.",
     metrics: [
@@ -105,7 +105,7 @@ export const ALPHA_SOLUTIONS = [
     eyebrow: "Frontier & Coastal Multi-Layer Defense",
     tag: "Border Defense",
     icon: Landmark,
-    heroImage: "/alpha_border_security.svg",
+    heroImage: "/national-guard-mobile-patrol.png",
     overview:
       "Alpha Matrix delivers integrated frontier defense platforms uniting ground surveillance radar grids, buried fiber-optic seismic sensors, electro-optical long-range observation towers, and tactical drone patrols to enforce sovereign border integrity.",
     metrics: [
@@ -179,7 +179,7 @@ export const ALPHA_SOLUTIONS = [
     eyebrow: "C4ISR Situational Awareness Platforms",
     tag: "C4ISR Hub",
     icon: Server,
-    heroImage: "/alpha_command_center.svg",
+    heroImage: "/services/it-ai-1.jpg",
     overview:
       "Alpha Matrix designs and integrates state-of-the-art C4ISR (Command, Control, Communications, Computers, Intelligence, Surveillance, and Reconnaissance) centers. We unify hundreds of video feeds, sensor telemetry, geospatial mapping, and tactical communications into an interactive operational dashboard.",
     metrics: [
@@ -253,7 +253,7 @@ export const ALPHA_SOLUTIONS = [
     eyebrow: "Biometric Identity & Facility Perimeter Control",
     tag: "Access Defense",
     icon: Fingerprint,
-    heroImage: "/alpha_access_control.svg",
+    heroImage: "/national-guard-about.png",
     overview:
       "Alpha Matrix provides high-security identity management and physical access control systems for defense ministries, government data centers, airports, and restricted military compounds. We deploy multi-modal biometric authentication, smart mantrap airlocks, and automated vehicle inspection.",
     metrics: [
@@ -327,7 +327,7 @@ export const ALPHA_SOLUTIONS = [
     eyebrow: "Electronic & Physical Anti-Intrusion Barriers",
     tag: "Physical Defense",
     icon: Shield,
-    heroImage: "/alpha_critical_infrastructure.svg",
+    heroImage: "/national-guard-cta-bg.png",
     overview:
       "Alpha Matrix designs and deploys physical and electronic perimeter security barriers that detect, delay, and neutralize intrusions before attackers reach critical facility assets. We integrate smart fence sensors, microwave barriers, crash-rated bollards, and anti-drone airspace shields.",
     metrics: [
@@ -401,7 +401,7 @@ export const ALPHA_SOLUTIONS = [
     eyebrow: "Zero-Trust Infrastructure & Tactical Encryption",
     tag: "Cyber Resilience",
     icon: Network,
-    heroImage: "/alpha_cyber_defense.svg",
+    heroImage: "/services/it-ai-2.jpg",
     overview:
       "Alpha Matrix defends critical electronic security networks, telemetry pipelines, and command centers against nation-state cyber warfare, malware infiltration, and unauthorized data interception. We implement hardware data diodes, zero-trust architectures, and end-to-end military encryption.",
     metrics: [

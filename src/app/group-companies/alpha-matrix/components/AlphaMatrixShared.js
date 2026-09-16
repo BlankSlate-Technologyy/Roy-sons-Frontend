@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,24 +18,27 @@ import {
   ShieldCheck,
   CheckCircle2,
   Send,
+  Lock,
+  Radar,
+  Radio,
 } from "lucide-react";
 
 export const theme = {
-  bg:           "#FFFFFF",
-  panel:        "#FFFFFF",
-  panelAlt:     "#F8FAFC",
-  navyDark:     "#08182B",
-  navy:         "#0B1B36",       // Logo "ALPHA MATRIX" dark navy
-  navySoft:     "#162B4D",
-  gold:         "#005691",       // Logo Shield Blue
-  goldSoft:     "#0E6BA8",
-  shieldBlue:   "#005691",
-  white:        "#FFFFFF",
-  textMuted:    "#3E5063",       // Slate text
-  textFaint:    "#5A6E7F",       // Logo "DEFENCE SYSTEM" slate grey
-  border:       "rgba(0, 86, 145, 0.16)",
-  borderSoft:   "rgba(0, 86, 145, 0.08)",
-  borderStrong: "rgba(0, 86, 145, 0.28)",
+  navyDark: "#050E1A",       // Deepest Midnight Command Navy
+  navy: "#08182B",           // Sovereign Alpha Matrix Navy
+  navySoft: "#0E243D",       // Tactical Navy Panel
+  navySurface: "#132D4C",    // Elevated Surface
+  shieldBlue: "#005691",     // Logo Shield Accent
+  cyanAccent: "#0284C7",     // Telemetry Highlight
+  cyanLight: "#38BDF8",
+  steel: "#3E5063",          // Metallic Steel
+  steelLight: "#64748B",     // Faint Steel Slate
+  textMuted: "#475569",      // Body Text Muted Slate
+  white: "#FFFFFF",
+  offWhite: "#F8FAFC",
+  border: "#E2E8F0",
+  borderDark: "rgba(255, 255, 255, 0.08)",
+  borderSoft: "rgba(0, 86, 145, 0.16)",
 };
 
 export function hexToRgba(hex, alpha = 1) {
@@ -57,7 +60,7 @@ export const NAV_LINKS = [
 ];
 
 export const FOOTER_LINKS = {
-  "Quick Links": [
+  "Navigation": [
     { label: "Home",       href: "/group-companies/alpha-matrix" },
     { label: "About Us",   href: "/group-companies/alpha-matrix/about" },
     { label: "Solutions",  href: "/group-companies/alpha-matrix/solutions" },
@@ -82,26 +85,42 @@ const SOCIAL_ICONS = [
   { Icon: Youtube,  href: "#", label: "YouTube" },
 ];
 
-export function SectionLabel({ children, center }) {
+export function SectionLabel({ children, center, dark }) {
   return (
-    <p className={`text-[11px] font-black uppercase tracking-[0.3em] mb-3 ${center ? "text-center" : ""}`} style={{ color: theme.gold }}>
+    <p
+      className={`text-[11px] font-semibold uppercase tracking-[0.25em] mb-2.5 ${center ? "text-center" : ""}`}
+      style={{ color: dark ? theme.cyanLight : theme.shieldBlue }}
+    >
       {children}
     </p>
   );
 }
 
-export function SectionHeading({ children, className = "", center }) {
+export function SectionHeading({ children, className = "", center, dark }) {
   return (
-    <h2 className={`text-2xl sm:text-3xl font-black uppercase tracking-tight ${center ? "text-center" : ""} ${className}`} style={{ color: theme.navy }}>
+    <h2
+      className={`text-2xl sm:text-3xl font-semibold uppercase tracking-tight ${center ? "text-center" : ""} ${className}`}
+      style={{ color: dark ? theme.white : theme.navy }}
+    >
       {children}
     </h2>
   );
 }
 
-// ─── Navbar ─────────────────────────────────────────────────────────
+// ─── Refined Button-Free Compact Navbar ─────────────────────────────
 export function AlphaMatrixNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const isActive = (href) => {
     if (!pathname) return false;
@@ -112,71 +131,72 @@ export function AlphaMatrixNavbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b backdrop-blur-md shadow-xs bg-white/95" style={{ borderColor: theme.border }}>
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#08182B]/95 backdrop-blur-md shadow-md border-b border-white/10"
+          : "bg-[#08182B] border-b border-white/5"
+      }`}
+    >
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
+        {/* Logo & Identity */}
         <Link href="/group-companies/alpha-matrix" className="flex items-center gap-3 group">
-          <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 flex items-center justify-center flex-shrink-0">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/4.png"
-              alt="Alpha Matrix Defence Systems Logo"
-              width={80}
-              height={80}
+              alt="Alpha Matrix Defence Systems"
+              width={48}
+              height={48}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
-          <div className="leading-none">
-            <p className="text-sm sm:text-base lg:text-lg font-black tracking-tight uppercase" style={{ color: theme.navy }}>ALPHA MATRIX</p>
-            <p className="text-[9.5px] sm:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.textFaint }}>DEFENCE SYSTEM</p>
+          <div className="leading-tight">
+            <span className="text-sm sm:text-[15px] font-semibold tracking-wider uppercase text-white block">
+              ALPHA MATRIX
+            </span>
+            <span className="text-[9px] font-medium tracking-[0.22em] uppercase text-slate-400 block">
+              DEFENCE SYSTEMS
+            </span>
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        {/* Desktop Navigation Links ONLY — No CTA Buttons */}
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[11.5px] xl:text-xs font-bold uppercase tracking-wide transition-colors py-1 px-1 hover:text-[#005691]"
-                style={{
-                  color: active ? theme.gold : theme.navy,
-                  borderBottom: active ? `2px solid ${theme.gold}` : "2px solid transparent",
-                  paddingBottom: "3px",
-                }}
+                className={`relative text-[13px] font-medium tracking-wide transition-colors py-1.5 ${
+                  active ? "text-white" : "text-slate-300 hover:text-white"
+                }`}
               >
                 {item.label}
+                {active && (
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0284C7] rounded-full" />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Action Button & Mobile Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <Link
-            href="/group-companies/alpha-matrix/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider transition-all duration-300 hover:shadow-md active:scale-[0.98] border shadow-xs"
-            style={{ borderColor: theme.gold, color: theme.white, backgroundColor: theme.gold }}
-          >
-            <span>Consultation</span>
-            <ArrowRight size={13} />
-          </Link>
-
+        {/* Clean Mobile Toggle Button (Zero Extra CTA Buttons) */}
+        <div className="lg:hidden flex items-center">
           <button
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
-            style={{ borderColor: theme.border, color: theme.navy }}
+            className="p-2 rounded-lg border border-white/10 text-white transition-colors hover:bg-white/5 cursor-pointer"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle Navigation Menu"
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Clean Compact Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl" style={{ borderColor: theme.border }}>
+        <div className="lg:hidden border-t border-white/10 px-5 py-4 space-y-1.5 bg-[#08182B] shadow-2xl">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
@@ -184,26 +204,19 @@ export function AlphaMatrixNavbar() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
-                style={{
-                  backgroundColor: active ? `${theme.gold}15` : "transparent",
-                  color: active ? theme.gold : theme.navy,
-                }}
+                className={`block text-xs font-medium tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors ${
+                  active
+                    ? "bg-white/10 text-white font-semibold"
+                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                }`}
               >
                 {item.label}
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/alpha-matrix/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.gold, color: theme.white }}
-            >
-              <span>Request Defense Consultation</span>
-              <ArrowRight size={14} />
-            </Link>
+          <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 px-3">
+            <span>Secure Defense Comms</span>
+            <span className="text-slate-200">0092-42-38924737</span>
           </div>
         </div>
       )}
@@ -211,31 +224,31 @@ export function AlphaMatrixNavbar() {
   );
 }
 
-// ─── Footer (Clean White Theme) ───────────────────────────────────────
+// ─── High-End Sovereign Defense Corporate Footer ─────────────────────
 export function AlphaMatrixFooter() {
   return (
-    <footer className="border-t bg-white mt-12" style={{ borderColor: theme.border, backgroundColor: theme.white }}>
+    <footer className="border-t border-white/10 bg-[#050E1A] text-white">
       <div className="mx-auto max-w-screen-xl px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
         
         {/* Brand Summary */}
         <div className="lg:col-span-4 max-w-sm">
           <div className="flex items-center gap-3.5 mb-5">
-            <div className="w-12 h-12 rounded-lg bg-white p-0.5 border shadow-xs flex items-center justify-center" style={{ borderColor: theme.border }}>
+            <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-1.5">
               <Image
-                src="/alpha matrix.jpeg"
+                src="/logos/4.png"
                 alt="Alpha Matrix Defence Systems"
-                width={44}
-                height={44}
+                width={36}
+                height={36}
                 className="object-contain"
               />
             </div>
             <div>
-              <p className="text-[16px] font-black uppercase tracking-wider" style={{ color: theme.navy }}>ALPHA MATRIX</p>
-              <p className="text-[9px] font-bold tracking-[0.26em]" style={{ color: theme.textFaint }}>DEFENCE SYSTEM</p>
+              <p className="text-[15px] font-semibold uppercase tracking-wider text-white">ALPHA MATRIX</p>
+              <p className="text-[9px] font-medium tracking-[0.22em] text-slate-400">DEFENCE SYSTEMS</p>
             </div>
           </div>
-          <p className="text-[12.5px] leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-            A leading defense and security technology company specializing in integrated surveillance, border protection, command &amp; control centers, cybersecurity, and mission-critical protection.
+          <p className="text-xs text-slate-400 leading-relaxed mb-6 font-normal">
+            A sovereign defense and security technology integrator engineering mission-critical surveillance grids, radar systems, automated command and control platforms, and critical infrastructure shields.
           </p>
           <div className="flex gap-2.5">
             {SOCIAL_ICONS.map(({ Icon, href, label }) => (
@@ -243,8 +256,7 @@ export function AlphaMatrixFooter() {
                 key={label}
                 href={href}
                 aria-label={label}
-                className="w-8 h-8 rounded-full border flex items-center justify-center transition-all hover:scale-110 hover:bg-[#005691]/10"
-                style={{ borderColor: theme.border, color: theme.gold }}
+                className="w-8 h-8 rounded-lg border border-white/10 flex items-center justify-center text-slate-400 transition-all hover:text-white hover:border-[#0284C7] hover:bg-white/5"
               >
                 <Icon size={14} />
               </a>
@@ -255,16 +267,15 @@ export function AlphaMatrixFooter() {
         {/* Quick Links & Core Solutions */}
         {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
           <div key={heading} className="lg:col-span-2">
-            <h5 className="text-[12px] font-black uppercase tracking-[0.2em] mb-4" style={{ color: theme.navy }}>
+            <h5 className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 text-slate-300">
               {heading}
             </h5>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {links.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-[12.5px] font-medium transition-colors hover:text-[#005691]"
-                    style={{ color: theme.textMuted }}
+                    className="text-xs text-slate-400 font-normal transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -276,76 +287,74 @@ export function AlphaMatrixFooter() {
 
         {/* Contact Info */}
         <div className="lg:col-span-4">
-          <h5 className="text-[12px] font-black uppercase tracking-[0.2em] mb-4" style={{ color: theme.navy }}>
-            Operational Headquarters
+          <h5 className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-4 text-slate-300">
+            Operational Command Center
           </h5>
-          <div className="space-y-3.5 text-[12.5px]" style={{ color: theme.textMuted }}>
+          <div className="space-y-3 text-xs text-slate-400 font-normal">
             <p className="flex items-start gap-2.5">
-              <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.gold }} />
-              <span>1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</span>
+              <MapPin size={15} className="flex-shrink-0 mt-0.5 text-[#0284C7]" />
+              <span className="leading-relaxed">1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.</span>
             </p>
             <p className="flex items-center gap-2.5">
-              <Phone size={16} className="flex-shrink-0" style={{ color: theme.gold }} />
-              <span>0092-42-38924737</span>
+              <Phone size={15} className="flex-shrink-0 text-[#0284C7]" />
+              <span className="text-slate-300">0092-42-38924737</span>
             </p>
             <p className="flex items-center gap-2.5">
-              <Phone size={16} className="flex-shrink-0" style={{ color: theme.gold }} />
-              <span>WhatsApp: 0092-304-7527498 | 0092-321-8431665</span>
+              <Radio size={15} className="flex-shrink-0 text-[#0284C7]" />
+              <span className="text-slate-300">Tactical Comms: 0092-304-7527498</span>
             </p>
             <p className="flex items-center gap-2.5">
-              <Mail size={16} className="flex-shrink-0" style={{ color: theme.gold }} />
-              <span>info@roysons.org | support@roysons.org</span>
+              <Mail size={15} className="flex-shrink-0 text-[#0284C7]" />
+              <span className="text-slate-300">info@roysons.org</span>
             </p>
           </div>
         </div>
-
       </div>
 
-      {/* Copyright Bar */}
-      <div className="border-t py-6 px-6" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between gap-4 text-[11.5px]" style={{ color: theme.textFaint }}>
-          <p>&copy; 2026 Alpha Matrix Defence Systems. All Rights Reserved. A Roy &amp; Sons Group Company.</p>
-          <Link href="/group-companies/alpha-matrix" className="hover:text-[#005691] transition-colors">
-            Return to Alpha Matrix Defense Portal
-          </Link>
-        </div>
+      <div className="border-t border-white/5 py-5 text-center text-[11px] text-slate-500">
+        <p>© {new Date().getFullYear()} Alpha Matrix Defence Systems • Division of Roy &amp; Sons Holdings • All Rights Reserved.</p>
       </div>
     </footer>
   );
 }
 
-// ─── Contact Form ───────────────────────────────────────────────────
+// ─── Compact Defense Consultation Form ──────────────────────────────
 export function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+  });
   const [selectedServices, setSelectedServices] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const availableServices = [
-    "Surveillance Systems",
-    "Border Security",
-    "Command & Control Centers",
-    "Access Control & Biometrics",
-    "Perimeter Protection",
+    "Integrated Surveillance Systems",
+    "Border Security & Radar",
+    "C4ISR Command & Control",
+    "Biometric Access Control",
+    "Perimeter Intrusion Shield",
     "Cyber Defense & Zero-Trust",
   ];
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const toggleService = (title) => {
+  const toggleService = (s) => {
     setSelectedServices((prev) =>
-      prev.includes(title) ? prev.filter((s) => s !== title) : [...prev, title]
+      prev.includes(s) ? prev.filter((item) => item !== s) : [...prev, s]
     );
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
-      setError("Please fill in your name, email, and project details.");
+      setError("Please complete all required fields.");
       return;
     }
     setError("");
@@ -356,7 +365,7 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, selectedServices }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.success) {
         throw new Error(data.message || "Failed to submit defense inquiry.");
       }
@@ -374,81 +383,94 @@ export function ContactForm() {
     setSubmitted(false);
   };
 
-  const inputStyle = {
-    backgroundColor: theme.white,
-    borderColor: theme.border,
-    color: theme.navy,
-  };
-
   if (submitted) {
     return (
-      <div className="p-8 md:p-10 rounded-2xl border flex flex-col items-center text-center gap-4 shadow-sm bg-white" style={{ borderColor: theme.border }}>
-        <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ backgroundColor: hexToRgba(theme.gold, 0.12) }}>
-          <CheckCircle2 size={32} style={{ color: theme.gold }} />
+      <div className="p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col items-center text-center gap-3">
+        <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-500/10 text-emerald-400">
+          <CheckCircle2 size={24} />
         </div>
-        <h3 className="text-xl font-black uppercase tracking-wide" style={{ color: theme.navy }}>Inquiry Submitted Successfully</h3>
-        <p className="text-[13px] leading-relaxed max-w-md" style={{ color: theme.textMuted }}>
-          Thank you, {form.name}. Our defense engineering and security solutions team will review your operational requirements and contact you promptly.
+        <h3 className="text-lg font-semibold uppercase text-white">Inquiry Transmitted</h3>
+        <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
+          Thank you, {form.name}. Your operational requirements have been registered with our defense engineering desk.
         </p>
-        <button onClick={resetForm} className="mt-3 px-6 py-3 rounded-md text-[11.5px] font-black uppercase tracking-wider border transition-all" style={{ borderColor: theme.gold, color: theme.gold }}>
-          Submit Another Inquiry
+        <button
+          onClick={resetForm}
+          className="mt-2 px-5 py-2 rounded-lg text-xs font-medium border border-white/20 text-white hover:bg-white/10 transition-colors"
+        >
+          Submit Another Request
         </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-8 md:p-10 rounded-2xl border shadow-sm bg-white" style={{ borderColor: theme.border }}>
-      <SectionLabel>Defense Procurement &amp; Integration</SectionLabel>
-      <SectionHeading className="mb-6">Request A Security Consultation</SectionHeading>
+    <form onSubmit={handleSubmit} className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md space-y-4">
+      <div>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0284C7] block mb-1">
+          Tactical Consultation
+        </span>
+        <h3 className="text-xl font-semibold uppercase text-white">
+          Defense Procurement &amp; Systems Inquiry
+        </h3>
+      </div>
 
-      <div className="grid sm:grid-cols-2 gap-4 mb-4">
+      <div className="grid sm:grid-cols-2 gap-3.5">
         <div>
-          <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Full Name *</label>
+          <label className="text-[11px] font-medium text-slate-300 mb-1 block">Full Name *</label>
           <input
-            type="text" name="name" value={form.name} onChange={handleChange}
-            placeholder="Lt. Col. John Smith / Director"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
-            style={inputStyle}
+            type="text"
+            name="name"
+            required
+            value={form.name}
+            onChange={handleChange}
+            placeholder="Official / Representative Name"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none focus:border-[#0284C7] transition-colors"
           />
         </div>
         <div>
-          <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Official Email Address *</label>
+          <label className="text-[11px] font-medium text-slate-300 mb-1 block">Official Email *</label>
           <input
-            type="email" name="email" value={form.email} onChange={handleChange}
-            placeholder="official@agency.gov / company.com"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
-            style={inputStyle}
+            type="email"
+            name="email"
+            required
+            value={form.email}
+            onChange={handleChange}
+            placeholder="procurement@agency.gov / corp.com"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none focus:border-[#0284C7] transition-colors"
           />
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-4 mb-5">
+      <div className="grid sm:grid-cols-2 gap-3.5">
         <div>
-          <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Phone / Secure Line</label>
+          <label className="text-[11px] font-medium text-slate-300 mb-1 block">Phone / Line</label>
           <input
-            type="tel" name="phone" value={form.phone} onChange={handleChange}
+            type="tel"
+            name="phone"
+            value={form.phone}
+            onChange={handleChange}
             placeholder="+92 300 1234567"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
-            style={inputStyle}
+            className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none focus:border-[#0284C7] transition-colors"
           />
         </div>
         <div>
-          <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Organization / Agency</label>
+          <label className="text-[11px] font-medium text-slate-300 mb-1 block">Agency / Enterprise</label>
           <input
-            type="text" name="company" value={form.company} onChange={handleChange}
-            placeholder="Ministry / Defense Agency / Enterprise"
-            className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all focus:border-[#005691]"
-            style={inputStyle}
+            type="text"
+            name="company"
+            value={form.company}
+            onChange={handleChange}
+            placeholder="Defense Entity / Authority"
+            className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none focus:border-[#0284C7] transition-colors"
           />
         </div>
       </div>
 
-      <div className="mb-5">
-        <label className="text-[10.5px] font-black uppercase tracking-wider mb-2.5 block" style={{ color: theme.textFaint }}>
-          Defense Solutions Required
+      <div>
+        <label className="text-[11px] font-medium text-slate-300 mb-2 block">
+          Defense Domains Required
         </label>
-        <div className="grid sm:grid-cols-2 gap-2.5">
+        <div className="grid sm:grid-cols-2 gap-2">
           {availableServices.map((s) => {
             const active = selectedServices.includes(s);
             return (
@@ -456,44 +478,48 @@ export function ContactForm() {
                 type="button"
                 key={s}
                 onClick={() => toggleService(s)}
-                className="flex items-center gap-2.5 px-3.5 py-3 rounded-md border text-left transition-all duration-200"
-                style={{
-                  borderColor: active ? theme.gold : theme.border,
-                  backgroundColor: active ? hexToRgba(theme.gold, 0.08) : theme.white,
-                }}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-left transition-all text-xs ${
+                  active
+                    ? "border-[#0284C7] bg-[#0284C7]/20 text-white font-medium"
+                    : "border-white/10 bg-black/10 text-slate-400 hover:text-white hover:border-white/20"
+                }`}
               >
                 <div
-                  className="w-4 h-4 rounded-sm border flex items-center justify-center flex-shrink-0"
-                  style={{ borderColor: active ? theme.gold : theme.border, backgroundColor: active ? theme.gold : "transparent" }}
+                  className={`w-3.5 h-3.5 rounded-xs border flex items-center justify-center shrink-0 ${
+                    active ? "border-[#0284C7] bg-[#0284C7]" : "border-white/20 bg-transparent"
+                  }`}
                 >
-                  {active && <CheckCircle2 size={12} style={{ color: theme.white }} />}
+                  {active && <CheckCircle2 size={10} className="text-white" />}
                 </div>
-                <span className="text-[11.5px] font-bold leading-tight" style={{ color: theme.navy }}>{s}</span>
+                <span className="leading-tight truncate">{s}</span>
               </button>
             );
           })}
         </div>
       </div>
 
-      <div className="mb-5">
-        <label className="text-[10.5px] font-black uppercase tracking-wider mb-2 block" style={{ color: theme.textFaint }}>Operational Requirements &amp; Scope *</label>
+      <div>
+        <label className="text-[11px] font-medium text-slate-300 mb-1 block">Operational Scope &amp; Parameters *</label>
         <textarea
-          name="message" value={form.message} onChange={handleChange} rows={4}
-          placeholder="Describe your site parameters, threat profile, desired systems, and deployment timelines..."
-          className="w-full px-4 py-3 rounded-md border text-[12.5px] outline-none transition-all resize-none focus:border-[#005691]"
-          style={inputStyle}
+          name="message"
+          required
+          value={form.message}
+          onChange={handleChange}
+          rows={3}
+          placeholder="Describe threat requirements, installation terrain, and targeted timelines..."
+          className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none resize-none focus:border-[#0284C7] transition-colors"
         />
       </div>
 
-      {error && <p className="text-[12px] font-bold mb-4" style={{ color: "#B3261E" }}>{error}</p>}
+      {error && <p className="text-xs text-rose-400">{error}</p>}
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md text-[12px] font-black uppercase tracking-wider transition-all duration-300 active:scale-[0.98] disabled:opacity-50 shadow-sm"
-        style={{ backgroundColor: theme.gold, color: theme.white }}
+        className="w-full py-3 rounded-lg text-xs font-medium text-white flex items-center justify-center gap-2 bg-[#005691] hover:bg-[#0284C7] transition-all cursor-pointer disabled:opacity-50"
       >
-        {loading ? "Transmitting..." : "Submit Consultation Request"} <Send size={14} />
+        <span>{loading ? "Transmitting..." : "Submit Tactical Consultation"}</span>
+        <Send size={13} />
       </button>
     </form>
   );
