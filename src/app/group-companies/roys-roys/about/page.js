@@ -147,12 +147,14 @@ export default function AboutPage() {
             </div>
 
             <div className="lg:col-span-5 hidden lg:block" data-aos="fade-left" data-aos-delay="200" data-aos-duration="800">
-              <div className="relative h-[360px] w-full rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
+              <div className="relative h-[400px] xl:h-[440px] w-full rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
                 <Image
-                  src="/roys_hospital_interior.png"
-                  alt="Modern Hospital Architecture"
+                  src="/logos/R&R About Image.jpeg"
+                  alt="Roys & Roys International Healthcare & Institutional Infrastructure"
                   fill
-                  className="object-cover"
+                  priority
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 500px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07152b]/80 via-transparent to-transparent" />
                 <div

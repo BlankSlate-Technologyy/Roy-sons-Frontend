@@ -445,10 +445,10 @@ export default function RoysRoysPage() {
           <div className="lg:col-span-6" data-aos="fade-left" data-aos-duration="800">
             <div className="relative h-[360px] sm:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-slate-200">
               <Image
-                src="/roys_hospital_interior.png"
-                alt="Hospital corridor interior"
+                src="/logos/R&R About Image.jpeg"
+                alt="ROYS & ROYS International Healthcare Solutions"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#061527]/90 via-transparent to-transparent" />
