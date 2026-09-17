@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
             data-aos-duration="700"
             className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-2 font-normal"
           >
-            ROYS &amp; ROYS™ International is committed to safeguarding institutional and client privacy in compliance with global ISO 27001 data security principles.
+            ROYS &amp; ROYS International is committed to safeguarding institutional and client privacy in compliance with global ISO 27001 data security principles.
           </p>
         </div>
       </section>

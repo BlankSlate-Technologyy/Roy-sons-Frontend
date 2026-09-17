@@ -41,7 +41,7 @@ export default function TermsPage() {
             data-aos-duration="700"
             className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto mb-2 font-normal"
           >
-            Standard operating conditions, project commissioning protocols, and international supply warranties of ROYS &amp; ROYS™ International.
+            Standard operating conditions, project commissioning protocols, and international supply warranties of ROYS &amp; ROYS International.
           </p>
         </div>
       </section>
@@ -59,7 +59,7 @@ export default function TermsPage() {
           <div data-aos="fade-up" data-aos-delay="200" className="p-6 rounded-2xl bg-[#f8fafc] border border-slate-200">
             <h3 className="text-base font-bold text-[#0f2b48] mb-2">2. Warranty &amp; SLA Guarantees</h3>
             <p>
-              Equipment supplied by ROYS &amp; ROYS™ International includes standard OEM manufacturer warranties and certified biomedical technical support services.
+              Equipment supplied by ROYS &amp; ROYS International includes standard OEM manufacturer warranties and certified biomedical technical support services.
             </p>
           </div>
 

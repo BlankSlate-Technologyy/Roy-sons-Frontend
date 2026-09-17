@@ -50,6 +50,7 @@ import {
 } from "lucide-react";
 
 import { RoysNavbar, RoysFooter } from "./_shared";
+import HealthcarePortfolio from "@/components/healthcare/HealthcarePortfolio";
 
 // ─── Static Data ─────────────────────────────────────────────────────────────
 
@@ -118,47 +119,6 @@ const CORE_BUSINESS_7 = [
   { title: "Equipment\nSolutions",      icon: Activity, slug: "equipment-solutions" },
   { title: "Institutional\nSupport",    icon: ShieldCheck, slug: "institutional-support" },
 ];
-
-const PRODUCT_TABS = [
-  "Diagnostic Imaging",
-  "OT Solutions",
-  "ICU & Critical Care",
-  "Lab Equipment",
-  "Hospital Furniture",
-];
-
-const PRODUCTS_BY_TAB = {
-  "Diagnostic Imaging": [
-    { name: "Digital X-Ray Systems",   desc: "High-resolution imaging for accurate diagnosis.",  img: "/biomax_diagnostic_equipment_ai.jpg" },
-    { name: "CT Scan Systems",         desc: "Advanced CT imaging for precise insights.",        img: "/roys_ct_scan.png" },
-    { name: "MRI Systems",             desc: "High-performance MRI for detailed imaging.",       img: "/roys_mri_scanner.png" },
-    { name: "Ultrasound Systems",      desc: "Versatile ultrasound systems for all needs.",      img: "/roys_ultrasound.png" },
-  ],
-  "OT Solutions": [
-    { name: "Hydraulic Surgical Table",desc: "Electro-hydraulic multi-position surgical table.", img: "/pakmedical-card2.png" },
-    { name: "Shadowless LED Lights",   desc: "Aerodynamic laminar flow surgical illumination.",  img: "/biomax_ind_healthcare_ai.jpg" },
-    { name: "Anesthesia Workstation",  desc: "Integrated anesthesia delivery & gas spirometry.", img: "/pakmedical-card4.png" },
-    { name: "4K Endoscopy Tower",      desc: "Ultra HD minimally invasive camera tower system.", img: "/biomax_ind_hero_ai.jpg" },
-  ],
-  "ICU & Critical Care": [
-    { name: "Multi-Parameter Monitor", desc: "15-inch touch vital signs monitor with ECG.",     img: "/biomax_consumables_ai.jpg" },
-    { name: "Intelligent Ventilator",  desc: "Invasive and non-invasive ICU life support.",      img: "/pakmedical-card1.png" },
-    { name: "Syringe & Infusion Pump", desc: "Multi-channel precision volumetric pump stack.",   img: "/healthcare_infrastructure.jpg" },
-    { name: "Biphasic Defibrillator",  desc: "Clinical pacing with automated AED coaching.",     img: "/biomax_qa_scientist_ai.jpg" },
-  ],
-  "Lab Equipment": [
-    { name: "Clinical Chemistry Analyzer", desc: "Automated high-throughput blood testing system.", img: "/biomax_lab_equipment_ai.jpg" },
-    { name: "5-Part Hematology Counter",  desc: "Laser flow cytometry 3D scattergram analyzer.", img: "/biomax_scientific_instruments_ai.jpg" },
-    { name: "Binocular Microscope",        desc: "Infinity optical system laboratory microscope.",img: "/biomax_research_lab.jpg" },
-    { name: "Refrigerated Centrifuge",    desc: "Microprocessor brushless sample centrifuge.",   img: "/biomax_quality_lab.jpg" },
-  ],
-  "Hospital Furniture": [
-    { name: "Electric ICU Bed",        desc: "5-function motorized critical care patient bed.",  img: "/roys_hospital_interior.png" },
-    { name: "Emergency Crash Cart",    desc: "Stainless steel resuscitation trolley with locks.",img: "/pakmedical-card5.png" },
-    { name: "Medical Storage Cabinet", desc: "Heavy-duty lockable antibacterial glass cabinet.", img: "/pakmedical-card3.png" },
-    { name: "Hydraulic Overbed Table", desc: "Smooth height-adjustable antimicrobial table.",    img: "/pakmedical-card6.png" },
-  ],
-};
 
 const CONFIGURATOR_ACCORDIONS = [
   {
@@ -257,7 +217,6 @@ const BUSINESS_VERTICALS = [
 ];
 
 export default function RoysRoysPage() {
-  const [productTab, setProductTab] = useState("Diagnostic Imaging");
   const [activeAccordion, setActiveAccordion] = useState(1);
 
   const selectedAccordionData =
@@ -280,11 +239,10 @@ export default function RoysRoysPage() {
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left: Content */}
             <div className="lg:col-span-7">
-              {/* Gold pill badge */}
               <div
                 data-aos="fade-down"
                 data-aos-duration="600"
-                className="inline-block px-3.5 py-1 rounded-full border border-[#B49438] bg-[#B49438]/10 text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-5"
+                className="text-[#d4af37] text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4 whitespace-nowrap"
               >
                 GLOBAL HEALTHCARE ENGINEERING &amp; INSTITUTIONAL CONTRACTING
               </div>
@@ -310,7 +268,7 @@ export default function RoysRoysPage() {
                 data-aos-duration="700"
                 className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-7 font-normal"
               >
-                Roys &amp; Roys™ International is a diversified enterprise specializing in turnkey hospital engineering, integrated healthcare infrastructure, and institutional contracting solutions across 30+ nations.
+                Roys &amp; Roys International is a diversified enterprise specializing in turnkey hospital engineering, integrated healthcare infrastructure, and institutional contracting solutions across 30+ nations.
               </p>
 
               {/* Hero Action Buttons (Compact, Sleek, Pixel-Perfect) */}
@@ -375,28 +333,33 @@ export default function RoysRoysPage() {
         </div>
       </section>
 
-      {/* ─── 3. TRUSTED BY LEADING ORGANIZATIONS ───────────────────────────── */}
-      <section className="py-10 sm:py-12 px-6 bg-white border-b border-[#e2e8f0]" data-aos="fade-up" data-aos-duration="600">
-        <div className="mx-auto max-w-screen-xl text-center">
-          <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.24em] text-[#0f2b48] mb-8">
+      {/* ─── 3. TRUSTED BY LEADING ORGANIZATIONS (ANIMATED INFINITE SLIDER) ─── */}
+      <section className="py-10 sm:py-12 bg-white border-b border-[#e2e8f0] overflow-hidden" data-aos="fade-up" data-aos-duration="600">
+        <div className="mx-auto max-w-screen-xl text-center mb-8 px-6">
+          <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.24em] text-[#0f2b48]">
             TRUSTED BY LEADING ORGANIZATIONS
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 items-center justify-center max-w-5xl mx-auto">
-            {TRUSTED_LOGOS.map((logo, idx) => (
+        </div>
+
+        {/* Infinite Slider Track Container with gradient fade masks */}
+        <div className="relative w-full overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+
+          <div className="flex items-center gap-12 sm:gap-20 w-max roys-logo-track">
+            {[...TRUSTED_LOGOS, ...TRUSTED_LOGOS, ...TRUSTED_LOGOS, ...TRUSTED_LOGOS].map((logo, idx) => (
               <div
-                key={logo.name}
-                data-aos="zoom-in"
-                data-aos-delay={idx * 100}
-                className="h-20 sm:h-24 px-4 py-2 flex items-center justify-center transition-all duration-300 hover:scale-105"
+                key={`${logo.name}-${idx}`}
+                className="flex-shrink-0 h-20 sm:h-24 w-48 sm:w-60 px-4 flex items-center justify-center transition-transform duration-300 hover:scale-105 select-none"
               >
                 {logo.img ? (
-                  <div className="relative w-full h-16 sm:h-20">
+                  <div className="relative w-full h-14 sm:h-18">
                     <Image
                       src={logo.img}
                       alt={logo.name}
                       fill
                       className="object-contain"
-                      sizes="(max-width: 768px) 180px, 260px"
+                      sizes="(max-width: 768px) 180px, 240px"
                     />
                   </div>
                 ) : (
@@ -408,6 +371,23 @@ export default function RoysRoysPage() {
             ))}
           </div>
         </div>
+
+        <style>{`
+          @keyframes roysLogoSlide {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          .roys-logo-track {
+            animation: roysLogoSlide 25s linear infinite;
+          }
+          .roys-logo-track:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
       </section>
 
       {/* ─── 4. ABOUT US SECTION ───────────────────────────────────────────── */}
@@ -424,7 +404,7 @@ export default function RoysRoysPage() {
             </h2>
 
             <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
-              Roys &amp; Roys™ International is a diversified healthcare company operating across medical equipment supply, laboratory solutions, pharmaceutical products, healthcare infrastructure, hospital engineering and institutional procurement. We combine strategic supplier relationships with end-to-end project execution to deliver complete solutions for hospitals, laboratories, and healthcare institutions.
+              Roys &amp; Roys International is a diversified healthcare company operating across medical equipment supply, laboratory solutions, pharmaceutical products, healthcare infrastructure, hospital engineering and institutional procurement. We combine strategic supplier relationships with end-to-end project execution to deliver complete solutions for hospitals, laboratories, and healthcare institutions.
             </p>
 
             <div className="space-y-3 mb-7">
@@ -555,18 +535,18 @@ export default function RoysRoysPage() {
                   className="p-6 rounded-xl border border-slate-200 bg-white shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-3xl font-black text-slate-300 font-mono">
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-300 font-mono">
                         {step.num}
                       </span>
-                      <div className="w-9 h-9 rounded-full bg-[#2563eb] text-white flex items-center justify-center shadow-xs">
-                        <Icon size={16} />
+                      <div className="w-12 h-12 rounded-full bg-[#2563eb] text-white flex items-center justify-center shadow-md">
+                        <Icon size={22} />
                       </div>
                     </div>
-                    <h3 className="text-sm sm:text-base font-bold text-[#0f2b48] mb-1.5">
+                    <h3 className="text-base sm:text-lg font-bold text-[#0f2b48] mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                       {step.desc}
                     </p>
                   </div>
@@ -677,92 +657,11 @@ export default function RoysRoysPage() {
         </div>
       </section>
 
-      {/* ─── 9. PRODUCTS & SOLUTIONS (TABS + 4 CARDS) ───────────────────────── */}
-      <section className="py-14 px-6 bg-[#f8fafc] border-t border-slate-200">
-        <div className="mx-auto max-w-screen-xl text-center">
-          <h2
-            data-aos="fade-up"
-            className="text-xl sm:text-2xl font-black uppercase tracking-wider text-[#0f2b48] mb-6"
-          >
-            PRODUCTS &amp; SOLUTIONS
-          </h2>
-
-          {/* Product Category Tabs */}
-          <div data-aos="fade-up" data-aos-delay="100" className="flex flex-wrap justify-center gap-2 mb-9">
-            {PRODUCT_TABS.map((tab) => {
-              const active = tab === productTab;
-              return (
-                <button
-                  key={tab}
-                  onClick={() => setProductTab(tab)}
-                  className={
-                    "px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer " +
-                    (active
-                      ? "bg-[#0f2b48] text-white shadow-xs"
-                      : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100")
-                  }
-                >
-                  {tab}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* 4 Products Cards Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left mb-9">
-            {(PRODUCTS_BY_TAB[productTab] || PRODUCTS_BY_TAB["Diagnostic Imaging"]).map((prod, idx) => (
-              <div
-                key={prod.name}
-                data-aos="fade-up"
-                data-aos-delay={idx * 100}
-                className="rounded-xl border border-slate-200 bg-white overflow-hidden shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="relative h-44 w-full bg-slate-900">
-                    <Image
-                      src={prod.img}
-                      alt={prod.name}
-                      fill
-                      className="object-cover"
-                      sizes="300px"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="text-sm font-bold text-[#0f2b48] mb-1">
-                      {prod.name}
-                    </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      {prod.desc}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="px-4 pb-4 pt-0">
-                  <Link
-                    href="/group-companies/roys-roys/products"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#2563eb] hover:text-[#0f2b48] transition-colors"
-                  >
-                    <span>View Details</span>
-                    <ArrowRight size={12} />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <Link
-            href="/group-companies/roys-roys/products"
-            data-aos="fade-up"
-            className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
-          >
-            <span>Explore All Products &amp; Solutions</span>
-            <ArrowRight size={14} />
-          </Link>
-        </div>
-      </section>
+      {/* ─── 9. HEALTHCARE INFRASTRUCTURE & CLINICAL EQUIPMENT SUPPLY PORTFOLIO ─── */}
+      <HealthcarePortfolio />
 
       {/* ─── 10. INTERACTIVE CONFIGURATOR BOX ───────────────────────────────── */}
-      <section className="py-14 px-6 bg-white">
+      <section id="cta-consultation" className="py-14 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <div
             data-aos="fade-up"

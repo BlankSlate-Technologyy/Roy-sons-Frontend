@@ -231,7 +231,7 @@ export function RoysFooter() {
             </div>
           </Link>
           <p className="text-[16.5px] sm:text-[18px] leading-relaxed text-slate-200 mb-5 font-normal">
-            Roys &amp; Roys™ International is a global leader in healthcare infrastructure and institutional solutions.
+            Roys &amp; Roys International is a global leader in healthcare infrastructure and institutional solutions.
           </p>
           <div className="flex items-center gap-3 text-slate-200">
             <a
@@ -336,7 +336,7 @@ export function RoysFooter() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10 py-5 px-4 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1536px] flex flex-wrap items-center justify-between text-[15px] sm:text-[16.5px] text-slate-300 gap-4">
-          <p>© {new Date().getFullYear()} Roys &amp; Roys™ International. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Roys &amp; Roys International. All rights reserved.</p>
           <div className="flex items-center gap-7">
             <Link href="/group-companies/roys-roys/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy

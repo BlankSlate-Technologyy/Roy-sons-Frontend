@@ -102,14 +102,14 @@ export default function WhatWeDoPage() {
                   className="p-6 rounded-xl border border-slate-200 bg-[#f8fafc] shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-3xl font-black text-slate-300 font-mono">{step.num}</span>
-                      <div className="w-9 h-9 rounded-full bg-[#2563eb] text-white flex items-center justify-center shadow-xs">
-                        <Icon size={16} />
+                    <div className="flex items-center justify-between mb-5">
+                      <span className="text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-300 font-mono">{step.num}</span>
+                      <div className="w-12 h-12 rounded-full bg-[#2563eb] text-white flex items-center justify-center shadow-md">
+                        <Icon size={22} />
                       </div>
                     </div>
-                    <h3 className="text-sm sm:text-base font-bold text-[#0f2b48] mb-1.5">{step.title}</h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">{step.desc}</p>
+                    <h3 className="text-base sm:text-lg font-bold text-[#0f2b48] mb-2">{step.title}</h3>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               );

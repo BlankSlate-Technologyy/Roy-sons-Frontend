@@ -126,7 +126,7 @@ export default function AboutPage() {
                 data-aos-duration="700"
                 className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mb-7 font-normal"
               >
-                Roys &amp; Roys™ International is a diversified enterprise specializing in turnkey hospital engineering, integrated healthcare infrastructure, medical equipment procurement, and institutional contracting.
+                Roys &amp; Roys International is a diversified enterprise specializing in turnkey hospital engineering, integrated healthcare infrastructure, medical equipment procurement, and institutional contracting.
               </p>
               <div data-aos="fade-up" data-aos-delay="300" className="flex flex-wrap items-center gap-3">
                 <Link
