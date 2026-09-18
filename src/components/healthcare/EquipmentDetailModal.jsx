@@ -268,7 +268,7 @@ export default function EquipmentDetailModal({
           {/* Bottom Procurement Disclaimer */}
           <div className="border-t border-slate-100 pt-4 text-center">
             <p className="text-[11px] text-slate-400 max-w-xl mx-auto">
-              ROYSONS partners with authorized medical institutions for customized hospital deployments, turnkey installations, and biomedical technical services.
+              Roys &amp; Roys partners with authorized medical institutions for customized hospital deployments, turnkey installations, and biomedical technical services.
             </p>
           </div>
         </div>

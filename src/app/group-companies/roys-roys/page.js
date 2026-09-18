@@ -254,11 +254,11 @@ export default function RoysRoysPage() {
                 data-aos-duration="700"
                 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-[1.18] tracking-tight text-white mb-5"
               >
-                Delivering Excellence Through
-                <span className="block text-[#38bdf8] font-black text-2xl sm:text-3xl lg:text-4xl my-1">
-                  &amp;
+                Delivering Excellence Through{" "}
+                <span className="text-[#38bdf8]">&amp;</span>
+                <span className="block mt-1">
+                  Turnkey Healthcare Solutions
                 </span>
-                Turnkey Healthcare Solutions
               </h1>
 
               {/* Subtitle */}
@@ -392,62 +392,67 @@ export default function RoysRoysPage() {
 
       {/* ─── 4. ABOUT US SECTION ───────────────────────────────────────────── */}
       <section className="py-14 lg:py-18 px-6 bg-white">
-        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10 items-center">
+        <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10 items-stretch">
           {/* Left: Content */}
-          <div className="lg:col-span-6" data-aos="fade-right" data-aos-duration="700">
-            <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-xs font-bold uppercase tracking-wider mb-3">
-              ABOUT US
-            </span>
+          <div className="lg:col-span-6 flex flex-col justify-between" data-aos="fade-right" data-aos-duration="700">
+            <div>
+              <span className="inline-block px-3 py-1 rounded bg-blue-50 text-[#2563eb] text-xs font-bold uppercase tracking-wider mb-3">
+                ABOUT US
+              </span>
 
-            <h2 className="text-2xl sm:text-3xl font-black text-[#0f2b48] leading-[1.22] tracking-tight mb-4">
-              Integrated Healthcare Solutions, Medical Equipment & Infrastructure
-            </h2>
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0f2b48] leading-[1.22] tracking-tight mb-4">
+                Integrated Healthcare Solutions, Medical Equipment & Infrastructure
+              </h2>
 
-            <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
-              Roys &amp; Roys International is a diversified healthcare company operating across medical equipment supply, laboratory solutions, pharmaceutical products, healthcare infrastructure, hospital engineering and institutional procurement. We combine strategic supplier relationships with end-to-end project execution to deliver complete solutions for hospitals, laboratories, and healthcare institutions.
-            </p>
+              <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                Roys &amp; Roys International is a diversified healthcare company operating across medical equipment supply, laboratory solutions, pharmaceutical products, healthcare infrastructure, hospital engineering and institutional procurement. We combine strategic supplier relationships with end-to-end project execution to deliver complete solutions for hospitals, laboratories, and healthcare institutions.
+              </p>
 
-            <div className="space-y-3 mb-7">
-              {[
-                { title: "Medical & Surgical Equipment", desc: "Supply of medical devices, surgical instruments, diagnostic and hospital equipment." },
-                { title: "Laboratory Solutions", desc: "Analytical, research and quality control laboratory equipment and glassware." },
-                { title: "Healthcare Infrastructure", desc: "Turnkey hospital planning, engineering, clean rooms and HVAC systems." },
-                { title: "Institutional Procurement", desc: "Disposables, consumables and general institutional healthcare supply." },
-              ].map((point, idx) => (
-                <div
-                  key={point.title}
-                  data-aos="fade-up"
-                  data-aos-delay={idx * 80}
-                  className="flex items-start gap-2.5"
-                >
-                  <div className="w-5 h-5 rounded-full bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0 mt-0.5">
-                    <Check size={12} strokeWidth={3} />
+              <div className="space-y-3 mb-7">
+                {[
+                  { title: "Medical & Surgical Equipment", desc: "Supply of medical devices, surgical instruments, diagnostic and hospital equipment." },
+                  { title: "Laboratory Solutions", desc: "Analytical, research and quality control laboratory equipment and glassware." },
+                  { title: "Healthcare Infrastructure", desc: "Turnkey hospital planning, engineering, clean rooms and HVAC systems." },
+                  { title: "Institutional Procurement", desc: "Disposables, consumables and general institutional healthcare supply." },
+                ].map((point, idx) => (
+                  <div
+                    key={point.title}
+                    data-aos="fade-up"
+                    data-aos-delay={idx * 80}
+                    className="flex items-start gap-2.5"
+                  >
+                    <div className="w-5 h-5 rounded-full bg-blue-100 text-[#2563eb] flex items-center justify-center shrink-0 mt-0.5">
+                      <Check size={12} strokeWidth={3} />
+                    </div>
+                    <p className="text-xs sm:text-sm text-slate-700 leading-normal">
+                      <strong className="text-[#0f2b48] font-bold">{point.title}:</strong> {point.desc}
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-700 leading-normal">
-                    <strong className="text-[#0f2b48] font-bold">{point.title}:</strong> {point.desc}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            <Link
-              href="/group-companies/roys-roys/about"
-              data-aos="fade-up"
-              data-aos-delay="300"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
-            >
-              <span>More About Us</span>
-              <ArrowRight size={14} />
-            </Link>
+            <div>
+              <Link
+                href="/group-companies/roys-roys/about"
+                data-aos="fade-up"
+                data-aos-delay="300"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded bg-[#0f2b48] hover:bg-[#2563eb] text-white font-semibold text-xs uppercase tracking-wider transition-colors duration-200 shadow-sm"
+              >
+                <span>More About Us</span>
+                <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
 
           {/* Right: Hospital Image Showcase with Floating Badge */}
-          <div className="lg:col-span-6" data-aos="fade-left" data-aos-duration="800">
-            <div className="relative h-[360px] sm:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+          <div className="lg:col-span-6 flex flex-col h-full" data-aos="fade-left" data-aos-duration="800">
+            <div className="relative w-full h-full min-h-[440px] sm:min-h-[500px] lg:min-h-[560px] flex-1 rounded-2xl overflow-hidden shadow-xl border border-slate-200">
               <Image
                 src="/logos/R&R About Image.jpeg"
                 alt="ROYS & ROYS International Healthcare Solutions"
                 fill
+                priority
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />

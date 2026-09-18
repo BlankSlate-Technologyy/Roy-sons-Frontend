@@ -92,7 +92,7 @@ export default function HealthcarePortfolio({ onSelectQuoteEquipment }) {
             </h2>
 
             <p className="mt-4 text-[15px] sm:text-[17px] text-slate-600 leading-relaxed">
-              Explore ROYSONS verified portfolio of hospital technology, advanced diagnostic modalities, intensive-care systems, and surgical infrastructure designed for modern healthcare institutions.
+              Explore Roys &amp; Roys verified portfolio of hospital technology, advanced diagnostic modalities, intensive-care systems, and surgical infrastructure designed for modern healthcare institutions.
             </p>
 
             {/* Quick Hero Actions */}

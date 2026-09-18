@@ -42,7 +42,7 @@ export default function HealthcareTrustCTA() {
           style={{ color: "#e2e8f0" }}
           className="mt-5 text-[15px] sm:text-[17px] !text-slate-200 max-w-2xl mx-auto leading-relaxed font-normal"
         >
-          ROYSONS assists healthcare institutions, diagnostic centers, and hospital leadership with equipment selection, technical specification compliance, facility planning, and dependable turnkey delivery.
+          Roys &amp; Roys assists healthcare institutions, diagnostic centers, and hospital leadership with equipment selection, technical specification compliance, facility planning, and dependable turnkey delivery.
         </p>
 
         {/* CTA Buttons */}
@@ -56,12 +56,12 @@ export default function HealthcareTrustCTA() {
           </button>
 
           <Link
-            href="/contact"
+            href="/group-companies/roys-roys/contact"
             style={{ color: "#ffffff" }}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 !text-white text-[15px] font-semibold border border-white/30 transition-all duration-200 backdrop-blur-sm cursor-pointer"
           >
             <PhoneCall className="w-4 h-4 text-[#01b576]" />
-            <span style={{ color: "#ffffff" }}>Contact ROYSONS</span>
+            <span style={{ color: "#ffffff" }}>Contact Roys &amp; Roys</span>
           </Link>
         </div>
 

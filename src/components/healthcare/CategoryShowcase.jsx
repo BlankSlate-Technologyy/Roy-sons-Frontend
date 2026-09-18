@@ -77,7 +77,7 @@ export default function CategoryShowcase({
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
               <span className="text-[13px] font-medium tracking-wide drop-shadow-sm">
-                ROYSONS Hospital Technologies
+                Roys &amp; Roys Hospital Technologies
               </span>
               <span className="text-[12px] opacity-80 uppercase tracking-widest font-mono">
                 Category {category.number}
