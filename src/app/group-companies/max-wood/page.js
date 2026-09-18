@@ -33,6 +33,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Maximize2,
+  Loader2,
 } from "lucide-react";
 import {
   theme,
@@ -97,6 +98,44 @@ export default function MaxWoodHomePage() {
   const [activeTimberTab, setActiveTimberTab] = useState("american-walnut");
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);
   const [isSliderHovered, setIsSliderHovered] = useState(false);
+
+  const [consultForm, setConsultForm] = useState({
+    name: "",
+    phone: "",
+    projectType: "Luxury Residential Villa",
+    preferredTimber: "American Black Walnut",
+    location: "",
+    requirements: "",
+  });
+  const [consultSubmitting, setConsultSubmitting] = useState(false);
+  const [consultSubmitted, setConsultSubmitted] = useState(false);
+  const [consultError, setConsultError] = useState("");
+
+  const handleConsultationSubmit = async (e) => {
+    e.preventDefault();
+    setConsultSubmitting(true);
+    setConsultError("");
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "max-wood",
+          name: consultForm.name,
+          phone: consultForm.phone,
+          service: consultForm.projectType,
+          subject: `Consultation: ${consultForm.projectType} (${consultForm.preferredTimber})`,
+          message: `Location: ${consultForm.location || "Not specified"}\nPreferred Timber: ${consultForm.preferredTimber}\nDetails: ${consultForm.requirements || "N/A"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit request");
+      setConsultSubmitted(true);
+    } catch (err) {
+      setConsultError(err.message || "Failed to submit request. Please try again.");
+    } finally {
+      setConsultSubmitting(false);
+    }
+  };
 
   useEffect(() => {
     if (isSliderHovered) return;
@@ -834,107 +873,160 @@ export default function MaxWoodHomePage() {
 
             {/* Interactive Inquiry Form */}
             <div className="lg:col-span-6 p-6 sm:p-8 rounded-2xl bg-[#FDFBF7] border" style={{ borderColor: theme.border }}>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Thank you! Your consultation request has been received. Our senior interior architect will contact you within 24 hours.");
-                }}
-                className="space-y-4"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {consultSubmitted ? (
+                <div className="text-center py-8 px-4 space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                    <CheckCircle2 size={32} />
+                  </div>
+                  <h3 className="text-xl font-black uppercase text-slate-800">
+                    Consultation Request Received
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
+                    Thank you, <span className="font-bold text-slate-900">{consultForm.name}</span>! Your bespoke timber consultation request has been logged. Our senior interior architect will contact you within 24 hours.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setConsultSubmitted(false);
+                      setConsultForm({
+                        name: "",
+                        phone: "",
+                        projectType: "Luxury Residential Villa",
+                        preferredTimber: "American Black Walnut",
+                        location: "",
+                        requirements: "",
+                      });
+                    }}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow transition-all hover:opacity-95"
+                    style={{ backgroundColor: theme.primary }}
+                  >
+                    Submit Another Request
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleConsultationSubmit} className="space-y-4">
+                  {consultError && (
+                    <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                      {consultError}
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
+                        Full Name *
+                      </label>
+                      <input
+                        required
+                        type="text"
+                        value={consultForm.name}
+                        onChange={(e) => setConsultForm({ ...consultForm, name: e.target.value })}
+                        placeholder="e.g. Tariq Mansoor"
+                        className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
+                        Phone Number *
+                      </label>
+                      <input
+                        required
+                        type="tel"
+                        value={consultForm.phone}
+                        onChange={(e) => setConsultForm({ ...consultForm, phone: e.target.value })}
+                        placeholder="+92 300 1234567"
+                        className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
+                        Project Type
+                      </label>
+                      <select
+                        value={consultForm.projectType}
+                        onChange={(e) => setConsultForm({ ...consultForm, projectType: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
+                        style={{ borderColor: theme.border }}
+                      >
+                        <option>Luxury Residential Villa</option>
+                        <option>Corporate Office / Boardroom</option>
+                        <option>Hospitality Resort / Restaurant</option>
+                        <option>Custom Dining / Living Furniture</option>
+                        <option>Acoustic Wall Paneling</option>
+                        <option>Modular Kitchen &amp; Wardrobes</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
+                        Preferred Timber
+                      </label>
+                      <select
+                        value={consultForm.preferredTimber}
+                        onChange={(e) => setConsultForm({ ...consultForm, preferredTimber: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
+                        style={{ borderColor: theme.border }}
+                      >
+                        <option>American Black Walnut</option>
+                        <option>Burma Teak</option>
+                        <option>European White Oak</option>
+                        <option>Indigenous Seasoned Sheesham</option>
+                        <option>Expert Recommendation Required</option>
+                      </select>
+                    </div>
+                  </div>
+
                   <div>
                     <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
-                      Full Name *
+                      Project Location / City
                     </label>
                     <input
-                      required
                       type="text"
-                      placeholder="e.g. Tariq Mansoor"
+                      value={consultForm.location}
+                      onChange={(e) => setConsultForm({ ...consultForm, location: e.target.value })}
+                      placeholder="e.g. Islamabad, Lahore, Karachi, Peshawar, Murree"
                       className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
                       style={{ borderColor: theme.border }}
                     />
                   </div>
+
                   <div>
                     <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
-                      Phone Number *
+                      Brief Requirements / Spatial Dimensions
                     </label>
-                    <input
-                      required
-                      type="tel"
-                      placeholder="+92 300 1234567"
+                    <textarea
+                      rows={3}
+                      value={consultForm.requirements}
+                      onChange={(e) => setConsultForm({ ...consultForm, requirements: e.target.value })}
+                      placeholder="Describe your space, timeline, or specific custom furniture requirements..."
                       className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
                       style={{ borderColor: theme.border }}
                     />
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
-                      Project Type
-                    </label>
-                    <select
-                      className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
-                      style={{ borderColor: theme.border }}
-                    >
-                      <option>Luxury Residential Villa</option>
-                      <option>Corporate Office / Boardroom</option>
-                      <option>Hospitality Resort / Restaurant</option>
-                      <option>Custom Dining / Living Furniture</option>
-                      <option>Acoustic Wall Paneling</option>
-                      <option>Modular Kitchen &amp; Wardrobes</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
-                      Preferred Timber
-                    </label>
-                    <select
-                      className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
-                      style={{ borderColor: theme.border }}
-                    >
-                      <option>American Black Walnut</option>
-                      <option>Burma Teak</option>
-                      <option>European White Oak</option>
-                      <option>Indigenous Seasoned Sheesham</option>
-                      <option>Expert Recommendation Required</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
-                    Project Location / City
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Islamabad, Lahore, Karachi, Peshawar, Murree"
-                    className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
-                    style={{ borderColor: theme.border }}
-                  />
-                </div>
-
-                <div>
-                  <label className="text-xs font-bold uppercase tracking-wider block mb-1 text-slate-700">
-                    Brief Requirements / Spatial Dimensions
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Describe your space, timeline, or specific custom furniture requirements..."
-                    className="w-full px-4 py-2.5 rounded-xl border bg-white text-xs font-medium text-slate-900 focus:outline-none focus:border-[#BA7A3E]"
-                    style={{ borderColor: theme.border }}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 px-6 rounded-xl text-xs font-black uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:opacity-95 flex items-center justify-center gap-2 cursor-pointer"
-                  style={{ backgroundColor: theme.primary }}
-                >
-                  <Send size={15} />
-                  <span>Submit Consultation Request</span>
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    disabled={consultSubmitting}
+                    className="w-full py-3.5 px-6 rounded-xl text-xs font-black uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:opacity-95 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    style={{ backgroundColor: theme.primary }}
+                  >
+                    {consultSubmitting ? (
+                      <>
+                        <Loader2 size={15} className="animate-spin" />
+                        <span>Sending Request...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send size={15} />
+                        <span>Submit Consultation Request</span>
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

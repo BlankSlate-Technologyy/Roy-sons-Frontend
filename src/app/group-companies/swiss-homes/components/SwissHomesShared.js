@@ -32,6 +32,7 @@ import {
   Check,
   Eye,
   Zap,
+  Loader2,
 } from "lucide-react";
 import { PROPERTY_LISTINGS } from "../swiss-homes-data";
 
@@ -454,6 +455,8 @@ export function PropertyInquiryModal({ isOpen, onClose, preselectedProperty = nu
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [refId, setRefId] = useState("");
 
   useEffect(() => {
@@ -468,15 +471,38 @@ export function PropertyInquiryModal({ isOpen, onClose, preselectedProperty = nu
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+    setError("");
     const randomRef = `SH-RE-${Math.floor(100000 + Math.random() * 900000)}`;
     setRefId(randomRef);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "swiss-homes",
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.propertyTitle || "Swiss Homes Property Booking",
+          subject: `Property Inquiry: ${formData.propertyTitle} (${formData.inquiryType})`,
+          message: `Property: ${formData.propertyTitle}\nInquiry Type: ${formData.inquiryType}\nBuyer Profile: ${formData.buyerType}\nPreferred Visit Date: ${formData.preferredDate || "N/A"}\nRef: ${randomRef}\nRequirements: ${formData.message || "N/A"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit inquiry");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit inquiry. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setError("");
     onClose();
   };
 
@@ -560,6 +586,11 @@ export function PropertyInquiryModal({ isOpen, onClose, preselectedProperty = nu
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                  {error}
+                </div>
+              )}
               {/* Property Selector */}
               <div>
                 <label className="block text-xs font-black uppercase tracking-wider text-[#1F2937] mb-1.5">
@@ -684,10 +715,20 @@ export function PropertyInquiryModal({ isOpen, onClose, preselectedProperty = nu
                 </div>
                 <button
                   type="submit"
-                  className="px-6 py-3 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-[#B01B2E] hover:bg-[#8E1524] transition-colors shadow-md cursor-pointer flex items-center gap-2"
+                  disabled={submitting}
+                  className="px-6 py-3 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-[#B01B2E] hover:bg-[#8E1524] transition-colors shadow-md cursor-pointer flex items-center gap-2 disabled:opacity-50"
                 >
-                  <span>Submit Property Inquiry</span>
-                  <ArrowRight size={14} />
+                  {submitting ? (
+                    <>
+                      <Loader2 size={14} className="animate-spin" />
+                      <span>Submitting Inquiry...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit Property Inquiry</span>
+                      <ArrowRight size={14} />
+                    </>
+                  )}
                 </button>
               </div>
             </form>

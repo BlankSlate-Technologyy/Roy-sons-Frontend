@@ -32,6 +32,7 @@ import {
   CalendarCheck,
   SlidersHorizontal,
   Info,
+  Loader2,
 } from "lucide-react";
 import { FOOD_LISTINGS } from "../walton-food-data";
 
@@ -582,6 +583,8 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
     notes: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (product) {
@@ -591,13 +594,36 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "walton-mirror-food",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.productTitle || "Food Processing Supplies",
+          subject: `Wholesale Inquiry: ${formData.productTitle || "General"} (${formData.company})`,
+          message: `Company: ${formData.company}\nVolume / MOQ: ${formData.volume}\nDestination: ${formData.destinationCountry || "N/A"}\nNotes: ${formData.notes || "N/A"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit inquiry");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit inquiry. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setError("");
     onClose();
   };
 
@@ -650,6 +676,11 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-4">
+            {error && (
+              <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                {error}
+              </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
@@ -775,10 +806,20 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
               </button>
               <button
                 type="submit"
-                className="px-7 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-[#1E6B43] hover:bg-[#134A2D] transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                disabled={submitting}
+                className="px-7 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-[#1E6B43] hover:bg-[#134A2D] transition-all shadow-md flex items-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                <Send size={13} className="text-[#F3C677]" />
-                <span>Submit Wholesale RFQ</span>
+                {submitting ? (
+                  <>
+                    <Loader2 size={13} className="animate-spin" />
+                    <span>Submitting RFQ...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send size={13} className="text-[#F3C677]" />
+                    <span>Submit Wholesale RFQ</span>
+                  </>
+                )}
               </button>
             </div>
           </form>

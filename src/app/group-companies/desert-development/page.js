@@ -103,6 +103,46 @@ export default function DesertDevHomePage() {
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);
   const [isSliderHovered, setIsSliderHovered] = useState(false);
 
+  const [assessmentForm, setAssessmentForm] = useState({
+    fullName: "",
+    organization: "",
+    email: "",
+    phone: "",
+    solution: "Desert Rehabilitation & Sand Dune Fixation",
+    message: "",
+  });
+  const [assessmentSubmitting, setAssessmentSubmitting] = useState(false);
+  const [assessmentSubmitted, setAssessmentSubmitted] = useState(false);
+
+  const handleAssessmentSubmit = async (e) => {
+    e.preventDefault();
+    setAssessmentSubmitting(true);
+    try {
+      await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "desert-development",
+          companyName: "Desert Development Corporation",
+          fullName: assessmentForm.fullName,
+          email: assessmentForm.email,
+          phone: assessmentForm.phone,
+          subject: assessmentForm.solution,
+          message: assessmentForm.message || "Land Assessment Consultation Request",
+          additionalFields: {
+            organization: assessmentForm.organization,
+          },
+        }),
+      });
+      setAssessmentSubmitted(true);
+    } catch (err) {
+      console.error("Assessment submit error:", err);
+      setAssessmentSubmitted(true);
+    } finally {
+      setAssessmentSubmitting(false);
+    }
+  };
+
   // Auto-play hero image slider
   useEffect(() => {
     if (isSliderHovered) return;
@@ -741,55 +781,121 @@ export default function DesertDevHomePage() {
               </h3>
               <p className="text-xs text-slate-500 mb-6">Fill in details regarding your land parcel to receive initial scope within 48 hours.</p>
 
-              <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Thank you! Desert Development Corporation's environmental engineering desk will contact you shortly."); }}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Full Name</label>
-                    <input type="text" required placeholder="Dr. / Engr. / Mr. Name" className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]" style={{ borderColor: theme.border }} />
+              {assessmentSubmitted ? (
+                <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center animate-in fade-in duration-300">
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
+                    <CheckCircle2 size={24} />
                   </div>
-                  <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Organization / Entity</label>
-                    <input type="text" required placeholder="Agency / Corporation" className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]" style={{ borderColor: theme.border }} />
+                  <h4 className="text-base font-black text-emerald-900 mb-1">
+                    Request Successfully Received
+                  </h4>
+                  <p className="text-xs text-emerald-800 max-w-sm mx-auto leading-relaxed">
+                    Thank you! Desert Development Corporation&apos;s environmental engineering desk will review your land parcel and contact you within 48 hours.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setAssessmentSubmitted(false)}
+                    className="mt-5 px-5 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider hover:bg-emerald-700 transition-colors cursor-pointer"
+                  >
+                    Submit Another Request
+                  </button>
+                </div>
+              ) : (
+                <form className="space-y-4" onSubmit={handleAssessmentSubmit}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Full Name</label>
+                      <input
+                        type="text"
+                        required
+                        value={assessmentForm.fullName}
+                        onChange={(e) => setAssessmentForm({ ...assessmentForm, fullName: e.target.value })}
+                        placeholder="Dr. / Engr. / Mr. Name"
+                        className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Organization / Entity</label>
+                      <input
+                        type="text"
+                        required
+                        value={assessmentForm.organization}
+                        onChange={(e) => setAssessmentForm({ ...assessmentForm, organization: e.target.value })}
+                        placeholder="Agency / Corporation"
+                        className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Email Address</label>
-                    <input type="email" required placeholder="contact@domain.com" className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]" style={{ borderColor: theme.border }} />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Email Address</label>
+                      <input
+                        type="email"
+                        required
+                        value={assessmentForm.email}
+                        onChange={(e) => setAssessmentForm({ ...assessmentForm, email: e.target.value })}
+                        placeholder="contact@domain.com"
+                        className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Phone / WhatsApp</label>
+                      <input
+                        type="tel"
+                        required
+                        value={assessmentForm.phone}
+                        onChange={(e) => setAssessmentForm({ ...assessmentForm, phone: e.target.value })}
+                        placeholder="+92 300 1234567"
+                        className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
                   </div>
+
                   <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Phone / WhatsApp</label>
-                    <input type="tel" required placeholder="+92 300 1234567" className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]" style={{ borderColor: theme.border }} />
+                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Primary Solution Required</label>
+                    <select
+                      value={assessmentForm.solution}
+                      onChange={(e) => setAssessmentForm({ ...assessmentForm, solution: e.target.value })}
+                      className="w-full text-xs p-3 rounded-xl border bg-white focus:outline-[#1B4D3E]"
+                      style={{ borderColor: theme.border }}
+                    >
+                      <option>Desert Rehabilitation &amp; Sand Dune Fixation</option>
+                      <option>Arid Land Reclamation &amp; Earthworks</option>
+                      <option>Deep Aquifer &amp; Solar Water Hydrology</option>
+                      <option>Mega-Afforestation &amp; Green Corridors</option>
+                      <option>Desert Renewable Energy &amp; Agrivoltaics</option>
+                      <option>Airborne LiDAR &amp; GIS Topographical Survey</option>
+                    </select>
                   </div>
-                </div>
 
-                <div>
-                  <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Primary Solution Required</label>
-                  <select className="w-full text-xs p-3 rounded-xl border bg-white focus:outline-[#1B4D3E]" style={{ borderColor: theme.border }}>
-                    <option>Desert Rehabilitation &amp; Sand Dune Fixation</option>
-                    <option>Arid Land Reclamation &amp; Earthworks</option>
-                    <option>Deep Aquifer &amp; Solar Water Hydrology</option>
-                    <option>Mega-Afforestation &amp; Green Corridors</option>
-                    <option>Desert Renewable Energy &amp; Agrivoltaics</option>
-                    <option>Airborne LiDAR &amp; GIS Topographical Survey</option>
-                  </select>
-                </div>
+                  <div>
+                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Approximate Land Area (Hectares) &amp; Coordinates</label>
+                    <textarea
+                      rows={3}
+                      value={assessmentForm.message}
+                      onChange={(e) => setAssessmentForm({ ...assessmentForm, message: e.target.value })}
+                      placeholder="Provide approximate scale (e.g. 2,500 Hectares in Cholistan), soil conditions, and target objectives..."
+                      className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]"
+                      style={{ borderColor: theme.border }}
+                    />
+                  </div>
 
-                <div>
-                  <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Approximate Land Area (Hectares) &amp; Coordinates</label>
-                  <textarea rows={3} placeholder="Provide approximate scale (e.g. 2,500 Hectares in Cholistan), soil conditions, and target objectives..." className="w-full text-xs p-3 rounded-xl border focus:outline-[#1B4D3E]" style={{ borderColor: theme.border }} />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-xl text-xs font-black uppercase tracking-widest text-white shadow-md hover:shadow-lg transition-all duration-300 hover:opacity-95 cursor-pointer flex items-center justify-center gap-2"
-                  style={{ backgroundColor: theme.primary }}
-                >
-                  <Send size={14} />
-                  <span>Submit Land Assessment Request</span>
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    disabled={assessmentSubmitting}
+                    className="w-full py-3.5 rounded-xl text-xs font-black uppercase tracking-widest text-white shadow-md hover:shadow-lg transition-all duration-300 hover:opacity-95 disabled:opacity-60 cursor-pointer flex items-center justify-center gap-2"
+                    style={{ backgroundColor: theme.primary }}
+                  >
+                    <Send size={14} />
+                    <span>{assessmentSubmitting ? "Submitting Request..." : "Submit Land Assessment Request"}</span>
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

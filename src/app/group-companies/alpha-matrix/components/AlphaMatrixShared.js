@@ -360,10 +360,22 @@ export function ContactForm() {
     setError("");
     setLoading(true);
     try {
-      const res = await fetch("/group-companies/alpha-matrix/api/contact", {
+      const res = await fetch("/api/company-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, selectedServices }),
+        body: JSON.stringify({
+          companySlug: "alpha-matrix",
+          companyName: "Alpha Matrix",
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          subject: form.company ? `Defense Inquiry from ${form.company}` : "Alpha Matrix Tactical Inquiry",
+          message: form.message,
+          additionalFields: {
+            company: form.company,
+            selectedServices,
+          },
+        }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.success) {

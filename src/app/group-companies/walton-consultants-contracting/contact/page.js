@@ -40,10 +40,38 @@ export default function WaltonContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate brief network submission
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setSubmitting(false);
-    setSubmitted(true);
+
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "walton-consultants-contracting",
+          companyName: "Walton Consultants & Contracting",
+          fullName: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.service || "Engineering Consultancy Inquiry",
+          message: formData.message,
+          additionalFields: {
+            organization: formData.organization,
+            budget: formData.budget,
+          },
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to submit inquiry.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Walton submission error:", err);
+      setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

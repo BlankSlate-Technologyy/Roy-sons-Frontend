@@ -36,6 +36,7 @@ import {
   Eye,
   Factory,
   ClipboardList,
+  Loader2,
 } from "lucide-react";
 import {
   theme,
@@ -102,6 +103,45 @@ export default function InverseUnionHomePage() {
   const [activeIncotermTab, setActiveIncotermTab] = useState("CIF");
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);
   const [isSliderHovered, setIsSliderHovered] = useState(false);
+
+  const [tradeForm, setTradeForm] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    discipline: "Industrial Machinery & Capital Equipment",
+    specifications: "",
+  });
+  const [tradeSubmitting, setTradeSubmitting] = useState(false);
+  const [tradeSubmitted, setTradeSubmitted] = useState(false);
+  const [tradeError, setTradeError] = useState("");
+
+  const handleTradeSubmit = async (e) => {
+    e.preventDefault();
+    setTradeSubmitting(true);
+    setTradeError("");
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "inverse&union",
+          name: tradeForm.name,
+          email: tradeForm.email,
+          phone: tradeForm.phone,
+          service: tradeForm.discipline,
+          subject: `Trade Quote: ${tradeForm.discipline} (${tradeForm.company || "Direct"})`,
+          message: `Company / Entity: ${tradeForm.company || "N/A"}\nDiscipline: ${tradeForm.discipline}\nCargo Specifications & Incoterm: ${tradeForm.specifications || "N/A"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit trade quote request");
+      setTradeSubmitted(true);
+    } catch (err) {
+      setTradeError(err.message || "Failed to submit quote request. Please try again.");
+    } finally {
+      setTradeSubmitting(false);
+    }
+  };
 
   // Auto-play hero slider
   useEffect(() => {
@@ -744,55 +784,145 @@ export default function InverseUnionHomePage() {
               </h3>
               <p className="text-xs text-slate-500 mb-6">Submit details regarding your commodity or cargo to receive an initial landed-cost quote within 24 hours.</p>
 
-              <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Thank you! Inverse and Union Trading's commercial trade desk will contact you within 24 hours."); }}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Contact Person</label>
-                    <input type="text" required placeholder="Full Name" className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]" style={{ borderColor: theme.border }} />
+              {tradeSubmitted ? (
+                <div className="text-center py-8 px-4 space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                    <CheckCircle2 size={32} />
                   </div>
-                  <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Company / Entity</label>
-                    <input type="text" required placeholder="Corporate Name" className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]" style={{ borderColor: theme.border }} />
+                  <h4 className="text-xl font-black uppercase" style={{ color: theme.navyDark }}>
+                    Quote Request Received
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
+                    Thank you, <span className="font-bold text-slate-900">{tradeForm.name}</span>! Inverse and Union Trading's commercial trade desk has received your request and will dispatch a proforma assessment within 24 hours.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setTradeSubmitted(false);
+                      setTradeForm({
+                        name: "",
+                        company: "",
+                        email: "",
+                        phone: "",
+                        discipline: "Industrial Machinery & Capital Equipment",
+                        specifications: "",
+                      });
+                    }}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow transition-all hover:opacity-95"
+                    style={{ backgroundColor: theme.blue }}
+                  >
+                    Submit Another Inquiry
+                  </button>
+                </div>
+              ) : (
+                <form className="space-y-4" onSubmit={handleTradeSubmit}>
+                  {tradeError && (
+                    <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                      {tradeError}
+                    </div>
+                  )}
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Contact Person *</label>
+                      <input
+                        type="text"
+                        required
+                        value={tradeForm.name}
+                        onChange={(e) => setTradeForm({ ...tradeForm, name: e.target.value })}
+                        placeholder="Full Name"
+                        className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Company / Entity</label>
+                      <input
+                        type="text"
+                        value={tradeForm.company}
+                        onChange={(e) => setTradeForm({ ...tradeForm, company: e.target.value })}
+                        placeholder="Corporate Name"
+                        className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Email Address</label>
-                    <input type="email" required placeholder="trade@company.com" className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]" style={{ borderColor: theme.border }} />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Email Address *</label>
+                      <input
+                        type="email"
+                        required
+                        value={tradeForm.email}
+                        onChange={(e) => setTradeForm({ ...tradeForm, email: e.target.value })}
+                        placeholder="trade@company.com"
+                        className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
+                    <div>
+                      <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Phone / WhatsApp *</label>
+                      <input
+                        type="tel"
+                        required
+                        value={tradeForm.phone}
+                        onChange={(e) => setTradeForm({ ...tradeForm, phone: e.target.value })}
+                        placeholder="+92 300 1234567"
+                        className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
                   </div>
+
                   <div>
-                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Phone / WhatsApp</label>
-                    <input type="tel" required placeholder="+92 300 1234567" className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]" style={{ borderColor: theme.border }} />
+                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Trade Discipline Required</label>
+                    <select
+                      value={tradeForm.discipline}
+                      onChange={(e) => setTradeForm({ ...tradeForm, discipline: e.target.value })}
+                      className="w-full text-xs p-3 rounded-xl border bg-white focus:outline-[#0080FF]"
+                      style={{ borderColor: theme.border }}
+                    >
+                      <option>Industrial Machinery &amp; Capital Equipment</option>
+                      <option>Bulk Commodities &amp; Raw Materials (Grains/Urea/Polymers)</option>
+                      <option>Global Multi-Modal Ocean &amp; Air Freight Logistics</option>
+                      <option>Pharmaceutical &amp; Cold-Chain Sourcing (APIs)</option>
+                      <option>Strategic Government &amp; Defense Procurement</option>
+                      <option>Trade Finance &amp; Letter of Credit (LC) Structuring</option>
+                    </select>
                   </div>
-                </div>
 
-                <div>
-                  <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Trade Discipline Required</label>
-                  <select className="w-full text-xs p-3 rounded-xl border bg-white focus:outline-[#0080FF]" style={{ borderColor: theme.border }}>
-                    <option>Industrial Machinery &amp; Capital Equipment</option>
-                    <option>Bulk Commodities &amp; Raw Materials (Grains/Urea/Polymers)</option>
-                    <option>Global Multi-Modal Ocean &amp; Air Freight Logistics</option>
-                    <option>Pharmaceutical &amp; Cold-Chain Sourcing (APIs)</option>
-                    <option>Strategic Government &amp; Defense Procurement</option>
-                    <option>Trade Finance &amp; Letter of Credit (LC) Structuring</option>
-                  </select>
-                </div>
+                  <div>
+                    <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Cargo Specifications, Desired Incoterm &amp; Destination</label>
+                    <textarea
+                      rows={3}
+                      value={tradeForm.specifications}
+                      onChange={(e) => setTradeForm({ ...tradeForm, specifications: e.target.value })}
+                      placeholder="Specify estimated volume, HS Code (if known), preferred Incoterm (e.g. CIF Karachi or DDP Lahore), and target delivery timeframe..."
+                      className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]"
+                      style={{ borderColor: theme.border }}
+                    />
+                  </div>
 
-                <div>
-                  <label className="text-[11px] font-bold uppercase tracking-wider block mb-1 text-slate-600">Cargo Specifications, Desired Incoterm &amp; Destination</label>
-                  <textarea rows={3} placeholder="Specify estimated volume, HS Code (if known), preferred Incoterm (e.g. CIF Karachi or DDP Lahore), and target delivery timeframe..." className="w-full text-xs p-3 rounded-xl border focus:outline-[#0080FF]" style={{ borderColor: theme.border }} />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-xl text-xs font-black uppercase tracking-widest text-white shadow-md hover:shadow-lg transition-all duration-300 hover:opacity-95 cursor-pointer flex items-center justify-center gap-2"
-                  style={{ backgroundColor: theme.blue }}
-                >
-                  <Send size={14} />
-                  <span>Submit Trade Quote Request</span>
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    disabled={tradeSubmitting}
+                    className="w-full py-3.5 rounded-xl text-xs font-black uppercase tracking-widest text-white shadow-md hover:shadow-lg transition-all duration-300 hover:opacity-95 cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
+                    style={{ backgroundColor: theme.blue }}
+                  >
+                    {tradeSubmitting ? (
+                      <>
+                        <Loader2 size={14} className="animate-spin" />
+                        <span>Sending Quote Request...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send size={14} />
+                        <span>Submit Trade Quote Request</span>
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>

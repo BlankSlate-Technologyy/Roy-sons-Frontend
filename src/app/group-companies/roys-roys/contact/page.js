@@ -27,13 +27,43 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleFormChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "roys-roys",
+          companyName: "Roys & Roys International",
+          fullName: form.fullName,
+          email: form.email,
+          phone: form.phone,
+          subject: form.inquiryType,
+          message: form.message,
+          company: form.company,
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to submit inquiry.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Roys & Roys submission error:", err);
+      setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -232,9 +262,10 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-lg bg-[#0f2b48] hover:bg-[#2563eb] text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors duration-200 shadow-sm cursor-pointer"
+                    disabled={submitting}
+                    className="w-full py-3 rounded-lg bg-[#0f2b48] hover:bg-[#2563eb] disabled:opacity-60 text-white text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors duration-200 shadow-sm cursor-pointer"
                   >
-                    <span>Submit Proposal Request</span>
+                    <span>{submitting ? "Submitting Request..." : "Submit Proposal Request"}</span>
                     <Send size={13} />
                   </button>
                 </form>

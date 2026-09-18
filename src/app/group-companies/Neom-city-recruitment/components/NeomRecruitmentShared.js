@@ -36,6 +36,7 @@ import {
   Check,
   Upload,
   FileText,
+  Loader2,
 } from "lucide-react";
 
 export const theme = {
@@ -334,6 +335,8 @@ export function NeomRecruitmentNavbar({ onOpenEmployerModal }) {
 export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState("details"); // 'details' or 'apply'
   const [appliedSuccess, setAppliedSuccess] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -345,13 +348,36 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
 
   if (!isOpen || !job) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setAppliedSuccess(true);
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "neom-city-recruitment",
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          service: `Job Application: ${job.title}`,
+          subject: `Job Application: ${job.title} (${job.country})`,
+          message: `Position: ${job.title}\nLocation: ${formData.currentCity}\nExperience: ${formData.experienceYears} Years\nCover Note: ${formData.coverNote || "N/A"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit job application");
+      setAppliedSuccess(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit application. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const resetModal = () => {
     setAppliedSuccess(false);
+    setError("");
     setActiveTab("details");
     onClose();
   };
@@ -514,6 +540,11 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
             </>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                  {error}
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">
@@ -623,10 +654,20 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-lg text-xs font-black uppercase tracking-wider text-white shadow-md transition-all bg-[#0072CE] hover:bg-[#005BB5] flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={submitting}
+                  className="w-full py-3 rounded-lg text-xs font-black uppercase tracking-wider text-white shadow-md transition-all bg-[#0072CE] hover:bg-[#005BB5] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
-                  <span>Submit Application for {job.title}</span>
-                  <ArrowRight size={14} />
+                  {submitting ? (
+                    <>
+                      <Loader2 size={14} className="animate-spin" />
+                      <span>Submitting Application...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit Application for {job.title}</span>
+                      <ArrowRight size={14} />
+                    </>
+                  )}
                 </button>
                 <p className="text-[10px] text-center text-slate-400 mt-2">
                   Zero Recruitment Fees Guaranteed under ILO Fair Recruitment Initiative.
@@ -660,6 +701,8 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
 // ─── Corporate Employer Workforce Requisition Modal ─────────────────
 export function EmployerInquiryModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [employerData, setEmployerData] = useState({
     companyName: "",
     contactPerson: "",
@@ -673,13 +716,36 @@ export function EmployerInquiryModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "neom-city-recruitment",
+          name: employerData.contactPerson,
+          email: employerData.email,
+          phone: employerData.phone,
+          service: `Manpower Requisition: ${employerData.sector}`,
+          subject: `Employer Inquiry: ${employerData.companyName} (${employerData.headcount} Workers)`,
+          message: `Company: ${employerData.companyName}\nSector: ${employerData.sector}\nHeadcount: ${employerData.headcount}\nDeployment Country: ${employerData.countryOfDeployment}\nMessage: ${employerData.message || "N/A"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit employer inquiry");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit inquiry. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleClose = () => {
     setSubmitted(false);
+    setError("");
     onClose();
   };
 
@@ -738,6 +804,11 @@ export function EmployerInquiryModal({ isOpen, onClose }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                  {error}
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[11px] font-bold uppercase text-slate-600 mb-1">Company / Enterprise *</label>
@@ -840,10 +911,20 @@ export function EmployerInquiryModal({ isOpen, onClose }) {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg text-xs font-black uppercase tracking-wider text-white shadow-md transition-all bg-[#0072CE] hover:bg-[#005BB5] flex items-center justify-center gap-2 cursor-pointer"
+                disabled={submitting}
+                className="w-full py-3 rounded-lg text-xs font-black uppercase tracking-wider text-white shadow-md transition-all bg-[#0072CE] hover:bg-[#005BB5] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                <span>Submit Manpower Request</span>
-                <ArrowRight size={14} />
+                {submitting ? (
+                  <>
+                    <Loader2 size={14} className="animate-spin" />
+                    <span>Submitting Manpower Request...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Submit Manpower Request</span>
+                    <ArrowRight size={14} />
+                  </>
+                )}
               </button>
             </form>
           )}

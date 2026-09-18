@@ -33,6 +33,7 @@ import {
   Maximize2,
   Users2,
   FileText,
+  Loader2,
 } from "lucide-react";
 
 export const theme = {
@@ -327,6 +328,8 @@ export function NeomCityNavbar({ onOpenInquiryModal }) {
 export function DevelopmentDetailModal({ development, isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState("overview"); // 'overview' or 'inquire'
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [investorData, setInvestorData] = useState({
     name: "",
     organization: "",
@@ -339,13 +342,36 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
 
   if (!isOpen || !development) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "neom-city",
+          name: investorData.name,
+          email: investorData.email,
+          phone: investorData.phone,
+          service: `Concession: ${investorData.inquiryType}`,
+          subject: `Development Inquiry: ${development.name} (${investorData.organization || "Private"})`,
+          message: `Development: ${development.name} (${development.location})\nOrganization: ${investorData.organization || "N/A"}\nInquiry Type: ${investorData.inquiryType}\nTarget Investment: ${investorData.estimatedInvestment}\nNotes: ${investorData.notes || "N/A"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit concession request");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit request. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleClose = () => {
     setSubmitted(false);
+    setError("");
     setActiveTab("overview");
     onClose();
   };
@@ -518,6 +544,11 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
             </>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                  {error}
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[11px] font-bold uppercase text-slate-600 mb-1">
@@ -632,10 +663,20 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg text-xs font-black uppercase tracking-wider text-white shadow-md transition-all bg-[#008080] hover:bg-[#006666] flex items-center justify-center gap-2 cursor-pointer"
+                disabled={submitting}
+                className="w-full py-3 rounded-lg text-xs font-black uppercase tracking-wider text-white shadow-md transition-all bg-[#008080] hover:bg-[#006666] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                <span>Submit Concession Request for {development.name}</span>
-                <ArrowRight size={14} />
+                {submitting ? (
+                  <>
+                    <Loader2 size={14} className="animate-spin" />
+                    <span>Submitting Concession Request...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Submit Concession Request for {development.name}</span>
+                    <ArrowRight size={14} />
+                  </>
+                )}
               </button>
             </form>
           )}
@@ -665,6 +706,8 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
 // ─── Masterplan RFP / Urban Planning Inquiry Modal ───────────────────
 export function MasterplanInquiryModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [rfpData, setRfpData] = useState({
     name: "",
     authority: "",
@@ -677,13 +720,36 @@ export function MasterplanInquiryModal({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "neom-city",
+          name: rfpData.name,
+          email: rfpData.email,
+          phone: rfpData.phone,
+          service: `Masterplan RFP: ${rfpData.scope}`,
+          subject: `Masterplan RFP: ${rfpData.scope} (${rfpData.authority})`,
+          message: `Authority / Enterprise: ${rfpData.authority}\nScope: ${rfpData.scope}\nTarget Area: ${rfpData.areaHectares}\nObjectives: ${rfpData.description || "N/A"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit RFP request");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit RFP request. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleClose = () => {
     setSubmitted(false);
+    setError("");
     onClose();
   };
 
@@ -740,6 +806,11 @@ export function MasterplanInquiryModal({ isOpen, onClose }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                  {error}
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-[11px] font-bold uppercase text-slate-600 mb-1">Official Full Name *</label>
@@ -840,10 +911,20 @@ export function MasterplanInquiryModal({ isOpen, onClose }) {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg text-xs font-black uppercase tracking-wider text-white shadow-md transition-all bg-[#008080] hover:bg-[#006666] flex items-center justify-center gap-2 cursor-pointer"
+                disabled={submitting}
+                className="w-full py-3 rounded-lg text-xs font-black uppercase tracking-wider text-white shadow-md transition-all bg-[#008080] hover:bg-[#006666] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                <span>Submit Masterplan RFP</span>
-                <ArrowRight size={14} />
+                {submitting ? (
+                  <>
+                    <Loader2 size={14} className="animate-spin" />
+                    <span>Submitting Masterplan RFP...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Submit Masterplan RFP</span>
+                    <ArrowRight size={14} />
+                  </>
+                )}
               </button>
             </form>
           )}

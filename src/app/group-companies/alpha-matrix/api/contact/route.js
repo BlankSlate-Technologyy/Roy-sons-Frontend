@@ -4,7 +4,7 @@ import CompanyContact from "@/lib/models/CompanyContact";
 
 export async function POST(req) {
   try {
-    await connectDB();
+    const db = await connectDB();
     const body = await req.json();
     const { name, fullName, email, phone, company, message, selectedServices, ...rest } = body;
 
@@ -16,20 +16,23 @@ export async function POST(req) {
       );
     }
 
-    const contactDoc = await CompanyContact.create({
-      companySlug: "alpha-matrix",
-      companyName: "Alpha Matrix",
-      fullName: applicantName,
-      email,
-      phone: phone || "",
-      subject: company ? `Inquiry from ${company}` : "Alpha Matrix Inquiry",
-      message,
-      additionalFields: {
-        company: company || "",
-        selectedServices: selectedServices || [],
-        ...rest,
-      },
-    });
+    let contactDoc = null;
+    if (db) {
+      contactDoc = await CompanyContact.create({
+        companySlug: "alpha-matrix",
+        companyName: "Alpha Matrix",
+        fullName: applicantName,
+        email,
+        phone: phone || "",
+        subject: company ? `Inquiry from ${company}` : "Alpha Matrix Inquiry",
+        message,
+        additionalFields: {
+          company: company || "",
+          selectedServices: selectedServices || [],
+          ...rest,
+        },
+      });
+    }
 
     return NextResponse.json(
       {

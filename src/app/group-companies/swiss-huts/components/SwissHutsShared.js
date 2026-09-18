@@ -35,6 +35,7 @@ import {
   Wifi,
   Flame,
   Check,
+  Loader2,
 } from "lucide-react";
 import { HOSPITALITY_LISTINGS } from "../swiss-huts-data";
 
@@ -462,6 +463,8 @@ export function BookingModal({ isOpen, onClose, preselectedStay = null }) {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [bookingRef, setBookingRef] = useState("");
 
   useEffect(() => {
@@ -476,15 +479,38 @@ export function BookingModal({ isOpen, onClose, preselectedStay = null }) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
+    setError("");
     const randomRef = `SH-${Math.floor(100000 + Math.random() * 900000)}`;
     setBookingRef(randomRef);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/company-contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          companySlug: "swiss-huts",
+          name: formData.guestName,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.stayName || "Swiss Huts Reservation",
+          subject: `Reservation: ${formData.stayName} (${formData.checkIn} - ${formData.checkOut})`,
+          message: `Chalet/Resort: ${formData.stayName}\nDates: ${formData.checkIn} to ${formData.checkOut}\nGuests: ${formData.guests}\nRef: ${randomRef}\nSpecial Requests: ${formData.specialRequests || "None"}`,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit booking reservation");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message || "Failed to submit booking. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setError("");
     onClose();
   };
 
@@ -568,6 +594,11 @@ export function BookingModal({ isOpen, onClose, preselectedStay = null }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {error && (
+                <div className="p-3 text-xs rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-medium">
+                  {error}
+                </div>
+              )}
               {/* Destination Selector */}
               <div>
                 <label className="block text-xs font-black uppercase tracking-wider text-[#1E293B] mb-1.5">
@@ -690,10 +721,20 @@ export function BookingModal({ isOpen, onClose, preselectedStay = null }) {
                 </div>
                 <button
                   type="submit"
-                  className="px-6 py-3 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-[#1E293B] hover:bg-[#C5A059] transition-colors shadow-md cursor-pointer flex items-center gap-2"
+                  disabled={submitting}
+                  className="px-6 py-3 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-[#1E293B] hover:bg-[#C5A059] transition-colors shadow-md cursor-pointer flex items-center gap-2 disabled:opacity-50"
                 >
-                  <span>Confirm Booking Request</span>
-                  <ArrowRight size={14} />
+                  {submitting ? (
+                    <>
+                      <Loader2 size={14} className="animate-spin" />
+                      <span>Submitting Request...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Confirm Booking Request</span>
+                      <ArrowRight size={14} />
+                    </>
+                  )}
                 </button>
               </div>
             </form>
