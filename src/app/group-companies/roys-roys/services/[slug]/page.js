@@ -66,87 +66,183 @@ export default function ServiceDetailPage({ params }) {
       </div>
 
       {/* ─── Hero Section ───────────────────────────────────────────────────────── */}
-      <section className="relative bg-[#0b2138] text-white py-16 lg:py-20 px-6 overflow-hidden">
-        {/* Ambient Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071728] via-[#0b2138] to-[#113658] opacity-95" />
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-15 pointer-events-none hidden lg:block" data-aos="fade-left" data-aos-duration="1000">
-          <Image
-            src={service.heroImage || "/roys_hospital_interior.png"}
-            alt={service.title}
-            fill
-            className="object-cover"
+      <section className="relative bg-gradient-to-b from-[#051324] via-[#0b2138] to-[#071728] text-white py-14 sm:py-16 lg:py-20 px-4 sm:px-6 overflow-hidden border-b border-white/10">
+        {/* Ambient Glows and Architectural Grid */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#B49438]/12 blur-[120px]" />
+          <div className="absolute top-1/2 -right-32 w-[480px] h-[480px] rounded-full bg-[#009088]/15 blur-[140px]" />
+          <div
+            className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
           />
         </div>
 
         <div className="relative z-10 mx-auto max-w-screen-xl">
-          <div className="max-w-3xl">
+          {/* 2-Column Hero Grid: Left Content + Right Luxury Framed Visual Showcase */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            {/* Left Column: Heading, Eyebrow, Badges & CTAs */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              {/* Service Category Pill */}
+              <div
+                data-aos="fade-down"
+                data-aos-duration="600"
+                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0d223c]/90 border border-[#b49438]/40 shadow-sm"
+              >
+                <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
+                <MainIcon size={14} className="text-[#d4af37]" />
+                <span className="text-[#d4af37] text-[11px] font-extrabold uppercase tracking-[0.2em]">
+                  {service.badge || "Core Engineering Division"}
+                </span>
+              </div>
+
+              {/* Eyebrow & Complete Title */}
+              <div className="space-y-3">
+                <p
+                  data-aos="fade-up"
+                  data-aos-delay="50"
+                  className="text-[#d4af37] text-xs sm:text-sm font-black uppercase tracking-[0.28em] drop-shadow-sm"
+                >
+                  {service.eyebrow || "ENGINEERING SOLUTIONS & HEALTHCARE SYSTEMS"}
+                </p>
+
+                {/* Complete Title */}
+                <h1
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                  data-aos-duration="700"
+                  className="text-3xl sm:text-4xl lg:text-[46px] xl:text-[52px] font-black tracking-tight leading-[1.12] text-white"
+                >
+                  {service.title}
+                </h1>
+              </div>
+
+              {/* High-Impact Tagline / Subtitle */}
+              <p
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-duration="700"
+                className="text-slate-100 text-base sm:text-lg lg:text-[19px] leading-relaxed max-w-2xl font-normal drop-shadow-sm"
+              >
+                {service.tagline}
+              </p>
+
+              {/* Trust Quality Pills */}
+              <div
+                data-aos="fade-up"
+                data-aos-delay="250"
+                className="flex flex-wrap items-center gap-2.5 pt-1"
+              >
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-xs font-semibold text-slate-100 shadow-xs">
+                  <ShieldCheck size={14} className="text-[#38bdf8]" />
+                  <span>ISO 9001 &amp; ISO 13485 Certified</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-xs font-semibold text-slate-100 shadow-xs">
+                  <CheckCircle2 size={14} className="text-emerald-400" />
+                  <span>Turnkey EPC Execution</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-xs font-semibold text-slate-100 shadow-xs">
+                  <Award size={14} className="text-[#d4af37]" />
+                  <span>CE &amp; FDA Compliant Systems</span>
+                </div>
+              </div>
+
+              {/* CTAs: [ Request Project Proposal ] [ Explore Capabilities ] */}
+              <div
+                data-aos="fade-up"
+                data-aos-delay="300"
+                className="flex flex-wrap items-center gap-3.5 pt-3"
+              >
+                <Link
+                  href="/group-companies/roys-roys/contact"
+                  className="roys-quote-btn px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#b49438] via-[#a8832a] to-[#8c6b1f] hover:brightness-110 text-white font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg shadow-black/30 hover:scale-[1.02] cursor-pointer"
+                  style={{ color: "#ffffff" }}
+                >
+                  <span className="text-white font-black" style={{ color: "#ffffff" }}>Request Project Proposal</span>
+                  <ArrowRight size={15} className="text-white" style={{ color: "#ffffff" }} />
+                </Link>
+                <a
+                  href="#capabilities"
+                  className="roys-quote-btn px-6 py-3.5 rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 hover:border-white/50 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer backdrop-blur-sm"
+                  style={{ color: "#ffffff" }}
+                >
+                  <span className="text-white font-bold" style={{ color: "#ffffff" }}>Explore Capabilities</span>
+                  <ChevronRight size={14} className="text-white" style={{ color: "#ffffff" }} />
+                </a>
+                <Link
+                  href="/group-companies/roys-roys/services"
+                  className="px-4 py-3.5 text-slate-300 hover:text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
+                >
+                  <ArrowLeft size={14} />
+                  <span>All Services</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Luxury Framed Visual Showcase Card (Hero Image) */}
             <div
-              data-aos="fade-down"
-              data-aos-duration="600"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#B49438] text-xs font-bold uppercase tracking-widest mb-4"
-            >
-              <MainIcon size={15} />
-              <span>{service.badge || "Core Business Area"}</span>
-            </div>
-
-            <p
-              data-aos="fade-up"
-              data-aos-delay="50"
-              className="text-[#B49438] text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] mb-2"
-            >
-              {service.eyebrow}
-            </p>
-
-            <h1
-              data-aos="fade-up"
-              data-aos-delay="100"
-              data-aos-duration="700"
-              className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-5 text-white"
-            >
-              {service.title}
-            </h1>
-
-            <p
-              data-aos="fade-up"
+              className="lg:col-span-5"
+              data-aos="fade-left"
               data-aos-delay="200"
-              data-aos-duration="700"
-              className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed mb-8"
+              data-aos-duration="800"
             >
-              {service.tagline}
-            </p>
+              <div className="relative w-full h-[360px] sm:h-[430px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)] bg-[#0c1f36] group">
+                <Image
+                  src={service.heroImage || "/images/roys/services/healthcare-technologies.jpg"}
+                  alt={`${service.title} Visual Showcase`}
+                  fill
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  priority
+                />
 
-            <div data-aos="fade-up" data-aos-delay="300" className="flex flex-wrap items-center gap-4">
-              <Link
-                href="/group-companies/roys-roys/contact"
-                className="px-6 py-3.5 rounded-sm bg-[#B49438] hover:bg-[#113658] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg shadow-black/20"
-              >
-                <span>Request Project Proposal</span>
-                <ArrowRight size={15} />
-              </Link>
-              <Link
-                href="/group-companies/roys-roys"
-                className="px-5 py-3.5 rounded-sm border border-white/40 hover:bg-white hover:text-[#113658] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2"
-              >
-                <ArrowLeft size={14} />
-                <span>Back to Overview</span>
-              </Link>
+                {/* Subtle vignette gradient for text contrast */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061426]/95 via-[#061426]/30 to-transparent" />
+
+                {/* Top Corner Floating Spec Badge */}
+                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#061426]/90 backdrop-blur-md border border-white/20 text-xs font-bold text-white shadow-lg">
+                  <Award size={14} className="text-[#d4af37]" />
+                  <span className="text-[11px] tracking-wide font-extrabold text-white">Grade-A Engineering Spec</span>
+                </div>
+
+                {/* Bottom Overlay Glass Card */}
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-xl sm:rounded-2xl bg-[#061426]/90 backdrop-blur-md border border-white/20 shadow-2xl">
+                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                    <span className="text-xs font-black uppercase text-[#d4af37] tracking-wider flex items-center gap-1.5">
+                      <Sparkles size={13} />
+                      {service.title} Systems
+                    </span>
+                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 rounded-full flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      Active
+                    </span>
+                  </div>
+                  <p className="text-[11px] sm:text-xs text-slate-200 font-medium leading-relaxed">
+                    Turnkey Engineering &bull; Advanced Technology &bull; Regulatory Compliance &bull; 24/7 SLA
+                  </p>
+                </div>
+              </div>
             </div>
+
           </div>
 
           {/* Quick Stat Highlights */}
           {service.stats && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-10 border-t border-white/10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 mt-12 pt-8 border-t border-white/15">
               {service.stats.map((stat, i) => (
                 <div
                   key={i}
                   data-aos="fade-up"
                   data-aos-delay={350 + i * 80}
-                  className="p-4 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs"
+                  className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-[#0c223c]/80 border border-white/15 backdrop-blur-md shadow-md hover:border-[#b49438]/50 transition-colors duration-300"
                 >
-                  <p className="text-2xl sm:text-3xl font-black text-[#B49438] tracking-tight mb-1">
+                  <p className="text-2xl sm:text-3xl font-black text-[#d4af37] tracking-tight mb-1">
                     {stat.value}
                   </p>
-                  <p className="text-xs text-white/70 font-semibold tracking-wide uppercase">
+                  <p className="text-xs text-slate-200 font-bold tracking-wide uppercase">
                     {stat.label}
                   </p>
                 </div>
@@ -186,7 +282,7 @@ export default function ServiceDetailPage({ params }) {
       </section>
 
       {/* ─── Detailed Overview Section ────────────────────────────────────────── */}
-      <section className="py-16 px-6 bg-[#f8fafc]">
+      <section id="overview" className="py-16 px-6 bg-[#f8fafc]">
         <div className="mx-auto max-w-screen-xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7" data-aos="fade-right" data-aos-duration="700">
             <div className="inline-flex items-center gap-2 text-[#009088] text-xs font-extrabold uppercase tracking-[0.2em] mb-3">
@@ -228,7 +324,7 @@ export default function ServiceDetailPage({ params }) {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-[#113658]">
               <div className="relative h-80 sm:h-96 w-full">
                 <Image
-                  src={service.heroImage || "/roys_hospital_interior.png"}
+                  src={service.aboutImage || service.heroImage || "/images/roys/hospital_diagnostic_suite.jpg"}
                   alt={service.title}
                   fill
                   className="object-cover"
@@ -250,7 +346,7 @@ export default function ServiceDetailPage({ params }) {
       </section>
 
       {/* ─── Core Pillars / Key Capabilities ──────────────────────────────────── */}
-      <section className="py-16 px-6 bg-white">
+      <section id="capabilities" className="py-16 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <SectionHeading
             eyebrow="SPECIALIZED CAPABILITIES"

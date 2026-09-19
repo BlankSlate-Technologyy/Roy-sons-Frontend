@@ -29,7 +29,8 @@ export const SERVICES_LIST = [
     tagline: "Empowering modern medical institutions with state-of-the-art diagnostic imaging, critical care instrumentation, and digital health technologies.",
     icon: HeartPulse,
     badge: "Diagnostic & Critical Care",
-    heroImage: "/roys_hospital_interior.png",
+    heroImage: "/images/roys/services/healthcare-technologies.jpg",
+    aboutImage: "/images/roys/hospital_diagnostic_suite.jpg",
     overview: [
       "Roys & Roys International delivers cutting-edge medical technologies and diagnostic systems designed to elevate clinical outcomes and hospital productivity. We partner with world-renowned healthcare manufacturers including Siemens Healthineers, Philips Healthcare, GE Healthcare, and Becton Dickinson to equip tertiary care facilities, military hospitals, and private clinical networks.",
       "From high-field MRI scanners and multi-slice CT systems to intensive care ventilators and telemetry patient monitors, our turnkey medical technology solutions include rigorous site planning, precision installation, clinical staff training, and long-term maintenance support.",
@@ -144,7 +145,8 @@ export const SERVICES_LIST = [
     tagline: "Engineering resilient, safe, and technologically advanced infrastructure for modern hospitals and specialized healthcare facilities.",
     icon: BriefcaseMedical,
     badge: "Infrastructure & MEP",
-    heroImage: "/roys_hospital_interior.png",
+    heroImage: "/images/roys/services/hospital-engineering.jpg",
+    aboutImage: "/images/roys/hospital_engineering_hero.jpg",
     overview: [
       "Modern healthcare infrastructure demands specialized engineering that goes far beyond conventional construction. Roys & Roys International designs, builds, and maintains critical hospital systems including Medical Gas Pipeline Systems (MGPS), Central Sterile Services Departments (CSSD), Isolated Power Supplies (IPS), and acoustic/radiation shielding.",
       "Our team of healthcare architects and MEP engineers ensures that every facility complies with international benchmarks such as HTM 02-01, NFPA 99, and ASHRAE 170. We transform empty spaces into sterile, energy-efficient, and patient-centered clinical facilities.",
@@ -259,7 +261,8 @@ export const SERVICES_LIST = [
     tagline: "Designing, manufacturing, and validating sterile environments, modular operating rooms, and precision HVAC systems for hospitals and pharma plants.",
     icon: FlaskConical,
     badge: "Sterile Air Engineering",
-    heroImage: "/roys_mri_scanner.png",
+    heroImage: "/images/roys/services/clean-room-hvac.jpg",
+    aboutImage: "/images/pakmedical/solution_cleanroom.jpg",
     overview: [
       "Contamination control is paramount in surgical operating rooms, pharmaceutical manufacturing, and biotechnology laboratories. Roys & Roys International designs and builds ISO Class 5 to Class 8 cleanrooms, laminar airflow systems, and specialized hospital HVAC solutions.",
       "Our modular operating theater panels are manufactured from antibacterial, non-porous materials that withstand rigorous chemical sanitation. Combined with precision Air Handling Units (AHUs), variable humidity control, and HEPA/ULPA terminal filtration, we guarantee sterile air free from airborne microbes and particulate contaminants.",
@@ -374,7 +377,8 @@ export const SERVICES_LIST = [
     tagline: "Empowering diagnostic accuracy and scientific discovery with world-class laboratory equipment, biosafety containment, and clinical reagents.",
     icon: Microscope,
     badge: "Clinical & Analytical Lab",
-    heroImage: "/roys_ct_scan.png",
+    heroImage: "/images/roys/services/laboratory-solutions.jpg",
+    aboutImage: "/biomax_research_lab.jpg",
     overview: [
       "Accurate laboratory diagnostics form the backbone of clinical decision-making and scientific breakthroughs. Roys & Roys International supplies comprehensive laboratory instrumentation, furniture, biosafety systems, and analytical consumables to clinical pathology labs, university research centers, and industrial testing facilities.",
       "We provide automated clinical chemistry analyzers, 5-part hematology counters, real-time PCR systems, chromatography instruments, and certified Class II biosafety cabinets. Our turnkey laboratory setups include ergonomic anti-chemical lab furniture, fume extraction, and pure water purification plants.",
@@ -489,7 +493,8 @@ export const SERVICES_LIST = [
     tagline: "Strategic advisory, regulatory engineering, and technical consultancy for pharmaceutical manufacturing plants, biotech ventures, and global exporters.",
     icon: Pill,
     badge: "GMP & Regulatory Advisory",
-    heroImage: "/roys_ultrasound.png",
+    heroImage: "/images/roys/services/pharmaceutical-consultancy.jpg",
+    aboutImage: "/images/pharma/qc-laboratory.jpg",
     overview: [
       "The pharmaceutical and biotechnology sector operates in an intensively regulated global landscape. Roys & Roys International offers end-to-end pharmaceutical engineering and regulatory consultancy, guiding clients from initial facility concept design to international market approvals.",
       "Our team of senior pharmaceutical consultants, process engineers, and regulatory specialists provides comprehensive advisory in WHO-GMP, cGMP, and PIC/S compliance, facility layout engineering, process validation, and Common Technical Document (CTD / eCTD) dossier preparation.",
@@ -604,7 +609,8 @@ export const SERVICES_LIST = [
     tagline: "Connecting international healthcare manufacturers with governments, institutional buyers, and humanitarian organizations across 30+ nations.",
     icon: Globe,
     badge: "Global Sourcing & Trade",
-    heroImage: "/roys_hospital_interior.png",
+    heroImage: "/images/roys/services/international-procurement.jpg",
+    aboutImage: "/global_trade_supply_chain.jpg",
     overview: [
       "In an increasingly interconnected yet volatile global supply environment, reliable procurement is critical to healthcare security. Roys & Roys International acts as an accredited global procurement partner, sourcing medical devices, pharmaceuticals, hospital furniture, and specialized equipment from tier-1 manufacturers worldwide.",
       "We operate a sophisticated international sourcing network with direct manufacturer connections across Europe, North America, Japan, and Asia. Our procurement specialists manage every link in the value chain: vendor pre-qualification, competitive tendering, contract negotiation, customs compliance, and temperature-controlled international logistics.",
@@ -719,7 +725,8 @@ export const SERVICES_LIST = [
     tagline: "Maximizing healthcare equipment uptime, precision, and patient safety through certified biomedical engineering and round-the-clock technical support.",
     icon: ShieldCheck,
     badge: "Calibration & 24/7 Support",
-    heroImage: "/roys_hospital_interior.png",
+    heroImage: "/images/roys/services/biomedical-services.jpg",
+    aboutImage: "/team/medical_equipment.jpg",
     overview: [
       "Healthcare equipment failure directly compromises clinical outcomes and patient lives. Roys & Roys International offers dedicated Biomedical Engineering Services, ensuring that every piece of medical equipment in your facility operates with peak accuracy, electrical safety, and clinical reliability.",
       "Our team of certified biomedical engineers and technicians provides comprehensive lifecycle asset management, certified calibration, planned preventive maintenance (PPM), electrical safety testing (IEC 62353), and rapid 24/7 breakdown response.",
