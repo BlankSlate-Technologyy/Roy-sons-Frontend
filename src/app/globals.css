@@ -2909,3 +2909,23 @@ body.roys-roys-theme .whatsapp-tooltip-badge * {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
+
+/* ─────────────────────────────────────────────────────────
+   ROYS & ROYS BUTTON & HEADER WHITE TEXT GUARANTEE
+   Ensures text on header action buttons is always visible & white
+────────────────────────────────────────────────────────── */
+body.roys-roys-theme .roys-quote-btn,
+body.roys-roys-theme .roys-quote-btn *,
+body.roys-roys-theme header a.roys-quote-btn,
+body.roys-roys-theme header a.roys-quote-btn *,
+body.roys-roys-theme header button.roys-quote-btn,
+body.roys-roys-theme header button.roys-quote-btn *,
+body.roys-roys-theme .text-white,
+body.roys-roys-theme .text-white *,
+body.roys-roys-theme .btn-white-text,
+body.roys-roys-theme .btn-white-text * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}

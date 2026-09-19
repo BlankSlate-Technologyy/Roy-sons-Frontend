@@ -275,17 +275,19 @@ export default function RoysRoysPage() {
               <div data-aos="fade-up" data-aos-delay="300" className="flex flex-wrap items-center gap-3 mb-10">
                 <Link
                   href="/group-companies/roys-roys/what-we-do"
-                  className="px-5 py-2.5 rounded bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow flex items-center gap-1.5"
+                  className="roys-quote-btn px-5 py-2.5 rounded bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow flex items-center gap-1.5"
+                  style={{ color: "#ffffff" }}
                 >
-                  <span>Explore Our Capabilities</span>
-                  <ArrowRight size={14} />
+                  <span className="text-white" style={{ color: "#ffffff" }}>Explore Our Capabilities</span>
+                  <ArrowRight size={14} className="text-white" />
                 </Link>
                 <Link
                   href="/group-companies/roys-roys/contact"
-                  className="px-5 py-2.5 rounded border border-white/40 bg-white/5 hover:bg-white/10 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5"
+                  className="roys-quote-btn px-5 py-2.5 rounded border border-white/40 bg-white/5 hover:bg-white/10 text-white font-semibold text-xs uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5"
+                  style={{ color: "#ffffff" }}
                 >
-                  <span>Download Brochure</span>
-                  <ArrowUpRight size={14} />
+                  <span className="text-white" style={{ color: "#ffffff" }}>Download Brochure</span>
+                  <ArrowUpRight size={14} className="text-white" />
                 </Link>
               </div>
 

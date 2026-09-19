@@ -152,17 +152,19 @@ export default function IndustryDetailPage({ params }) {
               >
                 <a
                   href="#solutions"
-                  className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#b49438] via-[#d4af37] to-[#c5a059] hover:from-[#c5a059] hover:to-[#996515] text-[#061426] font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#b49438]/25 hover:shadow-[#b49438]/40 hover:scale-[1.02] cursor-pointer"
+                  className="roys-quote-btn px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#b49438] via-[#a8832a] to-[#8c6b1f] hover:brightness-110 text-white font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg shadow-black/30 hover:scale-[1.02] cursor-pointer"
+                  style={{ color: "#ffffff" }}
                 >
-                  <span>Explore Solutions</span>
-                  <ArrowRight size={15} />
+                  <span className="text-white font-black" style={{ color: "#ffffff" }}>Explore Solutions</span>
+                  <ArrowRight size={15} className="text-white" style={{ color: "#ffffff" }} />
                 </a>
                 <a
                   href="#about"
-                  className="px-6 py-3.5 rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 hover:border-white/50 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer backdrop-blur-sm"
+                  className="roys-quote-btn px-6 py-3.5 rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 hover:border-white/50 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer backdrop-blur-sm"
+                  style={{ color: "#ffffff" }}
                 >
-                  <span>Learn More</span>
-                  <ChevronRight size={14} />
+                  <span className="text-white font-bold" style={{ color: "#ffffff" }}>Learn More</span>
+                  <ChevronRight size={14} className="text-white" style={{ color: "#ffffff" }} />
                 </a>
                 <Link
                   href="/group-companies/roys-roys/industries"
@@ -580,16 +582,17 @@ export default function IndustryDetailPage({ params }) {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/group-companies/roys-roys/contact"
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#b49438] via-[#d4af37] to-[#c5a059] hover:from-[#c5a059] hover:to-[#996515] text-[#061426] font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-xl shadow-black/40 cursor-pointer"
+              className="roys-quote-btn px-8 py-4 rounded-xl bg-gradient-to-r from-[#b49438] via-[#a8832a] to-[#8c6b1f] hover:brightness-110 text-white font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-xl shadow-black/40 cursor-pointer"
+              style={{ color: "#ffffff" }}
             >
-              <span>Submit Sector Inquiry</span>
-              <ArrowRight size={15} />
+              <span className="text-white font-black" style={{ color: "#ffffff" }}>Submit Sector Inquiry</span>
+              <ArrowRight size={15} className="text-white" style={{ color: "#ffffff" }} />
             </Link>
             <Link
               href="/group-companies/roys-roys/industries"
               className="px-6 py-4 rounded-xl border border-white/30 hover:bg-white hover:text-[#061426] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer"
             >
-              <span>View All Industries</span>
+              <span className="text-white">View All Industries</span>
             </Link>
           </div>
         </div>
