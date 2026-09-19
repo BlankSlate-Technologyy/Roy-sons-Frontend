@@ -43,15 +43,15 @@ export default function IndustryDetailPage({ params }) {
       {/* ─── Breadcrumb ─────────────────────────────────────────────────────────── */}
       <div className="bg-[#f1f5f9] border-b border-[#e2e8f0] py-3 px-4 sm:px-6">
         <div className="mx-auto max-w-screen-xl flex items-center gap-2 text-xs text-[#64748b]">
-          <Link href="/group-companies/roys-roys" className="hover:text-[#113658] transition-colors">
+          <Link href="/group-companies/roys-roys" className="hover:text-[#113658] transition-colors font-medium">
             Home
           </Link>
           <ChevronRight size={13} />
-          <Link href="/group-companies/roys-roys/industries" className="hover:text-[#113658] transition-colors">
+          <Link href="/group-companies/roys-roys/industries" className="hover:text-[#113658] transition-colors font-medium">
             Industries We Serve
           </Link>
           <ChevronRight size={13} />
-          <span className="font-semibold text-[#113658] truncate">{industry.title}</span>
+          <span className="font-bold text-[#0f2b48] truncate">{industry.title}</span>
         </div>
       </div>
 
@@ -60,21 +60,21 @@ export default function IndustryDetailPage({ params }) {
         {/* Subtle Ambient Background Gradients & Glows */}
         <div className="absolute inset-0 select-none pointer-events-none overflow-hidden">
           {/* Top-Right Sapphire Glow */}
-          <div className="absolute -top-32 -right-32 w-[550px] h-[550px] bg-[#1d4ed8]/15 rounded-full blur-[120px]" />
+          <div className="absolute -top-32 -right-32 w-[550px] h-[550px] bg-[#1d4ed8]/20 rounded-full blur-[120px]" />
           {/* Bottom-Left Gold Aura */}
-          <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-[#b49438]/12 rounded-full blur-[130px]" />
+          <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-[#b49438]/15 rounded-full blur-[130px]" />
           {/* Subtle Grid Accent Pattern */}
           <div 
-            className="absolute inset-0 opacity-[0.035]"
+            className="absolute inset-0 opacity-[0.04]"
             style={{
-              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)",
+              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px)",
               backgroundSize: "28px 28px",
             }}
           />
         </div>
 
         <div className="relative z-10 mx-auto max-w-screen-xl">
-          {/* 2-Column Hero Grid: Left Content + Right Framed Hospital Showcase */}
+          {/* 2-Column Hero Grid: Left Content + Right Framed Visual Showcase */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
             {/* Left Column: Heading, Eyebrow, Badges & CTAs */}
@@ -84,7 +84,7 @@ export default function IndustryDetailPage({ params }) {
               <div
                 data-aos="fade-down"
                 data-aos-duration="600"
-                className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#0d223c]/90 border border-[#b49438]/40 shadow-sm"
+                className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0d223c]/90 border border-[#b49438]/40 shadow-sm"
               >
                 <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
                 <MainIcon size={14} className="text-[#d4af37]" />
@@ -93,42 +93,33 @@ export default function IndustryDetailPage({ params }) {
                 </span>
               </div>
 
-              {/* Eyebrow & Title */}
+              {/* Eyebrow & Complete Title */}
               <div className="space-y-3">
                 <p
                   data-aos="fade-up"
                   data-aos-delay="50"
-                  className="text-[#d4af37] text-xs sm:text-sm font-black uppercase tracking-[0.25em]"
+                  className="text-[#d4af37] text-xs sm:text-sm font-black uppercase tracking-[0.28em] drop-shadow-sm"
                 >
-                  {industry.eyebrow}
+                  INDUSTRIES WE SERVE
                 </p>
 
+                {/* Complete Title - Clean, Bold, Unclipped */}
                 <h1
                   data-aos="fade-up"
                   data-aos-delay="100"
                   data-aos-duration="700"
-                  className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-black tracking-tight leading-[1.14] text-white"
+                  className="text-3xl sm:text-4xl lg:text-[46px] xl:text-[52px] font-black tracking-tight leading-[1.12] text-white"
                 >
-                  {industry.title.includes("&") ? (
-                    <>
-                      <span>{industry.title.split("&")[0].trim()}</span>{" "}
-                      <span className="text-[#38bdf8]">&amp;</span>{" "}
-                      <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f5e7b2] to-[#c5a059]">
-                        {industry.title.split("&")[1].trim()}
-                      </span>
-                    </>
-                  ) : (
-                    <span>{industry.title}</span>
-                  )}
+                  {industry.title}
                 </h1>
               </div>
 
-              {/* Tagline / Subtitle */}
+              {/* High-Impact Tagline / Subtitle */}
               <p
                 data-aos="fade-up"
                 data-aos-delay="200"
                 data-aos-duration="700"
-                className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl font-normal"
+                className="text-slate-100 text-base sm:text-lg lg:text-[19px] leading-relaxed max-w-2xl font-normal drop-shadow-sm"
               >
                 {industry.tagline}
               </p>
@@ -139,36 +130,43 @@ export default function IndustryDetailPage({ params }) {
                 data-aos-delay="250"
                 className="flex flex-wrap items-center gap-2.5 pt-1"
               >
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-xs font-semibold text-slate-100 shadow-xs">
                   <ShieldCheck size={14} className="text-[#38bdf8]" />
-                  <span>HTM 02-01 &amp; ISO 13485</span>
+                  <span>ISO 9001 &amp; ISO 13485 Certified</span>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-xs font-semibold text-slate-100 shadow-xs">
                   <CheckCircle2 size={14} className="text-emerald-400" />
                   <span>Turnkey EPC Execution</span>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/15 text-xs font-semibold text-slate-100 shadow-xs">
                   <Award size={14} className="text-[#d4af37]" />
-                  <span>30+ Years Clinical Engineering</span>
+                  <span>30+ Years Industry Excellence</span>
                 </div>
               </div>
 
-              {/* CTAs */}
+              {/* CTAs: Recommended Hero Structure [ Explore Solutions ] [ Learn More ] */}
               <div
                 data-aos="fade-up"
                 data-aos-delay="300"
                 className="flex flex-wrap items-center gap-3.5 pt-3"
               >
-                <Link
-                  href="/group-companies/roys-roys/contact"
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#b49438] via-[#d4af37] to-[#c5a059] hover:from-[#c5a059] hover:to-[#996515] text-[#061426] font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#b49438]/25 hover:shadow-[#b49438]/40 hover:scale-[1.02] cursor-pointer"
+                <a
+                  href="#solutions"
+                  className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-[#b49438] via-[#d4af37] to-[#c5a059] hover:from-[#c5a059] hover:to-[#996515] text-[#061426] font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#b49438]/25 hover:shadow-[#b49438]/40 hover:scale-[1.02] cursor-pointer"
                 >
-                  <span>Inquire For This Sector</span>
+                  <span>Explore Solutions</span>
                   <ArrowRight size={15} />
-                </Link>
+                </a>
+                <a
+                  href="#about"
+                  className="px-6 py-3.5 rounded-xl border border-white/30 bg-white/10 hover:bg-white/20 hover:border-white/50 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer backdrop-blur-sm"
+                >
+                  <span>Learn More</span>
+                  <ChevronRight size={14} />
+                </a>
                 <Link
                   href="/group-companies/roys-roys/industries"
-                  className="px-5 py-3.5 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer"
+                  className="px-4 py-3.5 text-slate-300 hover:text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors"
                 >
                   <ArrowLeft size={14} />
                   <span>All Industries</span>
@@ -176,45 +174,45 @@ export default function IndustryDetailPage({ params }) {
               </div>
             </div>
 
-            {/* Right Column: Luxury Framed Visual Showcase Card */}
+            {/* Right Column: Luxury Framed Visual Showcase Card (Hero Image) */}
             <div
               className="lg:col-span-5"
               data-aos="fade-left"
               data-aos-delay="200"
               data-aos-duration="800"
             >
-              <div className="relative w-full h-[360px] sm:h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)] bg-[#0c1f36] group">
+              <div className="relative w-full h-[380px] sm:h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)] bg-[#0c1f36] group">
                 <Image
                   src={industry.heroImage || "/images/roys/hospital_tertiary_hero.jpg"}
-                  alt={industry.title}
+                  alt={`${industry.title} Showcase`}
                   fill
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   priority
                 />
 
                 {/* Subtle vignette gradient for text contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#061426]/95 via-[#061426]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#061426]/95 via-[#061426]/30 to-transparent" />
 
                 {/* Top Corner Floating Spec Badge */}
-                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#061426]/85 backdrop-blur-md border border-white/15 text-xs font-bold text-white shadow-lg">
+                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#061426]/90 backdrop-blur-md border border-white/20 text-xs font-bold text-white shadow-lg">
                   <Award size={14} className="text-[#d4af37]" />
-                  <span className="text-[11px] tracking-wide">Grade-A Healthcare Facility Spec</span>
+                  <span className="text-[11px] tracking-wide font-extrabold text-white">Grade-A Sector Spec</span>
                 </div>
 
                 {/* Bottom Overlay Glass Card */}
-                <div className="absolute bottom-4 inset-x-4 p-4 rounded-xl sm:rounded-2xl bg-[#061426]/90 backdrop-blur-md border border-white/15 shadow-2xl">
+                <div className="absolute bottom-4 inset-x-4 p-4 rounded-xl sm:rounded-2xl bg-[#061426]/90 backdrop-blur-md border border-white/20 shadow-2xl">
                   <div className="flex items-center justify-between gap-2 mb-1.5">
                     <span className="text-xs font-black uppercase text-[#d4af37] tracking-wider flex items-center gap-1.5">
                       <Sparkles size={13} />
-                      Turnkey Medical Infrastructure
+                      {industry.title} Solutions
                     </span>
-                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 rounded-full flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       Active
                     </span>
                   </div>
-                  <p className="text-[11px] sm:text-xs text-slate-300 font-medium leading-relaxed">
-                    Radiology &bull; Modular OTs &bull; Medical Gases (MGPS) &bull; Critical Care ICUs &bull; Turnkey MEP
+                  <p className="text-[11px] sm:text-xs text-slate-200 font-medium leading-relaxed">
+                    Turnkey Engineering &bull; Advanced Technology &bull; Regulatory Compliance &bull; 24/7 SLA
                   </p>
                 </div>
               </div>
@@ -224,7 +222,7 @@ export default function IndustryDetailPage({ params }) {
 
           {/* Quick Stat Highlights - Solid dark cards with 100% contrast */}
           {industry.stats && (
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 mt-12 pt-8 border-t border-white/10">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 mt-12 pt-8 border-t border-white/15">
               {industry.stats.map((stat, i) => {
                 const StatIcon =
                   i === 0 ? Building2 : i === 1 ? HeartPulse : i === 2 ? Layers : ShieldCheck;
@@ -234,16 +232,16 @@ export default function IndustryDetailPage({ params }) {
                     key={i}
                     data-aos="fade-up"
                     data-aos-delay={300 + i * 70}
-                    className="p-4 sm:p-5 rounded-2xl bg-[#0b2038]/90 border border-white/12 hover:border-[#b49438]/50 shadow-xl transition-all duration-300 group flex items-center gap-3.5"
+                    className="p-4 sm:p-5 rounded-2xl bg-[#0b2038]/95 border border-white/15 hover:border-[#b49438]/50 shadow-xl transition-all duration-300 group flex items-center gap-3.5"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#b49438]/15 border border-[#b49438]/30 text-[#d4af37] flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-[#b49438]/25 transition-all">
+                    <div className="w-10 h-10 rounded-xl bg-[#b49438]/20 border border-[#b49438]/35 text-[#d4af37] flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:bg-[#b49438]/30 transition-all">
                       <StatIcon size={18} />
                     </div>
                     <div>
                       <p className="text-2xl sm:text-3xl font-black text-white group-hover:text-[#d4af37] tracking-tight transition-colors">
                         {stat.value}
                       </p>
-                      <p className="text-[11px] sm:text-xs text-slate-300 font-bold uppercase tracking-wider leading-snug mt-0.5">
+                      <p className="text-[11px] sm:text-xs text-slate-200 font-bold uppercase tracking-wider leading-snug mt-0.5">
                         {stat.label}
                       </p>
                     </div>
@@ -271,11 +269,11 @@ export default function IndustryDetailPage({ params }) {
                   href={`/group-companies/roys-roys/industries/${item.slug}`}
                   className={`px-3 py-1.5 rounded-md text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shrink-0 ${
                     isActive
-                      ? "bg-[#113658] text-white shadow-sm"
-                      : "bg-[#f8fafc] text-[#475569] hover:bg-[#e2e8f0] hover:text-[#113658]"
+                      ? "bg-[#0f2b48] text-white shadow-sm"
+                      : "bg-[#f8fafc] text-[#475569] hover:bg-[#e2e8f0] hover:text-[#0f2b48]"
                   }`}
                 >
-                  <TabIcon size={13} className={isActive ? "text-[#B49438]" : "text-[#64748b]"} />
+                  <TabIcon size={13} className={isActive ? "text-[#d4af37]" : "text-[#64748b]"} />
                   <span>{item.label.replace("\n", " ")}</span>
                 </Link>
               );
@@ -284,16 +282,16 @@ export default function IndustryDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ─── Sector Overview ─────────────────────────────────────────────────── */}
-      <section className="py-16 px-6 bg-[#f8fafc]">
+      {/* ─── Sector Profile / About Section (Distinct Image) ──────────────────── */}
+      <section id="about" className="py-16 px-6 bg-[#f8fafc] scroll-mt-20">
         <div className="mx-auto max-w-screen-xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7" data-aos="fade-right" data-aos-duration="700">
             <div className="inline-flex items-center gap-2 text-[#009088] text-xs font-extrabold uppercase tracking-[0.2em] mb-3">
               <Sparkles size={14} />
               <span>SECTOR PROFILE &amp; REQUIREMENTS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#113658] tracking-tight leading-snug mb-6">
-              Tailored Healthcare &amp; Infrastructure for {industry.title}
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0f2b48] tracking-tight leading-snug mb-6">
+              Tailored Solutions &amp; Infrastructure for {industry.title}
             </h2>
             <div className="space-y-4 text-[#334155] leading-relaxed text-base sm:text-[17px]">
               {industry.overview.map((para, idx) => (
@@ -323,24 +321,25 @@ export default function IndustryDetailPage({ params }) {
             </div>
           </div>
 
+          {/* Right: Distinct About Showcase Image */}
           <div className="lg:col-span-5" data-aos="fade-left" data-aos-duration="800">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-[#113658]">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-[#0f2b48] group">
               <div className="relative h-80 sm:h-96 w-full">
                 <Image
-                  src={industry.heroImage || "/roys_hospital_interior.png"}
-                  alt={industry.title}
+                  src={industry.aboutImage || "/images/roys/hospital_diagnostic_suite.jpg"}
+                  alt={`${industry.title} Facilities`}
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020f1f]/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020f1f]/85 via-transparent to-transparent" />
               </div>
-              <div className="p-6 bg-[#113658] text-white">
+              <div className="p-6 bg-[#0f2b48] text-white">
                 <div className="flex items-center gap-3 mb-2">
-                  <MainIcon size={24} className="text-[#B49438]" />
-                  <h3 className="text-lg font-black">{industry.title}</h3>
+                  <MainIcon size={24} className="text-[#d4af37]" />
+                  <h3 className="text-lg font-black text-white">{industry.title}</h3>
                 </div>
-                <p className="text-sm text-white/90 leading-relaxed">
-                  Specialized solutions designed to meet the rigorous clinical, technical, and regulatory requirements of this sector.
+                <p className="text-sm text-slate-200 leading-relaxed">
+                  Specialized solutions designed to meet the rigorous clinical, technical, and operational requirements of this sector.
                 </p>
               </div>
             </div>
@@ -349,11 +348,11 @@ export default function IndustryDetailPage({ params }) {
       </section>
 
       {/* ─── Key Solution Pillars ────────────────────────────────────────────── */}
-      <section className="py-16 px-6 bg-white">
+      <section id="solutions" className="py-16 px-6 bg-white scroll-mt-20">
         <div className="mx-auto max-w-screen-xl">
           <SectionHeading
             eyebrow="TAILORED CAPABILITIES"
-            title={`Key Solutions for ${industry.label.replace("\n", " ")}`}
+            title={`Key Solutions for ${industry.title}`}
             subtitle="Customized systems, certified infrastructure, and specialized procurement designed specifically for this sector."
           />
 
@@ -365,20 +364,20 @@ export default function IndustryDetailPage({ params }) {
                   key={idx}
                   data-aos="fade-up"
                   data-aos-delay={idx * 100}
-                  className="p-6 rounded-xl border border-[#e2e8f0] bg-white hover:border-[#113658] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
+                  className="p-6 rounded-xl border border-[#e2e8f0] bg-white hover:border-[#0f2b48] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-12 h-12 rounded-lg bg-[#113658]/10 text-[#113658] flex items-center justify-center mb-5 group-hover:bg-[#113658] group-hover:text-white transition-colors duration-300">
+                    <div className="w-12 h-12 rounded-lg bg-[#0f2b48]/10 text-[#0f2b48] flex items-center justify-center mb-5 group-hover:bg-[#0f2b48] group-hover:text-white transition-colors duration-300">
                       <PillarIcon size={24} />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-black text-[#113658] mb-2.5 group-hover:text-[#009088] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-black text-[#0f2b48] mb-2.5 group-hover:text-[#009088] transition-colors">
                       {pillar.title}
                     </h3>
-                    <p className="text-[15.5px] sm:text-[16.5px] text-[#475569] leading-relaxed">
+                    <p className="text-[15px] sm:text-[16px] text-[#475569] leading-relaxed">
                       {pillar.desc}
                     </p>
                   </div>
-                  <div className="mt-4 pt-4 border-t border-[#f1f5f9] flex items-center gap-1.5 text-xs font-extrabold text-[#113658] uppercase tracking-wider group-hover:text-[#009088]">
+                  <div className="mt-4 pt-4 border-t border-[#f1f5f9] flex items-center gap-1.5 text-xs font-extrabold text-[#0f2b48] uppercase tracking-wider group-hover:text-[#009088]">
                     <span>Standardized Workflow</span>
                     <CheckCircle2 size={13} className="text-[#009088]" />
                   </div>
@@ -393,13 +392,13 @@ export default function IndustryDetailPage({ params }) {
       <section className="py-20 px-6 bg-[#0c233c] text-white">
         <div className="mx-auto max-w-screen-xl">
           <div data-aos="fade-up" className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-[#B49438] text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] mb-2">
+            <p className="text-[#d4af37] text-xs sm:text-sm font-extrabold uppercase tracking-[0.25em] mb-2">
               EQUIPMENT &amp; SYSTEM LINEUP
             </p>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
               Featured Systems for {industry.title}
             </h2>
-            <div className="w-14 h-1 bg-[#B49438] mx-auto mt-4 rounded-full" />
+            <div className="w-14 h-1 bg-[#d4af37] mx-auto mt-4 rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
@@ -408,12 +407,12 @@ export default function IndustryDetailPage({ params }) {
                 key={idx}
                 data-aos="zoom-in"
                 data-aos-delay={idx * 60}
-                className="flex items-center gap-4 p-4.5 sm:p-5 rounded-xl bg-white/[0.07] border border-white/15 hover:bg-white/[0.12] hover:border-[#B49438]/50 transition-all duration-300 shadow-md group"
+                className="flex items-center gap-4 p-4.5 sm:p-5 rounded-xl bg-white/[0.08] border border-white/15 hover:bg-white/[0.14] hover:border-[#d4af37]/60 transition-all duration-300 shadow-md group"
               >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#B49438]/25 flex items-center justify-center shrink-0 text-[#B49438] group-hover:bg-[#B49438] group-hover:text-white transition-colors duration-300">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#d4af37]/25 flex items-center justify-center shrink-0 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-[#0c233c] transition-colors duration-300">
                   <CheckCircle2 size={18} />
                 </div>
-                <span className="text-[16px] sm:text-[17px] font-bold text-white leading-snug">
+                <span className="text-[15.5px] sm:text-[16.5px] font-bold text-white leading-snug">
                   {tech}
                 </span>
               </div>
@@ -437,16 +436,16 @@ export default function IndustryDetailPage({ params }) {
                 key={idx}
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
-                className="relative p-6 sm:p-7 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] hover:shadow-xl hover:border-[#113658]/30 transition-all duration-300 flex flex-col justify-between"
+                className="relative p-6 sm:p-7 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] hover:shadow-xl hover:border-[#0f2b48]/30 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <div className="text-3xl sm:text-4xl font-black text-[#113658]/25 mb-3 font-mono">
+                  <div className="text-3xl sm:text-4xl font-black text-[#0f2b48]/30 mb-3 font-mono">
                     {w.step}
                   </div>
-                  <h3 className="text-lg sm:text-xl font-black text-[#113658] mb-2.5">
+                  <h3 className="text-lg sm:text-xl font-black text-[#0f2b48] mb-2.5">
                     {w.title}
                   </h3>
-                  <p className="text-[15.5px] sm:text-[16.5px] text-[#475569] leading-relaxed font-normal">
+                  <p className="text-[15px] sm:text-[16px] text-[#475569] leading-relaxed font-normal">
                     {w.desc}
                   </p>
                 </div>
@@ -467,7 +466,7 @@ export default function IndustryDetailPage({ params }) {
                 <Award size={18} />
                 <span>STRATEGIC ADVANTAGES</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-[#113658] mb-7 tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-black text-[#0f2b48] mb-7 tracking-tight">
                 Why Partner With Roys &amp; Roys
               </h3>
               <div className="space-y-4 sm:space-y-5">
@@ -476,7 +475,7 @@ export default function IndustryDetailPage({ params }) {
                     <div className="w-6 h-6 rounded-full bg-[#009088]/15 text-[#009088] flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 size={16} />
                     </div>
-                    <p className="text-base sm:text-[17px] text-[#334155] font-medium leading-relaxed">
+                    <p className="text-base sm:text-[16.5px] text-[#334155] font-medium leading-relaxed">
                       {benefit}
                     </p>
                   </div>
@@ -486,9 +485,9 @@ export default function IndustryDetailPage({ params }) {
           </div>
 
           {/* Target Departments */}
-          <div data-aos="fade-left" data-aos-duration="700" className="p-8 sm:p-10 rounded-2xl bg-[#113658] text-white shadow-xl flex flex-col justify-between">
+          <div data-aos="fade-left" data-aos-duration="700" className="p-8 sm:p-10 rounded-2xl bg-[#0f2b48] text-white shadow-xl flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-2 text-[#B49438] text-xs sm:text-sm font-extrabold uppercase tracking-widest mb-3.5">
+              <div className="inline-flex items-center gap-2 text-[#d4af37] text-xs sm:text-sm font-extrabold uppercase tracking-widest mb-3.5">
                 <Building2 size={18} />
                 <span>DEPARTMENTS &amp; DIVISIONS SERVED</span>
               </div>
@@ -499,20 +498,20 @@ export default function IndustryDetailPage({ params }) {
                 {industry.targetDepts.map((dept, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-white/5 border border-white/10 text-[15.5px] sm:text-base font-semibold text-white/95 hover:bg-white/10 transition-colors"
+                    className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-white/10 border border-white/15 text-[15px] sm:text-base font-semibold text-white hover:bg-white/15 transition-colors"
                   >
-                    <Building2 size={18} className="text-[#B49438] shrink-0" />
+                    <Building2 size={18} className="text-[#d4af37] shrink-0" />
                     <span>{dept}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="pt-6 border-t border-white/10 flex items-center justify-between">
-              <span className="text-xs sm:text-sm text-white/70 uppercase tracking-wider font-bold">
+            <div className="pt-6 border-t border-white/15 flex items-center justify-between">
+              <span className="text-xs sm:text-sm text-slate-300 uppercase tracking-wider font-bold">
                 Quality Assurance
               </span>
-              <span className="text-xs sm:text-sm font-extrabold text-[#B49438]">
+              <span className="text-xs sm:text-sm font-extrabold text-[#d4af37]">
                 ISO 9001 / 13485 Certified
               </span>
             </div>
@@ -537,24 +536,24 @@ export default function IndustryDetailPage({ params }) {
                   key={idx}
                   data-aos="fade-up"
                   data-aos-delay={idx * 80}
-                  className="rounded-xl border border-[#e2e8f0] overflow-hidden transition-all duration-200 hover:border-[#113658]/30 shadow-sm"
+                  className="rounded-xl border border-[#e2e8f0] overflow-hidden transition-all duration-200 hover:border-[#0f2b48]/30 shadow-sm"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? -1 : idx)}
                     className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 bg-white hover:bg-[#f8fafc] transition-colors cursor-pointer"
                   >
-                    <span className="text-base sm:text-lg font-bold text-[#113658] leading-snug">
+                    <span className="text-base sm:text-lg font-bold text-[#0f2b48] leading-snug">
                       {faq.q}
                     </span>
                     <ChevronDown
                       size={20}
-                      className={`text-[#113658] shrink-0 transition-transform duration-200 ${
+                      className={`text-[#0f2b48] shrink-0 transition-transform duration-200 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     />
                   </button>
                   {isOpen && (
-                    <div className="p-5 sm:p-6 pt-0 bg-[#f8fafc] text-base sm:text-[16.5px] text-[#334155] leading-relaxed border-t border-[#f1f5f9]">
+                    <div className="p-5 sm:p-6 pt-0 bg-[#f8fafc] text-base sm:text-[16px] text-[#334155] leading-relaxed border-t border-[#f1f5f9]">
                       {faq.a}
                     </div>
                   )}
@@ -566,31 +565,31 @@ export default function IndustryDetailPage({ params }) {
       </section>
 
       {/* ─── CTA Banner ───────────────────────────────────────────────────────── */}
-      <section data-aos="fade-up" data-aos-duration="700" className="py-16 px-6 bg-[#020f1f] text-white">
+      <section data-aos="fade-up" data-aos-duration="700" className="py-16 px-6 bg-[#061426] text-white">
         <div className="mx-auto max-w-screen-xl text-center">
-          <p className="text-[#B49438] text-xs font-extrabold uppercase tracking-[0.3em] mb-3">
+          <p className="text-[#d4af37] text-xs font-extrabold uppercase tracking-[0.3em] mb-3">
             COLLABORATE WITH ROYS &amp; ROYS
           </p>
           <h2 className="text-2xl sm:text-4xl font-black mb-4 text-white">
             Need Solutions for {industry.title}?
           </h2>
-          <p className="text-white/70 max-w-2xl mx-auto text-sm sm:text-base mb-8">
+          <p className="text-slate-300 max-w-2xl mx-auto text-sm sm:text-base mb-8">
             Our sector specialists are ready to discuss tender specifications, customized product configurations, institutional pricing, and site planning.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/group-companies/roys-roys/contact"
-              className="px-8 py-4 rounded-sm bg-[#B49438] hover:bg-[#009088] text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-xl shadow-black/40"
+              className="px-8 py-4 rounded-xl bg-gradient-to-r from-[#b49438] via-[#d4af37] to-[#c5a059] hover:from-[#c5a059] hover:to-[#996515] text-[#061426] font-black text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2 shadow-xl shadow-black/40 cursor-pointer"
             >
               <span>Submit Sector Inquiry</span>
               <ArrowRight size={15} />
             </Link>
             <Link
               href="/group-companies/roys-roys/industries"
-              className="px-6 py-4 rounded-sm border border-white/30 hover:bg-white hover:text-[#020f1f] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300"
+              className="px-6 py-4 rounded-xl border border-white/30 hover:bg-white hover:text-[#061426] text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 cursor-pointer"
             >
-              <span>View All</span>
+              <span>View All Industries</span>
             </Link>
           </div>
         </div>

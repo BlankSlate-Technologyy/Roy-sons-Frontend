@@ -174,12 +174,12 @@ const CONFIGURATOR_ACCORDIONS = [
 const INDUSTRIES_8 = [
   { title: "Hospitals",                 icon: Building2,      slug: "hospitals" },
   { title: "Government",                icon: Building,       slug: "government" },
-  { title: "Military & Defence",        icon: ShieldCheck,    slug: "military-healthcare" },
-  { title: "Research Institutions",     icon: Microscope,     slug: "research-centers" },
-  { title: "Educational Institutions",  icon: GraduationCap,  slug: "universities" },
-  { title: "Pharma Companies",          icon: Pill,           slug: "pharmaceutical-industry" },
-  { title: "Hotels & Labs",             icon: FlaskConical,   slug: "diagnostic-labs" },
-  { title: "Industrial & Corporate",    icon: Factory,        slug: "pharmaceutical-industry" },
+  { title: "Military & Defence",        icon: ShieldCheck,    slug: "military-defence" },
+  { title: "Research Institutions",     icon: Microscope,     slug: "research-institutions" },
+  { title: "Educational Institutions",  icon: GraduationCap,  slug: "educational-institutions" },
+  { title: "Pharma Companies",          icon: Pill,           slug: "pharma-companies" },
+  { title: "Diagnostic Labs",           icon: FlaskConical,   slug: "diagnostic-labs" },
+  { title: "Industrial & Corporate",    icon: Factory,        slug: "industrial-corporate" },
 ];
 
 const WHY_CHOOSE_8 = [

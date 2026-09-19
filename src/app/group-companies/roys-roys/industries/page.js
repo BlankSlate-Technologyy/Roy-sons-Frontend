@@ -72,8 +72,8 @@ export default function IndustriesPage() {
                   <h3 className="text-base font-bold text-[#0f2b48] group-hover:text-[#009688] transition-colors mb-1.5">
                     {ind.title}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed mb-3">
-                    {ind.desc}
+                  <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-3 line-clamp-3">
+                    {ind.desc || ind.tagline}
                   </p>
                 </div>
                 <span className="inline-flex items-center gap-1 text-xs font-bold text-[#0a7a8c] group-hover:text-[#009688] group-hover:translate-x-0.5 transition-all mt-2">

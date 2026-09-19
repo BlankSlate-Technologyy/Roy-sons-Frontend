@@ -19,17 +19,22 @@ import {
   Sparkles,
   FileCheck,
   TrendingUp,
+  GraduationCap,
+  Building,
+  Factory,
+  Check,
 } from "lucide-react";
 
 export const INDUSTRIES_LIST = [
+  // ─── 1. HOSPITALS ──────────────────────────────────────────────────────────
   {
     slug: "hospitals",
     label: "Hospitals",
-    title: "Hospitals & Tertiary Medical Centers",
-    eyebrow: "COMPREHENSIVE HEALTHCARE FACILITY SOLUTIONS",
-    tagline: "Equipping public, private, and teaching hospitals with turnkey medical systems, critical care units, surgical suites, and MEP infrastructure.",
+    title: "Hospitals",
+    eyebrow: "INDUSTRIES WE SERVE",
+    tagline: "Advanced solutions supporting modern healthcare environments, patient care, medical infrastructure, and operational excellence.",
     icon: Building2,
-    badge: "Tertiary & General Hospitals",
+    badge: "Healthcare & Tertiary Centers",
     heroImage: "/images/roys/hospital_tertiary_hero.jpg",
     aboutImage: "/images/roys/hospital_diagnostic_suite.jpg",
     overview: [
@@ -139,18 +144,21 @@ export const INDUSTRIES_LIST = [
       },
     ],
   },
+
+  // ─── 2. GOVERNMENT ─────────────────────────────────────────────────────────
   {
     slug: "government",
     label: "Government",
-    title: "Government Healthcare Organizations",
-    eyebrow: "NATIONAL HEALTHCARE INFRASTRUCTURE & INSTITUTIONAL TENDERS",
-    tagline: "Trusted partner for federal and provincial health ministries, public hospital networks, and national healthcare modernization initiatives.",
-    icon: ShieldCheck,
+    title: "Government",
+    eyebrow: "INDUSTRIES WE SERVE",
+    tagline: "Reliable solutions supporting public institutions, government operations, infrastructure, and essential services.",
+    icon: Building,
     badge: "Public Sector & Ministries",
-    heroImage: "/roys_hospital_interior.png",
+    heroImage: "/federal_ministries_hero.jpg",
+    aboutImage: "/provincial_gov_hero.jpg",
     overview: [
-      "Government healthcare programs demand institutional accountability, rigorous regulatory compliance, transparent public procurement, and large-scale delivery capabilities. Roys & Roys International is an accredited partner for federal and provincial healthcare ministries and municipal health authorities.",
-      "We specialize in managing large-scale national healthcare tenders, equipping District Headquarter (DHQ) and Tehsil Headquarter (THQ) hospitals, rural health centers (RHC), and regional medical emergency fleets.",
+      "Government public institutions and ministries demand institutional accountability, rigorous regulatory compliance, transparent public procurement, and large-scale delivery capabilities. Roys & Roys International is an accredited partner for federal and provincial healthcare ministries and municipal health authorities.",
+      "We specialize in managing large-scale national tenders, equipping District Headquarter (DHQ) and Tehsil Headquarter (THQ) hospitals, rural health centers (RHC), and regional medical emergency fleets.",
       "Our team provides comprehensive documentation, regulatory import compliance, performance security guarantees, and multi-year lifecycle maintenance agreements tailored to public sector frameworks."
     ],
     stats: [
@@ -255,17 +263,20 @@ export const INDUSTRIES_LIST = [
       },
     ],
   },
+
+  // ─── 3. MILITARY & DEFENCE ────────────────────────────────────────────────
   {
-    slug: "military-healthcare",
-    label: "Military\nHealthcare",
-    title: "Military Healthcare & Defense Medical Corps",
-    eyebrow: "TACTICAL, TRAUMA & COMBAT-READY MEDICAL INFRASTRUCTURE",
-    tagline: "Delivering mission-critical medical technologies, field hospitals, trauma centers, and specialized healthcare solutions for armed forces institutions.",
-    icon: Star,
-    badge: "Defense & Armed Forces",
-    heroImage: "/roys_hospital_interior.png",
+    slug: "military-defence",
+    label: "Military & Defence",
+    title: "Military & Defence",
+    eyebrow: "INDUSTRIES WE SERVE",
+    tagline: "Trusted solutions designed to support defence healthcare, critical infrastructure, operational readiness, and institutional requirements.",
+    icon: ShieldCheck,
+    badge: "Defense & Critical Infrastructure",
+    heroImage: "/armed_forces_hero.jpg",
+    aboutImage: "/services/defense-2.jpg",
     overview: [
-      "Military healthcare operations demand rugged durability, extreme reliability, rapid deployability, and highest security standards. Roys & Roys International has a long-standing history of equipping military hospitals, garrison medical centers, and rapid-deployment field trauma units.",
+      "Military healthcare operations and defense installations demand rugged durability, extreme reliability, rapid deployability, and highest security standards. Roys & Roys International has a long-standing history of equipping military hospitals, garrison medical centers, and rapid-deployment field trauma units.",
       "We deliver heavy medical systems for Combined Military Hospitals (CMH), tactical transportable medical containers, ruggedized patient monitors, battlefield resuscitation kits, and high-field diagnostic imaging suites.",
       "Our defense solutions are engineered to withstand demanding environments, power fluctuations, and tactical relocations while ensuring uncompromised clinical excellence for armed forces personnel and their families."
     ],
@@ -371,131 +382,18 @@ export const INDUSTRIES_LIST = [
       },
     ],
   },
+
+  // ─── 4. RESEARCH INSTITUTIONS ──────────────────────────────────────────────
   {
-    slug: "universities",
-    label: "Universities",
-    title: "Universities & Medical Colleges",
-    eyebrow: "ACADEMIC EXCELLENCE & HEALTHCARE EDUCATION",
-    tagline: "Empowering medical universities, teaching hospitals, and nursing colleges with clinical simulation labs, analytical instrumentation, and teaching technology.",
-    icon: Award,
-    badge: "Medical Colleges & Academia",
-    heroImage: "/roys_mri_scanner.png",
-    overview: [
-      "Educating the next generation of physicians, surgeons, and healthcare scientists requires advanced educational infrastructure, clinical simulation centers, and multi-user diagnostic equipment. Roys & Roys International works closely with medical universities, teaching institutes, and nursing colleges.",
-      "We design and equip advanced high-fidelity clinical skills simulation labs, anatomy dissecting suites, digital pathology teaching stations, and full-scale teaching hospital wards.",
-      "Our solutions bridge the gap between academic theory and practical clinical reality, giving students hands-on experience with modern medical systems used in world-class hospitals."
-    ],
-    stats: [
-      { value: "35+", label: "Medical Colleges Equipped" },
-      { value: "50,000+", label: "Medical Students Trained" },
-      { value: "100+", label: "Simulation Labs Built" },
-      { value: "100%", label: "PMDC / HEC Compliance" },
-    ],
-    keyPillars: [
-      {
-        title: "Clinical Simulation & Skills Labs",
-        desc: "High-fidelity patient simulators, virtual reality (VR) surgical trainers, CPR mannequins, and automated feedback clinical skill stations.",
-        icon: Stethoscope,
-      },
-      {
-        title: "Digital Pathology & Multi-Head Microscopy",
-        desc: "Multi-head teaching microscopes with 4K camera projection, virtual slide scanners, and digital histology classroom software.",
-        icon: Microscope,
-      },
-      {
-        title: "Teaching Hospital Ward Equipment",
-        desc: "Hospital-grade teaching beds, ICU demonstration stations, anesthesia simulator workstations, and multi-parameter monitors.",
-        icon: Building2,
-      },
-      {
-        title: "Biochemistry & Physiology Student Labs",
-        desc: "Benchtop spectrophotometers, student centrifuges, digital physiology data acquisition systems, and electrophoretic systems.",
-        icon: FlaskConical,
-      },
-      {
-        title: "Anatomy & Mortuary Equipment",
-        desc: "Stainless steel cadaver dissection tables, mortuary refrigeration units, embalming stations, and 3D interactive virtual anatomy tables.",
-        icon: Layers,
-      },
-      {
-        title: "Medical IT & Audio-Visual Classrooms",
-        desc: "Live OT video streaming systems for lecture halls, PACS educational archiving, and integrated medical e-learning auditoriums.",
-        icon: Zap,
-      },
-    ],
-    technologies: [
-      "High-Fidelity Adult, Pediatric & Obstetric Mannequin Simulators",
-      "Virtual Reality Laparoscopic & Endoscopic Surgical Trainers",
-      "Multi-Head 5/10-User Optical & Digital Teaching Microscopes",
-      "3D Interactive Virtual Dissection Anatomy Display Tables",
-      "Live 4K OT-to-Auditorium Surgical Broadcasting Systems",
-      "Multi-Channel Human Physiology Student Data Recorders",
-      "Anatomy Cadaver Dissection & Preservation Stations",
-      "Benchtop Automated Clinical Chemistry Training Analyzers",
-      "Simulated ICU Bedhead Consoles with Medical Gas Simulators",
-      "Digital OSCE (Objective Structured Clinical Exam) Recording Systems",
-    ],
-    workflow: [
-      {
-        step: "01",
-        title: "Curriculum & Accreditation Review",
-        desc: "Aligning equipment lists with university curricula and regulatory medical council (PMDC / HEC / WFME) accreditation standards.",
-      },
-      {
-        step: "02",
-        title: "Simulation Lab Architectural Design",
-        desc: "Designing multi-station skills labs with one-way observation glass, control rooms, and debriefing audio-visual systems.",
-      },
-      {
-        step: "03",
-        title: "Instrument Installation & Network Setup",
-        desc: "Uncrating, assembly, network integration, and calibration of all analytical and simulation instruments.",
-      },
-      {
-        step: "04",
-        title: "Faculty Training & Workshop Delivery",
-        desc: "Hands-on training for professors and lab instructors to maximize simulation teaching impact.",
-      },
-    ],
-    benefits: [
-      "Compliant with international WFME, PMDC, and Higher Education guidelines",
-      "State-of-the-art simulation preparing students for real-world clinical practice",
-      "Modular classroom designs adaptable to expanding class sizes",
-      "Long-term warranty and curriculum-aligned equipment replacement plans",
-      "Direct technical support for university examination cycles (OSCE/OSPE)",
-    ],
-    targetDepts: [
-      "Undergraduate & Postgraduate Medical Colleges",
-      "Nursing & Allied Health Sciences Institutes",
-      "Dental Colleges & Oral Surgery Simulation Centers",
-      "Pharmacy & Pharmaceutical Sciences Faculties",
-      "University Teaching Hospitals & Clinical Centers",
-      "Anatomy, Histology & Pathology Academic Departments",
-    ],
-    faqs: [
-      {
-        q: "Do your simulation products meet medical council accreditation criteria?",
-        a: "Yes, our clinical skills labs and simulation equipment meet all PMDC, HEC, and international WFME standards for medical education.",
-      },
-      {
-        q: "Can live surgeries from the teaching hospital OT be streamed to lecture halls?",
-        a: "Yes, we install integrated 4K surgical camera systems with two-way audio streaming to university lecture auditoriums for student learning.",
-      },
-      {
-        q: "Do you supply maintenance packages for student laboratories?",
-        a: "Yes, we offer annual preventative maintenance programs tailored around university academic semesters and exam periods.",
-      },
-    ],
-  },
-  {
-    slug: "research-centers",
-    label: "Research\nCenters",
-    title: "Research Centers & Biotechnology Institutes",
-    eyebrow: "ADVANCED SCIENTIFIC INSTRUMENTATION & DISCOVERY",
-    tagline: "Equipping scientific research institutes, genomics centers, and biotechnology labs with ultra-precision analytical instrumentation and clean facilities.",
+    slug: "research-institutions",
+    label: "Research Institutions",
+    title: "Research Institutions",
+    eyebrow: "INDUSTRIES WE SERVE",
+    tagline: "Enabling research organizations with advanced technology, specialized equipment, and solutions built for innovation.",
     icon: Microscope,
     badge: "Genomics & Scientific R&D",
-    heroImage: "/roys_ct_scan.png",
+    heroImage: "/biomax_research_lab.jpg",
+    aboutImage: "/biomax_scientific_instruments_ai.jpg",
     overview: [
       "Scientific research and molecular discovery require extraordinary analytical sensitivity, repeatable precision, and strict contamination containment. Roys & Roys International partners with leading national research institutes, biotechnology centers, and clinical trial organizations.",
       "We supply advanced research instrumentation including Real-Time PCR thermal cyclers, High-Performance Liquid Chromatography (HPLC), mass spectrometers, high-speed refrigerated centrifuges, -86°C ultra-low freezers, and Class II/III biosafety containment hoods.",
@@ -603,363 +501,137 @@ export const INDUSTRIES_LIST = [
       },
     ],
   },
+
+  // ─── 5. EDUCATIONAL INSTITUTIONS ───────────────────────────────────────────
   {
-    slug: "private-clinics",
-    label: "Private\nClinics",
-    title: "Private Clinics & Specialized Medical Centers",
-    eyebrow: "PRACTICE EXCELLENCE & PATIENT-CENTERED CARE",
-    tagline: "Outfitting private practices, polyclinics, day-surgery centers, and executive health suites with modern, compact, and high-performance medical systems.",
-    icon: Users,
-    badge: "Outpatient & Polyclinics",
-    heroImage: "/roys_ultrasound.png",
+    slug: "educational-institutions",
+    label: "Educational Institutions",
+    title: "Educational Institutions",
+    eyebrow: "INDUSTRIES WE SERVE",
+    tagline: "Supporting universities and educational institutions with modern technology, infrastructure, and solutions for future-ready learning.",
+    icon: GraduationCap,
+    badge: "Medical Colleges & Academia",
+    heroImage: "/trust/trust_education.jpg",
+    aboutImage: "/images/tdrc/service_applied_research.jpg",
     overview: [
-      "Private outpatient clinics, day-care surgical centers, and executive wellness practices require high-performance, compact medical equipment that enhances diagnostic speed, patient comfort, and clinical prestige. Roys & Roys International delivers tailored medical equipment packages for private healthcare entrepreneurs.",
-      "We provide multi-specialty clinical examination furniture, point-of-care ultrasound, compact diagnostic lab analyzers, minor surgical electrosurgery units, patient monitors, and sterilizers.",
-      "Our clinic solutions combine luxury aesthetic design, compact space efficiency, and robust medical reliability, allowing private practitioners to deliver five-star care to their patients."
+      "Educating the next generation of physicians, surgeons, engineers, and healthcare scientists requires advanced educational infrastructure, clinical simulation centers, and multi-user diagnostic equipment. Roys & Roys International works closely with universities, teaching institutes, and nursing colleges.",
+      "We design and equip advanced high-fidelity clinical skills simulation labs, anatomy dissecting suites, digital pathology teaching stations, and full-scale teaching hospital wards.",
+      "Our solutions bridge the gap between academic theory and practical clinical reality, giving students hands-on experience with modern medical systems used in world-class institutions."
     ],
     stats: [
-      { value: "500+", label: "Private Clinics Equipped" },
-      { value: "98%", label: "Doctor Satisfaction Rate" },
-      { value: "Turnkey", label: "Setup In Under 30 Days" },
-      { value: "24/7", label: "Dedicated Helpdesk" },
+      { value: "35+", label: "Medical Colleges Equipped" },
+      { value: "50,000+", label: "Students Trained" },
+      { value: "100+", label: "Simulation Labs Built" },
+      { value: "100%", label: "Accreditation Compliance" },
     ],
     keyPillars: [
       {
-        title: "Clinical Examination & Specialist Chairs",
-        desc: "Motorized multi-position examination tables, ENT treatment units, gynecological chairs, and ergonomic doctor consultation furniture.",
+        title: "Clinical Simulation & Skills Labs",
+        desc: "High-fidelity patient simulators, virtual reality (VR) surgical trainers, CPR mannequins, and automated feedback clinical skill stations.",
         icon: Stethoscope,
       },
       {
-        title: "Point-of-Care Diagnostic Ultrasound",
-        desc: "Compact portable and cart-based color Doppler ultrasound machines with multi-frequency probes for cardiology, OB/GYN, and general abdominal care.",
-        icon: Activity,
-      },
-      {
-        title: "Minor Surgery & Day-Care Procedure Units",
-        desc: "Compact electrocautery units, shadowless LED mobile surgical lamps, minor procedure tables, and autoclave sterilizers.",
-        icon: BriefcaseMedical,
-      },
-      {
-        title: "Rapid Point-of-Care Lab Analyzers",
-        desc: "Compact benchtop hematology counters, dry chemistry analyzers, HbA1c readers, and urine test systems for instant patient results.",
-        icon: FlaskConical,
-      },
-      {
-        title: "Patient Vital Signs & ECG Stations",
-        desc: "12-lead digital ECG machines, automated blood pressure screening stations, pulse oximeters, and patient telemetry units.",
-        icon: HeartPulse,
-      },
-      {
-        title: "Clinic Sterilization & Infection Control",
-        desc: "Tabletop Class B vacuum autoclaves, ultrasonic instrument cleaners, pouch sealers, and air purification units for sterile clinic rooms.",
-        icon: ShieldCheck,
-      },
-    ],
-    technologies: [
-      "Portable Color Doppler Ultrasound Scanners with Convex/Linear Probes",
-      "Tabletop Class B Rapid Cycle Autoclaves (18L – 24L)",
-      "Motorized 3-Motor Hydraulic Examination & Procedure Chairs",
-      "Digital 12-Lead ECG Machines with Auto-Interpretation",
-      "Compact 3-Part Differential Hematology Benchtop Analyzers",
-      "Point-of-Care HbA1c & Cardiac Biomarker Immuno-Analyzers",
-      "Mobile Shadowless LED Minor Procedure Lights",
-      "Electrosurgical Units (ESU) for Dermatology & Minor Surgery",
-      "Medical-Grade Air Decontamination & HEPA Filtration Units",
-      "Digital Patient Height, Weight & BMI Measuring Stations",
-    ],
-    workflow: [
-      {
-        step: "01",
-        title: "Specialty Practice Assessment",
-        desc: "Evaluating clinic specialty (Cardiology, OB/GYN, Dermatology, General Medicine) and spatial floor plan.",
-      },
-      {
-        step: "02",
-        title: "Curated Equipment Bundling",
-        desc: "Bundling diagnostic, surgical, and furniture items with special package pricing for clinic setups.",
-      },
-      {
-        step: "03",
-        title: "Expedited Delivery & Setup",
-        desc: "Delivery, uncrating, full assembly, and electrical testing within 14–30 business days.",
-      },
-      {
-        step: "04",
-        title: "Doctor Orientation & Warranty",
-        desc: "One-on-one device orientation for practitioners and full warranty coverage with fast-swap support.",
-      },
-    ],
-    benefits: [
-      "All-in-one clinic packages tailored for private practitioner budgets",
-      "Compact, aesthetic equipment elevating clinic prestige and patient trust",
-      "Instant point-of-care results allowing same-day patient diagnoses",
-      "Fast delivery and setup minimizing clinic opening delays",
-      "Reliable warranty with replacement loaner units during maintenance",
-    ],
-    targetDepts: [
-      "Polyclinics & Multi-Specialty Medical Centers",
-      "Cardiology & Internal Medicine Private Practices",
-      "Obstetrics & Gynecology (OB/GYN) Clinics",
-      "Dermatology, Aesthetics & Minor Surgery Centers",
-      "Pediatric & Child Health Care Practices",
-      "Orthopedic, Physiotherapy & Pain Management Clinics",
-    ],
-    faqs: [
-      {
-        q: "Do you offer complete package deals for doctors opening a new clinic?",
-        a: "Yes, we provide bundled turnkey packages including examination furniture, ultrasound, ECG, tabletop autoclaves, and diagnostic kits at discounted rates.",
-      },
-      {
-        q: "Can your tabletop autoclaves fit into compact clinic utility rooms?",
-        a: "Yes, our Class B vacuum autoclaves (18L to 24L) are designed for countertop installation with fast cycle times and minimal power draw.",
-      },
-      {
-        q: "What warranty coverage is included for private clinic equipment?",
-        a: "All equipment comes with 1–2 years full warranty, backed by on-demand technician visits and replacement units if required.",
-      },
-    ],
-  },
-  {
-    slug: "ngos",
-    label: "NGOs",
-    title: "NGOs & Humanitarian Relief Organizations",
-    eyebrow: "GLOBAL HEALTH SECURITY & DISASTER RESPONSE",
-    tagline: "Partnering with international aid agencies, UN bodies, and non-profits to deliver life-saving medical supplies, mobile clinics, and relief equipment.",
-    icon: HeartPulse,
-    badge: "Humanitarian & UN Agencies",
-    heroImage: "/roys_hospital_interior.png",
-    overview: [
-      "Humanitarian organizations, non-governmental agencies (NGOs), and UN bodies (WHO, UNICEF, UNHCR) operate under emergency constraints, remote geographies, and austere environments. Roys & Roys International is a trusted humanitarian procurement partner delivering rapid emergency response supplies and sustainable healthcare infrastructure.",
-      "We provide standardized Interagency Emergency Health Kits (IEHK), mobile tent hospitals, maternal and child survival kits, solar cold-chain vaccine storage, and rapid diagnostic testing supplies.",
-      "Our global logistics network ensures fast-track charter shipments, customs clearance in crisis zones, and transparent compliance reporting meeting multilateral donor auditing requirements."
-    ],
-    stats: [
-      { value: "100+", label: "Relief Projects Completed" },
-      { value: "30+", label: "Disaster Zones Served" },
-      { value: "WHO / UN", label: "Prequalified Standards" },
-      { value: "72 Hours", label: "Emergency Dispatch SLA" },
-    ],
-    keyPillars: [
-      {
-        title: "Interagency Emergency Health Kits (IEHK)",
-        desc: "Pre-packed, standardized basic and supplementary medical kits for immediate disaster relief treating 10,000+ people for 3 months.",
-        icon: BriefcaseMedical,
-      },
-      {
-        title: "Rapid Deployment Mobile & Tent Hospitals",
-        desc: "Inflatable and modular frame medical tents, portable field surgical suites, and emergency triage hubs with off-grid solar power.",
-        icon: Building2,
-      },
-      {
-        title: "Maternal & Child Survival Solutions",
-        desc: "Portable infant warmers, resuscitation bags, clean delivery kits, solar fetal dopplers, and malnutrition diagnostic tools.",
-        icon: HeartPulse,
-      },
-      {
-        title: "Solar Direct Drive Vaccine Cold-Chain",
-        desc: "Battery-free Solar Direct Drive (SDD) vaccine refrigerators complying with WHO PQS for remote off-grid vaccination campaigns.",
-        icon: Zap,
-      },
-      {
-        title: "Water Purification & Sanitation (WASH)",
-        desc: "Mobile emergency drinking water treatment skids, chlorine disinfection kits, and emergency field hygiene supplies.",
-        icon: FlaskConical,
-      },
-      {
-        title: "Trauma, Wound Care & Surgical Disposables",
-        desc: "High-volume sterile gauze, suture kits, emergency orthopedic splints, burn care kits, and personal protective equipment (PPE).",
-        icon: ShieldCheck,
-      },
-    ],
-    technologies: [
-      "WHO PQS Solar Direct Drive (SDD) Vaccine Refrigerators",
-      "Standardized Interagency Emergency Health Kits (IEHK 2017)",
-      "Inflatable Emergency Field Hospital Medical Tents",
-      "Battery-Operated Portable Patient Transport Monitors",
-      "Manual & Solar-Powered Emergency Suction Units",
-      "Rapid Diagnostic Point-of-Care Test Kits (Malaria, HIV, Dengue)",
-      "Mobile Water Chlorination & Filtration Skids (1,000L/hr)",
-      "Collapsible Trauma Stretchers & Mass Casualty Transport Kits",
-      "Solar-Powered LED Surgical Headlamps & Task Lighting",
-      "Sterile Surgical Delivery Kits in Waterproof Packaging",
-    ],
-    workflow: [
-      {
-        step: "01",
-        title: "Crisis Needs & Donor Coordination",
-        desc: "Rapid coordination with NGO procurement teams to establish item specifications, quantities, and target geographic delivery points.",
-      },
-      {
-        step: "02",
-        title: "Emergency Stock Kitting & Consolidation",
-        desc: "Fast-track consolidation and packing of pre-kitted emergency medical supplies conforming to UN humanitarian guidelines.",
-      },
-      {
-        step: "03",
-        title: "Air Charter & Overland Border Logistics",
-        desc: "Expedited air charter or secure convoy transport with diplomatic customs clearance and real-time tracking.",
-      },
-      {
-        step: "04",
-        title: "Field Handover & Donor Verification",
-        desc: "Direct field handover to aid workers with third-party verification and comprehensive donor compliance audit reporting.",
-      },
-    ],
-    benefits: [
-      "Adherence to WHO, UNICEF, and Sphere Project humanitarian standards",
-      "Emergency 72-hour air cargo dispatch capability for crisis relief",
-      "Pre-vetted, high-durability items designed for off-grid field conditions",
-      "Complete transparency, anti-corruption compliance, and donor auditing logs",
-      "Experienced teams familiar with remote border logistics and customs waivers",
-    ],
-    targetDepts: [
-      "United Nations Agencies (WHO, UNICEF, UNHCR, UNFPA)",
-      "International Non-Governmental Organizations (INGOs)",
-      "Red Cross & Red Crescent National Societies",
-      "Disaster Management & Emergency Response Authorities",
-      "Refugee Camp Medical Clinics & Field Hospitals",
-      "Philanthropic Trusts & Rural Healthcare Foundations",
-    ],
-    faqs: [
-      {
-        q: "Can you supply emergency medical kits within 48 to 72 hours of a disaster?",
-        a: "Yes, we maintain stock reserves of essential trauma supplies, medical disposables, and emergency kits for rapid humanitarian air dispatch.",
-      },
-      {
-        q: "Do your solar vaccine refrigerators work without battery replacements?",
-        a: "Yes, our Solar Direct Drive (SDD) vaccine refrigerators use ice-storage technology instead of batteries, ensuring maintenance-free cooling in off-grid areas.",
-      },
-      {
-        q: "What reporting documentation do you provide for international donor audits?",
-        a: "We provide complete shipment manifests, Certificates of Conformity (CoC), batch inspection reports, and GPS-verified proof of field delivery.",
-      },
-    ],
-  },
-  {
-    slug: "diagnostic-labs",
-    label: "Diagnostic\nLabs",
-    title: "Diagnostic Laboratories & Pathology Networks",
-    eyebrow: "HIGH-THROUGHPUT ANALYTICS & CLINICAL ACCURACY",
-    tagline: "Equipping clinical pathology labs, molecular diagnostic centers, and imaging networks with automated analyzers, cold-chain reagents, and LIMS integration.",
-    icon: FlaskConical,
-    badge: "Clinical Pathology & Diagnostics",
-    heroImage: "/roys_ct_scan.png",
-    overview: [
-      "Clinical diagnostic laboratories are under constant pressure to deliver faster turnaround times, flawless analytical accuracy, and high-throughput sample processing while reducing operating cost per test. Roys & Roys International equips standalone pathology labs, hospital diagnostic hubs, and multi-branch laboratory chains.",
-      "We provide automated clinical chemistry analyzers (up to 1,200 tests/hour), 5-part differential hematology systems, real-time PCR molecular platforms, automated ELISA processors, and biosafety cleanrooms.",
-      "Beyond instrumentation, we ensure dependable cold-chain reagent replenishment contracts, NIST-traceable calibration, Laboratory Information Management System (LIMS) connectivity, and compliance with ISO 15189 accreditation standards."
-    ],
-    stats: [
-      { value: "300+", label: "Diagnostic Labs Equipped" },
-      { value: "10M+", label: "Patient Tests Processed/Yr" },
-      { value: "ISO 15189", label: "Accreditation Support" },
-      { value: "99.9%", label: "Analytical Reliability" },
-    ],
-    keyPillars: [
-      {
-        title: "Automated Clinical Chemistry",
-        desc: "High-throughput open and closed clinical chemistry analyzers, electrolyte modules, and automated sample loading carousels.",
-        icon: FlaskConical,
-      },
-      {
-        title: "Hematology & Coagulation Systems",
-        desc: "Laser flow cytometry 5-part differential hematology analyzers, automated reticulocyte counting, and optical/mechanical coagulometers.",
-        icon: Activity,
-      },
-      {
-        title: "Molecular Biology & PCR Workstations",
-        desc: "Real-time qPCR systems, automated magnetic bead nucleic acid extractors, PCR clean hoods, and UV crosslinkers.",
+        title: "Digital Pathology & Multi-Head Microscopy",
+        desc: "Multi-head teaching microscopes with 4K camera projection, virtual slide scanners, and digital histology classroom software.",
         icon: Microscope,
       },
       {
-        title: "Immunology & Chemiluminescence (CLIA)",
-        desc: "Automated Chemiluminescence Immunoassay (CLIA) and ELISA microplate readers for hormones, tumor markers, and viral serology.",
-        icon: Sparkles,
+        title: "Teaching Hospital Ward Equipment",
+        desc: "Hospital-grade teaching beds, ICU demonstration stations, anesthesia simulator workstations, and multi-parameter monitors.",
+        icon: Building2,
       },
       {
-        title: "Microbiology & Antibiotic Sensitivity",
-        desc: "Automated blood culture monitoring systems, microbial identification and antibiotic susceptibility testing (AST) analyzers.",
-        icon: ShieldCheck,
+        title: "Biochemistry & Physiology Student Labs",
+        desc: "Benchtop spectrophotometers, student centrifuges, digital physiology data acquisition systems, and electrophoretic systems.",
+        icon: FlaskConical,
       },
       {
-        title: "Cold Chain & Reagent Supply Network",
-        desc: "Temperature-monitored blood bank refrigerators, -20°C/-86°C freezers, and scheduled cold-chain delivery of validated diagnostic reagents.",
+        title: "Anatomy & Mortuary Equipment",
+        desc: "Stainless steel cadaver dissection tables, mortuary refrigeration units, embalming stations, and 3D interactive virtual anatomy tables.",
         icon: Layers,
+      },
+      {
+        title: "Medical IT & Audio-Visual Classrooms",
+        desc: "Live OT video streaming systems for lecture halls, PACS educational archiving, and integrated medical e-learning auditoriums.",
+        icon: Zap,
       },
     ],
     technologies: [
-      "Automated Clinical Chemistry Analyzers (400 – 1,200 tests/hour)",
-      "5-Part Differential Laser Hematology Analyzers with Autoloader",
-      "Automated Magnetic-Bead Viral RNA/DNA Extraction Systems",
-      "Real-Time Quantitative PCR (qPCR) Diagnostics Platforms",
-      "Chemiluminescence Immunoassay (CLIA) Multi-Channel Systems",
-      "Automated Microbial Blood Culture Incubation Systems",
-      "Microprocessor-Controlled Class II Type A2 Biosafety Hoods",
-      "High-Speed Refrigerated Laboratory Centrifuges",
-      "Digital Pathology Slide Scanners with Cloud Remote Viewing",
-      "Laboratory Information Management System (LIMS) Barcode Scanners",
+      "High-Fidelity Adult, Pediatric & Obstetric Mannequin Simulators",
+      "Virtual Reality Laparoscopic & Endoscopic Surgical Trainers",
+      "Multi-Head 5/10-User Optical & Digital Teaching Microscopes",
+      "3D Interactive Virtual Dissection Anatomy Display Tables",
+      "Live 4K OT-to-Auditorium Surgical Broadcasting Systems",
+      "Multi-Channel Human Physiology Student Data Recorders",
+      "Anatomy Cadaver Dissection & Preservation Stations",
+      "Benchtop Automated Clinical Chemistry Training Analyzers",
+      "Simulated ICU Bedhead Consoles with Medical Gas Simulators",
+      "Digital OSCE (Objective Structured Clinical Exam) Recording Systems",
     ],
     workflow: [
       {
         step: "01",
-        title: "Sample Throughput & Test Menu Audit",
-        desc: "Evaluating daily specimen volume, test menu diversity, and turnaround time (TAT) targets to recommend the right analyzer capacity.",
+        title: "Curriculum & Accreditation Review",
+        desc: "Aligning equipment lists with university curricula and regulatory accreditation standards.",
       },
       {
         step: "02",
-        title: "Laboratory Spatial & Water Purification Setup",
-        desc: "Installing chemical-resistant modular benches, pure Type 1 water systems, UPS power, and localized biosafety exhaust.",
+        title: "Simulation Lab Architectural Design",
+        desc: "Designing multi-station skills labs with one-way observation glass, control rooms, and debriefing audio-visual systems.",
       },
       {
         step: "03",
-        title: "Analyzer Commissioning & Calibration",
-        desc: "Precision installation, multi-level control calibration, precision verification, and LIMS bidirectional software interfacing.",
+        title: "Instrument Installation & Network Setup",
+        desc: "Uncrating, assembly, network integration, and calibration of all analytical and simulation instruments.",
       },
       {
         step: "04",
-        title: "Reagent Agreement & Quality Assurance",
-        desc: "Locking in guaranteed cost-per-test pricing, scheduled reagent deliveries, and external quality assessment (EQAS) support.",
+        title: "Faculty Training & Workshop Delivery",
+        desc: "Hands-on training for professors and lab instructors to maximize simulation teaching impact.",
       },
     ],
     benefits: [
-      "Lower cost-per-test through direct OEM reagent and analyzer contracts",
-      "Bidirectional LIMS interfacing eliminating manual data entry errors",
-      "Full ISO 15189 compliance documentation and calibration certification",
-      "Uninterrupted cold-chain reagent logistics preventing stockouts",
-      "Certified biomedical application engineers providing on-site support",
+      "Compliant with international WFME, PMDC, and Higher Education guidelines",
+      "State-of-the-art simulation preparing students for real-world clinical practice",
+      "Modular classroom designs adaptable to expanding class sizes",
+      "Long-term warranty and curriculum-aligned equipment replacement plans",
+      "Direct technical support for university examination cycles (OSCE/OSPE)",
     ],
     targetDepts: [
-      "Clinical Pathology & Diagnostic Laboratory Chains",
-      "Hospital Central Pathology Laboratories",
-      "Molecular Diagnostics & Genetic Testing Centers",
-      "Blood Transfusion Centers & Blood Banks",
-      "Toxicology, Forensic & Occupational Health Labs",
-      "Veterinary Diagnostic Laboratories",
+      "Undergraduate & Postgraduate Medical Colleges",
+      "Nursing & Allied Health Sciences Institutes",
+      "Dental Colleges & Oral Surgery Simulation Centers",
+      "Pharmacy & Pharmaceutical Sciences Faculties",
+      "University Teaching Hospitals & Clinical Centers",
+      "Anatomy, Histology & Pathology Academic Departments",
     ],
     faqs: [
       {
-        q: "Do your analyzers integrate with our existing LIMS software?",
-        a: "Yes, our chemistry, hematology, and PCR analyzers support bidirectional ASTM and HL7 protocols for seamless integration with your LIMS.",
+        q: "Do your simulation products meet medical council accreditation criteria?",
+        a: "Yes, our clinical skills labs and simulation equipment meet all PMDC, HEC, and international WFME standards for medical education.",
       },
       {
-        q: "What is your turnaround time for reagent restocking?",
-        a: "We maintain regional warehouse stock and provide guaranteed 24 to 48-hour cold-chain reagent delivery to contracted laboratories.",
+        q: "Can live surgeries from the teaching hospital OT be streamed to lecture halls?",
+        a: "Yes, we install integrated 4K surgical camera systems with two-way audio streaming to university lecture auditoriums for student learning.",
       },
       {
-        q: "Do you offer equipment placement agreements based on reagent consumption?",
-        a: "Yes, we provide flexible reagent-rental and outright purchase models based on your projected test volume.",
+        q: "Do you supply maintenance packages for student laboratories?",
+        a: "Yes, we offer annual preventative maintenance programs tailored around university academic semesters and exam periods.",
       },
     ],
   },
+
+  // ─── 6. PHARMA COMPANIES ───────────────────────────────────────────────────
   {
-    slug: "pharmaceutical-industry",
-    label: "Pharmaceutical\nIndustry",
-    title: "Pharmaceutical Industry & Manufacturing Plants",
-    eyebrow: "GMP FACILITIES, CLEAN UTILITIES & PRODUCTION INFRASTRUCTURE",
-    tagline: "Delivering turnkey cleanrooms, pharmaceutical machinery, water-for-injection (WFI) plants, and WHO-GMP compliance solutions.",
+    slug: "pharma-companies",
+    label: "Pharma Companies",
+    title: "Pharma Companies",
+    eyebrow: "INDUSTRIES WE SERVE",
+    tagline: "Supporting pharmaceutical organizations with reliable solutions for research, production, quality, and healthcare innovation.",
     icon: Pill,
     badge: "Pharma Manufacturing & QC",
-    heroImage: "/roys_hospital_interior.png",
+    heroImage: "/images/pharma/cleanroom-facility.jpg",
+    aboutImage: "/images/pharma/qc-laboratory.jpg",
     overview: [
       "Pharmaceutical manufacturing facilities demand absolute sterility, zero cross-contamination, precise HVAC air balancing, and continuous compliance with WHO-GMP and PIC/S standards. Roys & Roys International is an engineering partner for finished dosage formulation (FDF), active pharmaceutical ingredient (API), and biotechnology plants.",
       "We design, fabricate, and validate EU GMP Class A, B, C, and D cleanroom environments, modular sandwich panels, purified water and Water-for-Injection (WFI) generation loops, pure steam generators, and automated packaging lines.",
@@ -1067,8 +739,260 @@ export const INDUSTRIES_LIST = [
       },
     ],
   },
+
+  // ─── 7. DIAGNOSTIC LABS ───────────────────────────────────────────────────
+  {
+    slug: "diagnostic-labs",
+    label: "Diagnostic Labs",
+    title: "Diagnostic Labs",
+    eyebrow: "INDUSTRIES WE SERVE",
+    tagline: "Delivering solutions that support accurate diagnostics, advanced laboratory environments, and efficient healthcare operations.",
+    icon: FlaskConical,
+    badge: "Clinical Pathology & Diagnostics",
+    heroImage: "/roys_ct_scan.png",
+    aboutImage: "/team/laboratory_professional.jpg",
+    overview: [
+      "Clinical diagnostic laboratories are under constant pressure to deliver faster turnaround times, flawless analytical accuracy, and high-throughput sample processing while reducing operating cost per test. Roys & Roys International equips standalone pathology labs, hospital diagnostic hubs, and multi-branch laboratory chains.",
+      "We provide automated clinical chemistry analyzers (up to 1,200 tests/hour), 5-part differential hematology systems, real-time PCR molecular platforms, automated ELISA processors, and biosafety cleanrooms.",
+      "Beyond instrumentation, we ensure dependable cold-chain reagent replenishment contracts, NIST-traceable calibration, Laboratory Information Management System (LIMS) connectivity, and compliance with ISO 15189 accreditation standards."
+    ],
+    stats: [
+      { value: "300+", label: "Diagnostic Labs Equipped" },
+      { value: "10M+", label: "Patient Tests Processed/Yr" },
+      { value: "ISO 15189", label: "Accreditation Support" },
+      { value: "99.9%", label: "Analytical Reliability" },
+    ],
+    keyPillars: [
+      {
+        title: "Automated Clinical Chemistry",
+        desc: "High-throughput open and closed clinical chemistry analyzers, electrolyte modules, and automated sample loading carousels.",
+        icon: FlaskConical,
+      },
+      {
+        title: "Hematology & Coagulation Systems",
+        desc: "Laser flow cytometry 5-part differential hematology analyzers, automated reticulocyte counting, and optical/mechanical coagulometers.",
+        icon: Activity,
+      },
+      {
+        title: "Molecular Biology & PCR Workstations",
+        desc: "Real-time qPCR systems, automated magnetic bead nucleic acid extractors, PCR clean hoods, and UV crosslinkers.",
+        icon: Microscope,
+      },
+      {
+        title: "Immunology & Chemiluminescence (CLIA)",
+        desc: "Automated Chemiluminescence Immunoassay (CLIA) and ELISA microplate readers for hormones, tumor markers, and viral serology.",
+        icon: Sparkles,
+      },
+      {
+        title: "Microbiology & Antibiotic Sensitivity",
+        desc: "Automated blood culture monitoring systems, microbial identification and antibiotic susceptibility testing (AST) analyzers.",
+        icon: ShieldCheck,
+      },
+      {
+        title: "Cold Chain & Reagent Supply Network",
+        desc: "Temperature-monitored blood bank refrigerators, -20°C/-86°C freezers, and scheduled cold-chain delivery of validated diagnostic reagents.",
+        icon: Layers,
+      },
+    ],
+    technologies: [
+      "Automated Clinical Chemistry Analyzers (400 – 1,200 tests/hour)",
+      "5-Part Differential Laser Hematology Analyzers with Autoloader",
+      "Automated Magnetic-Bead Viral RNA/DNA Extraction Systems",
+      "Real-Time Quantitative PCR (qPCR) Diagnostics Platforms",
+      "Chemiluminescence Immunoassay (CLIA) Multi-Channel Systems",
+      "Automated Microbial Blood Culture Incubation Systems",
+      "Microprocessor-Controlled Class II Type A2 Biosafety Hoods",
+      "High-Speed Refrigerated Laboratory Centrifuges",
+      "Digital Pathology Slide Scanners with Cloud Remote Viewing",
+      "Laboratory Information Management System (LIMS) Barcode Scanners",
+    ],
+    workflow: [
+      {
+        step: "01",
+        title: "Sample Throughput & Test Menu Audit",
+        desc: "Evaluating daily specimen volume, test menu diversity, and turnaround time (TAT) targets to recommend the right analyzer capacity.",
+      },
+      {
+        step: "02",
+        title: "Laboratory Spatial & Water Purification Setup",
+        desc: "Installing chemical-resistant modular benches, pure Type 1 water systems, UPS power, and localized biosafety exhaust.",
+      },
+      {
+        step: "03",
+        title: "Analyzer Commissioning & Calibration",
+        desc: "Precision installation, multi-level control calibration, precision verification, and LIMS bidirectional software interfacing.",
+      },
+      {
+        step: "04",
+        title: "Reagent Agreement & Quality Assurance",
+        desc: "Locking in guaranteed cost-per-test pricing, scheduled reagent deliveries, and external quality assessment (EQAS) support.",
+      },
+    ],
+    benefits: [
+      "Lower cost-per-test through direct OEM reagent and analyzer contracts",
+      "Bidirectional LIMS interfacing eliminating manual data entry errors",
+      "Full ISO 15189 compliance documentation and calibration certification",
+      "Uninterrupted cold-chain reagent logistics preventing stockouts",
+      "Certified biomedical application engineers providing on-site support",
+    ],
+    targetDepts: [
+      "Clinical Pathology & Diagnostic Laboratory Chains",
+      "Hospital Central Pathology Laboratories",
+      "Molecular Diagnostics & Genetic Testing Centers",
+      "Blood Transfusion Centers & Blood Banks",
+      "Toxicology, Forensic & Occupational Health Labs",
+      "Veterinary Diagnostic Laboratories",
+    ],
+    faqs: [
+      {
+        q: "Do your analyzers integrate with our existing LIMS software?",
+        a: "Yes, our chemistry, hematology, and PCR analyzers support bidirectional ASTM and HL7 protocols for seamless integration with your LIMS.",
+      },
+      {
+        q: "What is your turnaround time for reagent restocking?",
+        a: "We maintain regional warehouse stock and provide guaranteed 24 to 48-hour cold-chain reagent delivery to contracted laboratories.",
+      },
+      {
+        q: "Do you offer equipment placement agreements based on reagent consumption?",
+        a: "Yes, we provide flexible reagent-rental and outright purchase models based on your projected test volume.",
+      },
+    ],
+  },
+
+  // ─── 8. INDUSTRIAL & CORPORATE ─────────────────────────────────────────────
+  {
+    slug: "industrial-corporate",
+    label: "Industrial & Corporate",
+    title: "Industrial & Corporate",
+    eyebrow: "INDUSTRIES WE SERVE",
+    tagline: "Providing dependable solutions for industrial organizations and corporate environments focused on efficiency, growth, and operational excellence.",
+    icon: Factory,
+    badge: "Industrial & Corporate Solutions",
+    heroImage: "/project-industrial-plant.jpg",
+    aboutImage: "/neomrecruitment/hero_executive_boardroom.jpg",
+    overview: [
+      "Modern industrial manufacturing facilities and corporate headquarters require sophisticated infrastructure, reliable MEP utilities, high-efficiency power networks, and occupational health systems. Roys & Roys International delivers robust turnkey engineering, facility systems, and institutional supply frameworks tailored for enterprise scale.",
+      "From heavy industrial plants, clean fabrication hubs, and warehouse complexes to prestigious corporate headquarters, we design and execute integrated solutions that optimize operational uptime, worker safety, energy consumption, and corporate wellness.",
+      "Our corporate and industrial solutions comply with international OSHA, ISO 9001, ISO 14001, and LEED green building standards, empowering leading enterprises to achieve maximum productivity and long-term sustainable growth."
+    ],
+    stats: [
+      { value: "180+", label: "Corporate & Plants Served" },
+      { value: "99.9%", label: "Facility Reliability" },
+      { value: "35%", label: "Avg Energy Efficiency Gain" },
+      { value: "100%", label: "Compliance & Safety Rate" },
+    ],
+    keyPillars: [
+      {
+        title: "Industrial Plant Engineering & MEP",
+        desc: "Heavy-duty electrical switchgear, industrial HVAC ventilation, compressed air piping, and process utility integration for manufacturing hubs.",
+        icon: Factory,
+      },
+      {
+        title: "Corporate Smart Infrastructure & BMS",
+        desc: "Intelligent Building Management Systems (BMS), IoT energy monitoring, acoustic conference automation, and smart access control.",
+        icon: Building,
+      },
+      {
+        title: "Occupational Health & On-Site Medical Units",
+        desc: "Equipping workplace first-aid stations, industrial emergency trauma clinics, employee health screening suites, and medical kits.",
+        icon: HeartPulse,
+      },
+      {
+        title: "Clean Industrial & Controlled Facilities",
+        desc: "Specialized precision engineering, dust-free assembly spaces, anti-static ESD flooring, and high-efficiency particulate containment.",
+        icon: Layers,
+      },
+      {
+        title: "Power Continuity & Energy Efficiency",
+        desc: "Heavy commercial UPS backups, diesel generator synchronization, solar PV plant installations, and power factor correction.",
+        icon: Zap,
+      },
+      {
+        title: "Facility Safety, Fire Protection & EHS",
+        desc: "Automated NFPA-standard fire suppression skids, hazardous gas detection, smoke evacuation, and occupational safety audits.",
+        icon: ShieldCheck,
+      },
+    ],
+    technologies: [
+      "Integrated Industrial Building Management Systems (BMS)",
+      "Heavy Commercial Central HVAC Chillers & Air Filtration",
+      "High-Voltage Switchgear & Redundant UPS Backup Infrastructure",
+      "Occupational Health Clinic Medical Devices & First-Aid Trauma Kits",
+      "Cleanroom Modular Wall Paneling & Positive Pressure Zoning",
+      "Addressable Fire Alarm & Automated Clean-Agent Sprinkler Skids",
+      "Energy Consumption Telemetry & IoT Cloud Sub-Metering",
+      "Ergonomic Corporate Office Technical Furniture & Workstations",
+      "Industrial Wastewater Neutralization & Effluent Treatment (ETP)",
+      "Access Control, RFID Turnstiles & Integrated Security Monitoring",
+    ],
+    workflow: [
+      {
+        step: "01",
+        title: "Site Assessment & Facility Audit",
+        desc: "Assessing plant square footage, electrical load, occupancy patterns, and environmental regulatory criteria.",
+      },
+      {
+        step: "02",
+        title: "Engineering Blueprint & Spatial Design",
+        desc: "Drafting MEP schematics, CAD layouts, load calculations, and energy efficiency models tailored to client specifications.",
+      },
+      {
+        step: "03",
+        title: "Procurement & Precision Installation",
+        desc: "Coordinating delivery of industrial-grade equipment, certified on-site rigging, and turnkey MEP commissioning.",
+      },
+      {
+        step: "04",
+        title: "Operational Handover & AMC Support",
+        desc: "System testing, operator staff training, compliance certification, and continuous 24/7 lifecycle facility maintenance.",
+      },
+    ],
+    benefits: [
+      "Single-source turnkey contractor for civil, MEP, power, and medical infrastructure",
+      "Proven reduction in operational energy costs and plant utility downtimes",
+      "Turnkey on-site occupational healthcare clinics safeguarding workforce productivity",
+      "Adherence to OSHA, ISO 9001, ISO 14001, and international environmental codes",
+      "Rapid-response engineering maintenance teams available 24/7",
+    ],
+    targetDepts: [
+      "Heavy Manufacturing & Assembly Plants",
+      "Multinational Corporate Headquarters & Business Parks",
+      "Logistics Hubs & Automated Distribution Centers",
+      "Electronics, Engineering & Precision Tooling Facilities",
+      "Enterprise Data Centers & High-Tech Campuses",
+      "Corporate Employee Health & Wellness Centers",
+    ],
+    faqs: [
+      {
+        q: "Can you set up turnkey on-site medical and occupational clinics for our industrial plant?",
+        a: "Yes, we design, furnish, and equip complete factory medical centers with emergency trauma beds, ECG, defibrillators, point-of-care diagnostics, and medical supplies.",
+      },
+      {
+        q: "Do you provide energy efficiency audits and BMS automation for corporate headquarters?",
+        a: "Yes, our engineers implement smart Building Management Systems (BMS) and IoT power telemetry that routinely reduce corporate building energy costs by 20% to 35%.",
+      },
+      {
+        q: "What maintenance and facility service agreements are offered for industrial facilities?",
+        a: "We provide comprehensive 24/7 Annual Maintenance Contracts (AMC/CMC) covering HVAC, electrical panels, backup power generators, fire safety, and plumbing systems.",
+      },
+    ],
+  },
 ];
 
+// ─── Slug Aliases for Seamless Backward Compatibility ────────────────────────
+const SLUG_ALIASES = {
+  "military-healthcare": "military-defence",
+  "research-centers": "research-institutions",
+  "universities": "educational-institutions",
+  "pharmaceutical-industry": "pharma-companies",
+  "hotels-labs": "diagnostic-labs",
+};
+
 export function getIndustryBySlug(slug) {
-  return INDUSTRIES_LIST.find((i) => i.slug === slug);
+  if (!slug) return undefined;
+  const canonicalSlug = SLUG_ALIASES[slug] || slug;
+  return (
+    INDUSTRIES_LIST.find((i) => i.slug === canonicalSlug) ||
+    INDUSTRIES_LIST.find((i) => i.slug === slug)
+  );
 }
