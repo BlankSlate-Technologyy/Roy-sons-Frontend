@@ -183,12 +183,12 @@ export default function IndustryDetailPage({ params }) {
               data-aos-delay="200"
               data-aos-duration="800"
             >
-              <div className="relative w-full h-[360px] sm:h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)] bg-[#0c1f36]">
+              <div className="relative w-full h-[360px] sm:h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)] bg-[#0c1f36] group">
                 <Image
-                  src={industry.heroImage || "/roys_hospital_interior.png"}
+                  src={industry.heroImage || "/images/roys/hospital_tertiary_hero.jpg"}
                   alt={industry.title}
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   priority
                 />
 

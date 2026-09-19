@@ -30,7 +30,8 @@ export const INDUSTRIES_LIST = [
     tagline: "Equipping public, private, and teaching hospitals with turnkey medical systems, critical care units, surgical suites, and MEP infrastructure.",
     icon: Building2,
     badge: "Tertiary & General Hospitals",
-    heroImage: "/roys_hospital_interior.png",
+    heroImage: "/images/roys/hospital_tertiary_hero.jpg",
+    aboutImage: "/images/roys/hospital_diagnostic_suite.jpg",
     overview: [
       "Hospitals represent the most complex operational environments in healthcare, requiring flawless integration between medical technology, sterile architecture, and continuous MEP engineering. Roys & Roys International is a trusted partner for 50-bed community hospitals to 1,000+ bed tertiary multi-specialty medical centers.",
       "We deliver turnkey solutions covering Diagnostic Radiology (MRI, CT, DR, Ultrasound), Critical Care & ICUs, Modular Operating Theaters, Medical Gas Pipeline Systems (MGPS), Central Sterile Services (CSSD), and hospital furniture.",
