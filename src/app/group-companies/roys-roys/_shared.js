@@ -439,7 +439,7 @@ export function RoysButton({ href, onClick, children, variant = "primary", style
 }
 
 // ─── Section Heading helper ───────────────────────────────────────────────────
-export function SectionHeading({ eyebrow, title, light = false, centered = true, subtitle }) {
+export function SectionHeading({ eyebrow, title, light = false, centered = true, subtitle, subtitleClassName, subtitleStyle }) {
   return (
     <div
       data-aos="fade-up"
@@ -473,7 +473,17 @@ export function SectionHeading({ eyebrow, title, light = false, centered = true,
         {title}
       </h2>
       {subtitle && (
-        <p style={{ color: light ? "rgba(255,255,255,0.75)" : C.muted, fontSize: "16px", lineHeight: "1.75", maxWidth: "600px", margin: centered ? "0 auto" : "0" }}>
+        <p
+          className={subtitleClassName || ""}
+          style={{
+            color: light ? "rgba(255,255,255,0.8)" : "#475569",
+            fontSize: "17.5px",
+            lineHeight: "1.7",
+            maxWidth: "680px",
+            margin: centered ? "0 auto" : "0",
+            ...subtitleStyle,
+          }}
+        >
           {subtitle}
         </p>
       )}

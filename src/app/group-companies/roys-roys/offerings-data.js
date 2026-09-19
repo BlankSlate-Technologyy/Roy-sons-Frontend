@@ -1294,7 +1294,8 @@ export const OFFERINGS_LIST = [
     tagline: "Engineering resilient, sterile, and technologically advanced infrastructure for modern hospitals and healthcare centers.",
     badge: "Hospital MEP Engineering",
     icon: Wrench,
-    image: "/pakmed_hero_engineering.svg",
+    image: "/images/roys/hospital_engineering_hero.jpg",
+    secondaryImage: "/images/roys/hospital_mgps_infrastructure.jpg",
     overview: [
       "Hospital engineering requires specialized technical competence that goes far beyond general construction. ROYS & ROYS International designs, builds, and commissions critical healthcare MEP infrastructure.",
       "Our specialized engineering division executes Medical Gas Pipeline Systems (MGPS) adhering to HTM 02-01 / NFPA 99, modular operating theater cleanrooms with laminar air flow, Isolated Power Systems (IPS) for operating rooms, and radiation lead shielding.",
