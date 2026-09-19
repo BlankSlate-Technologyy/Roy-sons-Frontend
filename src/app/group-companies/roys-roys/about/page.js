@@ -218,11 +218,11 @@ export default function AboutPage() {
             <div className="h-1 w-16 bg-[#2563eb] mx-auto mt-3 rounded-full" />
           </div>
 
-          {/* Chairman Showcase Card: Exact Match to Showcase Style */}
+          {/* Chairman Showcase Card: Borderless Clean Layout */}
           <div
             data-aos="fade-up"
             data-aos-duration="700"
-            className="w-full rounded-2xl p-6 sm:p-10 lg:p-12 border border-neutral-200 bg-white shadow-sm hover:border-[#0a7a8c]/40 hover:shadow-md transition-all duration-300"
+            className="w-full rounded-2xl p-6 sm:p-10 lg:p-12 border-none bg-white transition-all duration-300"
           >
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
               {/* Image Side (Left) */}
