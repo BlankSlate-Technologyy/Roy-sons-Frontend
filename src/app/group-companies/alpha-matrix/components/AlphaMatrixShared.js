@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -125,43 +126,53 @@ export function AlphaMatrixNavbar() {
   const isActive = (href) => {
     if (!pathname) return false;
     if (href === "/group-companies/alpha-matrix") {
-      return pathname === "/group-companies/alpha-matrix";
+      return pathname === "/group-companies/alpha-matrix" || pathname === "/group-companies/alpha-matrix/";
     }
     return pathname.startsWith(href);
   };
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
         scrolled
-          ? "bg-[#08182B]/95 backdrop-blur-md shadow-md border-b border-white/10"
-          : "bg-[#08182B] border-b border-white/5"
+          ? "shadow-md py-2 border-b border-slate-200"
+          : "py-2.5 sm:py-3.5 border-b border-slate-200/90"
       }`}
+      style={{
+        backgroundColor: "#ffffff",
+        borderBottom: "1px solid #E2E8F0",
+      }}
     >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo & Identity */}
-        <Link href="/group-companies/alpha-matrix" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0">
+        <Link href="/group-companies/alpha-matrix" className="flex items-center gap-3 select-none group shrink-0">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/4.png"
               alt="Alpha Matrix Defence Systems"
-              width={48}
-              height={48}
+              width={52}
+              height={52}
               className="object-contain w-full h-full group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
-          <div className="leading-tight">
-            <span className="text-sm sm:text-[15px] font-semibold tracking-wider uppercase text-white block">
+          <div className="leading-tight flex flex-col">
+            <span
+              className="text-base sm:text-lg lg:text-[19px] font-black tracking-wider uppercase block leading-none"
+              style={{ color: "#08182B" }}
+            >
               ALPHA MATRIX
             </span>
-            <span className="text-[9px] font-medium tracking-[0.22em] uppercase text-slate-400 block">
+            <span
+              className="text-[10px] sm:text-[11px] font-bold tracking-[0.24em] uppercase block mt-1 leading-none"
+              style={{ color: "#005691" }}
+            >
               DEFENCE SYSTEMS
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links ONLY — No CTA Buttons */}
+        {/* Desktop Navigation Links ONLY — Clean, Highly Visible & Increased Font Size */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
@@ -169,34 +180,43 @@ export function AlphaMatrixNavbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`relative text-[13px] font-medium tracking-wide transition-colors py-1.5 ${
-                  active ? "text-white" : "text-slate-300 hover:text-white"
-                }`}
+                className={`relative text-[15px] sm:text-[16px] font-bold tracking-wide transition-colors py-2 px-1 cursor-pointer hover:text-[#005691]`}
+                style={{
+                  color: active ? "#005691" : "#08182B",
+                }}
               >
                 {item.label}
                 {active && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0284C7] rounded-full" />
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[3px] rounded-full"
+                    style={{ backgroundColor: "#005691" }}
+                  />
                 )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Clean Mobile Toggle Button (Zero Extra CTA Buttons) */}
-        <div className="lg:hidden flex items-center">
+        {/* Right Portal & Mobile Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <RoysonsPortalButton />
           <button
-            className="p-2 rounded-lg border border-white/10 text-white transition-colors hover:bg-white/5 cursor-pointer"
+            className="lg:hidden p-2 rounded-lg border border-slate-200 transition-colors hover:bg-slate-100 cursor-pointer"
+            style={{ color: "#08182B", borderColor: "#E2E8F0" }}
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle Navigation Menu"
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={20} className="text-[#08182B]" /> : <Menu size={20} className="text-[#08182B]" />}
           </button>
         </div>
       </div>
 
       {/* Clean Compact Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-white/10 px-5 py-4 space-y-1.5 bg-[#08182B] shadow-2xl">
+        <div
+          className="lg:hidden border-t border-slate-200 px-5 py-4 space-y-1.5 bg-white shadow-2xl"
+          style={{ backgroundColor: "#ffffff" }}
+        >
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
@@ -204,19 +224,22 @@ export function AlphaMatrixNavbar() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block text-xs font-medium tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors ${
+                className={`block text-[15px] font-bold tracking-wide uppercase py-2.5 px-3.5 rounded-lg transition-colors ${
                   active
-                    ? "bg-white/10 text-white font-semibold"
-                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                    ? "bg-[#005691]/10 font-extrabold"
+                    : "hover:bg-slate-100"
                 }`}
+                style={{
+                  color: active ? "#005691" : "#08182B",
+                }}
               >
                 {item.label}
               </Link>
             );
           })}
-          <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 px-3">
+          <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 px-3">
             <span>Secure Defense Comms</span>
-            <span className="text-slate-200">0092-42-38924737</span>
+            <span className="font-bold text-[#08182B]">0092-42-38924737</span>
           </div>
         </div>
       )}

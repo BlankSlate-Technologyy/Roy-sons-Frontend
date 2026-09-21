@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -171,58 +172,64 @@ export function TDRCNavbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white/95 backdrop-blur-md h-16 lg:h-[68px] flex items-center border-b ${
+      className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white/95 backdrop-blur-md h-16 lg:h-[72px] flex items-center border-b ${
         scrolled ? "shadow-sm border-gray-200/90" : "border-gray-200/60"
       }`}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between">
-        {/* Brand Logo - 38-42px height */}
-        <Link href="/group-companies/TDRC" className="flex items-center gap-2.5 sm:gap-3 select-none group">
-          <div className="relative h-10 w-10 flex items-center justify-center flex-shrink-0">
+        {/* Brand Logo */}
+        <Link href="/group-companies/TDRC" className="flex items-center gap-2.5 sm:gap-3 select-none group shrink-0">
+          <div className="relative h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center shrink-0">
             <Image
               src="/logos/23.png"
               alt="TDRC Logo"
-              width={40}
-              height={40}
-              className="object-contain h-10 w-auto group-hover:scale-105 transition-transform duration-300"
+              width={44}
+              height={44}
+              className="object-contain h-10 sm:h-11 w-auto group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-base lg:text-[17px] font-black tracking-tight leading-none uppercase" style={{ color: theme.ink }}>
+            <span className="text-[16px] lg:text-[17.5px] font-black tracking-tight leading-none uppercase whitespace-nowrap" style={{ color: theme.ink }}>
               TDRC
             </span>
-            <span className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-0.5" style={{ color: theme.primaryDark }}>
+            <span className="text-[10px] sm:text-[10.5px] font-bold tracking-wider uppercase mt-1 whitespace-nowrap" style={{ color: theme.primaryDark }}>
               Thal Development &amp; Research Centre
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links - 13-14px font, slightly reduced horizontal spacing */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        {/* Desktop Navigation Links - Bold & highly legible font */}
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5.5 2xl:gap-7 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[13px] xl:text-[13.5px] font-semibold tracking-normal transition-colors duration-200 py-1 px-1 hover:text-[#2E9E54] cursor-pointer"
+                className="text-[15px] xl:text-[16px] font-bold tracking-normal transition-all duration-200 relative py-1.5 px-0.5 hover:text-[#2E9E54] cursor-pointer whitespace-nowrap"
                 style={{
                   color: active ? theme.primaryDark : theme.ink,
-                  borderBottom: active ? `2px solid ${theme.primary}` : "2px solid transparent",
                 }}
               >
                 {link.label}
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] rounded-full"
+                    style={{ backgroundColor: theme.primary }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Mobile Menu Toggle Button (Extra CTA Button removed per requirements) */}
-        <div className="lg:hidden flex items-center">
+        {/* Right Portal & Mobile Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 rounded-lg border transition-colors bg-white hover:bg-slate-50 cursor-pointer"
+            className="lg:hidden p-2 rounded-lg border transition-colors bg-white hover:bg-slate-50 cursor-pointer"
             style={{ borderColor: theme.border, color: theme.ink }}
             aria-label="Toggle Menu"
           >
@@ -244,7 +251,7 @@ export function TDRCNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-[13.5px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
+                className="block text-[15px] sm:text-[16px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.primary}12` : "transparent",
                   color: active ? theme.primaryDark : theme.ink,

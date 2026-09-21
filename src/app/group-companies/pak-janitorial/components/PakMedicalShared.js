@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -220,11 +221,12 @@ export function PakMedicalNavbar() {
           })}
         </nav>
 
-        {/* Mobile Hamburger Toggle (Right side - No CTA button) */}
-        <div className="lg:hidden flex items-center">
+        {/* Right Portal & Mobile Hamburger Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 rounded-lg border border-slate-200 text-slate-700 hover:text-[#1A4FA0] hover:bg-slate-50 transition-colors cursor-pointer"
+            className="lg:hidden p-2 rounded-lg border border-slate-200 text-slate-700 hover:text-[#1A4FA0] hover:bg-slate-50 transition-colors cursor-pointer"
             aria-label="Toggle Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}

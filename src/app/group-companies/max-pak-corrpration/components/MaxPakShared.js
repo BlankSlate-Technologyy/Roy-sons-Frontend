@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -175,10 +176,10 @@ export function MaxPakNavbar() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="w-full px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/group-companies/max-pak-corrpration" className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0 mr-2 xl:mr-4">
-          <div className="relative w-12 h-12 sm:w-14 sm:h-14 lg:w-15 lg:h-15 flex items-center justify-center flex-shrink-0">
+        <Link href="/group-companies/max-pak-corrpration" className="flex items-center gap-2.5 sm:gap-3 select-none group shrink-0 mr-2 xl:mr-4">
+          <div className="relative w-12 h-12 sm:w-13 sm:h-13 flex items-center justify-center shrink-0">
             <Image
               src="/logos/7.png"
               alt="Max Pak Corporation Logo"
@@ -189,58 +190,43 @@ export function MaxPakNavbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm sm:text-base lg:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.navyDark }}>
+            <span className="text-[16px] lg:text-[17.5px] font-black tracking-tight leading-none uppercase whitespace-nowrap" style={{ color: theme.navyDark }}>
               Max Pak
             </span>
-            <span className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.green }}>
+            <span className="text-[10px] sm:text-[10.5px] font-bold tracking-wider uppercase mt-1 whitespace-nowrap" style={{ color: theme.green }}>
               Industrial Supplies &amp; Trading
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 2xl:gap-3">
+        {/* Desktop Navigation Links - Bold & highly legible font */}
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5.5 2xl:gap-7 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11px] xl:text-[11.5px] 2xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1.5 hover:text-[#1B365D] cursor-pointer whitespace-nowrap"
+                className="text-[14.5px] xl:text-[16px] font-bold tracking-normal uppercase transition-all duration-200 relative py-1.5 px-0.5 hover:text-[#1B365D] cursor-pointer whitespace-nowrap"
                 style={{
-                  color: active ? theme.navy : theme.textMuted,
+                  color: active ? theme.green : theme.navyDark,
                 }}
               >
-                {link.shortLabel ? (
-                  <>
-                    <span className="hidden xl:inline">{link.label}</span>
-                    <span className="xl:hidden">{link.shortLabel}</span>
-                  </>
-                ) : (
-                  link.label
+                <span>{link.label}</span>
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] rounded-full"
+                    style={{ backgroundColor: theme.green }}
+                  />
                 )}
-                <span
-                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    active ? "w-full" : "w-0 hover:w-full"
-                  }`}
-                  style={{ backgroundColor: theme.green }}
-                />
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          <Link
-            href="/group-companies/max-pak-corrpration/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"
-            style={{ backgroundColor: theme.navy }}
-          >
-            <span>Procurement Quote</span>
-            <ArrowRight size={13} />
-          </Link>
-
+        {/* Right Portal & Mobile Menu Toggle — Button removed as requested */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
@@ -255,7 +241,7 @@ export function MaxPakNavbar() {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
+          className="lg:hidden border-t px-5 py-4 space-y-1.5 bg-white shadow-xl"
           style={{ borderColor: theme.border }}
         >
           {NAV_LINKS.map((link) => {
@@ -265,27 +251,16 @@ export function MaxPakNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-[15px] sm:text-[16px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.navy}12` : "transparent",
-                  color: active ? theme.navy : theme.navyDark,
+                  color: active ? theme.green : theme.navyDark,
                 }}
               >
                 {link.label}
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/max-pak-corrpration/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.navy }}
-            >
-              <span>Submit Procurement Inquiry</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       )}
     </header>

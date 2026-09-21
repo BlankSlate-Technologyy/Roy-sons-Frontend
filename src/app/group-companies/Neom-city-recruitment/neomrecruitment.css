@@ -79,3 +79,22 @@ body.neom-recruitment-theme li {
 body.neom-recruitment-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* Neom City Recruitment Navbar typography */
+.neom-recruitment-theme header nav a,
+.neom-city-recruitment-theme header nav a,
+body.neom-recruitment-theme header nav a,
+body.neom-city-recruitment-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 1279px) {
+  .neom-recruitment-theme header nav a,
+  .neom-city-recruitment-theme header nav a,
+  body.neom-recruitment-theme header nav a,
+  body.neom-city-recruitment-theme header nav a {
+    font-size: 14.5px !important;
+  }
+}
+

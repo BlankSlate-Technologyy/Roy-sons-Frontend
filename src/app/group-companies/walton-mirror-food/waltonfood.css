@@ -81,3 +81,22 @@ body.walton-mirror-food-theme li {
 body.walton-mirror-food-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* Walton & Mirror Food Navbar typography */
+.walton-mirror-food-theme header nav a,
+.walton-food-theme header nav a,
+body.walton-mirror-food-theme header nav a,
+body.walton-food-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 1279px) {
+  .walton-mirror-food-theme header nav a,
+  .walton-food-theme header nav a,
+  body.walton-mirror-food-theme header nav a,
+  body.walton-food-theme header nav a {
+    font-size: 14.5px !important;
+  }
+}
+

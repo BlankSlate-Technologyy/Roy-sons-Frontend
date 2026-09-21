@@ -793,7 +793,7 @@ export default function InverseUnionHomePage() {
                     Quote Request Received
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto">
-                    Thank you, <span className="font-bold text-slate-900">{tradeForm.name}</span>! Inverse and Union Trading's commercial trade desk has received your request and will dispatch a proforma assessment within 24 hours.
+                    Thank you, <span className="font-bold text-slate-900">{tradeForm.name}</span>! Inverse and Union Trading&apos;s commercial trade desk has received your request and will dispatch a proforma assessment within 24 hours.
                   </p>
                   <button
                     onClick={() => {

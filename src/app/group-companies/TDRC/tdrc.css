@@ -76,3 +76,18 @@ body.tdrc-theme li {
 body.tdrc-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* TDRC Navbar typography */
+.tdrc-theme header nav a,
+body.tdrc-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 1279px) {
+  .tdrc-theme header nav a,
+  body.tdrc-theme header nav a {
+    font-size: 15px !important;
+  }
+}
+

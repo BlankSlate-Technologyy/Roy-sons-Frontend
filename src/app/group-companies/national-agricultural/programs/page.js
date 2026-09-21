@@ -138,7 +138,7 @@ export default function NationalAgriculturalProgramsPage() {
                         className="object-cover"
                       />
                       <div className="absolute top-3.5 left-3.5">
-                        <span className="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
+                        <span className="text-xs font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
                           {prog.tag}
                         </span>
                       </div>
@@ -147,33 +147,33 @@ export default function NationalAgriculturalProgramsPage() {
                     {/* Content */}
                     <div className="p-6">
                       <div className="flex items-center gap-3 mb-2.5">
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
-                          <Icon size={17} style={{ color: theme.primaryMid }} />
+                        <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                          <Icon size={18} style={{ color: theme.primaryMid }} />
                         </div>
-                        <h3 className="text-[17px] font-semibold tracking-tight leading-snug" style={{ color: theme.navy }}>
+                        <h3 className="text-lg font-bold tracking-tight leading-snug" style={{ color: theme.navy }}>
                           <Link href={`/group-companies/national-agricultural/programs/${prog.slug}`} className="hover:text-[#236B38] transition-colors">
                             {prog.title}
                           </Link>
                         </h3>
                       </div>
 
-                      <p className="text-[11px] font-medium tracking-wide mb-2.5" style={{ color: theme.accent }}>
+                      <p className="text-xs font-bold tracking-wide mb-2.5" style={{ color: theme.accent }}>
                         {prog.subtitle}
                       </p>
 
-                      <p className="text-xs sm:text-[13px] font-normal leading-relaxed mb-4 line-clamp-3" style={{ color: theme.textMuted }}>
+                      <p className="text-sm font-normal leading-relaxed mb-4 line-clamp-3 text-slate-600">
                         {prog.overview}
                       </p>
 
                       {/* Benefits preview */}
-                      <div className="space-y-2 pt-3 border-t" style={{ borderColor: theme.borderLight }}>
-                        <p className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: theme.navy }}>
+                      <div className="space-y-2 pt-3.5 border-t" style={{ borderColor: theme.borderLight }}>
+                        <p className="text-xs font-bold uppercase tracking-wide" style={{ color: theme.navy }}>
                           Program Highlights:
                         </p>
                         {prog.benefits.slice(0, 2).map((b, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
-                            <span className="text-xs font-normal text-slate-700 leading-snug">{b}</span>
+                            <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                            <span className="text-sm font-medium text-slate-700 leading-snug">{b}</span>
                           </div>
                         ))}
                       </div>
@@ -184,11 +184,11 @@ export default function NationalAgriculturalProgramsPage() {
                   <div className="px-6 pb-5 pt-2 border-t" style={{ borderColor: theme.borderLight }}>
                     <Link
                       href={`/group-companies/national-agricultural/programs/${prog.slug}`}
-                      className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="agri-link-arrow text-sm font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                       style={{ color: theme.primaryMid }}
                     >
                       <span>Explore program details</span>
-                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -203,13 +203,13 @@ export default function NationalAgriculturalProgramsPage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
             <div>
-              <span className="text-[11px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
+              <span className="text-xs font-bold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
                 Community &amp; Cooperative Partnerships
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold mb-1.5" style={{ color: theme.navy }}>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.navy }}>
                 Partner With Our Agricultural Programs
               </h2>
-              <p className="text-xs sm:text-sm font-normal max-w-xl" style={{ color: theme.textMuted }}>
+              <p className="text-sm sm:text-base font-normal max-w-xl text-slate-600">
                 We collaborate with provincial agriculture departments, rural cooperatives, and institutional landowners to deploy machinery, drip systems, and veterinary hubs.
               </p>
             </div>
@@ -217,7 +217,7 @@ export default function NationalAgriculturalProgramsPage() {
             <div className="flex flex-wrap gap-3 flex-shrink-0">
               <Link
                 href="/group-companies/national-agricultural/contact"
-                className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
+                className="px-5 py-2.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
                 style={{ backgroundColor: theme.primaryMid }}
               >
                 <span>Program Inquiry</span>

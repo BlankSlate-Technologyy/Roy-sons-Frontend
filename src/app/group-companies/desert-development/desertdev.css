@@ -79,3 +79,23 @@ body.desert-development-theme li {
 body.desert-development-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   NAVBAR TYPOGRAPHY & OVERRIDES
+───────────────────────────────────────────────────────────── */
+.desertdev-nav-link,
+body.desert-development-theme header nav a,
+.desert-development-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+}
+
+@media (max-width: 1280px) {
+  .desertdev-nav-link,
+  body.desert-development-theme header nav a,
+  .desert-development-theme header nav a {
+    font-size: 14.5px !important;
+  }
+}
+

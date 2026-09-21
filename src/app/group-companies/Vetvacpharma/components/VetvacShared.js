@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -170,8 +171,9 @@ export function VetvacNavbar() {
           })}
         </nav>
 
-        {/* CTA Button */}
+        {/* CTA & Portal Button */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <Link
             href="/group-companies/Vetvacpharma/contact"
             className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[10.5px] xl:text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"

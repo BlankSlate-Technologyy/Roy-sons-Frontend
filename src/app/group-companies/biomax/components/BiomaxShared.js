@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import "../biomax.css";
 import {
   Phone,
@@ -181,11 +182,12 @@ export function BiomaxNavbar() {
           })}
         </nav>
 
-        {/* Mobile Menu Toggle (Only visible on mobile/tablet) */}
-        <div className="lg:hidden flex items-center shrink-0">
+        {/* Right Portal & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: COLORS.border, color: COLORS.primary }}
             aria-label="Toggle Navigation Menu"
           >

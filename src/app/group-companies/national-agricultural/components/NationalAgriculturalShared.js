@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -186,7 +187,7 @@ export function NationalAgriculturalNavbar() {
         {/* Brand Logo & Name */}
         <Link
           href="/group-companies/national-agricultural"
-          className="flex items-center gap-3 select-none group cursor-pointer"
+          className="flex items-center gap-3 select-none group cursor-pointer shrink-0"
         >
           <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0">
             <Image
@@ -200,13 +201,13 @@ export function NationalAgriculturalNavbar() {
           </div>
           <div className="flex flex-col">
             <span
-              className="text-[13.5px] sm:text-[15px] font-bold tracking-tight leading-none"
+              className="text-base sm:text-lg font-black tracking-tight leading-none"
               style={{ color: theme.navy }}
             >
               National Agricultural
             </span>
             <span
-              className="text-[9.5px] sm:text-[10px] font-medium tracking-[0.16em] uppercase mt-1"
+              className="text-[10px] sm:text-[10.5px] font-bold tracking-[0.16em] uppercase mt-1"
               style={{ color: theme.primaryMid }}
             >
               Corporation (Pvt) Ltd
@@ -215,14 +216,14 @@ export function NationalAgriculturalNavbar() {
         </Link>
 
         {/* Desktop Navigation Links — NO BUTTONS */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[13px] font-medium tracking-wide transition-colors relative py-1 cursor-pointer"
+                className="text-[15px] xl:text-[16px] font-bold tracking-wide transition-colors relative py-1.5 px-0.5 cursor-pointer hover:opacity-85 whitespace-nowrap"
                 style={{
                   color: active ? theme.primaryMid : theme.navy,
                 }}
@@ -230,7 +231,7 @@ export function NationalAgriculturalNavbar() {
                 {link.label}
                 {active && (
                   <span
-                    className="absolute bottom-0 left-0 w-full h-[2px] rounded-full"
+                    className="absolute bottom-0 left-0 w-full h-[2.5px] rounded-full"
                     style={{ backgroundColor: theme.primaryMid }}
                   />
                 )}
@@ -239,11 +240,12 @@ export function NationalAgriculturalNavbar() {
           })}
         </nav>
 
-        {/* Mobile Menu Toggle — NO CTA BUTTONS */}
-        <div className="lg:hidden flex items-center">
+        {/* Right Portal & Mobile Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: theme.border, color: theme.navy }}
             aria-label="Toggle Menu"
           >
@@ -265,7 +267,7 @@ export function NationalAgriculturalNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-[13px] font-medium py-2.5 px-3 rounded-lg transition-colors cursor-pointer"
+                className="block text-[15px] font-bold py-2.5 px-3 rounded-lg transition-colors cursor-pointer"
                 style={{
                   backgroundColor: active ? `${theme.primaryMid}10` : "transparent",
                   color: active ? theme.primaryMid : theme.navy,

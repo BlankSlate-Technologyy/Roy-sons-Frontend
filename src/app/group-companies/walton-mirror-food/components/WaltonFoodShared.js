@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -180,17 +181,17 @@ export function WaltonFoodNavbar({ onOpenWholesaleModal }) {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        scrolled ? "shadow-md py-2" : "py-3"
+        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
       }`}
       style={{
         borderBottom: `1px solid ${theme.border}`,
         backgroundColor: theme.white,
       }}
     >
-      <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between gap-3 lg:gap-4">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 lg:gap-4">
         {/* Brand Logo */}
         <Link href="/group-companies/walton-mirror-food" className="flex items-center gap-2.5 sm:gap-3 select-none group shrink-0">
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 xl:w-12 xl:h-12 rounded-xl overflow-hidden border p-0.5 bg-white shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 xl:w-12 xl:h-12 rounded-xl overflow-hidden border p-0.5 bg-white shadow-xs flex items-center justify-center shrink-0" style={{ borderColor: theme.border }}>
             <Image
               src="/walton&mirrorfood.jpeg"
               alt="Walton &amp; Mirror Food Logo"
@@ -201,47 +202,46 @@ export function WaltonFoodNavbar({ onOpenWholesaleModal }) {
             />
           </div>
           <div className="flex flex-col shrink-0">
-            <span className="text-[13px] sm:text-base lg:text-[15px] xl:text-[16px] font-black tracking-tight leading-tight uppercase whitespace-nowrap" style={{ color: theme.greenDark }}>
+            <span className="text-[15px] sm:text-base lg:text-[17px] xl:text-[17.5px] font-black tracking-tight leading-tight uppercase whitespace-nowrap" style={{ color: theme.greenDark }}>
               Walton &amp; Mirror Food
             </span>
-            <span className="text-[8.5px] sm:text-[9.5px] xl:text-[10px] font-bold tracking-widest uppercase mt-0.5 whitespace-nowrap" style={{ color: theme.ochre }}>
+            <span className="text-[9.5px] sm:text-[10px] xl:text-[10.5px] font-bold tracking-wider uppercase mt-0.5 whitespace-nowrap" style={{ color: theme.ochre }}>
               Food Processing &amp; Production
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center justify-end gap-1 xl:gap-2 2xl:gap-2.5 shrink-0">
+        {/* Desktop Navigation Links - Bold & highly legible font */}
+        <nav className="hidden lg:flex items-center justify-end gap-3.5 xl:gap-5.5 2xl:gap-7 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11px] xl:text-[11.5px] 2xl:text-xs font-extrabold tracking-wide uppercase transition-all duration-200 relative py-1.5 px-2 xl:px-2.5 rounded-lg hover:bg-emerald-50/70 hover:text-[#1E6B43] cursor-pointer whitespace-nowrap"
+                className="text-[14.5px] xl:text-[16px] font-bold tracking-normal uppercase transition-all duration-200 relative py-1.5 px-0.5 hover:text-[#1E6B43] cursor-pointer whitespace-nowrap"
                 style={{
-                  color: active ? theme.green : theme.textMuted,
-                  backgroundColor: active ? `${theme.green}12` : "transparent",
+                  color: active ? theme.green : theme.greenDark,
                 }}
               >
-                {link.shortLabel ? (
-                  <>
-                    <span className="inline xl:hidden">{link.shortLabel}</span>
-                    <span className="hidden xl:inline">{link.label}</span>
-                  </>
-                ) : (
-                  link.label
+                <span>{link.label}</span>
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] rounded-full"
+                    style={{ backgroundColor: theme.green }}
+                  />
                 )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <div className="flex items-center lg:hidden shrink-0">
+        {/* Right Portal & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 rounded-xl border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-2 rounded-xl border transition-colors bg-white cursor-pointer"
             style={{ borderColor: theme.border, color: theme.greenDark }}
             aria-label="Toggle Navigation Menu"
           >
@@ -263,7 +263,7 @@ export function WaltonFoodNavbar({ onOpenWholesaleModal }) {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-extrabold tracking-wider uppercase py-2.5 px-3.5 rounded-xl transition-colors"
+                className="block text-[15px] sm:text-[16px] font-bold tracking-wide uppercase py-2.5 px-3.5 rounded-xl transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.green}14` : "transparent",
                   color: active ? theme.green : theme.greenDark,
@@ -577,20 +577,17 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
     company: "",
     email: "",
     phone: "",
-    productTitle: product ? product.name : "",
     volume: "1 x 20ft FCL Container",
     destinationCountry: "",
     notes: "",
   });
+  const [productTitle, setProductTitle] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [refCode, setRefCode] = useState("WMF-RFQ-748291");
 
-  useEffect(() => {
-    if (product) {
-      setFormData((prev) => ({ ...prev, productTitle: product.name }));
-    }
-  }, [product]);
+  const effectiveProductTitle = productTitle || product?.name || "";
 
   if (!isOpen) return null;
 
@@ -598,6 +595,8 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
     e.preventDefault();
     setSubmitting(true);
     setError("");
+    const generatedRef = `WMF-RFQ-${Math.floor(100000 + Math.random() * 900000)}`;
+    setRefCode(generatedRef);
     try {
       const res = await fetch("/api/company-contact", {
         method: "POST",
@@ -607,8 +606,8 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          service: formData.productTitle || "Food Processing Supplies",
-          subject: `Wholesale Inquiry: ${formData.productTitle || "General"} (${formData.company})`,
+          service: effectiveProductTitle || "Food Processing Supplies",
+          subject: `Wholesale Inquiry: ${effectiveProductTitle || "General"} (${formData.company})`,
           message: `Company: ${formData.company}\nVolume / MOQ: ${formData.volume}\nDestination: ${formData.destinationCountry || "N/A"}\nNotes: ${formData.notes || "N/A"}`,
         }),
       });
@@ -624,6 +623,7 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
   const handleReset = () => {
     setSubmitted(false);
     setError("");
+    setProductTitle("");
     onClose();
   };
 
@@ -661,10 +661,10 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
             </div>
             <h4 className="text-xl font-black text-[#134A2D]">Inquiry Received Successfully!</h4>
             <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-              Thank you for connecting with Walton &amp; Mirror Food. Our export &amp; commercial team has logged your request for <strong>{formData.productTitle || "Food Processing Supplies"}</strong>. A commercial quote and technical dossier will be transmitted to <strong>{formData.email}</strong> within 24 hours.
+              Thank you for connecting with Walton &amp; Mirror Food. Our export &amp; commercial team has logged your request for <strong>{effectiveProductTitle || "Food Processing Supplies"}</strong>. A commercial quote and technical dossier will be transmitted to <strong>{formData.email}</strong> within 24 hours.
             </p>
             <div className="p-3 bg-slate-50 rounded-xl text-xs font-mono font-bold text-slate-700">
-              Ref: WMF-RFQ-{Math.floor(100000 + Math.random() * 900000)}
+              Ref: {refCode}
             </div>
             <button
               type="button"
@@ -739,8 +739,8 @@ export function WholesaleInquiryModal({ product, isOpen, onClose }) {
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Selected Product / Line</label>
                 <select
-                  value={formData.productTitle}
-                  onChange={(e) => setFormData({ ...formData, productTitle: e.target.value })}
+                  value={effectiveProductTitle}
+                  onChange={(e) => setProductTitle(e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl border text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#1E6B43] bg-white"
                   style={{ borderColor: theme.border }}
                 >

@@ -166,7 +166,7 @@ export default function NationalAgriculturalHomePage() {
                   <div className="mb-1" style={{ color: theme.navy }}>
                     <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
-                  <p className="text-[11px] font-medium tracking-wide uppercase whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-xs sm:text-[13px] font-bold tracking-wide uppercase whitespace-pre-line" style={{ color: theme.textMuted }}>
                     {stat.label}
                   </p>
                 </div>
@@ -190,11 +190,11 @@ export default function NationalAgriculturalHomePage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B2535]/80 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-3.5 border shadow-sm w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: theme.accent }}>
+                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-4 border shadow-sm w-full" style={{ borderColor: theme.border }}>
+                    <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: theme.accent }}>
                       Roy &amp; Sons Group Company
                     </p>
-                    <p className="text-xs sm:text-[13px] font-medium" style={{ color: theme.navy }}>
+                    <p className="text-sm sm:text-[15px] font-semibold" style={{ color: theme.navy }}>
                       Commercial Agribusiness · Modern Infrastructure · Dairy Hubs
                     </p>
                   </div>
@@ -209,28 +209,28 @@ export default function NationalAgriculturalHomePage() {
                 Pioneering Modern Agribusiness Across Pakistan
               </h2>
 
-              <p className="text-xs sm:text-sm font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+              <p className="text-sm sm:text-base font-normal leading-relaxed mb-5" style={{ color: theme.textMuted }}>
                 National Agricultural Corporation (Pvt) Ltd brings together certified agronomists, veterinary specialists, and irrigation engineers. With over 25 years of operational heritage, we design and manage commercial agribusiness projects that maximize yield per acre and conserve natural water tables.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                <div className="flex items-center gap-2.5 p-3 rounded-xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={16} style={{ color: theme.primaryMid }} className="flex-shrink-0" />
-                  <span className="text-xs font-medium text-slate-800">50% Water Savings via Drip Tech</span>
+                <div className="flex items-center gap-2.5 p-3.5 rounded-xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} style={{ color: theme.primaryMid }} className="flex-shrink-0" />
+                  <span className="text-sm font-semibold text-slate-800">50% Water Savings via Drip Tech</span>
                 </div>
-                <div className="flex items-center gap-2.5 p-3 rounded-xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
-                  <CheckCircle2 size={16} style={{ color: theme.primaryMid }} className="flex-shrink-0" />
-                  <span className="text-xs font-medium text-slate-800">Certified Dairy Semen &amp; Genetics</span>
+                <div className="flex items-center gap-2.5 p-3.5 rounded-xl border bg-white shadow-xs" style={{ borderColor: theme.border }}>
+                  <CheckCircle2 size={18} style={{ color: theme.primaryMid }} className="flex-shrink-0" />
+                  <span className="text-sm font-semibold text-slate-800">Certified Dairy Semen &amp; Genetics</span>
                 </div>
               </div>
 
               <Link
                 href="/group-companies/national-agricultural/about"
-                className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="agri-link-arrow text-sm font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                 style={{ color: theme.primaryMid }}
               >
                 <span>Read complete corporate overview</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={14} />
               </Link>
             </div>
           </div>
@@ -248,30 +248,30 @@ export default function NationalAgriculturalHomePage() {
                 Agriculture Development &amp; Precision Machinery
               </h2>
 
-              <p className="text-xs sm:text-sm font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+              <p className="text-sm sm:text-base font-normal leading-relaxed mb-5" style={{ color: theme.textMuted }}>
                 Modern crop yields depend on precision field preparation. Our fleets of GPS-guided laser land levelers, pneumatic seed drills, high-horsepower 4WD tractors, and automated combine harvesters accelerate turnaround times and cut per-acre field costs by up to 35%.
               </p>
 
-              <div className="space-y-2 mb-6">
+              <div className="space-y-2.5 mb-6">
                 {[
                   "GPS satellite-guided laser land leveling eliminating irrigation pooling",
                   "Pneumatic precision seed drills ensuring uniform germination depth",
                   "High-capacity grain combine harvesters preventing post-monsoon crop losses",
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
-                    <span className="text-xs font-normal text-slate-700">{item}</span>
+                  <div key={idx} className="flex items-start gap-2.5">
+                    <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                    <span className="text-sm font-medium text-slate-700">{item}</span>
                   </div>
                 ))}
               </div>
 
               <Link
                 href="/group-companies/national-agricultural/services/agricultural-development-mechanization"
-                className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="agri-link-arrow text-sm font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                 style={{ color: theme.primaryMid }}
               >
                 <span>Explore agriculture development specifications</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={14} />
               </Link>
             </div>
 
@@ -313,30 +313,30 @@ export default function NationalAgriculturalHomePage() {
                 Dairy Development &amp; Cold Chain Networks
               </h2>
 
-              <p className="text-xs sm:text-sm font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+              <p className="text-sm sm:text-base font-normal leading-relaxed mb-5" style={{ color: theme.textMuted }}>
                 We engineer turnkey commercial dairy farms ranging from 50-cow family herds up to 5,000-cow corporate estates. Incorporating automated electronic milking parlors, rapid bulk milk chillers (below 4°C), and village collection centers, we guarantee export-quality milk hygiene.
               </p>
 
-              <div className="space-y-2 mb-6">
+              <div className="space-y-2.5 mb-6">
                 {[
                   "Electronic herringbone & rotary milking parlors with yield meters",
                   "Direct-expansion SS304 bulk milk chillers arresting bacterial growth",
                   "TMR feed wagon mixers and high-density corn silage baling systems",
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 size={14} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
-                    <span className="text-xs font-normal text-slate-700">{item}</span>
+                  <div key={idx} className="flex items-start gap-2.5">
+                    <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                    <span className="text-sm font-medium text-slate-700">{item}</span>
                   </div>
                 ))}
               </div>
 
               <Link
                 href="/group-companies/national-agricultural/services/dairy-development-cold-chain"
-                className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="agri-link-arrow text-sm font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                 style={{ color: theme.primaryMid }}
               >
                 <span>Explore dairy development capabilities</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={14} />
               </Link>
             </div>
           </div>
@@ -383,7 +383,7 @@ export default function NationalAgriculturalHomePage() {
                         className="object-cover"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
+                        <span className="text-xs font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
                           {svc.tag}
                         </span>
                       </div>
@@ -391,32 +391,32 @@ export default function NationalAgriculturalHomePage() {
 
                     {/* Content */}
                     <div className="p-5">
-                      <div className="flex items-center gap-2.5 mb-2">
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
-                          <Icon size={16} style={{ color: theme.primaryMid }} />
+                      <div className="flex items-center gap-2.5 mb-2.5">
+                        <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                          <Icon size={18} style={{ color: theme.primaryMid }} />
                         </div>
-                        <h3 className="text-[16px] font-semibold tracking-tight" style={{ color: theme.navy }}>
+                        <h3 className="text-lg font-bold tracking-tight" style={{ color: theme.navy }}>
                           <Link href={`/group-companies/national-agricultural/services/${svc.slug}`} className="hover:text-[#236B38] transition-colors">
                             {svc.title}
                           </Link>
                         </h3>
                       </div>
 
-                      <p className="text-xs font-normal leading-relaxed line-clamp-3 mb-3" style={{ color: theme.textMuted }}>
+                      <p className="text-sm font-normal leading-relaxed line-clamp-3 mb-3 text-slate-600">
                         {svc.overview}
                       </p>
                     </div>
                   </div>
 
                   {/* Subtle Link */}
-                  <div className="px-5 pb-4 pt-1 border-t" style={{ borderColor: theme.borderLight }}>
+                  <div className="px-5 pb-4 pt-1.5 border-t" style={{ borderColor: theme.borderLight }}>
                     <Link
                       href={`/group-companies/national-agricultural/services/${svc.slug}`}
-                      className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="agri-link-arrow text-sm font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                       style={{ color: theme.primaryMid }}
                     >
                       <span>Explore specifications</span>
-                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -437,11 +437,11 @@ export default function NationalAgriculturalHomePage() {
 
             <Link
               href="/group-companies/national-agricultural/programs"
-              className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
+              className="agri-link-arrow text-sm font-bold flex items-center gap-1.5 cursor-pointer"
               style={{ color: theme.primaryMid }}
             >
               <span>View all programs</span>
-              <ArrowRight size={13} />
+              <ArrowRight size={14} />
             </Link>
           </div>
 
@@ -465,38 +465,38 @@ export default function NationalAgriculturalHomePage() {
                         className="object-cover"
                       />
                       <div className="absolute top-3 left-3">
-                        <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
+                        <span className="text-xs font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
                           {prog.tag}
                         </span>
                       </div>
                     </Link>
 
                     <div className="p-5">
-                      <div className="flex items-center gap-2.5 mb-2">
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
-                          <Icon size={16} style={{ color: theme.primaryMid }} />
+                      <div className="flex items-center gap-2.5 mb-2.5">
+                        <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                          <Icon size={18} style={{ color: theme.primaryMid }} />
                         </div>
-                        <h3 className="text-[16px] font-semibold tracking-tight" style={{ color: theme.navy }}>
+                        <h3 className="text-lg font-bold tracking-tight" style={{ color: theme.navy }}>
                           <Link href={`/group-companies/national-agricultural/programs/${prog.slug}`} className="hover:text-[#236B38] transition-colors">
                             {prog.title}
                           </Link>
                         </h3>
                       </div>
 
-                      <p className="text-xs font-normal leading-relaxed line-clamp-3 mb-3" style={{ color: theme.textMuted }}>
+                      <p className="text-sm font-normal leading-relaxed line-clamp-3 mb-3 text-slate-600">
                         {prog.overview}
                       </p>
                     </div>
                   </div>
 
-                  <div className="px-5 pb-4 pt-1 border-t" style={{ borderColor: theme.borderLight }}>
+                  <div className="px-5 pb-4 pt-1.5 border-t" style={{ borderColor: theme.borderLight }}>
                     <Link
                       href={`/group-companies/national-agricultural/programs/${prog.slug}`}
-                      className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="agri-link-arrow text-sm font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                       style={{ color: theme.primaryMid }}
                     >
                       <span>Explore initiative</span>
-                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -512,7 +512,7 @@ export default function NationalAgriculturalHomePage() {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <SectionLabel center>Environmental Focus</SectionLabel>
             <SectionHeading center className="mb-3">5 Pillars of Sustainability</SectionHeading>
-            <p className="text-xs sm:text-sm font-normal" style={{ color: theme.textMuted }}>
+            <p className="text-sm sm:text-base font-normal" style={{ color: theme.textMuted }}>
               Restoring nature&apos;s balance across farmlands through regenerative agronomic engineering.
             </p>
           </div>
@@ -523,19 +523,19 @@ export default function NationalAgriculturalHomePage() {
               return (
                 <div
                   key={p.title}
-                  className="agri-card rounded-2xl p-5 bg-white flex flex-col justify-between"
+                  className="agri-card rounded-2xl p-6 bg-white flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.primaryMid}10` }}>
-                      <Icon size={16} style={{ color: theme.primaryMid }} />
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3.5" style={{ backgroundColor: `${theme.primaryMid}10` }}>
+                      <Icon size={18} style={{ color: theme.primaryMid }} />
                     </div>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider block mb-1" style={{ color: theme.accent }}>
+                    <span className="text-xs font-bold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
                       Pillar 0{idx + 1}
                     </span>
-                    <h4 className="text-[15px] font-semibold mb-1.5" style={{ color: theme.navy }}>
+                    <h4 className="text-[17px] font-bold mb-2" style={{ color: theme.navy }}>
                       {p.title}
                     </h4>
-                    <p className="text-xs font-normal leading-relaxed" style={{ color: theme.textMuted }}>
+                    <p className="text-sm font-normal leading-relaxed text-slate-600">
                       {p.desc}
                     </p>
                   </div>
@@ -547,11 +547,11 @@ export default function NationalAgriculturalHomePage() {
           <div className="text-center mt-8">
             <Link
               href="/group-companies/national-agricultural/sustainability"
-              className="agri-link-arrow text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer"
+              className="agri-link-arrow text-sm font-bold inline-flex items-center gap-1.5 cursor-pointer"
               style={{ color: theme.primaryMid }}
             >
               <span>Read complete sustainability framework</span>
-              <ArrowRight size={13} />
+              <ArrowRight size={14} />
             </Link>
           </div>
         </div>
@@ -573,19 +573,19 @@ export default function NationalAgriculturalHomePage() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-semibold text-xs sm:text-sm cursor-pointer"
+                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base cursor-pointer"
                   style={{ color: theme.navy }}
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
-                    size={16}
+                    size={18}
                     className={`transition-transform duration-300 flex-shrink-0 ${
                       openFaq === idx ? "rotate-180 text-[#C59B27]" : "text-slate-400"
                     }`}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-4 sm:px-5 pb-4 text-xs font-normal leading-relaxed border-t pt-3 text-slate-600" style={{ borderColor: theme.borderLight }}>
+                  <div className="px-4 sm:px-5 pb-5 text-sm font-normal leading-relaxed border-t pt-3.5 text-slate-700" style={{ borderColor: theme.borderLight }}>
                     {faq.a}
                   </div>
                 )}
@@ -600,13 +600,13 @@ export default function NationalAgriculturalHomePage() {
         <div className="mx-auto max-w-screen-xl">
           <div className="rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
             <div>
-              <span className="text-[11px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
+              <span className="text-xs font-bold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
                 Agribusiness Feasibility &amp; Project Planning
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold mb-1.5" style={{ color: theme.navy }}>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.navy }}>
                 Request A Confidential Farm Consultation
               </h2>
-              <p className="text-xs sm:text-sm font-normal max-w-xl" style={{ color: theme.textMuted }}>
+              <p className="text-sm sm:text-base font-normal max-w-xl text-slate-600">
                 Speak directly with our agronomy and dairy specialists to discuss equipment schedules, irrigation designs, and yield forecasts.
               </p>
             </div>
@@ -614,18 +614,18 @@ export default function NationalAgriculturalHomePage() {
             <div className="flex flex-wrap gap-3 flex-shrink-0">
               <Link
                 href="/group-companies/national-agricultural/contact"
-                className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
+                className="px-5 py-2.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
                 style={{ backgroundColor: theme.primaryMid }}
               >
                 <span>Request Quotation</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={14} />
               </Link>
               <a
                 href="tel:+923218431665"
-                className="px-4 py-2.5 rounded-xl text-xs font-semibold border flex items-center gap-2 transition-all hover:bg-white cursor-pointer"
+                className="px-4 py-2.5 rounded-xl text-sm font-bold border flex items-center gap-2 transition-all hover:bg-white cursor-pointer"
                 style={{ borderColor: theme.border, color: theme.navy }}
               >
-                <Phone size={13} style={{ color: theme.primaryMid }} />
+                <Phone size={14} style={{ color: theme.primaryMid }} />
                 <span>+92 321 8431665</span>
               </a>
             </div>

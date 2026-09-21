@@ -76,3 +76,18 @@ body.max-pak-theme li {
 body.max-pak-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* Max Pak Corporation Navbar typography */
+.max-pak-theme header nav a,
+body.max-pak-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 1279px) {
+  .max-pak-theme header nav a,
+  body.max-pak-theme header nav a {
+    font-size: 14.5px !important;
+  }
+}
+

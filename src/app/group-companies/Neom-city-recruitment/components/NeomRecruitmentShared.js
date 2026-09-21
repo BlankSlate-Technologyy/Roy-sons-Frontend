@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -185,9 +186,9 @@ export function NeomRecruitmentNavbar({ onOpenEmployerModal }) {
         {/* Brand Logo & Name */}
         <Link
           href="/group-companies/Neom-city-recruitment"
-          className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0"
+          className="flex items-center gap-2.5 sm:gap-3 select-none group shrink-0"
         >
-          <div className="relative w-11 h-11 sm:w-13 sm:h-13 flex items-center justify-center flex-shrink-0 bg-white rounded-lg p-1 border shadow-2xs" style={{ borderColor: theme.border }}>
+          <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center shrink-0 bg-white rounded-lg p-1 border shadow-2xs" style={{ borderColor: theme.border }}>
             <Image
               src="/logos/24.png"
               alt="Neom City Recruitment Consultants Logo"
@@ -199,13 +200,13 @@ export function NeomRecruitmentNavbar({ onOpenEmployerModal }) {
           </div>
           <div className="flex flex-col">
             <span
-              className="text-[13px] sm:text-base lg:text-[17px] font-black tracking-tight leading-none uppercase"
+              className="text-[16px] lg:text-[17.5px] font-black tracking-tight leading-none uppercase whitespace-nowrap"
               style={{ color: theme.navyDark }}
             >
               Neom City Recruitment
             </span>
             <span
-              className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-1"
+              className="text-[10px] sm:text-[10.5px] font-bold tracking-wider uppercase mt-1 whitespace-nowrap"
               style={{ color: theme.blue }}
             >
               Human Resources &amp; Global Talent
@@ -213,63 +214,34 @@ export function NeomRecruitmentNavbar({ onOpenEmployerModal }) {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-2.5 xl:gap-4.5 2xl:gap-6 flex-shrink">
+        {/* Desktop Navigation Links - Bold & highly legible font */}
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5.5 2xl:gap-7 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-[12.5px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 whitespace-nowrap hover:text-[#0072CE] cursor-pointer"
+                className="text-[14.5px] xl:text-[16px] font-bold tracking-normal uppercase transition-all duration-200 relative py-1.5 px-0.5 whitespace-nowrap hover:text-[#0072CE] cursor-pointer"
                 style={{
-                  color: active ? theme.navy : theme.textMuted,
+                  color: active ? theme.blue : theme.navyDark,
                 }}
               >
                 {link.label}
-                <span
-                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    active ? "w-full" : "w-0 hover:w-full"
-                  }`}
-                  style={{ backgroundColor: theme.blue }}
-                />
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] rounded-full"
+                    style={{ backgroundColor: theme.blue }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Buttons & Mobile Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          <Link
-            href="/group-companies/Neom-city-recruitment/projects"
-            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors hover:bg-sky-50"
-            style={{ borderColor: theme.border, color: theme.navyDark }}
-          >
-            <Briefcase size={13} style={{ color: theme.blue }} />
-            <span>Jobs Portal</span>
-          </Link>
-
-          {onOpenEmployerModal ? (
-            <button
-              type="button"
-              onClick={onOpenEmployerModal}
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"
-              style={{ backgroundColor: theme.blue }}
-            >
-              <span>Hire Talent</span>
-              <ArrowRight size={13} className="hidden sm:inline-block" />
-            </button>
-          ) : (
-            <Link
-              href="/group-companies/Neom-city-recruitment/contact"
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"
-              style={{ backgroundColor: theme.blue }}
-            >
-              <span>Hire Talent</span>
-              <ArrowRight size={13} className="hidden sm:inline-block" />
-            </Link>
-          )}
-
+        {/* Right Portal & Mobile Toggle — Navbar buttons removed as requested */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -285,7 +257,7 @@ export function NeomRecruitmentNavbar({ onOpenEmployerModal }) {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl max-h-[85vh] overflow-y-auto"
+          className="lg:hidden border-t px-5 py-4 space-y-1.5 bg-white shadow-xl max-h-[85vh] overflow-y-auto"
           style={{ borderColor: theme.border }}
         >
           {NAV_LINKS.map((link) => {
@@ -295,7 +267,7 @@ export function NeomRecruitmentNavbar({ onOpenEmployerModal }) {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2.5 px-3 rounded-lg transition-colors"
+                className="block text-[15px] sm:text-[16px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.blue}12` : "transparent",
                   color: active ? theme.blue : theme.navyDark,
@@ -305,26 +277,6 @@ export function NeomRecruitmentNavbar({ onOpenEmployerModal }) {
               </Link>
             );
           })}
-          <div className="pt-3 flex flex-col gap-2 border-t" style={{ borderColor: theme.border }}>
-            <Link
-              href="/group-companies/Neom-city-recruitment/projects"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider border flex items-center justify-center gap-2"
-              style={{ borderColor: theme.border, color: theme.navyDark }}
-            >
-              <Briefcase size={14} style={{ color: theme.blue }} />
-              <span>Browse Job Vacancies</span>
-            </Link>
-            <Link
-              href="/group-companies/Neom-city-recruitment/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.blue }}
-            >
-              <span>Hire Workforce / Talent Inquiry</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       )}
     </header>
@@ -337,6 +289,7 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
   const [appliedSuccess, setAppliedSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [trackingRef, setTrackingRef] = useState("NCR-2026-582910");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -352,6 +305,8 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
     e.preventDefault();
     setSubmitting(true);
     setError("");
+    const generatedRef = `NCR-2026-${Math.floor(100000 + Math.random() * 900000)}`;
+    setTrackingRef(generatedRef);
     try {
       const res = await fetch("/api/company-contact", {
         method: "POST",
@@ -388,27 +343,26 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
         className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border overflow-hidden my-auto max-h-[90vh] flex flex-col"
         style={{ borderColor: theme.border }}
       >
-        {/* Header */}
+        {/* Modal Header */}
         <div className="p-5 sm:p-6 border-b bg-slate-50 flex items-start justify-between gap-4" style={{ borderColor: theme.border }}>
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-sky-100 text-[#0F2B5B]">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-sky-100 text-[#0072CE]">
                 {job.category}
               </span>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800">
-                {job.country} ({job.city})
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-slate-200 text-slate-800">
+                {job.employmentType}
               </span>
-              {job.urgentBadge && (
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-red-100 text-red-700 animate-pulse">
-                  Urgent Vacancy
-                </span>
-              )}
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-black uppercase bg-emerald-100 text-emerald-800">
+                {job.salaryRange}
+              </span>
             </div>
             <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight" style={{ color: theme.navyDark }}>
               {job.title}
             </h3>
-            <p className="text-xs font-semibold mt-1" style={{ color: theme.blue }}>
-              Salary: {job.salary} · {job.vacancies} Positions Available
+            <p className="text-xs font-semibold mt-1 text-slate-500 flex items-center gap-1">
+              <MapPin size={12} style={{ color: theme.blue }} />
+              <span>{job.city}, {job.country} • Visa: {job.visaStatus}</span>
             </p>
           </div>
           <button
@@ -421,7 +375,7 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
           </button>
         </div>
 
-        {/* Modal Navigation Tabs */}
+        {/* Navigation Tabs */}
         <div className="flex border-b bg-white text-xs font-bold uppercase tracking-wider" style={{ borderColor: theme.border }}>
           <button
             type="button"
@@ -430,7 +384,7 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
               activeTab === "details" ? "border-[#0072CE] text-[#0072CE]" : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            Position Specifications
+            Position Details &amp; Criteria
           </button>
           <button
             type="button"
@@ -439,12 +393,12 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
               activeTab === "apply" ? "border-[#0072CE] text-[#0072CE]" : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            Submit Job Application
+            Submit Application
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-5 sm:p-6 overflow-y-auto flex-1 space-y-6">
+        <div className="p-5 sm:p-6 overflow-y-auto flex-1">
           {appliedSuccess ? (
             <div className="py-10 text-center space-y-4">
               <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
@@ -457,7 +411,7 @@ export function JobDetailAndApplyModal({ job, isOpen, onClose }) {
                 Thank you, <strong>{formData.fullName || "Candidate"}</strong>. Your application for <strong>{job.title}</strong> has been registered with Neom City Recruitment Consultants.
               </p>
               <div className="p-4 rounded-xl bg-sky-50 border border-sky-200 inline-block text-left text-xs space-y-1">
-                <p><strong>Application Tracking Reference:</strong> NCR-2026-{Math.floor(100000 + Math.random() * 900000)}</p>
+                <p><strong>Application Tracking Reference:</strong> {trackingRef}</p>
                 <p><strong>Deployment Destination:</strong> {job.country} ({job.city})</p>
                 <p><strong>Status:</strong> Under Technical Review by Recruitment Panel</p>
               </div>
@@ -703,6 +657,7 @@ export function EmployerInquiryModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [inquiryId, setInquiryId] = useState("NCR-CORP-5912");
   const [employerData, setEmployerData] = useState({
     companyName: "",
     contactPerson: "",
@@ -720,6 +675,8 @@ export function EmployerInquiryModal({ isOpen, onClose }) {
     e.preventDefault();
     setSubmitting(true);
     setError("");
+    const generatedId = `NCR-CORP-${Math.floor(1000 + Math.random() * 9000)}`;
+    setInquiryId(generatedId);
     try {
       const res = await fetch("/api/company-contact", {
         method: "POST",
@@ -788,7 +745,7 @@ export function EmployerInquiryModal({ isOpen, onClose }) {
                 Thank you. Our Senior Client Talent Director will contact <strong>{employerData.contactPerson}</strong> at <strong>{employerData.companyName}</strong> within 4 business hours.
               </p>
               <div className="p-3 bg-slate-50 rounded-xl border text-xs text-slate-700 inline-block text-left">
-                <p><strong>Inquiry ID:</strong> NCR-CORP-{Math.floor(1000 + Math.random() * 9000)}</p>
+                <p><strong>Inquiry ID:</strong> {inquiryId}</p>
                 <p><strong>Sector:</strong> {employerData.sector}</p>
                 <p><strong>Estimated Quota:</strong> {employerData.headcount} Workers</p>
               </div>

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -182,9 +183,9 @@ export function NeomCityNavbar({ onOpenInquiryModal }) {
         {/* Brand Logo & Name */}
         <Link
           href="/group-companies/neom-city"
-          className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0"
+          className="flex items-center gap-2.5 sm:gap-3 select-none group shrink-0"
         >
-          <div className="relative w-11 h-11 sm:w-13 sm:h-13 flex items-center justify-center flex-shrink-0 bg-white rounded-lg p-1 border shadow-2xs" style={{ borderColor: theme.border }}>
+          <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center shrink-0 bg-white rounded-lg p-1 border shadow-2xs" style={{ borderColor: theme.border }}>
             <Image
               src="/logos/8.png"
               alt="Neom City Corporation Logo"
@@ -196,74 +197,47 @@ export function NeomCityNavbar({ onOpenInquiryModal }) {
           </div>
           <div className="flex flex-col">
             <span
-              className="text-[14px] sm:text-base lg:text-[17px] font-black tracking-tight leading-none uppercase"
+              className="text-[16px] lg:text-[17.5px] font-black tracking-tight leading-none uppercase whitespace-nowrap"
               style={{ color: theme.navyDark }}
             >
               Neom City
             </span>
             <span
-              className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-1 text-[#008080]"
+              className="text-[10px] sm:text-[10.5px] font-bold tracking-wider uppercase mt-1 text-[#008080] whitespace-nowrap"
             >
               Smart Cities &amp; Urban Development
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-2.5 xl:gap-4.5 2xl:gap-6 flex-shrink">
+        {/* Desktop Navigation Links - Bold & highly legible font */}
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5.5 2xl:gap-7 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-[12.5px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 whitespace-nowrap hover:text-[#008080] cursor-pointer"
+                className="text-[14.5px] xl:text-[16px] font-bold tracking-normal uppercase transition-all duration-200 relative py-1.5 px-0.5 whitespace-nowrap hover:text-[#008080] cursor-pointer"
                 style={{
-                  color: active ? theme.navy : theme.textMuted,
+                  color: active ? theme.teal : theme.navyDark,
                 }}
               >
                 {link.label}
-                <span
-                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    active ? "w-full" : "w-0 hover:w-full"
-                  }`}
-                  style={{ backgroundColor: theme.teal }}
-                />
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] rounded-full"
+                    style={{ backgroundColor: theme.teal }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Buttons & Mobile Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          <Link
-            href="/group-companies/neom-city/projects"
-            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors hover:bg-teal-50"
-            style={{ borderColor: theme.border, color: theme.navyDark }}
-          >
-            <Building2 size={13} style={{ color: theme.teal }} />
-            <span>Masterplans</span>
-          </Link>
-
-          {onOpenInquiryModal ? (
-            <button
-              type="button"
-              onClick={onOpenInquiryModal}
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap bg-[#008080] hover:bg-[#006666]"
-            >
-              <span>Masterplan RFP</span>
-              <ArrowRight size={13} className="hidden sm:inline-block" />
-            </button>
-          ) : (
-            <Link
-              href="/group-companies/neom-city/contact"
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-lg text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap bg-[#008080] hover:bg-[#006666]"
-            >
-              <span>Masterplan RFP</span>
-              <ArrowRight size={13} className="hidden sm:inline-block" />
-            </Link>
-          )}
-
+        {/* Right Portal & Mobile Toggle — Navbar buttons removed as requested */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <button
             type="button"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -279,7 +253,7 @@ export function NeomCityNavbar({ onOpenInquiryModal }) {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div
-          className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl max-h-[85vh] overflow-y-auto"
+          className="lg:hidden border-t px-5 py-4 space-y-1.5 bg-white shadow-xl max-h-[85vh] overflow-y-auto"
           style={{ borderColor: theme.border }}
         >
           {NAV_LINKS.map((link) => {
@@ -289,7 +263,7 @@ export function NeomCityNavbar({ onOpenInquiryModal }) {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2.5 px-3 rounded-lg transition-colors"
+                className="block text-[15px] sm:text-[16px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.teal}12` : "transparent",
                   color: active ? theme.teal : theme.navyDark,
@@ -299,25 +273,6 @@ export function NeomCityNavbar({ onOpenInquiryModal }) {
               </Link>
             );
           })}
-          <div className="pt-3 flex flex-col gap-2 border-t" style={{ borderColor: theme.border }}>
-            <Link
-              href="/group-companies/neom-city/projects"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider border flex items-center justify-center gap-2"
-              style={{ borderColor: theme.border, color: theme.navyDark }}
-            >
-              <Building2 size={14} style={{ color: theme.teal }} />
-              <span>Explore Master Developments</span>
-            </Link>
-            <Link
-              href="/group-companies/neom-city/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs bg-[#008080]"
-            >
-              <span>Submit Masterplan RFP / Inquiry</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       )}
     </header>
@@ -330,13 +285,14 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [trackingRef, setTrackingRef] = useState("NC-DEV-2026-48192");
   const [investorData, setInvestorData] = useState({
     name: "",
     organization: "",
     email: "",
     phone: "",
-    inquiryType: "Commercial Land Parcel Concession",
-    estimatedInvestment: "$10M - $50M USD",
+    inquiryType: "Commercial Concession",
+    estimatedInvestment: "USD $50M - $100M",
     notes: "",
   });
 
@@ -346,6 +302,8 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
     e.preventDefault();
     setSubmitting(true);
     setError("");
+    const generatedRef = `NC-DEV-2026-${Math.floor(10000 + Math.random() * 90000)}`;
+    setTrackingRef(generatedRef);
     try {
       const res = await fetch("/api/company-contact", {
         method: "POST",
@@ -381,6 +339,7 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
       <div
         className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border overflow-hidden my-auto max-h-[90vh] flex flex-col"
         style={{ borderColor: theme.border }}
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
         <div className="p-5 sm:p-6 border-b bg-slate-50 flex items-start justify-between gap-4" style={{ borderColor: theme.border }}>
@@ -423,7 +382,7 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
               activeTab === "overview" ? "border-[#008080] text-[#008080]" : "border-transparent text-slate-500 hover:text-slate-800"
             }`}
           >
-            Masterplan Specifications
+            Masterplan Overview
           </button>
           <button
             type="button"
@@ -437,11 +396,11 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
         </div>
 
         {/* Modal Body */}
-        <div className="p-5 sm:p-6 overflow-y-auto flex-1 space-y-6">
+        <div className="p-5 sm:p-6 overflow-y-auto flex-1">
           {submitted ? (
-            <div className="py-10 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
-                <CheckCircle2 size={36} />
+            <div className="p-8 text-center space-y-4 my-auto">
+              <div className="w-14 h-14 rounded-full bg-teal-100 text-[#008080] flex items-center justify-center mx-auto">
+                <Check size={28} />
               </div>
               <h4 className="text-xl font-black uppercase text-[#05172A]">
                 Concession Inquiry Registered
@@ -450,7 +409,7 @@ export function DevelopmentDetailModal({ development, isOpen, onClose }) {
                 Thank you, <strong>{investorData.name}</strong> from <strong>{investorData.organization || "your enterprise"}</strong>. Our Senior Urban Development Concession Team will review your inquiry and provide detailed spatial zoning datasets within 24 hours.
               </p>
               <div className="p-4 rounded-xl bg-teal-50 border border-teal-200 inline-block text-left text-xs space-y-1">
-                <p><strong>Tracking Reference:</strong> NC-DEV-2026-{Math.floor(10000 + Math.random() * 90000)}</p>
+                <p><strong>Tracking Reference:</strong> {trackingRef}</p>
                 <p><strong>Masterplan Sector:</strong> {development.name}</p>
                 <p><strong>Zoning Type:</strong> {investorData.inquiryType}</p>
               </div>
@@ -708,6 +667,7 @@ export function MasterplanInquiryModal({ isOpen, onClose }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [inquiryId, setInquiryId] = useState("NC-RFP-3849");
   const [rfpData, setRfpData] = useState({
     name: "",
     authority: "",
@@ -724,6 +684,8 @@ export function MasterplanInquiryModal({ isOpen, onClose }) {
     e.preventDefault();
     setSubmitting(true);
     setError("");
+    const generatedId = `NC-RFP-${Math.floor(1000 + Math.random() * 9000)}`;
+    setInquiryId(generatedId);
     try {
       const res = await fetch("/api/company-contact", {
         method: "POST",
@@ -755,29 +717,32 @@ export function MasterplanInquiryModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-xs overflow-y-auto animate-fadeIn">
-      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border overflow-hidden my-auto" style={{ borderColor: theme.border }}>
-        <div className="p-5 sm:p-6 border-b bg-[#0A2540] text-white flex items-start justify-between gap-4">
+      <div
+        className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border overflow-hidden my-auto flex flex-col"
+        style={{ borderColor: theme.border }}
+      >
+        {/* Modal Header */}
+        <div className="p-5 sm:p-6 border-b bg-slate-50 flex items-center justify-between" style={{ borderColor: theme.border }}>
           <div>
-            <span className="text-[10px] font-black uppercase tracking-widest text-[#10B981]">
-              Municipal &amp; Government Liaison Desk
+            <span className="text-[10px] font-black uppercase tracking-wider text-[#008080]">
+              Urban Development Bureau
             </span>
-            <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-white mt-1">
-              Commission Master Planning or Smart Infrastructure
+            <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight" style={{ color: theme.navyDark }}>
+              Masterplan RFP &amp; Urban Advisory
             </h3>
-            <p className="text-xs text-slate-300 mt-1">
-              GIS spatial zoning, subterranean utility tunnels, district cooling, and digital twin deployment.
-            </p>
           </div>
           <button
             type="button"
             onClick={handleClose}
-            className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+            className="p-1.5 rounded-lg border bg-white hover:bg-slate-100 text-slate-500 hover:text-slate-900 transition-colors"
+            style={{ borderColor: theme.border }}
           >
             <X size={20} />
           </button>
         </div>
 
-        <div className="p-5 sm:p-6">
+        {/* Modal Body */}
+        <div className="p-5 sm:p-6 overflow-y-auto max-h-[80vh]">
           {submitted ? (
             <div className="py-8 text-center space-y-3">
               <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
@@ -790,7 +755,7 @@ export function MasterplanInquiryModal({ isOpen, onClose }) {
                 Thank you. Our Chief Urban Planner will contact <strong>{rfpData.name}</strong> from <strong>{rfpData.authority}</strong> within 12 business hours.
               </p>
               <div className="p-3 bg-slate-50 rounded-xl border text-xs text-slate-700 inline-block text-left">
-                <p><strong>Inquiry ID:</strong> NC-RFP-{Math.floor(1000 + Math.random() * 9000)}</p>
+                <p><strong>Inquiry ID:</strong> {inquiryId}</p>
                 <p><strong>Planning Scope:</strong> {rfpData.scope}</p>
                 <p><strong>Target Area:</strong> {rfpData.areaHectares}</p>
               </div>

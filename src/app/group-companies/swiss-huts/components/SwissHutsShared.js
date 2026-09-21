@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -252,8 +253,9 @@ export function SwissHutsNavbar({ onOpenBooking }) {
             })}
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <div className="flex items-center lg:hidden shrink-0">
+          {/* Right Portal & Mobile Menu Toggle */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <RoysonsPortalButton />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="p-2 rounded-xl border transition-colors bg-white cursor-pointer"

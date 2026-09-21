@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -176,17 +177,17 @@ export function MaxPowerNavbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white ${
-        scrolled ? "shadow-md py-1 sm:py-1.5" : "py-1.5 sm:py-2"
+        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
       }`}
       style={{
         borderBottom: `1px solid ${theme.border}`,
         backgroundColor: theme.white,
       }}
     >
-      <div className="w-full max-w-[1400px] mx-auto px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between">
+      <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/group-companies/max-power" className="flex items-center gap-2.5 select-none group py-0.5">
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center flex-shrink-0">
+        <Link href="/group-companies/max-power" className="flex items-center gap-2.5 select-none group py-0.5 shrink-0">
+          <div className="relative w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 flex items-center justify-center shrink-0">
             <Image
               src="/logos/12.png"
               alt="Max Power Logo"
@@ -197,46 +198,46 @@ export function MaxPowerNavbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm sm:text-[15px] font-black tracking-tight leading-none uppercase" style={{ color: theme.navy }}>
+            <span className="text-[16px] lg:text-[17.5px] font-black tracking-tight leading-none uppercase whitespace-nowrap" style={{ color: theme.navy }}>
               Max Power
             </span>
-            <span className="text-[9px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-0.5" style={{ color: theme.teal }}>
+            <span className="text-[10px] sm:text-[10.5px] font-bold tracking-wider uppercase mt-1 whitespace-nowrap" style={{ color: theme.teal }}>
               Energy &amp; Power Infrastructure
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links - Compact, balanced, NO navbar button */}
-        <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
+        {/* Desktop Navigation Links - Bold & highly legible font */}
+        <nav className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-7 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11px] xl:text-[12px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 cursor-pointer whitespace-nowrap"
+                className="text-[14px] xl:text-[16px] font-bold tracking-normal uppercase transition-all duration-200 relative py-1.5 px-0.5 cursor-pointer whitespace-nowrap"
                 style={{
-                  color: active ? theme.teal : theme.textMuted,
+                  color: active ? theme.teal : theme.navy,
                 }}
               >
-                <span className="hidden xl:inline">{link.label}</span>
-                <span className="xl:hidden">{link.shortLabel || link.label}</span>
-                <span
-                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
-                    active ? "w-full" : "w-0 hover:w-full"
-                  }`}
-                  style={{ backgroundColor: theme.teal }}
-                />
+                <span>{link.label}</span>
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 right-0 h-[2.5px] rounded-full"
+                    style={{ backgroundColor: theme.teal }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Mobile Menu Toggle */}
-        <div className="lg:hidden flex items-center">
+        {/* Right Portal & Mobile Menu Toggle */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: theme.border, color: theme.navy }}
             aria-label="Toggle Menu"
           >
@@ -258,7 +259,7 @@ export function MaxPowerNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-[15px] sm:text-[16px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.teal}14` : "transparent",
                   color: active ? theme.teal : theme.navy,

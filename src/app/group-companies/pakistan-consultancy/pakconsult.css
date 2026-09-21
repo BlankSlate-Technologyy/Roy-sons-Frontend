@@ -67,3 +67,18 @@ body.pakistan-consultancy-theme li {
   background-clip: unset !important;
   -webkit-background-clip: unset !important;
 }
+
+/* Pakistan Consultancy Navbar typography */
+.pakistan-consultancy-theme header nav a,
+body.pakistan-consultancy-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 1279px) {
+  .pakistan-consultancy-theme header nav a,
+  body.pakistan-consultancy-theme header nav a {
+    font-size: 15px !important;
+  }
+}
+

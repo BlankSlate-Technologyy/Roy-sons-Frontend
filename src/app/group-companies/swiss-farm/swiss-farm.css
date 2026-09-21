@@ -22,12 +22,33 @@ body.swiss-farms-theme,
 .swiss-farms-theme,
 body.swiss-farm-theme main,
 body.swiss-farm-theme section,
-body.swiss-farm-theme header,
 .swiss-farm-theme main,
 .swiss-farm-theme section,
-.swiss-farm-theme header {
+body.swiss-farms-theme main,
+body.swiss-farms-theme section,
+.swiss-farms-theme main,
+.swiss-farms-theme section {
   background-color: #ffffff !important;
   color: #1C522A;
+}
+
+body.swiss-farm-theme header,
+.swiss-farm-theme header,
+body.swiss-farms-theme header,
+.swiss-farms-theme header {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #D6E5D7 !important;
+  color: #1C522A;
+}
+
+body.swiss-farm-theme header nav a,
+.swiss-farm-theme header nav a,
+body.swiss-farms-theme header nav a,
+.swiss-farms-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  text-decoration: none !important;
 }
 
 body.swiss-farm-theme .cursor-pointer,

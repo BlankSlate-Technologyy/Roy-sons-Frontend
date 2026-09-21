@@ -24,12 +24,25 @@ body.national-mines-theme,
 .national-mines-theme,
 body.national-mines-theme main,
 body.national-mines-theme section,
-body.national-mines-theme header,
 .national-mines-theme main,
-.national-mines-theme section,
-.national-mines-theme header {
+.national-mines-theme section {
   background-color: #ffffff !important;
   color: var(--nmc-navy);
+}
+
+body.national-mines-theme header,
+.national-mines-theme header {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: var(--nmc-navy);
+}
+
+body.national-mines-theme header nav a,
+.national-mines-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.015em !important;
+  text-decoration: none !important;
 }
 
 body.national-mines-theme .cursor-pointer,

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -225,14 +226,17 @@ export function WaltonNavbar() {
           })}
         </nav>
 
-        {/* Clean Mobile Hamburger Menu Button (No other buttons on navbar) */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-1.5 sm:p-2 rounded-lg border border-slate-200 text-[#0A1E34] hover:bg-slate-50 transition-colors cursor-pointer"
-          aria-label="Toggle Navigation Menu"
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        {/* Right Portal & Mobile Hamburger */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <RoysonsPortalButton />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden p-1.5 sm:p-2 rounded-lg border border-slate-200 text-[#0A1E34] hover:bg-slate-50 transition-colors cursor-pointer"
+            aria-label="Toggle Navigation Menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Clean Mobile Navigation Drawer */}

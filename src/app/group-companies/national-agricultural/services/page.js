@@ -125,7 +125,7 @@ export default function NationalAgriculturalServicesPage() {
                   <div className="mb-1" style={{ color: theme.navy }}>
                     <AnimatedCounter targetValue={stat.value} duration={1400 + idx * 100} />
                   </div>
-                  <p className="text-[11px] font-medium tracking-wide uppercase" style={{ color: theme.textMuted }}>
+                  <p className="text-xs sm:text-[13px] font-bold tracking-wide uppercase" style={{ color: theme.textMuted }}>
                     {stat.label}
                   </p>
                 </div>
@@ -141,7 +141,7 @@ export default function NationalAgriculturalServicesPage() {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <SectionLabel center>Comprehensive Portfolio</SectionLabel>
             <SectionHeading center className="mb-3">Our 6 Core Agribusiness Services</SectionHeading>
-            <p className="text-xs sm:text-sm font-normal" style={{ color: theme.textMuted }}>
+            <p className="text-sm sm:text-base font-normal" style={{ color: theme.textMuted }}>
               High-performance farm technologies, crop genetics, smart irrigation, and livestock infrastructure engineered for commercial yields.
             </p>
 
@@ -154,7 +154,7 @@ export default function NationalAgriculturalServicesPage() {
                   placeholder="Search services (e.g. Irrigation, Dairy, Mechanization)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border text-xs sm:text-sm font-normal focus:outline-none focus:ring-1 focus:ring-[#236B38] transition-all bg-white shadow-xs"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border text-sm font-normal focus:outline-none focus:ring-1 focus:ring-[#236B38] transition-all bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 />
               </div>
@@ -184,7 +184,7 @@ export default function NationalAgriculturalServicesPage() {
                         className="object-cover"
                       />
                       <div className="absolute top-3.5 left-3.5">
-                        <span className="text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
+                        <span className="text-xs font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
                           {svc.tag}
                         </span>
                       </div>
@@ -193,30 +193,30 @@ export default function NationalAgriculturalServicesPage() {
                     {/* Content */}
                     <div className="p-6">
                       <div className="flex items-center gap-3 mb-2.5">
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
-                          <Icon size={17} style={{ color: theme.primaryMid }} />
+                        <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                          <Icon size={18} style={{ color: theme.primaryMid }} />
                         </div>
-                        <h3 className="text-[17px] font-semibold tracking-tight leading-snug" style={{ color: theme.navy }}>
+                        <h3 className="text-lg font-bold tracking-tight leading-snug" style={{ color: theme.navy }}>
                           <Link href={`/group-companies/national-agricultural/services/${svc.slug}`} className="hover:text-[#236B38] transition-colors">
                             {svc.title}
                           </Link>
                         </h3>
                       </div>
 
-                      <p className="text-[11px] font-medium tracking-wide mb-2.5" style={{ color: theme.accent }}>
+                      <p className="text-xs font-bold tracking-wide mb-2.5" style={{ color: theme.accent }}>
                         {svc.subtitle}
                       </p>
 
-                      <p className="text-xs sm:text-[13px] font-normal leading-relaxed mb-4 line-clamp-3" style={{ color: theme.textMuted }}>
+                      <p className="text-sm font-normal leading-relaxed mb-4 line-clamp-3 text-slate-600">
                         {svc.overview}
                       </p>
 
                       {/* Deliverables */}
-                      <div className="space-y-2 pt-3 border-t" style={{ borderColor: theme.borderLight }}>
+                      <div className="space-y-2 pt-3.5 border-t" style={{ borderColor: theme.borderLight }}>
                         {svc.deliverables.slice(0, 3).map((d, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
-                            <span className="text-xs font-normal text-slate-700 leading-snug">{d}</span>
+                            <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                            <span className="text-sm font-medium text-slate-700 leading-snug">{d}</span>
                           </div>
                         ))}
                       </div>
@@ -227,11 +227,11 @@ export default function NationalAgriculturalServicesPage() {
                   <div className="px-6 pb-5 pt-2 border-t" style={{ borderColor: theme.borderLight }}>
                     <Link
                       href={`/group-companies/national-agricultural/services/${svc.slug}`}
-                      className="agri-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="agri-link-arrow text-sm font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                       style={{ color: theme.primaryMid }}
                     >
                       <span>Explore service specifications</span>
-                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </div>
                 </div>

@@ -34,7 +34,6 @@ import {
   X,
   ExternalLink,
   Maximize2,
-  Eye,
   TreePine,
 } from "lucide-react";
 import {
@@ -518,17 +517,10 @@ export default function DesertDevHomePage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
-                    <button
-                      onClick={() => setActiveModalItem(item)}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold border border-[#1B4D3E] text-[#1B4D3E] hover:bg-[#1B4D3E] hover:text-white transition-colors cursor-pointer"
-                    >
-                      <Eye size={13} />
-                      <span>Quick View Spec</span>
-                    </button>
+                  <div className="pt-3 border-t border-slate-100">
                     <Link
                       href="/group-companies/desert-development/contact"
-                      className="py-2 px-3 rounded-lg text-xs font-bold text-white bg-[#1B4D3E] hover:opacity-90 transition-opacity cursor-pointer"
+                      className="w-full inline-flex items-center justify-center py-2 px-3 rounded-lg text-xs font-bold text-white bg-[#1B4D3E] hover:opacity-90 transition-opacity cursor-pointer"
                     >
                       <span>Inquire</span>
                     </Link>

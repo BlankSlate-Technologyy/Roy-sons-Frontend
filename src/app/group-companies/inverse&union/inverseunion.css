@@ -78,3 +78,23 @@ body.inverse-union-theme li {
 body.inverse-union-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   NAVBAR TYPOGRAPHY & OVERRIDES
+───────────────────────────────────────────────────────────── */
+.inverse-union-nav-link,
+body.inverse-union-theme header nav a,
+.inverse-union-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+}
+
+@media (max-width: 1280px) {
+  .inverse-union-nav-link,
+  body.inverse-union-theme header nav a,
+  .inverse-union-theme header nav a {
+    font-size: 14.5px !important;
+  }
+}
+

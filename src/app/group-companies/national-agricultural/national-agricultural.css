@@ -27,12 +27,33 @@ body.national-agricalture-theme,
 .national-agricalture-theme,
 body.national-agricultural-theme main,
 body.national-agricultural-theme section,
-body.national-agricultural-theme header,
 .national-agricultural-theme main,
 .national-agricultural-theme section,
-.national-agricultural-theme header {
+body.national-agricalture-theme main,
+body.national-agricalture-theme section,
+.national-agricalture-theme main,
+.national-agricalture-theme section {
   background-color: #ffffff !important;
   color: var(--nac-navy);
+}
+
+body.national-agricultural-theme header,
+.national-agricultural-theme header,
+body.national-agricalture-theme header,
+.national-agricalture-theme header {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: var(--nac-navy);
+}
+
+body.national-agricultural-theme header nav a,
+.national-agricultural-theme header nav a,
+body.national-agricalture-theme header nav a,
+.national-agricalture-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.015em !important;
+  text-decoration: none !important;
 }
 
 body.national-agricultural-theme .cursor-pointer,
@@ -105,8 +126,8 @@ body.national-agricultural-theme .cursor-pointer,
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 700;
   color: var(--nac-primary-mid);
   transition: color 0.2s ease, gap 0.2s ease;
 }
@@ -115,6 +136,22 @@ body.national-agricultural-theme .cursor-pointer,
 .group:hover .agri-link-arrow {
   color: var(--nac-navy);
   gap: 0.5rem;
+}
+
+/* Card Typography Enhancements */
+.agri-card p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.agri-card h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.agri-card h4 {
+  font-size: 1.0625rem;
+  font-weight: 700;
 }
 
 /* Typography resets */

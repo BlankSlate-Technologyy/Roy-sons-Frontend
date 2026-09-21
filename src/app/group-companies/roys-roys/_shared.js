@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import { Menu, X, ArrowRight, ArrowUpRight, Phone, Mail, MapPin, Linkedin, Facebook, Youtube } from "lucide-react";
 
 // ─── Shared Design Tokens ─────────────────────────────────────────────────────
@@ -99,8 +100,9 @@ export function RoysNavbar({ active = "Home" }) {
           })}
         </nav>
 
-        {/* Action Button & Mobile Toggle */}
+        {/* Action Button, Portal & Mobile Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <RoysonsPortalButton />
           <Link
             href="/group-companies/roys-roys/contact"
             className="roys-quote-btn hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded text-sm font-bold text-white shadow-xs transition-all duration-200 hover:bg-[#091b2c] cursor-pointer"

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -179,16 +180,16 @@ export function DigitalZoneNavbar() {
       className={`sticky top-0 z-50 w-full transition-all duration-200 bg-white/95 backdrop-blur-md ${
         scrolled
           ? "h-16 shadow-xs border-b border-slate-200/90"
-          : "h-16 lg:h-[68px] border-b border-slate-100"
+          : "h-16 lg:h-[72px] border-b border-slate-100"
       }`}
     >
       <div className="mx-auto max-w-7xl h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Logo - Clean & properly proportioned */}
         <Link
           href="/group-companies/digitalzone"
-          className="flex items-center gap-2.5 sm:gap-3 group select-none flex-shrink-0"
+          className="flex items-center gap-2.5 sm:gap-3 group select-none shrink-0"
         >
-          <div className="relative w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center flex-shrink-0">
+          <div className="relative w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 flex items-center justify-center shrink-0">
             <Image
               src="/logos/17.png"
               alt="Digital Zoning Corporation"
@@ -199,43 +200,44 @@ export function DigitalZoneNavbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-[14px] sm:text-[15px] lg:text-[16px] font-extrabold tracking-tight text-[#061A30] leading-none group-hover:text-[#00A8E8] transition-colors">
+            <span className="text-[15px] sm:text-[16px] lg:text-[17.5px] font-black tracking-tight text-[#061A30] leading-none group-hover:text-[#00A8E8] transition-colors whitespace-nowrap">
               Digital Zoning Corporation
             </span>
-            <span className="text-[9.5px] sm:text-[10px] font-semibold tracking-wider text-[#00A8E8] uppercase mt-1">
+            <span className="text-[10px] sm:text-[10.5px] font-bold tracking-wider text-[#00A8E8] uppercase mt-1 whitespace-nowrap">
               AI &amp; Enterprise Software
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links - Compact 13px–14px, minimal, elegant */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-7">
+        {/* Desktop Navigation Links - Bold & highly legible font */}
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5.5 2xl:gap-7 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className={`text-[13px] xl:text-[13.5px] font-semibold tracking-normal transition-colors relative py-1.5 cursor-pointer ${
+                className={`text-[15px] xl:text-[16px] font-bold tracking-normal transition-colors relative py-1.5 cursor-pointer whitespace-nowrap ${
                   active
                     ? "text-[#00A8E8]"
-                    : "text-[#334155] hover:text-[#00A8E8]"
+                    : "text-[#061A30] hover:text-[#00A8E8]"
                 }`}
               >
                 {link.label}
                 {active && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#00A8E8] rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#00A8E8] rounded-full" />
                 )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Mobile Hamburger Menu Button (No unnecessary CTA button) */}
-        <div className="flex items-center lg:hidden">
+        {/* Right Portal & Mobile Hamburger Menu */}
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 rounded-lg border border-slate-200 text-[#061A30] hover:bg-slate-50 transition-colors cursor-pointer"
+            className="lg:hidden p-2 rounded-lg border border-slate-200 text-[#061A30] hover:bg-slate-50 transition-colors cursor-pointer"
             aria-label="Toggle navigation menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -253,9 +255,9 @@ export function DigitalZoneNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block text-[13.5px] font-medium py-2.5 px-3 rounded-md transition-colors ${
+                className={`block text-[15px] sm:text-[16px] font-bold py-2.5 px-3 rounded-md transition-colors ${
                   active
-                    ? "bg-[#00A8E8]/10 text-[#00A8E8] font-bold"
+                    ? "bg-[#00A8E8]/10 text-[#00A8E8]"
                     : "text-[#1E293B] hover:bg-slate-50 hover:text-[#00A8E8]"
                 }`}
               >

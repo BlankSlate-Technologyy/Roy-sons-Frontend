@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -200,35 +201,33 @@ export function GTXNavbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11.5px] xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1 hover:text-[#16A34A] cursor-pointer"
+                className="text-[15px] xl:text-[16px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1.5 px-0.5 hover:text-[#16A34A] cursor-pointer whitespace-nowrap"
                 style={{
                   color: active ? theme.primary : theme.charcoal,
                 }}
               >
                 {link.label}
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 w-full h-[2.5px] rounded-full"
+                    style={{ backgroundColor: theme.primary }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
+        {/* Right Portal Icon & Mobile Menu Toggle — No Extra Navbar Buttons */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <Link
-            href="/group-companies/GTX/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
-            style={{ backgroundColor: theme.primary }}
-          >
-            <span>Request EV Proposal</span>
-            <ArrowRight size={13} />
-          </Link>
-
+          <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
@@ -240,7 +239,7 @@ export function GTXNavbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer — Clean, No Extra Buttons */}
       {mobileOpen && (
         <div
           className="lg:hidden border-t px-5 py-4 space-y-2 bg-white shadow-xl"
@@ -253,7 +252,7 @@ export function GTXNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-[15px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.primary}10` : "transparent",
                   color: active ? theme.primary : theme.charcoal,
@@ -263,17 +262,6 @@ export function GTXNavbar() {
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/GTX/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.primary }}
-            >
-              <span>Request EV Proposal</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       )}
     </header>

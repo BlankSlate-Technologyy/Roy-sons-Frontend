@@ -76,3 +76,18 @@ body.max-power-theme li {
 body.max-power-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* Max Power Navbar typography */
+.max-power-theme header nav a,
+body.max-power-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 1279px) {
+  .max-power-theme header nav a,
+  body.max-power-theme header nav a {
+    font-size: 14.5px !important;
+  }
+}
+

@@ -76,3 +76,16 @@
   background-size: 24px 24px;
 }
 
+/* Alpha Matrix Navbar High Visibility & Enhanced Typography */
+body.alpha-matrix-theme header {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body.alpha-matrix-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.025em !important;
+  text-decoration: none !important;
+}
+

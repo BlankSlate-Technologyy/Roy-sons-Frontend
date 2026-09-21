@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
@@ -186,39 +187,46 @@ export function SwissFarmNavbar() {
             />
           </div>
           <div className="flex flex-col shrink-0">
-            <span className="text-xs sm:text-sm lg:text-[13.5px] xl:text-[15px] font-black tracking-tight leading-tight uppercase whitespace-nowrap" style={{ color: theme.primary }}>
+            <span className="text-base sm:text-lg font-black tracking-tight leading-none uppercase whitespace-nowrap" style={{ color: theme.primary }}>
               Swiss Farms
             </span>
-            <span className="text-[8px] sm:text-[8.5px] lg:text-[9px] xl:text-[9.5px] font-bold tracking-widest uppercase mt-0.5 whitespace-nowrap" style={{ color: theme.accentGold }}>
+            <span className="text-[10px] sm:text-[10.5px] font-bold tracking-[0.18em] uppercase mt-1 whitespace-nowrap" style={{ color: theme.accentGold }}>
               Dairy &amp; Livestock
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 shrink">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7 shrink">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[10px] xl:text-[11px] 2xl:text-[11.5px] font-extrabold tracking-wider uppercase transition-all duration-200 relative py-1 px-1.5 xl:px-2 hover:text-[#C5A059] cursor-pointer whitespace-nowrap"
+                className="text-[15px] xl:text-[16px] font-bold tracking-wide uppercase transition-all duration-200 relative py-1.5 px-1 hover:text-[#C5A059] cursor-pointer whitespace-nowrap"
                 style={{
                   color: active ? theme.accentGold : theme.primary,
                 }}
               >
                 {link.label}
+                {active && (
+                  <span
+                    className="absolute bottom-0 left-0 w-full h-[2.5px] rounded-full"
+                    style={{ backgroundColor: theme.accentGold }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
+        {/* Right CTA Button, Portal & Mobile Menu Toggle */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <RoysonsPortalButton />
           <Link
             href="/group-companies/swiss-farm/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-[10px] xl:text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap shrink-0"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-xs font-bold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap shrink-0"
             style={{ backgroundColor: theme.primary }}
           >
             <span>Dairy Sourcing</span>
@@ -249,7 +257,7 @@ export function SwissFarmNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-[15px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.accentGold}15` : "transparent",
                   color: active ? theme.accentGold : theme.primary,

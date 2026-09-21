@@ -4,13 +4,13 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import RoysonsPortalButton from "@/components/ui/RoysonsPortalButton";
 import {
   Phone,
   Mail,
   MapPin,
   Menu,
   X,
-  ArrowRight,
   ShieldCheck,
   CheckCircle2,
   Clock,
@@ -127,13 +127,14 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
       { threshold: 0.2 }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    const node = elementRef.current;
+    if (node) {
+      observer.observe(node);
     }
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+      if (node) {
+        observer.unobserve(node);
       }
     };
   }, [numericTarget, duration]);
@@ -176,9 +177,9 @@ export function DesertDevNavbar() {
         backgroundColor: theme.white,
       }}
     >
-      <div className="w-full px-3 sm:px-5 lg:px-6 xl:px-8 flex items-center justify-between gap-3">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         {/* Brand Logo */}
-        <Link href="/group-companies/desert-development" className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0">
+        <Link href="/group-companies/desert-development" className="flex items-center gap-2.5 sm:gap-3 select-none group flex-shrink-0 mr-4">
           <div className="relative w-11 h-11 sm:w-13 sm:h-13 lg:w-14 lg:h-14 flex items-center justify-center flex-shrink-0">
             <Image
               src="/logos/14.png"
@@ -190,38 +191,38 @@ export function DesertDevNavbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-[13px] sm:text-base lg:text-base xl:text-lg font-black tracking-tight leading-none uppercase" style={{ color: theme.darkGreen }}>
+            <span className="text-[14px] sm:text-base lg:text-[17px] xl:text-[18px] font-black tracking-tight leading-none uppercase" style={{ color: theme.darkGreen }}>
               Desert Development
             </span>
-            <span className="text-[8.5px] sm:text-[9.5px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.emerald }}>
+            <span className="text-[9px] sm:text-[9.5px] lg:text-[10px] font-bold tracking-widest uppercase mt-1" style={{ color: theme.emerald }}>
               Corporation
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center justify-center gap-1.5 xl:gap-3 2xl:gap-5 flex-1 px-2">
+        <nav className="hidden lg:flex items-center justify-end gap-2 xl:gap-3 2xl:gap-4 flex-1">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-[11px] xl:text-[12px] 2xl:text-xs font-bold tracking-wide uppercase transition-all duration-200 relative py-1 px-1.5 xl:px-2 whitespace-nowrap hover:text-[#1B4D3E] cursor-pointer"
+                className="desertdev-nav-link text-[14px] xl:text-[15.5px] 2xl:text-[16px] font-bold tracking-normal uppercase transition-all duration-200 relative py-1.5 px-1.5 xl:px-2.5 hover:text-[#1B4D3E] cursor-pointer whitespace-nowrap"
                 style={{
-                  color: active ? theme.primary : theme.textMuted,
+                  color: active ? theme.primary : theme.darkGreen,
                 }}
               >
                 {link.shortLabel ? (
                   <>
-                    <span className="inline 2xl:hidden">{link.shortLabel}</span>
-                    <span className="hidden 2xl:inline">{link.label}</span>
+                    <span className="inline xl:hidden">{link.shortLabel}</span>
+                    <span className="hidden xl:inline">{link.label}</span>
                   </>
                 ) : (
                   link.label
                 )}
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-[2.5px] rounded-full transition-all duration-300 ${
                     active ? "w-full" : "w-0 hover:w-full"
                   }`}
                   style={{ backgroundColor: theme.emerald }}
@@ -231,16 +232,9 @@ export function DesertDevNavbar() {
           })}
         </nav>
 
-        {/* Right CTA Button & Mobile Menu Toggle */}
+        {/* Right Portal & Mobile Menu Toggle */}
         <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-          <Link
-            href="/group-companies/desert-development/contact"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] sm:text-xs font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap flex-shrink-0"
-            style={{ backgroundColor: theme.primary }}
-          >
-            <span>Consultation</span>
-            <ArrowRight size={13} className="hidden sm:inline-block" />
-          </Link>
+          <RoysonsPortalButton />
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -266,7 +260,7 @@ export function DesertDevNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-[15px] sm:text-[16px] font-bold tracking-wide uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: active ? `${theme.primary}12` : "transparent",
                   color: active ? theme.primary : theme.darkGreen,
@@ -276,17 +270,6 @@ export function DesertDevNavbar() {
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/desert-development/contact"
-              onClick={() => setMobileOpen(false)}
-              className="w-full py-2.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-xs"
-              style={{ backgroundColor: theme.primary }}
-            >
-              <span>Environmental Consultation</span>
-              <ArrowRight size={14} />
-            </Link>
-          </div>
         </div>
       )}
     </header>

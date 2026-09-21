@@ -78,3 +78,22 @@ body.neom-city-theme li {
 body.neom-city-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* Neom City Corporation Navbar typography */
+.neom-city-theme header nav a,
+.neom-city-corp-theme header nav a,
+body.neom-city-theme header nav a,
+body.neom-city-corp-theme header nav a {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 1279px) {
+  .neom-city-theme header nav a,
+  .neom-city-corp-theme header nav a,
+  body.neom-city-theme header nav a,
+  body.neom-city-corp-theme header nav a {
+    font-size: 14.5px !important;
+  }
+}
+
