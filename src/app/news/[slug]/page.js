@@ -27,7 +27,8 @@ import {
   CheckCircle2,
   FileText,
   UserCheck,
-  Compass
+  Compass,
+  TrendingUp
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -46,6 +47,17 @@ export default function BlogPostPage({ params }) {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState("");
+  const canonicalUrl = post?.slug 
+    ? `https://roy-sons-frontend.vercel.app/news/${post.slug}`
+    : "https://roy-sons-frontend.vercel.app/news";
+  const [shareUrl, setShareUrl] = useState(canonicalUrl);
+
+  // Sync actual window URL on client after hydration (zero mismatch)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setShareUrl(window.location.href);
+    }
+  }, []);
 
   // Reading progress and active scroll spy
   useEffect(() => {
@@ -148,7 +160,6 @@ export default function BlogPostPage({ params }) {
   const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
 
   // SEO JSON-LD Structured Data
-  const currentUrl = typeof window !== "undefined" ? window.location.href : `https://roy-sons-frontend.vercel.app/news/${post.slug}`;
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -172,7 +183,7 @@ export default function BlogPostPage({ params }) {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": currentUrl
+      "@id": canonicalUrl
     },
     "keywords": (post.tags || []).join(", ")
   };
@@ -197,7 +208,7 @@ export default function BlogPostPage({ params }) {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": currentUrl
+        "item": canonicalUrl
       }
     ]
   };
@@ -238,49 +249,58 @@ export default function BlogPostPage({ params }) {
             alt={post.title}
             fill
             priority
-            className="object-cover object-center filter brightness-[0.78] contrast-[1.06]"
+            className="object-cover object-center filter brightness-[0.92] contrast-[1.02]"
             sizes="100vw"
           />
-          {/* Multi-layered cinematic gradient overlays for 100% text visibility */}
+          {/* Directional gradient overlay: Strong dark backdrop on left for text legibility, subtle fade on right for AI background vibrancy */}
           <div 
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(135deg, rgba(2, 22, 31, 0.95) 0%, rgba(4, 46, 58, 0.90) 45%, rgba(7, 93, 109, 0.82) 80%, rgba(0, 77, 64, 0.88) 100%)",
+              background: "linear-gradient(90deg, rgba(2, 22, 31, 0.86) 0%, rgba(3, 35, 46, 0.72) 42%, rgba(4, 46, 58, 0.50) 68%, rgba(7, 93, 109, 0.28) 100%)",
             }}
           />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#02161f] via-transparent to-black/50" />
-          <div 
-            className="absolute inset-0 opacity-[0.04] pointer-events-none"
-            style={{
-              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px)",
-              backgroundSize: "28px 28px",
-            }}
-          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#02161f]/85 via-transparent to-black/25" />
         </div>
 
         <div className="max-w-screen-xl mx-auto relative z-10 w-full">
           {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-bold text-white/80 mb-5 uppercase tracking-wider">
-            <Link href="/" className="text-white/80 hover:text-[#dfb753] transition-colors">Home</Link>
-            <ChevronRight size={12} className="text-white/50 shrink-0" />
-            <Link href="/news" className="text-white/80 hover:text-[#dfb753] transition-colors">News &amp; Perspectives</Link>
-            <ChevronRight size={12} className="text-white/50 shrink-0" />
-            <span className="text-[#dfb753] font-black truncate max-w-[200px] sm:max-w-xs md:max-w-md">{post.category}</span>
+          <nav aria-label="Breadcrumb" className="inline-flex flex-wrap items-center gap-2 text-xs font-bold mb-5 uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-black/45 border border-white/20 backdrop-blur-md shadow-xs">
+            <Link 
+              href="/" 
+              className="roysons-breadcrumb-link text-white hover:text-[#dfb753] transition-colors"
+            >
+              Home
+            </Link>
+            <ChevronRight size={12} className="text-white/80 shrink-0" />
+            <Link 
+              href="/news" 
+              className="roysons-breadcrumb-link text-white hover:text-[#dfb753] transition-colors"
+            >
+              News &amp; Perspectives
+            </Link>
+            <ChevronRight size={12} className="text-white/80 shrink-0" />
+            <span 
+              className="roysons-breadcrumb-current text-[#dfb753] font-black truncate max-w-[200px] sm:max-w-xs md:max-w-md"
+            >
+              {post.category}
+            </span>
           </nav>
 
           <div className="max-w-4xl">
             {/* Category Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/15 border border-white/25 backdrop-blur-md rounded-full mb-4 shadow-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-black/40 border border-white/30 backdrop-blur-md rounded-full mb-4 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#dfb753] animate-pulse" />
-              <span className="text-[11px] font-black uppercase tracking-[0.18em] text-white">
+              <span 
+                className="text-[11px] font-black uppercase tracking-[0.18em] text-white"
+                style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+              >
                 {post.category}
               </span>
             </div>
 
             {/* H1 Article Title */}
             <h1 
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black text-white tracking-tight leading-[1.18] mb-5 drop-shadow-sm"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black text-white tracking-tight leading-[1.18] mb-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
               style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
             >
               {post.title}
@@ -289,8 +309,8 @@ export default function BlogPostPage({ params }) {
             {/* Sub-headline / Executive Hook */}
             {post.excerpt && (
               <p 
-                className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed font-normal mb-6 max-w-3xl drop-shadow-xs"
-                style={{ color: "rgba(255, 255, 255, 0.92)", WebkitTextFillColor: "rgba(255, 255, 255, 0.92)" }}
+                className="text-white text-sm sm:text-base md:text-lg leading-relaxed font-normal mb-6 max-w-3xl drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)]"
+                style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
               >
                 {post.excerpt}
               </p>
@@ -323,8 +343,8 @@ export default function BlogPostPage({ params }) {
                       <CheckCircle2 size={13} className="text-[#dfb753]" />
                     </p>
                     <p 
-                      className="text-[11px] text-white/80 font-medium"
-                      style={{ color: "rgba(255, 255, 255, 0.8)", WebkitTextFillColor: "rgba(255, 255, 255, 0.8)" }}
+                      className="text-[11px] text-white/90 font-medium"
+                      style={{ color: "rgba(255, 255, 255, 0.9)", WebkitTextFillColor: "rgba(255, 255, 255, 0.9)" }}
                     >
                       {post.author?.team || "Corporate Research Unit"}
                     </p>
@@ -365,7 +385,7 @@ export default function BlogPostPage({ params }) {
                   title="Share / Copy Link"
                 >
                   {copied ? <Check size={14} className="text-emerald-300" /> : <Share2 size={14} className="text-white" />}
-                  <span className="!text-white" style={{ color: "#ffffff" }}>{copied ? "Link Copied!" : "Share Article"}</span>
+                  <span className="!text-white" style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>{copied ? "Link Copied!" : "Share Article"}</span>
                 </button>
               </div>
             </div>
@@ -386,9 +406,12 @@ export default function BlogPostPage({ params }) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
           
-          <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 bg-[#042E3A]/90 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg border border-white/20 text-white shadow-lg flex items-center gap-2">
+          <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5 bg-[#042E3A]/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg border border-white/25 shadow-lg flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#dfb753]" />
-            <p className="text-[10.5px] sm:text-xs font-bold uppercase tracking-wider">
+            <p 
+              className="text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-white"
+              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+            >
               {post.category} • ROYSONS Corporate Intelligence
             </p>
           </div>
@@ -472,15 +495,16 @@ export default function BlogPostPage({ params }) {
               {/* Tags Section */}
               {post.tags && post.tags.length > 0 && (
                 <div className="mt-10 pt-6 border-t border-neutral-200">
-                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-neutral-500 mb-3">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider mb-3">
                     <Tag size={13} className="text-[#0a7a8c]" />
-                    <span>Tagged Topics &amp; Sector Keywords</span>
+                    <span style={{ color: "#64748b", WebkitTextFillColor: "#64748b" }}>Tagged Topics &amp; Sector Keywords</span>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
                         className="px-3.5 py-1.5 rounded-lg bg-[#f0fdfa] border border-[#0a7a8c]/20 text-[#042E3A] font-bold text-xs hover:border-[#0a7a8c] transition-colors cursor-default"
+                        style={{ color: "#042E3A", WebkitTextFillColor: "#042E3A" }}
                       >
                         #{tag}
                       </span>
@@ -491,37 +515,40 @@ export default function BlogPostPage({ params }) {
 
               {/* Social Share Bar Inside Article */}
               <div className="mt-8 pt-6 border-t border-neutral-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#f8fafc] p-4.5 rounded-xl">
-                <div className="flex items-center gap-2 text-xs sm:text-sm font-black text-[#042E3A] uppercase tracking-wider">
+                <div className="flex items-center gap-2 text-xs sm:text-sm font-black uppercase tracking-wider">
                   <Share2 size={16} className="text-[#0a7a8c]" />
-                  <span>Share This Perspective</span>
+                  <span style={{ color: "#042E3A", WebkitTextFillColor: "#042E3A" }}>Share This Perspective</span>
                 </div>
                 <div className="flex items-center gap-2 flex-wrap">
                   {/* WhatsApp */}
                   <a
-                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + " - " + currentUrl)}`}
+                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title + " - " + shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3.5 py-1.5 rounded-md bg-[#25D366] text-white text-xs font-bold hover:opacity-90 transition-opacity flex items-center gap-1.5 shadow-2xs"
+                    style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
                   >
-                    <span>WhatsApp</span>
+                    <span style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>WhatsApp</span>
                   </a>
                   {/* LinkedIn */}
                   <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3.5 py-1.5 rounded-md bg-[#0077B5] text-white text-xs font-bold hover:opacity-90 transition-opacity flex items-center gap-1.5 shadow-2xs"
+                    style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
                   >
-                    <span>LinkedIn</span>
+                    <span style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>LinkedIn</span>
                   </a>
                   {/* X / Twitter */}
                   <a
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(currentUrl)}`}
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3.5 py-1.5 rounded-md bg-[#000000] text-white text-xs font-bold hover:opacity-90 transition-opacity flex items-center gap-1.5 shadow-2xs"
+                    style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
                   >
-                    <span>X</span>
+                    <span style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>X</span>
                   </a>
                   {/* Copy Link */}
                   <button
@@ -529,7 +556,7 @@ export default function BlogPostPage({ params }) {
                     className="px-3.5 py-1.5 rounded-md bg-white border border-neutral-300 text-neutral-800 text-xs font-bold hover:bg-neutral-100 transition-colors flex items-center gap-1.5 shadow-2xs cursor-pointer"
                   >
                     {copied ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
-                    <span>{copied ? "Copied!" : "Copy"}</span>
+                    <span style={{ color: "#262626", WebkitTextFillColor: "#262626" }}>{copied ? "Copied!" : "Copy"}</span>
                   </button>
                 </div>
               </div>
@@ -544,9 +571,9 @@ export default function BlogPostPage({ params }) {
                 }}
               >
                 <div className="relative z-10">
-                  <div className="flex items-center gap-2 text-[#dfb753] text-xs font-black uppercase tracking-[0.2em] mb-3">
-                    <Sparkles size={15} />
-                    <span>INTEGRATED STRATEGIC EXECUTION</span>
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] mb-3">
+                    <Sparkles size={15} className="text-[#dfb753]" />
+                    <span style={{ color: "#dfb753", WebkitTextFillColor: "#dfb753" }}>INTEGRATED STRATEGIC EXECUTION</span>
                   </div>
                   <h3 
                     className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white mb-3 leading-snug"
@@ -556,7 +583,7 @@ export default function BlogPostPage({ params }) {
                   </h3>
                   <p 
                     className="text-sm sm:text-base text-white/90 leading-relaxed mb-7 max-w-2xl"
-                    style={{ color: "rgba(255, 255, 255, 0.9)", WebkitTextFillColor: "rgba(255, 255, 255, 0.9)" }}
+                    style={{ color: "rgba(255, 255, 255, 0.95)", WebkitTextFillColor: "rgba(255, 255, 255, 0.95)" }}
                   >
                     Connect with our sector specialists to discover how our integrated procurement, engineering, and infrastructure solutions can drive sustainable growth for your enterprise.
                   </p>
@@ -575,8 +602,9 @@ export default function BlogPostPage({ params }) {
                     <Link
                       href="/contact"
                       className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-[13px] font-bold tracking-[0.14em] uppercase text-white hover:text-white border border-white/35 hover:bg-white/10 transition-all duration-300 rounded-lg"
+                      style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
                     >
-                      <span>Contact Advisory Desk</span>
+                      <span style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>Contact Advisory Desk</span>
                     </Link>
                   </div>
                 </div>
@@ -592,9 +620,12 @@ export default function BlogPostPage({ params }) {
                 >
                   <div className="flex items-center gap-2 text-xs font-bold text-[#0a7a8c] uppercase tracking-wider mb-2">
                     <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-                    <span>Previous Insight</span>
+                    <span style={{ color: "#0a7a8c", WebkitTextFillColor: "#0a7a8c" }}>Previous Insight</span>
                   </div>
-                  <h4 className="text-sm sm:text-base font-bold text-neutral-900 group-hover:text-[#0a7a8c] transition-colors line-clamp-2 leading-snug">
+                  <h4 
+                    className="text-sm sm:text-base font-bold text-neutral-900 group-hover:text-[#0a7a8c] transition-colors line-clamp-2 leading-snug"
+                    style={{ color: "#0a0a0a", WebkitTextFillColor: "#0a0a0a" }}
+                  >
                     {prevPost.title}
                   </h4>
                 </Link>
@@ -606,10 +637,13 @@ export default function BlogPostPage({ params }) {
                   className="p-5 rounded-xl border border-neutral-200 bg-white hover:border-[#0a7a8c] hover:shadow-md transition-all group flex flex-col justify-between text-right sm:text-right"
                 >
                   <div className="flex items-center justify-end gap-2 text-xs font-bold text-[#0a7a8c] uppercase tracking-wider mb-2">
-                    <span>Next Insight</span>
+                    <span style={{ color: "#0a7a8c", WebkitTextFillColor: "#0a7a8c" }}>Next Insight</span>
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
-                  <h4 className="text-sm sm:text-base font-bold text-neutral-900 group-hover:text-[#0a7a8c] transition-colors line-clamp-2 leading-snug">
+                  <h4 
+                    className="text-sm sm:text-base font-bold text-neutral-900 group-hover:text-[#0a7a8c] transition-colors line-clamp-2 leading-snug"
+                    style={{ color: "#0a0a0a", WebkitTextFillColor: "#0a0a0a" }}
+                  >
                     {nextPost.title}
                   </h4>
                 </Link>
@@ -623,9 +657,9 @@ export default function BlogPostPage({ params }) {
             {/* 1. Interactive Table of Contents (Desktop) */}
             {post.tableOfContents && post.tableOfContents.length > 0 && (
               <div className="bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-xs">
-                <div className="flex items-center gap-2 pb-3.5 mb-3.5 border-b border-neutral-200 text-xs font-black uppercase tracking-[0.16em] text-[#042E3A]">
+                <div className="flex items-center gap-2 pb-3.5 mb-3.5 border-b border-neutral-200 text-xs font-black uppercase tracking-[0.16em]">
                   <List size={16} className="text-[#0a7a8c]" />
-                  <span>In This Article</span>
+                  <span style={{ color: "#042E3A", WebkitTextFillColor: "#042E3A" }}>In This Article</span>
                 </div>
                 <nav className="space-y-1">
                   {post.tableOfContents.map((item, i) => {
@@ -637,7 +671,7 @@ export default function BlogPostPage({ params }) {
                         className={`w-full text-left py-2 px-3 rounded-lg text-xs sm:text-[13px] transition-all flex items-start gap-2.5 cursor-pointer ${
                           isCur
                             ? "bg-[#f0fdfa] text-[#0a7a8c] font-black border-l-2 border-[#0a7a8c]"
-                            : "text-neutral-600 hover:text-[#042E3A] hover:bg-neutral-50 font-medium"
+                            : "text-neutral-700 hover:text-[#042E3A] hover:bg-neutral-50 font-medium"
                         }`}
                       >
                         <span className={`text-[10px] font-mono mt-0.5 ${isCur ? "text-[#0a7a8c] font-bold" : "text-neutral-400"}`}>
@@ -688,7 +722,7 @@ export default function BlogPostPage({ params }) {
             <div className="bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-xs">
               <div className="flex items-center gap-2 pb-3 mb-4 border-b border-neutral-200 text-xs font-bold uppercase tracking-wider text-[#0a7a8c]">
                 <UserCheck size={15} />
-                <span>Editorial Credibility</span>
+                <span style={{ color: "#0a7a8c", WebkitTextFillColor: "#0a7a8c" }}>Editorial Credibility</span>
               </div>
               <div className="flex items-start gap-3.5 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-[#042E3A] flex items-center justify-center text-white shrink-0 overflow-hidden shadow-xs">
@@ -705,10 +739,10 @@ export default function BlogPostPage({ params }) {
                   )}
                 </div>
                 <div>
-                  <h4 className="text-sm font-black text-[#042E3A] leading-snug">
+                  <h4 className="text-sm font-black text-[#042E3A] leading-snug" style={{ color: "#042E3A", WebkitTextFillColor: "#042E3A" }}>
                     {post.author?.name || "ROYSONS Strategic Intelligence Desk"}
                   </h4>
-                  <p className="text-xs text-[#0a7a8c] font-semibold mt-0.5">
+                  <p className="text-xs text-[#0a7a8c] font-semibold mt-0.5" style={{ color: "#0a7a8c", WebkitTextFillColor: "#0a7a8c" }}>
                     {post.author?.role || "Corporate Strategy Unit"}
                   </p>
                 </div>
@@ -742,7 +776,7 @@ export default function BlogPostPage({ params }) {
               </h4>
               <p 
                 className="text-xs sm:text-sm text-white/90 leading-relaxed mb-6"
-                style={{ color: "rgba(255, 255, 255, 0.9)", WebkitTextFillColor: "rgba(255, 255, 255, 0.9)" }}
+                style={{ color: "rgba(255, 255, 255, 0.95)", WebkitTextFillColor: "rgba(255, 255, 255, 0.95)" }}
               >
                 Looking to deploy solutions in this sector? Connect directly with our industry directors and engineering advisory desk.
               </p>
@@ -770,10 +804,16 @@ export default function BlogPostPage({ params }) {
       >
         <div className="max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
           <div>
-            <span className="text-[11px] font-black uppercase tracking-[0.25em] text-[#dfb753] block mb-1">
+            <span 
+              className="text-[11px] font-black uppercase tracking-[0.25em] text-[#dfb753] block mb-1"
+              style={{ color: "#dfb753", WebkitTextFillColor: "#dfb753" }}
+            >
               STAY INFORMED
             </span>
-            <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+            <h3 
+              className="text-xl sm:text-2xl font-black text-white tracking-tight"
+              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+            >
               Subscribe to ROYSONS Corporate Insights &amp; Market Reports
             </h3>
           </div>
@@ -786,7 +826,7 @@ export default function BlogPostPage({ params }) {
               placeholder="Enter your corporate email..."
               required
               className="w-full sm:w-80 px-4 py-3 rounded-lg bg-white/15 border border-white/25 text-white placeholder-white/70 text-sm focus:outline-hidden focus:border-[#dfb753] transition-colors"
-              style={{ color: "#ffffff" }}
+              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
             />
             <button
               type="submit"
@@ -795,11 +835,11 @@ export default function BlogPostPage({ params }) {
               {subscribed ? (
                 <>
                   <Check size={15} />
-                  <span>SUBSCRIBED!</span>
+                  <span style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>SUBSCRIBED!</span>
                 </>
               ) : (
                 <>
-                  <span>SUBSCRIBE</span>
+                  <span style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>SUBSCRIBE</span>
                   <Send size={14} />
                 </>
               )}
@@ -810,20 +850,28 @@ export default function BlogPostPage({ params }) {
 
       {/* ─── Related Perspectives & Insights Grid ──────────────────────────── */}
       {relatedArticles.length > 0 && (
-        <section className="py-16 sm:py-20 bg-[#f8fafc] border-t border-neutral-200">
+        <section className="py-16 sm:py-20 bg-neutral-50/70 border-t border-neutral-200">
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-neutral-200">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-neutral-200">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.25em] text-[#0a7a8c] mb-1.5">
-                  KEEP EXPLORING
+                <p 
+                  className="text-[11px] font-black uppercase tracking-[0.25em] text-[#dfb753] mb-1.5 flex items-center gap-1.5"
+                  style={{ color: "#dfb753", WebkitTextFillColor: "#dfb753" }}
+                >
+                  <TrendingUp size={13} />
+                  <span>KEEP EXPLORING</span>
                 </p>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#042E3A]">
+                <h2 
+                  className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950"
+                  style={{ color: "#0a0a0a", WebkitTextFillColor: "#0a0a0a" }}
+                >
                   Related Perspectives &amp; Insights
                 </h2>
               </div>
               <Link 
                 href="/news" 
-                className="mt-3 sm:mt-0 inline-flex items-center gap-2 text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-[#0a7a8c] hover:text-[#042E3A] transition-colors"
+                className="mt-3 sm:mt-0 inline-flex items-center gap-2 text-xs sm:text-[13px] font-bold uppercase tracking-[0.16em] text-neutral-700 hover:text-[#dfb753] transition-colors"
+                style={{ color: "#374151", WebkitTextFillColor: "#374151" }}
               >
                 <span>View All Articles</span>
                 <ArrowRight size={14} strokeWidth={2.5} />
@@ -832,58 +880,72 @@ export default function BlogPostPage({ params }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 sm:gap-8">
               {relatedArticles.map((item, idx) => (
-                <article 
+                <div 
                   key={idx}
-                  className="group bg-white border border-neutral-200 hover:border-[#0a7a8c] rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                  className="group bg-white rounded-sm border border-neutral-200/80 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col overflow-hidden"
                 >
-                  <div className="relative w-full h-56 sm:h-64 overflow-hidden bg-neutral-100">
+                  <div className="relative h-48 sm:h-52 overflow-hidden bg-neutral-900">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute top-4 left-4 bg-white/95 border border-[#0a7a8c]/30 backdrop-blur-md px-3.5 py-1 rounded-full text-[10.5px] font-black text-[#0a7a8c] uppercase tracking-wider shadow-xs">
-                      {item.category}
+                    <div className="absolute top-3 left-3 bg-black/85 backdrop-blur-md border border-[#dfb753]/40 px-2.5 py-1 rounded text-[9.5px] font-black text-[#dfb753] uppercase tracking-wider">
+                      <span style={{ color: "#dfb753", WebkitTextFillColor: "#dfb753" }}>{item.category}</span>
                     </div>
                   </div>
 
-                  <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                  <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center gap-3 text-xs text-neutral-500 font-medium mb-3">
-                        <span className="flex items-center gap-1.5">
-                          <Calendar size={12} className="text-[#0a7a8c]" />
-                          <time>{item.date}</time>
+                      <div className="flex items-center gap-2.5 text-[11px] text-neutral-500 font-bold uppercase tracking-wider mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar size={11} className="text-[#dfb753]" />
+                          <span style={{ color: "#6b7280", WebkitTextFillColor: "#6b7280" }}>{item.date}</span>
                         </span>
                         <span>•</span>
-                        <span className="flex items-center gap-1.5">
-                          <Clock size={12} className="text-[#0a7a8c]" />
-                          <span>{item.readTime}</span>
+                        <span className="flex items-center gap-1">
+                          <Clock size={11} className="text-[#dfb753]" />
+                          <span style={{ color: "#6b7280", WebkitTextFillColor: "#6b7280" }}>{item.readTime}</span>
                         </span>
                       </div>
 
-                      <h3 className="text-lg sm:text-xl font-black text-neutral-950 group-hover:text-[#0a7a8c] transition-colors line-clamp-2 leading-snug mb-3">
-                        {item.title}
+                      <h3 className="text-[17px] font-black text-neutral-950 group-hover:text-[#dfb753] transition-colors leading-snug mb-3 line-clamp-2">
+                        <Link href={`/news/${item.slug}`} style={{ color: "#0a0a0a", WebkitTextFillColor: "#0a0a0a" }}>
+                          {item.title}
+                        </Link>
                       </h3>
 
                       {item.excerpt && (
-                        <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed line-clamp-2 mb-4 font-normal">
+                        <p 
+                          className="text-[13.5px] text-neutral-600 leading-relaxed font-normal mb-4 line-clamp-2"
+                          style={{ color: "#4b5563", WebkitTextFillColor: "#4b5563" }}
+                        >
                           {item.excerpt}
                         </p>
                       )}
                     </div>
 
-                    <Link
-                      href={`/news/${item.slug}`}
-                      className="inline-flex items-center gap-2 text-xs font-black tracking-[0.16em] uppercase text-[#0a7a8c] group-hover:text-[#042E3A] transition-colors pt-4 border-t border-neutral-100"
-                    >
-                      <span>Read Full Insight</span>
-                      <ArrowRight size={13} strokeWidth={2.5} className="group-hover:translate-x-1.5 transition-transform" />
-                    </Link>
+                    <div className="pt-4 border-t border-neutral-100 mt-4 flex items-center justify-between">
+                      <Link
+                        href={`/news/${item.slug}`}
+                        className="inline-flex items-center gap-2 text-[10.5px] font-black tracking-[0.16em] uppercase text-black group-hover:text-[#dfb753] transition-colors"
+                        style={{ color: "#000000", WebkitTextFillColor: "#000000" }}
+                      >
+                        <span>READ ARTICLE</span>
+                        <ArrowRight size={11} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
+                      </Link>
+
+                      <span 
+                        className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest"
+                        style={{ color: "#9ca3af", WebkitTextFillColor: "#9ca3af" }}
+                      >
+                        ROYSONS
+                      </span>
+                    </div>
                   </div>
-                </article>
+                </div>
               ))}
             </div>
           </div>

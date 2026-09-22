@@ -54,35 +54,34 @@ export default function NewsIndexPage() {
             alt="ROYSONS Strategic Intelligence"
             fill
             priority
-            className="object-cover object-center filter brightness-[0.8] contrast-[1.05]"
+            className="object-cover object-center filter brightness-[0.92] contrast-[1.02]"
             sizes="100vw"
           />
-          {/* Multi-layered cinematic gradient overlays for 100% text visibility */}
+          {/* Reduced shadow / overlay opacity so AI image is clearly visible */}
           <div 
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(135deg, rgba(2, 22, 31, 0.95) 0%, rgba(4, 46, 58, 0.90) 45%, rgba(7, 93, 109, 0.82) 80%, rgba(0, 77, 64, 0.88) 100%)",
+              background: "linear-gradient(135deg, rgba(2, 22, 31, 0.65) 0%, rgba(4, 46, 58, 0.48) 50%, rgba(7, 93, 109, 0.35) 100%)",
             }}
           />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#02161f] via-transparent to-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#02161f]/75 via-transparent to-black/25" />
         </div>
         
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="flex flex-wrap items-center gap-2 text-[11px] font-bold text-white/80 mb-4 uppercase tracking-wider">
-            <Link href="/" className="text-white/80 hover:text-[#dfb753] transition-colors">Home</Link>
-            <ChevronRight size={12} className="text-white/50 shrink-0" />
-            <span className="text-[#dfb753] font-black">News &amp; Perspectives</span>
+          <div className="inline-flex flex-wrap items-center gap-2 text-[11px] font-bold mb-4 uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-black/45 border border-white/20 backdrop-blur-md shadow-xs">
+            <Link href="/" className="roysons-breadcrumb-link text-white hover:text-[#dfb753] transition-colors">Home</Link>
+            <ChevronRight size={12} className="text-white/80 shrink-0" />
+            <span className="roysons-breadcrumb-current text-[#dfb753] font-black">News &amp; Perspectives</span>
           </div>
 
           <div className="max-w-3xl">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[#dfb753] mb-3">
               THOUGHT LEADERSHIP &amp; CORPORATE PERSPECTIVES
             </p>
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1] mb-5 drop-shadow-sm">
+            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.1] mb-5 drop-shadow-md">
               Insights &amp; Strategic Intelligence
             </h1>
-            <p className="text-[14.5px] sm:text-[16px] text-white/90 leading-relaxed max-w-2xl font-normal drop-shadow-xs">
+            <p className="text-[14.5px] sm:text-[16px] text-white/90 leading-relaxed max-w-2xl font-normal drop-shadow-sm">
               Explore in-depth analyses, industry trends, and strategic perspectives across healthcare, infrastructure, international trade, and diversified global business models.
             </p>
           </div>
@@ -95,7 +94,7 @@ export default function NewsIndexPage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 text-[11px] font-bold uppercase tracking-wider rounded-md transition-all duration-200 cursor-pointer ${
+                  className={`px-4 py-2 text-[11px] font-bold uppercase tracking-wider rounded-sm transition-all duration-200 cursor-pointer ${
                     selectedCategory === cat
                       ? "bg-[#dfb753] text-[#042E3A] font-black shadow-md border border-[#dfb753]"
                       : "bg-white/15 text-white/90 hover:text-white hover:bg-white/25 border border-white/25 backdrop-blur-md"
@@ -113,7 +112,7 @@ export default function NewsIndexPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search perspectives..."
-                className="w-full bg-white/15 border border-white/30 text-white placeholder-white/70 text-[12.5px] px-3.5 py-2.5 pl-9 rounded-md backdrop-blur-md focus:outline-hidden focus:border-[#dfb753] focus:bg-white/20 transition-all"
+                className="w-full bg-white/15 border border-white/30 text-white placeholder-white/70 text-[12.5px] px-3.5 py-2.5 pl-9 rounded-sm backdrop-blur-md focus:outline-hidden focus:border-[#dfb753] focus:bg-white/20 transition-all"
                 style={{ color: "#ffffff" }}
               />
               <Search size={14} className="absolute left-3 top-3.5 text-white/70" />
@@ -124,14 +123,14 @@ export default function NewsIndexPage() {
 
       {/* Featured Article Section (shown when no search active and 'All' category selected) */}
       {selectedCategory === "All" && searchQuery === "" && featuredPost && (
-        <section className="py-12 bg-neutral-50/80 border-b border-neutral-200/70">
+        <section className="py-12 bg-neutral-50/60 border-b border-neutral-200/70">
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-4">
+            <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[#dfb753] mb-4">
               <TrendingUp size={14} />
               <span>Featured Perspective</span>
             </div>
 
-            <div className="bg-white rounded-xl border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden grid grid-cols-1 lg:grid-cols-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+            <div className="bg-white rounded-sm border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.04)] overflow-hidden grid grid-cols-1 lg:grid-cols-12 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
               <div className="relative lg:col-span-7 h-64 sm:h-80 lg:h-auto min-h-[300px] overflow-hidden bg-neutral-900">
                 <Image
                   src={featuredPost.image}
@@ -147,39 +146,39 @@ export default function NewsIndexPage() {
 
               <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-3 text-[12px] text-neutral-600 font-bold mb-3">
+                  <div className="flex items-center gap-3 text-[11.5px] text-neutral-500 font-semibold mb-3">
                     <span className="flex items-center gap-1.5">
-                      <Calendar size={13} className="text-[#0a7a8c]" />
+                      <Calendar size={12} className="text-[#dfb753]" />
                       <span>{featuredPost.date}</span>
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1.5">
-                      <Clock size={13} className="text-[#0a7a8c]" />
+                      <Clock size={12} className="text-[#dfb753]" />
                       <span>{featuredPost.readTime}</span>
                     </span>
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight leading-snug mb-4 hover:text-[#0a7a8c] transition-colors">
+                  <h2 className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight leading-snug mb-4 hover:text-[#dfb753] transition-colors">
                     <Link href={`/news/${featuredPost.slug}`}>
                       {featuredPost.title}
                     </Link>
                   </h2>
 
-                  <p className="text-[14.5px] text-neutral-700 leading-relaxed font-normal mb-6 line-clamp-3">
-                    {featuredPost.excerpt || "Explore in-depth analyses and strategic perspectives across healthcare, infrastructure, and international business."}
+                  <p className="text-[14px] text-neutral-600 leading-relaxed font-normal mb-6 line-clamp-3">
+                    {featuredPost.excerpt || "Explore in-depth analyses, industry trends, and strategic perspectives across healthcare, infrastructure, and international business."}
                   </p>
                 </div>
 
                 <div className="pt-6 border-t border-neutral-100 flex items-center justify-between">
                   <Link
                     href={`/news/${featuredPost.slug}`}
-                    className="rs-cta-btn inline-flex items-center gap-2 px-5 py-3 text-[11px] font-black tracking-[0.16em] uppercase text-[#042E3A] border-2 border-[#dfb753] bg-[#dfb753] hover:bg-[#edd07a] transition-all duration-300 rounded-md shadow-xs"
+                    className="rs-cta-btn inline-flex items-center gap-2 px-5 py-3 text-[11px] font-black tracking-[0.16em] uppercase text-black border-2 border-[#dfb753] bg-[#dfb753] hover:bg-black hover:text-[#dfb753] hover:border-black transition-all duration-300 rounded-[2px]"
                   >
                     <span>Read Full Article</span>
                     <ArrowRight size={13} strokeWidth={2.5} />
                   </Link>
 
-                  <span className="text-[11px] text-neutral-600 font-bold uppercase tracking-wider">
+                  <span className="text-[11px] text-neutral-400 font-bold uppercase tracking-wider">
                     ROYSONS Desk
                   </span>
                 </div>
@@ -194,10 +193,10 @@ export default function NewsIndexPage() {
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between mb-10 pb-4 border-b border-neutral-200">
             <div>
-              <p className="text-[10.5px] font-extrabold uppercase tracking-[0.25em] text-[#0a7a8c] mb-1.5">
+              <p className="text-[10.5px] font-extrabold uppercase tracking-[0.25em] text-[#dfb753] mb-1.5">
                 ALL PERSPECTIVES
               </p>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#042E3A]">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950">
                 Latest Publications ({filteredPosts.length})
               </h2>
             </div>
@@ -210,7 +209,7 @@ export default function NewsIndexPage() {
               </p>
               <button
                 onClick={() => { setSelectedCategory("All"); setSearchQuery(""); }}
-                className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#0a7a8c] hover:underline transition-colors"
+                className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[#dfb753] hover:text-black underline transition-colors"
               >
                 Clear Search Filters
               </button>
@@ -220,7 +219,7 @@ export default function NewsIndexPage() {
               {gridPosts.map((item, index) => (
                 <div
                   key={index}
-                  className="group flex flex-col bg-white border border-neutral-200 hover:border-[#0a7a8c] rounded-xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex-1"
+                  className="group flex flex-col bg-white border border-neutral-200/80 rounded-sm overflow-hidden shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300 hover:border-neutral-300 flex-1"
                 >
                   <div className="relative w-full h-56 bg-neutral-900 overflow-hidden">
                     <Image
@@ -237,39 +236,33 @@ export default function NewsIndexPage() {
 
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center gap-2.5 text-[11.5px] text-neutral-600 font-bold uppercase tracking-wider mb-3">
+                      <div className="flex items-center gap-2.5 text-[11px] text-neutral-400 font-bold uppercase tracking-wider mb-3">
                         <span className="flex items-center gap-1">
-                          <Calendar size={12} className="text-[#0a7a8c]" />
+                          <Calendar size={11} className="text-[#dfb753]" />
                           <span>{item.date}</span>
                         </span>
                         <span>•</span>
                         <span className="flex items-center gap-1">
-                          <Clock size={12} className="text-[#0a7a8c]" />
+                          <Clock size={11} className="text-[#dfb753]" />
                           <span>{item.readTime}</span>
                         </span>
                       </div>
 
-                      <h3 className="text-[17px] font-black text-neutral-950 group-hover:text-[#0a7a8c] transition-colors leading-snug mb-3 line-clamp-2">
+                      <h3 className="text-[17px] font-black text-neutral-950 group-hover:text-[#dfb753] transition-colors leading-snug mb-4 line-clamp-2">
                         {item.title}
                       </h3>
-
-                      {item.excerpt && (
-                        <p className="text-[13.5px] text-neutral-600 leading-relaxed line-clamp-2 mb-4 font-normal">
-                          {item.excerpt}
-                        </p>
-                      )}
                     </div>
 
                     <div className="pt-4 border-t border-neutral-100 mt-4 flex items-center justify-between">
                       <Link
                         href={`/news/${item.slug}`}
-                        className="inline-flex items-center gap-2 text-[11px] font-black tracking-[0.16em] uppercase text-[#0a7a8c] group-hover:text-[#042E3A] transition-colors"
+                        className="inline-flex items-center gap-2 text-[10.5px] font-black tracking-[0.16em] uppercase text-black group-hover:text-[#dfb753] transition-colors"
                       >
                         <span>READ ARTICLE</span>
                         <ArrowRight size={11} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform" />
                       </Link>
 
-                      <span className="text-[10.5px] text-neutral-600 font-bold uppercase tracking-widest">
+                      <span className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest">
                         ROYSONS
                       </span>
                     </div>
