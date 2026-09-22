@@ -6,9 +6,38 @@ export const BLOG_POSTS = {
     readTime: "6–8 min read",
     date: "August 18, 2026",
     image: "/healthcare_infrastructure.jpg",
+    excerpt: "Discover how advanced medical engineering, cleanroom HVAC, modular operating theatres, and digital health technologies are transforming modern hospital infrastructure globally.",
+    keyTakeaways: [
+      "Modern healthcare requires holistic infrastructure integration beyond standalone equipment procurement.",
+      "Specialized cleanroom environments and HTM/ISO compliant HVAC systems are critical for clinical safety.",
+      "Turnkey engineering solutions significantly reduce hospital commissioning delays and lifecycle maintenance costs.",
+      "Global procurement networks provide direct access to verified medical technology and diagnostic innovations."
+    ],
+    tableOfContents: [
+      { id: "introduction", title: "Introduction" },
+      { id: "medical-technology", title: "Growing Importance of Medical Tech" },
+      { id: "complete-solutions", title: "Complete Healthcare Infrastructure" },
+      { id: "clean-room-tech", title: "Cleanroom & Contamination Control" },
+      { id: "global-procurement", title: "Global Procurement Networks" },
+      { id: "looking-ahead", title: "Looking Ahead" },
+      { id: "roysons-perspective", title: "ROYSONS Perspective" },
+    ],
+    tags: ["Healthcare Infrastructure", "Medical Devices", "Hospital Engineering", "Cleanroom HVAC", "Global Procurement"],
+    author: {
+      name: "Dr. Tariq Mahmood & Engineering Desk",
+      role: "Healthcare & Biomedical Strategy",
+      team: "ROYSONS Healthcare Intelligence",
+      avatar: "/logos/r&r.png",
+    },
+    sidebarSpecs: [
+      { label: "Sector Focus", value: "Healthcare & Life Sciences" },
+      { label: "Compliance Benchmark", value: "HTM 02-01 / ISO 13485" },
+      { label: "Target Audience", value: "Hospital Directors & Health Ministries" },
+      { label: "Published By", value: "ROYSONS Group Research" },
+    ],
     content: (
       <>
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-6 sm:mt-7 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="introduction" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-6 sm:mt-7 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Introduction
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -18,7 +47,7 @@ export const BLOG_POSTS = {
           At <strong className="text-[#042E3A] font-black">ROYSONS Pvt. Ltd.</strong>, we recognize that successful healthcare development requires more than supplying equipment. It requires integrated solutions that bring together technology, engineering, procurement, infrastructure, and technical expertise.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="medical-technology" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           The Growing Importance of Medical Technology
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -36,7 +65,7 @@ export const BLOG_POSTS = {
           <li>Improved healthcare accessibility</li>
         </ul>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="complete-solutions" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Beyond Equipment: Building Complete Healthcare Solutions
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -60,7 +89,7 @@ export const BLOG_POSTS = {
           An integrated approach helps healthcare organizations create facilities that are designed around both technology and patient needs.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="clean-room-tech" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           The Role of Clean Room Technology
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -70,7 +99,7 @@ export const BLOG_POSTS = {
           Advanced HVAC systems, HEPA filtration, pressure control, temperature management, and environmental monitoring help maintain controlled environments where cleanliness and contamination control are critical.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="global-procurement" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Global Procurement &amp; Healthcare Access
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -80,7 +109,7 @@ export const BLOG_POSTS = {
           ROYSONS combines international sourcing capabilities with technical and commercial expertise to help organizations identify suitable products and manage complex procurement requirements.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="looking-ahead" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Looking Ahead
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -90,7 +119,7 @@ export const BLOG_POSTS = {
           Organizations that invest in modern infrastructure today will be better positioned to meet tomorrow's healthcare challenges.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="roysons-perspective" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           ROYSONS Perspective
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -111,9 +140,39 @@ export const BLOG_POSTS = {
     readTime: "6–8 min read",
     date: "August 18, 2026",
     image: "/global_trade_supply_chain.jpg",
+    excerpt: "An in-depth strategic analysis on establishing resilient international supply chains, sovereign government contracting, and international trade compliance.",
+    keyTakeaways: [
+      "Resilient institutional supply chains require rigorous multi-tier supplier verification and audit trails.",
+      "Government contracting demands deep compliance with PPRA frameworks, bilateral accords, and performance bonds.",
+      "Integrated import-export management eliminates logistics bottlenecks and currency fluctuation risks.",
+      "Long-term bilateral partnerships consistently outperform transactional purchasing in mission-critical sectors."
+    ],
+    tableOfContents: [
+      { id: "introduction", title: "Introduction" },
+      { id: "reliable-supply-chains", title: "Modern Supply Chain Reliability" },
+      { id: "government-contracting", title: "Government Contracting & Tenders" },
+      { id: "international-sourcing", title: "International Sourcing Advantages" },
+      { id: "import-export", title: "Import & Export Trade Coordination" },
+      { id: "long-term-partnerships", title: "Building Long-Term Bilateral Ties" },
+      { id: "future-of-trade", title: "The Future of Global Trade" },
+      { id: "roysons-perspective", title: "ROYSONS Perspective" },
+    ],
+    tags: ["Government Contracting", "Global Trade", "Supply Chain", "PPRA Compliance", "Institutional Procurement"],
+    author: {
+      name: "M. Saifullah Roy & Commercial Desk",
+      role: "International Procurement & Trade",
+      team: "ROYSONS Global Trading Desk",
+      avatar: "/logos/gateway.png",
+    },
+    sidebarSpecs: [
+      { label: "Sector Focus", value: "Global Trade & Public Contracting" },
+      { label: "Regulatory Standard", value: "PPRA / Incoterms 2020" },
+      { label: "Geographic Scope", value: "Asia, Middle East & Africa" },
+      { label: "Published By", value: "ROYSONS International Desk" },
+    ],
     content: (
       <>
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-6 sm:mt-7 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="introduction" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-6 sm:mt-7 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Introduction
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -123,7 +182,7 @@ export const BLOG_POSTS = {
           At <strong className="text-[#042E3A] font-black">ROYSONS Pvt. Ltd.</strong>, we operate across government contracting, international trade, import and export, procurement, consultancy, and supply chain management, connecting organizations with products, services, and international business opportunities.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="reliable-supply-chains" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           What Makes a Modern Supply Chain Reliable?
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -147,7 +206,7 @@ export const BLOG_POSTS = {
           Each stage must work together to ensure that the final customer receives the right product at the right time and at the expected quality level.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="government-contracting" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Government Contracting &amp; Procurement
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -160,7 +219,7 @@ export const BLOG_POSTS = {
           ROYSONS works to provide comprehensive solutions covering product sourcing, procurement, technical coordination, project execution, and delivery.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="international-sourcing" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           The Importance of International Sourcing
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -180,7 +239,7 @@ export const BLOG_POSTS = {
           <li>Specialized manufacturing products</li>
         </ul>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="import-export" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Import &amp; Export Expertise
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -206,7 +265,7 @@ export const BLOG_POSTS = {
           This structured approach reduces complexity and improves supply chain efficiency.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="long-term-partnerships" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Building Long-Term Partnerships
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -216,7 +275,7 @@ export const BLOG_POSTS = {
           Long-term relationships with manufacturers, suppliers, distributors, government organizations, and institutional clients create opportunities for sustainable growth and continuous improvement.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="future-of-trade" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           The Future of Global Trade
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -226,7 +285,7 @@ export const BLOG_POSTS = {
           Organizations that combine strong relationships with modern technology will be better equipped to operate in increasingly competitive global markets.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="roysons-perspective" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           ROYSONS Perspective
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -247,9 +306,39 @@ export const BLOG_POSTS = {
     readTime: "6–8 min read",
     date: "August 18, 2026",
     image: "/diversified_future_growth.jpg",
+    excerpt: "Why multi-sector conglomerates and strategic diversification provide the resilience, cross-industry synergy, and risk mitigation required for sustainable long-term economic growth.",
+    keyTakeaways: [
+      "Diversification mitigates single-sector economic shocks while unlocking cross-industry synergies.",
+      "Technological integration (AI, automation, smart logistics) forms the connective backbone across diverse industries.",
+      "Strategic consortiums and public-private partnerships accelerate capital deployment and project scalability.",
+      "Sustainable corporate growth balances financial profitability with job creation and community impact."
+    ],
+    tableOfContents: [
+      { id: "introduction", title: "Introduction" },
+      { id: "business-diversification", title: "What Is Business Diversification?" },
+      { id: "multi-sector-enterprise", title: "ROYSONS: A Multi-Sector Enterprise" },
+      { id: "technology-foundation", title: "Technology as a Common Foundation" },
+      { id: "strategic-partnerships", title: "Strategic Partnerships" },
+      { id: "sustainable-growth", title: "Sustainable Growth Principles" },
+      { id: "future-outlook", title: "Looking Toward the Future" },
+      { id: "corporate-vision", title: "Our Long-Term Vision" },
+    ],
+    tags: ["Corporate Strategy", "Multi-Sector Growth", "Industrial Diversification", "Enterprise Resilience", "ESG"],
+    author: {
+      name: "Executive Strategy Board",
+      role: "Corporate Planning & Investments",
+      team: "ROYSONS Holdings Leadership",
+      avatar: "/logos/logo.png",
+    },
+    sidebarSpecs: [
+      { label: "Sector Focus", value: "Enterprise Strategy & Holdings" },
+      { label: "Portfolio Scope", value: "12 Operating Subsidiaries" },
+      { label: "Economic Impact", value: "Nation-Building & ESG Alignment" },
+      { label: "Published By", value: "ROYSONS Group Strategy" },
+    ],
     content: (
       <>
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-6 sm:mt-7 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="introduction" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-6 sm:mt-7 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Introduction
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -262,7 +351,7 @@ export const BLOG_POSTS = {
           <strong className="text-[#042E3A] font-black">ROYSONS Pvt. Ltd.</strong> was established with a vision to build a diversified enterprise capable of operating across strategic industries and delivering world-class products and services.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="business-diversification" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           What Is Business Diversification?
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -280,7 +369,7 @@ export const BLOG_POSTS = {
           <li>Respond to changing market conditions</li>
         </ul>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="multi-sector-enterprise" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           ROYSONS: A Multi-Sector Enterprise
         </h2>
         <p className="mb-3 text-[16.5px] sm:text-[17.5px] font-bold text-[#042E3A]">
@@ -304,7 +393,7 @@ export const BLOG_POSTS = {
           This diverse portfolio allows ROYSONS to participate in multiple areas of economic development.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="technology-foundation" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Technology as a Common Foundation
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -317,7 +406,7 @@ export const BLOG_POSTS = {
           This creates opportunities for knowledge and technology to move across sectors.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="strategic-partnerships" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Strategic Partnerships
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -330,7 +419,7 @@ export const BLOG_POSTS = {
           Strong partnerships allow organizations to combine capabilities and deliver solutions that would be difficult to achieve independently.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="sustainable-growth" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Sustainable Growth
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -352,7 +441,7 @@ export const BLOG_POSTS = {
           ROYSONS aims to pursue growth while maintaining a commitment to responsible and sustainable business development.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="future-outlook" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Looking Toward the Future
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
@@ -362,7 +451,7 @@ export const BLOG_POSTS = {
           ROYSONS Pvt. Ltd. is building its portfolio with this future in mind—developing businesses and partnerships that can contribute to healthcare, technology, infrastructure, energy, agriculture, trade, and broader economic development.
         </p>
 
-        <h2 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2">
+        <h2 id="corporate-vision" className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#042E3A] mt-7 sm:mt-8 mb-3 tracking-tight border-b border-[#0a7a8c]/15 pb-2 scroll-mt-28">
           Our Vision
         </h2>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
