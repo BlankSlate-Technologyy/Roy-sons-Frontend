@@ -405,19 +405,19 @@ export const FEATURED_STRUCTURAL_WORKS = [
 
 export const CORPORATE_BROADCAST_NEWS = [
   {
-    image: "/healthcare_infrastructure.jpg",
+    image: "/images/blog/future_of_healthcare_header.jpg",
     date: "August 18, 2026",
     title: "The Future of Healthcare: How Technology Is Transforming Medical Infrastructure",
     href: "/news/future-of-healthcare",
   },
   {
-    image: "/global_trade_supply_chain.jpg",
+    image: "/images/blog/global_trade_supply_chains_header.jpg",
     date: "August 18, 2026",
     title: "Global Trade & Government Contracting: Building Reliable Supply Chains",
     href: "/news/global-trade-supply-chains",
   },
   {
-    image: "/diversified_future_growth.jpg",
+    image: "/images/blog/building_diversified_future_header.jpg",
     date: "August 18, 2026",
     title: "Diversified Future: Why Multi-Sector Businesses Drive Sustainable Growth",
     href: "/news/building-diversified-future",

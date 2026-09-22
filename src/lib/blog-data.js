@@ -5,7 +5,8 @@ export const BLOG_POSTS = {
     category: "Healthcare & Medical Technologies",
     readTime: "6–8 min read",
     date: "August 18, 2026",
-    image: "/healthcare_infrastructure.jpg",
+    image: "/images/blog/future_of_healthcare_header.jpg",
+    headerImage: "/images/blog/future_of_healthcare_header.jpg",
     excerpt: "Discover how advanced medical engineering, cleanroom HVAC, modular operating theatres, and digital health technologies are transforming modern hospital infrastructure globally.",
     keyTakeaways: [
       "Modern healthcare requires holistic infrastructure integration beyond standalone equipment procurement.",
@@ -75,15 +76,15 @@ export const BLOG_POSTS = {
           This includes:
         </p>
         <div className="grid grid-cols-2 gap-3 mb-6 mt-2">
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Hospital engineering</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">HVAC systems</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Clean rooms</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Operation theatres</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Medical gas systems</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Critical-care infrastructure</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Biomedical engineering</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Laboratory environments</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm col-span-2 text-center">Medical furniture</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Hospital engineering</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">HVAC systems</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Clean rooms</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Operation theatres</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Medical gas systems</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Critical-care infrastructure</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Biomedical engineering</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Laboratory environments</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] col-span-2 text-center">Medical furniture</div>
         </div>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
           An integrated approach helps healthcare organizations create facilities that are designed around both technology and patient needs.
@@ -139,7 +140,8 @@ export const BLOG_POSTS = {
     category: "International Trade & Government Contracting",
     readTime: "6–8 min read",
     date: "August 18, 2026",
-    image: "/global_trade_supply_chain.jpg",
+    image: "/images/blog/global_trade_supply_chains_header.jpg",
+    headerImage: "/images/blog/global_trade_supply_chains_header.jpg",
     excerpt: "An in-depth strategic analysis on establishing resilient international supply chains, sovereign government contracting, and international trade compliance.",
     keyTakeaways: [
       "Resilient institutional supply chains require rigorous multi-tier supplier verification and audit trails.",
@@ -162,7 +164,7 @@ export const BLOG_POSTS = {
       name: "M. Saifullah Roy & Commercial Desk",
       role: "International Procurement & Trade",
       team: "ROYSONS Global Trading Desk",
-      avatar: "/logos/gateway.png",
+      avatar: "/gateway.jpeg",
     },
     sidebarSpecs: [
       { label: "Sector Focus", value: "Global Trade & Public Contracting" },
@@ -192,15 +194,15 @@ export const BLOG_POSTS = {
           It requires:
         </p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6 mt-2">
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Reliable suppliers</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Quality assurance</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Procurement planning</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Documentation</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Regulatory compliance</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Logistics coordination</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Inventory management</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Risk management</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3.5 rounded-lg shadow-xs font-bold text-[#042E3A] text-xs sm:text-sm text-center">Timely delivery</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Reliable suppliers</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Quality assurance</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Procurement planning</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Documentation</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Regulatory compliance</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Logistics coordination</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Inventory management</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Risk management</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs font-bold !text-[#042E3A] text-[13px] sm:text-[14px] text-center">Timely delivery</div>
         </div>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
           Each stage must work together to ensure that the final customer receives the right product at the right time and at the expected quality level.
@@ -248,18 +250,18 @@ export const BLOG_POSTS = {
         <p className="mb-3 text-[16.5px] sm:text-[17.5px] font-bold text-[#042E3A]">
           Professional trade management can help organizations navigate:
         </p>
-        <div className="bg-[#f0fdfa] border border-[#0a7a8c]/30 p-4 sm:p-5 rounded-lg text-center font-bold text-xs sm:text-sm mb-5 flex flex-wrap justify-center items-center gap-2.5">
-          <span className="bg-white text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs">Supplier Identification</span>
+        <div className="bg-[#f0fdfa] border border-[#0a7a8c]/30 p-4 sm:p-5 rounded-lg text-center font-bold text-[12px] sm:text-[13px] mb-5 flex flex-wrap justify-center items-center gap-2.5">
+          <span className="bg-white !text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs font-bold">Supplier Identification</span>
           <span className="text-[#0a7a8c] font-black">→</span>
-          <span className="bg-white text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs">Procurement</span>
+          <span className="bg-white !text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs font-bold">Procurement</span>
           <span className="text-[#0a7a8c] font-black">→</span>
-          <span className="bg-white text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs">Documentation</span>
+          <span className="bg-white !text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs font-bold">Documentation</span>
           <span className="text-[#0a7a8c] font-black">→</span>
-          <span className="bg-white text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs">Logistics</span>
+          <span className="bg-white !text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs font-bold">Logistics</span>
           <span className="text-[#0a7a8c] font-black">→</span>
-          <span className="bg-white text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs">Customs</span>
+          <span className="bg-white !text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs font-bold">Customs</span>
           <span className="text-[#0a7a8c] font-black">→</span>
-          <span className="bg-white text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs">Delivery</span>
+          <span className="bg-white !text-[#042E3A] px-3.5 py-1.5 rounded-md border border-[#0a7a8c]/25 shadow-2xs font-bold">Delivery</span>
         </div>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
           This structured approach reduces complexity and improves supply chain efficiency.
@@ -305,7 +307,8 @@ export const BLOG_POSTS = {
     category: "Business & Corporate Strategy",
     readTime: "6–8 min read",
     date: "August 18, 2026",
-    image: "/diversified_future_growth.jpg",
+    image: "/images/blog/building_diversified_future_header.jpg",
+    headerImage: "/images/blog/building_diversified_future_header.jpg",
     excerpt: "Why multi-sector conglomerates and strategic diversification provide the resilience, cross-industry synergy, and risk mitigation required for sustainable long-term economic growth.",
     keyTakeaways: [
       "Diversification mitigates single-sector economic shocks while unlocking cross-industry synergies.",
@@ -375,19 +378,19 @@ export const BLOG_POSTS = {
         <p className="mb-3 text-[16.5px] sm:text-[17.5px] font-bold text-[#042E3A]">
           ROYSONS operates through specialized businesses and strategic initiatives across a broad range of sectors, including:
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 mb-6 mt-2 text-xs sm:text-sm font-bold text-[#042E3A]">
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Healthcare &amp; Medical Technologies</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Engineering &amp; Infrastructure</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Information Technology &amp; AI</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Defense &amp; Security</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Agriculture &amp; Dairy</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Mining &amp; Minerals</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Energy &amp; Renewable Energy</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">International Trade</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Manufacturing</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Food Processing</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Real Estate &amp; Development</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-3 rounded-lg shadow-xs">Consultancy</div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 mb-6 mt-2 text-[12.5px] sm:text-[13.5px] font-bold !text-[#042E3A]">
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Healthcare &amp; Medical Technologies</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Engineering &amp; Infrastructure</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Information Technology &amp; AI</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Defense &amp; Security</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Agriculture &amp; Dairy</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Mining &amp; Minerals</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Energy &amp; Renewable Energy</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">International Trade</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Manufacturing</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Food Processing</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Real Estate &amp; Development</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 p-2.5 sm:p-3 rounded-lg shadow-xs !text-[#042E3A]">Consultancy</div>
         </div>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
           This diverse portfolio allows ROYSONS to participate in multiple areas of economic development.
@@ -428,14 +431,14 @@ export const BLOG_POSTS = {
         <p className="mb-3 text-[16.5px] sm:text-[17.5px] font-bold text-[#042E3A]">
           Modern organizations must also consider:
         </p>
-        <div className="grid grid-cols-2 gap-3 mb-6 mt-2 text-xs sm:text-sm font-bold text-[#042E3A]">
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs">Environmental responsibility</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs">Innovation</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs">Employment generation</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs">Community development</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs">Ethical business practices</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs">Operational efficiency</div>
-          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs col-span-2 text-center">Long-term stakeholder value</div>
+        <div className="grid grid-cols-2 gap-3 mb-6 mt-2 text-[12.5px] sm:text-[13.5px] font-bold !text-[#042E3A]">
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs !text-[#042E3A]">Environmental responsibility</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs !text-[#042E3A]">Innovation</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs !text-[#042E3A]">Employment generation</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs !text-[#042E3A]">Community development</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs !text-[#042E3A]">Ethical business practices</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs !text-[#042E3A]">Operational efficiency</div>
+          <div className="bg-[#f0fdfa] border border-[#0a7a8c]/20 border-l-4 border-l-[#0a7a8c] p-3 rounded-r-lg shadow-xs col-span-2 text-center !text-[#042E3A]">Long-term stakeholder value</div>
         </div>
         <p className="mb-4 text-[16.5px] sm:text-[17.5px] text-neutral-700 leading-relaxed">
           ROYSONS aims to pursue growth while maintaining a commitment to responsible and sustainable business development.

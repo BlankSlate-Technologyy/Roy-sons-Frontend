@@ -226,34 +226,47 @@ export default function BlogPostPage({ params }) {
 
       <HeaderNavbar activeRoute="/news" />
       
-      {/* ─── Hero Header & Breadcrumbs Section ─────────────────────────────── */}
+      {/* ─── Hero Header & Breadcrumbs Section with AI-Generated Header Image ─ */}
       <header 
         data-dark-section="true"
-        className="roysons-preserve-dark relative pt-24 sm:pt-28 lg:pt-32 pb-10 sm:pb-14 px-4 sm:px-6 overflow-hidden text-white border-b border-[#0a7a8c]/30 shadow-md"
-        style={{
-          background: "linear-gradient(135deg, #02161f 0%, #042E3A 45%, #075d6d 80%, #004d40 100%)",
-          backgroundColor: "#042E3A",
-        }}
+        className="roysons-preserve-dark relative pt-26 sm:pt-30 lg:pt-34 pb-12 sm:pb-16 px-4 sm:px-6 overflow-hidden text-white border-b border-[#0a7a8c]/30 shadow-xl min-h-[380px] sm:min-h-[440px] flex items-center"
       >
-        {/* Ambient Decorative Accents */}
-        <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-[#0a7a8c]/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-10 w-[450px] h-[450px] bg-[#dfb753]/10 rounded-full blur-3xl pointer-events-none" />
-        <div 
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
+        {/* Sector AI Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={post.headerImage || post.image}
+            alt={post.title}
+            fill
+            priority
+            className="object-cover object-center filter brightness-[0.78] contrast-[1.06]"
+            sizes="100vw"
+          />
+          {/* Multi-layered cinematic gradient overlays for 100% text visibility */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(135deg, rgba(2, 22, 31, 0.95) 0%, rgba(4, 46, 58, 0.90) 45%, rgba(7, 93, 109, 0.82) 80%, rgba(0, 77, 64, 0.88) 100%)",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#02161f] via-transparent to-black/50" />
+          <div 
+            className="absolute inset-0 opacity-[0.04] pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px)",
+              backgroundSize: "28px 28px",
+            }}
+          />
+        </div>
 
-        <div className="max-w-screen-xl mx-auto relative z-10">
+        <div className="max-w-screen-xl mx-auto relative z-10 w-full">
           {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-semibold text-white/75 mb-5 uppercase tracking-wider">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-bold text-white/80 mb-5 uppercase tracking-wider">
+            <Link href="/" className="text-white/80 hover:text-[#dfb753] transition-colors">Home</Link>
             <ChevronRight size={12} className="text-white/50 shrink-0" />
-            <Link href="/news" className="hover:text-white transition-colors">News &amp; Perspectives</Link>
+            <Link href="/news" className="text-white/80 hover:text-[#dfb753] transition-colors">News &amp; Perspectives</Link>
             <ChevronRight size={12} className="text-white/50 shrink-0" />
-            <span className="text-[#dfb753] font-bold truncate max-w-[200px] sm:max-w-xs md:max-w-md">{post.category}</span>
+            <span className="text-[#dfb753] font-black truncate max-w-[200px] sm:max-w-xs md:max-w-md">{post.category}</span>
           </nav>
 
           <div className="max-w-4xl">
@@ -275,13 +288,16 @@ export default function BlogPostPage({ params }) {
 
             {/* Sub-headline / Executive Hook */}
             {post.excerpt && (
-              <p className="text-white/85 text-sm sm:text-base md:text-lg leading-relaxed font-normal mb-6 max-w-3xl">
+              <p 
+                className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed font-normal mb-6 max-w-3xl drop-shadow-xs"
+                style={{ color: "rgba(255, 255, 255, 0.92)", WebkitTextFillColor: "rgba(255, 255, 255, 0.92)" }}
+              >
                 {post.excerpt}
               </p>
             )}
 
             {/* Author & Publication Metadata Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-white/15 text-xs sm:text-[13px] text-white/90">
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-white/20 text-xs sm:text-[13px] text-white">
               <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                 {/* Author Info */}
                 <div className="flex items-center gap-3">
@@ -299,11 +315,17 @@ export default function BlogPostPage({ params }) {
                     )}
                   </div>
                   <div>
-                    <p className="font-bold text-white leading-tight flex items-center gap-1.5">
-                      <span>{post.author?.name || "ROYSONS Strategic Desk"}</span>
+                    <p 
+                      className="font-bold text-white leading-tight flex items-center gap-1.5"
+                      style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                    >
+                      <span style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}>{post.author?.name || "ROYSONS Strategic Desk"}</span>
                       <CheckCircle2 size={13} className="text-[#dfb753]" />
                     </p>
-                    <p className="text-[11px] text-white/75 font-medium">
+                    <p 
+                      className="text-[11px] text-white/80 font-medium"
+                      style={{ color: "rgba(255, 255, 255, 0.8)", WebkitTextFillColor: "rgba(255, 255, 255, 0.8)" }}
+                    >
                       {post.author?.team || "Corporate Research Unit"}
                     </p>
                   </div>
@@ -312,15 +334,26 @@ export default function BlogPostPage({ params }) {
                 <div className="h-5 w-px bg-white/25 hidden md:block" />
 
                 {/* Date */}
-                <div className="flex items-center gap-1.5 text-white/90">
+                <div className="flex items-center gap-1.5 text-white">
                   <Calendar size={14} className="text-[#dfb753]" />
-                  <time dateTime="2026-08-18">{post.date}</time>
+                  <time 
+                    dateTime="2026-08-18" 
+                    className="!text-white font-medium"
+                    style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                  >
+                    {post.date}
+                  </time>
                 </div>
 
                 {/* Read Time */}
-                <div className="flex items-center gap-1.5 text-white/90">
+                <div className="flex items-center gap-1.5 text-white">
                   <Clock size={14} className="text-[#dfb753]" />
-                  <span>{post.readTime}</span>
+                  <span 
+                    className="!text-white font-medium"
+                    style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                  >
+                    {post.readTime}
+                  </span>
                 </div>
               </div>
 
@@ -332,7 +365,7 @@ export default function BlogPostPage({ params }) {
                   title="Share / Copy Link"
                 >
                   {copied ? <Check size={14} className="text-emerald-300" /> : <Share2 size={14} className="text-white" />}
-                  <span>{copied ? "Link Copied!" : "Share Article"}</span>
+                  <span className="!text-white" style={{ color: "#ffffff" }}>{copied ? "Link Copied!" : "Share Article"}</span>
                 </button>
               </div>
             </div>
@@ -532,10 +565,12 @@ export default function BlogPostPage({ params }) {
                     <Link
                       href={post.ctaLink || "/contact"}
                       className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 text-xs sm:text-[13px] font-black tracking-[0.14em] uppercase text-[#042E3A] bg-[#dfb753] hover:bg-[#edd07a] transition-all duration-300 rounded-lg shadow-md hover:scale-[1.02]"
-                      style={{ backgroundColor: "#dfb753", color: "#042E3A" }}
+                      style={{ backgroundColor: "#dfb753" }}
                     >
-                      <span>{post.ctaText || "Connect With Us"}</span>
-                      <ArrowRight size={15} strokeWidth={2.5} />
+                      <span className="!text-[#042E3A] font-black" style={{ color: "#042E3A", WebkitTextFillColor: "#042E3A" }}>
+                        {post.ctaText || "Connect With Us"}
+                      </span>
+                      <ArrowRight size={15} strokeWidth={2.5} className="!text-[#042E3A]" style={{ color: "#042E3A" }} />
                     </Link>
                     <Link
                       href="/contact"
@@ -618,18 +653,29 @@ export default function BlogPostPage({ params }) {
 
             {/* 2. Article Specifications Card (Matching Reference Design) */}
             {post.sidebarSpecs && (
-              <div className="bg-[#042E3A] text-white rounded-2xl p-6 shadow-md border border-[#0a7a8c]/30">
+              <div 
+                data-dark-section="true"
+                className="roysons-preserve-dark bg-[#042E3A] text-white rounded-2xl p-6 shadow-md border border-[#0a7a8c]/30"
+              >
                 <div className="flex items-center gap-2 text-xs font-bold text-[#dfb753] uppercase tracking-[0.2em] mb-4">
-                  <FileText size={14} />
-                  <span>Strategic Specification</span>
+                  <FileText size={14} className="text-[#dfb753]" />
+                  <span className="!text-[#dfb753] font-bold" style={{ color: "#dfb753", WebkitTextFillColor: "#dfb753" }}>
+                    Strategic Specification
+                  </span>
                 </div>
                 <div className="space-y-3 text-xs divide-y divide-white/10">
                   {post.sidebarSpecs.map((spec, idx) => (
                     <div key={idx} className={idx > 0 ? "pt-2.5 flex flex-col" : "flex flex-col"}>
-                      <span className="text-[10.5px] uppercase tracking-wider text-white/60 font-semibold mb-0.5">
+                      <span 
+                        className="text-[10.5px] uppercase tracking-wider text-white/70 font-semibold mb-0.5"
+                        style={{ color: "rgba(255, 255, 255, 0.7)", WebkitTextFillColor: "rgba(255, 255, 255, 0.7)" }}
+                      >
                         {spec.label}
                       </span>
-                      <span className="text-white font-bold text-[13px]">
+                      <span 
+                        className="text-white font-bold text-[13px]"
+                        style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+                      >
                         {spec.value}
                       </span>
                     </div>
@@ -703,11 +749,13 @@ export default function BlogPostPage({ params }) {
 
               <Link
                 href="/contact"
-                className="w-full py-3 px-4 rounded-lg bg-white hover:bg-neutral-100 text-[#042E3A] font-black text-xs uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:scale-[1.02]"
-                style={{ backgroundColor: "#ffffff", color: "#042E3A" }}
+                className="w-full py-3 px-4 rounded-lg bg-white hover:bg-neutral-100 transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:scale-[1.02]"
+                style={{ backgroundColor: "#ffffff" }}
               >
-                <span>Request Strategic Consultation</span>
-                <ArrowRight size={14} strokeWidth={2.5} />
+                <span className="!text-[#042E3A] font-black text-xs uppercase tracking-wider" style={{ color: "#042E3A", WebkitTextFillColor: "#042E3A" }}>
+                  Request Strategic Consultation
+                </span>
+                <ArrowRight size={14} strokeWidth={2.5} className="!text-[#042E3A]" style={{ color: "#042E3A" }} />
               </Link>
             </div>
 
@@ -737,7 +785,8 @@ export default function BlogPostPage({ params }) {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your corporate email..."
               required
-              className="w-full sm:w-80 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 text-sm focus:outline-hidden focus:border-[#dfb753] transition-colors"
+              className="w-full sm:w-80 px-4 py-3 rounded-lg bg-white/15 border border-white/25 text-white placeholder-white/70 text-sm focus:outline-hidden focus:border-[#dfb753] transition-colors"
+              style={{ color: "#ffffff" }}
             />
             <button
               type="submit"
