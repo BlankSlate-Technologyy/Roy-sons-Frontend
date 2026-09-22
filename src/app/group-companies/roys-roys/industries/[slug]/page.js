@@ -65,9 +65,9 @@ export default function IndustryDetailPage({ params }) {
           <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] bg-[#b49438]/15 rounded-full blur-[130px]" />
           {/* Subtle Grid Accent Pattern */}
           <div 
-            className="absolute inset-0 opacity-[0.04]"
+            className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px)",
+              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px)",
               backgroundSize: "28px 28px",
             }}
           />

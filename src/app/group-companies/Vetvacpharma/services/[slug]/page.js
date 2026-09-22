@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -46,6 +46,15 @@ export default function VetvacServiceDetailPage({ params }) {
 
   const [openFaq, setOpenFaq] = useState(0);
 
+  useEffect(() => {
+    document.body.classList.add("roys-roys-theme");
+    document.body.classList.add("vetvac-pharma-theme");
+    return () => {
+      document.body.classList.remove("roys-roys-theme");
+      document.body.classList.remove("vetvac-pharma-theme");
+    };
+  }, []);
+
   if (!service) {
     notFound();
   }
@@ -63,7 +72,7 @@ export default function VetvacServiceDetailPage({ params }) {
             Home
           </Link>
           <ChevronRight size={13} className="text-[#094C80]/50" />
-          <Link href="/group-companies/Vetvacpharma/industries" className="hover:text-[#094C80] transition-colors">
+          <Link href="/group-companies/Vetvacpharma/services" className="hover:text-[#094C80] transition-colors">
             Services & Sectors
           </Link>
           <ChevronRight size={13} className="text-[#094C80]/50" />

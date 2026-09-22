@@ -96,7 +96,13 @@ export default function AboutPage() {
 
       {/* ─── Hero Section ─────────────────────────────────────────────────── */}
       <section className="relative bg-[#07152b] text-white pt-12 pb-16 lg:pt-16 lg:pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 z-0 select-none pointer-events-none opacity-20 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:24px_24px]" />
+        <div
+          className="absolute inset-0 z-0 select-none pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
         
         <div className="relative z-10 mx-auto max-w-screen-xl">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">

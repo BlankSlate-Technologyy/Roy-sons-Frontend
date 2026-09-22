@@ -27,7 +27,8 @@ export const GATEWAY_SERVICES = [
     eyebrow: "Statutory Approvals & Siting",
     tag: "Licensing & Mandates",
     icon: FileCheck,
-    heroImage: "/gatway about.png",
+    heroImage: "/gateway/service_licensing.jpg",
+    image: "/gateway/service_licensing.jpg",
     overview:
       "Gateway Pharmaceuticals provides comprehensive end-to-end guidance for pharmaceutical licensing requirements, applications, statutory documentation, site selection, and official authority liaison. We ensure seamless approvals for manufacturing, compounding, wholesale distribution, and specialized storage facilities under DRAP, WHO-GMP, and international health authority frameworks.",
     metrics: [
@@ -102,7 +103,8 @@ export const GATEWAY_SERVICES = [
     eyebrow: "Marketing Authorization & CTD",
     tag: "Product Submissions",
     icon: Package,
-    heroImage: "/gatway commited.png",
+    heroImage: "/gateway/service_registration.jpg",
+    image: "/gateway/service_registration.jpg",
     overview:
       "Gateway Pharmaceuticals steers pharmaceutical formulations, biologicals, medical devices, and nutraceutical products through the complete marketing authorization lifecycle. We prepare and submit robust Common Technical Documents (CTD/eCTD) ensuring rapid registration with zero non-compliance bottlenecks.",
     metrics: [
@@ -177,7 +179,8 @@ export const GATEWAY_SERVICES = [
     eyebrow: "Strategic Liaison & Intelligence",
     tag: "Affairs Management",
     icon: ClipboardList,
-    heroImage: "/gatwayareaofexperince.png",
+    heroImage: "/gateway/service_regulatory.jpg",
+    image: "/gateway/service_regulatory.jpg",
     overview:
       "Gateway acts as an outsourced strategic regulatory affairs department for pharmaceutical enterprises. We maintain proactive, transparent liaison with health ministries, handle complex regulatory variations, manage pricing reviews, and deliver statutory intelligence that protects product lifecycles.",
     metrics: [
@@ -252,7 +255,8 @@ export const GATEWAY_SERVICES = [
     eyebrow: "Quality Systems & Inspection Audit",
     tag: "cGMP & Standards",
     icon: ShieldCheck,
-    heroImage: "/gatwaychosse us.png",
+    heroImage: "/gateway/service_compliance.jpg",
+    image: "/gateway/service_compliance.jpg",
     overview:
       "We deliver high-level consultancy to help pharmaceutical manufacturing units achieve and maintain compliance with WHO-cGMP, PIC/S, US-FDA, and national statutory standards. Our former senior regulatory auditors perform comprehensive gap analysis, quality system upgrades, and pre-inspection readiness drills.",
     metrics: [
@@ -327,7 +331,8 @@ export const GATEWAY_SERVICES = [
     eyebrow: "CTD / eCTD & Technical Writing",
     tag: "CTD & Dossiers",
     icon: FileText,
-    heroImage: "/gatway header.png",
+    heroImage: "/gateway/service_quality.jpg",
+    image: "/gateway/service_quality.jpg",
     overview:
       "Gateway delivers expert pharmaceutical technical writing and dossier compilation services in CTD, eCTD, and ACTD formats. Our regulatory scientists transform raw analytical data, batch records, and clinical literature into structured, error-free dossiers that meet the highest international submission standards.",
     metrics: [
@@ -402,7 +407,8 @@ export const GATEWAY_SERVICES = [
     eyebrow: "Risk Advisory & Complex Filings",
     tag: "Strategic Advisory",
     icon: Award,
-    heroImage: "/gatway about.png",
+    heroImage: "/gateway/service_digital.jpg",
+    image: "/gateway/service_digital.jpg",
     overview:
       "When pharmaceutical organizations encounter complex statutory challenges, novel product classifications, Drug Master File (DMF) rectifications, or formal board appeals, Gateway provides premier strategic counsel. We evaluate regulatory risks and engineer customized pathways to achieve commercialization.",
     metrics: [
@@ -477,7 +483,8 @@ export const GATEWAY_SERVICES = [
     eyebrow: "Drug Safety & Post-Market Surveillance",
     tag: "Safety & Vigilance",
     icon: TrendingUp,
-    heroImage: "/gatway commited.png",
+    heroImage: "/gateway/service_supply_chain.jpg",
+    image: "/gateway/service_supply_chain.jpg",
     overview:
       "Gateway establishes and manages compliant Pharmacovigilance (PV) systems for pharmaceutical manufacturers and marketing authorization holders. We deliver full-spectrum drug safety monitoring, Adverse Event (AE) reporting, Periodic Safety Update Reports (PSUR/PBRER), and risk management plans.",
     metrics: [
@@ -552,7 +559,8 @@ export const GATEWAY_SERVICES = [
     eyebrow: "Cross-Border Trade & Quotas",
     tag: "Trade & Quotas",
     icon: Globe2,
-    heroImage: "/gatwayareaofexperince.png",
+    heroImage: "/gateway/service_market_entry.jpg",
+    image: "/gateway/service_market_entry.jpg",
     overview:
       "We facilitate international pharmaceutical trade by securing statutory import permits, export permissions, raw material quotas, and Certificate of Pharmaceutical Product (CoPP) documentation. We ensure your cross-border shipments clear customs and health inspection gates smoothly.",
     metrics: [

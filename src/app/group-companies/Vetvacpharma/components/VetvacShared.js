@@ -121,9 +121,15 @@ export function VetvacNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Close mobile menu on route change
+  // Close mobile menu on route change & ensure theme classes are applied
   useEffect(() => {
     setMobileOpen(false);
+    document.body.classList.add("roys-roys-theme");
+    document.body.classList.add("vetvac-pharma-theme");
+    return () => {
+      document.body.classList.remove("roys-roys-theme");
+      document.body.classList.remove("vetvac-pharma-theme");
+    };
   }, [pathname]);
 
   return (
@@ -133,16 +139,30 @@ export function VetvacNavbar() {
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/group-companies/Vetvacpharma" className="flex items-center shrink-0">
+        <Link href="/group-companies/Vetvacpharma" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group select-none">
           <div className="relative flex items-center">
             <Image
               src="/logos/3.png"
               alt="VET VAC PHARMA Logo"
-              width={220}
-              height={65}
-              className="h-10 sm:h-11 lg:h-12 w-auto object-contain"
+              width={48}
+              height={48}
+              className="h-10 sm:h-11 lg:h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               priority
             />
+          </div>
+          <div className="flex flex-col leading-tight">
+            <span
+              className="text-[15px] sm:text-[17px] lg:text-[18px] font-black tracking-wider uppercase block leading-none"
+              style={{ color: COLORS.primaryDk }}
+            >
+              VET VEC PHARMA
+            </span>
+            <span
+              className="text-[9px] sm:text-[9.5px] font-bold tracking-[0.2em] uppercase block mt-1 leading-none"
+              style={{ color: COLORS.green }}
+            >
+              Veterinary Healthcare
+            </span>
           </div>
         </Link>
 
@@ -154,7 +174,7 @@ export function VetvacNavbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="relative text-[10.5px] xl:text-[11.5px] 2xl:text-xs font-bold uppercase tracking-wider py-1 px-1.5 whitespace-nowrap transition-colors hover:text-[#1E855C]"
+                className="relative text-[13px] xl:text-[14px] 2xl:text-[14.5px] font-bold uppercase tracking-wider py-1 px-1.5 whitespace-nowrap transition-colors hover:text-[#1E855C]"
                 style={{
                   color: isActive ? COLORS.primary : COLORS.green,
                 }}
@@ -176,7 +196,7 @@ export function VetvacNavbar() {
           <RoysonsPortalButton />
           <Link
             href="/group-companies/Vetvacpharma/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[10.5px] xl:text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg text-xs xl:text-[13px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"
             style={{ backgroundColor: COLORS.primary }}
           >
             <span>Inquire Now</span>
@@ -208,7 +228,7 @@ export function VetvacNavbar() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-xs font-bold tracking-wider uppercase py-2 px-3 rounded-lg transition-colors"
+                className="block text-sm font-bold tracking-wider uppercase py-2.5 px-3 rounded-lg transition-colors"
                 style={{
                   backgroundColor: isActive ? `${COLORS.primary}12` : "transparent",
                   color: isActive ? COLORS.primary : COLORS.green,
@@ -245,17 +265,25 @@ export function VetvacFooter() {
       <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10">
         {/* Brand Column */}
         <div className="lg:col-span-2 max-w-xs">
-          <div className="flex items-center mb-4">
-            <div className="bg-white px-4 py-2 rounded-xl flex items-center justify-center shadow-sm">
+          <Link href="/group-companies/Vetvacpharma" className="flex items-center gap-3 mb-4 select-none group">
+            <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0">
               <Image
-                src="/logo (1).png"
+                src="/logos/3.png"
                 alt="VET VAC PHARMA Logo"
-                width={240}
-                height={75}
-                className="h-14 sm:h-16 w-auto object-contain"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
               />
             </div>
-          </div>
+            <div className="flex flex-col">
+              <span className="text-[15px] sm:text-[16px] font-black uppercase tracking-wider text-white leading-tight">
+                VET VEC PHARMA
+              </span>
+              <span className="text-[9px] sm:text-[9.5px] font-bold tracking-[0.18em] uppercase text-emerald-300 leading-tight mt-0.5">
+                Veterinary Healthcare
+              </span>
+            </div>
+          </Link>
           <p
             className="text-[12px] leading-relaxed mb-5"
             style={{ color: "#FFFFFF" }}

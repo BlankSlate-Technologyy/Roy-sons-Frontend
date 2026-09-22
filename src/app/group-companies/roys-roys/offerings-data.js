@@ -1483,10 +1483,79 @@ export const OFFERINGS_LIST = [
   },
 ];
 
+const OFFERING_SLUG_ALIASES = {
+  "hospital-engineering": "hospital-engineering-infrastructure",
+  "hospital-engineering-infrastructure": "hospital-engineering-infrastructure",
+  "mep": "hospital-engineering-infrastructure",
+  "mep-engineering": "hospital-engineering-infrastructure",
+  "medical-devices-equipment": "medical-devices-healthcare-equipment",
+  "medical-devices": "medical-devices-healthcare-equipment",
+  "biomedical-services": "hospital-engineering-infrastructure",
+  "clean-room-hvac": "hospital-engineering-infrastructure",
+  "cleanroom-hvac": "hospital-engineering-infrastructure",
+  "laboratory-solutions": "laboratory-equipment-scientific-instruments",
+  "lab-diagnostic-solutions": "laboratory-equipment-scientific-instruments",
+  "laboratory-equipment": "laboratory-equipment-scientific-instruments",
+  "hospital-renovation-upgrades": "hospital-engineering-infrastructure",
+  "hospital-renovation": "hospital-engineering-infrastructure",
+  "facility-management-services": "hospital-engineering-infrastructure",
+  "facility-management": "hospital-engineering-infrastructure",
+  "radiation-protection-solutions": "hospital-engineering-infrastructure",
+  "radiation-protection": "hospital-engineering-infrastructure",
+  "fire-safety-life-safety": "hospital-engineering-infrastructure",
+  "fire-safety": "hospital-engineering-infrastructure",
+  "turnkey-projects": "turnkey-healthcare-projects",
+  "turnkey-healthcare": "turnkey-healthcare-projects",
+  "pharmaceuticals": "pharmaceutical-products",
+  "pharmaceutical-consultancy": "pharmaceutical-products",
+  "vaccines": "human-veterinary-vaccines",
+  "surgical-products": "surgical-disposable-products",
+  "surgical-disposables": "surgical-disposable-products",
+  "consumables": "medical-consumables",
+  "hospital-furniture": "hospital-medical-furniture",
+  "medical-furniture": "hospital-medical-furniture",
+};
+
 export function getOfferingBySlug(slug) {
-  return OFFERINGS_LIST.find((item) => item.slug === slug);
+  if (!slug) return undefined;
+
+  const normalized = String(slug).toLowerCase().trim();
+
+  // 1. Direct match
+  const direct = OFFERINGS_LIST.find((item) => item.slug.toLowerCase() === normalized);
+  if (direct) return direct;
+
+  // 2. Alias match
+  const targetSlug = OFFERING_SLUG_ALIASES[normalized];
+  if (targetSlug) {
+    const found = OFFERINGS_LIST.find((item) => item.slug.toLowerCase() === targetSlug.toLowerCase());
+    if (found) {
+      return {
+        ...found,
+        originalSlug: found.slug,
+        requestedSlug: slug,
+      };
+    }
+  }
+
+  // 3. Fuzzy / partial match
+  const fuzzy = OFFERINGS_LIST.find(
+    (item) => item.slug.toLowerCase().includes(normalized) || normalized.includes(item.slug.toLowerCase())
+  );
+  if (fuzzy) {
+    return {
+      ...fuzzy,
+      originalSlug: fuzzy.slug,
+      requestedSlug: slug,
+    };
+  }
+
+  return undefined;
 }
 
 export function getAllOfferingSlugs() {
-  return OFFERINGS_LIST.map((item) => item.slug);
+  const baseSlugs = OFFERINGS_LIST.map((item) => item.slug);
+  const aliasSlugs = Object.keys(OFFERING_SLUG_ALIASES);
+  return Array.from(new Set([...baseSlugs, ...aliasSlugs]));
 }
+

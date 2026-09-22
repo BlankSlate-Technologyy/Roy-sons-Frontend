@@ -100,16 +100,9 @@ export function RoysNavbar({ active = "Home" }) {
           })}
         </nav>
 
-        {/* Action Button, Portal & Mobile Toggle */}
+        {/* Portal Button & Mobile Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
           <RoysonsPortalButton />
-          <Link
-            href="/group-companies/roys-roys/contact"
-            className="roys-quote-btn hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded text-sm font-bold text-white shadow-xs transition-all duration-200 hover:bg-[#091b2c] cursor-pointer"
-            style={{ backgroundColor: "#0f2b48", color: "#ffffff" }}
-          >
-            <span className="text-white font-bold" style={{ color: "#ffffff" }}>Request a Quote</span>
-          </Link>
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -145,17 +138,6 @@ export function RoysNavbar({ active = "Home" }) {
               </Link>
             );
           })}
-          <div className="pt-2">
-            <Link
-              href="/group-companies/roys-roys/contact"
-              onClick={() => setMobileOpen(false)}
-              className="roys-quote-btn w-full py-3.5 rounded-md text-sm font-bold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-sm"
-              style={{ backgroundColor: "#0f2b48", color: "#ffffff" }}
-            >
-              <span className="text-white font-bold" style={{ color: "#ffffff" }}>Request a Quote</span>
-              <ArrowRight size={15} className="text-white" />
-            </Link>
-          </div>
         </div>
       )}
     </header>

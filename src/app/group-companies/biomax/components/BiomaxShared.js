@@ -118,12 +118,18 @@ export function BiomaxNavbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    document.body.classList.add("roys-roys-theme");
+    document.body.classList.add("biomax-theme");
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.classList.remove("roys-roys-theme");
+      document.body.classList.remove("biomax-theme");
+    };
+  }, [pathname]);
 
   const isActive = (href) => {
     if (!pathname) return false;
@@ -149,23 +155,23 @@ export function BiomaxNavbar() {
             <Image
               src="/logo.png"
               alt="BIO MAX CORPORATION Logo"
-              width={320}
-              height={95}
-              className="h-14 sm:h-16 lg:h-[72px] xl:h-[78px] w-auto object-contain"
+              width={260}
+              height={75}
+              className="h-11 sm:h-12 lg:h-13 xl:h-14 w-auto object-contain"
               priority
             />
           </div>
         </Link>
 
-        {/* Desktop Navigation Links - Compact Gaps */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3 shrink-0">
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-3 2xl:gap-4 shrink-0">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[9.5px] xl:text-[10.5px] 2xl:text-[11px] font-bold tracking-normal uppercase transition-colors relative py-1 px-1 xl:px-1.5 whitespace-nowrap cursor-pointer hover:text-[#1D906C]"
+                className="text-[12px] xl:text-[13.5px] 2xl:text-[14.5px] font-bold tracking-normal uppercase transition-colors relative py-1 px-1.5 xl:px-2 whitespace-nowrap cursor-pointer hover:text-[#1D906C]"
                 style={{
                   color: active ? COLORS.accent : COLORS.primary,
                 }}
@@ -210,7 +216,7 @@ export function BiomaxNavbar() {
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-between py-2 text-xs font-bold tracking-wide uppercase border-b last:border-0 transition-colors"
+                  className="flex items-center justify-between py-2.5 text-sm font-bold tracking-wide uppercase border-b last:border-0 transition-colors"
                   style={{
                     color: active ? COLORS.accent : COLORS.primary,
                     borderColor: "rgba(208, 226, 238, 0.4)",
@@ -245,15 +251,25 @@ export function BiomaxFooter() {
       <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10 text-white">
         {/* Brand Description Column */}
         <div className="lg:col-span-3 max-w-xs">
-          <div className="bg-white px-4 py-2 rounded-xl inline-flex items-center justify-center mb-4 shadow-sm">
-            <Image
-              src="/logo.png"
-              alt="BIO MAX CORPORATION Logo"
-              width={240}
-              height={75}
-              className="h-14 sm:h-16 w-auto object-contain"
-            />
-          </div>
+          <Link href="/group-companies/biomax" className="flex items-center gap-3.5 mb-5 select-none group">
+            <div className="relative w-12 h-12 flex items-center justify-center flex-shrink-0">
+              <Image
+                src="/logos/22.png"
+                alt="BIO MAX CORPORATION Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-lg sm:text-xl font-black uppercase tracking-wider text-white leading-tight">
+                BIO MAX
+              </span>
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-[#1D906C] leading-none mt-1">
+                CORPORATION
+              </span>
+            </div>
+          </Link>
           <p className="text-[12px] leading-relaxed mb-5" style={{ color: "#FFFFFF" }}>
             Delivering trusted laboratory equipment, diagnostic systems, biotechnology workflows, and precision scientific instruments worldwide.
           </p>

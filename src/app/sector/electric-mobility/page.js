@@ -17,6 +17,8 @@ import {
   ChevronRight,
   ArrowRight,
   Settings,
+  CheckCircle2,
+  ShieldCheck,
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -61,10 +63,10 @@ function AnimatedStatValue({ value }) {
       const startTime = performance.now();
 
       const updateCounter = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        const elapsed = Math.max(0, currentTime - startTime);
+        const progress = Math.min(Math.max(elapsed / duration, 0), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = target * easeOut;
+        const current = Math.max(0, target * easeOut);
 
         if (isDecimal) {
           setDisplayValue(`${current.toFixed(1)}${suffix}`);
@@ -106,8 +108,13 @@ function AnimatedStatValue({ value }) {
   }, [value]);
 
   return (
-    <span ref={elementRef} suppressHydrationWarning className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
-      {displayValue}
+    <span
+      ref={elementRef}
+      dir="ltr"
+      suppressHydrationWarning
+      className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight tabular-nums"
+    >
+      {String(displayValue).replace(/^-/, "")}
     </span>
   );
 }
@@ -210,30 +217,137 @@ export default function ElectricMobilityPage() {
       {/* Solutions */}
       <section id="solutions" className="py-14 sm:py-18 bg-neutral-50 border-b border-neutral-200">
         <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">CORE FOCUS</span>
-              <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">Strategic Solutions</h2>
-              <div className="h-[3px] w-14 bg-neutral-950 mb-4" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Left Column Content */}
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#0a7a8c] mb-2 block">
+                CORE FOCUS
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-neutral-950 mb-3">
+                Strategic Solutions
+              </h2>
+              <div className="h-[3px] w-16 bg-[#0a7a8c] mb-5" />
+
+              <p className="text-sm sm:text-base text-neutral-600 leading-relaxed font-normal mb-6">
+                ROYSONS delivers comprehensive electric mobility ecosystems tailored for enterprise, municipal, and commercial scale. By combining high-power charging corridors, turnkey civil engineering, and intelligent energy management, we enable a seamless and cost-effective transition towards sustainable transit.
+              </p>
+
+              {/* Strategic Pillars List */}
+              <div className="space-y-3.5 mb-8">
+                <div className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#0a7a8c]/10 flex items-center justify-center text-[#0a7a8c] mt-0.5 flex-shrink-0">
+                    <CheckCircle2 size={15} />
+                  </div>
+                  <p className="text-xs sm:text-sm text-neutral-700 leading-snug">
+                    <strong className="text-neutral-950 font-bold">Turnkey Hub Deployment:</strong> Site feasibility, civil engineering, high-voltage interconnects, and commissioning.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#0a7a8c]/10 flex items-center justify-center text-[#0a7a8c] mt-0.5 flex-shrink-0">
+                    <CheckCircle2 size={15} />
+                  </div>
+                  <p className="text-xs sm:text-sm text-neutral-700 leading-snug">
+                    <strong className="text-neutral-950 font-bold">Fleet Transition Advisory:</strong> Duty-cycle telemetry modeling, total cost of ownership (TCO), and depot setups.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full bg-[#0a7a8c]/10 flex items-center justify-center text-[#0a7a8c] mt-0.5 flex-shrink-0">
+                    <CheckCircle2 size={15} />
+                  </div>
+                  <p className="text-xs sm:text-sm text-neutral-700 leading-snug">
+                    <strong className="text-neutral-950 font-bold">BESS &amp; Renewable Pairing:</strong> Solar PV and battery storage integration to eliminate peak-tariff demand charges.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[2px] bg-[#0a7a8c] text-white text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-[#075e6c] transition-all duration-300 shadow-sm"
+                >
+                  <span>Consult EV Specialists</span>
+                  <ArrowRight size={15} />
+                </Link>
+                <a
+                  href="#capabilities"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[2px] border border-neutral-300 text-neutral-800 text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-neutral-100 hover:border-neutral-400 transition-all duration-300"
+                >
+                  View Capabilities
+                </a>
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+
+            {/* Right Column Cards (2x2 Grid) */}
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               <div className="bg-white p-5 sm:p-6 border border-neutral-200 rounded-[2px] group hover:border-[#009688] hover:shadow-lg transition-all duration-300">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-4 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
                   <PlugZap size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-neutral-950 mb-2 group-hover:text-[#009688] transition-colors duration-300">EV Infrastructure</h3>
                 <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
-                  Planning and deployment of charging networks for residential, commercial, industrial, and public environments.
+                  Planning, engineering, and turnkey installation of AC destination and ultra-fast DC charging networks for commercial hubs, highway corridors, and residential districts.
                 </p>
               </div>
+
               <div className="bg-white p-5 sm:p-6 border border-neutral-200 rounded-[2px] group hover:border-[#009688] hover:shadow-lg transition-all duration-300">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-4 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
                   <Bus size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-neutral-950 mb-2 group-hover:text-[#009688] transition-colors duration-300">Fleet Electrification</h3>
                 <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
-                  Helping organizations transition conventional vehicle fleets toward electric transportation efficiently.
+                  Structured conversion roadmaps, route telemetry analysis, and dedicated depot charging solutions for logistics, corporate, and municipal transit fleets.
                 </p>
+              </div>
+
+              <div className="bg-white p-5 sm:p-6 border border-neutral-200 rounded-[2px] group hover:border-[#009688] hover:shadow-lg transition-all duration-300">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-4 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                  <BatteryCharging size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-neutral-950 mb-2 group-hover:text-[#009688] transition-colors duration-300">Smart Grid &amp; Storage</h3>
+                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+                  Integration of Battery Energy Storage Systems (BESS) and on-site solar to shave peak electrical loads, optimize utility tariffs, and ensure uninterrupted charging.
+                </p>
+              </div>
+
+              <div className="bg-white p-5 sm:p-6 border border-neutral-200 rounded-[2px] group hover:border-[#009688] hover:shadow-lg transition-all duration-300">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[4px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center mb-4 group-hover:bg-gradient-to-r group-hover:from-[#0077b6] group-hover:via-[#009688] group-hover:to-[#02b875] group-hover:border-transparent group-hover:shadow-[0_4px_16px_rgba(0,150,136,0.35)] transition-all duration-300 shadow-xs">
+                  <Network size={32} strokeWidth={1.8} className="text-[#0a7a8c] group-hover:text-white transition-colors duration-300" />
+                </div>
+                <h3 className="text-base sm:text-lg font-bold uppercase tracking-[0.05em] text-neutral-950 mb-2 group-hover:text-[#009688] transition-colors duration-300">Charging Networks</h3>
+                <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
+                  OCPP 2.0.1 compliant cloud management platforms featuring automated billing, real-time charger diagnostics, mobile apps, and dynamic load balancing.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Key Value Indicators Strip */}
+          <div className="mt-12 pt-8 border-t border-neutral-200 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center flex-shrink-0">
+                <CheckCircle2 size={20} className="text-[#0a7a8c]" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold uppercase tracking-wide text-neutral-950">Turnkey Execution</h4>
+                <p className="text-xs text-neutral-600 mt-1 leading-relaxed">End-to-end engineering from site feasibility and civil works to high-voltage commissioning.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center flex-shrink-0">
+                <Zap size={20} className="text-[#0a7a8c]" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold uppercase tracking-wide text-neutral-950">High-Power Charging</h4>
+                <p className="text-xs text-neutral-600 mt-1 leading-relaxed">Scalable DC fast-charging up to 360kW with smart dynamic power sharing across dispensers.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-[3px] bg-[#f0fdfa] border border-[#0a7a8c]/25 flex items-center justify-center flex-shrink-0">
+                <ShieldCheck size={20} className="text-[#0a7a8c]" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold uppercase tracking-wide text-neutral-950">Compliance &amp; Safety</h4>
+                <p className="text-xs text-neutral-600 mt-1 leading-relaxed">Built to international IEC, SAE, and ISO safety standards ensuring high reliability and uptime.</p>
               </div>
             </div>
           </div>

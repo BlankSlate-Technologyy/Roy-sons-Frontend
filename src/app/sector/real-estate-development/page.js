@@ -18,6 +18,9 @@ import {
   ArrowRight,
   HeartHandshake,
   Laptop,
+  Leaf,
+  ShieldCheck,
+  CheckCircle2,
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -62,10 +65,10 @@ function AnimatedStatValue({ value }) {
       const startTime = performance.now();
 
       const updateCounter = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        const elapsed = Math.max(0, currentTime - startTime);
+        const progress = Math.min(Math.max(elapsed / duration, 0), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = target * easeOut;
+        const current = Math.max(0, target * easeOut);
 
         if (isDecimal) {
           setDisplayValue(`${current.toFixed(1)}${suffix}`);
@@ -107,8 +110,13 @@ function AnimatedStatValue({ value }) {
   }, [value]);
 
   return (
-    <span ref={elementRef} suppressHydrationWarning className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
-      {displayValue}
+    <span
+      ref={elementRef}
+      dir="ltr"
+      suppressHydrationWarning
+      className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight tabular-nums"
+    >
+      {String(displayValue).replace(/^-/, "")}
     </span>
   );
 }
@@ -125,6 +133,8 @@ const CAPABILITIES = [
   { icon: Users,         title: "Community Development",       description: "Creating vibrant neighborhoods with parks, schools, and healthcare." },
   { icon: FileText,      title: "Real Estate Consultancy",     description: "Market analysis, feasibility studies, and regulatory advisory." },
   { icon: ClipboardList, title: "Project Management",          description: "Strict quality control, timeline management, and budget tracking." },
+  { icon: Building2,     title: "Asset & Facility Management", description: "Lifecycle property maintenance, tenant coordination, and long-term asset preservation." },
+  { icon: Leaf,          title: "Sustainable Green Buildings", description: "LEED-aligned designs, solar integration, and low-carbon architectural practices." },
 ];
 
 /* ─── Page ──────────────────────────────────────────────────────── */
@@ -224,6 +234,30 @@ export default function RealEstateDevelopmentPage() {
               </p>
             </div>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mt-6">
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                Architectural Excellence
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">Contemporary aesthetics, human-centric living spaces, and top-tier structural engineering.</p>
+            </div>
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                Eco-Smart Infrastructure
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">Integrated solar power, green spaces, intelligent automation, and energy-efficient utilities.</p>
+            </div>
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                High Investment Yield
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">Prime urban locations, strategic asset appreciation, and clear transparent investor governance.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -235,7 +269,7 @@ export default function RealEstateDevelopmentPage() {
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">Our Capabilities</h2>
             <div className="mx-auto h-[3px] w-14 bg-neutral-950" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (

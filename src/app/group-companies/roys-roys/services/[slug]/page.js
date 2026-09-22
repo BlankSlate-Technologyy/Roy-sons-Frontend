@@ -72,9 +72,9 @@ export default function ServiceDetailPage({ params }) {
           <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#B49438]/12 blur-[120px]" />
           <div className="absolute top-1/2 -right-32 w-[480px] h-[480px] rounded-full bg-[#009088]/15 blur-[140px]" />
           <div
-            className="absolute inset-0 opacity-[0.035]"
+            className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px)",
+              backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px)",
               backgroundSize: "28px 28px",
             }}
           />

@@ -257,27 +257,27 @@ export default function BiomaxIndustriesPage() {
       {/* ─── The 7 Industry Column Cards (Exact Reproduction of Image) ─────── */}
       <section id="industry-cards-section" className="py-16 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          {/* 7 Columns Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4 items-stretch">
+          {/* 7 Cards across Two Lines (Row 1: 4 cards, Row 2: 3 cards centered) */}
+          <div className="flex flex-wrap justify-center gap-6 items-stretch">
             {INDUSTRIES_DATA.map((ind) => {
               const Icon = ind.icon;
               return (
                 <div
                   key={ind.id}
-                  className="rounded-2xl border-2 bg-white overflow-hidden shadow-md biomax-card-hover cursor-pointer flex flex-col justify-between group"
+                  className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] rounded-2xl border-2 bg-white overflow-hidden shadow-md biomax-card-hover cursor-pointer flex flex-col justify-between group transition-all duration-300"
                   style={{ borderColor: COLORS.border }}
                 >
                   <div>
                     {/* Top Header with Dark Blue Circular Icon */}
-                    <div className="p-4 text-center flex flex-col items-center bg-white border-b" style={{ borderColor: COLORS.border }}>
+                    <div className="p-5 text-center flex flex-col items-center bg-white border-b" style={{ borderColor: COLORS.border }}>
                       <div
-                        className="w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300"
+                        className="w-14 h-14 rounded-full flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300"
                         style={{ backgroundColor: COLORS.primary }}
                       >
-                        <Icon size={24} className="text-white" style={{ strokeWidth: 2 }} />
+                        <Icon size={26} className="text-white" style={{ strokeWidth: 2 }} />
                       </div>
                       <h3
-                        className="text-[11.5px] font-black uppercase tracking-wider leading-snug min-h-[34px] flex items-center justify-center text-center"
+                        className="text-xs sm:text-[13px] font-black uppercase tracking-wider leading-snug min-h-[38px] flex items-center justify-center text-center"
                         style={{ color: COLORS.primary }}
                       >
                         {ind.title}
@@ -285,34 +285,34 @@ export default function BiomaxIndustriesPage() {
                     </div>
 
                     {/* Image Middle Section */}
-                    <div className="relative w-full h-36 overflow-hidden">
+                    <div className="relative w-full h-44 overflow-hidden">
                       <Image
                         src={ind.image}
                         alt={ind.imageAlt}
                         fill
                         className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
-                        sizes="250px"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       />
                     </div>
 
                     {/* Description Paragraph */}
-                    <div className="p-3.5 text-center">
-                      <p className="text-[11.5px] leading-relaxed mb-3" style={{ color: COLORS.muted }}>
+                    <div className="p-4 text-center">
+                      <p className="text-xs leading-relaxed mb-4 min-h-[52px]" style={{ color: COLORS.muted }}>
                         {ind.desc}
                       </p>
                       <Link
                         href={`/group-companies/biomax/industries/${ind.id}`}
-                        className="w-full py-2 px-2.5 rounded-lg text-[10.5px] font-extrabold uppercase tracking-wider text-white bg-[#165B7E] hover:bg-[#1D906C] transition-all flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer"
+                        className="w-full py-2.5 px-4 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white bg-[#165B7E] hover:bg-[#1D906C] transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
                       >
                         <span>View Details</span>
-                        <ArrowRight size={11} />
+                        <ArrowRight size={13} />
                       </Link>
                     </div>
                   </div>
 
                   {/* Bottom Line Accent */}
-                  <div className="p-3 pt-0 text-center">
-                    <div className="w-8 h-0.5 mx-auto rounded-full group-hover:w-16 transition-all duration-300" style={{ backgroundColor: COLORS.accent }} />
+                  <div className="p-4 pt-0 text-center">
+                    <div className="w-10 h-0.5 mx-auto rounded-full group-hover:w-20 transition-all duration-300" style={{ backgroundColor: COLORS.accent }} />
                   </div>
                 </div>
               );

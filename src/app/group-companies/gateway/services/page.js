@@ -541,7 +541,7 @@ export default function GatewayServicesPage() {
                     {/* Top Image Showcase with Hover Zoom Out Effect */}
                     <div className="relative w-full h-44 rounded-2xl overflow-hidden mb-6 bg-slate-100 border border-slate-100">
                       <Image
-                        src={svc.image || "/gatway about.png"}
+                        src={svc.image || svc.heroImage || "/gateway/service_licensing.jpg"}
                         alt={svc.title}
                         fill
                         className="object-cover object-center transition-transform duration-700 ease-out scale-115 group-hover:scale-100"

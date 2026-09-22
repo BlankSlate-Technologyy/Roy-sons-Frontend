@@ -63,10 +63,10 @@ function AnimatedStatValue({ value }) {
       const startTime = performance.now();
 
       const updateCounter = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        const elapsed = Math.max(0, currentTime - startTime);
+        const progress = Math.min(Math.max(elapsed / duration, 0), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = target * easeOut;
+        const current = Math.max(0, target * easeOut);
 
         if (isDecimal) {
           setDisplayValue(`${current.toFixed(1)}${suffix}`);
@@ -110,10 +110,11 @@ function AnimatedStatValue({ value }) {
     <span
       ref={elementRef}
       suppressHydrationWarning
+      dir="ltr"
       style={{ fontFamily: '"Times New Roman", Times, serif' }}
-      className="block text-3xl sm:text-4xl font-black text-[#042E3A] tracking-tight"
+      className="block text-3xl sm:text-4xl font-black text-[#042E3A] tracking-tight tabular-nums"
     >
-      {displayValue}
+      {String(displayValue).replace(/^-/, "")}
     </span>
   );
 }

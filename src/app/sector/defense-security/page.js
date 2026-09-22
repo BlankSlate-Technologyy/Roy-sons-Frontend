@@ -17,6 +17,8 @@ import {
   ChevronRight,
   ArrowRight,
   Target,
+  Radar,
+  Cpu,
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -61,10 +63,10 @@ function AnimatedStatValue({ value }) {
       const startTime = performance.now();
 
       const updateCounter = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        const elapsed = Math.max(0, currentTime - startTime);
+        const progress = Math.min(Math.max(elapsed / duration, 0), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = target * easeOut;
+        const current = Math.max(0, target * easeOut);
 
         if (isDecimal) {
           setDisplayValue(`${current.toFixed(1)}${suffix}`);
@@ -106,8 +108,13 @@ function AnimatedStatValue({ value }) {
   }, [value]);
 
   return (
-    <span ref={elementRef} suppressHydrationWarning className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
-      {displayValue}
+    <span
+      ref={elementRef}
+      dir="ltr"
+      suppressHydrationWarning
+      className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight tabular-nums"
+    >
+      {String(displayValue).replace(/^-/, "")}
     </span>
   );
 }
@@ -124,6 +131,8 @@ const CAPABILITIES = [
   { icon: Building2,   title: "Critical Infrastructure Protection",description: "Safeguarding power grids, water supplies, and governmental facilities." },
   { icon: Lightbulb,   title: "Security Consultancy",             description: "Risk assessments, vulnerability audits, and strategic security planning." },
   { icon: Layers,      title: "Integrated Security Solutions",    description: "End-to-end integration of multiple security silos into one cohesive system." },
+  { icon: Cpu,         title: "Cyber & Electronic Defense",       description: "Hardened security architectures safeguarding defense networks and critical OT systems." },
+  { icon: Radar,       title: "Counter-UAS & Tactical Systems",   description: "Advanced radar detection, anti-drone countermeasures, and tactical defense equipment." },
 ];
 
 /* ─── Page ──────────────────────────────────────────────────────── */
@@ -236,7 +245,7 @@ export default function DefenseSecurityPage() {
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">Our Capabilities</h2>
             <div className="mx-auto h-[3px] w-14 bg-neutral-950" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (

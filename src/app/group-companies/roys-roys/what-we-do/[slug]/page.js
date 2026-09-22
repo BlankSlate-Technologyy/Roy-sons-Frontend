@@ -17,6 +17,7 @@ import {
   Award,
   Sparkles,
   ArrowLeft,
+  Wrench,
 } from "lucide-react";
 import { RoysNavbar, RoysFooter, RoysButton, SectionHeading } from "../../_shared";
 import { OFFERINGS_LIST, getOfferingBySlug } from "../../offerings-data";
@@ -32,7 +33,7 @@ export default function OfferingDetailPage({ params }) {
     notFound();
   }
 
-  const MainIcon = offering.icon;
+  const MainIcon = offering.icon || Wrench;
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-[#111827] overflow-hidden">
@@ -61,9 +62,9 @@ export default function OfferingDetailPage({ params }) {
           <div className="absolute top-1/3 -right-40 w-96 h-96 bg-[#009088]/20 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-[#B49438]/15 rounded-full blur-3xl" />
           <div
-            className="absolute inset-0 opacity-[0.03]"
+            className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+              backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0)",
               backgroundSize: "32px 32px",
             }}
           />
@@ -219,8 +220,11 @@ export default function OfferingDetailPage({ params }) {
               Explore Offerings:
             </span>
             {OFFERINGS_LIST.map((item) => {
-              const isActive = item.slug === offering.slug;
-              const TabIcon = item.icon;
+              const isActive =
+                item.slug === offering.slug ||
+                (offering.originalSlug && item.slug === offering.originalSlug) ||
+                (slug && (item.slug === slug || slug.startsWith(item.slug)));
+              const TabIcon = item.icon || Wrench;
               return (
                 <Link
                   key={item.slug}
@@ -252,7 +256,7 @@ export default function OfferingDetailPage({ params }) {
               Delivering Excellence in {offering.title}
             </h2>
             <div className="space-y-4 text-[#334155] leading-relaxed text-base sm:text-[17.5px]">
-              {offering.overview.map((para, idx) => (
+              {(offering.overview || []).map((para, idx) => (
                 <p key={idx}>{para}</p>
               ))}
             </div>
@@ -320,7 +324,7 @@ export default function OfferingDetailPage({ params }) {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {offering.keyPillars.map((pillar, idx) => {
+            {(offering.keyPillars || []).map((pillar, idx) => {
               const PillarIcon = pillar.icon || CheckCircle2;
               return (
                 <div
@@ -365,7 +369,7 @@ export default function OfferingDetailPage({ params }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
-            {offering.scopeOfServices.map((scope, idx) => (
+            {(offering.scopeOfServices || []).map((scope, idx) => (
               <div
                 key={idx}
                 data-aos="zoom-in"
@@ -394,7 +398,7 @@ export default function OfferingDetailPage({ params }) {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {offering.workflow.map((w, idx) => (
+            {(offering.workflow || []).map((w, idx) => (
               <div
                 key={idx}
                 data-aos="fade-up"
@@ -433,7 +437,7 @@ export default function OfferingDetailPage({ params }) {
                 Why Choose Roys &amp; Roys
               </h3>
               <div className="space-y-4 sm:space-y-5">
-                {offering.benefits.map((benefit, i) => (
+                {(offering.benefits || []).map((benefit, i) => (
                   <div key={i} className="flex items-start gap-3.5">
                     <div className="w-6 h-6 rounded-full bg-[#009088]/15 text-[#009088] flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 size={16} />
@@ -458,7 +462,7 @@ export default function OfferingDetailPage({ params }) {
                 Industries We Empower
               </h3>
               <div className="space-y-3.5 mb-8">
-                {offering.industries.map((ind, i) => (
+                {(offering.industries || []).map((ind, i) => (
                   <div
                     key={i}
                     className="flex items-center gap-3.5 p-3.5 sm:p-4 rounded-xl bg-white/5 border border-white/10 text-[15.5px] sm:text-base font-semibold text-white/95 hover:bg-white/10 transition-colors"
@@ -492,7 +496,7 @@ export default function OfferingDetailPage({ params }) {
           />
 
           <div className="space-y-3.5 sm:space-y-4">
-            {offering.faqs.map((faq, idx) => {
+            {(offering.faqs || []).map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
                 <div

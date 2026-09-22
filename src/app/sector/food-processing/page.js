@@ -17,6 +17,7 @@ import {
   Droplets,
   ChevronRight,
   ArrowRight,
+  Warehouse,
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -61,10 +62,10 @@ function AnimatedStatValue({ value }) {
       const startTime = performance.now();
 
       const updateCounter = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        const elapsed = Math.max(0, currentTime - startTime);
+        const progress = Math.min(Math.max(elapsed / duration, 0), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = target * easeOut;
+        const current = Math.max(0, target * easeOut);
 
         if (isDecimal) {
           setDisplayValue(`${current.toFixed(1)}${suffix}`);
@@ -106,24 +107,31 @@ function AnimatedStatValue({ value }) {
   }, [value]);
 
   return (
-    <span ref={elementRef} suppressHydrationWarning className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
-      {displayValue}
+    <span
+      ref={elementRef}
+      dir="ltr"
+      suppressHydrationWarning
+      className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight tabular-nums"
+    >
+      {String(displayValue).replace(/^-/, "")}
     </span>
   );
 }
 
 /* ─── Data ──────────────────────────────────────────────────────── */
 const CAPABILITIES = [
-  { icon: Factory,     title: "Food Processing",             description: "Advanced processing lines for raw agricultural products into consumer goods." },
-  { icon: Package,     title: "Packaging Solutions",         description: "Automated filling, sealing, labeling, and shelf-life extension technologies." },
-  { icon: Snowflake,   title: "Cold Storage",                description: "Temperature-controlled warehousing, blast freezers, and cold chain logistics." },
-  { icon: ShieldCheck, title: "Food Safety Systems",         description: "Implementation of HACCP, ISO, and rigorous contamination control measures." },
-  { icon: Leaf,        title: "Agricultural Processing",     description: "Sorting, grading, cleaning, and primary processing of crops and grains." },
-  { icon: ClipboardCheck,title: "Quality Control",           description: "Laboratory testing, traceability protocols, and product consistency." },
-  { icon: Truck,       title: "Supply Chain Management",     description: "Optimized logistics, inventory control, and raw material procurement." },
-  { icon: Box,         title: "Commodity Sourcing",          description: "Direct sourcing of high-quality agricultural commodities from growers." },
-  { icon: Utensils,    title: "Food Manufacturing",          description: "Turnkey plant development for ready-to-eat and processed foods." },
-  { icon: Globe,       title: "Export Solutions",            description: "Regulatory compliance, packaging, and logistics for international food trade." },
+  { icon: Factory,        title: "Food Processing",             description: "Advanced processing lines for raw agricultural products into consumer goods." },
+  { icon: Package,        title: "Packaging Solutions",         description: "Automated filling, sealing, labeling, and shelf-life extension technologies." },
+  { icon: Snowflake,      title: "Cold Storage",                description: "Temperature-controlled warehousing, blast freezers, and cold chain logistics." },
+  { icon: ShieldCheck,    title: "Food Safety Systems",         description: "Implementation of HACCP, ISO, and rigorous contamination control measures." },
+  { icon: Leaf,           title: "Agricultural Processing",     description: "Sorting, grading, cleaning, and primary processing of crops and grains." },
+  { icon: ClipboardCheck, title: "Quality Control",             description: "Laboratory testing, traceability protocols, and product consistency." },
+  { icon: Truck,          title: "Supply Chain Management",     description: "Optimized logistics, inventory control, and raw material procurement." },
+  { icon: Box,            title: "Commodity Sourcing",          description: "Direct sourcing of high-quality agricultural commodities from growers." },
+  { icon: Utensils,       title: "Food Manufacturing",          description: "Turnkey plant development for ready-to-eat and processed foods." },
+  { icon: Globe,          title: "Export Solutions",            description: "Regulatory compliance, packaging, and logistics for international food trade." },
+  { icon: Warehouse,      title: "Grain Silos & Bulk Storage",  description: "Automated grain handling, aeration silos, and bulk commodity warehousing." },
+  { icon: Droplets,       title: "Beverage & Liquid Processing",description: "Hygienic bottling, pasteurization, aseptic filling lines, and CIP sanitation." },
 ];
 
 const FOCUS_AREAS = [
@@ -251,7 +259,7 @@ export default function FoodProcessingPage() {
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">Our Capabilities</h2>
             <div className="mx-auto h-[3px] w-14 bg-neutral-950" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (

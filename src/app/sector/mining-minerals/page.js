@@ -19,6 +19,8 @@ import {
   ChevronRight,
   ArrowRight,
   ShieldCheck,
+  CheckCircle2,
+  HardHat,
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -63,10 +65,10 @@ function AnimatedStatValue({ value }) {
       const startTime = performance.now();
 
       const updateCounter = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        const elapsed = Math.max(0, currentTime - startTime);
+        const progress = Math.min(Math.max(elapsed / duration, 0), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = target * easeOut;
+        const current = Math.max(0, target * easeOut);
 
         if (isDecimal) {
           setDisplayValue(`${current.toFixed(1)}${suffix}`);
@@ -108,24 +110,31 @@ function AnimatedStatValue({ value }) {
   }, [value]);
 
   return (
-    <span ref={elementRef} suppressHydrationWarning className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
-      {displayValue}
+    <span
+      ref={elementRef}
+      dir="ltr"
+      suppressHydrationWarning
+      className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight tabular-nums"
+    >
+      {String(displayValue).replace(/^-/, "")}
     </span>
   );
 }
 
 /* ─── Data ──────────────────────────────────────────────────────── */
 const CAPABILITIES = [
-  { icon: Search,      title: "Mineral Exploration",         description: "Target generation, drilling programs, and preliminary resource identification." },
-  { icon: Map,         title: "Geological Surveys",          description: "Geophysical mapping, sampling, and advanced remote sensing technologies." },
-  { icon: ClipboardCheck,title: "Resource Assessment",       description: "Feasibility studies, reserve estimation, and economic modeling." },
-  { icon: Compass,     title: "Mining Planning",             description: "Mine design, optimization scheduling, and operational planning." },
-  { icon: Hammer,      title: "Extraction Operations",       description: "Surface and underground mining methodologies and execution support." },
-  { icon: Factory,     title: "Mineral Processing",          description: "Crushing, grinding, beneficiation, and metallurgical plant design." },
-  { icon: Truck,       title: "Mining Equipment",            description: "Procurement, deployment, and maintenance of heavy mining machinery." },
-  { icon: Building2,   title: "Infrastructure Development",  description: "Access roads, power supply, water management, and camp facilities." },
-  { icon: Layers,      title: "Project Consultancy",         description: "Regulatory compliance, risk management, and strategic advisory." },
-  { icon: Activity,    title: "Resource Management",         description: "Sustainable extraction practices and long-term asset optimization." },
+  { icon: Search,        title: "Mineral Exploration",         description: "Target generation, drilling programs, and preliminary resource identification." },
+  { icon: Map,           title: "Geological Surveys",          description: "Geophysical mapping, sampling, and advanced remote sensing technologies." },
+  { icon: ClipboardCheck,title: "Resource Assessment",         description: "Feasibility studies, reserve estimation, and economic modeling." },
+  { icon: Compass,       title: "Mining Planning",             description: "Mine design, optimization scheduling, and operational planning." },
+  { icon: Hammer,        title: "Extraction Operations",       description: "Surface and underground mining methodologies and execution support." },
+  { icon: Factory,       title: "Mineral Processing",          description: "Crushing, grinding, beneficiation, and metallurgical plant design." },
+  { icon: Truck,         title: "Mining Equipment",            description: "Procurement, deployment, and maintenance of heavy mining machinery." },
+  { icon: Building2,     title: "Infrastructure Development",  description: "Access roads, power supply, water management, and camp facilities." },
+  { icon: Layers,        title: "Project Consultancy",         description: "Regulatory compliance, risk management, and strategic advisory." },
+  { icon: Activity,      title: "Resource Management",         description: "Sustainable extraction practices and long-term asset optimization." },
+  { icon: Leaf,          title: "Environmental Reclamation",   description: "Tailings management, environmental impact mitigations, and post-mining ecological restoration." },
+  { icon: HardHat,       title: "Mine Safety & Health Protocols", description: "Zero-harm safety management, air quality & gas telemetry, and worker safety training." },
 ];
 
 /* ─── Page ──────────────────────────────────────────────────────── */
@@ -225,6 +234,30 @@ export default function MiningMineralsPage() {
               </p>
             </div>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mt-6">
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                Geological Rigor
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">High-precision geophysical surveys and 3D deposit modeling ensuring accurate resource validation.</p>
+            </div>
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                Sustainable Extraction
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">Closed-loop water recycling, modern dust suppression, and comprehensive ecological restoration.</p>
+            </div>
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                Zero-Harm Safety
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">Geotechnical stability audits, real-time gas telemetry, and certified workforce safety protocols.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -236,7 +269,7 @@ export default function MiningMineralsPage() {
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">Our Capabilities</h2>
             <div className="mx-auto h-[3px] w-14 bg-neutral-950" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (

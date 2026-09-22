@@ -29,9 +29,9 @@ function AnimatedStatValue({ value }) {
 
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / 1600, 1);
+      const progress = Math.min(Math.max((timestamp - startTime) / 1600, 0), 1);
       const easedProgress = 1 - Math.pow(1 - progress, 3);
-      const currentValue = numericTarget * easedProgress;
+      const currentValue = Math.max(0, numericTarget * easedProgress);
       const formattedValue = hasDecimal
         ? currentValue.toFixed(1).replace(/\.0$/, "")
         : Math.round(currentValue).toLocaleString("en-US");
@@ -68,10 +68,11 @@ function AnimatedStatValue({ value }) {
   return (
     <span
       ref={elementRef}
+      dir="ltr"
       style={{ fontFamily: '"Times New Roman", Times, serif' }}
-      className="block text-4xl sm:text-5xl font-black text-neutral-950 tracking-tight"
+      className="block text-4xl sm:text-5xl font-black text-neutral-950 tracking-tight tabular-nums"
     >
-      {displayValue}
+      {String(displayValue).replace(/^-/, "")}
     </span>
   );
 }
@@ -91,47 +92,43 @@ export default function HeroSection({ onGetConsultancyClick }) {
       {/* Hero Dark Container */}
       <section
         data-dark-section="true"
-        className="relative bg-gradient-to-b from-[#0e1418] via-[#121a20] to-[#0e1418] text-white py-16 sm:py-20 lg:py-24 border-b border-neutral-800 overflow-hidden"
+        className="relative bg-gradient-to-b from-[#0e1418] via-[#121a20] to-[#0e1418] text-white py-8 sm:py-10 lg:py-12 border-b border-neutral-800 overflow-hidden"
       >
         {/* Background Subtle Tech Grid */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#0a7a8c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             {/* Left Column Content */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/80 text-cyan-300 text-xs sm:text-[14px] font-bold uppercase tracking-[0.2em] mb-4 self-start shadow-[0_0_15px_rgba(34,211,238,0.25)]">
-                <FlaskConical size={18} className="text-cyan-300 flex-shrink-0" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-[#0a7a8c]/25 border border-cyan-400/80 text-cyan-300 text-xs sm:text-[13px] font-bold uppercase tracking-[0.18em] mb-3 self-start shadow-[0_0_15px_rgba(34,211,238,0.25)]">
+                <FlaskConical size={16} className="text-cyan-300 flex-shrink-0" />
                 <span>Sector 03 • Pharmaceutical &amp; Compliance</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black uppercase tracking-tight text-white leading-tight mb-4 font-serif">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[42px] font-black uppercase tracking-tight text-white leading-tight mb-2.5 font-serif">
                 Pharmaceutical Consultancy
               </h1>
 
-              <p className="text-lg sm:text-xl lg:text-2xl font-bold text-cyan-400 uppercase tracking-wide mb-4 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] font-serif">
+              <p className="text-sm sm:text-base lg:text-lg font-bold text-cyan-400 uppercase tracking-wide mb-2.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] font-serif">
                 Strategic, Regulatory &amp; Quality Solutions for Pharmaceutical Excellence
               </p>
 
-              <div className="h-[3.5px] w-24 bg-gradient-to-r from-cyan-400 via-[#0a7a8c] to-[#042E3A] mb-6" />
+              <div className="h-[2.5px] w-20 bg-gradient-to-r from-cyan-400 via-[#0a7a8c] to-[#042E3A] mb-3.5" />
 
-              <p className="text-base sm:text-lg text-neutral-100 leading-relaxed font-normal mb-4 max-w-2xl">
+              <p className="text-xs sm:text-sm lg:text-[15px] text-neutral-200 leading-relaxed font-normal mb-2.5 max-w-2xl">
                 ROYSONS provides professional pharmaceutical consultancy services to pharmaceutical manufacturers, biotechnology organizations, medical device companies, laboratories, healthcare institutions, investors, and organizations developing regulated healthcare facilities.
               </p>
 
-              <p className="text-base sm:text-lg text-neutral-300 leading-relaxed font-normal mb-5 max-w-2xl hidden sm:block">
+              <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal mb-0 max-w-2xl hidden sm:block">
                 Our consultancy services support clients throughout the complete project and operational lifecycle—from concept development, feasibility studies, facility planning, regulatory strategy, GMP implementation, quality-management systems, documentation, validation and qualification, licensing, inspection readiness, technology transfer, process improvement, and operational development.
-              </p>
-
-              <p className="text-sm sm:text-base text-cyan-200 leading-relaxed font-medium max-w-2xl border-l-3 border-cyan-400 pl-4 py-1 bg-cyan-950/20">
-                Through a multidisciplinary approach, ROYSONS helps organizations establish technically sound, operationally efficient, and compliance-focused pharmaceutical operations aligned with applicable national and international regulatory and quality requirements.
               </p>
             </div>
 
             {/* Right Column Media Carousel */}
             <div className="lg:col-span-5">
               <div className="relative rounded-[3px] p-1.5 bg-gradient-to-b from-cyan-500/40 via-neutral-800 to-[#0a7a8c]/30 shadow-2xl shadow-cyan-950/50 group select-none">
-                <div className="relative h-[360px] sm:h-[440px] w-full overflow-hidden rounded-[2px] bg-neutral-950">
+                <div className="relative h-[270px] sm:h-[320px] lg:h-[350px] w-full overflow-hidden rounded-[2px] bg-neutral-950">
                   {HERO_SLIDES.map((slide, idx) => (
                     <div
                       key={idx}

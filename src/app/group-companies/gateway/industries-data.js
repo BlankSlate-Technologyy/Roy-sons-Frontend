@@ -26,7 +26,8 @@ export const GATEWAY_INDUSTRIES = [
     eyebrow: "Oral Solid, Liquid & Sterile Injectables",
     tag: "Commercial Pharma",
     icon: FlaskConical,
-    heroImage: "/gatway about.png",
+    heroImage: "/gateway/industry_pharma_mfg.jpg",
+    image: "/gateway/industry_pharma_mfg.jpg",
     overview:
       "Gateway provides strategic regulatory support for pharmaceutical formulation and active pharmaceutical ingredient (API) manufacturers. From initial Drug Manufacturing Licensing (DML) and cleanroom facility design vetting to commercial product registration (Form 7) and WHO-cGMP compliance audits, we ensure seamless operational readiness.",
     metrics: [
@@ -94,7 +95,8 @@ export const GATEWAY_INDUSTRIES = [
     eyebrow: "Biologics, Vaccines & Recombinant DNA",
     tag: "Biotechnology",
     icon: Microscope,
-    heroImage: "/gatway commited.png",
+    heroImage: "/gateway/industry_biotech.jpg",
+    image: "/gateway/industry_biotech.jpg",
     overview:
       "Gateway provides high-level regulatory guidance for biotechnology enterprises developing vaccines, recombinant therapeutic proteins, monoclonal antibodies, and biosimilars. We navigate complex biological registration frameworks, clinical comparability protocols, cold-chain validation, and specialized biosafety mandates.",
     metrics: [
@@ -162,7 +164,8 @@ export const GATEWAY_INDUSTRIES = [
     eyebrow: "Class A, B, C, D Devices & IVD Kits",
     tag: "Medical Devices",
     icon: Activity,
-    heroImage: "/gatwayareaofexperince.png",
+    heroImage: "/gateway/industry_meddevice.jpg",
+    image: "/gateway/industry_meddevice.jpg",
     overview:
       "Gateway delivers end-to-end regulatory advisory under the Medical Devices Rules for manufacturers, importers, and distributors of medical devices and In-Vitro Diagnostic (IVD) reagents. We handle Device Master Records (DMR), Medical Device Establishment Licenses (MDEL), conformity assessments, and product registrations across Class A through Class D.",
     metrics: [
@@ -230,7 +233,8 @@ export const GATEWAY_INDUSTRIES = [
     eyebrow: "Health Supplements & Alternative Medicine",
     tag: "Nutraceuticals",
     icon: Leaf,
-    heroImage: "/gatwaychosse us.png",
+    heroImage: "/gateway/industry_nutra.jpg",
+    image: "/gateway/industry_nutra.jpg",
     overview:
       "Gateway assists nutraceutical, dietary supplement, herbal, and traditional alternative medicine manufacturers in securing Health & OTC Product Enlistment (Form 6 & 7). We review formulations against positive nutrient lists, verify botanical standardization, author product dossiers, and ensure label compliance.",
     metrics: [
@@ -298,7 +302,8 @@ export const GATEWAY_INDUSTRIES = [
     eyebrow: "Cross-Border Quota & Commercial Indenting",
     tag: "Trade & Logistics",
     icon: Globe,
-    heroImage: "/gatway header.png",
+    heroImage: "/gateway/industry_trade.jpg",
+    image: "/gateway/industry_trade.jpg",
     overview:
       "Gateway empowers pharmaceutical commercial indenters, international traders, raw material importers, and export houses to navigate cross-border trade regulations seamlessly. We handle commercial import permits, raw material quotas, WHO CoPPs, and port customs clearance authorizations.",
     metrics: [
@@ -366,7 +371,8 @@ export const GATEWAY_INDUSTRIES = [
     eyebrow: "IVD Reagents, Analyzers & Quality Protocols",
     tag: "Diagnostics & Labs",
     icon: BookOpen,
-    heroImage: "/gatway about.png",
+    heroImage: "/gateway/industry_diaglabs.jpg",
+    image: "/gateway/industry_diaglabs.jpg",
     overview:
       "Gateway provides specialized regulatory solutions for commercial clinical diagnostic laboratories, reference pathology centers, and IVD kit importers. We handle diagnostic analyzer registrations, test kit validation dossiers, biosafety licensing, and ISO 15189 laboratory accreditation compliance.",
     metrics: [
@@ -434,7 +440,8 @@ export const GATEWAY_INDUSTRIES = [
     eyebrow: "Wholesale Licensing, Warehousing & GDP",
     tag: "Distribution & GDP",
     icon: Building2,
-    heroImage: "/gatway commited.png",
+    heroImage: "/gateway/industry_distributors.jpg",
+    image: "/gateway/industry_distributors.jpg",
     overview:
       "Gateway guides pharmaceutical wholesalers, nationwide medical distributors, and third-party logistics (3PL) providers through statutory wholesale licensing (Form 9), cold-chain storage validation, temperature mapping, and Good Distribution Practices (GDP) compliance.",
     metrics: [

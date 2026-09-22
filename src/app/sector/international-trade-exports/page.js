@@ -17,6 +17,9 @@ import {
   ChevronRight,
   ArrowRight,
   Network,
+  ShieldCheck,
+  Briefcase,
+  CheckCircle2,
 } from "lucide-react";
 import HeaderNavbar from "@/components/ui/navigation-menu";
 import CorporateFooter from "@/components/ui/footer";
@@ -61,10 +64,10 @@ function AnimatedStatValue({ value }) {
       const startTime = performance.now();
 
       const updateCounter = (currentTime) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+        const elapsed = Math.max(0, currentTime - startTime);
+        const progress = Math.min(Math.max(elapsed / duration, 0), 1);
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = target * easeOut;
+        const current = Math.max(0, target * easeOut);
 
         if (isDecimal) {
           setDisplayValue(`${current.toFixed(1)}${suffix}`);
@@ -106,8 +109,13 @@ function AnimatedStatValue({ value }) {
   }, [value]);
 
   return (
-    <span ref={elementRef} suppressHydrationWarning className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight">
-      {displayValue}
+    <span
+      ref={elementRef}
+      dir="ltr"
+      suppressHydrationWarning
+      className="block text-2xl sm:text-3xl font-black text-neutral-950 tracking-tight tabular-nums"
+    >
+      {String(displayValue).replace(/^-/, "")}
     </span>
   );
 }
@@ -124,6 +132,8 @@ const CAPABILITIES = [
   { icon: Users,       title: "Vendor Management",           description: "Quality assurance, audit scheduling, and relationship management for suppliers." },
   { icon: Building2,   title: "Government Procurement",      description: "Supporting public sector sourcing requirements and international tenders." },
   { icon: Handshake,   title: "International Partnerships",  description: "Facilitating joint ventures and exclusive distribution agreements." },
+  { icon: ShieldCheck, title: "Customs & Tariff Advisory",   description: "Full-service bonded handling, HS code classification, and expedited customs clearance." },
+  { icon: Briefcase,   title: "Trade Finance & L/C Solutions", description: "Documentary letters of credit, escrow coordination, and cross-border trade risk management." },
 ];
 
 /* ─── Page ──────────────────────────────────────────────────────── */
@@ -223,6 +233,30 @@ export default function InternationalTradeExportsPage() {
               </p>
             </div>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mt-6">
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                Vetted Supplier Network
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">Direct relationships with Tier-1 manufacturers across 50+ countries guaranteeing quality and price stability.</p>
+            </div>
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                Intermodal Logistics
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">Coordinated ocean freight, air cargo, and cross-border road transit with real-time shipment visibility.</p>
+            </div>
+            <div className="bg-white border border-neutral-200 p-5 rounded-[2px] hover:border-[#009688] transition-all duration-300">
+              <h4 className="text-sm font-bold uppercase tracking-wider text-neutral-950 mb-1.5 flex items-center gap-2">
+                <CheckCircle2 size={16} className="text-[#0a7a8c] flex-shrink-0" />
+                Regulatory &amp; Tariffs
+              </h4>
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">Complete trade compliance, HS code categorization, export certifications, and bonded logistics.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -234,7 +268,7 @@ export default function InternationalTradeExportsPage() {
             <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-neutral-950 mb-3">Our Capabilities</h2>
             <div className="mx-auto h-[3px] w-14 bg-neutral-950" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {CAPABILITIES.map((cap, index) => {
               const Icon = cap.icon;
               return (
