@@ -404,18 +404,18 @@ function AnimatedStat({ icon: Icon, value, label }) {
       style={{ borderColor: COLORS.border, backgroundColor: COLORS.white }}
     >
       <Icon
-        size={26}
+        size={28}
         className="mx-auto mb-2"
         style={{ color: COLORS.green }}
       />
       <p
-        className="text-[19px] font-black leading-tight mb-1"
+        className="text-[22px] font-black leading-tight mb-1"
         style={{ color: COLORS.green }}
       >
         <Counter value={value} duration={2} />
       </p>
       <p
-        className="text-[11.5px] font-bold leading-tight"
+        className="text-[13px] font-bold leading-tight"
         style={{ color: COLORS.green }}
       >
         {label}
@@ -428,7 +428,7 @@ function SectionHeading({ eyebrow, align = "left", className = "" }) {
   return (
     <div className={`mb-3 ${align === "center" ? "text-center" : ""}`}>
       <h2
-        className={`text-[18px] font-black uppercase tracking-wide ${className}`}
+        className={`text-[21px] sm:text-[23px] font-black uppercase tracking-wide ${className}`}
         style={{ color: COLORS.green }}
       >
         {eyebrow}
@@ -443,7 +443,7 @@ function PrimaryButton({ href, children, className = "", onClick }) {
     <a
       href={href}
       onClick={onClick}
-      className={`vetvac-primary-btn px-6 py-3 rounded-md text-[13px] font-bold flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-white hover:text-white ${className}`}
+      className={`vetvac-primary-btn px-6 py-3.5 rounded-md text-[15.5px] font-bold flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-white hover:text-white ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -464,7 +464,7 @@ function OutlineButton({ href, children, className = "", onClick }) {
     <a
       href={href}
       onClick={onClick}
-      className={`px-6 py-3 rounded-md text-[13px] font-bold border-2 flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer ${className}`}
+      className={`px-6 py-3.5 rounded-md text-[15.5px] font-bold border-2 flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -537,13 +537,13 @@ function HeroSection() {
       <div className="relative z-10 mx-auto max-w-screen-xl w-full">
         <div className="max-w-2xl">
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[12px] font-extrabold uppercase tracking-wider mb-4 border"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[13.5px] font-extrabold uppercase tracking-wider mb-4 border"
             style={{ backgroundColor: COLORS.white, color: COLORS.green, borderColor: COLORS.border }}
           >
-            <ShieldCheck size={14} />
+            <ShieldCheck size={16} />
             <span>Advancing Veterinary Healthcare</span>
           </div>
-          <h1 className="text-3xl lg:text-[46px] font-black leading-[1.1] mb-5">
+          <h1 className="text-3xl sm:text-4xl lg:text-[52px] font-black leading-[1.1] mb-5">
             <span style={{ color: COLORS.green }}>
               Protecting Animal Health.
             </span>
@@ -553,7 +553,7 @@ function HeroSection() {
             </span>
           </h1>
           <p
-            className="text-[15px] font-medium leading-relaxed mb-8 max-w-md"
+            className="text-[17px] font-medium leading-relaxed mb-8 max-w-xl"
             style={{ color: COLORS.green }}
           >
             VET VAC PHARMA is a veterinary healthcare company focused on
@@ -565,13 +565,13 @@ function HeroSection() {
               href="#solutions"
               onClick={(e) => scrollToSection(e, "#solutions")}
             >
-              Explore Products <ArrowRight size={15} />
+              Explore Products <ArrowRight size={17} />
             </PrimaryButton>
             <OutlineButton
               href="/group-companies/Vetvacpharma/contact"
               className="bg-white/80 hover:bg-white transition-colors"
             >
-              Contact Us <ArrowRight size={15} />
+              Contact Us <ArrowRight size={17} />
             </OutlineButton>
           </div>
         </div>
@@ -589,7 +589,7 @@ function TrustedBySection() {
           style={{ borderColor: COLORS.border }}
         >
           <p
-            className="text-center text-[11px] font-black tracking-[0.2em] uppercase mb-7"
+            className="text-center text-[13px] font-black tracking-[0.2em] uppercase mb-7"
             style={{ color: COLORS.green }}
           >
             Trusted By
@@ -600,9 +600,9 @@ function TrustedBySection() {
                 key={idx}
                 className="flex flex-col items-center text-center gap-2.5"
               >
-                <Icon size={30} style={{ color: COLORS.green }} />
+                <Icon size={32} style={{ color: COLORS.green }} />
                 <span
-                  className="text-[14px] font-bold leading-snug whitespace-pre-line"
+                  className="text-[15.5px] font-bold leading-snug whitespace-pre-line"
                   style={{ color: COLORS.green }}
                 >
                   {label}
@@ -631,10 +631,10 @@ function AboutSection() {
         >
           <div className="mb-4">
             <span
-              className="text-[11.5px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-flex items-center gap-1.5 mb-2 border"
+              className="text-[13px] font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-2 border"
               style={{ backgroundColor: COLORS.white, color: COLORS.green, borderColor: COLORS.border }}
             >
-              <Sparkles size={13} />
+              <Sparkles size={14} />
               <span>Advancing Veterinary Healthcare</span>
             </span>
             <SectionHeading eyebrow="ABOUT VET VAC PHARMA" />
@@ -643,7 +643,7 @@ function AboutSection() {
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 space-y-4">
               <p
-                className="text-[15px] font-semibold leading-relaxed"
+                className="text-[17px] font-semibold leading-relaxed"
                 style={{ color: COLORS.green }}
               >
                 VET VAC PHARMA is a veterinary healthcare company focused on
@@ -651,13 +651,13 @@ function AboutSection() {
                 products, and animal-health solutions.
               </p>
               <p
-                className="text-[13.5px] leading-relaxed"
+                className="text-[16px] leading-relaxed"
                 style={{ color: COLORS.green }}
               >
                 We aim to serve the evolving needs of poultry and livestock industries by combining product quality, scientific knowledge, and practical industry understanding.
               </p>
               <p
-                className="text-[13px] leading-relaxed"
+                className="text-[15.5px] leading-relaxed"
                 style={{ color: COLORS.green }}
               >
                 Our focus extends beyond individual products. We believe effective animal healthcare requires prevention, responsible disease management, technical knowledge, and continuous improvement.
@@ -681,7 +681,7 @@ function AboutSection() {
 
             <div className="lg:col-span-4">
               <p
-                className="text-[13.5px] font-black uppercase tracking-wide mb-3"
+                className="text-[15px] font-black uppercase tracking-wide mb-3"
                 style={{ color: COLORS.green }}
               >
                 COMPANY AT A GLANCE
@@ -725,18 +725,18 @@ function AboutSection() {
 
                   <div>
                     <p
-                      className="text-[10.5px] font-black uppercase tracking-wider mb-1"
+                      className="text-[12.5px] font-black uppercase tracking-wider mb-1"
                       style={{ color: COLORS.green }}
                     >
                       {eyebrow}
                     </p>
                     <h3
-                      className="text-[18px] font-extrabold mb-2 transition-colors"
+                      className="text-[21px] font-extrabold mb-2 transition-colors"
                       style={{ color: COLORS.green }}
                     >
                       {title}
                     </h3>
-                    <p className="text-[12.5px] leading-relaxed" style={{ color: COLORS.green }}>
+                    <p className="text-[14.5px] leading-relaxed" style={{ color: COLORS.green }}>
                       {desc}
                     </p>
                   </div>
@@ -753,12 +753,12 @@ function AboutSection() {
         >
           <div className="mb-6">
             <span
-              className="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-1 border"
+              className="text-[12.5px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-1 border"
               style={{ backgroundColor: COLORS.white, color: COLORS.green, borderColor: COLORS.border }}
             >
               CORE PRINCIPLES
             </span>
-            <h3 className="text-xl font-black" style={{ color: COLORS.green }}>
+            <h3 className="text-2xl font-black" style={{ color: COLORS.green }}>
               Our Commitment
             </h3>
           </div>
@@ -779,10 +779,10 @@ function AboutSection() {
                   >
                     <Icon size={20} style={{ color: isGreen ? COLORS.green : COLORS.primary }} />
                   </div>
-                  <h4 className="text-[15px] font-black mb-1.5" style={{ color: COLORS.green }}>
+                  <h4 className="text-[17px] font-black mb-1.5" style={{ color: COLORS.green }}>
                     {title}
                   </h4>
-                  <p className="text-[12.5px] leading-relaxed" style={{ color: COLORS.green }}>
+                  <p className="text-[14.5px] leading-relaxed" style={{ color: COLORS.green }}>
                     {desc}
                   </p>
                 </div>
@@ -798,28 +798,28 @@ function AboutSection() {
         >
           <div className="max-w-2xl">
             <span
-              className="text-[11px] font-black uppercase tracking-widest block mb-1"
+              className="text-[12.5px] font-black uppercase tracking-widest block mb-1"
               style={{ color: COLORS.green }}
             >
               FARM PERFORMANCE &amp; ANIMAL WELLBEING
             </span>
-            <h3 className="text-xl font-black mb-2" style={{ color: COLORS.green }}>
+            <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.green }}>
               Supporting Modern Agriculture
             </h3>
-            <p className="text-[13.5px] leading-relaxed" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
               Healthy animals are fundamental to productive livestock and poultry farming. VET VAC PHARMA works toward solutions that help farmers and animal-health professionals address changing disease challenges while improving animal wellbeing and farm performance.
             </p>
           </div>
           <a
             href="#solutions"
             onClick={(e) => scrollToSection(e, "#solutions")}
-            className="px-6 py-3 rounded-md text-[13px] font-bold text-white flex items-center gap-2 flex-shrink-0 transition-all duration-300 hover:bg-[#1E855C] hover:text-white cursor-pointer shadow-md"
+            className="px-6 py-3.5 rounded-md text-[15.5px] font-bold text-white flex items-center gap-2 flex-shrink-0 transition-all duration-300 hover:bg-[#1E855C] hover:text-white cursor-pointer shadow-md"
             style={{ backgroundColor: COLORS.primary, color: "#FFFFFF" }}
             onMouseEnter={e => { e.currentTarget.style.backgroundColor = COLORS.green; e.currentTarget.style.color = "#FFFFFF"; }}
             onMouseLeave={e => { e.currentTarget.style.backgroundColor = COLORS.primary; e.currentTarget.style.color = "#FFFFFF"; }}
           >
             <span style={{ color: "#FFFFFF" }}>Explore Solutions</span>
-            <ArrowRight size={15} />
+            <ArrowRight size={17} />
           </a>
         </div>
       </div>
@@ -842,15 +842,15 @@ function SolutionsSection() {
         >
           <div className="max-w-3xl">
             <span
-              className="text-[11.5px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-2 border"
+              className="text-[13px] font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full inline-block mb-2 border"
               style={{ backgroundColor: COLORS.white, color: COLORS.green, borderColor: COLORS.border }}
             >
               03 — Products &amp; Solutions
             </span>
-            <h2 className="text-2xl lg:text-3xl font-black mb-2" style={{ color: COLORS.green }}>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2" style={{ color: COLORS.green }}>
               Comprehensive Veterinary Healthcare Solutions
             </h2>
-            <p className="text-[14.5px] leading-relaxed" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
               VET VAC PHARMA provides a focused portfolio of veterinary healthcare products designed to support disease prevention, animal wellbeing, and productive farming operations.
             </p>
           </div>
@@ -872,29 +872,29 @@ function SolutionsSection() {
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
                 <div
-                  className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase text-white shadow-sm bg-[#094C80]"
+                  className="absolute top-3 left-3 px-3.5 py-1.5 rounded-full text-[13px] font-extrabold uppercase text-white shadow-sm bg-[#094C80]"
                 >
                   Vaccines
                 </div>
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-black" style={{ color: COLORS.green }}>
+                  <h3 className="text-2xl font-black" style={{ color: COLORS.green }}>
                     Veterinary Vaccines
                   </h3>
                   <Link
                     href="/group-companies/Vetvacpharma/solutions/veterinary-vaccines"
-                    className="text-[11px] font-bold text-[#1E855C] hover:text-[#094C80] flex items-center gap-1"
+                    className="text-[13.5px] font-bold text-[#1E855C] hover:text-[#094C80] flex items-center gap-1"
                   >
                     <span>Details</span>
-                    <ArrowRight size={12} />
+                    <ArrowRight size={14} />
                   </Link>
                 </div>
-                <p className="text-[13.5px] leading-relaxed mb-5" style={{ color: COLORS.green }}>
+                <p className="text-[16px] leading-relaxed mb-5" style={{ color: COLORS.green }}>
                   Our vaccine solutions are designed to support preventive healthcare programs for poultry and livestock.
                 </p>
 
-                <p className="text-[12px] font-extrabold uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
+                <p className="text-[14px] font-extrabold uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
                   Key Areas Include:
                 </p>
                 <ul className="space-y-2.5">
@@ -905,8 +905,8 @@ function SolutionsSection() {
                     "Immunization programs",
                     "Farm-level health management",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-[13px] font-semibold" style={{ color: COLORS.green }}>
-                      <CheckCircle2 size={16} style={{ color: COLORS.green }} className="flex-shrink-0" />
+                    <li key={item} className="flex items-center gap-2.5 text-[15.5px] font-semibold" style={{ color: COLORS.green }}>
+                      <CheckCircle2 size={18} style={{ color: COLORS.green }} className="flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -915,17 +915,17 @@ function SolutionsSection() {
             </div>
             <div className="p-6 pt-0 space-y-3">
               <div
-                className="p-2.5 rounded-lg border text-[12px] font-bold text-center"
+                className="p-3 rounded-lg border text-[14px] font-bold text-center"
                 style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, color: COLORS.green }}
               >
                 Preventive Immunity &amp; Controlled Quality
               </div>
               <Link
                 href="/group-companies/Vetvacpharma/solutions/veterinary-vaccines"
-                className="w-full py-2.5 rounded-lg text-[12.5px] font-bold text-white bg-[#1E855C] hover:bg-[#156344] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                className="w-full py-3 rounded-lg text-[15px] font-bold text-white bg-[#1E855C] hover:bg-[#156344] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
               >
                 <span>View Vaccines Detail Page</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={15} />
               </Link>
             </div>
           </div>
@@ -944,32 +944,32 @@ function SolutionsSection() {
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
                 <div
-                  className="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase text-white shadow-sm bg-[#094C80]"
+                  className="absolute top-3 left-3 px-3.5 py-1.5 rounded-full text-[13px] font-extrabold uppercase text-white shadow-sm bg-[#094C80]"
                 >
                   Biologicals
                 </div>
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between gap-2 mb-2">
-                  <h3 className="text-xl font-black" style={{ color: COLORS.green }}>
+                  <h3 className="text-2xl font-black" style={{ color: COLORS.green }}>
                     Biological Products
                   </h3>
                   <Link
                     href="/group-companies/Vetvacpharma/solutions/biological-products"
-                    className="text-[11px] font-bold text-[#1E855C] hover:text-[#094C80] flex items-center gap-1"
+                    className="text-[13.5px] font-bold text-[#1E855C] hover:text-[#094C80] flex items-center gap-1"
                   >
                     <span>Details</span>
-                    <ArrowRight size={12} />
+                    <ArrowRight size={14} />
                   </Link>
                 </div>
-                <p className="text-[13.5px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
+                <p className="text-[16px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
                   Our biological product portfolio supports modern approaches to animal disease prevention and healthcare management.
                 </p>
-                <p className="text-[13.5px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
+                <p className="text-[16px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
                   We focus on solutions that contribute to improved animal health while supporting responsible and effective farming practices.
                 </p>
 
-                <p className="text-[12px] font-extrabold uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
+                <p className="text-[14px] font-extrabold uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
                   Key Formulations:
                 </p>
                 <ul className="space-y-2.5">
@@ -979,8 +979,8 @@ function SolutionsSection() {
                     "Targeted therapeutic biologicals",
                     "Sustainable, non-antibiotic farm formulations",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-[13px] font-semibold" style={{ color: COLORS.green }}>
-                      <CheckCircle2 size={16} style={{ color: COLORS.green }} className="flex-shrink-0" />
+                    <li key={item} className="flex items-center gap-2.5 text-[15.5px] font-semibold" style={{ color: COLORS.green }}>
+                      <CheckCircle2 size={18} style={{ color: COLORS.green }} className="flex-shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -989,17 +989,17 @@ function SolutionsSection() {
             </div>
             <div className="p-6 pt-0 space-y-3">
               <div
-                className="p-2.5 rounded-lg border text-[12px] font-bold text-center"
+                className="p-3 rounded-lg border text-[14px] font-bold text-center"
                 style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, color: COLORS.green }}
               >
                 Safe, Effective &amp; Responsible Farming
               </div>
               <Link
                 href="/group-companies/Vetvacpharma/solutions/biological-products"
-                className="w-full py-2.5 rounded-lg text-[12.5px] font-bold text-white bg-[#094C80] hover:bg-[#1E855C] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                className="w-full py-3 rounded-lg text-[15px] font-bold text-white bg-[#094C80] hover:bg-[#1E855C] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
               >
                 <span>View Biologicals Detail Page</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={15} />
               </Link>
             </div>
           </div>
@@ -1021,23 +1021,23 @@ function SolutionsSection() {
                     <Bird size={24} style={{ color: COLORS.green }} />
                   </div>
                   <div>
-                    <h3 className="text-[19px] font-black" style={{ color: COLORS.green }}>
+                    <h3 className="text-[21px] font-black" style={{ color: COLORS.green }}>
                       Poultry Health Solutions
                     </h3>
-                    <span className="text-[12px] font-bold" style={{ color: COLORS.green }}>
+                    <span className="text-[14px] font-bold" style={{ color: COLORS.green }}>
                       Healthier Flocks • Efficient Production
                     </span>
                   </div>
                 </div>
                 <Link
                   href="/group-companies/Vetvacpharma/solutions/poultry-health-solutions"
-                  className="text-[11px] font-bold text-[#1E855C] hover:text-[#094C80] flex items-center gap-1"
+                  className="text-[13.5px] font-bold text-[#1E855C] hover:text-[#094C80] flex items-center gap-1"
                 >
                   <span>Details</span>
-                  <ArrowRight size={12} />
+                  <ArrowRight size={14} />
                 </Link>
               </div>
-              <p className="text-[13.5px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
+              <p className="text-[16px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
                 Modern poultry farming requires effective prevention and health-management strategies. Our poultry-focused solutions are designed to help address common health challenges and support healthier flocks and more efficient production.
               </p>
               <div
@@ -1051,7 +1051,7 @@ function SolutionsSection() {
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-2 text-[12px] font-bold mb-4" style={{ color: COLORS.green }}>
+              <div className="grid grid-cols-2 gap-2 text-[14px] font-bold mb-4" style={{ color: COLORS.green }}>
                 <div className="p-2.5 rounded border text-center" style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}>
                   ✓ Viral &amp; Bacterial Vaccines
                 </div>
@@ -1062,10 +1062,10 @@ function SolutionsSection() {
             </div>
             <Link
               href="/group-companies/Vetvacpharma/solutions/poultry-health-solutions"
-              className="w-full py-2.5 rounded-lg text-[12.5px] font-bold text-white bg-[#1E855C] hover:bg-[#156344] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+              className="w-full py-3 rounded-lg text-[15px] font-bold text-white bg-[#1E855C] hover:bg-[#156344] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
             >
               <span>Explore Poultry Solutions</span>
-              <ArrowRight size={13} />
+              <ArrowRight size={15} />
             </Link>
           </div>
 
@@ -1083,26 +1083,26 @@ function SolutionsSection() {
                     <Wheat size={24} style={{ color: COLORS.green }} />
                   </div>
                   <div>
-                    <h3 className="text-[19px] font-black" style={{ color: COLORS.green }}>
+                    <h3 className="text-[21px] font-black" style={{ color: COLORS.green }}>
                       Livestock Health Solutions
                     </h3>
-                    <span className="text-[12px] font-bold" style={{ color: COLORS.green }}>
+                    <span className="text-[14px] font-bold" style={{ color: COLORS.green }}>
                       Preventive Care • Herd Wellbeing
                     </span>
                   </div>
                 </div>
                 <Link
                   href="/group-companies/Vetvacpharma/solutions/livestock-health-solutions"
-                  className="text-[11px] font-bold text-[#1E855C] hover:text-[#094C80] flex items-center gap-1"
+                  className="text-[13.5px] font-bold text-[#1E855C] hover:text-[#094C80] flex items-center gap-1"
                 >
                   <span>Details</span>
-                  <ArrowRight size={12} />
+                  <ArrowRight size={14} />
                 </Link>
               </div>
-              <p className="text-[13.5px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
+              <p className="text-[16px] leading-relaxed mb-4" style={{ color: COLORS.green }}>
                 We support livestock producers with healthcare solutions focused on maintaining animal wellbeing and reducing the impact of preventable diseases.
               </p>
-              <p className="text-[12px] font-extrabold uppercase tracking-wider mb-2.5" style={{ color: COLORS.green }}>
+              <p className="text-[14px] font-extrabold uppercase tracking-wider mb-2.5" style={{ color: COLORS.green }}>
                 Our solutions can support:
               </p>
               <div className="space-y-2 mb-4">
@@ -1113,8 +1113,8 @@ function SolutionsSection() {
                   "Farm disease prevention",
                   "Animal wellness programs",
                 ].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-[13px] font-semibold" style={{ color: COLORS.green }}>
-                    <CheckCircle2 size={15} style={{ color: COLORS.green }} />
+                  <div key={item} className="flex items-center gap-2 text-[15px] font-semibold" style={{ color: COLORS.green }}>
+                    <CheckCircle2 size={16} style={{ color: COLORS.green }} />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -1122,18 +1122,18 @@ function SolutionsSection() {
             </div>
             <div className="space-y-3">
               <div
-                className="p-3 rounded-lg border text-[12px] font-bold flex items-center justify-between"
+                className="p-3 rounded-lg border text-[14px] font-bold flex items-center justify-between"
                 style={{ backgroundColor: COLORS.white, borderColor: COLORS.border, color: COLORS.green }}
               >
                 <span>Targeted Herd Immunity Protocols</span>
-                <ShieldCheck size={18} />
+                <ShieldCheck size={20} />
               </div>
               <Link
                 href="/group-companies/Vetvacpharma/solutions/livestock-health-solutions"
-                className="w-full py-2.5 rounded-lg text-[12.5px] font-bold text-white bg-[#094C80] hover:bg-[#1E855C] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
+                className="w-full py-3 rounded-lg text-[15px] font-bold text-white bg-[#094C80] hover:bg-[#1E855C] transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer"
               >
                 <span>Explore Livestock Solutions</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={15} />
               </Link>
             </div>
           </div>
@@ -1146,15 +1146,15 @@ function SolutionsSection() {
         >
           <div className="max-w-3xl">
             <span
-              className="text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded bg-white inline-block mb-2"
+              className="text-[12.5px] font-black uppercase tracking-wider px-3 py-1 rounded bg-white inline-block mb-2"
               style={{ color: COLORS.green }}
             >
               HOLISTIC PERSPECTIVE
             </span>
-            <h3 className="text-xl font-black mb-2" style={{ color: COLORS.green }}>
+            <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.green }}>
               Integrated Animal Health Approach
             </h3>
-            <p className="text-[13.5px] leading-relaxed" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
               Effective animal healthcare involves more than a single product. We promote a comprehensive approach combining vaccination, preventive healthcare, farm management, veterinary guidance, and ongoing monitoring.
             </p>
           </div>
@@ -1166,16 +1166,16 @@ function SolutionsSection() {
           style={{ backgroundColor: COLORS.primary }}
         >
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
+            <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
               Find the Right Solution for Your Animal Health Program
             </h3>
-            <p className="text-[13.5px] text-white/90 max-w-xl">
+            <p className="text-[16px] text-white/90 max-w-xl">
               Connect with our team to explore veterinary healthcare solutions for your operation.
             </p>
           </div>
           <Link
             href="/group-companies/Vetvacpharma/contact"
-            className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
+            className="px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
             onMouseEnter={e => {
               e.currentTarget.style.backgroundColor = COLORS.green;
               e.currentTarget.style.color = "#FFFFFF";
@@ -1190,7 +1190,7 @@ function SolutionsSection() {
             }}
           >
             <span>Contact Us</span>
-            <ArrowRight size={15} />
+            <ArrowRight size={17} />
           </Link>
         </div>
       </div>
@@ -1318,7 +1318,7 @@ function WhyIndustriesProcessSection() {
             <p className="text-[16px] font-bold mb-3" style={{ color: COLORS.green }}>
               Supporting Every Stage of Animal Health
             </p>
-            <p className="text-[14px] leading-relaxed" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
               VET VAC PHARMA develops its focus around the diverse requirements of the animal-health industry, helping healthcare professionals and producers manage animal health through preventive and supportive solutions.
             </p>
           </div>
@@ -1351,19 +1351,19 @@ function WhyIndustriesProcessSection() {
                         color: isActive ? COLORS.white : COLORS.green,
                       }}
                     >
-                      <Icon size={20} />
+                      <Icon size={22} />
                     </div>
                     <div>
-                      <p className="text-[14px] font-black" style={{ color: COLORS.green }}>
+                      <p className="text-[16px] font-black" style={{ color: COLORS.green }}>
                         {ind.title}
                       </p>
-                      <p className="text-[11.5px] line-clamp-1" style={{ color: COLORS.green }}>
+                      <p className="text-[13px] line-clamp-1" style={{ color: COLORS.green }}>
                         {ind.tagline}
                       </p>
                     </div>
                   </div>
                   <ChevronDown
-                    size={16}
+                    size={18}
                     className={`transform transition-transform ${
                       isActive ? "-rotate-90 text-[#094C80]" : "rotate-0 text-slate-400"
                     }`}
@@ -1386,27 +1386,27 @@ function WhyIndustriesProcessSection() {
                       className="w-11 h-11 rounded-xl flex items-center justify-center"
                       style={{ backgroundColor: COLORS.white }}
                     >
-                      <CurrentIcon size={24} style={{ color: COLORS.green }} />
+                      <CurrentIcon size={26} style={{ color: COLORS.green }} />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-black" style={{ color: COLORS.green }}>
+                      <h3 className="text-2xl sm:text-3xl font-black" style={{ color: COLORS.green }}>
                         {current.title}
                       </h3>
-                      <p className="text-[13px] font-bold" style={{ color: COLORS.green }}>
+                      <p className="text-[15px] font-bold" style={{ color: COLORS.green }}>
                         {current.tagline}
                       </p>
                     </div>
                   </div>
                   <Link
                     href={`/group-companies/Vetvacpharma/services/${current.slug}`}
-                    className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase bg-[#EAF6F0] text-[#1E855C] hover:bg-[#1E855C] hover:text-white transition-colors"
+                    className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[13px] font-extrabold uppercase bg-[#EAF6F0] text-[#1E855C] hover:bg-[#1E855C] hover:text-white transition-colors"
                   >
                     <span>View Detail Page</span>
-                    <ArrowRight size={12} />
+                    <ArrowRight size={13} />
                   </Link>
                 </div>
 
-                <p className="text-[14px] leading-relaxed mb-6" style={{ color: COLORS.green }}>
+                <p className="text-[16px] leading-relaxed mb-6" style={{ color: COLORS.green }}>
                   {current.desc}
                 </p>
 
@@ -1422,7 +1422,7 @@ function WhyIndustriesProcessSection() {
                   />
                 </div>
 
-                <p className="text-[12.5px] font-black uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
+                <p className="text-[14px] font-black uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
                   Key Capabilities Include:
                 </p>
 
@@ -1430,11 +1430,11 @@ function WhyIndustriesProcessSection() {
                   {current.items.map((item) => (
                     <div
                       key={item}
-                      className="p-3 rounded-lg border flex items-center gap-2.5"
+                      className="p-3.5 rounded-lg border flex items-center gap-2.5"
                       style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
                     >
-                      <CheckCircle2 size={16} style={{ color: COLORS.green }} className="flex-shrink-0" />
-                      <span className="text-[13px] font-bold" style={{ color: COLORS.green }}>
+                      <CheckCircle2 size={18} style={{ color: COLORS.green }} className="flex-shrink-0" />
+                      <span className="text-[15px] font-bold" style={{ color: COLORS.green }}>
                         {item}
                       </span>
                     </div>
@@ -1443,20 +1443,20 @@ function WhyIndustriesProcessSection() {
               </div>
 
               <div className="pt-6 border-t flex flex-wrap items-center justify-between gap-4" style={{ borderColor: COLORS.border }}>
-                <span className="text-[12.5px] font-semibold" style={{ color: COLORS.green }}>
+                <span className="text-[14px] font-semibold" style={{ color: COLORS.green }}>
                   Targeted field protocols &amp; disease prevention
                 </span>
                 <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <Link
                     href={`/group-companies/Vetvacpharma/services/${current.slug}`}
-                    className="px-5 py-2.5 rounded-lg text-[13px] font-bold text-white flex items-center gap-2 transition-all duration-300 hover:bg-[#156344] hover:text-white cursor-pointer shadow-sm bg-[#1E855C]"
+                    className="px-6 py-3 rounded-lg text-[15px] font-bold text-white flex items-center gap-2 transition-all duration-300 hover:bg-[#156344] hover:text-white cursor-pointer shadow-sm bg-[#1E855C]"
                   >
                     <span style={{ color: "#FFFFFF" }}>Explore {current.title} Page</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={15} />
                   </Link>
                   <Link
                     href="/group-companies/Vetvacpharma/contact"
-                    className="px-4 py-2.5 rounded-lg text-[12px] font-bold border border-slate-300 text-[#094C80] hover:bg-slate-50 transition-colors"
+                    className="px-5 py-3 rounded-lg text-[14px] font-bold border border-slate-300 text-[#094C80] hover:bg-slate-50 transition-colors"
                   >
                     <span>Inquire Now</span>
                   </Link>
@@ -1473,15 +1473,15 @@ function WhyIndustriesProcessSection() {
         >
           <div className="max-w-2xl mb-6">
             <span
-              className="text-[11px] font-black uppercase tracking-wider block mb-1"
+              className="text-[12.5px] font-black uppercase tracking-wider block mb-1"
               style={{ color: COLORS.green }}
             >
               LONG-TERM COLLABORATION
             </span>
-            <h3 className="text-xl font-black mb-2" style={{ color: COLORS.green }}>
+            <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.green }}>
               Animal Health Partners
             </h3>
-            <p className="text-[13.5px] leading-relaxed" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
               We aim to build long-term relationships across the entire veterinary and agricultural network:
             </p>
           </div>
@@ -1497,9 +1497,9 @@ function WhyIndustriesProcessSection() {
                   className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
                   style={{ backgroundColor: COLORS.lightGreen, color: COLORS.green }}
                 >
-                  <Check size={11} />
+                  <Check size={12} />
                 </div>
-                <span className="text-[12.5px] font-bold" style={{ color: COLORS.green }}>
+                <span className="text-[14.5px] font-bold" style={{ color: COLORS.green }}>
                   {partner}
                 </span>
               </div>
@@ -1512,19 +1512,19 @@ function WhyIndustriesProcessSection() {
             style={{ backgroundColor: COLORS.primary }}
           >
             <div>
-              <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#EAF3F8] block mb-1">
+              <span className="text-[12.5px] font-extrabold uppercase tracking-widest text-[#EAF3F8] block mb-1">
                 COLLABORATE WITH US
               </span>
-              <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
+              <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
                 Partner With VET VAC PHARMA
               </h3>
-              <p className="text-[13.5px] text-white/90 max-w-xl">
+              <p className="text-[16px] text-white/90 max-w-xl">
                 Together, we can contribute to healthier animals, stronger farming operations, and a more sustainable future for the animal-health industry.
               </p>
             </div>
             <Link
               href="/group-companies/Vetvacpharma/contact"
-              className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
+              className="px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
               onMouseEnter={e => {
                 e.currentTarget.style.backgroundColor = COLORS.green;
                 e.currentTarget.style.color = "#FFFFFF";
@@ -1539,7 +1539,7 @@ function WhyIndustriesProcessSection() {
               }}
             >
               <span>Become a Partner</span>
-              <Handshake size={16} />
+              <Handshake size={17} />
             </Link>
           </div>
         </div>
@@ -1563,22 +1563,22 @@ function CommitmentRndSection() {
         >
           <div className="max-w-3xl">
             <span
-              className="text-[11.5px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-flex items-center gap-1.5 mb-3 border bg-white"
+              className="text-[13px] font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-3 border bg-white"
               style={{ color: COLORS.green, borderColor: COLORS.border }}
             >
-              <Microscope size={13} />
+              <Microscope size={14} />
               <span>04 — R&amp;D &amp; Quality</span>
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black mb-2" style={{ color: COLORS.green }}>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2" style={{ color: COLORS.green }}>
               Research &amp; Development
             </h2>
-            <p className="text-[16px] font-bold mb-3" style={{ color: COLORS.green }}>
+            <p className="text-[18px] font-bold mb-3" style={{ color: COLORS.green }}>
               Driven by Science. Focused on Animal Health.
             </p>
-            <p className="text-[14px] leading-relaxed mb-3" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed mb-3" style={{ color: COLORS.green }}>
               Research and development is essential to advancing modern veterinary healthcare.
             </p>
-            <p className="text-[14px] leading-relaxed" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
               At VET VAC PHARMA, our R&amp;D approach focuses on understanding emerging animal-health challenges and identifying opportunities for improved veterinary solutions.
             </p>
           </div>
@@ -1589,12 +1589,12 @@ function CommitmentRndSection() {
           <div className="lg:col-span-6 space-y-4">
             <div className="mb-2">
               <span
-                className="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-1 border"
+                className="text-[12.5px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-1 border"
                 style={{ backgroundColor: COLORS.white, color: COLORS.green, borderColor: COLORS.border }}
               >
                 SCIENTIFIC PRIORITIES
               </span>
-              <h3 className="text-xl font-black" style={{ color: COLORS.green }}>
+              <h3 className="text-2xl font-black" style={{ color: COLORS.green }}>
                 Our R&amp;D Focus
               </h3>
             </div>
@@ -1632,13 +1632,13 @@ function CommitmentRndSection() {
                       className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{ backgroundColor: COLORS.white }}
                     >
-                      <Icon size={16} style={{ color: COLORS.green }} />
+                      <Icon size={18} style={{ color: COLORS.green }} />
                     </div>
-                    <h4 className="text-[13.5px] font-black" style={{ color: COLORS.green }}>
+                    <h4 className="text-[16px] font-black" style={{ color: COLORS.green }}>
                       {title}
                     </h4>
                   </div>
-                  <p className="text-[12px] leading-relaxed" style={{ color: COLORS.green }}>
+                  <p className="text-[14.5px] leading-relaxed" style={{ color: COLORS.green }}>
                     {desc}
                   </p>
                 </div>
@@ -1666,11 +1666,11 @@ function CommitmentRndSection() {
                     className="w-2.5 h-2.5 rounded-full animate-pulse"
                     style={{ backgroundColor: COLORS.white }}
                   />
-                  <span className="text-[12px] font-bold" style={{ color: COLORS.green }}>
+                  <span className="text-[13.5px] font-bold" style={{ color: COLORS.green }}>
                     State-of-the-Art Laboratory Facilities
                   </span>
                 </div>
-                <span className="text-[11px] font-extrabold uppercase" style={{ color: COLORS.green }}>
+                <span className="text-[12px] font-extrabold uppercase" style={{ color: COLORS.green }}>
                   R&amp;D Team
                 </span>
               </div>
@@ -1687,28 +1687,28 @@ function CommitmentRndSection() {
             <div className="lg:col-span-6 space-y-5">
               <div>
                 <span
-                  className="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-2 bg-white"
+                  className="text-[12.5px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-2 bg-white"
                   style={{ color: COLORS.green }}
                 >
                   ZERO DEFECTS STANDARD
                 </span>
-                <h3 className="text-2xl font-black mb-1" style={{ color: COLORS.green }}>
+                <h3 className="text-2xl sm:text-3xl font-black mb-1" style={{ color: COLORS.green }}>
                   Quality Assurance
                 </h3>
-                <p className="text-[15px] font-bold mb-3" style={{ color: COLORS.green }}>
+                <p className="text-[17px] font-bold mb-3" style={{ color: COLORS.green }}>
                   Quality at Every Stage
                 </p>
-                <p className="text-[13.5px] leading-relaxed mb-3" style={{ color: COLORS.green }}>
+                <p className="text-[16px] leading-relaxed mb-3" style={{ color: COLORS.green }}>
                   Quality is fundamental to veterinary healthcare. Our quality-focused approach emphasizes consistency, product integrity, controlled processes, and responsible handling.
                 </p>
-                <p className="text-[13.5px] leading-relaxed" style={{ color: COLORS.green }}>
+                <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
                   We aim to maintain high standards across product development, manufacturing partnerships, storage, distribution, and delivery.
                 </p>
               </div>
 
               {/* 6 Quality Principles */}
               <div>
-                <p className="text-[12.5px] font-black uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
+                <p className="text-[14px] font-black uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
                   Our Quality Principles:
                 </p>
                 <div className="grid sm:grid-cols-2 gap-2.5">
@@ -1725,8 +1725,8 @@ function CommitmentRndSection() {
                       className="p-3 rounded-lg bg-white border flex items-center gap-2.5 shadow-sm"
                       style={{ borderColor: COLORS.border }}
                     >
-                      <CheckCircle2 size={16} style={{ color: COLORS.green }} className="flex-shrink-0" />
-                      <span className="text-[12.5px] font-bold" style={{ color: COLORS.green }}>
+                      <CheckCircle2 size={18} style={{ color: COLORS.green }} className="flex-shrink-0" />
+                      <span className="text-[14.5px] font-bold" style={{ color: COLORS.green }}>
                         {principle}
                       </span>
                     </div>
@@ -1758,18 +1758,18 @@ function CommitmentRndSection() {
         >
           <div className="max-w-3xl">
             <span
-              className="text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-2"
+              className="text-[12.5px] font-black uppercase tracking-wider px-3 py-1 rounded-full inline-block mb-2"
               style={{ backgroundColor: COLORS.white, color: COLORS.green }}
             >
               TECHNICAL MASTERY
             </span>
-            <h3 className="text-xl font-black mb-3" style={{ color: COLORS.green }}>
+            <h3 className="text-2xl font-black mb-3" style={{ color: COLORS.green }}>
               Scientific &amp; Technical Excellence
             </h3>
-            <p className="text-[13.5px] leading-relaxed mb-3" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed mb-3" style={{ color: COLORS.green }}>
               Veterinary vaccine development and biological products require controlled quality systems and evaluation of safety, potency, and efficacy.
             </p>
-            <p className="text-[13.5px] leading-relaxed" style={{ color: COLORS.green }}>
+            <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
               Our commitment is to combine scientific thinking with practical veterinary requirements to provide dependable solutions for animal-health professionals.
             </p>
           </div>
@@ -1781,20 +1781,20 @@ function CommitmentRndSection() {
           style={{ backgroundColor: COLORS.primary }}
         >
           <div>
-            <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#EAF3F8] block mb-1">
+            <span className="text-[12.5px] font-extrabold uppercase tracking-widest text-[#EAF3F8] block mb-1">
               PROVEN STANDARDS
             </span>
-            <h3 className="text-xl sm:text-2xl font-black text-white mb-2">
+            <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
               Quality You Can Trust
             </h3>
-            <p className="text-[13.5px] text-white/90 max-w-xl">
+            <p className="text-[16px] text-white/90 max-w-xl">
               Explore our approach to research, quality, and veterinary healthcare innovation.
             </p>
           </div>
           <a
             href="#solutions"
             onClick={(e) => scrollToSection(e, "#solutions")}
-            className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
+            className="px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
             onMouseEnter={e => {
               e.currentTarget.style.backgroundColor = COLORS.green;
               e.currentTarget.style.color = "#FFFFFF";
@@ -1809,7 +1809,7 @@ function CommitmentRndSection() {
             }}
           >
             <span>Explore Our Products</span>
-            <ArrowRight size={15} />
+            <ArrowRight size={17} />
           </a>
         </div>
       </div>
@@ -1871,20 +1871,20 @@ function TestimonialsFaqSection() {
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
-                    size={15}
+                    size={17}
                     fill="#F0B429"
                     style={{ color: "#F0B429" }}
                   />
                 ))}
               </div>
               <p
-                className="text-[14px] leading-relaxed mb-6 font-medium"
+                className="text-[16.5px] leading-relaxed mb-6 font-medium"
                 style={{ color: COLORS.green }}
               >
                 &ldquo;{t.quote}&rdquo;
               </p>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3.5">
               {t.img && (
                 <div
                   className="relative w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2"
@@ -1900,13 +1900,13 @@ function TestimonialsFaqSection() {
               )}
               <div>
                 <p
-                  className="text-[14px] font-black leading-snug"
+                  className="text-[16px] font-black leading-snug"
                   style={{ color: COLORS.green }}
                 >
                   {t.name}
                 </p>
                 <p
-                  className="text-[12px] font-semibold"
+                  className="text-[14px] font-semibold"
                   style={{ color: COLORS.green }}
                 >
                   {t.role}
@@ -1942,11 +1942,11 @@ function TestimonialsFaqSection() {
                   clearInterval(timerRef.current);
                   prev();
                 }}
-                className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-blue-50 transition-colors"
+                className="w-10 h-10 rounded-full border flex items-center justify-center hover:bg-blue-50 transition-colors"
                 style={{ borderColor: COLORS.border }}
               >
                 <ChevronDown
-                  size={16}
+                  size={18}
                   style={{
                     color: COLORS.green,
                     transform: "rotate(90deg)",
@@ -1958,11 +1958,11 @@ function TestimonialsFaqSection() {
                   clearInterval(timerRef.current);
                   next();
                 }}
-                className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-[#1E855C] transition-all cursor-pointer shadow-sm"
+                className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#1E855C] transition-all cursor-pointer shadow-sm"
                 style={{ backgroundColor: COLORS.primary }}
               >
                 <ChevronDown
-                  size={16}
+                  size={18}
                   style={{ color: "#FFFFFF", transform: "rotate(-90deg)" }}
                 />
               </button>
@@ -1999,7 +1999,7 @@ function TestimonialsFaqSection() {
                     }}
                   >
                     <span
-                      className="text-[13px] font-bold"
+                      className="text-[15.5px] font-bold"
                       style={{ color: isOpen ? COLORS.primary : COLORS.ink }}
                     >
                       Q{idx + 1}. {q}
@@ -2013,19 +2013,19 @@ function TestimonialsFaqSection() {
                         color: COLORS.green,
                       }}
                     >
-                      <Plus size={16} />
+                      <Plus size={18} />
                     </span>
                   </button>
 
                   <div
                     style={{
-                      maxHeight: isOpen ? 200 : 0,
+                      maxHeight: isOpen ? 250 : 0,
                       overflow: "hidden",
                       transition: "max-height 0.35s ease",
                     }}
                   >
                     <p
-                      className="px-4 pb-4 text-[12.5px] leading-relaxed border-t pt-3"
+                      className="px-4 pb-4 text-[15px] leading-relaxed border-t pt-3"
                       style={{
                         color: COLORS.green,
                         borderColor: COLORS.border,
@@ -2060,12 +2060,12 @@ function CtaSection() {
           style={{ backgroundColor: COLORS.primary }}
         >
           <div>
-            <h2 className="text-xl lg:text-2xl font-black text-white mb-2">
+            <h2 className="text-2xl lg:text-3xl font-black text-white mb-2">
               Partner with VET VAC PHARMA
             </h2>
             <p
-              className="text-[13px] max-w-md"
-              style={{ color: "rgba(255,255,255,0.8)" }}
+              className="text-[16px] max-w-md leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.9)" }}
             >
               Let&apos;s work together for healthier animals and a stronger
               agricultural future.
@@ -2074,7 +2074,7 @@ function CtaSection() {
           <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
             <Link
               href="/group-companies/Vetvacpharma/contact"
-              className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-md text-[13px] font-bold flex items-center gap-2 cursor-pointer transition-all duration-300 shadow-md"
+              className="flex-1 lg:flex-none justify-center px-7 py-3.5 rounded-md text-[15.5px] font-bold flex items-center gap-2 cursor-pointer transition-all duration-300 shadow-md"
               style={{ backgroundColor: COLORS.white, color: COLORS.primary }}
               onMouseEnter={e => {
                 e.currentTarget.style.backgroundColor = COLORS.green;
@@ -2089,16 +2089,16 @@ function CtaSection() {
                 if (span) span.style.color = COLORS.primary;
               }}
             >
-              <span>Contact Us Today</span> <ArrowRight size={15} />
+              <span>Contact Us Today</span> <ArrowRight size={17} />
             </Link>
             <a
               href="tel:+923218431665"
-              className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-md text-[13px] font-bold border-2 flex items-center gap-2 transition-all duration-200"
+              className="flex-1 lg:flex-none justify-center px-7 py-3.5 rounded-md text-[15.5px] font-bold border-2 flex items-center gap-2 transition-all duration-200"
               style={{ borderColor: COLORS.white, color: COLORS.white, backgroundColor: "transparent" }}
               onMouseEnter={e => { e.currentTarget.style.backgroundColor = COLORS.white; e.currentTarget.style.color = COLORS.primary; }}
               onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = COLORS.white; }}
             >
-              <Phone size={15} /> 0092-321-8431665
+              <Phone size={17} /> 0092-321-8431665
             </a>
           </div>
         </div>
@@ -2121,17 +2121,17 @@ function MapSection() {
             className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
             style={{ backgroundColor: `${COLORS.primary}15` }}
           >
-            <MapPin size={20} color={COLORS.primary} />
+            <MapPin size={22} color={COLORS.primary} />
           </div>
           <div>
             <p
-              className="text-[11px] font-black uppercase tracking-widest mb-0.5"
+              className="text-[13px] font-black uppercase tracking-widest mb-0.5"
               style={{ color: COLORS.green }}
             >
               Find Us
             </p>
             <p
-              className="text-xs sm:text-sm font-semibold leading-snug"
+              className="text-sm sm:text-base font-semibold leading-snug"
               style={{ color: COLORS.green }}
             >
               1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore

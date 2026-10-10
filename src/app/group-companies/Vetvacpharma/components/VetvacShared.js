@@ -58,7 +58,7 @@ function PrimaryButton({ href, children, className = "", onClick }) {
     <a
       href={href}
       onClick={onClick}
-      className={`vetvac-primary-btn px-6 py-3 rounded-md text-[13px] font-bold flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-white hover:text-white ${className}`}
+      className={`vetvac-primary-btn px-6 py-3 rounded-md text-[15px] font-bold flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer text-white hover:text-white ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -79,7 +79,7 @@ export function HeroPrimaryButton({ href, children, className = "" }) {
   return (
     <a
       href={href}
-      className={`vetvac-primary-btn px-6 py-3 rounded-lg text-[13.5px] font-bold flex items-center gap-2 shadow-md transition-all duration-300 cursor-pointer text-white hover:text-white ${className}`}
+      className={`vetvac-primary-btn px-6 py-3.5 rounded-lg text-[15.5px] font-bold flex items-center gap-2 shadow-md transition-all duration-300 cursor-pointer text-white hover:text-white ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -100,7 +100,7 @@ export function HeroOutlineButton({ href, children, className = "" }) {
   return (
     <a
       href={href}
-      className={`px-6 py-3 rounded-lg text-[13.5px] font-bold border-2 flex items-center gap-2 transition-all duration-300 cursor-pointer ${className}`}
+      className={`px-6 py-3.5 rounded-lg text-[15.5px] font-bold border-2 flex items-center gap-2 transition-all duration-300 cursor-pointer ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -133,8 +133,8 @@ export function VetvacNavbar() {
   }, [pathname]);
 
   return (
-    <div
-      className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b transition-all"
+    <header
+      className="vetvac-navbar sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b transition-all"
       style={{ borderColor: COLORS.border }}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between">
@@ -251,7 +251,7 @@ export function VetvacNavbar() {
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
 
@@ -276,16 +276,16 @@ export function VetvacFooter() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-[15px] sm:text-[16px] font-black uppercase tracking-wider text-white leading-tight">
+              <span className="text-[16px] sm:text-[17px] font-black uppercase tracking-wider text-white leading-tight">
                 VET VEC PHARMA
               </span>
-              <span className="text-[9px] sm:text-[9.5px] font-bold tracking-[0.18em] uppercase text-emerald-300 leading-tight mt-0.5">
+              <span className="text-[10px] sm:text-[10.5px] font-bold tracking-[0.18em] uppercase text-emerald-300 leading-tight mt-0.5">
                 Veterinary Healthcare
               </span>
             </div>
           </Link>
           <p
-            className="text-[12px] leading-relaxed mb-5"
+            className="text-[14px] leading-relaxed mb-5"
             style={{ color: "#FFFFFF" }}
           >
             Delivering trusted veterinary healthcare solutions to improve animal
@@ -297,10 +297,10 @@ export function VetvacFooter() {
                 key={idx}
                 href="#"
                 aria-label="Social media link"
-                className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-white/20 transition-colors text-white"
+                className="w-9 h-9 rounded-full border flex items-center justify-center hover:bg-white/20 transition-colors text-white"
                 style={{ borderColor: "rgba(255,255,255,0.4)", color: "#FFFFFF" }}
               >
-                <Icon size={13} style={{ color: "#FFFFFF" }} />
+                <Icon size={15} style={{ color: "#FFFFFF" }} />
               </a>
             ))}
           </div>
@@ -309,15 +309,15 @@ export function VetvacFooter() {
         {/* Link Columns */}
         {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
           <div key={heading} className="lg:col-span-2">
-            <h5 className="text-[12px] font-black uppercase tracking-[0.14em] mb-4 text-white" style={{ color: "#FFFFFF" }}>
+            <h5 className="text-[14px] font-black uppercase tracking-[0.14em] mb-4 text-white" style={{ color: "#FFFFFF" }}>
               {heading}
             </h5>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {links.map((link) => (
                 <li key={link}>
                   <a
                     href="#"
-                    className="text-[12px] hover:text-white transition-colors text-white"
+                    className="text-[13.5px] hover:text-white transition-colors text-white font-medium"
                     style={{ color: "rgba(255,255,255,0.9)" }}
                   >
                     {link}
@@ -330,43 +330,43 @@ export function VetvacFooter() {
 
         {/* Contact Column */}
         <div className="lg:col-span-2">
-          <h5 className="text-[12px] font-black uppercase tracking-[0.14em] mb-4 text-white" style={{ color: "#FFFFFF" }}>
+          <h5 className="text-[14px] font-black uppercase tracking-[0.14em] mb-4 text-white" style={{ color: "#FFFFFF" }}>
             Contact Us
           </h5>
-          <div className="space-y-3">
+          <div className="space-y-3.5">
             <p
-              className="text-[12px] flex items-start gap-2.5 text-white"
+              className="text-[13.5px] flex items-start gap-2.5 text-white leading-relaxed"
               style={{ color: "#FFFFFF" }}
             >
-              <MapPin size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
+              <MapPin size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
               1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
             </p>
             <p
-              className="text-[12px] flex items-start gap-2.5 text-white"
+              className="text-[13.5px] flex items-start gap-2.5 text-white font-medium"
               style={{ color: "#FFFFFF" }}
             >
-              <Phone size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
+              <Phone size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
               0092-42-38924737
             </p>
             <p
-              className="text-[12px] flex items-start gap-2.5 text-white"
+              className="text-[13.5px] flex items-start gap-2.5 text-white font-medium"
               style={{ color: "#FFFFFF" }}
             >
-              <Phone size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
+              <Phone size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
               WhatsApp: 0092-304-7527498 | 0092-321-8431665
             </p>
             <p
-              className="text-[12px] flex items-start gap-2.5 text-white"
+              className="text-[13.5px] flex items-start gap-2.5 text-white font-medium"
               style={{ color: "#FFFFFF" }}
             >
-              <Mail size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
+              <Mail size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
               info@roysons.org
             </p>
             <p
-              className="text-[12px] flex items-start gap-2.5 text-white"
+              className="text-[13.5px] flex items-start gap-2.5 text-white font-medium"
               style={{ color: "#FFFFFF" }}
             >
-              <Mail size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
+              <Mail size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
               support@roysons.org
             </p>
           </div>
@@ -379,8 +379,8 @@ export function VetvacFooter() {
         style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }}
       >
         <p
-          className="text-[11.5px] text-white"
-          style={{ color: "rgba(255,255,255,0.85)" }}
+          className="text-[13px] text-white"
+          style={{ color: "rgba(255,255,255,0.9)" }}
         >
           &copy; 2025 VET VAC PHARMA. All Rights Reserved.
         </p>
