@@ -88,6 +88,7 @@ export default function ContactPage() {
     message: "",
   });
   const [status, setStatus] = useState(null);
+  const [ctaBtnHovered, setCtaBtnHovered] = useState(false);
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -376,7 +377,7 @@ export default function ContactPage() {
                     </p>
                     <button
                       onClick={() => setStatus(null)}
-                      className="mt-2 px-6 py-2.5 rounded-lg text-[13px] font-bold text-white transition-all duration-300 hover:opacity-90 cursor-pointer"
+                      className="vetvac-primary-btn mt-2 px-6 py-2.5 rounded-lg text-[13px] font-bold text-white transition-all duration-300 hover:opacity-90 cursor-pointer shadow-sm"
                       style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
                     >
                       Submit Another Inquiry
@@ -488,7 +489,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={status === "sending"}
-                      className="w-full py-3.5 rounded-lg text-[14px] font-bold text-white flex items-center justify-center gap-2 hover:bg-[#1E855C] transition-all duration-300 disabled:opacity-70 cursor-pointer shadow-md"
+                      className="vetvac-primary-btn w-full py-3.5 rounded-lg text-[14px] font-bold text-white flex items-center justify-center gap-2 hover:bg-[#1E855C] transition-all duration-300 disabled:opacity-70 cursor-pointer shadow-md"
                       style={{ backgroundColor: COLORS.primary, color: COLORS.white }}
                     >
                       {status === "sending" ? (
@@ -509,30 +510,57 @@ export default function ContactPage() {
 
           {/* Final CTA Banner */}
           <div
-            className="rounded-2xl p-8 sm:p-12 text-white relative overflow-hidden shadow-xl"
-            style={{ backgroundColor: COLORS.primary }}
+            className="rounded-2xl p-8 sm:p-12 relative overflow-hidden shadow-2xl border border-[#1E855C]/30"
+            style={{
+              background: `linear-gradient(135deg, ${COLORS.primary} 0%, #063155 100%)`,
+            }}
           >
+            {/* Subtle decorative glow overlays */}
+            <div className="absolute -right-24 -bottom-24 w-80 h-80 rounded-full bg-[#1E855C]/25 blur-3xl pointer-events-none" />
+            <div className="absolute -left-20 -top-20 w-64 h-64 rounded-full bg-white/5 blur-2xl pointer-events-none" />
+
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="max-w-2xl">
                 <span
-                  className="text-[11.5px] font-black uppercase tracking-widest px-3 py-1 rounded-full inline-block mb-3"
-                  style={{ backgroundColor: "rgba(255,255,255,0.15)", color: "#CBE8D9" }}
+                  className="text-[11.5px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-3 border border-white/20 shadow-xs"
+                  style={{ backgroundColor: "rgba(255,255,255,0.12)", color: "#CBE8D9" }}
                 >
-                  PROACTIVE PREVENTION
+                  <Sparkles size={12} className="text-[#CBE8D9]" />
+                  <span>PROACTIVE PREVENTION</span>
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-black mb-2 text-white">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-2.5 text-white leading-tight">
                   Better Animal Health Starts With Prevention
                 </h2>
-                <p className="text-[14.5px] text-white/90 leading-relaxed">
+                <p className="text-[14.5px] sm:text-[15.5px] text-white/90 leading-relaxed">
                   Discover veterinary healthcare solutions designed to support healthier animals and more productive farming.
                 </p>
               </div>
               <Link
-                href="/group-companies/Vetvacpharma#solutions"
-                className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
+                href="/group-companies/Vetvacpharma/solutions"
+                className="vetvac-white-btn group px-8 py-4 rounded-xl text-[14.5px] sm:text-[15px] font-black tracking-wide flex items-center gap-2.5 flex-shrink-0 shadow-xl transition-all duration-300 hover:scale-[1.04] active:scale-[0.98] cursor-pointer"
+                style={{
+                  backgroundColor: ctaBtnHovered ? COLORS.green : "#FFFFFF",
+                  color: ctaBtnHovered ? "#FFFFFF" : COLORS.primary,
+                  boxShadow: ctaBtnHovered
+                    ? "0 10px 25px rgba(30, 133, 92, 0.45)"
+                    : "0 6px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                onMouseEnter={() => setCtaBtnHovered(true)}
+                onMouseLeave={() => setCtaBtnHovered(false)}
               >
-                <span>Explore Products</span>
-                <ArrowRight size={15} />
+                <span
+                  style={{
+                    color: ctaBtnHovered ? "#FFFFFF" : COLORS.primary,
+                    fontWeight: 800,
+                  }}
+                >
+                  Explore Products &amp; Solutions
+                </span>
+                <ArrowRight
+                  size={17}
+                  className="group-hover:translate-x-1.5 transition-transform duration-300"
+                  style={{ color: ctaBtnHovered ? "#FFFFFF" : COLORS.primary }}
+                />
               </Link>
             </div>
           </div>

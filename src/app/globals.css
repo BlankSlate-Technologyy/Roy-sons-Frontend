@@ -2758,6 +2758,43 @@ body.vetvac-pharma-theme .text-white:hover * {
   -webkit-text-fill-color: #FFFFFF !important;
 }
 
+/* ─────────────────────────────────────────────
+   VET VAC PHARMA HIGH-CONTRAST WHITE CTA BUTTONS
+───────────────────────────────────────────── */
+body.vetvac-pharma-theme .vetvac-white-btn,
+body.vetvac-pharma-theme a.vetvac-white-btn,
+.vetvac-pharma-root .vetvac-white-btn,
+.vetvac-pharma-root a.vetvac-white-btn {
+  background-color: #FFFFFF !important;
+  color: #094C80 !important;
+  -webkit-text-fill-color: #094C80 !important;
+}
+
+body.vetvac-pharma-theme .vetvac-white-btn *,
+body.vetvac-pharma-theme a.vetvac-white-btn *,
+.vetvac-pharma-root .vetvac-white-btn *,
+.vetvac-pharma-root a.vetvac-white-btn * {
+  color: #094C80 !important;
+  -webkit-text-fill-color: #094C80 !important;
+}
+
+body.vetvac-pharma-theme .vetvac-white-btn:hover,
+body.vetvac-pharma-theme a.vetvac-white-btn:hover,
+.vetvac-pharma-root .vetvac-white-btn:hover,
+.vetvac-pharma-root a.vetvac-white-btn:hover {
+  background-color: #1E855C !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+body.vetvac-pharma-theme .vetvac-white-btn:hover *,
+body.vetvac-pharma-theme a.vetvac-white-btn:hover *,
+.vetvac-pharma-root .vetvac-white-btn:hover *,
+.vetvac-pharma-root a.vetvac-white-btn:hover * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
 body.vetvac-pharma-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }

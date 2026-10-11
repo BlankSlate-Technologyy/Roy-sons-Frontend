@@ -10,6 +10,8 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { VetvacNavbar, VetvacFooter } from "./components/VetvacShared";
 import {
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ArrowRight,
   Phone,
   Mail,
@@ -400,26 +402,32 @@ function useCountUp(target, duration = 1800, shouldStart = false) {
 function AnimatedStat({ icon: Icon, value, label }) {
   return (
     <div
-      className="p-3.5 rounded-xl border text-center transition-all duration-300 hover:shadow-sm hover:-translate-y-0.5"
-      style={{ borderColor: COLORS.border, backgroundColor: COLORS.white }}
+      className="group relative p-3 sm:p-3.5 rounded-xl border text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-default overflow-hidden bg-white"
+      style={{ borderColor: "#D4E6DC" }}
     >
-      <Icon
-        size={28}
-        className="mx-auto mb-2"
-        style={{ color: COLORS.green }}
-      />
-      <p
-        className="text-[22px] font-black leading-tight mb-1"
-        style={{ color: COLORS.green }}
-      >
-        <Counter value={value} duration={2} />
-      </p>
-      <p
-        className="text-[13px] font-bold leading-tight"
-        style={{ color: COLORS.green }}
-      >
-        {label}
-      </p>
+      {/* Rich Green Gradient Background that smoothly blooms on hover */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1E855C] to-[#146645] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+      {/* Content wrapper */}
+      <div className="relative z-10 flex flex-col items-center">
+        {/* Elevated icon badge with hover inversion & micro-rotation */}
+        <div className="w-11 h-11 rounded-xl bg-[#EAF6F0] text-[#1E855C] group-hover:bg-white group-hover:text-[#1E855C] border border-[#CBE8D9]/80 group-hover:border-white shadow-2xs group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 flex items-center justify-center mb-2">
+          <Icon size={24} className="transition-transform duration-300" />
+        </div>
+
+        {/* Dynamic Counter with dark green default and white on hover */}
+        <p className="text-[21px] sm:text-[23px] font-black leading-tight mb-1 text-[#0F442E] group-hover:text-white transition-colors duration-300">
+          <Counter value={value} duration={2} />
+        </p>
+
+        {/* Label */}
+        <p className="text-[12px] sm:text-[12.5px] font-extrabold leading-tight text-[#2C5E48] group-hover:text-white/95 transition-colors duration-300">
+          {label}
+        </p>
+      </div>
+
+      {/* Subtle bottom shine accent on hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/40 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
     </div>
   );
 }
@@ -510,69 +518,221 @@ const SECTION_IDS = ["home", "about", "solutions", "rnd", "industries"];
 
 
 
+const HERO_SLIDES = [
+  {
+    id: 1,
+    image: "/vetvac_slider_1.jpg",
+    badge: "Advancing Veterinary Healthcare",
+    badgeIcon: ShieldCheck,
+    title1: "Protecting Animal Health.",
+    title2: "Empowering Modern Farming.",
+    desc: "VET VAC PHARMA is a veterinary healthcare company focused on supporting healthier animals through innovative vaccines, biological products, and precision animal-health solutions.",
+    tag: "100+ Formulations • GMP Certified",
+    primaryLabel: "Explore Products",
+    primaryHref: "#solutions",
+    isPrimaryAnchor: true,
+    secondaryLabel: "Contact Us",
+    secondaryHref: "/group-companies/Vetvacpharma/contact",
+  },
+  {
+    id: 2,
+    image: "/vetvac_slider_2.jpg",
+    badge: "Precision Livestock & Dairy Health",
+    badgeIcon: HeartPulse,
+    title1: "Healthier Cattle Herds.",
+    title2: "Sustainable Farm Yields.",
+    desc: "Delivering scientifically validated therapeutics, immunity boosters, and clinical-grade veterinary pharmaceuticals for dairy cattle, buffalo, sheep, and goats.",
+    tag: "Clinical Efficacy • Field Tested",
+    primaryLabel: "Our Solutions",
+    primaryHref: "/group-companies/Vetvacpharma/solutions",
+    isPrimaryAnchor: false,
+    secondaryLabel: "Technical Library",
+    secondaryHref: "/group-companies/Vetvacpharma/rnd",
+  },
+  {
+    id: 3,
+    image: "/vetvac_slider_3.jpg",
+    badge: "Next-Gen Veterinary Biotechnology",
+    badgeIcon: Sparkles,
+    title1: "Pioneering Avian Biotech.",
+    title2: "Total Biosecurity Assurance.",
+    desc: "State-of-the-art laboratory research producing next-generation poultry vaccines, biological disease barriers, and sustainable farm biosecurity protocols.",
+    tag: "Advanced R&D • ISO Compliant",
+    primaryLabel: "Explore R&D Lab",
+    primaryHref: "/group-companies/Vetvacpharma/rnd",
+    isPrimaryAnchor: false,
+    secondaryLabel: "Pharma Inquiries",
+    secondaryHref: "/group-companies/Vetvacpharma/contact",
+  },
+];
+
 function HeroSection() {
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-slide every 6 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const slide = HERO_SLIDES[current];
+  const BadgeIcon = slide.badgeIcon;
+
+  const handlePrev = () => {
+    setCurrent((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const handleNext = () => {
+    setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
   return (
     <section
       id="home"
-      className="section-animate relative py-32 lg:py-48 px-6 overflow-hidden flex items-center min-h-[600px]"
+      className="section-animate relative pt-6 sm:pt-8 lg:pt-10 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[540px] sm:min-h-[580px] lg:min-h-[620px] flex items-center"
       style={{ backgroundColor: COLORS.white }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/vetvacphrama-header.png"
-          alt="Veterinary laboratory and farm background"
-          fill
-          className="object-cover object-center pointer-events-none"
-          priority
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.85) 45%, rgba(255,255,255,0.2) 100%)",
-          }}
-        />
-      </div>
+      {/* Background AI Image Carousel with Smooth Crossfade */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={slide.id}
+          initial={{ opacity: 0, scale: 1.025 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title1}
+            fill
+            className="object-cover object-center pointer-events-none"
+            priority
+          />
+          {/* Directional readable overlay: ensures crisp text while showcasing the animals & lab */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.91) 45%, rgba(255,255,255,0.42) 75%, rgba(255,255,255,0.18) 100%)",
+            }}
+          />
+        </motion.div>
+      </AnimatePresence>
 
       <div className="relative z-10 mx-auto max-w-screen-xl w-full">
         <div className="max-w-2xl">
-          <div
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[13.5px] font-extrabold uppercase tracking-wider mb-4 border"
-            style={{ backgroundColor: COLORS.white, color: COLORS.green, borderColor: COLORS.border }}
-          >
-            <ShieldCheck size={16} />
-            <span>Advancing Veterinary Healthcare</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-[52px] font-black leading-[1.1] mb-5">
-            <span style={{ color: COLORS.green }}>
-              Protecting Animal Health.
-            </span>
-            <br />
-            <span style={{ color: COLORS.green }}>
-              Empowering Modern Farming.
-            </span>
-          </h1>
-          <p
-            className="text-[17px] font-medium leading-relaxed mb-8 max-w-xl"
-            style={{ color: COLORS.green }}
-          >
-            VET VAC PHARMA is a veterinary healthcare company focused on
-            supporting healthier animals through innovative vaccines, biological
-            products, and animal-health solutions.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <PrimaryButton
-              href="#solutions"
-              onClick={(e) => scrollToSection(e, "#solutions")}
+          {/* Animated Text Content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slide.id}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
             >
-              Explore Products <ArrowRight size={17} />
-            </PrimaryButton>
-            <OutlineButton
-              href="/group-companies/Vetvacpharma/contact"
-              className="bg-white/80 hover:bg-white transition-colors"
-            >
-              Contact Us <ArrowRight size={17} />
-            </OutlineButton>
+              {/* Badge */}
+              <div className="flex items-center gap-2 mb-3 sm:mb-4">
+                <div
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[12.5px] sm:text-[13px] font-extrabold uppercase tracking-wider border shadow-2xs"
+                  style={{
+                    backgroundColor: COLORS.white,
+                    color: COLORS.green,
+                    borderColor: COLORS.borderGreen,
+                  }}
+                >
+                  <BadgeIcon size={15} />
+                  <span>{slide.badge}</span>
+                </div>
+                <span
+                  className="hidden sm:inline-block text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#094C80]/10"
+                  style={{ color: COLORS.primary }}
+                >
+                  {slide.tag}
+                </span>
+              </div>
+
+              {/* Headline */}
+              <h1 className="text-3xl sm:text-4xl lg:text-[50px] font-black leading-[1.12] mb-4">
+                <span style={{ color: COLORS.green }}>{slide.title1}</span>
+                <br />
+                <span style={{ color: COLORS.green }}>{slide.title2}</span>
+              </h1>
+
+              {/* Description */}
+              <p
+                className="text-[16px] sm:text-[17px] font-medium leading-relaxed mb-6 sm:mb-8 max-w-xl"
+                style={{ color: COLORS.green }}
+              >
+                {slide.desc}
+              </p>
+
+              {/* CTA Action Buttons */}
+              <div className="flex flex-wrap items-center gap-3.5 mb-8 sm:mb-10">
+                <PrimaryButton
+                  href={slide.primaryHref}
+                  onClick={
+                    slide.isPrimaryAnchor
+                      ? (e) => scrollToSection(e, slide.primaryHref)
+                      : undefined
+                  }
+                >
+                  {slide.primaryLabel} <ArrowRight size={17} />
+                </PrimaryButton>
+                <OutlineButton
+                  href={slide.secondaryHref}
+                  className="bg-white/90 hover:bg-white transition-colors"
+                >
+                  {slide.secondaryLabel} <ArrowRight size={17} />
+                </OutlineButton>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Slider Interactive Controls */}
+          <div className="flex items-center gap-4 pt-1">
+            {/* Slide Indicator Pills */}
+            <div className="flex items-center gap-2 bg-white/85 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-slate-200/90 shadow-2xs">
+              {HERO_SLIDES.map((s, idx) => (
+                <button
+                  key={s.id}
+                  onClick={() => setCurrent(idx)}
+                  className="transition-all duration-300 rounded-full h-2.5 cursor-pointer"
+                  style={{
+                    width: current === idx ? "28px" : "10px",
+                    backgroundColor: current === idx ? COLORS.green : "#CBD5E1",
+                  }}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
+              <span className="text-[11px] font-bold text-slate-500 ml-1 select-none">
+                0{current + 1} / 0{HERO_SLIDES.length}
+              </span>
+            </div>
+
+            {/* Prev / Next Buttons */}
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={handlePrev}
+                aria-label="Previous Slide"
+                className="w-9 h-9 rounded-full bg-white/90 hover:bg-white border border-slate-200 flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-2xs cursor-pointer text-[#0B2745] hover:text-[#1E855C]"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={handleNext}
+                aria-label="Next Slide"
+                className="w-9 h-9 rounded-full bg-white/90 hover:bg-white border border-slate-200 flex items-center justify-center transition-all duration-200 hover:scale-105 shadow-2xs cursor-pointer text-[#0B2745] hover:text-[#1E855C]"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -582,31 +742,69 @@ function HeroSection() {
 
 function TrustedBySection() {
   return (
-    <section className="section-animate py-10 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="section-animate py-8 sm:py-10 px-4 sm:px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <div
-          className="rounded-xl border p-8"
-          style={{ borderColor: COLORS.border }}
+          className="rounded-2xl border p-6 sm:p-8 lg:p-10 transition-all"
+          style={{
+            backgroundColor: "#FFFFFF",
+            borderColor: "#D4E6DC",
+            boxShadow: "0 4px 20px -2px rgba(14, 61, 41, 0.06)",
+          }}
         >
-          <p
-            className="text-center text-[13px] font-black tracking-[0.2em] uppercase mb-7"
-            style={{ color: COLORS.green }}
-          >
-            Trusted By
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {/* Header with decorative accent lines */}
+          <div className="flex items-center justify-center gap-4 mb-7 sm:mb-8">
+            <div className="hidden sm:block h-px flex-1 max-w-[120px] bg-gradient-to-r from-transparent to-[#1E855C]/35" />
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[12px] font-black tracking-[0.22em] uppercase border shadow-2xs"
+              style={{
+                backgroundColor: "#EAF6F0",
+                color: "#0F442E",
+                borderColor: "#CBE8D9",
+              }}
+            >
+              <Sparkles size={13} style={{ color: "#1E855C" }} />
+              <span>Trusted By Industry Leaders</span>
+            </div>
+            <div className="hidden sm:block h-px flex-1 max-w-[120px] bg-gradient-to-l from-transparent to-[#1E855C]/35" />
+          </div>
+
+          {/* Partner Cards Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
             {TRUSTED_BY.map(({ icon: Icon, label }, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center text-center gap-2.5"
+                className="group relative flex flex-col items-center text-center p-4 sm:p-5 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-md cursor-default overflow-hidden"
+                style={{
+                  backgroundColor: "#F9FCFA",
+                  borderColor: "#E2EFE7",
+                }}
               >
-                <Icon size={32} style={{ color: COLORS.green }} />
+                {/* Elevated Icon Box with hover lift */}
+                <div
+                  className="w-13 h-13 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 border shadow-2xs group-hover:scale-105 group-hover:bg-[#1E855C] group-hover:text-white"
+                  style={{
+                    backgroundColor: "#FFFFFF",
+                    borderColor: "#CBE8D9",
+                    color: "#1E855C",
+                  }}
+                >
+                  <Icon size={26} className="transition-transform duration-300 group-hover:rotate-3" />
+                </div>
+
+                {/* Dark Green Typography for maximum contrast and elegance */}
                 <span
-                  className="text-[15.5px] font-bold leading-snug whitespace-pre-line"
-                  style={{ color: COLORS.green }}
+                  className="text-[13.5px] sm:text-[14.5px] font-extrabold leading-snug whitespace-pre-line transition-colors duration-200"
+                  style={{ color: "#0F442E" }}
                 >
                   {label}
                 </span>
+
+                {/* Bottom accent glow indicator on hover */}
+                <div
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-0 group-hover:w-12 rounded-full transition-all duration-300"
+                  style={{ backgroundColor: "#1E855C" }}
+                />
               </div>
             ))}
           </div>
@@ -620,7 +818,7 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="section-animate py-16 px-6"
+      className="section-animate pt-10 pb-5 sm:pt-14 sm:pb-6 px-4 sm:px-6"
       style={{ backgroundColor: COLORS.white }}
     >
       <div className="mx-auto max-w-screen-xl space-y-10">
@@ -681,9 +879,10 @@ function AboutSection() {
 
             <div className="lg:col-span-4">
               <p
-                className="text-[15px] font-black uppercase tracking-wide mb-3"
-                style={{ color: COLORS.green }}
+                className="text-[13.5px] font-black uppercase tracking-[0.18em] mb-3.5 flex items-center gap-2"
+                style={{ color: "#0F442E" }}
               >
+                <span className="w-2 h-2 rounded-full bg-[#1E855C]" />
                 COMPANY AT A GLANCE
               </p>
               <div className="grid grid-cols-3 gap-2.5">
@@ -793,34 +992,72 @@ function AboutSection() {
 
         {/* Supporting Modern Agriculture Banner */}
         <div
-          className="rounded-xl border p-8 flex flex-col md:flex-row items-center justify-between gap-6"
-          style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
+          className="relative rounded-2xl overflow-hidden border shadow-lg p-7 sm:p-10 lg:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 min-h-[300px]"
+          style={{ borderColor: "#CBE8D9" }}
         >
-          <div className="max-w-2xl">
-            <span
-              className="text-[12.5px] font-black uppercase tracking-widest block mb-1"
-              style={{ color: COLORS.green }}
-            >
-              FARM PERFORMANCE &amp; ANIMAL WELLBEING
-            </span>
-            <h3 className="text-2xl font-black mb-2" style={{ color: COLORS.green }}>
+          {/* Background AI Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/vetvac_agriculture_banner.jpg"
+              alt="Supporting Modern Agriculture"
+              fill
+              className="object-cover object-center pointer-events-none"
+              priority
+            />
+            {/* Multi-layered gradient overlay ensuring high contrast readability */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(7, 27, 48, 0.94) 0%, rgba(9, 76, 128, 0.88) 45%, rgba(14, 61, 41, 0.6) 80%, rgba(14, 61, 41, 0.25) 100%)",
+              }}
+            />
+          </div>
+
+          {/* Left Text Content */}
+          <div className="relative z-10 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-[11.5px] font-black uppercase tracking-[0.2em] bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 mb-3.5 backdrop-blur-xs">
+              <Sprout size={14} className="text-emerald-300" />
+              <span>Farm Performance &amp; Animal Wellbeing</span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-black mb-3 leading-tight text-white drop-shadow-xs">
               Supporting Modern Agriculture
             </h3>
-            <p className="text-[16px] leading-relaxed" style={{ color: COLORS.green }}>
+
+            <p className="text-[15px] sm:text-[16px] leading-relaxed text-slate-100/95 max-w-xl mb-5 drop-shadow-xs">
               Healthy animals are fundamental to productive livestock and poultry farming. VET VAC PHARMA works toward solutions that help farmers and animal-health professionals address changing disease challenges while improving animal wellbeing and farm performance.
             </p>
+
+            {/* Feature Pills */}
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-bold text-white/90">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10 backdrop-blur-xs border border-white/15">
+                <ShieldCheck size={14} className="text-emerald-300" />
+                Preventive Health
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10 backdrop-blur-xs border border-white/15">
+                <HeartPulse size={14} className="text-emerald-300" />
+                Enhanced Herd Immunity
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/10 backdrop-blur-xs border border-white/15">
+                <Wheat size={14} className="text-emerald-300" />
+                Sustainable Productivity
+              </span>
+            </div>
           </div>
-          <a
-            href="#solutions"
-            onClick={(e) => scrollToSection(e, "#solutions")}
-            className="px-6 py-3.5 rounded-md text-[15.5px] font-bold text-white flex items-center gap-2 flex-shrink-0 transition-all duration-300 hover:bg-[#1E855C] hover:text-white cursor-pointer shadow-md"
-            style={{ backgroundColor: COLORS.primary, color: "#FFFFFF" }}
-            onMouseEnter={e => { e.currentTarget.style.backgroundColor = COLORS.green; e.currentTarget.style.color = "#FFFFFF"; }}
-            onMouseLeave={e => { e.currentTarget.style.backgroundColor = COLORS.primary; e.currentTarget.style.color = "#FFFFFF"; }}
-          >
-            <span style={{ color: "#FFFFFF" }}>Explore Solutions</span>
-            <ArrowRight size={17} />
-          </a>
+
+          {/* Right Action Button */}
+          <div className="relative z-10 flex-shrink-0">
+            <a
+              href="#solutions"
+              onClick={(e) => scrollToSection(e, "#solutions")}
+              className="px-7 py-4 rounded-xl text-[15px] font-extrabold text-white flex items-center gap-2.5 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer group"
+              style={{ backgroundColor: COLORS.green }}
+            >
+              <span>Explore Solutions</span>
+              <ArrowRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -831,7 +1068,7 @@ function SolutionsSection() {
   return (
     <section
       id="solutions"
-      className="section-animate py-16 px-6"
+      className="section-animate pt-5 pb-12 sm:pt-6 sm:pb-14 px-4 sm:px-6"
       style={{ backgroundColor: COLORS.white }}
     >
       <div className="mx-auto max-w-screen-xl space-y-10">
@@ -1175,7 +1412,7 @@ function SolutionsSection() {
           </div>
           <Link
             href="/group-companies/Vetvacpharma/contact"
-            className="px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
+            className="vetvac-white-btn px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
             onMouseEnter={e => {
               e.currentTarget.style.backgroundColor = COLORS.green;
               e.currentTarget.style.color = "#FFFFFF";
@@ -1524,7 +1761,7 @@ function WhyIndustriesProcessSection() {
             </div>
             <Link
               href="/group-companies/Vetvacpharma/contact"
-              className="px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
+              className="vetvac-white-btn px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
               onMouseEnter={e => {
                 e.currentTarget.style.backgroundColor = COLORS.green;
                 e.currentTarget.style.color = "#FFFFFF";
@@ -1599,48 +1836,96 @@ function CommitmentRndSection() {
               </h3>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-3.5">
+            <div className="grid sm:grid-cols-2 gap-4">
               {[
                 {
                   title: "Disease Prevention",
                   desc: "Studying changing disease challenges and prevention requirements across poultry and livestock.",
                   icon: ShieldCheck,
+                  badge: "Proactive Defense",
                 },
                 {
                   title: "Product Development",
                   desc: "Exploring innovative approaches to veterinary vaccines and biological products.",
                   icon: FlaskConical,
+                  badge: "Formulation R&D",
                 },
                 {
                   title: "Performance Evaluation",
                   desc: "Supporting systematic evaluation of product quality, consistency, and performance.",
                   icon: ClipboardCheck,
+                  badge: "Clinical Validation",
                 },
                 {
                   title: "Continuous Improvement",
                   desc: "Using research and industry feedback to improve existing solutions and develop future products.",
                   icon: Award,
+                  badge: "Ongoing Quality",
                 },
-              ].map(({ title, desc, icon: Icon }) => (
+              ].map(({ title, desc, icon: Icon, badge }) => (
                 <div
                   key={title}
-                  className="p-4 rounded-xl border bg-white shadow-sm hover:shadow transition-all"
+                  className="group relative p-5 rounded-2xl border bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-[#1E855C]/15 hover:border-[#1E855C] cursor-pointer overflow-hidden flex flex-col justify-between"
                   style={{ borderColor: COLORS.border }}
                 >
-                  <div className="flex items-center gap-2 mb-2">
-                    <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: COLORS.white }}
-                    >
-                      <Icon size={18} style={{ color: COLORS.green }} />
+                  {/* Animated top gradient highlight beam on hover */}
+                  <div
+                    className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1E855C] via-[#094C80] to-[#1E855C] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                  />
+
+                  {/* Soft emerald ambient light in corner */}
+                  <div className="absolute -right-10 -top-10 w-24 h-24 rounded-full bg-[#1E855C]/0 group-hover:bg-[#1E855C]/10 blur-xl transition-all duration-500 pointer-events-none" />
+
+                  <div>
+                    <div className="flex items-center justify-between mb-3.5">
+                      <div
+                        className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 shadow-xs group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#1E855C] group-hover:text-white"
+                        style={{
+                          backgroundColor: COLORS.lightGreen,
+                          color: COLORS.green,
+                        }}
+                      >
+                        <Icon size={22} className="transition-transform duration-300 group-hover:scale-105" />
+                      </div>
+                      <span
+                        className="text-[10.5px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full border transition-all duration-300 group-hover:bg-[#1E855C] group-hover:text-white group-hover:border-[#1E855C]"
+                        style={{
+                          backgroundColor: COLORS.white,
+                          color: "#0F442E",
+                          borderColor: COLORS.border,
+                        }}
+                      >
+                        {badge}
+                      </span>
                     </div>
-                    <h4 className="text-[16px] font-black" style={{ color: COLORS.green }}>
+
+                    <h4
+                      className="text-[16.5px] font-black mb-2 transition-colors duration-300 group-hover:text-[#1E855C]"
+                      style={{ color: "#0F442E" }}
+                    >
                       {title}
                     </h4>
+
+                    <p
+                      className="text-[14px] leading-relaxed transition-colors duration-300"
+                      style={{ color: "#2D5A46" }}
+                    >
+                      {desc}
+                    </p>
                   </div>
-                  <p className="text-[14.5px] leading-relaxed" style={{ color: COLORS.green }}>
-                    {desc}
-                  </p>
+
+                  <div
+                    className="mt-4 pt-3 border-t flex items-center justify-between text-[12px] font-bold transition-all duration-300"
+                    style={{ borderColor: COLORS.border }}
+                  >
+                    <span className="text-[#0F442E] group-hover:text-[#1E855C] transition-colors duration-300">
+                      Scientific Standard
+                    </span>
+                    <ArrowRight
+                      size={14}
+                      className="text-[#0F442E] group-hover:text-[#1E855C] transform translate-x-0 group-hover:translate-x-1.5 transition-all duration-300"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
@@ -1648,29 +1933,40 @@ function CommitmentRndSection() {
 
           <div className="lg:col-span-6">
             <div
-              className="relative w-full h-[360px] rounded-xl overflow-hidden border shadow-sm"
+              className="group relative w-full h-[380px] sm:h-[420px] rounded-2xl overflow-hidden border shadow-md hover:shadow-2xl hover:shadow-[#094C80]/20 transition-all duration-500 cursor-pointer"
               style={{ borderColor: COLORS.border }}
             >
               <Image
                 src="/vetvac_rd_lab_ai.jpg"
                 alt="VET VAC PHARMA research scientist in pharmaceutical laboratory"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
               />
+
+              {/* Gradient vignette on image */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071B30]/75 via-[#071B30]/15 to-transparent transition-opacity duration-500 group-hover:opacity-60" />
+
+              {/* Interactive Floating Badge at Bottom */}
               <div
-                className="absolute bottom-4 left-4 right-4 p-3 rounded-lg bg-white/95 backdrop-blur-sm border shadow-sm flex items-center justify-between"
+                className="absolute bottom-4 left-4 right-4 p-3.5 sm:p-4 rounded-xl bg-white/95 backdrop-blur-md border shadow-lg flex items-center justify-between transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-white group-hover:border-[#1E855C]/40"
                 style={{ borderColor: COLORS.border }}
               >
                 <div className="flex items-center gap-2.5">
-                  <div
-                    className="w-2.5 h-2.5 rounded-full animate-pulse"
-                    style={{ backgroundColor: COLORS.white }}
-                  />
-                  <span className="text-[13.5px] font-bold" style={{ color: COLORS.green }}>
+                  <div className="relative flex items-center justify-center w-3 h-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1E855C] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#1E855C]" />
+                  </div>
+                  <span
+                    className="text-[13.5px] sm:text-[14px] font-black transition-colors duration-300 group-hover:text-[#1E855C]"
+                    style={{ color: "#0F442E" }}
+                  >
                     State-of-the-Art Laboratory Facilities
                   </span>
                 </div>
-                <span className="text-[12px] font-extrabold uppercase" style={{ color: COLORS.green }}>
+                <span
+                  className="text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md transition-all duration-300 group-hover:bg-[#1E855C] group-hover:text-white"
+                  style={{ backgroundColor: COLORS.lightGreen, color: COLORS.green }}
+                >
                   R&amp;D Team
                 </span>
               </div>
@@ -1708,10 +2004,10 @@ function CommitmentRndSection() {
 
               {/* 6 Quality Principles */}
               <div>
-                <p className="text-[14px] font-black uppercase tracking-wider mb-3" style={{ color: COLORS.green }}>
+                <p className="text-[13.5px] font-black uppercase tracking-wider mb-3" style={{ color: "#0F442E" }}>
                   Our Quality Principles:
                 </p>
-                <div className="grid sm:grid-cols-2 gap-2.5">
+                <div className="grid sm:grid-cols-2 gap-3">
                   {[
                     "Consistent product quality",
                     "Controlled processes",
@@ -1722,13 +2018,30 @@ function CommitmentRndSection() {
                   ].map((principle) => (
                     <div
                       key={principle}
-                      className="p-3 rounded-lg bg-white border flex items-center gap-2.5 shadow-sm"
+                      className="group relative p-3.5 sm:p-4 rounded-xl bg-white border flex items-center gap-3 transition-all duration-300 cursor-pointer overflow-hidden shadow-xs hover:shadow-lg hover:shadow-[#1E855C]/15 hover:-translate-y-1 hover:border-[#1E855C]"
                       style={{ borderColor: COLORS.border }}
                     >
-                      <CheckCircle2 size={18} style={{ color: COLORS.green }} className="flex-shrink-0" />
-                      <span className="text-[14.5px] font-bold" style={{ color: COLORS.green }}>
+                      {/* Left indicator bar on hover */}
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1E855C] to-[#094C80] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1E855C] group-hover:text-white"
+                        style={{ backgroundColor: COLORS.lightGreen, color: COLORS.green }}
+                      >
+                        <CheckCircle2 size={18} className="transition-transform duration-300" />
+                      </div>
+
+                      <span
+                        className="text-[14px] sm:text-[14.5px] font-black transition-colors duration-300 group-hover:text-[#1E855C]"
+                        style={{ color: "#0F442E" }}
+                      >
                         {principle}
                       </span>
+
+                      <ArrowRight
+                        size={14}
+                        className="ml-auto text-[#1E855C] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0"
+                      />
                     </div>
                   ))}
                 </div>
@@ -1737,15 +2050,43 @@ function CommitmentRndSection() {
 
             <div className="lg:col-span-6">
               <div
-                className="relative w-full h-[360px] rounded-xl overflow-hidden border shadow-sm"
+                className="group relative w-full h-[380px] sm:h-[420px] rounded-2xl overflow-hidden border shadow-md hover:shadow-2xl hover:shadow-[#094C80]/20 transition-all duration-500 cursor-pointer"
                 style={{ borderColor: COLORS.border }}
               >
                 <Image
                   src="/vetvac_rd_quality_ai.jpg"
                   alt="VET VAC PHARMA Automated Cold-Chain Quality Testing and Microscope Inspection"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
                 />
+
+                {/* Gradient vignette on image */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071B30]/75 via-[#071B30]/15 to-transparent transition-opacity duration-500 group-hover:opacity-60" />
+
+                {/* Interactive Floating Badge at Bottom */}
+                <div
+                  className="absolute bottom-4 left-4 right-4 p-3.5 sm:p-4 rounded-xl bg-white/95 backdrop-blur-md border shadow-lg flex items-center justify-between transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-white group-hover:border-[#1E855C]/40"
+                  style={{ borderColor: COLORS.border }}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="relative flex items-center justify-center w-3 h-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1E855C] opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#1E855C]" />
+                    </div>
+                    <span
+                      className="text-[13.5px] sm:text-[14px] font-black transition-colors duration-300 group-hover:text-[#1E855C]"
+                      style={{ color: "#0F442E" }}
+                    >
+                      Automated Cold-Chain &amp; Quality Inspection
+                    </span>
+                  </div>
+                  <span
+                    className="text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md transition-all duration-300 group-hover:bg-[#1E855C] group-hover:text-white"
+                    style={{ backgroundColor: COLORS.lightGreen, color: COLORS.green }}
+                  >
+                    GMP Certified
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -1794,7 +2135,7 @@ function CommitmentRndSection() {
           <a
             href="#solutions"
             onClick={(e) => scrollToSection(e, "#solutions")}
-            className="px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
+            className="vetvac-white-btn px-7 py-3.5 rounded-lg text-[15.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 cursor-pointer shadow-md"
             onMouseEnter={e => {
               e.currentTarget.style.backgroundColor = COLORS.green;
               e.currentTarget.style.color = "#FFFFFF";
@@ -2107,56 +2448,6 @@ function CtaSection() {
   );
 }
 
-// ─── Google Map Section ──────────────────────────────────────────────────────
-function MapSection() {
-  return (
-    <section className="relative w-full overflow-hidden bg-slate-50">
-      {/* Floating Address Header */}
-      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10 w-[92%] max-w-screen-xl pointer-events-none">
-        <div
-          className="pointer-events-auto flex items-center gap-3.5 rounded-2xl border bg-white/95 backdrop-blur-md px-6 py-4 shadow-xl max-w-3xl mx-auto"
-          style={{ borderColor: COLORS.border }}
-        >
-          <div
-            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ backgroundColor: `${COLORS.primary}15` }}
-          >
-            <MapPin size={22} color={COLORS.primary} />
-          </div>
-          <div>
-            <p
-              className="text-[13px] font-black uppercase tracking-widest mb-0.5"
-              style={{ color: COLORS.green }}
-            >
-              Find Us
-            </p>
-            <p
-              className="text-sm sm:text-base font-semibold leading-snug"
-              style={{ color: COLORS.green }}
-            >
-              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Map Embed - Full Width */}
-      <div className="w-full h-[500px] md:h-[550px] lg:h-[600px] relative">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904de60e29e3b%3A0x9a9d95ad0e1c7d50!2sRehman%20Centre-2%2C%20Ring%20Rd%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000"
-          width="100%"
-          height="100%"
-          style={{ border: 0, display: "block" }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="VET VAC PHARMA Office Location"
-        />
-      </div>
-    </section>
-  );
-}
-
 // ─── Page Component ───────────────────────────────────────────────────────────
 
 export default function VetVacPharmaPage() {
@@ -2220,7 +2511,6 @@ export default function VetVacPharmaPage() {
       <CommitmentRndSection />
       <TestimonialsFaqSection />
       <CtaSection />
-      <MapSection />
       <VetvacFooter />
     </main>
   );

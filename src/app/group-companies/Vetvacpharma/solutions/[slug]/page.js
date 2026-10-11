@@ -1,11 +1,13 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
+  ChevronLeft,
   ArrowRight,
   CheckCircle2,
   Phone,
@@ -30,16 +32,179 @@ import {
 import { VetvacNavbar, VetvacFooter } from "../../components/VetvacShared";
 import { VETVAC_PRODUCTS, getVetvacProductBySlug } from "../../products-data";
 
+// ─── AI Vaccine Slider Data ──────────────────────────────────────────────────
+const VACCINE_SLIDES = [
+  {
+    id: 1,
+    image: "/vetvac_vaccine_slide_1.jpg",
+    badge: "Active Immunization Portfolio",
+    tagline: "High-Titer Multivalent Poultry Vaccines",
+    desc: "Engineered live attenuated and oil-emulsion inactivated vaccines providing robust humoral and cellular immunity against high-consequence viral pathogens in commercial poultry.",
+    highlight: "Automated Biosecure Bottling",
+  },
+  {
+    id: 2,
+    image: "/vetvac_vaccine_slide_2.jpg",
+    badge: "Bovine Clinical Immunization",
+    tagline: "Durable Livestock Herd Protection",
+    desc: "Targeted multivalent formulations safeguarding dairy and beef cattle from FMD, Clostridial infections, and acute respiratory complexes with zero growth penalties.",
+    highlight: "Field-Tested Clinical Potency",
+  },
+  {
+    id: 3,
+    image: "/vetvac_vaccine_slide_3.jpg",
+    badge: "cGMP Cleanroom Biomanufacturing",
+    tagline: "Precision Cryogenic Cold-Chain Integrity",
+    desc: "Computer-monitored bioprocess fermentation and sterile vial processing backed by continuous 2°C to 8°C cold-chain tracking from production line to field administration.",
+    highlight: "Continuous Temperature Monitored",
+  },
+];
+
+// ─── AI Biological Products Slider Data ──────────────────────────────────────
+const BIOLOGICAL_SLIDES = [
+  {
+    id: 1,
+    image: "/vetvac_bio_slide_1.jpg",
+    badge: "Biotechnology & Immunomodulators",
+    tagline: "Advanced Bioactive Peptides & Natural Defense",
+    desc: "Formulated bioactive peptides, natural immune-response modulators, and hyperimmune serums engineered to enhance physiological defense mechanisms without inducing antimicrobial resistance.",
+    highlight: "100% Antibiotic-Free Compliant",
+  },
+  {
+    id: 2,
+    image: "/vetvac_bio_slide_2.jpg",
+    badge: "Maternal Immunity Fortification",
+    tagline: "Hyperimmune Colostrum & Neonatal Protection",
+    desc: "Specialized oral bio-fortifiers reinforcing the innate mucosal barrier and stabilizing gut microflora in newborn calves and young livestock during critical transition windows.",
+    highlight: "+32% Immune Response Surge",
+  },
+  {
+    id: 3,
+    image: "/vetvac_bio_slide_3.jpg",
+    badge: "Cellular Bioactivity & Fermentation",
+    tagline: "Precision Bioprocess & Competitive Exclusion",
+    desc: "Computer-controlled fermentation suites cultivating high-potency beneficial microflora and biological antitoxins for maximum livability and superior weight gain.",
+    highlight: "99.4% Gut Barrier Integrity",
+  },
+];
+
+// ─── AI Poultry Health Solutions Slider Data ─────────────────────────────────
+const POULTRY_SLIDES = [
+  {
+    id: 1,
+    image: "/vetvac_poultry_slide_1.jpg",
+    badge: "Avian Commercial Healthcare",
+    tagline: "Total Commercial Flock Livability & Performance",
+    desc: "Complete preventive, therapeutic, and biosecurity solutions engineered to maximize livability, accelerate daily weight gain, and protect commercial broiler, layer, and breeder flocks.",
+    highlight: "98.7% Flock Livability Rate",
+  },
+  {
+    id: 2,
+    image: "/vetvac_poultry_slide_2.jpg",
+    badge: "Automated Hatchery Immunization",
+    tagline: "Precision Day-Old Spray Vaccination Systems",
+    desc: "Automated fine-mist spray cabinets providing uniform mucosal antigen delivery and early brooding immune priming against Newcastle Disease and Infectious Bronchitis.",
+    highlight: "99.9% Hatchery Cleanliness",
+  },
+  {
+    id: 3,
+    image: "/vetvac_poultry_slide_3.jpg",
+    badge: "Advanced Avian Diagnostics & Biosecurity",
+    tagline: "Gut Health Microflora & Respiratory Protection",
+    desc: "Comprehensive diagnostic monitoring, anticoccidial rotations, and non-antibiotic water bio-stabilizers ensuring optimal flock feed conversion ratio (FCR).",
+    highlight: "-0.12 pts Broiler FCR Reduction",
+  },
+];
+
+// ─── AI Livestock Health Solutions Slider Data ───────────────────────────────
+const LIVESTOCK_SLIDES = [
+  {
+    id: 1,
+    image: "/vetvac_livestock_slide_1.jpg",
+    badge: "Ruminant Veterinary Care",
+    tagline: "Preventive Care & Total Herd Wellbeing",
+    desc: "Specialized clinical and preventive healthcare for high-yielding dairy herds, beef cattle, sheep, and goats, focusing on infectious disease control and metabolic performance.",
+    highlight: "-78% Herd Morbidity Drop",
+  },
+  {
+    id: 2,
+    image: "/vetvac_livestock_slide_2.jpg",
+    badge: "Precision Dairy & Transition Cow Health",
+    tagline: "Digital Herd Monitoring & Metabolic Care",
+    desc: "Integrated post-calving energy management, calcium balancing, and fertility support protocols maximizing longevity and peak lactation yields.",
+    highlight: "+1.8 Lactations Longevity",
+  },
+  {
+    id: 3,
+    image: "/vetvac_livestock_slide_3.jpg",
+    badge: "Pasture Parasite & Disease Shield",
+    tagline: "Sustainable Grazing & Comprehensive Immunity",
+    desc: "Broad-spectrum antiparasitic drenches, trace mineral chelated injectables, and multivalent clostridial protection across commercial grazing operations.",
+    highlight: "+14% Average Daily Gain",
+  },
+];
+
 export default function VetvacProductDetailPage({ params }) {
   const unwrappedParams = use(params);
   const slug = unwrappedParams?.slug;
   const product = getVetvacProductBySlug(slug);
 
   const [openFaq, setOpenFaq] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   if (!product) {
     notFound();
   }
+
+  // Dynamic slides for this product
+  let slides = [
+    {
+      id: 1,
+      image: product.heroImage || "/vetvac_vaccines_ai.jpg",
+      badge: product.badge,
+      tagline: product.tagline,
+      desc: product.desc,
+      highlight: "Certified Pharma Formulation",
+    },
+    {
+      id: 2,
+      image: "/vetvac_vaccine_slide_3.jpg",
+      badge: "Sterile Cleanroom Standard",
+      tagline: "Rigorous Safety & Potency Testing",
+      desc: "Certified free from adventitious agents with zero biological titer compromise throughout cold-chain handling.",
+      highlight: "cGMP & ISO Monitored",
+    },
+  ];
+
+  if (slug === "veterinary-vaccines") {
+    slides = VACCINE_SLIDES;
+  } else if (slug === "biological-products" || slug === "biologicals" || slug === "biologics") {
+    slides = BIOLOGICAL_SLIDES;
+  } else if (slug === "poultry-health-solutions" || slug === "poultry-health" || slug === "poultry") {
+    slides = POULTRY_SLIDES;
+  } else if (slug === "livestock-health-solutions" || slug === "livestock-health" || slug === "livestock") {
+    slides = LIVESTOCK_SLIDES;
+  }
+
+  // Auto-play timer (6 seconds)
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused, slides.length]);
+
+  const activeSlide = slides[currentSlide];
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
 
   const MainIcon = product.icon;
 
@@ -62,65 +227,90 @@ export default function VetvacProductDetailPage({ params }) {
         </div>
       </div>
 
-      {/* ─── Hero Section ───────────────────────────────────────────────────────── */}
-      <section className="relative bg-[#071B30] text-white py-14 sm:py-18 lg:py-22 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* ─── Hero Section with Interactive AI Slider ───────────────────────────── */}
+      <section
+        className="relative bg-[#071B30] text-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[560px] sm:min-h-[600px] lg:min-h-[640px] flex items-center"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Background AI Image Carousel with Smooth Crossfade */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeSlide.id}
+            initial={{ opacity: 0, scale: 1.03 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="absolute inset-0 z-0"
+          >
+            <Image
+              src={activeSlide.image}
+              alt={activeSlide.tagline}
+              fill
+              className="object-cover object-center pointer-events-none"
+              priority
+            />
+            {/* Multi-layered directional gradient overlay ensuring readable text */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(7, 27, 48, 0.97) 0%, rgba(7, 27, 48, 0.88) 45%, rgba(7, 27, 48, 0.52) 75%, rgba(7, 27, 48, 0.22) 100%)",
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
+
         {/* Ambient Glows */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#1E855C]/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#094C80]/40 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#1E855C]/20 rounded-full blur-3xl pointer-events-none z-1" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#094C80]/35 rounded-full blur-3xl pointer-events-none z-1" />
 
-        {/* Hero Background Preview for Large Screens */}
-        <div
-          className="absolute right-0 top-0 bottom-0 w-1/2 opacity-20 pointer-events-none hidden lg:block"
-          data-aos="fade-left"
-          data-aos-duration="1000"
-        >
-          <Image
-            src={product.heroImage}
-            alt={product.title}
-            fill
-            className="object-cover object-center"
-            priority
-          />
-        </div>
-
-        <div className="relative mx-auto max-w-screen-xl">
+        <div className="relative z-10 mx-auto max-w-screen-xl w-full">
           <div className="max-w-3xl space-y-5 sm:space-y-6">
-            {/* Top Badge */}
-            <div data-aos="fade-down" data-aos-duration="700">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[#6EE7B7] text-xs font-bold uppercase tracking-wider">
-                <MainIcon size={14} className="text-[#6EE7B7]" />
-                <span>{product.badge}</span>
-              </span>
-            </div>
+            {/* Animated Slide Content */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSlide.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="space-y-3.5 sm:space-y-4"
+              >
+                {/* Badges */}
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold uppercase tracking-wider backdrop-blur-xs">
+                    <MainIcon size={14} className="text-emerald-300" />
+                    <span>{activeSlide.badge}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-slate-200 text-xs font-bold tracking-wide backdrop-blur-xs">
+                    <Sparkles size={12} className="text-emerald-300" />
+                    <span>{activeSlide.highlight}</span>
+                  </span>
+                </div>
 
-            {/* Title & Tagline */}
-            <div data-aos="fade-up" data-aos-delay="100" className="space-y-2">
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
-                {product.title}
-              </h1>
-              <p className="text-base sm:text-xl font-bold text-[#6EE7B7]">
-                {product.tagline}
-              </p>
-            </div>
+                {/* Title & Tagline */}
+                <div className="space-y-2">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+                    {product.title}
+                  </h1>
+                  <p className="text-base sm:text-xl font-bold text-emerald-300">
+                    {activeSlide.tagline}
+                  </p>
+                </div>
 
-            {/* Description */}
-            <p
-              data-aos="fade-up"
-              data-aos-delay="200"
-              className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl"
-            >
-              {product.desc}
-            </p>
+                {/* Description */}
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl drop-shadow-xs">
+                  {activeSlide.desc}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
             {/* CTA Buttons */}
-            <div
-              data-aos="fade-up"
-              data-aos-delay="300"
-              className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2"
-            >
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
               <Link
                 href="/group-companies/Vetvacpharma/contact"
-                className="vetvac-primary-btn px-6 py-3.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white bg-[#1E855C] hover:bg-[#156344] shadow-lg shadow-black/25 flex items-center gap-2 transition-all duration-300 cursor-pointer"
+                className="vetvac-primary-btn px-6 py-3.5 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white bg-[#1E855C] hover:bg-[#156344] shadow-lg shadow-black/25 flex items-center gap-2 transition-all duration-300 cursor-pointer hover:scale-105"
               >
                 <span>Request Product Specifications</span>
                 <ArrowRight size={14} />
@@ -128,7 +318,7 @@ export default function VetvacProductDetailPage({ params }) {
 
               <Link
                 href="/group-companies/Vetvacpharma/solutions"
-                className="px-5 py-3.5 rounded-lg border border-white/30 hover:bg-white/10 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2"
+                className="px-5 py-3.5 rounded-lg border border-white/30 hover:bg-white/15 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center gap-2"
               >
                 <ArrowLeft size={14} />
                 <span>All Products &amp; Solutions</span>
@@ -136,20 +326,54 @@ export default function VetvacProductDetailPage({ params }) {
             </div>
 
             {/* Quick Metrics Bar */}
-            <div
-              data-aos="fade-up"
-              data-aos-delay="400"
-              className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-6 sm:pt-8 border-t border-white/15"
-            >
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-5 sm:pt-6 border-t border-white/15">
               {product.stats.map((st, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-xs hover:bg-white/10 transition-colors"
+                  className="p-3.5 rounded-xl bg-white/10 border border-white/15 backdrop-blur-md hover:bg-white/15 transition-all duration-300"
                 >
                   <p className="text-lg sm:text-2xl font-black text-white">{st.value}</p>
                   <p className="text-[11px] sm:text-xs text-slate-300 font-medium line-clamp-1">{st.label}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Interactive Slider Navigation Controls */}
+            <div className="flex items-center gap-3.5 pt-2">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15">
+                {slides.map((s, idx) => (
+                  <button
+                    key={s.id}
+                    onClick={() => setCurrentSlide(idx)}
+                    className="transition-all duration-300 rounded-full h-2.5 cursor-pointer"
+                    style={{
+                      width: currentSlide === idx ? "28px" : "10px",
+                      backgroundColor: currentSlide === idx ? "#1E855C" : "rgba(255,255,255,0.4)",
+                    }}
+                    aria-label={`Go to slide ${idx + 1}`}
+                  />
+                ))}
+                <span className="text-[11px] font-bold text-slate-300 ml-1 select-none">
+                  0{currentSlide + 1} / 0{slides.length}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous Slide"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer text-white"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="Next Slide"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer text-white"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
             </div>
           </div>
         </div>

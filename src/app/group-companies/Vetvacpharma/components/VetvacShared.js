@@ -120,45 +120,54 @@ export function HeroOutlineButton({ href, children, className = "" }) {
 export function VetvacNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
-  // Close mobile menu on route change & ensure theme classes are applied
-  useEffect(() => {
+  // Close mobile menu on route change during render
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setMobileOpen(false);
+  }
+
+  // Ensure theme classes are applied to body
+  useEffect(() => {
     document.body.classList.add("roys-roys-theme");
     document.body.classList.add("vetvac-pharma-theme");
     return () => {
       document.body.classList.remove("roys-roys-theme");
       document.body.classList.remove("vetvac-pharma-theme");
     };
-  }, [pathname]);
+  }, []);
 
   return (
     <header
       className="vetvac-navbar sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b transition-all"
       style={{ borderColor: COLORS.border }}
     >
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/group-companies/Vetvacpharma" className="flex items-center gap-2.5 sm:gap-3 shrink-0 group select-none">
+        <Link
+          href="/group-companies/Vetvacpharma"
+          className="flex items-center gap-3 sm:gap-3.5 shrink-0 group select-none mr-8 sm:mr-10 lg:mr-12 xl:mr-16"
+        >
           <div className="relative flex items-center">
             <Image
               src="/logos/3.png"
               alt="VET VAC PHARMA Logo"
-              width={48}
-              height={48}
-              className="h-10 sm:h-11 lg:h-12 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+              width={60}
+              height={60}
+              className="h-11 sm:h-12 lg:h-14 xl:h-[58px] w-auto object-contain group-hover:scale-105 transition-transform duration-300"
               priority
             />
           </div>
           <div className="flex flex-col leading-tight">
             <span
-              className="text-[15px] sm:text-[17px] lg:text-[18px] font-black tracking-wider uppercase block leading-none"
+              className="text-[17px] sm:text-[19px] lg:text-[21px] xl:text-[22px] font-black tracking-wider uppercase block leading-none"
               style={{ color: COLORS.primaryDk }}
             >
               VET VEC PHARMA
             </span>
             <span
-              className="text-[9px] sm:text-[9.5px] font-bold tracking-[0.2em] uppercase block mt-1 leading-none"
+              className="text-[10px] sm:text-[10.5px] lg:text-[11.5px] font-bold tracking-[0.22em] uppercase block mt-1 sm:mt-1.5 leading-none"
               style={{ color: COLORS.green }}
             >
               Veterinary Healthcare
@@ -167,7 +176,7 @@ export function VetvacNavbar() {
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-2 xl:gap-3.5 2xl:gap-4.5">
+        <nav className="hidden lg:flex items-center gap-2 xl:gap-3.5 2xl:gap-5">
           {NAV_LINKS.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -191,17 +200,9 @@ export function VetvacNavbar() {
           })}
         </nav>
 
-        {/* CTA & Portal Button */}
+        {/* Portal Button & Mobile Menu Toggle */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <RoysonsPortalButton />
-          <Link
-            href="/group-companies/Vetvacpharma/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-lg text-xs xl:text-[13px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer whitespace-nowrap"
-            style={{ backgroundColor: COLORS.primary }}
-          >
-            <span>Inquire Now</span>
-            <ArrowRight size={13} />
-          </Link>
 
           {/* Mobile Menu Toggle */}
           <button
@@ -259,7 +260,7 @@ export function VetvacNavbar() {
 export function VetvacFooter() {
   return (
     <footer
-      className="py-14 px-6 mt-4"
+      className="py-14 px-6"
       style={{ backgroundColor: COLORS.primary }}
     >
       <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10">
@@ -268,11 +269,11 @@ export function VetvacFooter() {
           <Link href="/group-companies/Vetvacpharma" className="flex items-center gap-3 mb-4 select-none group">
             <div className="relative w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center flex-shrink-0">
               <Image
-                src="/logos/3.png"
+                src="/logos/3-white.png"
                 alt="VET VAC PHARMA Logo"
                 width={48}
                 height={48}
-                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md brightness-0 invert"
               />
             </div>
             <div className="flex flex-col">
@@ -352,22 +353,8 @@ export function VetvacFooter() {
               className="text-[13.5px] flex items-start gap-2.5 text-white font-medium"
               style={{ color: "#FFFFFF" }}
             >
-              <Phone size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
-              WhatsApp: 0092-304-7527498 | 0092-321-8431665
-            </p>
-            <p
-              className="text-[13.5px] flex items-start gap-2.5 text-white font-medium"
-              style={{ color: "#FFFFFF" }}
-            >
               <Mail size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
               info@roysons.org
-            </p>
-            <p
-              className="text-[13.5px] flex items-start gap-2.5 text-white font-medium"
-              style={{ color: "#FFFFFF" }}
-            >
-              <Mail size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
-              support@roysons.org
             </p>
           </div>
         </div>

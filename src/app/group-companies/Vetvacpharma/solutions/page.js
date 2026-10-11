@@ -448,10 +448,10 @@ export default function SolutionsPage() {
             </div>
             <Link
               href="/group-companies/Vetvacpharma/contact"
-              className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 shadow-sm"
+              className="vetvac-white-btn group px-7 py-3.5 rounded-xl text-[14px] font-extrabold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2.5 shadow-md hover:scale-105 cursor-pointer"
             >
               <span>Contact Us</span>
-              <ArrowRight size={15} />
+              <ArrowRight size={17} className="group-hover:translate-x-1.5 transition-transform" />
             </Link>
           </div>
         </div>

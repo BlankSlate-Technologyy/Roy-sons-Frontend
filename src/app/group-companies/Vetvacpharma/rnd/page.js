@@ -42,21 +42,25 @@ const RND_FOCUS = [
     title: "Disease Prevention",
     desc: "Studying changing disease challenges and prevention requirements across poultry and livestock.",
     icon: ShieldCheck,
+    badge: "Proactive Defense",
   },
   {
     title: "Product Development",
     desc: "Exploring innovative approaches to veterinary vaccines and biological products.",
     icon: FlaskConical,
+    badge: "Formulation R&D",
   },
   {
     title: "Performance Evaluation",
     desc: "Supporting systematic evaluation of product quality, consistency, and performance.",
     icon: ClipboardCheck,
+    badge: "Clinical Validation",
   },
   {
     title: "Continuous Improvement",
     desc: "Using research and industry feedback to improve existing solutions and develop future products.",
     icon: Award,
+    badge: "Ongoing Quality",
   },
 ];
 
@@ -174,26 +178,70 @@ export default function RndQualityPage() {
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
-                {RND_FOCUS.map(({ title, desc, icon: Icon }) => (
+                {RND_FOCUS.map(({ title, desc, icon: Icon, badge }) => (
                   <div
                     key={title}
-                    className="p-5 rounded-xl border bg-white shadow-sm"
+                    className="group relative p-5 rounded-2xl border bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-[#1E855C]/15 hover:border-[#1E855C] cursor-pointer overflow-hidden flex flex-col justify-between"
                     style={{ borderColor: COLORS.border }}
                   >
-                    <div className="flex items-center gap-2.5 mb-2.5">
-                      <div
-                        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                        style={{ backgroundColor: COLORS.white }}
-                      >
-                        <Icon size={18} style={{ color: COLORS.green }} />
+                    {/* Animated top gradient highlight beam on hover */}
+                    <div
+                      className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1E855C] via-[#094C80] to-[#1E855C] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                    />
+
+                    {/* Soft emerald ambient light in corner */}
+                    <div className="absolute -right-10 -top-10 w-24 h-24 rounded-full bg-[#1E855C]/0 group-hover:bg-[#1E855C]/10 blur-xl transition-all duration-500 pointer-events-none" />
+
+                    <div>
+                      <div className="flex items-center justify-between mb-3.5">
+                        <div
+                          className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 shadow-xs group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#1E855C] group-hover:text-white"
+                          style={{
+                            backgroundColor: COLORS.lightGreen,
+                            color: COLORS.green,
+                          }}
+                        >
+                          <Icon size={22} className="transition-transform duration-300 group-hover:scale-105" />
+                        </div>
+                        <span
+                          className="text-[10.5px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full border transition-all duration-300 group-hover:bg-[#1E855C] group-hover:text-white group-hover:border-[#1E855C]"
+                          style={{
+                            backgroundColor: COLORS.white,
+                            color: "#0F442E",
+                            borderColor: COLORS.border,
+                          }}
+                        >
+                          {badge}
+                        </span>
                       </div>
-                      <h4 className="text-[14px] font-black" style={{ color: COLORS.green }}>
+
+                      <h4
+                        className="text-[16px] font-black mb-2 transition-colors duration-300 group-hover:text-[#1E855C]"
+                        style={{ color: "#0F442E" }}
+                      >
                         {title}
                       </h4>
+
+                      <p
+                        className="text-[13.5px] leading-relaxed transition-colors duration-300"
+                        style={{ color: "#2D5A46" }}
+                      >
+                        {desc}
+                      </p>
                     </div>
-                    <p className="text-[12.5px] leading-relaxed" style={{ color: COLORS.green }}>
-                      {desc}
-                    </p>
+
+                    <div
+                      className="mt-4 pt-3 border-t flex items-center justify-between text-[12px] font-bold transition-all duration-300"
+                      style={{ borderColor: COLORS.border }}
+                    >
+                      <span className="text-[#0F442E] group-hover:text-[#1E855C] transition-colors duration-300">
+                        Scientific Standard
+                      </span>
+                      <ArrowRight
+                        size={14}
+                        className="text-[#0F442E] group-hover:text-[#1E855C] transform translate-x-0 group-hover:translate-x-1.5 transition-all duration-300"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -201,15 +249,43 @@ export default function RndQualityPage() {
 
             <div className="lg:col-span-6">
               <div
-                className="relative w-full h-[400px] rounded-2xl overflow-hidden border shadow-md"
+                className="group relative w-full h-[400px] rounded-2xl overflow-hidden border shadow-md hover:shadow-2xl hover:shadow-[#094C80]/20 transition-all duration-500 cursor-pointer"
                 style={{ borderColor: COLORS.border }}
               >
                 <Image
                   src="/vetvac_rd_lab_ai.jpg"
                   alt="VET VAC PHARMA R&D Scientist"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
                 />
+
+                {/* Gradient vignette on image */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071B30]/75 via-[#071B30]/15 to-transparent transition-opacity duration-500 group-hover:opacity-60" />
+
+                {/* Interactive Floating Badge at Bottom */}
+                <div
+                  className="absolute bottom-4 left-4 right-4 p-3.5 sm:p-4 rounded-xl bg-white/95 backdrop-blur-md border shadow-lg flex items-center justify-between transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-white group-hover:border-[#1E855C]/40"
+                  style={{ borderColor: COLORS.border }}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="relative flex items-center justify-center w-3 h-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1E855C] opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#1E855C]" />
+                    </div>
+                    <span
+                      className="text-[13.5px] sm:text-[14px] font-black transition-colors duration-300 group-hover:text-[#1E855C]"
+                      style={{ color: "#0F442E" }}
+                    >
+                      State-of-the-Art Laboratory Facilities
+                    </span>
+                  </div>
+                  <span
+                    className="text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md transition-all duration-300 group-hover:bg-[#1E855C] group-hover:text-white"
+                    style={{ backgroundColor: COLORS.lightGreen, color: COLORS.green }}
+                  >
+                    R&amp;D Team
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -247,13 +323,30 @@ export default function RndQualityPage() {
                     {QUALITY_PRINCIPLES.map((principle) => (
                       <div
                         key={principle}
-                        className="p-3 rounded-xl bg-white border flex items-center gap-2.5 shadow-sm"
+                        className="group relative p-3.5 sm:p-4 rounded-xl bg-white border flex items-center gap-3 transition-all duration-300 cursor-pointer overflow-hidden shadow-xs hover:shadow-lg hover:shadow-[#1E855C]/15 hover:-translate-y-1 hover:border-[#1E855C]"
                         style={{ borderColor: COLORS.border }}
                       >
-                        <CheckCircle2 size={16} style={{ color: COLORS.green }} className="flex-shrink-0" />
-                        <span className="text-[13px] font-bold" style={{ color: COLORS.green }}>
+                        {/* Left indicator bar on hover */}
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1E855C] to-[#094C80] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
+
+                        <div
+                          className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#1E855C] group-hover:text-white"
+                          style={{ backgroundColor: COLORS.lightGreen, color: COLORS.green }}
+                        >
+                          <CheckCircle2 size={18} className="transition-transform duration-300" />
+                        </div>
+
+                        <span
+                          className="text-[13.5px] sm:text-[14px] font-black transition-colors duration-300 group-hover:text-[#1E855C]"
+                          style={{ color: "#0F442E" }}
+                        >
                           {principle}
                         </span>
+
+                        <ArrowRight
+                          size={14}
+                          className="ml-auto text-[#1E855C] opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0"
+                        />
                       </div>
                     ))}
                   </div>
@@ -262,15 +355,43 @@ export default function RndQualityPage() {
 
               <div className="lg:col-span-6">
                 <div
-                  className="relative w-full h-[400px] rounded-2xl overflow-hidden border shadow-md"
+                  className="group relative w-full h-[400px] rounded-2xl overflow-hidden border shadow-md hover:shadow-2xl hover:shadow-[#094C80]/20 transition-all duration-500 cursor-pointer"
                   style={{ borderColor: COLORS.border }}
                 >
                   <Image
                     src="/vetvac_rd_quality_ai.jpg"
                     alt="Automated Cold-Chain and Quality Testing"
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
                   />
+
+                  {/* Gradient vignette on image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071B30]/75 via-[#071B30]/15 to-transparent transition-opacity duration-500 group-hover:opacity-60" />
+
+                  {/* Interactive Floating Badge at Bottom */}
+                  <div
+                    className="absolute bottom-4 left-4 right-4 p-3.5 sm:p-4 rounded-xl bg-white/95 backdrop-blur-md border shadow-lg flex items-center justify-between transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-white group-hover:border-[#1E855C]/40"
+                    style={{ borderColor: COLORS.border }}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className="relative flex items-center justify-center w-3 h-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1E855C] opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#1E855C]" />
+                      </div>
+                      <span
+                        className="text-[13.5px] sm:text-[14px] font-black transition-colors duration-300 group-hover:text-[#1E855C]"
+                        style={{ color: "#0F442E" }}
+                      >
+                        Automated Cold-Chain &amp; Quality Inspection
+                      </span>
+                    </div>
+                    <span
+                      className="text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md transition-all duration-300 group-hover:bg-[#1E855C] group-hover:text-white"
+                      style={{ backgroundColor: COLORS.lightGreen, color: COLORS.green }}
+                    >
+                      GMP Certified
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -317,11 +438,11 @@ export default function RndQualityPage() {
               </p>
             </div>
             <Link
-              href="/group-companies/Vetvacpharma#solutions"
-              className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 shadow-sm"
+              href="/group-companies/Vetvacpharma/solutions"
+              className="vetvac-white-btn group px-7 py-3.5 rounded-xl text-[14px] font-extrabold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2.5 shadow-md hover:scale-105 cursor-pointer"
             >
               <span>Explore Our Products</span>
-              <ArrowRight size={15} />
+              <ArrowRight size={17} className="group-hover:translate-x-1.5 transition-transform" />
             </Link>
           </div>
         </div>

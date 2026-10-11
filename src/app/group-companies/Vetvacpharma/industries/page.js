@@ -409,10 +409,10 @@ export default function IndustriesPage() {
               </div>
               <Link
                 href="/group-companies/Vetvacpharma/contact"
-                className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2 shadow-sm"
+                className="vetvac-white-btn group px-7 py-3.5 rounded-xl text-[14px] font-extrabold bg-white text-[#094C80] hover:bg-[#1E855C] hover:text-white transition-all duration-300 flex-shrink-0 flex items-center gap-2.5 shadow-md hover:scale-105 cursor-pointer"
               >
                 <span>Become a Partner</span>
-                <Handshake size={16} />
+                <Handshake size={17} className="group-hover:scale-110 transition-transform" />
               </Link>
             </div>
           </div>
