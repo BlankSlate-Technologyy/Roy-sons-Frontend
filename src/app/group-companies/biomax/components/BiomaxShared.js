@@ -40,11 +40,11 @@ export const COLORS = {
 export const NAV_LINKS = [
   { label: "Home", href: "/group-companies/biomax" },
   { label: "About Us", href: "/group-companies/biomax/about" },
-  { label: "Products & Solutions", href: "/group-companies/biomax/solutions" },
-  { label: "Research & Development", href: "/group-companies/biomax/rnd" },
-  { label: "Quality Assurance", href: "/group-companies/biomax/quality" },
+  { label: "Products & Solutions", shortLabel: "Solutions", href: "/group-companies/biomax/solutions" },
+  { label: "Research & Development", shortLabel: "R&D", href: "/group-companies/biomax/rnd" },
+  { label: "Quality Assurance", shortLabel: "Quality", href: "/group-companies/biomax/quality" },
   { label: "Industries", href: "/group-companies/biomax/industries" },
-  { label: "Contact Us", href: "/group-companies/biomax/contact" },
+  { label: "Contact Us", shortLabel: "Contact", href: "/group-companies/biomax/contact" },
 ];
 
 export const FOOTER_LINKS = {
@@ -142,25 +142,25 @@ export function BiomaxNavbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white/95 backdrop-blur-md ${
-        scrolled ? "shadow-md py-2 sm:py-2.5" : "py-3 sm:py-4 lg:py-4.5"
+        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5 lg:py-3"
       }`}
       style={{
         borderBottom: `1px solid ${COLORS.border}`,
       }}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-3 lg:gap-5">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-2.5 lg:gap-4">
         {/* Brand Logo - Cropped Crisp Icon + Vector Code Typography */}
-        <Link href="/group-companies/biomax" className="flex items-center gap-2.5 sm:gap-3.5 select-none shrink-0 py-1 group">
+        <Link href="/group-companies/biomax" className="flex items-center gap-2.5 sm:gap-3 select-none shrink-0 py-0.5 group">
           <div className="relative flex items-center justify-center shrink-0">
             <Image
               src="/biomax_logo_icon.png"
               alt="BIO MAX Logo Icon"
-              width={76}
-              height={76}
+              width={56}
+              height={56}
               className={`${
                 scrolled
-                  ? "w-11 h-11 sm:w-12 sm:h-12 lg:w-13 lg:h-13"
-                  : "w-13 h-13 sm:w-15 sm:h-15 md:w-16 md:h-16 lg:w-[68px] lg:h-[68px]"
+                  ? "w-9 h-9 sm:w-10 sm:h-10"
+                  : "w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12"
               } object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-xs`}
               priority
             />
@@ -169,8 +169,8 @@ export function BiomaxNavbar() {
             <span
               className={`${
                 scrolled
-                  ? "text-[20px] sm:text-[22px] lg:text-[24px]"
-                  : "text-[22px] sm:text-[25px] md:text-[28px] lg:text-[31px]"
+                  ? "text-[17px] sm:text-[19px] lg:text-[20px]"
+                  : "text-[19px] sm:text-[21px] lg:text-[23px]"
               } font-black uppercase tracking-tight transition-all duration-300`}
               style={{
                 color: "#0D556E",
@@ -184,15 +184,15 @@ export function BiomaxNavbar() {
             <span
               className={`${
                 scrolled
-                  ? "text-[9.5px] sm:text-[10.5px] lg:text-[11.5px]"
-                  : "text-[11px] sm:text-[12.5px] md:text-[13.5px] lg:text-[14.5px]"
+                  ? "text-[8px] sm:text-[9px] lg:text-[9.5px]"
+                  : "text-[9px] sm:text-[10px] lg:text-[10.5px]"
               } font-black uppercase transition-all duration-300`}
               style={{
                 color: "#7B1C2A",
                 fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
                 letterSpacing: "0.22em",
                 lineHeight: 1.1,
-                marginTop: "3px",
+                marginTop: "2px",
               }}
             >
               CORPORATION
@@ -201,19 +201,26 @@ export function BiomaxNavbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-2 xl:gap-3.5 2xl:gap-5 shrink-0">
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3.5 shrink-0">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[13.5px] xl:text-[15px] 2xl:text-[16px] font-extrabold tracking-normal uppercase transition-colors relative py-1.5 px-2 xl:px-2.5 whitespace-nowrap cursor-pointer hover:text-[#1D906C]"
+                className="text-[12px] xl:text-[13px] 2xl:text-[13.5px] font-bold tracking-normal uppercase transition-colors relative py-1 px-1.5 xl:px-2 whitespace-nowrap cursor-pointer hover:text-[#1D906C]"
                 style={{
                   color: active ? COLORS.accent : COLORS.primary,
                 }}
               >
-                {item.label}
+                {item.shortLabel ? (
+                  <>
+                    <span className="inline xl:hidden">{item.shortLabel}</span>
+                    <span className="hidden xl:inline">{item.label}</span>
+                  </>
+                ) : (
+                  item.label
+                )}
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-300 ${
                     active ? "w-full" : "w-0 hover:w-full"
