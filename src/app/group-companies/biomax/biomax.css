@@ -15,6 +15,57 @@
   --biomax-footer-bg: #0D2B3D;    /* Deep Brand Navy Teal */
 }
 
+/* Enforce Modern Scientific Sans-Serif & Scaled Typography across BioMax */
+body.biomax-theme,
+.biomax-theme,
+body.biomax-theme *,
+.biomax-theme * {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+body.biomax-theme,
+.biomax-theme {
+  font-size: 16.5px;
+  line-height: 1.65;
+}
+
+body.biomax-theme p,
+.biomax-theme p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+body.biomax-theme h1,
+.biomax-theme h1 {
+  letter-spacing: -0.025em;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 5vw, 4.2rem) !important;
+  line-height: 1.1 !important;
+}
+
+body.biomax-theme h2,
+.biomax-theme h2 {
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 3.5vw, 2.75rem) !important;
+  line-height: 1.2 !important;
+}
+
+body.biomax-theme h3,
+.biomax-theme h3 {
+  letter-spacing: -0.015em;
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem) !important;
+  line-height: 1.25 !important;
+}
+
+body.biomax-theme h4,
+.biomax-theme h4 {
+  font-size: 1.25rem !important;
+  line-height: 1.35 !important;
+  font-weight: 800 !important;
+}
+
 body.biomax-theme,
 .biomax-theme,
 body.biomax-theme main,
@@ -58,6 +109,25 @@ body.biomax-theme li {
   -webkit-background-clip: unset !important;
 }
 
+/* Headings Typography */
+body.biomax-theme h1,
+.biomax-theme h1 {
+  letter-spacing: -0.025em;
+  font-weight: 900;
+}
+
+body.biomax-theme h2,
+.biomax-theme h2 {
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+body.biomax-theme h3,
+.biomax-theme h3 {
+  letter-spacing: -0.015em;
+  font-weight: 800;
+}
+
 /* Interactive Card & Button Hover Effects */
 .biomax-card-hover {
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -66,7 +136,7 @@ body.biomax-theme li {
 .biomax-card-hover:hover {
   transform: translateY(-5px) !important;
   border-color: #1D906C !important;
-  box-shadow: 0 14px 30px -8px rgba(22, 91, 126, 0.18), 0 0 0 1px rgba(29, 144, 108, 0.25) !important;
+  box-shadow: 0 16px 32px -8px rgba(22, 91, 126, 0.18), 0 0 0 1px rgba(29, 144, 108, 0.25) !important;
 }
 
 .biomax-counter-box {
@@ -77,6 +147,50 @@ body.biomax-theme li {
   border-color: #1D906C !important;
   transform: translateY(-4px) scale(1.02) !important;
   box-shadow: 0 10px 25px rgba(22, 91, 126, 0.16) !important;
+}
+
+/* Hero Slider High-Tech Animation & Glow */
+.biomax-slider-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px -12px rgba(22, 91, 126, 0.25), 0 0 0 1px rgba(208, 226, 238, 0.8);
+  transition: all 0.5s ease;
+}
+
+.biomax-slider-card:hover {
+  box-shadow: 0 25px 60px -10px rgba(29, 144, 108, 0.3), 0 0 0 1px rgba(29, 144, 108, 0.4);
+}
+
+.biomax-slide-image {
+  transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.biomax-slide-image.active {
+  transform: scale(1.06);
+}
+
+/* Trusted By Enhanced Cards */
+.biomax-trusted-card {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #ffffff;
+  border: 1px solid #D0E2EE;
+  position: relative;
+}
+
+.biomax-trusted-card:hover {
+  transform: translateY(-6px);
+  border-color: #1D906C;
+  box-shadow: 0 16px 36px -10px rgba(22, 91, 126, 0.15), 0 0 0 1px rgba(29, 144, 108, 0.25);
+}
+
+.biomax-trusted-card:hover .biomax-trusted-icon-wrap {
+  transform: scale(1.1) rotate(4deg);
+  background: linear-gradient(135deg, rgba(29, 144, 108, 0.15), rgba(22, 91, 126, 0.25));
+  border-color: #1D906C;
+}
+
+.biomax-trusted-icon-wrap {
+  transition: all 0.35s ease;
 }
 
 /* Footer rules */

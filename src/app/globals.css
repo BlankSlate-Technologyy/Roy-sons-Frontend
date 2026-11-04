@@ -1380,6 +1380,37 @@ body.swiss-homes-theme li {
 }
 
 /* ─────────────────────────────────────────────
+   BIO MAX CORPORATION MODERN SCIENTIFIC THEME
+───────────────────────────────────────────── */
+body.biomax-theme,
+.biomax-theme {
+  background-color: #ffffff !important;
+  color: #165B7E !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+body.biomax-theme main,
+body.biomax-theme section,
+body.biomax-theme header {
+  background-color: #ffffff !important;
+}
+
+body.biomax-theme h1,
+body.biomax-theme h2,
+body.biomax-theme h3,
+body.biomax-theme h4,
+body.biomax-theme h5,
+body.biomax-theme h6,
+body.biomax-theme p,
+body.biomax-theme a,
+body.biomax-theme span,
+body.biomax-theme li,
+body.biomax-theme button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  text-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
    RESET FOR ALL LIGHT-THEME SUBSIDIARIES
    Allows inline styles and classes to work properly
 ───────────────────────────────────────────── */

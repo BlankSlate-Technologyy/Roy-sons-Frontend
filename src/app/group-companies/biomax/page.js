@@ -9,11 +9,12 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { BiomaxNavbar, BiomaxFooter, HeroPrimaryButton, HeroOutlineButton } from "./components/BiomaxShared";
 import "./biomax.css";
 import {
-  ChevronRight, ChevronDown, ArrowRight,
+  ChevronRight, ChevronLeft, ChevronDown, ArrowRight,
   FlaskConical, Microscope, HeartPulse, Building2, GraduationCap, Pill, Landmark,
   Dna, TestTube, Wrench, Truck, ShieldCheck, Target, Eye, Sparkles,
   CheckCircle2, Users, Gauge, Package, ClipboardCheck, Recycle, Settings,
   Phone, Mail, MapPin, Star, Facebook, Linkedin, Twitter, Youtube, Plus, Minus,
+  Activity, Award, Clock
 } from "lucide-react";
 
 // ─── Design Tokens ──────────────────────────────────────────────────────────
@@ -51,6 +52,115 @@ const TRUSTED_BY = [
   { icon: GraduationCap,    label: "Universities &\nAcademic Institutions" },
   { icon: Pill,             label: "Pharmaceutical\nCompanies" },
   { icon: Landmark,         label: "Government Health\nDepartments" },
+];
+
+
+const HERO_SLIDES = [
+  {
+    id: 1,
+    image: "/biomax_hero_slide_1.jpg",
+    alt: "BioMax Automated Genomics & DNA Sequencing Platforms",
+    badge: "Genomics & Automated Sequencing",
+    title: "Automated Robotic Pipetting Workstations",
+    desc: "Automated liquid handling with sub-microliter precision for genomics and molecular diagnostics.",
+    specBadge: "Precision Verified",
+    specValue: "99.98% Robotic Precision",
+    icon: Dna,
+    tabLabel: "Genomics",
+  },
+  {
+    id: 2,
+    image: "/biomax_hero_slide_2.jpg",
+    alt: "BioMax Clinical Pathology & Diagnostic Analyzers",
+    badge: "Clinical Pathology Systems",
+    title: "Automated Diagnostic Analyzers & Spectrophotometry",
+    desc: "Continuous multi-channel pathology testing for hospital and commercial diagnostic hubs.",
+    specBadge: "Clinical Standard",
+    specValue: "ISO 13485 • Rapid Turnaround",
+    icon: HeartPulse,
+    tabLabel: "Pathology",
+  },
+  {
+    id: 3,
+    image: "/biomax_hero_slide_3.jpg",
+    alt: "BioMax Molecular Biology & Cellular Imaging",
+    badge: "Advanced Optics & Imaging",
+    title: "Confocal Fluorescence Microscopy Systems",
+    desc: "Sub-micron optical resolution and microfluidic testing for university research laboratories.",
+    specBadge: "Advanced Optics",
+    specValue: "4K Laser Confocal Optics",
+    icon: Microscope,
+    tabLabel: "Imaging",
+  },
+  {
+    id: 4,
+    image: "/biomax_products_hero_ai.jpg",
+    alt: "BioMax Turnkey Scientific Laboratory Solutions",
+    badge: "Turnkey Lab Infrastructure",
+    title: "Integrated Laboratory Instrumentation & Cleanrooms",
+    desc: "End-to-end laboratory design, sterile cleanroom systems, and analytical benches.",
+    specBadge: "Turnkey Excellence",
+    specValue: "150+ Systems • Full Deployment",
+    icon: FlaskConical,
+    tabLabel: "Turnkey",
+  },
+];
+
+const TRUSTED_SECTORS = [
+  {
+    icon: FlaskConical,
+    title: "Research Laboratories",
+    badge: "50+ R&D Centers",
+    tagline: "Genomics, Proteomics & Materials",
+    description: "Equipping molecular biology and analytical chemistry labs with high-precision instrumentation and sterile testing workflows.",
+    stats: "Turnkey R&D Setup",
+    metric: "50+ Active Labs",
+  },
+  {
+    icon: HeartPulse,
+    title: "Diagnostic Centers",
+    badge: "120+ Diagnostic Labs",
+    tagline: "Hematology & Biochemistry",
+    description: "Automated pathology analyzers delivering rapid turnaround with clinical precision and high-throughput reliability.",
+    stats: "Rapid Precision",
+    metric: "120+ Diagnostic Units",
+  },
+  {
+    icon: Building2,
+    title: "Hospitals & Clinical Labs",
+    badge: "80+ Hospital Systems",
+    tagline: "Point-of-Care & Critical Care",
+    description: "High-uptime, 24/7 reliable diagnostic equipment supporting emergency, surgical, and critical patient workflows.",
+    stats: "24/7 Clinical Grade",
+    metric: "80+ Hospital Systems",
+  },
+  {
+    icon: GraduationCap,
+    title: "Universities & Academia",
+    badge: "45+ Universities",
+    tagline: "Teaching & Student Benches",
+    description: "Specialized workstations, spectrophotometers, and scientific instruments supporting life science education and faculty research.",
+    stats: "Academic Excellence",
+    metric: "45+ Campuses",
+  },
+  {
+    icon: Pill,
+    title: "Pharmaceutical Companies",
+    badge: "35+ Pharma Plants",
+    tagline: "Quality Control & Drug Formulation",
+    description: "GMP and GLP compliant testing platforms for rigorous pharmaceutical batch assurance and sterility validation.",
+    stats: "GMP/GLP Compliant",
+    metric: "35+ Pharma Hubs",
+  },
+  {
+    icon: Landmark,
+    title: "Government Health Bodies",
+    badge: "15+ Public Health Hubs",
+    tagline: "Surveillance & Disease Control",
+    description: "National diagnostic pipelines, epidemiology centers, and reference laboratory networks for public health safety.",
+    stats: "National Quality",
+    metric: "15+ Public Agencies",
+  },
 ];
 
 const CORE_VALUES = [
@@ -281,87 +391,245 @@ function scrollToSection(e, href) {
 const BIOMAX_SECTION_IDS = ["home", "about", "solutions", "rnd", "quality", "industries", "contact"];
 
 function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? HERO_SLIDES.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  const slide = HERO_SLIDES[currentSlide];
+  const SlideIcon = slide.icon;
+
   return (
     <section
       id="home"
-      className="section-animate relative py-20 lg:py-28 px-6 overflow-hidden bg-white border-b"
-      style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
+      className="section-animate relative min-h-[660px] sm:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex items-center overflow-hidden border-b"
+      style={{ borderColor: COLORS.border }}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="mx-auto max-w-screen-xl relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+      {/* ── BACKGROUND SLIDER IMAGES ── */}
+      <div className="absolute inset-0 z-0 select-none overflow-hidden">
+        {HERO_SLIDES.map((item, idx) => (
+          <div
+            key={item.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+            }`}
+          >
+            <Image
+              src={item.image}
+              alt={item.alt}
+              fill
+              priority={idx === 0}
+              className="object-cover object-center transform transition-transform duration-7000 scale-105"
+              sizes="100vw"
+            />
+          </div>
+        ))}
+
+        {/* High-Contrast Scientific Gradient Overlay: Ensures crystal clear typography */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: `linear-gradient(
+              110deg,
+              rgba(13, 43, 61, 0.96) 0%,
+              rgba(13, 58, 82, 0.90) 45%,
+              rgba(13, 58, 82, 0.75) 75%,
+              rgba(29, 144, 108, 0.40) 100%
+            )`,
+          }}
+        />
+
+        {/* High-tech radial glow */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse at 85% 45%, rgba(46, 230, 173, 0.22) 0%, transparent 65%)",
+          }}
+        />
+      </div>
+
+      {/* ── CONTENT OVERLAY DIRECTLY ON TOP OF IMAGE ── */}
+      <div className="mx-auto max-w-screen-xl relative z-20 w-full px-6 py-20 lg:py-28">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: Hero Content */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-8 space-y-7">
             <div
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[12px] font-extrabold uppercase tracking-wider border bg-white shadow-sm"
-              style={{ color: COLORS.accent, borderColor: COLORS.border }}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[13px] sm:text-[14px] font-black uppercase tracking-wider backdrop-blur-md shadow-lg border"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                borderColor: "rgba(255, 255, 255, 0.35)",
+                color: "#ffffff",
+              }}
             >
-              <ShieldCheck size={14} style={{ color: COLORS.accent }} />
+              <ShieldCheck size={16} className="text-[#2ee6ad]" />
               <span>Advancing Laboratory Science &amp; Biotechnology</span>
+              <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-[50px] font-black leading-[1.1] tracking-tight">
-              <span style={{ color: COLORS.primary }}>
-                BIOTECHNOLOGY &amp;
-              </span>
-              <br />
-              <span style={{ color: COLORS.accent }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-[58px] xl:text-[66px] font-black leading-[1.08] tracking-tight text-white drop-shadow-md">
+              BIOTECHNOLOGY &amp; <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] via-[#65e8b5] to-[#ffffff]">
                 LABORATORY SOLUTIONS
               </span>
             </h1>
 
-            <p
-              className="text-[16px] sm:text-[17.5px] font-medium leading-relaxed max-w-xl"
-              style={{ color: COLORS.muted }}
-            >
+            <p className="text-[17px] sm:text-[19px] lg:text-[21px] font-medium leading-relaxed max-w-2xl text-slate-100/95 drop-shadow-xs">
               Supplying advanced scientific equipment, high-precision laboratory systems, and biotechnology solutions for research, healthcare, and diagnostic institutions.
             </p>
 
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap gap-5 pt-2">
               <HeroPrimaryButton href="/group-companies/biomax/solutions">
                 <span>Explore Products</span>
-                <ArrowRight size={15} />
+                <ArrowRight size={18} />
               </HeroPrimaryButton>
               <HeroOutlineButton href="/group-companies/biomax/contact">
                 <span>Contact Us</span>
-                <ArrowRight size={15} />
+                <ArrowRight size={18} />
               </HeroOutlineButton>
+            </div>
+
+            {/* Quick Hero Highlights Bar */}
+            <div
+              className="pt-8 border-t grid grid-cols-2 sm:grid-cols-4 gap-4"
+              style={{ borderColor: "rgba(255, 255, 255, 0.22)" }}
+            >
+              <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+                <p className="text-2xl sm:text-3xl font-black text-white">150+</p>
+                <p className="text-[13px] font-bold text-slate-200 mt-0.5">Lab Products</p>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+                <p className="text-2xl sm:text-3xl font-black text-[#2ee6ad]">99.8%</p>
+                <p className="text-[13px] font-bold text-slate-200 mt-0.5">Precision Benchmark</p>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+                <p className="text-2xl sm:text-3xl font-black text-white">300+</p>
+                <p className="text-[13px] font-bold text-slate-200 mt-0.5">Partner Labs</p>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
+                <p className="text-2xl sm:text-3xl font-black text-[#2ee6ad]">24/7</p>
+                <p className="text-[13px] font-bold text-slate-200 mt-0.5">Field Support</p>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: High-Tech Lab Showcase Card */}
-          <div className="lg:col-span-5 relative">
+          {/* Right Column: Glassmorphic Interactive Slide Control Panel */}
+          <div className="lg:col-span-4 space-y-4">
             <div
-              className="relative w-full h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border-2"
-              style={{ borderColor: COLORS.border }}
+              className="p-6 sm:p-7 rounded-3xl backdrop-blur-xl border shadow-2xl transition-all duration-300 relative overflow-hidden"
+              style={{
+                backgroundColor: "rgba(13, 43, 61, 0.80)",
+                borderColor: "rgba(255, 255, 255, 0.25)",
+              }}
             >
-              <Image
-                src="/biomax_products_hero_ai.jpg"
-                alt="BioMax Advanced Laboratory & Scientific Equipment"
-                fill
-                priority
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, 500px"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: "linear-gradient(to top, rgba(13, 58, 82, 0.45) 0%, transparent 60%)",
-                }}
-              />
-
-              {/* Floating Stat Pill on Image */}
-              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border shadow-lg flex items-center justify-between" style={{ borderColor: COLORS.border }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}15` }}>
-                    <Microscope size={20} style={{ color: COLORS.primary }} />
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: COLORS.accent }}>Precision Verified</p>
-                    <p className="text-[13px] font-black" style={{ color: COLORS.primary }}>100+ Scientific Systems</p>
-                  </div>
+              {/* Header inside Card */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#2ee6ad] animate-pulse" />
+                  <span className="text-[12px] font-black uppercase tracking-widest text-[#2ee6ad]">
+                    {slide.badge}
+                  </span>
                 </div>
-                <div className="w-2.5 h-2.5 rounded-full bg-[#1D906C] animate-pulse" />
+                <span
+                  className="px-2.5 py-1 rounded-full text-[11px] font-black tracking-widest text-white border border-white/20"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+                >
+                  0{currentSlide + 1} / 0{HERO_SLIDES.length}
+                </span>
               </div>
+
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 bg-white/15 border border-white/20 text-[#2ee6ad]">
+                <SlideIcon size={28} />
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-black text-white mb-2 leading-tight">
+                {slide.title}
+              </h3>
+
+              <p className="text-[14.5px] sm:text-[15.5px] text-slate-200 leading-relaxed mb-5 font-medium">
+                {slide.desc}
+              </p>
+
+              {/* Spec Pill */}
+              <div className="p-3.5 rounded-xl bg-white/10 border border-white/15 flex items-center justify-between mb-6">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-[#2ee6ad]">{slide.specBadge}</p>
+                  <p className="text-[14px] font-black text-white">{slide.specValue}</p>
+                </div>
+                <CheckCircle2 size={20} className="text-[#2ee6ad]" />
+              </div>
+
+              {/* Prev / Next & Progress Indicators */}
+              <div className="flex items-center justify-between pt-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={prevSlide}
+                    className="w-11 h-11 rounded-full bg-white/15 hover:bg-[#1D906C] text-white border border-white/25 flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-110 active:scale-95"
+                    aria-label="Previous Slide"
+                  >
+                    <ChevronLeft size={22} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={nextSlide}
+                    className="w-11 h-11 rounded-full bg-white/15 hover:bg-[#1D906C] text-white border border-white/25 flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-110 active:scale-95"
+                    aria-label="Next Slide"
+                  >
+                    <ChevronRight size={22} />
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-1.5">
+                  {HERO_SLIDES.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                        idx === currentSlide ? "w-8 bg-[#2ee6ad]" : "w-2 bg-white/40 hover:bg-white/70"
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 4 Quick Slide Switch Buttons */}
+            <div className="grid grid-cols-4 gap-2">
+              {HERO_SLIDES.map((item, idx) => {
+                const isActive = idx === currentSlide;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`py-2.5 px-1 rounded-xl text-center transition-all duration-200 cursor-pointer border backdrop-blur-md ${
+                      isActive
+                        ? "bg-[#2ee6ad] text-[#0D3A52] font-black border-[#2ee6ad] shadow-lg scale-[1.03]"
+                        : "bg-white/10 text-white/90 font-bold border-white/15 hover:bg-white/20"
+                    }`}
+                  >
+                    <span className="block text-[12.5px] truncate">{item.tabLabel}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -372,35 +640,132 @@ function HeroSection() {
 
 function TrustedBySection() {
   return (
-    <section className="section-animate py-10 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="section-animate py-14 lg:py-18 px-6 bg-white border-b" style={{ borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-widest border bg-white mb-3 shadow-xs"
+            style={{ color: COLORS.accent, borderColor: COLORS.border }}
+          >
+            <ShieldCheck size={14} style={{ color: COLORS.accent }} />
+            <span>Trusted Institutional Ecosystem</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight" style={{ color: COLORS.primary }}>
+            Powering High-Impact Laboratories Across 6 Core Sectors
+          </h2>
+          <p className="text-[14px] sm:text-[15px] font-medium mt-3 leading-relaxed" style={{ color: COLORS.muted }}>
+            Bio Max Corporation instruments, reagents, and engineering workflows are deployed across Pakistan’s leading healthcare networks, accredited research institutes, and clinical laboratories.
+          </p>
+        </div>
+
+        {/* 6 Attractive Sector Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {TRUSTED_SECTORS.map((sector) => {
+            const Icon = sector.icon;
+            return (
+              <div
+                key={sector.title}
+                className="group relative p-6 rounded-2xl border bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-pointer flex flex-col justify-between overflow-hidden"
+                style={{ borderColor: COLORS.border }}
+              >
+                {/* Top Glowing Gradient Accent line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#1D906C] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
+
+                <div>
+                  {/* Top Bar: Icon & Pill Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:shadow-md"
+                      style={{
+                        backgroundColor: "rgba(22, 91, 126, 0.08)",
+                        border: "1px solid rgba(22, 91, 126, 0.15)",
+                      }}
+                    >
+                      <Icon size={26} style={{ color: COLORS.primary }} className="group-hover:text-[#1D906C] transition-colors" />
+                    </div>
+
+                    <span
+                      className="text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider border shadow-xs"
+                      style={{
+                        backgroundColor: "#f0fdf7",
+                        borderColor: "#c6f1dc",
+                        color: COLORS.accent,
+                      }}
+                    >
+                      {sector.badge}
+                    </span>
+                  </div>
+
+                  {/* Title & Tagline */}
+                  <h3 className="text-[17px] font-black mb-1 group-hover:text-[#1D906C] transition-colors" style={{ color: COLORS.primary }}>
+                    {sector.title}
+                  </h3>
+                  <p className="text-[12px] font-bold uppercase tracking-wider mb-2.5 text-[#1D906C]">
+                    {sector.tagline}
+                  </p>
+                  <p className="text-[13px] leading-relaxed font-medium" style={{ color: COLORS.muted }}>
+                    {sector.description}
+                  </p>
+                </div>
+
+                {/* Bottom Spec Footer */}
+                <div
+                  className="mt-5 pt-3.5 border-t flex items-center justify-between text-[11.5px] font-bold"
+                  style={{ borderColor: "#edf4f8", color: COLORS.primary }}
+                >
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#1D906C]" />
+                    {sector.stats}
+                  </span>
+                  <span className="text-[#1D906C] group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                    Explore Solutions →
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom Institutional Trust Metrics Ribbon */}
         <div
-          className="rounded-xl border p-8 bg-white"
+          className="mt-10 p-6 sm:p-7 rounded-2xl border bg-gradient-to-r from-[#f8fcfa] via-white to-[#f4f9fc] shadow-sm flex flex-wrap items-center justify-around gap-6 text-center"
           style={{ borderColor: COLORS.border }}
         >
-          <p
-            className="text-center text-[11px] font-black tracking-[0.2em] uppercase mb-7"
-            style={{ color: COLORS.accent }}
-          >
-            Trusted By
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {TRUSTED_BY.map(({ icon: Icon, label }) => (
-              <div
-                key={label}
-                className="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all duration-300 cursor-pointer group hover:shadow-sm hover:border-[#1D906C] border border-transparent bg-white"
-              >
-                <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300"
-                  style={{ backgroundColor: `${COLORS.primary}12` }}
-                >
-                  <Icon size={26} style={{ color: COLORS.primary }} />
-                </div>
-                <span className="text-[13px] font-bold leading-snug whitespace-pre-line" style={{ color: COLORS.ink }}>
-                  {label}
-                </span>
-              </div>
-            ))}
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#165B7E]/10 text-[#165B7E]">
+              <CheckCircle2 size={20} />
+            </div>
+            <div className="text-left">
+              <p className="text-[17px] font-black text-[#165B7E]">300+ Deployments</p>
+              <p className="text-[11.5px] font-bold text-[#1F4E68]">Across Major Clinical &amp; R&amp;D Hubs</p>
+            </div>
+          </div>
+
+          <div className="hidden sm:block w-px h-10 bg-slate-200" />
+
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#1D906C]/10 text-[#1D906C]">
+              <ShieldCheck size={20} />
+            </div>
+            <div className="text-left">
+              <p className="text-[17px] font-black text-[#1D906C]">ISO 17025 &amp; 13485</p>
+              <p className="text-[11.5px] font-bold text-[#1F4E68]">Certified Quality &amp; Calibration Benchmarks</p>
+            </div>
+          </div>
+
+          <div className="hidden sm:block w-px h-10 bg-slate-200" />
+
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#165B7E]/10 text-[#165B7E]">
+              <Settings size={20} />
+            </div>
+            <div className="text-left">
+              <p className="text-[17px] font-black text-[#165B7E]">24/7 Field Support</p>
+              <p className="text-[11.5px] font-bold text-[#1F4E68]">On-Site Calibration &amp; Engineering Teams</p>
+            </div>
           </div>
         </div>
       </div>
@@ -424,16 +789,16 @@ function AboutSection() {
         {/* Main Header & Story */}
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
-            <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
+            <span className="text-[13px] sm:text-[14px] font-extrabold uppercase tracking-widest block mb-2.5" style={{ color: COLORS.primary }}>
               02 — ABOUT US
             </span>
             <h2 className="text-2xl lg:text-3xl font-extrabold mb-4" style={{ color: COLORS.accent }}>
               About Bio Max Corporation
             </h2>
-            <p className="text-[15px] font-bold mb-4" style={{ color: COLORS.primary }}>
+            <p className="text-[18px] sm:text-[20px] font-extrabold mb-4" style={{ color: COLORS.primary }}>
               Empowering Laboratories with Advanced Scientific Technology
             </p>
-            <div className="space-y-3 text-[14px] leading-relaxed" style={{ color: COLORS.ink }}>
+            <div className="space-y-4 text-[16px] sm:text-[17.5px] leading-relaxed" style={{ color: COLORS.ink }}>
               <p>
                 Bio Max Corporation is a biotechnology and laboratory solutions company focused on providing reliable scientific equipment, laboratory systems, and technical solutions to research, healthcare, diagnostic, educational, and industrial institutions.
               </p>
@@ -556,8 +921,8 @@ function SolutionsSection() {
                 <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style={{ backgroundColor: `${COLORS.primary}12` }}>
                   <Icon size={26} style={{ color: COLORS.primary }} />
                 </div>
-                <h4 className="text-[13.5px] font-extrabold mb-1.5 group-hover:text-[#1D906C] transition-colors" style={{ color: COLORS.primary }}>{title}</h4>
-                <p className="text-[11.5px] leading-relaxed mb-3" style={{ color: COLORS.muted }}>{desc}</p>
+                <h4 className="text-[16px] sm:text-[17px] font-black mb-2 group-hover:text-[#1D906C] transition-colors" style={{ color: COLORS.primary }}>{title}</h4>
+                <p className="text-[13.5px] sm:text-[14.5px] leading-relaxed mb-4" style={{ color: COLORS.muted }}>{desc}</p>
               </div>
               <div className="pt-2 text-[11px] font-extrabold text-[#1D906C] flex items-center gap-1">
                 <span>View Details</span>
@@ -601,14 +966,14 @@ function WhyIndustriesProcessSection() {
         {/* Why Choose Us */}
         <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
           <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>WHY CHOOSE US</span>
-          <h3 className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>Your Trusted Partner in Science</h3>
+          <h3 className="text-[23px] sm:text-[25px] font-black mb-6" style={{ color: COLORS.accent }}>Your Trusted Partner in Science</h3>
           <div className="space-y-5">
             {WHY_CHOOSE.map(({ title, desc }) => (
               <div key={title} className="flex gap-3">
                 <CheckCircle2 size={22} className="flex-shrink-0 mt-0.5" style={{ color: COLORS.accent }} />
                 <div>
-                  <p className="text-[14px] font-bold" style={{ color: COLORS.ink }}>{title}</p>
-                  <p className="text-[12.5px]" style={{ color: COLORS.muted }}>{desc}</p>
+                  <p className="text-[16px] font-black" style={{ color: COLORS.ink }}>{title}</p>
+                  <p className="text-[14.5px] leading-relaxed" style={{ color: COLORS.muted }}>{desc}</p>
                 </div>
               </div>
             ))}
@@ -619,7 +984,7 @@ function WhyIndustriesProcessSection() {
         <div className="p-8 rounded-xl border shadow-md flex flex-col justify-between" style={{ borderColor: COLORS.border }}>
           <div>
             <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>INDUSTRIES WE SERVE</span>
-            <h3 id="industries" className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>Sectors We Support</h3>
+            <h3 id="industries" className="text-[23px] sm:text-[25px] font-black mb-6" style={{ color: COLORS.accent }}>Sectors We Support</h3>
             <div className="space-y-2.5 mb-6">
               {INDUSTRIES.map(({ icon: Icon, label, href }) => (
                 <Link
@@ -654,7 +1019,7 @@ function WhyIndustriesProcessSection() {
         {/* Our Process */}
         <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
           <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>OUR PROCESS</span>
-          <h3 className="text-[20px] font-extrabold mb-6" style={{ color: COLORS.accent }}>How We Deliver Excellence</h3>
+          <h3 className="text-[23px] sm:text-[25px] font-black mb-6" style={{ color: COLORS.accent }}>How We Deliver Excellence</h3>
           <div className="space-y-5">
             {PROCESS_STEPS.map(({ step, title, desc }) => (
               <div key={step} className="flex gap-4">
@@ -685,7 +1050,7 @@ function CommitmentStatsSection() {
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
             OUR COMMITMENT
           </span>
-          <h3 className="text-2xl font-extrabold mb-4" style={{ color: COLORS.accent }}>Driving Scientific Progress</h3>
+          <h3 className="text-3xl sm:text-4xl font-black mb-4" style={{ color: COLORS.accent }}>Driving Scientific Progress</h3>
           <p className="text-[13.5px] leading-relaxed" style={{ color: COLORS.muted }}>
             We believe reliable laboratory infrastructure is the foundation of scientific discovery. Our
             commitment goes beyond supplying equipment — we partner with institutions to strengthen research
@@ -717,7 +1082,7 @@ function RndQualitySection() {
             <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.accent }}>
               RESEARCH &amp; DEVELOPMENT
             </span>
-            <h3 className="text-xl font-extrabold mb-3" style={{ color: COLORS.primary }}>Advancing Laboratory Science</h3>
+            <h3 className="text-2xl sm:text-3xl font-black mb-3" style={{ color: COLORS.primary }}>Advancing Laboratory Science</h3>
             <p className="text-[13.5px] leading-relaxed mb-6" style={{ color: COLORS.muted }}>
               Our R&amp;D team focuses on identifying emerging laboratory technologies and developing practical solutions for modern scientific and diagnostic environments.
             </p>
@@ -737,7 +1102,7 @@ function RndQualitySection() {
             <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
               QUALITY ASSURANCE
             </span>
-            <h3 className="text-xl font-extrabold mb-3" style={{ color: COLORS.accent }}>Quality You Can Trust</h3>
+            <h3 className="text-2xl sm:text-3xl font-black mb-3" style={{ color: COLORS.accent }}>Quality You Can Trust</h3>
             <p className="text-[13.5px] leading-relaxed mb-5" style={{ color: COLORS.muted }}>
               Our quality-focused approach extends from product selection and sourcing to technical support and customer service.
             </p>
@@ -813,8 +1178,8 @@ function TestimonialsFaqSection() {
                         {name.charAt(0)}
                       </div>
                       <div>
-                        <p className="text-[13px] font-extrabold" style={{ color: COLORS.primary }}>{name}</p>
-                        <p className="text-[11.5px]" style={{ color: COLORS.muted }}>{role}</p>
+                        <p className="text-[16px] font-black" style={{ color: COLORS.primary }}>{name}</p>
+                        <p className="text-[13.5px] font-bold" style={{ color: COLORS.muted }}>{role}</p>
                       </div>
                     </div>
                   </div>
@@ -885,7 +1250,7 @@ function TestimonialsFaqSection() {
                   </button>
                   <div className={`faq-body${isOpen ? " open" : ""}`}>
                     <div>
-                      <p className="px-5 pb-4 text-[12.5px] leading-relaxed" style={{ color: COLORS.muted }}>{a}</p>
+                      <p className="px-5 pb-4 text-[15px] sm:text-[16px] leading-relaxed" style={{ color: COLORS.muted }}>{a}</p>
                     </div>
                   </div>
                 </div>
@@ -943,7 +1308,7 @@ function ContactSection() {
       <div className="mx-auto max-w-screen-xl">
         <div className="text-center mb-12">
           <span className="text-[13px] font-extrabold uppercase tracking-widest" style={{ color: COLORS.primary }}>GET IN TOUCH</span>
-          <h2 className="text-3xl font-black mt-1 mb-3" style={{ color: COLORS.accent }}>Contact BIO MAX</h2>
+          <h2 className="text-4xl sm:text-5xl font-black mt-1 mb-4" style={{ color: COLORS.accent }}>Contact BIO MAX</h2>
           <p className="text-[14px] max-w-xl mx-auto" style={{ color: COLORS.muted }}>
             Have a question about our laboratory products, diagnostic equipment, or services? Our team is ready to assist you.
           </p>
@@ -966,8 +1331,8 @@ function ContactSection() {
                   <Icon size={22} style={{ color: COLORS.primary }} />
                 </div>
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-wide" style={{ color: COLORS.primary }}>{label}</p>
-                  <p className="text-[13px] font-semibold mt-0.5 leading-snug" style={{ color: COLORS.ink }}>{value}</p>
+                  <p className="text-[13px] font-extrabold uppercase tracking-wide" style={{ color: COLORS.primary }}>{label}</p>
+                  <p className="text-[15px] font-bold mt-1 leading-snug" style={{ color: COLORS.ink }}>{value}</p>
                 </div>
               </div>
             ))}

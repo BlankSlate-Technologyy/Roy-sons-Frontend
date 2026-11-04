@@ -4,7 +4,7 @@ import CompanyContact from "@/lib/models/CompanyContact";
 
 export async function POST(req) {
   try {
-    await connectDB();
+    const db = await connectDB();
     const body = await req.json();
     const { firstName, lastName, fullName, email, phone, service, subject, message, ...rest } = body;
 
@@ -16,16 +16,19 @@ export async function POST(req) {
       );
     }
 
-    const contactDoc = await CompanyContact.create({
-      companySlug: "biomax",
-      companyName: "BIO MAX Health & Biotechnology",
-      fullName: applicantName,
-      email,
-      phone: phone || "",
-      subject: service || subject || "BioMax Inquiry",
-      message,
-      additionalFields: rest,
-    });
+    let contactDoc = null;
+    if (db) {
+      contactDoc = await CompanyContact.create({
+        companySlug: "biomax",
+        companyName: "BIO MAX Corporation",
+        fullName: applicantName,
+        email,
+        phone: phone || "",
+        subject: service || subject || "BioMax Inquiry",
+        message,
+        additionalFields: rest,
+      });
+    }
 
     return NextResponse.json(
       {

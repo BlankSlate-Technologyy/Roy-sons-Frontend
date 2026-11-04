@@ -74,14 +74,14 @@ export function HeroPrimaryButton({ href, children, className = "" }) {
   return (
     <Link
       href={href}
-      className={`px-6 py-3 rounded-lg text-[13.5px] font-bold flex items-center gap-2 shadow-md transition-all duration-300 cursor-pointer text-white hover:text-white ${className}`}
+      className={`px-8 py-4 rounded-xl text-[15px] sm:text-[16px] font-black flex items-center gap-2.5 shadow-lg transition-all duration-300 cursor-pointer text-white hover:text-white ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
         backgroundColor: isHovered ? COLORS.accent : COLORS.primary,
         color: "#FFFFFF",
         transform: isHovered ? "translateY(-2px)" : "none",
-        boxShadow: isHovered ? "0 8px 20px rgba(22,91,126,0.35)" : "0 3px 10px rgba(22,91,126,0.2)",
+        boxShadow: isHovered ? "0 10px 25px rgba(22,91,126,0.4)" : "0 4px 14px rgba(22,91,126,0.25)",
       }}
     >
       <span className="text-white flex items-center gap-2" style={{ color: "#FFFFFF" }}>{children}</span>
@@ -95,7 +95,7 @@ export function HeroOutlineButton({ href, children, className = "" }) {
   return (
     <Link
       href={href}
-      className={`px-6 py-3 rounded-lg text-[13.5px] font-bold border-2 bg-white flex items-center gap-2 transition-all duration-300 cursor-pointer ${className}`}
+      className={`px-8 py-4 rounded-xl text-[15px] sm:text-[16px] font-black border-2 bg-white flex items-center gap-2.5 transition-all duration-300 cursor-pointer ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -103,7 +103,7 @@ export function HeroOutlineButton({ href, children, className = "" }) {
         backgroundColor: isHovered ? COLORS.primary : "#FFFFFF",
         color: isHovered ? "#FFFFFF" : COLORS.accent,
         transform: isHovered ? "translateY(-2px)" : "none",
-        boxShadow: isHovered ? "0 8px 20px rgba(22,91,126,0.2)" : "none",
+        boxShadow: isHovered ? "0 10px 25px rgba(22,91,126,0.25)" : "none",
       }}
     >
       <span className="flex items-center gap-2" style={{ color: isHovered ? "#FFFFFF" : COLORS.accent }}>{children}</span>
@@ -142,36 +142,73 @@ export function BiomaxNavbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 w-full bg-white/95 backdrop-blur-md ${
-        scrolled ? "shadow-md py-1.5 sm:py-2" : "py-2 sm:py-2.5"
+        scrolled ? "shadow-md py-2 sm:py-2.5" : "py-3 sm:py-4 lg:py-4.5"
       }`}
       style={{
         borderBottom: `1px solid ${COLORS.border}`,
       }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full flex items-center justify-between gap-3 lg:gap-5">
-        {/* Brand Logo - Enlarged, Prominent & High Resolution */}
-        <Link href="/group-companies/biomax" className="flex items-center gap-2.5 select-none shrink-0 py-1">
-          <div className="relative flex items-center">
+        {/* Brand Logo - Cropped Crisp Icon + Vector Code Typography */}
+        <Link href="/group-companies/biomax" className="flex items-center gap-2.5 sm:gap-3.5 select-none shrink-0 py-1 group">
+          <div className="relative flex items-center justify-center shrink-0">
             <Image
-              src="/logo.png"
-              alt="BIO MAX CORPORATION Logo"
-              width={260}
-              height={75}
-              className="h-11 sm:h-12 lg:h-13 xl:h-14 w-auto object-contain"
+              src="/biomax_logo_icon.png"
+              alt="BIO MAX Logo Icon"
+              width={76}
+              height={76}
+              className={`${
+                scrolled
+                  ? "w-11 h-11 sm:w-12 sm:h-12 lg:w-13 lg:h-13"
+                  : "w-13 h-13 sm:w-15 sm:h-15 md:w-16 md:h-16 lg:w-[68px] lg:h-[68px]"
+              } object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-xs`}
               priority
             />
+          </div>
+          <div className="flex flex-col justify-center leading-none select-none">
+            <span
+              className={`${
+                scrolled
+                  ? "text-[20px] sm:text-[22px] lg:text-[24px]"
+                  : "text-[22px] sm:text-[25px] md:text-[28px] lg:text-[31px]"
+              } font-black uppercase tracking-tight transition-all duration-300`}
+              style={{
+                color: "#0D556E",
+                fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                lineHeight: 1.02,
+                letterSpacing: "-0.015em",
+              }}
+            >
+              BIO MAX
+            </span>
+            <span
+              className={`${
+                scrolled
+                  ? "text-[9.5px] sm:text-[10.5px] lg:text-[11.5px]"
+                  : "text-[11px] sm:text-[12.5px] md:text-[13.5px] lg:text-[14.5px]"
+              } font-black uppercase transition-all duration-300`}
+              style={{
+                color: "#7B1C2A",
+                fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+                letterSpacing: "0.22em",
+                lineHeight: 1.1,
+                marginTop: "3px",
+              }}
+            >
+              CORPORATION
+            </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1.5 xl:gap-3 2xl:gap-4 shrink-0">
+        <nav className="hidden lg:flex items-center gap-2 xl:gap-3.5 2xl:gap-5 shrink-0">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-[12px] xl:text-[13.5px] 2xl:text-[14.5px] font-bold tracking-normal uppercase transition-colors relative py-1 px-1.5 xl:px-2 whitespace-nowrap cursor-pointer hover:text-[#1D906C]"
+                className="text-[13.5px] xl:text-[15px] 2xl:text-[16px] font-extrabold tracking-normal uppercase transition-colors relative py-1.5 px-2 xl:px-2.5 whitespace-nowrap cursor-pointer hover:text-[#1D906C]"
                 style={{
                   color: active ? COLORS.accent : COLORS.primary,
                 }}
@@ -252,20 +289,20 @@ export function BiomaxFooter() {
         {/* Brand Description Column */}
         <div className="lg:col-span-3 max-w-xs">
           <Link href="/group-companies/biomax" className="flex items-center gap-3.5 mb-5 select-none group">
-            <div className="relative w-12 h-12 flex items-center justify-center flex-shrink-0">
+            <div className="relative w-13 h-13 flex items-center justify-center flex-shrink-0">
               <Image
-                src="/logos/22.png"
+                src="/biomax_logo_icon.png"
                 alt="BIO MAX CORPORATION Logo"
-                width={48}
-                height={48}
+                width={52}
+                height={52}
                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-md"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="text-lg sm:text-xl font-black uppercase tracking-wider text-white leading-tight">
+            <div className="flex flex-col justify-center leading-none">
+              <span className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white leading-tight">
                 BIO MAX
               </span>
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase text-[#1D906C] leading-none mt-1">
+              <span className="text-[11px] sm:text-[12px] font-black tracking-[0.22em] uppercase text-[#1D906C] leading-none mt-1">
                 CORPORATION
               </span>
             </div>
