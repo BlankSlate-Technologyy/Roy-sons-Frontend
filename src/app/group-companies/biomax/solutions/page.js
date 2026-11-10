@@ -287,44 +287,82 @@ export default function BiomaxSolutionsPage() {
       <ScrollProgress color={COLORS.accent} />
       <BiomaxNavbar />
 
-      {/* ─── Hero Section with High-Tech Lab Showcase ──────────────────────── */}
-      <section className="relative py-16 lg:py-24 px-6 overflow-hidden border-b bg-white" style={{ backgroundColor: "#ffffff", borderColor: COLORS.border }}>
-        <div className="relative z-10 mx-auto max-w-screen-xl">
+      {/* ─── Hero Section with AI Background Image ──────────────────────── */}
+      <section className="relative py-20 lg:py-28 px-6 overflow-hidden border-b min-h-[480px] sm:min-h-[520px] flex items-center" style={{ borderColor: COLORS.border }}>
+        {/* ── Background AI Header Image ── */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden">
+          <Image
+            src="/biomax_header_solutions_ai.jpg"
+            alt="Products & Laboratory Solutions"
+            fill
+            priority
+            className="object-cover object-center transform scale-105"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background: `linear-gradient(
+                110deg,
+                rgba(13, 43, 61, 0.96) 0%,
+                rgba(13, 58, 82, 0.90) 45%,
+                rgba(13, 58, 82, 0.75) 75%,
+                rgba(29, 144, 108, 0.40) 100%
+              )`,
+            }}
+          />
+          <div
+            className="absolute inset-0 z-10 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at 85% 45%, rgba(46, 230, 173, 0.22) 0%, transparent 65%)",
+            }}
+          />
+        </div>
+
+        {/* ── Content Overlaid on Top of Image ── */}
+        <div className="relative z-20 mx-auto max-w-screen-xl w-full">
           <div className="max-w-3xl space-y-4">
             {/* Pill Eyebrow */}
             <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[12px] font-black uppercase tracking-widest mb-2 border bg-white shadow-sm"
-              style={{ color: COLORS.accent, borderColor: COLORS.border }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[12px] sm:text-[13px] font-black uppercase tracking-widest mb-2 border backdrop-blur-md shadow-md text-white"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                borderColor: "rgba(255, 255, 255, 0.35)",
+              }}
             >
-              <Sparkles size={14} style={{ color: COLORS.accent }} />
+              <Sparkles size={14} className="text-[#2ee6ad]" />
               <span>Our Products &amp; Laboratory Solutions</span>
+              <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
             </span>
 
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-3 leading-tight" style={{ color: COLORS.primary }}>
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black leading-tight text-white drop-shadow-md">
               Our Products &amp; <br />
-              <span style={{ color: COLORS.accent }}>Laboratory Solutions</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] to-[#ffffff]">Laboratory Solutions</span>
             </h1>
 
-            {/* Intro Text (Verbatim Requirement) */}
-            <p className="text-[16px] sm:text-[17.5px] font-medium leading-relaxed max-w-2xl" style={{ color: COLORS.muted }}>
+            {/* Intro Text */}
+            <p className="text-[17px] sm:text-[19px] font-medium leading-relaxed max-w-2xl text-slate-100">
               We provide a comprehensive range of scientific and laboratory solutions designed to support modern research, diagnostics, healthcare, and industrial applications.
             </p>
 
             {/* Hero CTAs */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap gap-4 pt-3">
               <a
                 href="#category-explorer"
-                className="px-7 py-3.5 rounded-md text-[13.5px] font-bold text-white transition-all flex items-center gap-2 cursor-pointer shadow-md hover:bg-[#1D906C] hover:-translate-y-0.5"
-                style={{ backgroundColor: COLORS.primary }}
+                className="px-7 py-3.5 rounded-xl text-[14px] font-bold text-white transition-all flex items-center gap-2 cursor-pointer shadow-lg hover:scale-105"
+                style={{ backgroundColor: COLORS.accent }}
               >
                 <span>Browse 5 Solution Portfolios</span>
                 <ChevronRight size={16} />
               </a>
               <button
                 onClick={() => scrollToInquiry("General Products Inquiry")}
-                className="px-7 py-3.5 rounded-md text-[13.5px] font-bold border-2 bg-white transition-all flex items-center gap-2 cursor-pointer hover:bg-[#1D906C] hover:border-[#1D906C] hover:text-white hover:-translate-y-0.5"
-                style={{ borderColor: COLORS.accent, color: COLORS.accent }}
+                className="px-7 py-3.5 rounded-xl text-[14px] font-bold border-2 transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md text-white hover:bg-white hover:text-[#165B7E]"
+                style={{
+                  borderColor: "rgba(255, 255, 255, 0.75)",
+                  backgroundColor: "rgba(255, 255, 255, 0.12)",
+                }}
               >
                 <span>Request Quotation</span>
                 <ArrowRight size={15} />
@@ -333,7 +371,7 @@ export default function BiomaxSolutionsPage() {
           </div>
 
           {/* Quick Jump Category Chips */}
-          <div className="mt-12 pt-8 border-t grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" style={{ borderColor: COLORS.border }}>
+          <div className="mt-12 pt-8 border-t border-white/20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {PRODUCT_CATEGORIES.map((cat, idx) => {
               const Icon = cat.icon;
               return (
@@ -344,18 +382,16 @@ export default function BiomaxSolutionsPage() {
                     const el = document.getElementById("category-explorer");
                     if (el) el.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="p-3.5 rounded-xl bg-white hover:border-[#1D906C] border text-left transition-all duration-200 cursor-pointer group flex items-center gap-2.5 hover:-translate-y-0.5 shadow-sm"
-                  style={{ borderColor: COLORS.border }}
+                  className="p-3.5 rounded-xl bg-white/90 hover:bg-white hover:border-[#2ee6ad] border border-white/40 text-left transition-all duration-200 cursor-pointer group flex items-center gap-2.5 hover:-translate-y-0.5 shadow-md backdrop-blur-sm"
                 >
                   <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
-                    style={{ backgroundColor: `${COLORS.primary}12` }}
+                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform bg-[#165B7E]/10"
                   >
                     <Icon size={16} style={{ color: COLORS.primary }} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold uppercase" style={{ color: COLORS.accent }}>{cat.eyebrow}</p>
-                    <p className="text-[12px] font-black leading-tight" style={{ color: COLORS.primary }}>{cat.title}</p>
+                    <p className="text-[10px] font-bold uppercase text-[#1D906C]">{cat.eyebrow}</p>
+                    <p className="text-[12px] font-black leading-tight text-[#165B7E]">{cat.title}</p>
                   </div>
                 </button>
               );

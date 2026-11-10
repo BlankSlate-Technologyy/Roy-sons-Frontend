@@ -17,6 +17,7 @@ import {
   Building2,
   ShieldCheck,
   Headphones,
+  ExternalLink,
 } from "lucide-react";
 
 export default function BiomaxContactPage() {
@@ -96,44 +97,91 @@ export default function BiomaxContactPage() {
       <ScrollProgress color={COLORS.accent} />
       <BiomaxNavbar />
 
-      {/* ─── Hero Section ──────────────────────────────────────────────────── */}
-      <section className="relative py-16 lg:py-24 px-6 overflow-hidden bg-white border-b" style={{ borderColor: COLORS.border }}>
-        <div className="absolute inset-0 z-0 opacity-15">
+      {/* ─── Hero Section with Gradient Overlay ───────────────────────────── */}
+      <section
+        className="relative py-20 lg:py-28 px-6 overflow-hidden border-b min-h-[460px] sm:min-h-[500px] flex items-center"
+        style={{ borderColor: COLORS.border }}
+      >
+        {/* ── Background Image with Gradient Overlay ── */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden">
           <Image
             src="/biomax_products_hero_ai.jpg"
-            alt="BioMax Laboratory"
+            alt="Contact Bio Max Corporation"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-center transform scale-105"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background: `linear-gradient(
+                110deg,
+                rgba(13, 43, 61, 0.96) 0%,
+                rgba(13, 58, 82, 0.90) 45%,
+                rgba(13, 58, 82, 0.75) 75%,
+                rgba(29, 144, 108, 0.40) 100%
+              )`,
+            }}
+          />
+          <div
+            className="absolute inset-0 z-10 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at 85% 45%, rgba(46, 230, 173, 0.22) 0%, transparent 65%)",
+            }}
           />
         </div>
 
-        <div className="mx-auto max-w-screen-xl relative z-10">
-          <div className="max-w-3xl">
+        {/* ── Content Overlaid on Top of Image ── */}
+        <div className="mx-auto max-w-screen-xl relative z-20 w-full">
+          <div className="max-w-3xl space-y-4">
             <span
-              className="text-[11.5px] font-black uppercase tracking-widest px-3.5 py-1.5 rounded-full inline-flex items-center gap-2 mb-4 border bg-white shadow-sm"
-              style={{ color: COLORS.accent, borderColor: COLORS.border }}
+              className="text-[12px] sm:text-[13px] font-black uppercase tracking-wider px-4 py-1.5 rounded-full inline-flex items-center gap-2 mb-2 border backdrop-blur-md shadow-md text-white"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                borderColor: "rgba(255, 255, 255, 0.35)",
+              }}
             >
-              <Sparkles size={14} />
+              <Sparkles size={14} className="text-[#2ee6ad]" />
               <span>GET IN TOUCH WITH BIOMAX</span>
+              <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
             </span>
 
-            <h1
-              className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight mb-4"
-              style={{ color: COLORS.primary }}
-            >
-              Contact BIO MAX Corporation
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black uppercase tracking-tight leading-tight text-white drop-shadow-md">
+              Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] to-[#ffffff]">BIO MAX Corporation</span>
             </h1>
 
-            <p className="text-[15.5px] sm:text-[17px] leading-relaxed max-w-2xl font-medium" style={{ color: COLORS.muted }}>
+            <p className="text-[17px] sm:text-[19px] leading-relaxed max-w-2xl font-medium text-slate-100">
               Have questions about our laboratory instruments, diagnostic equipment, or biotechnology reagents? Our technical specialists and customer service team are here to support your requirements.
             </p>
+
+            <div className="pt-2 flex flex-wrap gap-4">
+              <a
+                href="#contact-form-section"
+                className="px-7 py-3.5 rounded-xl text-[14px] font-bold text-white flex items-center gap-2 shadow-lg hover:scale-105 transition-all cursor-pointer"
+                style={{ backgroundColor: COLORS.accent }}
+              >
+                <span>Send Quotation Inquiry</span>
+                <ArrowRight size={16} />
+              </a>
+              <a
+                href="tel:00924238924737"
+                className="px-7 py-3.5 rounded-xl text-[14px] font-bold border-2 transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md text-white hover:bg-white hover:text-[#165B7E]"
+                style={{
+                  borderColor: "rgba(255, 255, 255, 0.75)",
+                  backgroundColor: "rgba(255, 255, 255, 0.12)",
+                }}
+              >
+                <Phone size={16} />
+                <span>0092-42-38924737</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── Main Contact Info & Form Section ──────────────────────────────── */}
-      <section className="py-16 px-6 bg-white">
+      <section id="contact-form-section" className="py-16 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             {/* Left Column: Contact Cards & Map */}
@@ -199,23 +247,6 @@ export default function BiomaxContactPage() {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Interactive Google Map Embed */}
-              <div
-                className="rounded-2xl border overflow-hidden shadow-md h-64 relative"
-                style={{ borderColor: COLORS.border }}
-              >
-                <iframe
-                  title="BioMax Corporation Location"
-                  src="https://maps.google.com/maps?q=Lahore%20Ring%20Road%20Rehman%20Centre&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
               </div>
             </div>
 
@@ -401,6 +432,57 @@ export default function BiomaxContactPage() {
                 </form>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Complete Full-Width Interactive Google Map Section ────────────── */}
+      <section className="py-16 px-6 bg-[#f8fbfa] border-t" style={{ borderColor: COLORS.border }}>
+        <div className="mx-auto max-w-screen-xl">
+          {/* Section Header */}
+          <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span
+                className="text-[11px] font-black uppercase tracking-widest block mb-1"
+                style={{ color: COLORS.accent }}
+              >
+                OUR PHYSICAL LOCATION
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-black" style={{ color: COLORS.primary }}>
+                Find Bio Max Corporation on Google Maps
+              </h2>
+              <p className="text-[13.5px] mt-1 font-medium" style={{ color: COLORS.muted }}>
+                1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.
+              </p>
+            </div>
+            <a
+              href="https://maps.google.com/maps?q=Lahore%20Ring%20Road%20Rehman%20Centre"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-[13.5px] font-bold text-white shadow-md hover:scale-105 transition-all self-start md:self-auto cursor-pointer"
+              style={{ backgroundColor: COLORS.accent }}
+            >
+              <MapPin size={16} />
+              <span>Open in Google Maps</span>
+              <ExternalLink size={14} />
+            </a>
+          </div>
+
+          {/* Complete Full-Width Map Container */}
+          <div
+            className="w-full rounded-3xl border-2 overflow-hidden shadow-2xl relative h-[440px] sm:h-[500px] lg:h-[550px] bg-white"
+            style={{ borderColor: COLORS.border }}
+          >
+            <iframe
+              title="BioMax Corporation Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904de60e29e3b%3A0x9a9d95ad0e1c7d50!2sRehman%20Centre-2%2C%20Ring%20Rd%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000"
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: "block" }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </section>

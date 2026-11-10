@@ -92,37 +92,72 @@ export default function BiomaxAboutPage() {
       <ScrollProgress color={COLORS.primary} />
       <BiomaxNavbar />
 
-      {/* Hero Section */}
+      {/* Hero Section with AI Background Image */}
       <section
-        className="py-20 px-6 border-b bg-white"
-        style={{ backgroundColor: COLORS.white, borderColor: COLORS.border }}
+        className="relative py-20 lg:py-28 px-6 overflow-hidden border-b min-h-[460px] sm:min-h-[500px] flex items-center"
+        style={{ borderColor: COLORS.border }}
       >
-        <div className="mx-auto max-w-screen-xl">
-          <div className="max-w-3xl">
+        {/* ── Background AI Header Image ── */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden">
+          <Image
+            src="/biomax_header_about_ai.jpg"
+            alt="About Bio Max Corporation"
+            fill
+            priority
+            className="object-cover object-center transform scale-105"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background: `linear-gradient(
+                110deg,
+                rgba(13, 43, 61, 0.96) 0%,
+                rgba(13, 58, 82, 0.90) 45%,
+                rgba(13, 58, 82, 0.75) 75%,
+                rgba(29, 144, 108, 0.40) 100%
+              )`,
+            }}
+          />
+          <div
+            className="absolute inset-0 z-10 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at 85% 45%, rgba(46, 230, 173, 0.22) 0%, transparent 65%)",
+            }}
+          />
+        </div>
+
+        {/* ── Content Overlaid on Top of Image ── */}
+        <div className="mx-auto max-w-screen-xl relative z-20 w-full">
+          <div className="max-w-3xl space-y-4">
             <span
-              className="text-[11.5px] font-extrabold uppercase tracking-wider px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-3 border bg-white shadow-sm"
-              style={{ color: COLORS.accent, borderColor: COLORS.border }}
+              className="text-[12px] sm:text-[13px] font-black uppercase tracking-wider px-4 py-1.5 rounded-full inline-flex items-center gap-2 mb-2 border backdrop-blur-md shadow-md text-white"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                borderColor: "rgba(255, 255, 255, 0.35)",
+              }}
             >
-              <Sparkles size={13} />
+              <Sparkles size={14} className="text-[#2ee6ad]" />
               <span>02 — About Bio Max Corporation</span>
+              <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
             </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-3 leading-tight" style={{ color: COLORS.accent }}>
-              About Bio Max Corporation
+
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black leading-tight text-white drop-shadow-md">
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] to-[#ffffff]">Bio Max Corporation</span>
             </h1>
-            <p className="text-[18px] font-bold mb-3" style={{ color: COLORS.primary }}>
+
+            <p className="text-[18px] sm:text-[21px] font-bold text-[#2ee6ad] drop-shadow-xs">
               Empowering Laboratories with Advanced Scientific Technology
             </p>
-            <p className="text-[15.5px] leading-relaxed mb-4" style={{ color: COLORS.muted }}>
+
+            <p className="text-[16px] sm:text-[17.5px] leading-relaxed text-slate-100 font-medium">
               Bio Max Corporation is a biotechnology and laboratory solutions company focused on providing reliable scientific equipment, laboratory systems, and technical solutions to research, healthcare, diagnostic, educational, and industrial institutions.
             </p>
-            <p className="text-[15.5px] leading-relaxed mb-6" style={{ color: COLORS.muted }}>
-              We work with laboratories and organizations that require dependable technology, quality products, and professional support for their scientific and diagnostic operations.
-            </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 pt-3">
               <HeroPrimaryButton href="/group-companies/biomax/solutions">
                 <span>Explore Lab Solutions</span>
-                <ArrowRight size={15} />
+                <ArrowRight size={16} />
               </HeroPrimaryButton>
               <HeroOutlineButton href="/group-companies/biomax/contact">
                 <span>Contact Technical Team</span>

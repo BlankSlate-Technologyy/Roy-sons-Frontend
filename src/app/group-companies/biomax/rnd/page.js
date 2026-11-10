@@ -170,102 +170,91 @@ export default function BiomaxRndPage() {
       <ScrollProgress color={COLORS.accent} />
       <BiomaxNavbar />
 
-      {/* ─── Hero Section (Exact Reproduction of User Reference) ───────────── */}
-      <section className="relative py-16 lg:py-24 px-6 overflow-hidden bg-white border-b" style={{ borderColor: COLORS.border }}>
-        {/* Subtle Molecular DNA Backdrop Accent */}
-        <div className="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none hidden lg:block">
-          <div className="w-full h-full bg-[radial-gradient(#165B7E_1px,transparent_1px)] [background-size:16px_16px]" />
+      {/* ─── Hero Section with AI Background Image ───────────── */}
+      <section className="relative py-20 lg:py-28 px-6 overflow-hidden border-b min-h-[460px] sm:min-h-[500px] flex items-center" style={{ borderColor: COLORS.border }}>
+        {/* ── Background AI Header Image ── */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden">
+          <Image
+            src="/biomax_header_rnd_ai.jpg"
+            alt="Research and Development"
+            fill
+            priority
+            className="object-cover object-center transform scale-105"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background: `linear-gradient(
+                110deg,
+                rgba(13, 43, 61, 0.96) 0%,
+                rgba(13, 58, 82, 0.90) 45%,
+                rgba(13, 58, 82, 0.75) 75%,
+                rgba(29, 144, 108, 0.40) 100%
+              )`,
+            }}
+          />
+          <div
+            className="absolute inset-0 z-10 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at 85% 45%, rgba(46, 230, 173, 0.22) 0%, transparent 65%)",
+            }}
+          />
         </div>
 
-        <div className="mx-auto max-w-screen-xl relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            {/* Left: Text Content (Exact User Image Content) */}
-            <div className="lg:col-span-6 space-y-6">
-              <div>
-                <span
-                  className="text-[12px] font-black uppercase tracking-[0.18em] px-3.5 py-1.5 rounded-full inline-flex items-center gap-2 mb-4 border bg-white shadow-sm"
-                  style={{ color: COLORS.accent, borderColor: COLORS.border }}
-                >
-                  <Sparkles size={14} />
-                  <span>SCIENTIFIC EXCELLENCE</span>
-                </span>
+        {/* ── Content Overlaid on Top of Image ── */}
+        <div className="mx-auto max-w-screen-xl relative z-20 w-full">
+          <div className="max-w-3xl space-y-4">
+            <span
+              className="text-[12px] sm:text-[13px] font-black uppercase tracking-[0.18em] px-4 py-1.5 rounded-full inline-flex items-center gap-2 mb-2 border backdrop-blur-md shadow-md text-white"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                borderColor: "rgba(255, 255, 255, 0.35)",
+              }}
+            >
+              <Sparkles size={14} className="text-[#2ee6ad]" />
+              <span>SCIENTIFIC EXCELLENCE &amp; R&amp;D</span>
+              <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
+            </span>
 
-                <h1
-                  className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-[1.15]"
-                  style={{ color: COLORS.primary }}
-                >
-                  RESEARCH &amp; <br />
-                  <span style={{ color: "#165B7E" }}>DEVELOPMENT</span>
-                </h1>
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black uppercase tracking-tight leading-[1.1] text-white drop-shadow-md">
+              RESEARCH &amp; <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] to-[#ffffff]">DEVELOPMENT</span>
+            </h1>
 
-                <h2
-                  className="text-lg sm:text-xl font-bold mt-4 mb-5"
-                  style={{ color: COLORS.primary }}
-                >
-                  Advancing Laboratory Science Through Innovation
-                </h2>
-              </div>
+            <h2 className="text-lg sm:text-xl font-bold text-[#2ee6ad]">
+              Advancing Laboratory Science Through Innovation
+            </h2>
 
-              {/* Exact Paragraph 1 & Paragraph 2 */}
-              <div className="space-y-4 text-[15px] sm:text-[16px] leading-relaxed" style={{ color: COLORS.muted }}>
-                <p>
-                  At Bio Max Corporation, we recognize that scientific progress depends on reliable technology and continuous innovation.
-                </p>
-                <p>
-                  Our Research &amp; Development approach focuses on identifying emerging laboratory technologies and developing practical solutions for modern scientific and diagnostic environments.
-                </p>
-              </div>
-
-              {/* Hero Action Buttons */}
-              <div className="flex flex-wrap gap-4 pt-2">
-                <button
-                  onClick={() => scrollToSection("rd-focus-section")}
-                  className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold text-white flex items-center gap-2 shadow-md hover:bg-[#1D906C] transition-all cursor-pointer"
-                  style={{ backgroundColor: COLORS.primary }}
-                >
-                  <span>Explore Our R&amp;D Focus</span>
-                  <ChevronRight size={16} />
-                </button>
-                <button
-                  onClick={() => scrollToSection("rd-collaborate")}
-                  className="px-7 py-3.5 rounded-lg text-[13.5px] font-bold border-2 bg-white flex items-center gap-2 transition-all cursor-pointer shadow-sm"
-                  style={{ borderColor: COLORS.primary, color: COLORS.primary }}
-                >
-                  <span>Collaborate With Us</span>
-                  <ArrowRight size={15} />
-                </button>
-              </div>
+            <div className="space-y-3 text-[16px] sm:text-[17.5px] leading-relaxed text-slate-100 font-medium max-w-2xl">
+              <p>
+                At Bio Max Corporation, we recognize that scientific progress depends on reliable technology and continuous innovation.
+              </p>
+              <p>
+                Our Research &amp; Development approach focuses on identifying emerging laboratory technologies and developing practical solutions for modern scientific and diagnostic environments.
+              </p>
             </div>
 
-            {/* Right: AI-Generated Scientist Laboratory Showcase */}
-            <div className="lg:col-span-6">
-              <div
-                className="relative w-full h-[380px] sm:h-[460px] rounded-3xl overflow-hidden border-2 shadow-2xl group"
-                style={{ borderColor: COLORS.border }}
+            <div className="flex flex-wrap gap-4 pt-3">
+              <button
+                onClick={() => scrollToSection("rd-focus-section")}
+                className="px-7 py-3.5 rounded-xl text-[14px] font-bold text-white flex items-center gap-2 shadow-lg hover:scale-105 transition-all cursor-pointer"
+                style={{ backgroundColor: COLORS.accent }}
               >
-                <Image
-                  src="/biomax_rnd_hero_ai.jpg"
-                  alt="BioMax Research & Development Laboratory"
-                  fill
-                  priority
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 650px"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: "linear-gradient(to top, rgba(15,51,89,0.75) 0%, rgba(15,51,89,0.1) 60%, transparent 100%)",
-                  }}
-                />
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-white/20 backdrop-blur-md uppercase tracking-wider mb-1 inline-block">
-                    BioMax Innovation Lab
-                  </span>
-                  <p className="text-sm font-semibold text-white/90">
-                    Cutting-edge molecular diagnostics &amp; high-precision analytical research workflows.
-                  </p>
-                </div>
-              </div>
+                <span>Explore Our R&amp;D Focus</span>
+                <ChevronRight size={16} />
+              </button>
+              <button
+                onClick={() => scrollToSection("rd-collaborate")}
+                className="px-7 py-3.5 rounded-xl text-[14px] font-bold border-2 transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md text-white hover:bg-white hover:text-[#165B7E]"
+                style={{
+                  borderColor: "rgba(255, 255, 255, 0.75)",
+                  backgroundColor: "rgba(255, 255, 255, 0.12)",
+                }}
+              >
+                <span>Collaborate With Us</span>
+                <ArrowRight size={15} />
+              </button>
             </div>
           </div>
         </div>

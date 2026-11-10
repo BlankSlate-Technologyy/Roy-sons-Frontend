@@ -545,12 +545,20 @@ function HeroSection() {
                     {slide.badge}
                   </span>
                 </div>
-                <span
-                  className="px-2.5 py-1 rounded-full text-[11px] font-black tracking-widest text-white border border-white/20"
+                <div
+                  className="w-12 py-2 rounded-2xl backdrop-blur-md border border-white/25 shadow-md flex flex-col items-center justify-center text-center select-none"
                   style={{ backgroundColor: "rgba(255, 255, 255, 0.15)" }}
                 >
-                  0{currentSlide + 1} / 0{HERO_SLIDES.length}
-                </span>
+                  <span className="text-[13px] font-black text-white leading-none">
+                    0{currentSlide + 1}
+                  </span>
+                  <span className="text-[11px] font-black text-white/80 leading-none my-1 select-none">
+                    /
+                  </span>
+                  <span className="text-[13px] font-black text-white leading-none">
+                    0{HERO_SLIDES.length}
+                  </span>
+                </div>
               </div>
 
               <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 bg-white/15 border border-white/20 text-[#2ee6ad]">
@@ -709,20 +717,6 @@ function TrustedBySection() {
                   <p className="text-[13px] leading-relaxed font-medium" style={{ color: COLORS.muted }}>
                     {sector.description}
                   </p>
-                </div>
-
-                {/* Bottom Spec Footer */}
-                <div
-                  className="mt-5 pt-3.5 border-t flex items-center justify-between text-[11.5px] font-bold"
-                  style={{ borderColor: "#edf4f8", color: COLORS.primary }}
-                >
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#1D906C]" />
-                    {sector.stats}
-                  </span>
-                  <span className="text-[#1D906C] group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                    Explore Solutions →
-                  </span>
                 </div>
               </div>
             );

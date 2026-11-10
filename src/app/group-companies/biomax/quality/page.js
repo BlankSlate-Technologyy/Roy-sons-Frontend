@@ -198,37 +198,68 @@ export default function BiomaxQualityPage() {
       <ScrollProgress color={COLORS.accent} />
       <BiomaxNavbar />
 
-      {/* ─── Hero & Master Showcase Section (Exact Reference Layout) ───────── */}
-      <section className="relative py-12 lg:py-16 px-6 bg-white border-b overflow-hidden" style={{ borderColor: COLORS.border }}>
-        {/* Subtle Molecular DNA Texture */}
-        <div className="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none hidden lg:block">
-          <div className="w-full h-full bg-[radial-gradient(#165B7E_1px,transparent_1px)] [background-size:16px_16px]" />
+      {/* ─── Hero Section with AI Background Image ───────── */}
+      <section className="relative py-20 lg:py-28 px-6 overflow-hidden border-b min-h-[460px] sm:min-h-[500px] flex items-center" style={{ borderColor: COLORS.border }}>
+        {/* ── Background AI Header Image ── */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden">
+          <Image
+            src="/biomax_header_quality_ai.jpg"
+            alt="Quality Assurance Standards"
+            fill
+            priority
+            className="object-cover object-center transform scale-105"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background: `linear-gradient(
+                110deg,
+                rgba(13, 43, 61, 0.96) 0%,
+                rgba(13, 58, 82, 0.90) 45%,
+                rgba(13, 58, 82, 0.75) 75%,
+                rgba(29, 144, 108, 0.40) 100%
+              )`,
+            }}
+          />
+          <div
+            className="absolute inset-0 z-10 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at 85% 45%, rgba(46, 230, 173, 0.22) 0%, transparent 65%)",
+            }}
+          />
         </div>
 
-        <div className="mx-auto max-w-screen-xl relative z-10 space-y-10">
-          {/* Top Row: Title, Subtitle, Intro Text + Top-Right Badge */}
-          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-8">
+        {/* ── Content Overlaid on Top of Image ── */}
+        <div className="mx-auto max-w-screen-xl relative z-20 w-full">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="max-w-3xl space-y-4">
-              {/* Main Heading */}
-              <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight"
-                style={{ color: COLORS.primary }}
+              <span
+                className="text-[12px] sm:text-[13px] font-black uppercase tracking-[0.18em] px-4 py-1.5 rounded-full inline-flex items-center gap-2 mb-2 border backdrop-blur-md shadow-md text-white"
+                style={{
+                  backgroundColor: "rgba(255, 255, 255, 0.15)",
+                  borderColor: "rgba(255, 255, 255, 0.35)",
+                }}
               >
+                <ShieldCheck size={14} className="text-[#2ee6ad]" />
+                <span>ISO &amp; CE CERTIFIED STANDARDS</span>
+                <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
+              </span>
+
+              <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black uppercase tracking-tight leading-tight text-white drop-shadow-md">
                 QUALITY <br className="hidden sm:inline" />
-                <span style={{ color: "#165B7E" }}>ASSURANCE</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] to-[#ffffff]">ASSURANCE</span>
               </h1>
 
-              {/* Subtitle with dashes */}
               <div className="flex items-center gap-3">
-                <span className="w-10 h-0.5" style={{ backgroundColor: COLORS.primary }} />
-                <h2 className="text-lg sm:text-xl font-black tracking-wide" style={{ color: COLORS.primary }}>
+                <span className="w-10 h-0.5 bg-[#2ee6ad]" />
+                <h2 className="text-lg sm:text-xl font-black tracking-wide text-[#2ee6ad]">
                   Quality You Can Trust
                 </h2>
-                <span className="w-10 h-0.5" style={{ backgroundColor: COLORS.primary }} />
+                <span className="w-10 h-0.5 bg-[#2ee6ad]" />
               </div>
 
-              {/* Exact Paragraph 1 & Paragraph 2 */}
-              <div className="space-y-3 text-[14.5px] sm:text-[15.5px] leading-relaxed" style={{ color: COLORS.muted }}>
+              <div className="space-y-3 text-[16px] sm:text-[17.5px] leading-relaxed text-slate-100 font-medium">
                 <p>
                   Quality and reliability are fundamental to laboratory operations. At Bio Max Corporation, we focus on providing products and solutions that meet appropriate quality and performance requirements.
                 </p>
@@ -236,37 +267,63 @@ export default function BiomaxQualityPage() {
                   Our quality-focused approach extends from product selection and sourcing to technical support and customer service.
                 </p>
               </div>
+
+              <div className="flex flex-wrap gap-4 pt-2">
+                <button
+                  onClick={() => scrollToSection("qa-pillars-section")}
+                  className="px-7 py-3.5 rounded-xl text-[14px] font-bold text-white flex items-center gap-2 shadow-lg hover:scale-105 transition-all cursor-pointer"
+                  style={{ backgroundColor: COLORS.accent }}
+                >
+                  <span>Explore 5 QA Pillars</span>
+                  <ChevronRight size={16} />
+                </button>
+                <button
+                  onClick={() => scrollToSection("qa-protocols-section")}
+                  className="px-7 py-3.5 rounded-xl text-[14px] font-bold border-2 transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md text-white hover:bg-white hover:text-[#165B7E]"
+                  style={{
+                    borderColor: "rgba(255, 255, 255, 0.75)",
+                    backgroundColor: "rgba(255, 255, 255, 0.12)",
+                  }}
+                >
+                  <span>View Inspection Protocol</span>
+                  <ArrowRight size={16} />
+                </button>
+              </div>
             </div>
 
-            {/* Top Right: "QUALITY YOU CAN TRUST" Shield Badge */}
+            {/* Right Badge */}
             <div className="flex-shrink-0 flex items-center justify-start lg:justify-end">
               <div
-                className="p-5 rounded-2xl shadow-sm flex flex-col items-center text-center border-2 bg-white"
+                className="p-6 rounded-3xl shadow-2xl flex flex-col items-center text-center border backdrop-blur-xl"
                 style={{
-                  borderColor: COLORS.border,
-                  backgroundColor: "#ffffff",
-                  minWidth: "180px",
+                  backgroundColor: "rgba(13, 43, 61, 0.85)",
+                  borderColor: "rgba(255, 255, 255, 0.25)",
+                  minWidth: "200px",
                 }}
               >
                 <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center mb-2 shadow-sm"
-                  style={{ backgroundColor: `${COLORS.primary}12` }}
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-3 shadow-md bg-white/15 border border-white/20 text-[#2ee6ad]"
                 >
-                  <ShieldCheck size={26} style={{ color: COLORS.primary }} />
+                  <ShieldCheck size={32} />
                 </div>
-                <p className="text-[12px] font-black uppercase tracking-wider" style={{ color: COLORS.primary }}>
+                <p className="text-[14px] font-black uppercase tracking-wider text-white">
                   QUALITY
                 </p>
-                <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: COLORS.accent }}>
+                <p className="text-[12px] font-extrabold uppercase tracking-widest text-[#2ee6ad] mt-0.5">
                   YOU CAN TRUST
                 </p>
-                <div className="mt-2 w-6 h-6 rounded-full bg-[#1D906C] flex items-center justify-center shadow-sm">
-                  <Check size={14} className="text-white" style={{ strokeWidth: 3 }} />
+                <div className="mt-3 w-7 h-7 rounded-full bg-[#1D906C] flex items-center justify-center shadow-md">
+                  <Check size={16} className="text-white" style={{ strokeWidth: 3 }} />
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* ─── Master Showcase Grid Section ───────────────────────────────────── */}
+      <section className="py-16 px-6 bg-white border-b" style={{ borderColor: COLORS.border }}>
+        <div className="mx-auto max-w-screen-xl relative z-10 space-y-10">
           {/* Main 3-Column Showcase Grid */}
           <div className="grid lg:grid-cols-12 gap-6 items-stretch">
             {/* Left Card: OUR QUALITY COMMITMENT */}

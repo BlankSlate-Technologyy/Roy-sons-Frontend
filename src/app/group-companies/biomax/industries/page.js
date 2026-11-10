@@ -175,80 +175,87 @@ export default function BiomaxIndustriesPage() {
       <ScrollProgress color={COLORS.accent} />
       <BiomaxNavbar />
 
-      {/* ─── Hero Header (Exact Layout from User Image) ────────────────────── */}
-      <section className="relative pt-12 pb-8 px-6 bg-white border-b overflow-hidden" style={{ borderColor: COLORS.border }}>
-        <div className="mx-auto max-w-screen-xl relative z-10">
-          <div className="grid lg:grid-cols-12 gap-8 items-center">
-            {/* Left Title & Intro (Exact Text from Image) */}
-            <div className="lg:col-span-6 space-y-4">
-              <h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.1]"
-                style={{ color: COLORS.primary }}
-              >
-                INDUSTRIES <br />
-                <span style={{ color: "#165B7E" }}>WE SERVE</span>
-              </h1>
+      {/* ─── Hero Section with AI Background Image ─────────────────────────── */}
+      <section className="relative py-20 lg:py-28 px-6 overflow-hidden border-b min-h-[460px] sm:min-h-[500px] flex items-center" style={{ borderColor: COLORS.border }}>
+        {/* ── Background AI Header Image ── */}
+        <div className="absolute inset-0 z-0 select-none overflow-hidden">
+          <Image
+            src="/biomax_header_industries_ai.jpg"
+            alt="Multi-Industry Laboratory Capabilities"
+            fill
+            priority
+            className="object-cover object-center transform scale-105"
+            sizes="100vw"
+          />
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background: `linear-gradient(
+                110deg,
+                rgba(13, 43, 61, 0.96) 0%,
+                rgba(13, 58, 82, 0.90) 45%,
+                rgba(13, 58, 82, 0.75) 75%,
+                rgba(29, 144, 108, 0.40) 100%
+              )`,
+            }}
+          />
+          <div
+            className="absolute inset-0 z-10 pointer-events-none"
+            style={{
+              background: "radial-gradient(ellipse at 85% 45%, rgba(46, 230, 173, 0.22) 0%, transparent 65%)",
+            }}
+          />
+        </div>
 
-              {/* Blue accent line with dot */}
-              <div className="flex items-center gap-2 my-2">
-                <div className="w-16 h-1 rounded-full" style={{ backgroundColor: COLORS.primary }} />
-                <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: COLORS.primary }} />
-              </div>
+        {/* ── Content Overlaid on Top of Image ── */}
+        <div className="mx-auto max-w-screen-xl relative z-20 w-full">
+          <div className="max-w-3xl space-y-4">
+            <span
+              className="text-[12px] sm:text-[13px] font-black uppercase tracking-[0.18em] px-4 py-1.5 rounded-full inline-flex items-center gap-2 mb-2 border backdrop-blur-md shadow-md text-white"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                borderColor: "rgba(255, 255, 255, 0.35)",
+              }}
+            >
+              <Sparkles size={14} className="text-[#2ee6ad]" />
+              <span>MULTI-SECTOR CAPABILITIES</span>
+              <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
+            </span>
 
-              {/* Exact Description Text from Image */}
-              <p className="text-[16px] sm:text-[17.5px] leading-relaxed font-medium" style={{ color: COLORS.muted }}>
-                Bio Max Corporation provides laboratory and biotechnology solutions across multiple scientific, healthcare, educational, and industrial sectors.
-              </p>
+            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black uppercase tracking-tight leading-[1.1] text-white drop-shadow-md">
+              INDUSTRIES &amp; <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] to-[#ffffff]">SECTORS WE SERVE</span>
+            </h1>
 
-              <div className="pt-2 flex flex-wrap gap-3">
-                <button
-                  onClick={() => scrollToSection("industry-cards-section")}
-                  className="px-6 py-3 rounded-lg text-[13px] font-bold text-white flex items-center gap-2 shadow-md hover:bg-[#1D906C] transition-all cursor-pointer"
-                  style={{ backgroundColor: COLORS.primary }}
-                >
-                  <span>Explore 7 Sectors</span>
-                  <ChevronRight size={15} />
-                </button>
-                <button
-                  onClick={() => scrollToSection("industry-inquiry-section")}
-                  className="px-6 py-3 rounded-lg text-[13px] font-bold border-2 bg-white flex items-center gap-2 transition-all cursor-pointer shadow-sm"
-                  style={{ borderColor: COLORS.primary, color: COLORS.primary }}
-                >
-                  <span>Request Sector Proposal</span>
-                  <ArrowRight size={14} />
-                </button>
-              </div>
+            <div className="flex items-center gap-2 my-2">
+              <div className="w-16 h-1 rounded-full bg-[#2ee6ad]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-[#2ee6ad]" />
             </div>
 
-            {/* Right: High-Tech Microscope & Glassware AI Showcase */}
-            <div className="lg:col-span-6">
-              <div
-                className="relative w-full h-[280px] sm:h-[340px] rounded-3xl overflow-hidden border-2 shadow-xl group"
-                style={{ borderColor: COLORS.border }}
+            <p className="text-[17px] sm:text-[19px] leading-relaxed font-medium text-slate-100 max-w-2xl">
+              Bio Max Corporation provides laboratory and biotechnology solutions across multiple scientific, healthcare, educational, and industrial sectors.
+            </p>
+
+            <div className="pt-3 flex flex-wrap gap-4">
+              <button
+                onClick={() => scrollToSection("industry-cards-section")}
+                className="px-7 py-3.5 rounded-xl text-[14px] font-bold text-white flex items-center gap-2 shadow-lg hover:scale-105 transition-all cursor-pointer"
+                style={{ backgroundColor: COLORS.accent }}
               >
-                <Image
-                  src="/biomax_ind_hero_ai.jpg"
-                  alt="Modern Scientific Laboratory Equipment & Glassware"
-                  fill
-                  priority
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 600px"
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: "linear-gradient(to top, rgba(15,51,89,0.7) 0%, transparent 60%)",
-                  }}
-                />
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <span className="px-3 py-1 rounded-full text-[10.5px] font-bold bg-white/20 backdrop-blur-md uppercase tracking-wider mb-1 inline-block">
-                    Multi-Industry Laboratory Capabilities
-                  </span>
-                  <p className="text-[12.5px] font-semibold text-white/90">
-                    Trusted scientific instrumentation &amp; consumables across all research sectors.
-                  </p>
-                </div>
-              </div>
+                <span>Explore 7 Sectors</span>
+                <ChevronRight size={16} />
+              </button>
+              <button
+                onClick={() => scrollToSection("industry-inquiry-section")}
+                className="px-7 py-3.5 rounded-xl text-[14px] font-bold border-2 transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md text-white hover:bg-white hover:text-[#165B7E]"
+                style={{
+                  borderColor: "rgba(255, 255, 255, 0.75)",
+                  backgroundColor: "rgba(255, 255, 255, 0.12)",
+                }}
+              >
+                <span>Request Sector Proposal</span>
+                <ArrowRight size={16} />
+              </button>
             </div>
           </div>
         </div>
