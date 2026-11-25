@@ -372,7 +372,7 @@ export function DigitalZoneFooter() {
                 <MapPin size={16} className="text-[#00A8E8] flex-shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-slate-800 font-semibold block text-[12.5px]">Headquarters (Lahore):</strong>
-                  <span>1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore</span>
+                  <span>First Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore</span>
                 </div>
               </div>
               <div className="flex items-start gap-2.5">

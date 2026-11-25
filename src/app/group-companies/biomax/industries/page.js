@@ -68,58 +68,65 @@ const INDUSTRIES_DATA = [
   {
     id: "healthcare-diagnostics",
     icon: HeartPulse,
-    title: "HEALTHCARE & DIAGNOSTICS",
+    title: "Healthcare & Diagnostics",
     image: "/biomax_ind_healthcare_ai.jpg",
     imageAlt: "Clinical medical diagnostics and pathology laboratory solutions",
     desc: "Supporting hospitals, diagnostic laboratories, medical institutions, and clinical testing environments with laboratory and diagnostic solutions.",
+    tags: ["Diagnostic Labs", "Hospital Networks", "Pathology Testing"],
   },
   {
     id: "research-institutions",
     icon: Microscope,
-    title: "RESEARCH INSTITUTIONS",
+    title: "Research Institutions",
     image: "/biomax_ind_research_ai.jpg",
     imageAlt: "Scientific research laboratories and advanced microscopy",
     desc: "Providing scientific equipment and laboratory technologies for research organizations and scientific laboratories.",
+    tags: ["Life Sciences R&D", "Microscopy Suites", "Analytical Chemistry"],
   },
   {
     id: "universities-education",
     icon: GraduationCap,
-    title: "UNIVERSITIES & EDUCATIONAL INSTITUTIONS",
+    title: "Universities & Educational Institutions",
     image: "/biomax_ind_university_ai.jpg",
     imageAlt: "University students in scientific life sciences laboratory",
     desc: "Supporting universities, colleges, and educational laboratories with equipment and laboratory supplies for teaching and research.",
+    tags: ["Academic Labs", "Student Workstations", "Educational Supplies"],
   },
   {
     id: "pharmaceutical-industry",
     icon: Pill,
-    title: "PHARMACEUTICAL INDUSTRY",
+    title: "Pharmaceutical Industry",
     image: "/biomax_scientific_instruments_ai.jpg",
     imageAlt: "Pharmaceutical laboratory quality control and HPLC testing",
     desc: "Laboratory solutions supporting pharmaceutical research, testing, quality control, and development environments.",
+    tags: ["QA/QC Laboratories", "Formulation Testing", "Regulatory Compliance"],
   },
   {
     id: "biotechnology",
     icon: Dna,
-    title: "BIOTECHNOLOGY",
+    title: "Biotechnology",
     image: "/biomax_biotech_solutions_ai.jpg",
     imageAlt: "Biotechnology molecular biology and cell culture workstations",
     desc: "Providing equipment and technologies for biotechnology research, molecular biology, and related applications.",
+    tags: ["Genomics & PCR", "Cell Culture", "Biosafety Environments"],
   },
   {
     id: "food-agriculture",
     icon: FlaskConical,
-    title: "FOOD & AGRICULTURE",
+    title: "Food & Agriculture",
     image: "/biomax_consumables_ai.jpg",
     imageAlt: "Food safety testing and agricultural research consumables",
     desc: "Laboratory solutions supporting food testing, agricultural research, quality analysis, and related scientific applications.",
+    tags: ["Food Safety Testing", "Agronomic Research", "Soil & Water Analysis"],
   },
   {
     id: "industrial-laboratories",
     icon: Building2,
-    title: "INDUSTRIAL LABORATORIES",
+    title: "Industrial Laboratories",
     image: "/biomax_lab_equipment_ai.jpg",
     imageAlt: "Industrial testing laboratories and quality control equipment",
     desc: "Supporting industrial laboratories with testing, analysis, measurement, and quality-control solutions.",
+    tags: ["Materials Testing", "Industrial Calibration", "Process Control"],
   },
 ];
 
@@ -261,65 +268,96 @@ export default function BiomaxIndustriesPage() {
         </div>
       </section>
 
-      {/* ─── The 7 Industry Column Cards (Exact Reproduction of Image) ─────── */}
+      {/* ─── The 7 Industry Column Cards ─────── */}
       <section id="industry-cards-section" className="py-16 px-6 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          {/* 7 Cards across Two Lines (Row 1: 4 cards, Row 2: 3 cards centered) */}
-          <div className="flex flex-wrap justify-center gap-6 items-stretch">
-            {INDUSTRIES_DATA.map((ind) => {
+          {/* Section Heading */}
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span
+              className="text-[11.5px] font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full inline-block mb-3 border shadow-xs"
+              style={{ backgroundColor: `${COLORS.accent}14`, color: COLORS.accent, borderColor: `${COLORS.accent}30` }}
+            >
+              SPECIALIZED SECTOR SOLUTIONS
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-3" style={{ color: COLORS.primary }}>
+              Sectors &amp; Industries We Empower
+            </h2>
+            <p className="text-[14.5px] leading-relaxed" style={{ color: COLORS.muted }}>
+              From clinical healthcare to advanced biotechnology and industrial manufacturing, explore our dedicated equipment and technology portfolios tailored for each sector.
+            </p>
+          </div>
+
+          {/* Cards Grid: Row 1 has 4 cards, Row 2 has 3 cards perfectly filling 12 columns */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
+            {INDUSTRIES_DATA.map((ind, idx) => {
               const Icon = ind.icon;
+              const isSecondRow = idx >= 4;
+              const colSpanClass = isSecondRow ? "lg:col-span-4" : "lg:col-span-3";
+
               return (
                 <div
                   key={ind.id}
-                  className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] rounded-2xl border-2 bg-white overflow-hidden shadow-md biomax-card-hover cursor-pointer flex flex-col justify-between group transition-all duration-300"
-                  style={{ borderColor: COLORS.border }}
+                  className={`${colSpanClass} rounded-2xl border border-[#d7e5ec] bg-white overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#1D906C] transition-all duration-300 flex flex-col justify-between group cursor-pointer`}
                 >
                   <div>
-                    {/* Top Header with Dark Blue Circular Icon */}
-                    <div className="p-5 text-center flex flex-col items-center bg-white border-b" style={{ borderColor: COLORS.border }}>
-                      <div
-                        className="w-14 h-14 rounded-full flex items-center justify-center mb-3 shadow-md group-hover:scale-110 transition-transform duration-300"
-                        style={{ backgroundColor: COLORS.primary }}
-                      >
-                        <Icon size={26} className="text-white" style={{ strokeWidth: 2 }} />
-                      </div>
-                      <h3
-                        className="text-xs sm:text-[13px] font-black uppercase tracking-wider leading-snug min-h-[38px] flex items-center justify-center text-center"
-                        style={{ color: COLORS.primary }}
-                      >
-                        {ind.title}
-                      </h3>
-                    </div>
-
-                    {/* Image Middle Section */}
-                    <div className="relative w-full h-44 overflow-hidden">
+                    {/* Card Image Header with Floating Badge & Icon */}
+                    <div className="relative w-full h-48 overflow-hidden bg-slate-100">
                       <Image
                         src={ind.image}
                         alt={ind.imageAlt}
                         fill
-                        className="object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                        className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/65 via-transparent to-transparent" />
+
+                      {/* Icon Floating Tile */}
+                      <div className="absolute top-3.5 left-3.5">
+                        <div className="w-10 h-10 rounded-xl bg-white/95 backdrop-blur-md shadow-md flex items-center justify-center border border-white/60 group-hover:scale-110 group-hover:bg-[#1D906C] transition-all duration-300">
+                          <Icon size={20} className="text-[#165B7E] group-hover:text-white transition-colors duration-300" />
+                        </div>
+                      </div>
+
+                      {/* Sector Number Tag */}
+                      <div className="absolute bottom-3 left-3.5 right-3.5">
+                        <span className="text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md bg-[#0D2B3D]/85 text-[#2ee6ad] border border-white/10 backdrop-blur-sm">
+                          Sector {String(idx + 1).padStart(2, "0")}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Description Paragraph */}
-                    <div className="p-4 text-center">
-                      <p className="text-xs leading-relaxed mb-4 min-h-[52px]" style={{ color: COLORS.muted }}>
+                    {/* Content Body */}
+                    <div className="p-5 sm:p-6">
+                      <h3 className="text-[17px] sm:text-[18px] font-bold text-[#165B7E] group-hover:text-[#1D906C] transition-colors leading-snug mb-2.5 min-h-[44px] flex items-center">
+                        {ind.title}
+                      </h3>
+                      <p className="text-[13px] leading-relaxed text-[#1F4E68] mb-4 min-h-[60px]">
                         {ind.desc}
                       </p>
-                      <Link
-                        href={`/group-companies/biomax/industries/${ind.id}`}
-                        className="w-full py-2.5 px-4 rounded-lg text-xs font-extrabold uppercase tracking-wider text-white bg-[#165B7E] hover:bg-[#1D906C] transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer"
-                      >
-                        <span>View Details</span>
-                        <ArrowRight size={13} />
-                      </Link>
+
+                      {/* Feature Tags */}
+                      <div className="flex flex-wrap gap-1.5 mb-2">
+                        {ind.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-[11px] font-bold px-2.5 py-1 rounded-md bg-slate-50 border border-slate-200/80 text-slate-700 group-hover:border-[#1D906C]/30 transition-colors"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Bottom Line Accent */}
-                  <div className="p-4 pt-0 text-center">
-                    <div className="w-10 h-0.5 mx-auto rounded-full group-hover:w-20 transition-all duration-300" style={{ backgroundColor: COLORS.accent }} />
+                  {/* Bottom Action Footer */}
+                  <div className="p-5 pt-0 sm:p-6 sm:pt-0">
+                    <Link
+                      href={`/group-companies/biomax/industries/${ind.id}`}
+                      className="w-full py-2.5 px-4 rounded-xl text-[12.5px] font-bold text-white bg-[#165B7E] group-hover:bg-[#1D906C] transition-all duration-300 flex items-center justify-center gap-2 shadow-sm group-hover:shadow-md cursor-pointer"
+                    >
+                      <span>Explore Sector Solutions</span>
+                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                    </Link>
                   </div>
                 </div>
               );
@@ -380,30 +418,30 @@ export default function BiomaxIndustriesPage() {
       </section>
 
       {/* ─── Sector Tailored Consultation Form ──────────────────────────────── */}
-      <section id="industry-inquiry-section" className="py-16 px-6 bg-white border-t" style={{ borderColor: COLORS.border }}>
+      <section id="industry-inquiry-section" className="py-10 sm:py-12 px-6 bg-white border-t" style={{ borderColor: COLORS.border }}>
         <div className="mx-auto max-w-screen-xl">
           <div
-            className="rounded-3xl border overflow-hidden shadow-sm bg-white"
+            className="rounded-2xl border overflow-hidden shadow-md bg-white"
             style={{ borderColor: COLORS.border }}
           >
-            <div className="grid lg:grid-cols-12">
+            <div className="grid lg:grid-cols-12 items-stretch">
               {/* Left Info Panel */}
               <div
-                className="lg:col-span-5 p-8 sm:p-10 border-b lg:border-b-0 lg:border-r bg-white flex flex-col justify-between"
-                style={{ borderColor: COLORS.border, backgroundColor: "#ffffff" }}
+                className="lg:col-span-5 p-6 sm:p-8 text-white flex flex-col justify-between"
+                style={{ backgroundColor: COLORS.primary }}
               >
                 <div>
-                  <span className="text-[11px] font-black uppercase tracking-widest block mb-2" style={{ color: COLORS.accent }}>
+                  <span className="text-[11px] font-black uppercase tracking-widest text-[#dce8f0] block mb-2">
                     SECTOR SOLUTIONS
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-black mb-3" style={{ color: COLORS.primary }}>
+                  <h3 className="text-2xl sm:text-3xl font-black mb-3 text-white">
                     Connect With Our Industry Specialists
                   </h3>
-                  <p className="text-[13.5px] leading-relaxed mb-6" style={{ color: COLORS.muted }}>
+                  <p className="text-[13.5px] text-white/85 leading-relaxed mb-6">
                     Whatever your industry, our dedicated application engineers provide tailored equipment recommendations, technical setup, and procurement guidance.
                   </p>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3.5">
                     <div className="flex items-start gap-3">
                       <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-white/15 flex-shrink-0">
                         <MapPin size={15} className="text-white" />
@@ -411,7 +449,7 @@ export default function BiomaxIndustriesPage() {
                       <div>
                         <p className="text-[10.5px] font-bold uppercase text-white/70">Main Office</p>
                         <p className="text-[12.5px] text-white font-medium">
-                          1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
+                          First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
                         </p>
                       </div>
                     </div>
@@ -442,7 +480,7 @@ export default function BiomaxIndustriesPage() {
                   </div>
                 </div>
 
-                <div className="mt-8 pt-4 border-t border-white/20 flex gap-3">
+                <div className="mt-6 pt-4 border-t border-white/20 flex gap-3">
                   {SOCIAL_ICONS.map((Icon, i) => (
                     <a
                       key={i}
@@ -456,27 +494,27 @@ export default function BiomaxIndustriesPage() {
               </div>
 
               {/* Right CTA Panel */}
-              <div className="lg:col-span-7 p-8 sm:p-10 bg-white flex flex-col justify-between">
+              <div className="lg:col-span-7 p-6 sm:p-8 bg-white flex flex-col justify-center">
                 <div>
                   <span className="text-[11px] font-black uppercase tracking-widest block mb-1" style={{ color: COLORS.accent }}>
                     INDUSTRY INQUIRY &amp; PROPOSALS
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-black mb-3" style={{ color: COLORS.primary }}>
+                  <h3 className="text-2xl sm:text-3xl font-black mb-2.5" style={{ color: COLORS.primary }}>
                     Request Industry-Specific Consultation
                   </h3>
-                  <p className="text-[13.5px] leading-relaxed mb-6" style={{ color: COLORS.muted }}>
+                  <p className="text-[13.5px] leading-relaxed mb-5" style={{ color: COLORS.muted }}>
                     Whether you require clinical diagnostics systems for hospitals, analytical instruments for universities, or quality-control machinery for pharmaceutical plants, our specialists are ready to tailor solutions.
                   </p>
 
-                  <div className="space-y-3 mb-8">
+                  <div className="space-y-3 mb-6">
                     {[
                       "Custom equipment packages configured for your sector needs",
                       "Turnkey laboratory setup, delivery, calibration & support",
                       "Institutional procurement pricing & long-term maintenance contracts",
                     ].map((feat) => (
-                      <div key={feat} className="flex items-center gap-2.5">
-                        <CheckCircle2 size={16} style={{ color: COLORS.accent }} />
-                        <span className="text-[13px] font-semibold" style={{ color: COLORS.primary }}>
+                      <div key={feat} className="flex items-center gap-3">
+                        <CheckCircle2 size={19} className="flex-shrink-0" style={{ color: COLORS.accent }} />
+                        <span className="text-[14px] sm:text-[14.5px] font-bold" style={{ color: COLORS.primary }}>
                           {feat}
                         </span>
                       </div>
@@ -486,7 +524,7 @@ export default function BiomaxIndustriesPage() {
 
                 <Link
                   href="/group-companies/biomax/contact"
-                  className="w-full py-4 rounded-xl text-[14px] font-bold text-white flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-md"
+                  className="w-full py-3.5 rounded-xl text-[14px] font-bold text-white flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-md"
                   style={{ backgroundColor: COLORS.primary }}
                 >
                   <span>Submit Industry Inquiry on Contact Page</span>

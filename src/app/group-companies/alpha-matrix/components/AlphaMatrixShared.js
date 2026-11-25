@@ -316,7 +316,7 @@ export function AlphaMatrixFooter() {
           <div className="space-y-3 text-xs text-slate-400 font-normal">
             <p className="flex items-start gap-2.5">
               <MapPin size={15} className="flex-shrink-0 mt-0.5 text-[#0284C7]" />
-              <span className="leading-relaxed">1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.</span>
+              <span className="leading-relaxed">First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.</span>
             </p>
             <p className="flex items-center gap-2.5">
               <Phone size={15} className="flex-shrink-0 text-[#0284C7]" />

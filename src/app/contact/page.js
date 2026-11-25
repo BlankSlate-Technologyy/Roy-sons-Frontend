@@ -389,7 +389,7 @@ export default function ContactPage() {
                       Roy Sons Pvt. Ltd.
                     </p>
                     <p className="text-[13px] text-neutral-600 leading-normal mt-0.5">
-                      1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Lahore.
+                      First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Lahore.
                     </p>
                   </div>
                 </a>

@@ -314,39 +314,52 @@ export default function GatewayServicesPage() {
       {/* Navbar */}
       <Navbar />
 
-      {/* ─── Hero Section ──────────────────────────────────────────────────── */}
+      {/* ─── Hero Section with AI Background ───────────────────────────────── */}
       <section
-        className="section-animate relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white"
+        className="section-animate relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b overflow-hidden text-white"
         style={{
-          backgroundColor: COLORS.white,
           borderColor: COLORS.border,
         }}
       >
-        <Container>
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/gateway/gateway_header_services.jpg"
+            alt="Gateway Pharmaceutical Regulatory Services"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Directional Overlay: deep navy on left for text, soft & light on right */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(7, 24, 56, 0.95) 0%, rgba(11, 30, 61, 0.82) 42%, rgba(15, 38, 77, 0.35) 72%, rgba(7, 24, 56, 0.08) 100%)",
+            }}
+          />
+        </div>
+
+        <Container className="relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column Copy */}
             <div className="lg:col-span-7 flex flex-col justify-center">
               <div
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest mb-5 border w-fit shadow-sm bg-white"
-                style={{
-                  color: COLORS.secondary,
-                  borderColor: COLORS.border,
-                }}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest mb-5 border w-fit backdrop-blur-md bg-white/10 border-white/20 text-[#34D399]"
               >
-                <Sparkles size={14} style={{ color: COLORS.secondary }} />
+                <Sparkles size={14} className="text-[#34D399]" />
                 <span>Regulatory Consultancy Services</span>
               </div>
 
               <h1
-                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6"
-                style={{ color: COLORS.primary }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6 text-white"
               >
                 Our Regulatory Consultancy Services
               </h1>
 
               <p
-                className="text-base sm:text-lg font-medium leading-relaxed mb-8"
-                style={{ color: COLORS.textGray }}
+                className="text-base sm:text-lg text-slate-200 font-medium leading-relaxed mb-8"
               >
                 We provide a range of regulatory services designed to support
                 pharmaceutical organizations across different stages of their
@@ -358,7 +371,7 @@ export default function GatewayServicesPage() {
                 <a
                   href="#services-grid"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
-                  style={{ backgroundColor: COLORS.primary }}
+                  style={{ backgroundColor: COLORS.secondary }}
                 >
                   <span>Explore 8 Core Services</span>
                   <ArrowRight size={16} />
@@ -366,12 +379,7 @@ export default function GatewayServicesPage() {
 
                 <a
                   href="/group-companies/gateway#contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{
-                    borderColor: COLORS.border,
-                    color: COLORS.primary,
-                    backgroundColor: COLORS.white,
-                  }}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border border-white/30 backdrop-blur-md bg-white/10 text-white transition-all duration-300 hover:bg-white/20 cursor-pointer"
                 >
                   <span>Request Consultation</span>
                 </a>
@@ -381,11 +389,10 @@ export default function GatewayServicesPage() {
             {/* Right Column Showcase Card */}
             <div className="lg:col-span-5 w-full flex justify-center">
               <div
-                className="relative w-full max-w-[500px] h-[340px] sm:h-[400px] rounded-3xl overflow-hidden shadow-2xl border group"
-                style={{ borderColor: COLORS.border }}
+                className="relative w-full max-w-[500px] h-[340px] sm:h-[400px] rounded-3xl overflow-hidden shadow-2xl border border-white/20 group"
               >
                 <Image
-                  src="/gatway header.png"
+                  src="/gateway/gateway_header_services.jpg"
                   alt="Gateway Pharmaceutical Regulatory Services"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -395,20 +402,18 @@ export default function GatewayServicesPage() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, rgba(23, 63, 138, 0.45) 0%, transparent 65%)",
+                      "linear-gradient(to top, rgba(7, 24, 56, 0.85) 0%, transparent 65%)",
                   }}
                 />
                 <div
-                  className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-2xl p-5 border shadow-lg"
-                  style={{ borderColor: COLORS.border }}
+                  className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-slate-900/85 rounded-2xl p-5 border border-white/15 shadow-lg"
                 >
                   <p
-                    className="text-xs font-bold uppercase tracking-wider mb-1"
-                    style={{ color: COLORS.secondary }}
+                    className="text-xs font-bold uppercase tracking-wider mb-1 text-[#34D399]"
                   >
                     End-to-End Regulatory Support
                   </p>
-                  <p className="text-sm font-bold" style={{ color: COLORS.primary }}>
+                  <p className="text-sm font-bold text-white">
                     From Licensing &amp; Dossiers to Authority Compliance
                   </p>
                 </div>

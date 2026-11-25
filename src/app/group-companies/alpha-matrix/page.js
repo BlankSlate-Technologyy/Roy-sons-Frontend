@@ -605,7 +605,7 @@ export default function AlphaMatrixPage() {
               <div className="p-5 rounded-xl border border-white/10 bg-white/5 space-y-3 text-xs text-slate-300">
                 <div className="flex items-start gap-2.5">
                   <MapPin size={15} className="text-[#0284C7] shrink-0 mt-0.5" />
-                  <span>1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.</span>
+                  <span>First Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Phone size={15} className="text-[#0284C7] shrink-0" />

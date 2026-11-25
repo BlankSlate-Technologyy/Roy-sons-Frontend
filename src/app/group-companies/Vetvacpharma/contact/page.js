@@ -307,7 +307,7 @@ export default function ContactPage() {
                       {
                         icon: MapPin,
                         label: "Our Office",
-                        value: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
+                        value: "First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
                       },
                       { icon: Phone, label: "Call Us", value: "0092-42-38924737" },
                       { icon: Phone, label: "WhatsApp", value: "0092-304-7527498 | 0092-321-8431665" },

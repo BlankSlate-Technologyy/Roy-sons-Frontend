@@ -203,7 +203,7 @@ export default function BiomaxContactPage() {
                   {
                     icon: MapPin,
                     title: "Corporate Facility Location",
-                    value: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.",
+                    value: "First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.",
                   },
                   {
                     icon: Phone,
@@ -452,7 +452,7 @@ export default function BiomaxContactPage() {
                 Find Bio Max Corporation on Google Maps
               </h2>
               <p className="text-[13.5px] mt-1 font-medium" style={{ color: COLORS.muted }}>
-                1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.
+                First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.
               </p>
             </div>
             <a

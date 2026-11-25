@@ -291,7 +291,7 @@ export function BiomaxNavbar() {
 // ─── Reusable Footer Component ────────────────────────────────────────────────
 export function BiomaxFooter() {
   return (
-    <footer className="py-14 px-6 mt-6" style={{ backgroundColor: COLORS.footerBg }}>
+    <footer className="py-14 px-6" style={{ backgroundColor: COLORS.footerBg }}>
       <div className="mx-auto max-w-screen-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-10 text-white">
         {/* Brand Description Column */}
         <div className="lg:col-span-3 max-w-xs">
@@ -314,7 +314,7 @@ export function BiomaxFooter() {
               </span>
             </div>
           </Link>
-          <p className="text-[12px] leading-relaxed mb-5" style={{ color: "#FFFFFF" }}>
+          <p className="text-[13px] sm:text-[13.5px] leading-relaxed mb-5" style={{ color: "#FFFFFF" }}>
             Delivering trusted laboratory equipment, diagnostic systems, biotechnology workflows, and precision scientific instruments worldwide.
           </p>
           <div className="flex gap-3">
@@ -333,47 +333,50 @@ export function BiomaxFooter() {
         </div>
 
         {/* Quick Links & Product Portfolios */}
-        {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
-          <div key={heading} className="lg:col-span-2">
-            <h5 className="text-[12px] font-black uppercase tracking-[0.14em] mb-4 text-white" style={{ color: "#FFFFFF" }}>
-              {heading}
-            </h5>
-            <ul className="space-y-2.5">
-              {links.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-[12px] hover:text-[#1D906C] transition-colors text-white cursor-pointer"
-                    style={{ color: "rgba(255,255,255,0.95)" }}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {Object.entries(FOOTER_LINKS).map(([heading, links]) => {
+          const isWide = heading === "Product Portfolios";
+          return (
+            <div key={heading} className={isWide ? "lg:col-span-3" : "lg:col-span-2"}>
+              <h5 className="text-[13px] sm:text-[13.5px] font-black uppercase tracking-[0.14em] mb-4 text-white" style={{ color: "#FFFFFF" }}>
+                {heading}
+              </h5>
+              <ul className="space-y-3">
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-[14px] sm:text-[14.5px] font-medium hover:text-[#1D906C] transition-colors text-white/95 hover:text-white cursor-pointer block leading-snug"
+                      style={{ color: "rgba(255,255,255,0.95)" }}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
 
         {/* Contact Information */}
-        <div className="lg:col-span-5">
-          <h5 className="text-[12px] font-black uppercase tracking-[0.14em] mb-4 text-white" style={{ color: "#FFFFFF" }}>
+        <div className="lg:col-span-4">
+          <h5 className="text-[13px] sm:text-[13.5px] font-black uppercase tracking-[0.14em] mb-4 text-white" style={{ color: "#FFFFFF" }}>
             Contact Information
           </h5>
-          <div className="space-y-3">
-            <p className="text-[12px] flex items-start gap-2.5 text-white" style={{ color: "#FFFFFF" }}>
-              <MapPin size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
-              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
+          <div className="space-y-3.5">
+            <p className="text-[13.5px] sm:text-[14px] leading-relaxed flex items-start gap-2.5 text-white" style={{ color: "#FFFFFF" }}>
+              <MapPin size={16} className="flex-shrink-0 mt-1 text-white" style={{ color: "#FFFFFF" }} />
+              First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
             </p>
-            <p className="text-[12px] flex items-start gap-2.5 text-white" style={{ color: "#FFFFFF" }}>
-              <Phone size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
+            <p className="text-[13.5px] sm:text-[14px] flex items-center gap-2.5 text-white" style={{ color: "#FFFFFF" }}>
+              <Phone size={16} className="flex-shrink-0 text-white" style={{ color: "#FFFFFF" }} />
               0092-42-38924737
             </p>
-            <p className="text-[12px] flex items-start gap-2.5 text-white" style={{ color: "#FFFFFF" }}>
-              <Phone size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
+            <p className="text-[13.5px] sm:text-[14px] flex items-center gap-2.5 text-white" style={{ color: "#FFFFFF" }}>
+              <Phone size={16} className="flex-shrink-0 text-white" style={{ color: "#FFFFFF" }} />
               WhatsApp: 0092-304-7527498 | 0092-321-8431665
             </p>
-            <p className="text-[12px] flex items-start gap-2.5 text-white" style={{ color: "#FFFFFF" }}>
-              <Mail size={15} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
+            <p className="text-[13.5px] sm:text-[14px] flex items-center gap-2.5 text-white" style={{ color: "#FFFFFF" }}>
+              <Mail size={16} className="flex-shrink-0 text-white" style={{ color: "#FFFFFF" }} />
               info@roysons.org | support@roysons.org
             </p>
           </div>
@@ -385,11 +388,11 @@ export function BiomaxFooter() {
         className="mx-auto max-w-screen-xl mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center"
         style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }}
       >
-        <p className="text-[11.5px] text-white" style={{ color: "rgba(255,255,255,0.85)" }}>
+        <p className="text-[12.5px] text-white" style={{ color: "rgba(255,255,255,0.85)" }}>
           &copy; 2026 BIO MAX CORPORATION. All Rights Reserved.
         </p>
         <div className="flex gap-6">
-          <Link href="/group-companies/biomax" className="text-[11.5px] text-white/80 hover:text-white transition-colors">
+          <Link href="/group-companies/biomax" className="text-[12.5px] text-white/80 hover:text-white transition-colors">
             Return to BioMax Overview
           </Link>
         </div>

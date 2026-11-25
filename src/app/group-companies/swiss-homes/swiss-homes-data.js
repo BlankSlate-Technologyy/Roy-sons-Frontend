@@ -379,7 +379,7 @@ export const PROPERTY_LISTINGS = [
     badge: "Institutional Grade",
     image: "/swisshomes/card_commercial_arcade.jpg",
     summary:
-      "Prime front-facing commercial landmark hosting international retail brands on Ground, Mezzanine, and 1st floors, corporate IT headquarters on upper floors, and rooftop revolving restaurant.",
+      "Prime front-facing commercial landmark hosting international retail brands on Ground, Mezzanine, and First floors, corporate IT headquarters on upper floors, and rooftop revolving restaurant.",
     specs: {
       height: "G+9 Commercial & Office Floors",
       parking: "3-Level Underground Automated 500-Car Silo",

@@ -218,3 +218,14 @@ body.biomax-theme footer svg {
 body.biomax-theme svg:not([fill="currentColor"]) {
   fill: none !important;
 }
+
+/* Ensure footer connects flush to map with zero white gap */
+body.biomax-theme footer {
+  margin-top: 0 !important;
+}
+
+body.biomax-theme iframe {
+  display: block !important;
+  vertical-align: bottom !important;
+  margin-bottom: 0 !important;
+}

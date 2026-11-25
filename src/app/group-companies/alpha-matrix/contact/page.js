@@ -79,7 +79,7 @@ export default function AlphaMatrixContactPage() {
                   <div>
                     <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Defense Headquarters</h4>
                     <p className="text-xs text-slate-300 leading-relaxed mt-1">
-                      1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.
+                      First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.
                     </p>
                   </div>
                 </div>

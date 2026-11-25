@@ -588,7 +588,7 @@ export default function BiomaxQualityPage() {
                       <div>
                         <p className="text-[10.5px] font-bold uppercase text-white/70">QA Department Location</p>
                         <p className="text-[12.5px] text-white font-medium">
-                          1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
+                          First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
                         </p>
                       </div>
                     </div>

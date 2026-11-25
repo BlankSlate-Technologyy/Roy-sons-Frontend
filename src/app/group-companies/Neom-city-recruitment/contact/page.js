@@ -31,7 +31,7 @@ import {
 const OFFICES = [
   {
     city: "Lahore Headquarters (Global Talent & Executive Search Hub)",
-    address: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
+    address: "First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
     phone: "0092-42-38924737 / 0092-321-8431665",
     whatsapp: "0092-304-7527498",
     email: "info@roysons.org",

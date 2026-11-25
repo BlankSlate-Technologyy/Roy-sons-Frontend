@@ -27,7 +27,7 @@ const CONTACT_INFO = [
   {
     icon: MapPin,
     label: "Our Office",
-    value: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
+    value: "First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
     href: null,
   },
   {

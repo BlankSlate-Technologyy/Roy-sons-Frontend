@@ -77,11 +77,12 @@ const PRODUCT_CATEGORIES = [
     items: [
       "Laboratory Instruments",
       "Analytical Equipment",
-      "Centrifuges",
-      "Incubators",
-      "Microscopes",
-      "Laboratory Shakers",
+      "Centrifuges & Shakers",
+      "Laboratory Incubators",
+      "Microscopes & Imaging",
       "Heating & Cooling Equipment",
+      "Autoclaves & Sterilizers",
+      "Water Purification Systems",
     ],
     features: [
       "Digital microprocessor temperature & speed regulation",
@@ -105,8 +106,11 @@ const PRODUCT_CATEGORIES = [
       "Diagnostic Instruments",
       "Clinical Laboratory Equipment",
       "Sample Processing Systems",
-      "Testing Equipment",
-      "Laboratory Consumables",
+      "Automated Biochemistry Analyzers",
+      "Hematology & Coagulation Systems",
+      "Immunology & ELISA Testing",
+      "Electrolyte & Blood Gas Analyzers",
+      "Diagnostic Reagents & Consumables",
     ],
     features: [
       "Automated robotic sample handling & barcode tracking",
@@ -129,9 +133,11 @@ const PRODUCT_CATEGORIES = [
     items: [
       "Molecular Biology Equipment",
       "DNA & RNA Analysis Solutions",
-      "PCR & Related Systems",
+      "PCR & Thermal Cyclers",
       "Cell Culture Equipment",
       "Biotechnology Consumables",
+      "Gel Electrophoresis Systems",
+      "Biosafety Cabinets & Clean Benches",
       "Research Laboratory Systems",
     ],
     features: [
@@ -154,10 +160,12 @@ const PRODUCT_CATEGORIES = [
     description: "A comprehensive catalog of premium laboratory consumables manufactured to stringent purity standards, ensuring sample integrity, zero cross-contamination, and accurate fluid handling.",
     items: [
       "Laboratory Plasticware",
-      "Glassware",
-      "Pipettes & Tips",
-      "Tubes & Containers",
+      "Borosilicate Glassware",
+      "Pipettes & Filter Tips",
+      "Centrifuge Tubes & Vials",
       "Sample Collection Products",
+      "Sterile Filtration Membranes",
+      "Cryogenic Storage Solutions",
       "General Laboratory Supplies",
     ],
     features: [
@@ -179,12 +187,14 @@ const PRODUCT_CATEGORIES = [
     badge: "PRECISION ANALYTICS",
     description: "Advanced analytical and measurement instruments engineered for chemical characterization, quality assurance testing, environmental monitoring, and scientific discovery.",
     items: [
-      "Precision-Focused Measurement Instruments",
-      "UV-Vis Spectrophotometers & Optical Analyzers",
-      "Chromatography & Separation Systems (HPLC)",
-      "Analytical Microbalances & Precision Scales",
-      "Digital pH, Conductivity & Electrochemical Meters",
-      "Quality Control & Calibration Instruments",
+      "Precision Measurement Instruments",
+      "UV-Vis Spectrophotometers",
+      "Chromatography Systems (HPLC)",
+      "Analytical Microbalances",
+      "Digital pH & Conductivity Meters",
+      "Refractometers & Polarimeters",
+      "Thermal & Viscosity Analyzers",
+      "Quality Control & Calibration Tools",
     ],
     features: [
       "Sub-milligram analytical weighing accuracy with internal calibration",
@@ -288,7 +298,7 @@ export default function BiomaxSolutionsPage() {
       <BiomaxNavbar />
 
       {/* ─── Hero Section with AI Background Image ──────────────────────── */}
-      <section className="relative py-20 lg:py-28 px-6 overflow-hidden border-b min-h-[480px] sm:min-h-[520px] flex items-center" style={{ borderColor: COLORS.border }}>
+      <section className="relative py-10 sm:py-12 lg:py-14 px-6 overflow-hidden border-b flex items-center" style={{ borderColor: COLORS.border }}>
         {/* ── Background AI Header Image ── */}
         <div className="absolute inset-0 z-0 select-none overflow-hidden">
           <Image
@@ -321,10 +331,10 @@ export default function BiomaxSolutionsPage() {
 
         {/* ── Content Overlaid on Top of Image ── */}
         <div className="relative z-20 mx-auto max-w-screen-xl w-full">
-          <div className="max-w-3xl space-y-4">
+          <div className="max-w-3xl space-y-3 sm:space-y-3.5">
             {/* Pill Eyebrow */}
             <span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[12px] sm:text-[13px] font-black uppercase tracking-widest mb-2 border backdrop-blur-md shadow-md text-white"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[12px] sm:text-[13px] font-black uppercase tracking-widest border backdrop-blur-md shadow-md text-white"
               style={{
                 backgroundColor: "rgba(255, 255, 255, 0.15)",
                 borderColor: "rgba(255, 255, 255, 0.35)",
@@ -347,7 +357,7 @@ export default function BiomaxSolutionsPage() {
             </p>
 
             {/* Hero CTAs */}
-            <div className="flex flex-wrap gap-4 pt-3">
+            <div className="flex flex-wrap gap-4 pt-1 sm:pt-2">
               <a
                 href="#category-explorer"
                 className="px-7 py-3.5 rounded-xl text-[14px] font-bold text-white transition-all flex items-center gap-2 cursor-pointer shadow-lg hover:scale-105"
@@ -371,7 +381,7 @@ export default function BiomaxSolutionsPage() {
           </div>
 
           {/* Quick Jump Category Chips */}
-          <div className="mt-12 pt-8 border-t border-white/20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {PRODUCT_CATEGORIES.map((cat, idx) => {
               const Icon = cat.icon;
               return (
@@ -582,39 +592,12 @@ export default function BiomaxSolutionsPage() {
                         ))}
                       </div>
                     </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex flex-wrap gap-3 pt-2">
-                      <Link
-                        href={`/group-companies/biomax/solutions/${cat.id}`}
-                        className="px-6 py-3 rounded-lg text-[13.5px] font-bold text-white flex items-center gap-2 shadow-md bg-[#1D906C] hover:bg-[#136B50] transition-all cursor-pointer"
-                      >
-                        <span>View {cat.title} Details</span>
-                        <ArrowRight size={15} />
-                      </Link>
-                      <button
-                        onClick={() => scrollToInquiry(cat.title)}
-                        className="px-6 py-3 rounded-lg text-[13.5px] font-bold text-white flex items-center gap-2 shadow-md hover:opacity-90 transition-opacity cursor-pointer"
-                        style={{ backgroundColor: COLORS.primary }}
-                      >
-                        <span>Inquire for {cat.title}</span>
-                        <ArrowRight size={15} />
-                      </button>
-                      <button
-                        onClick={() => scrollToInquiry(`Technical Specs for ${cat.title}`)}
-                        className="px-6 py-3 rounded-lg text-[13.5px] font-bold border-2 bg-white flex items-center gap-2 transition-all duration-200 cursor-pointer"
-                        style={{ borderColor: COLORS.accent, color: COLORS.accent }}
-                      >
-                        <FileText size={15} />
-                        <span>Request Datasheet</span>
-                      </button>
-                    </div>
                   </div>
 
-                  {/* Right Column: AI-Generated High-Resolution Photography */}
-                  <div className="lg:col-span-6">
+                  {/* Right Column: AI-Generated High-Resolution Photography & Action Buttons */}
+                  <div className="lg:col-span-6 flex flex-col gap-5">
                     <div
-                      className="relative w-full h-[420px] sm:h-[480px] rounded-2xl overflow-hidden border shadow-lg group"
+                      className="relative w-full h-[380px] sm:h-[440px] rounded-2xl overflow-hidden border shadow-lg group"
                       style={{ borderColor: COLORS.border }}
                     >
                       <Image
@@ -641,6 +624,33 @@ export default function BiomaxSolutionsPage() {
                         <p className="text-white font-black text-[16px]">{cat.title}</p>
                         <p className="text-white/80 text-[13px] mt-0.5">{cat.tagline}</p>
                       </div>
+                    </div>
+
+                    {/* Action Buttons (Positioned on the Right Column under Image) */}
+                    <div className="flex flex-wrap gap-3 pt-1">
+                      <Link
+                        href={`/group-companies/biomax/solutions/${cat.id}`}
+                        className="px-6 py-3 rounded-lg text-[13.5px] font-bold text-white flex items-center justify-center gap-2 shadow-md bg-[#1D906C] hover:bg-[#136B50] transition-all cursor-pointer"
+                      >
+                        <span>View {cat.title} Details</span>
+                        <ArrowRight size={15} />
+                      </Link>
+                      <button
+                        onClick={() => scrollToInquiry(cat.title)}
+                        className="px-6 py-3 rounded-lg text-[13.5px] font-bold text-white flex items-center justify-center gap-2 shadow-md hover:opacity-90 transition-opacity cursor-pointer"
+                        style={{ backgroundColor: COLORS.primary }}
+                      >
+                        <span>Inquire for {cat.title}</span>
+                        <ArrowRight size={15} />
+                      </button>
+                      <button
+                        onClick={() => scrollToInquiry(`Technical Specs for ${cat.title}`)}
+                        className="px-6 py-3 rounded-lg text-[13.5px] font-bold border-2 bg-white flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer"
+                        style={{ borderColor: COLORS.accent, color: COLORS.accent }}
+                      >
+                        <FileText size={15} />
+                        <span>Request Datasheet</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -790,7 +800,14 @@ export default function BiomaxSolutionsPage() {
                 >
                   <Icon size={20} />
                 </div>
-                <h4 className="text-[13px] font-black leading-snug mb-1" style={{ color: COLORS.primary }}>
+                <h4
+                  className="text-[14.5px] sm:text-[15px] font-black leading-snug mb-1"
+                  style={{
+                    color: COLORS.primary,
+                    fontWeight: 900,
+                    fontFamily: "system-ui, -apple-system, sans-serif",
+                  }}
+                >
                   {title}
                 </h4>
                 <p className="text-[11px] leading-tight" style={{ color: COLORS.muted }}>
@@ -839,7 +856,14 @@ export default function BiomaxSolutionsPage() {
                 <Icon size={20} />
               </div>
               <div>
-                <h4 className="text-[13.5px] font-black mb-1" style={{ color: COLORS.primary }}>
+                <h4
+                  className="text-[15px] sm:text-[16px] font-black mb-1"
+                  style={{
+                    color: COLORS.primary,
+                    fontWeight: 900,
+                    fontFamily: "system-ui, -apple-system, sans-serif",
+                  }}
+                >
                   {title}
                 </h4>
                 <p className="text-[12px] leading-relaxed" style={{ color: COLORS.muted }}>
@@ -883,7 +907,7 @@ export default function BiomaxSolutionsPage() {
                       <div>
                         <p className="text-[10.5px] font-bold uppercase text-white/70">Office Location</p>
                         <p className="text-[12.5px] text-white font-medium">
-                          1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
+                          First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
                         </p>
                       </div>
                     </div>
@@ -940,15 +964,15 @@ export default function BiomaxSolutionsPage() {
                     Looking for detailed model specifications, institutional bulk pricing, or tender procurement documents? Our dedicated sales engineers will prepare a comprehensive proposal for your facility.
                   </p>
 
-                  <div className="space-y-3 mb-8">
+                  <div className="space-y-4 mb-8">
                     {[
                       "Official manufacturer authorization & warranty coverage",
                       "Standard IQ/OQ installation & validation support",
                       "Turnkey delivery, calibration & on-site staff training",
                     ].map((feat) => (
-                      <div key={feat} className="flex items-center gap-2.5">
-                        <CheckCircle2 size={16} style={{ color: COLORS.accent }} />
-                        <span className="text-[13px] font-semibold" style={{ color: COLORS.primary }}>
+                      <div key={feat} className="flex items-center gap-3.5">
+                        <CheckCircle2 size={24} className="flex-shrink-0" style={{ color: COLORS.accent }} />
+                        <span className="text-[17px] sm:text-[18px] font-bold leading-snug" style={{ color: COLORS.primary }}>
                           {feat}
                         </span>
                       </div>

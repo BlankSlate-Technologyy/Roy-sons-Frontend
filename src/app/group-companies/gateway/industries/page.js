@@ -86,69 +86,89 @@ export default function GatewayIndustriesOverviewPage() {
         </Container>
       </div>
 
-      {/* ─── Hero Section with High-Tech AI Imagery & Industry Showcase ────── */}
-      <section className="relative bg-gradient-to-b from-[#F8FAFC] to-white py-14 lg:py-24 border-b overflow-hidden" style={{ borderColor: COLORS.border }}>
-        <Container>
+      {/* ─── Hero Section with High-Tech AI Background & Industry Showcase ────── */}
+      <section className="relative py-14 lg:py-24 border-b overflow-hidden text-white" style={{ borderColor: COLORS.border }}>
+        {/* Background AI Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/gateway/gateway_header_industries.jpg"
+            alt="Gateway Pharmaceuticals Global Manufacturing & Industries"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Directional Overlay: deep navy on left for text, soft & light on right */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(7, 24, 56, 0.95) 0%, rgba(11, 30, 61, 0.82) 42%, rgba(15, 38, 77, 0.35) 72%, rgba(7, 24, 56, 0.08) 100%)",
+            }}
+          />
+        </div>
+
+        <Container className="relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-7 space-y-5" data-aos="fade-right">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-blue-50 border border-blue-200 text-[#173F8A]">
-                <Sparkles size={13} className="text-[#2E8B57]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-wider backdrop-blur-md bg-white/10 border border-white/20 text-[#34D399]">
+                <Sparkles size={13} className="text-[#34D399]" />
                 <span>CROSS-SECTOR REGULATORY EXCELLENCE</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#173F8A] tracking-tight leading-[1.15]">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15]">
                 Industries We Serve Across <br />
-                <span className="text-[#2E8B57]">Global Healthcare &amp; Pharma</span>
+                <span className="text-[#34D399]">Global Healthcare &amp; Pharma</span>
               </h1>
 
-              <p className="text-[15px] sm:text-[16.5px] text-slate-600 leading-relaxed font-normal max-w-2xl">
+              <p className="text-[15px] sm:text-[16.5px] text-slate-200 leading-relaxed font-normal max-w-2xl">
                 Gateway Pharmaceuticals Consultants partners with pharmaceutical manufacturers, biotech innovators, medical device producers, and international distributors. We tailor statutory licensing, marketing authorization, and cGMP compliance frameworks to the exact regulatory dynamics of each industry vertical.
               </p>
 
               {/* Statistics Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="p-3.5 rounded-xl bg-white border shadow-xs" style={{ borderColor: COLORS.border }}>
-                  <p className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wider">Sectors Covered</p>
-                  <p className="text-2xl font-black text-[#173F8A] mt-0.5">7 Verticals</p>
+                <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/15 backdrop-blur-md shadow-xs">
+                  <p className="text-[10.5px] font-bold text-slate-300 uppercase tracking-wider">Sectors Covered</p>
+                  <p className="text-2xl font-black text-white mt-0.5">7 Verticals</p>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border shadow-xs" style={{ borderColor: COLORS.border }}>
-                  <p className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wider">Regulatory Rate</p>
-                  <p className="text-2xl font-black text-[#2E8B57] mt-0.5">99.4%</p>
+                <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/15 backdrop-blur-md shadow-xs">
+                  <p className="text-[10.5px] font-bold text-slate-300 uppercase tracking-wider">Regulatory Rate</p>
+                  <p className="text-2xl font-black text-[#34D399] mt-0.5">99.4%</p>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border shadow-xs" style={{ borderColor: COLORS.border }}>
-                  <p className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wider">Registrations</p>
-                  <p className="text-2xl font-black text-[#173F8A] mt-0.5">500+ Drugs</p>
+                <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/15 backdrop-blur-md shadow-xs">
+                  <p className="text-[10.5px] font-bold text-slate-300 uppercase tracking-wider">Registrations</p>
+                  <p className="text-2xl font-black text-white mt-0.5">500+ Drugs</p>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border shadow-xs" style={{ borderColor: COLORS.border }}>
-                  <p className="text-[10.5px] font-bold text-slate-500 uppercase tracking-wider">Compliance</p>
-                  <p className="text-2xl font-black text-[#2E8B57] mt-0.5">WHO / cGMP</p>
+                <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/15 backdrop-blur-md shadow-xs">
+                  <p className="text-[10.5px] font-bold text-slate-300 uppercase tracking-wider">Compliance</p>
+                  <p className="text-2xl font-black text-[#34D399] mt-0.5">WHO / cGMP</p>
                 </div>
               </div>
             </div>
 
             {/* Right Hero Image Card */}
             <div className="lg:col-span-5" data-aos="fade-left">
-              <div className="relative group rounded-3xl overflow-hidden border shadow-xl bg-white" style={{ borderColor: COLORS.border }}>
+              <div className="relative group rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-slate-900/60 backdrop-blur-md">
                 <div className="relative w-full h-[320px] sm:h-[380px] overflow-hidden">
                   <Image
-                    src="/gatwayareaofexperince.png"
+                    src="/gateway/gateway_header_industries.jpg"
                     alt="Gateway Pharmaceuticals Industries We Serve"
                     fill
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 500px"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071838]/85 via-transparent to-transparent" />
                   
-                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-white/40 shadow-lg">
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-900/90 backdrop-blur-md border border-white/20 shadow-lg">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-blue-100 text-[#173F8A]">
+                        <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#2E8B57]/20 border border-[#2E8B57]/40 text-[#34D399]">
                           <Award size={20} />
                         </div>
                         <div>
-                          <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">National &amp; Global Scope</p>
-                          <p className="text-xs font-black text-[#173F8A]">Commercial Pharma, Biotech &amp; Medical Devices</p>
+                          <p className="text-[11px] font-bold text-slate-300 uppercase tracking-wider">National &amp; Global Scope</p>
+                          <p className="text-xs font-black text-white">Commercial Pharma, Biotech &amp; Medical Devices</p>
                         </div>
                       </div>
                     </div>

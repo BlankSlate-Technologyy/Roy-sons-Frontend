@@ -384,7 +384,7 @@ export function SwissFarmFooter() {
             <div className="space-y-3 text-xs font-medium" style={{ color: theme.textMuted }}>
               <div className="flex items-start gap-2.5">
                 <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.accentGold }} />
-                <span>1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</span>
+                <span>First Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone size={16} className="flex-shrink-0" style={{ color: theme.accentGold }} />

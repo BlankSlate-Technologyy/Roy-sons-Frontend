@@ -122,7 +122,6 @@ export default function Navbar() {
 
         {/* Right CTA Button, Portal & Mobile Menu Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <RoysonsPortalButton />
           <Link
             href="/group-companies/gateway#contact"
             className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
@@ -130,6 +129,7 @@ export default function Navbar() {
           >
             <span>Consult Pharma Desk</span>
           </Link>
+          <RoysonsPortalButton />
 
           {/* Mobile Toggle Button */}
           <button

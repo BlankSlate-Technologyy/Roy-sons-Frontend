@@ -340,7 +340,7 @@ export function VetvacFooter() {
               style={{ color: "#FFFFFF" }}
             >
               <MapPin size={17} className="flex-shrink-0 mt-0.5 text-white" style={{ color: "#FFFFFF" }} />
-              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
+              First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
             </p>
             <p
               className="text-[13.5px] flex items-start gap-2.5 text-white font-medium"

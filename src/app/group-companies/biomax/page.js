@@ -255,7 +255,7 @@ const SOCIAL_ICONS = [Facebook, Linkedin, Twitter, Youtube];
 
 function SectionHeading({ eyebrow, title, subtitle, align = "left" }) {
   return (
-    <div className={`mb-10 ${align === "center" ? "text-center" : ""}`}>
+    <div className={`mb-7 sm:mb-8 ${align === "center" ? "text-center" : ""}`}>
       <span className="text-[11px] font-extrabold tracking-widest uppercase block mb-2" style={{ color: COLORS.primary }}>
         {eyebrow}
       </span>
@@ -648,10 +648,10 @@ function HeroSection() {
 
 function TrustedBySection() {
   return (
-    <section className="section-animate py-14 lg:py-18 px-6 bg-white border-b" style={{ borderColor: COLORS.border }}>
+    <section className="section-animate py-10 lg:py-12 px-6 bg-white border-b" style={{ borderColor: COLORS.border }}>
       <div className="mx-auto max-w-screen-xl">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-widest border bg-white mb-3 shadow-xs"
             style={{ color: COLORS.accent, borderColor: COLORS.border }}
@@ -778,8 +778,8 @@ function AboutSection() {
   ];
 
   return (
-    <section id="about" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
-      <div className="mx-auto max-w-screen-xl space-y-12">
+    <section id="about" className="section-animate py-10 sm:py-12 lg:py-14 px-6" style={{ backgroundColor: COLORS.white }}>
+      <div className="mx-auto max-w-screen-xl space-y-8 sm:space-y-10">
         {/* Main Header & Story */}
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7">
@@ -900,7 +900,7 @@ function AboutSection() {
 
 function SolutionsSection() {
   return (
-    <section id="solutions" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section id="solutions" className="section-animate pt-10 sm:pt-12 pb-6 sm:pb-8 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading eyebrow="OUR SOLUTIONS" title="Complete Biotechnology & Laboratory Portfolio" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
@@ -927,7 +927,7 @@ function SolutionsSection() {
         </div>
 
         {/* View Full Product Catalog Banner */}
-        <div className="mt-12 p-8 rounded-2xl border flex flex-col md:flex-row items-center justify-between gap-6 bg-white shadow-md" style={{ borderColor: COLORS.border }}>
+        <div className="mt-8 p-6 sm:p-8 rounded-2xl border flex flex-col md:flex-row items-center justify-between gap-6 bg-white shadow-md" style={{ borderColor: COLORS.border }}>
           <div>
             <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.accent }}>
               OUR PRODUCTS &amp; LABORATORY SOLUTIONS
@@ -955,7 +955,7 @@ function SolutionsSection() {
 
 function WhyIndustriesProcessSection() {
   return (
-    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="section-animate pt-4 sm:pt-6 pb-10 sm:pb-12 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-3 gap-8">
         {/* Why Choose Us */}
         <div className="p-8 rounded-xl border shadow-md" style={{ borderColor: COLORS.border }}>
@@ -979,34 +979,34 @@ function WhyIndustriesProcessSection() {
           <div>
             <span className="text-[13px] font-extrabold uppercase tracking-widest block mb-1" style={{ color: COLORS.primary }}>INDUSTRIES WE SERVE</span>
             <h3 id="industries" className="text-[23px] sm:text-[25px] font-black mb-6" style={{ color: COLORS.accent }}>Sectors We Support</h3>
-            <div className="space-y-2.5 mb-6">
+            <div className="space-y-2 mb-6">
               {INDUSTRIES.map(({ icon: Icon, label, href }) => (
                 <Link
                   key={label}
                   href={href || "/group-companies/biomax/industries"}
-                  className="flex items-center justify-between p-2 rounded-lg hover:bg-[#F0F7FA] transition-colors group cursor-pointer"
+                  className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#F0F7FA] transition-all group cursor-pointer border border-transparent hover:border-[#165B7E]/10"
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3.5 min-w-0">
                     <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform"
                       style={{ backgroundColor: `${COLORS.primary}15` }}
                     >
-                      <Icon size={16} style={{ color: COLORS.primary }} />
+                      <Icon size={19} style={{ color: COLORS.primary }} />
                     </div>
-                    <span className="text-[13px] font-bold group-hover:text-[#1D906C] transition-colors" style={{ color: COLORS.ink }}>{label}</span>
+                    <span className="text-[15px] sm:text-[15.5px] font-extrabold leading-snug group-hover:text-[#1D906C] transition-colors" style={{ color: COLORS.ink }}>{label}</span>
                   </div>
-                  <ChevronRight size={13} className="text-[#1D906C] opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ChevronRight size={16} className="text-[#1D906C] opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 ml-2" />
                 </Link>
               ))}
             </div>
           </div>
           <Link
             href="/group-companies/biomax/industries"
-            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-[12px] font-bold text-white shadow-sm hover:bg-[#1D906C] transition-all"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg text-[13.5px] font-bold text-white shadow-sm hover:bg-[#1D906C] transition-all cursor-pointer"
             style={{ backgroundColor: COLORS.primary }}
           >
             <span>Explore All 7 Sectors</span>
-            <ArrowRight size={13} />
+            <ArrowRight size={15} />
           </Link>
         </div>
 
@@ -1038,7 +1038,7 @@ function WhyIndustriesProcessSection() {
 
 function CommitmentStatsSection() {
   return (
-    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="section-animate pt-4 sm:pt-6 pb-10 sm:pb-12 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-8 items-center">
         <div className="lg:col-span-5">
           <span className="text-[11px] font-extrabold uppercase tracking-widest block mb-2" style={{ color: COLORS.primary }}>
@@ -1069,7 +1069,7 @@ function CommitmentStatsSection() {
 
 function RndQualitySection() {
   return (
-    <section className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="section-animate py-10 sm:py-12 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-2 gap-8">
         <div id="rnd" className="p-8 rounded-2xl border flex flex-col justify-between shadow-sm bg-white" style={{ borderColor: COLORS.border, backgroundColor: "#ffffff" }}>
           <div>
@@ -1097,21 +1097,21 @@ function RndQualitySection() {
               QUALITY ASSURANCE
             </span>
             <h3 className="text-2xl sm:text-3xl font-black mb-3" style={{ color: COLORS.accent }}>Quality You Can Trust</h3>
-            <p className="text-[13.5px] leading-relaxed mb-5" style={{ color: COLORS.muted }}>
+            <p className="text-[14px] sm:text-[14.5px] leading-relaxed mb-5" style={{ color: COLORS.muted }}>
               Our quality-focused approach extends from product selection and sourcing to technical support and customer service.
             </p>
-            <div className="grid grid-cols-5 gap-2 mb-6">
+            <div className="grid grid-cols-5 gap-2 sm:gap-2.5 mb-6">
               {QUALITY_POINTS.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex flex-col items-center text-center gap-1.5 p-2 rounded-lg bg-white border" style={{ borderColor: COLORS.border }}>
-                  <Icon size={16} style={{ color: COLORS.accent }} />
-                  <span className="text-[9.5px] font-bold leading-tight" style={{ color: COLORS.ink }}>{label}</span>
+                <div key={label} className="flex flex-col items-center justify-center text-center gap-2 p-2.5 sm:p-3 rounded-xl bg-white border shadow-xs" style={{ borderColor: COLORS.border }}>
+                  <Icon size={20} style={{ color: COLORS.accent }} />
+                  <span className="text-[12px] sm:text-[12.5px] font-bold leading-snug whitespace-pre-line" style={{ color: COLORS.ink }}>{label}</span>
                 </div>
               ))}
             </div>
           </div>
           <Link
             href="/group-companies/biomax/quality"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-bold text-white hover:bg-[#1D906C] transition-all w-fit shadow-md"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-[13.5px] sm:text-[14px] font-bold text-white hover:bg-[#1D906C] transition-all w-fit shadow-md"
             style={{ backgroundColor: COLORS.accent }}
           >
             <span>View Quality Standards</span>
@@ -1137,12 +1137,12 @@ function TestimonialsFaqSection() {
   }, []);
 
   return (
-    <section className="section-animate py-16 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section className="section-animate pt-10 sm:pt-12 pb-6 sm:pb-8 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl grid lg:grid-cols-12 gap-10">
 
         {/* ── Testimonials Slider ── */}
         <div className="lg:col-span-7">
-          <SectionHeading eyebrow="TESTIMONIALS" title="What Our Partners Say" />
+          <SectionHeading eyebrow="TESTIMONIALS" title={<>What Our <br />Partners Say</>} />
 
           {/* Slide track */}
           <div className="relative overflow-hidden rounded-xl">
@@ -1298,9 +1298,9 @@ function CtaSection() {
 
 function ContactSection() {
   return (
-    <section id="contact" className="section-animate py-20 px-6" style={{ backgroundColor: COLORS.white }}>
+    <section id="contact" className="section-animate pt-6 sm:pt-8 pb-12 sm:pb-14 px-6" style={{ backgroundColor: COLORS.white }}>
       <div className="mx-auto max-w-screen-xl">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <span className="text-[13px] font-extrabold uppercase tracking-widest" style={{ color: COLORS.primary }}>GET IN TOUCH</span>
           <h2 className="text-4xl sm:text-5xl font-black mt-1 mb-4" style={{ color: COLORS.accent }}>Contact BIO MAX</h2>
           <p className="text-[14px] max-w-xl mx-auto" style={{ color: COLORS.muted }}>
@@ -1312,7 +1312,7 @@ function ContactSection() {
           {/* Contact Info Cards */}
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
             {[
-              { icon: MapPin, label: "Our Office", value: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore." },
+              { icon: MapPin, label: "Our Office", value: "First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore." },
               { icon: Phone, label: "Call Us", value: "0092-42-38924737" },
               { icon: Phone, label: "WhatsApp", value: "0092-304-7527498 | 0092-321-8431665" },
               { icon: Mail, label: "Email Us", value: "info@roysons.org | support@roysons.org" },
@@ -1367,7 +1367,7 @@ function ContactSection() {
 // ─── Google Map Section ─────────────────────────────────────────────────────
 function MapSection() {
   return (
-    <section className="relative w-full overflow-hidden bg-white">
+    <section className="relative w-full overflow-hidden bg-white m-0 p-0 block leading-none">
       {/* Floating Address Header */}
       <div className="absolute top-6 left-1/2 -translate-x-1/2 z-10 w-[92%] max-w-screen-xl pointer-events-none">
         <div
@@ -1391,19 +1391,19 @@ function MapSection() {
               className="text-xs sm:text-sm font-semibold leading-snug"
               style={{ color: COLORS.ink }}
             >
-              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
+              First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
             </p>
           </div>
         </div>
       </div>
 
       {/* Map Embed - Full Width */}
-      <div className="w-full h-[500px] md:h-[550px] lg:h-[600px] relative">
+      <div className="w-full h-[500px] md:h-[550px] lg:h-[600px] relative block leading-none">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.0!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904de60e29e3b%3A0x9a9d95ad0e1c7d50!2sRehman%20Centre-2%2C%20Ring%20Rd%2C%20Lahore!5e0!3m2!1sen!2s!4v1690000000000"
           width="100%"
           height="100%"
-          style={{ border: 0, display: "block" }}
+          style={{ border: 0, display: "block", verticalAlign: "bottom" }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

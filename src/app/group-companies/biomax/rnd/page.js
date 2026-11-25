@@ -217,7 +217,7 @@ export default function BiomaxRndPage() {
               <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
             </span>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] font-black uppercase tracking-tight leading-[1.1] text-white drop-shadow-md">
+            <h1 className="text-2xl sm:text-4xl lg:text-[40px] font-black uppercase tracking-tight leading-[1.15] text-white drop-shadow-md">
               RESEARCH &amp; <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] to-[#ffffff]">DEVELOPMENT</span>
             </h1>
@@ -468,7 +468,7 @@ export default function BiomaxRndPage() {
                       <div>
                         <p className="text-[10.5px] font-bold uppercase text-white/70">R&amp;D Facility Location</p>
                         <p className="text-[12.5px] text-white font-medium">
-                          1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
+                          First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.
                         </p>
                       </div>
                     </div>

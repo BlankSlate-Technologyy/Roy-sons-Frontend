@@ -412,7 +412,7 @@ export function PakMedicalFooter() {
             <div className="space-y-3 text-xs font-medium text-slate-600">
               <div className="flex items-start gap-2.5">
                 <MapPin size={16} className="flex-shrink-0 mt-0.5 text-[#1A4FA0]" />
-                <span>1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</span>
+                <span>First Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone size={16} className="flex-shrink-0 text-[#1A4FA0]" />

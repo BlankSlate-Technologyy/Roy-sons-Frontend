@@ -30,7 +30,7 @@ export default function MapSection() {
               className="text-xs sm:text-sm font-bold leading-snug"
               style={{ color: COLORS.textDark }}
             >
-              1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
+              First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore
             </p>
           </div>
         </div>

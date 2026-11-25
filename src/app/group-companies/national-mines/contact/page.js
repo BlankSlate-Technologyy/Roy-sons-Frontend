@@ -31,7 +31,7 @@ const OFFICES = [
   {
     city: "Lahore Corporate Headquarters",
     subtitle: "Principal Executive & Commercial Operations Center",
-    address: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.",
+    address: "First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.",
     phone: "0092-42-38924737",
     whatsapp: "0092-304-7527498",
     email: "info@roysons.org",

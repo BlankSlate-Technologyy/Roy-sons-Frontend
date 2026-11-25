@@ -26,7 +26,7 @@ const OFFICES = [
   {
     city: "Lahore Headquarters",
     fullCity: "Lahore Headquarters (Principal Agribusiness Complex)",
-    address: "1st Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
+    address: "First Floor, Rehman Centre-2, Near Zakir Tikka, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore.",
     phone: "0092-42-38924737 / 0092-321-8431665",
     whatsapp: "0092-304-7527498",
     email: "info@roysons.org",
@@ -412,7 +412,7 @@ export default function NationalAgriculturalContactPage() {
               <div>
                 <h4 className="text-sm font-semibold" style={{ color: theme.navy }}>Principal Agribusiness Headquarters</h4>
                 <p className="text-xs font-normal text-slate-500 mt-0.5">
-                  1st Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.
+                  First Floor, Rehman Centre-2, Service Lane Ring Road, Near ASK-11 Gate #3, Lahore, Pakistan.
                 </p>
               </div>
             </div>
