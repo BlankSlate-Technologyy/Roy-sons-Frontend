@@ -465,10 +465,10 @@ function HeroSection() {
       </div>
 
       {/* ── CONTENT OVERLAY DIRECTLY ON TOP OF IMAGE ── */}
-      <div className="mx-auto max-w-screen-xl relative z-20 w-full px-6 py-20 lg:py-28">
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div className="mx-auto max-w-screen-2xl relative z-20 w-full px-6 sm:px-8 lg:px-12 py-16 lg:py-24">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
           {/* Left Column: Hero Content */}
-          <div className="lg:col-span-8 space-y-7">
+          <div className="lg:col-span-7 space-y-6">
             <div
               className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[13px] sm:text-[14px] font-black uppercase tracking-wider backdrop-blur-md shadow-lg border"
               style={{
@@ -482,18 +482,18 @@ function HeroSection() {
               <span className="w-2 h-2 rounded-full bg-[#2ee6ad] animate-pulse" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[58px] xl:text-[66px] font-black leading-[1.08] tracking-tight text-white drop-shadow-md">
+            <h1 className="text-3xl sm:text-5xl lg:text-[46px] xl:text-[56px] font-black leading-[1.08] tracking-tight text-white drop-shadow-md">
               BIOTECHNOLOGY &amp; <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2ee6ad] via-[#65e8b5] to-[#ffffff]">
                 LABORATORY SOLUTIONS
               </span>
             </h1>
 
-            <p className="text-[17px] sm:text-[19px] lg:text-[21px] font-medium leading-relaxed max-w-2xl text-slate-100/95 drop-shadow-xs">
+            <p className="text-[16px] sm:text-[18px] lg:text-[19px] font-medium leading-relaxed max-w-2xl text-slate-100/95 drop-shadow-xs">
               Supplying advanced scientific equipment, high-precision laboratory systems, and biotechnology solutions for research, healthcare, and diagnostic institutions.
             </p>
 
-            <div className="flex flex-wrap gap-5 pt-2">
+            <div className="flex flex-wrap gap-4 pt-2">
               <HeroPrimaryButton href="/group-companies/biomax/solutions">
                 <span>Explore Products</span>
                 <ArrowRight size={18} />
@@ -506,7 +506,7 @@ function HeroSection() {
 
             {/* Quick Hero Highlights Bar */}
             <div
-              className="pt-8 border-t grid grid-cols-2 sm:grid-cols-4 gap-4"
+              className="pt-7 border-t grid grid-cols-2 sm:grid-cols-4 gap-3.5"
               style={{ borderColor: "rgba(255, 255, 255, 0.22)" }}
             >
               <div className="p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15">
@@ -529,88 +529,89 @@ function HeroSection() {
           </div>
 
           {/* Right Column: Glassmorphic Interactive Slide Control Panel */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-5 space-y-4 w-full">
             <div
-              className="p-6 sm:p-7 rounded-3xl backdrop-blur-xl border shadow-2xl transition-all duration-300 relative overflow-hidden"
+              className="p-7 sm:p-8 lg:p-9 rounded-3xl backdrop-blur-xl border shadow-2xl transition-all duration-300 relative overflow-hidden"
               style={{
-                backgroundColor: "rgba(13, 43, 61, 0.80)",
-                borderColor: "rgba(255, 255, 255, 0.25)",
+                backgroundColor: "rgba(13, 43, 61, 0.85)",
+                borderColor: "rgba(255, 255, 255, 0.28)",
               }}
             >
               {/* Header inside Card */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#2ee6ad] animate-pulse" />
-                  <span className="text-[12px] font-black uppercase tracking-widest text-[#2ee6ad]">
+              <div className="flex items-center justify-between gap-3 mb-5">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#2ee6ad] animate-pulse shrink-0" />
+                  <span className="text-[12.5px] sm:text-[13px] font-black uppercase tracking-widest text-[#2ee6ad] truncate">
                     {slide.badge}
                   </span>
                 </div>
+                {/* Enlarged & Widened Counter Badge (01 / 04) */}
                 <div
-                  className="w-12 py-2 rounded-2xl backdrop-blur-md border border-white/25 shadow-md flex flex-col items-center justify-center text-center select-none"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+                  className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl backdrop-blur-md border border-white/30 shadow-lg flex items-center justify-center gap-2 select-none shrink-0"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.18)" }}
                 >
-                  <span className="text-[13px] font-black text-white leading-none">
+                  <span className="text-[16px] sm:text-[18px] font-black text-[#2ee6ad] leading-none tracking-tight">
                     0{currentSlide + 1}
                   </span>
-                  <span className="text-[11px] font-black text-white/80 leading-none my-1 select-none">
+                  <span className="text-[14px] sm:text-[15px] font-bold text-white/60 leading-none select-none">
                     /
                   </span>
-                  <span className="text-[13px] font-black text-white leading-none">
+                  <span className="text-[14px] sm:text-[16px] font-extrabold text-white/95 leading-none">
                     0{HERO_SLIDES.length}
                   </span>
                 </div>
               </div>
 
-              <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 bg-white/15 border border-white/20 text-[#2ee6ad]">
-                <SlideIcon size={28} />
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 bg-white/15 border border-white/20 text-[#2ee6ad] shadow-inner">
+                <SlideIcon size={32} />
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-black text-white mb-2 leading-tight">
+              <h3 className="text-2xl sm:text-[26px] lg:text-[28px] font-black text-white mb-2.5 leading-tight">
                 {slide.title}
               </h3>
 
-              <p className="text-[14.5px] sm:text-[15.5px] text-slate-200 leading-relaxed mb-5 font-medium">
+              <p className="text-[15px] sm:text-[16px] text-slate-100 leading-relaxed mb-6 font-medium">
                 {slide.desc}
               </p>
 
               {/* Spec Pill */}
-              <div className="p-3.5 rounded-xl bg-white/10 border border-white/15 flex items-center justify-between mb-6">
+              <div className="p-4 rounded-2xl bg-white/12 border border-white/20 flex items-center justify-between mb-6 shadow-sm">
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-[#2ee6ad]">{slide.specBadge}</p>
-                  <p className="text-[14px] font-black text-white">{slide.specValue}</p>
+                  <p className="text-[11.5px] font-bold uppercase tracking-wider text-[#2ee6ad]">{slide.specBadge}</p>
+                  <p className="text-[15px] sm:text-[16px] font-black text-white mt-0.5">{slide.specValue}</p>
                 </div>
-                <CheckCircle2 size={20} className="text-[#2ee6ad]" />
+                <CheckCircle2 size={22} className="text-[#2ee6ad]" />
               </div>
 
               {/* Prev / Next & Progress Indicators */}
               <div className="flex items-center justify-between pt-2">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   <button
                     type="button"
                     onClick={prevSlide}
-                    className="w-11 h-11 rounded-full bg-white/15 hover:bg-[#1D906C] text-white border border-white/25 flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-110 active:scale-95"
+                    className="w-12 h-12 rounded-full bg-white/15 hover:bg-[#1D906C] text-white border border-white/25 flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-110 active:scale-95 shadow-md"
                     aria-label="Previous Slide"
                   >
-                    <ChevronLeft size={22} />
+                    <ChevronLeft size={24} />
                   </button>
                   <button
                     type="button"
                     onClick={nextSlide}
-                    className="w-11 h-11 rounded-full bg-white/15 hover:bg-[#1D906C] text-white border border-white/25 flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-110 active:scale-95"
+                    className="w-12 h-12 rounded-full bg-white/15 hover:bg-[#1D906C] text-white border border-white/25 flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-110 active:scale-95 shadow-md"
                     aria-label="Next Slide"
                   >
-                    <ChevronRight size={22} />
+                    <ChevronRight size={24} />
                   </button>
                 </div>
 
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   {HERO_SLIDES.map((_, idx) => (
                     <button
                       key={idx}
                       type="button"
                       onClick={() => setCurrentSlide(idx)}
-                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                        idx === currentSlide ? "w-8 bg-[#2ee6ad]" : "w-2 bg-white/40 hover:bg-white/70"
+                      className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        idx === currentSlide ? "w-10 bg-[#2ee6ad] shadow-sm shadow-[#2ee6ad]/50" : "w-2.5 bg-white/40 hover:bg-white/70"
                       }`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
@@ -620,7 +621,7 @@ function HeroSection() {
             </div>
 
             {/* 4 Quick Slide Switch Buttons */}
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-4 gap-2.5">
               {HERO_SLIDES.map((item, idx) => {
                 const isActive = idx === currentSlide;
                 return (
@@ -628,13 +629,13 @@ function HeroSection() {
                     key={item.id}
                     type="button"
                     onClick={() => setCurrentSlide(idx)}
-                    className={`py-2.5 px-1 rounded-xl text-center transition-all duration-200 cursor-pointer border backdrop-blur-md ${
+                    className={`py-3 px-2 rounded-xl text-center transition-all duration-200 cursor-pointer border backdrop-blur-md ${
                       isActive
-                        ? "bg-[#2ee6ad] text-[#0D3A52] font-black border-[#2ee6ad] shadow-lg scale-[1.03]"
+                        ? "bg-[#2ee6ad] text-[#0D3A52] font-black border-[#2ee6ad] shadow-lg scale-[1.02]"
                         : "bg-white/10 text-white/90 font-bold border-white/15 hover:bg-white/20"
                     }`}
                   >
-                    <span className="block text-[12.5px] truncate">{item.tabLabel}</span>
+                    <span className="block text-[13px] sm:text-[13.5px] truncate">{item.tabLabel}</span>
                   </button>
                 );
               })}

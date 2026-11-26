@@ -6,6 +6,7 @@ import Hero from "./sections/Hero";
 import TrustedBy from "./sections/TrustedBy";
 import Statistics from "./sections/Statistics";
 import About from "./sections/About";
+import Leadership from "./sections/Leadership";
 import Services from "./sections/Services";
 import Expertise from "./sections/Expertise";
 import WhyChooseUs from "./sections/WhyChooseUs";
@@ -77,6 +78,7 @@ export default function GatewayPage() {
       <TrustedBy />
       <Statistics />
       <About />
+      <Leadership />
       <Services />
       <Expertise />
       <WhyChooseUs />

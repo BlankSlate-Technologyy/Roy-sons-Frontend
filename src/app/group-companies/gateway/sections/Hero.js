@@ -100,7 +100,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[580px] sm:min-h-[620px] lg:min-h-[680px] flex items-center overflow-hidden bg-slate-950 text-white"
+      className="relative flex items-center overflow-hidden bg-slate-950 text-white"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -135,8 +135,8 @@ export default function Hero() {
       </AnimatePresence>
 
       {/* Main Hero Content */}
-      <Container className="relative z-10 py-16 sm:py-20 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+      <Container className="relative z-10 py-8 sm:py-10 lg:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-8 flex flex-col justify-center">
             <AnimatePresence mode="wait">
@@ -148,13 +148,13 @@ export default function Hero() {
                 transition={{ duration: 0.65, ease: "easeOut" }}
               >
                 {/* Pill Badge */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-5 border backdrop-blur-md bg-white/10 border-white/20 text-[#34D399]">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-3.5 border backdrop-blur-md bg-white/10 border-white/20 text-[#34D399]">
                   <BadgeIcon size={14} className="text-[#34D399] shrink-0" />
                   <span>{slide.badge}</span>
                 </div>
 
                 {/* Main Headline */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] mb-5 text-white">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold tracking-tight leading-[1.08] mb-3.5 text-white">
                   {slide.titleLine1}
                   <br />
                   <span className="text-[#34D399] drop-shadow-sm">
@@ -165,20 +165,20 @@ export default function Hero() {
                 </h1>
 
                 {/* Subtitle / Description */}
-                <p className="text-base sm:text-lg text-slate-200 font-medium leading-relaxed mb-6 max-w-2xl drop-shadow-xs">
+                <p className="text-base sm:text-[17px] text-slate-200 font-medium leading-relaxed mb-4 max-w-2xl drop-shadow-xs">
                   {slide.desc}
                 </p>
 
                 {/* Metric pill */}
-                <div className="inline-block text-xs font-semibold text-slate-300 bg-slate-900/60 backdrop-blur-sm px-3.5 py-1.5 rounded-lg border border-white/10 mb-8">
+                <div className="inline-block text-xs font-semibold text-slate-300 bg-slate-900/60 backdrop-blur-sm px-3.5 py-1.5 rounded-lg border border-white/10 mb-5">
                   <span className="text-[#34D399] font-bold">✓</span> {slide.metric}
                 </div>
 
                 {/* Call-to-Action Buttons */}
-                <div className="flex flex-wrap items-center gap-4">
+                <div className="flex flex-wrap items-center gap-3.5">
                   <Link
                     href={slide.primaryHref}
-                    className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white shadow-lg transition-all duration-300 hover:opacity-95 hover:shadow-xl active:scale-95 cursor-pointer"
+                    className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white shadow-lg transition-all duration-300 hover:opacity-95 hover:shadow-xl active:scale-95 cursor-pointer"
                     style={{ backgroundColor: COLORS.secondary }}
                   >
                     <span>{slide.primaryLabel}</span>
@@ -190,7 +190,7 @@ export default function Hero() {
 
                   <Link
                     href={slide.secondaryHref}
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white border border-white/30 backdrop-blur-md bg-white/10 transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-95 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white border border-white/30 backdrop-blur-md bg-white/10 transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-95 cursor-pointer"
                   >
                     <span>{slide.secondaryLabel}</span>
                   </Link>
@@ -208,11 +208,11 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.65, delay: 0.1 }}
-                className="relative p-6 rounded-2xl border backdrop-blur-xl bg-slate-900/70 border-white/15 shadow-2xl max-w-xs w-full space-y-4"
+                className="relative p-5 rounded-2xl border backdrop-blur-xl bg-slate-900/70 border-white/15 shadow-2xl max-w-xs w-full space-y-3.5"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#2E8B57]/20 border border-[#2E8B57]/40 text-[#34D399]">
-                    <ShieldCheck size={24} />
+                  <div className="w-11 h-11 rounded-xl flex items-center justify-center bg-[#2E8B57]/20 border border-[#2E8B57]/40 text-[#34D399]">
+                    <ShieldCheck size={22} />
                   </div>
                   <div>
                     <span className="text-xs font-bold uppercase tracking-wide text-white block">
@@ -244,7 +244,7 @@ export default function Hero() {
         </div>
 
         {/* Carousel Bottom Controls: Prev/Next, Dots & Slide Counter */}
-        <div className="mt-12 sm:mt-16 pt-6 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
+        <div className="mt-8 sm:mt-10 pt-4 border-t border-white/15 flex flex-wrap items-center justify-between gap-4">
           {/* Slide Indicator Dots */}
           <div className="flex items-center gap-2">
             {HERO_SLIDES.map((s, idx) => (
