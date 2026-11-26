@@ -89,7 +89,7 @@ const SOCIAL_ICONS = [
 export function SectionLabel({ children, center, dark }) {
   return (
     <p
-      className={`text-[11px] font-semibold uppercase tracking-[0.25em] mb-2.5 ${center ? "text-center" : ""}`}
+      className={`text-xs sm:text-[13px] font-bold uppercase tracking-[0.25em] mb-3 ${center ? "text-center" : ""}`}
       style={{ color: dark ? theme.cyanLight : theme.shieldBlue }}
     >
       {children}
@@ -100,7 +100,7 @@ export function SectionLabel({ children, center, dark }) {
 export function SectionHeading({ children, className = "", center, dark }) {
   return (
     <h2
-      className={`text-2xl sm:text-3xl font-semibold uppercase tracking-tight ${center ? "text-center" : ""} ${className}`}
+      className={`text-3xl sm:text-4xl lg:text-[42px] font-black uppercase tracking-tight leading-tight ${center ? "text-center" : ""} ${className}`}
       style={{ color: dark ? theme.white : theme.navy }}
     >
       {children}

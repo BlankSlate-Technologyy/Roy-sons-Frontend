@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import Navbar from "../sections/Navbar";
 import Footer from "../sections/Footer";
+import Leadership from "../sections/Leadership";
 import { COLORS } from "../constants";
 import { Container, Card, Button } from "../sections/Shared";
 
@@ -64,13 +65,14 @@ function AnimatedCounter({ targetValue, duration = 1600 }) {
       { threshold: 0.15 }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    const currentEl = elementRef.current;
+    if (currentEl) {
+      observer.observe(currentEl);
     }
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+      if (currentEl) {
+        observer.unobserve(currentEl);
       }
     };
   }, [numericTarget, duration]);
@@ -239,14 +241,14 @@ export default function GatewayAboutPage() {
               </p>
 
               <div className="flex flex-wrap gap-4 items-center">
-                <a
+                <Link
                   href="/group-companies/gateway#contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
                   style={{ backgroundColor: COLORS.secondary }}
                 >
                   <span>Consult Our Experts</span>
                   <ArrowRight size={16} />
-                </a>
+                </Link>
 
                 <a
                   href="#why-choose"
@@ -392,6 +394,9 @@ export default function GatewayAboutPage() {
           </div>
         </Container>
       </section>
+
+      {/* ─── Executive Leadership & Specialist Council ───────────────────────── */}
+      <Leadership />
 
       {/* ─── Animated Statistics & Counters Section ────────────────────────── */}
       <section
@@ -669,13 +674,13 @@ export default function GatewayAboutPage() {
                 </p>
               </div>
 
-              <a
+              <Link
                 href="/group-companies/gateway#contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 shadow-md hover:bg-emerald-600 bg-emerald-500 text-white w-full"
               >
                 <span>Get in Touch Today</span>
                 <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
           </div>
         </Container>
@@ -708,14 +713,14 @@ export default function GatewayAboutPage() {
             </div>
 
             <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
-              <a
+              <Link
                 href="/group-companies/gateway#contact"
                 className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
                 style={{ backgroundColor: COLORS.primary }}
               >
                 <span>Contact Us Today</span>
                 <ArrowRight size={15} />
-              </a>
+              </Link>
               <a
                 href="tel:+923218431665"
                 className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"

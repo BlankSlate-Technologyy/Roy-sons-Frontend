@@ -83,11 +83,11 @@ export default function Services() {
 
                     {/* Top 2 Deliverables Bullets */}
                     {topDeliverables.length > 0 && (
-                      <div className="space-y-1.5 pt-3 border-t border-slate-100">
+                      <div className="space-y-2 pt-3 border-t border-slate-100">
                         {topDeliverables.map((deliv, idx) => (
-                          <div key={idx} className="flex items-start gap-1.5 text-[11px] font-semibold text-slate-700 leading-snug">
-                            <CheckCircle2 size={13} className="text-[#2E8B57] shrink-0 mt-0.5" />
-                            <span className="line-clamp-1">{deliv}</span>
+                          <div key={idx} className="flex items-start gap-2 text-[12.5px] sm:text-[13px] font-medium text-slate-700 leading-snug">
+                            <CheckCircle2 size={15} className="text-[#2E8B57] shrink-0 mt-0.5" />
+                            <span className="line-clamp-2">{deliv}</span>
                           </div>
                         ))}
                       </div>

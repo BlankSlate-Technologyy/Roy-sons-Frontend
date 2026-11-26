@@ -92,11 +92,11 @@ export default function Industries() {
 
                     {/* Applications / Deliverables */}
                     {topApps.length > 0 && (
-                      <div className="space-y-1.5 pt-3 border-t border-slate-100">
+                      <div className="space-y-2 pt-3 border-t border-slate-100">
                         {topApps.map((app, i) => (
-                          <div key={i} className="flex items-start gap-1.5 text-[11px] font-semibold text-slate-700 leading-snug">
-                            <CheckCircle2 size={13} className="text-[#173F8A] shrink-0 mt-0.5" />
-                            <span className="line-clamp-1">{app}</span>
+                          <div key={i} className="flex items-start gap-2 text-[12.5px] sm:text-[13px] font-medium text-slate-700 leading-snug">
+                            <CheckCircle2 size={15} className="text-[#173F8A] shrink-0 mt-0.5" />
+                            <span className="line-clamp-2">{app}</span>
                           </div>
                         ))}
                       </div>

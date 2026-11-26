@@ -75,17 +75,41 @@ export default function Navbar() {
       }}
     >
       <Container className="flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/group-companies/gateway" className="flex items-center gap-2.5 select-none">
-          <div className="relative flex items-center">
+        {/* Brand Logo - Crisp Icon + Live Typography */}
+        <Link href="/group-companies/gateway" className="flex items-center gap-2.5 sm:gap-3 select-none shrink-0 py-0.5 group">
+          <div className="relative flex items-center justify-center shrink-0">
             <Image
-              src="/logo (2).png"
-              alt="Gateway Pharmaceuticals Logo"
-              width={260}
-              height={80}
-              className="h-14 sm:h-16 lg:h-[68px] w-auto object-contain"
+              src="/gateway_logo_icon.png"
+              alt="Gateway Pharmaceuticals Logo Icon"
+              width={56}
+              height={56}
+              className={`${
+                scrolled
+                  ? "w-9 h-9 sm:w-10 sm:h-10"
+                  : "w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12"
+              } object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-xs`}
               priority
             />
+          </div>
+          <div className="flex flex-col justify-center leading-none select-none">
+            <span
+              className={`${
+                scrolled
+                  ? "text-[16px] sm:text-[18px] lg:text-[19px]"
+                  : "text-[18px] sm:text-[20px] lg:text-[21px]"
+              } font-bold uppercase tracking-tight transition-all duration-300 text-[#173F8A]`}
+              style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
+            >
+              GATEWAY
+            </span>
+            <span
+              className={`${
+                scrolled ? "text-[8px] sm:text-[8.5px]" : "text-[8.5px] sm:text-[9.5px]"
+              } font-medium uppercase tracking-[0.22em] transition-all duration-300 mt-1 text-[#173F8A]/85`}
+              style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
+            >
+              PHARMACEUTICALS CONSULTANTS
+            </span>
           </div>
         </Link>
 
@@ -120,15 +144,8 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right CTA Button, Portal & Mobile Menu Toggle */}
+        {/* Right Portal & Mobile Menu Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <Link
-            href="/group-companies/gateway#contact"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
-            style={{ backgroundColor: COLORS.primary }}
-          >
-            <span>Consult Pharma Desk</span>
-          </Link>
           <RoysonsPortalButton />
 
           {/* Mobile Toggle Button */}

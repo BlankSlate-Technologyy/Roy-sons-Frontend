@@ -276,42 +276,6 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-                {/* Fast-Select Regulatory Requirement Chips */}
-                <div>
-                  <label style={{ display: "block", fontSize: "11px", fontWeight: 800, marginBottom: "8px", color: COLORS.primary, textTransform: "uppercase", letterSpacing: "0.12em" }}>
-                    Quick Select Your Regulatory Inquiry:
-                  </label>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                    {[
-                      "Drug Licensing & Registration",
-                      "Regulatory Affairs Management",
-                      "Compliance Consultancy",
-                      "GMP & Quality Compliance Support",
-                      "Import & Export Licensing",
-                      "Dossier Preparation & Submission",
-                    ].map((topic) => (
-                      <button
-                        type="button"
-                        key={topic}
-                        onClick={() => setForm((p) => ({ ...p, service: topic }))}
-                        style={{
-                          padding: "6px 12px",
-                          borderRadius: "20px",
-                          fontSize: "11px",
-                          fontWeight: 700,
-                          cursor: "pointer",
-                          border: form.service === topic ? "1.5px solid #173F8A" : "1px solid #CBD5E1",
-                          backgroundColor: form.service === topic ? "#173F8A" : "#FFFFFF",
-                          color: form.service === topic ? "#FFFFFF" : "#334155",
-                          transition: "all 0.2s",
-                        }}
-                      >
-                        {topic}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
                 {status === "error" && errorMessage && (
                   <div style={{ padding: "12px 16px", borderRadius: "8px", backgroundColor: "#FFEBEB", border: "1px solid #FFC2C2", color: "#C00", fontSize: "13px", fontWeight: 600 }}>
                     {errorMessage}

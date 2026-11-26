@@ -58,12 +58,12 @@ function Counter({ targetValue, duration = 1600 }) {
 }
 
 const STATS_DATA = [
-  { value: "200+", label: "Successful Registrations", sub: "DRAP & Health Ministries", icon: FileCheck2 },
-  { value: "15+", label: "Regulatory Experts", sub: "Pharmacists & Legal Council", icon: Users },
-  { value: "150+", label: "Client Partnerships", sub: "National & Global Firms", icon: Building },
-  { value: "500+", label: "Licenses Processed", sub: "Import, Export & Formulations", icon: Award },
-  { value: "10+", label: "Years Industry Leadership", sub: "Continuous Pharma Advisory", icon: ShieldCheck },
-  { value: "98%", label: "First-Time Clearance", sub: "Rigorous Pre-Audit Review", icon: Percent },
+  { value: "200+", label: "Successful Registrations", icon: FileCheck2 },
+  { value: "15+", label: "Regulatory Experts", icon: Users },
+  { value: "150+", label: "Client Partnerships", icon: Building },
+  { value: "500+", label: "Licenses Processed", icon: Award },
+  { value: "10+", label: "Years Industry Leadership", icon: ShieldCheck },
+  { value: "98%", label: "First-Time Clearance", icon: Percent },
 ];
 
 export default function Statistics() {
@@ -105,9 +105,6 @@ export default function Statistics() {
                   <h3 className="text-xs sm:text-[13px] font-black uppercase tracking-wide text-slate-900 leading-tight">
                     {item.label}
                   </h3>
-                  <p className="text-[11px] font-semibold text-slate-500 mt-1">
-                    {item.sub}
-                  </p>
                 </div>
               </div>
             );

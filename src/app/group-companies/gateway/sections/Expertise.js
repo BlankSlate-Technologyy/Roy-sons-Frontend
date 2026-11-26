@@ -77,18 +77,35 @@ export default function Expertise() {
         </div>
 
         {/* Right Side: Image */}
-        <div className="lg:col-span-5 relative w-full flex justify-center">
+        <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end">
           <div
-            className="relative w-full max-w-[480px] h-[380px] lg:h-[440px] rounded-2xl overflow-hidden shadow-xl border group"
-            style={{ borderColor: COLORS.border }}
+            className="relative w-full max-w-[520px] h-[460px] sm:h-[520px] lg:h-[560px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group"
           >
             <Image
               src="/gatwayareaofexperince.png"
               alt="Medical regulatory scales and books"
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
-              sizes="(max-width: 1024px) 100vw, 500px"
+              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              sizes="(max-width: 1024px) 100vw, 520px"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+
+            {/* Floating Glassmorphic Pill */}
+            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/40 shadow-lg">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#173F8A] text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <CheckCircle2 size={20} className="text-[#34D399]" />
+                </div>
+                <div>
+                  <p className="text-xs font-black uppercase tracking-wider text-[#173F8A]">
+                    Accredited Technical Advisory
+                  </p>
+                  <p className="text-xs text-slate-600 font-medium mt-0.5">
+                    CTD Modules 1–5 &amp; Formulations Compliance
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Container>
