@@ -9,42 +9,11 @@ import {
   ArrowRight,
   CheckCircle2,
   Phone,
-  Mail,
   ChevronDown,
-  Building2,
   ShieldCheck,
   Award,
-  Sparkles,
-  ArrowLeft,
-  Calendar,
   Layers,
-  Activity,
-  Check,
-  FileText,
-  FileCheck,
-  ClipboardList,
-  Globe2,
   Package,
-  TrendingUp,
-  RefreshCw,
-  Scale,
-  Send,
-  Lock,
-  Eye,
-  Radio,
-  Clock,
-  Shield,
-  Zap,
-  Wheat,
-  Tractor,
-  Droplets,
-  Leaf,
-  FlaskConical,
-  Users,
-  Sun,
-  Factory,
-  Truck,
-  HeartPulse,
 } from "lucide-react";
 import {
   theme,
@@ -52,7 +21,6 @@ import {
   SwissFarmFooter,
   SectionLabel,
   SectionHeading,
-  AnimatedCounter,
 } from "../../components/SwissFarmShared";
 import {
   SWISS_FARM_PRODUCTS,
@@ -76,90 +44,90 @@ export default function SwissFarmProductDetailPage({ params }) {
 
   return (
     <main className="min-h-screen bg-white text-[#1C522A] font-sans antialiased overflow-x-hidden">
-      {/* ─── Global Swiss Farm Header ────────────────────────────────────── */}
       <SwissFarmNavbar />
 
-      {/* ─── Breadcrumb Navigation Bar ───────────────────────────────────── */}
+      {/* Breadcrumb Navigation Bar */}
       <div className="bg-[#F4F8F4] border-b" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-3">
-          <nav className="flex items-center gap-2 text-xs font-semibold text-slate-500 overflow-x-auto no-scrollbar whitespace-nowrap">
+          <nav className="flex items-center gap-2 text-[14px] font-bold text-slate-600 overflow-x-auto no-scrollbar whitespace-nowrap">
             <Link
               href="/group-companies/swiss-farm"
-              className="hover:text-[#C5A059] transition-colors"
+              className="hover:text-[#A88134] transition-colors"
               style={{ color: theme.primary }}
             >
-              Swiss Farm
+              Swiss Farms
             </Link>
-            <ChevronRight size={13} className="text-slate-400 shrink-0" />
+            <ChevronRight size={15} className="text-slate-400 shrink-0" />
             <Link
               href="/group-companies/swiss-farm/products"
-              className="hover:text-[#C5A059] transition-colors"
+              className="hover:text-[#A88134] transition-colors"
               style={{ color: theme.primary }}
             >
               Products &amp; Genetics
             </Link>
-            <ChevronRight size={13} className="text-slate-400 shrink-0" />
-            <span className="font-bold" style={{ color: theme.accentGold }}>
+            <ChevronRight size={15} className="text-slate-400 shrink-0" />
+            <span className="font-extrabold" style={{ color: theme.accentGold }}>
               {product.name}
             </span>
           </nav>
         </div>
       </div>
 
-      {/* ─── Hero Section with High-Impact Visuals & Metrics ────────────── */}
+      {/* Hero Section with High-Impact Visuals & Metrics */}
       <section
-        className="relative bg-gradient-to-b from-[#F4F8F4] to-white py-12 lg:py-20 border-b overflow-hidden"
+        className="relative bg-gradient-to-b from-[#F4F8F4] to-white py-10 sm:py-12 border-b overflow-hidden"
         style={{ borderColor: theme.border }}
       >
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             {/* Left Narrative Column */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-5">
               <div
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider border shadow-xs bg-white"
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[13px] font-extrabold uppercase tracking-wider border shadow-xs bg-white"
                 style={{ borderColor: theme.border, color: theme.primary }}
               >
-                <Package size={14} style={{ color: theme.accentGold }} />
+                <Package size={15} style={{ color: theme.accentGold }} />
                 <span>{product.eyebrow}</span>
               </div>
 
               <div>
                 <h1
-                  className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] uppercase"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.12] uppercase"
                   style={{ color: theme.primary }}
                 >
                   {product.name}
                 </h1>
                 <p
-                  className="text-sm sm:text-base font-bold uppercase tracking-wider mt-2 text-[#C5A059]"
+                  className="text-[15px] sm:text-[16px] font-extrabold uppercase tracking-wider mt-2.5"
+                  style={{ color: theme.accentGold }}
                 >
                   {product.subtitle}
                 </p>
               </div>
 
               <p
-                className="text-sm sm:text-base font-medium leading-relaxed"
+                className="text-[15.5px] sm:text-[17px] font-medium leading-relaxed"
                 style={{ color: theme.textMuted }}
               >
                 {product.overview}
               </p>
 
               {/* Live Metric Pills */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
                 {product.metrics.map((metric, idx) => (
                   <div
                     key={idx}
-                    className="p-3.5 rounded-2xl bg-white border shadow-xs hover:border-[#C5A059] transition-all group"
+                    className="p-4 rounded-2xl bg-white border shadow-xs hover:border-[#A88134] transition-all group"
                     style={{ borderColor: theme.border }}
                   >
                     <p
-                      className="text-[10.5px] font-bold uppercase tracking-wider"
+                      className="text-[12.5px] font-bold uppercase tracking-wide"
                       style={{ color: theme.textLight }}
                     >
                       {metric.label}
                     </p>
                     <p
-                      className="text-lg sm:text-xl font-black mt-0.5 group-hover:text-[#C5A059] transition-colors"
+                      className="text-[18px] sm:text-[20px] font-black mt-1 group-hover:text-[#A88134] transition-colors"
                       style={{ color: theme.primary }}
                     >
                       {metric.value}
@@ -169,21 +137,21 @@ export default function SwissFarmProductDetailPage({ params }) {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-3">
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
                 <Link
                   href="/group-companies/swiss-farm/contact"
-                  className="px-6 py-3.5 rounded-xl text-xs sm:text-sm font-extrabold text-white flex items-center gap-2 shadow-md transition-all hover:opacity-95 cursor-pointer"
+                  className="px-6 py-3.5 rounded-xl text-[15px] font-extrabold text-white flex items-center gap-2 shadow-md transition-all hover:opacity-95 cursor-pointer"
                   style={{ backgroundColor: theme.primary }}
                 >
                   <span>Request Contract &amp; Lab Assay</span>
-                  <ArrowRight size={15} />
+                  <ArrowRight size={17} />
                 </Link>
                 <a
                   href="tel:00924238924737"
-                  className="px-5 py-3.5 rounded-xl text-xs sm:text-sm font-bold border bg-white hover:bg-slate-50 flex items-center gap-2 transition-all cursor-pointer shadow-xs"
-                  style={{ borderColor: theme.border, color: theme.primary }}
+                  className="px-5 py-3.5 rounded-xl text-[15px] font-extrabold border-2 bg-white hover:bg-[#F4F8F4] flex items-center gap-2 transition-all cursor-pointer shadow-xs"
+                  style={{ borderColor: theme.primary, color: theme.primary }}
                 >
-                  <Phone size={14} style={{ color: theme.accentGold }} />
+                  <Phone size={16} style={{ color: theme.accentGold }} />
                   <span>0092-42-38924737</span>
                 </a>
               </div>
@@ -195,7 +163,7 @@ export default function SwissFarmProductDetailPage({ params }) {
                 className="relative group rounded-3xl overflow-hidden border shadow-xl bg-white"
                 style={{ borderColor: theme.border }}
               >
-                <div className="relative w-full h-[320px] sm:h-[400px] overflow-hidden bg-slate-100">
+                <div className="relative w-full h-[320px] sm:h-[380px] overflow-hidden bg-slate-100">
                   <Image
                     src={product.heroImage}
                     alt={`${product.name} - Swiss Farms`}
@@ -211,25 +179,25 @@ export default function SwissFarmProductDetailPage({ params }) {
                     className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border shadow-lg"
                     style={{ borderColor: theme.border }}
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-3">
                         <div
-                          className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                          className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                           style={{ backgroundColor: `${theme.primary}15` }}
                         >
                           <Award size={22} style={{ color: theme.primary }} />
                         </div>
                         <div>
-                          <p className="text-[10.5px] font-extrabold text-slate-500 uppercase tracking-wider">
+                          <p className="text-[12.5px] font-extrabold text-slate-500 uppercase tracking-wider">
                             Certified Grade-A
                           </p>
-                          <p className="text-xs font-black uppercase" style={{ color: theme.primary }}>
-                            {product.category}
+                          <p className="text-[15px] font-black uppercase" style={{ color: theme.primary }}>
+                            {product.category || product.tag}
                           </p>
                         </div>
                       </div>
-                      <span className="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase bg-emerald-100 text-emerald-700">
-                        In Stock &amp; Supplying
+                      <span className="px-3 py-1 rounded-full text-[12px] font-extrabold uppercase bg-emerald-100 text-emerald-800">
+                        Supplying Now
                       </span>
                     </div>
                   </div>
@@ -240,9 +208,9 @@ export default function SwissFarmProductDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ─── 1-Click Sticky Product Switcher Tabs ───────────────────────── */}
+      {/* 1-Click Sticky Product Switcher Tabs */}
       <div
-        className="sticky top-[60px] sm:top-[68px] z-30 bg-white/95 backdrop-blur-md border-b shadow-xs"
+        className="sticky top-[62px] sm:top-[68px] z-30 bg-white/95 backdrop-blur-md border-b shadow-xs"
         style={{ borderColor: theme.border }}
       >
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
@@ -253,16 +221,16 @@ export default function SwissFarmProductDetailPage({ params }) {
                 <Link
                   key={p.slug}
                   href={`/group-companies/swiss-farm/products/${p.slug}`}
-                  className={`px-3.5 py-2 rounded-xl text-[11px] font-extrabold uppercase tracking-wider whitespace-nowrap transition-all shrink-0 cursor-pointer ${
+                  className={`px-4 py-2 rounded-xl text-[13px] font-extrabold uppercase tracking-wider whitespace-nowrap transition-all shrink-0 cursor-pointer ${
                     isCurrent
                       ? "text-white shadow-xs"
-                      : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                      : "bg-[#F4F8F4] hover:bg-[#E6F0E7] text-[#1C522A]"
                   }`}
                   style={{
                     backgroundColor: isCurrent ? theme.primary : undefined,
                   }}
                 >
-                  {p.name.split(" ")[0]} {p.name.split(" ")[1]}
+                  {p.name.split(" ").slice(0, 2).join(" ")}
                 </Link>
               );
             })}
@@ -270,54 +238,54 @@ export default function SwissFarmProductDetailPage({ params }) {
         </div>
       </div>
 
-      {/* ─── 4 Core Strategic Production Pillars ─────────────────────────── */}
-      <section className="py-16 lg:py-24 bg-white border-b" style={{ borderColor: theme.border }}>
+      {/* 4 Core Strategic Production Pillars */}
+      <section className="py-10 sm:py-12 bg-white border-b" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-9">
             <SectionLabel center>Quality Standard</SectionLabel>
             <SectionHeading center className="mb-3">
               Strategic Production Pillars for {product.name}
             </SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+            <p className="text-[15.5px] sm:text-[16.5px] font-medium" style={{ color: theme.textMuted }}>
               Strict laboratory assays, cold-chain integrity, and uncompromised food safety protocols.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {product.pillars.map((pillar, idx) => {
               const Icon = pillar.icon;
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-3xl border bg-white shadow-xs hover:shadow-lg hover:border-[#C5A059] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                  className="swiss-farm-card-hover p-6 rounded-3xl border bg-white shadow-xs flex flex-col justify-between group"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
                     <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 mb-5"
-                      style={{ backgroundColor: `${theme.primary}10`, color: theme.primary }}
+                      className="w-12 h-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 mb-4"
+                      style={{ backgroundColor: `${theme.primary}12`, color: theme.primary }}
                     >
-                      <Icon size={22} style={{ color: theme.primary }} />
+                      <Icon size={24} style={{ color: theme.primary }} />
                     </div>
                     <h3
-                      className="text-base font-black mb-2.5 group-hover:text-[#C5A059] transition-colors leading-snug uppercase"
+                      className="text-[18px] font-black mb-2 group-hover:text-[#A88134] transition-colors leading-snug uppercase"
                       style={{ color: theme.primary }}
                     >
                       {pillar.title}
                     </h3>
                     <p
-                      className="text-xs sm:text-sm font-medium leading-relaxed"
+                      className="text-[14.5px] sm:text-[15px] font-medium leading-relaxed"
                       style={{ color: theme.textMuted }}
                     >
                       {pillar.desc}
                     </p>
                   </div>
                   <div
-                    className="pt-4 mt-6 border-t flex items-center justify-between text-[11px] font-black uppercase tracking-wider text-[#C5A059]"
-                    style={{ borderColor: theme.border }}
+                    className="pt-4 mt-5 border-t flex items-center justify-between text-[13px] font-black uppercase tracking-wider"
+                    style={{ borderColor: theme.border, color: theme.accentGold }}
                   >
                     <span>Pillar 0{idx + 1}</span>
-                    <CheckCircle2 size={15} style={{ color: theme.accentGold }} />
+                    <CheckCircle2 size={16} style={{ color: theme.accentGold }} />
                   </div>
                 </div>
               );
@@ -326,21 +294,21 @@ export default function SwissFarmProductDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ─── Scope of Supply & Chemical / Physical Specs Profile ─────────── */}
+      {/* Scope of Supply & Chemical / Physical Specs Profile */}
       <section
-        className="py-16 lg:py-20 bg-[#F4F8F4] border-b"
+        className="py-10 sm:py-12 bg-[#F4F8F4] border-b"
         style={{ borderColor: theme.border }}
       >
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Deliverables Checklist */}
-            <div className="lg:col-span-6 space-y-6">
+            <div className="lg:col-span-6 space-y-5">
               <div>
                 <SectionLabel>Supply Specifications</SectionLabel>
                 <SectionHeading className="mb-3">
                   Key Supply Deliverables
                 </SectionHeading>
-                <p className="text-xs sm:text-sm font-medium" style={{ color: theme.textMuted }}>
+                <p className="text-[15.5px] font-medium" style={{ color: theme.textMuted }}>
                   Every consignment includes official laboratory certificates, batch serial tracking, and temperature logs.
                 </p>
               </div>
@@ -349,16 +317,16 @@ export default function SwissFarmProductDetailPage({ params }) {
                 {product.deliverables.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-2xl bg-white border shadow-xs flex items-start gap-3.5 hover:border-[#C5A059] transition-colors"
+                    className="p-4 rounded-2xl bg-white border shadow-xs flex items-start gap-3.5 hover:border-[#A88134] transition-colors"
                     style={{ borderColor: theme.border }}
                   >
                     <div
-                      className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                      style={{ backgroundColor: `${theme.primary}10` }}
+                      className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                      style={{ backgroundColor: `${theme.primary}12` }}
                     >
-                      <CheckCircle2 size={15} style={{ color: theme.accentGold }} />
+                      <CheckCircle2 size={16} style={{ color: theme.accentGold }} />
                     </div>
-                    <p className="text-xs sm:text-[13.5px] font-semibold text-slate-800 leading-snug">
+                    <p className="text-[14.5px] sm:text-[15px] font-semibold text-slate-800 leading-snug">
                       {item}
                     </p>
                   </div>
@@ -373,30 +341,32 @@ export default function SwissFarmProductDetailPage({ params }) {
                 style={{ borderColor: theme.border }}
               >
                 <div
-                  className="flex items-center gap-3.5 mb-6 pb-4 border-b"
+                  className="flex items-center gap-3.5 mb-5 pb-4 border-b"
                   style={{ borderColor: theme.border }}
                 >
                   <div
-                    className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: `${theme.primary}10` }}
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${theme.primary}12` }}
                   >
-                    <Layers size={22} style={{ color: theme.primary }} />
+                    <Layers size={24} style={{ color: theme.primary }} />
                   </div>
                   <div>
-                    <h3 className="text-base sm:text-lg font-black uppercase" style={{ color: theme.primary }}>
+                    <h3 className="text-[19px] font-black uppercase" style={{ color: theme.primary }}>
                       Chemical &amp; Physical Analysis
                     </h3>
-                    <p className="text-xs text-slate-500 font-medium">Standardized laboratory benchmarks</p>
+                    <p className="text-[14px] text-slate-600 font-medium">
+                      Standardized laboratory benchmarks
+                    </p>
                   </div>
                 </div>
 
-                <div className="divide-y text-xs sm:text-[13px]" style={{ borderColor: theme.border }}>
+                <div className="divide-y text-[14.5px]" style={{ borderColor: theme.border }}>
                   {product.technicalSpecs.map((spec, idx) => (
                     <div
                       key={idx}
-                      className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1"
+                      className="py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5"
                     >
-                      <span className="font-bold text-slate-500">{spec.key}</span>
+                      <span className="font-bold text-slate-600">{spec.key}</span>
                       <span className="font-extrabold sm:text-right" style={{ color: theme.primary }}>
                         {spec.value}
                       </span>
@@ -409,52 +379,55 @@ export default function SwissFarmProductDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ─── 4-Stage Extraction & QA Pathway ────────────────────────────── */}
-      <section className="py-16 lg:py-24 bg-white border-b" style={{ borderColor: theme.border }}>
+      {/* 4-Stage Extraction & QA Pathway */}
+      <section className="py-10 sm:py-12 bg-white border-b" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-9">
             <SectionLabel center>Quality Lifecycle</SectionLabel>
             <SectionHeading center className="mb-3">
               Extraction &amp; Quality Assurance Pathway
             </SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+            <p className="text-[15.5px] sm:text-[16.5px] font-medium" style={{ color: theme.textMuted }}>
               From initial raw processing to precision laboratory assaying and refrigerated logistics dispatch.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {product.workflow.map((w, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {product.workflow.map((w) => (
               <div
                 key={w.step}
-                className="relative p-6 rounded-3xl border bg-white hover:border-[#C5A059] hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
+                className="swiss-farm-card-hover relative p-6 rounded-3xl border bg-[#F4F8F4]/60 flex flex-col justify-between group"
                 style={{ borderColor: theme.border }}
               >
                 <div>
                   <div
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-base text-white mb-4 shadow-sm group-hover:scale-105 transition-transform"
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-[16px] text-white mb-4 shadow-sm group-hover:scale-105 transition-transform"
                     style={{ backgroundColor: theme.primary }}
                   >
                     {w.step}
                   </div>
                   <h3
-                    className="text-base font-black mb-2 group-hover:text-[#C5A059] transition-colors uppercase leading-snug"
+                    className="text-[18px] font-black mb-2 group-hover:text-[#A88134] transition-colors uppercase leading-snug"
                     style={{ color: theme.primary }}
                   >
                     {w.title}
                   </h3>
                   <p
-                    className="text-xs sm:text-sm font-medium leading-relaxed"
+                    className="text-[14.5px] sm:text-[15px] font-medium leading-relaxed"
                     style={{ color: theme.textMuted }}
                   >
                     {w.desc}
                   </p>
                 </div>
                 <div
-                  className="pt-4 mt-6 border-t flex items-center gap-2"
+                  className="pt-4 mt-5 border-t flex items-center gap-2"
                   style={{ borderColor: theme.border }}
                 >
-                  <ShieldCheck size={14} style={{ color: theme.accentGold }} />
-                  <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#C5A059]">
+                  <ShieldCheck size={16} style={{ color: theme.accentGold }} />
+                  <span
+                    className="text-[13px] font-extrabold uppercase tracking-wider"
+                    style={{ color: theme.accentGold }}
+                  >
                     Stage {w.step} Verified
                   </span>
                 </div>
@@ -464,20 +437,20 @@ export default function SwissFarmProductDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ─── FAQs Accordion ─────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 bg-[#F4F8F4] border-b" style={{ borderColor: theme.border }}>
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 space-y-8">
+      {/* FAQs Accordion */}
+      <section className="py-10 sm:py-12 bg-[#F4F8F4] border-b" style={{ borderColor: theme.border }}>
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="text-center">
             <SectionLabel center>Product Inquiries</SectionLabel>
             <SectionHeading center className="mb-3">
               Frequently Asked Questions
             </SectionHeading>
-            <p className="text-xs sm:text-sm font-medium" style={{ color: theme.textMuted }}>
+            <p className="text-[15.5px] font-medium" style={{ color: theme.textMuted }}>
               Key clarifications regarding contract terms, packaging, and laboratory testing protocols.
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3.5">
             {product.faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
@@ -488,22 +461,22 @@ export default function SwissFarmProductDetailPage({ params }) {
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? -1 : idx)}
-                    className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-slate-50 transition-colors"
+                    className="w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#F4F8F4]/60 transition-colors"
                   >
-                    <span className="text-xs sm:text-sm font-black uppercase" style={{ color: theme.primary }}>
+                    <span className="text-[15.5px] sm:text-[16.5px] font-extrabold" style={{ color: theme.primary }}>
                       {faq.q}
                     </span>
                     <ChevronDown
-                      size={16}
+                      size={20}
                       className={`text-slate-400 transition-transform duration-300 shrink-0 ${
-                        isOpen ? "rotate-180 text-[#C5A059]" : ""
+                        isOpen ? "rotate-180 text-[#A88134]" : ""
                       }`}
                     />
                   </button>
                   {isOpen && (
                     <div
-                      className="px-4 sm:px-5 pb-5 text-xs sm:text-sm font-medium leading-relaxed border-t pt-3 text-slate-600 bg-slate-50/50"
-                      style={{ borderColor: theme.border }}
+                      className="px-5 pb-5 text-[15px] font-medium leading-relaxed border-t pt-4"
+                      style={{ borderColor: theme.border, color: theme.textMuted }}
                     >
                       {faq.a}
                     </div>
@@ -515,24 +488,25 @@ export default function SwissFarmProductDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ─── Other Dairy Products Navigation Grid ───────────────────────── */}
-      <section className="py-16 lg:py-20 bg-white border-b" style={{ borderColor: theme.border }}>
+      {/* Other Dairy Products Navigation Grid */}
+      <section className="py-10 sm:py-12 bg-white border-b" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
             <div>
               <SectionLabel>Full Product Line</SectionLabel>
               <SectionHeading>Other Dairy Products &amp; Genetics</SectionHeading>
             </div>
             <Link
               href="/group-companies/swiss-farm/products"
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#C5A059]"
+              className="inline-flex items-center gap-2 text-[15px] font-extrabold uppercase tracking-wider"
+              style={{ color: theme.accentGold }}
             >
-              <span>View All</span>
-              <ArrowRight size={14} />
+              <span>View All Products</span>
+              <ArrowRight size={16} />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {otherProducts.slice(0, 3).map((other) => (
               <Link
                 key={other.slug}
@@ -541,22 +515,28 @@ export default function SwissFarmProductDetailPage({ params }) {
                 style={{ borderColor: theme.border }}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10.5px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-[#C5A059]/10 text-[#C5A059]">
-                      {other.category}
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span
+                      className="text-[12.5px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-lg"
+                      style={{ backgroundColor: "rgba(168, 129, 52, 0.12)", color: theme.accentGold }}
+                    >
+                      {other.category || other.tag}
                     </span>
-                    <span className="text-xs font-semibold text-slate-500">{other.metrics[0].value}</span>
+                    <span className="text-[13.5px] font-bold text-slate-600">{other.metrics[0].value}</span>
                   </div>
-                  <h4 className="text-lg font-black mb-1.5 uppercase" style={{ color: theme.primary }}>
+                  <h4 className="text-[19px] font-black mb-2 uppercase leading-snug" style={{ color: theme.primary }}>
                     {other.name}
                   </h4>
-                  <p className="text-xs font-medium line-clamp-2" style={{ color: theme.textMuted }}>
+                  <p className="text-[14.5px] font-medium line-clamp-2" style={{ color: theme.textMuted }}>
                     {other.overview}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#C5A059]" style={{ borderColor: theme.border }}>
+                <div
+                  className="mt-4 pt-3.5 border-t flex items-center justify-between text-[13.5px] font-extrabold uppercase tracking-wider"
+                  style={{ borderColor: theme.border, color: theme.accentGold }}
+                >
                   <span>View Full Details</span>
-                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             ))}
@@ -564,41 +544,45 @@ export default function SwissFarmProductDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ─── Fast Inquiry & Consultation Desk CTA ───────────────────────── */}
-      <section className="py-16 lg:py-20 bg-white">
+      {/* Fast Inquiry & Consultation Desk CTA */}
+      <section className="py-10 sm:py-12 bg-[#F4F8F4]">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div
-            className="rounded-3xl border p-8 sm:p-12 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8 bg-white"
-            style={{ borderColor: theme.border }}
+            className="rounded-3xl border p-7 sm:p-10 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-7"
+            style={{
+              backgroundColor: theme.primaryDark,
+              borderColor: "rgba(224, 188, 111, 0.35)",
+              color: "#FFFFFF",
+            }}
           >
-            <div className="max-w-2xl space-y-3">
+            <div className="max-w-2xl space-y-2.5">
               <span
-                className="text-xs font-black uppercase tracking-widest block text-[#C5A059]"
+                className="text-[13px] font-black uppercase tracking-widest block"
+                style={{ color: theme.goldBright }}
               >
                 COMMERCIAL CONTRACT SUPPLY DESK
               </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase leading-tight" style={{ color: theme.primary }}>
+              <h2 className="text-2xl sm:text-3xl font-black uppercase leading-tight text-white">
                 Request A Supply Agreement For {product.name}
               </h2>
-              <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+              <p className="text-[15.5px] font-medium leading-relaxed text-[#D8E8DC]">
                 We execute tailored B2B supply agreements with commercial dairy processors, cheese manufacturers, hotels, and corporate livestock farms.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-3.5 shrink-0 w-full lg:w-auto">
               <Link
                 href="/group-companies/swiss-farm/contact"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-black text-xs sm:text-sm uppercase tracking-wider text-white text-center shadow-md hover:opacity-95 transition-all cursor-pointer"
-                style={{ backgroundColor: theme.primary }}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-extrabold text-[15px] text-center shadow-md hover:opacity-95 transition-all cursor-pointer"
+                style={{ backgroundColor: theme.goldBright, color: theme.primaryDark }}
               >
                 Request Supply Contract
               </Link>
               <a
                 href="tel:00924238924737"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm border-2 text-center transition-all hover:bg-slate-50 cursor-pointer flex items-center justify-center gap-2"
-                style={{ borderColor: theme.primary, color: theme.primary }}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl font-extrabold text-[15px] border-2 border-white/80 text-white text-center transition-all hover:bg-white/10 cursor-pointer flex items-center justify-center gap-2"
               >
-                <Phone size={15} />
+                <Phone size={16} />
                 <span>0092-42-38924737</span>
               </a>
             </div>
@@ -606,7 +590,6 @@ export default function SwissFarmProductDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ─── Global Swiss Farm Footer ────────────────────────────────────── */}
       <SwissFarmFooter />
     </main>
   );

@@ -178,7 +178,7 @@ export default function Hero() {
                 <div className="flex flex-wrap items-center gap-3.5">
                   <Link
                     href={slide.primaryHref}
-                    className="group inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white shadow-lg transition-all duration-300 hover:opacity-95 hover:shadow-xl active:scale-95 cursor-pointer"
+                    className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-extrabold uppercase tracking-wide text-white shadow-lg transition-all duration-300 hover:opacity-95 hover:shadow-xl active:scale-95 cursor-pointer"
                     style={{ backgroundColor: COLORS.secondary }}
                   >
                     <span>{slide.primaryLabel}</span>
@@ -190,7 +190,7 @@ export default function Hero() {
 
                   <Link
                     href={slide.secondaryHref}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-white border border-white/30 backdrop-blur-md bg-white/10 transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-95 cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-extrabold uppercase tracking-wide transition-all duration-300 shadow-md active:scale-95 cursor-pointer bg-white text-[#173F8A] hover:bg-slate-100 hover:shadow-lg border-2 border-white"
                   >
                     <span>{slide.secondaryLabel}</span>
                   </Link>

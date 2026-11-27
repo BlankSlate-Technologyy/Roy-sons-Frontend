@@ -2,25 +2,17 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import {
-  GraduationCap,
   Award,
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
   Phone,
-  Mail,
   MapPin,
-  Clock,
-  UserCheck,
   Building2,
-  FileCheck,
   Send,
   HeartPulse,
-  Briefcase,
   DollarSign,
-  ShieldAlert,
 } from "lucide-react";
 import {
   theme,
@@ -107,11 +99,12 @@ const JOB_OPENINGS = [
 export default function NationalGuardCareersPage() {
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     phone: "",
     cnic: "",
     city: "",
     position: "Armed Security Guard (Ex-Army / Frontier Corps)",
-    exMilitary: "No",
+    exMilitary: "No - Civilian",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -122,6 +115,8 @@ export default function NationalGuardCareersPage() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
+    const candidateEmail = formData.email.trim() || "recruitment@nationalguard.com.pk";
+
     try {
       const res = await fetch("/api/company-contact", {
         method: "POST",
@@ -130,11 +125,15 @@ export default function NationalGuardCareersPage() {
           companySlug: "national-guard",
           companyName: "National Guard Security Services",
           fullName: formData.name,
-          email: "careers@nationalguard.com.pk",
+          email: candidateEmail,
           phone: formData.phone,
           subject: `Security Career Application: ${formData.position}`,
-          message: formData.message || `CNIC: ${formData.cnic}, City: ${formData.city}, Ex-Military: ${formData.exMilitary}`,
+          message:
+            formData.message.trim() ||
+            `Application for ${formData.position} | CNIC: ${formData.cnic} | City: ${formData.city} | Service Status: ${formData.exMilitary}`,
           additionalFields: {
+            inquiryCategory: "career-application",
+            applicantProvidedEmail: Boolean(formData.email.trim()),
             cnic: formData.cnic,
             city: formData.city,
             position: formData.position,
@@ -147,15 +146,18 @@ export default function NationalGuardCareersPage() {
       if (res.ok && data.success) {
         setSubmitStatus({
           type: "success",
-          message: data.message || "Application received! Our recruitment desk will call you for interview and document verification.",
+          message:
+            data.message ||
+            "Application received! Our recruitment desk will call you for interview and document verification.",
         });
         setFormData({
           name: "",
+          email: "",
           phone: "",
           cnic: "",
           city: "",
           position: "Armed Security Guard (Ex-Army / Frontier Corps)",
-          exMilitary: "No",
+          exMilitary: "No - Civilian",
           message: "",
         });
       } else {
@@ -178,58 +180,81 @@ export default function NationalGuardCareersPage() {
     <main className="min-h-screen bg-white text-[#1B365D] font-sans antialiased overflow-x-hidden">
       <NationalGuardNavbar />
 
-      {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* 01 — Hero Section (Unique Image: /logos/Defense & Security.jpg.jpeg) */}
+      <section
+        className="relative py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 border-b"
+        style={{
+          background: "linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%)",
+          borderColor: theme.border,
+        }}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             <div className="lg:col-span-7">
               <SectionLabel>Recruitment &amp; Careers</SectionLabel>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.navy }}>
-                Join Pakistan&apos;s Most <span style={{ color: theme.gold }}>Disciplined Security Force</span>
+              <h1
+                className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.12] uppercase mb-4"
+                style={{ color: theme.navy }}
+              >
+                Join Pakistan&apos;s Most{" "}
+                <span style={{ color: theme.gold }}>Disciplined Security Force</span>
               </h1>
 
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
-                We are actively hiring retired military personnel, experienced guards, CCTV controllers, and area supervisors. Join an honorable security enterprise that values your service with competitive pay, medical benefits, and free accommodation.
+              <p
+                className="text-[16px] sm:text-[18px] font-medium leading-relaxed mb-6"
+                style={{ color: theme.textMuted }}
+              >
+                We are actively hiring retired military personnel, experienced security officers,
+                CCTV controllers, and area supervisors. Join an honorable security enterprise offering
+                competitive salaries, medical coverage, and free barrack accommodation.
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3.5">
                 <a
                   href="#openings"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-[15px] font-extrabold uppercase tracking-wide text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
                   style={{ backgroundColor: theme.navy }}
                 >
                   <span>View Current Openings</span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={17} />
                 </a>
 
                 <a
                   href="#apply-form"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.navy }}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-[15px] font-extrabold uppercase tracking-wide border-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer bg-white"
+                  style={{ borderColor: theme.navy, color: theme.navy }}
                 >
                   <span>Apply Online</span>
                 </a>
               </div>
             </div>
 
-            {/* Right Hero Image Card */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
+              <div
+                className="relative w-full max-w-[520px] h-[340px] sm:h-[400px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-100"
+                style={{ borderColor: theme.border }}
+              >
                 <Image
-                  src="/national-guard-team.png"
-                  alt="National Guard Security Officers"
+                  src="/logos/Defense & Security.jpg.jpeg"
+                  alt="National Guard Security Perimeter Operations & Control Team"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 520px"
+                  className="object-cover object-right group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F2540]/80 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1" style={{ color: theme.gold }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F2540]/85 via-transparent to-transparent flex items-end p-5">
+                  <div
+                    className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full"
+                    style={{ borderColor: theme.border }}
+                  >
+                    <p
+                      className="text-[12.5px] font-black uppercase tracking-wider mb-1"
+                      style={{ color: theme.gold }}
+                    >
                       Equal Opportunity Employer
                     </p>
-                    <p className="text-sm font-bold" style={{ color: theme.navy }}>
+                    <p className="text-[15px] font-extrabold" style={{ color: theme.navy }}>
                       Ex-Army · FC · Rangers &amp; Civilian Candidates Welcome
                     </p>
                   </div>
@@ -240,34 +265,49 @@ export default function NationalGuardCareersPage() {
         </div>
       </section>
 
-      {/* Benefits / Perks Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* 02 — Employee Benefits Grid */}
+      <section
+        className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-b"
+        style={{ backgroundColor: theme.bgLight, borderColor: theme.border }}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-9">
             <SectionLabel center>Employee Benefits</SectionLabel>
-            <SectionHeading center className="mb-4">Why Work With National Guard?</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              We ensure our security personnel are well-supported so they can perform their duties with absolute dedication.
+            <SectionHeading center className="mb-3">
+              Why Work With National Guard?
+            </SectionHeading>
+            <p className="text-[15.5px] sm:text-[17px] font-medium" style={{ color: theme.textMuted }}>
+              We ensure our security personnel are well-supported so they can perform their duties
+              with pride and absolute dedication.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             {PERKS.map((perk) => {
               const Icon = perk.icon;
               return (
                 <div
                   key={perk.title}
-                  className="ng-card-hover p-8 rounded-3xl border flex flex-col justify-between bg-white shadow-xs"
+                  className="ng-card-hover p-6 rounded-3xl border flex flex-col justify-between bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${theme.navy}10` }}>
-                      <Icon size={26} style={{ color: theme.navy }} />
+                    <div
+                      className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4"
+                      style={{ backgroundColor: `${theme.navy}12` }}
+                    >
+                      <Icon size={24} style={{ color: theme.navy }} />
                     </div>
-                    <h3 className="text-lg font-bold mb-3" style={{ color: theme.navy }}>
+                    <h3
+                      className="text-[18.5px] font-black mb-2.5 leading-snug"
+                      style={{ color: theme.navy }}
+                    >
                       {perk.title}
                     </h3>
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed" style={{ color: theme.textMuted }}>
+                    <p
+                      className="text-[14.5px] sm:text-[15px] font-medium leading-relaxed"
+                      style={{ color: theme.textMuted }}
+                    >
                       {perk.desc}
                     </p>
                   </div>
@@ -278,47 +318,64 @@ export default function NationalGuardCareersPage() {
         </div>
       </section>
 
-      {/* Active Job Openings */}
-      <section id="openings" className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* 03 — Active Job Openings */}
+      <section
+        id="openings"
+        className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-b bg-white"
+        style={{ borderColor: theme.border }}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-9">
             <SectionLabel center>Open Vacancies</SectionLabel>
-            <SectionHeading center className="mb-4">Current Opportunities</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
-              Walk-in interviews conducted daily at our Regional Recruitment Centers in Lahore and Rawalpindi.
+            <SectionHeading center className="mb-3">
+              Current Opportunities
+            </SectionHeading>
+            <p className="text-[15.5px] sm:text-[17px] font-medium" style={{ color: theme.textMuted }}>
+              Walk-in interviews conducted daily at our Regional Recruitment Centers in Lahore and
+              Rawalpindi.
             </p>
           </div>
 
-          <div className="space-y-6 max-w-4xl mx-auto">
+          <div className="space-y-5 max-w-4xl mx-auto">
             {JOB_OPENINGS.map((job) => (
               <div
                 key={job.id}
-                className="p-8 rounded-3xl border bg-white shadow-xs hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-6"
+                className="p-6 sm:p-7 rounded-3xl border bg-[#F4F6F9] shadow-xs hover:shadow-md hover:border-[#C5A059] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6"
                 style={{ borderColor: theme.border }}
               >
-                <div className="space-y-2">
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <span className="text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full bg-slate-50 border" style={{ color: theme.gold, borderColor: theme.border }}>
+                <div className="space-y-2.5">
+                  <div className="flex flex-wrap items-center gap-2.5">
+                    <span
+                      className="text-[12.5px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full bg-white border"
+                      style={{ color: theme.gold, borderColor: theme.border }}
+                    >
                       {job.type}
                     </span>
-                    <span className="text-xs font-semibold text-slate-500 flex items-center gap-1">
-                      <MapPin size={13} />
+                    <span className="text-[13.5px] font-bold text-slate-600 flex items-center gap-1">
+                      <MapPin size={14} style={{ color: theme.gold }} />
                       {job.location}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold" style={{ color: theme.navy }}>
+                  <h3 className="text-[19px] sm:text-[21px] font-black" style={{ color: theme.navy }}>
                     {job.title}
                   </h3>
 
-                  <p className="text-xs font-bold text-slate-700">
-                    Criteria: <span className="font-normal text-slate-600">{job.experience}</span>
+                  <p className="text-[14.5px] font-extrabold text-slate-800">
+                    Criteria: <span className="font-medium text-slate-700">{job.experience}</span>
                   </p>
 
-                  <ul className="space-y-1 pt-2">
+                  <ul className="space-y-1.5 pt-1">
                     {job.responsibilities.map((r) => (
-                      <li key={r} className="text-xs font-medium text-slate-600 flex items-center gap-1.5">
-                        <CheckCircle2 size={13} style={{ color: theme.gold }} className="flex-shrink-0" />
+                      <li
+                        key={r}
+                        className="text-[14px] sm:text-[14.5px] font-medium text-slate-700 flex items-start gap-2"
+                      >
+                        <CheckCircle2
+                          size={15}
+                          style={{ color: theme.gold }}
+                          className="flex-shrink-0 mt-0.5"
+                        />
                         <span>{r}</span>
                       </li>
                     ))}
@@ -329,11 +386,11 @@ export default function NationalGuardCareersPage() {
                   <a
                     href="#apply-form"
                     onClick={() => setFormData((prev) => ({ ...prev, position: job.title }))}
-                    className="px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all hover:opacity-95 flex items-center gap-2 cursor-pointer"
+                    className="px-6 py-3.5 rounded-xl text-[14px] font-extrabold uppercase tracking-wider text-white shadow-sm transition-all hover:opacity-95 flex items-center justify-center gap-2 cursor-pointer"
                     style={{ backgroundColor: theme.navy }}
                   >
                     <span>Apply For Position</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={15} />
                   </a>
                 </div>
               </div>
@@ -342,31 +399,56 @@ export default function NationalGuardCareersPage() {
         </div>
       </section>
 
-      {/* Online Application Form */}
-      <section id="apply-form" className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* 04 — Online Application Form */}
+      <section
+        id="apply-form"
+        className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-b"
+        style={{ backgroundColor: theme.bgLight, borderColor: theme.border }}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             <div className="lg:col-span-5">
               <SectionLabel>Recruitment Desk</SectionLabel>
-              <SectionHeading className="mb-4">Submit Your Application</SectionHeading>
-              <p className="text-sm sm:text-base font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-                Fill out the quick form below. Our recruitment officers will verify your credentials with NADRA and schedule your document verification and uniform measurement.
+              <SectionHeading className="mb-3">Submit Your Application</SectionHeading>
+              <p
+                className="text-[15.5px] sm:text-[17px] font-medium leading-relaxed mb-6"
+                style={{ color: theme.textMuted }}
+              >
+                Fill out the quick form below. Our recruitment officers will verify your credentials
+                with NADRA and schedule your document verification and uniform measurement.
               </p>
 
-              <div className="space-y-4 text-xs font-medium text-slate-600">
-                <div className="flex items-start gap-3 p-4 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <ShieldCheck size={20} className="flex-shrink-0" style={{ color: theme.gold }} />
+              <div className="space-y-4 text-[14.5px] font-medium text-slate-700">
+                <div
+                  className="flex items-start gap-3 p-4 rounded-2xl border bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <ShieldCheck size={22} className="flex-shrink-0 mt-0.5" style={{ color: theme.gold }} />
                   <div>
-                    <h5 className="font-bold" style={{ color: theme.navy }}>Required Documents For Interview</h5>
-                    <p>Original CNIC, 4 Passport Photos, Police Character Certificate, Ex-Army Discharge Book (for ex-servicemen).</p>
+                    <h5 className="font-black text-[15.5px] mb-1" style={{ color: theme.navy }}>
+                      Required Documents For Interview
+                    </h5>
+                    <p className="leading-relaxed">
+                      Original CNIC, 4 Passport Photos, Police Character Certificate, Ex-Army
+                      Discharge Book (for ex-servicemen).
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 p-4 rounded-2xl border bg-slate-50" style={{ borderColor: theme.border }}>
-                  <Phone size={18} className="flex-shrink-0" style={{ color: theme.gold }} />
+                <div
+                  className="flex items-center gap-3 p-4 rounded-2xl border bg-white shadow-xs"
+                  style={{ borderColor: theme.border }}
+                >
+                  <Phone size={20} className="flex-shrink-0" style={{ color: theme.gold }} />
                   <div>
-                    <h5 className="font-bold" style={{ color: theme.navy }}>Direct Recruitment Helpline</h5>
-                    <a href="tel:+923218431665" className="font-bold hover:underline" style={{ color: theme.navy }}>
+                    <h5 className="font-black text-[15.5px]" style={{ color: theme.navy }}>
+                      Direct Recruitment Helpline
+                    </h5>
+                    <a
+                      href="tel:+923218431665"
+                      className="font-extrabold hover:underline"
+                      style={{ color: theme.navy }}
+                    >
                       +92 321 8431665 (Mon–Sat, 9AM–6PM)
                     </a>
                   </div>
@@ -374,27 +456,32 @@ export default function NationalGuardCareersPage() {
               </div>
             </div>
 
-            {/* Application Form Card */}
             <div className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-3xl border bg-white shadow-lg" style={{ borderColor: theme.border }}>
+              <div
+                className="p-6 sm:p-8 rounded-3xl border bg-white shadow-lg"
+                style={{ borderColor: theme.border }}
+              >
                 {submitStatus.type === "success" && (
-                  <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3 text-emerald-800 text-xs font-medium">
-                    <CheckCircle2 size={18} className="text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <div className="mb-5 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3 text-emerald-900 text-[14.5px] font-semibold">
+                    <CheckCircle2 size={20} className="text-emerald-600 flex-shrink-0 mt-0.5" />
                     <span>{submitStatus.message}</span>
                   </div>
                 )}
 
                 {submitStatus.type === "error" && (
-                  <div className="mb-6 p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-start gap-3 text-rose-800 text-xs font-medium">
-                    <ShieldCheck size={18} className="text-rose-600 flex-shrink-0 mt-0.5" />
+                  <div className="mb-5 p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-start gap-3 text-rose-900 text-[14.5px] font-semibold">
+                    <ShieldCheck size={20} className="text-rose-600 flex-shrink-0 mt-0.5" />
                     <span>{submitStatus.message}</span>
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navy }}>
+                      <label
+                        className="block text-[13px] font-extrabold uppercase tracking-wider mb-1.5"
+                        style={{ color: theme.navy }}
+                      >
                         Full Name *
                       </label>
                       <input
@@ -402,14 +489,17 @@ export default function NationalGuardCareersPage() {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Candidate Name"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
+                        placeholder="Candidate Full Name"
+                        className="w-full px-4 py-3 rounded-xl border text-[15px] font-medium text-[#1B365D] focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
                         style={{ borderColor: theme.border }}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navy }}>
+                      <label
+                        className="block text-[13px] font-extrabold uppercase tracking-wider mb-1.5"
+                        style={{ color: theme.navy }}
+                      >
                         Mobile Number *
                       </label>
                       <input
@@ -418,15 +508,18 @@ export default function NationalGuardCareersPage() {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="0300-1234567"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
+                        className="w-full px-4 py-3 rounded-xl border text-[15px] font-medium text-[#1B365D] focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
                         style={{ borderColor: theme.border }}
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navy }}>
+                      <label
+                        className="block text-[13px] font-extrabold uppercase tracking-wider mb-1.5"
+                        style={{ color: theme.navy }}
+                      >
                         CNIC Number *
                       </label>
                       <input
@@ -435,13 +528,35 @@ export default function NationalGuardCareersPage() {
                         value={formData.cnic}
                         onChange={(e) => setFormData({ ...formData, cnic: e.target.value })}
                         placeholder="35201-XXXXXXX-X"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
+                        className="w-full px-4 py-3 rounded-xl border text-[15px] font-medium text-[#1B365D] focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
                         style={{ borderColor: theme.border }}
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navy }}>
+                      <label
+                        className="block text-[13px] font-extrabold uppercase tracking-wider mb-1.5"
+                        style={{ color: theme.navy }}
+                      >
+                        Email Address (Optional)
+                      </label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="candidate@email.com"
+                        className="w-full px-4 py-3 rounded-xl border text-[15px] font-medium text-[#1B365D] focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
+                        style={{ borderColor: theme.border }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        className="block text-[13px] font-extrabold uppercase tracking-wider mb-1.5"
+                        style={{ color: theme.navy }}
+                      >
                         Current City / District *
                       </label>
                       <input
@@ -450,50 +565,57 @@ export default function NationalGuardCareersPage() {
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                         placeholder="e.g. Lahore, Rawalpindi"
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
+                        className="w-full px-4 py-3 rounded-xl border text-[15px] font-medium text-[#1B365D] focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
                         style={{ borderColor: theme.border }}
                       />
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navy }}>
-                        Applying For Position *
-                      </label>
-                      <select
-                        value={formData.position}
-                        onChange={(e) => setFormData({ ...formData, position: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white cursor-pointer"
-                        style={{ borderColor: theme.border }}
+                      <label
+                        className="block text-[13px] font-extrabold uppercase tracking-wider mb-1.5"
+                        style={{ color: theme.navy }}
                       >
-                        {JOB_OPENINGS.map((j) => (
-                          <option key={j.id} value={j.title}>
-                            {j.title}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navy }}>
                         Are You An Ex-Serviceman? *
                       </label>
                       <select
                         value={formData.exMilitary}
                         onChange={(e) => setFormData({ ...formData, exMilitary: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white cursor-pointer"
+                        className="w-full px-4 py-3 rounded-xl border text-[15px] font-medium text-[#1B365D] focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white cursor-pointer"
                         style={{ borderColor: theme.border }}
                       >
+                        <option value="No - Civilian">No - Civilian Candidate</option>
                         <option value="Yes - Pak Army">Yes - Pakistan Army</option>
                         <option value="Yes - FC / Rangers">Yes - FC / Rangers / Police</option>
-                        <option value="No - Civilian">No - Civilian Candidate</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-2" style={{ color: theme.navy }}>
+                    <label
+                      className="block text-[13px] font-extrabold uppercase tracking-wider mb-1.5"
+                      style={{ color: theme.navy }}
+                    >
+                      Applying For Position *
+                    </label>
+                    <select
+                      value={formData.position}
+                      onChange={(e) => setFormData({ ...formData, position: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border text-[15px] font-medium text-[#1B365D] focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white cursor-pointer"
+                      style={{ borderColor: theme.border }}
+                    >
+                      {JOB_OPENINGS.map((j) => (
+                        <option key={j.id} value={j.title}>
+                          {j.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      className="block text-[13px] font-extrabold uppercase tracking-wider mb-1.5"
+                      style={{ color: theme.navy }}
+                    >
                       Brief Experience / Note
                     </label>
                     <textarea
@@ -501,7 +623,7 @@ export default function NationalGuardCareersPage() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Mention your previous security employer, weapon training, or discharge details..."
-                      className="w-full px-4 py-3 rounded-xl border text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
+                      className="w-full px-4 py-3 rounded-xl border text-[15px] font-medium text-[#1B365D] focus:outline-none focus:ring-2 focus:ring-[#1B365D] bg-white"
                       style={{ borderColor: theme.border }}
                     />
                   </div>
@@ -509,10 +631,10 @@ export default function NationalGuardCareersPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shadow-lg transition-all duration-300 hover:opacity-95 cursor-pointer disabled:opacity-50"
+                    className="w-full py-4 rounded-xl text-[15px] font-extrabold uppercase tracking-wider text-white flex items-center justify-center gap-2 shadow-lg transition-all duration-300 hover:opacity-95 cursor-pointer disabled:opacity-50"
                     style={{ backgroundColor: theme.navy }}
                   >
-                    <Send size={16} />
+                    <Send size={17} />
                     <span>{isSubmitting ? "Submitting Application..." : "Submit Guard Application"}</span>
                   </button>
                 </form>

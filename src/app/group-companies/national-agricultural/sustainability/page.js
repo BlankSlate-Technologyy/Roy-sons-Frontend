@@ -12,7 +12,6 @@ import {
   ArrowRight,
   ShieldCheck,
   Shield,
-  Zap,
 } from "lucide-react";
 import {
   theme,
@@ -94,34 +93,34 @@ export default function NationalAgriculturalSustainabilityPage() {
       <NationalAgriculturalNavbar />
 
       {/* Hero Section */}
-      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
+      <section className="relative py-10 lg:py-14 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
               <SectionLabel>Environmental Responsibility</SectionLabel>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight leading-tight mb-5" style={{ color: theme.navy }}>
+              <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight leading-tight mb-4" style={{ color: theme.navy }}>
                 Climate-Resilient &amp; <span style={{ color: theme.primaryMid }}>Sustainable Agriculture</span>
               </h1>
 
-              <p className="text-sm sm:text-base font-normal leading-relaxed mb-8 max-w-2xl" style={{ color: theme.textMuted }}>
+              <p className="text-[15px] sm:text-lg font-normal leading-relaxed mb-6 max-w-2xl" style={{ color: theme.textMuted }}>
                 Securing Pakistan&apos;s agricultural future requires harmonious coexistence with nature. Through water conservation, regenerative soil management, clean solar energy, and biodiversity protection, we ensure productive farmlands for generations to come.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-wrap items-center gap-3.5">
                 <a
                   href="#pillars-section"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm sm:text-[15px] font-bold text-white shadow-xs transition-all duration-300 hover:opacity-95 cursor-pointer"
                   style={{ backgroundColor: theme.primaryMid }}
                 >
                   <span>Explore 5 Core Pillars</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={16} />
                 </a>
 
                 <Link
                   href="/group-companies/national-agricultural/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold border transition-all duration-300 hover:bg-white cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm sm:text-[15px] font-bold border bg-white transition-all duration-300 hover:bg-slate-50 cursor-pointer"
                   style={{ borderColor: theme.border, color: theme.navy }}
                 >
                   <span>Inquire About Green Agritech</span>
@@ -131,20 +130,21 @@ export default function NationalAgriculturalSustainabilityPage() {
 
             {/* Right Hero Visual */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[480px] h-[320px] sm:h-[380px] rounded-2xl overflow-hidden shadow-md border agri-card bg-white" style={{ borderColor: theme.border }}>
+              <div className="relative w-full max-w-[500px] h-[300px] sm:h-[360px] rounded-2xl overflow-hidden shadow-md border agri-card bg-white" style={{ borderColor: theme.border }}>
                 <Image
-                  src="/desertdev/arid_agriculture.jpg"
-                  alt="Sustainable Agriculture and Water Conservation"
+                  src="/national-agricultural/sustainability-hero-solar.png"
+                  alt="Solar-Powered Eco-Sustainable Farm and Clean Pasture Ecosystem"
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B2535]/80 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-3.5 border shadow-sm w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider mb-0.5" style={{ color: theme.accent }}>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0B2535]/80 via-transparent to-transparent flex items-end p-5">
+                  <div className="bg-white/95 backdrop-blur-md rounded-xl p-4 border shadow-sm w-full" style={{ borderColor: theme.border }}>
+                    <p className="text-xs font-bold uppercase tracking-wider mb-0.5" style={{ color: theme.accent }}>
                       100% Sustainable Operations
                     </p>
-                    <p className="text-xs sm:text-[13px] font-medium" style={{ color: theme.navy }}>
+                    <p className="text-sm sm:text-[15px] font-semibold" style={{ color: theme.navy }}>
                       Solar Pumping · Soil Stewardship · Water Recycling
                     </p>
                   </div>
@@ -156,9 +156,9 @@ export default function NationalAgriculturalSustainabilityPage() {
       </section>
 
       {/* Sustainability Metrics Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
             {SUSTAINABILITY_STATS.map((stat, idx) => {
               const Icon = stat.icon;
               return (
@@ -166,13 +166,13 @@ export default function NationalAgriculturalSustainabilityPage() {
                   key={stat.label}
                   className="agri-card rounded-xl p-5 text-center flex flex-col items-center justify-center bg-white shadow-xs"
                 >
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center mb-2.5" style={{ backgroundColor: `${theme.primaryMid}10` }}>
-                    <Icon size={20} style={{ color: theme.primaryMid }} />
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center mb-2.5" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                    <Icon size={21} style={{ color: theme.primaryMid }} />
                   </div>
                   <div className="mb-1" style={{ color: theme.navy }}>
                     <AnimatedCounter targetValue={stat.value} duration={1400 + idx * 100} />
                   </div>
-                  <p className="text-[11px] font-medium tracking-wide uppercase whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-xs sm:text-sm font-bold tracking-wide uppercase whitespace-pre-line leading-snug" style={{ color: theme.textMuted }}>
                     {stat.label}
                   </p>
                 </div>
@@ -183,17 +183,17 @@ export default function NationalAgriculturalSustainabilityPage() {
       </section>
 
       {/* 5 Core Pillars Section */}
-      <section id="pillars-section" className="py-18 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
+      <section id="pillars-section" className="py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-8">
             <SectionLabel center>Core Environmental Framework</SectionLabel>
-            <SectionHeading center className="mb-3">Our 5 Sustainability Pillars</SectionHeading>
-            <p className="text-xs sm:text-sm font-normal" style={{ color: theme.textMuted }}>
+            <SectionHeading center className="mb-2.5">Our 5 Sustainability Pillars</SectionHeading>
+            <p className="text-[15px] sm:text-base font-normal leading-relaxed" style={{ color: theme.textMuted }}>
               Engineered strategies to build climate resilience, protect natural water systems, and restore agrarian vitality across Pakistan.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {SUSTAINABILITY_PILLARS.map((pillar, idx) => {
               const Icon = pillar.icon;
               return (
@@ -203,35 +203,35 @@ export default function NationalAgriculturalSustainabilityPage() {
                 >
                   <div>
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
-                        <Icon size={18} style={{ color: theme.primaryMid }} />
+                      <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${theme.primaryMid}12` }}>
+                        <Icon size={20} style={{ color: theme.primaryMid }} />
                       </div>
                       <div>
-                        <span className="text-[10px] font-semibold uppercase tracking-wider block" style={{ color: theme.accent }}>
+                        <span className="text-xs font-bold uppercase tracking-wider block" style={{ color: theme.accent }}>
                           Pillar 0{idx + 1}
                         </span>
-                        <h3 className="text-[17px] font-semibold tracking-tight leading-snug" style={{ color: theme.navy }}>
+                        <h3 className="text-lg font-bold tracking-tight leading-snug" style={{ color: theme.navy }}>
                           {pillar.title}
                         </h3>
                       </div>
                     </div>
 
-                    <p className="text-[11px] font-medium tracking-wide mb-2.5" style={{ color: theme.primaryMid }}>
+                    <p className="text-sm font-semibold tracking-wide mb-2.5" style={{ color: theme.primaryMid }}>
                       {pillar.subtitle}
                     </p>
 
-                    <p className="text-xs sm:text-[13px] font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
+                    <p className="text-[15px] font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
                       {pillar.desc}
                     </p>
 
-                    <div className="space-y-2 pt-3 border-t" style={{ borderColor: theme.borderLight }}>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: theme.navy }}>
+                    <div className="space-y-2 pt-3.5 border-t" style={{ borderColor: theme.borderLight }}>
+                      <p className="text-xs font-bold uppercase tracking-wide" style={{ color: theme.navy }}>
                         Key Commitments:
                       </p>
                       {pillar.features.map((feat, fIdx) => (
                         <div key={fIdx} className="flex items-start gap-2">
-                          <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
-                          <span className="text-xs font-normal text-slate-700 leading-snug">{feat}</span>
+                          <CheckCircle2 size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                          <span className="text-sm font-medium text-slate-700 leading-snug">{feat}</span>
                         </div>
                       ))}
                     </div>
@@ -244,17 +244,17 @@ export default function NationalAgriculturalSustainabilityPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
+          <div className="rounded-2xl p-6 sm:p-8 lg:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
             <div>
-              <span className="text-[11px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
+              <span className="text-xs sm:text-[13px] font-bold uppercase tracking-wider block mb-1.5" style={{ color: theme.accent }}>
                 Clean Agricultural Transition
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold mb-1.5" style={{ color: theme.navy }}>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.navy }}>
                 Transition Your Farm to Climate-Smart Practices
               </h2>
-              <p className="text-xs sm:text-sm font-normal max-w-xl" style={{ color: theme.textMuted }}>
+              <p className="text-[15px] sm:text-base font-normal max-w-xl leading-relaxed" style={{ color: theme.textMuted }}>
                 Connect with our environmental engineers to calculate water savings, solar ROI, and organic certification pathways.
               </p>
             </div>
@@ -262,11 +262,11 @@ export default function NationalAgriculturalSustainabilityPage() {
             <div className="flex flex-wrap gap-3 flex-shrink-0">
               <Link
                 href="/group-companies/national-agricultural/contact"
-                className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
+                className="px-6 py-3 rounded-xl text-sm sm:text-[15px] font-bold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
                 style={{ backgroundColor: theme.primaryMid }}
               >
                 <span>Consult Agronomists</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={16} />
               </Link>
             </div>
           </div>

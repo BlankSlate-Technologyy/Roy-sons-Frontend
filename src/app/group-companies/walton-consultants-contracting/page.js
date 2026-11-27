@@ -32,6 +32,7 @@ import {
   SectionHeading,
   AnimatedCounter,
   CardImageSlider,
+  WaltonTeamSection,
 } from "./components/WaltonShared";
 import { WALTON_SERVICES } from "./services-data";
 import { WALTON_SOLUTIONS } from "./solutions-data";
@@ -258,7 +259,7 @@ export default function WaltonHomePage() {
       {/* ─────────────────────────────────────────────────────────────
           2. CORPORATE METRICS COUNTER SECTION
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {STATS.map((stat, i) => {
@@ -277,7 +278,7 @@ export default function WaltonHomePage() {
                   <div className="mb-1" style={{ color: theme.navyDark }}>
                     <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600 whitespace-pre-line">
+                  <p className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-slate-700 whitespace-pre-line">
                     {stat.label}
                   </p>
                 </div>
@@ -290,9 +291,9 @@ export default function WaltonHomePage() {
       {/* ─────────────────────────────────────────────────────────────
           3. HOME — SERVICES CARDS (LARGE IMAGE HEADERS + MINI SLIDERS)
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10">
             <div className="max-w-2xl">
               <SectionLabel>Core Disciplines</SectionLabel>
               <SectionHeading className="mb-3">
@@ -340,15 +341,15 @@ export default function WaltonHomePage() {
 
                     {/* Content */}
                     <div className="p-5">
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-[#0E2A47] inline-block mb-2.5">
+                      <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-slate-100 text-[#0E2A47] inline-block mb-2.5">
                         {svc.category}
                       </span>
 
-                      <h3 className="text-base font-black text-[#0A1E34] leading-snug mb-2 group-hover:text-[#0E2A47] transition-colors">
+                      <h3 className="text-lg font-black text-[#0A1E34] leading-snug mb-2 group-hover:text-[#0E2A47] transition-colors">
                         {svc.title}
                       </h3>
 
-                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+                      <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
                         {svc.overview}
                       </p>
                     </div>
@@ -357,7 +358,7 @@ export default function WaltonHomePage() {
                   <div className="p-5 pt-0">
                     <Link
                       href={`/group-companies/walton-consultants-contracting/services#${svc.id}`}
-                      className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all"
+                      className="w-full py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all"
                     >
                       <span>View Specifications</span>
                       <ArrowRight size={13} />
@@ -373,9 +374,9 @@ export default function WaltonHomePage() {
       {/* ─────────────────────────────────────────────────────────────
           4. SOLUTIONS PREVIEW SECTION
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10">
             <div className="max-w-2xl">
               <SectionLabel>Engineered Packages</SectionLabel>
               <SectionHeading className="mb-3">
@@ -411,24 +412,24 @@ export default function WaltonHomePage() {
                       sizes="(max-width: 768px) 100vw, 300px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/50 via-transparent to-transparent" />
-                    <span className="absolute bottom-3 left-3 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-white/90 text-[#0A1E34] backdrop-blur-xs">
+                    <span className="absolute bottom-3 left-3 text-xs font-bold uppercase px-2.5 py-1 rounded bg-white/95 text-[#0A1E34] backdrop-blur-xs shadow-xs">
                       {sol.tag}
                     </span>
                   </div>
 
                   <div className="p-5">
-                    <h3 className="text-base font-black text-[#0A1E34] leading-snug mb-2">
+                    <h3 className="text-lg font-black text-[#0A1E34] leading-snug mb-2">
                       {sol.name}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3 font-normal">
                       {sol.desc}
                     </p>
 
                     <div className="grid grid-cols-2 gap-2 pt-3 border-t border-slate-100">
                       {sol.stats.slice(0, 2).map((st) => (
                         <div key={st.label}>
-                          <span className="text-xs font-black text-[#0E2A47] block">{st.value}</span>
-                          <span className="text-[10px] text-slate-500 font-semibold">{st.label}</span>
+                          <span className="text-sm font-black text-[#0E2A47] block">{st.value}</span>
+                          <span className="text-xs text-slate-500 font-semibold">{st.label}</span>
                         </div>
                       ))}
                     </div>
@@ -438,7 +439,7 @@ export default function WaltonHomePage() {
                 <div className="p-5 pt-0">
                   <Link
                     href="/group-companies/walton-consultants-contracting/solutions"
-                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 transition-colors"
+                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all"
                   >
                     <span>Explore Scope</span>
                     <ArrowRight size={13} />
@@ -453,9 +454,9 @@ export default function WaltonHomePage() {
       {/* ─────────────────────────────────────────────────────────────
           5. FEATURED PROJECTS SHOWCASE
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-10">
             <div className="max-w-2xl">
               <SectionLabel>National Footprint</SectionLabel>
               <SectionHeading className="mb-3">
@@ -491,25 +492,25 @@ export default function WaltonHomePage() {
                       sizes="(max-width: 768px) 100vw, 400px"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/70 via-transparent to-transparent" />
-                    <span className="absolute top-3 right-3 text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#C5A059] text-white">
+                    <span className="absolute top-3 right-3 text-xs font-black uppercase px-2.5 py-1 rounded-full bg-[#C5A059] text-white shadow-xs">
                       {p.category}
                     </span>
                     <div className="absolute bottom-3 left-3 text-white">
-                      <span className="text-[11px] font-bold text-slate-200 flex items-center gap-1">
-                        <MapPin size={12} className="text-[#C5A059]" /> {p.location}
+                      <span className="text-xs sm:text-[13px] font-bold text-slate-200 flex items-center gap-1.5">
+                        <MapPin size={13} className="text-[#C5A059]" /> {p.location}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-base font-black text-[#0A1E34] mb-2 leading-snug">
+                    <h3 className="text-lg font-black text-[#0A1E34] mb-2 leading-snug">
                       {p.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3 font-normal">
                       {p.summary}
                     </p>
 
-                    <div className="flex items-center justify-between text-xs py-2 border-t border-slate-100">
+                    <div className="flex items-center justify-between text-xs sm:text-[13px] py-2 border-t border-slate-100">
                       <span className="text-slate-500 font-semibold">Client</span>
                       <span className="font-bold text-[#0A1E34] text-right truncate max-w-[200px]">{p.client}</span>
                     </div>
@@ -519,7 +520,7 @@ export default function WaltonHomePage() {
                 <div className="p-6 pt-0">
                   <Link
                     href="/group-companies/walton-consultants-contracting/projects"
-                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 transition-colors"
+                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs sm:text-[13px] font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all"
                   >
                     <span>View Project Details</span>
                     <ArrowRight size={13} />
@@ -534,9 +535,9 @@ export default function WaltonHomePage() {
       {/* ─────────────────────────────────────────────────────────────
           6. 6-STAGE CONSTRUCTION LIFECYCLE
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <SectionLabel center>Disciplined Protocol</SectionLabel>
             <SectionHeading center className="mb-3">
               6-Stage Construction Lifecycle
@@ -559,10 +560,10 @@ export default function WaltonHomePage() {
                   >
                     {step.num}
                   </div>
-                  <h4 className="text-base font-bold text-[#0A1E34] mb-2">
+                  <h4 className="text-lg font-black text-[#0A1E34] mb-2">
                     {step.title}
                   </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
                     {step.desc}
                   </p>
                 </div>
@@ -573,16 +574,25 @@ export default function WaltonHomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          7. FAQ ACCORDION SECTION
+          7. EXECUTIVE ENGINEERING LEADERSHIP & TEAM SECTION
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      <WaltonTeamSection
+        bg="bg-white"
+        title="LEADERSHIP & PRINCIPAL ENGINEERS"
+        subtitle="Direct technical oversight by Pakistan Engineering Council (PEC) registered chartered engineers and infrastructure directors with over 25 years of field execution authority."
+      />
+
+      {/* ─────────────────────────────────────────────────────────────
+          8. FAQ ACCORDION SECTION
+      ───────────────────────────────────────────────────────────── */}
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="text-center max-w-3xl mx-auto mb-10">
             <SectionLabel center>Clarity &amp; Governance</SectionLabel>
             <SectionHeading center className="mb-3">
               Frequently Asked Questions
             </SectionHeading>
-            <p className="text-sm sm:text-base text-slate-600">
+            <p className="text-sm sm:text-base text-slate-600 font-normal">
               Essential technical and operational details on our contracting framework.
             </p>
           </div>
@@ -595,18 +605,18 @@ export default function WaltonHomePage() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#0A1E34] cursor-pointer"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg text-[#0A1E34] cursor-pointer"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
-                    size={18}
+                    size={20}
                     className={`transition-transform duration-300 shrink-0 ${
                       openFaq === idx ? "rotate-180 text-[#C5A059]" : "text-slate-400"
                     }`}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                  <div className="px-5 pb-5 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100 pt-4 font-normal">
                     {faq.a}
                   </div>
                 )}
@@ -617,9 +627,9 @@ export default function WaltonHomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-          8. FINAL CALL TO ACTION BANNER
+          9. FINAL CALL TO ACTION BANNER
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-12 lg:py-14 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <div
             className="rounded-3xl p-8 sm:p-12 lg:p-14 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-xl text-white relative overflow-hidden"

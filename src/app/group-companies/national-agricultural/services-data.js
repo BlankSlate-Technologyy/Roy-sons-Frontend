@@ -32,7 +32,7 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     eyebrow: "Precision Farm Engineering & High-Capacity Machinery",
     tag: "Farm Mechanization",
     icon: Tractor,
-    heroImage: "/services/agriculture-1.jpg",
+    heroImage: "/national-agricultural/service-mechanization.jpg",
     overview:
       "National Agricultural Corporation modernizes crop cultivation through precision farm mechanization fleets. From GPS-guided laser land leveling that cuts irrigation losses by up to 35%, to computerized pneumatic seed drills, high-horsepower 4WD tractors, and automated combine harvesting fleets, we boost field operational efficiency, accelerate turnaround times, and maximize farm profitability.",
     metrics: [
@@ -125,7 +125,7 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     eyebrow: "Commercial Dairy Architecture & Farm-to-Processor Logistics",
     tag: "Dairy Infrastructure",
     icon: Building2,
-    heroImage: "/vetvac_dairy_service.jpg",
+    heroImage: "/national-agricultural/service-dairy-milking.jpg",
     overview:
       "National Agricultural Corporation delivers end-to-end commercial dairy farm engineering. From climate-controlled free-stall sheds with evaporative cooling fans and automated electronic herringbone/rotary milking parlors, to rapid direct-expansion bulk milk chillers and village collection networks, we guarantee hygienic milk production meeting strict international food standards.",
     metrics: [
@@ -218,7 +218,7 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     eyebrow: "Elite Herd Genetics, Artificial Insemination & Herd Health",
     tag: "Animal Husbandry",
     icon: Leaf,
-    heroImage: "/vetvac_livestock_service.jpg",
+    heroImage: "/national-agricultural/service-livestock-vet.jpg",
     overview:
       "National Agricultural Corporation delivers comprehensive livestock genetic upgrade programs. Featuring imported pedigree Holstein-Friesian, Jersey, and certified pure Sahiwal semen, sexed semen artificial insemination (AI), computerized herd management, and preventative veterinary healthcare protocols, we transform herd milk yield and disease resistance.",
     metrics: [
@@ -311,7 +311,7 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     eyebrow: "High-Efficiency Water Engineering & Solar Tube-Wells",
     tag: "Water Management",
     icon: Droplets,
-    heroImage: "/desertdev/arid_agriculture.jpg",
+    heroImage: "/national-agricultural/service-irrigation-water.jpg",
     overview:
       "National Agricultural Corporation engineers climate-resilient water management solutions. Specializing in automated center-pivot sprinklers, subsurface and surface drip irrigation systems, solar hybrid pumping stations, and geomembrane-lined farm storage ponds, our systems cut water and energy consumption by up to 50% while increasing crop yields.",
     metrics: [
@@ -404,7 +404,7 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     eyebrow: "Drought-Resilient Hybrids & Balanced Soil Microbiology",
     tag: "Crop Nutrition",
     icon: FlaskConical,
-    heroImage: "/services/agriculture-2.jpg",
+    heroImage: "/national-agricultural/service-seeds-grain.jpg",
     overview:
       "National Agricultural Corporation supplies certified high-germination hybrid seeds and advanced crop nutrition solutions. Our research-backed hybrid varieties for wheat, cotton, maize, rice, and oilseeds deliver high drought and heat tolerance, while our organic liquid bio-fertilizers, humic acid, and micronutrient foliar sprays revitalize depleted soil microbiology.",
     metrics: [
@@ -497,7 +497,7 @@ export const NATIONAL_AGRICULTURAL_SERVICES = [
     eyebrow: "Bankable Farm Feasibility, Greenhouse Tech & Supply Chain",
     tag: "Agri Consultancy",
     icon: Wheat,
-    heroImage: "/waltonfood/hero_farm_sourcing.jpg",
+    heroImage: "/national-agricultural/service-farm-greenhouse.jpg",
     overview:
       "National Agricultural Corporation provides strategic management consultancy and technical advisory for corporate farm investors, sovereign agricultural funds, institutional landholders, and progressive growers. We formulate bankable feasibility studies, design automated greenhouse operations, optimize supply chains, and secure organic export certifications.",
     metrics: [

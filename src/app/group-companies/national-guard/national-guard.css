@@ -5,23 +5,26 @@
 
 :root {
   --ng-navy: #1B365D;          /* Shield Navy Blue */
-  --ng-navy-dark: #0F2540;     /* Deep Navy */
+  --ng-navy-dark: #0F2540;     /* Deep Command Navy */
   --ng-gold: #C5A059;          /* Wreath Gold */
+  --ng-gold-bright: #DFB868;   /* High-Contrast Gold for Dark Surfaces */
   --ng-gold-hover: #A6823B;
   --ng-white: #ffffff;
   --ng-bg-light: #F4F6F9;
-  --ng-border: #E2E7EE;
-  --ng-text-muted: #4A5B73;
-  --ng-text-light: #6E7F98;
+  --ng-border: #DCE3EC;
+  --ng-text-muted: #3F526B;
+  --ng-text-light: #5C6F87;
 }
 
 body.national-guard-theme,
 .national-guard-theme,
 body.national-guard-theme main,
-body.national-guard-theme section,
+.national-guard-theme main {
+  background-color: #ffffff;
+  color: #1B365D;
+}
+
 body.national-guard-theme header,
-.national-guard-theme main,
-.national-guard-theme section,
 .national-guard-theme header {
   background-color: #ffffff !important;
   color: #1B365D;
@@ -34,25 +37,27 @@ body.national-guard-theme .cursor-pointer,
 
 /* Card hover animation */
 .ng-card-hover {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease !important;
 }
 .ng-card-hover:hover {
-  transform: translateY(-5px) !important;
+  transform: translateY(-4px) !important;
   border-color: #C5A059 !important;
-  box-shadow: 0 16px 32px -8px rgba(27, 54, 93, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.25) !important;
+  box-shadow: 0 16px 32px -10px rgba(15, 37, 64, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.3) !important;
 }
 
 /* Counter box */
 .ng-counter-box {
-  transition: all 0.3s ease !important;
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease !important;
 }
 .ng-counter-box:hover {
-  transform: translateY(-4px) !important;
+  transform: translateY(-3px) !important;
   border-color: #C5A059 !important;
-  box-shadow: 0 10px 25px rgba(27, 54, 93, 0.1) !important;
+  box-shadow: 0 12px 26px -6px rgba(15, 37, 64, 0.14) !important;
 }
 
-/* Reset for National Guard components */
+/* Clean typography reset scoped to National Guard */
 body.national-guard-theme a,
 body.national-guard-theme button,
 body.national-guard-theme label,
@@ -67,7 +72,6 @@ body.national-guard-theme span,
 body.national-guard-theme li {
   -webkit-text-fill-color: inherit;
   text-shadow: none !important;
-  background-image: none !important;
   background-clip: unset !important;
   -webkit-background-clip: unset !important;
 }

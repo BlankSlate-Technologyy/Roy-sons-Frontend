@@ -219,7 +219,7 @@ export const NATIONAL_GUARD_SERVICES = [
     subtitle: "Real-Time Threat Detection & Remote Video Auditing",
     tag: "Surveillance",
     icon: Camera,
-    heroImage: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/national-guard-hero-bg.png",
     overview:
       "National Guard operates state-of-the-art 24/7 Central Monitoring Control Rooms staffed by certified surveillance specialists. We integrate high-definition IP video feeds, AI-powered perimeter tripwire analytics, automatic license plate recognition (ANPR), and remote panic button monitoring to preempt security breaches before they occur.",
     metrics: [
@@ -311,7 +311,7 @@ export const NATIONAL_GUARD_SERVICES = [
     subtitle: "Comprehensive Threat Identification & Mitigation Architecture",
     tag: "Consulting",
     icon: ClipboardCheck,
-    heroImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/images/walton/about_conference_plans.jpg",
     overview:
       "Led by retired senior military intelligence and police commanders, National Guard’s Risk Assessment division delivers in-depth security audits for commercial complexes, industrial plants, and multinational enterprises. We systematically identify physical entry vulnerabilities, emergency evacuation bottlenecks, electronic blind spots, and procedural flaws to create actionable security blueprints.",
     metrics: [
@@ -493,7 +493,7 @@ export const NATIONAL_GUARD_SERVICES = [
     subtitle: "Integrated Multi-Tiered Security Architecture",
     tag: "Corporate Security",
     icon: Building2,
-    heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/bright-corporate-skyscraper.jpg",
     overview:
       "National Guard delivers end-to-end facility security solutions designed specifically for corporate headquarters, IT business parks, multinational office towers, and distribution complexes. We combine front-desk security concierge services, automated turnstile badging, loading bay oversight, after-hours facility lockups, and fire safety marshaling into a synchronized security ecosystem.",
     metrics: [

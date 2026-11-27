@@ -6,15 +6,11 @@ import Link from "next/link";
 import {
   HeartPulse,
   Leaf,
-  Sun,
   Droplets,
   CheckCircle2,
   ArrowRight,
   Phone,
   ShieldCheck,
-  Award,
-  Users,
-  Sparkles,
   Zap,
 } from "lucide-react";
 import {
@@ -82,35 +78,45 @@ export default function SwissFarmSustainabilityPage() {
       <SwissFarmNavbar />
 
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      <section
+        className="relative py-10 sm:py-12 lg:py-14 px-4 sm:px-6 lg:px-8 border-b bg-[#F4F8F4]"
+        style={{ borderColor: theme.border }}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
               <SectionLabel>Sustainable Dairy Ecology &amp; ESG</SectionLabel>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight uppercase mb-6" style={{ color: theme.primary }}>
-                Animal Welfare &amp; <span style={{ color: theme.accentGold }}>Sustainable Dairy Farming</span>
+              <h1
+                className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.12] uppercase mb-5"
+                style={{ color: theme.primary }}
+              >
+                Animal Welfare &amp;{" "}
+                <span style={{ color: theme.accentGold }}>Sustainable Dairy Farming</span>
               </h1>
 
-              <p className="text-base sm:text-lg font-medium leading-relaxed mb-8" style={{ color: theme.textMuted }}>
+              <p
+                className="text-[16px] sm:text-[17.5px] font-medium leading-relaxed mb-7 max-w-2xl"
+                style={{ color: theme.textMuted }}
+              >
                 At Swiss Farms, happy, healthy cows produce pure, wholesome milk. Through circular bio-energy generation, compassionate housing, closed-loop water recycling, and organic soil enrichment, we set the benchmark for ethical dairy agriculture in Pakistan.
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3.5">
                 <Link
                   href="/group-companies/swiss-farm/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[15px] font-extrabold text-white shadow-md transition-all duration-300 hover:opacity-95 cursor-pointer"
                   style={{ backgroundColor: theme.primary }}
                 >
                   <span>Inquire About ESG Standards</span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={17} />
                 </Link>
 
                 <Link
                   href="/group-companies/swiss-farm/about"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold border transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                  style={{ borderColor: theme.border, color: theme.primary }}
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[15px] font-extrabold border-2 bg-white transition-all duration-300 hover:bg-[#F4F8F4] cursor-pointer"
+                  style={{ borderColor: theme.primary, color: theme.primary }}
                 >
                   <span>About Our Farm Operations</span>
                 </Link>
@@ -119,20 +125,30 @@ export default function SwissFarmSustainabilityPage() {
 
             {/* Right Visual Card */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="relative w-full max-w-[500px] h-[360px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl border group bg-slate-50" style={{ borderColor: theme.border }}>
+              <div
+                className="relative w-full max-w-[520px] h-[320px] sm:h-[380px] rounded-3xl overflow-hidden shadow-xl border group bg-white"
+                style={{ borderColor: theme.border }}
+              >
                 <Image
-                  src="/swiss-card3.png"
-                  alt="Swiss Farms Sustainable Pasture & Bio-Energy"
+                  src="/swiss-card2.png"
+                  alt="Swiss Farms Solar-Powered Eco Dairy Complex and Pastures"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#123B1D]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full" style={{ borderColor: theme.border }}>
-                    <p className="text-xs font-black uppercase tracking-wider mb-1 text-[#C5A059]">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#123B1D]/85 via-transparent to-transparent flex items-end p-5">
+                  <div
+                    className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border shadow-lg w-full"
+                    style={{ borderColor: theme.border }}
+                  >
+                    <p
+                      className="text-[13px] font-black uppercase tracking-wider mb-1"
+                      style={{ color: theme.accentGold }}
+                    >
                       Zero-Waste Dairy Model
                     </p>
-                    <p className="text-sm font-bold" style={{ color: theme.primary }}>
+                    <p className="text-[15px] font-extrabold" style={{ color: theme.primary }}>
                       100% Animal Welfare · Biogas Power · Bio-Compost
                     </p>
                   </div>
@@ -143,25 +159,38 @@ export default function SwissFarmSustainabilityPage() {
         </div>
       </section>
 
-      {/* Metrics Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      {/* Deep Forest Green Metrics Strip */}
+      <section
+        className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 border-b"
+        style={{
+          backgroundColor: theme.primaryDark,
+          borderColor: "rgba(255,255,255,0.1)",
+          color: "#FFFFFF",
+        }}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
             {SUSTAINABILITY_STATS.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div
                   key={stat.label}
-                  className="swiss-farm-counter-box rounded-2xl border p-6 text-center flex flex-col items-center justify-center bg-white shadow-xs"
-                  style={{ borderColor: theme.border }}
+                  className="swiss-farm-counter-box rounded-2xl border p-5 text-center flex flex-col items-center justify-center shadow-sm"
+                  style={{
+                    backgroundColor: theme.primaryCard,
+                    borderColor: "rgba(224, 188, 111, 0.28)",
+                  }}
                 >
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center mb-3" style={{ backgroundColor: `${theme.primary}10` }}>
-                    <Icon size={22} style={{ color: theme.primary }} />
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center mb-3"
+                    style={{ backgroundColor: "rgba(224, 188, 111, 0.16)" }}
+                  >
+                    <Icon size={22} style={{ color: theme.goldBright }} />
                   </div>
-                  <div className="mb-2" style={{ color: theme.primary }}>
+                  <div className="mb-1.5 text-white">
                     <AnimatedCounter targetValue={stat.value} duration={1400 + i * 100} />
                   </div>
-                  <p className="text-xs font-bold uppercase tracking-wider whitespace-pre-line" style={{ color: theme.textMuted }}>
+                  <p className="text-[13.5px] font-bold uppercase tracking-wide whitespace-pre-line text-[#DFECE2] leading-snug">
                     {stat.label}
                   </p>
                 </div>
@@ -172,43 +201,61 @@ export default function SwissFarmSustainabilityPage() {
       </section>
 
       {/* Sustainability Pillars Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 border-b bg-white" style={{ borderColor: theme.border }}>
+      <section
+        className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 border-b bg-white"
+        style={{ borderColor: theme.border }}
+      >
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-9">
             <SectionLabel center>Strategic Framework</SectionLabel>
-            <SectionHeading center className="mb-4">Our 4 Pillars of Sustainable Dairy Farming</SectionHeading>
-            <p className="text-sm sm:text-base font-medium" style={{ color: theme.textMuted }}>
+            <SectionHeading center className="mb-3">
+              Our 4 Pillars of Sustainable Dairy Farming
+            </SectionHeading>
+            <p className="text-[15.5px] sm:text-[16.5px] font-medium" style={{ color: theme.textMuted }}>
               Proven ethical husbandry and bio-energy systems creating positive environmental and social impact.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {SUSTAINABILITY_PILLARS.map((pillar) => {
               const Icon = pillar.icon;
               return (
                 <div
                   key={pillar.title}
-                  className="swiss-farm-card-hover p-8 rounded-3xl border flex flex-col justify-between bg-white shadow-xs"
+                  className="swiss-farm-card-hover p-7 rounded-3xl border flex flex-col justify-between bg-[#F4F8F4]/70 shadow-xs"
                   style={{ borderColor: theme.border }}
                 >
                   <div>
-                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: `${theme.primary}10` }}>
-                      <Icon size={26} style={{ color: theme.primary }} />
+                    <div
+                      className="w-13 h-13 rounded-2xl flex items-center justify-center mb-5 bg-white border shadow-xs"
+                      style={{ borderColor: theme.border }}
+                    >
+                      <Icon size={25} style={{ color: theme.primary }} />
                     </div>
 
-                    <h3 className="text-xl font-bold mb-3" style={{ color: theme.primary }}>
+                    <h3 className="text-[21px] font-black mb-3 leading-snug" style={{ color: theme.primary }}>
                       {pillar.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm font-medium leading-relaxed mb-6" style={{ color: theme.textMuted }}>
+                    <p
+                      className="text-[15px] sm:text-[15.5px] font-medium leading-relaxed mb-5"
+                      style={{ color: theme.textMuted }}
+                    >
                       {pillar.desc}
                     </p>
 
-                    <div className="space-y-2 pt-4 border-t" style={{ borderColor: "rgba(214, 229, 215, 0.7)" }}>
+                    <div
+                      className="space-y-2.5 pt-4 border-t"
+                      style={{ borderColor: theme.border }}
+                    >
                       {pillar.features.map((f) => (
-                        <div key={f} className="flex items-center gap-2">
-                          <CheckCircle2 size={15} className="flex-shrink-0 text-[#C5A059]" />
-                          <span className="text-xs font-medium text-slate-700">{f}</span>
+                        <div key={f} className="flex items-start gap-2.5">
+                          <CheckCircle2
+                            size={17}
+                            className="flex-shrink-0 mt-0.5"
+                            style={{ color: theme.accentGold }}
+                          />
+                          <span className="text-[14.5px] font-semibold text-slate-800">{f}</span>
                         </div>
                       ))}
                     </div>
@@ -220,37 +267,46 @@ export default function SwissFarmSustainabilityPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Executive CTA Section */}
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#F4F8F4]">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-md border bg-white" style={{ borderColor: theme.border }}>
+          <div
+            className="rounded-3xl p-7 sm:p-10 flex flex-col lg:flex-row gap-7 items-center justify-between shadow-xl border"
+            style={{
+              backgroundColor: theme.primaryDark,
+              borderColor: "rgba(224, 188, 111, 0.35)",
+              color: "#FFFFFF",
+            }}
+          >
             <div>
-              <span className="text-xs font-black uppercase tracking-widest block mb-2 text-[#C5A059]">
+              <span
+                className="text-[13px] font-black uppercase tracking-widest block mb-2"
+                style={{ color: theme.goldBright }}
+              >
                 VERIFIED SUSTAINABLE DAIRY SOURCE
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2" style={{ color: theme.primary }}>
+              <h2 className="text-2xl sm:text-3xl font-black mb-2 text-white">
                 Require Our Sustainability &amp; Quality Audit Reports?
               </h2>
-              <p className="text-sm font-medium max-w-xl" style={{ color: theme.textMuted }}>
+              <p className="text-[15.5px] font-medium max-w-xl text-[#D8E8DC]">
                 We provide complete third-party laboratory microbiological assays, biosecurity certifications, and animal welfare audit documentation.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 flex-shrink-0 w-full lg:w-auto">
+            <div className="flex flex-wrap gap-3.5 flex-shrink-0 w-full lg:w-auto">
               <Link
                 href="/group-companies/swiss-farm/contact"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.primary }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-[15px] font-extrabold flex items-center gap-2 transition-all duration-300 shadow-md hover:opacity-95 cursor-pointer"
+                style={{ backgroundColor: theme.goldBright, color: theme.primaryDark }}
               >
                 <span>Request ESG &amp; Lab Audit</span>
-                <ArrowRight size={15} />
+                <ArrowRight size={17} />
               </Link>
               <a
                 href="tel:00924238924737"
-                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-sm font-bold border-2 flex items-center gap-2 transition-all duration-300 hover:bg-slate-50 cursor-pointer"
-                style={{ borderColor: theme.primary, color: theme.primary }}
+                className="flex-1 lg:flex-none justify-center px-6 py-3.5 rounded-xl text-[15px] font-extrabold border-2 border-white/80 text-white flex items-center gap-2 transition-all duration-300 hover:bg-white/10 cursor-pointer"
               >
-                <Phone size={15} />
+                <Phone size={16} />
                 <span>0092-42-38924737</span>
               </a>
             </div>

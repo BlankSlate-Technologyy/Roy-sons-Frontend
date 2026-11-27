@@ -96,18 +96,19 @@ export default function Footer() {
         <Container className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Brand */}
           <div className="lg:col-span-1 flex flex-col gap-5">
-            <a
-              href="#home"
-              className="inline-flex items-center select-none w-fit px-4 py-2.5 rounded-2xl bg-white shadow-lg border border-white/20 hover:scale-105 transition-all duration-300 group"
+            <Link
+              href="/group-companies/gateway"
+              className="inline-flex items-center select-none w-fit px-5 py-3 rounded-2xl bg-white shadow-xl border-2 border-white/40 hover:scale-105 transition-all duration-300 group"
             >
               <Image
                 src="/logo (2).png"
                 alt="Gateway Pharmaceuticals Logo"
-                width={240}
-                height={75}
+                width={260}
+                height={80}
                 className="h-14 sm:h-16 w-auto object-contain"
+                priority
               />
-            </a>
+            </Link>
 
             <p
               className="text-sm font-medium leading-relaxed"

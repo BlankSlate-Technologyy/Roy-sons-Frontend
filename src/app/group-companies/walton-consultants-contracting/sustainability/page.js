@@ -95,9 +95,9 @@ export default function WaltonSustainabilityPage() {
       {/* ─────────────────────────────────────────────────────────────
           1. SUSTAINABILITY HERO: ULTRA-REALISTIC SUSTAINABLE URBAN INFRASTRUCTURE
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      <section className="relative py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-6">
               <SectionLabel>Environment &amp; Resilience</SectionLabel>
@@ -106,7 +106,7 @@ export default function WaltonSustainabilityPage() {
                 INFRASTRUCTURE FOR A <span style={{ color: theme.navy }}>MORE SUSTAINABLE FUTURE</span>
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-8">
                 At Walton Consultants &amp; Contracting, sustainable engineering is not an afterthought — it is the cornerstone of our civil design philosophy. We build eco-resilient infrastructure combining renewable energy, water conservation, climate adaptation, and green building envelopes.
               </p>
 
@@ -140,14 +140,14 @@ export default function WaltonSustainabilityPage() {
                   sizes="(max-width: 1024px) 100vw, 600px"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/85 via-transparent to-transparent flex items-end p-6">
-                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 border border-slate-200 shadow-md w-full">
+                  <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-md w-full">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-[11px] font-black uppercase tracking-wider text-[#C5A059]">
+                      <span className="text-xs font-black uppercase tracking-wider text-[#C5A059]">
                         Net-Zero Engineering
                       </span>
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                     </div>
-                    <p className="text-xs sm:text-sm font-bold text-[#0A1E34]">
+                    <p className="text-sm sm:text-base font-bold text-[#0A1E34]">
                       Solar Integration &middot; Green Public Spaces &middot; Water Management
                     </p>
                   </div>
@@ -161,20 +161,20 @@ export default function WaltonSustainabilityPage() {
       {/* ─────────────────────────────────────────────────────────────
           2. IMPACT STATS COUNTER BAR
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {IMPACT_STATS.map((stat, i) => {
               const Icon = stat.icon;
               return (
                 <div key={stat.label} className="text-center">
-                  <div className="w-10 h-10 rounded-xl bg-[#0E2A47]/10 flex items-center justify-center mx-auto mb-3">
+                  <div className="w-11 h-11 rounded-xl bg-[#0E2A47]/10 flex items-center justify-center mx-auto mb-3">
                     <Icon size={20} style={{ color: theme.navy }} />
                   </div>
                   <div className="mb-1" style={{ color: theme.navyDark }}>
                     <AnimatedCounter targetValue={stat.value} duration={1300 + i * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500 whitespace-pre-line">
+                  <p className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-slate-700 whitespace-pre-line">
                     {stat.label}
                   </p>
                 </div>
@@ -187,9 +187,9 @@ export default function WaltonSustainabilityPage() {
       {/* ─────────────────────────────────────────────────────────────
           3. 7 CORE SUSTAINABILITY PILLARS
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-12">
             <SectionLabel center>Our Ecological Framework</SectionLabel>
             <SectionHeading center className="mb-3">
               7 Pillars of Sustainable Infrastructure
@@ -205,29 +205,29 @@ export default function WaltonSustainabilityPage() {
               return (
                 <div
                   key={pillar.title}
-                  className="walton-card-lift p-7 rounded-2xl border border-slate-200 bg-white shadow-xs flex flex-col justify-between group"
+                  className="walton-card-lift p-6 sm:p-7 rounded-2xl border border-slate-200 bg-white shadow-xs flex flex-col justify-between group"
                 >
                   <div>
                     <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 text-white" style={{ backgroundColor: theme.navy }}>
                       <Icon size={20} />
                     </div>
 
-                    <h3 className="text-lg font-black text-[#0A1E34] uppercase tracking-tight mb-1">
+                    <h3 className="text-lg sm:text-xl font-black text-[#0A1E34] uppercase tracking-tight mb-1">
                       {pillar.title}
                     </h3>
 
-                    <p className="text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-3">
+                    <p className="text-xs sm:text-[13px] font-bold text-[#C5A059] uppercase tracking-wider mb-3">
                       {pillar.subtitle}
                     </p>
 
-                    <p className="text-xs text-slate-600 leading-relaxed font-normal mb-5">
+                    <p className="text-sm text-slate-600 leading-relaxed font-normal mb-5">
                       {pillar.desc}
                     </p>
                   </div>
 
                   <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[11px] font-bold text-[#0E2A47]">{pillar.metrics}</span>
-                    <CheckCircle2 size={15} className="text-[#C5A059]" />
+                    <span className="text-xs sm:text-sm font-bold text-[#0E2A47]">{pillar.metrics}</span>
+                    <CheckCircle2 size={16} className="text-[#C5A059]" />
                   </div>
                 </div>
               );
@@ -239,7 +239,7 @@ export default function WaltonSustainabilityPage() {
       {/* ─────────────────────────────────────────────────────────────
           4. FINAL CALL TO ACTION
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F4F7FA]">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
           <div
             className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-xl text-white relative overflow-hidden"

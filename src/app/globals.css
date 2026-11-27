@@ -1217,17 +1217,10 @@ body.roys-roys-theme li {
 }
 
 /* ─────────────────────────────────────────────
-   ALPHA MATRIX DEFENCE SYSTEMS WHITE THEME
+   ALPHA MATRIX DEFENCE SYSTEMS THEME
 ───────────────────────────────────────────── */
 body.alpha-matrix-theme {
-  background-color: #ffffff !important;
-  color: #0B1B36 !important;
-}
-
-body.alpha-matrix-theme main,
-body.alpha-matrix-theme section,
-body.alpha-matrix-theme header {
-  background-color: #ffffff !important;
+  color: #0B1B36;
 }
 
 body.alpha-matrix-theme h1,

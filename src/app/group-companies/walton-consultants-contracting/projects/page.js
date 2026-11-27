@@ -57,9 +57,9 @@ export default function WaltonProjectsPage() {
       {/* ─────────────────────────────────────────────────────────────
           1. PROJECTS HERO
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      <section className="relative py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-7">
               <SectionLabel>Infrastructure &amp; Civil Portfolio</SectionLabel>
 
@@ -67,7 +67,7 @@ export default function WaltonProjectsPage() {
                 PROJECTS BUILT TO <span style={{ color: theme.navy }}>MAKE AN IMPACT</span>
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-8">
                 Over 350 completed projects across Pakistan. Our portfolio spans arterial highway interchanges, prestressed river bridges, high-rise commercial towers, turnkey industrial factories, and sustainable utility works.
               </p>
 
@@ -101,10 +101,10 @@ export default function WaltonProjectsPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/85 via-transparent to-transparent flex items-end p-6">
                   <div className="text-white">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-[#DFC48B] block mb-1">
+                    <span className="text-xs font-black uppercase tracking-wider text-[#DFC48B] block mb-1">
                       Over PKR 100B+ Delivered
                     </span>
-                    <h4 className="text-base font-bold">
+                    <h4 className="text-base sm:text-lg font-bold">
                       National Infrastructure &amp; Commercial Superstructures
                     </h4>
                   </div>
@@ -118,7 +118,7 @@ export default function WaltonProjectsPage() {
       {/* ─────────────────────────────────────────────────────────────
           2. FILTER TABS & SEARCH
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-6 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA] sticky top-14 sm:top-16 z-30 shadow-xs">
+      <section className="py-5 sm:py-6 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA] sticky top-14 sm:top-16 z-30 shadow-xs">
         <div className="mx-auto max-w-screen-xl flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Category Tabs */}
           <div className="flex flex-wrap items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
@@ -126,7 +126,7 @@ export default function WaltonProjectsPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
+                className={`px-4 py-2 rounded-full text-xs sm:text-[13px] font-bold uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                   activeCategory === cat
                     ? "bg-[#0E2A47] text-white shadow-xs"
                     : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
@@ -145,7 +145,7 @@ export default function WaltonProjectsPage() {
               placeholder="Search projects..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-[#0A1E34] bg-white focus:outline-hidden focus:border-[#C5A059] transition-colors"
+              className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-xs sm:text-sm font-semibold text-[#0A1E34] bg-white focus:outline-hidden focus:border-[#C5A059] transition-colors"
             />
           </div>
         </div>
@@ -154,9 +154,9 @@ export default function WaltonProjectsPage() {
       {/* ─────────────────────────────────────────────────────────────
           3. PROJECT PORTFOLIO GRID
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filtered.map((p) => (
               <div
                 key={p.id}
@@ -175,29 +175,29 @@ export default function WaltonProjectsPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/70 via-transparent to-transparent" />
                     
                     {/* Project Category */}
-                    <span className="absolute top-3.5 right-3.5 text-[10px] font-black uppercase px-3 py-1 rounded-full bg-[#C5A059] text-white shadow-xs">
+                    <span className="absolute top-3.5 right-3.5 text-xs font-black uppercase px-3 py-1 rounded-full bg-[#C5A059] text-white shadow-xs">
                       {p.category}
                     </span>
 
                     {/* Location Badge */}
-                    <div className="absolute bottom-3 left-4 text-white flex items-center gap-1.5 text-xs font-bold">
-                      <MapPin size={13} className="text-[#DFC48B]" />
+                    <div className="absolute bottom-3 left-4 text-white flex items-center gap-1.5 text-xs sm:text-sm font-bold">
+                      <MapPin size={14} className="text-[#DFC48B]" />
                       <span>{p.location}</span>
                     </div>
                   </div>
 
                   <div className="p-6">
                     {/* Project Title */}
-                    <h3 className="text-base font-black text-[#0A1E34] leading-snug mb-2 group-hover:text-[#0E2A47] transition-colors">
+                    <h3 className="text-base sm:text-lg font-black text-[#0A1E34] leading-snug mb-2 group-hover:text-[#0E2A47] transition-colors">
                       {p.title}
                     </h3>
 
                     {/* Short Description */}
-                    <p className="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
                       {p.summary}
                     </p>
 
-                    <div className="py-2.5 border-t border-slate-100 flex items-center justify-between text-xs">
+                    <div className="py-2.5 border-t border-slate-100 flex items-center justify-between text-xs sm:text-sm">
                       <span className="text-slate-500 font-semibold">Client:</span>
                       <span className="font-bold text-[#0A1E34] truncate max-w-[200px] text-right">{p.client}</span>
                     </div>
@@ -208,10 +208,10 @@ export default function WaltonProjectsPage() {
                 <div className="p-6 pt-0">
                   <button
                     onClick={() => setSelectedProject(p)}
-                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all cursor-pointer"
+                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all cursor-pointer"
                   >
                     <span>View Project</span>
-                    <ArrowRight size={13} />
+                    <ArrowRight size={14} />
                   </button>
                 </div>
               </div>
@@ -226,7 +226,7 @@ export default function WaltonProjectsPage() {
                   setActiveCategory("All");
                   setSearchQuery("");
                 }}
-                className="mt-3 text-xs font-bold uppercase tracking-wider text-[#0E2A47] underline cursor-pointer"
+                className="mt-3 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0E2A47] underline cursor-pointer"
               >
                 Reset Filters
               </button>

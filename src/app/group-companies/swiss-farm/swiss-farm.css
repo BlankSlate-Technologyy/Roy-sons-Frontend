@@ -5,15 +5,16 @@
 
 :root {
   --swiss-farm-primary: #1C522A;      /* Deep Forest Green */
-  --swiss-farm-dark: #123B1D;
+  --swiss-farm-dark: #123B1D;         /* Executive Forest Green */
   --swiss-farm-light: #2A6B3D;
-  --swiss-farm-gold: #C5A059;       /* Warm Gold */
-  --swiss-farm-charcoal: #2A3439;
+  --swiss-farm-gold: #A88134;         /* High-Contrast Warm Gold (Light Bg) */
+  --swiss-farm-gold-bright: #E0BC6F;  /* Luminous Gold (Dark Bg) */
+  --swiss-farm-charcoal: #223027;
   --swiss-farm-white: #ffffff;
   --swiss-farm-offwhite: #F4F8F4;
-  --swiss-farm-border: #D6E5D7;
-  --swiss-farm-text-muted: #485E4E;
-  --swiss-farm-text-light: #6B8271;
+  --swiss-farm-border: #D2E3D4;
+  --swiss-farm-text-muted: #3A5041;
+  --swiss-farm-text-light: #526B59;
 }
 
 body.swiss-farm-theme,
@@ -21,14 +22,10 @@ body.swiss-farm-theme,
 body.swiss-farms-theme,
 .swiss-farms-theme,
 body.swiss-farm-theme main,
-body.swiss-farm-theme section,
 .swiss-farm-theme main,
-.swiss-farm-theme section,
 body.swiss-farms-theme main,
-body.swiss-farms-theme section,
-.swiss-farms-theme main,
-.swiss-farms-theme section {
-  background-color: #ffffff !important;
+.swiss-farms-theme main {
+  background-color: #ffffff;
   color: #1C522A;
 }
 
@@ -37,7 +34,7 @@ body.swiss-farm-theme header,
 body.swiss-farms-theme header,
 .swiss-farms-theme header {
   background-color: #ffffff !important;
-  border-bottom: 1px solid #D6E5D7 !important;
+  border-bottom: 1px solid #D2E3D4 !important;
   color: #1C522A;
 }
 
@@ -45,7 +42,7 @@ body.swiss-farm-theme header nav a,
 .swiss-farm-theme header nav a,
 body.swiss-farms-theme header nav a,
 .swiss-farms-theme header nav a {
-  font-size: 16px !important;
+  font-size: 15px !important;
   font-weight: 700 !important;
   letter-spacing: 0.02em !important;
   text-decoration: none !important;
@@ -58,28 +55,25 @@ body.swiss-farm-theme .cursor-pointer,
 
 /* Card hover animation */
 .swiss-farm-card-hover {
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease !important;
 }
 .swiss-farm-card-hover:hover {
-  transform: translateY(-5px) !important;
+  transform: translateY(-4px) !important;
   border-color: #C5A059 !important;
-  box-shadow: 0 16px 32px -8px rgba(28, 82, 42, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.25) !important;
+  box-shadow: 0 16px 32px -8px rgba(18, 59, 29, 0.14), 0 0 0 1px rgba(197, 160, 89, 0.28) !important;
 }
 
 /* Counter box */
 .swiss-farm-counter-box {
-  transition: all 0.3s ease !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 .swiss-farm-counter-box:hover {
-  transform: translateY(-4px) !important;
+  transform: translateY(-3px) !important;
   border-color: #C5A059 !important;
-  box-shadow: 0 10px 25px rgba(28, 82, 42, 0.1) !important;
+  box-shadow: 0 10px 24px rgba(18, 59, 29, 0.12) !important;
 }
 
-/* Reset for Swiss Farm components */
-body.swiss-farm-theme a,
-body.swiss-farm-theme button,
-body.swiss-farm-theme label,
+/* Clean typography reset without killing dark section contrast or gradients */
 body.swiss-farm-theme h1,
 body.swiss-farm-theme h2,
 body.swiss-farm-theme h3,
@@ -87,13 +81,10 @@ body.swiss-farm-theme h4,
 body.swiss-farm-theme h5,
 body.swiss-farm-theme h6,
 body.swiss-farm-theme p,
-body.swiss-farm-theme span,
-body.swiss-farm-theme li {
+body.swiss-farm-theme li,
+body.swiss-farm-theme label {
   -webkit-text-fill-color: inherit;
   text-shadow: none !important;
-  background-image: none !important;
-  background-clip: unset !important;
-  -webkit-background-clip: unset !important;
 }
 
 body.swiss-farm-theme svg:not([fill="currentColor"]) {

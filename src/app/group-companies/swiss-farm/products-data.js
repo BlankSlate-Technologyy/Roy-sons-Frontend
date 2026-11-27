@@ -31,7 +31,7 @@ export const SWISS_FARM_PRODUCTS = [
     eyebrow: "Grade-A Certified Raw Milk for Dairy & Cheese Processors",
     category: "Bulk Raw Milk",
     tag: "Commercial B2B Supply",
-    heroImage: "/swiss-card1.png",
+    heroImage: "/waltonfood/listing_uht_milk.jpg",
     overview:
       "Swiss Farms Grade-A Bulk Raw Milk is extracted in fully automated electronic rotary parlors and instantly chilled to 3.5°C within seconds through sanitary plate heat exchangers. Untouched by human hands from udder to delivery tanker, our milk features a guaranteed natural butterfat range of 3.8% to 4.2%, minimum 8.5% Solid-Not-Fat (SNF), ultra-low somatic cell count (SCC < 150,000), and verified zero antibiotic residues.",
     metrics: [
@@ -121,8 +121,9 @@ export const SWISS_FARM_PRODUCTS = [
     name: "HTST Pasteurized Institutional Milk",
     subtitle: "Continuous-Flow HTST Pasteurized Milk in Food-Grade 20L & 50L Drums",
     eyebrow: "Sanitized Institutional Dairy for Hotels, Hospitals & Bakeries",
+    category: "Pasteurized Dairy",
     tag: "Hygienic Pasteurized",
-    heroImage: "/swiss-card2.png",
+    heroImage: "/waltonfood/listing_desi_ghee.jpg",
     overview:
       "Swiss Farms HTST Pasteurized Milk is processed using continuous High-Temperature Short-Time (72°C for 15 seconds) pasteurization and immediate homogenization. This precision process eliminates all harmful pathogens and bacteria while preserving 100% of the natural calcium, vitamins, enzymes, and fresh flavor. Supplied in sealed food-grade 20-liter and 50-liter reusable stainless drums for luxury hotels, commercial bakeries, catering institutions, and hospitals.",
     metrics: [
@@ -212,8 +213,9 @@ export const SWISS_FARM_PRODUCTS = [
     name: "Pedigree Holstein-Friesian Heifers",
     subtitle: "Certified Disease-Free 5–7 Month Pregnant Heifers with Verified Genomic Linages",
     eyebrow: "Elite Live Cattle Genetics with Certified Calving Lineages",
+    category: "Breeding Genetics",
     tag: "Elite Live Cattle",
-    heroImage: "/swiss-card3.png",
+    heroImage: "/vetvac_livestock_slide_2.jpg",
     overview:
       "Swiss Farms breeds and supplies top-tier pregnant and maiden Holstein-Friesian and Jersey dairy heifers. Reared on balanced nutritional TMR diets in climate-controlled cross-ventilated barns, each heifer features certified 5-generation genomic parentage from top 1% TPI international sires, certified disease-free status (FMD, TB, Brucellosis negative), and guaranteed first-lactation milk potential exceeding 8,500 kg.",
     metrics: [
@@ -303,8 +305,9 @@ export const SWISS_FARM_PRODUCTS = [
     name: "Sexed Bovine Semen Straws",
     subtitle: "Cryogenically Preserved 92% Female-Sorted Semen from Elite International Sires",
     eyebrow: "Flow-Cytometry Sorted Bovine Genetics & Cryogenic Logistics",
+    category: "Breeding Genetics",
     tag: "Genetic Technology",
-    heroImage: "/swiss-farm-hero.png",
+    heroImage: "/national-agricultural/program-soil-lab.jpg",
     overview:
       "Swiss Farms provides high-fertility sexed bovine semen straws sorted via high-speed laser flow-cytometry. Featuring over 90% female (X-chromosome) purity from world-champion progeny-tested Holstein-Friesian, Jersey, and certified pure Sahiwal sires (TPI > +2,900), our cryogenically preserved semen accelerates herd genetic gain, eliminates unprofitable bull calves, and guarantees easy calving.",
     metrics: [
@@ -394,8 +397,9 @@ export const SWISS_FARM_PRODUCTS = [
     name: "High-Energy Whole-Crop Corn Silage",
     subtitle: "Precision-Chopped & Inoculated Hybrid Maize Bales (500kg & 1000kg)",
     eyebrow: "Anaerobically Fermented Lactation Fuel for High-Yield Herds",
+    category: "Cattle Feed & Silage",
     tag: "Animal Nutrition",
-    heroImage: "/swiss-card1.png",
+    heroImage: "/national-agricultural/services-hero-crops.jpg",
     overview:
       "Swiss Farms High-Energy Corn Silage is harvested from prime hybrid maize crops at the optimal 33% dry matter milk-line stage. Utilizing precision forage harvesters equipped with heavy-duty kernel processors that crush over 95% of grain, our silage is inoculated with homofermentative lactic acid bacteria and vacuum-wrapped in UV-resistant heavy-duty plastic bales. This ensures high energy density, lactic fermentation (pH < 4.0), and guaranteed 18-month outdoor shelf life.",
     metrics: [
@@ -485,8 +489,9 @@ export const SWISS_FARM_PRODUCTS = [
     name: "Matured Bovine Bio-Compost",
     subtitle: "Aerobically Fermented Organic Fertilizer & Soil Carbon Conditioner",
     eyebrow: "100% Organic Soil Enrichment & Microbial Activation",
+    category: "Organic Fertilizers",
     tag: "Eco Soil Enhancer",
-    heroImage: "/swiss-farm-about.png",
+    heroImage: "/images/tdrc/service_climate_greening.jpg",
     overview:
       "Swiss Farms Matured Bovine Bio-Compost is produced through 60-day controlled aerobic windrow thermophilic fermentation of pure cattle manure and organic bedding solids. Reaching sustained internal core temperatures above 65°C that destroy all weed seeds, fly larvae, and pathogens, our rich dark bio-compost delivers over 45% organic matter, optimal Carbon-to-Nitrogen ratio (C:N 18:1), and diverse beneficial microbial flora that permanently restore soil water retention and crop yields.",
     metrics: [

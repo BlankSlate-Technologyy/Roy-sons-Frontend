@@ -20,7 +20,9 @@ import {
   Building2,
   Layers,
   Award,
+  Users2,
 } from "lucide-react";
+import { WALTON_TEAM } from "../team-data";
 
 export const theme = {
   navy: "#0E2A47",
@@ -62,12 +64,12 @@ export const FOOTER_SERVICES = [
 export function SectionLabel({ children, center }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[11px] font-bold uppercase tracking-[0.18em] mb-3.5 bg-[#F4F7FA] ${
+      className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.18em] mb-3 bg-[#F4F7FA] shadow-xs ${
         center ? "mx-auto" : ""
       }`}
       style={{ borderColor: theme.border, color: theme.navy }}
     >
-      <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: theme.gold }} />
+      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: theme.gold }} />
       <span>{children}</span>
     </div>
   );
@@ -76,7 +78,7 @@ export function SectionLabel({ children, center }) {
 export function SectionHeading({ children, className = "", center }) {
   return (
     <h2
-      className={`text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight leading-[1.2] uppercase ${
+      className={`text-2xl sm:text-3xl lg:text-4xl xl:text-[40px] font-black tracking-tight leading-[1.2] uppercase ${
         center ? "text-center" : ""
       } ${className}`}
       style={{ color: theme.navyDark }}
@@ -120,13 +122,14 @@ export function AnimatedCounter({ targetValue, duration = 1500 }) {
       { threshold: 0.2 }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    const currentElement = elementRef.current;
+    if (currentElement) {
+      observer.observe(currentElement);
     }
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+      if (currentElement) {
+        observer.unobserve(currentElement);
       }
     };
   }, [numericTarget, duration]);
@@ -189,13 +192,13 @@ export function WaltonNavbar() {
           </div>
           <div className="flex flex-col">
             <span
-              className="text-[13px] sm:text-[14px] lg:text-[14.5px] font-black tracking-tight leading-none uppercase"
+              className="text-[14px] sm:text-[15.5px] lg:text-[16px] font-black tracking-tight leading-none uppercase"
               style={{ color: theme.navyDark }}
             >
               Walton Consultants
             </span>
             <span
-              className="text-[9px] sm:text-[9.5px] font-bold tracking-[0.16em] uppercase mt-0.5"
+              className="text-[10px] sm:text-[10.5px] font-extrabold tracking-[0.16em] uppercase mt-0.5"
               style={{ color: theme.goldMuted }}
             >
               Engineering &amp; Infrastructure
@@ -203,7 +206,7 @@ export function WaltonNavbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links: 13px–14px font, reduced spacing, clean hover */}
+        {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-2 xl:gap-4 2xl:gap-5">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
@@ -211,7 +214,7 @@ export function WaltonNavbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`relative py-1.5 px-2 text-[13px] xl:text-[13.5px] 2xl:text-[14px] font-semibold tracking-[0.03em] uppercase transition-colors duration-200 whitespace-nowrap cursor-pointer ${
+                className={`relative py-1.5 px-2 text-[14px] xl:text-[14.5px] 2xl:text-[15px] font-bold tracking-[0.03em] uppercase transition-colors duration-200 whitespace-nowrap cursor-pointer ${
                   active ? "text-[#0E2A47]" : "text-[#4A5D70] hover:text-[#0E2A47]"
                 }`}
               >
@@ -357,6 +360,137 @@ export function CardImageSlider({ images = [], alt = "Project visual", className
         </div>
       )}
     </div>
+  );
+}
+
+// ─── Executive Engineering Leadership & Team Section ───
+export function WaltonTeamSection({
+  bg = "bg-[#F4F7FA]",
+  showBadge = true,
+  title = "LEADERSHIP & PRINCIPAL ENGINEERS",
+  subtitle = "Led by Pakistan Engineering Council (PEC) licensed principal engineers, chartered project directors, and multidisciplinary infrastructure specialists with decades of national and international execution experience.",
+  showCta = true,
+}) {
+  return (
+    <section className={`py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 ${bg}`}>
+      <div className="mx-auto max-w-screen-xl">
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          {showBadge && <SectionLabel center>Executive Engineering Leadership</SectionLabel>}
+          <SectionHeading center className="mb-3">
+            {title}
+          </SectionHeading>
+          <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            {subtitle}
+          </p>
+        </div>
+
+        {/* 4 Leadership Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {WALTON_TEAM.map((member) => {
+            const Icon = member.icon;
+            return (
+              <div
+                key={member.id}
+                className="walton-card-lift rounded-2xl border border-slate-200 bg-white overflow-hidden flex flex-col justify-between shadow-xs group"
+              >
+                <div>
+                  {/* Photo with Experience Badge */}
+                  <div className="relative w-full h-64 overflow-hidden bg-slate-100">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover object-top walton-img-zoom transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, 300px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/80 via-[#0A1E34]/20 to-transparent" />
+                    <span className="absolute top-3 right-3 text-[11px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#C5A059] text-white shadow-xs">
+                      {member.experience}
+                    </span>
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <span className="text-[11px] font-bold text-[#DFC48B] uppercase tracking-wider block">
+                        {member.specialty}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <h3 className="text-lg font-black text-[#0A1E34] leading-snug group-hover:text-[#0E2A47] transition-colors">
+                        {member.name}
+                      </h3>
+                      <div className="w-8 h-8 rounded-lg bg-[#0E2A47]/8 flex items-center justify-center text-[#0E2A47] shrink-0 mt-0.5">
+                        <Icon size={16} />
+                      </div>
+                    </div>
+
+                    <p className="text-xs font-bold uppercase tracking-wider text-[#C5A059] mb-2">
+                      {member.role}
+                    </p>
+
+                    <div className="inline-block px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200 text-[11px] font-semibold text-slate-700 mb-3">
+                      {member.credentials}
+                    </div>
+
+                    <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed font-normal mb-4">
+                      {member.bio}
+                    </p>
+
+                    {/* Achievements */}
+                    <div className="space-y-1.5 pt-3 border-t border-slate-100">
+                      {member.achievements.map((ach) => (
+                        <div key={ach} className="flex items-center gap-2 text-xs font-medium text-slate-700">
+                          <CheckCircle2 size={13} className="text-[#C5A059] shrink-0" />
+                          <span className="truncate">{ach}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-5 pt-0">
+                  <Link
+                    href="/group-companies/walton-consultants-contracting/contact"
+                    className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all"
+                  >
+                    <span>Consult Directly</span>
+                    <ArrowRight size={13} />
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Bottom Consultation Banner */}
+        {showCta && (
+          <div className="mt-10 p-6 rounded-2xl border border-slate-200 bg-white shadow-xs flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#0E2A47]/10 flex items-center justify-center text-[#0E2A47] shrink-0">
+                <Users2 size={24} />
+              </div>
+              <div>
+                <h4 className="text-base font-black text-[#0A1E34] uppercase">
+                  Engage With Principal Structural Engineers
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-600 font-normal">
+                  Our directors review architectural CAD drawings, structural BOQs, and EPC contracts with strict NDA guarantees.
+                </p>
+              </div>
+            </div>
+
+            <Link
+              href="/group-companies/walton-consultants-contracting/contact"
+              className="px-6 py-3 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md hover:brightness-110 transition-all shrink-0 cursor-pointer"
+              style={{ backgroundColor: theme.navy }}
+            >
+              <span>Schedule Technical Consultation</span>
+            </Link>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
 

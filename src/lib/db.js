@@ -1,53 +1,66 @@
 import mongoose from "mongoose";
 
-let isConnected = false;
-let dbConnection = null;
+const globalCache =
+  globalThis.__roysonsMongooseCache ||
+  (globalThis.__roysonsMongooseCache = { conn: null, promise: null });
+
+export const isDatabaseConfigured = () => Boolean(process.env.MONGODB_URI?.trim());
 
 /**
- * Connect to MongoDB with connection pooling and graceful error handling.
- * Returns the mongoose connection or null if database is unavailable.
+ * Connect to MongoDB with globalThis serverless connection/promise pooling.
+ * Returns the mongoose connection, or null if unavailable.
  */
 export const connectDB = async () => {
-  if (isConnected && dbConnection && mongoose.connection.readyState === 1) {
-    return dbConnection;
+  if (globalCache.conn && mongoose.connection.readyState === 1) {
+    return globalCache.conn;
   }
 
-  const mongoURI = process.env.MONGODB_URI;
+  const mongoURI = process.env.MONGODB_URI?.trim();
   if (!mongoURI) {
-    console.warn("Database Notice: MONGODB_URI is not configured in environment variables. Operating in resilient logging mode.");
+    console.warn(
+      "Database Notice: MONGODB_URI is not configured in environment variables. Operating without persistent DB storage."
+    );
     return null;
   }
 
   mongoose.set("strictQuery", true);
 
-  const options = {
-    maxPoolSize: 10,
-    serverSelectionTimeoutMS: 4000,
-    socketTimeoutMS: 30000,
-    family: 4,
-  };
+  if (!globalCache.promise) {
+    const options = {
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 30000,
+      family: 4,
+    };
 
-  try {
-    dbConnection = await mongoose.connect(mongoURI, options);
-    isConnected = dbConnection.connections[0].readyState === 1;
-    console.log("Database: MongoDB connection established successfully");
-    return dbConnection;
-  } catch (error) {
-    console.warn(`Database Notice: MongoDB connection failed (${error.message}). Operating in resilient fallback mode.`);
-    isConnected = false;
-    return null;
+    globalCache.promise = mongoose
+      .connect(mongoURI, options)
+      .then((mongooseInstance) => {
+        console.log("Database: MongoDB connection established successfully");
+        return mongooseInstance;
+      })
+      .catch((error) => {
+        globalCache.promise = null;
+        console.error(`Database Error: MongoDB connection failed (${error.message}).`);
+        return null;
+      });
   }
+
+  globalCache.conn = await globalCache.promise;
+  return globalCache.conn;
 };
 
-mongoose.connection.on("connected", () => {
-  isConnected = true;
-});
+if (!globalThis.__roysonsMongooseListenersAttached) {
+  globalThis.__roysonsMongooseListenersAttached = true;
 
-mongoose.connection.on("error", (err) => {
-  console.warn("Database Event Warning:", err.message);
-  isConnected = false;
-});
+  mongoose.connection.on("error", (err) => {
+    console.warn("Database Event Warning:", err.message);
+    globalCache.conn = null;
+    globalCache.promise = null;
+  });
 
-mongoose.connection.on("disconnected", () => {
-  isConnected = false;
-});
+  mongoose.connection.on("disconnected", () => {
+    globalCache.conn = null;
+    globalCache.promise = null;
+  });
+}

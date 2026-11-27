@@ -26,7 +26,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "High-Strength Quarry Aggregates, Limestone & Granite",
     tag: "Construction & Civil",
     icon: Building,
-    heroImage: "https://images.unsplash.com/photo-1541888946425-d0fbb180c5f7?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/images/walton/service_04_infrastructure.jpg",
     overview:
       "National Mines Corporation supplies high-density limestone aggregates, granite sub-base, crushed sand, and heavy rip-rap boulders for commercial skyscrapers, residential mega-developments, and bridge structures. With high compressive strength and low flakiness indices, our quarry aggregates comply with ASTM C33 standards.",
     metrics: [
@@ -93,7 +93,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Motorways, Dams, Airports & Deep-Sea Ports",
     tag: "Infrastructure & Heavy Civil",
     icon: Landmark,
-    heroImage: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/images/walton/project_04_transport.jpg",
     overview:
       "National Mines Corporation is the strategic raw resource supplier for national mega infrastructure projects including CPEC motorways, hydroelectric dams, airport runways, and deep-sea marine harbors. We deliver massive volumes of high-spec limestone base, ballast rock, granite armor stones, and specialized cement feedstocks.",
     metrics: [
@@ -160,7 +160,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Iron Ore, Metallurgical Chromite & Flux Stones",
     tag: "Metallurgy & Steel",
     icon: Factory,
-    heroImage: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/maxpak/structural_steel_rebar.jpg",
     overview:
       "National Mines Corporation delivers essential metallic feeds and chemical fluxes to integrated steel mills, induction furnaces, and ferroalloy smelters. We supply high-grade magnetite/hematite iron ore (62%–65% Fe), metallurgical chromite (Cr2O3 46%–48%, Cr:Fe 3:1), high-calcium limestone flux, and low-silica dolomite.",
     metrics: [
@@ -227,7 +227,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Limestone, Gypsum, Clay & Pozzolanic Shales",
     tag: "Cement & Clinker",
     icon: Building2,
-    heroImage: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/images/walton/hero_infrastructure.jpg",
     overview:
       "National Mines Corporation is the core raw material backbone for leading cement manufacturing plants across Pakistan. We supply millions of tons of pure limestone (CaCO3 > 94.5%), natural crystalline gypsum (CaSO4·2H2O > 92%), silica clay, and iron corrective additives under long-term continuous supply contracts.",
     metrics: [
@@ -294,7 +294,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Thermal Steam Coal & Industrial Energy Feedstocks",
     tag: "Energy & Power",
     icon: Zap,
-    heroImage: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/maxpower/svc_power_generation.jpg",
     overview:
       "National Mines Corporation supplies high-calorific thermal steam coal, washed bituminous coal, and anthracite energy minerals for captive industrial power plants, textile mills, paper manufacturers, and chemical processing facilities. Our coal delivers high energy density (6,200+ kcal/kg), low moisture, and reliable combustion characteristics.",
     metrics: [
@@ -361,7 +361,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Silica Sand, High-Purity Calcium, Gypsum & Binders",
     tag: "Chemicals & Foundry",
     icon: Layers,
-    heroImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/maxpower/svc_switchgear_scada.jpg",
     overview:
       "National Mines Corporation supplies high-purity industrial minerals for chemical synthesis, glass manufacturing, metal foundry casting, paints, and polymer plastics. Our washed silica sand (SiO2 > 99.2%, Fe2O3 < 0.025%), micronized calcium carbonate, and high-purity gypsum meet strict international industrial chemical specifications.",
     metrics: [
@@ -428,7 +428,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Seaborne Commodity Shipments & Bulk Vessel Charters",
     tag: "Global Trade & Exports",
     icon: Globe,
-    heroImage: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/services/trade-1.jpg",
     overview:
       "National Mines Corporation operates an international commodity trading and bulk export division. Exporting copper concentrate, high-grade chromite ore, marble/onyx blocks, and industrial minerals to trading partners in China, East Asia, the Middle East, and Europe through deep-sea bulk vessel charters and containerized sea freight from Gwadar and Karachi ports.",
     metrics: [
@@ -495,7 +495,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Sovereign Mineral Reserves & National Strategic Reserves",
     tag: "Government & Sovereign",
     icon: Landmark,
-    heroImage: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/offerings/roys_gov_contracting.jpg",
     overview:
       "National Mines Corporation partners with federal and provincial governments on national resource development, strategic mineral reserves, geological surveys, and public infrastructure supply. We operate under full regulatory compliance, ethical environmental standards, and transparent royalty frameworks to maximize sovereign resource value.",
     metrics: [
@@ -562,7 +562,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Refractory Linings, Ferroalloys & Precision Casting",
     tag: "Heavy Industry & Metallurgy",
     icon: HardHat,
-    heroImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/services/renewable-2.jpg",
     overview:
       "National Mines Corporation supplies specialized refractory minerals, metallurgical ores, and heavy casting materials for heavy machinery manufacturers, automotive foundry complexes, and defense engineering plants. From high-grade chromite refractory bricks to washed quartz casting sand and high-carbon ferroalloys, we ensure superior thermal and structural resilience.",
     metrics: [
@@ -629,7 +629,7 @@ export const NATIONAL_MINES_INDUSTRIES = [
     eyebrow: "Bullion Refining, Rare Gemstones & Luxury Architectural Stones",
     tag: "Luxury & Precious Metals",
     icon: TrendingUp,
-    heroImage: "/mine gold.png",
+    heroImage: "/national-mines/ind-gemology-emeralds.png",
     overview:
       "National Mines Corporation extracts and refines certified gold bullion, precious gemstones, and world-class architectural dimension stones (Translucent Green Onyx, Black & Gold Marble). Combining artisanal stone selection with certified laboratory assay testing, we supply the international jewelry trade, sovereign bullion markets, and ultra-luxury architectural developers.",
     metrics: [

@@ -31,7 +31,7 @@ export const SWISS_FARM_SERVICES = [
     eyebrow: "Untouched By Hand Industrial Dairy Extraction",
     tag: "Milk Production",
     icon: Truck,
-    heroImage: "/swiss-card1.png",
+    heroImage: "/waltonfood/card_dairy_processing.jpg",
     overview:
       "Swiss Farms operates modern 80-stall computerized rotary milking parlors producing pure, wholesome Grade-A milk with zero human touch. Cows are milked in pristine, stress-free acoustic environments with automated pre-dip sanitization, electronic yield telemetry, and instant plate-heat exchange cooling that drops raw milk temperature to 3.5°C within seconds of extraction, arresting bacterial growth completely.",
     metrics: [
@@ -123,7 +123,7 @@ export const SWISS_FARM_SERVICES = [
     eyebrow: "World-Class Animal Welfare & Stress-Free Herd Husbandry",
     tag: "Herd Care",
     icon: Users,
-    heroImage: "/swiss-card2.png",
+    heroImage: "/vetvac_livestock_service.jpg",
     overview:
       "Swiss Farms houses over 25,000 head of healthy pedigree dairy cattle across expansive, climate-controlled cross-ventilated barns. Featuring deep inorganic washed sand bedding that eliminates bacterial growth, automated high-volume low-speed (HVLS) cooling fans with high-pressure misting systems, robotic grooming brushes, and RFID rumination tracking collars, we provide an environment where cows thrive.",
     metrics: [
@@ -215,7 +215,7 @@ export const SWISS_FARM_SERVICES = [
     eyebrow: "Elite Genomic Bloodlines & 90% Female Heifer Guarantee",
     tag: "Breeding Genetics",
     icon: Leaf,
-    heroImage: "/swiss-card3.png",
+    heroImage: "/biomax_biotech_solutions_ai.jpg",
     overview:
       "Swiss Farms conducts elite genetic improvement programs combining imported pedigree Holstein-Friesian, Jersey, and indigenous Sahiwal bloodlines. Utilizing sexed semen artificial insemination, genomic DNA testing, and in-vitro embryo transfer, we breed animals with superior lifetime milk production, high butterfat percentages, strong hoof conformation, and exceptional heat resilience.",
     metrics: [
@@ -307,7 +307,7 @@ export const SWISS_FARM_SERVICES = [
     eyebrow: "24/7 Veterinary Hospital & Zero-Harm Medical Standards",
     tag: "Veterinary Care",
     icon: HeartPulse,
-    heroImage: "/swiss-card1.png",
+    heroImage: "/vetvac_dairy_vet_ai.jpg",
     overview:
       "Swiss Farms maintains a dedicated on-site veterinary hospital staffed 24/7 by experienced veterinary surgeons and diagnostic pathologists. Enforcing strict biosecurity perimeters, vehicle disinfection showers, comprehensive preventative vaccination schedules, and daily microbiological testing, we ensure an antibiotic-free, disease-free dairy ecosystem.",
     metrics: [
@@ -399,7 +399,7 @@ export const SWISS_FARM_SERVICES = [
     eyebrow: "Scientific Bovine Nutrition & High-Energy Forage",
     tag: "Feed & Silage",
     icon: Sparkles,
-    heroImage: "/swiss-card2.png",
+    heroImage: "/waltonfood/hero_farm_sourcing.jpg",
     overview:
       "Swiss Farms formulates customized Total Mixed Rations (TMR) engineered by international bovine nutritionists. Utilizing high-energy whole-crop corn silage fermented in anaerobic bunker pits, premium alfalfa hay, soybean meal, bypass fats, and custom mineral premixes, our precision feeding protocols maximize milk yield, optimize butterfat synthesis, and maintain herd health.",
     metrics: [
@@ -491,7 +491,7 @@ export const SWISS_FARM_SERVICES = [
     eyebrow: "Zero-Waste Circular Agritech & Renewable Power Generation",
     tag: "Circular Agritech",
     icon: Zap,
-    heroImage: "/swiss-card3.png",
+    heroImage: "/national-agricultural/program-solar-water.jpg",
     overview:
       "Swiss Farms operates a cutting-edge circular sustainability model that turns dairy farm by-products into valuable resources. Our anaerobic biogas digesters process thousands of tons of cattle manure daily, generating renewable electrical power for the farm complex, while mechanical solid-liquid separators yield organic bio-compost and recycled bedding that nourish agricultural soils.",
     metrics: [

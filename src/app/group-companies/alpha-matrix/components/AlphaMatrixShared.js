@@ -420,17 +420,20 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col items-center text-center gap-3">
-        <div className="w-12 h-12 rounded-full flex items-center justify-center bg-emerald-500/10 text-emerald-400">
-          <CheckCircle2 size={24} />
+      <div
+        className="p-8 sm:p-10 rounded-3xl border border-sky-500/30 bg-[#08182B] shadow-2xl flex flex-col items-center text-center gap-4"
+        style={{ backgroundColor: "#08182B", color: "#FFFFFF" }}
+      >
+        <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shadow-lg">
+          <CheckCircle2 size={32} />
         </div>
-        <h3 className="text-lg font-semibold uppercase text-white">Inquiry Transmitted</h3>
-        <p className="text-xs text-slate-300 leading-relaxed max-w-sm">
-          Thank you, {form.name}. Your operational requirements have been registered with our defense engineering desk.
+        <h3 className="text-2xl font-black uppercase text-white tracking-tight">Inquiry Transmitted</h3>
+        <p className="text-base text-slate-200 font-medium leading-relaxed max-w-md">
+          Thank you, <span className="font-bold text-white">{form.name}</span>. Your operational requirements have been registered with our defense engineering desk.
         </p>
         <button
           onClick={resetForm}
-          className="mt-2 px-5 py-2 rounded-lg text-xs font-medium border border-white/20 text-white hover:bg-white/10 transition-colors"
+          className="mt-4 px-7 py-3 rounded-xl text-sm font-bold border border-sky-500/40 text-white bg-[#005691] hover:bg-[#0284C7] shadow-lg transition-all cursor-pointer"
         >
           Submit Another Request
         </button>
@@ -439,19 +442,29 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md space-y-4">
+    <form
+      onSubmit={handleSubmit}
+      className="p-7 sm:p-9 rounded-3xl border border-sky-500/30 bg-[#08182B] shadow-2xl space-y-6"
+      style={{ backgroundColor: "#08182B", color: "#FFFFFF" }}
+    >
       <div>
-        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#0284C7] block mb-1">
-          Tactical Consultation
-        </span>
-        <h3 className="text-xl font-semibold uppercase text-white">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#005691]/30 border border-sky-500/30 text-xs font-bold uppercase tracking-[0.22em] text-[#38BDF8] mb-2.5">
+          <ShieldCheck size={14} className="text-[#38BDF8]" />
+          <span>Tactical Consultation</span>
+        </div>
+        <h3 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
           Defense Procurement &amp; Systems Inquiry
         </h3>
+        <p className="text-sm sm:text-[15px] font-medium text-slate-200 mt-1.5 leading-relaxed">
+          Submit classified or commercial defense integration parameters directly to our senior engineering council.
+        </p>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-3.5">
+      <div className="grid sm:grid-cols-2 gap-4">
         <div>
-          <label className="text-[11px] font-medium text-slate-300 mb-1 block">Full Name *</label>
+          <label className="text-xs sm:text-[13px] font-bold text-slate-100 uppercase tracking-wider mb-2 block">
+            Full Name *
+          </label>
           <input
             type="text"
             name="name"
@@ -459,11 +472,13 @@ export function ContactForm() {
             value={form.name}
             onChange={handleChange}
             placeholder="Official / Representative Name"
-            className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none focus:border-[#0284C7] transition-colors"
+            className="w-full px-4 py-3.5 rounded-xl border border-slate-600/80 bg-[#050E1A] text-sm sm:text-base font-medium text-white placeholder-slate-400 outline-none focus:border-[#38BDF8] focus:ring-2 focus:ring-[#38BDF8]/20 transition-all shadow-inner"
           />
         </div>
         <div>
-          <label className="text-[11px] font-medium text-slate-300 mb-1 block">Official Email *</label>
+          <label className="text-xs sm:text-[13px] font-bold text-slate-100 uppercase tracking-wider mb-2 block">
+            Official Email *
+          </label>
           <input
             type="email"
             name="email"
@@ -471,41 +486,45 @@ export function ContactForm() {
             value={form.email}
             onChange={handleChange}
             placeholder="procurement@agency.gov / corp.com"
-            className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none focus:border-[#0284C7] transition-colors"
+            className="w-full px-4 py-3.5 rounded-xl border border-slate-600/80 bg-[#050E1A] text-sm sm:text-base font-medium text-white placeholder-slate-400 outline-none focus:border-[#38BDF8] focus:ring-2 focus:ring-[#38BDF8]/20 transition-all shadow-inner"
           />
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-3.5">
+      <div className="grid sm:grid-cols-2 gap-4">
         <div>
-          <label className="text-[11px] font-medium text-slate-300 mb-1 block">Phone / Line</label>
+          <label className="text-xs sm:text-[13px] font-bold text-slate-100 uppercase tracking-wider mb-2 block">
+            Phone / Line
+          </label>
           <input
             type="tel"
             name="phone"
             value={form.phone}
             onChange={handleChange}
             placeholder="+92 300 1234567"
-            className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none focus:border-[#0284C7] transition-colors"
+            className="w-full px-4 py-3.5 rounded-xl border border-slate-600/80 bg-[#050E1A] text-sm sm:text-base font-medium text-white placeholder-slate-400 outline-none focus:border-[#38BDF8] focus:ring-2 focus:ring-[#38BDF8]/20 transition-all shadow-inner"
           />
         </div>
         <div>
-          <label className="text-[11px] font-medium text-slate-300 mb-1 block">Agency / Enterprise</label>
+          <label className="text-xs sm:text-[13px] font-bold text-slate-100 uppercase tracking-wider mb-2 block">
+            Agency / Enterprise
+          </label>
           <input
             type="text"
             name="company"
             value={form.company}
             onChange={handleChange}
             placeholder="Defense Entity / Authority"
-            className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none focus:border-[#0284C7] transition-colors"
+            className="w-full px-4 py-3.5 rounded-xl border border-slate-600/80 bg-[#050E1A] text-sm sm:text-base font-medium text-white placeholder-slate-400 outline-none focus:border-[#38BDF8] focus:ring-2 focus:ring-[#38BDF8]/20 transition-all shadow-inner"
           />
         </div>
       </div>
 
       <div>
-        <label className="text-[11px] font-medium text-slate-300 mb-2 block">
+        <label className="text-xs sm:text-[13px] font-bold text-slate-100 uppercase tracking-wider mb-2.5 block">
           Defense Domains Required
         </label>
-        <div className="grid sm:grid-cols-2 gap-2">
+        <div className="grid sm:grid-cols-2 gap-2.5">
           {availableServices.map((s) => {
             const active = selectedServices.includes(s);
             return (
@@ -513,18 +532,18 @@ export function ContactForm() {
                 type="button"
                 key={s}
                 onClick={() => toggleService(s)}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-left transition-all text-xs ${
+                className={`flex items-center gap-3 px-3.5 py-3 rounded-xl border text-left transition-all text-xs sm:text-[13px] font-bold cursor-pointer ${
                   active
-                    ? "border-[#0284C7] bg-[#0284C7]/20 text-white font-medium"
-                    : "border-white/10 bg-black/10 text-slate-400 hover:text-white hover:border-white/20"
+                    ? "border-[#38BDF8] bg-[#005691] text-white shadow-md shadow-sky-950/60"
+                    : "border-slate-700/80 bg-[#050E1A] text-slate-200 hover:text-white hover:border-sky-400/60"
                 }`}
               >
                 <div
-                  className={`w-3.5 h-3.5 rounded-xs border flex items-center justify-center shrink-0 ${
-                    active ? "border-[#0284C7] bg-[#0284C7]" : "border-white/20 bg-transparent"
+                  className={`w-4 h-4 rounded-md border flex items-center justify-center shrink-0 transition-colors ${
+                    active ? "border-[#38BDF8] bg-[#38BDF8]" : "border-slate-500 bg-transparent"
                   }`}
                 >
-                  {active && <CheckCircle2 size={10} className="text-white" />}
+                  {active && <CheckCircle2 size={12} className="text-[#08182B]" />}
                 </div>
                 <span className="leading-tight truncate">{s}</span>
               </button>
@@ -534,7 +553,9 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label className="text-[11px] font-medium text-slate-300 mb-1 block">Operational Scope &amp; Parameters *</label>
+        <label className="text-xs sm:text-[13px] font-bold text-slate-100 uppercase tracking-wider mb-2 block">
+          Operational Scope &amp; Parameters *
+        </label>
         <textarea
           name="message"
           required
@@ -542,19 +563,19 @@ export function ContactForm() {
           onChange={handleChange}
           rows={3}
           placeholder="Describe threat requirements, installation terrain, and targeted timelines..."
-          className="w-full px-3.5 py-2.5 rounded-lg border border-white/10 bg-black/20 text-xs text-white placeholder-slate-500 outline-none resize-none focus:border-[#0284C7] transition-colors"
+          className="w-full px-4 py-3.5 rounded-xl border border-slate-600/80 bg-[#050E1A] text-sm sm:text-base font-medium text-white placeholder-slate-400 outline-none resize-none focus:border-[#38BDF8] focus:ring-2 focus:ring-[#38BDF8]/20 transition-all shadow-inner"
         />
       </div>
 
-      {error && <p className="text-xs text-rose-400">{error}</p>}
+      {error && <p className="text-sm font-bold text-rose-400 bg-rose-500/10 p-3 rounded-lg border border-rose-500/20">{error}</p>}
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full py-3 rounded-lg text-xs font-medium text-white flex items-center justify-center gap-2 bg-[#005691] hover:bg-[#0284C7] transition-all cursor-pointer disabled:opacity-50"
+        className="w-full py-4 rounded-xl text-sm sm:text-base font-black uppercase tracking-wider text-white flex items-center justify-center gap-3 bg-gradient-to-r from-[#005691] via-[#0284C7] to-[#38BDF8] hover:opacity-95 shadow-xl shadow-sky-950/50 cursor-pointer transition-all disabled:opacity-50"
       >
-        <span>{loading ? "Transmitting..." : "Submit Tactical Consultation"}</span>
-        <Send size={13} />
+        <span>{loading ? "Transmitting Requirements..." : "Submit Tactical Consultation"}</span>
+        <Send size={16} />
       </button>
     </form>
   );

@@ -33,7 +33,7 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
     category: "Water Conservation",
     tag: "Water Security",
     icon: Droplets,
-    heroImage: "/desertdev/arid_agriculture.jpg",
+    heroImage: "/national-agricultural/program-solar-water.jpg",
     overview:
       "The Sustainable Agriculture Initiative transforms water-stressed, drought-vulnerable, and off-grid lands into high-yielding productive agro-ecosystems. By combining high-efficiency solar hybrid pumps with pressure-compensated drip irrigation lines, this program eliminates expensive diesel pumping costs and saves over 50% of precious groundwater.",
     metrics: [
@@ -124,9 +124,10 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
     fullTitle: "Dairy Development & Herd Genetic Improvement",
     subtitle: "Upgrading Rural Cattle Genetics, Semen Viability & Milk Yield",
     eyebrow: "Sovereign Dairy Productivity & Progeny-Tested Bloodlines",
+    category: "Dairy & Livestock",
     tag: "Livestock & Dairy",
     icon: Leaf,
-    heroImage: "/vetvac_dairy_service.jpg",
+    heroImage: "/national-agricultural/program-dairy-herd.png",
     overview:
       "The Dairy Development Program is a transformative rural development initiative aimed at doubling milk production in smallholder dairy farming households. By delivering sexed semen artificial insemination from elite pedigree Holstein-Friesian and pure Sahiwal sires, combined with village-level veterinary health camps and transparent milk chilling hubs, we elevate household dairy incomes permanently.",
     metrics: [
@@ -220,7 +221,7 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
     category: "Farm Technology",
     tag: "Machinery Access",
     icon: Tractor,
-    heroImage: "/services/agriculture-1.jpg",
+    heroImage: "/national-agricultural/program-farmer-crops.jpg",
     overview:
       "The Farmer Development Program bridges the technological divide for small and medium landholders across Pakistan. By establishing village-level agricultural machinery hubs, farmers gain affordable, pay-per-acre access to GPS laser land levelers, pneumatic seed drills, high-horsepower tractors, and modern combine harvesters without high capital expenditure.",
     metrics: [
@@ -311,9 +312,10 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
     fullTitle: "Rural Development & Women in Agriculture",
     subtitle: "High-Tunnel Vegetables, Hygienic Milking & Organic Poultry Kits",
     eyebrow: "Gender Inclusion, Micro-Agri Enterprises & Household Prosperity",
+    category: "Rural Empowerment",
     tag: "Rural Development",
     icon: Users,
-    heroImage: "/swiss-farm-about.png",
+    heroImage: "/national-agricultural/program-rural-produce.jpg",
     overview:
       "The Rural Development Initiative provides rural families and women farmers with specialized technical training, micro-farming starter kits, and direct market connectivity. Focusing on high-tunnel greenhouse vegetable farming, hygienic livestock milking, backyard poultry enterprises, and post-harvest food processing, the initiative builds financial independence and food security for rural households.",
     metrics: [
@@ -404,9 +406,10 @@ export const NATIONAL_AGRICULTURAL_PROGRAMS = [
     fullTitle: "Agricultural Innovation & Mobile Soil Health Clinics",
     subtitle: "Rapid 30-Minute On-Site Soil Assays & Precision Nutrient Prescriptions",
     eyebrow: "Scientific Soil Health Diagnostics & Fertilizer Cost Reduction",
+    category: "Agritech & Soil",
     tag: "Agritech & Soil",
     icon: FlaskConical,
-    heroImage: "/services/agriculture-2.jpg",
+    heroImage: "/national-agricultural/program-soil-lab.jpg",
     overview:
       "The Agricultural Innovation initiative deploys specialized mobile laboratory vans directly to farmers' fields. Equipped with computerized spectrophotometers and digital soil analyzers, our agronomists deliver instant 30-minute soil fertility reports (N-P-K, pH, EC, Organic Matter) and customized fertilizer prescriptions that cut input costs by up to 25% while restoring soil vitality.",
     metrics: [

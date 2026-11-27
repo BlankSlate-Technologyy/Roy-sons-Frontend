@@ -63,9 +63,9 @@ export default function WaltonServicesPage() {
       {/* ─────────────────────────────────────────────────────────────
           1. SERVICES HERO
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      <section className="relative py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7">
               <SectionLabel>Multidisciplinary Engineering Divisions</SectionLabel>
@@ -74,7 +74,7 @@ export default function WaltonServicesPage() {
                 EXPERTISE THAT MOVES <span style={{ color: theme.navy }}>PROJECTS FORWARD</span>
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-8">
                 From technical consultancy and project management to infrastructure development and construction oversight, we bring engineering expertise to every stage of the project lifecycle.
               </p>
 
@@ -109,10 +109,10 @@ export default function WaltonServicesPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/85 via-transparent to-transparent flex items-end p-6">
                   <div className="text-white">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-[#DFC48B] block mb-1">
+                    <span className="text-xs font-black uppercase tracking-wider text-[#DFC48B] block mb-1">
                       8 Specialized Divisions
                     </span>
-                    <h4 className="text-base font-bold">
+                    <h4 className="text-base sm:text-lg font-bold">
                       Full-Lifecycle Engineering &amp; Infrastructure Governance
                     </h4>
                   </div>
@@ -126,7 +126,7 @@ export default function WaltonServicesPage() {
       {/* ─────────────────────────────────────────────────────────────
           2. STATS COUNTER BAR
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-10 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
+      <section className="py-8 sm:py-10 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {SERVICE_STATS.map((stat, i) => {
@@ -136,7 +136,7 @@ export default function WaltonServicesPage() {
                   <div className="mb-1" style={{ color: theme.navyDark }}>
                     <AnimatedCounter targetValue={stat.value} duration={1300 + i * 100} />
                   </div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                  <p className="text-xs sm:text-[13px] font-bold uppercase tracking-wider text-slate-700">
                     {stat.label}
                   </p>
                 </div>
@@ -185,8 +185,8 @@ export default function WaltonServicesPage() {
       {/* ─────────────────────────────────────────────────────────────
           4. 8 VISUALLY RICH SERVICES SECTIONS
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="mx-auto max-w-screen-xl space-y-20">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="mx-auto max-w-screen-xl space-y-12 sm:space-y-14">
           {filtered.map((svc, index) => {
             const Icon = svc.icon;
             const isEven = index % 2 === 0;
@@ -197,10 +197,10 @@ export default function WaltonServicesPage() {
                 id={svc.id}
                 className="scroll-mt-32 p-6 sm:p-8 lg:p-10 rounded-3xl border border-slate-200 bg-white shadow-sm transition-all"
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   {/* Left or Right Image Header (4:3 aspect ratio) */}
                   <div className={`lg:col-span-5 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
-                    <div className="relative w-full h-[300px] sm:h-[360px] lg:h-[400px] rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
+                    <div className="relative w-full h-[280px] sm:h-[340px] lg:h-[380px] rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
                       <Image
                         src={svc.image}
                         alt={svc.title}
@@ -209,7 +209,7 @@ export default function WaltonServicesPage() {
                         sizes="(max-width: 1024px) 100vw, 500px"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/70 via-transparent to-transparent" />
-                      <span className="absolute top-4 left-4 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-[#C5A059] text-white shadow-xs">
+                      <span className="absolute top-4 left-4 text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-[#C5A059] text-white shadow-xs">
                         {svc.category}
                       </span>
                     </div>
@@ -218,8 +218,8 @@ export default function WaltonServicesPage() {
                     <div className="grid grid-cols-2 gap-3 mt-4">
                       {svc.metrics.map((m) => (
                         <div key={m.label} className="p-3 rounded-xl border border-slate-200 bg-[#F4F7FA] text-center">
-                          <span className="text-xs sm:text-sm font-black text-[#0E2A47] block">{m.value}</span>
-                          <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">{m.label}</span>
+                          <span className="text-sm sm:text-base font-black text-[#0E2A47] block">{m.value}</span>
+                          <span className="text-xs text-slate-600 font-bold uppercase tracking-wider">{m.label}</span>
                         </div>
                       ))}
                     </div>
@@ -228,10 +228,10 @@ export default function WaltonServicesPage() {
                   {/* Text Content */}
                   <div className={`lg:col-span-7 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white" style={{ backgroundColor: theme.navy }}>
-                        <Icon size={18} />
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-white" style={{ backgroundColor: theme.navy }}>
+                        <Icon size={20} />
                       </div>
-                      <span className="text-xs font-black uppercase tracking-[0.16em] text-[#C5A059]">
+                      <span className="text-xs sm:text-sm font-black uppercase tracking-[0.16em] text-[#C5A059]">
                         Division 0{index + 1}
                       </span>
                     </div>
@@ -240,23 +240,23 @@ export default function WaltonServicesPage() {
                       {svc.title}
                     </h2>
 
-                    <p className="text-xs sm:text-sm font-bold text-[#0E2A47] uppercase tracking-wide mb-4">
+                    <p className="text-xs sm:text-sm font-bold text-[#0E2A47] uppercase tracking-wide mb-3">
                       {svc.subtitle}
                     </p>
 
-                    <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 font-normal">
                       {svc.overview}
                     </p>
 
                     {/* Deliverables List */}
                     <div className="mb-6">
-                      <h4 className="text-xs font-black uppercase tracking-[0.14em] text-[#0A1E34] mb-3">
+                      <h4 className="text-xs sm:text-sm font-black uppercase tracking-[0.14em] text-[#0A1E34] mb-3">
                         Key Engineering Scope &amp; Deliverables:
                       </h4>
-                      <ul className="space-y-2">
+                      <ul className="space-y-2.5">
                         {svc.deliverables.slice(0, 4).map((del, dIdx) => (
-                          <li key={dIdx} className="flex items-start gap-2.5 text-xs text-slate-600">
-                            <CheckCircle2 size={14} className="text-[#C5A059] shrink-0 mt-0.5" />
+                          <li key={dIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                            <CheckCircle2 size={16} className="text-[#C5A059] shrink-0 mt-0.5" />
                             <span>{del}</span>
                           </li>
                         ))}
@@ -264,14 +264,14 @@ export default function WaltonServicesPage() {
                     </div>
 
                     {/* Technical Specs Table */}
-                    <div className="p-4 rounded-xl border border-slate-200 bg-[#F4F7FA] mb-6">
-                      <h5 className="text-[11px] font-black uppercase tracking-wider text-[#0A1E34] mb-2.5">
+                    <div className="p-4 sm:p-5 rounded-xl border border-slate-200 bg-[#F4F7FA] mb-6">
+                      <h5 className="text-xs font-black uppercase tracking-wider text-[#0A1E34] mb-3">
                         Technical Standards &amp; Codes:
                       </h5>
-                      <div className="space-y-1.5 text-xs">
+                      <div className="space-y-2 text-xs sm:text-sm">
                         {svc.technicalSpecs.slice(0, 3).map((spec) => (
-                          <div key={spec.key} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200/60 pb-1 last:border-0 last:pb-0">
-                            <span className="font-bold text-slate-700">{spec.key}:</span>
+                          <div key={spec.key} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200/60 pb-1.5 last:border-0 last:pb-0">
+                            <span className="font-bold text-slate-800">{spec.key}:</span>
                             <span className="text-slate-600 sm:text-right">{spec.value}</span>
                           </div>
                         ))}
@@ -282,16 +282,16 @@ export default function WaltonServicesPage() {
                     <div className="flex flex-wrap items-center gap-3">
                       <Link
                         href="/group-companies/walton-consultants-contracting/contact"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-xs hover:brightness-110 transition-all"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-xs hover:brightness-110 transition-all"
                         style={{ backgroundColor: theme.navy }}
                       >
                         <span>Request Scope Quote</span>
-                        <ArrowRight size={13} />
+                        <ArrowRight size={14} />
                       </Link>
 
                       <Link
                         href="/group-companies/walton-consultants-contracting/projects"
-                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider text-[#0A1E34] hover:bg-slate-50 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#0A1E34] hover:bg-slate-50 transition-colors"
                       >
                         <span>Related Case Studies</span>
                       </Link>
@@ -307,7 +307,7 @@ export default function WaltonServicesPage() {
       {/* ─────────────────────────────────────────────────────────────
           5. FINAL CALL TO ACTION
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F4F7FA] border-t border-slate-200">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#F4F7FA] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl">
           <div
             className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-xl text-white relative overflow-hidden"

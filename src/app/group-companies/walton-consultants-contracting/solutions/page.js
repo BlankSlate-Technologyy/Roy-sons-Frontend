@@ -46,9 +46,9 @@ export default function WaltonSolutionsPage() {
       {/* ─────────────────────────────────────────────────────────────
           1. SOLUTIONS HERO
       ───────────────────────────────────────────────────────────── */}
-      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      <section className="relative py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-7">
               <SectionLabel>Engineered Turnkey Solutions</SectionLabel>
 
@@ -56,7 +56,7 @@ export default function WaltonSolutionsPage() {
                 FROM COMPLEX CHALLENGES <span style={{ color: theme.navy }}>TO PRACTICAL SOLUTIONS</span>
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-8">
                 Integrated packages engineered to eliminate budget uncertainty, accelerate construction timelines, and ensure lifelong structural resilience across transport, industrial, and urban sectors.
               </p>
 
@@ -90,10 +90,10 @@ export default function WaltonSolutionsPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/85 via-transparent to-transparent flex items-end p-6">
                   <div className="text-white">
-                    <span className="text-[11px] font-black uppercase tracking-wider text-[#DFC48B] block mb-1">
+                    <span className="text-xs font-black uppercase tracking-wider text-[#DFC48B] block mb-1">
                       8 Comprehensive Packages
                     </span>
-                    <h4 className="text-base font-bold">
+                    <h4 className="text-base sm:text-lg font-bold">
                       Infrastructure, Industrial, Urban &amp; Structural Engineering
                     </h4>
                   </div>
@@ -107,7 +107,7 @@ export default function WaltonSolutionsPage() {
       {/* ─────────────────────────────────────────────────────────────
           2. SEARCH BAR
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-6 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
+      <section className="py-5 sm:py-6 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-[#F4F7FA]">
         <div className="mx-auto max-w-screen-xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="relative w-full sm:w-96">
             <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -116,11 +116,11 @@ export default function WaltonSolutionsPage() {
               placeholder="Search solutions by keyword or sector..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs font-semibold text-[#0A1E34] bg-white focus:outline-hidden focus:border-[#C5A059] transition-colors"
+              className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-semibold text-[#0A1E34] bg-white focus:outline-hidden focus:border-[#C5A059] transition-colors"
             />
           </div>
 
-          <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+          <div className="text-xs sm:text-[13px] font-bold text-slate-600 uppercase tracking-wider">
             Showing {filtered.length} of {WALTON_SOLUTIONS.length} Solution Packages
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function WaltonSolutionsPage() {
       {/* ─────────────────────────────────────────────────────────────
           3. 8 VISUALLY ATTRACTIVE SOLUTION CARDS GRID
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {filtered.map((sol) => {
@@ -150,7 +150,7 @@ export default function WaltonSolutionsPage() {
                         sizes="(max-width: 768px) 100vw, 350px"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E34]/60 via-transparent to-transparent" />
-                      <span className="absolute top-3 left-3 text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#C5A059] text-white shadow-xs">
+                      <span className="absolute top-3 left-3 text-xs font-black uppercase px-3 py-1 rounded-full bg-[#C5A059] text-white shadow-xs">
                         {sol.tag}
                       </span>
                     </div>
@@ -160,23 +160,23 @@ export default function WaltonSolutionsPage() {
                         <Icon size={20} />
                       </div>
 
-                      <h3 className="text-lg font-black text-[#0A1E34] leading-snug mb-1.5 group-hover:text-[#0E2A47] transition-colors">
+                      <h3 className="text-lg sm:text-xl font-black text-[#0A1E34] leading-snug mb-1.5 group-hover:text-[#0E2A47] transition-colors">
                         {sol.name}
                       </h3>
 
-                      <p className="text-[11px] font-bold text-[#0E2A47] uppercase tracking-wide mb-3">
+                      <p className="text-xs font-bold text-[#0E2A47] uppercase tracking-wide mb-3">
                         {sol.subtitle}
                       </p>
 
-                      <p className="text-xs text-slate-600 leading-relaxed mb-5 line-clamp-3">
+                      <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-3">
                         {sol.desc}
                       </p>
 
                       {/* Key Highlights */}
-                      <div className="space-y-1.5 mb-5">
+                      <div className="space-y-2 mb-5">
                         {sol.highlights.slice(0, 3).map((hl, hIdx) => (
-                          <div key={hIdx} className="flex items-start gap-2 text-[11px] text-slate-600">
-                            <CheckCircle2 size={13} className="text-[#C5A059] shrink-0 mt-0.5" />
+                          <div key={hIdx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700">
+                            <CheckCircle2 size={15} className="text-[#C5A059] shrink-0 mt-0.5" />
                             <span className="line-clamp-1">{hl}</span>
                           </div>
                         ))}
@@ -186,8 +186,8 @@ export default function WaltonSolutionsPage() {
                       <div className="grid grid-cols-3 gap-2 pt-3 border-t border-slate-100 text-center">
                         {sol.stats.map((st) => (
                           <div key={st.label}>
-                            <span className="text-xs font-black text-[#0E2A47] block truncate">{st.value}</span>
-                            <span className="text-[9px] text-slate-500 font-bold uppercase tracking-wider block truncate">{st.label}</span>
+                            <span className="text-xs sm:text-sm font-black text-[#0E2A47] block truncate">{st.value}</span>
+                            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block truncate">{st.label}</span>
                           </div>
                         ))}
                       </div>
@@ -197,10 +197,10 @@ export default function WaltonSolutionsPage() {
                   <div className="p-6 pt-0">
                     <Link
                       href="/group-companies/walton-consultants-contracting/contact"
-                      className="w-full py-2.5 rounded-xl border border-slate-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all"
+                      className="w-full py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#0A1E34] hover:bg-slate-50 hover:border-[#C5A059] transition-all"
                     >
                       <span>Inquire Specifications</span>
-                      <ArrowRight size={13} />
+                      <ArrowRight size={14} />
                     </Link>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export default function WaltonSolutionsPage() {
       {/* ─────────────────────────────────────────────────────────────
           4. FINAL CALL TO ACTION
       ───────────────────────────────────────────────────────────── */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F4F7FA] border-t border-slate-200">
+      <section className="py-12 lg:py-16 px-4 sm:px-6 lg:px-8 bg-[#F4F7FA] border-t border-slate-200">
         <div className="mx-auto max-w-screen-xl">
           <div
             className="rounded-3xl p-8 sm:p-12 flex flex-col lg:flex-row gap-8 items-center justify-between shadow-xl text-white relative overflow-hidden"

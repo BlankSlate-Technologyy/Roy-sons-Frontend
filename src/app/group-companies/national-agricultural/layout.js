@@ -12,7 +12,7 @@ export default function NationalAgriculturalLayout({ children }) {
   }, []);
 
   return (
-    <div className="national-agricultural-theme min-h-screen bg-white text-[#1A5C2A]">
+    <div className="national-agricultural-theme min-h-screen bg-white text-[#0B2535]">
       {children}
     </div>
   );

@@ -3,6 +3,7 @@ import { asyncHandler, validateRequiredFields, validateEmailFormat } from "./mid
 
 // Models
 import Contact from "./models/Contact.js";
+import CompanyContact from "./models/CompanyContact.js";
 import Consultation from "./models/Consultation.js";
 import ServiceQuery from "./models/ServiceQuery.js";
 import ProjectQuery from "./models/ProjectQuery.js";
@@ -44,6 +45,50 @@ apiRouter.post(
       status: "success",
       message: "Your message has been received. Our team will contact you shortly.",
       data: contact,
+    });
+  })
+);
+
+// Group Company Contact Submission
+apiRouter.post(
+  "/company-contact",
+  asyncHandler(async (req, res) => {
+    const {
+      companySlug,
+      companyName,
+      fullName,
+      name,
+      email,
+      phone,
+      subject,
+      message,
+      additionalFields,
+      ...rest
+    } = req.body;
+
+    const applicantName = (fullName || name || "").trim();
+    validateRequiredFields({ fullName: applicantName, email, message }, ["fullName", "email", "message"]);
+    validateEmailFormat(email);
+
+    const record = await CompanyContact.create({
+      companySlug: (companySlug || "general").trim(),
+      companyName: (companyName || companySlug || "General").trim(),
+      fullName: applicantName,
+      email: email.trim().toLowerCase(),
+      phone: (phone || "").trim(),
+      subject: (subject || "Company Inquiry").trim(),
+      message: message.trim(),
+      additionalFields: {
+        ...(additionalFields || {}),
+        ...rest,
+      },
+    });
+
+    res.status(201).json({
+      success: true,
+      status: "success",
+      message: `Thank you! Your request for ${record.companyName} has been submitted successfully.`,
+      data: record,
     });
   })
 );

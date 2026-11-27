@@ -121,11 +121,11 @@ export const NATIONAL_MINES_MINERALS = [
     eyebrow: "Porphyry Copper Concentrate & Cathode",
     category: "Industrial Base Metals",
     grade: "28% – 32% Concentrate",
-    origin: "Balochistan Porphyry Belt",
+    origin: "Chagai (Reko Diq & Saindak Corridor), Balochistan",
     tag: "Base Metals",
     heroImage: "/mine copper.png",
     overview:
-      "National Mines Corporation operates world-class copper porphyry concessions across the Chagai mineral volcanic arc. Our processing facilities utilize high-efficiency semi-autogenous grinding (SAG) mills and multi-stage froth flotation to produce high-grade chalcopyrite and bornite copper concentrate with exceptional copper content and valuable precious metal credits.",
+      "National Mines Corporation operates along Pakistan's premier porphyry copper province in the Chagai Magmatic Arc — the same Tethyan Metallogenic Belt hosting the 5.9-billion-tonne Reko Diq deposit and Saindak's 412M+ tonne producing complex. Our processing facilities utilize semi-autogenous grinding (SAG) mills and multi-stage froth flotation to yield high-grade chalcopyrite and bornite copper concentrate with precious gold and silver by-product credits.",
     metrics: [
       { label: "Concentrate Grade", value: "28% – 32% Cu" },
       { label: "Annual Capacity", value: "150,000 Tons" },
@@ -208,15 +208,108 @@ export const NATIONAL_MINES_MINERALS = [
     ],
   },
   {
+    id: "himalayan-pink-salt",
+    slug: "himalayan-pink-salt-nacl",
+    name: "Himalayan Pink Rock Salt (NaCl)",
+    eyebrow: "Khewra & Salt Range Natural Crystalline Halite",
+    category: "Industrial Minerals",
+    grade: "98.0% – 99.2% NaCl Purity",
+    origin: "Khewra & Salt Range Belt, Jhelum, Punjab",
+    tag: "Evaporite Minerals",
+    heroImage: "/national-mines/mineral-pink-salt.png",
+    overview:
+      "Pakistan's Salt Range — home to the iconic Khewra Salt Mine, the world's second-largest rock salt mine holding over 1 billion tonnes of proven reserves — represents Earth's largest source of authentic Himalayan Pink Salt. National Mines Corporation delivers export-certified raw rock salt boulders, culinary pink salt crystals, pharmaceutical-grade halite, animal lick blocks, and industrial chlor-alkali salt directly from Punjab concessions with full origin traceability.",
+    metrics: [
+      { label: "NaCl Purity", value: "98.0% – 99.2%" },
+      { label: "Belt Reserves", value: "1B+ Tonnes" },
+      { label: "Trace Minerals", value: "84 Natural Ions" },
+      { label: "Export Grades", value: "Food & Industrial" },
+    ],
+    deliverables: [
+      "Authentic GI-traceable Himalayan Pink Rock Salt crystals (fine, coarse, 2–5mm grinder grain)",
+      "Raw natural pink salt boulders (5kg–50kg) for architectural salt walls, lamps, and wellness spas",
+      "Industrial chemical-grade rock salt (98.5%+ NaCl) for soda ash and chlor-alkali plants",
+      "Pressed & raw natural livestock mineral salt lick blocks for agricultural export markets",
+      "HACCP, ISO 22000, and SGS laboratory heavy-metal-free food safety certification",
+      "Containerized 25kg bags, 1-ton jumbo FIBC bags, and private-label retail packaging FOB Karachi",
+    ],
+    technicalSpecs: [
+      { key: "Chemical Formula", value: "NaCl (Natural Crystalline Halite)" },
+      { key: "Sodium Chloride (NaCl)", value: "98.0% – 99.2% Dry Basis" },
+      { key: "Insoluble Matter", value: "< 0.45% (Premium Sorted Grade)" },
+      { key: "Trace Elements", value: "Iron Oxide (pink hue), Calcium, Magnesium, Potassium" },
+      { key: "Moisture Content", value: "< 0.25% Natural Low Moisture" },
+      { key: "Supply Formats", value: "Raw chunks, 0.5–5mm grains, 25kg/1,000kg export bags" },
+    ],
+    pillars: [
+      {
+        title: "Room-and-Pillar Extraction",
+        desc: "Precision subterranean room-and-pillar mining preserving geological stability and crystal clarity.",
+        icon: Mountain,
+      },
+      {
+        title: "Optical Color Grading",
+        desc: "Automated sorting into dark pink, medium rose, light pink, and pure white crystalline grades.",
+        icon: Sparkles,
+      },
+      {
+        title: "Food & Pharma Purity",
+        desc: "Clean crushing, magnetic de-ironing, and hygienic screening compliant with ISO 22000 & FDA standards.",
+        icon: ShieldCheck,
+      },
+      {
+        title: "Value-Added Global Export",
+        desc: "Aligned with SIFC value-addition policy, exporting finished graded salt directly to 40+ markets.",
+        icon: Globe,
+      },
+    ],
+    workflow: [
+      {
+        step: "01",
+        title: "Underground Seam Extraction",
+        desc: "Controlled extraction along pure Precambrian Salt Range halite seams with zero chemical leaching.",
+      },
+      {
+        step: "02",
+        title: "Color & Purity Sorting",
+        desc: "Salt blocks are hand-selected and optically graded by mineral translucency and iron-oxide tone.",
+      },
+      {
+        step: "03",
+        title: "Hygienic Crushing & Screening",
+        desc: "Stainless steel roller crushers size salt into fine edible, coarse culinary, or industrial meshes.",
+      },
+      {
+        step: "04",
+        title: "SGS Testing & Port Export",
+        desc: "Moisture-sealed into food-grade bags or jumbo totes and dispatched via Karachi & Port Qasim.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Where is National Mines Himalayan Pink Salt sourced from?",
+        a: "Our pink rock salt is sourced directly from the Salt Range mineral belt (Khewra, Warcha, and Kalabagh region in Punjab, Pakistan), holding the world's largest natural pink halite reserves.",
+      },
+      {
+        q: "Do you supply both food-grade and industrial chemical rock salt?",
+        a: "Yes. We supply ISO 22000-compliant culinary pink salt as well as bulk 98.5%+ NaCl industrial rock salt for soda ash, chemical processing, and water softening.",
+      },
+      {
+        q: "What export packaging and Incoterms are available?",
+        a: "We ship in 25kg/50kg PP bags, 1,000kg jumbo bags, or bulk boulders inside 20ft containers under FOB Karachi/Port Qasim or CIF worldwide ports.",
+      },
+    ],
+  },
+  {
     id: "iron-ore",
     slug: "iron-ore-fe",
     name: "Iron Ore (Fe)",
     eyebrow: "High-Grade Magnetite & Hematite Lumps and Fines",
     category: "Ferrous Minerals",
     grade: "62% – 65% Fe Content",
-    origin: "Kalabagh & Chigendik Reserves",
+    origin: "Chiniot (Punjab), Kalabagh & Chigendik Reserves",
     tag: "Ferrous Metals",
-    heroImage: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/national-mines/mineral-iron-ore.png",
     overview:
       "National Mines Corporation mines and processes high-grade magnetite and hematite iron ore reserves. Beneficiated through dry magnetic separation and optical lump sorting, our iron ore products deliver high iron content (62%–65% Fe) and minimal silica/phosphorus, serving as premier feedstock for domestic steel mills, blast furnaces, and direct reduced iron (DRI) plants.",
     metrics: [
@@ -307,11 +400,11 @@ export const NATIONAL_MINES_MINERALS = [
     eyebrow: "High-Calorific Energy Fuel & Industrial Reductant",
     category: "Energy Resources",
     grade: "6,200+ kcal/kg GCV",
-    origin: "Salt Range & Lakhra Fields",
+    origin: "Thar Coalfield (Sindh), Salt Range & Lakhra",
     tag: "Energy Minerals",
-    heroImage: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/national-mines/mineral-coal.png",
     overview:
-      "National Mines Corporation supplies high-calorific thermal and semi-anthracite coal extracted from deep underground shafts and open-cast fields. Featuring low inherent moisture, consistent volatile matter, and high heat output (6,200+ kcal/kg), our coal powers cement rotary kilns, industrial boilers, brick kilns, and captive power generation plants.",
+      "Pakistan ranks among the world's premier coal-bearing nations, anchored by over 175 billion tonnes of lignite in the Thar Coalfield (Tharparkar, Sindh) alongside high-calorific sub-bituminous seams in Punjab's Salt Range and Balochistan. National Mines Corporation supplies graded thermal steam coal, washed bituminous coal, and custom-blended fuels powering cement rotary kilns, captive power plants, and coal-to-chemical industrial projects.",
     metrics: [
       { label: "Calorific Value", value: "6,200+ kcal/kg" },
       { label: "Fixed Carbon", value: "52% – 58%" },
@@ -402,7 +495,7 @@ export const NATIONAL_MINES_MINERALS = [
     grade: "94%+ Calcium Carbonate",
     origin: "Margalla & Salt Range Quarries",
     tag: "Construction",
-    heroImage: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/national-mines/mineral-limestone.png",
     overview:
       "National Mines Corporation operates extensive high-purity limestone quarries supplying cement plants, steel flux operations, paper fillers, glass manufacturers, and infrastructure aggregate projects. With calcium carbonate (CaCO3) concentrations exceeding 94.5% and low magnesium/silica impurities, our limestone delivers superior chemical reactivity and mechanical strength.",
     metrics: [
@@ -495,7 +588,7 @@ export const NATIONAL_MINES_MINERALS = [
     grade: "92%+ Purity",
     origin: "Daudkhel & Kohat Formations",
     tag: "Industrial Minerals",
-    heroImage: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/national-mines/mineral-gypsum.png",
     overview:
       "National Mines Corporation extracts high-grade crystalline rock gypsum from world-class evaporite deposits. With dihydrate purity exceeding 92% and bright white color characteristics, our gypsum is the preferred material for Portland cement setting regulators, plaster of Paris, gypsum wallboards, and agricultural soil desalinization.",
     metrics: [
@@ -586,9 +679,9 @@ export const NATIONAL_MINES_MINERALS = [
     eyebrow: "High Cr:Fe Ratio Metallurgical & Refractory Chromite",
     category: "Strategic Minerals",
     grade: "46% – 48% Metallurgical Grade",
-    origin: "Muslim Bagh Mineral Belt",
+    origin: "Muslim Bagh (Qila Saifullah), Balochistan",
     tag: "Strategic Minerals",
-    heroImage: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    heroImage: "/national-mines/mineral-chromite.png",
     overview:
       "National Mines Corporation mines world-renowned high-grade chromite ore from the Muslim Bagh ophiolite belt. Characterized by high chromic oxide (Cr2O3 46%–48%) concentrations and an outstanding Chromium-to-Iron (Cr:Fe) ratio of 3.0:1 or greater, our chromite is the prime global standard for ferrochrome alloys, stainless steel manufacturing, and high-temperature refractory furnace linings.",
     metrics: [
@@ -679,9 +772,9 @@ export const NATIONAL_MINES_MINERALS = [
     eyebrow: "World-Renowned Green Onyx & Architectural Marble",
     category: "Architectural Stones",
     grade: "Grade-A Export Slabs & Blocks",
-    origin: "Chagai & Mohmand Quarries",
+    origin: "Chagai, Ziarat & Lasbela (Balochistan) / Mohmand",
     tag: "Dimension Stones",
-    heroImage: "/mine copper.png",
+    heroImage: "/national-mines/mineral-marble-onyx.png",
     overview:
       "National Mines Corporation quarries and fabricates world-famous Green Onyx, Dark Green Onyx, Ziarat White, Black & Gold (Michaelangelo), and Golden Marble. Extracted with advanced diamond wire saw cutting technology to preserve natural grain integrity without micro-cracks, our architectural stone blocks and polished slabs adorn luxury projects globally.",
     metrics: [
@@ -772,9 +865,9 @@ export const NATIONAL_MINES_MINERALS = [
     eyebrow: "Heavy-Duty Igneous Granite Slabs & Rough Blocks",
     category: "Architectural Stones",
     grade: "Export Quality Commercial Stone",
-    origin: "Nagar Parkar & Mansehra Formations",
+    origin: "Nagar Parkar (Sindh) & Mansehra (KP)",
     tag: "Dimension Stones",
-    heroImage: "/mine gold.png",
+    heroImage: "/national-mines/mineral-granite.png",
     overview:
       "National Mines Corporation quarries premium natural igneous granite featuring exceptional mechanical hardness, uniform crystalline speckling, and ultra-low water absorption. Resistant to chemical weathering, acid stains, and high abrasion, our granite blocks, flamed pavers, and polished slabs are designed for airport terminals, commercial plazas, and heavy infrastructure facades.",
     metrics: [
@@ -865,9 +958,9 @@ export const NATIONAL_MINES_MINERALS = [
     eyebrow: "High-Purity Washed & Low-Iron Industrial Silica",
     category: "Industrial Minerals",
     grade: "99.2% Washed Silica",
-    origin: "Mianwali & Surghar Range",
+    origin: "Mianwali & Surghar Range (Punjab / KP)",
     tag: "Industrial Minerals",
-    heroImage: "/mine copper.png",
+    heroImage: "/national-mines/mineral-silica-sand.png",
     overview:
       "National Mines Corporation produces ultra-pure, double-washed silica sand from high-grade quartz sandstone formations. Beneficiated through attrition scrubbing, hydro-cyclone classification, and high-gradient magnetic separation, our silica sand features SiO2 concentrations above 99.2% and ultra-low iron oxide (Fe2O3 < 0.025%), making it the prime raw material for high-transmission solar glass, container bottles, foundry casting molds, and chemical silicates.",
     metrics: [

@@ -4,23 +4,16 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Mountain,
-  FlaskConical,
   CheckCircle2,
   ArrowRight,
   Search,
-  Award,
-  Sparkles,
-  Layers,
-  Factory,
-  ShieldCheck,
+  Compass,
 } from "lucide-react";
 import {
   theme,
   NationalMinesNavbar,
   NationalMinesFooter,
   SectionLabel,
-  SectionHeading,
 } from "../components/NationalMinesShared";
 import { NATIONAL_MINES_MINERALS } from "../minerals-data";
 
@@ -30,8 +23,10 @@ const CATEGORIES = [
   "Industrial Base Metals",
   "Ferrous Minerals",
   "Energy Resources",
+  "Strategic Minerals",
   "Construction Materials",
   "Industrial Minerals",
+  "Architectural Stones",
 ];
 
 export default function NationalMinesMineralsPage() {
@@ -43,7 +38,8 @@ export default function NationalMinesMineralsPage() {
     const matchesSearch =
       m.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       m.overview.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      m.origin.toLowerCase().includes(searchQuery.toLowerCase());
+      m.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      m.tag.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -52,29 +48,29 @@ export default function NationalMinesMineralsPage() {
       <NationalMinesNavbar />
 
       {/* Hero Section */}
-      <section className="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
+      <section className="relative py-12 lg:py-16 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="text-center max-w-2xl mx-auto">
-            <SectionLabel center>Commodities &amp; Raw Resources</SectionLabel>
+          <div className="text-center max-w-3xl mx-auto">
+            <SectionLabel center>Pakistan Commodities &amp; Raw Resources</SectionLabel>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight leading-tight mb-4" style={{ color: theme.navy }}>
+            <h1 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight leading-[1.14] mb-4" style={{ color: theme.navy }}>
               Certified Export-Grade <span style={{ color: theme.gold }}>Minerals &amp; Metals</span>
             </h1>
 
-            <p className="text-sm sm:text-base font-normal leading-relaxed mb-6" style={{ color: theme.textMuted }}>
-              Sourced directly from our managed mining concessions across Pakistan and refined to rigorous international purity specifications for industrial, metallurgical, and global commodity export markets.
+            <p className="text-base sm:text-lg font-normal leading-relaxed mb-7" style={{ color: theme.textMuted }}>
+              Sourced directly from our managed Pakistani mining concessions across Chagai, Khewra Salt Range, Thar, Chiniot, and Muslim Bagh—assayed and refined to international metallurgical and export specifications.
             </p>
 
             {/* Live Search */}
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
-                <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Search minerals by name, origin, or grade..."
+                  placeholder="Search minerals by name, belt, or grade (e.g. Salt, Chagai, Cu)..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border text-xs sm:text-sm font-normal focus:outline-none focus:ring-1 focus:ring-[#C59B27] transition-all bg-white shadow-xs"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl border text-sm sm:text-[15px] font-normal focus:outline-none focus:ring-2 focus:ring-[#C59B27]/40 transition-all bg-white shadow-xs"
                   style={{ borderColor: theme.border }}
                 />
               </div>
@@ -93,10 +89,10 @@ export default function NationalMinesMineralsPage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-medium tracking-wide whitespace-nowrap transition-all cursor-pointer ${
+                  className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all cursor-pointer ${
                     active
                       ? "bg-[#0B1B2B] text-white shadow-xs"
-                      : "bg-slate-50 border border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-[#0B1B2B]"
+                      : "bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-[#0B1B2B]"
                   }`}
                 >
                   {cat}
@@ -108,96 +104,108 @@ export default function NationalMinesMineralsPage() {
       </section>
 
       {/* Minerals Grid */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
+      <section className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 border-b bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
         <div className="mx-auto max-w-screen-xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((mineral) => (
-              <div
-                key={mineral.slug}
-                id={mineral.id}
-                className="mine-card group rounded-2xl overflow-hidden flex flex-col justify-between bg-white"
+          {filtered.length === 0 ? (
+            <div className="text-center py-12 bg-white rounded-2xl border" style={{ borderColor: theme.border }}>
+              <p className="text-base font-semibold text-slate-700 mb-2">No minerals match your current filter.</p>
+              <button
+                onClick={() => {
+                  setSelectedCategory("All");
+                  setSearchQuery("");
+                }}
+                className="text-sm font-bold cursor-pointer underline"
+                style={{ color: theme.gold }}
               >
-                <div>
-                  {/* Mineral Visual with zoom */}
-                  <Link
-                    href={`/group-companies/national-mines/minerals/${mineral.slug}`}
-                    className="mine-img-wrapper block w-full h-48 bg-slate-950 relative cursor-pointer"
-                  >
-                    <Image
-                      src={mineral.heroImage}
-                      alt={mineral.name}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className="text-[10px] font-semibold tracking-wider uppercase px-2 py-0.5 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
-                        {mineral.tag}
-                      </span>
-                    </div>
-                    <div className="absolute bottom-3 right-3">
-                      <span className="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-md bg-black/80 text-amber-300 border border-amber-500/30">
-                        {mineral.grade}
-                      </span>
-                    </div>
-                  </Link>
+                Reset filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filtered.map((mineral) => (
+                <div
+                  key={mineral.slug}
+                  id={mineral.id}
+                  className="mine-card group rounded-2xl overflow-hidden flex flex-col justify-between bg-white"
+                >
+                  <div>
+                    <Link
+                      href={`/group-companies/national-mines/minerals/${mineral.slug}`}
+                      className="mine-img-wrapper block w-full h-52 bg-slate-950 relative cursor-pointer"
+                    >
+                      <Image
+                        src={mineral.heroImage}
+                        alt={mineral.name}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="text-xs font-bold tracking-wide uppercase px-2.5 py-1 rounded-full bg-white/95 border shadow-xs" style={{ color: theme.navy, borderColor: theme.border }}>
+                          {mineral.tag}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-3 right-3">
+                        <span className="text-xs font-bold tracking-wide uppercase px-2.5 py-1 rounded-md bg-black/85 text-amber-300 border border-amber-500/40">
+                          {mineral.grade}
+                        </span>
+                      </div>
+                    </Link>
 
-                  {/* Content */}
-                  <div className="p-5">
-                    <h3 className="text-[16px] font-semibold tracking-tight mb-1" style={{ color: theme.navy }}>
-                      <Link href={`/group-companies/national-mines/minerals/${mineral.slug}`} className="hover:text-[#C59B27] transition-colors">
-                        {mineral.name}
-                      </Link>
-                    </h3>
+                    <div className="p-5 sm:p-6">
+                      <h3 className="text-xl font-bold tracking-tight mb-1" style={{ color: theme.navy }}>
+                        <Link href={`/group-companies/national-mines/minerals/${mineral.slug}`} className="hover:text-[#C59B27] transition-colors">
+                          {mineral.name}
+                        </Link>
+                      </h3>
 
-                    <p className="text-[11px] font-medium text-amber-700 mb-2">
-                      Concession: {mineral.origin}
-                    </p>
+                      <p className="text-xs sm:text-[13px] font-semibold text-amber-700 mb-2.5 flex items-center gap-1.5">
+                        <Compass size={13} className="shrink-0" />
+                        <span>{mineral.origin}</span>
+                      </p>
 
-                    <p className="text-xs font-normal leading-relaxed text-slate-500 mb-3 line-clamp-2">
-                      {mineral.overview}
-                    </p>
+                      <p className="text-sm sm:text-[15px] font-normal leading-relaxed mb-4 line-clamp-3" style={{ color: theme.textMuted }}>
+                        {mineral.overview}
+                      </p>
 
-                    {/* Quick Specs */}
-                    <div className="space-y-1.5 pt-3 border-t" style={{ borderColor: theme.borderLight }}>
-                      {mineral.deliverables.slice(0, 2).map((d, idx) => (
-                        <div key={idx} className="flex items-start gap-2">
-                          <CheckCircle2 size={13} className="flex-shrink-0 mt-0.5 text-emerald-600" />
-                          <span className="text-xs font-normal text-slate-700 leading-snug">{d}</span>
-                        </div>
-                      ))}
+                      <div className="space-y-2 pt-3 border-t" style={{ borderColor: theme.borderLight }}>
+                        {mineral.deliverables.slice(0, 2).map((d, idx) => (
+                          <div key={idx} className="flex items-start gap-2">
+                            <CheckCircle2 size={15} className="flex-shrink-0 mt-0.5 text-emerald-700" />
+                            <span className="text-xs sm:text-[13px] font-medium text-slate-700 leading-snug">{d}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Subtle Link — NO BIG BUTTONS */}
-                <div className="px-5 pb-4 pt-2 border-t" style={{ borderColor: theme.borderLight }}>
-                  <Link
-                    href={`/group-companies/national-mines/minerals/${mineral.slug}`}
-                    className="mine-link-arrow text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
-                    style={{ color: theme.gold }}
-                  >
-                    <span>View commodity specifications</span>
-                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  <div className="px-5 sm:px-6 pb-5 pt-3 border-t" style={{ borderColor: theme.borderLight }}>
+                    <Link
+                      href={`/group-companies/national-mines/minerals/${mineral.slug}`}
+                      className="mine-link-arrow cursor-pointer"
+                    >
+                      <span>View commodity specifications</span>
+                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Bottom CTA / Inquiry Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* Bottom CTA */}
+      <section className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="mx-auto max-w-screen-xl">
-          <div className="rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#F8FAFB]" style={{ borderColor: theme.border }}>
+          <div className="rounded-2xl p-7 sm:p-10 flex flex-col lg:flex-row gap-6 items-center justify-between border bg-[#0B1B2B] text-white" style={{ borderColor: theme.borderDark }}>
             <div>
-              <span className="text-[11px] font-semibold uppercase tracking-wider block mb-1.5" style={{ color: theme.gold }}>
+              <span className="text-xs font-bold uppercase tracking-wider block mb-2" style={{ color: theme.goldLight }}>
                 Bulk Mineral Procurement &amp; Off-Take
               </span>
-              <h2 className="text-xl sm:text-2xl font-bold mb-1.5" style={{ color: theme.navy }}>
+              <h2 className="text-2xl sm:text-3xl font-extrabold mb-2 text-white">
                 Require Certified Mineral Assays or Volume Allocations?
               </h2>
-              <p className="text-xs sm:text-sm font-normal max-w-xl" style={{ color: theme.textMuted }}>
+              <p className="text-sm sm:text-base font-normal max-w-xl text-slate-200 leading-relaxed">
                 Submit your volume specifications, port of destination, and target purity to receive an official commercial proposal.
               </p>
             </div>
@@ -205,11 +213,11 @@ export default function NationalMinesMineralsPage() {
             <div className="flex flex-wrap gap-3 flex-shrink-0">
               <Link
                 href="/group-companies/national-mines/contact"
-                className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white flex items-center gap-2 transition-all shadow-xs hover:opacity-95 cursor-pointer"
-                style={{ backgroundColor: theme.navy }}
+                className="px-6 py-3.5 rounded-xl text-sm font-bold text-white flex items-center gap-2 transition-all shadow-sm hover:brightness-110 cursor-pointer"
+                style={{ backgroundColor: theme.gold }}
               >
                 <span>Request Mineral Quotation</span>
-                <ArrowRight size={13} />
+                <ArrowRight size={16} />
               </Link>
             </div>
           </div>

@@ -11,5 +11,5 @@ export default function AlphaMatrixLayout({ children }) {
     };
   }, []);
 
-  return <div className="alpha-matrix-theme min-h-screen bg-white text-[#0B1B36]">{children}</div>;
+  return <div className="alpha-matrix-theme min-h-screen bg-[#050E1A] text-slate-100">{children}</div>;
 }

@@ -11,7 +11,6 @@ import {
   MapPin,
   Menu,
   X,
-  ArrowRight,
   ShieldCheck,
   ChevronRight,
   Sprout,
@@ -67,12 +66,12 @@ export const FOOTER_PROGRAMS = [
 export function SectionLabel({ children, center }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[11px] font-semibold tracking-wider uppercase mb-3.5 bg-slate-50/80 ${
+      className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs sm:text-[13px] font-bold tracking-wider uppercase mb-3 bg-white shadow-2xs ${
         center ? "mx-auto" : ""
       }`}
       style={{ borderColor: theme.border, color: theme.primaryMid }}
     >
-      <Sprout size={13} style={{ color: theme.accent }} />
+      <Sprout size={14} style={{ color: theme.accent }} />
       <span>{children}</span>
     </div>
   );
@@ -81,7 +80,7 @@ export function SectionLabel({ children, center }) {
 export function SectionHeading({ children, className = "", center }) {
   return (
     <h2
-      className={`text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight ${
+      className={`text-2xl sm:text-3xl lg:text-[38px] font-bold tracking-tight leading-tight ${
         center ? "text-center" : ""
       } ${className}`}
       style={{ color: theme.navy }}
@@ -100,6 +99,9 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
   const suffix = String(targetValue).replace(/[0-9]/g, "");
 
   useEffect(() => {
+    const el = elementRef.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -125,19 +127,15 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
       { threshold: 0.2 }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
+    observer.observe(el);
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
+      observer.unobserve(el);
     };
   }, [numericTarget, duration]);
 
   return (
-    <span ref={elementRef} className="font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight">
+    <span ref={elementRef} className="font-extrabold text-3xl sm:text-4xl tracking-tight">
       {count}
       {suffix}
     </span>
@@ -145,14 +143,6 @@ export function AnimatedCounter({ targetValue, duration = 1600 }) {
 }
 
 // ─── Reusable Navbar ────────────────────────────────────────────────
-// Rules:
-// - Reduced navbar font size (13px - 14px)
-// - Clean professional typography
-// - Navigation: Home | About Us | Services | Programs | Sustainability | Contact
-// - REMOVE all navbar buttons (zero buttons in navbar)
-// - Keep existing logo clean and properly proportioned
-// - Sticky with subtle background transition on scroll
-// - Clean mobile hamburger menu
 export function NationalAgriculturalNavbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -167,7 +157,10 @@ export function NationalAgriculturalNavbar() {
   const isActive = (href) => {
     if (!pathname) return false;
     if (href === "/group-companies/national-agricultural") {
-      return pathname === "/group-companies/national-agricultural" || pathname === "/group-companies/national-agricultural/";
+      return (
+        pathname === "/group-companies/national-agricultural" ||
+        pathname === "/group-companies/national-agricultural/"
+      );
     }
     return pathname.startsWith(href);
   };
@@ -207,7 +200,7 @@ export function NationalAgriculturalNavbar() {
               National Agricultural
             </span>
             <span
-              className="text-[10px] sm:text-[10.5px] font-bold tracking-[0.16em] uppercase mt-1"
+              className="text-[11px] sm:text-xs font-bold tracking-[0.14em] uppercase mt-1"
               style={{ color: theme.primaryMid }}
             >
               Corporation (Pvt) Ltd
@@ -215,8 +208,8 @@ export function NationalAgriculturalNavbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links — NO BUTTONS */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7">
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (
@@ -245,7 +238,7 @@ export function NationalAgriculturalNavbar() {
           <RoysonsPortalButton />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-1.5 rounded-lg border transition-colors bg-white cursor-pointer"
+            className="lg:hidden p-2 rounded-lg border transition-colors bg-white cursor-pointer"
             style={{ borderColor: theme.border, color: theme.navy }}
             aria-label="Toggle Menu"
           >
@@ -254,7 +247,7 @@ export function NationalAgriculturalNavbar() {
         </div>
       </div>
 
-      {/* Clean Mobile Drawer — NO BUTTONS */}
+      {/* Clean Mobile Drawer */}
       {mobileOpen && (
         <div
           className="lg:hidden border-t px-5 py-3 space-y-1 bg-white shadow-lg"
@@ -267,7 +260,7 @@ export function NationalAgriculturalNavbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-[15px] font-bold py-2.5 px-3 rounded-lg transition-colors cursor-pointer"
+                className="block text-base font-bold py-2.5 px-3 rounded-lg transition-colors cursor-pointer"
                 style={{
                   backgroundColor: active ? `${theme.primaryMid}10` : "transparent",
                   color: active ? theme.primaryMid : theme.navy,
@@ -287,16 +280,16 @@ export function NationalAgriculturalNavbar() {
 export function NationalAgriculturalFooter() {
   return (
     <footer
-      className="border-t bg-white pt-14 pb-8"
+      className="border-t bg-white pt-10 pb-6"
       style={{
         borderColor: theme.border,
       }}
     >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b" style={{ borderColor: theme.border }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-8 border-b" style={{ borderColor: theme.border }}>
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <Link href="/group-companies/national-agricultural" className="flex items-center gap-3 mb-4 select-none cursor-pointer">
+            <Link href="/group-companies/national-agricultural" className="flex items-center gap-3 mb-3.5 select-none cursor-pointer">
               <div className="w-11 h-11 rounded-lg bg-white p-1 border shadow-xs flex items-center justify-center flex-shrink-0" style={{ borderColor: theme.border }}>
                 <Image
                   src="/logos/2.png"
@@ -307,26 +300,26 @@ export function NationalAgriculturalFooter() {
                 />
               </div>
               <div>
-                <p className="text-sm sm:text-[15px] font-bold leading-tight" style={{ color: theme.navy }}>
+                <p className="text-base font-bold leading-tight" style={{ color: theme.navy }}>
                   National Agricultural
                 </p>
-                <p className="text-[10px] font-medium tracking-[0.16em] uppercase" style={{ color: theme.primaryMid }}>
+                <p className="text-xs font-semibold tracking-[0.12em] uppercase" style={{ color: theme.primaryMid }}>
                   Corporation (Pvt) Ltd
                 </p>
               </div>
             </Link>
 
-            <p className="text-xs sm:text-[13px] font-normal leading-relaxed mb-5" style={{ color: theme.textMuted }}>
+            <p className="text-sm font-normal leading-relaxed mb-4" style={{ color: theme.textMuted }}>
               An established leader in commercial agribusiness, smart irrigation, high-yield dairy genetics, mechanized farm development, and sustainable rural economic growth across Pakistan.
             </p>
 
             <div className="flex items-center gap-2 flex-wrap">
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-medium bg-slate-50" style={{ borderColor: theme.border, color: theme.primaryMid }}>
-                <ShieldCheck size={13} style={{ color: theme.accent }} />
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold bg-slate-50" style={{ borderColor: theme.border, color: theme.primaryMid }}>
+                <ShieldCheck size={14} style={{ color: theme.accent }} />
                 <span>Govt Licensed &amp; Certified</span>
               </div>
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-medium bg-slate-50" style={{ borderColor: theme.border, color: theme.primaryMid }}>
-                <Sprout size={13} style={{ color: theme.primaryMid }} />
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold bg-slate-50" style={{ borderColor: theme.border, color: theme.primaryMid }}>
+                <Sprout size={14} style={{ color: theme.primaryMid }} />
                 <span>Sustainable Agritech</span>
               </div>
             </div>
@@ -334,18 +327,18 @@ export function NationalAgriculturalFooter() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
+            <h4 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: theme.navy }}>
               Navigation
             </h4>
-            <ul className="space-y-2 text-[13px]">
+            <ul className="space-y-2 text-sm">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="hover:underline transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="hover:underline transition-colors flex items-center gap-1.5 cursor-pointer font-medium"
                     style={{ color: theme.textMuted }}
                   >
-                    <ChevronRight size={12} style={{ color: theme.accent }} />
+                    <ChevronRight size={14} style={{ color: theme.accent }} />
                     <span>{link.label}</span>
                   </Link>
                 </li>
@@ -355,18 +348,18 @@ export function NationalAgriculturalFooter() {
 
           {/* Core Services */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
+            <h4 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: theme.navy }}>
               Our Services
             </h4>
-            <ul className="space-y-2 text-[13px]">
+            <ul className="space-y-2 text-sm">
               {FOOTER_SERVICES.map((s) => (
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="hover:underline transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="hover:underline transition-colors flex items-center gap-1.5 cursor-pointer font-medium"
                     style={{ color: theme.textMuted }}
                   >
-                    <ChevronRight size={12} style={{ color: theme.accent }} />
+                    <ChevronRight size={14} style={{ color: theme.accent }} />
                     <span>{s.label}</span>
                   </Link>
                 </li>
@@ -376,47 +369,47 @@ export function NationalAgriculturalFooter() {
 
           {/* Contact Coordinates */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider mb-3.5" style={{ color: theme.navy }}>
+            <h4 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: theme.navy }}>
               Corporate Office
             </h4>
-            <div className="space-y-2.5 text-[13px]" style={{ color: theme.textMuted }}>
+            <div className="space-y-2.5 text-sm" style={{ color: theme.textMuted }}>
               <div className="flex items-start gap-2.5">
-                <MapPin size={15} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
+                <MapPin size={16} className="flex-shrink-0 mt-0.5" style={{ color: theme.primaryMid }} />
                 <span>Executive Agricultural Complex, Service Lane Ring Road, Lahore, Pakistan</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone size={15} className="flex-shrink-0" style={{ color: theme.primaryMid }} />
-                <a href="tel:+923218431665" className="hover:underline font-medium" style={{ color: theme.navy }}>
+                <Phone size={16} className="flex-shrink-0" style={{ color: theme.primaryMid }} />
+                <a href="tel:+923218431665" className="hover:underline font-semibold" style={{ color: theme.navy }}>
                   +92 321 8431665 / +92 42 38924737
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail size={15} className="flex-shrink-0" style={{ color: theme.primaryMid }} />
+                <Mail size={16} className="flex-shrink-0" style={{ color: theme.primaryMid }} />
                 <a href="mailto:info@roysons.org" className="hover:underline">
                   info@roysons.org
                 </a>
               </div>
             </div>
 
-            <div className="mt-4 p-3 rounded-xl border bg-slate-50/60 flex items-center gap-2.5" style={{ borderColor: theme.border }}>
-              <Headphones size={20} style={{ color: theme.accent }} />
+            <div className="mt-4 p-3.5 rounded-xl border bg-slate-50/70 flex items-center gap-3" style={{ borderColor: theme.border }}>
+              <Headphones size={20} style={{ color: theme.accent }} className="flex-shrink-0" />
               <div>
-                <p className="text-[11px] font-semibold uppercase" style={{ color: theme.navy }}>Agribusiness Advisory</p>
-                <p className="text-[11px] font-normal" style={{ color: theme.textMuted }}>Direct agronomy &amp; farm setup support</p>
+                <p className="text-xs font-bold uppercase" style={{ color: theme.navy }}>Agribusiness Advisory</p>
+                <p className="text-xs font-medium" style={{ color: theme.textMuted }}>Direct agronomy &amp; farm setup support</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Copyright Sub-bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs" style={{ color: theme.textLight }}>
+        <div className="pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm" style={{ color: theme.textLight }}>
           <p>&copy; {new Date().getFullYear()} National Agricultural Corporation (Pvt) Ltd. A Roy &amp; Sons Group Company.</p>
           <div className="flex items-center gap-4">
-            <Link href="/group-companies/national-agricultural/contact" className="hover:underline hover:text-[#236B38]">
+            <Link href="/group-companies/national-agricultural/contact" className="hover:underline hover:text-[#236B38] font-medium">
               Agritech Policy
             </Link>
             <span>•</span>
-            <Link href="/group-companies/national-agricultural/contact" className="hover:underline hover:text-[#236B38]">
+            <Link href="/group-companies/national-agricultural/contact" className="hover:underline hover:text-[#236B38] font-medium">
               Partnership Terms
             </Link>
           </div>

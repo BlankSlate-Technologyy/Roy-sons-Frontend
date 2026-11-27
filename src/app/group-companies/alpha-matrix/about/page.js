@@ -104,25 +104,31 @@ const defenseLeadership = [
 
 export default function AlphaMatrixAboutPage() {
   return (
-    <main className="alpha-matrix-theme min-h-screen font-sans bg-[#08182B] text-slate-100 selection:bg-[#0284C7] selection:text-white">
+    <main
+      className="min-h-screen font-sans selection:bg-[#0284C7] selection:text-white"
+      style={{ backgroundColor: "#08182B", color: "#FFFFFF" }}
+    >
       <AlphaMatrixNavbar />
 
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-20 lg:pt-36 lg:pb-24 px-6 overflow-hidden border-b border-white/10 bg-[#08182B]">
+      <section
+        className="relative pt-32 pb-20 lg:pt-36 lg:pb-24 px-6 overflow-hidden border-b border-white/10"
+        style={{ backgroundColor: "#08182B", color: "#FFFFFF" }}
+      >
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(#0284C7_1px,transparent_1px)] [background-size:24px_24px]" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-screen-xl">
-          <div className="flex items-center gap-2 text-xs text-slate-400 mb-6 font-mono">
+          <div className="flex items-center gap-2 text-sm text-slate-300 mb-6 font-mono">
             <Link href="/group-companies/alpha-matrix" className="hover:text-white transition-colors">
               ALPHA MATRIX
             </Link>
-            <ChevronRight size={12} className="text-slate-500" />
-            <span className="text-[#38BDF8]">ABOUT US</span>
+            <ChevronRight size={14} className="text-slate-400" />
+            <span className="text-[#38BDF8] font-bold">ABOUT US</span>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#0284C7]/30 bg-[#0284C7]/10 mb-4 text-[#38BDF8] text-xs font-bold tracking-wide">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#0284C7]/40 bg-[#0284C7]/15 mb-5 text-[#38BDF8] text-xs sm:text-[13px] font-bold tracking-wide">
             <span className="w-2 h-2 rounded-full bg-[#38BDF8] animate-pulse" />
             CORPORATE OVERVIEW &amp; MISSION
           </div>
@@ -131,14 +137,17 @@ export default function AlphaMatrixAboutPage() {
             Engineering Strategic Advantage &amp; Sovereign Resilience
           </h1>
 
-          <p className="max-w-3xl text-base sm:text-lg text-slate-200 font-medium leading-relaxed">
+          <p className="max-w-3xl text-base sm:text-lg font-medium leading-relaxed" style={{ color: "#E2E8F0" }}>
             Alpha Matrix Defence Systems is an international defense technology integrator and security engineering specialist. We deliver mission-critical C4ISR platforms, perimeter surveillance arrays, counter-drone networks, and hardened tactical infrastructures to protect sovereignty and critical assets.
           </p>
         </div>
       </section>
 
       {/* Narrative & Strategic Intent - Light Section for Visual Rhythm */}
-      <section className="py-20 lg:py-28 px-6 bg-white text-slate-900 border-b border-slate-200">
+      <section
+        className="py-20 lg:py-28 px-6 border-b border-slate-200"
+        style={{ backgroundColor: "#FFFFFF", color: "#08182B" }}
+      >
         <div className="mx-auto max-w-screen-xl">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
@@ -184,19 +193,19 @@ export default function AlphaMatrixAboutPage() {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-200">
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
                   <p className="text-3xl font-black text-[#08182B]">15+</p>
-                  <p className="text-xs text-slate-600 font-bold uppercase tracking-wider mt-1">Years Experience</p>
+                  <p className="text-xs text-slate-700 font-bold uppercase tracking-wider mt-1">Years Experience</p>
                 </div>
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
                   <p className="text-3xl font-black text-[#08182B]">250+</p>
-                  <p className="text-xs text-slate-600 font-bold uppercase tracking-wider mt-1">Tactical Sites</p>
+                  <p className="text-xs text-slate-700 font-bold uppercase tracking-wider mt-1">Tactical Sites</p>
                 </div>
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
                   <p className="text-3xl font-black text-[#08182B]">99.98%</p>
-                  <p className="text-xs text-slate-600 font-bold uppercase tracking-wider mt-1">C4ISR Uptime</p>
+                  <p className="text-xs text-slate-700 font-bold uppercase tracking-wider mt-1">C4ISR Uptime</p>
                 </div>
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
                   <p className="text-2xl font-black text-[#08182B]">STANAG</p>
-                  <p className="text-xs text-slate-600 font-bold uppercase tracking-wider mt-1">Standardized</p>
+                  <p className="text-xs text-slate-700 font-bold uppercase tracking-wider mt-1">Standardized</p>
                 </div>
               </div>
             </div>
@@ -206,7 +215,10 @@ export default function AlphaMatrixAboutPage() {
       </section>
 
       {/* Core Principles & Values - Dark Section */}
-      <section className="py-20 lg:py-24 px-6 bg-[#050E1A] border-b border-white/10">
+      <section
+        className="py-20 lg:py-24 px-6 border-b border-white/10"
+        style={{ backgroundColor: "#050E1A", color: "#FFFFFF" }}
+      >
         <div className="mx-auto max-w-screen-xl">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs sm:text-[13px] font-bold tracking-widest text-[#38BDF8] uppercase block mb-2">
@@ -215,7 +227,7 @@ export default function AlphaMatrixAboutPage() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-3">
               The Pillars of Defense Engineering
             </h2>
-            <p className="text-base sm:text-lg text-slate-300 font-medium">
+            <p className="text-base sm:text-lg font-medium" style={{ color: "#E2E8F0" }}>
               Built on strict sovereign discipline, technological superiority, and zero tolerance for operational failure.
             </p>
           </div>
@@ -224,7 +236,8 @@ export default function AlphaMatrixAboutPage() {
             {coreValues.map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="p-6 sm:p-7 rounded-2xl border border-white/10 bg-[#08182B]/80 backdrop-blur-md transition-all duration-300 hover:border-[#38BDF8]/60 hover:-translate-y-1 shadow-xl"
+                className="p-6 sm:p-7 rounded-2xl border border-sky-500/20 transition-all duration-300 hover:border-[#38BDF8]/60 hover:-translate-y-1 shadow-2xl"
+                style={{ backgroundColor: "#08182B", color: "#FFFFFF" }}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 border border-sky-500/30 bg-[#005691]/20 text-[#38BDF8] shadow-sm">
                   <Icon size={22} />
@@ -232,7 +245,7 @@ export default function AlphaMatrixAboutPage() {
                 <h3 className="text-lg font-black text-white mb-2.5 tracking-wide">
                   {title}
                 </h3>
-                <p className="text-[14px] text-slate-300 font-medium leading-relaxed">
+                <p className="text-sm font-medium leading-relaxed" style={{ color: "#CBD5E1" }}>
                   {desc}
                 </p>
               </div>
@@ -242,7 +255,10 @@ export default function AlphaMatrixAboutPage() {
       </section>
 
       {/* Specialized Divisions & Technical Governance */}
-      <section className="py-20 lg:py-24 px-6 bg-[#08182B] border-b border-white/10">
+      <section
+        className="py-20 lg:py-24 px-6 border-b border-white/10"
+        style={{ backgroundColor: "#08182B", color: "#FFFFFF" }}
+      >
         <div className="mx-auto max-w-screen-xl">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
@@ -254,26 +270,30 @@ export default function AlphaMatrixAboutPage() {
                 <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight uppercase leading-tight mb-4">
                   Multi-Domain Engineering Disciplines
                 </h2>
-                <p className="text-base sm:text-lg text-slate-200 font-medium leading-relaxed">
+                <p className="text-base sm:text-lg font-medium leading-relaxed" style={{ color: "#E2E8F0" }}>
                   Our specialized technical divisions work in synchronized concert to provide defense clients with turn-key tactical superiority and resilient operational infrastructure.
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
                 {engineeringDivisions.map(({ icon: Icon, title, desc }) => (
-                  <div key={title} className="p-5 rounded-xl border border-white/10 bg-white/5 space-y-2">
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3 bg-[#0284C7]/20 text-[#38BDF8]">
-                      <Icon size={18} />
+                  <div
+                    key={title}
+                    className="p-5 sm:p-6 rounded-2xl border border-sky-500/20 space-y-2 shadow-xl"
+                    style={{ backgroundColor: "#0E243D", color: "#FFFFFF" }}
+                  >
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 bg-[#0284C7]/20 text-[#38BDF8]">
+                      <Icon size={20} />
                     </div>
-                    <h4 className="text-sm sm:text-base font-black text-white">{title}</h4>
-                    <p className="text-[12px] sm:text-[13px] text-slate-300 font-medium leading-relaxed">{desc}</p>
+                    <h4 className="text-base font-black text-white">{title}</h4>
+                    <p className="text-xs sm:text-[13px] font-medium leading-relaxed" style={{ color: "#CBD5E1" }}>{desc}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="lg:col-span-6 relative">
-              <div className="relative h-[420px] md:h-[500px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl alpha-img-wrapper group">
+              <div className="relative h-[420px] md:h-[500px] rounded-2xl overflow-hidden border border-white/15 shadow-2xl alpha-img-wrapper group">
                 <Image
                   src="/logos/Defense & Security.jpg.jpeg"
                   alt="Alpha Matrix High-Tech Security Access Facility"
@@ -298,8 +318,11 @@ export default function AlphaMatrixAboutPage() {
         </div>
       </section>
 
-      {/* NEW: DEFENSE LEADERSHIP & SYSTEMS COUNCIL */}
-      <section className="py-20 lg:py-28 px-6 bg-[#050E1A] border-b border-white/10">
+      {/* DEFENSE LEADERSHIP & SYSTEMS COUNCIL */}
+      <section
+        className="py-20 lg:py-28 px-6 border-b border-white/10"
+        style={{ backgroundColor: "#050E1A", color: "#FFFFFF" }}
+      >
         <div className="mx-auto max-w-screen-xl">
           <div className="max-w-3xl mb-16">
             <span className="text-xs sm:text-[13px] font-bold tracking-widest text-[#38BDF8] uppercase block mb-2">
@@ -308,7 +331,7 @@ export default function AlphaMatrixAboutPage() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase mb-3">
               Defense Leadership &amp; Systems Council
             </h2>
-            <p className="text-base sm:text-lg text-slate-200 font-medium leading-relaxed">
+            <p className="text-base sm:text-lg font-medium leading-relaxed" style={{ color: "#E2E8F0" }}>
               Helmed by seasoned defense leaders, veteran tactical advisors, and senior aerospace engineers directing sovereign technology, national defense contracts, and mission resilience.
             </p>
           </div>
@@ -317,7 +340,8 @@ export default function AlphaMatrixAboutPage() {
             {defenseLeadership.map((member) => (
               <div
                 key={member.name}
-                className="group rounded-2xl border border-white/10 bg-[#08182B]/85 backdrop-blur-md overflow-hidden hover:border-[#38BDF8]/60 transition-all duration-300 shadow-2xl flex flex-col justify-between"
+                className="group rounded-2xl border border-sky-500/20 overflow-hidden hover:border-[#38BDF8]/60 transition-all duration-300 shadow-2xl flex flex-col justify-between"
+                style={{ backgroundColor: "#08182B", color: "#FFFFFF" }}
               >
                 <div>
                   <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-slate-900">
@@ -329,7 +353,7 @@ export default function AlphaMatrixAboutPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#08182B] via-transparent to-transparent opacity-90" />
                     
-                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider text-[#38BDF8] border border-sky-500/30">
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-black/85 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider text-[#38BDF8] border border-sky-500/40">
                       {member.badge}
                     </div>
                   </div>
@@ -344,7 +368,7 @@ export default function AlphaMatrixAboutPage() {
                       </p>
                     </div>
 
-                    <p className="text-[13px] sm:text-[14px] text-slate-300 font-medium leading-relaxed">
+                    <p className="text-sm sm:text-[15px] font-medium leading-relaxed" style={{ color: "#CBD5E1" }}>
                       {member.desc}
                     </p>
                   </div>
@@ -355,7 +379,7 @@ export default function AlphaMatrixAboutPage() {
                     {member.tags.map((t) => (
                       <span
                         key={t}
-                        className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 text-slate-300"
+                        className="px-2.5 py-1 rounded text-[11px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 text-slate-200"
                       >
                         {t}
                       </span>
@@ -369,7 +393,10 @@ export default function AlphaMatrixAboutPage() {
       </section>
 
       {/* Compliance & Standards - Light Section */}
-      <section className="py-20 lg:py-24 px-6 bg-white text-slate-900 border-b border-slate-200">
+      <section
+        className="py-20 lg:py-24 px-6 border-b border-slate-200"
+        style={{ backgroundColor: "#FFFFFF", color: "#08182B" }}
+      >
         <div className="mx-auto max-w-screen-xl">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             
@@ -441,7 +468,10 @@ export default function AlphaMatrixAboutPage() {
       </section>
 
       {/* Strategic Callout Banner */}
-      <section className="py-20 lg:py-24 px-6 bg-[#050E1A] border-t border-white/10">
+      <section
+        className="py-20 lg:py-24 px-6 border-t border-white/10"
+        style={{ backgroundColor: "#050E1A", color: "#FFFFFF" }}
+      >
         <div className="mx-auto max-w-screen-lg text-center space-y-6">
           <span className="text-xs sm:text-[13px] font-bold tracking-widest text-[#38BDF8] uppercase block">
             Operational Engagement
@@ -449,7 +479,7 @@ export default function AlphaMatrixAboutPage() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight uppercase leading-tight">
             Ready to Bolster Your Critical Defense Architecture?
           </h2>
-          <p className="text-base sm:text-lg text-slate-200 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg font-medium max-w-2xl mx-auto leading-relaxed" style={{ color: "#E2E8F0" }}>
             Consult with our defense systems engineers to plan, integrate, and deploy mission-grade perimeter, sensor, and cyber-physical protection.
           </p>
           <div className="pt-4 flex flex-wrap justify-center gap-4">

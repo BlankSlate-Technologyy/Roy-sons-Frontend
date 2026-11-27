@@ -275,16 +275,71 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 {status === "error" && errorMessage && (
                   <div style={{ padding: "12px 16px", borderRadius: "8px", backgroundColor: "#FFEBEB", border: "1px solid #FFC2C2", color: "#C00", fontSize: "13px", fontWeight: 600 }}>
                     {errorMessage}
                   </div>
                 )}
+
+                {/* Quick Select Regulatory Inquiry Pills */}
+                <div>
+                  <label
+                    style={{
+                      display: "block",
+                      fontSize: "12.5px",
+                      fontWeight: 800,
+                      marginBottom: "10px",
+                      color: COLORS.primary,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.12em",
+                    }}
+                  >
+                    Quick Select Your Regulatory Inquiry:
+                  </label>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "10px",
+                    }}
+                  >
+                    {SERVICES.slice(0, 6).map(({ title }) => {
+                      const isSelected = form.service === title;
+                      return (
+                        <button
+                          key={title}
+                          type="button"
+                          onClick={() => setForm((p) => ({ ...p, service: title }))}
+                          style={{
+                            padding: "9px 18px",
+                            borderRadius: "9999px",
+                            fontSize: "13px",
+                            fontWeight: 700,
+                            letterSpacing: "0.01em",
+                            cursor: "pointer",
+                            transition: "all 0.2s ease",
+                            border: isSelected
+                              ? `1.5px solid ${COLORS.primary}`
+                              : `1.5px solid ${COLORS.border}`,
+                            backgroundColor: isSelected ? COLORS.primary : "#FFFFFF",
+                            color: isSelected ? "#FFFFFF" : COLORS.textDark,
+                            boxShadow: isSelected
+                              ? "0 4px 14px rgba(23,63,138,0.25)"
+                              : "0 1px 4px rgba(0,0,0,0.04)",
+                          }}
+                        >
+                          {title}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
                 {/* Name + Email */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                   <div>
-                    <label style={{ display: "block", fontSize: "11.5px", fontWeight: 700, marginBottom: "6px", color: COLORS.textGray, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 800, marginBottom: "6px", color: COLORS.textDark, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                       Full Name *
                     </label>
                     <input
@@ -297,7 +352,7 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label style={{ display: "block", fontSize: "11.5px", fontWeight: 700, marginBottom: "6px", color: COLORS.textGray, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 800, marginBottom: "6px", color: COLORS.textDark, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                       Email Address *
                     </label>
                     <input
@@ -315,7 +370,7 @@ export default function Contact() {
                 {/* Phone + Service */}
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                   <div>
-                    <label style={{ display: "block", fontSize: "11.5px", fontWeight: 700, marginBottom: "6px", color: COLORS.textGray, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 800, marginBottom: "6px", color: COLORS.textDark, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                       Phone Number
                     </label>
                     <input
@@ -327,8 +382,8 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label style={{ display: "block", fontSize: "11.5px", fontWeight: 700, marginBottom: "6px", color: COLORS.textGray, textTransform: "uppercase", letterSpacing: "0.1em" }}>
-                      Service *
+                    <label style={{ display: "block", fontSize: "12px", fontWeight: 800, marginBottom: "6px", color: COLORS.textDark, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                      Selected Service / Focus *
                     </label>
                     <select
                       name="service"
@@ -347,7 +402,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div>
-                  <label style={{ display: "block", fontSize: "11.5px", fontWeight: 700, marginBottom: "6px", color: COLORS.textGray, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                  <label style={{ display: "block", fontSize: "12px", fontWeight: 800, marginBottom: "6px", color: COLORS.textDark, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                     Message *
                   </label>
                   <textarea
